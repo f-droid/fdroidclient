@@ -16,7 +16,7 @@ public sealed class IndexUpdateResult {
     public object Unchanged : IndexUpdateResult()
     public object Processed : IndexUpdateResult()
     public object NotFound : IndexUpdateResult()
-    public class Error(public val e: Exception) : IndexUpdateResult()
+    public data class Error(public val e: Exception) : IndexUpdateResult()
 }
 
 public interface IndexUpdateListener {
@@ -41,7 +41,7 @@ internal val defaultRepoUriBuilder = RepoUriBuilder { repo, pathElements ->
 
 public fun interface TempFileProvider {
     @Throws(IOException::class)
-    public fun createTempFile(): File
+    public fun createTempFile(sha256: String?): File
 }
 
 /**

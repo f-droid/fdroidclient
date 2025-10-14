@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.fdroid.CompatibilityChecker
+import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppPrefsDaoInt
 import org.fdroid.database.FDroidDatabase
@@ -39,12 +41,20 @@ public class RepoManager @JvmOverloads constructor(
     downloaderFactory: DownloaderFactory,
     httpManager: HttpManager,
     repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
+    compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(
+        packageManager = context.packageManager,
+        forceTouchApps = false,
+    ),
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
     private val repositoryDao = db.getRepositoryDao() as RepositoryDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
-    private val tempFileProvider = TempFileProvider {
-        File.createTempFile("dl-", "", context.cacheDir)
+    private val tempFileProvider = TempFileProvider { sha256 ->
+        if (sha256 == null) {
+            File.createTempFile("dl-", "", context.cacheDir)
+        } else {
+            File(context.cacheDir, sha256).apply { createNewFile() }
+        }
     }
     private val repoAdder = RepoAdder(
         context = context,
@@ -52,6 +62,7 @@ public class RepoManager @JvmOverloads constructor(
         tempFileProvider = tempFileProvider,
         downloaderFactory = downloaderFactory,
         httpManager = httpManager,
+        compatibilityChecker = compatibilityChecker,
         repoUriBuilder = repoUriBuilder,
         coroutineContext = coroutineContext,
     )

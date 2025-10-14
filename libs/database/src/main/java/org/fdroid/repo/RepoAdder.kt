@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
+import org.fdroid.CompatibilityChecker
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.MinimalApp
@@ -34,6 +35,8 @@ import org.fdroid.download.HttpManager
 import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexUpdateResult
+import org.fdroid.index.RepoUpdater
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
@@ -42,6 +45,7 @@ import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.IS_ARCHIVE_REPO
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
+import java.io.File
 import java.io.IOException
 import java.net.Proxy
 import kotlin.coroutines.CoroutineContext
@@ -57,11 +61,12 @@ public class Fetching(
     public val receivedRepo: Repository?,
     public val apps: List<MinimalApp>,
     public val fetchResult: FetchResult?,
+    public val indexFile: File? = null,
+) : AddRepoState() {
     /**
      * true if fetching is complete.
      */
-    public val done: Boolean = false,
-) : AddRepoState() {
+    public val done: Boolean = indexFile != null
     override fun toString(): String {
         return "Fetching(fetchUrl=$fetchUrl, repo=${receivedRepo?.address}, apps=${apps.size}, " +
             "fetchResult=$fetchResult, done=$done)"
@@ -72,6 +77,7 @@ public object Adding : AddRepoState()
 
 public class Added(
     public val repo: Repository,
+    public val updateResult: IndexUpdateResult?,
 ) : AddRepoState()
 
 public data class AddRepoError(
@@ -103,6 +109,7 @@ internal class RepoAdder(
     private val tempFileProvider: TempFileProvider,
     private val downloaderFactory: DownloaderFactory,
     private val httpManager: HttpManager,
+    private val compatibilityChecker: CompatibilityChecker,
     private val repoUriGetter: RepoUriGetter = RepoUriGetter,
     private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
@@ -173,7 +180,7 @@ internal class RepoAdder(
         addRepoState.value = Fetching(fetchUrl, receivedRepo, apps, fetchResult)
 
         // try fetching repo with v2 format first and fallback to v1
-        try {
+        val indexFile = try {
             fetchRepo(nUri.uri, nUri.fingerprint, proxy, nUri.username, nUri.password, receiver)
         } catch (e: SigningException) {
             log.error(e) { "Error verifying repo with given fingerprint." }
@@ -197,7 +204,7 @@ internal class RepoAdder(
         if (finalRepo == null) {
             onError(AddRepoError(INVALID_INDEX))
         } else {
-            addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, done = true)
+            addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, indexFile)
         }
     }
 
@@ -207,6 +214,10 @@ internal class RepoAdder(
         }
     }
 
+    /**
+     * Fetches the repo from the given [uri] and posts updates to [receiver].
+     * @return the temporary file the repo was written to.
+     */
     private suspend fun fetchRepo(
         uri: Uri,
         fingerprint: String?,
@@ -214,10 +225,9 @@ internal class RepoAdder(
         username: String?,
         password: String?,
         receiver: RepoPreviewReceiver,
-    ) {
-        try {
-            val repo =
-                getTempRepo(uri, IndexFormatVersion.TWO, username, password)
+    ): File {
+        return try {
+            val repo = getTempRepo(uri, IndexFormatVersion.TWO, username, password)
             val repoFetcher = RepoV2Fetcher(
                 tempFileProvider, downloaderFactory, httpManager, repoUriBuilder, proxy
             )
@@ -225,8 +235,7 @@ internal class RepoAdder(
         } catch (e: NotFoundException) {
             log.warn(e) { "Did not find v2 repo, trying v1 now." }
             // try to fetch v1 repo
-            val repo =
-                getTempRepo(uri, IndexFormatVersion.ONE, username, password)
+            val repo = getTempRepo(uri, IndexFormatVersion.ONE, username, password)
             val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
             repoFetcher.fetchRepo(uri, repo, receiver, fingerprint)
         }
@@ -270,7 +279,7 @@ internal class RepoAdder(
     }
 
     @WorkerThread
-    internal suspend fun addFetchedRepository(): Repository? {
+    internal fun addFetchedRepository(): Repository? {
         // prevent double calls (e.g. caused by double tapping a UI button)
         if (addRepoState.compareAndSet(Adding, Adding)) return null
 
@@ -280,6 +289,7 @@ internal class RepoAdder(
         // get current state before changing it
         val state = (addRepoState.value as? Fetching)
             ?: throw IllegalStateException("Unexpected state: ${addRepoState.value}")
+        log.info { "Moved to state \'Adding\'..." }
         addRepoState.value = Adding
 
         val repo = state.receivedRepo
@@ -287,6 +297,7 @@ internal class RepoAdder(
         val fetchResult = state.fetchResult
             ?: throw IllegalStateException("No fetchResult: ${addRepoState.value}")
 
+        var indexUpdateResult: IndexUpdateResult? = null
         val modifiedRepo: Repository = when (fetchResult) {
             is FetchResult.IsExistingRepository -> error("Repo exists: $fetchResult")
             is FetchResult.IsExistingMirror -> error("Mirror exists: $fetchResult")
@@ -314,6 +325,17 @@ internal class RepoAdder(
                         repositoryDao.updateUserMirrors(repoId, userMirrors)
                     }
                     repositoryDao.getRepository(repoId) ?: error("New repository not found in DB")
+                }.also { repo ->
+                    // Update the repo before returning, so we already have its content.
+                    // This should pick up [indexFile] automatically without re-downloading,
+                    // because we use the sha256 hash as the file name.
+                    indexUpdateResult = RepoUpdater(
+                        tempDir = context.cacheDir,
+                        db = db,
+                        downloaderFactory = downloaderFactory,
+                        compatibilityChecker = compatibilityChecker,
+                    ).update(repo)
+                    log.info { "Updated repo: $indexUpdateResult" }
                 }
             }
 
@@ -330,11 +352,14 @@ internal class RepoAdder(
                 }
             }
         }
-        addRepoState.value = Added(modifiedRepo)
+        log.info { "Added repository" }
+        state.indexFile?.delete()
+        addRepoState.value = Added(modifiedRepo, indexUpdateResult)
         return modifiedRepo
     }
 
     internal fun abortAddingRepo() {
+        (addRepoState.value as? Fetching)?.indexFile?.delete()
         addRepoState.value = None
         fetchJob?.cancel()
     }

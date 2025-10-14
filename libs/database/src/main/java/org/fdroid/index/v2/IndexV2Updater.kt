@@ -54,7 +54,7 @@ public class IndexV2Updater(
     }
 
     private fun getCertAndEntry(repo: Repository, certificate: String): Pair<String, Entry> {
-        val file = tempFileProvider.createTempFile()
+        val file = tempFileProvider.createTempFile(null)
         val downloader = downloaderFactory.createWithTryFirstMirror(
             repo = repo,
             uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME),
@@ -80,7 +80,7 @@ public class IndexV2Updater(
         repoVersion: Long,
         streamProcessor: IndexV2StreamProcessor,
     ): IndexUpdateResult {
-        val file = tempFileProvider.createTempFile()
+        val file = tempFileProvider.createTempFile(entryFile.sha256)
         val downloader = downloaderFactory.createWithTryFirstMirror(
             repo = repo,
             uri = repoUriBuilder.getUri(repo, entryFile.name.trimStart('/')),

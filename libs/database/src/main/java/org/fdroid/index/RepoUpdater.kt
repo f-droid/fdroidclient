@@ -20,11 +20,15 @@ public class RepoUpdater(
     downloaderFactory: DownloaderFactory,
     repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     compatibilityChecker: CompatibilityChecker,
-    listener: IndexUpdateListener,
+    listener: IndexUpdateListener? = null,
 ) {
     private val log = KotlinLogging.logger {}
-    private val tempFileProvider = TempFileProvider {
-        File.createTempFile("dl-", "", tempDir)
+    private val tempFileProvider = TempFileProvider { sha256 ->
+        if (sha256 == null) {
+            File.createTempFile("dl-", "", tempDir)
+        } else {
+            File(tempDir, sha256).apply { createNewFile() }
+        }
     }
 
     /**

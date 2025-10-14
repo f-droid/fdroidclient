@@ -9,6 +9,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import app.cash.turbine.test
+import io.mockk.MockKException
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.every
@@ -21,8 +22,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
+import org.fdroid.CompatibilityChecker
 import org.fdroid.LocaleChooser.getBestLocale
-import org.fdroid.database.FDroidDatabase
+import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.database.Mirror
 import org.fdroid.database.NewRepository
 import org.fdroid.database.Repository
@@ -37,6 +39,7 @@ import org.fdroid.download.NotFoundException
 import org.fdroid.download.getDigestInputStream
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexParser.json
+import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.v2.IndexV2
@@ -77,10 +80,11 @@ internal class RepoAdderTest {
     var folder: TemporaryFolder = TemporaryFolder()
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
-    private val db = mockk<FDroidDatabase>()
+    private val db = mockk<FDroidDatabaseInt>()
     private val repoDao = mockk<RepositoryDaoInt>()
     private val tempFileProvider = mockk<TempFileProvider>()
     private val httpManager = mockk<HttpManager>()
+    private val compatibilityChecker = mockk<CompatibilityChecker>()
     private val downloaderFactory = mockk<DownloaderFactory>()
     private val downloader = mockk<Downloader>()
     private val digest = mockk<MessageDigest>()
@@ -96,14 +100,28 @@ internal class RepoAdderTest {
 
         mockkStatic("org.fdroid.download.HttpManagerKt")
 
-        repoAdder = RepoAdder(context, db, tempFileProvider, downloaderFactory, httpManager)
+        repoAdder = RepoAdder(
+            context = context,
+            db = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            httpManager = httpManager,
+            compatibilityChecker = compatibilityChecker,
+        )
     }
 
     @Test
     fun testDisallowInstallUnknownSources() = runTest {
         val context = mockk<Context>()
         val userManager = mockk<UserManager>()
-        val repoAdder = RepoAdder(context, db, tempFileProvider, downloaderFactory, httpManager)
+        val repoAdder = RepoAdder(
+            context,
+            db,
+            tempFileProvider,
+            downloaderFactory,
+            httpManager,
+            compatibilityChecker,
+        )
 
         every { context.getSystemService(UserManager::class.java) } returns userManager
         every {
@@ -170,6 +188,8 @@ internal class RepoAdderTest {
             val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
             assertEquals(expectedResult, fetching.fetchResult)
 
+            every { newRepo.formatVersion } returns IndexFormatVersion.TWO
+
             repoAdder.addFetchedRepository()
 
             assertIs<Adding>(awaitItem()) // now moved to Adding
@@ -177,6 +197,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
+            // we are not mocking all the actual repo adding,
+            // so just assert that this fails due to mocking
+            assertIs<IndexUpdateResult.Error>(addedState.updateResult)
+            assertIs<MockKException>(addedState.updateResult.e)
         }
     }
 
@@ -199,6 +223,8 @@ internal class RepoAdderTest {
             val fetching: Fetching = awaitItem() as Fetching // still Fetching from last call
             assertIs<IsNewRepository>(fetching.fetchResult)
 
+            every { newRepo.formatVersion } returns IndexFormatVersion.TWO
+
             repoAdder.addFetchedRepository()
 
             assertIs<Adding>(awaitItem()) // now moved to Adding
@@ -206,6 +232,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
+            // we are not mocking all the actual repo adding,
+            // so just assert that this fails due to mocking
+            assertIs<IndexUpdateResult.Error>(addedState.updateResult)
+            assertIs<MockKException>(addedState.updateResult.e)
         }
 
         verify(exactly = 0) {
@@ -409,7 +439,7 @@ internal class RepoAdderTest {
         val url = "https://example.org/repo"
         val jarFile = folder.newFile()
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match { it.address == url && it.formatVersion == IndexFormatVersion.TWO },
@@ -445,7 +475,7 @@ internal class RepoAdderTest {
         val index = "{ invalid JSON foo bar,".toByteArray()
         val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match {
@@ -496,7 +526,7 @@ internal class RepoAdderTest {
         val url = "https://example.org/repo/"
         val jarFile = folder.newFile()
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match {
@@ -563,7 +593,7 @@ internal class RepoAdderTest {
         val index = json.encodeToString(IndexV2.serializer(), indexV2).toByteArray()
         val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match {
@@ -623,7 +653,7 @@ internal class RepoAdderTest {
         val index = json.encodeToString(IndexV2.serializer(), indexV2).toByteArray()
         val indexStream = DigestInputStream(ByteArrayInputStream(index), digest)
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match {
@@ -686,7 +716,7 @@ internal class RepoAdderTest {
         val urlTrimmed = "http://testy.at.or.at/fdroid/repo"
 
         val jarFile = folder.newFile()
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
 
         every {
             downloaderFactory.create(
@@ -743,7 +773,7 @@ internal class RepoAdderTest {
         val url = "https://example.org/repo"
         val jarFile = folder.newFile()
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match { it.address == url && it.formatVersion == IndexFormatVersion.TWO },
@@ -820,6 +850,7 @@ internal class RepoAdderTest {
         repoAdder.addRepoState.test {
             assertIs<Fetching>(awaitItem()) // still Fetching from last call
 
+            every { newRepo.formatVersion } returns IndexFormatVersion.TWO
             repoAdder.addFetchedRepository()
 
             assertIs<Adding>(awaitItem()) // now moved to Adding
@@ -827,6 +858,10 @@ internal class RepoAdderTest {
             val addedState = awaitItem()
             assertIs<Added>(addedState)
             assertEquals(newRepo, addedState.repo)
+            // we are not mocking all the actual repo adding,
+            // so just assert that this fails due to mocking
+            assertIs<IndexUpdateResult.Error>(addedState.updateResult)
+            assertIs<MockKException>(addedState.updateResult.e)
         }
     }
 
@@ -867,7 +902,7 @@ internal class RepoAdderTest {
         val indexInputStream = assets.open(indexFile)
         val indexDigestStream = DigestInputStream(indexInputStream, digest)
 
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(any()) } returns jarFile
         every {
             downloaderFactory.create(
                 repo = match {
