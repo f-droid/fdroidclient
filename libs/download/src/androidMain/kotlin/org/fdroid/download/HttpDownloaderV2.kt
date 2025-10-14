@@ -25,9 +25,12 @@ import io.ktor.client.plugins.ResponseException
 import io.ktor.http.HttpStatusCode.Companion.NotFound
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
+import org.fdroid.fdroid.toHex
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 /**
  * Download files over HTTP, with support for proxies, `.onion` addresses, HTTP Basic Auth, etc.
@@ -62,10 +65,23 @@ public class HttpDownloaderV2 constructor(
         var resumable = false
         val fileLength = outputFile.length()
         if (fileLength > (request.indexFile.size ?: -1)) {
+            // file was larger than expected, so delete and re-download
             if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
         } else if (fileLength == request.indexFile.size && outputFile.isFile) {
             log.debug { "Already have outputFile, not downloading: ${outputFile.name}" }
-            return // already have it!
+            if (request.indexFile.sha256 == null) {
+                // no way to check file, so we trust that what we have is legit (v1 only)
+                return
+            } else {
+                if (hashFile(outputFile) == request.indexFile.sha256) {
+                    // hash matched, so we already have the good file, don't download again
+                    return
+                } else {
+                    log.warn { "Hash mismatch for ${request.indexFile}" }
+                    // delete file and continue
+                    if (!outputFile.delete()) log.warn { "Warning: outputFile not deleted" }
+                }
+            }
         } else if (fileLength > 0) {
             resumable = true
         }
@@ -88,6 +104,23 @@ public class HttpDownloaderV2 constructor(
     }
 
     override fun close() {
+    }
+
+    private fun hashFile(file: File): String {
+        val messageDigest: MessageDigest = try {
+            MessageDigest.getInstance("SHA-256")
+        } catch (e: NoSuchAlgorithmException) {
+            throw AssertionError(e)
+        }
+        file.inputStream().use { inputStream ->
+            val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+            var bytes = inputStream.read(buffer)
+            while (bytes >= 0) {
+                messageDigest.update(buffer, 0, bytes)
+                bytes = inputStream.read(buffer)
+            }
+        }
+        return messageDigest.digest().toHex()
     }
 
 }
