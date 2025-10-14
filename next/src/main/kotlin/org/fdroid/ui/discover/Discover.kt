@@ -166,7 +166,13 @@ fun Discover(
                     }
                 }
                 NoEnabledReposDiscoverModel -> {
-                    Text(stringResource(R.string.no_repos_enabled))
+                    Text(
+                        text = stringResource(R.string.no_repos_enabled),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp, vertical = 64.dp)
+                    )
                 }
             }
             AnimatedVisibility(discoverModel is LoadedDiscoverModel) {
@@ -190,6 +196,23 @@ fun LoadingDiscoverPreview() {
         Discover(
             discoverModel = LoadingDiscoverModel(true),
             numUpdates = 23,
+            isBigScreen = false,
+            onListTap = {},
+            onAppTap = {},
+            onNav = {},
+            onSearch = {},
+            onSearchCleared = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun NoEnabledReposPreview() {
+    FDroidContent {
+        Discover(
+            discoverModel = NoEnabledReposDiscoverModel,
+            numUpdates = 0,
             isBigScreen = false,
             onListTap = {},
             onAppTap = {},

@@ -9,7 +9,7 @@
     <string name="menu_apps_my">My apps</string>
 
     <string name="first_start_loading">Retrieving apps…\n\nThis may take some time.</string>
-    <string name="no_repos_enabled">No repositories enabled.\nEnable at least one repository to see apps.</string>
+    <string name="no_repos_enabled">No repositories enabled.\nEnable or add at least one repository to see apps.</string>
     <string name="no_app_selected">No app selected</string>
     <string name="no_repository_selected">No repository selected</string>
 
