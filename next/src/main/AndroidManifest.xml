@@ -66,6 +66,29 @@
                 <data android:pathPrefix="/packages/" />
                 <data android:pathPattern="/.*/packages/.*" />
             </intent-filter>
+
+            <!-- Repo URLs -->
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="fdroid.link" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="fdroidrepos" />
+                <data
+                    android:scheme="FDROIDREPOS"
+                    tools:ignore="AppLinkUrlError" />
+            </intent-filter>
         </activity>
         <activity
             android:name="org.fdroid.ui.CrashActivity"
@@ -73,6 +96,11 @@
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance"
             android:process=":acra" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:ignore="DiscouragedApi"
+            tools:replace="screenOrientation" />
 
         <service
             android:name="org.fdroid.install.AppInstallService"

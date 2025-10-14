@@ -43,6 +43,11 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
             } else if (uri.path?.matches(packagesUrlRegex) == true) {
                 val packageName = uri.lastPathSegment ?: return
                 backStack.add(NavigationKey.AppDetails(packageName))
+            } else if (uri.scheme == "fdroidrepos" ||
+                uri.scheme == "FDROIDREPOS" ||
+                (uri.scheme == "https" && uri.host == "fdroid.link")
+            ) {
+                backStack.add(NavigationKey.AddRepo(uri.toString()))
             }
         } else if (ACTION_MY_APPS == intent.action) {
             if (backStack.lastOrNull() !is NavigationKey.MyApps) {

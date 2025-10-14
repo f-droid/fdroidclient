@@ -34,6 +34,9 @@ sealed interface NavigationKey : NavKey {
     data class RepoDetails(val repoId: Long) : NavigationKey
 
     @Serializable
+    data class AddRepo(val uri: String? = null) : NavigationKey
+
+    @Serializable
     data object Settings : NavigationKey
 
     @Serializable

@@ -5,8 +5,8 @@ import android.content.Intent.ACTION_SHOW_APP_INFO
 import android.content.Intent.ACTION_VIEW
 import android.content.Intent.CATEGORY_BROWSABLE
 import android.content.Intent.EXTRA_PACKAGE_NAME
-import androidx.compose.runtime.mutableStateListOf
 import androidx.core.net.toUri
+import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,7 +18,7 @@ import kotlin.test.assertEquals
 @RunWith(RobolectricTestRunner::class)
 class IntentRouterTest {
 
-    private val backstack = mutableStateListOf<NavKey>()
+    private val backstack: NavBackStack<NavKey> = NavBackStack()
     private val intentRouter = IntentRouter(backstack)
 
     @Test
@@ -83,6 +83,23 @@ class IntentRouterTest {
         }
         intentRouter.accept(i)
         assertEquals(0, backstack.size)
+    }
+
+    @Test
+    fun testRepoUris() {
+        listOf(
+            "fdroidrepos://example.org/repo",
+            "FDROIDREPOS://example.org/repo",
+            "https://fdroid.link/#repo=https://f-droid.org/repo",
+            "https://fdroid.link/#foo/bar",
+        ).forEach { uri ->
+            val i = Intent(ACTION_VIEW).apply {
+                data = uri.toUri()
+            }
+            intentRouter.accept(i)
+            assertEquals(1, backstack.size)
+            assertEquals(NavigationKey.AddRepo(uri), backstack.removeLastOrNull())
+        }
     }
 
 }

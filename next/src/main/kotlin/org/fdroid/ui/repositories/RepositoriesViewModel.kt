@@ -77,8 +77,5 @@ class RepositoriesViewModel @Inject constructor(
         repoManager.reorderRepositories(fromRepo, toRepo)
     }
 
-    fun addRepo() {
-    }
-
     fun onOnboardingSeen() = settingsManager.onRepositoriesOnboardingSeen()
 }

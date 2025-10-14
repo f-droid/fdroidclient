@@ -5,6 +5,8 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
+import org.fdroid.database.Repository
+import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
@@ -235,3 +237,14 @@ fun getRepositoriesInfo(
     override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) {}
     override fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {}
 }
+
+fun getRepository(address: String = "https://example.org/repo") = Repository(
+    repoId = 42L,
+    address = address,
+    timestamp = 42L,
+    formatVersion = IndexFormatVersion.ONE,
+    certificate = "010203",
+    version = 20001L,
+    weight = 42,
+    lastUpdated = 1337,
+)

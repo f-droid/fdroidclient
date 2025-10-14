@@ -88,6 +88,8 @@ dependencies {
 
     implementation(libs.acra.mail)
     implementation(libs.acra.dialog)
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0") { isTransitive = false }
+    implementation(libs.zxing.core)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)

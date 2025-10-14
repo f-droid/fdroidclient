@@ -50,6 +50,8 @@ import org.fdroid.ui.repositories.RepositoriesViewModel
 import org.fdroid.ui.repositories.RepositoryInfo
 import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.repositories.RepositoryModel
+import org.fdroid.ui.repositories.add.AddRepo
+import org.fdroid.ui.repositories.add.AddRepoViewModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
 
@@ -207,7 +209,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             backStack.add(NavigationKey.RepoDetails(repositoryItem.repoId))
                         }
 
-                        override fun onAddRepo() = viewModel.addRepo()
+                        override fun onAddRepo() {
+                            backStack.add(NavigationKey.AddRepo())
+                        }
 
                         override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) =
                             viewModel.onRepositoriesMoved(fromIndex, toIndex)
@@ -233,6 +237,30 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                         Text("Repo ${it.repoId}")
                         Text("This will basically be the repo details screen from latest client")
                     }
+                }
+                entry<NavigationKey.AddRepo> { navKey ->
+                    val viewModel = hiltViewModel<AddRepoViewModel>()
+                    LaunchedEffect(navKey) {
+                        if (navKey.uri != null) {
+                            viewModel.onFetchRepo(navKey.uri)
+                        }
+                    }
+                    AddRepo(
+                        state = viewModel.state.collectAsStateWithLifecycle().value,
+                        onFetchRepo = viewModel::onFetchRepo,
+                        onAddRepo = viewModel::addFetchedRepository,
+                        onExistingRepo = { repoId ->
+                            backStack.removeLastOrNull()
+                            backStack.add(NavigationKey.RepoDetails(repoId))
+                        },
+                        onRepoAdded = { title, repoId ->
+                            backStack.removeLastOrNull()
+                            backStack.add(NavigationKey.RepoDetails(repoId))
+                            val type = AppListType.Repository(title, repoId)
+                            backStack.add(NavigationKey.AppList(type))
+                        },
+                        onBackClicked = { backStack.removeLastOrNull() },
+                    )
                 }
                 entry(NavigationKey.Settings) {
                     val viewModel = hiltViewModel<SettingsViewModel>()
