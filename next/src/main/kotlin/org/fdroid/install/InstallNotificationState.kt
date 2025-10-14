@@ -2,7 +2,7 @@ package org.fdroid.install
 
 import android.content.Context
 import androidx.annotation.StringRes
-import org.fdroid.next.R
+import org.fdroid.R
 import kotlin.math.roundToInt
 
 data class InstallNotificationState(

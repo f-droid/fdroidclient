@@ -20,7 +20,6 @@ import androidx.core.content.ContextCompat.checkSelfPermission
 import dagger.hilt.android.qualifiers.ApplicationContext
 import mu.KotlinLogging
 import org.fdroid.install.InstallNotificationState
-import org.fdroid.next.R
 import org.fdroid.ui.IntentRouter.Companion.ACTION_MY_APPS
 import org.fdroid.updates.UpdateNotificationState
 import javax.inject.Inject

@@ -68,9 +68,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import org.fdroid.LocaleChooser.getBestLocale
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
-import org.fdroid.next.R
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.icons.License

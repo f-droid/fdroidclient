@@ -50,11 +50,11 @@ import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation3.runtime.NavKey
+import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
-import org.fdroid.next.R
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.lists.TopSearchBar

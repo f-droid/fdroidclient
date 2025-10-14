@@ -31,10 +31,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.IndexFormatVersion.TWO
-import org.fdroid.next.R
 import org.fdroid.ui.repositories.RepoIcon
 import org.fdroid.ui.utils.FDroidOutlineButton
 

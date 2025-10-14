@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import org.fdroid.next.R
+import org.fdroid.R
 import org.fdroid.ui.utils.startActivitySafe
 
 @OptIn(ExperimentalMaterial3Api::class)

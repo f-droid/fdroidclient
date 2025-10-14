@@ -12,6 +12,7 @@ import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.NotificationManager
+import org.fdroid.R
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
@@ -20,7 +21,6 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.index.v1.IndexV1Updater
-import org.fdroid.next.R
 import org.fdroid.updates.UpdatesManager
 import java.io.File
 import javax.inject.Inject

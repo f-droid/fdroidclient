@@ -20,11 +20,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
-import org.fdroid.next.R
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem

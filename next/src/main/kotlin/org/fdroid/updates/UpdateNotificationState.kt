@@ -1,7 +1,7 @@
 package org.fdroid.updates
 
 import android.content.Context
-import org.fdroid.next.R
+import org.fdroid.R
 
 data class UpdateNotificationState(
     private val updates: List<AppUpdate>,

@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.os.LocaleListCompat
+import org.fdroid.R
 import org.fdroid.index.IndexUpdateResult
-import org.fdroid.next.R
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoState
 import org.fdroid.repo.Added

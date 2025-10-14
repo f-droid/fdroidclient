@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
-import org.fdroid.next.R
+import org.fdroid.R
 import java.io.IOException
 import java.lang.Runtime.getRuntime
 import javax.inject.Inject

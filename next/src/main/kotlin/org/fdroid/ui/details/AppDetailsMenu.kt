@@ -16,8 +16,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.next.R
 import org.fdroid.ui.utils.testApp
 
 @Composable

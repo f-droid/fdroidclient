@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.core.os.LocaleListCompat
+import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.download.getDownloadRequest
-import org.fdroid.next.R
 import org.fdroid.ui.utils.AsyncShimmerImage
 
 @Composable

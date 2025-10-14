@@ -29,10 +29,10 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
+import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
-import org.fdroid.next.R
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsViewModel

@@ -22,7 +22,7 @@ import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
-import org.fdroid.next.R
+import org.fdroid.R
 import org.fdroid.ui.discover.AppSearchInputField
 import org.fdroid.ui.discover.SEARCH_THRESHOLD
 

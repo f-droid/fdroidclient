@@ -32,9 +32,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.fdroid.BuildConfig.VERSION_NAME
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.next.BuildConfig.VERSION_NAME
-import org.fdroid.next.R
 import org.fdroid.ui.utils.openUriSafe
 
 @Composable

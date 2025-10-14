@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.next.R
 import org.fdroid.repo.FetchResult.IsExistingMirror
 import org.fdroid.repo.FetchResult.IsExistingRepository
 import org.fdroid.repo.FetchResult.IsNewMirror

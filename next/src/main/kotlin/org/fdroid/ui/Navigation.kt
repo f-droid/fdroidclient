@@ -9,7 +9,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
-import org.fdroid.next.R
+import org.fdroid.R
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.lists.AppListType
 

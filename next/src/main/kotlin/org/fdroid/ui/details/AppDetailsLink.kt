@@ -21,7 +21,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-import org.fdroid.next.R
+import org.fdroid.R
 import org.fdroid.ui.utils.openUriSafe
 
 @Composable

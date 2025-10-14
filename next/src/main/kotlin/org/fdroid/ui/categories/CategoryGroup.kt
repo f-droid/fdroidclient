@@ -1,7 +1,7 @@
 package org.fdroid.ui.categories
 
 import androidx.annotation.StringRes
-import org.fdroid.next.R
+import org.fdroid.R
 
 data class CategoryGroup(
     val id: String,

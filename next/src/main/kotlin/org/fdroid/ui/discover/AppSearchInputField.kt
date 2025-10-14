@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import org.fdroid.next.R
+import org.fdroid.R
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)

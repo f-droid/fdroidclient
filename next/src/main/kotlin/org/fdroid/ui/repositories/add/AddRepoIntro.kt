@@ -66,8 +66,8 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import com.journeyapps.barcodescanner.ScanOptions.QR_CODE
 import kotlinx.coroutines.launch
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.next.R
 import org.fdroid.repo.None
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton

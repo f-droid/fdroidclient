@@ -23,14 +23,12 @@ import org.acra.config.dialog
 import org.acra.config.mailSender
 import org.acra.data.StringFormat.JSON
 import org.acra.ktx.initAcra
+import org.fdroid.BuildConfig.APPLICATION_ID
+import org.fdroid.BuildConfig.VERSION_NAME
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.LocalIconFetcher
 import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
-import org.fdroid.next.BuildConfig
-import org.fdroid.next.BuildConfig.APPLICATION_ID
-import org.fdroid.next.BuildConfig.VERSION_NAME
-import org.fdroid.next.R
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.CrashActivity
 import org.fdroid.updates.AppUpdateWorker

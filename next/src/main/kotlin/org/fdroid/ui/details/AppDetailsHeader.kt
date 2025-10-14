@@ -55,9 +55,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
+import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
-import org.fdroid.next.R
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe

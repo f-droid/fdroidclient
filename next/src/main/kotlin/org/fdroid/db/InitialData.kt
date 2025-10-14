@@ -5,11 +5,11 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidFixture
 import org.fdroid.database.InitialRepository
 import org.fdroid.database.RepositoryDao
+import org.fdroid.repo.RepoUpdateWorker
 import java.io.File
 
 class InitialData(val context: Context) : FDroidFixture {

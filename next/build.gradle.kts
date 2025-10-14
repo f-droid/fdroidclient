@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "org.fdroid.next"
+    namespace = "org.fdroid"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.fdroid.next"
+        applicationId = "org.fdroid.basic"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

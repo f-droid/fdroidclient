@@ -32,10 +32,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import org.fdroid.R
 import org.fdroid.database.AppVersion
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.PackageVersion
-import org.fdroid.next.R
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp
