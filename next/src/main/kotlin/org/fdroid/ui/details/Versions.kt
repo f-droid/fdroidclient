@@ -36,6 +36,7 @@ import org.fdroid.R
 import org.fdroid.database.AppVersion
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.PackageVersion
+import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp

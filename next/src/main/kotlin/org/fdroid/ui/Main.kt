@@ -2,11 +2,6 @@ package org.fdroid.ui
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement.spacedBy
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
@@ -52,6 +47,9 @@ import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.repositories.RepositoryModel
 import org.fdroid.ui.repositories.add.AddRepo
 import org.fdroid.ui.repositories.add.AddRepoViewModel
+import org.fdroid.ui.repositories.details.RepoDetails
+import org.fdroid.ui.repositories.details.RepoDetailsInfo
+import org.fdroid.ui.repositories.details.RepoDetailsViewModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
 
@@ -227,15 +225,22 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 }
                 entry<NavigationKey.RepoDetails>(
                     metadata = ListDetailSceneStrategy.detailPane("repos")
-                ) {
-                    Column(
-                        verticalArrangement = spacedBy(16.dp),
-                        modifier = Modifier
-                            .background(MaterialTheme.colorScheme.background)
-                            .safeDrawingPadding(),
+                ) { navKey ->
+                    val viewModel = hiltViewModel<RepoDetailsViewModel>()
+                    LaunchedEffect(navKey) {
+                        viewModel.setRepoId(navKey.repoId)
+                    }
+                    RepoDetails(
+                        info = object : RepoDetailsInfo {
+                            override val model = viewModel.model.collectAsStateWithLifecycle().value
+                            override val actions = viewModel
+                        },
+                        onShowAppsClicked = { title, repoId ->
+                            val type = AppListType.Repository(title, repoId)
+                            backStack.add(NavigationKey.AppList(type))
+                        },
                     ) {
-                        Text("Repo ${it.repoId}")
-                        Text("This will basically be the repo details screen from latest client")
+                        backStack.removeLastOrNull()
                     }
                 }
                 entry<NavigationKey.AddRepo> { navKey ->

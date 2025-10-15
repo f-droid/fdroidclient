@@ -88,6 +88,9 @@
     <string name="onboarding_app_list_filter_message">Here you can apply filters to the list of apps, e.g. showing only apps within a certain category or repository. Changing the sort order is also possible.</string>
     <string name="got_it">Got it</string>
     <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
+    <string name="repo_basicauth_username">Username</string>
+    <string name="repo_basicauth_password">Password</string>
+    <string name="repo_basicauth_edit">Save Changes</string>
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.

@@ -6,6 +6,7 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.Repository
+import org.fdroid.download.Mirror
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
@@ -24,6 +25,12 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.repositories.RepositoryInfo
 import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.repositories.RepositoryModel
+import org.fdroid.ui.repositories.details.ArchiveState
+import org.fdroid.ui.repositories.details.OfficialMirrorItem
+import org.fdroid.ui.repositories.details.RepoDetailsActions
+import org.fdroid.ui.repositories.details.RepoDetailsInfo
+import org.fdroid.ui.repositories.details.RepoDetailsModel
+import org.fdroid.ui.repositories.details.UserMirrorItem
 import java.util.concurrent.TimeUnit.DAYS
 
 object Names {
@@ -238,6 +245,53 @@ fun getRepositoriesInfo(
     override fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {}
 }
 
+fun getRepoDetailsInfo(
+    model: RepoDetailsModel = RepoDetailsModel(
+        repo = getRepository(),
+        numberApps = 42,
+        officialMirrors = listOf(
+            OfficialMirrorItem(
+                mirror = Mirror(baseUrl = "https://mirror.example.com/fdroid/repo"),
+                isEnabled = true,
+                isRepoAddress = true,
+            ),
+            OfficialMirrorItem(
+                mirror = Mirror("https://mirror.example.com/foo/bar/fdroid/repo", "de"),
+                isEnabled = false,
+                isRepoAddress = false,
+            ),
+        ),
+        userMirrors = listOf(
+            UserMirrorItem(Mirror("https://mirror.example.com/fdroid/repo"), true),
+            UserMirrorItem(Mirror("https://mirror.example.com/foo/bar/fdroid/repo"), false),
+        ),
+        archiveState = ArchiveState.LOADING,
+        showOnboarding = false,
+    ),
+) = object : RepoDetailsInfo {
+    override val model = model
+    override val actions: RepoDetailsActions = object : RepoDetailsActions {
+        override fun deleteRepository(repoId: Long) {}
+        override fun updateUsernameAndPassword(
+            repoId: Long,
+            username: String,
+            password: String,
+        ) {
+        }
+
+        override fun setMirrorEnabled(
+            repoId: Long,
+            mirror: Mirror,
+            enabled: Boolean,
+        ) {
+        }
+
+        override fun deleteUserMirror(repoId: Long, mirror: Mirror) {}
+        override fun setArchiveRepoEnabled(enabled: Boolean) {}
+        override fun onOnboardingSeen() {}
+    }
+}
+
 fun getRepository(address: String = "https://example.org/repo") = Repository(
     repoId = 42L,
     address = address,
@@ -247,4 +301,6 @@ fun getRepository(address: String = "https://example.org/repo") = Repository(
     version = 20001L,
     weight = 42,
     lastUpdated = 1337,
+    username = "foo",
+    password = "bar",
 )

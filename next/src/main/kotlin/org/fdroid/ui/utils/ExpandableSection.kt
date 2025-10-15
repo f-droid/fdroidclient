@@ -1,4 +1,4 @@
-package org.fdroid.ui.details
+package org.fdroid.ui.utils
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable

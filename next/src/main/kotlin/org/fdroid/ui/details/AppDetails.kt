@@ -77,6 +77,7 @@ import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.testApp
 
 @Composable

@@ -4,6 +4,8 @@ import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
@@ -11,6 +13,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.UriHandler
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.createBitmap
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.qrcode.QRCodeWriter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.text.Normalizer
 import java.text.Normalizer.Form.NFKD
 
@@ -44,6 +51,30 @@ fun String.normalize(): String {
     return Normalizer.normalize(this, NFKD).replace(normalizerRegex, "")
 }
 
+/**
+ * Same as the Java function Utils.generateQrBitmap, but using coroutines instead of Single and Disposable.
+ */
+suspend fun generateQrBitmap(qrData: String): Bitmap? = withContext(Dispatchers.Default) {
+    return@withContext try {
+        val bitMatrix = QRCodeWriter().encode(qrData, BarcodeFormat.QR_CODE, 800, 800)
+        val qrCodeWidth = bitMatrix.width
+        val qrCodeHeight = bitMatrix.height
+        val pixels = IntArray(qrCodeWidth * qrCodeHeight)
+        for (y in 0 until qrCodeHeight) {
+            val offset = y * qrCodeWidth
+            for (x in 0 until qrCodeWidth) {
+                pixels[offset + x] = if (bitMatrix.get(x, y)) Color.BLACK else Color.WHITE
+            }
+        }
+        createBitmap(qrCodeWidth, qrCodeHeight).apply {
+            setPixels(pixels, 0, qrCodeWidth, 0, 0, qrCodeWidth, qrCodeHeight)
+        }
+    } catch (e: Exception) {
+        Log.e("generateQrBitmap", "Could not encode QR as bitmap", e)
+        null
+    }
+}
+
 fun Long.asRelativeTimeString(): String {
     return DateUtils.getRelativeTimeSpanString(
         this,
@@ -52,6 +83,18 @@ fun Long.asRelativeTimeString(): String {
         DateUtils.FORMAT_ABBREV_ALL
     ).toString()
 }
+
+val String.flagEmoji: String?
+    get() {
+        if (this.length != 2) {
+            return null
+        }
+        val chars = this.uppercase().toCharArray()
+        val first = chars[0].code - 0x41 + 0x1F1E6
+        val second = chars[1].code - 0x41 + 0x1F1E6
+        val flagEmoji = String(Character.toChars(first) + Character.toChars(second))
+        return flagEmoji
+    }
 
 fun canStartForegroundService(context: Context): Boolean {
     val powerManager = ContextCompat.getSystemService(context, PowerManager::class.java)
