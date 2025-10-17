@@ -6,7 +6,7 @@ interface RepositoryInfo {
     fun onOnboardingSeen()
     fun onRepositorySelected(repositoryItem: RepositoryItem)
     fun onAddRepo()
-    fun onRepositoryMoved(fromIndex: Int, toIndex: Int)
+    fun onRepositoryMoved(fromRepoId: Long, toRepoId: Long)
     fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long)
 }
 

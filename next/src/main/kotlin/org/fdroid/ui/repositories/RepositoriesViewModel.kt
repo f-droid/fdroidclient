@@ -9,11 +9,12 @@ import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import mu.KotlinLogging
+import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
 import org.fdroid.settings.SettingsManager
 import javax.inject.Inject
@@ -29,22 +30,16 @@ class RepositoriesViewModel @Inject constructor(
     private val localeList = LocaleListCompat.getDefault()
     private val moleculeScope =
         CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
-    private val repos: Flow<List<RepositoryItem>> = repoManager.repositoriesState.map { repos ->
-        repos.mapNotNull {
-            if (it.isArchiveRepo) null
-            else RepositoryItem(it, localeList)
-        }
-    }
-    private val repoSortingMap: MutableStateFlow<Map<Long, Int>>
+    private val repos = MutableStateFlow<List<RepositoryItem>?>(null)
+    private val repoSortingMap = MutableStateFlow<Map<Long, Int>>(emptyMap())
     private val showOnboarding = settingsManager.showRepositoriesOnboarding
 
     init {
-        // just add repos to sortingMap, because they are already pre-sorted by weight
-        val sortingMap = mutableMapOf<Long, Int>()
-        repoManager.getRepositories().forEachIndexed { index, repository ->
-            sortingMap[repository.repoId] = index
+        viewModelScope.launch {
+            repoManager.repositoriesState.collect {
+                onRepositoriesChanged(it)
+            }
         }
-        repoSortingMap = MutableStateFlow(sortingMap)
     }
 
     // define below init, because this only defines repoSortingMap
@@ -56,14 +51,31 @@ class RepositoriesViewModel @Inject constructor(
         )
     }
 
-    fun onRepositoriesMoved(fromIndex: Int, toIndex: Int) {
-        log.info { "onRepositoriesMoved($fromIndex, $toIndex)" }
-        val repoItems = model.value.repositories ?: error("Model had null repositories")
-        val fromItem = repoItems[fromIndex]
-        val toItem = repoItems[toIndex]
-        repoSortingMap.value = repoSortingMap.value.toMutableMap().apply {
-            replace(fromItem.repoId, toIndex)
-            replace(toItem.repoId, fromIndex)
+    private fun onRepositoriesChanged(repositories: List<Repository>) {
+        log.info("onRepositoriesChanged(${repositories.size})")
+        repos.update {
+            repositories.mapNotNull {
+                if (it.isArchiveRepo) null
+                else RepositoryItem(it, localeList)
+            }
+        }
+        repoSortingMap.update {
+            // just add repos to sortingMap, because they are already pre-sorted by weight
+            mutableMapOf<Long, Int>().apply {
+                repositories.forEachIndexed { index, repository ->
+                    this[repository.repoId] = index
+                }
+            }
+        }
+    }
+
+    fun onRepositoriesMoved(fromRepoId: Long, toRepoId: Long) {
+        log.info { "onRepositoriesMoved($fromRepoId, $toRepoId)" }
+        repoSortingMap.update {
+            repoSortingMap.value.toMutableMap().apply {
+                val toIndex = get(toRepoId) ?: error("No position for toRepoId $toRepoId")
+                replace(toRepoId, replace(fromRepoId, toIndex)!!)
+            }
         }
     }
 

@@ -213,8 +213,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             backStack.add(NavigationKey.AddRepo())
                         }
 
-                        override fun onRepositoryMoved(fromIndex: Int, toIndex: Int) =
-                            viewModel.onRepositoriesMoved(fromIndex, toIndex)
+                        override fun onRepositoryMoved(fromRepoId: Long, toRepoId: Long) =
+                            viewModel.onRepositoriesMoved(fromRepoId, toRepoId)
 
                         override fun onRepositoriesFinishedMoving(
                             fromRepoId: Long,

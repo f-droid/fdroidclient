@@ -49,10 +49,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
+// We are not passing indexes like in upstream code, because in larger lists these weren't correct
+// so we pass [Any] for the item key instead.
+// Hopefully, dragging items will be natively supported soon, so we can remove this entire file.
+
 @Composable
 fun rememberDragDropState(
     lazyListState: LazyListState,
-    onMove: (Int, Int) -> Unit,
+    onMove: (Any, Any) -> Unit,
     onEnd: (Any, Any) -> Unit
 ): DragDropState {
     val scope = rememberCoroutineScope()
@@ -71,12 +75,11 @@ fun rememberDragDropState(
 class DragDropState internal constructor(
     private val state: LazyListState,
     private val scope: CoroutineScope,
-    private val onMove: (Int, Int) -> Unit,
+    private val onMove: (Any, Any) -> Unit,
     private val onEnd: (Any, Any) -> Unit,
 ) {
-    private var movedFrom: Int? = null
-    private var movedFromKey: Any? = null
-    private var movedToKey: Any? = null
+    private var movedFrom: LazyListItemInfo? = null
+    private var movedTo: LazyListItemInfo? = null
     var draggingItemIndex by mutableStateOf<Int?>(null)
         private set
 
@@ -103,8 +106,7 @@ class DragDropState internal constructor(
         state.layoutInfo.visibleItemsInfo
             .firstOrNull { item -> offset.y.toInt() in item.offset..(item.offset + item.size) }
             ?.also {
-                movedFrom = it.index
-                movedFromKey = it.key
+                movedFrom = it
                 draggingItemIndex = it.index
                 draggingItemInitialOffset = it.offset
             }
@@ -127,14 +129,13 @@ class DragDropState internal constructor(
         draggingItemIndex = null
         draggingItemInitialOffset = 0
         movedFrom = null
-        movedFromKey = null
-        movedToKey = null
+        movedTo = null
     }
 
     internal fun onDragEnd() {
-        val from = movedFromKey ?: error("Moved from was null")
-        val to = movedToKey ?: from
-        if (from != to) onEnd(from, to)
+        val from = movedFrom ?: error("Moved from was null")
+        val to = movedTo ?: from
+        if (from.key != to.key && from.index != to.index) onEnd(from.key, to.key)
         onDragInterrupted()
     }
 
@@ -161,9 +162,9 @@ class DragDropState internal constructor(
                     state.firstVisibleItemScrollOffset,
                 )
             }
-            onMove.invoke(draggingItem.index, targetItem.index)
+            onMove(draggingItem.key, targetItem.key)
             draggingItemIndex = targetItem.index
-            movedToKey = targetItem.key
+            movedTo = targetItem
         } else {
             val overscroll =
                 when {
@@ -218,7 +219,7 @@ fun LazyItemScope.DraggableItem(
                     translationY = dragDropState.previousItemOffset.value
                 }
         } else {
-            Modifier.animateItem(fadeInSpec = null, fadeOutSpec = null)
+            Modifier // not animating here as this caused strange item jumps
         }
     Column(modifier = modifier.then(draggingModifier)) { content(dragging) }
 }

@@ -32,7 +32,11 @@ fun RepositoriesList(
     val listState = rememberLazyListState()
     val dragDropState = rememberDragDropState(
         lazyListState = listState,
-        onMove = info::onRepositoryMoved,
+        onMove = { from, to ->
+            from as? Long ?: error("from $from was not a repoId")
+            to as? Long ?: error("to $to was not a repoId")
+            info.onRepositoryMoved(from, to)
+        },
         onEnd = { from, to ->
             from as? Long ?: error("from $from was not a repoId")
             to as? Long ?: error("to $to was not a repoId")
