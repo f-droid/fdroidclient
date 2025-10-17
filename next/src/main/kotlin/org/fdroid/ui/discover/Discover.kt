@@ -137,13 +137,15 @@ fun Discover(
                             .padding(16.dp)
                             .align(Alignment.CenterHorizontally),
                     )
-                    val listNew = AppListType.New(stringResource(R.string.app_list_new))
-                    AppCarousel(
-                        title = listNew.title,
-                        apps = discoverModel.newApps,
-                        onTitleTap = { onListTap(listNew) },
-                        onAppTap = onAppTap,
-                    )
+                    if (discoverModel.newApps.isNotEmpty()) {
+                        val listNew = AppListType.New(stringResource(R.string.app_list_new))
+                        AppCarousel(
+                            title = listNew.title,
+                            apps = discoverModel.newApps,
+                            onTitleTap = { onListTap(listNew) },
+                            onAppTap = onAppTap,
+                        )
+                    }
                     val listRecentlyUpdated = AppListType.RecentlyUpdated(
                         stringResource(R.string.app_list_recently_updated),
                     )

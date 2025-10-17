@@ -25,7 +25,7 @@ fun CategoryList(
     onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (categoryMap != null) Column(
+    if (categoryMap != null && categoryMap.isNotEmpty()) Column(
         modifier = modifier
     ) {
         Text(

@@ -21,7 +21,10 @@ fun DiscoverPresenter(
     val categories = categoriesFlow.collectAsState(null).value
     val searchResults = searchResultsFlow.collectAsState().value
 
-    return if (newApps.isNullOrEmpty() || recentlyUpdatedApps.isNullOrEmpty()) {
+    // We may not have any new apps, but there should always be recently updated apps,
+    // because those don't have a freshness constraint.
+    // So if we don't have those, we are still loading, have no enabled repo, or this is first start
+    return if (recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
         if (newApps == null && recentlyUpdatedApps == null) {
             LoadingDiscoverModel(false)
@@ -35,7 +38,7 @@ fun DiscoverPresenter(
         }
     } else {
         LoadedDiscoverModel(
-            newApps = newApps,
+            newApps = newApps ?: emptyList(),
             recentlyUpdatedApps = recentlyUpdatedApps,
             categories = categories?.groupBy { it.group },
             searchResults = searchResults,
