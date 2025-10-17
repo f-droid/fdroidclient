@@ -31,7 +31,6 @@ import org.fdroid.repo.RepoAdder
 import org.fdroid.repo.RepoUriGetter
 import java.io.File
 import java.net.Proxy
-import java.util.concurrent.CancellationException
 import java.util.concurrent.CountDownLatch
 import kotlin.coroutines.CoroutineContext
 
@@ -255,11 +254,7 @@ public class RepoManager @JvmOverloads constructor(
         var archiveRepoId = repositoryDao.getArchiveRepoId(cert)
         if (enabled) {
             if (archiveRepoId == null) {
-                try {
-                    archiveRepoId = repoAdder.addArchiveRepo(repository, proxy)
-                } catch (e: CancellationException) {
-                    if (e.message != "expected") throw e
-                }
+                archiveRepoId = repoAdder.addArchiveRepo(repository, proxy)
             } else {
                 repositoryDao.setRepositoryEnabled(archiveRepoId, true)
             }

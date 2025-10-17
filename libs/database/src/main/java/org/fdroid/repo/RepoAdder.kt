@@ -391,7 +391,6 @@ internal class RepoAdder(
                         repositoryDao.setWeight(repoId, repo.weight - 1)
                         archiveRepoId = repoId
                     }
-                    cancel("expected") // no need to continue downloading the entire repo
                 }
 
                 override fun onAppReceived(app: AppOverviewItem) {
