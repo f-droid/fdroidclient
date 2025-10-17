@@ -1,8 +1,6 @@
 package org.fdroid.database
 
-import android.util.Log
 import androidx.annotation.WorkerThread
-import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -229,19 +227,14 @@ public data class Repository internal constructor(
     }
 
     val shareUri: String
-        @WorkerThread
+        @WorkerThread // because fingerprint creation can take time
         get() {
-            var uri = address.toUri()
-            try {
-                uri = uri.buildUpon().appendQueryParameter("fingerprint", fingerprint).build()
-            } catch (e: UnsupportedOperationException) {
-                Log.e(TAG, "Failed to append fingerprint to URI: $e")
-            }
-            return uri.toString()
+            return "https://fdroid.link/#$address?fingerprint=$fingerprint"
         }
 }
 
 // Dummy repo to use in Compose Previews and in tests
+@Deprecated("Will be removed in future version")
 public val DUMMY_TEST_REPO: Repository = Repository(
     repoId = 1L,
     address = "https://example.com/fdroid/repo",
