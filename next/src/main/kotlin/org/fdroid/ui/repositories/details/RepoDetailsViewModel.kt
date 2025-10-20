@@ -26,7 +26,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
-import org.fdroid.settings.SettingsManager
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.ui.repositories.details.ArchiveState.UNKNOWN
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -36,7 +36,7 @@ class RepoDetailsViewModel @Inject constructor(
     app: Application,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
-    private val settingsManager: SettingsManager,
+    private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app), RepoDetailsActions {
 
@@ -52,7 +52,7 @@ class RepoDetailsViewModel @Inject constructor(
         } else null
     }.flowOn(Dispatchers.IO).distinctUntilChanged()
     private val archiveStateFlow = MutableStateFlow(UNKNOWN)
-    private val showOnboarding = settingsManager.showRepoDetailsOnboarding
+    private val showOnboarding = onboardingManager.showRepoDetailsOnboarding
 
     val model: StateFlow<RepoDetailsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
         RepoDetailsPresenter(
@@ -128,7 +128,7 @@ class RepoDetailsViewModel @Inject constructor(
         }
     }
 
-    override fun onOnboardingSeen() = settingsManager.onRepoDetailsOnboardingSeen()
+    override fun onOnboardingSeen() = onboardingManager.onRepoDetailsOnboardingSeen()
 
     private fun Repository.archiveState(): ArchiveState {
         val isEnabled = repoManager.getRepositories().find { r ->

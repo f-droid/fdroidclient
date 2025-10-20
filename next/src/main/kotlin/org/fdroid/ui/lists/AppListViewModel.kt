@@ -25,6 +25,7 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getDownloadRequest
 import org.fdroid.index.RepoManager
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
@@ -39,6 +40,7 @@ class AppListViewModel @Inject constructor(
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
+    private val onboardingManager: OnboardingManager,
 ) : AndroidViewModel(app), AppListActions {
 
     private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
@@ -72,7 +74,7 @@ class AppListViewModel @Inject constructor(
     private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible.value)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
-    val showOnboarding = settingsManager.showFilterOnboarding
+    val showOnboarding = onboardingManager.showFilterOnboarding
 
     val appListModel: StateFlow<AppListModel> = scope.launchMolecule(mode = ContextClock) {
         AppListPresenter(
@@ -181,5 +183,5 @@ class AppListViewModel @Inject constructor(
         this.query.value = query
     }
 
-    override fun onOnboardingSeen() = settingsManager.onFilterOnboardingSeen()
+    override fun onOnboardingSeen() = onboardingManager.onFilterOnboardingSeen()
 }

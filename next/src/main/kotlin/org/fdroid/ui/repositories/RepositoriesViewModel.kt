@@ -20,7 +20,7 @@ import mu.KotlinLogging
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
-import org.fdroid.settings.SettingsManager
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 
@@ -28,7 +28,7 @@ import javax.inject.Inject
 class RepositoriesViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
-    private val settingsManager: SettingsManager,
+    private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
@@ -38,7 +38,7 @@ class RepositoriesViewModel @Inject constructor(
         CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     private val repos = MutableStateFlow<List<RepositoryItem>?>(null)
     private val repoSortingMap = MutableStateFlow<Map<Long, Int>>(emptyMap())
-    private val showOnboarding = settingsManager.showRepositoriesOnboarding
+    private val showOnboarding = onboardingManager.showRepositoriesOnboarding
 
     init {
         viewModelScope.launch {
@@ -104,5 +104,5 @@ class RepositoriesViewModel @Inject constructor(
         repoManager.reorderRepositories(fromRepo, toRepo)
     }
 
-    fun onOnboardingSeen() = settingsManager.onRepositoriesOnboardingSeen()
+    fun onOnboardingSeen() = onboardingManager.onRepositoriesOnboardingSeen()
 }
