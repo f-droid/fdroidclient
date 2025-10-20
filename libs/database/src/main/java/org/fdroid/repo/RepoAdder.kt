@@ -15,9 +15,10 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -168,15 +169,18 @@ internal class RepoAdder(
                     )
                 }
                 fetchResult = getFetchResult(fetchUrl, repo)
+                coroutineContext.ensureActive() // ensure active before updating state
                 addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
 
             override fun onAppReceived(app: AppOverviewItem) {
                 apps.add(app)
+                coroutineContext.ensureActive() // ensure active before updating state
                 addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
         }
         // set a state early, so the ui can show progress animation
+        coroutineContext.ensureActive() // ensure active before updating state
         addRepoState.value = Fetching(fetchUrl, receivedRepo, apps, fetchResult)
 
         // try fetching repo with v2 format first and fallback to v1
@@ -201,6 +205,7 @@ internal class RepoAdder(
         }
         // set final result
         val finalRepo = receivedRepo
+        coroutineContext.ensureActive() // ensure active before updating state
         if (finalRepo == null) {
             onError(AddRepoError(INVALID_INDEX))
         } else {
@@ -280,17 +285,17 @@ internal class RepoAdder(
 
     @WorkerThread
     internal fun addFetchedRepository(): Repository? {
-        // prevent double calls (e.g. caused by double tapping a UI button)
-        if (addRepoState.compareAndSet(Adding, Adding)) return null
-
-        // cancel fetch preview job, so it stops emitting new states
+        // first cancel fetch preview job, so it stops emitting new states,
+        // screwing up the atomicity of getAndUpdate() below.
         fetchJob?.cancel()
 
         // get current state before changing it
-        val state = (addRepoState.value as? Fetching)
-            ?: throw IllegalStateException("Unexpected state: ${addRepoState.value}")
-        log.info { "Moved to state \'Adding\'..." }
-        addRepoState.value = Adding
+        // prevent double calls (e.g. caused by double tapping a UI button)
+        val state = addRepoState.getAndUpdate {
+            log.info { "Previous state was $it" }
+            Adding
+        } as? Fetching ?: error("Unexpected previous state")
+        log.info { "Moved to state ${addRepoState.value}, cancelling preview job..." }
 
         val repo = state.receivedRepo
             ?: throw IllegalStateException("No repo: ${addRepoState.value}")
