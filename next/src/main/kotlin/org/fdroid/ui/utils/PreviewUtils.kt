@@ -240,6 +240,7 @@ fun getRepositoriesInfo(
     override val currentRepositoryId: Long? = currentRepositoryId
     override fun onOnboardingSeen() {}
     override fun onRepositorySelected(repositoryItem: RepositoryItem) {}
+    override fun onRepositoryEnabled(repoId: Long, enabled: Boolean) {}
     override fun onAddRepo() {}
     override fun onRepositoryMoved(fromRepoId: Long, toRepoId: Long) {}
     override fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {}

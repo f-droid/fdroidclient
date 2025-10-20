@@ -207,6 +207,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                             backStack.add(NavigationKey.RepoDetails(repositoryItem.repoId))
                         }
 
+                        override fun onRepositoryEnabled(repoId: Long, enabled: Boolean) =
+                            viewModel.onRepositoryEnabled(repoId, enabled)
+
                         override fun onAddRepo() {
                             backStack.add(NavigationKey.AddRepo())
                         }

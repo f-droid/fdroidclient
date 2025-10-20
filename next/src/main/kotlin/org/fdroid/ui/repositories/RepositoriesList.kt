@@ -11,13 +11,22 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.shadow.Shadow
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import org.fdroid.R
 import org.fdroid.ui.utils.DraggableItem
 import org.fdroid.ui.utils.dragContainer
 import org.fdroid.ui.utils.rememberDragDropState
@@ -28,6 +37,7 @@ fun RepositoriesList(
     modifier: Modifier = Modifier,
 ) {
     val repositories = info.model.repositories ?: return
+    var showDisableRepoDialog by remember { mutableStateOf<Long?>(null) }
     val currentRepositoryId = info.currentRepositoryId
     val listState = rememberLazyListState()
     val dragDropState = rememberDragDropState(
@@ -77,6 +87,13 @@ fun RepositoriesList(
                 RepositoryRow(
                     repoItem = repoItem,
                     isSelected = isSelected,
+                    onRepoEnabled = { enabled ->
+                        if (enabled) {
+                            info.onRepositoryEnabled(repoItem.repoId, true)
+                        } else {
+                            showDisableRepoDialog = repoItem.repoId
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .then(interactionModifier)
@@ -92,5 +109,30 @@ fun RepositoriesList(
                 )
             }
         }
+    }
+    val repoId = showDisableRepoDialog
+    if (repoId != null) {
+        AlertDialog(
+            text = {
+                Text(text = stringResource(R.string.repo_disable_warning))
+            },
+            onDismissRequest = { showDisableRepoDialog = null },
+            confirmButton = {
+                TextButton(onClick = {
+                    info.onRepositoryEnabled(repoId, false)
+                    showDisableRepoDialog = null
+                }) {
+                    Text(
+                        text = stringResource(R.string.repo_disable_warning_button),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDisableRepoDialog = null }) {
+                    Text(stringResource(android.R.string.cancel))
+                }
+            }
+        )
     }
 }

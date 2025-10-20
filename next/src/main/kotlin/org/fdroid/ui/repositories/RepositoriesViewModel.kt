@@ -3,20 +3,25 @@ package org.fdroid.ui.repositories
 import android.app.Application
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
+import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
+import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,6 +29,7 @@ class RepositoriesViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
+    @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
@@ -65,6 +71,15 @@ class RepositoriesViewModel @Inject constructor(
                 repositories.forEachIndexed { index, repository ->
                     this[repository.repoId] = index
                 }
+            }
+        }
+    }
+
+    fun onRepositoryEnabled(repoId: Long, enabled: Boolean) {
+        ioScope.launch {
+            repoManager.setRepositoryEnabled(repoId, enabled)
+            if (enabled) withContext(Dispatchers.Main) {
+                RepoUpdateWorker.updateNow(application, repoId)
             }
         }
     }

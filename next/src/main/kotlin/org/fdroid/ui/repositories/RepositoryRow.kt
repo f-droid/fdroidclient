@@ -15,6 +15,7 @@ import org.fdroid.ui.utils.AsyncShimmerImage
 fun RepositoryRow(
     repoItem: RepositoryItem,
     isSelected: Boolean,
+    onRepoEnabled: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     ListItem(
@@ -32,7 +33,7 @@ fun RepositoryRow(
             Text(repoItem.address)
         },
         trailingContent = {
-            Switch(repoItem.enabled, onCheckedChange = null)
+            Switch(repoItem.enabled, onCheckedChange = onRepoEnabled)
         },
         colors = ListItemDefaults.colors(
             containerColor = if (isSelected) {
