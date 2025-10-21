@@ -300,7 +300,6 @@ libs database schema:
     - export AVD="$AVD_PACKAGE"
     - echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "$AVD"
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
-    - sed -i "s@hw.cpu.ncore=3@hw.cpu.ncore=$(nproc --all)@" $HOME/.android/avd/"$NAME_AVD".avd/config.ini
     - df -h
     - start-emulator.sh
     - ./gradlew installFullDebug
@@ -338,7 +337,7 @@ kvm jobs skipped:
     - printf "\x1b[32m${CI_SERVER_URL}/$CI_PROJECT_PATH/-/settings/ci_cd#js-cicd-variables-settings\n"
 
 
-kvm 23 default x86:
+kvm 24 default x86:
   <<: *kvm-template
 
 

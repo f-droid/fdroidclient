@@ -34,12 +34,10 @@ import java.util.jar.JarOutputStream;
  * This test the JAR signing functions of {@link ZipSigner}.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = {23, 25, 32}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
+@Config(sdk = {24, 25, 32, 35}) // minSdkVersion, targetSdkVersion, max SDK supported by Robolectric
 public class ZipSignerTest {
-    public static final String TAG = "ZipSignerTest";
 
     private File unsigned;
-    private File signed;
 
     @Before
     public void setUp() {
@@ -63,9 +61,6 @@ public class ZipSignerTest {
     public void tearDown() {
         if (unsigned != null) {
             unsigned.delete();
-        }
-        if (signed != null) {
-            signed.delete();
         }
     }
 
