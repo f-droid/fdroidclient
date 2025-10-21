@@ -1,7 +1,7 @@
 apply plugin: 'pmd'
 
 pmd {
-    toolVersion = '6.20.0'
+    toolVersion = '7.17.0'
     consoleOutput = true
 }
 

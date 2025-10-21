@@ -94,7 +94,9 @@ public class HttpDownloaderTest {
         File destFile = File.createTempFile("dl-", "");
         final DownloadRequest request = new DownloadRequest(path, mirrors, null, null, null);
         final HttpDownloader httpDownloader = new HttpDownloader(httpManager, request, destFile);
-        httpDownloader.setListener((bytesRead, totalBytes) -> receivedProgress = true);
+        httpDownloader.setListener((bytesRead, totalBytes) -> {
+            receivedProgress = true;
+        });
         new Thread() {
             @Override
             public void run() {

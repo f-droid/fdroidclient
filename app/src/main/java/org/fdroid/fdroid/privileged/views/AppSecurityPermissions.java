@@ -351,11 +351,8 @@ public class AppSecurityPermissions {
      * this concept, permissions are never "new permissions".
      */
     private static boolean isNewPermission(PackageInfo installedPkgInfo, int existingFlags) {
-        if (installedPkgInfo == null) {
-            return false;
-        }
-
-        return (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
+        return installedPkgInfo != null &&
+                (existingFlags & PackageInfo.REQUESTED_PERMISSION_GRANTED) == 0;
     }
 
     private List<MyPermissionInfo> getPermissionList(MyPermissionGroupInfo grp, int which) {
@@ -454,6 +451,7 @@ public class AppSecurityPermissions {
 
         private final Collator collator = Collator.getInstance();
 
+        @Override
         public final int compare(MyPermissionGroupInfo a, MyPermissionGroupInfo b) {
             return collator.compare(a.label, b.label);
         }
@@ -466,6 +464,7 @@ public class AppSecurityPermissions {
         PermissionInfoComparator() {
         }
 
+        @Override
         public final int compare(MyPermissionInfo a, MyPermissionInfo b) {
             return collator.compare(a.label, b.label);
         }

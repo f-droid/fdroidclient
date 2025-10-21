@@ -357,6 +357,7 @@ public class Netstat {
         }
 
         @NonNull
+        @Override
         public String toString() {
             return "[Prot=" + getProtocolAsString() +
                     ",POwner=" + powner +

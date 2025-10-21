@@ -129,7 +129,7 @@ libs index test:
   script:
     - ./gradlew :libs:index:testDebugUnitTest
 
-app lint pmd checkstyle:
+app lint checkstyle:
   <<: *test-template
   stage: lint
   rules:
@@ -140,7 +140,7 @@ app lint pmd checkstyle:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew :app:lint :app:pmd :app:checkstyle :app:ktlintCheck
+    - ./gradlew :app:lint :app:checkstyle :app:ktlintCheck
 
 libs lint ktlintCheck:
   <<: *test-template
@@ -153,6 +153,55 @@ libs lint ktlintCheck:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck
+
+# Reference: https://gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/-/blob/4121970daed111dda84cab4547e1f2951684653c/templates/pmd.yml#L52-92
+app lint pmd:
+  stage: lint
+  image:
+    name: registry.gitlab.com/gitlab-ci-utils/gitlab-pmd-cpd:latest
+    entrypoint: [ "" ]
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
+  parallel:
+    matrix:
+      - PMD_VARIANT: main
+        PMD_RULESETS: "config/pmd/rules.xml,config/pmd/rules-main.xml"
+        PMD_FILE_PATHS:
+          - "app/src/main/java"
+      - PMD_VARIANT: test
+        PMD_RULESETS: "config/pmd/rules.xml,config/pmd/rules-test.xml"
+        PMD_FILE_PATHS:
+          - "app/src/test/java"
+          - "app/src/androidTest/java"
+  before_script:
+    - apt-get update
+    - apt-get -qy install --no-install-recommends jq
+  script:
+    - find ${PMD_FILE_PATHS[@]} -type f -name '*.java' ! -path '/vendored/*' > .pmd-files.txt
+    - pmd check --file-list .pmd-files.txt -R ${PMD_RULESETS} -f codeclimate -r gl-code-quality-not-formatted.json --no-fail-on-violation
+  after_script:
+    ## Fingerprint is required for reading Codequality: https://docs.gitlab.com/ee/ci/testing/code_quality.html#implement-a-custom-tool
+    ## PMD output does not contain fingerprint. Following snippet generates a fingerprint with md5sum for each code quality item and adds a comma at end of each line to format as JSON array
+    ## This returns true always. PMD rarely outputs codequality items which are not JSON conformant, because they are not properly escaped.
+    ## For example \w+ instead of \\w+ Therefore following snippet ignores those issues, so that all other lines are represented in the report
+    - |
+      sed 's/\\/\\\\/g' gl-code-quality-not-formatted.json | while IFS= read -r line; do
+      fingerprint=$(echo -n "$line" | md5sum | awk '{print $1}');
+      echo "$line" | jq -c --arg fp "$fingerprint" '. + {fingerprint: $fp}' | sed 's/$/,/';
+      done > gl-pmd-${PMD_VARIANT}-report.json || true
+
+    # adds square bracket at the beginning for JSON array
+    - sed -i '1s/^/[/' gl-pmd-${PMD_VARIANT}-report.json
+    # adds square bracket at the end for JSON array
+    - sed -i '$s/,$/]/' gl-pmd-${PMD_VARIANT}-report.json
+  artifacts:
+    paths:
+      - gl-pmd-${PMD_VARIANT}-report.json
+    reports:
+      codequality: gl-pmd-${PMD_VARIANT}-report.json
+    when: always
 
 app tools scripts:
   stage: lint

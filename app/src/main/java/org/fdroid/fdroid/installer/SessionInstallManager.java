@@ -283,36 +283,34 @@ public class SessionInstallManager extends BroadcastReceiver {
      */
     public static boolean canBeUsed(Context context) {
         // In case of bugs, let the user disable this while it is still beta.
-        if (Preferences.get().forceOldInstaller()) return false;
-        // We could use the SessionInstaller also on lower versions,
-        // but the benefit of unattended updates only starts with SDK 31.
-        // Before the extra bugs it has aren't worth it.
-        if (Build.VERSION.SDK_INT < 31) return false;
-        // Xiaomi MIUI (at least in version 12) is known to break the PackageInstaller API in several ways.
-        // Disabling MIUI "optimizations" in developer options fixes it, but we can't ask users to do this (bad UX).
-        // Therefore, we have no choice, but to disable it completely for those devices.
-        // See: https://github.com/vvb2060/PackageInstallerTest
-        if (isStockXiaomi(context)) return false;
-        // We don't use SessionInstaller, if PrivilegedInstaller can be used instead.
-        // This is the last check, because it is the most expensive one
-        // getting PackageInfo and doing service binding.
-        return !PrivilegedInstaller.isDefault(context);
+        return !Preferences.get().forceOldInstaller() &&
+                // We could use the SessionInstaller also on lower versions,
+                // but the benefit of unattended updates only starts with SDK 31.
+                // Before the extra bugs it has aren't worth it.
+                Build.VERSION.SDK_INT >= 31 &&
+                // Xiaomi MIUI (at least in version 12) is known to break the PackageInstaller API in several ways.
+                // Disabling MIUI "optimizations" in developer options fixes it,
+                // but we can't ask users to do this (bad UX).
+                // Therefore, we have no choice, but to disable it completely for those devices.
+                // See: https://github.com/vvb2060/PackageInstallerTest
+                !isStockXiaomi(context) &&
+                // We don't use SessionInstaller, if PrivilegedInstaller can be used instead.
+                // This is the last check, because it is the most expensive one
+                // getting PackageInfo and doing service binding.
+                !PrivilegedInstaller.isDefault(context);
     }
 
     private static boolean isStockXiaomi(Context context) {
         if (isStockXiaomi == null) {
             boolean xiaomiPhone = "Xiaomi".equalsIgnoreCase(Build.BRAND) || "Redmi".equalsIgnoreCase(Build.BRAND);
-            if (xiaomiPhone) {
+            if (!xiaomiPhone) {
+                isStockXiaomi = false;
+            } else {
                 // Calls for non-installed packages take longer than installed ones
                 // MIUI OS will result in one call
                 // Non-MIUI OS will result in two calls
-                if (Utils.getPackageInfo(context, "com.miui.securitycenter") != null) {
-                    isStockXiaomi = true;
-                } else {
-                    isStockXiaomi = Utils.getPackageInfo(context, "com.miui.packageinstaller") != null;
-                }
-            } else {
-                isStockXiaomi = false;
+                isStockXiaomi = Utils.getPackageInfo(context, "com.miui.securitycenter") != null ||
+                        Utils.getPackageInfo(context, "com.miui.packageinstaller") != null;
             }
         }
         return isStockXiaomi;
@@ -324,15 +322,15 @@ public class SessionInstallManager extends BroadcastReceiver {
      * thus updating the app with the given targetSdk without user action.
      */
     public static boolean isTargetSdkSupported(int targetSdk) {
-        if (Build.VERSION.SDK_INT < 31) return false; // not supported below Android 12
-        if (Build.VERSION.SDK_INT == 31 && targetSdk >= 29) return true;
-        if (Build.VERSION.SDK_INT == 32 && targetSdk >= 29) return true;
-        if (Build.VERSION.SDK_INT == 33 && targetSdk >= 30) return true;
-        if (Build.VERSION.SDK_INT == 34 && targetSdk >= 31) return true;
         // This needs to be adjusted as new Android versions are released
         // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
         // https://cs.android.com/android/platform/superproject/+/android-16.0.0_r2:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=329;drc=73caa0299d9196ddeefe4f659f557fb880f6536d
         // current code requires targetSdk 33 on SDK 35+
-        return Build.VERSION.SDK_INT >= 35 && targetSdk >= 33;
+        int sdk = Build.VERSION.SDK_INT;
+        if (sdk < 31) return false;                 // not supported below Android 12
+        if (sdk <= 32) return targetSdk >= 29;
+        if (sdk == 33) return targetSdk >= 30;
+        if (sdk == 34) return targetSdk >= 31;
+        return targetSdk >= 33;
     }
 }

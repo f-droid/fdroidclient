@@ -177,11 +177,11 @@ public class NotificationHelper {
     private boolean shouldIgnoreEntry(AppUpdateStatusManager.AppUpdateStatus entry) {
         // Ignore unknown status
         // Ignore downloading, readyToInstall and installError if we are showing the details screen for this app
-        if (entry.status == AppUpdateStatusManager.Status.DownloadInterrupted) return true;
-        return (entry.status == AppUpdateStatusManager.Status.Downloading ||
-                entry.status == AppUpdateStatusManager.Status.ReadyToInstall ||
-                entry.status == AppUpdateStatusManager.Status.InstallError) &&
-                AppDetailsActivity.isAppVisible(entry.app.packageName);
+        return entry.status == AppUpdateStatusManager.Status.DownloadInterrupted ||
+                ((entry.status == AppUpdateStatusManager.Status.Downloading ||
+                        entry.status == AppUpdateStatusManager.Status.ReadyToInstall ||
+                        entry.status == AppUpdateStatusManager.Status.InstallError) &&
+                        AppDetailsActivity.isAppVisible(entry.app.packageName));
     }
 
     private void createNotification(AppUpdateStatusManager.AppUpdateStatus entry) {

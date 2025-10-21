@@ -149,6 +149,7 @@ public final class AppUpdateStatusManager {
          * Dumps some information about the status for debugging purposes.
          */
         @NonNull
+        @Override
         public String toString() {
             return app.packageName + " [Status: " + status
                     + ", Progress: " + progressCurrent + " / " + progressMax + ']';
