@@ -5,58 +5,60 @@ androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on builds
 androidKspPlugin = "2.2.0-2.0.2" # first version needs to match kotlin version
 dokka = "2.0.0"
 mavenPublish = "0.18.0"
-jlleitschuhKtlint = "13.0.0"
+jlleitschuhKtlint = "13.1.0"
 
 kotlinxSerializationJson = "1.9.0" # 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
 kotlinxCoroutinesTest = "1.10.2"
 
-ktor = "3.2.3"
+ktor = "3.3.0"
 okhttp = "4.12.0"
-room = "2.7.2"
-glide = "4.16.0"
-glideCompose = "1.0.0-beta01"
+room = "2.8.1"
+glide = "5.0.5"
+glideCompose = "1.0.0-beta08"
 
-androidxCoreKtx = "1.16.0"
+androidxCoreKtx = "1.17.0"
 androidxAppcompat = "1.7.1"
 androidxPreferenceKtx = "1.2.1"
-androidxLifecycleLivedataKtx = "2.9.2"
-androidxWork = "2.10.3"
+androidxLifecycleLivedataKtx = "2.9.4"
+androidxWork = "2.10.5"
+androidxDocumentfile = "1.1.0"
+androidxLocalbroadcastmanager = "1.1.0"
 androidxRecyclerview = "1.4.0"
 androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.1.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2025.07.00"
-androidxActivityCompose = "1.10.1"
+androidxComposeBom = "2025.09.01"
+androidxActivityCompose = "1.11.0"
 accompanistDrawablepainter = "0.37.3"
-material = "1.12.0"
+material = "1.13.0"
 
 #noinspection GradleDependency newer version need minSdk 24 or library desugering
 zxingCore = "3.3.3"
 guardianprojectNetcipher = "2.2.0-alpha"
 guardianprojectPanic = "1.0"
-acra = "5.12.0"
+acra = "5.13.1"
 adapterdelegates4 = "4.3.2"
 #noinspection GradleDependency Commons IO > 2.5 uses java.nio.file, which requires desugaring
 commonsIo = "2.6"
 commonsNet = "3.6"
-bouncycastle = "1.81"
+bouncycastle = "1.82"
 #noinspection NewerVersionAvailable upgrade to 3.6.1 failed BonjourManagerTest
 jmdns = "3.5.5"
 nanohttpd = "2.3.1"
-guava = "33.4.8-android"
+guava = "33.5.0-android"
 
-rxjava = "3.1.11"
+rxjava = "3.1.12"
 rxandroid = "3.0.2"
 
 slf4jApi = "2.0.17"
 microutilsKotlinLogging = "3.0.5"
-logbackClassic = "1.5.18"
+logbackClassic = "1.5.19"
 logbackAndroid = "3.0.0"
 
 junit = "4.13.2"
-mockk = "1.14.5"
-robolectric = "4.15.1"
+mockk = "1.14.6"
+robolectric = "4.16"
 androidxTestCore = "1.6.1"
 androidxTestRunner = "1.6.2"
 androidxTestExtJunit = "1.2.1"
@@ -87,6 +89,8 @@ androidx-preference-ktx = { module = "androidx.preference:preference-ktx", versi
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidxAppcompat" }
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidxRecyclerview" }
 androidx-vectordrawable = { module = "androidx.vectordrawable:vectordrawable", version.ref = "androidxVectordrawable" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "androidxDocumentfile" }
+androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "androidxLocalbroadcastmanager" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "androidxWork" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }

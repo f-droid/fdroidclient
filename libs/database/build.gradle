@@ -11,7 +11,7 @@ android {
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdk 34 // relevant for instrumentation tests (targetSdk 21 fails on Android 14)
 
         consumerProguardFiles "consumer-rules.pro"
