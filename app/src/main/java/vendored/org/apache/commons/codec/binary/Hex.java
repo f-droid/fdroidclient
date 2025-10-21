@@ -103,11 +103,11 @@ public class Hex implements BinaryEncoder, BinaryDecoder {
         }
 
         // two characters form the hex value.
-        for (int i = outOffset, j = 0; j < len; i++) {
-            int f = toDigit(data[j], j) << 4;
-            j++;
-            f = f | toDigit(data[j], j);
-            j++;
+        for (int i = outOffset, j = 0; j < len; i++) { // NOPMD
+            int f = toDigit(data[j], j) << 4; // NOPMD
+            j++; // NOPMD
+            f = f | toDigit(data[j], j); // NOPMD
+            j++; // NOPMD
             out[i] = (byte) (f & 0xFF);
         }
 
@@ -219,9 +219,9 @@ public class Hex implements BinaryEncoder, BinaryDecoder {
     private static void encodeHex(final byte[] data, final int dataOffset, final int dataLen, final char[] toDigits,
             final char[] out, final int outOffset) {
         // two characters form the hex value.
-        for (int i = dataOffset, j = outOffset; i < dataOffset + dataLen; i++) {
-            out[j++] = toDigits[(0xF0 & data[i]) >>> 4];
-            out[j++] = toDigits[0x0F & data[i]];
+        for (int i = dataOffset, j = outOffset; i < dataOffset + dataLen; i++) { // NOPMD
+            out[j++] = toDigits[(0xF0 & data[i]) >>> 4]; // NOPMD
+            out[j++] = toDigits[0x0F & data[i]]; // NOPMD
         }
     }
 

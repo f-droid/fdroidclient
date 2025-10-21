@@ -54,13 +54,13 @@ public class CharSequenceUtils {
         if (cs instanceof String && substring instanceof String) {
             return ((String) cs).regionMatches(ignoreCase, thisStart, (String) substring, start, length);
         }
-        int index1 = thisStart;
-        int index2 = start;
-        int tmpLen = length;
+        int index1 = thisStart; // NOPMD
+        int index2 = start; // NOPMD
+        int tmpLen = length; // NOPMD
 
-        while (tmpLen-- > 0) {
-            final char c1 = cs.charAt(index1++);
-            final char c2 = substring.charAt(index2++);
+        while (tmpLen-- > 0) { // NOPMD
+            final char c1 = cs.charAt(index1++); // NOPMD
+            final char c2 = substring.charAt(index2++); // NOPMD
 
             if (c1 == c2) {
                 continue;

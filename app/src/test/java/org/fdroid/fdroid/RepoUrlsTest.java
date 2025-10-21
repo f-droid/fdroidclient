@@ -44,9 +44,9 @@ public class RepoUrlsTest {
      */
     private static class TestRepo {
         // Repo URL for the test case
-        String repoUrl;
+        final String repoUrl;
         // String format pattern for generating file URLs, should contain a single %s for the filename
-        String fileUrlPattern;
+        final String fileUrlPattern;
 
         TestRepo(String repoUrl, String fileUrlPattern) {
             this.repoUrl = repoUrl;

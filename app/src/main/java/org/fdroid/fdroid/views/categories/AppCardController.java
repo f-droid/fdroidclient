@@ -85,10 +85,8 @@ public class AppCardController extends RecyclerView.ViewHolder
     }
 
     private boolean isConsideredNew(@NonNull AppOverviewItem app) {
-        if (app.getAdded() != app.getLastUpdated()) {
-            return false;
-        }
-        return Utils.daysSince(app.getAdded()) <= DAYS_TO_CONSIDER_NEW;
+        return app.getAdded() == app.getLastUpdated() &&
+                Utils.daysSince(app.getAdded()) <= DAYS_TO_CONSIDER_NEW;
     }
 
     /**

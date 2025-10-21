@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    @SuppressWarnings("StaticFieldLeak")
     public static final String EXTRA_VIEW_LATEST = "org.fdroid.fdroid.views.main.MainActivity.VIEW_LATEST";
     private static final String EXTRA_VIEW_CATEGORIES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_CATEGORIES";
     private static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * {@link android.material.navigation.NavigationBarView} says "Menu items
+     * {@link com.google.android.material.navigation.NavigationBarView} says "Menu items
      * can also be used for programmatically selecting which destination is
      * currently active. It can be done using {@code MenuItem.setChecked(true)}".
      */
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressWarnings("PMD.UnusedPrivateMethod")
     private void setSelectedMenuInNav(final String viewName) {
         if (EXTRA_VIEW_LATEST.equals(viewName)) {
             setSelectedMenuInNav(R.id.latest);
@@ -227,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    protected void onNewIntent(@NonNull Intent intent) {
         super.onNewIntent(intent);
 
         if (handleMainViewSelectIntent(intent)) {

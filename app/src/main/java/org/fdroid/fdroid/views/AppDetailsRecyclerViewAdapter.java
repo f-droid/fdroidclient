@@ -821,12 +821,11 @@ public class AppDetailsRecyclerViewAdapter
     private class ScreenShotsViewHolder extends AppDetailsViewHolder
             implements ScreenShotsRecyclerViewAdapter.Listener {
         final RecyclerView recyclerView;
-        ItemDecorator itemDecorator;
 
         ScreenShotsViewHolder(View view) {
             super(view);
             recyclerView = view.findViewById(R.id.screenshots);
-            itemDecorator = new ItemDecorator(context);
+            ItemDecorator itemDecorator = new ItemDecorator(context);
             recyclerView.addItemDecoration(itemDecorator);
         }
 
@@ -979,6 +978,7 @@ public class AppDetailsRecyclerViewAdapter
             updateExpandableItem(showVersions);
         }
 
+        @Override
         @DrawableRes
         protected int getIcon() {
             return R.drawable.ic_versions;
@@ -1082,6 +1082,7 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
 
+        @Override
         @DrawableRes
         protected int getIcon() {
             return R.drawable.ic_lock;
@@ -1161,6 +1162,7 @@ public class AppDetailsRecyclerViewAdapter
             }
         }
 
+        @Override
         @DrawableRes
         protected int getIcon() {
             return R.drawable.ic_website;
@@ -1179,7 +1181,6 @@ public class AppDetailsRecyclerViewAdapter
         final TextView size;
         final TextView api;
         final Button buttonInstallUpgrade;
-        Button buttonAction;
         final View busyIndicator;
         final TextView incompatibleReasons;
         final TextView targetArch;
@@ -1372,21 +1373,20 @@ public class AppDetailsRecyclerViewAdapter
         }
 
         private void showActionButton(Button button, boolean isApkInstalled, boolean isApkDownloading) {
-            buttonAction = button;
             if (isApkDownloading) {
                 // Don't show the button in this case
                 // as the busy indicator will take its place
-                buttonAction.setVisibility(View.GONE);
+                button.setVisibility(View.GONE);
             } else {
                 // The button should be shown but it should be also disabled
                 // if either the APK isn't compatible or it's already installed
                 // or also when some other APK is currently being downloaded
-                buttonAction.setVisibility(View.VISIBLE);
+                button.setVisibility(View.VISIBLE);
                 boolean buttonActionDisabled = !apk.compatible || isApkInstalled ||
                         callbacks.isAppDownloading();
-                buttonAction.setEnabled(!buttonActionDisabled);
-                buttonAction.setAlpha(buttonActionDisabled ? 0.15f : 1f);
-                buttonAction.setOnClickListener(v -> callbacks.installApk(apk));
+                button.setEnabled(!buttonActionDisabled);
+                button.setAlpha(buttonActionDisabled ? 0.15f : 1f);
+                button.setOnClickListener(v -> callbacks.installApk(apk));
             }
         }
 
@@ -1487,10 +1487,7 @@ public class AppDetailsRecyclerViewAdapter
     }
 
     private boolean uriIsSet(String s) {
-        if (TextUtils.isEmpty(s)) {
-            return false;
-        }
-        return true;
+        return !TextUtils.isEmpty(s);
     }
 
     /**
