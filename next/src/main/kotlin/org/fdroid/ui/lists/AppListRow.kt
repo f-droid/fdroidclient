@@ -28,7 +28,7 @@ fun AppListRow(
         supportingContent = { Text(item.summary) },
         leadingContent = {
             AsyncShimmerImage(
-                model = item.iconDownloadRequest,
+                model = item.iconModel,
                 error = painterResource(R.drawable.ic_repo_app_default),
                 contentDescription = null,
                 modifier = Modifier.size(48.dp),

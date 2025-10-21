@@ -1,5 +1,6 @@
 package org.fdroid.download
 
+import android.content.ContentResolver.SCHEME_FILE
 import android.net.Uri
 import org.fdroid.IndexFile
 import org.fdroid.database.Repository
@@ -36,21 +37,13 @@ class DownloaderFactoryImpl @Inject constructor(
             tryFirstMirror = tryFirst,
         )
         val v1OrUnknown = repo.formatVersion == null || repo.formatVersion == IndexFormatVersion.ONE
-        return if (v1OrUnknown) {
+        return if (uri.scheme == SCHEME_FILE) {
+            LocalFileDownloader(uri, indexFile, destFile)
+        } else if (v1OrUnknown) {
+            @Suppress("DEPRECATION") // v1 only
             HttpDownloader(httpManager, request, destFile)
         } else {
             HttpDownloaderV2(httpManager, request, destFile)
         }
     }
-}
-
-// TODO move to a better place
-fun IndexFile.getDownloadRequest(repository: Repository?): DownloadRequest? {
-    return DownloadRequest(
-        indexFile = this,
-        mirrors = repository?.getMirrors() ?: return null,
-        proxy = null,
-        username = repository.username,
-        password = repository.password,
-    )
 }

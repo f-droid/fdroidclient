@@ -74,7 +74,7 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
             .clickable { onAppTap(app) },
     ) {
         AsyncShimmerImage(
-            model = app.iconDownloadRequest,
+            model = app.imageModel,
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier

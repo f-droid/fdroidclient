@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
+import org.fdroid.download.DownloadRequest
 import org.fdroid.download.PackageName
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
@@ -28,7 +29,7 @@ fun InstalledAppRow(
         ListItem(
             leadingContent = {
                 AsyncShimmerImage(
-                    model = PackageName(app.packageName, app.iconDownloadRequest),
+                    model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
                     error = painterResource(R.drawable.ic_repo_app_default),
                     contentDescription = null,
                     modifier = Modifier.size(48.dp),

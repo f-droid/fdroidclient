@@ -8,7 +8,7 @@ sealed class MyAppItem {
     abstract val packageName: String
     abstract val name: String
     abstract val lastUpdated: Long
-    abstract val iconDownloadRequest: DownloadRequest?
+    abstract val iconModel: Any?
 }
 
 data class InstallingAppItem(
@@ -17,7 +17,7 @@ data class InstallingAppItem(
 ) : MyAppItem() {
     override val name: String = installState.name
     override val lastUpdated: Long = installState.lastUpdated
-    override val iconDownloadRequest: DownloadRequest? = installState.iconDownloadRequest
+    override val iconModel: DownloadRequest? = installState.iconDownloadRequest
 }
 
 data class AppUpdateItem(
@@ -27,7 +27,7 @@ data class AppUpdateItem(
     val installedVersionName: String,
     val update: PackageVersion,
     val whatsNew: String?,
-    override val iconDownloadRequest: DownloadRequest? = null,
+    override val iconModel: Any? = null,
 ) : MyAppItem() {
     override val lastUpdated: Long = update.added
 }
@@ -37,5 +37,5 @@ data class InstalledAppItem(
     override val name: String,
     val installedVersionName: String,
     override val lastUpdated: Long,
-    override val iconDownloadRequest: DownloadRequest? = null,
+    override val iconModel: Any? = null,
 ) : MyAppItem()

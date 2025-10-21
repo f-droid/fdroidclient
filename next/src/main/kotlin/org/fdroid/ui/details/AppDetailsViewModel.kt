@@ -24,7 +24,6 @@ import org.fdroid.UpdateChecker
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
-import org.fdroid.download.DownloadRequest
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
@@ -82,18 +81,14 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     @UiThread
-    fun install(
-        appMetadata: AppMetadata,
-        version: AppVersion,
-        iconDownloadRequest: DownloadRequest?,
-    ) {
+    fun install(appMetadata: AppMetadata, version: AppVersion, iconModel: Any?) {
         scope.launch(Dispatchers.Main) {
             val result = appInstallManager.install(
                 appMetadata = appMetadata,
                 version = version,
                 currentVersionName = packageInfoFlow.value?.packageInfo?.versionName,
                 repo = repoManager.getRepository(version.repoId) ?: return@launch, // TODO
-                iconDownloadRequest = iconDownloadRequest,
+                iconModel = iconModel,
             )
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo

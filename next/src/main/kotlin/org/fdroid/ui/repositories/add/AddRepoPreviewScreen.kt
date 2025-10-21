@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import org.fdroid.R
 import org.fdroid.database.MinimalApp
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.FileV2
 import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
@@ -88,7 +88,7 @@ fun AddRepoPreviewScreen(
                     packageName = app.packageName,
                     name = app.name ?: "Unknown app",
                     summary = app.summary ?: "",
-                    iconDownloadRequest = app.getIcon(localeList)?.getDownloadRequest(repo),
+                    iconModel = app.getIcon(localeList)?.getImageModel(repo),
                     lastUpdated = 1L,
                     isCompatible = true,
                 )

@@ -1,7 +1,5 @@
 package org.fdroid.ui.lists
 
-import org.fdroid.download.DownloadRequest
-
 data class AppListItem(
     val repoId: Long,
     val packageName: String,
@@ -9,6 +7,6 @@ data class AppListItem(
     val summary: String,
     val lastUpdated: Long,
     val isCompatible: Boolean,
-    val iconDownloadRequest: DownloadRequest? = null,
+    val iconModel: Any? = null,
     val categoryIds: Set<String>? = null,
 )

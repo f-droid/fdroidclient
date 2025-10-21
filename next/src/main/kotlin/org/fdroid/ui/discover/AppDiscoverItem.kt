@@ -1,10 +1,8 @@
 package org.fdroid.ui.discover
 
-import org.fdroid.download.DownloadRequest
-
 class AppDiscoverItem(
     val packageName: String,
     val name: String,
-    val iconDownloadRequest: DownloadRequest? = null,
+    val imageModel: Any? = null,
     val lastUpdated: Long = -1,
 )

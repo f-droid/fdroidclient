@@ -10,8 +10,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
-import org.fdroid.download.DownloadRequest
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallState
@@ -35,9 +34,9 @@ data class AppDetailsItem(
     val name: String,
     val summary: String? = null,
     val description: String? = null,
-    val icon: DownloadRequest? = null,
-    val featureGraphic: DownloadRequest? = null,
-    val phoneScreenshots: List<DownloadRequest> = emptyList(),
+    val icon: Any? = null,
+    val featureGraphic: Any? = null,
+    val phoneScreenshots: List<Any> = emptyList(),
     val categories: List<CategoryItem>? = null,
     val versions: List<PackageVersion>? = null,
     val installedVersion: PackageVersion? = null,
@@ -90,10 +89,10 @@ data class AppDetailsItem(
         name = dbApp.name ?: "Unknown App",
         summary = dbApp.summary,
         description = getHtmlDescription(dbApp.getDescription(localeList)),
-        icon = dbApp.getIcon(localeList)?.getDownloadRequest(repository),
-        featureGraphic = dbApp.getFeatureGraphic(localeList)?.getDownloadRequest(repository),
+        icon = dbApp.getIcon(localeList)?.getImageModel(repository),
+        featureGraphic = dbApp.getFeatureGraphic(localeList)?.getImageModel(repository),
         phoneScreenshots = dbApp.getPhoneScreenshots(localeList).mapNotNull {
-            it.getDownloadRequest(repository)
+            it.getImageModel(repository)
         },
         categories = dbApp.metadata.categories?.mapNotNull { categoryId ->
             val category = repository.getCategories()[categoryId] ?: return@mapNotNull null
@@ -189,7 +188,7 @@ data class AppDetailsItem(
 }
 
 class AppDetailsActions(
-    val installAction: (AppMetadata, AppVersion, DownloadRequest?) -> Unit,
+    val installAction: (AppMetadata, AppVersion, Any?) -> Unit,
     val requestUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
     /**
      * A workaround for Android 10, 11, 12 and 13 where tapping outside the confirmation dialog
@@ -218,7 +217,7 @@ enum class MainButtonState {
 
 data class AntiFeature(
     val id: String,
-    val icon: DownloadRequest? = null,
+    val icon: Any? = null,
     val name: String = id,
     val reason: String? = null,
 )
@@ -231,7 +230,7 @@ private fun AppVersion?.getAntiFeatures(
         val antiFeature = repository.getAntiFeatures()[key] ?: return@mapNotNull null
         AntiFeature(
             id = key,
-            icon = antiFeature.getIcon(localeList)?.getDownloadRequest(repository),
+            icon = antiFeature.getIcon(localeList)?.getImageModel(repository),
             name = antiFeature.getName(localeList) ?: key,
             reason = getAntiFeatureReason(key, localeList),
         )

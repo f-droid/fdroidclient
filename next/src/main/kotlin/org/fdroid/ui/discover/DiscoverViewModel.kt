@@ -22,7 +22,7 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
@@ -114,8 +114,7 @@ class DiscoverViewModel @Inject constructor(
                         summary = it.summary.getBestLocale(localeList) ?: "",
                         lastUpdated = it.lastUpdated,
                         isCompatible = true, // doesn't matter here, as we don't filter
-                        iconDownloadRequest = it.getIcon(localeList)
-                            ?.getDownloadRequest(repository),
+                        iconModel = it.getIcon(localeList)?.getImageModel(repository),
                         categoryIds = it.categories?.toSet(),
                     )
                 }
@@ -146,6 +145,6 @@ class DiscoverViewModel @Inject constructor(
         packageName = packageName,
         name = getName(localeList) ?: "Unknown App",
         lastUpdated = lastUpdated,
-        iconDownloadRequest = getIcon(localeList)?.getDownloadRequest(repository),
+        imageModel = getIcon(localeList)?.getImageModel(repository),
     )
 }

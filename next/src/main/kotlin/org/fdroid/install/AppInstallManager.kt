@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_DELETE
 import android.graphics.Bitmap
-import android.net.Uri
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
@@ -36,6 +35,7 @@ import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.DownloaderFactory
+import org.fdroid.download.getUri
 import org.fdroid.getCacheKey
 import org.fdroid.utils.IoDispatcher
 import java.io.File
@@ -107,9 +107,10 @@ class AppInstallManager @Inject constructor(
         version: AppVersion,
         currentVersionName: String?,
         repo: Repository,
-        iconDownloadRequest: DownloadRequest?,
+        iconModel: Any?,
     ): InstallState {
         val packageName = appMetadata.packageName
+        val iconDownloadRequest = iconModel as? DownloadRequest
         val job = scope.async {
             installInt(appMetadata, version, currentVersionName, repo, iconDownloadRequest)
         }
@@ -178,8 +179,8 @@ class AppInstallManager @Inject constructor(
                 coroutineContext.ensureActive()
                 // download file
                 val file = File(context.cacheDir, version.file.sha256)
-                val downloader =
-                    downloaderFactory.create(repo, Uri.EMPTY, version.file, file)
+                val uri = getUri(repo.address, version.file)
+                val downloader = downloaderFactory.create(repo, uri, version.file, file)
                 val now = System.currentTimeMillis()
                 downloader.setListener { bytesRead, totalBytes ->
                     coroutineContext.ensureActive()

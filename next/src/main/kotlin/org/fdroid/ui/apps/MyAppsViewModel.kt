@@ -20,7 +20,7 @@ import mu.KotlinLogging
 import org.fdroid.database.AppListItem
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
@@ -55,8 +55,8 @@ class MyAppsViewModel @Inject constructor(
                 name = app.name ?: "Unknown app",
                 installedVersionName = app.installedVersionName ?: "???",
                 lastUpdated = app.lastUpdated,
-                iconDownloadRequest = repoManager.getRepository(app.repoId)?.let { repo ->
-                    app.getIcon(localeList)?.getDownloadRequest(repo)
+                iconModel = repoManager.getRepository(app.repoId)?.let { repo ->
+                    app.getIcon(localeList)?.getImageModel(repo)
                 },
             )
         }

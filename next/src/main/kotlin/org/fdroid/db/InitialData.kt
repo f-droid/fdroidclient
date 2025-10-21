@@ -15,7 +15,7 @@ import java.io.File
 class InitialData(val context: Context) : FDroidFixture {
     override fun prePopulateDb(db: FDroidDatabase) {
         addPreloadedRepositories(db, context.packageName)
-        RepoUpdateWorker.Companion.updateNow(context)
+        RepoUpdateWorker.updateNow(context)
     }
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -24,7 +24,6 @@ class InitialData(val context: Context) : FDroidFixture {
             Json.decodeFromStream<List<DefaultRepository>>(inputStream)
         }
         addRepositories(db.getRepositoryDao(), defaultRepos)
-        // TODO support file:/// Uri for repo and test additional_repos.json
         // "system" can be removed when minSdk is 28
         for (root in listOf("/system", "/system_ext", "/product", "/vendor")) {
             val romReposFile = File("$root/etc/$packageName/additional_repos.json")

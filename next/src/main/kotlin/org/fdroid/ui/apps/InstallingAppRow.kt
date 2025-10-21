@@ -33,7 +33,7 @@ fun InstallingAppRow(
         ListItem(
             leadingContent = {
                 AsyncShimmerImage(
-                    model = PackageName(app.packageName, app.iconDownloadRequest, false),
+                    model = PackageName(app.packageName, app.iconModel, false),
                     error = painterResource(R.drawable.ic_repo_app_default),
                     contentDescription = null,
                     modifier = Modifier.size(48.dp),

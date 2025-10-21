@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
@@ -119,7 +119,7 @@ class AppListViewModel @Inject constructor(
                 summary = it.getSummary(localeList) ?: "Unknown",
                 lastUpdated = it.lastUpdated,
                 isCompatible = it.isCompatible,
-                iconDownloadRequest = it.getIcon(localeList)?.getDownloadRequest(repository),
+                iconModel = it.getIcon(localeList)?.getImageModel(repository),
                 categoryIds = it.categories?.toSet(),
             )
         }

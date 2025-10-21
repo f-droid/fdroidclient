@@ -13,7 +13,7 @@ import mu.KotlinLogging
 import org.fdroid.database.AppVersion
 import org.fdroid.database.DbUpdateChecker
 import org.fdroid.database.FDroidDatabase
-import org.fdroid.download.getDownloadRequest
+import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.ui.apps.AppUpdateItem
@@ -66,8 +66,8 @@ class UpdatesManager @Inject constructor(
                     installedVersionName = update.installedVersionName,
                     update = update.update,
                     whatsNew = update.update.getWhatsNew(localeList),
-                    iconDownloadRequest = repoManager.getRepository(update.repoId)?.let { repo ->
-                        update.getIcon(localeList)?.getDownloadRequest(repo)
+                    iconModel = repoManager.getRepository(update.repoId)?.let { repo ->
+                        update.getIcon(localeList)?.getImageModel(repo)
                     },
                 )
             }
@@ -102,7 +102,7 @@ class UpdatesManager @Inject constructor(
             version = update.update as AppVersion,
             currentVersionName = update.installedVersionName,
             repo = repoManager.getRepository(update.repoId) ?: return,
-            iconDownloadRequest = update.iconDownloadRequest
+            iconModel = update.iconModel
         )
     }
 }
