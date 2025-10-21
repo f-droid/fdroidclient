@@ -31,15 +31,17 @@ fun DetailsPresenter(
     appInstallManager: AppInstallManager,
     viewModel: AppDetailsViewModel,
     packageInfoFlow: StateFlow<AppInfo?>,
+    currentRepoIdFlow: StateFlow<Long?>,
 ): AppDetailsItem? {
     val packagePair = packageInfoFlow.collectAsState().value ?: return null
     val packageName = packagePair.packageName
-    val app = db.getAppDao().getApp(packageName).asFlow().collectAsState(null).value
-        ?: return null
+    val currentRepoId = currentRepoIdFlow.collectAsState().value
+    val app = if (currentRepoId == null) {
+        db.getAppDao().getApp(packageName).asFlow().collectAsState(null).value
+    } else {
+        db.getAppDao().getApp(currentRepoId, packageName)
+    } ?: return null
     val repo = repoManager.getRepository(app.repoId) ?: return null
-    val preferredRepoId = remember(packageName) {
-        app.repoId // DB loads preferred repo first, so we remember it
-    }
     val repositories = remember(packageName) {
         db.getAppDao().getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
             repoManager.getRepository(repoId)
@@ -48,9 +50,15 @@ fun DetailsPresenter(
     val installState =
         appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
 
-    val versions =
-        db.getVersionDao().getAppVersions(packageName).asFlow().collectAsState(null).value
+    val versions = if (currentRepoId == null) {
+        db.getVersionDao().getAppVersions(packageName)
+    } else {
+        db.getVersionDao().getAppVersions(currentRepoId, packageName)
+    }.asFlow().collectAsState(null).value
     val appPrefs = db.getAppPrefsDao().getAppPrefs(packageName).asFlow().collectAsState(null).value
+    val preferredRepoId = remember(packageName, appPrefs) {
+        appPrefs?.preferredRepoId ?: app.repoId // DB loads preferred repo first, so we remember it
+    }
     val suggestedVersion = if (versions == null || appPrefs == null) {
         null
     } else {
@@ -109,6 +117,8 @@ fun DetailsPresenter(
             checkUserConfirmation = viewModel::checkUserConfirmation,
             cancelInstall = viewModel::cancelInstall,
             onUninstallResult = viewModel::onUninstallResult,
+            onRepoChanged = viewModel::onRepoChanged,
+            onPreferredRepoChanged = viewModel::onPreferredRepoChanged,
             allowBetaVersions = viewModel::allowBetaUpdates,
             ignoreAllUpdates = if (installedVersionCode == null) {
                 null

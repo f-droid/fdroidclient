@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
@@ -44,6 +45,7 @@ class AppDetailsViewModel @Inject constructor(
 ) : AndroidViewModel(app) {
     private val log = KotlinLogging.logger { }
     private val packageInfoFlow = MutableStateFlow<AppInfo?>(null)
+    private val currentRepoIdFlow = MutableStateFlow<Long?>(null)
 
     val appDetails: StateFlow<AppDetailsItem?> = viewModelScope.launchMolecule(
         context = Dispatchers.IO, mode = Immediate,
@@ -55,6 +57,7 @@ class AppDetailsViewModel @Inject constructor(
             appInstallManager = appInstallManager,
             viewModel = this,
             packageInfoFlow = packageInfoFlow,
+            currentRepoIdFlow = currentRepoIdFlow,
         )
     }
 
@@ -134,6 +137,17 @@ class AppDetailsViewModel @Inject constructor(
             // to reload packageInfoFlow with fresh packageInfo
             loadPackageInfoFlow(packageName)
         }
+    }
+
+    @UiThread
+    fun onRepoChanged(repoId: Long) {
+        currentRepoIdFlow.update { repoId }
+    }
+
+    @UiThread
+    fun onPreferredRepoChanged(repoId: Long) {
+        val packageName = packageInfoFlow.value?.packageName ?: error("Had not package name")
+        repoManager.setPreferredRepoId(packageName, repoId)
     }
 
     override fun onCleared() {

@@ -199,6 +199,8 @@ class AppDetailsActions(
     val checkUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
     val cancelInstall: (String) -> Unit,
     val onUninstallResult: (String, ActivityResult) -> Unit,
+    val onRepoChanged: (Long) -> Unit,
+    val onPreferredRepoChanged: (Long) -> Unit,
     val allowBetaVersions: () -> Unit,
     val ignoreAllUpdates: (() -> Unit)? = null,
     val ignoreThisUpdate: (() -> Unit)? = null,

@@ -43,7 +43,7 @@ fun RepoChooser(
     repos: List<Repository>,
     currentRepoId: Long,
     preferredRepoId: Long,
-    onRepoChanged: (Repository) -> Unit,
+    onRepoChanged: (Long) -> Unit,
     onPreferredRepoChanged: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -116,7 +116,7 @@ fun RepoChooser(
                         repo = repo,
                         isPreferred = repo.repoId == preferredRepoId,
                         onClick = {
-                            onRepoChanged(repo)
+                            onRepoChanged(repo.repoId)
                             expanded = false
                         },
                         modifier = modifier,
