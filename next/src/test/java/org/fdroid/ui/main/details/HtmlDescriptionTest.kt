@@ -24,6 +24,15 @@ class HtmlDescriptionTest {
     }
 
     @Test
+    fun testLinkAtTheVeryEnd() {
+        val description = """
+Project page: https://github.com/lukaspieper/Gcam-Services-Provider"""
+        val expectedDescription = """<br>
+Project page: <a href="https://github.com/lukaspieper/Gcam-Services-Provider">https://github.com/lukaspieper/Gcam-Services-Provider</a>"""
+        assertEquals(expectedDescription, getHtmlDescription(description))
+    }
+
+    @Test
     fun testLinkWithDotAtTheEnd() {
         val description = """please visit our website: https://wikimediafoundation.org/."""
 
