@@ -8,9 +8,11 @@ import android.content.pm.PackageManager.GET_SIGNATURES
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.RecompositionMode.Immediate
 import app.cash.molecule.launchMolecule
+import coil3.SingletonImageLoader
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +27,8 @@ import org.fdroid.UpdateChecker
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.download.DownloadRequest
+import org.fdroid.getCacheKey
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
@@ -155,6 +159,15 @@ class AppDetailsViewModel @Inject constructor(
         log.info { "App details screen left: $packageName" }
         packageName?.let {
             appInstallManager.cleanUp(it)
+        }
+        // remove screenshots from disk cache to not fill it up quickly with large images
+        val diskCache = SingletonImageLoader.get(application).diskCache
+        if (diskCache != null) scope.launch {
+            appDetails.value?.phoneScreenshots?.forEach { screenshot ->
+                if (screenshot is DownloadRequest) {
+                    diskCache.remove(screenshot.getCacheKey())
+                }
+            }
         }
     }
 

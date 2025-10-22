@@ -17,6 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorFilter.Companion.tint
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -43,7 +44,7 @@ fun AsyncShimmerImage(
                 Image(
                     painter = placeholder,
                     contentDescription = contentDescription,
-                    colorFilter = colorFilter,
+                    colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
                     contentScale = contentScale,
                     modifier = Modifier
                         .matchParentSize()
@@ -54,7 +55,7 @@ fun AsyncShimmerImage(
                 Image(
                     painter = error,
                     contentDescription = contentDescription,
-                    colorFilter = colorFilter,
+                    colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
                     contentScale = contentScale,
                     modifier = Modifier.matchParentSize(),
                 )

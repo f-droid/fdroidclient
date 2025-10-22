@@ -5,11 +5,8 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
@@ -19,10 +16,8 @@ import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.CurrencyBitcoin
 import androidx.compose.material.icons.filled.EditNote
-import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.Mail
 import androidx.compose.material.icons.filled.OndemandVideo
@@ -40,8 +35,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
-import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -51,10 +44,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -75,7 +66,6 @@ import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
-import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.testApp
@@ -201,32 +191,11 @@ fun AppDetails(
             }
             // Anti-features
             if (!item.antiFeatures.isNullOrEmpty()) {
-                AntiFeatures(item)
+                AntiFeatures(item.antiFeatures)
             }
             // Screenshots
             if (item.phoneScreenshots.isNotEmpty()) {
-                val carouselState = rememberCarouselState { item.phoneScreenshots.size }
-                HorizontalUncontainedCarousel(
-                    state = carouselState,
-                    itemWidth = 120.dp,
-                    itemSpacing = 4.dp,
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(240.dp)
-                        .padding(vertical = 8.dp)
-                ) { index ->
-                    AsyncShimmerImage(
-                        model = item.phoneScreenshots[index],
-                        contentDescription = "",
-                        contentScale = ContentScale.Fit,
-                        placeholder = rememberVectorPainter(Icons.Default.Image),
-                        error = rememberVectorPainter(Icons.Default.Error),
-                        modifier = Modifier
-                            .size(120.dp, 240.dp)
-                            .clip(MaterialTheme.shapes.medium),
-                    )
-                }
+                Screenshots(item.phoneScreenshots)
             }
             // Donate card
             if (item.showDonate) ElevatedCard(

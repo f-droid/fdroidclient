@@ -31,7 +31,7 @@ import org.fdroid.ui.utils.testApp
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun AntiFeatures(
-    item: AppDetailsItem,
+    antiFeatures: List<AntiFeature>,
 ) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(
@@ -47,7 +47,7 @@ fun AntiFeatures(
             modifier = Modifier.padding(horizontal = 16.dp),
         ) {
             Column {
-                item.antiFeatures?.forEach { antiFeature ->
+                antiFeatures.forEach { antiFeature ->
                     ListItem(
                         leadingContent = {
                             AsyncShimmerImage(
@@ -87,6 +87,6 @@ fun AntiFeatures(
 @Composable
 fun AntiFeaturesPreview() {
     FDroidContent {
-        AntiFeatures(testApp)
+        AntiFeatures(testApp.antiFeatures!!)
     }
 }
