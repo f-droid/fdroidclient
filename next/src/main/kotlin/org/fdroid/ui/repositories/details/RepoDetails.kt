@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Update
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -32,6 +36,7 @@ import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getHintOverlayColor
@@ -91,9 +96,7 @@ fun RepoDetails(
                     )
                 }
             },
-            title = {
-                Text(stringResource(R.string.repo_details))
-            },
+            title = { },
             actions = {
                 if (repo == null) return@TopAppBar
                 IconButton(onClick = { info.model.shareRepo(context) }) {
@@ -108,10 +111,36 @@ fun RepoDetails(
                         contentDescription = stringResource(R.string.show_repository_qr)
                     )
                 }
-                IconButton(onClick = { deleteDialog = true }) {
+                var menuExpanded by remember { mutableStateOf(false) }
+                IconButton(onClick = { menuExpanded = !menuExpanded }) {
                     Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = stringResource(R.string.delete)
+                        Icons.Default.MoreVert,
+                        contentDescription = null,
+                    )
+                }
+                DropdownMenu(
+                    expanded = menuExpanded,
+                    onDismissRequest = { menuExpanded = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.repo_force_update)) },
+                        onClick = {
+                            menuExpanded = false
+                            RepoUpdateWorker.updateNow(context, repo.repoId)
+                        },
+                        leadingIcon = {
+                            Icon(Icons.Default.Update, contentDescription = null)
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(stringResource(R.string.delete)) },
+                        onClick = {
+                            menuExpanded = false
+                            deleteDialog = true
+                        },
+                        leadingIcon = {
+                            Icon(Icons.Default.Delete, contentDescription = null)
+                        }
                     )
                 }
             })

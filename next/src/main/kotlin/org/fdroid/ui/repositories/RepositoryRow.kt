@@ -38,7 +38,7 @@ fun RepositoryRow(
             } else {
                 repoItem.timestamp.asRelativeTimeString()
             }
-            Text(stringResource(R.string.last_updated, lastUpdated))
+            Text(stringResource(R.string.repo_last_update_upstream, lastUpdated))
         },
         trailingContent = {
             Switch(repoItem.enabled, onCheckedChange = onRepoEnabled)
