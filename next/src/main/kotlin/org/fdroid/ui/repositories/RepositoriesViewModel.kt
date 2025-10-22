@@ -51,6 +51,7 @@ class RepositoriesViewModel @Inject constructor(
     // define below init, because this only defines repoSortingMap
     val model: StateFlow<RepositoryModel> = moleculeScope.launchMolecule(mode = ContextClock) {
         RepositoriesPresenter(
+            context = application,
             repositoriesFlow = repos,
             repoSortingMapFlow = repoSortingMap,
             showOnboardingFlow = showOnboarding,

@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,7 +34,7 @@ import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepositoriesInfo
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Repositories(
     info: RepositoryInfo,
     onBackClicked: () -> Unit,
@@ -76,7 +77,10 @@ fun Repositories(
                 title = {
                     Text(stringResource(R.string.app_details_repositories))
                 },
-                // TODO show when repos were last updated
+                subtitle = {
+                    val lastUpdated = info.model.lastCheckForUpdate
+                    Text(stringResource(R.string.repo_last_update_check, lastUpdated))
+                }
             )
         },
         floatingActionButton = {
@@ -107,7 +111,7 @@ fun Repositories(
 @Composable
 fun RepositoriesScaffoldLoadingPreview() {
     FDroidContent {
-        val model = RepositoryModel(null, false)
+        val model = RepositoryModel(null, false, "never")
         val info = getRepositoriesInfo(model)
         Repositories(info) {}
     }
@@ -140,7 +144,7 @@ fun RepositoriesScaffoldPreview() {
                 name = "My second repository",
             ),
         )
-        val model = RepositoryModel(repos, false)
+        val model = RepositoryModel(repos, false, "42min. ago")
         val info = getRepositoriesInfo(model, repos[0].repoId)
         Repositories(info) { }
     }

@@ -8,8 +8,11 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import org.fdroid.R
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.asRelativeTimeString
 
 @Composable
 fun RepositoryRow(
@@ -30,7 +33,12 @@ fun RepositoryRow(
             Text(repoItem.name)
         },
         supportingContent = {
-            Text(repoItem.address)
+            val lastUpdated = if (repoItem.lastUpdated == null || repoItem.lastUpdated <= 0) {
+                stringResource(R.string.repositories_last_update_never)
+            } else {
+                repoItem.timestamp.asRelativeTimeString()
+            }
+            Text(stringResource(R.string.last_updated, lastUpdated))
         },
         trailingContent = {
             Switch(repoItem.enabled, onCheckedChange = onRepoEnabled)

@@ -14,4 +14,5 @@ interface RepositoryInfo {
 data class RepositoryModel(
     val repositories: List<RepositoryItem>?,
     val showOnboarding: Boolean,
+    val lastCheckForUpdate: String,
 )
