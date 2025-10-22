@@ -24,7 +24,7 @@ public class DownloadRequestLoader(
         height: Int,
         options: Options,
     ): LoadData<InputStream> {
-        return LoadData(downloadRequest.getKey(), HttpFetcher(httpManager, downloadRequest))
+        return LoadData(downloadRequest.getObjectKey(), HttpFetcher(httpManager, downloadRequest))
     }
 
     public class Factory(
@@ -41,6 +41,10 @@ public class DownloadRequestLoader(
 
 }
 
-internal fun DownloadRequest.getKey(): ObjectKey {
-    return ObjectKey(indexFile.sha256 ?: (mirrors[0].baseUrl + indexFile.name))
+internal fun DownloadRequest.getObjectKey(): ObjectKey {
+    return ObjectKey(getKey())
+}
+
+internal fun DownloadRequest.getKey(): String {
+    return indexFile.sha256 ?: (mirrors[0].baseUrl + indexFile.name)
 }
