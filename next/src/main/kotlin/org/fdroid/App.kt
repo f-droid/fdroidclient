@@ -30,12 +30,17 @@ import org.fdroid.download.LocalIconFetcher
 import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.repo.RepoUpdateWorker
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.CrashActivity
+import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
 import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application(), Configuration.Provider, SingletonImageLoader.Factory {
+
+    @Inject
+    lateinit var settingsManager: SettingsManager
 
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
@@ -86,6 +91,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         if (BuildConfig.DEBUG) {
             Composer.setDiagnosticStackTraceMode(ComposeStackTraceMode.SourceInformation)
         }
+        applyNewTheme(settingsManager.theme)
         // bail out here if we are the ACRA process to not initialize anything in crash process
         if (ACRA.isACRASenderServiceProcess()) return
 

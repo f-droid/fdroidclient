@@ -22,6 +22,7 @@ glideCompose = "1.0.0-beta08"
 coilCompose = "3.3.0"
 molecule = "2.2.0"
 hints = "2.0.1"
+composePreference = "2.1.0"
 
 androidxCoreKtx = "1.17.0"
 androidxAppcompat = "1.7.1"
@@ -145,6 +146,7 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 
 molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
 compose-hints = { module = "com.viktormykhailiv:compose-hints", version.ref = "hints" }
+compose-preference = { module = "me.zhanghai.compose.preference:preference", version.ref = "composePreference" }
 guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
 guardianproject-panic = { module = "info.guardianproject.panic:panic", version.ref = "guardianprojectPanic" }
 nanohttpd = { module = "org.nanohttpd:nanohttpd", version.ref = "nanohttpd" }

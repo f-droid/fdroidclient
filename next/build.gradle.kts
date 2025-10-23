@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.hilt.work)
@@ -81,6 +82,7 @@ dependencies {
     implementation(libs.molecule.runtime)
     implementation(libs.coil.compose)
     implementation(libs.compose.hints)
+    implementation(libs.compose.preference)
 
     implementation(libs.slf4j.api)
     implementation(libs.logback.android)

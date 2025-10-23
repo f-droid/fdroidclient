@@ -70,8 +70,8 @@ class AppListViewModel @Inject constructor(
     private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
     val showFilters = _showFilters.asStateFlow()
 
-    private val sortBy = MutableStateFlow(settingsManager.appListSortOrder.value)
-    private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible.value)
+    private val sortBy = MutableStateFlow(settingsManager.appListSortOrder)
+    private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
     val showOnboarding = onboardingManager.showFilterOnboarding

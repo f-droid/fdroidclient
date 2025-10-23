@@ -268,6 +268,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         entry(NavigationKey.Settings) {
             val viewModel = hiltViewModel<SettingsViewModel>()
             Settings(
+                prefsFlow = viewModel.prefsFlow,
                 onSaveLogcat = {
                     viewModel.onSaveLogcat(it)
                     backStack.removeLastOrNull()

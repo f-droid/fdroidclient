@@ -13,16 +13,17 @@ fun RepositoriesPresenter(
     repositoriesFlow: StateFlow<List<RepositoryItem>?>,
     repoSortingMapFlow: StateFlow<Map<Long, Int>>,
     showOnboardingFlow: StateFlow<Boolean>,
+    lastUpdateFlow: StateFlow<Long>,
 ): RepositoryModel {
     val repositories = repositoriesFlow.collectAsState().value
     val repoSortingMap = repoSortingMapFlow.collectAsState().value
-    val lastUpdated = repositories?.maxBy { it.lastUpdated ?: 0 }?.lastUpdated
+    val lastUpdated = lastUpdateFlow.collectAsState().value
     return RepositoryModel(
         repositories = repositories?.sortedBy { repo ->
             repoSortingMap[repo.repoId] ?: repoSortingMap.size
         },
         showOnboarding = showOnboardingFlow.collectAsState().value,
-        lastCheckForUpdate = if (lastUpdated == null || lastUpdated <= 0) {
+        lastCheckForUpdate = if (lastUpdated <= 0) {
             context.getString(R.string.repositories_last_update_never)
         } else {
             lastUpdated.asRelativeTimeString()

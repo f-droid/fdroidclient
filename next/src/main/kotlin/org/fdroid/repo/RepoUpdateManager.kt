@@ -21,17 +21,22 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.index.v1.IndexV1Updater
+import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import java.io.File
 import javax.inject.Inject
+import javax.inject.Singleton
 
 private val TAG = RepoUpdateManager::class.java.simpleName
+private const val MIN_UPDATE_INTERVAL_MILLIS = 15_000
 
+@Singleton
 class RepoUpdateManager(
     private val context: Context,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val updatesManager: UpdatesManager,
+    private val settingsManager: SettingsManager,
     private val downloaderFactory: DownloaderFactory,
     private val notificationManager: NotificationManager,
     private val compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(
@@ -109,6 +114,7 @@ class RepoUpdateManager(
         db: FDroidDatabase,
         repositoryManager: RepoManager,
         updatesManager: UpdatesManager,
+        settingsManager: SettingsManager,
         downloaderFactory: DownloaderFactory,
         notificationManager: NotificationManager,
     ) : this(
@@ -116,6 +122,7 @@ class RepoUpdateManager(
         db = db,
         repoManager = repositoryManager,
         updatesManager = updatesManager,
+        settingsManager = settingsManager,
         downloaderFactory = downloaderFactory,
         notificationManager = notificationManager,
     )
@@ -136,11 +143,11 @@ class RepoUpdateManager(
     @WorkerThread
     suspend fun updateRepos() {
         if (isUpdating.value) log.warn { "Already updating repositories: updateRepos()" }
-        // TODO
-//            if (timeSinceLastCheck < MIN_UPDATE_INTERVAL_MILLIS) {
-//                Log.i(TAG, "Not updating, only $timeSinceLastCheck ms since last check.")
-//                return
-//            }
+        val timeSinceLastCheck = System.currentTimeMillis() - settingsManager.lastRepoUpdate
+        if (timeSinceLastCheck < MIN_UPDATE_INTERVAL_MILLIS) {
+            log.info { "Not updating, only $timeSinceLastCheck ms since last check." }
+            return
+        }
         _isUpdating.value = true
         try {
             var reposUpdated = false
@@ -169,7 +176,7 @@ class RepoUpdateManager(
                 }
             }
             db.getRepositoryDao().walCheckpoint()
-            // TODO fdroidPrefs.lastUpdateCheck = System.currentTimeMillis()
+            settingsManager.lastRepoUpdate = System.currentTimeMillis()
             if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
                 updatesManager.loadUpdates().join()

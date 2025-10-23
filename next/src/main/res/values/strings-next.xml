@@ -63,9 +63,11 @@
     <string name="signer_colon">Signer: %1$s</string>
     <string name="architectures_colon">Architectures: %1$s</string>
 
+    <string name="notification_title">Notifications</string>
+    <string name="notification_summary">Opens system notification settings</string>
     <string name="notification_channel_install_success_title">Automatically installed apps</string>
     <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically.</string>
-    <string name="notification_channel_updates_available_title">Informs about available app updates</string>
+    <string name="notification_channel_updates_available_title">Available app updates</string>
     <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found.</string>
     <plurals name="notification_installing_title">
         <item quantity="one">Installing %1$d app…</item>
@@ -93,6 +95,9 @@
     <string name="repo_basicauth_password">Password</string>
     <string name="repo_basicauth_edit">Save Changes</string>
     <string name="repo_force_update">Check for updates</string>
+
+
+    <string name="pref_language_summary">Opens system language settings</string>
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.

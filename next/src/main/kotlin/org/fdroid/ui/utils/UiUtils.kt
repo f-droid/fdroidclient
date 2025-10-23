@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.UriHandler
@@ -31,6 +32,15 @@ fun Context.startActivitySafe(i: Intent?) {
     } catch (e: Exception) {
         Log.e("Context", "Error opening $i ", e)
     }
+}
+
+fun applyNewTheme(theme: String) {
+    val mode = when (theme) {
+        "light" -> AppCompatDelegate.MODE_NIGHT_NO
+        "dark" -> AppCompatDelegate.MODE_NIGHT_YES
+        else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+    }
+    AppCompatDelegate.setDefaultNightMode(mode)
 }
 
 fun UriHandler.openUriSafe(uri: String) {

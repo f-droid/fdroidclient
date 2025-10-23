@@ -11,10 +11,13 @@ import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.R
+import org.fdroid.settings.SettingsManager
+import org.fdroid.ui.utils.applyNewTheme
 import java.io.IOException
 import java.lang.Runtime.getRuntime
 import javax.inject.Inject
@@ -22,9 +25,20 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     app: Application,
+    private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger {}
+    val prefsFlow = settingsManager.prefsFlow
+
+    init {
+        viewModelScope.launch {
+            // react to theme changes right away
+            settingsManager.themeFlow.drop(1).collect {
+                if (it != null) applyNewTheme(it)
+            }
+        }
+    }
 
     fun onSaveLogcat(uri: Uri?) = viewModelScope.launch(Dispatchers.IO) {
         if (uri == null) {

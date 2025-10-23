@@ -4,16 +4,18 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import org.fdroid.ui.Main
 
+// Using [AppCompatActivity] and not [ComponentActivity] seems to be needed
+// for automatic theme changes when calling AppCompatDelegate.setDefaultNightMode()
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     val requestPermissionLauncher = registerForActivityResult(RequestPermission()) { isGranted ->
     }

@@ -21,6 +21,7 @@ import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
+import org.fdroid.settings.SettingsManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 
@@ -28,6 +29,7 @@ import javax.inject.Inject
 class RepositoriesViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
+    private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
@@ -55,6 +57,7 @@ class RepositoriesViewModel @Inject constructor(
             repositoriesFlow = repos,
             repoSortingMapFlow = repoSortingMap,
             showOnboardingFlow = showOnboarding,
+            lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
         )
     }
 
