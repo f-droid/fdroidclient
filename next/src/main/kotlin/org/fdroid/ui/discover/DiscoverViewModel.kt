@@ -24,6 +24,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.utils.normalize
@@ -40,6 +41,7 @@ class DiscoverViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     updatesManager: UpdatesManager,
+    settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
@@ -79,6 +81,7 @@ class DiscoverViewModel @Inject constructor(
             categoriesFlow = categories,
             repositoriesFlow = repoManager.repositoriesState,
             searchResultsFlow = searchResults,
+            lastRepoUpdate = settingsManager.lastRepoUpdate,
         )
     }
 

@@ -11,9 +11,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -158,7 +158,7 @@ fun Discover(
                     val listAll = AppListType.All(
                         title = stringResource(R.string.app_list_all),
                     )
-                    FilledTonalButton(
+                    OutlinedButton(
                         onClick = { onListTap(listAll) },
                         modifier = Modifier
                             .align(End)

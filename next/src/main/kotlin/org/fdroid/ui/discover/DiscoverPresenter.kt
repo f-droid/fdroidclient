@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.ui.categories.CategoryGroup
 import org.fdroid.ui.categories.CategoryItem
 
@@ -15,6 +16,7 @@ fun DiscoverPresenter(
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
+    lastRepoUpdate: Long,
 ): DiscoverModel {
     val newApps = newAppsFlow.collectAsState(null).value
     val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
@@ -26,14 +28,14 @@ fun DiscoverPresenter(
     // So if we don't have those, we are still loading, have no enabled repo, or this is first start
     return if (recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
+        val isFirstStart = lastRepoUpdate == PREF_DEFAULT_LAST_UPDATE_CHECK
         if (newApps == null && recentlyUpdatedApps == null) {
-            LoadingDiscoverModel(false)
+            // we don't know yet if this
+            LoadingDiscoverModel(isFirstStart)
         } else if (repositories?.all { !it.enabled } == true) {
             NoEnabledReposDiscoverModel
         } else {
             // apps are empty, if we have enabled repos assume this is first start (still loading)
-            // TODO use more reliable check for first start
-            val isFirstStart = repositories?.find { it.enabled } != null
             LoadingDiscoverModel(isFirstStart)
         }
     } else {
