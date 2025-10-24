@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,11 +35,11 @@ import org.fdroid.ui.utils.rememberDragDropState
 fun RepositoriesList(
     info: RepositoryInfo,
     modifier: Modifier = Modifier,
+    listState: LazyListState,
 ) {
     val repositories = info.model.repositories ?: return
     var showDisableRepoDialog by remember { mutableStateOf<Long?>(null) }
     val currentRepositoryId = info.currentRepositoryId
-    val listState = rememberLazyListState()
     val dragDropState = rememberDragDropState(
         lazyListState = listState,
         onMove = { from, to ->
