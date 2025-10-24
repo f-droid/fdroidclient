@@ -38,7 +38,7 @@ data class AppDetailsItem(
     val featureGraphic: Any? = null,
     val phoneScreenshots: List<Any> = emptyList(),
     val categories: List<CategoryItem>? = null,
-    val versions: List<PackageVersion>? = null,
+    val versions: List<VersionItem>? = null,
     val installedVersion: PackageVersion? = null,
     /**
      * Needed, because the [installedVersion] may not be available, e.g. too old.
@@ -61,7 +61,7 @@ data class AppDetailsItem(
      * compatible signer. This means that the app is installed, but does not receive updates either
      * because the signer in the repo has changed or a wrong repo is set as preferred.
      */
-    val noCompatibleVersions: Boolean = false,
+    val noUpdatesBecauseDifferentSigner: Boolean = false,
     val authorHasMoreThanOneApp: Boolean = false,
 ) {
     constructor(
@@ -71,13 +71,13 @@ data class AppDetailsItem(
         dbApp: App,
         actions: AppDetailsActions,
         installState: InstallState,
-        versions: List<AppVersion>?,
+        versions: List<VersionItem>?,
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
         suggestedVersion: AppVersion?,
         possibleUpdate: AppVersion?,
         appPrefs: AppPrefs?,
-        noCompatibleVersions: Boolean,
+        noUpdatesBecauseDifferentSigner: Boolean,
         authorHasMoreThanOneApp: Boolean,
         localeList: LocaleListCompat,
     ) : this(
@@ -110,8 +110,8 @@ data class AppDetailsItem(
         whatsNew = installedVersion?.getWhatsNew(localeList),
         antiFeatures = installedVersion?.getAntiFeatures(repository, localeList)
             ?: suggestedVersion?.getAntiFeatures(repository, localeList)
-            ?: versions?.first()?.getAntiFeatures(repository, localeList),
-        noCompatibleVersions = noCompatibleVersions,
+            ?: (versions?.first()?.version as? AppVersion).getAntiFeatures(repository, localeList),
+        noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
     )
 
@@ -156,9 +156,15 @@ data class AppDetailsItem(
         }
 
     /**
+     * True if all available versions for this app are incompatible with this device.
+     */
+    val isIncompatible: Boolean = versions?.all { !it.isCompatible } ?: false
+
+    /**
      * True if this app has warnings, we need to show to the user.
      */
-    val showWarnings: Boolean get() = oldTargetSdk || noCompatibleVersions
+    val showWarnings: Boolean
+        get() = isIncompatible || oldTargetSdk || noUpdatesBecauseDifferentSigner
 
     /**
      * True if the targetSdk of the suggested version is so old
@@ -208,6 +214,15 @@ class AppDetailsActions(
     val uninstallIntent: Intent? = null,
     val launchIntent: Intent? = null,
     val shareIntent: Intent? = null,
+)
+
+data class VersionItem(
+    val version: PackageVersion,
+    val isInstalled: Boolean,
+    val isSuggested: Boolean,
+    val isCompatible: Boolean,
+    val isSignerCompatible: Boolean,
+    val showInstallButton: Boolean,
 )
 
 enum class MainButtonState {

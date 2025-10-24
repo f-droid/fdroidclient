@@ -9,7 +9,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,37 +26,45 @@ import org.fdroid.ui.utils.testApp
 fun AppDetailsWarnings(
     item: AppDetailsItem,
 ) {
+    val (color, stringRes) = when {
+        // app is outright incompatible
+        item.isIncompatible -> Pair(
+            MaterialTheme.colorScheme.errorContainer,
+            R.string.app_no_compatible_versions,
+        )
+        // app is installed, but can't receive updates, because current repo has different signer
+        item.noUpdatesBecauseDifferentSigner -> Pair(
+            MaterialTheme.colorScheme.errorContainer,
+            R.string.app_no_compatible_signer,
+        )
+        // app targets old targetSdk, not a deal breaker, but worth flagging, no auto-update
+        item.oldTargetSdk -> Pair(
+            MaterialTheme.colorScheme.inverseSurface,
+            R.string.app_no_auto_update,
+        )
+        else -> return
+    }
     ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.errorContainer,
-        ),
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.elevatedCardColors(containerColor = color),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
     ) {
-        Column {
-            if (item.noCompatibleVersions) Row(
-                horizontalArrangement = spacedBy(8.dp),
-                verticalAlignment = CenterVertically,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Icon(Icons.Default.WarningAmber, "")
-                Text(
-                    text = stringResource(R.string.app_no_compatible_versions),
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-            }
-            if (item.noCompatibleVersions && item.oldTargetSdk) HorizontalDivider()
-            if (item.oldTargetSdk) Row(
-                horizontalArrangement = spacedBy(8.dp),
-                verticalAlignment = CenterVertically,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Icon(Icons.Default.WarningAmber, "")
-                Text(
-                    stringResource(R.string.app_no_auto_update),
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-            }
-        }
+        WarningRow(
+            text = stringResource(stringRes),
+        )
+    }
+}
+
+@Composable
+private fun WarningRow(text: String) {
+    Row(
+        horizontalArrangement = spacedBy(8.dp),
+        verticalAlignment = CenterVertically,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Icon(Icons.Default.WarningAmber, null)
+        Text(text, style = MaterialTheme.typography.bodyLarge)
     }
 }
 
@@ -67,6 +74,22 @@ fun AppDetailsWarningsPreview() {
     FDroidContent {
         Column {
             AppDetailsWarnings(testApp)
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun IncompatiblePreview() {
+    FDroidContent {
+        Column {
+            AppDetailsWarnings(
+                testApp.copy(
+                    versions = listOf(
+                        testApp.versions!!.first().copy(isCompatible = false),
+                    ),
+                )
+            )
         }
     }
 }

@@ -129,7 +129,7 @@ fun AppDetailsHeader(
                 }
             }
             val lastUpdated = item.app.lastUpdated.asRelativeTimeString()
-            val version = item.suggestedVersion ?: item.versions?.first()
+            val version = item.suggestedVersion ?: item.versions?.first()?.version
             val size = version?.size?.let { size ->
                 Formatter.formatFileSize(LocalContext.current, size)
             }

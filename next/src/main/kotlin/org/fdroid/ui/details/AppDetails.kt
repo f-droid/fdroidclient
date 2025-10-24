@@ -2,7 +2,6 @@ package org.fdroid.ui.details
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,7 +45,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
@@ -72,8 +71,7 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @OptIn(
-    ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class,
-    ExperimentalSharedTransitionApi::class
+    ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class
 )
 fun AppDetails(
     item: AppDetailsItem?,
@@ -81,7 +79,7 @@ fun AppDetails(
     onBackNav: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
-    val context = LocalContext.current
+    val res = LocalResources.current
     val topAppBarState = rememberTopAppBarState()
     val snackbarHostState = remember { SnackbarHostState() }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
@@ -100,7 +98,7 @@ fun AppDetails(
                 Log.i("AppDetails", "Requesting user confirmation... $state")
                 item.actions.requestUserConfirmation(item.app.packageName, state)
             } else if (state is InstallState.Error) {
-                val msg = context.getString(R.string.install_error_notify_title, state.msg ?: "")
+                val msg = res.getString(R.string.install_error_notify_title, state.msg ?: "")
                 snackbarHostState.showSnackbar(msg)
             }
         }

@@ -56,12 +56,15 @@
     <string name="anti_features_title">This app has anti-features</string>
     <string name="developer_contact">Developer contact</string>
     <string name="copy_link">Copy link</string>
-    <string name="app_no_compatible_versions">Can not update this app, because no compatible versions available in repository.</string>
+    <string name="app_no_compatible_versions">This app is not compatible with your device.</string>
+    <string name="app_no_compatible_signer">Can not update this app, because no compatible versions available in repository.</string>
     <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
     <string name="signer_colon">Signer: %1$s</string>
     <string name="architectures_colon">Architectures: %1$s</string>
+    <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>
+    <string name="app_details_incompatible_signer">Signature mismatch, can\'t install</string>
 
     <string name="notification_title">Notifications</string>
     <string name="notification_summary">Opens system notification settings</string>

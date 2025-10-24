@@ -18,6 +18,7 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
 import org.fdroid.ui.lists.AppListModel
@@ -174,10 +175,41 @@ val testApp = AppDetailsItem(
         "and in the long run the SABR video protocol needs to be implemented, " +
         "but TeamNewPipe members are currently busy so any help would be greatly appreciated! " +
         "https://github.com/TeamNewPipe/NewPipe/issues/12248",
+    noUpdatesBecauseDifferentSigner = true,
     authorHasMoreThanOneApp = true,
     versions = listOf(
-        testVersion1,
-        testVersion2,
+        VersionItem(
+            testVersion1,
+            isInstalled = false,
+            isSuggested = true,
+            isCompatible = true,
+            isSignerCompatible = true,
+            showInstallButton = true,
+        ),
+        VersionItem(
+            testVersion1,
+            isInstalled = false,
+            isSuggested = false,
+            isCompatible = true,
+            isSignerCompatible = false,
+            showInstallButton = false,
+        ),
+        VersionItem(
+            testVersion2,
+            isInstalled = false,
+            isSuggested = false,
+            isCompatible = false,
+            isSignerCompatible = true,
+            showInstallButton = true,
+        ),
+        VersionItem(
+            testVersion2,
+            isInstalled = true,
+            isSuggested = false,
+            isCompatible = true,
+            isSignerCompatible = true,
+            showInstallButton = false,
+        ),
     ),
     installedVersion = testVersion2,
     suggestedVersion = null,

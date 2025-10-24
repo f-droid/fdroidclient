@@ -35,7 +35,6 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppVersion
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.index.v2.PackageVersion
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString
@@ -53,21 +52,9 @@ fun Versions(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
         Column(modifier = Modifier) {
-            item.versions?.forEach { version ->
+            item.versions?.forEach { versionItem ->
                 Version(
-                    version = version,
-                    isInstalled = item.installedVersion == version,
-                    isSuggested = item.suggestedVersion == version,
-                    isInstallable = if (item.installState.showProgress) {
-                        false
-                    } else {
-                        if (item.installedVersion == null) {
-                            true
-                        } else {
-                            // TODO take compatibility and signer into account
-                            item.installedVersion.versionCode < version.versionCode
-                        }
-                    },
+                    item = versionItem,
                     installAction = { version: AppVersion ->
                         item.actions.installAction(item.app, version, item.icon)
                     },
@@ -80,10 +67,7 @@ fun Versions(
 
 @Composable
 fun Version(
-    version: PackageVersion,
-    isInstalled: Boolean,
-    isSuggested: Boolean,
-    isInstallable: Boolean,
+    item: VersionItem,
     installAction: (AppVersion) -> Unit,
     scrollUp: suspend () -> Unit,
 ) {
@@ -110,7 +94,7 @@ fun Version(
             Row {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = version.versionName,
+                        text = item.version.versionName,
                         style = MaterialTheme.typography.titleMedium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
@@ -118,14 +102,14 @@ fun Version(
                     Text(
                         text = stringResource(
                             R.string.added_x_ago,
-                            version.added.asRelativeTimeString(),
+                            item.version.added.asRelativeTimeString(),
                         ),
                         style = MaterialTheme.typography.bodyMedium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }
-                if (isInstalled) Badge(
+                if (item.isInstalled) Badge(
                     containerColor = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(start = 8.dp)
                 ) {
@@ -134,7 +118,7 @@ fun Version(
                         modifier = Modifier.padding(2.dp)
                     )
                 }
-                if (isSuggested) Badge(
+                if (item.isSuggested) Badge(
                     containerColor = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.padding(start = 8.dp)
                 ) {
@@ -151,7 +135,18 @@ fun Version(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    version.size?.let { size ->
+                    if (!item.isCompatible || !item.isSignerCompatible) Text(
+                        text = if (!item.isCompatible) {
+                            stringResource(R.string.app_details_incompatible_version)
+                        } else {
+                            stringResource(R.string.app_details_incompatible_signer)
+                        },
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    item.version.size?.let { size ->
                         Text(
                             text = stringResource(
                                 R.string.size_colon,
@@ -162,7 +157,7 @@ fun Version(
                             overflow = TextOverflow.Ellipsis,
                         )
                     }
-                    version.packageManifest.nativecode?.let { nativeCode ->
+                    item.version.packageManifest.nativecode?.let { nativeCode ->
                         if (nativeCode.isNotEmpty()) {
                             Text(
                                 text = stringResource(
@@ -175,7 +170,7 @@ fun Version(
                             )
                         }
                     }
-                    version.signer?.let { signer ->
+                    item.version.signer?.let { signer ->
                         Text(
                             text = stringResource(
                                 R.string.signer_colon,
@@ -187,12 +182,12 @@ fun Version(
                         )
                     }
                 }
-                if (isInstallable) {
+                if (item.showInstallButton) {
                     val coroutineScope = rememberCoroutineScope()
                     FDroidOutlineButton(
                         text = stringResource(R.string.menu_install),
                         onClick = {
-                            installAction(version as AppVersion)
+                            installAction(item.version as AppVersion)
                             coroutineScope.launch {
                                 scrollUp()
                             }

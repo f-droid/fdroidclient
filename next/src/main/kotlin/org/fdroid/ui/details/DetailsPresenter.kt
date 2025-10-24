@@ -35,6 +35,7 @@ fun DetailsPresenter(
 ): AppDetailsItem? {
     val packagePair = packageInfoFlow.collectAsState().value ?: return null
     val packageName = packagePair.packageName
+    val packageInfo = packagePair.packageInfo
     val currentRepoId = currentRepoIdFlow.collectAsState().value
     val app = if (currentRepoId == null) {
         db.getAppDao().getApp(packageName).asFlow().collectAsState(null).value
@@ -59,12 +60,17 @@ fun DetailsPresenter(
     val preferredRepoId = remember(packageName, appPrefs) {
         appPrefs?.preferredRepoId ?: app.repoId // DB loads preferred repo first, so we remember it
     }
+
+    @Suppress("DEPRECATION") // so far we had issues with the new way of getting sigs
+    val installedSigner = packageInfo?.signatures?.get(0)?.let {
+        sha256(it.toByteArray())
+    }
     val suggestedVersion = if (versions == null || appPrefs == null) {
         null
     } else {
         updateChecker.getSuggestedVersion(
             versions = versions,
-            preferredSigner = app.metadata.preferredSigner,
+            preferredSigner = installedSigner ?: app.metadata.preferredSigner,
             releaseChannels = appPrefs.releaseChannels,
             preferencesGetter = { appPrefs },
         )
@@ -79,16 +85,13 @@ fun DetailsPresenter(
             preferencesGetter = null, // ignoring existing preferences to include ignored versions
         )
     }
-    val installedVersionCode = packagePair.packageInfo?.let {
-        getLongVersionCode(packagePair.packageInfo)
+    val installedVersionCode = packageInfo?.let {
+        getLongVersionCode(packageInfo)
     }
-    val installedVersion = packagePair.packageInfo?.let {
+    val installedVersion = packageInfo?.let {
         versions?.find { it.versionCode == installedVersionCode }
     }
-    val installedSigner = packagePair.packageInfo?.signatures?.get(0)?.let {
-        sha256(it.toByteArray())
-    }
-    val noCompatibleVersions = if (packagePair.packageInfo != null && versions != null) {
+    val noUpdatesBecauseDifferentSigner = if (packageInfo != null && versions != null) {
         // return true of no version has same signer
         versions.none { version ->
             version.manifest.signer?.sha256?.get(0) == installedSigner
@@ -134,7 +137,7 @@ fun DetailsPresenter(
                 viewModel::ignoreThisUpdate
             },
             shareApk = null, // TODO
-            uninstallIntent = packagePair.packageInfo?.let {
+            uninstallIntent = packageInfo?.let {
                 Intent(Intent.ACTION_DELETE).apply {
                     setData(Uri.fromParts("package", it.packageName, null))
                     putExtra(Intent.EXTRA_RETURN_RESULT, true)
@@ -144,13 +147,28 @@ fun DetailsPresenter(
             shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
         ),
         installState = installState,
-        versions = versions,
+        versions = versions?.map { version ->
+            val signerCompatible = installedSigner == null ||
+                version.signer?.sha256?.first() == installedSigner
+            VersionItem(
+                version = version,
+                isInstalled = installedVersion == version,
+                isSuggested = suggestedVersion == version,
+                isCompatible = version.isCompatible,
+                isSignerCompatible = signerCompatible,
+                showInstallButton = if (!signerCompatible || installState.showProgress) {
+                    false
+                } else {
+                    (installedVersion?.versionCode ?: 0) < version.versionCode
+                },
+            )
+        },
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
-        noCompatibleVersions = noCompatibleVersions,
+        noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
         localeList = locales,
     )
