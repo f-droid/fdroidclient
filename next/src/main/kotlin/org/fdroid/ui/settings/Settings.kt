@@ -1,6 +1,5 @@
 package org.fdroid.ui.settings
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build.VERSION.SDK_INT
@@ -47,10 +46,7 @@ import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import org.fdroid.utils.getLogName
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -156,7 +152,7 @@ fun Settings(
                 )
                 item {
                     OutlinedButton(
-                        onClick = { launcher.launch(getLogName(context)) },
+                        onClick = { launcher.launch("${getLogName(context)}.txt") },
                         modifier = Modifier
                             .padding(16.dp)
                     ) {
@@ -170,14 +166,6 @@ fun Settings(
             }
         }
     }
-}
-
-private fun getLogName(context: Context): String {
-    val sdf = SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'", Locale.US).apply {
-        timeZone = TimeZone.getTimeZone("UTC")
-    }
-    val time = sdf.format(Date())
-    return "${context.packageName}-$time.txt"
 }
 
 @Preview

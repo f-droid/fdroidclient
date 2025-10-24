@@ -93,11 +93,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.fdroid.ui.CrashActivity"
+            android:name="org.fdroid.ui.crash.CrashActivity"
             android:excludeFromRecents="true"
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance"
-            android:process=":acra" />
+            android:process=":acra"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"

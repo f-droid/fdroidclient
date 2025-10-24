@@ -31,7 +31,7 @@ import org.fdroid.download.PackageName
 import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
-import org.fdroid.ui.CrashActivity
+import org.fdroid.ui.crash.CrashActivity
 import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
 import javax.inject.Inject

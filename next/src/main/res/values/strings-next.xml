@@ -109,5 +109,8 @@
     <string name="crash_report_comment_hint">Tell us what happened right before the crash</string>
     <string name="crash_report_button_send">Send report</string>
     <string name="crash_report_error">Could not send report. No email program found :(</string>
+    <string name="crash_report_save">Save crash report as file</string>
+    <string name="crash_report_saved">Saved report to file</string>
+    <string name="crash_report_error_saving">Error saving crash report to file</string>
 
 </resources>
