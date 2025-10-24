@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
-import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -35,7 +34,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -44,7 +42,6 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -81,6 +78,9 @@ fun AppDetailsHeader(
             onSuccess = {
                 showTopSpacer = false
             },
+            onError = {
+                showTopSpacer = true
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(max = 196.dp)
@@ -97,7 +97,6 @@ fun AppDetailsHeader(
                     )
                 }
                 .padding(bottom = 8.dp),
-            error = rememberVectorPainter(Icons.Default.Error),
         )
     }
     // Header
@@ -105,7 +104,7 @@ fun AppDetailsHeader(
         modifier = Modifier
             .padding(horizontal = 16.dp),
         horizontalArrangement = spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = CenterVertically,
     ) {
         AsyncShimmerImage(
             model = item.icon,
