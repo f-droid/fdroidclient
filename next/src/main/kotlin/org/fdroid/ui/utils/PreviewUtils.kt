@@ -214,6 +214,7 @@ val testApp = AppDetailsItem(
     installedVersion = testVersion2,
     suggestedVersion = null,
     possibleUpdate = testVersion1,
+    proxy = null,
 )
 
 fun getPreviewVersion(versionName: String, size: Long? = null) = object : PackageVersion {
@@ -302,6 +303,7 @@ fun getRepoDetailsInfo(
         ),
         archiveState = ArchiveState.LOADING,
         showOnboarding = false,
+        proxy = null,
     ),
 ) = object : RepoDetailsInfo {
     override val model = model

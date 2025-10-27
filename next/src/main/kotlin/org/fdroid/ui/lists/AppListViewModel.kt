@@ -57,8 +57,9 @@ class AppListViewModel @Inject constructor(
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
     private val repositories = repoManager.repositoriesState.map { repositories ->
+        val proxyConfig = settingsManager.proxyConfig
         repositories.mapNotNull {
-            if (it.enabled) RepositoryItem(it, localeList)
+            if (it.enabled) RepositoryItem(it, localeList, proxyConfig)
             else null
         }.sortedBy { it.weight }
     }
@@ -102,6 +103,7 @@ class AppListViewModel @Inject constructor(
     @WorkerThread
     private suspend fun loadApps(type: AppListType): List<AppListItem> {
         val appDao = db.getAppDao()
+        val proxyConfig = settingsManager.proxyConfig
         return when (type) {
             is AppListType.Author -> appDao.getAppsByAuthor(type.authorName)
             is AppListType.Category -> appDao.getAppsByCategory(type.categoryId)
@@ -119,7 +121,7 @@ class AppListViewModel @Inject constructor(
                 summary = it.getSummary(localeList) ?: "Unknown",
                 lastUpdated = it.lastUpdated,
                 isCompatible = it.isCompatible,
-                iconModel = it.getIcon(localeList)?.getImageModel(repository),
+                iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig),
                 categoryIds = it.categories?.toSet(),
             )
         }

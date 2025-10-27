@@ -228,7 +228,7 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
 @Preview
 private fun Preview() {
     FDroidContent {
-        AddRepo(None, {}, {}, {}, { _, _ -> }) {}
+        AddRepo(None, null, {}, {}, {}, { _, _ -> }) {}
     }
 }
 
@@ -236,6 +236,6 @@ private fun Preview() {
 @Preview(uiMode = UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 private fun PreviewNight() {
     FDroidContent {
-        AddRepo(None, {}, {}, {}, { _, _ -> }) {}
+        AddRepo(None, null, {}, {}, {}, { _, _ -> }) {}
     }
 }

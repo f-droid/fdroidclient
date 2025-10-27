@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.MinimalApp
 import org.fdroid.download.getImageModel
@@ -34,6 +35,7 @@ import org.fdroid.ui.utils.getRepository
 @Composable
 fun AddRepoPreviewScreen(
     state: Fetching,
+    proxyConfig: ProxyConfig?,
     modifier: Modifier = Modifier,
     onAddRepo: () -> Unit,
     onExistingRepo: (Long) -> Unit,
@@ -48,6 +50,7 @@ fun AddRepoPreviewScreen(
         item {
             RepoPreviewHeader(
                 state = state,
+                proxyConfig = proxyConfig,
                 onAddRepo = onAddRepo,
                 onExistingRepo = onExistingRepo,
                 modifier = Modifier
@@ -88,7 +91,7 @@ fun AddRepoPreviewScreen(
                     packageName = app.packageName,
                     name = app.name ?: "Unknown app",
                     summary = app.summary ?: "",
-                    iconModel = app.getIcon(localeList)?.getImageModel(repo),
+                    iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
                     lastUpdated = 1L,
                     isCompatible = true,
                 )
@@ -137,6 +140,7 @@ private fun Preview() {
     FDroidContent(pureBlack = true) {
         AddRepoPreviewScreen(
             Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository),
+            proxyConfig = null,
             onAddRepo = { },
             onExistingRepo = {},
         )

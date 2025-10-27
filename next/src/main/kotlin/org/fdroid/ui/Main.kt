@@ -250,6 +250,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             }
             AddRepo(
                 state = viewModel.state.collectAsStateWithLifecycle().value,
+                proxyConfig = viewModel.proxyConfig,
                 onFetchRepo = viewModel::onFetchRepo,
                 onAddRepo = viewModel::addFetchedRepository,
                 onExistingRepo = { repoId ->

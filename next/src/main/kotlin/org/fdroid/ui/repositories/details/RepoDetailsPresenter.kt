@@ -2,6 +2,7 @@ package org.fdroid.ui.repositories.details
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
@@ -12,6 +13,7 @@ fun RepoDetailsPresenter(
     numAppsFlow: Flow<Int?>,
     archiveStateFlow: StateFlow<ArchiveState>,
     showOnboardingFlow: StateFlow<Boolean>,
+    proxyConfig: ProxyConfig?,
 ): RepoDetailsModel {
     val repo = repoFlow.collectAsState(null).value
     return RepoDetailsModel(
@@ -30,5 +32,6 @@ fun RepoDetailsPresenter(
         } ?: emptyList(),
         archiveState = archiveStateFlow.collectAsState().value,
         showOnboarding = showOnboardingFlow.collectAsState().value,
+        proxy = proxyConfig,
     )
 }

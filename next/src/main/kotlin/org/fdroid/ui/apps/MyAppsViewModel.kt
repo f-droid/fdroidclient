@@ -24,6 +24,7 @@ import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
+import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -34,6 +35,7 @@ class MyAppsViewModel @Inject constructor(
     @param:IoDispatcher private val scope: CoroutineScope,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
+    private val settingsManager: SettingsManager,
     private val appInstallManager: AppInstallManager,
     private val updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
@@ -49,6 +51,7 @@ class MyAppsViewModel @Inject constructor(
     private var installedAppsLiveData =
         db.getAppDao().getInstalledAppListItems(application.packageManager)
     private val installedAppsObserver = Observer<List<AppListItem>> { list ->
+        val proxyConfig = settingsManager.proxyConfig
         installedApps.value = list.map { app ->
             InstalledAppItem(
                 packageName = app.packageName,
@@ -56,7 +59,7 @@ class MyAppsViewModel @Inject constructor(
                 installedVersionName = app.installedVersionName ?: "???",
                 lastUpdated = app.lastUpdated,
                 iconModel = repoManager.getRepository(app.repoId)?.let { repo ->
-                    app.getIcon(localeList)?.getImageModel(repo)
+                    app.getIcon(localeList)?.getImageModel(repo, proxyConfig)
                 },
             )
         }

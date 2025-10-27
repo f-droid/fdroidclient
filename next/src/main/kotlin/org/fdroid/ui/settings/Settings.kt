@@ -30,6 +30,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -45,12 +47,15 @@ import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.listPreference
 import me.zhanghai.compose.preference.preference
 import me.zhanghai.compose.preference.preferenceCategory
+import me.zhanghai.compose.preference.rememberPreferenceState
 import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.utils.getLogName
@@ -87,6 +92,8 @@ fun Settings(
         val context = LocalContext.current
         val res = LocalResources.current
         ProvidePreferenceLocals(prefsFlow) {
+            val showProxyError = remember { mutableStateOf(false) }
+            val proxyState = rememberPreferenceState(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
             LazyColumn(
                 modifier = Modifier
                     .padding(paddingValues)
@@ -196,6 +203,11 @@ fun Settings(
                         Text(s)
                     },
                 )
+                preferenceCategory(
+                    key = "pref_category_network",
+                    title = { Text(stringResource(R.string.pref_category_network)) },
+                )
+                preferenceProxy(proxyState, showProxyError)
                 item {
                     OutlinedButton(
                         onClick = { launcher.launch("${getLogName(context)}.txt") },

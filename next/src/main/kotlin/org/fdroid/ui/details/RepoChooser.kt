@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.ui.theme.FDroidContent
@@ -43,6 +44,7 @@ fun RepoChooser(
     repos: List<Repository>,
     currentRepoId: Long,
     preferredRepoId: Long,
+    proxy: ProxyConfig?,
     onRepoChanged: (Long) -> Unit,
     onPreferredRepoChanged: (Long) -> Unit,
     modifier: Modifier = Modifier,
@@ -79,7 +81,7 @@ fun RepoChooser(
                     }
                 },
                 leadingIcon = {
-                    RepoIcon(repo = currentRepo, modifier = Modifier.size(24.dp))
+                    RepoIcon(repo = currentRepo, proxy = proxy, modifier = Modifier.size(24.dp))
                 },
                 trailingIcon = {
                     if (repos.size > 1) Icon(
@@ -115,6 +117,7 @@ fun RepoChooser(
                     RepoMenuItem(
                         repo = repo,
                         isPreferred = repo.repoId == preferredRepoId,
+                        proxy = proxy,
                         onClick = {
                             onRepoChanged(repo.repoId)
                             expanded = false
@@ -140,6 +143,7 @@ fun RepoChooser(
 private fun RepoMenuItem(
     repo: Repository,
     isPreferred: Boolean,
+    proxy: ProxyConfig?,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -152,7 +156,7 @@ private fun RepoMenuItem(
         },
         modifier = modifier,
         onClick = onClick,
-        leadingIcon = { RepoIcon(repo, Modifier.size(24.dp)) }
+        leadingIcon = { RepoIcon(repo, proxy, Modifier.size(24.dp)) }
     )
 }
 
@@ -172,7 +176,7 @@ private fun getRepoString(repo: Repository, isPreferred: Boolean) = buildAnnotat
 fun RepoChooserSingleRepoPreview() {
     val repo1 = Repository(1L, "1", 1L, TWO, "null", 1L, 1, 1L)
     FDroidContent(pureBlack = true) {
-        RepoChooser(listOf(repo1), 1L, 1L, {}, {})
+        RepoChooser(listOf(repo1), 1L, 1L, null, {}, {})
     }
 }
 
@@ -183,7 +187,7 @@ fun RepoChooserPreview() {
     val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
     val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
     FDroidContent(pureBlack = true) {
-        RepoChooser(listOf(repo1, repo2, repo3), 1L, 1L, {}, {})
+        RepoChooser(listOf(repo1, repo2, repo3), 1L, 1L, null, {}, {})
     }
 }
 
@@ -194,6 +198,6 @@ fun RepoChooserNightPreview() {
     val repo2 = Repository(2L, "2", 2L, TWO, "null", 2L, 2, 2L)
     val repo3 = Repository(3L, "2", 3L, TWO, "null", 3L, 3, 3L)
     FDroidContent(pureBlack = true) {
-        RepoChooser(listOf(repo1, repo2, repo3), 1L, 2L, {}, {})
+        RepoChooser(listOf(repo1, repo2, repo3), 1L, 2L, null, {}, {})
     }
 }

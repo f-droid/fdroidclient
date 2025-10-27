@@ -19,6 +19,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -30,6 +31,7 @@ class UpdatesManager @Inject constructor(
     @ApplicationContext context: Context,
     private val db: FDroidDatabase,
     private val dbUpdateChecker: DbUpdateChecker,
+    private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     private val appInstallManager: AppInstallManager,
     @param:IoDispatcher private val coroutineScope: CoroutineScope,
@@ -70,6 +72,7 @@ class UpdatesManager @Inject constructor(
         val localeList = LocaleListCompat.getDefault()
         val updates = try {
             log.info { "Checking for updates..." }
+            val proxyConfig = settingsManager.proxyConfig
             dbUpdateChecker.getUpdatableApps(onlyFromPreferredRepo = true).map { update ->
                 AppUpdateItem(
                     repoId = update.repoId,
@@ -79,7 +82,7 @@ class UpdatesManager @Inject constructor(
                     update = update.update,
                     whatsNew = update.update.getWhatsNew(localeList),
                     iconModel = repoManager.getRepository(update.repoId)?.let { repo ->
-                        update.getIcon(localeList)?.getImageModel(repo)
+                        update.getIcon(localeList)?.getImageModel(repo, proxyConfig)
                     },
                 )
             }

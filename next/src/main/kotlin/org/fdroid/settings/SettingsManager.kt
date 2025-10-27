@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.ktor.client.engine.ProxyBuilder
+import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
@@ -14,11 +16,13 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.getAppListSortOrder
@@ -60,6 +64,16 @@ class SettingsManager @Inject constructor(
         }
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
+
+    val proxyConfig: ProxyConfig?
+        get() {
+            val proxyStr = prefs.getString(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
+            return if (proxyStr.isNullOrBlank()) null
+            else {
+                val (host, port) = proxyStr.split(':')
+                ProxyBuilder.socks(host, port.toInt())
+            }
+        }
 
     val filterIncompatible: Boolean
         get() = !prefs.getBoolean(PREF_KEY_SHOW_INCOMPATIBLE, PREF_DEFAULT_SHOW_INCOMPATIBLE)

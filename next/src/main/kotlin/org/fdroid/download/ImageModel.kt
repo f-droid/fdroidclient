@@ -2,10 +2,11 @@ package org.fdroid.download
 
 import android.net.Uri
 import androidx.core.net.toUri
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.IndexFile
 import org.fdroid.database.Repository
 
-fun IndexFile.getImageModel(repository: Repository?): Any? {
+fun IndexFile.getImageModel(repository: Repository?, proxyConfig: ProxyConfig?): Any? {
     if (repository == null) return null
     val address = repository.address
     if (address.startsWith("content://") || address.startsWith("file://")) {
@@ -14,7 +15,7 @@ fun IndexFile.getImageModel(repository: Repository?): Any? {
     return DownloadRequest(
         indexFile = this,
         mirrors = repository.getMirrors(),
-        proxy = null, // TODO proxy support
+        proxy = proxyConfig,
         username = repository.username,
         password = repository.password,
     )

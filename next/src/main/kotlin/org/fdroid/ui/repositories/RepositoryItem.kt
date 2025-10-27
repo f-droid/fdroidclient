@@ -1,6 +1,7 @@
 package org.fdroid.ui.repositories
 
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.database.Repository
 import org.fdroid.download.getImageModel
 
@@ -14,11 +15,11 @@ data class RepositoryItem(
     val weight: Int,
     val enabled: Boolean,
 ) {
-    constructor(repo: Repository, localeList: LocaleListCompat) : this(
+    constructor(repo: Repository, localeList: LocaleListCompat, proxy: ProxyConfig?) : this(
         repoId = repo.repoId,
         address = repo.address,
         name = repo.getName(localeList) ?: "Unknown Repo",
-        icon = repo.getIcon(localeList)?.getImageModel(repo),
+        icon = repo.getIcon(localeList)?.getImageModel(repo, proxy),
         timestamp = repo.timestamp,
         lastUpdated = repo.lastUpdated,
         weight = repo.weight,

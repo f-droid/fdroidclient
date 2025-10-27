@@ -11,6 +11,7 @@ import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -41,7 +42,7 @@ class DiscoverViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     updatesManager: UpdatesManager,
-    settingsManager: SettingsManager,
+    private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
@@ -52,15 +53,17 @@ class DiscoverViewModel @Inject constructor(
 
     val numUpdates = updatesManager.numUpdates
     val newApps = db.getAppDao().getNewAppsFlow().map { list ->
+        val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {
             val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
-            it.toAppDiscoverItem(repository)
+            it.toAppDiscoverItem(repository, proxyConfig)
         }
     }
     val recentlyUpdatedApps = db.getAppDao().getRecentlyUpdatedAppsFlow().map { list ->
+        val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {
             val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
-            it.toAppDiscoverItem(repository)
+            it.toAppDiscoverItem(repository, proxyConfig)
         }
     }
     private val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
@@ -108,6 +111,7 @@ class DiscoverViewModel @Inject constructor(
         log.info { "Searching for: $query" }
         val timedApps = measureTimedValue {
             try {
+                val proxyConfig = settingsManager.proxyConfig
                 db.getAppDao().getAppSearchItems(query).sortedDescending().mapNotNull {
                     val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
                     AppListItem(
@@ -117,7 +121,7 @@ class DiscoverViewModel @Inject constructor(
                         summary = it.summary.getBestLocale(localeList) ?: "",
                         lastUpdated = it.lastUpdated,
                         isCompatible = true, // doesn't matter here, as we don't filter
-                        iconModel = it.getIcon(localeList)?.getImageModel(repository),
+                        iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig),
                         categoryIds = it.categories?.toSet(),
                     )
                 }
@@ -144,10 +148,13 @@ class DiscoverViewModel @Inject constructor(
         searchResults.value = null
     }
 
-    private fun AppOverviewItem.toAppDiscoverItem(repository: Repository) = AppDiscoverItem(
+    private fun AppOverviewItem.toAppDiscoverItem(
+        repository: Repository,
+        proxyConfig: ProxyConfig?,
+    ) = AppDiscoverItem(
         packageName = packageName,
         name = getName(localeList) ?: "Unknown App",
         lastUpdated = lastUpdated,
-        imageModel = getIcon(localeList)?.getImageModel(repository),
+        imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig),
     )
 }

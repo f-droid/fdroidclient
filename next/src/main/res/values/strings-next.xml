@@ -92,6 +92,7 @@
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Here you can apply filters to the list of apps, e.g. showing only apps within a certain category or repository. Changing the sort order is also possible.</string>
     <string name="got_it">Got it</string>
+    <string name="clear">Clear</string>
     <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
     <string name="repo_last_update_upstream">Last update: %s</string>
     <string name="repo_basicauth_username">Username</string>
@@ -102,6 +103,12 @@
 
     <string name="pref_language_summary">Opens system language settings</string>
     <string name="pref_auto_updates_summary">Download and update apps daily when the device isn\'t being used</string>
+    <string name="pref_category_network">Network</string>
+    <string name="pref_proxy_title">Connect via SOCKS proxy</string>
+    <string name="pref_proxy_disabled">Connect to the internet without proxy</string>
+    <string name="pref_proxy_enabled">Uses proxy %s to connect</string>
+    <string name="pref_proxy_hint">Proxy is expected in host:port format.</string>
+    <string name="pref_proxy_error">Proxy format invalid</string>
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.

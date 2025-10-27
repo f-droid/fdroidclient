@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.fdroid.ui.theme.FDroidContent
@@ -33,6 +34,7 @@ import org.fdroid.ui.utils.getRepository
 fun RepoDetailsHeader(
     repo: Repository,
     numberOfApps: Int?,
+    proxy: ProxyConfig?,
     onShowAppsClicked: (String, Long) -> Unit,
 ) {
     val localeList = LocaleListCompat.getDefault()
@@ -59,7 +61,7 @@ fun RepoDetailsHeader(
         Row(
             horizontalArrangement = spacedBy(8.dp),
         ) {
-            RepoIcon(repo, Modifier.size(64.dp))
+            RepoIcon(repo, proxy, Modifier.size(64.dp))
             Column(horizontalAlignment = Alignment.Start) {
                 Text(
                     text = name,
@@ -110,6 +112,6 @@ fun RepoDetailsHeader(
 @Composable
 private fun Preview() {
     FDroidContent {
-        RepoDetailsHeader(getRepository(), 45) { _, _ -> }
+        RepoDetailsHeader(getRepository(), 45, null) { _, _ -> }
     }
 }

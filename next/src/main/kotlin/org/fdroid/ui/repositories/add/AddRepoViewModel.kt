@@ -8,16 +8,20 @@ import kotlinx.coroutines.flow.StateFlow
 import mu.KotlinLogging
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.AddRepoState
+import org.fdroid.settings.SettingsManager
 import javax.inject.Inject
 
 @HiltViewModel
 class AddRepoViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
+    private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
     val state: StateFlow<AddRepoState> = repoManager.addRepoState
+
+    val proxyConfig = settingsManager.proxyConfig
 
     override fun onCleared() {
         log.info { "onCleared() abort adding repository" }
@@ -30,8 +34,7 @@ class AddRepoViewModel @Inject constructor(
             // TODO full only
         } else {
             repoManager.abortAddingRepository()
-            // TODO support proxy
-            repoManager.fetchRepositoryPreview(uri.toString(), proxy = null)
+            repoManager.fetchRepositoryPreview(uri.toString(), settingsManager.proxyConfig)
         }
     }
 

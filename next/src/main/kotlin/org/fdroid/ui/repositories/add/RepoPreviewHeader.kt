@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.repo.FetchResult.IsExistingMirror
@@ -40,6 +41,7 @@ import org.fdroid.ui.utils.getRepository
 @Composable
 fun RepoPreviewHeader(
     state: Fetching,
+    proxyConfig: ProxyConfig?,
     onAddRepo: () -> Unit,
     onExistingRepo: (Long) -> Unit,
     modifier: Modifier = Modifier,
@@ -86,7 +88,7 @@ fun RepoPreviewHeader(
             horizontalArrangement = spacedBy(16.dp),
             verticalAlignment = CenterVertically,
         ) {
-            RepoIcon(repo, Modifier.size(48.dp))
+            RepoIcon(repo, proxyConfig, Modifier.size(48.dp))
             Column(horizontalAlignment = Alignment.Start) {
                 Text(
                     text = repo.getName(localeList) ?: "Unknown Repository",
@@ -151,6 +153,7 @@ fun RepoPreviewScreenNewMirrorPreview() {
             onAddRepo = { },
             onExistingRepo = {},
             localeList = LocaleListCompat.getDefault(),
+            proxyConfig = null,
         )
     }
 }
@@ -170,6 +173,7 @@ fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
             onAddRepo = { },
             onExistingRepo = {},
             localeList = LocaleListCompat.getDefault(),
+            proxyConfig = null,
         )
     }
 }
@@ -185,6 +189,7 @@ fun RepoPreviewScreenExistingRepoPreview() {
             onAddRepo = { },
             onExistingRepo = {},
             localeList = LocaleListCompat.getDefault(),
+            proxyConfig = null,
         )
     }
 }
@@ -199,6 +204,7 @@ fun RepoPreviewScreenExistingMirrorPreview() {
             onAddRepo = { },
             onExistingRepo = {},
             localeList = LocaleListCompat.getDefault(),
+            proxyConfig = null,
         )
     }
 }

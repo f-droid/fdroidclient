@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.fdroid.BuildConfig
+import org.fdroid.settings.SettingsManager
 import javax.inject.Singleton
 
 @Module
@@ -15,13 +16,13 @@ object DownloadModule {
 
     @Provides
     @Singleton
-    fun provideHttpManager(): HttpManager {
-        return HttpManager(userAgent = USER_AGENT)
+    fun provideHttpManager(settingsManager: SettingsManager): HttpManager {
+        return HttpManager(userAgent = USER_AGENT, proxyConfig = settingsManager.proxyConfig)
     }
 
     @Provides
     @Singleton
-    fun provideDownloaderFactory(httpManager: HttpManager): DownloaderFactory {
-        return DownloaderFactoryImpl(httpManager)
-    }
+    fun provideDownloaderFactory(
+        downloaderFactoryImpl: DownloaderFactoryImpl,
+    ): DownloaderFactory = downloaderFactoryImpl
 }

@@ -66,7 +66,7 @@ class RepositoriesViewModel @Inject constructor(
         repos.update {
             repositories.mapNotNull {
                 if (it.isArchiveRepo) null
-                else RepositoryItem(it, localeList)
+                else RepositoryItem(it, localeList, settingsManager.proxyConfig)
             }
         }
         repoSortingMap.update {

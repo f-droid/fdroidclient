@@ -27,6 +27,7 @@ import org.fdroid.download.Mirror
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.repositories.details.ArchiveState.UNKNOWN
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -36,6 +37,7 @@ class RepoDetailsViewModel @Inject constructor(
     app: Application,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app), RepoDetailsActions {
@@ -60,6 +62,7 @@ class RepoDetailsViewModel @Inject constructor(
             numAppsFlow = numAppsFlow,
             archiveStateFlow = archiveStateFlow,
             showOnboardingFlow = showOnboarding,
+            proxyConfig = settingsManager.proxyConfig,
         )
     }
 

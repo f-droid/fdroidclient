@@ -38,7 +38,12 @@ fun RepoDetailsContent(
             .fillMaxWidth()
             .verticalScroll(rememberScrollState()),
     ) {
-        RepoDetailsHeader(repo, info.model.numberApps, onShowAppsClicked)
+        RepoDetailsHeader(
+            repo = repo,
+            numberOfApps = info.model.numberApps,
+            proxy = info.model.proxy,
+            onShowAppsClicked = onShowAppsClicked,
+        )
         if (info.model.showOfficialMirrors) {
             OfficialMirrors(
                 mirrors = info.model.officialMirrors,

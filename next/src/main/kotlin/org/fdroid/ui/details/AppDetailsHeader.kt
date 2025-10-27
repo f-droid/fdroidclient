@@ -159,6 +159,7 @@ fun AppDetailsHeader(
         repos = item.repositories,
         currentRepoId = item.app.repoId,
         preferredRepoId = item.preferredRepoId,
+        proxy = item.proxy,
         onRepoChanged = item.actions.onRepoChanged,
         onPreferredRepoChanged = item.actions.onPreferredRepoChanged,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

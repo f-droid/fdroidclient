@@ -33,6 +33,7 @@ import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
+import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
@@ -45,6 +46,7 @@ class AppDetailsViewModel @Inject constructor(
     private val repoManager: RepoManager,
     private val updateChecker: UpdateChecker,
     private val updatesManager: UpdatesManager,
+    private val settingsManager: SettingsManager,
     private val appInstallManager: AppInstallManager,
 ) : AndroidViewModel(app) {
     private val log = KotlinLogging.logger { }
@@ -62,6 +64,7 @@ class AppDetailsViewModel @Inject constructor(
             viewModel = this,
             packageInfoFlow = packageInfoFlow,
             currentRepoIdFlow = currentRepoIdFlow,
+            settingsManager = settingsManager,
         )
     }
 

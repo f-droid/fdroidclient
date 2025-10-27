@@ -5,6 +5,7 @@ import android.os.Build.VERSION.SDK_INT
 import androidx.activity.result.ActivityResult
 import androidx.annotation.VisibleForTesting
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.database.App
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
@@ -63,6 +64,7 @@ data class AppDetailsItem(
      */
     val noUpdatesBecauseDifferentSigner: Boolean = false,
     val authorHasMoreThanOneApp: Boolean = false,
+    val proxy: ProxyConfig?,
 ) {
     constructor(
         repository: Repository,
@@ -80,6 +82,7 @@ data class AppDetailsItem(
         noUpdatesBecauseDifferentSigner: Boolean,
         authorHasMoreThanOneApp: Boolean,
         localeList: LocaleListCompat,
+        proxy: ProxyConfig?,
     ) : this(
         app = dbApp.metadata,
         actions = actions,
@@ -89,10 +92,10 @@ data class AppDetailsItem(
         name = dbApp.name ?: "Unknown App",
         summary = dbApp.summary,
         description = getHtmlDescription(dbApp.getDescription(localeList)),
-        icon = dbApp.getIcon(localeList)?.getImageModel(repository),
-        featureGraphic = dbApp.getFeatureGraphic(localeList)?.getImageModel(repository),
+        icon = dbApp.getIcon(localeList)?.getImageModel(repository, proxy),
+        featureGraphic = dbApp.getFeatureGraphic(localeList)?.getImageModel(repository, proxy),
         phoneScreenshots = dbApp.getPhoneScreenshots(localeList).mapNotNull {
-            it.getImageModel(repository)
+            it.getImageModel(repository, proxy)
         },
         categories = dbApp.metadata.categories?.mapNotNull { categoryId ->
             val category = repository.getCategories()[categoryId] ?: return@mapNotNull null
@@ -108,11 +111,16 @@ data class AppDetailsItem(
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
         whatsNew = installedVersion?.getWhatsNew(localeList),
-        antiFeatures = installedVersion?.getAntiFeatures(repository, localeList)
-            ?: suggestedVersion?.getAntiFeatures(repository, localeList)
-            ?: (versions?.first()?.version as? AppVersion).getAntiFeatures(repository, localeList),
+        antiFeatures = installedVersion?.getAntiFeatures(repository, localeList, proxy)
+            ?: suggestedVersion?.getAntiFeatures(repository, localeList, proxy)
+            ?: (versions?.first()?.version as? AppVersion).getAntiFeatures(
+                repository = repository,
+                localeList = localeList,
+                proxy = proxy,
+            ),
         noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
+        proxy = proxy,
     )
 
     /**
@@ -242,12 +250,13 @@ data class AntiFeature(
 private fun AppVersion?.getAntiFeatures(
     repository: Repository,
     localeList: LocaleListCompat,
+    proxy: ProxyConfig?,
 ): List<AntiFeature>? {
     return this?.antiFeatureKeys?.mapNotNull { key ->
         val antiFeature = repository.getAntiFeatures()[key] ?: return@mapNotNull null
         AntiFeature(
             id = key,
-            icon = antiFeature.getIcon(localeList)?.getImageModel(repository),
+            icon = antiFeature.getIcon(localeList)?.getImageModel(repository, proxy),
             name = antiFeature.getName(localeList) ?: key,
             reason = getAntiFeatureReason(key, localeList),
         )

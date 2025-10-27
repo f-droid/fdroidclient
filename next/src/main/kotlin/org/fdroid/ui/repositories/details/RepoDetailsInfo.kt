@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.content.Intent.EXTRA_TEXT
 import android.graphics.Bitmap
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
@@ -39,6 +40,7 @@ data class RepoDetailsModel(
     val userMirrors: List<UserMirrorItem>,
     val archiveState: ArchiveState,
     val showOnboarding: Boolean,
+    val proxy: ProxyConfig?,
 ) {
     /**
      * The repo's address is currently also an official mirror.

@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.repo.AddRepoError
@@ -30,6 +31,7 @@ import org.fdroid.repo.RepoUpdateWorker
 @Composable
 fun AddRepo(
     state: AddRepoState,
+    proxyConfig: ProxyConfig?,
     onFetchRepo: (String) -> Unit,
     onAddRepo: () -> Unit,
     onExistingRepo: (Long) -> Unit,
@@ -73,6 +75,7 @@ fun AddRepo(
                 } else {
                     AddRepoPreviewScreen(
                         state = state,
+                        proxyConfig = proxyConfig,
                         onAddRepo = onAddRepo,
                         onExistingRepo = onExistingRepo,
                         modifier = Modifier.padding(paddingValues),

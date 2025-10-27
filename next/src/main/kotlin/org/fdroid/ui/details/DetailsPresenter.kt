@@ -17,6 +17,7 @@ import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
+import org.fdroid.settings.SettingsManager
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
@@ -28,6 +29,7 @@ fun DetailsPresenter(
     db: FDroidDatabase,
     repoManager: RepoManager,
     updateChecker: UpdateChecker,
+    settingsManager: SettingsManager,
     appInstallManager: AppInstallManager,
     viewModel: AppDetailsViewModel,
     packageInfoFlow: StateFlow<AppInfo?>,
@@ -190,6 +192,7 @@ fun DetailsPresenter(
         noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
         localeList = locales,
+        proxy = settingsManager.proxyConfig,
     )
 }
 
