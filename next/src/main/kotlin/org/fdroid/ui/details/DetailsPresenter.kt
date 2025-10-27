@@ -38,7 +38,10 @@ fun DetailsPresenter(
     val packageInfo = packagePair.packageInfo
     val currentRepoId = currentRepoIdFlow.collectAsState().value
     val app = if (currentRepoId == null) {
-        db.getAppDao().getApp(packageName).asFlow().collectAsState(null).value
+        val flow = remember {
+            db.getAppDao().getApp(packageName).asFlow()
+        }
+        flow.collectAsState(null).value
     } else {
         db.getAppDao().getApp(currentRepoId, packageName)
     } ?: return null
@@ -51,39 +54,52 @@ fun DetailsPresenter(
     val installState =
         appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
 
-    val versions = if (currentRepoId == null) {
-        db.getVersionDao().getAppVersions(packageName)
-    } else {
-        db.getVersionDao().getAppVersions(currentRepoId, packageName)
-    }.asFlow().collectAsState(null).value
-    val appPrefs = db.getAppPrefsDao().getAppPrefs(packageName).asFlow().collectAsState(null).value
+    val versionsFlow = remember(currentRepoId) {
+        if (currentRepoId == null) {
+            db.getVersionDao().getAppVersions(app.repoId, packageName).asFlow()
+        } else {
+            db.getVersionDao().getAppVersions(currentRepoId, packageName).asFlow()
+        }
+    }
+    val versions = versionsFlow.collectAsState(null).value
+    val appPrefsFlow = remember(packageName) {
+        db.getAppPrefsDao().getAppPrefs(packageName).asFlow()
+    }
+    val appPrefs = appPrefsFlow.collectAsState(null).value
     val preferredRepoId = remember(packageName, appPrefs) {
         appPrefs?.preferredRepoId ?: app.repoId // DB loads preferred repo first, so we remember it
     }
 
-    @Suppress("DEPRECATION") // so far we had issues with the new way of getting sigs
-    val installedSigner = packageInfo?.signatures?.get(0)?.let {
-        sha256(it.toByteArray())
+    val installedSigner = remember(packageInfo?.packageName) {
+        @Suppress("DEPRECATION") // so far we had issues with the new way of getting sigs
+        packageInfo?.signatures?.get(0)?.let {
+            sha256(it.toByteArray())
+        }
     }
-    val suggestedVersion = if (versions == null || appPrefs == null) {
-        null
-    } else {
-        updateChecker.getSuggestedVersion(
-            versions = versions,
-            preferredSigner = installedSigner ?: app.metadata.preferredSigner,
-            releaseChannels = appPrefs.releaseChannels,
-            preferencesGetter = { appPrefs },
-        )
+    val suggestedVersion = remember(versions, appPrefs, installedSigner) {
+        if (versions == null || appPrefs == null) {
+            null
+        } else {
+            updateChecker.getSuggestedVersion(
+                versions = versions,
+                preferredSigner = installedSigner ?: app.metadata.preferredSigner,
+                releaseChannels = appPrefs.releaseChannels,
+                preferencesGetter = { appPrefs },
+            )
+        }
     }
-    val possibleUpdate = if (versions == null || appPrefs == null) {
-        null
-    } else {
-        updateChecker.getUpdate(
-            versions = versions,
-            allowedSignersGetter = app.metadata.preferredSigner?.let { { setOf(it) } },
-            allowedReleaseChannels = appPrefs.releaseChannels,
-            preferencesGetter = null, // ignoring existing preferences to include ignored versions
-        )
+    val possibleUpdate = remember(versions, appPrefs) {
+        if (versions == null || appPrefs == null) {
+            null
+        } else {
+            updateChecker.getUpdate(
+                versions = versions,
+                allowedSignersGetter = app.metadata.preferredSigner?.let { { setOf(it) } },
+                allowedReleaseChannels = appPrefs.releaseChannels,
+                // ignoring existing preferences to include ignored versions
+                preferencesGetter = null,
+            )
+        }
     }
     val installedVersionCode = packageInfo?.let {
         getLongVersionCode(packageInfo)
@@ -101,7 +117,10 @@ fun DetailsPresenter(
     }
     val authorName = app.authorName
     val authorHasMoreThanOneApp = if (authorName == null) false else {
-        db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow().collectAsState(false).value
+        val flow = remember(authorName) {
+            db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow()
+        }
+        flow.collectAsState(false).value
     }
     val locales = LocaleListCompat.getDefault()
     Log.d(TAG, "Presenting app details:")
