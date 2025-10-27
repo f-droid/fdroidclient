@@ -42,9 +42,16 @@ class SettingsManager @Inject constructor(
     val theme get() = prefs.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME)!!
     val themeFlow = prefsFlow.map { it.get<String>(PREF_KEY_THEME) }
     var lastRepoUpdate: Long
-        get() = prefs.getLong(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
+        get() = try {
+            prefs.getInt(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
+                .toLong() * 1000
+        } catch (_: Exception) {
+            // TODO remove Int hack, because preferences library crashes on Long
+            //  see: https://github.com/zhanghai/ComposePreference/issues/24
+            PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
+        }
         set(value) {
-            prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
+            prefs.edit { putInt(PREF_KEY_LAST_UPDATE_CHECK, (value / 1000).toInt()) }
             _lastRepoUpdateFlow.update { value }
         }
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)

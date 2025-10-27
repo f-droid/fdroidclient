@@ -28,7 +28,7 @@ fun DiscoverPresenter(
     // So if we don't have those, we are still loading, have no enabled repo, or this is first start
     return if (recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
-        val isFirstStart = lastRepoUpdate == PREF_DEFAULT_LAST_UPDATE_CHECK
+        val isFirstStart = lastRepoUpdate < PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
         if (newApps == null && recentlyUpdatedApps == null) {
             // we don't know yet if this
             LoadingDiscoverModel(isFirstStart)
