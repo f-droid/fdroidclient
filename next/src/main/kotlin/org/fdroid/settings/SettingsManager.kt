@@ -12,10 +12,12 @@ import me.zhanghai.compose.preference.createPreferenceFlow
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
+import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
@@ -41,6 +43,8 @@ class SettingsManager @Inject constructor(
     val prefsFlow by lazy { createPreferenceFlow(prefs) }
     val theme get() = prefs.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME)!!
     val themeFlow = prefsFlow.map { it.get<String>(PREF_KEY_THEME) }
+    val autoUpdateApps get() = prefs.getBoolean(PREF_KEY_AUTO_UPDATES, PREF_DEFAULT_AUTO_UPDATES)
+    val autoUpdateAppsFlow get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_AUTO_UPDATES) }
     var lastRepoUpdate: Long
         get() = try {
             prefs.getInt(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)

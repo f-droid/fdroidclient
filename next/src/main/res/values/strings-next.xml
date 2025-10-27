@@ -101,6 +101,7 @@
 
 
     <string name="pref_language_summary">Opens system language settings</string>
+    <string name="pref_auto_updates_summary">Download and update apps daily when the device isn\'t being used</string>
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.

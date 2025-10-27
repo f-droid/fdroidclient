@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Translate
+import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -28,6 +29,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -35,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.zhanghai.compose.preference.MapPreferences
 import me.zhanghai.compose.preference.Preferences
@@ -42,16 +45,22 @@ import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.listPreference
 import me.zhanghai.compose.preference.preference
 import me.zhanghai.compose.preference.preferenceCategory
+import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
+import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
+import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.utils.getLogName
+import java.util.concurrent.TimeUnit
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun Settings(
     prefsFlow: MutableStateFlow<Preferences>,
+    nextAppUpdateFlow: Flow<Long>,
     onSaveLogcat: (Uri?) -> Unit,
     onBackClicked: () -> Unit,
 ) {
@@ -116,6 +125,23 @@ fun Settings(
                     },
                     summary = { Text(text = "${themeToString(it)}") },
                 )
+                if (SDK_INT >= 33) preference(
+                    key = "languages",
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Translate,
+                            contentDescription = null,
+                        )
+                    },
+                    title = { Text(stringResource(R.string.pref_language)) },
+                    summary = { Text(stringResource(R.string.pref_language_summary)) },
+                    onClick = {
+                        val intent = Intent(ACTION_APP_LOCALE_SETTINGS).apply {
+                            setData(Uri.fromParts("package", context.packageName, null))
+                        }
+                        context.startActivity(intent)
+                    },
+                )
                 if (SDK_INT >= 26) preference(
                     key = "notifications",
                     icon = {
@@ -133,21 +159,41 @@ fun Settings(
                         context.startActivity(intent)
                     },
                 )
-                if (SDK_INT >= 33) preference(
-                    key = "languages",
+                preferenceCategory(
+                    key = "pref_category_updates",
+                    title = { Text(stringResource(R.string.updates)) },
+                )
+                switchPreference(
+                    key = PREF_KEY_AUTO_UPDATES,
+                    defaultValue = PREF_DEFAULT_AUTO_UPDATES,
+                    title = {
+                        Text(stringResource(R.string.update_auto_install))
+                    },
                     icon = {
                         Icon(
-                            imageVector = Icons.Default.Translate,
+                            imageVector = Icons.Default.Update,
                             contentDescription = null,
                         )
                     },
-                    title = { Text(stringResource(R.string.pref_language)) },
-                    summary = { Text(stringResource(R.string.pref_language_summary)) },
-                    onClick = {
-                        val intent = Intent(ACTION_APP_LOCALE_SETTINGS).apply {
-                            setData(Uri.fromParts("package", context.packageName, null))
+                    summary = {
+                        val nextUpdate = nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
+                        val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
+                            stringResource(
+                                R.string.auto_update_time,
+                                stringResource(R.string.repositories_last_update_never)
+                            )
+                        } else if (nextUpdate - System.currentTimeMillis() <= 0) {
+                            stringResource(R.string.auto_update_time_past)
+                        } else {
+                            stringResource(
+                                R.string.auto_update_time,
+                                nextUpdate.asRelativeTimeString()
+                            )
                         }
-                        context.startActivity(intent)
+                        val s = stringResource(R.string.pref_auto_updates_summary) +
+                            "\n\n" +
+                            nextUpdateStr
+                        Text(s)
                     },
                 )
                 item {
@@ -172,6 +218,7 @@ fun Settings(
 @Composable
 fun SettingsPreview() {
     FDroidContent {
-        Settings(MutableStateFlow(MapPreferences()), {}, { })
+        val nextFLow = MutableStateFlow(System.currentTimeMillis() - TimeUnit.HOURS.toMillis(12))
+        Settings(MutableStateFlow(MapPreferences()), nextFLow, {}, { })
     }
 }

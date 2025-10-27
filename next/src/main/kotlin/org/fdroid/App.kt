@@ -96,7 +96,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         if (ACRA.isACRASenderServiceProcess()) return
 
         RepoUpdateWorker.scheduleOrCancel(applicationContext)
-        AppUpdateWorker.scheduleOrCancel(applicationContext)
+        AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
     }
 
     override fun newImageLoader(context: Context): ImageLoader {

@@ -1,11 +1,14 @@
 package org.fdroid.updates
 
+import android.content.Context
 import androidx.core.os.LocaleListCompat
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
@@ -24,6 +27,7 @@ import kotlin.math.min
 
 @Singleton
 class UpdatesManager @Inject constructor(
+    @ApplicationContext context: Context,
     private val db: FDroidDatabase,
     private val dbUpdateChecker: DbUpdateChecker,
     private val repoManager: RepoManager,
@@ -36,6 +40,14 @@ class UpdatesManager @Inject constructor(
     val updates = _updates.asStateFlow()
     private val _numUpdates = MutableStateFlow(0)
     val numUpdates = _numUpdates.asStateFlow()
+
+    /**
+     * The time in milliseconds of the (earliest!) next automatic app update run.
+     * This is [Long.MAX_VALUE], if no time is known.
+     */
+    val nextAppUpdateFlow = AppUpdateWorker.getAutoUpdateWorkInfo(context).map { workInfo ->
+        workInfo?.nextScheduleTimeMillis ?: Long.MAX_VALUE
+    }
 
     val notificationStates: UpdateNotificationState
         get() = UpdateNotificationState(

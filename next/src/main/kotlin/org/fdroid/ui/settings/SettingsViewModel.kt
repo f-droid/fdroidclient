@@ -18,6 +18,8 @@ import mu.KotlinLogging
 import org.fdroid.R
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.utils.applyNewTheme
+import org.fdroid.updates.AppUpdateWorker
+import org.fdroid.updates.UpdatesManager
 import java.io.IOException
 import java.lang.Runtime.getRuntime
 import javax.inject.Inject
@@ -25,17 +27,25 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     app: Application,
+    updatesManager: UpdatesManager,
     private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger {}
     val prefsFlow = settingsManager.prefsFlow
+    val nextAppUpdateFlow = updatesManager.nextAppUpdateFlow
 
     init {
         viewModelScope.launch {
             // react to theme changes right away
             settingsManager.themeFlow.drop(1).collect {
                 if (it != null) applyNewTheme(it)
+            }
+        }
+        viewModelScope.launch {
+            // react to auto-update changes
+            settingsManager.autoUpdateAppsFlow.drop(1).collect { enable ->
+                if (enable != null) AppUpdateWorker.scheduleOrCancel(application, enable)
             }
         }
     }

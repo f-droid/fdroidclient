@@ -12,10 +12,13 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
@@ -41,9 +44,8 @@ class AppUpdateWorker @AssistedInject constructor(
         internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
 
         @JvmStatic
-        fun scheduleOrCancel(context: Context) {
+        fun scheduleOrCancel(context: Context, doAutoUpdates: Boolean) {
             val workManager = WorkManager.getInstance(context)
-            val doAutoUpdates = true // TODO check settings, if auto-updates is on, metered network
             if (doAutoUpdates) {
                 Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
                 val constraints = Constraints.Builder()
@@ -66,9 +68,15 @@ class AppUpdateWorker @AssistedInject constructor(
                     request = workRequest,
                 )
             } else {
-                Log.w(TAG, "Not scheduling job due to settings!")
+                Log.w(TAG, "Cancelling job due to settings!")
                 workManager.cancelUniqueWork(UNIQUE_WORK_NAME_APP_UPDATE)
             }
+        }
+
+        fun getAutoUpdateWorkInfo(context: Context): Flow<WorkInfo?> {
+            return WorkManager.getInstance(context).getWorkInfosForUniqueWorkFlow(
+                UNIQUE_WORK_NAME_APP_UPDATE
+            ).map { it.getOrNull(0) }
         }
     }
 

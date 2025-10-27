@@ -10,6 +10,9 @@ object SettingsConstants {
     const val PREF_KEY_THEME = "theme"
     const val PREF_DEFAULT_THEME = "followSystem"
 
+    const val PREF_KEY_AUTO_UPDATES = "autoUpdates"
+    const val PREF_DEFAULT_AUTO_UPDATES = true
+
     const val PREF_KEY_SHOW_INCOMPATIBLE = "incompatibleVersions"
     const val PREF_DEFAULT_SHOW_INCOMPATIBLE = true
 
