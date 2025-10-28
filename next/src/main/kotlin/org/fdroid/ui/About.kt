@@ -3,7 +3,6 @@ package org.fdroid.ui
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -65,11 +65,13 @@ fun About(onBackClicked: () -> Unit) {
                 .verticalScroll(scrollableState)
         ) {
             AboutHeader(modifier = Modifier.padding(top = 32.dp))
-            Text(
-                text = stringResource(R.string.about_text),
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(top = 24.dp),
-            )
+            SelectionContainer {
+                Text(
+                    text = stringResource(R.string.about_text),
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(top = 24.dp),
+                )
+            }
             Column(modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)) {
                 val uriHandler = LocalUriHandler.current
                 Text(
@@ -109,20 +111,15 @@ fun AboutHeader(modifier: Modifier = Modifier) {
             painter = painterResource(id = R.drawable.ic_launcher),
             contentDescription = null, // decorative element
         )
-        Text(
-            text = "${stringResource(R.string.about_version)} $VERSION_NAME",
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .alpha(0.75f)
-                .combinedClickable(
-                    onClick = { },
-                    onLongClick = {
-                        // intentional crash for testing crash reporter, could be moved elsewhere
-                        error("BOOOM!")
-                    },
-                )
-        )
+        SelectionContainer {
+            Text(
+                text = "${stringResource(R.string.about_version)} $VERSION_NAME",
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .alpha(0.75f)
+            )
+        }
     }
 }
 

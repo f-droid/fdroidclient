@@ -89,6 +89,9 @@ class DiscoverViewModel @Inject constructor(
     }
 
     suspend fun search(term: String) = withContext(ioScope.coroutineContext) {
+        // we need a way to make the app crash for testing, e.g. the crash reporter
+        if (term == "CrashMe") error("BOOOOOOOOM!!!")
+
         val sanitized = term.replace(Regex.fromLiteral("\""), "")
         val splits = sanitized.split(' ').filter { it.isNotBlank() }
         val query = splits.joinToString(" AND ") { word ->
