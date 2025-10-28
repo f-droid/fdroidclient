@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.R
+import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
@@ -32,14 +33,24 @@ class SettingsViewModel @Inject constructor(
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger {}
-    val prefsFlow = settingsManager.prefsFlow
-    val nextAppUpdateFlow = updatesManager.nextAppUpdateFlow
+
+    val model = SettingsModel(
+        prefsFlow = settingsManager.prefsFlow,
+        nextRepoUpdateFlow = updatesManager.nextRepoUpdateFlow,
+        nextAppUpdateFlow = updatesManager.nextAppUpdateFlow,
+    )
 
     init {
         viewModelScope.launch {
             // react to theme changes right away
             settingsManager.themeFlow.drop(1).collect {
                 if (it != null) applyNewTheme(it)
+            }
+        }
+        viewModelScope.launch {
+            // react to repo-update changes
+            settingsManager.repoUpdatesFlow.drop(1).collect { enable ->
+                if (enable != null) RepoUpdateWorker.scheduleOrCancel(application, enable)
             }
         }
         viewModelScope.launch {

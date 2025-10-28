@@ -18,12 +18,16 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.SystemSecurityUpdate
+import androidx.compose.material.icons.filled.SystemSecurityUpdateWarning
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Update
+import androidx.compose.material.icons.filled.UpdateDisabled
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,10 +43,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.zhanghai.compose.preference.MapPreferences
-import me.zhanghai.compose.preference.Preferences
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.listPreference
 import me.zhanghai.compose.preference.preference
@@ -53,19 +55,21 @@ import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.utils.getLogName
-import java.util.concurrent.TimeUnit
+import java.lang.System.currentTimeMillis
+import java.util.concurrent.TimeUnit.HOURS
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun Settings(
-    prefsFlow: MutableStateFlow<Preferences>,
-    nextAppUpdateFlow: Flow<Long>,
+    model: SettingsModel,
     onSaveLogcat: (Uri?) -> Unit,
     onBackClicked: () -> Unit,
 ) {
@@ -91,7 +95,7 @@ fun Settings(
         }
         val context = LocalContext.current
         val res = LocalResources.current
-        ProvidePreferenceLocals(prefsFlow) {
+        ProvidePreferenceLocals(model.prefsFlow) {
             val showProxyError = remember { mutableStateOf(false) }
             val proxyState = rememberPreferenceState(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
             LazyColumn(
@@ -112,7 +116,6 @@ fun Settings(
                             else -> error("Unknown value: $value")
                         }
                     )
-
                 }
                 listPreference(
                     key = PREF_KEY_THEME,
@@ -171,35 +174,87 @@ fun Settings(
                     title = { Text(stringResource(R.string.updates)) },
                 )
                 switchPreference(
+                    key = PREF_KEY_REPO_UPDATES,
+                    defaultValue = PREF_DEFAULT_REPO_UPDATES,
+                    title = {
+                        Text(stringResource(R.string.pref_repo_updates_title))
+                    },
+                    icon = { repoUpdatesEnabled ->
+                        if (repoUpdatesEnabled) Icon(
+                            imageVector = Icons.Default.SystemSecurityUpdate,
+                            contentDescription = null,
+                        ) else Icon(
+                            imageVector = Icons.Default.SystemSecurityUpdateWarning,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.error,
+                        )
+                    },
+                    summary = { repoUpdatesEnabled ->
+                        if (repoUpdatesEnabled) {
+                            val nextUpdate =
+                                model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
+                            val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
+                                stringResource(
+                                    R.string.auto_update_time,
+                                    stringResource(R.string.repositories_last_update_never)
+                                )
+                            } else if (nextUpdate - currentTimeMillis() <= 0) {
+                                stringResource(R.string.auto_update_time_past)
+                            } else {
+                                stringResource(
+                                    R.string.auto_update_time,
+                                    nextUpdate.asRelativeTimeString()
+                                )
+                            }
+                            val s = stringResource(R.string.pref_repo_updates_summary_enabled) +
+                                "\n\n" + nextUpdateStr
+                            Text(s)
+                        } else {
+                            Text(
+                                text = stringResource(R.string.pref_repo_updates_summary_disabled),
+                                color = MaterialTheme.colorScheme.error,
+                            )
+                        }
+                    },
+                )
+                switchPreference(
                     key = PREF_KEY_AUTO_UPDATES,
                     defaultValue = PREF_DEFAULT_AUTO_UPDATES,
                     title = {
                         Text(stringResource(R.string.update_auto_install))
                     },
-                    icon = {
+                    icon = { autoUpdatesEnabled ->
                         Icon(
-                            imageVector = Icons.Default.Update,
+                            imageVector = if (autoUpdatesEnabled) {
+                                Icons.Default.Update
+                            } else {
+                                Icons.Default.UpdateDisabled
+                            },
                             contentDescription = null,
                         )
                     },
-                    summary = {
-                        val nextUpdate = nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
-                        val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
-                            stringResource(
-                                R.string.auto_update_time,
-                                stringResource(R.string.repositories_last_update_never)
-                            )
-                        } else if (nextUpdate - System.currentTimeMillis() <= 0) {
-                            stringResource(R.string.auto_update_time_past)
+                    summary = { autoUpdatesEnabled ->
+                        val s = if (autoUpdatesEnabled) {
+                            val nextUpdate =
+                                model.nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
+                            val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
+                                stringResource(
+                                    R.string.auto_update_time,
+                                    stringResource(R.string.repositories_last_update_never)
+                                )
+                            } else if (nextUpdate - currentTimeMillis() <= 0) {
+                                stringResource(R.string.auto_update_time_past)
+                            } else {
+                                stringResource(
+                                    R.string.auto_update_time,
+                                    nextUpdate.asRelativeTimeString()
+                                )
+                            }
+                            stringResource(R.string.pref_auto_updates_summary_enabled) +
+                                "\n\n" + nextUpdateStr
                         } else {
-                            stringResource(
-                                R.string.auto_update_time,
-                                nextUpdate.asRelativeTimeString()
-                            )
+                            stringResource(R.string.pref_auto_updates_summary_disabled)
                         }
-                        val s = stringResource(R.string.pref_auto_updates_summary) +
-                            "\n\n" +
-                            nextUpdateStr
                         Text(s)
                     },
                 )
@@ -230,7 +285,11 @@ fun Settings(
 @Composable
 fun SettingsPreview() {
     FDroidContent {
-        val nextFLow = MutableStateFlow(System.currentTimeMillis() - TimeUnit.HOURS.toMillis(12))
-        Settings(MutableStateFlow(MapPreferences()), nextFLow, {}, { })
+        val model = SettingsModel(
+            prefsFlow = MutableStateFlow(MapPreferences()),
+            nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
+            nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
+        )
+        Settings(model, {}, { })
     }
 }

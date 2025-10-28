@@ -19,6 +19,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
+import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.utils.IoDispatcher
@@ -42,6 +43,14 @@ class UpdatesManager @Inject constructor(
     val updates = _updates.asStateFlow()
     private val _numUpdates = MutableStateFlow(0)
     val numUpdates = _numUpdates.asStateFlow()
+
+    /**
+     * The time in milliseconds of the (earliest!) next repository update run.
+     * This is [Long.MAX_VALUE], if no time is known.
+     */
+    val nextRepoUpdateFlow = RepoUpdateWorker.getAutoUpdateWorkInfo(context).map { workInfo ->
+        workInfo?.nextScheduleTimeMillis ?: Long.MAX_VALUE
+    }
 
     /**
      * The time in milliseconds of the (earliest!) next automatic app update run.

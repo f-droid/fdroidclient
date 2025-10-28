@@ -8,6 +8,7 @@ import io.ktor.client.engine.ProxyBuilder
 import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import me.zhanghai.compose.preference.createPreferenceFlow
@@ -17,12 +18,14 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.getAppListSortOrder
@@ -46,9 +49,13 @@ class SettingsManager @Inject constructor(
      */
     val prefsFlow by lazy { createPreferenceFlow(prefs) }
     val theme get() = prefs.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME)!!
-    val themeFlow = prefsFlow.map { it.get<String>(PREF_KEY_THEME) }
+    val themeFlow = prefsFlow.map { it.get<String>(PREF_KEY_THEME) }.distinctUntilChanged()
+    val repoUpdates get() = prefs.getBoolean(PREF_KEY_REPO_UPDATES, PREF_DEFAULT_REPO_UPDATES)
+    val repoUpdatesFlow
+        get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_REPO_UPDATES) }.distinctUntilChanged()
     val autoUpdateApps get() = prefs.getBoolean(PREF_KEY_AUTO_UPDATES, PREF_DEFAULT_AUTO_UPDATES)
-    val autoUpdateAppsFlow get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_AUTO_UPDATES) }
+    val autoUpdateAppsFlow
+        get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_AUTO_UPDATES) }.distinctUntilChanged()
     var lastRepoUpdate: Long
         get() = try {
             prefs.getInt(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)

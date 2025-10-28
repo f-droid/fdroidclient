@@ -95,7 +95,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         // bail out here if we are the ACRA process to not initialize anything in crash process
         if (ACRA.isACRASenderServiceProcess()) return
 
-        RepoUpdateWorker.scheduleOrCancel(applicationContext)
+        RepoUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.repoUpdates)
         AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
     }
 

@@ -102,7 +102,11 @@
 
 
     <string name="pref_language_summary">Opens system language settings</string>
-    <string name="pref_auto_updates_summary">Download and update apps daily when the device isn\'t being used</string>
+    <string name="pref_auto_updates_summary_enabled">Download and update apps daily when the device isn\'t being used</string>
+    <string name="pref_auto_updates_summary_disabled">Auto-updates disabled • Apps will need to be updated manually</string>
+    <string name="pref_repo_updates_title">Check for updates</string>
+    <string name="pref_repo_updates_summary_enabled">Automatically ask all repositories for app updates</string>
+    <string name="pref_repo_updates_summary_disabled">Do NOT check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
     <string name="pref_proxy_title">Connect via SOCKS proxy</string>
     <string name="pref_proxy_disabled">Connect to the internet without proxy</string>

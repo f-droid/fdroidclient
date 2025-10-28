@@ -63,28 +63,33 @@ class RepoUpdateWorker @AssistedInject constructor(
         }
 
         @JvmStatic
-        fun scheduleOrCancel(context: Context) {
+        fun scheduleOrCancel(context: Context, enabled: Boolean) {
             val workManager = WorkManager.getInstance(context)
-            Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
-            val networkType = NetworkType.UNMETERED
-            val constraints = Constraints.Builder()
-                .setRequiresBatteryNotLow(true)
-                .setRequiresStorageNotLow(true)
-                .setRequiredNetworkType(networkType)
-                .build()
-            val workRequest = PeriodicWorkRequestBuilder<RepoUpdateWorker>(
-                repeatInterval = 4,
-                repeatIntervalTimeUnit = TimeUnit.HOURS,
-                flexTimeInterval = 15,
-                flexTimeIntervalUnit = MINUTES,
-            )
-                .setConstraints(constraints)
-                .build()
-            workManager.enqueueUniquePeriodicWork(
-                UNIQUE_WORK_NAME_REPO_AUTO_UPDATE,
-                UPDATE,
-                workRequest,
-            )
+            if (enabled) {
+                Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
+                val networkType = NetworkType.UNMETERED
+                val constraints = Constraints.Builder()
+                    .setRequiresBatteryNotLow(true)
+                    .setRequiresStorageNotLow(true)
+                    .setRequiredNetworkType(networkType)
+                    .build()
+                val workRequest = PeriodicWorkRequestBuilder<RepoUpdateWorker>(
+                    repeatInterval = 4,
+                    repeatIntervalTimeUnit = TimeUnit.HOURS,
+                    flexTimeInterval = 15,
+                    flexTimeIntervalUnit = MINUTES,
+                )
+                    .setConstraints(constraints)
+                    .build()
+                workManager.enqueueUniquePeriodicWork(
+                    UNIQUE_WORK_NAME_REPO_AUTO_UPDATE,
+                    UPDATE,
+                    workRequest,
+                )
+            } else {
+                Log.w(TAG, "Cancelling job due to settings!")
+                workManager.cancelUniqueWork(UNIQUE_WORK_NAME_REPO_AUTO_UPDATE)
+            }
         }
 
         fun getAutoUpdateWorkInfo(context: Context): Flow<WorkInfo?> {
