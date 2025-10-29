@@ -15,6 +15,7 @@ import org.fdroid.UpdateChecker
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
+import org.fdroid.install.ApkFileProvider
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
 import org.fdroid.settings.SettingsManager
@@ -157,7 +158,11 @@ fun DetailsPresenter(
             } else {
                 viewModel::ignoreThisUpdate
             },
-            shareApk = null, // TODO
+            shareApk = if (installedVersionCode == null) {
+                null
+            } else {
+                ApkFileProvider.getIntent(packageName)
+            },
             uninstallIntent = packageInfo?.let {
                 Intent(Intent.ACTION_DELETE).apply {
                     setData(Uri.fromParts("package", it.packageName, null))

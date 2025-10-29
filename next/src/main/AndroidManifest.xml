@@ -114,6 +114,11 @@
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
+        <provider
+            android:name="org.fdroid.install.ApkFileProvider"
+            android:authorities="${applicationId}.install.ApkFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
         <!-- disable WorkManager initialization, needed for Hilt -->
         <provider
             android:name="androidx.startup.InitializationProvider"

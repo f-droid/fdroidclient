@@ -218,7 +218,7 @@ class AppDetailsActions(
     val allowBetaVersions: () -> Unit,
     val ignoreAllUpdates: (() -> Unit)? = null,
     val ignoreThisUpdate: (() -> Unit)? = null,
-    val shareApk: (() -> Unit)? = null,
+    val shareApk: Intent? = null,
     val uninstallIntent: Intent? = null,
     val launchIntent: Intent? = null,
     val shareIntent: Intent? = null,

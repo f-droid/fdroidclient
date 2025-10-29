@@ -1,5 +1,6 @@
 package org.fdroid.ui.details
 
+import android.content.Intent
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
@@ -14,6 +15,8 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
@@ -26,6 +29,8 @@ fun AppDetailsMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
 ) {
+    val res = LocalResources.current
+    val context = LocalContext.current
     val uninstallLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {
         item.actions.onUninstallResult(item.app.packageName, it)
     }
@@ -88,7 +93,9 @@ fun AppDetailsMenu(
             },
             text = { Text(stringResource(R.string.menu_share_apk)) },
             onClick = {
-                item.actions.shareApk()
+                val s = res.getString(R.string.menu_share_apk)
+                val i = Intent.createChooser(item.actions.shareApk, s)
+                context.startActivity(i)
                 onDismiss()
             },
         )

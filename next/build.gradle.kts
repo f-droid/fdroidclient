@@ -105,6 +105,7 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.slf4j.simple)
 
+    androidTestImplementation(kotlin("test"))
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
