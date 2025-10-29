@@ -8,6 +8,7 @@ import android.os.UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES
 import androidx.core.os.LocaleListCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import app.cash.turbine.TurbineTestContext
 import app.cash.turbine.test
 import io.mockk.MockKException
 import io.mockk.Runs
@@ -970,7 +971,7 @@ internal class RepoAdderTest {
             url,
             expectedFetchResult,
             TestDataMinV2.repo,
-        ) { awaitItem ->
+        ) {
             val state = awaitItem()
             assertIs<Fetching>(state)
             assertEquals(TestDataMinV2.packages.size, state.apps.size)
@@ -989,7 +990,7 @@ internal class RepoAdderTest {
             url,
             expectedFetchResult,
             TestDataMidV2.repo,
-        ) { awaitItem ->
+        ) {
             val state = awaitItem()
             assertIs<Fetching>(state)
             assertEquals(1, state.apps.size)
@@ -1011,7 +1012,7 @@ internal class RepoAdderTest {
         url: String,
         expectedFetchResult: FetchResult,
         expectedRepo: RepoV2,
-        onAppsReceived: suspend (suspend () -> AddRepoState) -> Unit,
+        onAppsReceived: suspend TurbineTestContext<AddRepoState>.() -> Unit,
     ) {
         repoAdder.addRepoState.test {
             assertIs<None>(awaitItem())
@@ -1019,7 +1020,7 @@ internal class RepoAdderTest {
             launch(Dispatchers.IO) {
                 // FIXME executing this block may emit items too fast, so we might miss one
                 //  causing flaky tests. A short delay may fix it, let's see.
-                delay(250)
+                delay(750)
                 repoAdder.fetchRepository(url = url, proxy = null)
             }
 
@@ -1043,12 +1044,14 @@ internal class RepoAdderTest {
             assertFalse(state2.done)
 
             // onAppReceived (state3)
-            onAppsReceived(::awaitItem)
+            onAppsReceived(this)
 
             // final result
             val state4 = awaitItem()
             assertIs<Fetching>(state4)
             assertTrue(state4.done)
+
+            expectNoEvents()
         }
     }
 }
