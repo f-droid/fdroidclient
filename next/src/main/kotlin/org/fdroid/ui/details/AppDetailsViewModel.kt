@@ -33,6 +33,7 @@ import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
+import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
@@ -44,6 +45,7 @@ class AppDetailsViewModel @Inject constructor(
     @param:IoDispatcher private val scope: CoroutineScope,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    private val repoPreLoader: RepoPreLoader,
     private val updateChecker: UpdateChecker,
     private val updatesManager: UpdatesManager,
     private val settingsManager: SettingsManager,
@@ -59,6 +61,7 @@ class AppDetailsViewModel @Inject constructor(
         DetailsPresenter(
             db = db,
             repoManager = repoManager,
+            repoPreLoader = repoPreLoader,
             updateChecker = updateChecker,
             appInstallManager = appInstallManager,
             viewModel = this,

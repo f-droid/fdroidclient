@@ -15,8 +15,10 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Provides
     @Singleton
-    fun provideFDroidDatabase(@ApplicationContext context: Context): FDroidDatabase {
-        val initialData = InitialData(context)
+    fun provideFDroidDatabase(
+        @ApplicationContext context: Context,
+        initialData: InitialData,
+    ): FDroidDatabase {
         return FDroidDatabaseHolder.getDb(context, "fdroid_db", initialData)
     }
 }

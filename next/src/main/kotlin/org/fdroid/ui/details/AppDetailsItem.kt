@@ -28,8 +28,7 @@ data class AppDetailsItem(
      */
     val preferredRepoId: Long = app.repoId,
     /**
-     * A list of [Repository]s the app is in. If this is empty, the list doesn't matter,
-     * because the user only has one repo.
+     * A list of [Repository]s the app is in. If this is empty, we don't want to show the list.
      */
     val repositories: List<Repository> = emptyList(),
     val name: String,

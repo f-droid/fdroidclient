@@ -18,6 +18,7 @@ import org.fdroid.index.RepoManager
 import org.fdroid.install.ApkFileProvider
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
+import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.utils.sha256
 
@@ -29,6 +30,7 @@ private const val TAG = "DetailsPresenter"
 fun DetailsPresenter(
     db: FDroidDatabase,
     repoManager: RepoManager,
+    repoPreLoader: RepoPreLoader,
     updateChecker: UpdateChecker,
     settingsManager: SettingsManager,
     appInstallManager: AppInstallManager,
@@ -50,9 +52,15 @@ fun DetailsPresenter(
     } ?: return null
     val repo = repoManager.getRepository(app.repoId) ?: return null
     val repositories = remember(packageName) {
-        db.getAppDao().getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
+        val repos = db.getAppDao().getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
             repoManager.getRepository(repoId)
         }
+        // show repo chooser only if
+        // * app is in more than one repo, or
+        // * app is from a non-default repo
+        if (repos.size > 1) repos
+        else if (repo.address in repoPreLoader.defaultRepoAddresses) emptyList()
+        else repos
     }
     val installState =
         appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
@@ -134,7 +142,7 @@ fun DetailsPresenter(
     return AppDetailsItem(
         repository = repo,
         preferredRepoId = preferredRepoId,
-        repositories = repositories, // TODO maybe use emptyList() when only in F-Droid repo
+        repositories = repositories,
         dbApp = app,
         actions = AppDetailsActions(
             installAction = viewModel::install,
