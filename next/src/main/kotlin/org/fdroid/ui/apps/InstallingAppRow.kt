@@ -1,9 +1,11 @@
 package org.fdroid.ui.apps
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -56,6 +58,15 @@ fun InstallingAppRow(
                         imageVector = Icons.Default.CheckCircle,
                         contentDescription = stringResource(R.string.app_installed),
                         tint = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                } else if (app.installState is InstallState.Error) {
+                    val desc = stringResource(R.string.notification_title_summary_install_error)
+                    Icon(
+                        imageVector = Icons.Default.ErrorOutline,
+                        contentDescription = desc,
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(8.dp)
                     )
                 } else {
                     if (app.installState is InstallState.Downloading) {
@@ -103,10 +114,22 @@ private fun Preview() {
             iconDownloadRequest = null,
         )
     )
+    val installingApp3 = InstallingAppItem(
+        packageName = "A3",
+        installState = InstallState.Error(
+            msg = "error msg",
+            name = "Installing App 2",
+            versionName = "0.0.4",
+            currentVersionName = null,
+            lastUpdated = 13,
+            iconDownloadRequest = null,
+        )
+    )
     FDroidContent {
         Column {
             InstallingAppRow(installingApp1, false)
             InstallingAppRow(installingApp2, true)
+            InstallingAppRow(installingApp3, false)
         }
     }
 }

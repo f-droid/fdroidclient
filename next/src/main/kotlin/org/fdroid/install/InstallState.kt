@@ -79,7 +79,24 @@ sealed class InstallState(val showProgress: Boolean) {
     ) : InstallStateWithInfo(false)
 
     data object UserAborted : InstallState(false)
-    data class Error(val msg: String?) : InstallState(false)
+
+    data class Error(
+        val msg: String?,
+        override val name: String,
+        override val versionName: String,
+        override val currentVersionName: String?,
+        override val lastUpdated: Long,
+        override val iconDownloadRequest: DownloadRequest?,
+    ) : InstallStateWithInfo(false) {
+        constructor(msg: String?, s: InstallStateWithInfo) : this(
+            msg = msg,
+            name = s.name,
+            versionName = s.versionName,
+            currentVersionName = s.currentVersionName,
+            lastUpdated = s.lastUpdated,
+            iconDownloadRequest = s.iconDownloadRequest,
+        )
+    }
 
     data object Uninstalled : InstallState(false)
 }

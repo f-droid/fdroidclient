@@ -65,6 +65,7 @@
     <string name="architectures_colon">Architectures: %1$s</string>
     <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>
     <string name="app_details_incompatible_signer">Signature mismatch, can\'t install</string>
+    <string name="app_details_install_error_text">Sorry! There was an unexpected error installing this app.</string>
 
     <string name="notification_title">Notifications</string>
     <string name="notification_summary">Opens system notification settings</string>

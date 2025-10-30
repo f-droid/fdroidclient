@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Mail
 import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Translate
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -29,8 +30,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
@@ -45,11 +44,11 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.text.style.TextOverflow
@@ -79,9 +78,8 @@ fun AppDetails(
     onBackNav: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
-    val res = LocalResources.current
     val topAppBarState = rememberTopAppBarState()
-    val snackbarHostState = remember { SnackbarHostState() }
+    var showInstallError by remember { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     if (item == null) BigLoadingIndicator()
     else Scaffold(
@@ -89,7 +87,6 @@ fun AppDetails(
         topBar = {
             AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { innerPadding ->
         // react to install state changes
         LaunchedEffect(item.installState) {
@@ -98,8 +95,7 @@ fun AppDetails(
                 Log.i("AppDetails", "Requesting user confirmation... $state")
                 item.actions.requestUserConfirmation(item.app.packageName, state)
             } else if (state is InstallState.Error) {
-                val msg = res.getString(R.string.install_error_notify_title, state.msg ?: "")
-                snackbarHostState.showSnackbar(msg)
+                showInstallError = true
             }
         }
         val scrollState = rememberScrollState()
@@ -376,6 +372,36 @@ fun AppDetails(
             }
         }
     }
+    if (showInstallError && item != null && item.installState is InstallState.Error) AlertDialog(
+        onDismissRequest = { showInstallError = false },
+        containerColor = MaterialTheme.colorScheme.errorContainer,
+        title = {
+            Text(stringResource(R.string.install_error_notify_title, item.name))
+        },
+        text = {
+            if (item.installState.msg == null) {
+                Text(stringResource(R.string.app_details_install_error_text))
+            } else {
+                ExpandableSection(
+                    icon = null,
+                    title = stringResource(R.string.app_details_install_error_text)
+                ) {
+                    SelectionContainer {
+                        Text(
+                            text = item.installState.msg,
+                            fontFamily = FontFamily.Monospace,
+                            modifier = Modifier.padding(top = 8.dp),
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { showInstallError = false }) {
+                Text(stringResource(R.string.ok))
+            }
+        },
+    )
 }
 
 @Preview

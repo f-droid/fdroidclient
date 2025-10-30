@@ -195,7 +195,8 @@ class SessionInstallManager @Inject constructor(
             }
         } catch (e: Exception) {
             log.error(e) { "Error when creating session: " }
-            cont.resume(InstallState.Error("${e::class.java.simpleName} ${e.message}"))
+            val s = InstallState.Error("${e::class.java.simpleName} ${e.message}", state)
+            cont.resume(s)
             return@suspendCancellableCoroutine
         }
         // set-up receiver for install result
@@ -248,7 +249,7 @@ class SessionInstallManager @Inject constructor(
                         )
                         cont.resume(newState)
                     } else {
-                        cont.resume(InstallState.Error(msg))
+                        cont.resume(InstallState.Error(msg, state))
                     }
                 }
             }
@@ -284,7 +285,7 @@ class SessionInstallManager @Inject constructor(
             }
         } catch (e: Exception) {
             log.error(e) { "Error during install session: " }
-            cont.resume(InstallState.Error("${e::class.java.simpleName} ${e.message}"))
+            cont.resume(InstallState.Error("${e::class.java.simpleName} ${e.message}", state))
         }
     }
 
@@ -311,7 +312,7 @@ class SessionInstallManager @Inject constructor(
                     if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
                         cont.resume(InstallState.UserAborted)
                     } else {
-                        cont.resume(InstallState.Error(msg))
+                        cont.resume(InstallState.Error(msg, installState))
                     }
                 }
             }

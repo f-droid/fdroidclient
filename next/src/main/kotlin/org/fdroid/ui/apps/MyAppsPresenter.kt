@@ -14,40 +14,38 @@ import java.util.Locale
 
 @Composable
 fun MyAppsPresenter(
-    appInstallStatesFlow: StateFlow<Map<String, InstallState>>,
     appUpdatesFlow: StateFlow<List<AppUpdateItem>?>,
+    appInstallStatesFlow: StateFlow<Map<String, InstallState>>,
     installedAppsFlow: StateFlow<List<InstalledAppItem>?>,
     searchQueryFlow: StateFlow<String>,
     sortOrderFlow: StateFlow<AppListSortOrder>,
 ): MyAppsModel {
-    val appInstallStates = appInstallStatesFlow.collectAsState().value
     val appUpdates = appUpdatesFlow.collectAsState().value
+    val appInstallStates = appInstallStatesFlow.collectAsState().value
     val installedApps = installedAppsFlow.collectAsState().value
     val searchQuery = searchQueryFlow.collectAsState().value.normalize()
     val sortOrder = sortOrderFlow.collectAsState().value
     val processedPackageNames = mutableSetOf<String>()
 
-    // TODO process updates first
+    val updates = appUpdates?.filter {
+        val keep = searchQuery.isBlank() ||
+            it.name.normalize().contains(searchQuery, ignoreCase = true)
+        if (keep) processedPackageNames.add(it.packageName)
+        keep
+    }
     val installingApps = appInstallStates.mapNotNull { (packageName, state) ->
         if (state is InstallStateWithInfo) {
+            val keep = if (searchQuery.isBlank()) {
+                packageName !in processedPackageNames
+            } else {
+                packageName !in processedPackageNames &&
+                    state.name.normalize().contains(searchQuery, ignoreCase = true)
+            }
             processedPackageNames.add(packageName)
-            InstallingAppItem(packageName, state)
+            if (keep) InstallingAppItem(packageName, state) else null
         } else {
             null
         }
-    }
-    val installing = if (searchQuery.isBlank()) installingApps else installingApps.filter {
-        it.name.normalize().contains(searchQuery, ignoreCase = true)
-    }
-    val updates = appUpdates?.filter {
-        val keep = if (searchQuery.isBlank()) {
-            it.packageName !in processedPackageNames
-        } else {
-            it.packageName !in processedPackageNames &&
-                it.name.normalize().contains(searchQuery, ignoreCase = true)
-        }
-        processedPackageNames.add(it.packageName)
-        keep
     }
     val installed = installedApps?.filter {
         if (searchQuery.isBlank()) {
@@ -58,7 +56,7 @@ fun MyAppsPresenter(
         }
     }
     return MyAppsModel(
-        installingApps = installing.sort(sortOrder),
+        installingApps = installingApps.sort(sortOrder),
         appUpdates = updates?.sort(sortOrder),
         installedApps = installed?.sort(sortOrder),
         sortOrder = sortOrder,

@@ -162,7 +162,14 @@ class AppInstallManager @Inject constructor(
         )
         // continue depending on result, abort early if no approval was given
         return when (preApprovalResult) {
-            is PreApprovalResult.Error -> InstallState.Error(preApprovalResult.errorMsg)
+            is PreApprovalResult.Error -> InstallState.Error(
+                msg = preApprovalResult.errorMsg,
+                name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault()) ?: "Unknown",
+                versionName = version.versionName,
+                currentVersionName = currentVersionName,
+                lastUpdated = version.added,
+                iconDownloadRequest = iconDownloadRequest,
+            )
             is PreApprovalResult.UserAborted -> InstallState.UserAborted
             is PreApprovalResult.Success, PreApprovalResult.NotSupported -> {
                 apps.checkAndUpdateApp(appMetadata.packageName) {
@@ -205,7 +212,15 @@ class AppInstallManager @Inject constructor(
                     if (e is CancellationException) throw e
                     log.error(e) { "Error downloading ${version.file}" }
                     val msg = "Download failed: ${e::class.java.simpleName} ${e.message}"
-                    return InstallState.Error(msg)
+                    return InstallState.Error(
+                        msg = msg,
+                        name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault())
+                            ?: "Unknown",
+                        versionName = version.versionName,
+                        currentVersionName = currentVersionName,
+                        lastUpdated = version.added,
+                        iconDownloadRequest = iconDownloadRequest,
+                    )
                 }
                 coroutineContext.ensureActive()
                 val newState = apps.checkAndUpdateApp(appMetadata.packageName) {

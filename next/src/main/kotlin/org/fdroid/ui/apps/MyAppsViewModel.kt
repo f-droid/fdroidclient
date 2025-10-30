@@ -68,8 +68,8 @@ class MyAppsViewModel @Inject constructor(
     private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
     val myAppsModel: StateFlow<MyAppsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
         MyAppsPresenter(
-            appInstallStatesFlow = appInstallManager.appInstallStates,
             appUpdatesFlow = updates,
+            appInstallStatesFlow = appInstallManager.appInstallStates,
             installedAppsFlow = installedApps,
             searchQueryFlow = searchQuery,
             sortOrderFlow = sortOrder,
