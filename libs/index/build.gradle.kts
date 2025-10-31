@@ -99,7 +99,7 @@ tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
         mapOf(
             "org.jetbrains.dokka.base.DokkaBase" to """{
                 "customAssets": ["${file("${rootProject.rootDir}/logo-icon.svg")}"],
-                "footerMessage": "© 2010-2025 F-Droid Limited and Contributors",
+                "footerMessage": "© 2010-2025 F-Droid Limited and Contributors"
         }""",
         ),
     )

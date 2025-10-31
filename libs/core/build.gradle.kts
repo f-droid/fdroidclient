@@ -4,10 +4,6 @@ plugins {
     alias(libs.plugins.jetbrains.dokka)
     alias(libs.plugins.vanniktech.maven.publish)
 }
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
 kotlin {
     androidTarget {
         compilerOptions {
@@ -45,6 +41,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
     }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -55,12 +60,23 @@ signing {
     useGpgCmd()
 }
 
+mavenPublishing {
+    @Suppress("ktlint:standard:chain-method-continuation")
+    configure(
+        com.vanniktech.maven.publish.KotlinMultiplatform(
+            javadocJar = com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaHtml"),
+            sourcesJar = true,
+            androidVariantsToPublish = listOf("release"),
+        ),
+    )
+}
+
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
     pluginsMapConfiguration.set(
         mapOf(
             "org.jetbrains.dokka.base.DokkaBase" to """{
                 "customAssets": ["${file("${rootProject.rootDir}/logo-icon.svg")}"],
-                "footerMessage": "© 2010-2025 F-Droid Limited and Contributors",
+                "footerMessage": "© 2010-2025 F-Droid Limited and Contributors"
         }""",
         ),
     )

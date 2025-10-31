@@ -4,7 +4,7 @@ kotlin = "2.2.0"
 androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
 androidKspPlugin = "2.2.0-2.0.2" # first version needs to match kotlin version
 dokka = "2.0.0"
-mavenPublish = "0.18.0"
+mavenPublish = "0.34.0"
 jlleitschuhKtlint = "13.1.0"
 
 kotlinxSerializationJson = "1.9.0" # 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
