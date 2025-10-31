@@ -72,8 +72,9 @@ kotlin {
 }
 
 dependencies {
-    implementation(project(":libs:download"))
+    implementation(project(":libs:core"))
     implementation(project(":libs:index"))
+    implementation(project(":libs:download")) // needed for updater code
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)

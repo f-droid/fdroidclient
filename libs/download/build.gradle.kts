@@ -19,6 +19,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                api(project(":libs:core"))
                 api(libs.ktor.client.core)
                 implementation(libs.microutils.kotlin.logging)
             }

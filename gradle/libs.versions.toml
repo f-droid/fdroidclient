@@ -130,11 +130,9 @@ microutils-kotlin-logging = { module = "io.github.microutils:kotlin-logging", ve
 
 commons-io = { module = "commons-io:commons-io", version.ref = "commonsIo" }
 commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
-ktor-io = { module = "io.ktor:ktor-io", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
-ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 goncalossilva-resources = { module = "com.goncalossilva:resources", version.ref = "goncalossilvaResources" }
