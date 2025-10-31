@@ -1,0 +1,8 @@
+public abstract interface class org/fdroid/IndexFile {
+	public abstract fun getIpfsCidV1 ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getSha256 ()Ljava/lang/String;
+	public abstract fun getSize ()Ljava/lang/Long;
+	public abstract fun serialize ()Ljava/lang/String;
+}
+

@@ -16,6 +16,10 @@ kotlin {
         publishLibraryVariants("release")
     }
     explicitApi()
+    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled = true
+    }
     compilerOptions {
         optIn.add("kotlin.RequiresOptIn")
     }
