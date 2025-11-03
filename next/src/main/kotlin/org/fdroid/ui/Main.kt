@@ -29,7 +29,7 @@ import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
-import org.fdroid.install.InstallState
+import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsViewModel
@@ -119,7 +119,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 override fun search(query: String) = myAppsViewModel.search(query)
                 override fun confirmAppInstall(
                     packageName: String,
-                    state: InstallState.UserConfirmationNeeded,
+                    state: InstallConfirmationState,
                 ) = myAppsViewModel.confirmAppInstall(packageName, state)
             }
             MyApps(

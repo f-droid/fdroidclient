@@ -54,6 +54,7 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.NavigationKey
@@ -78,7 +79,7 @@ fun MyApps(
     val appToConfirm by remember(myAppsInfo.model.installingApps) {
         derivedStateOf {
             myAppsInfo.model.installingApps.find { app ->
-                app.installState is InstallState.UserConfirmationNeeded
+                app.installState is InstallConfirmationState
             }
         }
     }
@@ -92,7 +93,7 @@ fun MyApps(
     LaunchedEffect(appToConfirm) {
         val app = appToConfirm
         if (app != null && lifecycleOwner.lifecycle.currentState.isAtLeast(STARTED)) {
-            val state = app.installState as InstallState.UserConfirmationNeeded
+            val state = app.installState as InstallConfirmationState
             myAppsInfo.confirmAppInstall(app.packageName, state)
         }
     }
@@ -194,6 +195,9 @@ fun MyApps(
                     .padding(16.dp),
             )
         } else {
+            var showUpdateAllButton by remember(updatableApps) {
+                mutableStateOf(true)
+            }
             LazyColumn(
                 state = lazyListState,
                 modifier = modifier
@@ -214,8 +218,11 @@ fun MyApps(
                                     .padding(16.dp)
                                     .weight(1f),
                             )
-                            Button(
-                                onClick = myAppsInfo::updateAll,
+                            if (showUpdateAllButton) Button(
+                                onClick = {
+                                    myAppsInfo.updateAll()
+                                    showUpdateAllButton = false
+                                },
                                 modifier = Modifier.padding(end = 16.dp),
                             ) {
                                 Text(stringResource(R.string.update_all))

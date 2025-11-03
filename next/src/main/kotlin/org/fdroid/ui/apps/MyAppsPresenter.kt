@@ -12,6 +12,7 @@ import org.fdroid.ui.utils.normalize
 import java.text.Collator
 import java.util.Locale
 
+// TODO add tests for this, similar to DetailsPresenter
 @Composable
 fun MyAppsPresenter(
     appUpdatesFlow: StateFlow<List<AppUpdateItem>?>,
@@ -27,25 +28,29 @@ fun MyAppsPresenter(
     val sortOrder = sortOrderFlow.collectAsState().value
     val processedPackageNames = mutableSetOf<String>()
 
-    val updates = appUpdates?.filter {
-        val keep = searchQuery.isBlank() ||
-            it.name.normalize().contains(searchQuery, ignoreCase = true)
-        if (keep) processedPackageNames.add(it.packageName)
-        keep
-    }
+    // we want to show apps currently installing/updating even if they have updates available,
+    // so we need to handle those first
     val installingApps = appInstallStates.mapNotNull { (packageName, state) ->
         if (state is InstallStateWithInfo) {
-            val keep = if (searchQuery.isBlank()) {
-                packageName !in processedPackageNames
-            } else {
-                packageName !in processedPackageNames &&
-                    state.name.normalize().contains(searchQuery, ignoreCase = true)
-            }
-            processedPackageNames.add(packageName)
-            if (keep) InstallingAppItem(packageName, state) else null
+            val keep = searchQuery.isBlank() ||
+                state.name.normalize().contains(searchQuery, ignoreCase = true)
+            if (keep) {
+                processedPackageNames.add(packageName)
+                InstallingAppItem(packageName, state)
+            } else null
         } else {
             null
         }
+    }
+    val updates = appUpdates?.filter {
+        val keep = if (searchQuery.isBlank()) {
+            it.packageName !in processedPackageNames
+        } else {
+            it.packageName !in processedPackageNames &&
+                it.name.normalize().contains(searchQuery, ignoreCase = true)
+        }
+        if (keep) processedPackageNames.add(it.packageName)
+        keep
     }
     val installed = installedApps?.filter {
         if (searchQuery.isBlank()) {

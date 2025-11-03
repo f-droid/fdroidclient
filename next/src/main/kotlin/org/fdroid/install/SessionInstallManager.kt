@@ -93,21 +93,22 @@ class SessionInstallManager @Inject constructor(
         app: AppMetadata,
         icon: Bitmap?,
         isUpdate: Boolean,
-        version: AppVersion
+        version: AppVersion,
+        canRequestUserConfirmationNow: Boolean,
     ): PreApprovalResult {
         return if (!context.isAppInForeground()) {
-            log.info { "App not in foreground, pre-approval not supported." }
+            log.info { "App not in foreground, pre-approval for ${app.packageName} not supported." }
             PreApprovalResult.NotSupported
         } else if (isUpdate && canDoAutoUpdate(version)) {
             // should not be needed, so we say not supported
-            log.info { "Can do auto-update pre-approval not needed." }
+            log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
             PreApprovalResult.NotSupported
         } else if (SDK_INT >= 34) {
-            log.info { "Requesting pre-approval..." }
+            log.info { "Requesting pre-approval for ${app.packageName}..." }
             try {
-                preapproval(app, icon)
+                preapproval(app, icon, canRequestUserConfirmationNow)
             } catch (e: Exception) {
-                log.error(e) { "Error requesting pre-approval: " }
+                log.error(e) { "Error requesting pre-approval for ${app.packageName}: " }
                 PreApprovalResult.Error("${e::class.java.simpleName} ${e.message}")
             }
         } else {
@@ -119,10 +120,11 @@ class SessionInstallManager @Inject constructor(
     private suspend fun preapproval(
         app: AppMetadata,
         icon: Bitmap?,
+        canRequestUserConfirmationNow: Boolean,
     ): PreApprovalResult = suspendCancellableCoroutine { cont ->
         val params = getSessionParams(app.packageName)
         val sessionId = installer.createSession(params)
-        log.info { "Opened session $sessionId" }
+        log.info { "Opened session $sessionId for ${app.packageName}" }
         val name = app.name.getBestLocale(LocaleListCompat.getDefault()) ?: ""
 
         val receiver = InstallBroadcastReceiver(sessionId) { status, intent, msg ->
@@ -138,7 +140,15 @@ class SessionInstallManager @Inject constructor(
                     // There should be no bugs on Android versions where this is supported
                     // and we should be in the foreground right now,
                     // so fire up intent here and now.
-                    pendingIntent.send()
+                    if (canRequestUserConfirmationNow) {
+                        log.info { "Sending pre-approval intent for ${app.packageName}: $intent" }
+                        pendingIntent.send()
+                    } else {
+                        log.info { "Can not ask pre-approval for ${app.packageName}: $intent" }
+                        val s = PreApprovalResult.UserConfirmationRequired(sessionId, pendingIntent)
+                        cont.resume(s)
+                        context.unregisterReceiver(this)
+                    }
                 }
                 else -> { // some error, can't help it now, continue
                     if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
@@ -157,7 +167,7 @@ class SessionInstallManager @Inject constructor(
             RECEIVER_NOT_EXPORTED
         )
         cont.invokeOnCancellation {
-            log.info { "Pre-approval cancelled." }
+            log.info { "Pre-approval for ${app.packageName} cancelled." }
             context.unregisterReceiver(receiver)
         }
 
@@ -172,7 +182,6 @@ class SessionInstallManager @Inject constructor(
             val sender = getInstallIntentSender(sessionId, app.packageName)
             session.requestUserPreapproval(details, sender)
         }
-        sessionId
     }
 
     @WorkerThread
@@ -290,18 +299,26 @@ class SessionInstallManager @Inject constructor(
     }
 
     suspend fun requestUserConfirmation(
-        installState: InstallState.UserConfirmationNeeded,
+        state: InstallConfirmationState,
     ): InstallState = suspendCancellableCoroutine { cont ->
-        val receiver = InstallBroadcastReceiver(installState.sessionId) { status, intent, msg ->
+        val isPreApproval = state is InstallState.PreApprovalConfirmationNeeded
+        val receiver = InstallBroadcastReceiver(state.sessionId) { status, _, msg ->
             context.unregisterReceiver(this)
             when (status) {
                 PackageInstaller.STATUS_SUCCESS -> {
-                    val newState = InstallState.Installed(
-                        name = installState.name,
-                        versionName = installState.versionName,
-                        currentVersionName = installState.currentVersionName,
-                        lastUpdated = installState.lastUpdated,
-                        iconDownloadRequest = installState.iconDownloadRequest,
+                    val newState = if (isPreApproval) InstallState.PreApproved(
+                        name = state.name,
+                        versionName = state.versionName,
+                        currentVersionName = state.currentVersionName,
+                        lastUpdated = state.lastUpdated,
+                        iconDownloadRequest = state.iconDownloadRequest,
+                        result = PreApprovalResult.Success(state.sessionId),
+                    ) else InstallState.Installed(
+                        name = state.name,
+                        versionName = state.versionName,
+                        currentVersionName = state.currentVersionName,
+                        lastUpdated = state.lastUpdated,
+                        iconDownloadRequest = state.iconDownloadRequest,
                     )
                     cont.resume(newState)
                 }
@@ -312,7 +329,7 @@ class SessionInstallManager @Inject constructor(
                     if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
                         cont.resume(InstallState.UserAborted)
                     } else {
-                        cont.resume(InstallState.Error(msg, installState))
+                        cont.resume(InstallState.Error(msg, state))
                     }
                 }
             }
@@ -326,7 +343,7 @@ class SessionInstallManager @Inject constructor(
         cont.invokeOnCancellation {
             context.unregisterReceiver(receiver)
         }
-        installState.intent.send()
+        state.intent.send()
     }
 
     private fun getSessionParams(packageName: String, size: Long? = null): SessionParams {

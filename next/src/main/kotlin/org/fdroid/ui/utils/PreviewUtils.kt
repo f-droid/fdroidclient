@@ -11,6 +11,7 @@ import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
+import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsModel
@@ -260,11 +261,7 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
     override fun updateAll() {}
     override fun changeSortOrder(sort: AppListSortOrder) {}
     override fun search(query: String) {}
-    override fun confirmAppInstall(
-        packageName: String,
-        state: InstallState.UserConfirmationNeeded,
-    ) {
-    }
+    override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
 }
 
 fun getRepositoriesInfo(

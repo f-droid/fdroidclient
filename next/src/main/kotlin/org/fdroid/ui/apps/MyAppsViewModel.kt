@@ -23,6 +23,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
+import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
@@ -109,10 +110,17 @@ class MyAppsViewModel @Inject constructor(
             }
     }
 
-    fun confirmAppInstall(packageName: String, state: InstallState.UserConfirmationNeeded) {
+    fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
         log.info { "Asking user to confirm install of $packageName..." }
         scope.launch(Dispatchers.Main) {
-            appInstallManager.requestUserConfirmation(packageName, state)
+            when (state) {
+                is InstallState.PreApprovalConfirmationNeeded -> {
+                    appInstallManager.requestPreApprovalConfirmation(packageName, state)
+                }
+                is InstallState.UserConfirmationNeeded -> {
+                    appInstallManager.requestUserConfirmation(packageName, state)
+                }
+            }
         }
     }
 }

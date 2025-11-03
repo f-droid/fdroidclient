@@ -1,7 +1,7 @@
 package org.fdroid.ui.apps
 
 import org.fdroid.database.AppListSortOrder
-import org.fdroid.install.InstallState
+import org.fdroid.install.InstallConfirmationState
 
 interface MyAppsInfo {
     val model: MyAppsModel
@@ -9,7 +9,7 @@ interface MyAppsInfo {
     fun updateAll()
     fun changeSortOrder(sort: AppListSortOrder)
     fun search(query: String)
-    fun confirmAppInstall(packageName: String, state: InstallState.UserConfirmationNeeded)
+    fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
 }
 
 data class MyAppsModel(

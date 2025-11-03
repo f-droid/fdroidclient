@@ -105,6 +105,8 @@ class UpdatesManager @Inject constructor(
 
     suspend fun updateAll(): List<Job> {
         val appsToUpdate = updates.value ?: updates.first() ?: return emptyList()
+        // we could do more in-depth checks regarding pre-approval, but this also works
+        val canAskPreApprovalNow = appsToUpdate.size == 1
         val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), 8)
         val semaphore = Semaphore(concurrencyLimit)
         return appsToUpdate.map { update ->
@@ -112,13 +114,13 @@ class UpdatesManager @Inject constructor(
             coroutineScope.launch {
                 // suspend here until we get a permit from the semaphore (there's free workers)
                 semaphore.withPermit {
-                    updateApp(update)
+                    updateApp(update, canAskPreApprovalNow)
                 }
             }
         }
     }
 
-    private suspend fun updateApp(update: AppUpdateItem) {
+    private suspend fun updateApp(update: AppUpdateItem, canAskPreApprovalNow: Boolean) {
         val app = db.getAppDao().getApp(update.repoId, update.packageName) ?: return
         appInstallManager.install(
             appMetadata = app.metadata,
@@ -126,7 +128,8 @@ class UpdatesManager @Inject constructor(
             version = update.update as AppVersion,
             currentVersionName = update.installedVersionName,
             repo = repoManager.getRepository(update.repoId) ?: return,
-            iconModel = update.iconModel
+            iconModel = update.iconModel,
+            canAskPreApprovalNow = canAskPreApprovalNow,
         )
     }
 }

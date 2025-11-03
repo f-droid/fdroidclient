@@ -40,6 +40,9 @@ data class InstallNotificationState(
     val numInstalled: Int get() = apps.count { it.category == AppStateCategory.INSTALLED }
 
     fun getTitle(context: Context): String {
+        // can briefly show as foreground service notification, before we update real state
+        if (apps.isEmpty()) return context.getString(R.string.installing)
+
         val titleRes = if (isUpdatingApps) {
             R.plurals.notification_updating_title
         } else {

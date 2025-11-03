@@ -32,7 +32,7 @@ class InstallBroadcastReceiver(
         }
         val confirmIntent = getParcelableExtra(intent, EXTRA_INTENT, Intent::class.java)
         val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME)
-        val status = intent.getIntExtra(EXTRA_STATUS, Int.Companion.MIN_VALUE)
+        val status = intent.getIntExtra(EXTRA_STATUS, Int.MIN_VALUE)
         val msg = intent.getStringExtra(EXTRA_STATUS_MESSAGE)
         val warnings = intent.getStringArrayListExtra("android.content.pm.extra.WARNINGS")
         log.info {

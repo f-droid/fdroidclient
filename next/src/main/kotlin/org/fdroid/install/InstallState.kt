@@ -1,6 +1,8 @@
 package org.fdroid.install
 
 import android.app.PendingIntent
+import org.fdroid.database.AppVersion
+import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
 
 sealed class InstallState(val showProgress: Boolean) {
@@ -12,6 +14,20 @@ sealed class InstallState(val showProgress: Boolean) {
         override val lastUpdated: Long,
         override val iconDownloadRequest: DownloadRequest? = null,
     ) : InstallStateWithInfo(true)
+
+    data class PreApprovalConfirmationNeeded(
+        private val state: InstallStateWithInfo,
+        val version: AppVersion,
+        val repo: Repository,
+        override val sessionId: Int,
+        override val intent: PendingIntent,
+    ) : InstallConfirmationState() {
+        override val name: String = state.name
+        override val versionName: String = state.versionName
+        override val currentVersionName: String? = state.currentVersionName
+        override val lastUpdated: Long = state.lastUpdated
+        override val iconDownloadRequest: DownloadRequest? = state.iconDownloadRequest
+    }
 
     data class PreApproved(
         override val name: String,
@@ -49,10 +65,10 @@ sealed class InstallState(val showProgress: Boolean) {
         override val currentVersionName: String?,
         override val lastUpdated: Long,
         override val iconDownloadRequest: DownloadRequest?,
-        val sessionId: Int,
-        val intent: PendingIntent,
+        override val sessionId: Int,
+        override val intent: PendingIntent,
         val progress: Float,
-    ) : InstallStateWithInfo(true) {
+    ) : InstallConfirmationState() {
         constructor(
             state: InstallStateWithInfo,
             sessionId: Int,
@@ -107,4 +123,9 @@ sealed class InstallStateWithInfo(showProgress: Boolean) : InstallState(showProg
     abstract val currentVersionName: String?
     abstract val lastUpdated: Long
     abstract val iconDownloadRequest: DownloadRequest?
+}
+
+sealed class InstallConfirmationState() : InstallStateWithInfo(true) {
+    abstract val sessionId: Int
+    abstract val intent: PendingIntent
 }

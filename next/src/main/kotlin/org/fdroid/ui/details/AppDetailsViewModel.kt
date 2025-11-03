@@ -102,6 +102,7 @@ class AppDetailsViewModel @Inject constructor(
                 currentVersionName = packageInfoFlow.value?.packageInfo?.versionName,
                 repo = repoManager.getRepository(version.repoId) ?: return@launch, // TODO
                 iconModel = iconModel,
+                canAskPreApprovalNow = true,
             )
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo

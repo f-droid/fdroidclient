@@ -17,6 +17,7 @@ import coil3.toBitmap
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.currentCoroutineContext
@@ -62,7 +63,7 @@ class AppInstallManager @Inject constructor(
             var numBytesDownloaded = 0L
             var numTotalBytes = 0L
             // go throw all apps that have active state
-            apps.value.toMap().forEach { packageName, state ->
+            apps.value.toMap().forEach { (packageName, state) ->
                 // assign a category to each in progress state
                 val appStateCategory = when (state) {
                     is InstallState.Installing, is InstallState.PreApproved,
@@ -101,6 +102,16 @@ class AppInstallManager @Inject constructor(
         return apps.map { it[packageName] ?: InstallState.Unknown }
     }
 
+    /**
+     * Installs the given [version].
+     *
+     * @param canAskPreApprovalNow true if there will be only one approval dialog
+     * and the app is currently in the foreground.
+     * Reasoning:
+     * The system will swallow the second or third dialog we pop up
+     * before the user could respond to the first.
+     * Also we are not allowed anymore to start other activities while in the background.
+     */
     @UiThread
     suspend fun install(
         appMetadata: AppMetadata,
@@ -108,14 +119,31 @@ class AppInstallManager @Inject constructor(
         currentVersionName: String?,
         repo: Repository,
         iconModel: Any?,
+        canAskPreApprovalNow: Boolean,
     ): InstallState {
         val packageName = appMetadata.packageName
+        val currentState = apps.value[packageName]
+        if (currentState?.showProgress == true) {
+            log.warn { "Attempted to install $packageName with install in progress: $currentState" }
+            return currentState
+        }
         val iconDownloadRequest = iconModel as? DownloadRequest
         val job = scope.async {
-            installInt(appMetadata, version, currentVersionName, repo, iconDownloadRequest)
+            startInstall(
+                appMetadata = appMetadata,
+                version = version,
+                currentVersionName = currentVersionName,
+                repo = repo,
+                iconDownloadRequest = iconDownloadRequest,
+                canAskPreApprovalNow = canAskPreApprovalNow,
+            )
         }
         // keep track of this job, in case we want to cancel it
-        jobs.put(packageName, job)
+        return trackJob(packageName, job)
+    }
+
+    private suspend fun trackJob(packageName: String, job: Deferred<InstallState>): InstallState {
+        jobs[packageName] = job
         // wait for job to return
         val result = try {
             job.await()
@@ -131,22 +159,23 @@ class AppInstallManager @Inject constructor(
     }
 
     @WorkerThread
-    private suspend fun installInt(
+    private suspend fun startInstall(
         appMetadata: AppMetadata,
         version: AppVersion,
         currentVersionName: String?,
         repo: Repository,
         iconDownloadRequest: DownloadRequest?,
+        canAskPreApprovalNow: Boolean,
     ): InstallState {
-        apps.updateApp(appMetadata.packageName) {
-            InstallState.Starting(
-                name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault()) ?: "Unknown",
-                versionName = version.versionName,
-                currentVersionName = currentVersionName,
-                lastUpdated = version.added,
-                iconDownloadRequest = iconDownloadRequest,
-            )
-        }
+        val startingState = InstallState.Starting(
+            name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault()) ?: "Unknown",
+            versionName = version.versionName,
+            currentVersionName = currentVersionName,
+            lastUpdated = version.added,
+            iconDownloadRequest = iconDownloadRequest,
+        )
+        apps.updateApp(appMetadata.packageName) { startingState }
+        log.info { "Started install of ${appMetadata.packageName}" }
         onStatesUpdated()
         val coroutineContext = currentCoroutineContext()
         // get the icon for pre-approval (usually in memory cache, so should be quick)
@@ -159,20 +188,14 @@ class AppInstallManager @Inject constructor(
             icon = icon,
             isUpdate = currentVersionName != null,
             version = version,
+            canRequestUserConfirmationNow = canAskPreApprovalNow,
         )
+        log.info { "Got pre-approval result $preApprovalResult for ${appMetadata.packageName}" }
         // continue depending on result, abort early if no approval was given
         return when (preApprovalResult) {
-            is PreApprovalResult.Error -> InstallState.Error(
-                msg = preApprovalResult.errorMsg,
-                name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault()) ?: "Unknown",
-                versionName = version.versionName,
-                currentVersionName = currentVersionName,
-                lastUpdated = version.added,
-                iconDownloadRequest = iconDownloadRequest,
-            )
             is PreApprovalResult.UserAborted -> InstallState.UserAborted
             is PreApprovalResult.Success, PreApprovalResult.NotSupported -> {
-                apps.checkAndUpdateApp(appMetadata.packageName) {
+                val newState = apps.checkAndUpdateApp(appMetadata.packageName) {
                     InstallState.PreApproved(
                         name = it.name,
                         versionName = it.versionName,
@@ -181,69 +204,127 @@ class AppInstallManager @Inject constructor(
                         iconDownloadRequest = it.iconDownloadRequest,
                         result = preApprovalResult,
                     )
-                }
-                val sessionId = (preApprovalResult as? PreApprovalResult.Success)?.sessionId
-                coroutineContext.ensureActive()
-                // download file
-                val file = File(context.cacheDir, version.file.sha256)
-                val uri = getUri(repo.address, version.file)
-                val downloader = downloaderFactory.create(repo, uri, version.file, file)
-                val now = System.currentTimeMillis()
-                downloader.setListener { bytesRead, totalBytes ->
-                    coroutineContext.ensureActive()
-                    apps.checkAndUpdateApp(appMetadata.packageName) {
-                        InstallState.Downloading(
-                            name = it.name,
-                            versionName = it.versionName,
-                            currentVersionName = it.currentVersionName,
-                            lastUpdated = it.lastUpdated,
-                            iconDownloadRequest = it.iconDownloadRequest,
-                            downloadedBytes = bytesRead,
-                            totalBytes = totalBytes,
-                            startMillis = now,
-                        )
-                    }
-                    onStatesUpdated()
-                }
-                try {
-                    downloader.download()
-                    log.debug { "Download completed" }
-                } catch (e: Exception) {
-                    if (e is CancellationException) throw e
-                    log.error(e) { "Error downloading ${version.file}" }
-                    val msg = "Download failed: ${e::class.java.simpleName} ${e.message}"
-                    return InstallState.Error(
-                        msg = msg,
-                        name = appMetadata.name.getBestLocale(LocaleListCompat.getDefault())
-                            ?: "Unknown",
-                        versionName = version.versionName,
-                        currentVersionName = currentVersionName,
-                        lastUpdated = version.added,
-                        iconDownloadRequest = iconDownloadRequest,
-                    )
-                }
-                coroutineContext.ensureActive()
-                val newState = apps.checkAndUpdateApp(appMetadata.packageName) {
-                    InstallState.Installing(
-                        name = it.name,
-                        versionName = it.versionName,
-                        currentVersionName = it.currentVersionName,
-                        lastUpdated = it.lastUpdated,
-                        iconDownloadRequest = it.iconDownloadRequest,
-                    )
-                }
-                val result =
-                    sessionInstallManager.install(sessionId, version.packageName, newState, file)
-                if (result is InstallState.PreApproved &&
-                    result.result is PreApprovalResult.Error
-                ) {
-                    // if pre-approval failed (e.g. due to app label mismatch),
-                    // then try to install again, this time not using the pre-approved session
-                    sessionInstallManager.install(null, version.packageName, newState, file)
-                } else {
-                    result
-                }
+                } as InstallState.PreApproved
+                downloadAndInstall(newState, version, currentVersionName, repo, iconDownloadRequest)
             }
+            is PreApprovalResult.UserConfirmationRequired -> {
+                InstallState.PreApprovalConfirmationNeeded(
+                    state = startingState,
+                    version = version,
+                    repo = repo,
+                    sessionId = preApprovalResult.sessionId,
+                    intent = preApprovalResult.intent,
+                )
+            }
+            is PreApprovalResult.Error -> InstallState.Error(
+                msg = preApprovalResult.errorMsg,
+                s = startingState,
+            )
+        }
+    }
+
+    /**
+     * Request user confirmation for pre-approval and suspend until we get a result.
+     */
+    @UiThread
+    suspend fun requestPreApprovalConfirmation(
+        packageName: String,
+        installState: InstallState.PreApprovalConfirmationNeeded,
+    ): InstallState? {
+        val state = apps.value[packageName] ?: error("No state for $packageName $installState")
+        if (state !is InstallState.PreApprovalConfirmationNeeded) {
+            log.error { "Unexpected state: $state" }
+            return null
+        }
+        log.info { "Requesting pre-approval confirmation for $packageName" }
+        val result = sessionInstallManager.requestUserConfirmation(installState)
+        log.info { "Pre-approval confirmation for $packageName $result" }
+        apps.updateApp(packageName) { result }
+        onStatesUpdated()
+        return if (result is InstallState.PreApproved) {
+            // move us off the UiThread, so we can download/install this app now
+            val job = scope.async {
+                downloadAndInstall(
+                    state = result,
+                    version = installState.version,
+                    currentVersionName = installState.currentVersionName,
+                    repo = installState.repo,
+                    iconDownloadRequest = installState.iconDownloadRequest,
+                )
+            }
+            // suspend/wait for this job and track it in case we want to cancel it
+            return trackJob(packageName, job)
+        } else result
+    }
+
+    @WorkerThread
+    private suspend fun downloadAndInstall(
+        state: InstallState.PreApproved,
+        version: AppVersion,
+        currentVersionName: String?,
+        repo: Repository,
+        iconDownloadRequest: DownloadRequest?,
+    ): InstallState {
+        val sessionId = (state.result as? PreApprovalResult.Success)?.sessionId
+        val coroutineContext = currentCoroutineContext()
+        coroutineContext.ensureActive()
+        // download file
+        val file = File(context.cacheDir, version.file.sha256)
+        val uri = getUri(repo.address, version.file)
+        val downloader = downloaderFactory.create(repo, uri, version.file, file)
+        val now = System.currentTimeMillis()
+        downloader.setListener { bytesRead, totalBytes ->
+            coroutineContext.ensureActive()
+            apps.checkAndUpdateApp(version.packageName) {
+                InstallState.Downloading(
+                    name = it.name,
+                    versionName = it.versionName,
+                    currentVersionName = it.currentVersionName,
+                    lastUpdated = it.lastUpdated,
+                    iconDownloadRequest = it.iconDownloadRequest,
+                    downloadedBytes = bytesRead,
+                    totalBytes = totalBytes,
+                    startMillis = now,
+                )
+            }
+            onStatesUpdated()
+        }
+        try {
+            downloader.download()
+            log.debug { "Download completed" }
+        } catch (e: Exception) {
+            if (e is CancellationException) throw e
+            log.error(e) { "Error downloading ${version.file}" }
+            val msg = "Download failed: ${e::class.java.simpleName} ${e.message}"
+            return InstallState.Error(
+                msg = msg,
+                name = state.name,
+                versionName = version.versionName,
+                currentVersionName = currentVersionName,
+                lastUpdated = version.added,
+                iconDownloadRequest = iconDownloadRequest,
+            )
+        }
+        currentCoroutineContext().ensureActive()
+        val newState = apps.checkAndUpdateApp(version.packageName) {
+            InstallState.Installing(
+                name = it.name,
+                versionName = it.versionName,
+                currentVersionName = it.currentVersionName,
+                lastUpdated = it.lastUpdated,
+                iconDownloadRequest = it.iconDownloadRequest,
+            )
+        }
+        val result =
+            sessionInstallManager.install(sessionId, version.packageName, newState, file)
+        return if (result is InstallState.PreApproved &&
+            result.result is PreApprovalResult.Error
+        ) {
+            // if pre-approval failed (e.g. due to app label mismatch),
+            // then try to install again, this time not using the pre-approved session
+            sessionInstallManager.install(null, version.packageName, newState, file)
+        } else {
+            result
         }
     }
 
