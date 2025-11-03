@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -155,6 +156,9 @@ fun AppList(
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
+        val listState = rememberSaveable(saver = LazyListState.Saver) {
+            LazyListState()
+        }
         Column(
             modifier = Modifier
                 .padding(paddingValues)
@@ -171,6 +175,7 @@ fun AppList(
                         .padding(16.dp),
                 )
             } else LazyColumn(
+                state = listState,
                 contentPadding = PaddingValues(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.then(
