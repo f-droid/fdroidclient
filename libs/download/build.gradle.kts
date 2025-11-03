@@ -116,13 +116,9 @@ signing {
     useGpgCmd()
 }
 
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
-    pluginsMapConfiguration.set(
-        mapOf(
-            "org.jetbrains.dokka.base.DokkaBase" to """{
-                "customAssets": ["${file("${rootProject.rootDir}/logo-icon.svg")}"],
-                "footerMessage": "© 2010-2025 F-Droid Limited and Contributors"
-        }""",
-        ),
-    )
+dokka {
+    pluginsConfiguration.html {
+        customAssets.from("${file("${rootProject.rootDir}/logo-icon.svg")}")
+        footerMessage.set("© 2010-2025 F-Droid Limited and Contributors")
+    }
 }
