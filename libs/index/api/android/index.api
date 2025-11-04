@@ -1,0 +1,1252 @@
+public abstract interface class org/fdroid/CompatibilityChecker {
+	public abstract fun isCompatible (Lorg/fdroid/index/v2/PackageManifest;)Z
+}
+
+public final class org/fdroid/CompatibilityCheckerImpl : org/fdroid/CompatibilityChecker {
+	public fun <init> (Landroid/content/pm/PackageManager;)V
+	public fun <init> (Landroid/content/pm/PackageManager;Z)V
+	public fun <init> (Landroid/content/pm/PackageManager;ZI)V
+	public fun <init> (Landroid/content/pm/PackageManager;ZI[Ljava/lang/String;)V
+	public synthetic fun <init> (Landroid/content/pm/PackageManager;ZI[Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun isCompatible (Lorg/fdroid/index/v2/PackageManifest;)Z
+}
+
+public final class org/fdroid/CompatibilityCheckerUtils {
+	public static final field INSTANCE Lorg/fdroid/CompatibilityCheckerUtils;
+	public final fun minInstallableTargetSdk ()I
+	public final fun minInstallableTargetSdk (I)I
+	public static synthetic fun minInstallableTargetSdk$default (Lorg/fdroid/CompatibilityCheckerUtils;IILjava/lang/Object;)I
+}
+
+public final class org/fdroid/LocaleChooser {
+	public static final field INSTANCE Lorg/fdroid/LocaleChooser;
+	public final fun getBestLocale (Ljava/util/Map;Landroidx/core/os/LocaleListCompat;)Ljava/lang/Object;
+}
+
+public abstract interface class org/fdroid/PackagePreference {
+	public abstract fun getIgnoreVersionCodeUpdate ()J
+	public abstract fun getReleaseChannels ()Ljava/util/List;
+}
+
+public final class org/fdroid/UpdateChecker {
+	public fun <init> (Lorg/fdroid/CompatibilityChecker;)V
+	public final fun getSuggestedVersion (Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/functions/Function0;)Lorg/fdroid/index/v2/PackageVersion;
+	public static synthetic fun getSuggestedVersion$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersion;
+	public final fun getUpdate (Ljava/util/List;Landroid/content/pm/PackageInfo;Ljava/util/List;ZLkotlin/jvm/functions/Function0;)Lorg/fdroid/index/v2/PackageVersion;
+	public final fun getUpdate (Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;)Lorg/fdroid/index/v2/PackageVersion;
+	public static synthetic fun getUpdate$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Landroid/content/pm/PackageInfo;Ljava/util/List;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersion;
+	public static synthetic fun getUpdate$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersion;
+}
+
+public final class org/fdroid/index/IndexConverter {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun toIndexV2 (Lorg/fdroid/index/v1/IndexV1;)Lorg/fdroid/index/v2/IndexV2;
+}
+
+public final class org/fdroid/index/IndexConverterKt {
+	public static final field RELEASE_CHANNEL_BETA Ljava/lang/String;
+	public static final fun getV1ReleaseChannels ()Ljava/util/Map;
+}
+
+public abstract class org/fdroid/index/IndexCreator {
+	public fun <init> (Landroid/content/pm/PackageManager;Ljava/io/File;Ljava/util/Set;)V
+	protected final fun copyApkToRepo (Landroid/content/pm/PackageInfo;)Ljava/io/File;
+	protected final fun copyIconToRepo (Landroid/content/pm/PackageInfo;)Ljava/lang/String;
+	public abstract fun createRepo ()Ljava/lang/Object;
+	protected final fun getPackageManager ()Landroid/content/pm/PackageManager;
+	protected final fun getPackageNames ()Ljava/util/Set;
+	protected final fun getRepoDir ()Ljava/io/File;
+	protected final fun hashFile (Ljava/io/File;)Ljava/lang/String;
+	protected final fun parseNativeCode (Landroid/content/pm/PackageInfo;)Ljava/util/List;
+	protected final fun prepareIconFolders ()V
+}
+
+public final class org/fdroid/index/IndexParser {
+	public static final field INSTANCE Lorg/fdroid/index/IndexParser;
+	public static final fun getJson ()Lkotlinx/serialization/json/Json;
+	public static final fun parseEntry (Ljava/lang/String;)Lorg/fdroid/index/v2/Entry;
+	public static final fun parseV1 (Ljava/lang/String;)Lorg/fdroid/index/v1/IndexV1;
+	public static final fun parseV2 (Ljava/lang/String;)Lorg/fdroid/index/v2/IndexV2;
+}
+
+public final class org/fdroid/index/IndexParserKt {
+	public static final fun parseEntry (Lorg/fdroid/index/IndexParser;Ljava/io/InputStream;)Lorg/fdroid/index/v2/Entry;
+	public static final fun parseV1 (Lorg/fdroid/index/IndexParser;Ljava/io/InputStream;)Lorg/fdroid/index/v1/IndexV1;
+	public static final fun parseV2 (Lorg/fdroid/index/IndexParser;Ljava/io/InputStream;)Lorg/fdroid/index/v2/IndexV2;
+}
+
+public final class org/fdroid/index/IndexUtils {
+	public static final field INSTANCE Lorg/fdroid/index/IndexUtils;
+	public final fun getFingerprint (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getPackageSigner ([B)Ljava/lang/String;
+	public final fun getsig ([B)Ljava/lang/String;
+}
+
+public abstract class org/fdroid/index/JarIndexVerifier {
+	public fun <init> (Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V
+	protected abstract fun checkAttributes (Ljava/util/jar/Attributes;)V
+	protected abstract fun getJsonFileName ()Ljava/lang/String;
+	public final fun getStreamAndVerify (Lkotlin/jvm/functions/Function1;)Lkotlin/Pair;
+}
+
+public final class org/fdroid/index/SigningException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
+public final class org/fdroid/index/v1/AppV1 {
+	public static final field Companion Lorg/fdroid/index/v1/AppV1$Companion;
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Map;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Map;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component20 ()Ljava/lang/String;
+	public final fun component21 ()Ljava/lang/String;
+	public final fun component22 ()Ljava/lang/String;
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Ljava/lang/String;
+	public final fun component25 ()Ljava/lang/String;
+	public final fun component26 ()Ljava/lang/Long;
+	public final fun component27 ()Ljava/lang/String;
+	public final fun component28 ()Ljava/lang/String;
+	public final fun component29 ()Ljava/lang/Long;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component30 ()Ljava/util/Map;
+	public final fun component31 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Map;Ljava/util/List;)Lorg/fdroid/index/v1/AppV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/AppV1;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/util/Map;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v1/AppV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdded ()Ljava/lang/Long;
+	public final fun getAllowedAPKSigningKeys ()Ljava/util/List;
+	public final fun getAntiFeatures ()Ljava/util/List;
+	public final fun getAuthorEmail ()Ljava/lang/String;
+	public final fun getAuthorName ()Ljava/lang/String;
+	public final fun getAuthorPhone ()Ljava/lang/String;
+	public final fun getAuthorWebSite ()Ljava/lang/String;
+	public final fun getBinaries ()Ljava/lang/String;
+	public final fun getBitcoin ()Ljava/lang/String;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getChangelog ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDonate ()Ljava/lang/String;
+	public final fun getFlattrID ()Ljava/lang/String;
+	public final fun getIcon ()Ljava/lang/String;
+	public final fun getIssueTracker ()Ljava/lang/String;
+	public final fun getLastUpdated ()Ljava/lang/Long;
+	public final fun getLiberapay ()Ljava/lang/String;
+	public final fun getLiberapayID ()Ljava/lang/String;
+	public final fun getLicense ()Ljava/lang/String;
+	public final fun getLitecoin ()Ljava/lang/String;
+	public final fun getLocalized ()Ljava/util/Map;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getOpenCollective ()Ljava/lang/String;
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getSourceCode ()Ljava/lang/String;
+	public final fun getSuggestedVersionCode ()Ljava/lang/String;
+	public final fun getSuggestedVersionName ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/lang/String;
+	public final fun getTranslation ()Ljava/lang/String;
+	public final fun getWebSite ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun toMetadataV2 (Ljava/lang/String;Ljava/lang/String;)Lorg/fdroid/index/v2/MetadataV2;
+	public static synthetic fun toMetadataV2$default (Lorg/fdroid/index/v1/AppV1;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/MetadataV2;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/AppV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/AppV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/AppV1;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/AppV1;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/AppV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/IndexV1 {
+	public static final field Companion Lorg/fdroid/index/v1/IndexV1$Companion;
+	public fun <init> (Lorg/fdroid/index/v1/RepoV1;Lorg/fdroid/index/v1/Requests;Ljava/util/List;Ljava/util/Map;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v1/RepoV1;Lorg/fdroid/index/v1/Requests;Ljava/util/List;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/fdroid/index/v1/RepoV1;
+	public final fun component2 ()Lorg/fdroid/index/v1/Requests;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun copy (Lorg/fdroid/index/v1/RepoV1;Lorg/fdroid/index/v1/Requests;Ljava/util/List;Ljava/util/Map;)Lorg/fdroid/index/v1/IndexV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/IndexV1;Lorg/fdroid/index/v1/RepoV1;Lorg/fdroid/index/v1/Requests;Ljava/util/List;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v1/IndexV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApps ()Ljava/util/List;
+	public final fun getPackages ()Ljava/util/Map;
+	public final fun getRepo ()Lorg/fdroid/index/v1/RepoV1;
+	public final fun getRequests ()Lorg/fdroid/index/v1/Requests;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/IndexV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/IndexV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/IndexV1;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/IndexV1;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/IndexV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/IndexV1Creator : org/fdroid/index/IndexCreator {
+	public fun <init> (Landroid/content/pm/PackageManager;Ljava/io/File;Ljava/util/Set;Lorg/fdroid/index/v1/RepoV1;)V
+	public synthetic fun createRepo ()Ljava/lang/Object;
+	public fun createRepo ()Lorg/fdroid/index/v1/IndexV1;
+}
+
+public final class org/fdroid/index/v1/IndexV1StreamProcessor {
+	public fun <init> (Lorg/fdroid/index/v1/IndexV1StreamReceiver;JLjava/lang/String;Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v1/IndexV1StreamReceiver;JLjava/lang/String;Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun process (Ljava/io/InputStream;)V
+}
+
+public abstract interface class org/fdroid/index/v1/IndexV1StreamReceiver {
+	public abstract fun receive (Ljava/lang/String;Ljava/util/Map;)V
+	public abstract fun receive (Ljava/lang/String;Lorg/fdroid/index/v2/MetadataV2;)V
+	public abstract fun receive (Lorg/fdroid/index/v2/RepoV2;J)V
+	public abstract fun updateAppMetadata (Ljava/lang/String;Ljava/lang/String;)V
+	public abstract fun updateRepo (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+}
+
+public final class org/fdroid/index/v1/IndexV1Verifier : org/fdroid/index/JarIndexVerifier {
+	public fun <init> (Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class org/fdroid/index/v1/IndexV1VerifierKt {
+	public static final field DATA_FILE_NAME Ljava/lang/String;
+}
+
+public final class org/fdroid/index/v1/Localized {
+	public static final field Companion Lorg/fdroid/index/v1/Localized$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/List;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Ljava/util/List;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/fdroid/index/v1/Localized;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/Localized;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v1/Localized;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getFeatureGraphic ()Ljava/lang/String;
+	public final fun getIcon ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPhoneScreenshots ()Ljava/util/List;
+	public final fun getPromoGraphic ()Ljava/lang/String;
+	public final fun getSevenInchScreenshots ()Ljava/util/List;
+	public final fun getSummary ()Ljava/lang/String;
+	public final fun getTenInchScreenshots ()Ljava/util/List;
+	public final fun getTvBanner ()Ljava/lang/String;
+	public final fun getTvScreenshots ()Ljava/util/List;
+	public final fun getVideo ()Ljava/lang/String;
+	public final fun getWearScreenshots ()Ljava/util/List;
+	public final fun getWhatsNew ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/Localized$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/Localized$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/Localized;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/Localized;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/Localized$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/OldIndexException : java/lang/Exception {
+	public fun <init> (ZLjava/lang/String;)V
+	public final fun isSameTimestamp ()Z
+}
+
+public final class org/fdroid/index/v1/PackageV1 {
+	public static final field Companion Lorg/fdroid/index/v1/PackageV1$Companion;
+	public fun <init> (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Long;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()J
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/util/List;
+	public final fun component14 ()Ljava/util/List;
+	public final fun component15 ()Ljava/lang/Long;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/util/List;
+	public final fun component18 ()Ljava/util/List;
+	public final fun component19 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/Integer;
+	public final fun component6 ()Ljava/lang/Integer;
+	public final fun component7 ()Ljava/lang/Integer;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lorg/fdroid/index/v1/PackageV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/PackageV1;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/Long;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v1/PackageV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdded ()Ljava/lang/Long;
+	public final fun getAntiFeatures ()Ljava/util/List;
+	public final fun getApkName ()Ljava/lang/String;
+	public final fun getFeatures ()Ljava/util/List;
+	public final fun getHash ()Ljava/lang/String;
+	public final fun getHashType ()Ljava/lang/String;
+	public final fun getMaxSdkVersion ()Ljava/lang/Integer;
+	public final fun getMinSdkVersion ()Ljava/lang/Integer;
+	public final fun getNativeCode ()Ljava/util/List;
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getSig ()Ljava/lang/String;
+	public final fun getSigner ()Ljava/lang/String;
+	public final fun getSize ()J
+	public final fun getSrcName ()Ljava/lang/String;
+	public final fun getTargetSdkVersion ()Ljava/lang/Integer;
+	public final fun getUsesPermission ()Ljava/util/List;
+	public final fun getUsesPermission23 ()Ljava/util/List;
+	public final fun getVersionCode ()Ljava/lang/Long;
+	public final fun getVersionName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun toPackageVersionV2 (Ljava/util/List;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/PackageVersionV2;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/PackageV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/PackageV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/PackageV1;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/PackageV1;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/PackageV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/PermissionV1 {
+	public static final field Companion Lorg/fdroid/index/v1/PermissionV1$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Integer;)Lorg/fdroid/index/v1/PermissionV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/PermissionV1;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Lorg/fdroid/index/v1/PermissionV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxSdk ()Ljava/lang/Integer;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/index/v1/PermissionV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/RepoV1 {
+	public static final field Companion Lorg/fdroid/index/v1/RepoV1$Companion;
+	public fun <init> (JILjava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (JILjava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/util/List;
+	public final fun copy (JILjava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lorg/fdroid/index/v1/RepoV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/RepoV1;JILjava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v1/RepoV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getIcon ()Ljava/lang/String;
+	public final fun getMaxAge ()Ljava/lang/Integer;
+	public final fun getMirrors ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTimestamp ()J
+	public final fun getVersion ()I
+	public fun hashCode ()I
+	public final fun toRepoV2 (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/RepoV2;
+	public static synthetic fun toRepoV2$default (Lorg/fdroid/index/v1/RepoV1;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/RepoV2;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/RepoV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/RepoV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/RepoV1;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/RepoV1;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/RepoV1$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/Requests {
+	public static final field Companion Lorg/fdroid/index/v1/Requests$Companion;
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lorg/fdroid/index/v1/Requests;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v1/Requests;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v1/Requests;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInstall ()Ljava/util/List;
+	public final fun getUninstall ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v1/Requests$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v1/Requests$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v1/Requests;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v1/Requests;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v1/Requests$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/AntiFeatureV2 {
+	public static final field Companion Lorg/fdroid/index/v2/AntiFeatureV2$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/AntiFeatureV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/AntiFeatureV2;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/AntiFeatureV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getIcon ()Ljava/util/Map;
+	public final fun getName ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/AntiFeatureV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/AntiFeatureV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/AntiFeatureV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/AntiFeatureV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/AntiFeatureV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/CategoryV2 {
+	public static final field Companion Lorg/fdroid/index/v2/CategoryV2$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/CategoryV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/CategoryV2;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/CategoryV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getIcon ()Ljava/util/Map;
+	public final fun getName ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/CategoryV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/CategoryV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/CategoryV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/CategoryV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/CategoryV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/Entry {
+	public static final field Companion Lorg/fdroid/index/v2/Entry$Companion;
+	public fun <init> (JJLjava/lang/Integer;Lorg/fdroid/index/v2/EntryFileV2;Ljava/util/Map;)V
+	public synthetic fun <init> (JJLjava/lang/Integer;Lorg/fdroid/index/v2/EntryFileV2;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()J
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Lorg/fdroid/index/v2/EntryFileV2;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun copy (JJLjava/lang/Integer;Lorg/fdroid/index/v2/EntryFileV2;Ljava/util/Map;)Lorg/fdroid/index/v2/Entry;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/Entry;JJLjava/lang/Integer;Lorg/fdroid/index/v2/EntryFileV2;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/Entry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDiff (J)Lorg/fdroid/index/v2/EntryFileV2;
+	public final fun getDiffs ()Ljava/util/Map;
+	public final fun getIndex ()Lorg/fdroid/index/v2/EntryFileV2;
+	public final fun getMaxAge ()Ljava/lang/Integer;
+	public final fun getTimestamp ()J
+	public final fun getVersion ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/Entry$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/Entry$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/Entry;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/Entry;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/Entry$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/EntryFileV2 : org/fdroid/IndexFile {
+	public static final field Companion Lorg/fdroid/index/v2/EntryFileV2$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;I)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;I)Lorg/fdroid/index/v2/EntryFileV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/EntryFileV2;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;IILjava/lang/Object;)Lorg/fdroid/index/v2/EntryFileV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIpfsCidV1 ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public final fun getNumPackages ()I
+	public fun getSha256 ()Ljava/lang/String;
+	public fun getSize ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun serialize ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/EntryFileV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/EntryFileV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/EntryFileV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/EntryFileV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/EntryFileV2$Companion {
+	public final fun deserialize (Ljava/lang/String;)Lorg/fdroid/index/v2/EntryFileV2;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/EntryVerifier : org/fdroid/index/JarIndexVerifier {
+	public fun <init> (Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class org/fdroid/index/v2/EntryVerifierKt {
+	public static final field DATA_FILE_NAME Ljava/lang/String;
+}
+
+public final class org/fdroid/index/v2/FeatureV2 {
+	public static final field Companion Lorg/fdroid/index/v2/FeatureV2$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lorg/fdroid/index/v2/FeatureV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/FeatureV2;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/FeatureV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/FeatureV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/FeatureV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/FeatureV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/FeatureV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/FeatureV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/FileV1 : org/fdroid/IndexFile {
+	public static final field Companion Lorg/fdroid/index/v2/FileV1$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Lorg/fdroid/index/v2/FileV1;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/FileV1;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/FileV1;
+	public static final fun deserialize (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIpfsCidV1 ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public fun getSha256 ()Ljava/lang/String;
+	public fun getSize ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun serialize ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/FileV1$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/FileV1$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/FileV1;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/FileV1;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/FileV1$Companion {
+	public final fun deserialize (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV1;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/FileV2 : org/fdroid/IndexFile {
+	public static final field Companion Lorg/fdroid/index/v2/FileV2$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Lorg/fdroid/index/v2/FileV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/FileV2;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/FileV2;
+	public static final fun deserialize (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public static final fun fromPath (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV2;
+	public fun getIpfsCidV1 ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public fun getSha256 ()Ljava/lang/String;
+	public fun getSize ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun serialize ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/FileV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/FileV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/FileV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/FileV2$Companion {
+	public final fun deserialize (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV2;
+	public final fun fromPath (Ljava/lang/String;)Lorg/fdroid/index/v2/FileV2;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/IndexV2 {
+	public static final field Companion Lorg/fdroid/index/v2/IndexV2$Companion;
+	public fun <init> (Lorg/fdroid/index/v2/RepoV2;Ljava/util/Map;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v2/RepoV2;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/fdroid/index/v2/RepoV2;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Lorg/fdroid/index/v2/RepoV2;Ljava/util/Map;)Lorg/fdroid/index/v2/IndexV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/IndexV2;Lorg/fdroid/index/v2/RepoV2;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/IndexV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPackages ()Ljava/util/Map;
+	public final fun getRepo ()Lorg/fdroid/index/v2/RepoV2;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun walkFiles (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final synthetic class org/fdroid/index/v2/IndexV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/IndexV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/IndexV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/IndexV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/IndexV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/IndexV2DiffStreamProcessor : org/fdroid/index/v2/IndexV2StreamProcessor {
+	public fun <init> (Lorg/fdroid/index/v2/IndexV2DiffStreamReceiver;Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v2/IndexV2DiffStreamReceiver;Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun process (JLjava/io/InputStream;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class org/fdroid/index/v2/IndexV2DiffStreamReceiver {
+	public abstract fun onStreamEnded ()V
+	public abstract fun receivePackageMetadataDiff (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)V
+	public abstract fun receiveRepoDiff (JLkotlinx/serialization/json/JsonObject;)V
+	public abstract fun receiveVersionsDiff (Ljava/lang/String;Ljava/util/Map;)V
+}
+
+public final class org/fdroid/index/v2/IndexV2FullStreamProcessor : org/fdroid/index/v2/IndexV2StreamProcessor {
+	public fun <init> (Lorg/fdroid/index/v2/IndexV2StreamReceiver;Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v2/IndexV2StreamReceiver;Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun process (JLjava/io/InputStream;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class org/fdroid/index/v2/IndexV2StreamProcessor {
+	public abstract fun process (JLjava/io/InputStream;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class org/fdroid/index/v2/IndexV2StreamReceiver {
+	public abstract fun onStreamEnded ()V
+	public abstract fun receive (Ljava/lang/String;Lorg/fdroid/index/v2/PackageV2;)V
+	public abstract fun receive (Lorg/fdroid/index/v2/RepoV2;J)V
+}
+
+public final class org/fdroid/index/v2/ManifestV2 : org/fdroid/index/v2/PackageManifest {
+	public static final field Companion Lorg/fdroid/index/v2/ManifestV2$Companion;
+	public fun <init> (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Lorg/fdroid/index/v2/UsesSdkV2;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Lorg/fdroid/index/v2/SignerV2;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Ljava/util/List;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lorg/fdroid/index/v2/ManifestV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/ManifestV2;Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v2/ManifestV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFeatureNames ()Ljava/util/List;
+	public final fun getFeatures ()Ljava/util/List;
+	public fun getMaxSdkVersion ()Ljava/lang/Integer;
+	public fun getMinSdkVersion ()Ljava/lang/Integer;
+	public fun getNativecode ()Ljava/util/List;
+	public final fun getSigner ()Lorg/fdroid/index/v2/SignerV2;
+	public fun getTargetSdkVersion ()Ljava/lang/Integer;
+	public final fun getUsesPermission ()Ljava/util/List;
+	public final fun getUsesPermissionSdk23 ()Ljava/util/List;
+	public final fun getUsesSdk ()Lorg/fdroid/index/v2/UsesSdkV2;
+	public final fun getVersionCode ()J
+	public final fun getVersionName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/ManifestV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/ManifestV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/ManifestV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/ManifestV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/ManifestV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/MetadataV2 {
+	public static final field Companion Lorg/fdroid/index/v2/MetadataV2$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lorg/fdroid/index/v2/Screenshots;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lorg/fdroid/index/v2/Screenshots;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/util/List;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/util/List;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component20 ()Ljava/lang/String;
+	public final fun component21 ()Ljava/lang/String;
+	public final fun component22 ()Ljava/lang/String;
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Ljava/lang/String;
+	public final fun component25 ()Ljava/util/Map;
+	public final fun component26 ()Ljava/util/Map;
+	public final fun component27 ()Ljava/util/Map;
+	public final fun component28 ()Ljava/util/Map;
+	public final fun component29 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component30 ()Lorg/fdroid/index/v2/Screenshots;
+	public final fun component4 ()J
+	public final fun component5 ()J
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lorg/fdroid/index/v2/Screenshots;)Lorg/fdroid/index/v2/MetadataV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/MetadataV2;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Lorg/fdroid/index/v2/Screenshots;ILjava/lang/Object;)Lorg/fdroid/index/v2/MetadataV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdded ()J
+	public final fun getAuthorEmail ()Ljava/lang/String;
+	public final fun getAuthorName ()Ljava/lang/String;
+	public final fun getAuthorPhone ()Ljava/lang/String;
+	public final fun getAuthorWebSite ()Ljava/lang/String;
+	public final fun getBitcoin ()Ljava/lang/String;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getChangelog ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getDonate ()Ljava/util/List;
+	public final fun getFeatureGraphic ()Ljava/util/Map;
+	public final fun getFlattrID ()Ljava/lang/String;
+	public final fun getIcon ()Ljava/util/Map;
+	public final fun getIssueTracker ()Ljava/lang/String;
+	public final fun getLastUpdated ()J
+	public final fun getLiberapay ()Ljava/lang/String;
+	public final fun getLiberapayID ()Ljava/lang/String;
+	public final fun getLicense ()Ljava/lang/String;
+	public final fun getLitecoin ()Ljava/lang/String;
+	public final fun getName ()Ljava/util/Map;
+	public final fun getOpenCollective ()Ljava/lang/String;
+	public final fun getPreferredSigner ()Ljava/lang/String;
+	public final fun getPromoGraphic ()Ljava/util/Map;
+	public final fun getScreenshots ()Lorg/fdroid/index/v2/Screenshots;
+	public final fun getSourceCode ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/util/Map;
+	public final fun getTranslation ()Ljava/lang/String;
+	public final fun getTvBanner ()Ljava/util/Map;
+	public final fun getVideo ()Ljava/util/Map;
+	public final fun getWebSite ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun walkFiles (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final synthetic class org/fdroid/index/v2/MetadataV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/MetadataV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/MetadataV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/MetadataV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/MetadataV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/MirrorV2 {
+	public static final field Companion Lorg/fdroid/index/v2/MirrorV2$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/fdroid/index/v2/MirrorV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/MirrorV2;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/MirrorV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCountryCode ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/MirrorV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/MirrorV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/MirrorV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/MirrorV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/MirrorV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class org/fdroid/index/v2/PackageManifest {
+	public abstract fun getFeatureNames ()Ljava/util/List;
+	public abstract fun getMaxSdkVersion ()Ljava/lang/Integer;
+	public abstract fun getMinSdkVersion ()Ljava/lang/Integer;
+	public abstract fun getNativecode ()Ljava/util/List;
+	public abstract fun getTargetSdkVersion ()Ljava/lang/Integer;
+}
+
+public final class org/fdroid/index/v2/PackageV2 {
+	public static final field Companion Lorg/fdroid/index/v2/PackageV2$Companion;
+	public fun <init> (Lorg/fdroid/index/v2/MetadataV2;Ljava/util/Map;)V
+	public synthetic fun <init> (Lorg/fdroid/index/v2/MetadataV2;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/fdroid/index/v2/MetadataV2;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Lorg/fdroid/index/v2/MetadataV2;Ljava/util/Map;)Lorg/fdroid/index/v2/PackageV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/PackageV2;Lorg/fdroid/index/v2/MetadataV2;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMetadata ()Lorg/fdroid/index/v2/MetadataV2;
+	public final fun getVersions ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun walkFiles (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final synthetic class org/fdroid/index/v2/PackageV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/PackageV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/PackageV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/PackageV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/PackageV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/PackageV2Kt {
+	public static final field ANTI_FEATURE_KNOWN_VULNERABILITY Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/index/v2/PackageVersion {
+	public abstract fun getAdded ()J
+	public abstract fun getHasKnownVulnerability ()Z
+	public abstract fun getPackageManifest ()Lorg/fdroid/index/v2/PackageManifest;
+	public abstract fun getReleaseChannels ()Ljava/util/List;
+	public abstract fun getSigner ()Lorg/fdroid/index/v2/SignerV2;
+	public abstract fun getSize ()Ljava/lang/Long;
+	public abstract fun getVersionCode ()J
+	public abstract fun getVersionName ()Ljava/lang/String;
+}
+
+public final class org/fdroid/index/v2/PackageVersionV2 : org/fdroid/index/v2/PackageVersion {
+	public static final field Companion Lorg/fdroid/index/v2/PackageVersionV2$Companion;
+	public fun <init> (JLorg/fdroid/index/v2/FileV1;Lorg/fdroid/index/v2/FileV2;Lorg/fdroid/index/v2/ManifestV2;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (JLorg/fdroid/index/v2/FileV1;Lorg/fdroid/index/v2/FileV2;Lorg/fdroid/index/v2/ManifestV2;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Lorg/fdroid/index/v2/FileV1;
+	public final fun component3 ()Lorg/fdroid/index/v2/FileV2;
+	public final fun component4 ()Lorg/fdroid/index/v2/ManifestV2;
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Ljava/util/Map;
+	public final fun component7 ()Ljava/util/Map;
+	public final fun copy (JLorg/fdroid/index/v2/FileV1;Lorg/fdroid/index/v2/FileV2;Lorg/fdroid/index/v2/ManifestV2;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/PackageVersionV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/PackageVersionV2;JLorg/fdroid/index/v2/FileV1;Lorg/fdroid/index/v2/FileV2;Lorg/fdroid/index/v2/ManifestV2;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersionV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAdded ()J
+	public final fun getAntiFeatures ()Ljava/util/Map;
+	public final fun getFile ()Lorg/fdroid/index/v2/FileV1;
+	public fun getHasKnownVulnerability ()Z
+	public final fun getManifest ()Lorg/fdroid/index/v2/ManifestV2;
+	public fun getPackageManifest ()Lorg/fdroid/index/v2/PackageManifest;
+	public fun getReleaseChannels ()Ljava/util/List;
+	public fun getSigner ()Lorg/fdroid/index/v2/SignerV2;
+	public fun getSize ()Ljava/lang/Long;
+	public final fun getSrc ()Lorg/fdroid/index/v2/FileV2;
+	public fun getVersionCode ()J
+	public fun getVersionName ()Ljava/lang/String;
+	public final fun getWhatsNew ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun walkFiles (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final synthetic class org/fdroid/index/v2/PackageVersionV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/PackageVersionV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/PackageVersionV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/PackageVersionV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/PackageVersionV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/PermissionV2 {
+	public static final field Companion Lorg/fdroid/index/v2/PermissionV2$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Integer;)Lorg/fdroid/index/v2/PermissionV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/PermissionV2;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Lorg/fdroid/index/v2/PermissionV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxSdkVersion ()Ljava/lang/Integer;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/PermissionV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/PermissionV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/PermissionV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/PermissionV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/PermissionV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/ReflectionDiffer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/ReflectionDiffer;
+	public final fun applyDiff (Ljava/lang/Object;Lkotlinx/serialization/json/JsonObject;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/index/v2/ReleaseChannelV2 {
+	public static final field Companion Lorg/fdroid/index/v2/ReleaseChannelV2$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/ReleaseChannelV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/ReleaseChannelV2;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/ReleaseChannelV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getName ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/ReleaseChannelV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/ReleaseChannelV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/ReleaseChannelV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/ReleaseChannelV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/ReleaseChannelV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/RepoV2 {
+	public static final field Companion Lorg/fdroid/index/v2/RepoV2$Companion;
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/List;JLjava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/List;JLjava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component10 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()J
+	public final fun component8 ()Ljava/util/Map;
+	public final fun component9 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/List;JLjava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/RepoV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/RepoV2;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/List;JLjava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/RepoV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getAntiFeatures ()Ljava/util/Map;
+	public final fun getCategories ()Ljava/util/Map;
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getIcon ()Ljava/util/Map;
+	public final fun getMirrors ()Ljava/util/List;
+	public final fun getName ()Ljava/util/Map;
+	public final fun getReleaseChannels ()Ljava/util/Map;
+	public final fun getTimestamp ()J
+	public final fun getWebBaseUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun walkFiles (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final synthetic class org/fdroid/index/v2/RepoV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/RepoV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/RepoV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/RepoV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/RepoV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/Screenshots {
+	public static final field Companion Lorg/fdroid/index/v2/Screenshots$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/index/v2/Screenshots;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/Screenshots;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/index/v2/Screenshots;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPhone ()Ljava/util/Map;
+	public final fun getSevenInch ()Ljava/util/Map;
+	public final fun getTenInch ()Ljava/util/Map;
+	public final fun getTv ()Ljava/util/Map;
+	public final fun getWear ()Ljava/util/Map;
+	public fun hashCode ()I
+	public final fun isNull ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/Screenshots$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/Screenshots$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/Screenshots;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/Screenshots;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/Screenshots$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/SignerV2 {
+	public static final field Companion Lorg/fdroid/index/v2/SignerV2$Companion;
+	public fun <init> (Ljava/util/List;Z)V
+	public synthetic fun <init> (Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/util/List;Z)Lorg/fdroid/index/v2/SignerV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;ZILjava/lang/Object;)Lorg/fdroid/index/v2/SignerV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasMultipleSigners ()Z
+	public final fun getSha256 ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/SignerV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/SignerV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/SignerV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/SignerV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/SignerV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/UsesSdkV2 {
+	public static final field Companion Lorg/fdroid/index/v2/UsesSdkV2$Companion;
+	public fun <init> (II)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun copy (II)Lorg/fdroid/index/v2/UsesSdkV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/UsesSdkV2;IIILjava/lang/Object;)Lorg/fdroid/index/v2/UsesSdkV2;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMinSdkVersion ()I
+	public final fun getTargetSdkVersion ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class org/fdroid/index/v2/UsesSdkV2$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/fdroid/index/v2/UsesSdkV2$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/fdroid/index/v2/UsesSdkV2;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/fdroid/index/v2/UsesSdkV2;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/fdroid/index/v2/UsesSdkV2$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

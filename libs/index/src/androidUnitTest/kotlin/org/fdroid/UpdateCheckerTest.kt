@@ -14,9 +14,9 @@ internal class UpdateCheckerTest {
     private val signer = "9f9261f0b911c60f8db722f5d430a9e9d557a3f8078ce43e1c07522ef41efedb"
     private val signerV2 = SignerV2(listOf(signer))
     private val betaChannels = listOf(RELEASE_CHANNEL_BETA)
-    private val version1 = Version(1)
-    private val version2 = Version(2)
-    private val version3 = Version(3)
+    private val version1 = Version(1, "1", 23, 1)
+    private val version2 = Version(2, "2", 23, 2)
+    private val version3 = Version(3, "2", 23, 3)
     private val versions = listOf(version3, version2, version1)
 
     @Test
@@ -181,6 +181,9 @@ internal class UpdateCheckerTest {
 
     private data class Version(
         override val versionCode: Long,
+        override val versionName: String,
+        override val added: Long,
+        override val size: Long?,
         override val signer: SignerV2? = null,
         override val releaseChannels: List<String>? = null,
         // the manifest is only needed for compatibility checking which we can test differently

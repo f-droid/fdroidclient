@@ -1,0 +1,210 @@
+public abstract interface class org/fdroid/download/BytesReceiver {
+	public abstract fun receive ([BLjava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/download/DownloadRequest {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/net/Proxy;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;)V
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;)V
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;)V
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;)V
+	public synthetic fun <init> (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/fdroid/IndexFile;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/net/Proxy;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Lorg/fdroid/download/Mirror;
+	public final fun copy (Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;)Lorg/fdroid/download/DownloadRequest;
+	public static synthetic fun copy$default (Lorg/fdroid/download/DownloadRequest;Lorg/fdroid/IndexFile;Ljava/util/List;Ljava/net/Proxy;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/download/Mirror;ILjava/lang/Object;)Lorg/fdroid/download/DownloadRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasCredentials ()Z
+	public final fun getIndexFile ()Lorg/fdroid/IndexFile;
+	public final fun getMirrors ()Ljava/util/List;
+	public final fun getPassword ()Ljava/lang/String;
+	public final fun getProxy ()Ljava/net/Proxy;
+	public final fun getTryFirstMirror ()Lorg/fdroid/download/Mirror;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/fdroid/download/Downloader {
+	public static final field Companion Lorg/fdroid/download/Downloader$Companion;
+	protected final field outputFile Ljava/io/File;
+	public fun <init> (Lorg/fdroid/IndexFile;Ljava/io/File;)V
+	public final fun cancelDownload ()V
+	public abstract fun close ()V
+	public abstract fun download ()V
+	protected final fun downloadFromBytesReceiver (ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	protected final fun downloadFromStream (Z)V
+	protected fun getBytes (ZLorg/fdroid/download/BytesReceiver;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCacheTag ()Ljava/lang/String;
+	protected final fun getIndexFile ()Lorg/fdroid/IndexFile;
+	protected abstract fun getInputStream (Z)Ljava/io/InputStream;
+	public abstract fun hasChanged ()Z
+	public final fun setCacheTag (Ljava/lang/String;)V
+	public final fun setListener (Lorg/fdroid/fdroid/ProgressListener;)V
+	protected abstract fun totalDownloadSize ()J
+	public final fun wasCancelled ()Z
+}
+
+public final class org/fdroid/download/Downloader$Companion {
+}
+
+public final class org/fdroid/download/HeadInfo {
+	public fun <init> (ZLjava/lang/String;Ljava/lang/Long;Ljava/lang/String;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (ZLjava/lang/String;Ljava/lang/Long;Ljava/lang/String;)Lorg/fdroid/download/HeadInfo;
+	public static synthetic fun copy$default (Lorg/fdroid/download/HeadInfo;ZLjava/lang/String;Ljava/lang/Long;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/download/HeadInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentLength ()Ljava/lang/Long;
+	public final fun getETag ()Ljava/lang/String;
+	public final fun getETagChanged ()Z
+	public final fun getLastModified ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/download/HttpDownloader : org/fdroid/download/Downloader {
+	public fun <init> (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Ljava/io/File;)V
+	public fun close ()V
+	public fun download ()V
+	public fun hasChanged ()Z
+}
+
+public final class org/fdroid/download/HttpDownloaderV2 : org/fdroid/download/Downloader {
+	public fun <init> (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Ljava/io/File;)V
+	public fun close ()V
+	public fun download ()V
+	public fun hasChanged ()Z
+}
+
+public class org/fdroid/download/HttpManager {
+	public static final field Companion Lorg/fdroid/download/HttpManager$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;Lorg/fdroid/download/MirrorParameterManager;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;Lorg/fdroid/download/MirrorParameterManager;Z)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;Lorg/fdroid/download/MirrorParameterManager;ZLorg/fdroid/download/MirrorChooser;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;Lorg/fdroid/download/MirrorParameterManager;ZLorg/fdroid/download/MirrorChooser;Lio/ktor/client/engine/HttpClientEngineFactory;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lokhttp3/Dns;Lorg/fdroid/download/MirrorParameterManager;ZLorg/fdroid/download/MirrorChooser;Lio/ktor/client/engine/HttpClientEngineFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun get (Lorg/fdroid/download/DownloadRequest;Ljava/lang/Long;Lorg/fdroid/download/BytesReceiver;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun get (Lorg/fdroid/download/DownloadRequest;Lorg/fdroid/download/BytesReceiver;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun get$default (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Ljava/lang/Long;Lorg/fdroid/download/BytesReceiver;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun head (Lorg/fdroid/download/DownloadRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun head$default (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun post (Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun post$default (Lorg/fdroid/download/HttpManager;Ljava/lang/String;Ljava/lang/String;Ljava/net/Proxy;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/download/HttpManager$Companion {
+	public final fun isInvalidHttpUrl (Ljava/lang/String;)Z
+}
+
+public final class org/fdroid/download/HttpManagerKt {
+	public static final fun getDigestInputStream (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getInputStream (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/download/HttpPoster {
+	public fun <init> (Lorg/fdroid/download/HttpManager;Ljava/lang/String;)V
+	public final fun post (Ljava/lang/String;)V
+}
+
+public final class org/fdroid/download/Mirror {
+	public static final field Companion Lorg/fdroid/download/Mirror$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Z)Lorg/fdroid/download/Mirror;
+	public static synthetic fun copy$default (Lorg/fdroid/download/Mirror;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lorg/fdroid/download/Mirror;
+	public fun equals (Ljava/lang/Object;)Z
+	public static final fun fromStrings (Ljava/util/List;)Ljava/util/List;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getCountryCode ()Ljava/lang/String;
+	public final fun getFDroidLinkUrl (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getUrl ()Lio/ktor/http/Url;
+	public final fun getUrl (Ljava/lang/String;)Lio/ktor/http/Url;
+	public fun hashCode ()I
+	public final fun isHttp ()Z
+	public final fun isIpfsGateway ()Z
+	public final fun isLocal ()Z
+	public final fun isOnion ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/download/Mirror$Companion {
+	public final fun fromStrings (Ljava/util/List;)Ljava/util/List;
+}
+
+public abstract interface class org/fdroid/download/MirrorChooser {
+	public abstract fun mirrorRequest (Lorg/fdroid/download/DownloadRequest;Lkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun orderMirrors (Lorg/fdroid/download/DownloadRequest;)Ljava/util/List;
+}
+
+public abstract interface class org/fdroid/download/MirrorParameterManager {
+	public abstract fun getCurrentLocation ()Ljava/lang/String;
+	public abstract fun getMirrorErrorCount (Ljava/lang/String;)I
+	public abstract fun incrementMirrorErrorCount (Ljava/lang/String;)V
+	public abstract fun preferForeignMirrors ()Z
+}
+
+public final class org/fdroid/download/NoResumeException : java/lang/Exception {
+	public fun <init> ()V
+}
+
+public final class org/fdroid/download/NotFoundException : java/lang/Exception {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class org/fdroid/download/coil/DownloadRequestFetcher : coil3/fetch/Fetcher {
+	public fun <init> (Lorg/fdroid/download/HttpManager;Lorg/fdroid/download/DownloadRequest;Lcoil3/request/Options;Lkotlin/Lazy;)V
+	public fun fetch (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/download/coil/DownloadRequestFetcher$Factory : coil3/fetch/Fetcher$Factory {
+	public fun <init> (Lorg/fdroid/download/HttpManager;)V
+	public synthetic fun create (Ljava/lang/Object;Lcoil3/request/Options;Lcoil3/ImageLoader;)Lcoil3/fetch/Fetcher;
+	public fun create (Lorg/fdroid/download/DownloadRequest;Lcoil3/request/Options;Lcoil3/ImageLoader;)Lcoil3/fetch/Fetcher;
+}
+
+public final class org/fdroid/download/glide/DownloadRequestLoader : com/bumptech/glide/load/model/ModelLoader {
+	public fun <init> (Lorg/fdroid/download/HttpManager;)V
+	public synthetic fun buildLoadData (Ljava/lang/Object;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/model/ModelLoader$LoadData;
+	public fun buildLoadData (Lorg/fdroid/download/DownloadRequest;IILcom/bumptech/glide/load/Options;)Lcom/bumptech/glide/load/model/ModelLoader$LoadData;
+	public synthetic fun handles (Ljava/lang/Object;)Z
+	public fun handles (Lorg/fdroid/download/DownloadRequest;)Z
+}
+
+public final class org/fdroid/download/glide/DownloadRequestLoader$Factory : com/bumptech/glide/load/model/ModelLoaderFactory {
+	public fun <init> (Lorg/fdroid/download/HttpManager;)V
+	public fun build (Lcom/bumptech/glide/load/model/MultiModelLoaderFactory;)Lcom/bumptech/glide/load/model/ModelLoader;
+	public fun teardown ()V
+}
+
+public final class org/fdroid/fdroid/DigestInputStreamKt {
+	public static final fun getDigestHex (Ljava/security/DigestInputStream;)Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/fdroid/ProgressListener {
+	public abstract fun onProgress (JJ)V
+}
+

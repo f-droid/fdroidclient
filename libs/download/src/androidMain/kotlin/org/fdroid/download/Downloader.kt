@@ -180,7 +180,7 @@ public abstract class Downloader(
 
     private fun reportProgress(lastTimeReported: Long, bytesRead: Long, bytesTotal: Long): Long {
         val now = System.currentTimeMillis()
-        return if (now - lastTimeReported > 100) {
+        return if (now - lastTimeReported > 1000) {
             log.debug { "onProgress: $bytesRead/$bytesTotal" }
             progressListener?.onProgress(bytesRead, bytesTotal)
             now

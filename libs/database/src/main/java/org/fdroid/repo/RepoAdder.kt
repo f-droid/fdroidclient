@@ -10,16 +10,21 @@ import androidx.annotation.AnyThread
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.net.toUri
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.getAndUpdate
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
+import org.fdroid.CompatibilityChecker
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.MinimalApp
@@ -31,6 +36,8 @@ import org.fdroid.download.HttpManager
 import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexUpdateResult
+import org.fdroid.index.RepoUpdater
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
@@ -39,6 +46,7 @@ import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
 import org.fdroid.repo.AddRepoError.ErrorType.IS_ARCHIVE_REPO
 import org.fdroid.repo.AddRepoError.ErrorType.UNKNOWN_SOURCES_DISALLOWED
+import java.io.File
 import java.io.IOException
 import java.net.Proxy
 import kotlin.coroutines.CoroutineContext
@@ -54,11 +62,12 @@ public class Fetching(
     public val receivedRepo: Repository?,
     public val apps: List<MinimalApp>,
     public val fetchResult: FetchResult?,
+    public val indexFile: File? = null,
+) : AddRepoState() {
     /**
      * true if fetching is complete.
      */
-    public val done: Boolean = false,
-) : AddRepoState() {
+    public val done: Boolean = indexFile != null
     override fun toString(): String {
         return "Fetching(fetchUrl=$fetchUrl, repo=${receivedRepo?.address}, apps=${apps.size}, " +
             "fetchResult=$fetchResult, done=$done)"
@@ -69,6 +78,7 @@ public object Adding : AddRepoState()
 
 public class Added(
     public val repo: Repository,
+    public val updateResult: IndexUpdateResult?,
 ) : AddRepoState()
 
 public data class AddRepoError(
@@ -100,6 +110,7 @@ internal class RepoAdder(
     private val tempFileProvider: TempFileProvider,
     private val downloaderFactory: DownloaderFactory,
     private val httpManager: HttpManager,
+    private val compatibilityChecker: CompatibilityChecker,
     private val repoUriGetter: RepoUriGetter = RepoUriGetter,
     private val repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
@@ -158,46 +169,60 @@ internal class RepoAdder(
                     )
                 }
                 fetchResult = getFetchResult(fetchUrl, repo)
+                coroutineContext.ensureActive() // ensure active before updating state
                 addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
 
             override fun onAppReceived(app: AppOverviewItem) {
                 apps.add(app)
+                coroutineContext.ensureActive() // ensure active before updating state
                 addRepoState.value = Fetching(fetchUrl, receivedRepo, apps.toList(), fetchResult)
             }
         }
         // set a state early, so the ui can show progress animation
+        coroutineContext.ensureActive() // ensure active before updating state
         addRepoState.value = Fetching(fetchUrl, receivedRepo, apps, fetchResult)
 
         // try fetching repo with v2 format first and fallback to v1
-        try {
+        val indexFile = try {
             fetchRepo(nUri.uri, nUri.fingerprint, proxy, nUri.username, nUri.password, receiver)
         } catch (e: SigningException) {
             log.error(e) { "Error verifying repo with given fingerprint." }
-            addRepoState.value = AddRepoError(INVALID_FINGERPRINT, e)
+            onError(AddRepoError(INVALID_FINGERPRINT, e))
             return
         } catch (e: IOException) {
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(IO_ERROR, e)
+            onError(AddRepoError(IO_ERROR, e))
             return
         } catch (e: SerializationException) {
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            onError(AddRepoError(INVALID_INDEX, e))
             return
         } catch (e: NotFoundException) { // v1 repos can also have 404
             log.error(e) { "Error fetching repo." }
-            addRepoState.value = AddRepoError(INVALID_INDEX, e)
+            onError(AddRepoError(INVALID_INDEX, e))
             return
         }
         // set final result
         val finalRepo = receivedRepo
+        coroutineContext.ensureActive() // ensure active before updating state
         if (finalRepo == null) {
-            addRepoState.value = AddRepoError(INVALID_INDEX)
+            onError(AddRepoError(INVALID_INDEX))
         } else {
-            addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, done = true)
+            addRepoState.value = Fetching(fetchUrl, finalRepo, apps, fetchResult, indexFile)
         }
     }
 
+    private suspend fun onError(state: AddRepoError) {
+        if (currentCoroutineContext().isActive) {
+            addRepoState.value = state
+        }
+    }
+
+    /**
+     * Fetches the repo from the given [uri] and posts updates to [receiver].
+     * @return the temporary file the repo was written to.
+     */
     private suspend fun fetchRepo(
         uri: Uri,
         fingerprint: String?,
@@ -205,10 +230,9 @@ internal class RepoAdder(
         username: String?,
         password: String?,
         receiver: RepoPreviewReceiver,
-    ) {
-        try {
-            val repo =
-                getTempRepo(uri, IndexFormatVersion.TWO, username, password)
+    ): File {
+        return try {
+            val repo = getTempRepo(uri, IndexFormatVersion.TWO, username, password)
             val repoFetcher = RepoV2Fetcher(
                 tempFileProvider, downloaderFactory, httpManager, repoUriBuilder, proxy
             )
@@ -216,8 +240,7 @@ internal class RepoAdder(
         } catch (e: NotFoundException) {
             log.warn(e) { "Did not find v2 repo, trying v1 now." }
             // try to fetch v1 repo
-            val repo =
-                getTempRepo(uri, IndexFormatVersion.ONE, username, password)
+            val repo = getTempRepo(uri, IndexFormatVersion.ONE, username, password)
             val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
             repoFetcher.fetchRepo(uri, repo, receiver, fingerprint)
         }
@@ -226,7 +249,7 @@ internal class RepoAdder(
     private fun getFetchResult(fetchUrlIn: String, fetchedRepo: Repository): FetchResult {
         // Note the delicate difference between fetchedRepo (from the network) and
         // existingRepo (from the database) in this function!
-        val cert = fetchedRepo.certificate ?: error("Certificate was null")
+        val cert = fetchedRepo.certificate
         val existingRepo = repositoryDao.getRepository(cert)
         val fetchUrl = fetchUrlIn.trimEnd('/')
 
@@ -262,22 +285,24 @@ internal class RepoAdder(
 
     @WorkerThread
     internal fun addFetchedRepository(): Repository? {
-        // prevent double calls (e.g. caused by double tapping a UI button)
-        if (addRepoState.compareAndSet(Adding, Adding)) return null
-
-        // cancel fetch preview job, so it stops emitting new states
+        // first cancel fetch preview job, so it stops emitting new states,
+        // screwing up the atomicity of getAndUpdate() below.
         fetchJob?.cancel()
 
         // get current state before changing it
-        val state = (addRepoState.value as? Fetching)
-            ?: throw IllegalStateException("Unexpected state: ${addRepoState.value}")
-        addRepoState.value = Adding
+        // prevent double calls (e.g. caused by double tapping a UI button)
+        val state = addRepoState.getAndUpdate {
+            log.info { "Previous state was $it" }
+            Adding
+        } as? Fetching ?: error("Unexpected previous state")
+        log.info { "Moved to state ${addRepoState.value}, cancelling preview job..." }
 
         val repo = state.receivedRepo
             ?: throw IllegalStateException("No repo: ${addRepoState.value}")
         val fetchResult = state.fetchResult
             ?: throw IllegalStateException("No fetchResult: ${addRepoState.value}")
 
+        var indexUpdateResult: IndexUpdateResult? = null
         val modifiedRepo: Repository = when (fetchResult) {
             is FetchResult.IsExistingRepository -> error("Repo exists: $fetchResult")
             is FetchResult.IsExistingMirror -> error("Mirror exists: $fetchResult")
@@ -289,7 +314,7 @@ internal class RepoAdder(
                     icon = repo.repository.icon ?: emptyMap(),
                     address = repo.address,
                     formatVersion = repo.formatVersion,
-                    certificate = repo.certificate ?: error("Repo had no certificate"),
+                    certificate = repo.certificate,
                     username = repo.username,
                     password = repo.password,
                 )
@@ -305,6 +330,17 @@ internal class RepoAdder(
                         repositoryDao.updateUserMirrors(repoId, userMirrors)
                     }
                     repositoryDao.getRepository(repoId) ?: error("New repository not found in DB")
+                }.also { repo ->
+                    // Update the repo before returning, so we already have its content.
+                    // This should pick up [indexFile] automatically without re-downloading,
+                    // because we use the sha256 hash as the file name.
+                    indexUpdateResult = RepoUpdater(
+                        tempDir = context.cacheDir,
+                        db = db,
+                        downloaderFactory = downloaderFactory,
+                        compatibilityChecker = compatibilityChecker,
+                    ).update(repo)
+                    log.info { "Updated repo: $indexUpdateResult" }
                 }
             }
 
@@ -321,11 +357,14 @@ internal class RepoAdder(
                 }
             }
         }
-        addRepoState.value = Added(modifiedRepo)
+        log.info { "Added repository" }
+        state.indexFile?.delete()
+        addRepoState.value = Added(modifiedRepo, indexUpdateResult)
         return modifiedRepo
     }
 
     internal fun abortAddingRepo() {
+        (addRepoState.value as? Fetching)?.indexFile?.delete()
         addRepoState.value = None
         fetchJob?.cancel()
     }
@@ -348,7 +387,7 @@ internal class RepoAdder(
                         icon = archiveRepo.repository.icon ?: emptyMap(),
                         address = archiveRepo.address,
                         formatVersion = archiveRepo.formatVersion,
-                        certificate = archiveRepo.certificate ?: error("Repo had no certificate"),
+                        certificate = archiveRepo.certificate,
                         username = archiveRepo.username,
                         password = archiveRepo.password,
                     )
@@ -357,14 +396,13 @@ internal class RepoAdder(
                         repositoryDao.setWeight(repoId, repo.weight - 1)
                         archiveRepoId = repoId
                     }
-                    cancel("expected") // no need to continue downloading the entire repo
                 }
 
                 override fun onAppReceived(app: AppOverviewItem) {
                     // no-op
                 }
             }
-            val uri = Uri.parse(address)
+            val uri = address.toUri()
             fetchRepo(uri, repo.fingerprint, proxy, repo.username, repo.password, receiver)
             return@withContext archiveRepoId
         }
@@ -398,7 +436,7 @@ internal class RepoAdder(
 }
 
 internal val defaultRepoUriBuilder = RepoUriBuilder { repo, pathElements ->
-    val builder = Uri.parse(repo.address).buildUpon()
+    val builder = repo.address.toUri().buildUpon()
     pathElements.forEach { builder.appendEncodedPath(it) }
     builder.build()
 }

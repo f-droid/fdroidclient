@@ -152,7 +152,7 @@ libs lint ktlintCheck:
   script:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck
+    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck checkLegacyAbi
 
 # Reference: https://gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/-/blob/4121970daed111dda84cab4547e1f2951684653c/templates/pmd.yml#L52-92
 app lint pmd:
@@ -347,9 +347,10 @@ pages:
   only:
     - master
   script:
-    - ./gradlew :libs:download:dokkaHtml :libs:index:dokkaHtml :libs:database:dokkaHtml
+    - ./gradlew :libs:core:dokkaGenerateHtml :libs:download:dokkaGenerateHtml :libs:index:dokkaGenerateHtml :libs:database:dokkaGenerateHtml
     - mkdir -p public/libs
     - touch public/index.html public/libs/index.html
+    - cp -r libs/core/build/dokka/html public/libs/core
     - cp -r libs/download/build/dokka/html public/libs/download
     - cp -r libs/index/build/dokka/html public/libs/index
     - cp -r libs/database/build/dokka/html public/libs/database

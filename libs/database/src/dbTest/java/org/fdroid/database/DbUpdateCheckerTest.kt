@@ -40,7 +40,7 @@ internal class DbUpdateCheckerTest : AppTest() {
     override fun createDb() {
         super.createDb()
         every { packageManager.systemAvailableFeatures } returns emptyArray()
-        updateChecker = DbUpdateChecker(db, packageManager) { true }
+        updateChecker = DbUpdateChecker(db, packageManager, { true })
     }
 
     @Test

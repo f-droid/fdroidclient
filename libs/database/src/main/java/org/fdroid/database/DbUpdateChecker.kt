@@ -14,12 +14,12 @@ public class DbUpdateChecker @JvmOverloads constructor(
     db: FDroidDatabase,
     private val packageManager: PackageManager,
     compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(packageManager),
+    private val updateChecker: UpdateChecker = UpdateChecker(compatibilityChecker),
 ) {
 
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
-    private val updateChecker = UpdateChecker(compatibilityChecker)
 
     /**
      * Returns a list of apps that can be updated.
@@ -69,6 +69,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
                 val app = getUpdatableApp(
                     version = version,
                     installedVersionCode = getLongVersionCode(packageInfo),
+                    installedVersionName = packageInfo.versionName ?: "???", // should never be null
                     isFromPreferredRepo = preferredRepoId == version.repoId,
                 )
                 if (app != null) updatableApps.add(app)
@@ -158,6 +159,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
     private fun getUpdatableApp(
         version: Version,
         installedVersionCode: Long,
+        installedVersionName: String,
         isFromPreferredRepo: Boolean,
     ): UpdatableApp? {
         val versionedStrings = versionDao.getVersionedStrings(
@@ -171,6 +173,7 @@ public class DbUpdateChecker @JvmOverloads constructor(
             repoId = version.repoId,
             packageName = version.packageName,
             installedVersionCode = installedVersionCode,
+            installedVersionName = installedVersionName,
             update = version.toAppVersion(versionedStrings),
             isFromPreferredRepo = isFromPreferredRepo,
             hasKnownVulnerability = version.hasKnownVulnerability,

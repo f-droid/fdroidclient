@@ -283,7 +283,9 @@ internal class IndexV2UpdaterTest : DbTest() {
                 assets.open("diff-empty-min/23.json").use { inputStream ->
                     indexFile.outputStream().use { inputStream.copyTo(it) }
                 }
-                every { tempFileProvider.createTempFile() } returnsMany listOf(entryFile, indexFile)
+                every {
+                    tempFileProvider.createTempFile(any())
+                } returnsMany listOf(entryFile, indexFile)
 
                 val result2 = indexUpdater.update(repo2)
                 assertIs<IndexUpdateResult.Error>(result2)
@@ -312,7 +314,7 @@ internal class IndexV2UpdaterTest : DbTest() {
             indexFile.outputStream().use { inputStream.copyTo(it) }
         }
 
-        every { tempFileProvider.createTempFile() } returnsMany listOf(entryFile, indexFile)
+        every { tempFileProvider.createTempFile(any()) } returnsMany listOf(entryFile, indexFile)
         every {
             downloaderFactory.createWithTryFirstMirror(repo, entryUri, entryFileV2, any())
         } returns downloader

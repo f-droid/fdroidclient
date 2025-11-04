@@ -4,16 +4,21 @@ import androidx.core.os.LocaleListCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import app.cash.turbine.test
+import io.mockk.MockKException
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.slot
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import org.fdroid.database.FDroidDatabase
+import org.fdroid.CompatibilityChecker
+import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.database.NewRepository
 import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.HttpManager
 import org.fdroid.download.TestDownloadFactory
+import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.TempFileProvider
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.junit.Assume.assumeTrue
@@ -22,7 +27,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
+import java.util.concurrent.Callable
 import kotlin.test.assertEquals
+import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -34,17 +41,25 @@ internal class RepoAdderIntegrationTest {
     var folder: TemporaryFolder = TemporaryFolder()
 
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
-    private val db = mockk<FDroidDatabase>()
+    private val db = mockk<FDroidDatabaseInt>()
     private val repoDao = mockk<RepositoryDaoInt>()
     private val tempFileProvider = TempFileProvider { folder.newFile() }
     private val httpManager = HttpManager("test")
     private val downloaderFactory = TestDownloadFactory(httpManager)
+    private val compatibilityChecker = mockk<CompatibilityChecker>()
 
     private val repoAdder: RepoAdder
 
     init {
         every { db.getRepositoryDao() } returns repoDao
-        repoAdder = RepoAdder(context, db, tempFileProvider, downloaderFactory, httpManager)
+        repoAdder = RepoAdder(
+            context = context,
+            db = db,
+            tempFileProvider = tempFileProvider,
+            downloaderFactory = downloaderFactory,
+            httpManager = httpManager,
+            compatibilityChecker = compatibilityChecker,
+        )
     }
 
     @Before
@@ -80,7 +95,9 @@ internal class RepoAdderIntegrationTest {
             assertEquals(1, (awaitItem() as Fetching).apps.size)
             assertEquals(2, (awaitItem() as Fetching).apps.size)
             assertEquals(3, (awaitItem() as Fetching).apps.size)
-            assertTrue(awaitItem() is Fetching)
+            assertEquals(4, (awaitItem() as Fetching).apps.size)
+            assertEquals(5, (awaitItem() as Fetching).apps.size)
+            assertTrue((awaitItem() as Fetching).done)
         }
 
         val state = repoAdder.addRepoState.value
@@ -90,7 +107,12 @@ internal class RepoAdderIntegrationTest {
             println("  ${app.packageName} ${app.summary}")
         }
 
+        val runSlot = slot<Callable<Any>>()
+        every { db.runInTransaction(capture(runSlot)) } answers {
+            runSlot.captured.call()
+        }
         val newRepo: Repository = mockk()
+        every { newRepo.formatVersion } returns IndexFormatVersion.TWO
         every { repoDao.insert(any<NewRepository>()) } returns 42L
         every { repoDao.getRepository(42L) } returns newRepo
 
@@ -99,6 +121,10 @@ internal class RepoAdderIntegrationTest {
             val addedState = awaitItem()
             assertTrue(addedState is Added, addedState.toString())
             assertEquals(newRepo, addedState.repo)
+            // we are not mocking all the actual repo adding,
+            // so just assert that this fails due to mocking
+            assertIs<IndexUpdateResult.Error>(addedState.updateResult)
+            assertIs<MockKException>(addedState.updateResult.e)
         }
     }
 

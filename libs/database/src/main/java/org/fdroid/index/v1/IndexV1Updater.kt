@@ -42,7 +42,7 @@ public class IndexV1Updater(
         if (repo.formatVersion != null && repo.formatVersion != ONE) {
             log.error { "Format downgrade for ${repo.address}" }
         }
-        val file = tempFileProvider.createTempFile()
+        val file = tempFileProvider.createTempFile(null)
         val downloader = downloaderFactory.createWithTryFirstMirror(
             repo = repo,
             uri = repoUriBuilder.getUri(repo, SIGNED_FILE_NAME),

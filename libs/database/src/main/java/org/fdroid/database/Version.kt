@@ -5,6 +5,7 @@ import androidx.room.DatabaseView
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Ignore
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.VersionedStringType.PERMISSION
@@ -40,7 +41,7 @@ internal data class Version(
     val repoId: Long,
     val packageName: String,
     val versionId: String,
-    val added: Long,
+    override val added: Long,
     @Embedded(prefix = "file_") val file: FileV1,
     @Embedded(prefix = "src_") val src: FileV2? = null,
     @Embedded(prefix = "manifest_") val manifest: AppManifest,
@@ -54,6 +55,8 @@ internal data class Version(
     }
 
     override val versionCode: Long get() = manifest.versionCode
+    override val versionName: String get() = manifest.versionName
+    override val size: Long? get() = file.size
     override val signer: SignerV2? get() = manifest.signer
     override val packageManifest: PackageManifest get() = manifest
     override val hasKnownVulnerability: Boolean
@@ -95,10 +98,11 @@ public data class AppVersion internal constructor(
         entityColumn = "versionId",
     )
     internal val versionedStrings: List<VersionedString>?,
-) {
+) : PackageVersion {
     public val repoId: Long get() = version.repoId
     public val packageName: String get() = version.packageName
-    public val added: Long get() = version.added
+    public override val added: Long get() = version.added
+    override val size: Long? get() = version.file.size
     public val isCompatible: Boolean get() = version.isCompatible
     public val manifest: AppManifest get() = version.manifest
     public val file: FileV1 get() = version.file
@@ -109,7 +113,22 @@ public data class AppVersion internal constructor(
         get() = versionedStrings?.getPermissionsSdk23(version) ?: emptyList()
     public val featureNames: List<String> get() = version.manifest.features ?: emptyList()
     public val nativeCode: List<String> get() = version.manifest.nativecode ?: emptyList()
-    public val releaseChannels: List<String> get() = version.releaseChannels ?: emptyList()
+    public override val releaseChannels: List<String> get() = version.releaseChannels ?: emptyList()
+
+    @get:Ignore
+    public override val versionCode: Long get() = version.manifest.versionCode
+
+    @get:Ignore
+    override val versionName: String get() = version.manifest.versionName
+
+    @get:Ignore
+    public override val signer: SignerV2? get() = version.manifest.signer
+
+    @Ignore
+    public override val packageManifest: PackageManifest = version.manifest
+
+    @Ignore
+    public override val hasKnownVulnerability: Boolean = version.hasKnownVulnerability
     public val antiFeatureKeys: List<String>
         get() = version.antiFeatures?.map { it.key } ?: emptyList()
 

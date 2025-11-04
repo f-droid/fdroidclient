@@ -2,8 +2,6 @@ package org.fdroid.index.v2
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
 import org.fdroid.IndexFile
 import org.fdroid.index.IndexParser
 
@@ -78,6 +76,9 @@ public data class Screenshots(
 
 public interface PackageVersion {
     public val versionCode: Long
+    public val versionName: String
+    public val added: Long
+    public val size: Long?
     public val signer: SignerV2?
     public val releaseChannels: List<String>?
     public val packageManifest: PackageManifest
@@ -88,7 +89,7 @@ public const val ANTI_FEATURE_KNOWN_VULNERABILITY: String = "KnownVuln"
 
 @Serializable
 public data class PackageVersionV2(
-    val added: Long,
+    override val added: Long,
     val file: FileV1,
     val src: FileV2? = null,
     val manifest: ManifestV2,
@@ -97,6 +98,8 @@ public data class PackageVersionV2(
     val whatsNew: LocalizedTextV2 = emptyMap(),
 ) : PackageVersion {
     override val versionCode: Long = manifest.versionCode
+    override val versionName: String = manifest.versionName
+    override val size: Long? = file.size
     override val signer: SignerV2? = manifest.signer
     override val packageManifest: PackageManifest = manifest
     override val hasKnownVulnerability: Boolean

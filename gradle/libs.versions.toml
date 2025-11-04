@@ -1,18 +1,18 @@
 [versions]
 compileSdk = "36"
-kotlin = "2.2.0"
+kotlin = "2.2.21"
 androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
-androidKspPlugin = "2.2.0-2.0.2" # first version needs to match kotlin version
-dokka = "2.0.0"
-mavenPublish = "0.18.0"
+androidKspPlugin = "2.2.21-2.0.4" # first version needs to match kotlin version
+dokka = "2.1.0"
+mavenPublish = "0.34.0"
 jlleitschuhKtlint = "13.1.0"
 
-kotlinxSerializationJson = "1.9.0" # 1.4.1 because https://github.com/Kotlin/kotlinx.serialization/issues/2231
+kotlinxSerializationJson = "1.9.0"
 kotlinxCoroutinesTest = "1.10.2"
 
-ktor = "3.3.0"
+ktor = "3.3.1"
 okhttp = "4.12.0"
-room = "2.8.1"
+room = "2.8.3"
 glide = "5.0.5"
 glideCompose = "1.0.0-beta08"
 
@@ -130,11 +130,9 @@ microutils-kotlin-logging = { module = "io.github.microutils:kotlin-logging", ve
 
 commons-io = { module = "commons-io:commons-io", version.ref = "commonsIo" }
 commons-net = { module = "commons-net:commons-net", version.ref = "commonsNet" }
-ktor-io = { module = "io.ktor:ktor-io", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
-ktor-client-curl = { module = "io.ktor:ktor-client-curl", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 goncalossilva-resources = { module = "com.goncalossilva:resources", version.ref = "goncalossilvaResources" }
@@ -167,6 +165,7 @@ json = { module = "org.json:json", version.ref = "json" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

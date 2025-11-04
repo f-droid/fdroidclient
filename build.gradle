@@ -6,6 +6,7 @@ buildscript {
 }
 plugins {
     alias libs.plugins.android.application apply false
+    alias libs.plugins.android.library apply false
     alias libs.plugins.android.ksp apply false
     alias libs.plugins.jetbrains.kotlin.android apply false
     alias libs.plugins.jetbrains.kotlin.multiplatform apply false
@@ -19,12 +20,6 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
-    }
-    // use new Sonatype server for mavenCentral publishing
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = "S01"
-        }
     }
 }
 subprojects {

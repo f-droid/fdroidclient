@@ -13,8 +13,11 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.fdroid.CompatibilityChecker
+import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppPrefsDaoInt
 import org.fdroid.database.FDroidDatabase
@@ -28,7 +31,6 @@ import org.fdroid.repo.RepoAdder
 import org.fdroid.repo.RepoUriGetter
 import java.io.File
 import java.net.Proxy
-import java.util.concurrent.CancellationException
 import java.util.concurrent.CountDownLatch
 import kotlin.coroutines.CoroutineContext
 
@@ -39,12 +41,20 @@ public class RepoManager @JvmOverloads constructor(
     downloaderFactory: DownloaderFactory,
     httpManager: HttpManager,
     repoUriBuilder: RepoUriBuilder = defaultRepoUriBuilder,
+    compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(
+        packageManager = context.packageManager,
+        forceTouchApps = false,
+    ),
     private val coroutineContext: CoroutineContext = Dispatchers.IO,
 ) {
     private val repositoryDao = db.getRepositoryDao() as RepositoryDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
-    private val tempFileProvider = TempFileProvider {
-        File.createTempFile("dl-", "", context.cacheDir)
+    private val tempFileProvider = TempFileProvider { sha256 ->
+        if (sha256 == null) {
+            File.createTempFile("dl-", "", context.cacheDir)
+        } else {
+            File(context.cacheDir, sha256).apply { createNewFile() }
+        }
     }
     private val repoAdder = RepoAdder(
         context = context,
@@ -52,6 +62,7 @@ public class RepoManager @JvmOverloads constructor(
         tempFileProvider = tempFileProvider,
         downloaderFactory = downloaderFactory,
         httpManager = httpManager,
+        compatibilityChecker = compatibilityChecker,
         repoUriBuilder = repoUriBuilder,
         coroutineContext = coroutineContext,
     )
@@ -134,6 +145,14 @@ public class RepoManager @JvmOverloads constructor(
      */
     @WorkerThread
     public fun deleteRepository(repoId: Long) {
+        // while this will get updated automatically, getting the update may be slow,
+        // so to speed up the UI, we emit the state change right away (deletion is unlikely to fail)
+        _repositoriesState.update {
+            _repositoriesState.value.filter { repo ->
+                // keep only repos that are not the deleted one
+                repo.repoId != repoId
+            }
+        }
         db.runInTransaction {
             // find and remove archive repo if existing
             val repository = repositoryDao.getRepository(repoId) ?: return@runInTransaction
@@ -141,11 +160,6 @@ public class RepoManager @JvmOverloads constructor(
             if (archiveRepoId != null) repositoryDao.deleteRepository(archiveRepoId)
             // delete main repo
             repositoryDao.deleteRepository(repoId)
-            // while this gets updated automatically, getting the update may be slow,
-            // so to speed up the UI, we emit the state change right away
-            _repositoriesState.value = _repositoriesState.value.filter { repo ->
-                repo.repoId == repoId
-            }
         }
     }
 
@@ -240,11 +254,7 @@ public class RepoManager @JvmOverloads constructor(
         var archiveRepoId = repositoryDao.getArchiveRepoId(cert)
         if (enabled) {
             if (archiveRepoId == null) {
-                try {
-                    archiveRepoId = repoAdder.addArchiveRepo(repository, proxy)
-                } catch (e: CancellationException) {
-                    if (e.message != "expected") throw e
-                }
+                archiveRepoId = repoAdder.addArchiveRepo(repository, proxy)
             } else {
                 repositoryDao.setRepositoryEnabled(archiveRepoId, true)
             }

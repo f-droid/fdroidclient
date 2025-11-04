@@ -19,6 +19,8 @@ import androidx.room.RoomRawQuery
 import androidx.room.RoomWarnings.Companion.QUERY_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
+import androidx.sqlite.SQLiteStatement
+import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
@@ -34,6 +36,7 @@ import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
+import java.util.concurrent.TimeUnit
 
 public interface AppDao {
     /**
@@ -83,15 +86,61 @@ public interface AppDao {
      * Apps without name, icon or summary are at the end (or excluded if limit is too small).
      * Includes anti-features from the version with the highest version code.
      */
+    @Deprecated("Use getNewAppsFlow and getRecentlyUpdatedAppsFlow instead")
     public fun getAppOverviewItems(limit: Int = 200): LiveData<List<AppOverviewItem>>
 
     /**
      * Returns a limited number of apps with limited data within the given [category].
      */
+    @Deprecated("Use getAppsByCategory instead")
     public fun getAppOverviewItems(
         category: String,
         limit: Int = 50,
     ): LiveData<List<AppOverviewItem>>
+
+    /**
+     * Returns all apps from the database.
+     */
+    public suspend fun getAllApps(): List<AppOverviewItem>
+
+    /**
+     * Returns all apps whose author is set exactly to [authorName].
+     */
+    public suspend fun getAppsByAuthor(authorName: String): List<AppOverviewItem>
+
+    /**
+     * Returns all apps that are in the category with [categoryId].
+     */
+    public suspend fun getAppsByCategory(categoryId: String): List<AppOverviewItem>
+
+    /**
+     * Returns apps that are new. This means that they were added and last updated at the same time.
+     * @param maxAgeInDays the number of days that is still considered "new".
+     * Apps older than this won't be returned.
+     */
+    public suspend fun getNewApps(maxAgeInDays: Long = 14): List<AppOverviewItem>
+
+    /**
+     * Get apps that were recently updated.
+     * This excludes apps returned by [getNewApps].
+     * @param limit only return that many apps and not more.
+     */
+    public suspend fun getRecentlyUpdatedApps(limit: Int = 200): List<AppOverviewItem>
+
+    /**
+     * Get all apps from the repository identified by [repoId].
+     */
+    public suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
+
+    /**
+     * Same as [getNewApps], but returns an observable [Flow].
+     */
+    public fun getNewAppsFlow(maxAgeInDays: Long = 14): Flow<List<AppOverviewItem>>
+
+    /**
+     * Same as [getRecentlyUpdatedApps], but returns an observable [Flow].
+     */
+    public fun getRecentlyUpdatedAppsFlow(limit: Int = 200): Flow<List<AppOverviewItem>>
 
     /**
      * Returns a list of all [AppListItem] sorted by the given [sortOrder],
@@ -140,6 +189,8 @@ public interface AppDao {
     public fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+
+    public suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
     public fun getNumberOfAppsInCategory(category: String): Int
 
@@ -237,13 +288,19 @@ internal interface AppDaoInt : AppDao {
             }
             // diff metadata
             val diffedApp = applyDiff(metadata, jsonObject)
-            val updatedApp =
-                if (jsonObject.containsKey("name") || jsonObject.containsKey("summary")) {
-                    diffedApp.copy(
-                        localizedName = diffedApp.name.getBestLocale(locales),
-                        localizedSummary = diffedApp.summary.getBestLocale(locales),
-                    )
-                } else diffedApp
+            val containsName = jsonObject.containsKey("name")
+            val containsSummary = jsonObject.containsKey("summary")
+            val containsDescription = jsonObject.containsKey("description")
+            val updatedApp = if (containsName || containsSummary || containsDescription) {
+                diffedApp.copy(
+                    name = if (containsName) diffedApp.name.zero() else diffedApp.name,
+                    summary = if (containsSummary) diffedApp.summary.zero() else diffedApp.summary,
+                    description = if (containsDescription) diffedApp.description.zero()
+                    else diffedApp.description,
+                    localizedName = diffedApp.name.getBestLocale(locales),
+                    localizedSummary = diffedApp.summary.getBestLocale(locales),
+                )
+            } else diffedApp
             updateAppMetadata(updatedApp)
             // diff localizedFiles
             val localizedFiles = getLocalizedFiles(repoId, packageName)
@@ -319,6 +376,7 @@ internal interface AppDaoInt : AppDao {
         WHERE repoId = :repoId""")
     override fun updateCompatibility(repoId: Long)
 
+    @Deprecated("Will be removed in future version")
     @Query("""UPDATE ${AppMetadata.TABLE} SET localizedName = :name, localizedSummary = :summary
         WHERE repoId = :repoId AND packageName = :packageName""")
     fun updateAppMetadata(repoId: Long, packageName: String, name: String?, summary: String?)
@@ -366,7 +424,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-            localizedSummary, version.antiFeatures, app.isCompatible
+            localizedSummary, app.name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -381,7 +439,7 @@ internal interface AppDaoInt : AppDao {
 
     @Transaction
     @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
-             localizedSummary, version.antiFeatures, app.isCompatible
+             localizedSummary, app.name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -401,9 +459,114 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, added, app.lastUpdated, localizedName,
-             localizedSummary, app.isCompatible
+             localizedSummary, name, summary, categories, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""")
     fun getAppOverviewItem(repoId: Long, packageName: String): AppOverviewItem?
+
+    @Transaction
+    override suspend fun getAllApps(): List<AppOverviewItem> {
+        val query = getAppsQuery("") {}
+        return getApps(query)
+    }
+
+    @Transaction
+    override suspend fun getAppsByAuthor(authorName: String): List<AppOverviewItem> {
+        val query = getAppsQuery("authorName = ?") { statement ->
+            statement.bindText(1, authorName)
+        }
+        return getApps(query)
+    }
+
+    @Transaction
+    override suspend fun getAppsByCategory(categoryId: String): List<AppOverviewItem> {
+        val query = getAppsQuery("categories LIKE '%,' || ? || ',%'") { statement ->
+            statement.bindText(1, categoryId)
+        }
+        return getApps(query)
+    }
+
+    @Transaction
+    override suspend fun getNewApps(maxAgeInDays: Long): List<AppOverviewItem> {
+        val query =
+            getAppsQuery("app.added = app.lastUpdated AND app.lastUpdated > ?") { statement ->
+                statement.bindLong(
+                    1,
+                    System.currentTimeMillis() - TimeUnit.DAYS.toMillis(maxAgeInDays)
+                )
+            }
+        return getApps(query)
+    }
+
+    @Transaction
+    override suspend fun getRecentlyUpdatedApps(limit: Int): List<AppOverviewItem> {
+        val query = getAppsQuery(
+            "app.added != app.lastUpdated ORDER BY app.lastUpdated DESC LIMIT ?"
+        ) { statement ->
+            statement.bindInt(1, limit)
+        }
+        return getApps(query)
+    }
+
+    @Transaction
+    @Query("""SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
+            localizedSummary, name, summary, categories, version.antiFeatures, app.isCompatible
+        FROM ${AppMetadata.TABLE} AS app
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE repoId = :repoId""")
+    override suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
+
+    override fun getNewAppsFlow(maxAgeInDays: Long): Flow<List<AppOverviewItem>> {
+        val query =
+            getAppsQuery(
+                "app.added = app.lastUpdated AND app.lastUpdated > ? ORDER BY app.added DESC"
+            ) { statement ->
+                statement.bindLong(
+                    1,
+                    System.currentTimeMillis() - TimeUnit.DAYS.toMillis(maxAgeInDays)
+                )
+            }
+        return getAppsFlow(query)
+    }
+
+    override fun getRecentlyUpdatedAppsFlow(limit: Int): Flow<List<AppOverviewItem>> {
+        val query = getAppsQuery(
+            "app.added != app.lastUpdated ORDER BY app.lastUpdated DESC LIMIT ?"
+        ) { statement ->
+            statement.bindInt(1, limit)
+        }
+        return getAppsFlow(query)
+    }
+
+    private fun getAppsQuery(
+        whereQuery: String,
+        onBindStatement: (SQLiteStatement) -> Unit,
+    ): RoomRawQuery {
+        val queryBuilder = StringBuilder(
+            """
+        SELECT repoId, packageName, app.added, app.lastUpdated, localizedName,
+            localizedSummary, name, summary, categories, version.antiFeatures, app.isCompatible
+        FROM ${AppMetadata.TABLE} AS app
+        JOIN PreferredRepo USING (packageName)
+        LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
+        WHERE repoId = preferredRepoId"""
+        )
+        if (whereQuery.isNotEmpty()) queryBuilder.append(" AND ").append(whereQuery)
+        return RoomRawQuery(
+            sql = queryBuilder.toString().trimIndent(),
+            onBindStatement = onBindStatement,
+        )
+    }
+
+    @RawQuery
+    suspend fun getApps(query: RoomRawQuery): List<AppOverviewItem>
+
+    @Transaction
+    @RawQuery(
+        observedEntities = [
+            AppMetadata::class, Version::class, Repository::class, RepositoryPreferences::class,
+        ]
+    )
+    fun getAppsFlow(query: RoomRawQuery): Flow<List<AppOverviewItem>>
 
     //
     // AppListItems
@@ -430,7 +593,7 @@ internal interface AppDaoInt : AppDao {
             val queryBuilder =
                 StringBuilder("""
                 SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-                       version.antiFeatures, app.isCompatible, app.preferredSigner
+                       categories, version.antiFeatures, app.isCompatible, app.preferredSigner
                 FROM ${AppMetadata.TABLE} AS app
                 JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
                 JOIN PreferredRepo USING (packageName)
@@ -461,7 +624,7 @@ internal interface AppDaoInt : AppDao {
             val queryBuilder =
                 StringBuilder("""
                 SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
-                    version.antiFeatures, app.isCompatible, app.preferredSigner
+                    categories, version.antiFeatures, app.isCompatible, app.preferredSigner
                 FROM ${AppMetadata.TABLE} AS app
                 LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
                 WHERE repoId = :repoId""")
@@ -486,7 +649,7 @@ internal interface AppDaoInt : AppDao {
             val queryBuilder =
                 StringBuilder("""
                 SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-                     version.antiFeatures, app.isCompatible, app.preferredSigner
+                     categories, version.antiFeatures, app.isCompatible, app.preferredSigner
                 FROM ${AppMetadata.TABLE} AS app
                 JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
                 JOIN PreferredRepo USING (packageName)
@@ -537,7 +700,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""
         SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN PreferredRepo USING (packageName)
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
@@ -554,7 +717,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""
         SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
         JOIN PreferredRepo USING (packageName)
@@ -574,7 +737,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""
         SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         WHERE repoId = :repoId AND app.rowid IN (
@@ -586,7 +749,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""
         SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         JOIN PreferredRepo USING (packageName)
@@ -599,7 +762,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query("""
         SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated,
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -618,7 +781,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @SuppressWarnings(QUERY_MISMATCH) // no anti-features needed here
     @Query("""SELECT repoId, packageName, localizedName, localizedSummary, app.lastUpdated, 
-                     app.isCompatible, app.preferredSigner
+                     categories, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
@@ -630,7 +793,7 @@ internal interface AppDaoInt : AppDao {
     @Transaction
     @Query(
         """SELECT repoId, packageName, app.localizedName, app.localizedSummary, app.lastUpdated, 
-               version.antiFeatures, app.isCompatible, app.preferredSigner
+               categories, version.antiFeatures, app.isCompatible, app.preferredSigner
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         WHERE authorName = :authorName AND app.rowid IN (
@@ -699,6 +862,20 @@ internal interface AppDaoInt : AppDao {
             }
         }
     }
+
+    @Transaction
+    @Query(
+        """
+        SELECT repoId, packageName, app.lastUpdated, app.name, app.summary,
+            app.description, app.authorName, app.categories,
+            matchinfo(${AppMetadataFts.TABLE}, 'pcx')
+        FROM ${AppMetadata.TABLE} AS app
+        JOIN PreferredRepo USING (packageName)
+        JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
+        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND
+            repoId = preferredRepoId"""
+    )
+    override suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
     //
     // Misc Queries

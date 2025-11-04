@@ -194,7 +194,7 @@ internal class IndexV1UpdaterTest : DbTest() {
         assets.open(jar).use { inputStream ->
             jarFile.outputStream().use { inputStream.copyTo(it) }
         }
-        every { tempFileProvider.createTempFile() } returns jarFile
+        every { tempFileProvider.createTempFile(null) } returns jarFile
         every {
             downloaderFactory.createWithTryFirstMirror(repo, uri, indexFile, jarFile)
         } returns downloader

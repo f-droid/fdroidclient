@@ -390,6 +390,37 @@ internal class IndexV2DiffTest : DbTest() {
         )
     }
 
+    @Test
+    fun testMinAddChinese() {
+        val diffJson = """{
+          "packages": {
+            "org.fdroid.min1": {
+              "metadata": {
+                "name": { "zh-CN": "自由软件仓库" },
+                "summary": { "ja": "这个仓库中的" },
+                "description": { "ko-KR": "切始终是从" }
+              }
+            }
+          }
+        }""".trimIndent()
+        testJsonDiff(
+            startPath = "index-min-v2.json",
+            diff = diffJson,
+            endIndex = TestDataMinV2.index.copy(
+                packages = TestDataMinV2.index.packages.mapValues {
+                    it.value.copy(
+                        metadata = it.value.metadata.copy(
+                            // zero whitespaces (to separate tokens) will be added in testJsonDiff()
+                            name = mapOf("zh-CN" to "自由软件仓库"),
+                            summary = mapOf("ja" to "这个仓库中的"),
+                            description = mapOf("ko-KR" to "切始终是从"),
+                        )
+                    )
+                }
+            ),
+        )
+    }
+
     private fun testJsonDiff(startPath: String, diff: String, endIndex: IndexV2) {
         testDiff(startPath, ByteArrayInputStream(diff.toByteArray()), endIndex)
     }

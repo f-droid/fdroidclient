@@ -176,29 +176,16 @@ internal class FtsCaseInsensitiveMigrationTest {
         // now get the Room DB, so we can use our DAOs for verifying the migration
         Room.databaseBuilder(context, FDroidDatabaseInt::class.java, TEST_DB)
             .allowMainThreadQueries()
+            .addMigrations(MIGRATION_8_9) // was added later
             .build().use { db ->
                 // assert that apps are still there
                 val metadata = db.getAppDao().getAppMetadata()
                 assertEquals(2, metadata.size)
                 // default search with no diacritics
-                assertGetAppListItems(db, "*Transport*", 1)
-                assertGetAppListItems(db, "Transportr", 1)
-                assertGetAppListItems(db, "*f*", 2)
-                // no or wrong diacritics
-                assertGetAppListItems(db, "Offi", 0)
-                assertGetAppListItems(db, "offi", 0)
-                assertGetAppListItems(db, "õffi", 0)
-                assertGetAppListItems(db, "*Offi*", 0)
-                assertGetAppListItems(db, "*offi*", 0)
-                assertGetAppListItems(db, "Konig", 0)
-                // correct diacritics
-                assertGetAppListItems(db, "*Öffi*", 1)
-                assertGetAppListItems(db, "*öffi*", 1)
-                assertGetAppListItems(db, "Öffi", 1)
-                assertGetAppListItems(db, "öffi", 1)
-                // both apps have "öff" in their name or summary
-                assertGetAppListItems(db, "*öff*", 2)
-                assertGetAppListItems(db, "König", 1)
+                assertGetAppListItems(db, "*Transport*", 2)
+
+                // other tests here were removed, because MIGRATION_8_9 changed this once again
+                // and has its own test
             }
     }
 

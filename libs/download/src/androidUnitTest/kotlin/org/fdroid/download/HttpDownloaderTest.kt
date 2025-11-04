@@ -25,6 +25,7 @@ import org.fdroid.runSuspend
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
+import java.io.File
 import java.io.IOException
 import java.net.BindException
 import java.net.ServerSocket
@@ -33,6 +34,7 @@ import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -212,6 +214,53 @@ internal class HttpDownloaderTest {
         httpDownloader.download()
 
         assertContentEquals(firstBytes + secondBytes, file.readBytes())
+    }
+
+    /**
+     * Tests re-using an already downloaded file with hash verification.
+     * This can fail if the hashing doesn't take the already downloaded bytes into account.
+     */
+    @Test
+    fun testCompleteResumeWithHashSuccess() = runSuspend {
+        val sha256 = "efabb260da949061c88173c19f369b4aa0eaa82003c7c2dec08b5dfe75525368"
+        val file = File(folder.newFolder(), sha256).apply { createNewFile() }
+        val bytes = ("These are the first bytes that were already downloaded." +
+            "These are the last bytes that still need to be downloaded.").encodeToByteArray()
+        file.writeBytes(bytes)
+        // specifying the sha256 hash forces its validation
+        val indexFile = getIndexFile("foo/bar", sha256, bytes.size.toLong())
+        val downloadRequest = DownloadRequest(indexFile, mirrors)
+
+        val httpManager = HttpManager(userAgent, null)
+        val httpDownloader = HttpDownloaderV2(httpManager, downloadRequest, file)
+        // this throws if the hash doesn't match while downloading
+        httpDownloader.download()
+
+        assertContentEquals(bytes, file.readBytes())
+    }
+
+    @Test
+    fun testCompleteResumeWithHashFailure() = runSuspend {
+        val sha256 = "efabb260da949061c88173c19f369b4aa0eaa82003c7c2dec08b5dfe75525368"
+        val file = File(folder.newFolder(), sha256).apply { createNewFile() }
+        val bytes = ("These are the first bytes that were already downloaded." +
+            "These are the last bytes that still need to be downloaded.").encodeToByteArray()
+        file.writeBytes(bytes)
+        // specifying the sha256 hash forces its validation
+        val indexFile = getIndexFile("foo/bar", sha256.replaceFirst('e', 'f'), bytes.size.toLong())
+        val downloadRequest = DownloadRequest(indexFile, mirrors)
+        val mockEngine = MockEngine.config {
+            reuseHandlers = false
+            addHandler {
+                respond("", OK)
+            }
+        }
+        val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
+        val httpDownloader = HttpDownloaderV2(httpManager, downloadRequest, file)
+        val e = assertFailsWith<IOException> {
+            httpDownloader.download()
+        }
+        assertEquals("Hash not matching", e.message)
     }
 
     @Test
