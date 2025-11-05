@@ -30,18 +30,20 @@ public object LocaleChooser {
                 if (firstMatch.script.isNullOrEmpty()) {
                     ICUCompat.maximizeAndGetScript(firstMatch)?.takeUnless { it.isEmpty() }
                         ?.let { script -> getInRankingOrder(firstMatch, tried + 1, script, tried) }
-                } else if (tried > 1) {
-                    getInRankingOrder(firstMatch, tried - 1, firstMatch.script, tried)
                 } else {
-                    null
+                    if (tried > 1) {
+                        getInRankingOrder(firstMatch, tried - 1, firstMatch.script, tried)
+                    } else {
+                        null
+                    }
                 }
                     // then language and other countries if script matches
-                    ?: if (tried == 0) null else get(firstMatch.language)?.takeIf { _ ->
+                    ?: (if (tried == 0) null else get(firstMatch.language)?.takeIf { _ ->
                         LocaleListCompat.matchesLanguageAndScript(
                             getLocale(firstMatch.language),
                             firstMatch
                         )
-                    } ?: getFirstSameScript(firstMatch)
+                    }) ?: getFirstSameScript(firstMatch)
             }
         }
             // or English and then just take the first of the list
@@ -88,12 +90,12 @@ public object LocaleChooser {
         }
     }
 
-    private fun getLocale(language: String, script: String = "") =
+    private fun getLocale(language: String, country: String = "") =
         if (android.os.Build.VERSION.SDK_INT >= 36) {
-            Locale.of(language, script)
+            Locale.of(language, country)
         } else {
             @Suppress("DEPRECATION")
-            Locale(language, script)
+            Locale(language, country)
         }
 
 }
