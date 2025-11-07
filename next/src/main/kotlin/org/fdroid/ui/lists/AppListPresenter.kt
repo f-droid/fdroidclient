@@ -56,7 +56,8 @@ fun AppListPresenter(
         val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
         val matchesQuery = searchQuery.isEmpty() ||
             it.name.normalize().contains(searchQuery, ignoreCase = true) ||
-            it.summary.normalize().contains(searchQuery, ignoreCase = true)
+            it.summary.normalize().contains(searchQuery, ignoreCase = true) ||
+            it.packageName.contains(searchQuery, ignoreCase = true)
         val matchesCompatibility = !filterIncompatible || it.isCompatible
         matchesCategories && matchesRepos && matchesQuery && matchesCompatibility
     }
