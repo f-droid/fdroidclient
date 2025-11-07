@@ -115,6 +115,11 @@ class NotificationManager @Inject constructor(
             .setAutoCancel(true)
     }
 
+    val isAppUpdatesAvailableNotificationShowing: Boolean
+        get() = nm.activeNotifications.any { notification ->
+            notification.id == NOTIFICATION_ID_APP_UPDATES_AVAILABLE
+        }
+
     fun cancelAppUpdatesAvailableNotification() {
         log.info { "cancel app updates available notification" }
         nm.cancel(NOTIFICATION_ID_APP_UPDATES_AVAILABLE)

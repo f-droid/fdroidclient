@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
 import mu.KotlinLogging
+import org.fdroid.NotificationManager
 import org.fdroid.database.AppVersion
 import org.fdroid.database.DbUpdateChecker
 import org.fdroid.database.FDroidDatabase
@@ -29,12 +30,13 @@ import kotlin.math.min
 
 @Singleton
 class UpdatesManager @Inject constructor(
-    @ApplicationContext context: Context,
+    @param:ApplicationContext private val context: Context,
     private val db: FDroidDatabase,
     private val dbUpdateChecker: DbUpdateChecker,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     private val appInstallManager: AppInstallManager,
+    private val notificationManager: NotificationManager,
     @param:IoDispatcher private val coroutineScope: CoroutineScope,
 ) {
     private val log = KotlinLogging.logger { }
@@ -101,6 +103,11 @@ class UpdatesManager @Inject constructor(
         }
         _updates.value = updates
         _numUpdates.value = updates.size
+        // update 'update available' notification, if it is currently showing
+        if (notificationManager.isAppUpdatesAvailableNotificationShowing) {
+            if (updates.isEmpty()) notificationManager.cancelAppUpdatesAvailableNotification()
+            else notificationManager.showAppUpdatesAvailableNotification(notificationStates)
+        }
     }
 
     suspend fun updateAll(): List<Job> {

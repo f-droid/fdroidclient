@@ -107,6 +107,8 @@ class AppDetailsViewModel @Inject constructor(
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo
                 loadPackageInfoFlow(appMetadata.packageName)
+                // load updates as there may be less now (removes/updates notification)
+                updatesManager.loadUpdates()
             }
         }
     }
