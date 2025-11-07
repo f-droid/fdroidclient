@@ -46,7 +46,7 @@ fun AddRepoErrorScreen(state: AddRepoError, modifier: Modifier = Modifier) {
     ) {
         Image(
             imageVector = Icons.Default.Error,
-            contentDescription = null,
+            contentDescription = stringResource(R.string.error),
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.error),
             modifier = Modifier.size(48.dp),
         )

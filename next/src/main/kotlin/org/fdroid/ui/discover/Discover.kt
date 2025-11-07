@@ -31,6 +31,9 @@ import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -79,8 +82,8 @@ fun Discover(
                     var menuExpanded by remember { mutableStateOf(false) }
                     IconButton(onClick = { menuExpanded = !menuExpanded }) {
                         Icon(
-                            Icons.Default.MoreVert,
-                            contentDescription = null,
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = stringResource(R.string.more),
                         )
                     }
                     MainOverFlowMenu(menuExpanded, {
@@ -107,7 +110,11 @@ fun Discover(
         ) {
             when (discoverModel) {
                 is LoadingDiscoverModel -> {
-                    AnimatedVisibility(discoverModel.isFirstStart) {
+                    AnimatedVisibility(
+                        visible = discoverModel.isFirstStart,
+                        modifier = Modifier
+                            .semantics { liveRegion = LiveRegionMode.Polite },
+                    ) {
                         Text(
                             stringResource(R.string.first_start_loading),
                             textAlign = TextAlign.Center,

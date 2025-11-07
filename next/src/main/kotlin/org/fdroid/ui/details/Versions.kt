@@ -9,11 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
-import androidx.compose.material.icons.filled.ExpandLess
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Badge
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +25,9 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +35,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppVersion
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.ExpandIconChevron
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString
@@ -83,14 +84,7 @@ fun Version(
                     expanded = !expanded
                 }
         ) {
-            Icon(
-                imageVector = if (expanded) {
-                    Icons.Default.ExpandLess
-                } else {
-                    Icons.Default.ExpandMore
-                },
-                contentDescription = null,
-            )
+            ExpandIconChevron(expanded)
             Row {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
@@ -129,7 +123,11 @@ fun Version(
                 }
             }
         }
-        AnimatedVisibility(expanded) {
+        AnimatedVisibility(
+            visible = expanded,
+            modifier = Modifier
+                .semantics { liveRegion = LiveRegionMode.Polite }
+        ) {
             Row(
                 horizontalArrangement = spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically,

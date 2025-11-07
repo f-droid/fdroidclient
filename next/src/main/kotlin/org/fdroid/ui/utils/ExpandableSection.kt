@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -45,6 +46,7 @@ fun ExpandableSection(
             if (icon != null) Icon(
                 painter = icon,
                 contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
             )
             Text(
                 text = title,
@@ -52,17 +54,13 @@ fun ExpandableSection(
                 modifier = Modifier.weight(1f),
             )
             IconButton(onClick = { sectionExpanded = !sectionExpanded }) {
-                Icon(
-                    imageVector = if (sectionExpanded) {
-                        Icons.Default.KeyboardArrowUp
-                    } else {
-                        Icons.Default.KeyboardArrowDown
-                    },
-                    contentDescription = null,
-                )
+                ExpandIconArrow(sectionExpanded)
             }
         }
-        AnimatedVisibility(sectionExpanded) {
+        AnimatedVisibility(
+            visible = sectionExpanded,
+            modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+        ) {
             content()
         }
     }

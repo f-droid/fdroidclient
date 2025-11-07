@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.NewReleases
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Card
@@ -27,6 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
@@ -34,6 +36,7 @@ import org.fdroid.download.DownloadRequest
 import org.fdroid.download.PackageName
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.getPreviewVersion
 
 @Composable
@@ -50,7 +53,9 @@ fun UpdatableAppRow(
                     Icon(
                         imageVector = Icons.Filled.NewReleases,
                         tint = MaterialTheme.colorScheme.error,
-                        contentDescription = null, modifier = Modifier.size(24.dp),
+                        contentDescription =
+                        stringResource(R.string.notification_title_single_update_available),
+                        modifier = Modifier.size(24.dp),
                     )
                 }) {
                     AsyncShimmerImage(
@@ -72,11 +77,7 @@ fun UpdatableAppRow(
             },
             trailingContent = {
                 if (app.whatsNew != null) IconButton(onClick = { isExpanded = !isExpanded }) {
-                    if (isExpanded) {
-                        Icon(Icons.Default.ArrowDropUp, "TODO")
-                    } else {
-                        Icon(Icons.Default.ArrowDropDown, "TODO")
-                    }
+                    ExpandIconArrow(isExpanded)
                 }
             },
             colors = ListItemDefaults.colors(
@@ -88,12 +89,18 @@ fun UpdatableAppRow(
             ),
             modifier = modifier,
         )
-        AnimatedVisibility(visible = isExpanded, modifier = Modifier.padding(8.dp)) {
+        AnimatedVisibility(
+            visible = isExpanded,
+            modifier = Modifier
+                .padding(8.dp)
+                .semantics { liveRegion = LiveRegionMode.Polite }
+        ) {
             Card(modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = app.whatsNew ?: "",
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(8.dp)
+                    modifier = Modifier
+                        .padding(8.dp)
                 )
             }
         }

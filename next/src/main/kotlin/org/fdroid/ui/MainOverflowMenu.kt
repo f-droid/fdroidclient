@@ -5,7 +5,10 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 
 @Composable
 fun MainOverFlowMenu(
@@ -22,7 +25,11 @@ fun MainOverFlowMenu(
                 text = { Text(stringResource(dest.label)) },
                 onClick = { onItemClicked(dest) },
                 leadingIcon = {
-                    Icon(dest.icon, contentDescription = null)
+                    Icon(
+                        imageVector = dest.icon,
+                        contentDescription = null,
+                        modifier = Modifier.semantics { hideFromAccessibility() },
+                    )
                 }
             )
         }

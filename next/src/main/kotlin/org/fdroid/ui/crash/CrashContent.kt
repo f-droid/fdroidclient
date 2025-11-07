@@ -24,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
@@ -54,6 +56,7 @@ fun CrashContent(
                 .fillMaxWidth(0.5f)
                 .aspectRatio(1f)
                 .padding(vertical = 16.dp)
+                .semantics { hideFromAccessibility() },
         )
         Column(verticalArrangement = spacedBy(16.dp)) {
             Text(

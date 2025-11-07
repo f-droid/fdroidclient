@@ -29,6 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viktormykhailiv.compose.hints.rememberHint
@@ -115,7 +117,7 @@ fun RepoDetails(
                 IconButton(onClick = { menuExpanded = !menuExpanded }) {
                     Icon(
                         Icons.Default.MoreVert,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.more),
                     )
                 }
                 DropdownMenu(
@@ -129,7 +131,11 @@ fun RepoDetails(
                             RepoUpdateWorker.updateNow(context, repo.repoId)
                         },
                         leadingIcon = {
-                            Icon(Icons.Default.Update, contentDescription = null)
+                            Icon(
+                                imageVector = Icons.Default.Update,
+                                contentDescription = null,
+                                modifier = Modifier.semantics { hideFromAccessibility() },
+                            )
                         }
                     )
                     DropdownMenuItem(
@@ -139,7 +145,11 @@ fun RepoDetails(
                             deleteDialog = true
                         },
                         leadingIcon = {
-                            Icon(Icons.Default.Delete, contentDescription = null)
+                            Icon(
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = null,
+                                modifier = Modifier.semantics { hideFromAccessibility() },
+                            )
                         }
                     )
                 }

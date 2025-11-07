@@ -40,6 +40,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -131,6 +133,7 @@ fun Settings(
                         Icon(
                             imageVector = Icons.Default.BrightnessMedium,
                             contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
                     summary = { Text(text = "${themeToString(it)}") },
@@ -141,6 +144,7 @@ fun Settings(
                         Icon(
                             imageVector = Icons.Default.Translate,
                             contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
                     title = { Text(stringResource(R.string.pref_language)) },
@@ -158,6 +162,7 @@ fun Settings(
                         Icon(
                             imageVector = Icons.Default.Notifications,
                             contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
                     title = { Text(stringResource(R.string.notification_title)) },
@@ -183,10 +188,12 @@ fun Settings(
                         if (repoUpdatesEnabled) Icon(
                             imageVector = Icons.Default.SystemSecurityUpdate,
                             contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         ) else Icon(
                             imageVector = Icons.Default.SystemSecurityUpdateWarning,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
                     summary = { repoUpdatesEnabled ->
@@ -231,6 +238,7 @@ fun Settings(
                                 Icons.Default.UpdateDisabled
                             },
                             contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
                     summary = { autoUpdatesEnabled ->

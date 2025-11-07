@@ -21,6 +21,8 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
@@ -51,6 +53,7 @@ fun AppCarousel(
             )
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                modifier = Modifier.semantics { hideFromAccessibility() },
                 contentDescription = null,
             )
         }
@@ -79,7 +82,8 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .requiredSize(76.dp)
-                .clip(MaterialTheme.shapes.medium),
+                .clip(MaterialTheme.shapes.medium)
+                .semantics { hideFromAccessibility() },
         )
         Text(
             text = app.name,

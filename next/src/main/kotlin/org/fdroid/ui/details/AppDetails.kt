@@ -45,6 +45,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.buildAnnotatedString
@@ -146,7 +149,11 @@ fun AppDetails(
             var descriptionExpanded by remember { mutableStateOf(false) }
             item.description?.let { description ->
                 val htmlDescription = AnnotatedString.fromHtml(description)
-                AnimatedVisibility(descriptionExpanded) {
+                AnimatedVisibility(
+                    visible = descriptionExpanded,
+                    modifier = Modifier
+                        .semantics { liveRegion = LiveRegionMode.Polite },
+                ) {
                     SelectionContainer {
                         Text(
                             text = htmlDescription,

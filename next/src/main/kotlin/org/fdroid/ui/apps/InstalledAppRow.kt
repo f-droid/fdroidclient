@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
@@ -32,7 +34,9 @@ fun InstalledAppRow(
                     model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
                     error = painterResource(R.drawable.ic_repo_app_default),
                     contentDescription = null,
-                    modifier = Modifier.size(48.dp),
+                    modifier = Modifier
+                        .size(48.dp)
+                        .semantics { hideFromAccessibility() },
                 )
             },
             headlineContent = {

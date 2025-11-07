@@ -144,9 +144,7 @@ fun AppList(
                         }) {
                             Icon(
                                 imageVector = Icons.Filled.FilterList,
-                                contentDescription = stringResource(
-                                    R.string.search_filter_no_results
-                                ),
+                                contentDescription = stringResource(R.string.filter),
                             )
                         }
                     }

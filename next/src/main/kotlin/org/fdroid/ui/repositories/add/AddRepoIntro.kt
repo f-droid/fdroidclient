@@ -25,14 +25,11 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -54,6 +51,9 @@ import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -69,6 +69,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.repo.None
+import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
 
@@ -124,7 +125,11 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
                 }
             },
         )
-        AnimatedVisibility(showPermissionWarning) {
+        AnimatedVisibility(
+            visible = showPermissionWarning,
+            modifier = Modifier
+                .semantics { liveRegion = LiveRegionMode.Polite },
+        ) {
             Card(
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.inverseSurface,
@@ -161,19 +166,16 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
                 // avoid occupying the whole row
                 modifier = Modifier.weight(1f),
             )
-            Icon(
-                imageVector = if (manualExpanded) {
-                    Icons.Default.ArrowDropUp
-                } else {
-                    Icons.Default.ArrowDropDown
-                },
-                contentDescription = null,
-            )
+            ExpandIconArrow(manualExpanded)
         }
         val textState = remember { mutableStateOf(TextFieldValue()) }
         val focusRequester = remember { FocusRequester() }
         val coroutineScope = rememberCoroutineScope()
-        AnimatedVisibility(visible = manualExpanded) {
+        AnimatedVisibility(
+            visible = manualExpanded,
+            modifier = Modifier
+                .semantics { liveRegion = LiveRegionMode.Polite },
+        ) {
             Column(
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = spacedBy(16.dp),
