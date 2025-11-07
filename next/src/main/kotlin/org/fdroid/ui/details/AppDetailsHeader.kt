@@ -191,10 +191,7 @@ fun AppDetailsHeader(
             modifier = buttonLineModifier,
             verticalAlignment = CenterVertically,
         ) {
-            Column(
-                verticalArrangement = spacedBy(8.dp, CenterVertically),
-                modifier = Modifier.weight(1f)
-            ) {
+            Column {
                 val strRes = when (item.installState) {
                     is InstallState.Starting -> R.string.status_install_preparing
                     is InstallState.PreApproved -> R.string.status_install_preparing
@@ -207,33 +204,35 @@ fun AppDetailsHeader(
                     text = stringResource(strRes),
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                if (item.installState is InstallState.Downloading) {
-                    val animatedProgress by animateFloatAsState(
-                        targetValue = item.installState.progress,
-                        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
-                    )
-                    LinearWavyProgressIndicator(
-                        stopSize = 0.dp,
-                        progress = { animatedProgress },
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                } else {
-                    LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth())
-                }
-            }
-            var cancelled by remember { mutableStateOf(false) }
-            IconButton(onClick = {
-                if (!cancelled) item.actions.cancelInstall(item.app.packageName)
-                cancelled = true
-            }) {
-                AnimatedVisibility(cancelled) {
-                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
-                }
-                AnimatedVisibility(!cancelled) {
-                    Icon(
-                        imageVector = Icons.Default.Cancel,
-                        contentDescription = stringResource(R.string.cancel),
-                    )
+                Row(verticalAlignment = CenterVertically) {
+                    if (item.installState is InstallState.Downloading) {
+                        val animatedProgress by animateFloatAsState(
+                            targetValue = item.installState.progress,
+                            animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
+                        )
+                        LinearWavyProgressIndicator(
+                            stopSize = 0.dp,
+                            progress = { animatedProgress },
+                            modifier = Modifier.weight(1f),
+                        )
+                    } else {
+                        LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
+                    }
+                    var cancelled by remember { mutableStateOf(false) }
+                    IconButton(onClick = {
+                        if (!cancelled) item.actions.cancelInstall(item.app.packageName)
+                        cancelled = true
+                    }) {
+                        AnimatedVisibility(cancelled) {
+                            CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                        }
+                        AnimatedVisibility(!cancelled) {
+                            Icon(
+                                imageVector = Icons.Default.Cancel,
+                                contentDescription = stringResource(R.string.cancel),
+                            )
+                        }
+                    }
                 }
             }
         }
