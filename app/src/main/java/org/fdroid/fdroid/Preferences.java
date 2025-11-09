@@ -77,7 +77,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     private static final String TAG = "Preferences";
 
     public static final List<String> DEFAULT_IPFS_GATEWAYS = Collections.singletonList(
-            "https://gateway.ipfs.io/ipfs/"
+            "https://ipfs.io/ipfs/"
     );
 
     private final SharedPreferences preferences;
