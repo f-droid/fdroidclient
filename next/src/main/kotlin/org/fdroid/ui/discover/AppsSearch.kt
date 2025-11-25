@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
@@ -25,6 +26,7 @@ import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
@@ -78,6 +80,10 @@ fun AppsSearch(
         },
         modifier = modifier,
     )
+    // rememberLazyListState done differently, so it refreshes for different searchResults
+    val listState = rememberSaveable(searchResults, saver = LazyListState.Saver) {
+        LazyListState(0, 0)
+    }
     ExpandedFullScreenSearchBar(
         state = searchBarState,
         inputField = {
@@ -106,7 +112,10 @@ fun AppsSearch(
                     .fillMaxWidth()
             )
         } else {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(
+                state = listState,
+                modifier = Modifier.fillMaxSize()
+            ) {
                 if (searchResults.categories.isNotEmpty()) {
                     item(
                         key = "categories",
@@ -140,7 +149,8 @@ fun AppsSearch(
                     contentType = { "app" },
                 ) { item ->
                     AppListRow(
-                        item = item, isSelected = false,
+                        item = item,
+                        isSelected = false,
                         modifier = Modifier
                             .fillMaxWidth()
                             .animateItem()
