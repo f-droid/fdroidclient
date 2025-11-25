@@ -68,17 +68,17 @@ val testVersion1 = object : PackageVersion {
     override val versionCode: Long = 42
     override val versionName: String = "42.23.0-alpha1337-33d2252b90"
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
-    override val size: Long? = 1024 * 1024 * 42
-    override val signer: SignerV2? = SignerV2(
+    override val size: Long = 1024 * 1024 * 42
+    override val signer: SignerV2 = SignerV2(
         listOf("271721a9cddc96660336c19a39ae3cca4375072c80d3c8170860c333d2252b90")
     )
     override val releaseChannels: List<String>? = null
     override val packageManifest: PackageManifest = object : PackageManifest {
-        override val minSdkVersion: Int? = null
+        override val minSdkVersion: Int = 2
+        override val targetSdkVersion: Int = 13
         override val maxSdkVersion: Int? = null
         override val featureNames: List<String>? = null
-        override val nativecode: List<String>? = listOf("amd64", "x86")
-        override val targetSdkVersion: Int? = 13
+        override val nativecode: List<String> = listOf("amd64", "x86")
     }
     override val hasKnownVulnerability: Boolean = false
 }
@@ -93,10 +93,10 @@ val testVersion2 = object : PackageVersion {
     override val releaseChannels: List<String>? = null
     override val packageManifest: PackageManifest = object : PackageManifest {
         override val minSdkVersion: Int? = null
-        override val maxSdkVersion: Int? = null
+        override val targetSdkVersion: Int = 13
+        override val maxSdkVersion: Int = 99
         override val featureNames: List<String>? = null
         override val nativecode: List<String>? = null
-        override val targetSdkVersion: Int? = 13
     }
     override val hasKnownVulnerability: Boolean = false
 }

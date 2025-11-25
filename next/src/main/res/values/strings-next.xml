@@ -61,6 +61,13 @@
     <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
+    <string name="sdk_versions_colon">SDK versions: %1$s</string>
+    <!-- The minimum SDK version the app can be installed on, e.g. only Android 10 or higher -->
+    <string name="sdk_min_version">%1$s (Min)</string>
+    <!-- The target SDK version of the app -->
+    <string name="sdk_target_version">%1$s (Target)</string>
+    <!-- The maximum SDK version the app can be installed on, e.g. only Android 10 or lower -->
+    <string name="sdk_max_version">%1$s (Max)</string>
     <string name="signer_colon">Signer: %1$s</string>
     <string name="architectures_colon">Architectures: %1$s</string>
     <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>

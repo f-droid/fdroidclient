@@ -155,6 +155,25 @@ fun Version(
                             overflow = TextOverflow.Ellipsis,
                         )
                     }
+                    val sdkString = buildString {
+                        item.version.packageManifest.minSdkVersion?.let { sdk ->
+                            append(stringResource(R.string.sdk_min_version, sdk))
+                        }
+                        item.version.packageManifest.targetSdkVersion?.let { sdk ->
+                            if (isNotEmpty()) append(" ")
+                            append(stringResource(R.string.sdk_target_version, sdk))
+                        }
+                        item.version.packageManifest.maxSdkVersion?.let { sdk ->
+                            if (isNotEmpty()) append(" ")
+                            append(stringResource(R.string.sdk_max_version, sdk))
+                        }
+                    }
+                    if (sdkString.isNotEmpty()) Text(
+                        text = stringResource(R.string.sdk_versions_colon, sdkString),
+                        style = MaterialTheme.typography.bodySmall,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                     item.version.packageManifest.nativecode?.let { nativeCode ->
                         if (nativeCode.isNotEmpty()) {
                             Text(
