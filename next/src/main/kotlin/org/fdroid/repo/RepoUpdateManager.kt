@@ -142,9 +142,17 @@ class RepoUpdateManager(
 
     @WorkerThread
     suspend fun updateRepos() {
-        if (isUpdating.value) log.warn { "Already updating repositories: updateRepos()" }
+        if (isUpdating.value) {
+            // This is a workaround for what looks like a WorkManager bug.
+            // Sometimes it goes through scheduling/cancellation loops
+            // and then ends up running the same worker more than once.
+            log.warn { "Already updating repositories in updateRepos() not doing it again." }
+            return
+        }
         val timeSinceLastCheck = System.currentTimeMillis() - settingsManager.lastRepoUpdate
         if (timeSinceLastCheck < MIN_UPDATE_INTERVAL_MILLIS) {
+            // This is a workaround for a similar issue as above.
+            // We've seen WorkManager tell our worker to run in what looks like an endless loop.
             log.info { "Not updating, only $timeSinceLastCheck ms since last check." }
             return
         }
