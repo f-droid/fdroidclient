@@ -6,6 +6,7 @@ import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_MAIN
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationChannelCompat
@@ -91,6 +92,7 @@ class NotificationManager @Inject constructor(
         .setCategory(CATEGORY_SERVICE)
         .setContentTitle(context.getString(R.string.banner_updating_repositories))
         .setContentText(msg)
+        .setContentIntent(getMainActivityPendingIntent(context))
         .setOngoing(true)
         .setProgress(100, progress ?: 0, progress == null)
 
@@ -171,6 +173,14 @@ class NotificationManager @Inject constructor(
             .setContentIntent(pi)
             .setAutoCancel(true)
         return builder
+    }
+
+    private fun getMainActivityPendingIntent(context: Context): PendingIntent {
+        val i = Intent(ACTION_MAIN).apply {
+            setClass(context, MainActivity::class.java)
+        }
+        val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+        return PendingIntent.getActivity(context, 0, i, flags)
     }
 
     private fun getMyAppsPendingIntent(context: Context): PendingIntent {
