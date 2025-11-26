@@ -3,12 +3,14 @@ package org.fdroid.database
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.os.Build.VERSION.SDK_INT
 import androidx.annotation.VisibleForTesting
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.map
 import androidx.room.Dao
 import androidx.room.Insert
@@ -189,6 +191,9 @@ public interface AppDao {
     public fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
     public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
+    public fun getInstalledAppListItems(
+        packageInfoMap: Map<String, PackageInfo>,
+    ): Flow<List<AppListItem>>
 
     public suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
@@ -682,8 +687,14 @@ internal interface AppDaoInt : AppDao {
 
     private fun LiveData<List<AppListItem>>.map(
         packageManager: PackageManager,
-        installedPackages: Map<String, PackageInfo> = packageManager.getInstalledPackages(0)
-            .associateBy { packageInfo -> packageInfo.packageName },
+    ): LiveData<List<AppListItem>> {
+        val installedPackages = packageManager.getInstalledPackages(0)
+            .associateBy { packageInfo -> packageInfo.packageName }
+        return map(installedPackages)
+    }
+
+    private fun LiveData<List<AppListItem>>.map(
+        installedPackages: Map<String, PackageInfo>,
     ) = map { items ->
         items.map { item ->
             val packageInfo = installedPackages[item.packageName]
@@ -823,13 +834,28 @@ internal interface AppDaoInt : AppDao {
         val installedPackages = packageManager.getInstalledPackages(0)
             .associateBy { packageInfo -> packageInfo.packageName }
         val packageNames = installedPackages.keys.toList()
-        return if (packageNames.size <= 999) {
-            getAppListItems(packageNames).map(packageManager, installedPackages)
+        // since sqlite 3.32.0 the max variables number was increased to 32766
+        return if (packageNames.size <= 999 || SDK_INT >= 31) {
+            getAppListItems(packageNames).map(installedPackages)
         } else {
             AppListLiveData().apply {
                 packageNames.chunked(999) { addSource(getAppListItems(it)) }
-            }.map(packageManager, installedPackages)
+            }.map(installedPackages)
         }
+    }
+
+    override fun getInstalledAppListItems(
+        packageInfoMap: Map<String, PackageInfo>,
+    ): Flow<List<AppListItem>> {
+        val packageNames = packageInfoMap.keys.toList()
+        // since sqlite 3.32.0 the max variables number was increased to 32766
+        return if (packageNames.size <= 999 || SDK_INT >= 31) {
+            getAppListItems(packageNames).map(packageInfoMap)
+        } else {
+            AppListLiveData().apply {
+                packageNames.chunked(999) { addSource(getAppListItems(it)) }
+            }.map(packageInfoMap)
+        }.asFlow()
     }
 
     private class AppListLiveData : MediatorLiveData<List<AppListItem>>() {
