@@ -11,6 +11,7 @@ import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneSt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -86,6 +87,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         ) {
             val viewModel = hiltViewModel<DiscoverViewModel>()
             val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle(0).value
+            val hasIssues = viewModel.hasIssues.collectAsState(false).value
             Discover(
                 discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
                 onListTap = {
@@ -96,6 +98,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 },
                 onNav = { backStack.add(it) },
                 numUpdates = numUpdates,
+                hasIssues = hasIssues,
                 isBigScreen = isBigScreen,
                 onSearch = viewModel::search,
                 onSearchCleared = viewModel::onSearchCleared,

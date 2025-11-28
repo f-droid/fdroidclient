@@ -14,6 +14,7 @@
     <string name="no_repository_selected">No repository selected</string>
 
     <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
+    <string name="my_apps_header_apps_with_issue">Apps with issues</string>
 
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>
@@ -57,8 +58,12 @@
     <string name="developer_contact">Developer contact</string>
     <string name="copy_link">Copy link</string>
     <string name="app_no_compatible_versions">This app is not compatible with your device.</string>
-    <string name="app_no_compatible_signer">Can not update this app, because no compatible versions available in repository.</string>
+    <string name="app_no_compatible_signer">Can not update this app, because all versions have an incompatible signature.\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
+    <string name="app_no_compatible_signer_in_this_repo">Can not update this app, because there are no compatible versions in the preferred repository.\n\nTry changing the preferred repository.</string>
     <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
+    <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred.</string>
+    <string name="app_issue_not_available_title">No longer available</string>
+    <string name="app_issue_not_available_text">This app is not receiving updates, because it is no longer in any enabled repository.\n\nIt may have been in a repository you removed or disabled. Or it was simply removed.</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
     <string name="sdk_versions_colon">SDK versions: %1$s</string>

@@ -54,6 +54,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 fun Discover(
     discoverModel: DiscoverModel,
     numUpdates: Int,
+    hasIssues: Boolean,
     isBigScreen: Boolean,
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
@@ -97,7 +98,7 @@ fun Discover(
             )
         },
         bottomBar = {
-            if (!isBigScreen) BottomBar(numUpdates, NavigationKey.Discover, onNav)
+            if (!isBigScreen) BottomBar(numUpdates, hasIssues, NavigationKey.Discover, onNav)
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
@@ -205,12 +206,13 @@ fun LoadingDiscoverPreview() {
         Discover(
             discoverModel = LoadingDiscoverModel(true),
             numUpdates = 23,
+            hasIssues = true,
             isBigScreen = false,
+            onSearch = {},
+            onSearchCleared = {},
             onListTap = {},
             onAppTap = {},
             onNav = {},
-            onSearch = {},
-            onSearchCleared = {},
         )
     }
 }
@@ -222,12 +224,13 @@ private fun NoEnabledReposPreview() {
         Discover(
             discoverModel = NoEnabledReposDiscoverModel,
             numUpdates = 0,
+            hasIssues = true,
             isBigScreen = false,
+            onSearch = {},
+            onSearchCleared = {},
             onListTap = {},
             onAppTap = {},
             onNav = {},
-            onSearch = {},
-            onSearchCleared = {},
         )
     }
 }

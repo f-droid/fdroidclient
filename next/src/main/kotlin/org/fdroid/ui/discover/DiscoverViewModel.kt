@@ -52,6 +52,7 @@ class DiscoverViewModel @Inject constructor(
     private val collator = Collator.getInstance(Locale.getDefault())
 
     val numUpdates = updatesManager.numUpdates
+    val hasIssues = updatesManager.appsWithIssues.map { !it.isNullOrEmpty() }
     val newApps = db.getAppDao().getNewAppsFlow().map { list ->
         val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {

@@ -3,9 +3,7 @@ package org.fdroid.ui.apps
 import android.app.Application
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
@@ -13,11 +11,12 @@ import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
-import org.fdroid.database.AppListItem
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.getImageModel
@@ -25,6 +24,7 @@ import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
+import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
@@ -37,6 +37,7 @@ class MyAppsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     private val settingsManager: SettingsManager,
+    private val installedAppsCache: InstalledAppsCache,
     private val appInstallManager: AppInstallManager,
     private val updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
@@ -48,41 +49,37 @@ class MyAppsViewModel @Inject constructor(
         CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
     private val updates = updatesManager.updates
-    private val installedApps = MutableStateFlow<List<InstalledAppItem>?>(null)
-    private var installedAppsLiveData =
-        db.getAppDao().getInstalledAppListItems(application.packageManager)
-    private val installedAppsObserver = Observer<List<AppListItem>> { list ->
-        val proxyConfig = settingsManager.proxyConfig
-        installedApps.value = list.map { app ->
-            InstalledAppItem(
-                packageName = app.packageName,
-                name = app.name ?: "Unknown app",
-                installedVersionName = app.installedVersionName ?: "???",
-                lastUpdated = app.lastUpdated,
-                iconModel = repoManager.getRepository(app.repoId)?.let { repo ->
-                    app.getIcon(localeList)?.getImageModel(repo, proxyConfig)
-                },
-            )
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private val installedAppItems =
+        installedAppsCache.installedApps.flatMapLatest { installedApps ->
+            val proxyConfig = settingsManager.proxyConfig
+            db.getAppDao().getInstalledAppListItems(installedApps).map { list ->
+                list.map { app ->
+                    InstalledAppItem(
+                        packageName = app.packageName,
+                        name = app.name ?: "Unknown app",
+                        installedVersionName = app.installedVersionName ?: "???",
+                        lastUpdated = app.lastUpdated,
+                        iconModel = repoManager.getRepository(app.repoId)?.let { repo ->
+                            app.getIcon(localeList)?.getImageModel(repo, proxyConfig)
+                        },
+                    )
+                }
+            }
         }
-    }
-    private val searchQuery = savedStateHandle.getMutableStateFlow<String>("query", "")
+
+    private val searchQuery = savedStateHandle.getMutableStateFlow("query", "")
     private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
     val myAppsModel: StateFlow<MyAppsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
         MyAppsPresenter(
             appUpdatesFlow = updates,
             appInstallStatesFlow = appInstallManager.appInstallStates,
-            installedAppsFlow = installedApps,
+            appsWithIssuesFlow = updatesManager.appsWithIssues,
+            installedAppsFlow = installedAppItems,
             searchQueryFlow = searchQuery,
             sortOrderFlow = sortOrder,
         )
-    }
-
-    init {
-        installedAppsLiveData.observeForever(installedAppsObserver)
-    }
-
-    override fun onCleared() {
-        installedAppsLiveData.removeObserver(installedAppsObserver)
     }
 
     fun updateAll() {
@@ -100,14 +97,8 @@ class MyAppsViewModel @Inject constructor(
     }
 
     fun refresh() {
-        updatesManager.loadUpdates()
-
-        // need to get new liveData from the DB, so it re-queries installed packages
-        installedAppsLiveData.removeObserver(installedAppsObserver)
-        installedAppsLiveData =
-            db.getAppDao().getInstalledAppListItems(application.packageManager).apply {
-                observeForever(installedAppsObserver)
-            }
+        // TODO check if really not needed anymore and if so remove
+        // updatesManager.loadUpdates()
     }
 
     fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {

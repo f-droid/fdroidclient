@@ -4,6 +4,7 @@ package org.fdroid.ui.apps
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.install.InstallState
@@ -17,13 +18,15 @@ import java.util.Locale
 fun MyAppsPresenter(
     appUpdatesFlow: StateFlow<List<AppUpdateItem>?>,
     appInstallStatesFlow: StateFlow<Map<String, InstallState>>,
-    installedAppsFlow: StateFlow<List<InstalledAppItem>?>,
+    appsWithIssuesFlow: StateFlow<List<AppWithIssueItem>?>,
+    installedAppsFlow: Flow<List<InstalledAppItem>>,
     searchQueryFlow: StateFlow<String>,
     sortOrderFlow: StateFlow<AppListSortOrder>,
 ): MyAppsModel {
     val appUpdates = appUpdatesFlow.collectAsState().value
     val appInstallStates = appInstallStatesFlow.collectAsState().value
-    val installedApps = installedAppsFlow.collectAsState().value
+    val appsWithIssues = appsWithIssuesFlow.collectAsState().value
+    val installedApps = installedAppsFlow.collectAsState(null).value
     val searchQuery = searchQueryFlow.collectAsState().value.normalize()
     val sortOrder = sortOrderFlow.collectAsState().value
     val processedPackageNames = mutableSetOf<String>()
@@ -52,6 +55,16 @@ fun MyAppsPresenter(
         if (keep) processedPackageNames.add(it.packageName)
         keep
     }
+    val withIssues = appsWithIssues?.filter {
+        val keep = if (searchQuery.isBlank()) {
+            it.packageName !in processedPackageNames
+        } else {
+            it.packageName !in processedPackageNames &&
+                it.name.normalize().contains(searchQuery, ignoreCase = true)
+        }
+        if (keep) processedPackageNames.add(it.packageName)
+        keep
+    }
     val installed = installedApps?.filter {
         if (searchQuery.isBlank()) {
             it.packageName !in processedPackageNames
@@ -63,6 +76,7 @@ fun MyAppsPresenter(
     return MyAppsModel(
         installingApps = installingApps.sort(sortOrder),
         appUpdates = updates?.sort(sortOrder),
+        appsWithIssue = withIssues?.sort(sortOrder),
         installedApps = installed?.sort(sortOrder),
         sortOrder = sortOrder,
     )

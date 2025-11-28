@@ -56,18 +56,19 @@ class AppDetailsViewModel @Inject constructor(
     private val currentRepoIdFlow = MutableStateFlow<Long?>(null)
 
     val appDetails: StateFlow<AppDetailsItem?> = viewModelScope.launchMolecule(
-        context = Dispatchers.IO, mode = Immediate,
+        context = scope.coroutineContext, mode = Immediate,
     ) {
         DetailsPresenter(
             db = db,
             repoManager = repoManager,
             repoPreLoader = repoPreLoader,
             updateChecker = updateChecker,
+            settingsManager = settingsManager,
             appInstallManager = appInstallManager,
             viewModel = this,
             packageInfoFlow = packageInfoFlow,
             currentRepoIdFlow = currentRepoIdFlow,
-            settingsManager = settingsManager,
+            appsWithIssuesFlow = updatesManager.appsWithIssues,
         )
     }
 
@@ -107,8 +108,6 @@ class AppDetailsViewModel @Inject constructor(
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo
                 loadPackageInfoFlow(appMetadata.packageName)
-                // load updates as there may be less now (removes/updates notification)
-                updatesManager.loadUpdates()
             }
         }
     }
@@ -160,7 +159,10 @@ class AppDetailsViewModel @Inject constructor(
     @UiThread
     fun onPreferredRepoChanged(repoId: Long) {
         val packageName = packageInfoFlow.value?.packageName ?: error("Had not package name")
-        repoManager.setPreferredRepoId(packageName, repoId)
+        scope.launch {
+            repoManager.setPreferredRepoId(packageName, repoId).join()
+            updatesManager.loadUpdates()
+        }
     }
 
     override fun onCleared() {

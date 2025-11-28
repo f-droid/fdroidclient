@@ -22,6 +22,7 @@ import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
+import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 
@@ -29,6 +30,7 @@ import javax.inject.Inject
 class RepositoriesViewModel @Inject constructor(
     app: Application,
     private val repoManager: RepoManager,
+    private val updateManager: UpdatesManager,
     private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
@@ -82,6 +84,7 @@ class RepositoriesViewModel @Inject constructor(
     fun onRepositoryEnabled(repoId: Long, enabled: Boolean) {
         ioScope.launch {
             repoManager.setRepositoryEnabled(repoId, enabled)
+            updateManager.loadUpdates()
             if (enabled) withContext(Dispatchers.Main) {
                 RepoUpdateWorker.updateNow(application, repoId)
             }

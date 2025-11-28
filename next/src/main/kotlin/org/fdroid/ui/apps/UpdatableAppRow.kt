@@ -27,6 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,7 +53,7 @@ fun UpdatableAppRow(
                 BadgedBox(badge = {
                     Icon(
                         imageVector = Icons.Filled.NewReleases,
-                        tint = MaterialTheme.colorScheme.error,
+                        tint = MaterialTheme.colorScheme.secondary,
                         contentDescription =
                         stringResource(R.string.notification_title_single_update_available),
                         modifier = Modifier.size(24.dp),
@@ -62,7 +63,9 @@ fun UpdatableAppRow(
                         model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
                         error = painterResource(R.drawable.ic_repo_app_default),
                         contentDescription = null,
-                        modifier = Modifier.size(48.dp),
+                        modifier = Modifier
+                            .size(48.dp)
+                            .semantics { hideFromAccessibility() },
                     )
                 }
             },

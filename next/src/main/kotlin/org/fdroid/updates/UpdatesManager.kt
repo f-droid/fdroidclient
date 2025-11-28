@@ -1,6 +1,7 @@
 package org.fdroid.updates
 
 import android.content.Context
+import android.content.pm.PackageInfo
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -17,14 +18,18 @@ import kotlinx.coroutines.sync.withPermit
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.database.AppVersion
-import org.fdroid.database.DbUpdateChecker
+import org.fdroid.database.AvailableAppWithIssue
+import org.fdroid.database.DbAppChecker
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.database.UnavailableAppWithIssue
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
+import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppUpdateItem
+import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.utils.IoDispatcher
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,10 +39,11 @@ import kotlin.math.min
 class UpdatesManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val db: FDroidDatabase,
-    private val dbUpdateChecker: DbUpdateChecker,
+    private val dbAppChecker: DbAppChecker,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     private val appInstallManager: AppInstallManager,
+    private val installedAppsCache: InstalledAppsCache,
     private val notificationManager: NotificationManager,
     @param:IoDispatcher private val coroutineScope: CoroutineScope,
 ) {
@@ -45,6 +51,8 @@ class UpdatesManager @Inject constructor(
 
     private val _updates = MutableStateFlow<List<AppUpdateItem>?>(null)
     val updates = _updates.asStateFlow()
+    private val _appsWithIssues = MutableStateFlow<List<AppWithIssueItem>?>(null)
+    val appsWithIssues = _appsWithIssues.asStateFlow()
     private val _numUpdates = MutableStateFlow(0)
     val numUpdates = _numUpdates.asStateFlow()
 
@@ -77,16 +85,24 @@ class UpdatesManager @Inject constructor(
         )
 
     init {
-        loadUpdates()
+        coroutineScope.launch {
+            // refresh updates whenever installed apps change
+            installedAppsCache.installedApps.collect {
+                loadUpdates(it)
+            }
+        }
     }
 
-    fun loadUpdates() = coroutineScope.launch {
-        // TODO (includeKnownVulnerabilities = true) and show in AppDetails
+    fun loadUpdates(
+        packageInfoMap: Map<String, PackageInfo> = installedAppsCache.installedApps.value,
+    ) = coroutineScope.launch {
+        if (packageInfoMap.isEmpty()) return@launch
         val localeList = LocaleListCompat.getDefault()
-        val updates = try {
-            log.info { "Checking for updates..." }
+        try {
+            log.info { "Checking for updates (${packageInfoMap.size} apps)..." }
             val proxyConfig = settingsManager.proxyConfig
-            dbUpdateChecker.getUpdatableApps(onlyFromPreferredRepo = true).map { update ->
+            val apps = dbAppChecker.getApps(packageInfoMap = packageInfoMap)
+            val updates = apps.updates.map { update ->
                 AppUpdateItem(
                     repoId = update.repoId,
                     packageName = update.packageName,
@@ -99,16 +115,42 @@ class UpdatesManager @Inject constructor(
                     },
                 )
             }
+            _updates.value = updates
+            _numUpdates.value = updates.size
+            // update 'update available' notification, if it is currently showing
+            if (notificationManager.isAppUpdatesAvailableNotificationShowing) {
+                if (updates.isEmpty()) notificationManager.cancelAppUpdatesAvailableNotification()
+                else notificationManager.showAppUpdatesAvailableNotification(notificationStates)
+            }
+
+            val issueItems = apps.issues.map { app ->
+                when (app) {
+                    is AvailableAppWithIssue -> AppWithIssueItem(
+                        packageName = app.app.packageName,
+                        name = app.app.getName(localeList) ?: "Unknown app",
+                        installedVersionName = app.installVersionName,
+                        issue = app.issue,
+                        lastUpdated = app.app.lastUpdated,
+                        iconModel = PackageName(
+                            packageName = app.app.packageName,
+                            iconDownloadRequest = repoManager.getRepository(app.app.repoId)?.let {
+                                app.app.getIcon(localeList)?.getImageModel(it, proxyConfig)
+                            } as? DownloadRequest),
+                    )
+                    is UnavailableAppWithIssue -> AppWithIssueItem(
+                        packageName = app.packageName,
+                        name = app.name.toString(),
+                        installedVersionName = app.installVersionName,
+                        issue = app.issue,
+                        lastUpdated = -1,
+                        iconModel = PackageName(app.packageName, null),
+                    )
+                }
+            }
+            _appsWithIssues.value = issueItems
         } catch (e: Exception) {
             log.error(e) { "Error loading updates: " }
             return@launch
-        }
-        _updates.value = updates
-        _numUpdates.value = updates.size
-        // update 'update available' notification, if it is currently showing
-        if (notificationManager.isAppUpdatesAvailableNotificationShowing) {
-            if (updates.isEmpty()) notificationManager.cancelAppUpdatesAvailableNotification()
-            else notificationManager.showAppUpdatesAvailableNotification(notificationStates)
         }
     }
 

@@ -1,10 +1,13 @@
 package org.fdroid.ui.utils
 
 import android.content.Intent
+import androidx.annotation.RestrictTo
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
+import org.fdroid.database.KnownVulnerability
+import org.fdroid.database.NotAvailable
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.index.IndexFormatVersion
@@ -13,6 +16,10 @@ import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
+import org.fdroid.ui.apps.AppUpdateItem
+import org.fdroid.ui.apps.AppWithIssueItem
+import org.fdroid.ui.apps.InstalledAppItem
+import org.fdroid.ui.apps.InstallingAppItem
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsModel
 import org.fdroid.ui.categories.CategoryItem
@@ -176,7 +183,6 @@ val testApp = AppDetailsItem(
         "and in the long run the SABR video protocol needs to be implemented, " +
         "but TeamNewPipe members are currently busy so any help would be greatly appreciated! " +
         "https://github.com/TeamNewPipe/NewPipe/issues/12248",
-    noUpdatesBecauseDifferentSigner = true,
     authorHasMoreThanOneApp = true,
     versions = listOf(
         VersionItem(
@@ -263,6 +269,80 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
     override fun search(query: String) {}
     override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
 }
+
+@RestrictTo(RestrictTo.Scope.TESTS)
+internal val myAppsModel = MyAppsModel(
+    appUpdates = listOf(
+        AppUpdateItem(
+            repoId = 1,
+            packageName = "B1",
+            name = "App Update 123",
+            installedVersionName = "1.0.1",
+            update = getPreviewVersion("1.1.0", 123456789),
+            whatsNew = "This is new, all is new, nothing old.",
+        ),
+        AppUpdateItem(
+            repoId = 2,
+            packageName = "B2",
+            name = Names.randomName,
+            installedVersionName = "3.0.1",
+            update = getPreviewVersion("3.1.0", 9876543),
+            whatsNew = null,
+        )
+    ),
+    installingApps = listOf(
+        InstallingAppItem(
+            packageName = "A1",
+            installState = InstallState.Downloading(
+                name = "Installing App 1",
+                versionName = "1.0.4",
+                currentVersionName = null,
+                lastUpdated = 23,
+                iconDownloadRequest = null,
+                downloadedBytes = 25,
+                totalBytes = 100,
+                startMillis = System.currentTimeMillis(),
+            )
+        )
+    ),
+    appsWithIssue = listOf(
+        AppWithIssueItem(
+            packageName = "C1",
+            name = Names.randomName,
+            installedVersionName = "1",
+            issue = KnownVulnerability(true),
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(5)
+        ),
+        AppWithIssueItem(
+            packageName = "C2",
+            name = Names.randomName,
+            installedVersionName = "2",
+            issue = NotAvailable,
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(7)
+        ),
+    ),
+    installedApps = listOf(
+        InstalledAppItem(
+            packageName = "D1",
+            name = Names.randomName,
+            installedVersionName = "1",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(1)
+        ),
+        InstalledAppItem(
+            packageName = "D2",
+            name = Names.randomName,
+            installedVersionName = "2",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(2)
+        ),
+        InstalledAppItem(
+            packageName = "D3",
+            name = Names.randomName,
+            installedVersionName = "3",
+            lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3)
+        )
+    ),
+    sortOrder = AppListSortOrder.NAME,
+)
 
 fun getRepositoriesInfo(
     model: RepositoryModel,

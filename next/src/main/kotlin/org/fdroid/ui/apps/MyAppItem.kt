@@ -1,5 +1,6 @@
 package org.fdroid.ui.apps
 
+import org.fdroid.database.AppIssue
 import org.fdroid.download.DownloadRequest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallStateWithInfo
@@ -32,10 +33,23 @@ data class AppUpdateItem(
     override val lastUpdated: Long = update.added
 }
 
+data class AppWithIssueItem(
+    override val packageName: String,
+    override val name: String,
+    override val installedVersionName: String,
+    val issue: AppIssue,
+    override val lastUpdated: Long,
+    override val iconModel: Any? = null,
+) : MyInstalledAppItem()
+
 data class InstalledAppItem(
     override val packageName: String,
     override val name: String,
-    val installedVersionName: String,
+    override val installedVersionName: String,
     override val lastUpdated: Long,
     override val iconModel: Any? = null,
-) : MyAppItem()
+) : MyInstalledAppItem()
+
+abstract class MyInstalledAppItem : MyAppItem() {
+    abstract val installedVersionName: String
+}

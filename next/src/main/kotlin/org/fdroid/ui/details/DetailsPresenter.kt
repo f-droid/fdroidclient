@@ -20,6 +20,7 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
 import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
+import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
@@ -37,11 +38,13 @@ fun DetailsPresenter(
     viewModel: AppDetailsViewModel,
     packageInfoFlow: StateFlow<AppInfo?>,
     currentRepoIdFlow: StateFlow<Long?>,
+    appsWithIssuesFlow: StateFlow<List<AppWithIssueItem>?>,
 ): AppDetailsItem? {
     val packagePair = packageInfoFlow.collectAsState().value ?: return null
     val packageName = packagePair.packageName
     val packageInfo = packagePair.packageInfo
     val currentRepoId = currentRepoIdFlow.collectAsState().value
+    val appsWithIssues = appsWithIssuesFlow.collectAsState().value
     val app = if (currentRepoId == null) {
         val flow = remember {
             db.getAppDao().getApp(packageName).asFlow()
@@ -118,20 +121,15 @@ fun DetailsPresenter(
     val installedVersion = packageInfo?.let {
         versions?.find { it.versionCode == installedVersionCode }
     }
-    val noUpdatesBecauseDifferentSigner = if (packageInfo != null && versions != null) {
-        // return true of no version has same signer
-        versions.none { version ->
-            version.manifest.signer?.sha256?.get(0) == installedSigner
-        }
-    } else {
-        false
-    }
     val authorName = app.authorName
     val authorHasMoreThanOneApp = if (authorName == null) false else {
         val flow = remember(authorName) {
             db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow()
         }
         flow.collectAsState(false).value
+    }
+    val issue = remember(appsWithIssues) {
+        appsWithIssues?.find { it.packageName == packageName }?.issue
     }
     val locales = LocaleListCompat.getDefault()
     Log.d(TAG, "Presenting app details:")
@@ -202,7 +200,7 @@ fun DetailsPresenter(
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
-        noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
+        issue = issue,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
         localeList = locales,
         proxy = settingsManager.proxyConfig,

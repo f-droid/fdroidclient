@@ -15,6 +15,7 @@ interface MyAppsInfo {
 data class MyAppsModel(
     val installingApps: List<InstallingAppItem>,
     val appUpdates: List<AppUpdateItem>? = null,
+    val appsWithIssue: List<AppWithIssueItem>? = null,
     val installedApps: List<InstalledAppItem>? = null,
     val sortOrder: AppListSortOrder = AppListSortOrder.NAME,
 )

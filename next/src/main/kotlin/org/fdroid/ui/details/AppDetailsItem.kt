@@ -7,6 +7,7 @@ import androidx.annotation.VisibleForTesting
 import androidx.core.os.LocaleListCompat
 import io.ktor.client.engine.ProxyConfig
 import org.fdroid.database.App
+import org.fdroid.database.AppIssue
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
@@ -56,12 +57,7 @@ data class AppDetailsItem(
     val appPrefs: AppPrefs? = null,
     val whatsNew: String? = null,
     val antiFeatures: List<AntiFeature>? = null,
-    /**
-     * true if this app from this repository has no versions with a
-     * compatible signer. This means that the app is installed, but does not receive updates either
-     * because the signer in the repo has changed or a wrong repo is set as preferred.
-     */
-    val noUpdatesBecauseDifferentSigner: Boolean = false,
+    val issue: AppIssue? = null,
     val authorHasMoreThanOneApp: Boolean = false,
     val proxy: ProxyConfig?,
 ) {
@@ -78,7 +74,7 @@ data class AppDetailsItem(
         suggestedVersion: AppVersion?,
         possibleUpdate: AppVersion?,
         appPrefs: AppPrefs?,
-        noUpdatesBecauseDifferentSigner: Boolean,
+        issue: AppIssue?,
         authorHasMoreThanOneApp: Boolean,
         localeList: LocaleListCompat,
         proxy: ProxyConfig?,
@@ -117,7 +113,7 @@ data class AppDetailsItem(
                 localeList = localeList,
                 proxy = proxy,
             ),
-        noUpdatesBecauseDifferentSigner = noUpdatesBecauseDifferentSigner,
+        issue = issue,
         authorHasMoreThanOneApp = authorHasMoreThanOneApp,
         proxy = proxy,
     )
@@ -171,7 +167,7 @@ data class AppDetailsItem(
      * True if this app has warnings, we need to show to the user.
      */
     val showWarnings: Boolean
-        get() = isIncompatible || oldTargetSdk || noUpdatesBecauseDifferentSigner
+        get() = isIncompatible || oldTargetSdk || issue != null
 
     /**
      * True if the targetSdk of the suggested version is so old

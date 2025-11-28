@@ -2,6 +2,10 @@ package org.fdroid.ui.apps
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Error
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
@@ -10,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,21 +28,32 @@ import org.fdroid.ui.utils.Names
 
 @Composable
 fun InstalledAppRow(
-    app: InstalledAppItem,
+    app: MyInstalledAppItem,
     isSelected: Boolean,
     modifier: Modifier = Modifier,
+    hasIssue: Boolean = false,
 ) {
     Column(modifier = modifier) {
         ListItem(
             leadingContent = {
-                AsyncShimmerImage(
-                    model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
-                    error = painterResource(R.drawable.ic_repo_app_default),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .semantics { hideFromAccessibility() },
-                )
+                BadgedBox(badge = {
+                    if (hasIssue) Icon(
+                        imageVector = Icons.Filled.Error,
+                        tint = MaterialTheme.colorScheme.error,
+                        contentDescription =
+                        stringResource(R.string.notification_title_single_update_available),
+                        modifier = Modifier.size(24.dp),
+                    )
+                }) {
+                    AsyncShimmerImage(
+                        model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
+                        error = painterResource(R.drawable.ic_repo_app_default),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(48.dp)
+                            .semantics { hideFromAccessibility() },
+                    )
+                }
             },
             headlineContent = {
                 Text(app.name)
@@ -70,6 +86,7 @@ fun InstalledAppRowPreview() {
         Column {
             InstalledAppRow(app, false)
             InstalledAppRow(app, true)
+            InstalledAppRow(app, false, hasIssue = true)
         }
     }
 }

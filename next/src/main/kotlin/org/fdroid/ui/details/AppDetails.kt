@@ -110,7 +110,9 @@ fun AppDetails(
         ) {
             // Header is taking care of top innerPadding
             AppDetailsHeader(item, innerPadding)
-            AnimatedVisibility(item.showWarnings) { AppDetailsWarnings(item) }
+            AnimatedVisibility(item.showWarnings) {
+                AppDetailsWarnings(item, Modifier.padding(horizontal = 16.dp))
+            }
             // What's New
             if (item.installedVersion != null &&
                 (item.whatsNew != null || item.app.changelog != null)
