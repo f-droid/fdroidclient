@@ -93,7 +93,29 @@ public class UpdateChecker(
         allowedReleaseChannels: List<String>? = null,
         includeKnownVulnerabilities: Boolean = false,
         preferencesGetter: (() -> PackagePreference?)? = null,
-    ): T? {
+    ): T? = getUpdates(
+        versions = versions,
+        allowedSignersGetter = allowedSignersGetter,
+        installedVersionCode = installedVersionCode,
+        allowedReleaseChannels = allowedReleaseChannels,
+        includeKnownVulnerabilities = includeKnownVulnerabilities,
+        preferencesGetter = preferencesGetter,
+    ).firstOrNull() // just return matching update with highest version code, don't look at others
+
+    /**
+     * Same as [getUpdate], but gets a list of all possible updates
+     * beginning from highest version code.
+     *
+     * This usually isn't useful unless you need to pick a certain update with your own criteria.
+     */
+    public fun <T : PackageVersion> getUpdates(
+        versions: List<T>,
+        allowedSignersGetter: (() -> Set<String>?)? = null,
+        installedVersionCode: Long = 0,
+        allowedReleaseChannels: List<String>? = null,
+        includeKnownVulnerabilities: Boolean = false,
+        preferencesGetter: (() -> PackagePreference?)? = null,
+    ): Sequence<T> = sequence {
         // getting signers is rather expensive, so we only do that when there's update candidates
         val allowedSigners by lazy { allowedSignersGetter?.let { it() } }
         versions.iterator().forEach versions@{ version ->
@@ -101,9 +123,9 @@ public class UpdateChecker(
             if (includeKnownVulnerabilities &&
                 version.versionCode == installedVersionCode &&
                 version.hasKnownVulnerability
-            ) return version
+            ) yield(version)
             // if version code is not higher than installed skip package as list is sorted
-            if (version.versionCode <= installedVersionCode) return null
+            if (version.versionCode <= installedVersionCode) return@sequence
             // we don't support versions that have multiple signers
             if (version.signer?.hasMultipleSigners == true) return@versions
             // skip incompatible versions
@@ -115,7 +137,7 @@ public class UpdateChecker(
             // check if release channel of version is allowed
             val hasAllowedReleaseChannel = hasAllowedReleaseChannel(
                 allowedReleaseChannels = allowedReleaseChannels?.toMutableSet() ?: LinkedHashSet(),
-                versionReleaseChannels = version.releaseChannels,
+                versionReleaseChannels = version.releaseChannels?.toSet(),
                 packagePreference = packagePreference,
             )
             if (!hasAllowedReleaseChannel) return@versions
@@ -126,14 +148,13 @@ public class UpdateChecker(
                 if (versionSigners.intersect(allowedSigners!!).isEmpty()) return@versions
             }
             // no need to see other versions, we got the highest version code per sorting
-            return version
+            yield(version)
         }
-        return null
     }
 
     private fun hasAllowedReleaseChannel(
         allowedReleaseChannels: MutableSet<String>,
-        versionReleaseChannels: List<String>?,
+        versionReleaseChannels: Set<String>?,
         packagePreference: PackagePreference?,
     ): Boolean {
         // no channels (aka stable version) is always allowed

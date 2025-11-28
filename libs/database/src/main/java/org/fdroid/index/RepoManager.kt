@@ -10,6 +10,7 @@ import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -203,8 +204,8 @@ public class RepoManager @JvmOverloads constructor(
     }
 
     @AnyThread
-    public fun setPreferredRepoId(packageName: String, repoId: Long) {
-        GlobalScope.launch(coroutineContext) {
+    public fun setPreferredRepoId(packageName: String, repoId: Long): Job {
+        return GlobalScope.launch(coroutineContext) {
             db.runInTransaction {
                 val appPrefs = appPrefsDao.getAppPrefsOrNull(packageName) ?: AppPrefs(packageName)
                 appPrefsDao.update(appPrefs.copy(preferredRepoId = repoId))

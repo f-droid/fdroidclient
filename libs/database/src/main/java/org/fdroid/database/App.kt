@@ -397,11 +397,13 @@ public data class UpdatableApp internal constructor(
     public val installedVersionCode: Long,
     public val installedVersionName: String,
     public val update: AppVersion,
+    @Deprecated("Use AppWithIssue instead: UpdateInOtherRepo")
     public val isFromPreferredRepo: Boolean,
     /**
      * If true, this is not necessarily an update (contrary to the class name),
      * but an app with the `KnownVuln` anti-feature.
      */
+    @Deprecated("Use AppWithIssue instead: KnownVulnerability")
     public val hasKnownVulnerability: Boolean,
     public override val name: String? = null,
     public override val summary: String? = null,
