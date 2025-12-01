@@ -128,6 +128,7 @@ class AppInstallManager @Inject constructor(
             return currentState
         }
         val iconDownloadRequest = iconModel as? DownloadRequest
+        currentCoroutineContext().ensureActive()
         val job = scope.async {
             startInstall(
                 appMetadata = appMetadata,

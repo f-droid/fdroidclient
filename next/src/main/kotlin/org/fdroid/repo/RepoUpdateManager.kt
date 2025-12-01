@@ -5,6 +5,8 @@ import android.text.format.Formatter
 import android.util.Log
 import androidx.annotation.WorkerThread
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
@@ -142,6 +144,7 @@ class RepoUpdateManager(
 
     @WorkerThread
     suspend fun updateRepos() {
+        currentCoroutineContext().ensureActive()
         if (isUpdating.value) {
             // This is a workaround for what looks like a WorkManager bug.
             // Sometimes it goes through scheduling/cancellation loops
@@ -158,6 +161,7 @@ class RepoUpdateManager(
         }
         _isUpdating.value = true
         try {
+            currentCoroutineContext().ensureActive()
             var reposUpdated = false
             val repoErrors = mutableListOf<Pair<Repository, Exception>>()
             // always get repos fresh from DB, because
@@ -167,6 +171,7 @@ class RepoUpdateManager(
             //   it might not be in the FDroidApp list, yet
             db.getRepositoryDao().getRepositories().forEach { repo ->
                 if (!repo.enabled) return@forEach
+                currentCoroutineContext().ensureActive()
 
                 // show notification
                 if (isUpdateNotificationEnabled) {

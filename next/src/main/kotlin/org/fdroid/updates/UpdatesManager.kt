@@ -5,6 +5,8 @@ import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
@@ -117,10 +119,12 @@ class UpdatesManager @Inject constructor(
         val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), 8)
         val semaphore = Semaphore(concurrencyLimit)
         return appsToUpdate.map { update ->
+            currentCoroutineContext().ensureActive()
             // launch a new co-routine for each app to update
             coroutineScope.launch {
                 // suspend here until we get a permit from the semaphore (there's free workers)
                 semaphore.withPermit {
+                    currentCoroutineContext().ensureActive()
                     updateApp(update, canAskPreApprovalNow)
                 }
             }

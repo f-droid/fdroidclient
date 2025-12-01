@@ -20,6 +20,8 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
@@ -116,6 +118,7 @@ class RepoUpdateWorker @AssistedInject constructor(
         }
         val repoId = inputData.getLong("repoId", -1)
         return try {
+            currentCoroutineContext().ensureActive()
             if (repoId >= 0) repoUpdateManager.updateRepo(repoId)
             else repoUpdateManager.updateRepos()
             Result.success()
