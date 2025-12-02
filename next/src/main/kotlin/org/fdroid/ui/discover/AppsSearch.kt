@@ -67,7 +67,13 @@ fun AppsSearch(
             SearchBarDefaults.InputField(
                 searchBarState = searchBarState,
                 textFieldState = textFieldState,
-                placeholder = { Text(stringResource(R.string.search_placeholder)) },
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.search_placeholder),
+                        // we hide the placeholder, because TalkBack is already saying "Search"
+                        modifier = Modifier.semantics { hideFromAccessibility() },
+                    )
+                },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
@@ -174,7 +180,7 @@ private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (Navigation
         )
         FlowRow {
             categories.forEach { item ->
-                CategoryChip(categoryItem = item, onSelected = {
+                CategoryChip(categoryItem = item, onClick = {
                     val type = AppListType.Category(item.name, item.id)
                     val navKey = NavigationKey.AppList(type)
                     onNav(navKey)

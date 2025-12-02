@@ -356,7 +356,7 @@ fun AppDetails(
             ) {
                 FlowRow(modifier = Modifier.padding(start = 16.dp)) {
                     item.categories.forEach { item ->
-                        CategoryChip(item, onSelected = {
+                        CategoryChip(item, onClick = {
                             val categoryNav = AppListType.Category(item.name, item.id)
                             onNav(NavigationKey.AppList(categoryNav))
                         })

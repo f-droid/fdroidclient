@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -51,6 +52,33 @@ fun CategoryChip(
     )
 }
 
+@Composable
+fun CategoryChip(
+    categoryItem: CategoryItem,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    AssistChip(
+        onClick = onClick,
+        leadingIcon = {
+            Icon(
+                imageVector = categoryItem.imageVector,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+        },
+        label = {
+            Text(
+                text = categoryItem.name,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+        },
+        modifier = modifier.padding(horizontal = 4.dp)
+    )
+}
+
 @Preview
 @Composable
 fun CategoryCardPreview() {
@@ -65,6 +93,10 @@ fun CategoryCardPreview() {
                 CategoryItem("VPN & Proxy", "VPN & Proxy"),
                 selected = false,
                 onSelected = {},
+            )
+            CategoryChip(
+                CategoryItem("VPN & Proxy", "VPN & Proxy"),
+                onClick = {},
             )
         }
     }

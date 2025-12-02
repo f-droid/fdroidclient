@@ -49,11 +49,14 @@ fun CategoryList(
                 horizontalArrangement = Arrangement.Start,
             ) {
                 categories.forEach { category ->
-                    CategoryChip(category, {
-                        val type = AppListType.Category(category.name, category.id)
-                        val navKey = NavigationKey.AppList(type)
-                        onNav(navKey)
-                    })
+                    CategoryChip(
+                        categoryItem = category,
+                        onClick = {
+                            val type = AppListType.Category(category.name, category.id)
+                            val navKey = NavigationKey.AppList(type)
+                            onNav(navKey)
+                        },
+                    )
                 }
             }
         }

@@ -16,7 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 
@@ -27,6 +30,7 @@ fun BottomBar(
     currentNavKey: NavKey,
     onNav: (NavigationKey) -> Unit,
 ) {
+    val res = LocalResources.current
     NavigationBar {
         BottomNavDestinations.entries.forEach { dest ->
             NavigationBarItem(
@@ -41,6 +45,17 @@ fun BottomBar(
                 onClick = {
                     if (dest.key != currentNavKey) onNav(dest.key)
                 },
+                modifier = Modifier.semantics {
+                    if (dest == BottomNavDestinations.MY_APPS) {
+                        if (numUpdates > 0) {
+                            stateDescription =
+                                res.getString(R.string.notification_channel_updates_available_title)
+                        } else if (hasIssues) {
+                            stateDescription =
+                                res.getString(R.string.my_apps_header_apps_with_issue)
+                        }
+                    }
+                }
             )
         }
     }
@@ -54,6 +69,7 @@ fun NavigationRail(
     onNav: (NavigationKey) -> Unit,
     modifier: Modifier,
 ) {
+    val res = LocalResources.current
     NavigationRail(modifier) {
         BottomNavDestinations.entries.forEach { dest ->
             NavigationRailItem(
@@ -68,6 +84,17 @@ fun NavigationRail(
                 onClick = {
                     if (dest.key != currentNavKey) onNav(dest.key)
                 },
+                modifier = Modifier.semantics {
+                    if (dest == BottomNavDestinations.MY_APPS) {
+                        if (numUpdates > 0) {
+                            stateDescription =
+                                res.getString(R.string.notification_channel_updates_available_title)
+                        } else if (hasIssues) {
+                            stateDescription =
+                                res.getString(R.string.my_apps_header_apps_with_issue)
+                        }
+                    }
+                }
             )
         }
     }

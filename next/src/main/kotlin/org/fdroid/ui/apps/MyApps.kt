@@ -116,7 +116,10 @@ fun MyApps(
                     }
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
                     IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
-                        Icon(Icons.Filled.MoreVert, null)
+                        Icon(
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = stringResource(R.string.more),
+                        )
                     }
                     DropdownMenu(
                         expanded = sortByMenuExpanded,

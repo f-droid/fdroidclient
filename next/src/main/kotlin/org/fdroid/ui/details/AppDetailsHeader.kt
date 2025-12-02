@@ -46,6 +46,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
@@ -96,7 +98,8 @@ fun AppDetailsHeader(
                         blendMode = BlendMode.DstIn
                     )
                 }
-                .padding(bottom = 8.dp),
+                .padding(bottom = 8.dp)
+                .semantics { hideFromAccessibility() },
         )
     }
     // Header
@@ -110,7 +113,9 @@ fun AppDetailsHeader(
             model = item.icon,
             contentDescription = "",
             error = painterResource(R.drawable.ic_repo_app_default),
-            modifier = Modifier.size(64.dp),
+            modifier = Modifier
+                .size(64.dp)
+                .semantics { hideFromAccessibility() },
         )
         Column {
             SelectionContainer {
