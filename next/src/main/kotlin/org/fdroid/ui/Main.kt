@@ -96,7 +96,13 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 onAppTap = {
                     backStack.add(NavigationKey.AppDetails(it.packageName))
                 },
-                onNav = { backStack.add(it) },
+                onNav = { navKey ->
+                    if (navKey == NavigationKey.MyApps) {
+                        // reset back stack when going to My Apps
+                        while (backStack.isNotEmpty()) backStack.removeLastOrNull()
+                    }
+                    backStack.add(navKey)
+                },
                 numUpdates = numUpdates,
                 hasIssues = hasIssues,
                 isBigScreen = isBigScreen,
@@ -133,7 +139,13 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 onAppItemClick = {
                     backStack.add(NavigationKey.AppDetails(it))
                 },
-                onNav = { backStack.add(it) },
+                onNav = { navKey ->
+                    if (navKey == NavigationKey.Discover) {
+                        // reset back stack when going to Discover
+                        while (backStack.isNotEmpty()) backStack.removeLastOrNull()
+                    }
+                    backStack.add(navKey)
+                },
                 isBigScreen = isBigScreen,
             )
         }

@@ -50,7 +50,12 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
                 backStack.add(NavigationKey.AddRepo(uri.toString()))
             }
         } else if (ACTION_MY_APPS == intent.action) {
-            if (backStack.lastOrNull() !is NavigationKey.MyApps) {
+            val lastOnBackStack = backStack.lastOrNull()
+            if (lastOnBackStack !is NavigationKey.MyApps) {
+                if (lastOnBackStack is NavigationKey.Discover) {
+                    // reset back stack when going to My Apps from Discover
+                    while (backStack.isNotEmpty()) backStack.removeLastOrNull()
+                }
                 backStack.add(NavigationKey.MyApps)
             }
         } else {
