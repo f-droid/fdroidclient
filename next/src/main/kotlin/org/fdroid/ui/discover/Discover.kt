@@ -1,6 +1,7 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -105,6 +106,7 @@ fun Discover(
         val scope = rememberCoroutineScope()
         Column(
             Modifier
+                .focusable() // workaround for https://issuetracker.google.com/issues/445720462
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValues)
