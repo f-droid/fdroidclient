@@ -172,13 +172,25 @@ fun AppDetailsHeader(
     // check user confirmation ON_RESUME to work around Android bug
     val lifecycleOwner = LocalLifecycleOwner.current
     val currentInstallState by rememberUpdatedState(item.installState)
+    var numChecks by remember { mutableStateOf(0) }
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
                 val state = currentInstallState
-                if (state is InstallState.UserConfirmationNeeded) {
-                    Log.i("AppDetailsHeader", "Resumed. Checking user confirmation... $state")
+                if (state is InstallState.UserConfirmationNeeded && numChecks < 3) {
+                    Log.i(
+                        "AppDetailsHeader",
+                        "Resumed ($numChecks). Checking user confirmation... $state"
+                    )
+                    // there's annoying installer bugs where it doesn't tell us about errors
+                    // and we would run into infinite UI loops here, so there's a counter.
+                    @Suppress("AssignedValueIsNeverRead")
+                    numChecks += 1
                     item.actions.checkUserConfirmation(item.app.packageName, state)
+                } else if (state is InstallState.UserConfirmationNeeded) {
+                    // we tried three times, so cancel install now
+                    Log.i("AppDetailsHeader", "Cancel installation")
+                    item.actions.cancelInstall(item.app.packageName)
                 }
             }
         }

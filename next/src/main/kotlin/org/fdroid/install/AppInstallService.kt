@@ -31,11 +31,11 @@ class AppInstallService : Service() {
     }
 
     override fun onStartCommand(
-        intent: Intent,
+        intent: Intent?,
         flags: Int,
         startId: Int
     ): Int {
-        log.info { "onStartCommand" }
+        log.info { "onStartCommand $intent" }
         val notificationState = InstallNotificationState()
         try {
             ServiceCompat.startForeground(

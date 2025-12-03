@@ -343,7 +343,11 @@ class AppInstallManager @Inject constructor(
             return null
         }
         log.info { "Requesting user confirmation for $packageName" }
-        val result = sessionInstallManager.requestUserConfirmation(installState)
+        val job = scope.async {
+            sessionInstallManager.requestUserConfirmation(installState)
+        }
+        // keep track of this job, in case we need to cancel it
+        val result = trackJob(packageName, job)
         log.info { "User confirmation for $packageName $result" }
         apps.updateApp(packageName) { result }
         onStatesUpdated()
