@@ -42,6 +42,15 @@ Project page: <a href="https://github.com/lukaspieper/Gcam-Services-Provider">ht
     }
 
     @Test
+    fun testLinkInRoundBrackets() {
+        val description = """our link (https://wikimediafoundation.org/)."""
+
+        @Suppress("ktlint:standard:max-line-length")
+        val expectedDescription = """our link (<a href="https://wikimediafoundation.org/">https://wikimediafoundation.org/</a>)."""
+        assertEquals(expectedDescription, getHtmlDescription(description))
+    }
+
+    @Test
     fun testHeadlineRemoval() {
         val description = """<h1>SimpleX - the first messaging platform that has no user identifiers, not even random numbers!</h1>
 <p><a href="https://simplex.chat/blog/20221108-simplex-chat-v4.2-security-audit-new-website.html" target="_blank">Security assessment</a> was done by Trail of Bits in November 2022.</p>
