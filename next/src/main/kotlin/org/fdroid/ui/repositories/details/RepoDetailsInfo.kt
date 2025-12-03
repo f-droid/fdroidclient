@@ -11,6 +11,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.ui.utils.flagEmoji
 import org.fdroid.ui.utils.generateQrBitmap
+import org.fdroid.ui.utils.startActivitySafe
 
 interface RepoDetailsInfo {
     val model: RepoDetailsModel
@@ -59,7 +60,7 @@ data class RepoDetailsModel(
             putExtra(EXTRA_TEXT, repo.shareUri)
         }
         val chooserTitle = context.getString(R.string.share_repository)
-        context.startActivity(
+        context.startActivitySafe(
             Intent.createChooser(intent, chooserTitle)
         )
     }
@@ -107,7 +108,7 @@ data class UserMirrorItem(
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, uri)
         }
-        context.startActivity(
+        context.startActivitySafe(
             Intent.createChooser(intent, context.getString(R.string.share_mirror))
         )
     }

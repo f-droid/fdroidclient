@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -95,7 +96,7 @@ fun AppDetailsMenu(
             onClick = {
                 val s = res.getString(R.string.menu_share_apk)
                 val i = Intent.createChooser(item.actions.shareApk, s)
-                context.startActivity(i)
+                context.startActivitySafe(i)
                 onDismiss()
             },
         )

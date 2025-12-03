@@ -64,6 +64,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.ui.utils.asRelativeTimeString
+import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit.HOURS
@@ -153,7 +154,7 @@ fun Settings(
                         val intent = Intent(ACTION_APP_LOCALE_SETTINGS).apply {
                             setData(Uri.fromParts("package", context.packageName, null))
                         }
-                        context.startActivity(intent)
+                        context.startActivitySafe(intent)
                     },
                 )
                 if (SDK_INT >= 26) preference(
@@ -171,7 +172,7 @@ fun Settings(
                         val intent = Intent(ACTION_APP_NOTIFICATION_SETTINGS).apply {
                             putExtra(EXTRA_APP_PACKAGE, context.packageName)
                         }
-                        context.startActivity(intent)
+                        context.startActivitySafe(intent)
                     },
                 )
                 preferenceCategory(

@@ -64,6 +64,7 @@
     <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred.</string>
     <string name="app_issue_not_available_title">No longer available</string>
     <string name="app_issue_not_available_text">This app is not receiving updates, because it is no longer in any enabled repository.\n\nIt may have been in a repository you removed or disabled. Or it was simply removed.</string>
+    <string name="app_issue_not_available_button">Show app info</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
     <string name="sdk_versions_colon">SDK versions: %1$s</string>

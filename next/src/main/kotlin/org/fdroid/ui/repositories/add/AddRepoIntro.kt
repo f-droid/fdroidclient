@@ -72,6 +72,7 @@ import org.fdroid.repo.None
 import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
+import org.fdroid.ui.utils.startActivitySafe
 
 @Composable
 fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modifier) {
@@ -140,7 +141,7 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
                         val intent = Intent(ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                             data = Uri.fromParts("package", context.packageName, null)
                         }
-                        context.startActivity(intent)
+                        context.startActivitySafe(intent)
                     }
             ) {
                 Text(

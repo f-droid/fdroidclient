@@ -9,11 +9,9 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -171,16 +169,9 @@ fun MyAppsList(
                     .animateItem()
                     .then(interactionModifier)
                 InstalledAppRow(app, isSelected, modifier, hasIssue = true)
-                if (showNotAvailableDialog) AlertDialog(
-                    onDismissRequest = { showNotAvailableDialog = false },
-                    title = { Text(text = stringResource(R.string.app_issue_not_available_title)) },
-                    text = { Text(text = stringResource(R.string.app_issue_not_available_text)) },
-                    confirmButton = {
-                        TextButton(
-                            onClick = { showNotAvailableDialog = false }
-                        ) { Text(stringResource(R.string.ok)) }
-                    },
-                )
+                if (showNotAvailableDialog) NotAvailableDialog(app.packageName) {
+                    showNotAvailableDialog = false
+                }
             }
         }
         // Installed apps header (only show when we have non-empty lists above)
