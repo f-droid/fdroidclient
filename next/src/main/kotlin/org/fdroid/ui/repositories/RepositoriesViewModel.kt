@@ -53,14 +53,16 @@ class RepositoriesViewModel @Inject constructor(
     }
 
     // define below init, because this only defines repoSortingMap
-    val model: StateFlow<RepositoryModel> = moleculeScope.launchMolecule(mode = ContextClock) {
-        RepositoriesPresenter(
-            context = application,
-            repositoriesFlow = repos,
-            repoSortingMapFlow = repoSortingMap,
-            showOnboardingFlow = showOnboarding,
-            lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
-        )
+    val model: StateFlow<RepositoryModel> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            RepositoriesPresenter(
+                context = application,
+                repositoriesFlow = repos,
+                repoSortingMapFlow = repoSortingMap,
+                showOnboardingFlow = showOnboarding,
+                lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
+            )
+        }
     }
 
     private fun onRepositoriesChanged(repositories: List<Repository>) {

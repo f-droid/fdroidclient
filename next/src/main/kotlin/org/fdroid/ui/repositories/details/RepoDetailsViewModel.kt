@@ -56,14 +56,16 @@ class RepoDetailsViewModel @Inject constructor(
     private val archiveStateFlow = MutableStateFlow(UNKNOWN)
     private val showOnboarding = onboardingManager.showRepoDetailsOnboarding
 
-    val model: StateFlow<RepoDetailsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
-        RepoDetailsPresenter(
-            repoFlow = repoFlow,
-            numAppsFlow = numAppsFlow,
-            archiveStateFlow = archiveStateFlow,
-            showOnboardingFlow = showOnboarding,
-            proxyConfig = settingsManager.proxyConfig,
-        )
+    val model: StateFlow<RepoDetailsModel> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            RepoDetailsPresenter(
+                repoFlow = repoFlow,
+                numAppsFlow = numAppsFlow,
+                archiveStateFlow = archiveStateFlow,
+                showOnboardingFlow = showOnboarding,
+                proxyConfig = settingsManager.proxyConfig,
+            )
+        }
     }
 
     fun setRepoId(repoId: Long) {

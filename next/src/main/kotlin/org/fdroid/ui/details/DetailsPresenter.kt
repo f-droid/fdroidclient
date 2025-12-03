@@ -5,13 +5,19 @@ import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.asFlow
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.withContext
 import org.fdroid.UpdateChecker
+import org.fdroid.database.App
+import org.fdroid.database.AppPrefs
+import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.index.RepoManager
@@ -30,6 +36,7 @@ private const val TAG = "DetailsPresenter"
 @Composable
 fun DetailsPresenter(
     db: FDroidDatabase,
+    scope: CoroutineScope,
     repoManager: RepoManager,
     repoPreLoader: RepoPreLoader,
     updateChecker: UpdateChecker,
@@ -45,41 +52,56 @@ fun DetailsPresenter(
     val packageInfo = packagePair.packageInfo
     val currentRepoId = currentRepoIdFlow.collectAsState().value
     val appsWithIssues = appsWithIssuesFlow.collectAsState().value
-    val app = if (currentRepoId == null) {
-        val flow = remember {
-            db.getAppDao().getApp(packageName).asFlow()
+    val appDao = db.getAppDao()
+    val app = produceState<App?>(null, currentRepoId) {
+        withContext(scope.coroutineContext) {
+            if (currentRepoId == null) {
+                val flow = appDao.getApp(packageName).asFlow()
+                flow.collect { value = it }
+            } else {
+                value = appDao.getApp(currentRepoId, packageName)
+            }
         }
-        flow.collectAsState(null).value
-    } else {
-        db.getAppDao().getApp(currentRepoId, packageName)
-    } ?: return null
-    val repo = repoManager.getRepository(app.repoId) ?: return null
-    val repositories = remember(packageName) {
-        val repos = db.getAppDao().getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
-            repoManager.getRepository(repoId)
+    }.value ?: return null
+    val repo = produceState<Repository?>(null) {
+        withContext(scope.coroutineContext) {
+            value = repoManager.getRepository(app.repoId)
         }
-        // show repo chooser only if
-        // * app is in more than one repo, or
-        // * app is from a non-default repo
-        if (repos.size > 1) repos
-        else if (repo.address in repoPreLoader.defaultRepoAddresses) emptyList()
-        else repos
-    }
+    }.value ?: return null
+    val repositories = produceState(emptyList(), packageName) {
+        withContext(scope.coroutineContext) {
+            val repos = appDao.getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
+                repoManager.getRepository(repoId)
+            }
+            // show repo chooser only if
+            // * app is in more than one repo, or
+            // * app is from a non-default repo
+            value = if (repos.size > 1) repos
+            else if (repo.address in repoPreLoader.defaultRepoAddresses) emptyList()
+            else repos
+        }
+    }.value
     val installState =
         appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
 
-    val versionsFlow = remember(currentRepoId) {
-        if (currentRepoId == null) {
-            db.getVersionDao().getAppVersions(app.repoId, packageName).asFlow()
-        } else {
-            db.getVersionDao().getAppVersions(currentRepoId, packageName).asFlow()
+    val versions = produceState<List<AppVersion>?>(null, currentRepoId) {
+        withContext(scope.coroutineContext) {
+            if (currentRepoId == null) {
+                db.getVersionDao().getAppVersions(app.repoId, packageName).asFlow().collect {
+                    value = it
+                }
+            } else {
+                db.getVersionDao().getAppVersions(currentRepoId, packageName).asFlow().collect {
+                    value = it
+                }
+            }
         }
-    }
-    val versions = versionsFlow.collectAsState(null).value
-    val appPrefsFlow = remember(packageName) {
-        db.getAppPrefsDao().getAppPrefs(packageName).asFlow()
-    }
-    val appPrefs = appPrefsFlow.collectAsState(null).value
+    }.value
+    val appPrefs = produceState<AppPrefs?>(null, packageName) {
+        withContext(scope.coroutineContext) {
+            db.getAppPrefsDao().getAppPrefs(packageName).asFlow().collect { value = it }
+        }
+    }.value
     val preferredRepoId = remember(packageName, appPrefs) {
         appPrefs?.preferredRepoId ?: app.repoId // DB loads preferred repo first, so we remember it
     }
@@ -123,10 +145,11 @@ fun DetailsPresenter(
     }
     val authorName = app.authorName
     val authorHasMoreThanOneApp = if (authorName == null) false else {
-        val flow = remember(authorName) {
-            db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow()
-        }
-        flow.collectAsState(false).value
+        produceState(false) {
+            withContext(scope.coroutineContext) {
+                db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow().collect { value = it }
+            }
+        }.value
     }
     val issue = remember(appsWithIssues) {
         appsWithIssues?.find { it.packageName == packageName }?.issue

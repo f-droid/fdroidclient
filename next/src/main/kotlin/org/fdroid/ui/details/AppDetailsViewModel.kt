@@ -10,7 +10,8 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
-import app.cash.molecule.RecompositionMode.Immediate
+import app.cash.molecule.AndroidUiDispatcher
+import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import coil3.SingletonImageLoader
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -54,22 +55,25 @@ class AppDetailsViewModel @Inject constructor(
     private val log = KotlinLogging.logger { }
     private val packageInfoFlow = MutableStateFlow<AppInfo?>(null)
     private val currentRepoIdFlow = MutableStateFlow<Long?>(null)
+    private val moleculeScope =
+        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
-    val appDetails: StateFlow<AppDetailsItem?> = viewModelScope.launchMolecule(
-        context = scope.coroutineContext, mode = Immediate,
-    ) {
-        DetailsPresenter(
-            db = db,
-            repoManager = repoManager,
-            repoPreLoader = repoPreLoader,
-            updateChecker = updateChecker,
-            settingsManager = settingsManager,
-            appInstallManager = appInstallManager,
-            viewModel = this,
-            packageInfoFlow = packageInfoFlow,
-            currentRepoIdFlow = currentRepoIdFlow,
-            appsWithIssuesFlow = updatesManager.appsWithIssues,
-        )
+    val appDetails: StateFlow<AppDetailsItem?> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            DetailsPresenter(
+                db = db,
+                scope = scope,
+                repoManager = repoManager,
+                repoPreLoader = repoPreLoader,
+                updateChecker = updateChecker,
+                settingsManager = settingsManager,
+                appInstallManager = appInstallManager,
+                viewModel = this,
+                packageInfoFlow = packageInfoFlow,
+                currentRepoIdFlow = currentRepoIdFlow,
+                appsWithIssuesFlow = updatesManager.appsWithIssues,
+            )
+        }
     }
 
     fun setAppDetails(packageName: String) {

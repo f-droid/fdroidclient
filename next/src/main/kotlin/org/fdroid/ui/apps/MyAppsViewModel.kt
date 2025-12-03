@@ -71,15 +71,17 @@ class MyAppsViewModel @Inject constructor(
 
     private val searchQuery = savedStateHandle.getMutableStateFlow("query", "")
     private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
-    val myAppsModel: StateFlow<MyAppsModel> = moleculeScope.launchMolecule(mode = ContextClock) {
-        MyAppsPresenter(
-            appUpdatesFlow = updates,
-            appInstallStatesFlow = appInstallManager.appInstallStates,
-            appsWithIssuesFlow = updatesManager.appsWithIssues,
-            installedAppsFlow = installedAppItems,
-            searchQueryFlow = searchQuery,
-            sortOrderFlow = sortOrder,
-        )
+    val myAppsModel: StateFlow<MyAppsModel> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            MyAppsPresenter(
+                appUpdatesFlow = updates,
+                appInstallStatesFlow = appInstallManager.appInstallStates,
+                appsWithIssuesFlow = updatesManager.appsWithIssues,
+                installedAppsFlow = installedAppItems,
+                searchQueryFlow = searchQuery,
+                sortOrderFlow = sortOrder,
+            )
+        }
     }
 
     fun updateAll() {

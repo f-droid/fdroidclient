@@ -43,7 +43,8 @@ class AppListViewModel @Inject constructor(
     private val onboardingManager: OnboardingManager,
 ) : AndroidViewModel(app), AppListActions {
 
-    private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+    private val moleculeScope =
+        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
     private val localeList = LocaleListCompat.getDefault()
     private val apps = MutableStateFlow<List<AppListItem>?>(null)
@@ -77,17 +78,19 @@ class AppListViewModel @Inject constructor(
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
     val showOnboarding = onboardingManager.showFilterOnboarding
 
-    val appListModel: StateFlow<AppListModel> = scope.launchMolecule(mode = ContextClock) {
-        AppListPresenter(
-            appsFlow = apps,
-            sortByFlow = sortBy,
-            filterIncompatibleFlow = filterIncompatible,
-            categoriesFlow = categories,
-            filteredCategoryIdsFlow = filteredCategoryIds,
-            repositoriesFlow = repositories,
-            filteredRepositoryIdsFlow = filteredRepositoryIds,
-            searchQueryFlow = query,
-        )
+    val appListModel: StateFlow<AppListModel> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            AppListPresenter(
+                appsFlow = apps,
+                sortByFlow = sortBy,
+                filterIncompatibleFlow = filterIncompatible,
+                categoriesFlow = categories,
+                filteredCategoryIdsFlow = filteredCategoryIds,
+                repositoriesFlow = repositories,
+                filteredRepositoryIdsFlow = filteredRepositoryIds,
+                searchQueryFlow = query,
+            )
+        }
     }
 
     @UiThread

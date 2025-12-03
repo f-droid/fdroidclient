@@ -48,7 +48,8 @@ class DiscoverViewModel @Inject constructor(
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
-    private val scope = CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+    private val moleculeScope =
+        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     private val collator = Collator.getInstance(Locale.getDefault())
 
     val numUpdates = updatesManager.numUpdates
@@ -78,15 +79,17 @@ class DiscoverViewModel @Inject constructor(
     private val searchResults = MutableStateFlow<SearchResults?>(null)
 
     val localeList = LocaleListCompat.getDefault()
-    val discoverModel: StateFlow<DiscoverModel> = scope.launchMolecule(mode = ContextClock) {
-        DiscoverPresenter(
-            newAppsFlow = newApps,
-            recentlyUpdatedAppsFlow = recentlyUpdatedApps,
-            categoriesFlow = categories,
-            repositoriesFlow = repoManager.repositoriesState,
-            searchResultsFlow = searchResults,
-            lastRepoUpdate = settingsManager.lastRepoUpdate,
-        )
+    val discoverModel: StateFlow<DiscoverModel> by lazy(LazyThreadSafetyMode.NONE) {
+        moleculeScope.launchMolecule(mode = ContextClock) {
+            DiscoverPresenter(
+                newAppsFlow = newApps,
+                recentlyUpdatedAppsFlow = recentlyUpdatedApps,
+                categoriesFlow = categories,
+                repositoriesFlow = repoManager.repositoriesState,
+                searchResultsFlow = searchResults,
+                lastRepoUpdate = settingsManager.lastRepoUpdate,
+            )
+        }
     }
 
     suspend fun search(term: String) = withContext(ioScope.coroutineContext) {
