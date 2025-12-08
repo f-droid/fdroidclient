@@ -220,6 +220,7 @@ fun DetailsPresenter(
         },
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
+        installedVersionName = packageInfo?.versionName,
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,

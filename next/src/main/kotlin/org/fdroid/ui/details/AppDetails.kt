@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AppSettingsAlt
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
@@ -362,6 +363,13 @@ fun AppDetails(
                         })
                     }
                 }
+            }
+            ExpandableSection(
+                icon = rememberVectorPainter(Icons.Default.AppSettingsAlt),
+                title = stringResource(R.string.technical_info),
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            ) {
+                TechnicalInfo(item)
             }
             // More apps by dev
             if (item.authorHasMoreThanOneApp) {

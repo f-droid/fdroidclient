@@ -45,6 +45,7 @@ data class AppDetailsItem(
      * Needed, because the [installedVersion] may not be available, e.g. too old.
      */
     val installedVersionCode: Long? = null,
+    val installedVersionName: String? = null,
     /**
      * The currently suggested version for installation.
      */
@@ -71,6 +72,7 @@ data class AppDetailsItem(
         versions: List<VersionItem>?,
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
+        installedVersionName: String?,
         suggestedVersion: AppVersion?,
         possibleUpdate: AppVersion?,
         appPrefs: AppPrefs?,
@@ -102,6 +104,7 @@ data class AppDetailsItem(
         versions = versions,
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
+        installedVersionName = installedVersionName,
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,

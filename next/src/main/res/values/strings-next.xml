@@ -56,6 +56,9 @@
     <string name="donate_title">Donate</string>
     <string name="anti_features_title">This app has anti-features</string>
     <string name="developer_contact">Developer contact</string>
+    <string name="technical_info">Technical information</string>
+    <string name="package_name">Package Name:</string>
+    <string name="installed_version">Installed Version:</string>
     <string name="copy_link">Copy link</string>
     <string name="app_no_compatible_versions">This app is not compatible with your device.</string>
     <string name="app_no_compatible_signer">Can not update this app, because all versions have an incompatible signature.\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>

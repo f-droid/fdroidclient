@@ -93,8 +93,8 @@ val testVersion2 = object : PackageVersion {
     override val versionCode: Long = 23
     override val versionName: String = "23.42.0"
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
-    override val size: Long? = 1024 * 1024 * 23
-    override val signer: SignerV2? = SignerV2(
+    override val size: Long = 1024 * 1024 * 23
+    override val signer: SignerV2 = SignerV2(
         listOf("271721a9cddc96660336c19a39ae3cca4375072c80d3c8170860c333d2252b90")
     )
     override val releaseChannels: List<String>? = null
@@ -219,6 +219,8 @@ val testApp = AppDetailsItem(
         ),
     ),
     installedVersion = testVersion2,
+    installedVersionCode = testVersion2.versionCode,
+    installedVersionName = testVersion2.versionName,
     suggestedVersion = null,
     possibleUpdate = testVersion1,
     proxy = null,
