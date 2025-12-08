@@ -19,6 +19,8 @@ import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
@@ -56,14 +58,15 @@ class MyAppsViewModel @Inject constructor(
             val proxyConfig = settingsManager.proxyConfig
             db.getAppDao().getInstalledAppListItems(installedApps).map { list ->
                 list.map { app ->
+                    val backupModel = repoManager.getRepository(app.repoId)?.let { repo ->
+                        app.getIcon(localeList)?.getImageModel(repo, proxyConfig)
+                    } as? DownloadRequest
                     InstalledAppItem(
                         packageName = app.packageName,
                         name = app.name ?: "Unknown app",
                         installedVersionName = app.installedVersionName ?: "???",
                         lastUpdated = app.lastUpdated,
-                        iconModel = repoManager.getRepository(app.repoId)?.let { repo ->
-                            app.getIcon(localeList)?.getImageModel(repo, proxyConfig)
-                        },
+                        iconModel = PackageName(app.packageName, backupModel),
                     )
                 }
             }

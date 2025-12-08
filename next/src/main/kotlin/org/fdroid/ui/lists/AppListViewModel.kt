@@ -23,8 +23,11 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
+import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
@@ -41,6 +44,7 @@ class AppListViewModel @Inject constructor(
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
+    private val installedAppsCache: InstalledAppsCache,
 ) : AndroidViewModel(app), AppListActions {
 
     private val moleculeScope =
@@ -117,14 +121,22 @@ class AppListViewModel @Inject constructor(
         }.mapNotNull {
             val repository = repoManager.getRepository(it.repoId)
                 ?: return@mapNotNull null
+            val iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig)
+                as? DownloadRequest
+            val isInstalled = installedAppsCache.isInstalled(it.packageName)
             AppListItem(
                 repoId = it.repoId,
                 packageName = it.packageName,
                 name = it.getName(localeList) ?: "Unknown App",
                 summary = it.getSummary(localeList) ?: "Unknown",
                 lastUpdated = it.lastUpdated,
+                isInstalled = isInstalled,
                 isCompatible = it.isCompatible,
-                iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig),
+                iconModel = if (isInstalled) {
+                    PackageName(it.packageName, iconModel)
+                } else {
+                    iconModel
+                },
                 categoryIds = it.categories?.toSet(),
             )
         }

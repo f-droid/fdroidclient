@@ -22,6 +22,8 @@ import org.fdroid.database.AvailableAppWithIssue
 import org.fdroid.database.DbAppChecker
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.UnavailableAppWithIssue
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
@@ -103,6 +105,9 @@ class UpdatesManager @Inject constructor(
             val proxyConfig = settingsManager.proxyConfig
             val apps = dbAppChecker.getApps(packageInfoMap = packageInfoMap)
             val updates = apps.updates.map { update ->
+                val iconModel = repoManager.getRepository(update.repoId)?.let { repo ->
+                    update.getIcon(localeList)?.getImageModel(repo, proxyConfig)
+                } as? DownloadRequest
                 AppUpdateItem(
                     repoId = update.repoId,
                     packageName = update.packageName,
@@ -110,9 +115,7 @@ class UpdatesManager @Inject constructor(
                     installedVersionName = update.installedVersionName,
                     update = update.update,
                     whatsNew = update.update.getWhatsNew(localeList),
-                    iconModel = repoManager.getRepository(update.repoId)?.let { repo ->
-                        update.getIcon(localeList)?.getImageModel(repo, proxyConfig)
-                    },
+                    iconModel = PackageName(update.packageName, iconModel),
                 )
             }
             _updates.value = updates

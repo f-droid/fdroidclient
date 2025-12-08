@@ -23,8 +23,11 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
+import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
@@ -44,6 +47,7 @@ class DiscoverViewModel @Inject constructor(
     updatesManager: UpdatesManager,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
+    private val installedAppsCache: InstalledAppsCache,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
@@ -121,14 +125,22 @@ class DiscoverViewModel @Inject constructor(
                 val proxyConfig = settingsManager.proxyConfig
                 db.getAppDao().getAppSearchItems(query).sortedDescending().mapNotNull {
                     val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+                    val iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig)
+                        as? DownloadRequest
+                    val isInstalled = installedAppsCache.isInstalled(it.packageName)
                     AppListItem(
                         repoId = it.repoId,
                         packageName = it.packageName,
                         name = it.name.getBestLocale(localeList) ?: "Unknown",
                         summary = it.summary.getBestLocale(localeList) ?: "",
                         lastUpdated = it.lastUpdated,
+                        isInstalled = isInstalled,
                         isCompatible = true, // doesn't matter here, as we don't filter
-                        iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig),
+                        iconModel = if (isInstalled) {
+                            PackageName(it.packageName, iconModel)
+                        } else {
+                            iconModel
+                        },
                         categoryIds = it.categories?.toSet(),
                     )
                 }
@@ -158,10 +170,20 @@ class DiscoverViewModel @Inject constructor(
     private fun AppOverviewItem.toAppDiscoverItem(
         repository: Repository,
         proxyConfig: ProxyConfig?,
-    ) = AppDiscoverItem(
-        packageName = packageName,
-        name = getName(localeList) ?: "Unknown App",
-        lastUpdated = lastUpdated,
-        imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig),
-    )
+    ): AppDiscoverItem {
+        val isInstalled = installedAppsCache.isInstalled(packageName)
+        val imageModel =
+            getIcon(localeList)?.getImageModel(repository, proxyConfig) as? DownloadRequest
+        return AppDiscoverItem(
+            packageName = packageName,
+            name = getName(localeList) ?: "Unknown App",
+            lastUpdated = lastUpdated,
+            isInstalled = isInstalled,
+            imageModel = if (isInstalled) {
+                PackageName(packageName, imageModel)
+            } else {
+                imageModel
+            },
+        )
+    }
 }

@@ -13,7 +13,6 @@ import coil3.disk.DiskCache
 import coil3.disk.directory
 import coil3.key.Keyer
 import coil3.memory.MemoryCache
-import coil3.request.Options
 import coil3.request.crossfade
 import coil3.util.DebugLogger
 import dagger.hilt.android.HiltAndroidApp
@@ -103,17 +102,11 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         return ImageLoader.Builder(context)
             .crossfade(true)
             .components {
-                val downloadRequestKeyer = object : Keyer<DownloadRequest> {
-                    override fun key(data: DownloadRequest, options: Options): String {
-                        return data.getCacheKey()
-                    }
-                }
+                val downloadRequestKeyer = Keyer<DownloadRequest> { data, _ -> data.getCacheKey() }
                 add(downloadRequestKeyer)
                 add(downloadRequestFetcherFactory)
 
-                val packageNameKeyer = object : Keyer<PackageName> {
-                    override fun key(data: PackageName, options: Options): String = data.packageName
-                }
+                val packageNameKeyer = Keyer<PackageName> { data, _ -> data.packageName }
                 add(packageNameKeyer)
                 add(LocalIconFetcher.Factory(context, downloadRequestFetcherFactory))
             }
@@ -123,8 +116,6 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
                     .build()
             }
             .diskCache {
-                // TODO disk cache needs to be manually filled by the Fetcher
-                //  this is not automatic like it is with Glide
                 DiskCache.Builder()
                     .directory(context.cacheDir.resolve("coil"))
                     .maxSizePercent(0.05)

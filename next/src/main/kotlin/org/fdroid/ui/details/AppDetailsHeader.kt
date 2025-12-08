@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -37,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
@@ -58,6 +60,7 @@ import org.fdroid.R
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.InstalledBadge
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
@@ -106,17 +109,21 @@ fun AppDetailsHeader(
     Row(
         modifier = Modifier
             .padding(horizontal = 16.dp),
-        horizontalArrangement = spacedBy(8.dp),
+        horizontalArrangement = spacedBy(16.dp),
         verticalAlignment = CenterVertically,
     ) {
-        AsyncShimmerImage(
-            model = item.icon,
-            contentDescription = "",
-            error = painterResource(R.drawable.ic_repo_app_default),
-            modifier = Modifier
-                .size(64.dp)
-                .semantics { hideFromAccessibility() },
-        )
+        BadgedBox(badge = { if (item.installedVersionCode != null) InstalledBadge() }) {
+            AsyncShimmerImage(
+                model = item.icon,
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                error = painterResource(R.drawable.ic_repo_app_default),
+                modifier = Modifier
+                    .size(64.dp)
+                    .clip(MaterialTheme.shapes.large)
+                    .semantics { hideFromAccessibility() },
+            )
+        }
         Column {
             SelectionContainer {
                 Text(

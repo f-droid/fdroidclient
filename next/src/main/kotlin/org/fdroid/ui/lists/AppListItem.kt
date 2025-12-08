@@ -6,6 +6,7 @@ data class AppListItem(
     val name: String,
     val summary: String,
     val lastUpdated: Long,
+    val isInstalled: Boolean,
     val isCompatible: Boolean,
     val iconModel: Any? = null,
     val categoryIds: Set<String>? = null,

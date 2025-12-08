@@ -58,7 +58,7 @@ class LocalIconFetcher(
             data: PackageName,
             options: Options,
             imageLoader: ImageLoader,
-        ): Fetcher? = LocalIconFetcher(
+        ): Fetcher = LocalIconFetcher(
             packageManager = context.packageManager,
             data = data,
             downloadRequestFetcher = data.iconDownloadRequest?.let {

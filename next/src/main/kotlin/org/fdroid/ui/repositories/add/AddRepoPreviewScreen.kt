@@ -86,6 +86,7 @@ fun AddRepoPreviewScreen(
             }
             items(items = state.apps, key = { it.packageName }) { app ->
                 val repo = state.receivedRepo ?: error("no repo")
+                // TODO this conversion ideally doesn't happen in the UI layer
                 val item = AppListItem(
                     repoId = repo.repoId,
                     packageName = app.packageName,
@@ -93,6 +94,7 @@ fun AddRepoPreviewScreen(
                     summary = app.summary ?: "",
                     iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
                     lastUpdated = 1L,
+                    isInstalled = false,
                     isCompatible = true,
                 )
                 AppListRow(

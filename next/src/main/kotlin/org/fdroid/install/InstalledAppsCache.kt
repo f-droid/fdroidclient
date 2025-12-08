@@ -43,6 +43,11 @@ class InstalledAppsCache @Inject constructor(
         loadInstalledApps()
     }
 
+    fun isInstalled(packageName: String): Boolean {
+        // TODO on first start this may have to wait for installed apps to load
+        return _installedApps.value.contains(packageName)
+    }
+
     @UiThread
     private fun loadInstalledApps() {
         if (loadJob?.isActive == true) {

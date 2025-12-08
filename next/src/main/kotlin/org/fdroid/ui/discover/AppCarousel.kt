@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.InstalledBadge
 import org.fdroid.ui.utils.Names
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,15 +78,17 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
             .padding(8.dp)
             .clickable { onAppTap(app) },
     ) {
-        AsyncShimmerImage(
-            model = app.imageModel,
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .requiredSize(76.dp)
-                .clip(MaterialTheme.shapes.medium)
-                .semantics { hideFromAccessibility() },
-        )
+        BadgedBox(badge = { if (app.isInstalled) InstalledBadge() }) {
+            AsyncShimmerImage(
+                model = app.imageModel,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .requiredSize(76.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .semantics { hideFromAccessibility() },
+            )
+        }
         Text(
             text = app.name,
             style = MaterialTheme.typography.bodySmall,
@@ -98,11 +102,11 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
 @Composable
 fun AppCarouselPreview() {
     val apps = listOf(
-        AppDiscoverItem("", Names.randomName),
-        AppDiscoverItem("", Names.randomName),
-        AppDiscoverItem("", Names.randomName),
-        AppDiscoverItem("", Names.randomName),
-        AppDiscoverItem("", Names.randomName),
+        AppDiscoverItem("", Names.randomName, false),
+        AppDiscoverItem("", Names.randomName, true),
+        AppDiscoverItem("", Names.randomName, false),
+        AppDiscoverItem("", Names.randomName, false),
+        AppDiscoverItem("", Names.randomName, false),
     )
     FDroidContent {
         AppCarousel("Preview Apps", apps, onTitleTap = {}) {}

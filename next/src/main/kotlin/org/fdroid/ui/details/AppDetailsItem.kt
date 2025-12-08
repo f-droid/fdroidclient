@@ -12,6 +12,8 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
+import org.fdroid.download.DownloadRequest
+import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.PackageVersion
@@ -89,7 +91,13 @@ data class AppDetailsItem(
         name = dbApp.name ?: "Unknown App",
         summary = dbApp.summary,
         description = getHtmlDescription(dbApp.getDescription(localeList)),
-        icon = dbApp.getIcon(localeList)?.getImageModel(repository, proxy),
+        icon = if (installedVersionCode == null) {
+            dbApp.getIcon(localeList)?.getImageModel(repository, proxy)
+        } else {
+            val request =
+                dbApp.getIcon(localeList)?.getImageModel(repository, proxy) as? DownloadRequest
+            PackageName(dbApp.packageName, request)
+        },
         featureGraphic = dbApp.getFeatureGraphic(localeList)?.getImageModel(repository, proxy),
         phoneScreenshots = dbApp.getPhoneScreenshots(localeList).mapNotNull {
             it.getImageModel(repository, proxy)

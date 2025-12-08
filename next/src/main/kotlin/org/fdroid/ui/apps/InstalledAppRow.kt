@@ -1,7 +1,10 @@
 package org.fdroid.ui.apps
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.BadgedBox
@@ -12,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -20,8 +24,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
-import org.fdroid.download.DownloadRequest
-import org.fdroid.download.PackageName
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.Names
@@ -41,12 +43,16 @@ fun InstalledAppRow(
                         imageVector = Icons.Filled.Error,
                         tint = MaterialTheme.colorScheme.error,
                         contentDescription =
-                        stringResource(R.string.notification_title_single_update_available),
-                        modifier = Modifier.size(24.dp),
+                            stringResource(R.string.my_apps_header_apps_with_issue),
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surface)
+                            .padding(1.dp)
+                            .size(24.dp)
                     )
                 }) {
                     AsyncShimmerImage(
-                        model = PackageName(app.packageName, app.iconModel as? DownloadRequest),
+                        model = app.iconModel,
                         error = painterResource(R.drawable.ic_repo_app_default),
                         contentDescription = null,
                         modifier = Modifier
