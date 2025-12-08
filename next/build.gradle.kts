@@ -26,7 +26,7 @@ android {
             buildConfigField("String", "ACRA_REPORT_EMAIL", "\"t+fdroidnext@grobox.de\"")
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

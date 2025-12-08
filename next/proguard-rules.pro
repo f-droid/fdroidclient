@@ -1,5 +1,4 @@
 -dontobfuscate
--dontoptimize
 -keepattributes SourceFile,LineNumberTable,Exceptions
 -keep class org.fdroid.fdroid.** {*;}
 
