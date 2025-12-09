@@ -23,6 +23,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
@@ -72,6 +73,24 @@ class SettingsManager @Inject constructor(
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
 
+    /**
+     * A set of package name for which we should not show app issues.
+     */
+    var ignoredAppIssues: Map<String, Long>
+        get() = try {
+            prefs.getStringSet(PREF_KEY_IGNORED_APP_ISSUES, emptySet<String>())?.associate {
+                val (packageName, versionCode) = it.split('|')
+                Pair(packageName, versionCode.toLong())
+            } ?: emptyMap()
+        } catch (e: Exception) {
+            log.error(e) { "Error parsing ignored app issues: " }
+            emptyMap()
+        }
+        private set(value) {
+            val newValue = value.map { (packageName, versionCode) -> "$packageName|$versionCode" }
+            prefs.edit { putStringSet(PREF_KEY_IGNORED_APP_ISSUES, newValue.toSet()) }
+        }
+
     val proxyConfig: ProxyConfig?
         get() {
             val proxyStr = prefs.getString(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
@@ -95,5 +114,12 @@ class SettingsManager @Inject constructor(
             putBoolean(PREF_KEY_SHOW_INCOMPATIBLE, !filterIncompatible)
             putString(PREF_KEY_APP_LIST_SORT_ORDER, sortOrder.toSettings())
         }
+    }
+
+    fun ignoreAppIssue(packageName: String, versionCode: Long) {
+        val newMap = ignoredAppIssues.toMutableMap().apply {
+            put(packageName, versionCode)
+        }
+        ignoredAppIssues = newMap
     }
 }

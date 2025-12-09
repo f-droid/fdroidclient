@@ -38,7 +38,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle.State.STARTED
-import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
@@ -70,10 +69,6 @@ fun MyApps(
                 app.installState is InstallConfirmationState
             }
         }
-    }
-    LifecycleStartEffect(Unit) {
-        myAppsInfo.refresh()
-        onStopOrDispose { }
     }
     // Ask user to confirm appToConfirm whenever it changes and we are in STARTED state.
     // In tests, waiting for RESUME didn't work, because the LaunchedEffect ran before.

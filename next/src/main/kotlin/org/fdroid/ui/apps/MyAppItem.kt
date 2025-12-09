@@ -37,6 +37,7 @@ data class AppWithIssueItem(
     override val packageName: String,
     override val name: String,
     override val installedVersionName: String,
+    val installedVersionCode: Long,
     val issue: AppIssue,
     override val lastUpdated: Long,
     override val iconModel: Any? = null,

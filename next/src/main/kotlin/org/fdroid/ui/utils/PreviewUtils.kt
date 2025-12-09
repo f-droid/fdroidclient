@@ -265,11 +265,11 @@ fun getAppListInfo(model: AppListModel) = object : AppListInfo {
 
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
     override val model = model
-    override fun refresh() {}
     override fun updateAll() {}
     override fun changeSortOrder(sort: AppListSortOrder) {}
     override fun search(query: String) {}
     override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
+    override fun ignoreAppIssue(item: AppWithIssueItem) {}
 }
 
 @RestrictTo(RestrictTo.Scope.TESTS)
@@ -312,6 +312,7 @@ internal val myAppsModel = MyAppsModel(
             packageName = "C1",
             name = Names.randomName,
             installedVersionName = "1",
+            installedVersionCode = 1,
             issue = KnownVulnerability(true),
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(5)
         ),
@@ -319,6 +320,7 @@ internal val myAppsModel = MyAppsModel(
             packageName = "C2",
             name = Names.randomName,
             installedVersionName = "2",
+            installedVersionCode = 2,
             issue = NotAvailable,
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(7)
         ),

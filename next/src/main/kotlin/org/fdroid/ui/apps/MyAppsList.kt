@@ -2,6 +2,7 @@ package org.fdroid.ui.apps
 
 import androidx.annotation.RestrictTo
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -44,6 +45,7 @@ fun MyAppsList(
     var showUpdateAllButton by remember(updatableApps) {
         mutableStateOf(true)
     }
+    var showIssueIgnoreDialog by remember { mutableStateOf<AppWithIssueItem?>(null) }
     LazyColumn(
         state = lazyListState,
         modifier = modifier
@@ -156,8 +158,10 @@ fun MyAppsList(
                     }
                 }
                 val interactionModifier = if (currentPackageName == null) {
-                    Modifier.clickable(
+                    Modifier.combinedClickable(
                         onClick = onClick,
+                        onLongClick = { showIssueIgnoreDialog = app },
+                        onLongClickLabel = stringResource(R.string.my_apps_ignore_dialog_title),
                     )
                 } else {
                     Modifier.selectable(
@@ -169,7 +173,16 @@ fun MyAppsList(
                     .animateItem()
                     .then(interactionModifier)
                 InstalledAppRow(app, isSelected, modifier, hasIssue = true)
-                if (showNotAvailableDialog) NotAvailableDialog(app.packageName) {
+                // Dialogs
+                val appToIgnore = showIssueIgnoreDialog
+                if (appToIgnore != null) IgnoreIssueDialog(
+                    appName = appToIgnore.name,
+                    onIgnore = {
+                        myAppsInfo.ignoreAppIssue(appToIgnore)
+                        showIssueIgnoreDialog = null
+                    },
+                    onDismiss = { showIssueIgnoreDialog = null },
+                ) else if (showNotAvailableDialog) NotAvailableDialog(app.packageName) {
                     showNotAvailableDialog = false
                 }
             }

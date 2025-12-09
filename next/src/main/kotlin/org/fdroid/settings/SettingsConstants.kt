@@ -34,4 +34,5 @@ object SettingsConstants {
         AppListSortOrder.NAME -> "name"
     }
 
+    const val PREF_KEY_IGNORED_APP_ISSUES = "ignoredAppIssues"
 }

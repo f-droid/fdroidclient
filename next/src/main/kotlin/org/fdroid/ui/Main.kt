@@ -31,6 +31,7 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallConfirmationState
+import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsViewModel
@@ -120,7 +121,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             val myAppsInfo = object : MyAppsInfo {
                 override val model = myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
 
-                override fun refresh() = myAppsViewModel.refresh()
                 override fun updateAll() = myAppsViewModel.updateAll()
                 override fun changeSortOrder(sort: AppListSortOrder) =
                     myAppsViewModel.changeSortOrder(sort)
@@ -130,6 +130,9 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     packageName: String,
                     state: InstallConfirmationState,
                 ) = myAppsViewModel.confirmAppInstall(packageName, state)
+
+                override fun ignoreAppIssue(item: AppWithIssueItem) =
+                    myAppsViewModel.ignoreAppIssue(item)
             }
             MyApps(
                 myAppsInfo = myAppsInfo,

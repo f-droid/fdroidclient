@@ -101,11 +101,6 @@ class MyAppsViewModel @Inject constructor(
         sortOrder.value = sort
     }
 
-    fun refresh() {
-        // TODO check if really not needed anymore and if so remove
-        // updatesManager.loadUpdates()
-    }
-
     fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
         log.info { "Asking user to confirm install of $packageName..." }
         scope.launch(Dispatchers.Main) {
@@ -118,5 +113,10 @@ class MyAppsViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun ignoreAppIssue(item: AppWithIssueItem) {
+        settingsManager.ignoreAppIssue(item.packageName, item.installedVersionCode)
+        updatesManager.loadUpdates()
     }
 }

@@ -15,6 +15,9 @@
 
     <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>
+    <string name="my_apps_ignore_dialog_title">Hide app issue</string>
+    <string name="my_apps_ignore_dialog_text">Do you want to hide the issue with the app \"%1$s\"?</string>
+    <string name="my_apps_ignore_dialog_button">Hide</string>
 
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>

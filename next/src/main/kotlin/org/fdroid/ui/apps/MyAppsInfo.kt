@@ -5,11 +5,11 @@ import org.fdroid.install.InstallConfirmationState
 
 interface MyAppsInfo {
     val model: MyAppsModel
-    fun refresh()
     fun updateAll()
     fun changeSortOrder(sort: AppListSortOrder)
     fun search(query: String)
     fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
+    fun ignoreAppIssue(item: AppWithIssueItem)
 }
 
 data class MyAppsModel(

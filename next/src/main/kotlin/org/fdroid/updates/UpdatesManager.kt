@@ -126,12 +126,14 @@ class UpdatesManager @Inject constructor(
                 else notificationManager.showAppUpdatesAvailableNotification(notificationStates)
             }
 
-            val issueItems = apps.issues.map { app ->
+            val issueItems = apps.issues.mapNotNull { app ->
+                if (app.packageName in settingsManager.ignoredAppIssues) return@mapNotNull null
                 when (app) {
                     is AvailableAppWithIssue -> AppWithIssueItem(
                         packageName = app.app.packageName,
                         name = app.app.getName(localeList) ?: "Unknown app",
                         installedVersionName = app.installVersionName,
+                        installedVersionCode = app.installVersionCode,
                         issue = app.issue,
                         lastUpdated = app.app.lastUpdated,
                         iconModel = PackageName(
@@ -144,6 +146,7 @@ class UpdatesManager @Inject constructor(
                         packageName = app.packageName,
                         name = app.name.toString(),
                         installedVersionName = app.installVersionName,
+                        installedVersionCode = app.installVersionCode,
                         issue = app.issue,
                         lastUpdated = -1,
                         iconModel = PackageName(app.packageName, null),
