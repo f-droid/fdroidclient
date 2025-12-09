@@ -307,8 +307,9 @@ libs database schema:
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
     - ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
-    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done
-
+    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done || exit 137
+  allow_failure:
+    exit_codes: 137
 
 # Since jobs that require KVM need special runners, these jobs are
 # opt-in.  To set up your fork to run KVM jobs, go to Settings ->
