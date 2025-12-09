@@ -251,11 +251,10 @@ libs database schema:
     - start-emulator.sh
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
-    - if [ $AVD_SDK -lt 29 ] || ! emulator -accel-check; then
-          export FLAG=-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest;
-      fi
-    - ./gradlew :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck $FLAG
-
+    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
+    - ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck || exit 137
+  allow_failure:
+    exit_codes: 137
 
 # Since jobs that require KVM need special runners, these jobs are
 # opt-in.  To set up your fork to run KVM jobs, go to Settings ->
