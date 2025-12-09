@@ -17,7 +17,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppOverviewItem
@@ -41,7 +45,7 @@ import kotlin.time.measureTimedValue
 
 @HiltViewModel
 class DiscoverViewModel @Inject constructor(
-    app: Application,
+    private val app: Application,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     updatesManager: UpdatesManager,
@@ -58,20 +62,21 @@ class DiscoverViewModel @Inject constructor(
 
     val numUpdates = updatesManager.numUpdates
     val hasIssues = updatesManager.appsWithIssues.map { !it.isNullOrEmpty() }
-    val newApps = db.getAppDao().getNewAppsFlow().map { list ->
+    private val newApps = db.getAppDao().getNewAppsFlow().map { list ->
         val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {
             val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
             it.toAppDiscoverItem(repository, proxyConfig)
         }
     }
-    val recentlyUpdatedApps = db.getAppDao().getRecentlyUpdatedAppsFlow().map { list ->
+    private val recentlyUpdatedApps = db.getAppDao().getRecentlyUpdatedAppsFlow().map { list ->
         val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {
             val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
             it.toAppDiscoverItem(repository, proxyConfig)
         }
     }
+    private val mostDownloadedApps = MutableStateFlow<List<AppDiscoverItem>?>(null)
     private val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
         categories.map { category ->
             CategoryItem(
@@ -88,11 +93,37 @@ class DiscoverViewModel @Inject constructor(
             DiscoverPresenter(
                 newAppsFlow = newApps,
                 recentlyUpdatedAppsFlow = recentlyUpdatedApps,
+                mostDownloadedAppsFlow = mostDownloadedApps,
                 categoriesFlow = categories,
                 repositoriesFlow = repoManager.repositoriesState,
                 searchResultsFlow = searchResults,
                 lastRepoUpdate = settingsManager.lastRepoUpdate,
             )
+        }
+    }
+
+    init {
+        loadMostDownloadedApps()
+    }
+
+    private fun loadMostDownloadedApps() {
+        viewModelScope.launch(ioScope.coroutineContext) {
+            val packageNames = try {
+                app.assets.open("most_downloaded_apps.json").use { inputStream ->
+                    @OptIn(ExperimentalSerializationApi::class)
+                    Json.decodeFromStream<List<String>>(inputStream)
+                }
+            } catch (e: Exception) {
+                log.error(e) { "Error loading most downloaded apps: " }
+                return@launch
+            }
+            db.getAppDao().getAppsFlow(packageNames).collect { apps ->
+                val proxyConfig = settingsManager.proxyConfig
+                mostDownloadedApps.value = apps.mapNotNull {
+                    val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+                    it.toAppDiscoverItem(repository, proxyConfig)
+                }
+            }
         }
     }
 

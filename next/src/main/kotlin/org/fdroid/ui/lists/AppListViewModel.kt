@@ -20,6 +20,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
@@ -38,7 +41,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppListViewModel @Inject constructor(
-    app: Application,
+    private val app: Application,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
@@ -116,6 +119,13 @@ class AppListViewModel @Inject constructor(
             is AppListType.Category -> appDao.getAppsByCategory(type.categoryId)
             is AppListType.New -> appDao.getNewApps()
             is AppListType.RecentlyUpdated -> appDao.getRecentlyUpdatedApps()
+            is AppListType.MostDownloaded -> {
+                val packageNames = app.assets.open("most_downloaded_apps.json").use { inputStream ->
+                    @OptIn(ExperimentalSerializationApi::class)
+                    Json.decodeFromStream<List<String>>(inputStream)
+                }
+                appDao.getApps(packageNames)
+            }
             is AppListType.All -> appDao.getAllApps()
             is AppListType.Repository -> appDao.getAppsByRepository(type.repoId)
         }.mapNotNull {

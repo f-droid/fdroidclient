@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.BadgedBox
@@ -15,8 +18,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.carousel.HorizontalUncontainedCarousel
-import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -40,8 +41,10 @@ fun AppCarousel(
     onTitleTap: () -> Unit,
     onAppTap: (AppDiscoverItem) -> Unit,
 ) {
-    val carouselState = rememberCarouselState { apps.size }
-    Column(modifier = modifier) {
+    Column(
+        verticalArrangement = spacedBy(8.dp),
+        modifier = modifier
+    ) {
         Row(
             verticalAlignment = CenterVertically,
             modifier = Modifier
@@ -59,13 +62,13 @@ fun AppCarousel(
                 contentDescription = null,
             )
         }
-        HorizontalUncontainedCarousel(
-            state = carouselState,
-            itemWidth = 80.dp,
-            itemSpacing = 8.dp,
+        LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
-        ) { index ->
-            AppBox(apps[index], onAppTap)
+            horizontalArrangement = spacedBy(16.dp),
+        ) {
+            items(apps, key = { it.packageName }) { app ->
+                AppBox(app, onAppTap)
+            }
         }
     }
 }
@@ -75,17 +78,17 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier
-            .padding(8.dp)
+            .width(80.dp)
             .clickable { onAppTap(app) },
     ) {
         BadgedBox(badge = { if (app.isInstalled) InstalledBadge() }) {
             AsyncShimmerImage(
                 model = app.imageModel,
                 contentDescription = null,
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .requiredSize(76.dp)
-                    .clip(MaterialTheme.shapes.medium)
+                    .size(76.dp)
+                    .clip(MaterialTheme.shapes.large)
                     .semantics { hideFromAccessibility() },
             )
         }
@@ -102,11 +105,11 @@ fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
 @Composable
 fun AppCarouselPreview() {
     val apps = listOf(
-        AppDiscoverItem("", Names.randomName, false),
-        AppDiscoverItem("", Names.randomName, true),
-        AppDiscoverItem("", Names.randomName, false),
-        AppDiscoverItem("", Names.randomName, false),
-        AppDiscoverItem("", Names.randomName, false),
+        AppDiscoverItem("1", Names.randomName, false),
+        AppDiscoverItem("2", Names.randomName, true),
+        AppDiscoverItem("3", Names.randomName, false),
+        AppDiscoverItem("4", Names.randomName, false),
+        AppDiscoverItem("5", Names.randomName, false),
     )
     FDroidContent {
         AppCarousel("Preview Apps", apps, onTitleTap = {}) {}

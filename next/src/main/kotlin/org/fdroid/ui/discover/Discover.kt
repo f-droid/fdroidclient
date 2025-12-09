@@ -144,7 +144,8 @@ fun Discover(
                         },
                         onSearchCleared = onSearchCleared,
                         modifier = Modifier
-                            .padding(16.dp)
+                            .padding(top = 16.dp, bottom = 4.dp)
+                            .padding(horizontal = 16.dp)
                             .align(Alignment.CenterHorizontally),
                     )
                     if (discoverModel.newApps.isNotEmpty()) {
@@ -165,6 +166,17 @@ fun Discover(
                         onTitleTap = { onListTap(listRecentlyUpdated) },
                         onAppTap = onAppTap,
                     )
+                    if (!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
+                        val listMostDownloaded = AppListType.MostDownloaded(
+                            stringResource(R.string.app_list_most_downloaded),
+                        )
+                        AppCarousel(
+                            title = listMostDownloaded.title,
+                            apps = discoverModel.mostDownloadedApps,
+                            onTitleTap = { onListTap(listMostDownloaded) },
+                            onAppTap = onAppTap,
+                        )
+                    }
                     val listAll = AppListType.All(
                         title = stringResource(R.string.app_list_all),
                     )
@@ -172,7 +184,7 @@ fun Discover(
                         onClick = { onListTap(listAll) },
                         modifier = Modifier
                             .align(End)
-                            .padding(16.dp),
+                            .padding(horizontal = 16.dp),
                     ) {
                         Text(listAll.title)
                     }

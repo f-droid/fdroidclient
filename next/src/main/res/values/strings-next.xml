@@ -18,6 +18,7 @@
 
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>
+    <string name="app_list_most_downloaded">Most downloaded</string>
     <string name="app_list_all">All apps</string>
     <string name="app_list_author">Apps by %s</string>
 

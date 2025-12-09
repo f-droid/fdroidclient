@@ -3,6 +3,7 @@ package org.fdroid.ui.discover
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
@@ -13,6 +14,7 @@ import org.fdroid.ui.categories.CategoryItem
 fun DiscoverPresenter(
     newAppsFlow: Flow<List<AppDiscoverItem>>,
     recentlyUpdatedAppsFlow: Flow<List<AppDiscoverItem>>,
+    mostDownloadedAppsFlow: MutableStateFlow<List<AppDiscoverItem>?>,
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
@@ -20,6 +22,7 @@ fun DiscoverPresenter(
 ): DiscoverModel {
     val newApps = newAppsFlow.collectAsState(null).value
     val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
+    val mostDownloadedApps = mostDownloadedAppsFlow.collectAsState().value
     val categories = categoriesFlow.collectAsState(null).value
     val searchResults = searchResultsFlow.collectAsState().value
 
@@ -42,6 +45,7 @@ fun DiscoverPresenter(
         LoadedDiscoverModel(
             newApps = newApps ?: emptyList(),
             recentlyUpdatedApps = recentlyUpdatedApps,
+            mostDownloadedApps = mostDownloadedApps,
             categories = categories?.groupBy { it.group },
             searchResults = searchResults,
         )
@@ -54,6 +58,7 @@ object NoEnabledReposDiscoverModel : DiscoverModel()
 data class LoadedDiscoverModel(
     val newApps: List<AppDiscoverItem>,
     val recentlyUpdatedApps: List<AppDiscoverItem>,
+    val mostDownloadedApps: List<AppDiscoverItem>?,
     val categories: Map<CategoryGroup, List<CategoryItem>>?,
     val searchResults: SearchResults? = null,
 ) : DiscoverModel()

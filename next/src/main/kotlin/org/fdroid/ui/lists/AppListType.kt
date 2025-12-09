@@ -13,6 +13,9 @@ sealed class AppListType {
     data class RecentlyUpdated(override val title: String) : AppListType()
 
     @Serializable
+    data class MostDownloaded(override val title: String) : AppListType()
+
+    @Serializable
     data class All(override val title: String) : AppListType()
 
     @Serializable
