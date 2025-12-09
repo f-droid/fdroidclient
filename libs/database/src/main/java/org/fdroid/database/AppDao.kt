@@ -135,6 +135,11 @@ public interface AppDao {
     public suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
 
     /**
+     * Returns apps for the given [packageNames].
+     */
+    public suspend fun getApps(packageNames: List<String>): List<AppOverviewItem>
+
+    /**
      * Same as [getNewApps], but returns an observable [Flow].
      */
     public fun getNewAppsFlow(maxAgeInDays: Long = 14): Flow<List<AppOverviewItem>>
@@ -143,6 +148,11 @@ public interface AppDao {
      * Same as [getRecentlyUpdatedApps], but returns an observable [Flow].
      */
     public fun getRecentlyUpdatedAppsFlow(limit: Int = 200): Flow<List<AppOverviewItem>>
+
+    /**
+     * Returns apps for the given [packageNames].
+     */
+    public fun getAppsFlow(packageNames: List<String>): Flow<List<AppOverviewItem>>
 
     /**
      * Returns a list of all [AppListItem] sorted by the given [sortOrder],
@@ -520,6 +530,20 @@ internal interface AppDaoInt : AppDao {
         WHERE repoId = :repoId""")
     override suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
 
+    override suspend fun getApps(packageNames: List<String>): List<AppOverviewItem> {
+        val placeholders = buildString {
+            repeat(packageNames.size) { append("?,") }
+        }.trimEnd(',')
+        val query = getAppsQuery(
+            "packageName IN ($placeholders) ORDER BY app.lastUpdated DESC"
+        ) { statement ->
+            packageNames.forEachIndexed { i, packageName ->
+                statement.bindText(i + 1, packageName)
+            }
+        }
+        return getApps(query)
+    }
+
     override fun getNewAppsFlow(maxAgeInDays: Long): Flow<List<AppOverviewItem>> {
         val query =
             getAppsQuery(
@@ -538,6 +562,20 @@ internal interface AppDaoInt : AppDao {
             "app.added != app.lastUpdated ORDER BY app.lastUpdated DESC LIMIT ?"
         ) { statement ->
             statement.bindInt(1, limit)
+        }
+        return getAppsFlow(query)
+    }
+
+    override fun getAppsFlow(packageNames: List<String>): Flow<List<AppOverviewItem>> {
+        val placeholders = buildString {
+            repeat(packageNames.size) { append("?,") }
+        }.trimEnd(',')
+        val query = getAppsQuery(
+            "packageName IN ($placeholders) ORDER BY app.lastUpdated DESC"
+        ) { statement ->
+            packageNames.forEachIndexed { i, packageName ->
+                statement.bindText(i + 1, packageName)
+            }
         }
         return getAppsFlow(query)
     }
