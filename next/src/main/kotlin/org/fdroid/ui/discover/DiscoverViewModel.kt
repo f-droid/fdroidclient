@@ -133,7 +133,7 @@ class DiscoverViewModel @Inject constructor(
 
         val sanitized = term.replace(Regex.fromLiteral("\""), "")
         val splits = sanitized.split(' ').filter { it.isNotBlank() }
-        val query = splits.joinToString(" AND ") { word ->
+        val query = splits.joinToString(" ") { word ->
             var isCjk = false
             // go through word and separate CJK chars (if needed)
             val newString = word.toList().joinToString("") {
@@ -145,9 +145,11 @@ class DiscoverViewModel @Inject constructor(
             // add * to enable prefix matches
             if (isCjk) newString else "$newString*"
         }.let { firstPassQuery ->
-            // if we had more than one word, also look for both combined to find CamelCase names
+            // if we had more than one word, make a more complex query
             if (splits.size > 1) {
-                "$firstPassQuery OR ${splits.joinToString("")}*"
+                "$firstPassQuery " + // search* term* (implicit AND and prefix search)
+                    "OR ${splits.joinToString("")}* " + // camel case prefix
+                    "OR \"${splits.joinToString("* ")}*\"" // phrase query
             } else firstPassQuery
         }
         log.info { "Searching for: $query" }
