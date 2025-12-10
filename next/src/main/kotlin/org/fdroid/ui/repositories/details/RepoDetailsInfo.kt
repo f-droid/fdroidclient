@@ -19,10 +19,10 @@ interface RepoDetailsInfo {
 }
 
 interface RepoDetailsActions {
-    fun deleteRepository(repoId: Long)
-    fun updateUsernameAndPassword(repoId: Long, username: String, password: String)
-    fun setMirrorEnabled(repoId: Long, mirror: Mirror, enabled: Boolean)
-    fun deleteUserMirror(repoId: Long, mirror: Mirror)
+    fun deleteRepository()
+    fun updateUsernameAndPassword(username: String, password: String)
+    fun setMirrorEnabled(mirror: Mirror, enabled: Boolean)
+    fun deleteUserMirror(mirror: Mirror)
     fun setArchiveRepoEnabled(enabled: Boolean)
     fun onOnboardingSeen()
     suspend fun generateQrCode(repo: Repository): Bitmap? {

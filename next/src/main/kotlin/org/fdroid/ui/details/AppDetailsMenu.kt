@@ -33,7 +33,7 @@ fun AppDetailsMenu(
     val res = LocalResources.current
     val context = LocalContext.current
     val uninstallLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {
-        item.actions.onUninstallResult(item.app.packageName, it)
+        item.actions.onUninstallResult(it)
     }
     DropdownMenu(
         expanded = expanded,

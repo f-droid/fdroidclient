@@ -48,7 +48,7 @@ fun RepoDetailsContent(
             OfficialMirrors(
                 mirrors = info.model.officialMirrors,
                 setMirrorEnabled = { m, e ->
-                    info.actions.setMirrorEnabled(repo.repoId, m, e)
+                    info.actions.setMirrorEnabled(m, e)
                 },
             )
         }
@@ -56,12 +56,12 @@ fun RepoDetailsContent(
             UserMirrors(
                 mirrors = info.model.userMirrors,
                 setMirrorEnabled = { m, e ->
-                    info.actions.setMirrorEnabled(repo.repoId, m, e)
+                    info.actions.setMirrorEnabled(m, e)
                 },
                 onShareMirror = { mirror ->
                     mirror.share(context, repo.fingerprint)
                 },
-                onDeleteMirror = { info.actions.deleteUserMirror(repo.repoId, it) },
+                onDeleteMirror = { info.actions.deleteUserMirror(it) },
             )
         }
         FingerprintExpandable(repo.fingerprint)

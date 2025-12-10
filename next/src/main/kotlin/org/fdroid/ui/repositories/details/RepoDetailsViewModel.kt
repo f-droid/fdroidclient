@@ -7,6 +7,9 @@ import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +18,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -30,11 +32,11 @@ import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.repositories.details.ArchiveState.UNKNOWN
 import org.fdroid.utils.IoDispatcher
-import javax.inject.Inject
 
-@HiltViewModel
-class RepoDetailsViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = RepoDetailsViewModel.Factory::class)
+class RepoDetailsViewModel @AssistedInject constructor(
     app: Application,
+    @Assisted private val repoId: Long,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
@@ -46,7 +48,6 @@ class RepoDetailsViewModel @Inject constructor(
     private val moleculeScope =
         CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
-    private val repoIdFlow = MutableStateFlow<Long?>(null)
     private val repoFlow = MutableStateFlow<Repository?>(null)
     private val numAppsFlow: Flow<Int?> = repoFlow.map { repo ->
         if (repo != null) {
@@ -68,13 +69,7 @@ class RepoDetailsViewModel @Inject constructor(
         }
     }
 
-    fun setRepoId(repoId: Long) {
-        val oldValue = repoIdFlow.getAndUpdate { repoId }
-        if (oldValue != null) {
-            log.warn { "setRepoId($repoId) was called more than once" }
-            return
-        }
-
+    init {
         viewModelScope.launch {
             repoManager.repositoriesState.collect { repos ->
                 val repo = repos.find { it.repoId == repoId }
@@ -88,13 +83,13 @@ class RepoDetailsViewModel @Inject constructor(
         archiveStateFlow.update { repo?.archiveState() ?: UNKNOWN }
     }
 
-    override fun deleteRepository(repoId: Long) {
+    override fun deleteRepository() {
         ioScope.launch {
             repoManager.deleteRepository(repoId)
         }
     }
 
-    override fun updateUsernameAndPassword(repoId: Long, username: String, password: String) {
+    override fun updateUsernameAndPassword(username: String, password: String) {
         ioScope.launch {
             repoManager.updateUsernameAndPassword(repoId, username, password)
             withContext(Dispatchers.Main) {
@@ -103,13 +98,13 @@ class RepoDetailsViewModel @Inject constructor(
         }
     }
 
-    override fun setMirrorEnabled(repoId: Long, mirror: Mirror, enabled: Boolean) {
+    override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
         ioScope.launch {
             repoManager.setMirrorEnabled(repoId, mirror, enabled)
         }
     }
 
-    override fun deleteUserMirror(repoId: Long, mirror: Mirror) {
+    override fun deleteUserMirror(mirror: Mirror) {
         ioScope.launch {
             repoManager.deleteUserMirror(repoId, mirror)
         }
@@ -120,11 +115,14 @@ class RepoDetailsViewModel @Inject constructor(
             val repo = repoFlow.value ?: return@launch
             archiveStateFlow.value = ArchiveState.LOADING
             try {
-                // TODO support proxy
-                val repoId = repoManager.setArchiveRepoEnabled(repo, enabled, null)
+                val archiveRepoId = repoManager.setArchiveRepoEnabled(
+                    repository = repo,
+                    enabled = enabled,
+                    proxy = settingsManager.proxyConfig,
+                )
                 archiveStateFlow.value = enabled.toArchiveState()
-                if (enabled && repoId != null) withContext(Dispatchers.Main) {
-                    RepoUpdateWorker.updateNow(application, repoId)
+                if (enabled && archiveRepoId != null) withContext(Dispatchers.Main) {
+                    RepoUpdateWorker.updateNow(application, archiveRepoId)
                 }
             } catch (e: Exception) {
                 log.error(e) { "Error toggling archive repo: " }
@@ -148,5 +146,10 @@ class RepoDetailsViewModel @Inject constructor(
 
     private fun Boolean.toArchiveState(): ArchiveState {
         return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(repoId: Long): RepoDetailsViewModel
     }
 }

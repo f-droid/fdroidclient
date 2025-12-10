@@ -14,8 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AddRepoViewModel @Inject constructor(
     app: Application,
+    settingsManager: SettingsManager,
     private val repoManager: RepoManager,
-    private val settingsManager: SettingsManager,
 ) : AndroidViewModel(app) {
 
     private val log = KotlinLogging.logger { }
@@ -34,7 +34,7 @@ class AddRepoViewModel @Inject constructor(
             // TODO full only
         } else {
             repoManager.abortAddingRepository()
-            repoManager.fetchRepositoryPreview(uri.toString(), settingsManager.proxyConfig)
+            repoManager.fetchRepositoryPreview(uri.toString(), proxyConfig)
         }
     }
 

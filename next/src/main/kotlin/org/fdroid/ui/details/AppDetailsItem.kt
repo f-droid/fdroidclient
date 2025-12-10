@@ -209,16 +209,16 @@ data class AppDetailsItem(
 
 class AppDetailsActions(
     val installAction: (AppMetadata, AppVersion, Any?) -> Unit,
-    val requestUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
+    val requestUserConfirmation: (InstallState.UserConfirmationNeeded) -> Unit,
     /**
      * A workaround for Android 10, 11, 12 and 13 where tapping outside the confirmation dialog
      * dismisses it without any feedback for us.
      * So when our activity resumes while we are in state [InstallState.UserConfirmationNeeded]
      * we need to call this method, so we can manually check if our session progressed or not.
      */
-    val checkUserConfirmation: (String, InstallState.UserConfirmationNeeded) -> Unit,
-    val cancelInstall: (String) -> Unit,
-    val onUninstallResult: (String, ActivityResult) -> Unit,
+    val checkUserConfirmation: (InstallState.UserConfirmationNeeded) -> Unit,
+    val cancelInstall: () -> Unit,
+    val onUninstallResult: (ActivityResult) -> Unit,
     val onRepoChanged: (Long) -> Unit,
     val onPreferredRepoChanged: (Long) -> Unit,
     val allowBetaVersions: () -> Unit,

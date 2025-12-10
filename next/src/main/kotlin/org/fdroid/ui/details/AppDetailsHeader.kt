@@ -193,11 +193,11 @@ fun AppDetailsHeader(
                     // and we would run into infinite UI loops here, so there's a counter.
                     @Suppress("AssignedValueIsNeverRead")
                     numChecks += 1
-                    item.actions.checkUserConfirmation(item.app.packageName, state)
+                    item.actions.checkUserConfirmation(state)
                 } else if (state is InstallState.UserConfirmationNeeded) {
                     // we tried three times, so cancel install now
                     Log.i("AppDetailsHeader", "Cancel installation")
-                    item.actions.cancelInstall(item.app.packageName)
+                    item.actions.cancelInstall()
                 }
             }
         }
@@ -244,7 +244,7 @@ fun AppDetailsHeader(
                     }
                     var cancelled by remember { mutableStateOf(false) }
                     IconButton(onClick = {
-                        if (!cancelled) item.actions.cancelInstall(item.app.packageName)
+                        if (!cancelled) item.actions.cancelInstall()
                         cancelled = true
                     }) {
                         AnimatedVisibility(cancelled) {

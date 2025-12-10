@@ -97,7 +97,7 @@ fun AppDetails(
             val state = item.installState
             if (state is InstallState.UserConfirmationNeeded) {
                 Log.i("AppDetails", "Requesting user confirmation... $state")
-                item.actions.requestUserConfirmation(item.app.packageName, state)
+                item.actions.requestUserConfirmation(state)
             } else if (state is InstallState.Error) {
                 showInstallError = true
             }

@@ -1,7 +1,6 @@
 package org.fdroid.ui.lists
 
 import android.app.Application
-import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
@@ -11,6 +10,9 @@ import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,7 +25,6 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
@@ -37,11 +38,11 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
 import java.text.Collator
 import java.util.Locale
-import javax.inject.Inject
 
-@HiltViewModel
-class AppListViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = AppListViewModel.Factory::class)
+class AppListViewModel @AssistedInject constructor(
     private val app: Application,
+    @Assisted val type: AppListType,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
@@ -73,9 +74,6 @@ class AppListViewModel @Inject constructor(
     }
     private val query = MutableStateFlow("")
 
-    private val _currentList =
-        MutableStateFlow<AppListType>(AppListType.New(app.getString(R.string.app_list_new)))
-    val currentList = _currentList.asStateFlow()
     private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
     val showFilters = _showFilters.asStateFlow()
 
@@ -100,11 +98,7 @@ class AppListViewModel @Inject constructor(
         }
     }
 
-    @UiThread
-    fun load(type: AppListType) {
-        apps.value = null
-        _currentList.value = type
-
+    init {
         viewModelScope.launch(Dispatchers.IO) {
             apps.value = loadApps(type)
         }
@@ -211,4 +205,9 @@ class AppListViewModel @Inject constructor(
     }
 
     override fun onOnboardingSeen() = onboardingManager.onFilterOnboardingSeen()
+
+    @AssistedFactory
+    interface Factory {
+        fun create(type: AppListType): AppListViewModel
+    }
 }

@@ -84,7 +84,7 @@ fun RepoDetails(
         info.actions.generateQrCode(repo)
     }
     if (repo != null && deleteDialog) DeleteDialog({ deleteDialog = false }) {
-        info.actions.deleteRepository(repo.repoId)
+        info.actions.deleteRepository()
         deleteDialog = false
         onBack()
     }

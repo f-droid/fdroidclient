@@ -137,10 +137,10 @@ val testApp = AppDetailsItem(
     ),
     actions = AppDetailsActions(
         installAction = { _, _, _ -> },
-        requestUserConfirmation = { _, _ -> },
-        checkUserConfirmation = { _, _ -> },
+        requestUserConfirmation = { _ -> },
+        checkUserConfirmation = { _ -> },
         cancelInstall = {},
-        onUninstallResult = { _, _ -> },
+        onUninstallResult = { _ -> },
         onRepoChanged = {},
         onPreferredRepoChanged = {},
         allowBetaVersions = {},
@@ -387,22 +387,10 @@ fun getRepoDetailsInfo(
 ) = object : RepoDetailsInfo {
     override val model = model
     override val actions: RepoDetailsActions = object : RepoDetailsActions {
-        override fun deleteRepository(repoId: Long) {}
-        override fun updateUsernameAndPassword(
-            repoId: Long,
-            username: String,
-            password: String,
-        ) {
-        }
-
-        override fun setMirrorEnabled(
-            repoId: Long,
-            mirror: Mirror,
-            enabled: Boolean,
-        ) {
-        }
-
-        override fun deleteUserMirror(repoId: Long, mirror: Mirror) {}
+        override fun deleteRepository() {}
+        override fun updateUsernameAndPassword(username: String, password: String) {}
+        override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {}
+        override fun deleteUserMirror(mirror: Mirror) {}
         override fun setArchiveRepoEnabled(enabled: Boolean) {}
         override fun onOnboardingSeen() {}
     }

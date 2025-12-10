@@ -152,12 +152,13 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         entry<NavigationKey.AppDetails>(
             metadata = ListDetailSceneStrategy.detailPane("appdetails")
         ) {
-            val appDetailsViewModel = hiltViewModel<AppDetailsViewModel>()
-            LaunchedEffect(it.packageName) {
-                appDetailsViewModel.setAppDetails(it.packageName)
-            }
+            val viewModel = hiltViewModel<AppDetailsViewModel, AppDetailsViewModel.Factory>(
+                creationCallback = { factory ->
+                    factory.create(it.packageName)
+                }
+            )
             AppDetails(
-                item = appDetailsViewModel.appDetails.collectAsStateWithLifecycle().value,
+                item = viewModel.appDetails.collectAsStateWithLifecycle().value,
                 onNav = { navKey -> backStack.add(navKey) },
                 onBackNav = if (isBigScreen) null else {
                     { backStack.removeLastOrNull() }
@@ -170,20 +171,19 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 Text(stringResource(R.string.no_app_selected))
             },
         ) {
-            val appListViewModel = hiltViewModel<AppListViewModel>()
-            LaunchedEffect(it.type) {
-                appListViewModel.load(it.type)
-            }
+            val viewModel = hiltViewModel<AppListViewModel, AppListViewModel.Factory>(
+                creationCallback = { factory ->
+                    factory.create(it.type)
+                }
+            )
             val appListInfo = object : AppListInfo {
-                override val model =
-                    appListViewModel.appListModel.collectAsStateWithLifecycle().value
-                override val actions: AppListActions = appListViewModel
-                override val list: AppListType =
-                    appListViewModel.currentList.collectAsStateWithLifecycle().value
+                override val model = viewModel.appListModel.collectAsStateWithLifecycle().value
+                override val list: AppListType = it.type
+                override val actions: AppListActions = viewModel
                 override val showFilters: Boolean =
-                    appListViewModel.showFilters.collectAsStateWithLifecycle().value
+                    viewModel.showFilters.collectAsStateWithLifecycle().value
                 override val showOnboarding: Boolean =
-                    appListViewModel.showOnboarding.collectAsStateWithLifecycle().value
+                    viewModel.showOnboarding.collectAsStateWithLifecycle().value
             }
             AppList(
                 appListInfo = appListInfo,
@@ -238,14 +238,14 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         entry<NavigationKey.RepoDetails>(
             metadata = ListDetailSceneStrategy.detailPane("repos")
         ) { navKey ->
-            val viewModel = hiltViewModel<RepoDetailsViewModel>()
-            LaunchedEffect(navKey) {
-                viewModel.setRepoId(navKey.repoId)
-            }
+            val viewModel = hiltViewModel<RepoDetailsViewModel, RepoDetailsViewModel.Factory>(
+                creationCallback = { factory ->
+                    factory.create(navKey.repoId)
+                }
+            )
             RepoDetails(
                 info = object : RepoDetailsInfo {
-                    override val model =
-                        viewModel.model.collectAsStateWithLifecycle().value
+                    override val model = viewModel.model.collectAsStateWithLifecycle().value
                     override val actions = viewModel
                 },
                 onShowAppsClicked = { title, repoId ->
@@ -258,6 +258,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         }
         entry<NavigationKey.AddRepo> { navKey ->
             val viewModel = hiltViewModel<AddRepoViewModel>()
+            // this is for intents we receive via IntentRouter, usually the user provides URI later
             LaunchedEffect(navKey) {
                 if (navKey.uri != null) {
                     viewModel.onFetchRepo(navKey.uri)

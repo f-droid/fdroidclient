@@ -29,7 +29,7 @@ fun RepoSettings(
     repo: Repository,
     archiveState: ArchiveState,
     onToggleArchiveClicked: (Boolean) -> Unit,
-    onCredentialsUpdated: (Long, String, String) -> Unit,
+    onCredentialsUpdated: (String, String) -> Unit,
 ) {
     ExpandableSection(
         icon = rememberVectorPainter(Icons.Default.Settings),
@@ -70,7 +70,7 @@ fun RepoSettings(
             val username = repo.username
             if (username != null && username.isNotBlank()) {
                 BasicAuth(username) { username, password ->
-                    onCredentialsUpdated(repo.repoId, username, password)
+                    onCredentialsUpdated(username, password)
                 }
             }
         }
@@ -81,7 +81,7 @@ fun RepoSettings(
 @Composable
 private fun PreviewUnknown() {
     FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.UNKNOWN, {}) { _, _, _ -> }
+        RepoSettings(getRepository(), ArchiveState.UNKNOWN, {}) { _, _ -> }
     }
 }
 
@@ -89,7 +89,7 @@ private fun PreviewUnknown() {
 @Composable
 private fun PreviewLoading() {
     FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.LOADING, {}) { _, _, _ -> }
+        RepoSettings(getRepository(), ArchiveState.LOADING, {}) { _, _ -> }
     }
 }
 
@@ -97,7 +97,7 @@ private fun PreviewLoading() {
 @Composable
 private fun PreviewEnabled() {
     FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.ENABLED, {}) { _, _, _ -> }
+        RepoSettings(getRepository(), ArchiveState.ENABLED, {}) { _, _ -> }
     }
 }
 
@@ -105,6 +105,6 @@ private fun PreviewEnabled() {
 @Composable
 private fun PreviewDisabled() {
     FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.DISABLED, {}) { _, _, _ -> }
+        RepoSettings(getRepository(), ArchiveState.DISABLED, {}) { _, _ -> }
     }
 }

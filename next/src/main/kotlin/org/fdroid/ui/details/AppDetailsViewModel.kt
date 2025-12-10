@@ -14,6 +14,9 @@ import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import coil3.SingletonImageLoader
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,11 +41,11 @@ import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
-import javax.inject.Inject
 
-@HiltViewModel
-class AppDetailsViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = AppDetailsViewModel.Factory::class)
+class AppDetailsViewModel @AssistedInject constructor(
     private val app: Application,
+    @Assisted private val packageName: String,
     @param:IoDispatcher private val scope: CoroutineScope,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
@@ -76,15 +79,15 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
-    fun setAppDetails(packageName: String) {
-        packageInfoFlow.value = null
-        loadPackageInfoFlow(packageName)
+    init {
+        loadPackageInfoFlow()
     }
 
-    private fun loadPackageInfoFlow(packageName: String) {
+    private fun loadPackageInfoFlow() {
         val packageManager = app.packageManager
         scope.launch {
             val packageInfo = try {
+                @Suppress("DEPRECATION")
                 packageManager.getPackageInfo(packageName, GET_SIGNATURES)
             } catch (_: PackageManager.NameNotFoundException) {
                 null
@@ -111,30 +114,24 @@ class AppDetailsViewModel @Inject constructor(
             )
             if (result is InstallState.Installed) {
                 // to reload packageInfoFlow with fresh packageInfo
-                loadPackageInfoFlow(appMetadata.packageName)
+                loadPackageInfoFlow()
             }
         }
     }
 
     @UiThread
-    fun requestUserConfirmation(
-        packageName: String,
-        installState: InstallState.UserConfirmationNeeded,
-    ) {
+    fun requestUserConfirmation(installState: InstallState.UserConfirmationNeeded) {
         scope.launch(Dispatchers.Main) {
             val result = appInstallManager.requestUserConfirmation(packageName, installState)
             if (result is InstallState.Installed) withContext(Dispatchers.Main) {
                 // to reload packageInfoFlow with fresh packageInfo
-                loadPackageInfoFlow(packageName)
+                loadPackageInfoFlow()
             }
         }
     }
 
     @UiThread
-    fun checkUserConfirmation(
-        packageName: String,
-        installState: InstallState.UserConfirmationNeeded,
-    ) {
+    fun checkUserConfirmation(installState: InstallState.UserConfirmationNeeded) {
         scope.launch(Dispatchers.Main) {
             delay(500) // wait a moment to increase chance that state got updated
             appInstallManager.checkUserConfirmation(packageName, installState)
@@ -142,16 +139,16 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     @UiThread
-    fun cancelInstall(packageName: String) {
+    fun cancelInstall() {
         appInstallManager.cancel(packageName)
     }
 
     @UiThread
-    fun onUninstallResult(packageName: String, activityResult: ActivityResult) {
+    fun onUninstallResult(activityResult: ActivityResult) {
         val result = appInstallManager.onUninstallResult(packageName, activityResult)
         if (result is InstallState.Uninstalled) {
             // to reload packageInfoFlow with fresh packageInfo
-            loadPackageInfoFlow(packageName)
+            loadPackageInfoFlow()
         }
     }
 
@@ -162,7 +159,6 @@ class AppDetailsViewModel @Inject constructor(
 
     @UiThread
     fun onPreferredRepoChanged(repoId: Long) {
-        val packageName = packageInfoFlow.value?.packageName ?: error("Had not package name")
         scope.launch {
             repoManager.setPreferredRepoId(packageName, repoId).join()
             updatesManager.loadUpdates()
@@ -170,11 +166,8 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     override fun onCleared() {
-        val packageName = packageInfoFlow.value?.packageName
         log.info { "App details screen left: $packageName" }
-        packageName?.let {
-            appInstallManager.cleanUp(it)
-        }
+        appInstallManager.cleanUp(packageName)
         // remove screenshots from disk cache to not fill it up quickly with large images
         val diskCache = SingletonImageLoader.get(application).diskCache
         if (diskCache != null) scope.launch {
@@ -212,6 +205,11 @@ class AppDetailsViewModel @Inject constructor(
             db.getAppPrefsDao().update(appPrefs.toggleIgnoreVersionCodeUpdate(versionCode))
             updatesManager.loadUpdates()
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(packageName: String): AppDetailsViewModel
     }
 }
 
