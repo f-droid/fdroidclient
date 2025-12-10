@@ -87,13 +87,13 @@ public class RepoManager @JvmOverloads constructor(
     init {
         // we need to load the repositories first off the UiThread, so it doesn't deadlock
         GlobalScope.launch(coroutineContext) {
-            _repositoriesState.value = repositoryDao.getRepositories()
+            _repositoriesState.update { repositoryDao.getRepositories() }
             repoCountDownLatch.countDown()
             withContext(Dispatchers.Main) {
                 // keep observing the repos from the DB
                 // and update internal cache when changes happen
                 db.getRepositoryDao().getLiveRepositories().observeForever { repositories ->
-                    _repositoriesState.value = repositories
+                    _repositoriesState.update { repositories }
                 }
             }
         }
@@ -149,7 +149,7 @@ public class RepoManager @JvmOverloads constructor(
         // while this will get updated automatically, getting the update may be slow,
         // so to speed up the UI, we emit the state change right away (deletion is unlikely to fail)
         _repositoriesState.update {
-            _repositoriesState.value.filter { repo ->
+            it.filter { repo ->
                 // keep only repos that are not the deleted one
                 repo.repoId != repoId
             }
@@ -186,8 +186,10 @@ public class RepoManager @JvmOverloads constructor(
             val addedRepo = repoAdder.addFetchedRepository()
             // if repo was added, update state right away, so it becomes available asap
             if (addedRepo != null) withContext(Dispatchers.Main) {
-                _repositoriesState.value = _repositoriesState.value.toMutableList().apply {
-                    add(addedRepo)
+                _repositoriesState.update {
+                    it.toMutableList().apply {
+                        add(addedRepo)
+                    }
                 }
             }
         }
