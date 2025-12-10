@@ -16,7 +16,7 @@ import java.util.concurrent.Callable
     // When bumping this version, please make sure to add one (or more) migration(s) below!
     // Consider also providing tests for that migration.
     // Don't forget to commit the new schema to the git repo as well.
-    version = 9,
+    version = 10,
     entities = [
         // repo
         CoreRepository::class,
@@ -51,6 +51,7 @@ import java.util.concurrent.Callable
         AutoMigration(6, 7),
         AutoMigration(7, 8, CountryCodeMigration::class),
         // 8 to 9 is a manual migration
+        AutoMigration(9, 10),
         // add future migrations above!
     ],
 )
