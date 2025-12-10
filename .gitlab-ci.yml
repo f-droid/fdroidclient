@@ -22,7 +22,7 @@ workflow:
   before_script:
     - echo "org.gradle.caching=true" >> gradle.properties
     - test -e /etc/apt/sources.list.d/bookworm-backports.list
-        || echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list
+      || echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list
     - apt update
     - apt-get -qy install -t bookworm-backports --no-install-recommends git sdkmanager openjdk-17-jdk-headless
 
@@ -307,39 +307,13 @@ libs database schema:
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
     - ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
-    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done
-
-
-# Since jobs that require KVM need special runners, these jobs are
-# opt-in.  To set up your fork to run KVM jobs, go to Settings ->
-# CI/CD -> Variables, and add a variable called RUN_KVM_JOBS with a
-# value of "1".  For example, this is for the canonical repo:
-#
-# https://gitlab.com/fdroid/fdroidclient/-/settings/ci_cd#js-cicd-variables-settings
-.kvm-template: &kvm-template
-  tags:
-    - fdroid
-    - kvm
-  rules:
-    - if: $RUN_KVM_JOBS
-  <<: *test-template
-  <<: *kvm-connected-template
-
-
-kvm jobs skipped:
-  rules:
-    - if: '$RUN_KVM_JOBS == null || $RUN_KVM_JOBS == "" || $RUN_KVM_JOBS == "0"'
-  image: alpine  # this only needs printf, so it should be as small as possible
-  variables:
-    GIT_DEPTH: 1
-  script:
-    - printf '\x1b[33mJobs that require KVM need special runners, these jobs are opt-in.  To set up your fork to run KVM jobs, go to Settings -> CI/CD -> Variables, and add a variable called RUN_KVM_JOBS with a value of "1".  This link should take you there:\n'
-    - printf "\x1b[32m${CI_SERVER_URL}/$CI_PROJECT_PATH/-/settings/ci_cd#js-cicd-variables-settings\n"
-
+    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done || exit 137
+  allow_failure:
+    exit_codes: 137
 
 kvm 24 default x86:
-  <<: *kvm-template
-
+  <<: *test-template
+  <<: *kvm-connected-template
 
 pages:
   extends: .base
@@ -388,7 +362,7 @@ deploy_nightly:
     - mkdir $fdroidserver
     - git ls-remote https://gitlab.com/fdroid/fdroidserver.git master
     - curl --silent https://gitlab.com/fdroid/fdroidserver/-/archive/master/fdroidserver-master.tar.gz
-        | tar -xz --directory=$fdroidserver --strip-components=1
+      | tar -xz --directory=$fdroidserver --strip-components=1
     - export PATH="$fdroidserver:$PATH"
     - export PYTHONPATH="$fdroidserver:$fdroidserver/examples"
     - export PYTHONUNBUFFERED=true
