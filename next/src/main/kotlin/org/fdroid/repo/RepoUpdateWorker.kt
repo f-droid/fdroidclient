@@ -1,7 +1,7 @@
 package org.fdroid.repo
 
 import android.content.Context
-import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST
 import android.os.Build.VERSION.SDK_INT
 import android.util.Log
 import androidx.annotation.UiThread
@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
+import org.fdroid.ui.utils.canStartForegroundService
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MINUTES
 
@@ -112,9 +113,9 @@ class RepoUpdateWorker @AssistedInject constructor(
             }
         }
         try {
-            setForeground(getForegroundInfo())
+            if (canStartForegroundService(applicationContext)) setForeground(getForegroundInfo())
         } catch (e: Exception) {
-            log.error(e) { "Error while running setForeground" }
+            log.error(e) { "Error while running setForeground: " }
         }
         val repoId = inputData.getLong("repoId", -1)
         return try {
@@ -139,11 +140,10 @@ class RepoUpdateWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val n = nm.getRepoUpdateNotification().build()
-        return if (SDK_INT >= 29) {
-            ForegroundInfo(NOTIFICATION_ID_REPO_UPDATE, n, FOREGROUND_SERVICE_TYPE_DATA_SYNC)
-        } else {
-            ForegroundInfo(NOTIFICATION_ID_REPO_UPDATE, n)
-        }
+        return ForegroundInfo(
+            NOTIFICATION_ID_REPO_UPDATE,
+            nm.getRepoUpdateNotification().build(),
+            if (SDK_INT >= 29) FOREGROUND_SERVICE_TYPE_MANIFEST else 0
+        )
     }
 }

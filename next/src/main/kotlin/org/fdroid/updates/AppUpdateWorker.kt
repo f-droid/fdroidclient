@@ -1,7 +1,7 @@
 package org.fdroid.updates
 
 import android.content.Context
-import android.content.pm.ServiceInfo
+import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST
 import android.os.Build.VERSION.SDK_INT
 import android.util.Log
 import androidx.annotation.VisibleForTesting
@@ -25,7 +25,6 @@ import kotlinx.coroutines.joinAll
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
-import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallNotificationState
 import org.fdroid.ui.utils.canStartForegroundService
@@ -129,15 +128,10 @@ class AppUpdateWorker @AssistedInject constructor(
     }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
-        val n = nm.getAppInstallNotification(InstallNotificationState()).build()
-        return if (SDK_INT >= 29) {
-            ForegroundInfo(
-                NOTIFICATION_ID_APP_INSTALLS,
-                n,
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST
-            )
-        } else {
-            ForegroundInfo(NOTIFICATION_ID_REPO_UPDATE, n)
-        }
+        return ForegroundInfo(
+            NOTIFICATION_ID_APP_INSTALLS,
+            nm.getAppInstallNotification(InstallNotificationState()).build(),
+            if (SDK_INT >= 29) FOREGROUND_SERVICE_TYPE_MANIFEST else 0
+        )
     }
 }

@@ -318,6 +318,7 @@ class AppInstallManager @Inject constructor(
         }
         val result =
             sessionInstallManager.install(sessionId, version.packageName, newState, file)
+        log.debug { "Install result: $result" }
         return if (result is InstallState.PreApproved &&
             result.result is PreApprovalResult.Error
         ) {

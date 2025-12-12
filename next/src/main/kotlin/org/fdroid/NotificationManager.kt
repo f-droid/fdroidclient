@@ -131,6 +131,7 @@ class NotificationManager @Inject constructor(
         // TODO we may need some throttling when many apps download at the same time
         val n = getAppInstallNotification(installNotificationState).build()
         if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+            log.debug { "Show app install notification" }
             nm.notify(NOTIFICATION_ID_APP_INSTALLS, n)
         }
     }
@@ -153,6 +154,7 @@ class NotificationManager @Inject constructor(
     }
 
     fun cancelAppInstallNotification() {
+        log.debug { "Cancel app install notification" }
         nm.cancel(NOTIFICATION_ID_APP_INSTALLS)
     }
 

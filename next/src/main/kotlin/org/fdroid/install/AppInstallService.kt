@@ -9,6 +9,7 @@ import androidx.core.app.ServiceCompat
 import dagger.hilt.android.AndroidEntryPoint
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
+import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,9 +41,9 @@ class AppInstallService : Service() {
         try {
             ServiceCompat.startForeground(
                 this,
-                NotificationManager.NOTIFICATION_ID_APP_INSTALLS,
+                NOTIFICATION_ID_APP_INSTALLS,
                 notificationManager.getAppInstallNotification(notificationState).build(),
-                if (SDK_INT >= 30) FOREGROUND_SERVICE_TYPE_MANIFEST else 0,
+                if (SDK_INT >= 29) FOREGROUND_SERVICE_TYPE_MANIFEST else 0,
             )
         } catch (e: Exception) {
             log.error(e) { "Error starting foreground service: " }
