@@ -111,6 +111,7 @@ public data class Repository internal constructor(
         lastUpdated: Long,
         username: String? = null,
         password: String? = null,
+        lastError: String? = null,
     ) : this(
         repository = CoreRepository(
             repoId = repoId,
@@ -132,6 +133,7 @@ public data class Repository internal constructor(
             lastUpdated = lastUpdated,
             username = username,
             password = password,
+            lastError = lastError,
         )
     )
 
@@ -232,6 +234,8 @@ public data class Repository internal constructor(
         get() {
             return "https://fdroid.link/#$address?fingerprint=$fingerprint"
         }
+    public val errorCount: Int get() = preferences.errorCount
+    public val lastError: String? get() = preferences.lastError
 }
 
 // Dummy repo to use in Compose Previews and in tests

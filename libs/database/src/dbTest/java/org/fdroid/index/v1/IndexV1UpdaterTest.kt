@@ -129,7 +129,14 @@ internal class IndexV1UpdaterTest : DbTest() {
         assertIs<SigningException>(result.e)
 
         // check that the DB transaction was rolled back and the DB wasn't changed
-        assertEquals(repo, repoDao.getRepository(repoId) ?: fail())
+        // except for adding the error to the repo
+        val expectedRepo = repo.copy(
+            preferences = repo.preferences.copy(
+                errorCount = 1,
+                lastError = "Signing certificate does not match"
+            ),
+        )
+        assertEquals(expectedRepo, repoDao.getRepository(repoId) ?: fail())
         assertEquals(0, appDao.countApps())
         assertEquals(0, versionDao.countAppVersions())
     }

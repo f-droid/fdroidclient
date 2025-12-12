@@ -8,6 +8,7 @@ import org.fdroid.database.DbV1StreamReceiver
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.database.Repository
+import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexFormatVersion.ONE
@@ -34,6 +35,7 @@ public class IndexV1Updater(
     private val log = KotlinLogging.logger {}
     public override val formatVersion: IndexFormatVersion = ONE
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
+    override val repoDao: RepositoryDaoInt = db.getRepositoryDao()
 
     override fun updateRepo(repo: Repository): IndexUpdateResult {
         // Normally, we shouldn't allow repository downgrades and assert the condition below.
@@ -66,10 +68,11 @@ public class IndexV1Updater(
                     streamProcessor.process(inputStream)
                 }
                 // update RepositoryPreferences with timestamp and ETag (for v1)
-                val repoDao = db.getRepositoryDao()
                 val updatedPrefs = repo.preferences.copy(
                     lastUpdated = System.currentTimeMillis(),
                     lastETag = eTag,
+                    errorCount = 0,
+                    lastError = null,
                 )
                 repoDao.updateRepositoryPreferences(updatedPrefs)
             }

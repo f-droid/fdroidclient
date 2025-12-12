@@ -190,6 +190,8 @@ internal class RepoAdderTest {
             assertEquals(expectedResult, fetching.fetchResult)
 
             every { newRepo.formatVersion } returns IndexFormatVersion.TWO
+            every { newRepo.repoId } returns 1
+            every { repoDao.trackRepoUpdateError(1, any()) } just Runs
 
             repoAdder.addFetchedRepository()
 
@@ -225,6 +227,8 @@ internal class RepoAdderTest {
             assertIs<IsNewRepository>(fetching.fetchResult)
 
             every { newRepo.formatVersion } returns IndexFormatVersion.TWO
+            every { newRepo.repoId } returns 1
+            every { repoDao.trackRepoUpdateError(1, any()) } just Runs
 
             repoAdder.addFetchedRepository()
 
@@ -852,6 +856,8 @@ internal class RepoAdderTest {
             assertIs<Fetching>(awaitItem()) // still Fetching from last call
 
             every { newRepo.formatVersion } returns IndexFormatVersion.TWO
+            every { newRepo.repoId } returns 1
+            every { repoDao.trackRepoUpdateError(1, any()) } just Runs
             repoAdder.addFetchedRepository()
 
             assertIs<Adding>(awaitItem()) // now moved to Adding

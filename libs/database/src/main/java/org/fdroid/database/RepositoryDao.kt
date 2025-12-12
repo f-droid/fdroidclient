@@ -442,6 +442,21 @@ internal interface RepositoryDaoInt : RepositoryDao {
     )
     fun getArchiveRepoId(cert: String): Long?
 
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE}
+            SET errorCount = errorCount + 1, lastError = :errorMsg
+            WHERE repoId = :repoId
+        """
+    )
+    fun trackRepoUpdateError(repoId: Long, errorMsg: String)
+
+    @Query(
+        """UPDATE ${RepositoryPreferences.TABLE}
+            SET errorCount = 0, lastError = NULL WHERE repoId = :repoId
+        """
+    )
+    fun resetRepoUpdateError(repoId: Long)
+
     @Transaction
     override fun deleteRepository(repoId: Long) {
         deleteCoreRepository(repoId)

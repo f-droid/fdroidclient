@@ -1,7 +1,10 @@
 package org.fdroid.index
 
 import android.net.Uri
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.WorkerThread
 import org.fdroid.database.Repository
+import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.Downloader
 import org.fdroid.download.NotFoundException
 import java.io.File
@@ -48,6 +51,8 @@ public fun interface TempFileProvider {
  * A class to update information of a [Repository] in the database with a new downloaded index.
  */
 public abstract class IndexUpdater {
+    @VisibleForTesting
+    internal abstract val repoDao: RepositoryDaoInt
 
     /**
      * The [IndexFormatVersion] used by this updater.
@@ -59,21 +64,46 @@ public abstract class IndexUpdater {
     /**
      * Updates an existing [repo] with a known [Repository.certificate].
      */
-    public fun update(repo: Repository): IndexUpdateResult = catchExceptions {
-        updateRepo(repo)
+    @WorkerThread
+    public fun update(repo: Repository): IndexUpdateResult = catchExceptions(repo) {
+        updateRepo(repo).also { result ->
+            // reset repo errors if repo updated fine again, but is still unchanged
+            if (repo.errorCount > 0 && result is IndexUpdateResult.Unchanged) {
+                repoDao.resetRepoUpdateError(repo.repoId)
+            }
+        }
     }
 
-    private fun catchExceptions(block: () -> IndexUpdateResult): IndexUpdateResult {
+    @WorkerThread
+    protected abstract fun updateRepo(repo: Repository): IndexUpdateResult
+
+    @WorkerThread
+    private fun catchExceptions(
+        repo: Repository,
+        block: () -> IndexUpdateResult,
+    ): IndexUpdateResult {
         return try {
             block()
         } catch (e: NotFoundException) {
+            onError(repo.repoId, e)
             IndexUpdateResult.NotFound
         } catch (e: Exception) {
+            onError(repo.repoId, e)
             IndexUpdateResult.Error(e)
         }
     }
 
-    protected abstract fun updateRepo(repo: Repository): IndexUpdateResult
+    @WorkerThread
+    private fun onError(repoId: Long, e: Exception) {
+        val msg = buildString {
+            append(e.localizedMessage ?: e.message ?: e.javaClass.simpleName)
+            e.cause?.let { cause ->
+                append("\n")
+                append(cause.localizedMessage ?: cause.message ?: cause.javaClass.simpleName)
+            }
+        }
+        repoDao.trackRepoUpdateError(repoId, msg)
+    }
 }
 
 internal fun Downloader.setIndexUpdateListener(
