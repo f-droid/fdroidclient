@@ -16,6 +16,7 @@ object CategoryGroups {
     val media = CategoryGroup("media", R.string.category_group_media)
     val communication = CategoryGroup("communication", R.string.category_group_communication)
     val device = CategoryGroup("device", R.string.category_group_device)
+    val network = CategoryGroup("network", R.string.category_group_network)
     val storage = CategoryGroup("storage", R.string.category_group_storage)
     val interests = CategoryGroup("interests", R.string.category_group_interests)
     val misc = CategoryGroup("misc", R.string.category_group_misc)

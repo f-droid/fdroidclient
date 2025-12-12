@@ -43,10 +43,11 @@
 
     <string name="category_group_productivity">Productivity</string>
     <string name="category_group_tools">Tools</string>
-    <string name="category_group_wallets">Digital Wallets</string>
+    <string name="category_group_wallets">Finances &amp; Wallets</string>
     <string name="category_group_media">Entertainment &amp; Media</string>
     <string name="category_group_communication">Communication</string>
     <string name="category_group_device">Device</string>
+    <string name="category_group_network">Network</string>
     <string name="category_group_storage">Files &amp; Storage</string>
     <string name="category_group_interests">Interests</string>
     <string name="category_group_misc">Miscellaneous</string>
