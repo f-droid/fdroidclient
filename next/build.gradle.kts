@@ -99,17 +99,17 @@ dependencies {
     ksp(libs.androidx.hilt.compiler)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))
     testImplementation(libs.robolectric)
     testImplementation(libs.slf4j.simple)
 
-    androidTestImplementation(kotlin("test"))
+    androidTestImplementation(libs.kotlin.test)
+    androidTestImplementation(libs.kotlin.reflect)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }
