@@ -116,6 +116,8 @@
     <string name="clear">Clear</string>
     <string name="error">Error</string>
     <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
+    <string name="repo_has_update_error">Had errors updating</string>
+    <string name="repo_has_update_error_intro">An error occurred while trying to update this repository:</string>
     <string name="repo_last_update_upstream">Last update: %s</string>
     <string name="repo_basicauth_username">Username</string>
     <string name="repo_basicauth_password">Password</string>

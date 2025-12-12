@@ -10,6 +10,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -74,11 +76,19 @@ fun Discover(
                 },
                 actions = {
                     topBarMenuItems.forEach { dest ->
-                        IconButton(onClick = { onNav(dest.id) }) {
-                            Icon(
-                                imageVector = dest.icon,
-                                contentDescription = stringResource(dest.label),
-                            )
+                        BadgedBox(badge = {
+                            val hasRepoIssues =
+                                (discoverModel as? LoadedDiscoverModel)?.hasRepoIssues == true
+                            if (dest.id == NavigationKey.Repos && hasRepoIssues) Badge {
+                                Text("")
+                            }
+                        }) {
+                            IconButton(onClick = { onNav(dest.id) }) {
+                                Icon(
+                                    imageVector = dest.icon,
+                                    contentDescription = stringResource(dest.label),
+                                )
+                            }
                         }
                     }
                     var menuExpanded by remember { mutableStateOf(false) }

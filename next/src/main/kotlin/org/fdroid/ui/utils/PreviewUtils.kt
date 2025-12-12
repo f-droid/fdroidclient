@@ -348,6 +348,42 @@ internal val myAppsModel = MyAppsModel(
     sortOrder = AppListSortOrder.NAME,
 )
 
+val repoItems = listOf(
+    RepositoryItem(
+        repoId = 1,
+        address = "http://example.org",
+        name = "F-Droid",
+        icon = null,
+        timestamp = System.currentTimeMillis() - 1_111_111,
+        lastUpdated = System.currentTimeMillis() - 9_999_999,
+        weight = 1,
+        enabled = true,
+        errorCount = 0,
+    ),
+    RepositoryItem(
+        repoId = 2,
+        address = "http://example.org",
+        name = "Guardian Project Repository",
+        icon = null,
+        timestamp = System.currentTimeMillis() - 9_999_999,
+        lastUpdated = System.currentTimeMillis() - 99_999_999,
+        weight = 2,
+        enabled = true,
+        errorCount = 3,
+    ),
+    RepositoryItem(
+        repoId = 3,
+        address = "http://example.net",
+        name = "My first Repo",
+        icon = null,
+        timestamp = System.currentTimeMillis() - 888_888,
+        lastUpdated = System.currentTimeMillis(),
+        weight = 3,
+        enabled = true,
+        errorCount = 1,
+    ),
+)
+
 fun getRepositoriesInfo(
     model: RepositoryModel,
     currentRepositoryId: Long? = null,
@@ -409,4 +445,5 @@ fun getRepository(address: String = "https://example.org/repo") = Repository(
     lastUpdated = 1337,
     username = "foo",
     password = "bar",
+    lastError = "NotFoundException FooBar technical blabla"
 )

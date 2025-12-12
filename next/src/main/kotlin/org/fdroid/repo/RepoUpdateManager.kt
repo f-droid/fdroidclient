@@ -22,10 +22,8 @@ import org.fdroid.index.IndexUpdateListener
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
-import org.fdroid.index.v1.IndexV1Updater
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
-import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -99,15 +97,6 @@ class RepoUpdateManager(
         compatibilityChecker = compatibilityChecker,
         listener = indexUpdateListener,
     ),
-    private val indexV1Updater: IndexV1Updater? = if (false) {
-        IndexV1Updater(
-            database = db,
-            tempFileProvider = { File.createTempFile("dl-", "", context.cacheDir) },
-            downloaderFactory = downloaderFactory,
-            compatibilityChecker = compatibilityChecker,
-            listener = indexUpdateListener,
-        )
-    } else null,
 ) {
 
     @Inject
@@ -130,7 +119,6 @@ class RepoUpdateManager(
     )
 
     private val log = KotlinLogging.logger { }
-    private val isUpdateNotificationEnabled = true
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating = _isUpdating.asStateFlow()
 
@@ -163,7 +151,6 @@ class RepoUpdateManager(
         try {
             currentCoroutineContext().ensureActive()
             var reposUpdated = false
-            val repoErrors = mutableListOf<Pair<Repository, Exception>>()
             // always get repos fresh from DB, because
             // * when an update is requested early at app start,
             //   the repos above might not be available, yet
@@ -174,23 +161,17 @@ class RepoUpdateManager(
                 currentCoroutineContext().ensureActive()
 
                 // show notification
-                if (isUpdateNotificationEnabled) {
-                    val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
-                    notificationManager.showUpdateRepoNotification(msg, throttle = false)
-                }
-
-                // indexV1Updater only gets used directly if forceIndexV1 was true
-                val result = indexV1Updater?.update(repo) ?: repoUpdater.update(repo)
-
+                val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
+                notificationManager.showUpdateRepoNotification(msg, throttle = false)
+                // update repo
+                val result = repoUpdater.update(repo)
                 if (result is IndexUpdateResult.Processed) reposUpdated = true
                 else if (result is IndexUpdateResult.Error) {
-                    Log.e(TAG, "Error updating repository ${repo.address}", result.e)
-                    repoErrors.add(Pair(repo, result.e))
+                    log.error(result.e) { "Error updating repository ${repo.address} " }
                 }
             }
             db.getRepositoryDao().walCheckpoint()
             settingsManager.lastRepoUpdate = System.currentTimeMillis()
-            if (repoErrors.isNotEmpty()) showRepoErrors(repoErrors)
             if (reposUpdated) {
                 updatesManager.loadUpdates().join()
                 val numUpdates = updatesManager.numUpdates.value
@@ -213,15 +194,14 @@ class RepoUpdateManager(
         _isUpdating.value = true
         return try {
             // show notification
-            if (isUpdateNotificationEnabled) {
-                val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
-                notificationManager.showUpdateRepoNotification(msg, throttle = false)
-            }
-
-            // indexV1Updater only gets used directly if forceIndexV1 was true
-            val result = indexV1Updater?.update(repo) ?: repoUpdater.update(repo)
+            val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
+            notificationManager.showUpdateRepoNotification(msg, throttle = false)
+            // update repo
+            val result = repoUpdater.update(repo)
             if (result is IndexUpdateResult.Processed) {
                 updatesManager.loadUpdates()
+            } else if (result is IndexUpdateResult.Error) {
+                log.error(result.e) { "Error updating ${repo.address}: " }
             }
             result
         } finally {
@@ -230,9 +210,4 @@ class RepoUpdateManager(
             db.getRepositoryDao().walCheckpoint()
         }
     }
-
-    private fun showRepoErrors(repoErrors: List<Pair<Repository, Exception>>) {
-        // TODO
-    }
-
 }

@@ -31,6 +31,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -40,6 +41,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepositoriesInfo
+import org.fdroid.ui.utils.repoItems
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -151,30 +153,12 @@ fun RepositoriesScaffoldLoadingPreview() {
     uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
 )
 @Composable
-fun RepositoriesScaffoldPreview() {
-    FDroidContent {
-        val repos = listOf(
-            RepositoryItem(
-                repoId = 1,
-                address = "http://example.org",
-                timestamp = System.currentTimeMillis(),
-                lastUpdated = null,
-                weight = 1,
-                enabled = true,
-                name = "My first repository",
-            ),
-            RepositoryItem(
-                repoId = 2,
-                address = "http://example.com",
-                timestamp = System.currentTimeMillis(),
-                lastUpdated = null,
-                weight = 2,
-                enabled = false,
-                name = "My second repository",
-            ),
-        )
-        val model = RepositoryModel(repos, false, "42min. ago")
-        val info = getRepositoriesInfo(model, repos[0].repoId)
-        Repositories(info) { }
+private fun RepositoriesScaffoldPreview() {
+    HintHost {
+        FDroidContent {
+            val model = RepositoryModel(repoItems, false, "42min. ago")
+            val info = getRepositoriesInfo(model, repoItems[0].repoId)
+            Repositories(info) { }
+        }
     }
 }

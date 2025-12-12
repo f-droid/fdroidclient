@@ -14,6 +14,7 @@ data class RepositoryItem(
     val lastUpdated: Long?,
     val weight: Int,
     val enabled: Boolean,
+    private val errorCount: Int,
 ) {
     constructor(repo: Repository, localeList: LocaleListCompat, proxy: ProxyConfig?) : this(
         repoId = repo.repoId,
@@ -24,5 +25,8 @@ data class RepositoryItem(
         lastUpdated = repo.lastUpdated,
         weight = repo.weight,
         enabled = repo.enabled,
+        errorCount = repo.errorCount,
     )
+
+    val hasIssue: Boolean = errorCount >= 3
 }

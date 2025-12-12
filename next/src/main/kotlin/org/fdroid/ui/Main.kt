@@ -88,7 +88,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         ) {
             val viewModel = hiltViewModel<DiscoverViewModel>()
             val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle(0).value
-            val hasIssues = viewModel.hasIssues.collectAsState(false).value
+            val hasIssues = viewModel.hasAppIssues.collectAsState(false).value
             Discover(
                 discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
                 onListTap = {

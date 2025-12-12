@@ -42,9 +42,9 @@ import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.icons.PackageVariant
-import org.fdroid.ui.repositories.RepositoryItem
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.getAppListInfo
+import org.fdroid.ui.utils.repoItems
 import kotlin.random.Random
 
 @Composable
@@ -254,28 +254,7 @@ private fun Preview() {
                 CategoryItem("doesn't exist", "Foo bar"),
             ),
             filteredCategoryIds = setOf("Browser"),
-            repositories = listOf(
-                RepositoryItem(
-                    repoId = 1,
-                    address = "http://example.org",
-                    name = "F-Droid",
-                    icon = null,
-                    timestamp = 42,
-                    lastUpdated = null,
-                    weight = 1,
-                    enabled = true,
-                ),
-                RepositoryItem(
-                    repoId = 2,
-                    address = "http://example.org",
-                    name = "Guardian Project Repository",
-                    icon = null,
-                    timestamp = 42,
-                    lastUpdated = null,
-                    weight = 2,
-                    enabled = true,
-                ),
-            ),
+            repositories = repoItems,
             filteredRepositoryIds = setOf(2),
         )
         val info = getAppListInfo(model)

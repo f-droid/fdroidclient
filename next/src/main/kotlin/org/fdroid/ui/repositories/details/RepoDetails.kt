@@ -33,6 +33,7 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -167,7 +168,9 @@ fun RepoDetails(
 @Preview
 @Composable
 fun RepoDetailsScreenPreview() {
-    FDroidContent {
-        RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {})
+    HintHost {
+        FDroidContent {
+            RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {})
+        }
     }
 }

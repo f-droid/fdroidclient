@@ -8,11 +8,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.WarningAmber
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -91,6 +97,27 @@ fun RepoDetailsHeader(
                 Text(
                     text = lastUpdated,
                     style = MaterialTheme.typography.bodySmall,
+                )
+            }
+        }
+        if (repo.lastError != null) ElevatedCard(
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+        ) {
+            Row(
+                horizontalArrangement = spacedBy(16.dp),
+                verticalAlignment = CenterVertically,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            ) {
+                Icon(Icons.Default.WarningAmber, null)
+                Text(
+                    text = stringResource(R.string.repo_has_update_error_intro) +
+                        "\n\n${repo.lastError}",
+                    style = MaterialTheme.typography.bodyLarge
                 )
             }
         }

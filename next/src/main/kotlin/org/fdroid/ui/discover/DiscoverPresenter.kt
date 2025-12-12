@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import org.fdroid.database.Repository
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.ui.categories.CategoryGroup
@@ -42,12 +43,16 @@ fun DiscoverPresenter(
             LoadingDiscoverModel(isFirstStart)
         }
     } else {
+        val hasRepoIssues = repositoriesFlow.map { repos ->
+            repos.any { it.errorCount >= 5 }
+        }.collectAsState(false).value
         LoadedDiscoverModel(
             newApps = newApps ?: emptyList(),
             recentlyUpdatedApps = recentlyUpdatedApps,
             mostDownloadedApps = mostDownloadedApps,
             categories = categories?.groupBy { it.group },
             searchResults = searchResults,
+            hasRepoIssues = hasRepoIssues,
         )
     }
 }
@@ -61,4 +66,5 @@ data class LoadedDiscoverModel(
     val mostDownloadedApps: List<AppDiscoverItem>?,
     val categories: Map<CategoryGroup, List<CategoryItem>>?,
     val searchResults: SearchResults? = null,
+    val hasRepoIssues: Boolean,
 ) : DiscoverModel()
