@@ -29,7 +29,6 @@ import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOW
 import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.ui.apps.MyApps
@@ -59,7 +58,7 @@ import org.fdroid.ui.settings.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
-fun Main(onListeningForIntent: () -> Unit = {}) {
+fun Main(dynamicColors: Boolean, onListeningForIntent: () -> Unit = {}) {
     val backStack = rememberNavBackStack(NavigationKey.Discover)
     // set up intent routing by listening to new intents from activity
     val activity = (LocalActivity.current as ComponentActivity)
@@ -194,7 +193,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     (backStack.last() as? NavigationKey.AppDetails)?.packageName
                 } else null,
                 onBackClicked = { backStack.removeLastOrNull() },
-                modifier = Modifier,
             ) { packageName ->
                 backStack.add(NavigationKey.AppDetails(packageName))
             }
@@ -300,7 +298,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             About { backStack.removeLastOrNull() }
         }
     }
-    FDroidContent {
+    FDroidContent(dynamicColors = dynamicColors) {
         HintHost {
             NavDisplay(
                 backStack = backStack,

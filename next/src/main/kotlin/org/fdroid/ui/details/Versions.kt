@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppVersion
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.ExpandIconChevron
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton

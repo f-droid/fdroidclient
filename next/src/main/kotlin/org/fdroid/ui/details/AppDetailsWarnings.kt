@@ -25,8 +25,8 @@ import org.fdroid.database.KnownVulnerability
 import org.fdroid.database.NoCompatibleSigner
 import org.fdroid.database.NotAvailable
 import org.fdroid.database.UpdateInOtherRepo
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.testApp
 
 @Composable

@@ -29,7 +29,7 @@ import androidx.core.os.LocaleListCompat
 import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.Repository
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.repositories.RepoIcon
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.asRelativeTimeString

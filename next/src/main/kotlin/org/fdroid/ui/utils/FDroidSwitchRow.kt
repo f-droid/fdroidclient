@@ -15,7 +15,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.FDroidContent
 
 @Composable
 fun FDroidSwitchRow(

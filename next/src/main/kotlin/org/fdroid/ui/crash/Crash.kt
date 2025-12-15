@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.launch
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.FDroidContent
 import org.fdroid.utils.getLogName
 
 @Composable

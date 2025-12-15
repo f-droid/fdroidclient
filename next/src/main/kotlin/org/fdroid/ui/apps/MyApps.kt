@@ -43,9 +43,9 @@ import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.BottomBar
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.lists.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator

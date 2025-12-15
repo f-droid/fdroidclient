@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BrightnessMedium
+import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SystemSecurityUpdate
@@ -54,15 +55,17 @@ import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.rememberPreferenceState
 import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
@@ -138,6 +141,23 @@ fun Settings(
                         )
                     },
                     summary = { Text(text = "${themeToString(it)}") },
+                )
+                if (SDK_INT >= 31) switchPreference(
+                    key = PREF_KEY_DYNAMIC_COLORS,
+                    defaultValue = PREF_DEFAULT_DYNAMIC_COLORS,
+                    title = {
+                        Text(stringResource(R.string.pref_dyn_colors_title))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.ColorLens,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = {
+                        Text(text = stringResource(R.string.pref_dyn_colors_summary))
+                    },
                 )
                 if (SDK_INT >= 33) preference(
                     key = "languages",

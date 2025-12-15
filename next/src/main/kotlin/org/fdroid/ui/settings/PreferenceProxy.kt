@@ -24,9 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.textFieldPreference
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
+import org.fdroid.ui.FDroidContent
 import java.net.InetSocketAddress
 
 fun LazyListScope.preferenceProxy(

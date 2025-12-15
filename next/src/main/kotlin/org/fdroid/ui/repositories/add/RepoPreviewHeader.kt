@@ -26,13 +26,13 @@ import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.repo.FetchResult.IsExistingMirror
 import org.fdroid.repo.FetchResult.IsExistingRepository
 import org.fdroid.repo.FetchResult.IsNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.repositories.RepoIcon
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.asRelativeTimeString

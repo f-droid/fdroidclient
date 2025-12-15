@@ -57,8 +57,8 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.install.InstallState
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.InstalledBadge
 import org.fdroid.ui.utils.asRelativeTimeString

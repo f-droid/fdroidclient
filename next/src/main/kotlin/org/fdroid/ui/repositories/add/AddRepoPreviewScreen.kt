@@ -22,11 +22,11 @@ import io.ktor.client.engine.ProxyConfig
 import org.fdroid.R
 import org.fdroid.database.MinimalApp
 import org.fdroid.download.getImageModel
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.index.v2.FileV2
 import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.utils.getRepository
@@ -139,7 +139,7 @@ private fun Preview() {
 
         override fun getIcon(localeList: LocaleListCompat): FileV2? = null
     }
-    FDroidContent(pureBlack = true) {
+    FDroidContent {
         AddRepoPreviewScreen(
             Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository),
             proxyConfig = null,

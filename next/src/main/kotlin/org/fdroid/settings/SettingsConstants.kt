@@ -10,6 +10,9 @@ object SettingsConstants {
     const val PREF_KEY_THEME = "theme"
     const val PREF_DEFAULT_THEME = "followSystem"
 
+    const val PREF_KEY_DYNAMIC_COLORS = "dynamicColors"
+    const val PREF_DEFAULT_DYNAMIC_COLORS = false
+
     const val PREF_KEY_REPO_UPDATES = "repoUpdates"
     const val PREF_DEFAULT_REPO_UPDATES = true
 

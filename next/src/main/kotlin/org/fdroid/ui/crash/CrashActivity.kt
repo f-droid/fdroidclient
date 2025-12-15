@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import mu.KotlinLogging
 import org.acra.ReportField
 import org.acra.dialog.CrashReportDialogHelper
-import org.fdroid.fdroid.ui.theme.FDroidContent
+import org.fdroid.ui.FDroidContent
 import java.io.IOException
 
 class CrashActivity : ComponentActivity() {

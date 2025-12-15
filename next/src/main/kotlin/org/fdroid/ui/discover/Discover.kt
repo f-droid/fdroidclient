@@ -43,8 +43,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import kotlinx.coroutines.launch
 import org.fdroid.R
-import org.fdroid.fdroid.ui.theme.FDroidContent
 import org.fdroid.ui.BottomBar
+import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.MainOverFlowMenu
 import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryList
