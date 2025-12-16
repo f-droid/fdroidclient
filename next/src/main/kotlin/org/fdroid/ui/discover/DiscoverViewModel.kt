@@ -32,6 +32,7 @@ import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
+import org.fdroid.repo.RepoUpdateManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
@@ -51,6 +52,7 @@ class DiscoverViewModel @Inject constructor(
     updatesManager: UpdatesManager,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
+    private val repoUpdateManager: RepoUpdateManager,
     private val installedAppsCache: InstalledAppsCache,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
@@ -98,6 +100,7 @@ class DiscoverViewModel @Inject constructor(
                 repositoriesFlow = repoManager.repositoriesState,
                 searchResultsFlow = searchResults,
                 lastRepoUpdate = settingsManager.lastRepoUpdate,
+                repoUpdateStateFlow = repoUpdateManager.repoUpdateState,
             )
         }
     }

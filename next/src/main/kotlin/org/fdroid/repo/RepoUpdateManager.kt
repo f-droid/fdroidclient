@@ -3,6 +3,9 @@ package org.fdroid.repo
 import android.content.Context
 import android.text.format.Formatter
 import android.util.Log
+import androidx.annotation.FloatRange
+import androidx.annotation.IntRange
+import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.currentCoroutineContext
@@ -10,6 +13,7 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
@@ -31,7 +35,7 @@ private val TAG = RepoUpdateManager::class.java.simpleName
 private const val MIN_UPDATE_INTERVAL_MILLIS = 15_000
 
 @Singleton
-class RepoUpdateManager(
+class RepoUpdateManager @VisibleForTesting internal constructor(
     private val context: Context,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
@@ -43,59 +47,14 @@ class RepoUpdateManager(
         packageManager = context.packageManager,
         forceTouchApps = false,
     ),
-    private val indexUpdateListener: IndexUpdateListener = object : IndexUpdateListener {
-        override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
-            Log.d(TAG, "Downloading ${repo.address} ($bytesRead/$totalBytes)")
-
-            val percent = if (totalBytes > 0) {
-                getPercent(bytesRead, totalBytes)
-            } else {
-                -1
-            }
-            val size = Formatter.formatFileSize(context, bytesRead)
-            val message: String = if (totalBytes == -1L) {
-                context.getString(R.string.status_download_unknown_size, repo.address, size)
-            } else {
-                val totalSize = Formatter.formatFileSize(context, totalBytes)
-                context.getString(R.string.status_download, repo.address, size, totalSize, percent)
-            }
-            notificationManager.showUpdateRepoNotification(msg = message, progress = percent)
-        }
-
-        /**
-         * If an updater is unable to know how many apps it has to process (i.e. it
-         * is streaming apps to the database or performing a large database query
-         * which touches all apps, but is unable to report progress), then it call
-         * this listener with [totalApps] = 0. Doing so will result in a message of
-         * "Saving app details" sent to the user. If you know how many apps you have
-         * processed, then a message of "Saving app details (x/total)" is displayed.
-         */
-        override fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int) {
-            Log.d(TAG, "Committing ${repo.address} ($appsProcessed/$totalApps)")
-
-            if (totalApps > 0) notificationManager.showUpdateRepoNotification(
-                msg = context.getString(
-                    R.string.status_inserting_x_apps,
-                    appsProcessed,
-                    totalApps,
-                    repo.address,
-                ),
-                progress = getPercent(appsProcessed.toLong(), totalApps.toLong())
-            ) else notificationManager.showUpdateRepoNotification(
-                msg = context.getString(R.string.status_inserting_apps),
-            )
-        }
-
-        fun getPercent(current: Long, total: Long): Int {
-            return (100L * current / total).toInt()
-        }
-    },
+    private val repoUpdateListener: RepoUpdateListener =
+        RepoUpdateListener(context, notificationManager),
     private val repoUpdater: RepoUpdater = RepoUpdater(
         tempDir = context.cacheDir,
         db = db,
         downloaderFactory = downloaderFactory,
         compatibilityChecker = compatibilityChecker,
-        listener = indexUpdateListener,
+        listener = repoUpdateListener,
     ),
 ) {
 
@@ -121,6 +80,7 @@ class RepoUpdateManager(
     private val log = KotlinLogging.logger { }
     private val _isUpdating = MutableStateFlow(false)
     val isUpdating = _isUpdating.asStateFlow()
+    val repoUpdateState = repoUpdateListener.updateState
 
     /**
      * The time in milliseconds of the (earliest!) next automatic repo update check.
@@ -165,6 +125,7 @@ class RepoUpdateManager(
                 notificationManager.showUpdateRepoNotification(msg, throttle = false)
                 // update repo
                 val result = repoUpdater.update(repo)
+                log.info { "Update repo result: $result" }
                 if (result is IndexUpdateResult.Processed) reposUpdated = true
                 else if (result is IndexUpdateResult.Error) {
                     log.error(result.e) { "Error updating repository ${repo.address} " }
@@ -198,6 +159,7 @@ class RepoUpdateManager(
             notificationManager.showUpdateRepoNotification(msg, throttle = false)
             // update repo
             val result = repoUpdater.update(repo)
+            log.info { "Update repo result: $result" }
             if (result is IndexUpdateResult.Processed) {
                 updatesManager.loadUpdates()
             } else if (result is IndexUpdateResult.Error) {
@@ -210,4 +172,96 @@ class RepoUpdateManager(
             db.getRepositoryDao().walCheckpoint()
         }
     }
+}
+
+@VisibleForTesting
+internal class RepoUpdateListener(
+    private val context: Context,
+    private val notificationManager: NotificationManager,
+) : IndexUpdateListener {
+
+    private val _updateState = MutableStateFlow<RepoUpdateState?>(null)
+    val updateState = _updateState.asStateFlow()
+    private var lastUpdateProgress = 0L
+
+    override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
+        Log.d(TAG, "Downloading ${repo.address} ($bytesRead/$totalBytes)")
+
+        val percent = getPercent(bytesRead, totalBytes)
+        val size = Formatter.formatFileSize(context, bytesRead)
+        val message: String = if (totalBytes == -1L) {
+            context.getString(R.string.status_download_unknown_size, repo.address, size)
+        } else {
+            val totalSize = Formatter.formatFileSize(context, totalBytes)
+            context.getString(R.string.status_download, repo.address, size, totalSize, percent)
+        }
+        notificationManager.showUpdateRepoNotification(msg = message, progress = percent)
+        _updateState.update { RepoUpdateState(repo.repoId, true, percent) }
+    }
+
+    /**
+     * If an updater is unable to know how many apps it has to process (i.e. it
+     * is streaming apps to the database or performing a large database query
+     * which touches all apps, but is unable to report progress), then it call
+     * this listener with [totalApps] = 0. Doing so will result in a message of
+     * "Saving app details" sent to the user. If you know how many apps you have
+     * processed, then a message of "Saving app details (x/total)" is displayed.
+     */
+    override fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int) {
+        // Don't update progress, if we already have updated once within the last second
+        if (System.currentTimeMillis() - lastUpdateProgress < 1000 && appsProcessed != totalApps) {
+            return
+        }
+        Log.d(TAG, "Committing ${repo.address} ($appsProcessed/$totalApps)")
+
+        if (totalApps > 0) {
+            val percent = getPercent(appsProcessed.toLong(), totalApps.toLong())
+            notificationManager.showUpdateRepoNotification(
+                msg = context.getString(
+                    R.string.status_inserting_x_apps,
+                    appsProcessed,
+                    totalApps,
+                    repo.address,
+                ),
+                progress = percent
+            )
+            _updateState.update { RepoUpdateState(repo.repoId, false, percent) }
+        } else {
+            notificationManager.showUpdateRepoNotification(
+                msg = context.getString(R.string.status_inserting_apps),
+            )
+            _updateState.update { RepoUpdateState(repo.repoId, false, 0f) }
+        }
+        lastUpdateProgress = System.currentTimeMillis()
+    }
+
+    private fun getPercent(current: Long, total: Long): Int {
+        if (total <= 0) return 0
+        return (100L * current / total).toInt()
+    }
+}
+
+/**
+ * There's two types of progress. First, there's the download, so [isDownloading] is true.
+ * Then there's inserting the repo data into the DB, there [isDownloading] is false.
+ * The [stepProgress] gets re-used for both.
+ *
+ * An external unified view on that is given as [progress].
+ */
+data class RepoUpdateState(
+    val repoId: Long,
+    private val isDownloading: Boolean,
+    @param:FloatRange(from = 0.0, to = 1.0) private val stepProgress: Float,
+) {
+    constructor(
+        repoId: Long,
+        isDownloading: Boolean,
+        @IntRange(from = 0, to = 100) percent: Int,
+    ) : this(
+        repoId = repoId,
+        isDownloading = isDownloading,
+        stepProgress = percent.toFloat() / 100,
+    )
+
+    val progress: Float = if (isDownloading) stepProgress / 2 else 0.5f + stepProgress / 2
 }

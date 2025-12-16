@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import org.fdroid.database.Repository
+import org.fdroid.repo.RepoUpdateState
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.ui.categories.CategoryGroup
 import org.fdroid.ui.categories.CategoryItem
@@ -20,6 +21,7 @@ fun DiscoverPresenter(
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
     lastRepoUpdate: Long,
+    repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
 ): DiscoverModel {
     val newApps = newAppsFlow.collectAsState(null).value
     val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
@@ -33,14 +35,12 @@ fun DiscoverPresenter(
     return if (recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
         val isFirstStart = lastRepoUpdate < PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
-        if (newApps == null && recentlyUpdatedApps == null) {
-            // we don't know yet if this
-            LoadingDiscoverModel(isFirstStart)
-        } else if (repositories?.all { !it.enabled } == true) {
+        if (repositories?.all { !it.enabled } == true) {
             NoEnabledReposDiscoverModel
+        } else if (isFirstStart) {
+            FirstStartDiscoverModel(repoUpdateStateFlow.collectAsState().value)
         } else {
-            // apps are empty, if we have enabled repos assume this is first start (still loading)
-            LoadingDiscoverModel(isFirstStart)
+            LoadingDiscoverModel
         }
     } else {
         val hasRepoIssues = repositoriesFlow.map { repos ->
@@ -58,8 +58,12 @@ fun DiscoverPresenter(
 }
 
 sealed class DiscoverModel
-data class LoadingDiscoverModel(val isFirstStart: Boolean) : DiscoverModel()
-object NoEnabledReposDiscoverModel : DiscoverModel()
+data class FirstStartDiscoverModel(
+    val repoUpdateState: RepoUpdateState?,
+) : DiscoverModel()
+
+data object LoadingDiscoverModel : DiscoverModel()
+data object NoEnabledReposDiscoverModel : DiscoverModel()
 data class LoadedDiscoverModel(
     val newApps: List<AppDiscoverItem>,
     val recentlyUpdatedApps: List<AppDiscoverItem>,

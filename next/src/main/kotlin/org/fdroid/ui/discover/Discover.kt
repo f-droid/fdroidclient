@@ -34,15 +34,13 @@ import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
-import androidx.compose.ui.semantics.liveRegion
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import kotlinx.coroutines.launch
 import org.fdroid.R
+import org.fdroid.repo.RepoUpdateState
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.MainOverFlowMenu
@@ -122,22 +120,8 @@ fun Discover(
                 .padding(paddingValues)
         ) {
             when (discoverModel) {
-                is LoadingDiscoverModel -> {
-                    AnimatedVisibility(
-                        visible = discoverModel.isFirstStart,
-                        modifier = Modifier
-                            .semantics { liveRegion = LiveRegionMode.Polite },
-                    ) {
-                        Text(
-                            stringResource(R.string.first_start_loading),
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .padding(16.dp)
-                                .fillMaxWidth()
-                        )
-                    }
-                    BigLoadingIndicator()
-                }
+                is FirstStartDiscoverModel -> FirstStart(discoverModel.repoUpdateState)
+                is LoadingDiscoverModel -> BigLoadingIndicator()
                 is LoadedDiscoverModel -> {
                     AppsSearch(
                         searchBarState = searchBarState,
@@ -225,10 +209,28 @@ fun Discover(
 
 @Preview
 @Composable
+fun FirstStartDiscoverPreview() {
+    FDroidContent {
+        Discover(
+            discoverModel = FirstStartDiscoverModel(RepoUpdateState(1, true, 0.25f)),
+            numUpdates = 23,
+            hasIssues = true,
+            isBigScreen = false,
+            onSearch = {},
+            onSearchCleared = {},
+            onListTap = {},
+            onAppTap = {},
+            onNav = {},
+        )
+    }
+}
+
+@Preview
+@Composable
 fun LoadingDiscoverPreview() {
     FDroidContent {
         Discover(
-            discoverModel = LoadingDiscoverModel(true),
+            discoverModel = LoadingDiscoverModel,
             numUpdates = 23,
             hasIssues = true,
             isBigScreen = false,
