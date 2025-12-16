@@ -46,6 +46,7 @@
     <string name="dialog_metered_text">You are currently on a metered internet connection. Do you want to continue downloading %1$s?</string>
     <string name="dialog_metered_text_no_size">You are currently on a metered internet connection. Do you want to continue downloading?</string>
     <string name="dialog_metered_button">Download</string>
+    <string name="screenshots_metered">Tap to load screenshots via mobile data</string>
 
     <string name="category_group_productivity">Productivity</string>
     <string name="category_group_tools">Tools</string>

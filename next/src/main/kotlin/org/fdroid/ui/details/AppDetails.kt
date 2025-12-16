@@ -199,7 +199,7 @@ fun AppDetails(
             }
             // Screenshots
             if (item.phoneScreenshots.isNotEmpty()) {
-                Screenshots(item.phoneScreenshots)
+                Screenshots(item.networkState.isMetered, item.phoneScreenshots)
             }
             // Donate card
             if (item.showDonate) ElevatedCard(
