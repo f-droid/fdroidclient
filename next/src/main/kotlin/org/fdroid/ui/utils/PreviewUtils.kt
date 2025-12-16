@@ -10,6 +10,7 @@ import org.fdroid.database.KnownVulnerability
 import org.fdroid.database.NotAvailable
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
+import org.fdroid.download.NetworkState
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
@@ -152,6 +153,7 @@ val testApp = AppDetailsItem(
         shareIntent = Intent(),
     ),
     installState = InstallState.Unknown,
+    networkState = NetworkState(isOnline = false, isMetered = false),
     appPrefs = AppPrefs("org.schabi.newpipe"),
     name = "New Pipe",
     summary = "Lightweight YouTube frontend",
@@ -346,6 +348,8 @@ internal val myAppsModel = MyAppsModel(
         )
     ),
     sortOrder = AppListSortOrder.NAME,
+    networkState = NetworkState(isOnline = false, isMetered = false),
+    appUpdatesBytes = null,
 )
 
 val repoItems = listOf(
@@ -420,6 +424,7 @@ fun getRepoDetailsInfo(
         ),
         archiveState = ArchiveState.LOADING,
         showOnboarding = false,
+        networkState = NetworkState(isOnline = false, isMetered = false),
         proxy = null,
     ),
 ) = object : RepoDetailsInfo {

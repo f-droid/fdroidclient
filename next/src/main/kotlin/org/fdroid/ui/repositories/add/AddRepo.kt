@@ -15,8 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.ktor.client.engine.ProxyConfig
+import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.repo.AddRepoError
 import org.fdroid.repo.AddRepoState
@@ -31,6 +34,7 @@ import org.fdroid.repo.RepoUpdateWorker
 @Composable
 fun AddRepo(
     state: AddRepoState,
+    networkStateFlow: StateFlow<NetworkState>,
     proxyConfig: ProxyConfig?,
     onFetchRepo: (String) -> Unit,
     onAddRepo: () -> Unit,
@@ -65,7 +69,10 @@ fun AddRepo(
         },
     ) { paddingValues ->
         when (state) {
-            None -> AddRepoIntroContent(onFetchRepo, Modifier.padding(paddingValues))
+            None -> {
+                val networkState = networkStateFlow.collectAsStateWithLifecycle().value
+                AddRepoIntroContent(networkState, onFetchRepo, Modifier.padding(paddingValues))
+            }
             is Fetching -> {
                 if (state.receivedRepo == null) {
                     AddRepoProgressScreen(

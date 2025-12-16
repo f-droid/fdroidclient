@@ -20,6 +20,7 @@ import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
@@ -41,6 +42,7 @@ class MyAppsViewModel @Inject constructor(
     private val settingsManager: SettingsManager,
     private val installedAppsCache: InstalledAppsCache,
     private val appInstallManager: AppInstallManager,
+    private val networkMonitor: NetworkMonitor,
     private val updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
 ) : AndroidViewModel(app) {
@@ -83,6 +85,7 @@ class MyAppsViewModel @Inject constructor(
                 installedAppsFlow = installedAppItems,
                 searchQueryFlow = searchQuery,
                 sortOrderFlow = sortOrder,
+                networkStateFlow = networkMonitor.networkState,
             )
         }
     }

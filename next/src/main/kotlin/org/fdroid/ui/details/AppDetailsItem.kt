@@ -13,6 +13,7 @@ import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
+import org.fdroid.download.NetworkState
 import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RELEASE_CHANNEL_BETA
@@ -25,6 +26,7 @@ data class AppDetailsItem(
     val app: AppMetadata,
     val actions: AppDetailsActions,
     val installState: InstallState,
+    val networkState: NetworkState,
     /**
      * The ID of the repo that is currently set as preferred.
      * Note that the repository ID of this [app] may be different.
@@ -71,6 +73,7 @@ data class AppDetailsItem(
         dbApp: App,
         actions: AppDetailsActions,
         installState: InstallState,
+        networkState: NetworkState,
         versions: List<VersionItem>?,
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
@@ -86,6 +89,7 @@ data class AppDetailsItem(
         app = dbApp.metadata,
         actions = actions,
         installState = installState,
+        networkState = networkState,
         preferredRepoId = preferredRepoId,
         repositories = repositories,
         name = dbApp.name ?: "Unknown App",

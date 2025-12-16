@@ -32,6 +32,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.getCacheKey
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
@@ -52,6 +53,7 @@ class AppDetailsViewModel @AssistedInject constructor(
     private val repoPreLoader: RepoPreLoader,
     private val updateChecker: UpdateChecker,
     private val updatesManager: UpdatesManager,
+    private val networkMonitor: NetworkMonitor,
     private val settingsManager: SettingsManager,
     private val appInstallManager: AppInstallManager,
 ) : AndroidViewModel(app) {
@@ -75,6 +77,7 @@ class AppDetailsViewModel @AssistedInject constructor(
                 packageInfoFlow = packageInfoFlow,
                 currentRepoIdFlow = currentRepoIdFlow,
                 appsWithIssuesFlow = updatesManager.appsWithIssues,
+                networkStateFlow = networkMonitor.networkState,
             )
         }
     }

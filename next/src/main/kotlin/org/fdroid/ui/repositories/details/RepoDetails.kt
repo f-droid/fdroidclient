@@ -41,6 +41,7 @@ import org.fdroid.R
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepoDetailsInfo
@@ -81,14 +82,24 @@ fun RepoDetails(
 
     var qrCodeDialog by remember { mutableStateOf(false) }
     var deleteDialog by remember { mutableStateOf(false) }
+    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
+    // QrCode dialog
     if (repo != null && qrCodeDialog) QrCodeDialog({ qrCodeDialog = false }) {
         info.actions.generateQrCode(repo)
     }
+    // Repo delete dialog
     if (repo != null && deleteDialog) DeleteDialog({ deleteDialog = false }) {
         info.actions.deleteRepository()
         deleteDialog = false
         onBack()
     }
+    // Metered warning dialog
+    val meteredLambda = showMeteredDialog
+    if (meteredLambda != null) MeteredConnectionDialog(
+        numBytes = null,
+        onConfirm = { meteredLambda() },
+        onDismiss = { showMeteredDialog = null },
+    )
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
@@ -129,7 +140,9 @@ fun RepoDetails(
                         text = { Text(stringResource(R.string.repo_force_update)) },
                         onClick = {
                             menuExpanded = false
-                            RepoUpdateWorker.updateNow(context, repo.repoId)
+                            if (info.model.networkState.isMetered) showMeteredDialog = {
+                                RepoUpdateWorker.updateNow(context, repo.repoId)
+                            } else RepoUpdateWorker.updateNow(context, repo.repoId)
                         },
                         leadingIcon = {
                             Icon(

@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -38,6 +39,7 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.ExpandIconChevron
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton
+import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp
 
@@ -56,6 +58,7 @@ fun Versions(
             item.versions?.forEach { versionItem ->
                 Version(
                     item = versionItem,
+                    isMetered = item.networkState.isMetered,
                     installAction = { version: AppVersion ->
                         item.actions.installAction(item.app, version, item.icon)
                     },
@@ -69,6 +72,7 @@ fun Versions(
 @Composable
 fun Version(
     item: VersionItem,
+    isMetered: Boolean,
     installAction: (AppVersion) -> Unit,
     scrollUp: suspend () -> Unit,
 ) {
@@ -128,6 +132,8 @@ fun Version(
             modifier = Modifier
                 .semantics { liveRegion = LiveRegionMode.Polite }
         ) {
+            val coroutineScope = rememberCoroutineScope()
+            var showMeteredDialog by remember { mutableStateOf(false) }
             Row(
                 horizontalArrangement = spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically,
@@ -204,14 +210,28 @@ fun Version(
                     FDroidOutlineButton(
                         text = stringResource(R.string.menu_install),
                         onClick = {
-                            installAction(item.version as AppVersion)
-                            coroutineScope.launch {
-                                scrollUp()
+                            if (isMetered) {
+                                showMeteredDialog = true
+                            } else {
+                                installAction(item.version as AppVersion)
+                                coroutineScope.launch {
+                                    scrollUp()
+                                }
                             }
                         },
                     )
                 }
             }
+            if (showMeteredDialog) MeteredConnectionDialog(
+                numBytes = item.version.size,
+                onConfirm = {
+                    installAction(item.version as AppVersion)
+                    coroutineScope.launch {
+                        scrollUp()
+                    }
+                },
+                onDismiss = { showMeteredDialog = false },
+            )
         }
     }
 }

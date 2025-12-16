@@ -26,6 +26,7 @@ import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
@@ -37,6 +38,7 @@ import org.fdroid.utils.IoDispatcher
 class RepoDetailsViewModel @AssistedInject constructor(
     app: Application,
     @Assisted private val repoId: Long,
+    networkMonitor: NetworkMonitor,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
     private val settingsManager: SettingsManager,
@@ -64,6 +66,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
                 numAppsFlow = numAppsFlow,
                 archiveStateFlow = archiveStateFlow,
                 showOnboardingFlow = showOnboarding,
+                networkStateFlow = networkMonitor.networkState,
                 proxyConfig = settingsManager.proxyConfig,
             )
         }

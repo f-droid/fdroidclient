@@ -43,6 +43,7 @@ import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
+import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.FDroidContent
@@ -205,6 +206,7 @@ fun MyAppsLoadingPreview() {
         appUpdates = null,
         installedApps = null,
         sortOrder = AppListSortOrder.NAME,
+        networkState = NetworkState(isOnline = false, isMetered = false),
     )
     FDroidContent {
         MyApps(

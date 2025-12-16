@@ -267,6 +267,7 @@ fun Main(dynamicColors: Boolean, onListeningForIntent: () -> Unit = {}) {
             }
             AddRepo(
                 state = viewModel.state.collectAsStateWithLifecycle().value,
+                networkStateFlow = viewModel.networkState,
                 proxyConfig = viewModel.proxyConfig,
                 onFetchRepo = viewModel::onFetchRepo,
                 onAddRepo = viewModel::addFetchedRepository,

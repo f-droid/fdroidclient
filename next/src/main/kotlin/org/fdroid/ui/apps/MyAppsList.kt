@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.database.NotAvailable
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.MeteredConnectionDialog
+import org.fdroid.ui.utils.OfflineBar
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 
@@ -45,6 +47,7 @@ fun MyAppsList(
     var showUpdateAllButton by remember(updatableApps) {
         mutableStateOf(true)
     }
+    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
     var showIssueIgnoreDialog by remember { mutableStateOf<AppWithIssueItem?>(null) }
     LazyColumn(
         state = lazyListState,
@@ -54,8 +57,13 @@ fun MyAppsList(
                 else Modifier.selectableGroup()
             ),
     ) {
-        // Updates header with Update all button (only show when there's a list below)
+        // Updates header with Update all button
         if (!updatableApps.isNullOrEmpty()) {
+            if (!myAppsInfo.model.networkState.isOnline) {
+                item(key = "OfflineBar", contentType = "offlineBar") {
+                    OfflineBar()
+                }
+            }
             item(key = "A", contentType = "header") {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
@@ -67,8 +75,15 @@ fun MyAppsList(
                     )
                     if (showUpdateAllButton) Button(
                         onClick = {
-                            myAppsInfo.updateAll()
-                            showUpdateAllButton = false
+                            val installLambda = {
+                                myAppsInfo.updateAll()
+                                showUpdateAllButton = false
+                            }
+                            if (myAppsInfo.model.networkState.isMetered) {
+                                showMeteredDialog = installLambda
+                            } else {
+                                installLambda()
+                            }
                         },
                         modifier = Modifier.padding(end = 16.dp),
                     ) {
@@ -223,6 +238,12 @@ fun MyAppsList(
             InstalledAppRow(app, isSelected, modifier)
         }
     }
+    val meteredLambda = showMeteredDialog
+    if (meteredLambda != null) MeteredConnectionDialog(
+        numBytes = myAppsInfo.model.appUpdatesBytes,
+        onConfirm = { meteredLambda() },
+        onDismiss = { showMeteredDialog = null },
+    )
 }
 
 @Preview

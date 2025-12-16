@@ -20,6 +20,7 @@ import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
+import org.fdroid.download.NetworkState
 import org.fdroid.index.RepoManager
 import org.fdroid.install.ApkFileProvider
 import org.fdroid.install.AppInstallManager
@@ -46,6 +47,7 @@ fun DetailsPresenter(
     packageInfoFlow: StateFlow<AppInfo?>,
     currentRepoIdFlow: StateFlow<Long?>,
     appsWithIssuesFlow: StateFlow<List<AppWithIssueItem>?>,
+    networkStateFlow: StateFlow<NetworkState>,
 ): AppDetailsItem? {
     val packagePair = packageInfoFlow.collectAsState().value ?: return null
     val packageName = packagePair.packageName
@@ -202,6 +204,7 @@ fun DetailsPresenter(
             shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
         ),
         installState = installState,
+        networkState = networkStateFlow.collectAsState().value,
         versions = versions?.map { version ->
             val signerCompatible = installedSigner == null ||
                 version.signer?.sha256?.first() == installedSigner

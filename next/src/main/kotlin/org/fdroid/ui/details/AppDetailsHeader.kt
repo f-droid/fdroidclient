@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -57,10 +58,13 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.InstalledBadge
+import org.fdroid.ui.utils.MeteredConnectionDialog
+import org.fdroid.ui.utils.OfflineBar
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
@@ -75,6 +79,7 @@ fun AppDetailsHeader(
     if (showTopSpacer) {
         Spacer(modifier = Modifier.padding(innerPadding))
     }
+    var showMeteredDialog by remember { mutableStateOf(false) }
     item.featureGraphic?.let { featureGraphic ->
         AsyncImage(
             model = featureGraphic,
@@ -105,7 +110,12 @@ fun AppDetailsHeader(
                 .semantics { hideFromAccessibility() },
         )
     }
+    // Offline bar, if no internet
+    if (!item.networkState.isOnline) {
+        OfflineBar(modifier = Modifier.absoluteOffset(y = (-16).dp))
+    }
     // Header
+    val version = item.suggestedVersion ?: item.versions?.first()?.version
     Row(
         modifier = Modifier
             .padding(horizontal = 16.dp),
@@ -140,7 +150,6 @@ fun AppDetailsHeader(
                 }
             }
             val lastUpdated = item.app.lastUpdated.asRelativeTimeString()
-            val version = item.suggestedVersion ?: item.versions?.first()?.version
             val size = version?.size?.let { size ->
                 Formatter.formatFileSize(LocalContext.current, size)
             }
@@ -279,10 +288,14 @@ fun AppDetailsHeader(
             // button is for either installing or updating
             Button(
                 onClick = {
-                    require(item.suggestedVersion != null) {
-                        "suggestedVersion was null"
+                    if (item.networkState.isMetered) {
+                        showMeteredDialog = true
+                    } else {
+                        require(item.suggestedVersion != null) {
+                            "suggestedVersion was null"
+                        }
+                        item.actions.installAction(item.app, item.suggestedVersion, item.icon)
                     }
-                    item.actions.installAction(item.app, item.suggestedVersion, item.icon)
                 },
                 modifier = Modifier.weight(1f)
             ) {
@@ -294,6 +307,14 @@ fun AppDetailsHeader(
             }
         }
     }
+    if (showMeteredDialog) MeteredConnectionDialog(
+        numBytes = version?.size,
+        onConfirm = {
+            require(item.suggestedVersion != null) { "suggestedVersion was null" }
+            item.actions.installAction(item.app, item.suggestedVersion, item.icon)
+        },
+        onDismiss = { showMeteredDialog = false },
+    )
 }
 
 @Preview
@@ -301,7 +322,7 @@ fun AppDetailsHeader(
 fun AppDetailsHeaderPreview() {
     FDroidContent {
         Column {
-            AppDetailsHeader(testApp, PaddingValues())
+            AppDetailsHeader(testApp, PaddingValues(top = 16.dp))
         }
     }
 }
@@ -309,10 +330,13 @@ fun AppDetailsHeaderPreview() {
 @Preview
 @Composable
 private fun PreviewProgress() {
-    FDroidContent {
+    FDroidContent(dynamicColors = true) {
         Column {
-            val app = testApp.copy(installState = InstallState.Starting("", "", "", 23))
-            AppDetailsHeader(app, PaddingValues())
+            val app = testApp.copy(
+                installState = InstallState.Starting("", "", "", 23),
+                networkState = NetworkState(true, isMetered = true),
+            )
+            AppDetailsHeader(app, PaddingValues(top = 16.dp))
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.fdroid.ui.apps
 
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 
 interface MyAppsInfo {
@@ -18,4 +19,6 @@ data class MyAppsModel(
     val appsWithIssue: List<AppWithIssueItem>? = null,
     val installedApps: List<InstalledAppItem>? = null,
     val sortOrder: AppListSortOrder = AppListSortOrder.NAME,
+    val networkState: NetworkState,
+    val appUpdatesBytes: Long? = null,
 )

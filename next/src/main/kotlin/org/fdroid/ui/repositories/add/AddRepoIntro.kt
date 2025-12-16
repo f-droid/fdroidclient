@@ -65,17 +65,25 @@ import com.google.zxing.client.android.Intents.Scan.SCAN_TYPE
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import com.journeyapps.barcodescanner.ScanOptions.QR_CODE
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.repo.None
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
+import org.fdroid.ui.utils.MeteredConnectionDialog
+import org.fdroid.ui.utils.OfflineBar
 import org.fdroid.ui.utils.startActivitySafe
 
 @Composable
-fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modifier) {
+fun AddRepoIntroContent(
+    networkState: NetworkState,
+    onFetchRepo: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     val isPreview = LocalInspectionMode.current
@@ -102,6 +110,7 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
         showPermissionWarning = !isGranted
         if (isGranted) startScanning()
     }
+    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
     Column(
         verticalArrangement = spacedBy(16.dp),
         horizontalAlignment = CenterHorizontally,
@@ -111,6 +120,7 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
             .verticalScroll(scrollState)
             .padding(16.dp),
     ) {
+        if (!networkState.isOnline) OfflineBar()
         Text(
             text = stringResource(R.string.repo_intro),
             style = MaterialTheme.typography.bodyLarge,
@@ -119,11 +129,15 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
             stringResource(R.string.repo_scan_qr_code),
             imageVector = Icons.Filled.QrCode,
             onClick = {
-                if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
-                    startScanning()
-                } else {
-                    permissionLauncher.launch(CAMERA)
+                val scanLambda = {
+                    if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
+                        startScanning()
+                    } else {
+                        permissionLauncher.launch(CAMERA)
+                    }
                 }
+                if (networkState.isMetered) showMeteredDialog = scanLambda
+                else scanLambda()
             },
         )
         AnimatedVisibility(
@@ -219,19 +233,30 @@ fun AddRepoIntroContent(onFetchRepo: (String) -> Unit, modifier: Modifier = Modi
                     Spacer(modifier = Modifier.weight(1f))
                     FDroidButton(
                         text = stringResource(R.string.repo_add_add),
-                        onClick = { onFetchRepo(textState.value.text) },
+                        onClick = {
+                            if (networkState.isMetered) showMeteredDialog = {
+                                onFetchRepo(textState.value.text)
+                            } else onFetchRepo(textState.value.text)
+                        },
                     )
                 }
             }
         }
     }
+    val meteredLambda = showMeteredDialog
+    if (meteredLambda != null) MeteredConnectionDialog(
+        numBytes = null,
+        onConfirm = { meteredLambda() },
+        onDismiss = { showMeteredDialog = null },
+    )
 }
 
 @Composable
 @Preview
 private fun Preview() {
     FDroidContent {
-        AddRepo(None, null, {}, {}, {}, { _, _ -> }) {}
+        val networkStateFlow = MutableStateFlow(NetworkState(isOnline = true, isMetered = false))
+        AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
     }
 }
 
@@ -239,6 +264,7 @@ private fun Preview() {
 @Preview(uiMode = UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 private fun PreviewNight() {
     FDroidContent {
-        AddRepo(None, null, {}, {}, {}, { _, _ -> }) {}
+        val networkStateFlow = MutableStateFlow(NetworkState(isOnline = false, isMetered = false))
+        AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
     }
 }

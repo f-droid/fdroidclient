@@ -6,6 +6,7 @@ import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
+import org.fdroid.download.NetworkState
 
 @Composable
 fun RepoDetailsPresenter(
@@ -13,6 +14,7 @@ fun RepoDetailsPresenter(
     numAppsFlow: Flow<Int?>,
     archiveStateFlow: StateFlow<ArchiveState>,
     showOnboardingFlow: StateFlow<Boolean>,
+    networkStateFlow: StateFlow<NetworkState>,
     proxyConfig: ProxyConfig?,
 ): RepoDetailsModel {
     val repo = repoFlow.collectAsState(null).value
@@ -32,6 +34,7 @@ fun RepoDetailsPresenter(
         } ?: emptyList(),
         archiveState = archiveStateFlow.collectAsState().value,
         showOnboarding = showOnboardingFlow.collectAsState().value,
+        networkState = networkStateFlow.collectAsState().value,
         proxy = proxyConfig,
     )
 }
