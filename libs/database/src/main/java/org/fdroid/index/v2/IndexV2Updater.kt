@@ -63,7 +63,12 @@ public class IndexV2Updater(
             indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME"),
             destFile = file,
         ).apply {
-            setIndexUpdateListener(listener, repo)
+            if (listener != null) setListener { bytesRead, _ ->
+                // don't report a total for entry.jar,
+                // because we'll download another file afterwards
+                // and progress reporting would jump to 100% two times.
+                listener.onDownloadProgress(repo, bytesRead, -1)
+            }
         }
         try {
             downloader.download()

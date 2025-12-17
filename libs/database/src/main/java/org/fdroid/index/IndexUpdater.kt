@@ -23,6 +23,9 @@ public sealed class IndexUpdateResult {
 }
 
 public interface IndexUpdateListener {
+    /**
+     * If [totalBytes] is 0 or less, it is unknown and indeterminate progress should be shown.
+     */
     public fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long)
     public fun onUpdateProgress(repo: Repository, appsProcessed: Int, totalApps: Int)
 }
