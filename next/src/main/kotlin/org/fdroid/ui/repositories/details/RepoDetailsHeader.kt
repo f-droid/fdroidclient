@@ -32,6 +32,7 @@ import org.fdroid.database.Repository
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.repositories.RepoIcon
 import org.fdroid.ui.utils.FDroidOutlineButton
+import org.fdroid.ui.utils.addressForUi
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.getRepository
 
@@ -76,9 +77,7 @@ fun RepoDetailsHeader(
                     style = MaterialTheme.typography.headlineMediumEmphasized,
                 )
                 Text(
-                    text = repo.address
-                        .replaceFirst("https://", "")
-                        .replaceFirst("/repo", ""),
+                    text = repo.addressForUi,
                     style = MaterialTheme.typography.bodyMedium,
                 )
                 if (numberOfApps != null) Text(

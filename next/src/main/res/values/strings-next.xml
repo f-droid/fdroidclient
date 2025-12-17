@@ -101,6 +101,13 @@
     <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically.</string>
     <string name="notification_channel_updates_available_title">Available app updates</string>
     <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found.</string>
+
+    <string name="notification_repo_update_default">Connecting to %1$s…</string>
+    <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="one">Saved %1$d app from %2$s</item>
+        <item quantity="other">Saved %1$d apps from %2$s</item>
+    </plurals>
     <plurals name="notification_installing_title">
         <item quantity="one">Installing %1$d app…</item>
         <item quantity="other">Installing %1$d apps…</item>

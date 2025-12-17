@@ -2,11 +2,11 @@ package org.fdroid.repo
 
 import android.content.Context
 import android.text.format.Formatter
-import android.util.Log
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
+import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
@@ -27,6 +27,7 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.settings.SettingsManager
+import org.fdroid.ui.utils.addressForUi
 import org.fdroid.updates.UpdatesManager
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -121,11 +122,13 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
                 currentCoroutineContext().ensureActive()
 
                 // show notification
-                val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
+                val repoName = repo.getName(LocaleListCompat.getDefault())
+                val msg = context.getString(R.string.notification_repo_update_default, repoName)
                 notificationManager.showUpdateRepoNotification(msg, throttle = false)
                 // update repo
                 val result = repoUpdater.update(repo)
                 log.info { "Update repo result: $result" }
+                repoUpdateListener.onUpdateFinished()
                 if (result is IndexUpdateResult.Processed) reposUpdated = true
                 else if (result is IndexUpdateResult.Error) {
                     log.error(result.e) { "Error updating repository ${repo.address} " }
@@ -155,11 +158,13 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
         _isUpdating.value = true
         return try {
             // show notification
-            val msg = context.getString(R.string.status_connecting_to_repo, repo.address)
+            val repoName = repo.getName(LocaleListCompat.getDefault())
+            val msg = context.getString(R.string.notification_repo_update_default, repoName)
             notificationManager.showUpdateRepoNotification(msg, throttle = false)
             // update repo
             val result = repoUpdater.update(repo)
             log.info { "Update repo result: $result" }
+            repoUpdateListener.onUpdateFinished()
             if (result is IndexUpdateResult.Processed) {
                 updatesManager.loadUpdates()
             } else if (result is IndexUpdateResult.Error) {
@@ -180,22 +185,24 @@ internal class RepoUpdateListener(
     private val notificationManager: NotificationManager,
 ) : IndexUpdateListener {
 
+    private val log = KotlinLogging.logger { }
     private val _updateState = MutableStateFlow<RepoUpdateState?>(null)
     val updateState = _updateState.asStateFlow()
     private var lastUpdateProgress = 0L
 
     override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
-        Log.d(TAG, "Downloading ${repo.address} ($bytesRead/$totalBytes)")
+        log.debug { "Downloading ${repo.address} ($bytesRead/$totalBytes)" }
 
         val percent = getPercent(bytesRead, totalBytes)
         val size = Formatter.formatFileSize(context, bytesRead)
-        val message: String = if (totalBytes == -1L) {
-            context.getString(R.string.status_download_unknown_size, repo.address, size)
-        } else {
-            val totalSize = Formatter.formatFileSize(context, totalBytes)
-            context.getString(R.string.status_download, repo.address, size, totalSize, percent)
-        }
-        notificationManager.showUpdateRepoNotification(msg = message, progress = percent)
+        notificationManager.showUpdateRepoNotification(
+            msg = context.getString(
+                R.string.notification_repo_update_downloading,
+                size, repo.addressForUi
+            ),
+            throttle = bytesRead != totalBytes,
+            progress = percent,
+        )
         _updateState.update { RepoUpdateState(repo.repoId, true, percent) }
     }
 
@@ -212,27 +219,31 @@ internal class RepoUpdateListener(
         if (System.currentTimeMillis() - lastUpdateProgress < 1000 && appsProcessed != totalApps) {
             return
         }
-        Log.d(TAG, "Committing ${repo.address} ($appsProcessed/$totalApps)")
+        log.debug { "Committing ${repo.address} ($appsProcessed/$totalApps)" }
 
+        val repoName = repo.getName(LocaleListCompat.getDefault())
+        val msg = context.resources.getQuantityString(
+            R.plurals.notification_repo_update_saving,
+            appsProcessed,
+            appsProcessed, repoName,
+        )
         if (totalApps > 0) {
             val percent = getPercent(appsProcessed.toLong(), totalApps.toLong())
             notificationManager.showUpdateRepoNotification(
-                msg = context.getString(
-                    R.string.status_inserting_x_apps,
-                    appsProcessed,
-                    totalApps,
-                    repo.address,
-                ),
-                progress = percent
+                msg = msg,
+                throttle = appsProcessed != totalApps,
+                progress = percent,
             )
             _updateState.update { RepoUpdateState(repo.repoId, false, percent) }
         } else {
-            notificationManager.showUpdateRepoNotification(
-                msg = context.getString(R.string.status_inserting_apps),
-            )
+            notificationManager.showUpdateRepoNotification(msg)
             _updateState.update { RepoUpdateState(repo.repoId, false, 0f) }
         }
         lastUpdateProgress = System.currentTimeMillis()
+    }
+
+    fun onUpdateFinished() {
+        _updateState.update { null }
     }
 
     private fun getPercent(current: Long, total: Long): Int {

@@ -19,6 +19,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.fdroid.database.Repository
 import java.text.Normalizer
 import java.text.Normalizer.Form.NFKD
 
@@ -105,6 +106,10 @@ val String.flagEmoji: String?
         val flagEmoji = String(Character.toChars(first) + Character.toChars(second))
         return flagEmoji
     }
+
+val Repository.addressForUi: String
+    get() = address.replaceFirst("https://", "")
+        .replaceFirst("/repo", "")
 
 fun canStartForegroundService(context: Context): Boolean {
     val powerManager = ContextCompat.getSystemService(context, PowerManager::class.java)
