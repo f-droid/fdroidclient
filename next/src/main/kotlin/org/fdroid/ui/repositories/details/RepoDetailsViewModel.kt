@@ -28,6 +28,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkMonitor
 import org.fdroid.index.RepoManager
+import org.fdroid.repo.RepoUpdateManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
@@ -41,6 +42,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
     networkMonitor: NetworkMonitor,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    repoUpdateManager: RepoUpdateManager,
     private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
@@ -58,6 +60,9 @@ class RepoDetailsViewModel @AssistedInject constructor(
     }.flowOn(Dispatchers.IO).distinctUntilChanged()
     private val archiveStateFlow = MutableStateFlow(UNKNOWN)
     private val showOnboarding = onboardingManager.showRepoDetailsOnboarding
+    private val updateFlow = repoUpdateManager.repoUpdateState.map {
+        if (it?.repoId == repoId) it else null
+    }
 
     val model: StateFlow<RepoDetailsModel> by lazy(LazyThreadSafetyMode.NONE) {
         moleculeScope.launchMolecule(mode = ContextClock) {
@@ -66,6 +71,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
                 numAppsFlow = numAppsFlow,
                 archiveStateFlow = archiveStateFlow,
                 showOnboardingFlow = showOnboarding,
+                updateFlow = updateFlow,
                 networkStateFlow = networkMonitor.networkState,
                 proxyConfig = settingsManager.proxyConfig,
             )

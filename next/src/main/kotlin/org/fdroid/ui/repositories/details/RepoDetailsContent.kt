@@ -1,5 +1,6 @@
 package org.fdroid.ui.repositories.details
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,9 +9,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Fingerprint
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
@@ -18,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.ui.FDroidContent
@@ -25,6 +30,7 @@ import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.getRepoDetailsInfo
 
 @Composable
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun RepoDetailsContent(
     info: RepoDetailsInfo,
     onShowAppsClicked: (String, Long) -> Unit,
@@ -38,6 +44,17 @@ fun RepoDetailsContent(
             .fillMaxWidth()
             .verticalScroll(rememberScrollState()),
     ) {
+        // show progress here as well, if repo is currently updating
+        if (info.model.updateState != null) {
+            val animatedProgress by animateFloatAsState(
+                targetValue = info.model.updateState?.progress ?: 0f,
+            )
+            LinearWavyProgressIndicator(
+                progress = { animatedProgress },
+                stopSize = 0.dp,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
         RepoDetailsHeader(
             repo = repo,
             numberOfApps = info.model.numberApps,
@@ -95,7 +112,9 @@ private fun FingerprintExpandable(
 @Composable
 @Preview
 private fun Preview() {
-    FDroidContent {
-        RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {})
+    HintHost {
+        FDroidContent {
+            RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {})
+        }
     }
 }

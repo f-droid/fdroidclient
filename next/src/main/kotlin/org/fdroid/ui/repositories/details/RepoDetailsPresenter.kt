@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.Repository
 import org.fdroid.download.NetworkState
+import org.fdroid.repo.RepoUpdateState
 
 @Composable
 fun RepoDetailsPresenter(
@@ -14,6 +15,7 @@ fun RepoDetailsPresenter(
     numAppsFlow: Flow<Int?>,
     archiveStateFlow: StateFlow<ArchiveState>,
     showOnboardingFlow: StateFlow<Boolean>,
+    updateFlow: Flow<RepoUpdateState?>,
     networkStateFlow: StateFlow<NetworkState>,
     proxyConfig: ProxyConfig?,
 ): RepoDetailsModel {
@@ -34,6 +36,7 @@ fun RepoDetailsPresenter(
         } ?: emptyList(),
         archiveState = archiveStateFlow.collectAsState().value,
         showOnboarding = showOnboardingFlow.collectAsState().value,
+        updateState = updateFlow.collectAsState(null).value,
         networkState = networkStateFlow.collectAsState().value,
         proxy = proxyConfig,
     )

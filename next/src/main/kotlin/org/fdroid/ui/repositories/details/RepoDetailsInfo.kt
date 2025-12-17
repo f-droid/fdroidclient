@@ -10,6 +10,7 @@ import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkState
+import org.fdroid.repo.RepoUpdateState
 import org.fdroid.ui.utils.flagEmoji
 import org.fdroid.ui.utils.generateQrBitmap
 import org.fdroid.ui.utils.startActivitySafe
@@ -42,6 +43,7 @@ data class RepoDetailsModel(
     val userMirrors: List<UserMirrorItem>,
     val archiveState: ArchiveState,
     val showOnboarding: Boolean,
+    val updateState: RepoUpdateState?,
     val networkState: NetworkState,
     val proxy: ProxyConfig?,
 ) {

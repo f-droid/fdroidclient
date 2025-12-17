@@ -125,6 +125,16 @@ fun RepoDetails(
                         contentDescription = stringResource(R.string.show_repository_qr)
                     )
                 }
+                IconButton(onClick = {
+                    if (info.model.networkState.isMetered) showMeteredDialog = {
+                        RepoUpdateWorker.updateNow(context, repo.repoId)
+                    } else RepoUpdateWorker.updateNow(context, repo.repoId)
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.Update,
+                        contentDescription = stringResource(R.string.repo_force_update)
+                    )
+                }
                 var menuExpanded by remember { mutableStateOf(false) }
                 IconButton(onClick = { menuExpanded = !menuExpanded }) {
                     Icon(
@@ -136,22 +146,6 @@ fun RepoDetails(
                     expanded = menuExpanded,
                     onDismissRequest = { menuExpanded = false }
                 ) {
-                    DropdownMenuItem(
-                        text = { Text(stringResource(R.string.repo_force_update)) },
-                        onClick = {
-                            menuExpanded = false
-                            if (info.model.networkState.isMetered) showMeteredDialog = {
-                                RepoUpdateWorker.updateNow(context, repo.repoId)
-                            } else RepoUpdateWorker.updateNow(context, repo.repoId)
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Update,
-                                contentDescription = null,
-                                modifier = Modifier.semantics { hideFromAccessibility() },
-                            )
-                        }
-                    )
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.delete)) },
                         onClick = {
