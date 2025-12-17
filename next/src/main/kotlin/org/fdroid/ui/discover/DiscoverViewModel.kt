@@ -28,6 +28,7 @@ import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
 import org.fdroid.index.RepoManager
@@ -50,6 +51,7 @@ class DiscoverViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     updatesManager: UpdatesManager,
+    networkMonitor: NetworkMonitor,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
     private val repoUpdateManager: RepoUpdateManager,
@@ -100,6 +102,9 @@ class DiscoverViewModel @Inject constructor(
                 repositoriesFlow = repoManager.repositoriesState,
                 searchResultsFlow = searchResults,
                 isFirstStart = settingsManager.isFirstStart,
+                // not observing the flow, but just taking the current value,
+                // because we kick off repo updates from the UI depending on this state
+                networkState = networkMonitor.networkState.value,
                 repoUpdateStateFlow = repoUpdateManager.repoUpdateState,
             )
         }

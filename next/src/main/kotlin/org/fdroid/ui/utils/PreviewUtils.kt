@@ -17,7 +17,7 @@ import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
-import org.fdroid.repo.RepoUpdateState
+import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.ui.apps.InstalledAppItem
@@ -425,7 +425,7 @@ fun getRepoDetailsInfo(
         ),
         archiveState = ArchiveState.LOADING,
         showOnboarding = false,
-        updateState = RepoUpdateState(42L, true, 0.75f),
+        updateState = RepoUpdateProgress(42L, true, 0.75f),
         networkState = NetworkState(isOnline = false, isMetered = false),
         proxy = null,
     ),

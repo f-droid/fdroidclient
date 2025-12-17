@@ -2,6 +2,7 @@ package org.fdroid.ui.discover
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.focusable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,7 +41,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import kotlinx.coroutines.launch
 import org.fdroid.R
-import org.fdroid.repo.RepoUpdateState
+import org.fdroid.download.NetworkState
+import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.BottomBar
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.MainOverFlowMenu
@@ -113,14 +115,18 @@ fun Discover(
     ) { paddingValues ->
         val scope = rememberCoroutineScope()
         Column(
-            Modifier
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
                 .focusable() // workaround for https://issuetracker.google.com/issues/445720462
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValues)
         ) {
             when (discoverModel) {
-                is FirstStartDiscoverModel -> FirstStart(discoverModel.repoUpdateState)
+                is FirstStartDiscoverModel -> FirstStart(
+                    networkState = discoverModel.networkState,
+                    repoUpdateState = discoverModel.repoUpdateState,
+                )
                 is LoadingDiscoverModel -> BigLoadingIndicator()
                 is LoadedDiscoverModel -> {
                     AppsSearch(
@@ -212,9 +218,12 @@ fun Discover(
 fun FirstStartDiscoverPreview() {
     FDroidContent {
         Discover(
-            discoverModel = FirstStartDiscoverModel(RepoUpdateState(1, true, 0.25f)),
-            numUpdates = 23,
-            hasIssues = true,
+            discoverModel = FirstStartDiscoverModel(
+                NetworkState(true, isMetered = false),
+                RepoUpdateProgress(1, true, 0.25f),
+            ),
+            numUpdates = 0,
+            hasIssues = false,
             isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},

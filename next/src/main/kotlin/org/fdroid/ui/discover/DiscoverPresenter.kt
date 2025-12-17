@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import org.fdroid.database.Repository
+import org.fdroid.download.NetworkState
 import org.fdroid.repo.RepoUpdateState
 import org.fdroid.ui.categories.CategoryGroup
 import org.fdroid.ui.categories.CategoryItem
@@ -20,6 +21,7 @@ fun DiscoverPresenter(
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
     isFirstStart: Boolean,
+    networkState: NetworkState,
     repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
 ): DiscoverModel {
     val newApps = newAppsFlow.collectAsState(null).value
@@ -36,7 +38,7 @@ fun DiscoverPresenter(
         if (repositories?.all { !it.enabled } == true) {
             NoEnabledReposDiscoverModel
         } else if (isFirstStart) {
-            FirstStartDiscoverModel(repoUpdateStateFlow.collectAsState().value)
+            FirstStartDiscoverModel(networkState, repoUpdateStateFlow.collectAsState().value)
         } else {
             LoadingDiscoverModel
         }
@@ -57,6 +59,7 @@ fun DiscoverPresenter(
 
 sealed class DiscoverModel
 data class FirstStartDiscoverModel(
+    val networkState: NetworkState,
     val repoUpdateState: RepoUpdateState?,
 ) : DiscoverModel()
 

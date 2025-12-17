@@ -5,7 +5,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidFixture
 import org.fdroid.repo.RepoPreLoader
-import org.fdroid.repo.RepoUpdateWorker
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,6 +15,7 @@ class InitialData @Inject constructor(
 ) : FDroidFixture {
     override fun prePopulateDb(db: FDroidDatabase) {
         repoPreLoader.addPreloadedRepositories(db)
-        RepoUpdateWorker.updateNow(context)
+        // we are kicking off the initial update from the UI,
+        // not here to account for metered connection
     }
 }

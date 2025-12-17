@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.R
 import org.fdroid.database.Repository
+import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.getRepoDetailsInfo
@@ -45,10 +46,9 @@ fun RepoDetailsContent(
             .verticalScroll(rememberScrollState()),
     ) {
         // show progress here as well, if repo is currently updating
-        if (info.model.updateState != null) {
-            val animatedProgress by animateFloatAsState(
-                targetValue = info.model.updateState?.progress ?: 0f,
-            )
+        val updateState = info.model.updateState
+        if (updateState is RepoUpdateProgress) {
+            val animatedProgress by animateFloatAsState(targetValue = updateState.progress)
             LinearWavyProgressIndicator(
                 progress = { animatedProgress },
                 stopSize = 0.dp,

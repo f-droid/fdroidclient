@@ -32,7 +32,6 @@ import org.fdroid.updates.UpdatesManager
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private val TAG = RepoUpdateManager::class.java.simpleName
 private const val MIN_UPDATE_INTERVAL_MILLIS = 15_000
 
 @Singleton
@@ -128,14 +127,17 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
                 // update repo
                 val result = repoUpdater.update(repo)
                 log.info { "Update repo result: $result" }
-                repoUpdateListener.onUpdateFinished()
+                repoUpdateListener.onUpdateFinished(repo.repoId, result)
                 if (result is IndexUpdateResult.Processed) reposUpdated = true
                 else if (result is IndexUpdateResult.Error) {
                     log.error(result.e) { "Error updating repository ${repo.address} " }
                 }
             }
             db.getRepositoryDao().walCheckpoint()
-            settingsManager.lastRepoUpdate = System.currentTimeMillis()
+            // don't update time on first start when repos failed to update
+            if (!settingsManager.isFirstStart || reposUpdated) {
+                settingsManager.lastRepoUpdate = System.currentTimeMillis()
+            }
             if (reposUpdated) {
                 updatesManager.loadUpdates().join()
                 val numUpdates = updatesManager.numUpdates.value
@@ -164,7 +166,7 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
             // update repo
             val result = repoUpdater.update(repo)
             log.info { "Update repo result: $result" }
-            repoUpdateListener.onUpdateFinished()
+            repoUpdateListener.onUpdateFinished(repo.repoId, result)
             if (result is IndexUpdateResult.Processed) {
                 updatesManager.loadUpdates()
             } else if (result is IndexUpdateResult.Error) {
@@ -203,7 +205,7 @@ internal class RepoUpdateListener(
             throttle = bytesRead != totalBytes,
             progress = percent,
         )
-        _updateState.update { RepoUpdateState(repo.repoId, true, percent) }
+        _updateState.update { RepoUpdateProgress(repo.repoId, true, percent) }
     }
 
     /**
@@ -234,22 +236,26 @@ internal class RepoUpdateListener(
                 throttle = appsProcessed != totalApps,
                 progress = percent,
             )
-            _updateState.update { RepoUpdateState(repo.repoId, false, percent) }
+            _updateState.update { RepoUpdateProgress(repo.repoId, false, percent) }
         } else {
             notificationManager.showUpdateRepoNotification(msg)
-            _updateState.update { RepoUpdateState(repo.repoId, false, 0f) }
+            _updateState.update { RepoUpdateProgress(repo.repoId, false, 0f) }
         }
         lastUpdateProgress = System.currentTimeMillis()
     }
 
-    fun onUpdateFinished() {
-        _updateState.update { null }
+    fun onUpdateFinished(repoId: Long, result: IndexUpdateResult) {
+        _updateState.update { RepoUpdateFinished(repoId, result) }
     }
 
     private fun getPercent(current: Long, total: Long): Int {
         if (total <= 0) return 0
         return (100L * current / total).toInt()
     }
+}
+
+sealed interface RepoUpdateState {
+    val repoId: Long
 }
 
 /**
@@ -259,11 +265,11 @@ internal class RepoUpdateListener(
  *
  * An external unified view on that is given as [progress].
  */
-data class RepoUpdateState(
-    val repoId: Long,
+data class RepoUpdateProgress(
+    override val repoId: Long,
     private val isDownloading: Boolean,
     @param:FloatRange(from = 0.0, to = 1.0) private val stepProgress: Float,
-) {
+) : RepoUpdateState {
     constructor(
         repoId: Long,
         isDownloading: Boolean,
@@ -276,3 +282,8 @@ data class RepoUpdateState(
 
     val progress: Float = if (isDownloading) stepProgress / 2 else 0.5f + stepProgress / 2
 }
+
+data class RepoUpdateFinished(
+    override val repoId: Long,
+    val result: IndexUpdateResult,
+) : RepoUpdateState

@@ -9,6 +9,10 @@
     <string name="menu_apps_my">My apps</string>
 
     <string name="first_start_loading">Retrieving apps…\n\nThis may take some time.</string>
+    <string name="first_start_intro">We need to download the latest app repository to get you started.</string>
+    <string name="first_start_offline">However, you seem to be offline. Connect to the internet and tap the button below when ready.</string>
+    <string name="first_start_metered">However, you are on mobile data and we\'ll need to download more than 10 MB. Tap the button below when ready to download.</string>
+    <string name="first_start_button">Download app repository</string>
     <string name="no_repos_enabled">No repositories enabled.\nEnable or add at least one repository to see apps.</string>
     <string name="no_app_selected">No app selected</string>
     <string name="no_repository_selected">No repository selected</string>
