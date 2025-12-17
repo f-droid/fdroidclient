@@ -90,7 +90,8 @@ class UpdatesManager @Inject constructor(
         coroutineScope.launch {
             // refresh updates whenever installed apps change
             installedAppsCache.installedApps.collect {
-                loadUpdates(it)
+                // don't load updates on very first start or we may find issues too early
+                if (!settingsManager.isFirstStart) loadUpdates(it)
             }
         }
     }
@@ -151,6 +152,8 @@ class UpdatesManager @Inject constructor(
                         lastUpdated = -1,
                         iconModel = PackageName(app.packageName, null),
                     )
+                }.also {
+                    log.error { "ISSUE: $it" }
                 }
             }
             _appsWithIssues.value = issueItems

@@ -99,7 +99,7 @@ class DiscoverViewModel @Inject constructor(
                 categoriesFlow = categories,
                 repositoriesFlow = repoManager.repositoriesState,
                 searchResultsFlow = searchResults,
-                lastRepoUpdate = settingsManager.lastRepoUpdate,
+                isFirstStart = settingsManager.isFirstStart,
                 repoUpdateStateFlow = repoUpdateManager.repoUpdateState,
             )
         }

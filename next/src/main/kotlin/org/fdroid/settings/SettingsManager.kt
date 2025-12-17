@@ -78,6 +78,7 @@ class SettingsManager @Inject constructor(
         }
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
+    val isFirstStart get() = lastRepoUpdate <= PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
 
     /**
      * A set of package name for which we should not show app issues.

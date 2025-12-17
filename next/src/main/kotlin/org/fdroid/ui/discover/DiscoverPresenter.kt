@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import org.fdroid.database.Repository
 import org.fdroid.repo.RepoUpdateState
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.ui.categories.CategoryGroup
 import org.fdroid.ui.categories.CategoryItem
 
@@ -20,7 +19,7 @@ fun DiscoverPresenter(
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
     searchResultsFlow: StateFlow<SearchResults?>,
-    lastRepoUpdate: Long,
+    isFirstStart: Boolean,
     repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
 ): DiscoverModel {
     val newApps = newAppsFlow.collectAsState(null).value
@@ -34,7 +33,6 @@ fun DiscoverPresenter(
     // So if we don't have those, we are still loading, have no enabled repo, or this is first start
     return if (recentlyUpdatedApps.isNullOrEmpty()) {
         val repositories = repositoriesFlow.collectAsState(null).value
-        val isFirstStart = lastRepoUpdate < PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
         if (repositories?.all { !it.enabled } == true) {
             NoEnabledReposDiscoverModel
         } else if (isFirstStart) {
