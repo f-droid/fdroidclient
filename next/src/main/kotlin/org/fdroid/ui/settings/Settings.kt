@@ -55,6 +55,10 @@ import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.rememberPreferenceState
 import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Always
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
@@ -65,6 +69,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
+import org.fdroid.settings.toAutoUpdateValue
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
@@ -199,14 +204,14 @@ fun Settings(
                     key = "pref_category_updates",
                     title = { Text(stringResource(R.string.updates)) },
                 )
-                switchPreference(
+                listPreference(
                     key = PREF_KEY_REPO_UPDATES,
                     defaultValue = PREF_DEFAULT_REPO_UPDATES,
                     title = {
                         Text(stringResource(R.string.pref_repo_updates_title))
                     },
-                    icon = { repoUpdatesEnabled ->
-                        if (repoUpdatesEnabled) Icon(
+                    icon = { strValue ->
+                        if (strValue != Never.name) Icon(
                             imageVector = Icons.Default.SystemSecurityUpdate,
                             contentDescription = null,
                             modifier = Modifier.semantics { hideFromAccessibility() },
@@ -217,8 +222,8 @@ fun Settings(
                             modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
-                    summary = { repoUpdatesEnabled ->
-                        if (repoUpdatesEnabled) {
+                    summary = { strValue ->
+                        if (strValue != Never.name) {
                             val nextUpdate =
                                 model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
                             val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
@@ -234,26 +239,39 @@ fun Settings(
                                     nextUpdate.asRelativeTimeString()
                                 )
                             }
-                            val s = stringResource(R.string.pref_repo_updates_summary_enabled) +
-                                "\n\n" + nextUpdateStr
-                            Text(s)
+                            val s = if (strValue == OnlyWifi.name) {
+                                stringResource(R.string.pref_repo_updates_summary_only_wifi)
+                            } else if (strValue == Always.name) {
+                                stringResource(R.string.pref_repo_updates_summary_always)
+                            } else error("Unknown value: $strValue")
+                            Text(s + "\n" + nextUpdateStr)
                         } else {
                             Text(
-                                text = stringResource(R.string.pref_repo_updates_summary_disabled),
+                                text = stringResource(R.string.pref_repo_updates_summary_never),
                                 color = MaterialTheme.colorScheme.error,
                             )
                         }
                     },
+                    values = AutoUpdateValues.entries.map { it.name },
+                    valueToText = { value: String ->
+                        AnnotatedString(
+                            when (value.toAutoUpdateValue()) {
+                                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
+                                Always -> res.getString(R.string.pref_auto_updates_only_always)
+                                Never -> res.getString(R.string.pref_auto_updates_only_never)
+                            }
+                        )
+                    },
                 )
-                switchPreference(
+                listPreference(
                     key = PREF_KEY_AUTO_UPDATES,
                     defaultValue = PREF_DEFAULT_AUTO_UPDATES,
                     title = {
                         Text(stringResource(R.string.update_auto_install))
                     },
-                    icon = { autoUpdatesEnabled ->
+                    icon = { strValue ->
                         Icon(
-                            imageVector = if (autoUpdatesEnabled) {
+                            imageVector = if (strValue != Never.name) {
                                 Icons.Default.Update
                             } else {
                                 Icons.Default.UpdateDisabled
@@ -262,8 +280,8 @@ fun Settings(
                             modifier = Modifier.semantics { hideFromAccessibility() },
                         )
                     },
-                    summary = { autoUpdatesEnabled ->
-                        val s = if (autoUpdatesEnabled) {
+                    summary = { strValue ->
+                        val s = if (strValue != Never.name) {
                             val nextUpdate =
                                 model.nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
                             val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
@@ -279,12 +297,26 @@ fun Settings(
                                     nextUpdate.asRelativeTimeString()
                                 )
                             }
-                            stringResource(R.string.pref_auto_updates_summary_enabled) +
-                                "\n\n" + nextUpdateStr
+                            val s = if (strValue == OnlyWifi.name) {
+                                stringResource(R.string.pref_auto_updates_summary_only_wifi)
+                            } else if (strValue == Always.name) {
+                                stringResource(R.string.pref_auto_updates_summary_always)
+                            } else error("Unknown value: $strValue")
+                            s + "\n" + nextUpdateStr
                         } else {
-                            stringResource(R.string.pref_auto_updates_summary_disabled)
+                            stringResource(R.string.pref_auto_updates_summary_never)
                         }
                         Text(s)
+                    },
+                    values = AutoUpdateValues.entries.map { it.name },
+                    valueToText = { value: String ->
+                        AnnotatedString(
+                            when (value.toAutoUpdateValue()) {
+                                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
+                                Always -> res.getString(R.string.pref_auto_updates_only_always)
+                                Never -> res.getString(R.string.pref_auto_updates_only_never)
+                            }
+                        )
                     },
                 )
                 preferenceCategory(

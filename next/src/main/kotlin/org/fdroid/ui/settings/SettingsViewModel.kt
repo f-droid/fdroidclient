@@ -48,15 +48,15 @@ class SettingsViewModel @Inject constructor(
             }
         }
         viewModelScope.launch {
-            // react to repo-update changes
-            settingsManager.repoUpdatesFlow.drop(1).collect { enable ->
-                if (enable != null) RepoUpdateWorker.scheduleOrCancel(application, enable)
+            // react to repo auto update changes
+            settingsManager.repoUpdatesFlow.drop(1).collect { value ->
+                RepoUpdateWorker.scheduleOrCancel(application, value)
             }
         }
         viewModelScope.launch {
-            // react to auto-update changes
-            settingsManager.autoUpdateAppsFlow.drop(1).collect { enable ->
-                if (enable != null) AppUpdateWorker.scheduleOrCancel(application, enable)
+            // react to app auto update changes
+            settingsManager.autoUpdateAppsFlow.drop(1).collect { value ->
+                AppUpdateWorker.scheduleOrCancel(application, value)
             }
         }
     }

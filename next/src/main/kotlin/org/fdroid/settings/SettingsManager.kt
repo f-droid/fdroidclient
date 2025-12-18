@@ -57,12 +57,20 @@ class SettingsManager @Inject constructor(
     val dynamicColorFlow: Flow<Boolean> = prefsFlow.map {
         it.get<Boolean>(PREF_KEY_DYNAMIC_COLORS) ?: PREF_DEFAULT_DYNAMIC_COLORS
     }.distinctUntilChanged()
-    val repoUpdates get() = prefs.getBoolean(PREF_KEY_REPO_UPDATES, PREF_DEFAULT_REPO_UPDATES)
+    val repoUpdates
+        get() = prefs.getString(PREF_KEY_REPO_UPDATES, PREF_DEFAULT_REPO_UPDATES)
+            .toAutoUpdateValue()
     val repoUpdatesFlow
-        get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_REPO_UPDATES) }.distinctUntilChanged()
-    val autoUpdateApps get() = prefs.getBoolean(PREF_KEY_AUTO_UPDATES, PREF_DEFAULT_AUTO_UPDATES)
+        get() = prefsFlow.map {
+            it.get<String>(PREF_KEY_REPO_UPDATES).toAutoUpdateValue()
+        }.distinctUntilChanged()
+    val autoUpdateApps
+        get() = prefs.getString(PREF_KEY_AUTO_UPDATES, PREF_DEFAULT_AUTO_UPDATES)
+            .toAutoUpdateValue()
     val autoUpdateAppsFlow
-        get() = prefsFlow.map { it.get<Boolean>(PREF_KEY_AUTO_UPDATES) }.distinctUntilChanged()
+        get() = prefsFlow.map {
+            it.get<String>(PREF_KEY_AUTO_UPDATES).toAutoUpdateValue()
+        }.distinctUntilChanged()
     var lastRepoUpdate: Long
         get() = try {
             prefs.getInt(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)

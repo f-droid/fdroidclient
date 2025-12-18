@@ -27,6 +27,7 @@ import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallNotificationState
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 import java.util.concurrent.TimeUnit
 
@@ -46,15 +47,20 @@ class AppUpdateWorker @AssistedInject constructor(
         internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
 
         @JvmStatic
-        fun scheduleOrCancel(context: Context, doAutoUpdates: Boolean) {
+        fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
             val workManager = WorkManager.getInstance(context)
-            if (doAutoUpdates) {
+            if (autoUpdate != AutoUpdateValues.Never) {
                 Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
+                val networkType = if (autoUpdate == AutoUpdateValues.Always) {
+                    NetworkType.CONNECTED
+                } else {
+                    NetworkType.UNMETERED
+                }
                 val constraints = Constraints.Builder()
                     .setRequiresBatteryNotLow(true)
                     .setRequiresStorageNotLow(true)
                     .setRequiresDeviceIdle(true)
-                    .setRequiredNetworkType(NetworkType.UNMETERED)
+                    .setRequiredNetworkType(networkType)
                     .build()
                 val workRequest = PeriodicWorkRequestBuilder<AppUpdateWorker>(
                     repeatInterval = TimeUnit.HOURS.toMillis(24),

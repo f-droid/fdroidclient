@@ -28,6 +28,7 @@ import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.install.CacheCleaner
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MINUTES
@@ -68,11 +69,15 @@ class RepoUpdateWorker @AssistedInject constructor(
         }
 
         @JvmStatic
-        fun scheduleOrCancel(context: Context, enabled: Boolean) {
+        fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
             val workManager = WorkManager.getInstance(context)
-            if (enabled) {
+            if (autoUpdate != AutoUpdateValues.Never) {
                 Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
-                val networkType = NetworkType.UNMETERED
+                val networkType = if (autoUpdate == AutoUpdateValues.Always) {
+                    NetworkType.CONNECTED
+                } else {
+                    NetworkType.UNMETERED
+                }
                 val constraints = Constraints.Builder()
                     .setRequiresBatteryNotLow(true)
                     .setRequiresStorageNotLow(true)

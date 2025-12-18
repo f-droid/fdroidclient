@@ -1,6 +1,7 @@
 package org.fdroid.settings
 
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 
 object SettingsConstants {
 
@@ -13,11 +14,13 @@ object SettingsConstants {
     const val PREF_KEY_DYNAMIC_COLORS = "dynamicColors"
     const val PREF_DEFAULT_DYNAMIC_COLORS = false
 
-    const val PREF_KEY_REPO_UPDATES = "repoUpdates"
-    const val PREF_DEFAULT_REPO_UPDATES = true
+    enum class AutoUpdateValues { OnlyWifi, Always, Never }
 
-    const val PREF_KEY_AUTO_UPDATES = "autoUpdates"
-    const val PREF_DEFAULT_AUTO_UPDATES = true
+    const val PREF_KEY_REPO_UPDATES = "repoAutoUpdates"
+    val PREF_DEFAULT_REPO_UPDATES = AutoUpdateValues.OnlyWifi.name
+
+    const val PREF_KEY_AUTO_UPDATES = "appAutoUpdates"
+    val PREF_DEFAULT_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name
 
     const val PREF_KEY_PROXY = "proxy"
     const val PREF_DEFAULT_PROXY = ""
@@ -38,4 +41,11 @@ object SettingsConstants {
     }
 
     const val PREF_KEY_IGNORED_APP_ISSUES = "ignoredAppIssues"
+}
+
+fun String?.toAutoUpdateValue() = try {
+    if (this == null) AutoUpdateValues.OnlyWifi
+    else AutoUpdateValues.valueOf(this)
+} catch (_: IllegalArgumentException) {
+    AutoUpdateValues.OnlyWifi
 }
