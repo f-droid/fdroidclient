@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.map
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
+import org.fdroid.install.CacheCleaner
 import org.fdroid.ui.utils.canStartForegroundService
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeUnit.MINUTES
@@ -38,6 +39,7 @@ class RepoUpdateWorker @AssistedInject constructor(
     @Assisted appContext: Context,
     @Assisted workerParams: WorkerParameters,
     private val repoUpdateManager: RepoUpdateManager,
+    private val cacheCleaner: CacheCleaner,
     private val nm: NotificationManager,
 ) : CoroutineWorker(appContext, workerParams) {
 
@@ -122,6 +124,9 @@ class RepoUpdateWorker @AssistedInject constructor(
             currentCoroutineContext().ensureActive()
             if (repoId >= 0) repoUpdateManager.updateRepo(repoId)
             else repoUpdateManager.updateRepos()
+            // use opportunity to clean up cached APKs
+            cacheCleaner.clean()
+            // return result
             Result.success()
         } catch (e: Exception) {
             log.error(e) { "Error updating repos" }
