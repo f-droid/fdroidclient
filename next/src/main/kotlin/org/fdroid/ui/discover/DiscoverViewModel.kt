@@ -1,5 +1,6 @@
 package org.fdroid.ui.discover
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.database.sqlite.SQLiteException
 import androidx.core.os.LocaleListCompat
@@ -90,9 +91,13 @@ class DiscoverViewModel @Inject constructor(
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
     private val searchResults = MutableStateFlow<SearchResults?>(null)
+    private val hasRepoIssues = repoManager.repositoriesState.map { repos ->
+        repos.any { it.errorCount >= 5 }
+    }
 
     val localeList = LocaleListCompat.getDefault()
     val discoverModel: StateFlow<DiscoverModel> by lazy(LazyThreadSafetyMode.NONE) {
+        @SuppressLint("StateFlowValueCalledInComposition") // see comment below
         moleculeScope.launchMolecule(mode = ContextClock) {
             DiscoverPresenter(
                 newAppsFlow = newApps,
@@ -106,6 +111,7 @@ class DiscoverViewModel @Inject constructor(
                 // because we kick off repo updates from the UI depending on this state
                 networkState = networkMonitor.networkState.value,
                 repoUpdateStateFlow = repoUpdateManager.repoUpdateState,
+                hasRepoIssuesFlow = hasRepoIssues,
             )
         }
     }

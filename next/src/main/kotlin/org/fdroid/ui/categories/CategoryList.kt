@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,9 +34,9 @@ fun CategoryList(
             modifier = Modifier.padding(bottom = 8.dp, start = 4.dp),
         )
         // we'll sort the groups here, because before we didn't have the context to get names
-        val context = LocalContext.current
+        val res = LocalResources.current
         val sortedMap = remember(categoryMap) {
-            val comparator = compareBy<CategoryGroup> { context.getString(it.name) }
+            val comparator = compareBy<CategoryGroup> { res.getString(it.name) }
             categoryMap.toSortedMap(comparator)
         }
         sortedMap.forEach { (group, categories) ->
