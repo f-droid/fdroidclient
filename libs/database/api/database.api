@@ -1,0 +1,884 @@
+public final class org/fdroid/database/AntiFeature : org/fdroid/database/RepoAttribute {
+	public static final field TABLE Ljava/lang/String;
+	public fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/database/AntiFeature;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AntiFeature;JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/database/AntiFeature;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIcon ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/App : org/fdroid/database/MinimalApp {
+	public final fun component1 ()Lorg/fdroid/database/AppMetadata;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAuthorName ()Ljava/lang/String;
+	public final fun getDescription (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getFeatureGraphic (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getMetadata ()Lorg/fdroid/database/AppMetadata;
+	public fun getName ()Ljava/lang/String;
+	public fun getPackageName ()Ljava/lang/String;
+	public final fun getPhoneScreenshots (Landroidx/core/os/LocaleListCompat;)Ljava/util/List;
+	public final fun getPromoGraphic (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public fun getRepoId ()J
+	public final fun getSevenInchScreenshots (Landroidx/core/os/LocaleListCompat;)Ljava/util/List;
+	public fun getSummary ()Ljava/lang/String;
+	public final fun getTenInchScreenshots (Landroidx/core/os/LocaleListCompat;)Ljava/util/List;
+	public final fun getTvBanner (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getTvScreenshots (Landroidx/core/os/LocaleListCompat;)Ljava/util/List;
+	public final fun getVideo (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getWearScreenshots (Landroidx/core/os/LocaleListCompat;)Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppCheckResult {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lorg/fdroid/database/AppCheckResult;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AppCheckResult;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/database/AppCheckResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIssues ()Ljava/util/List;
+	public final fun getUpdates ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/database/AppDao {
+	public abstract fun getAllApps (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getApp (JLjava/lang/String;)Lorg/fdroid/database/App;
+	public abstract fun getApp (Ljava/lang/String;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppListItems (Landroid/content/pm/PackageManager;JLjava/lang/String;Lorg/fdroid/database/AppListSortOrder;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppListItems (Landroid/content/pm/PackageManager;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/database/AppListSortOrder;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppListItems (Landroid/content/pm/PackageManager;Ljava/lang/String;Lorg/fdroid/database/AppListSortOrder;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppListItemsForAuthor (Landroid/content/pm/PackageManager;Ljava/lang/String;Ljava/lang/String;Lorg/fdroid/database/AppListSortOrder;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppOverviewItems (I)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppOverviewItems (Ljava/lang/String;I)Landroidx/lifecycle/LiveData;
+	public static synthetic fun getAppOverviewItems$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Landroidx/lifecycle/LiveData;
+	public static synthetic fun getAppOverviewItems$default (Lorg/fdroid/database/AppDao;Ljava/lang/String;IILjava/lang/Object;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppSearchItems (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getApps (Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getAppsByAuthor (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getAppsByCategory (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getAppsByRepository (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getAppsFlow (Ljava/util/List;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getInstalledAppListItems (Landroid/content/pm/PackageManager;)Landroidx/lifecycle/LiveData;
+	public abstract fun getInstalledAppListItems (Ljava/util/Map;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getNewApps (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getNewApps$default (Lorg/fdroid/database/AppDao;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getNewAppsFlow (J)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getNewAppsFlow$default (Lorg/fdroid/database/AppDao;JILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getNumberOfAppsInCategory (Ljava/lang/String;)I
+	public abstract fun getNumberOfAppsInRepository (J)I
+	public abstract fun getRecentlyUpdatedApps (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getRecentlyUpdatedAppsFlow (I)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getRepositoryIdsForApp (Ljava/lang/String;)Ljava/util/List;
+	public abstract fun hasAuthorMoreThanOneApp (Ljava/lang/String;)Landroidx/lifecycle/LiveData;
+	public abstract fun insert (JLjava/lang/String;Lorg/fdroid/index/v2/MetadataV2;Landroidx/core/os/LocaleListCompat;)V
+	public static synthetic fun insert$default (Lorg/fdroid/database/AppDao;JLjava/lang/String;Lorg/fdroid/index/v2/MetadataV2;Landroidx/core/os/LocaleListCompat;ILjava/lang/Object;)V
+	public abstract fun updateCompatibility (J)V
+}
+
+public final class org/fdroid/database/AppDao$DefaultImpls {
+	public static synthetic fun getAppOverviewItems$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Landroidx/lifecycle/LiveData;
+	public static synthetic fun getAppOverviewItems$default (Lorg/fdroid/database/AppDao;Ljava/lang/String;IILjava/lang/Object;)Landroidx/lifecycle/LiveData;
+	public static synthetic fun getNewApps$default (Lorg/fdroid/database/AppDao;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getNewAppsFlow$default (Lorg/fdroid/database/AppDao;JILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun insert$default (Lorg/fdroid/database/AppDao;JLjava/lang/String;Lorg/fdroid/index/v2/MetadataV2;Landroidx/core/os/LocaleListCompat;ILjava/lang/Object;)V
+}
+
+public abstract interface class org/fdroid/database/AppIssue {
+}
+
+public final class org/fdroid/database/AppListItem : org/fdroid/database/MinimalApp {
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/Long;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()J
+	public final fun component6 ()Ljava/util/List;
+	public final fun component9 ()Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAntiFeatureKeys ()Ljava/util/List;
+	public final fun getAntiFeatureReason (Ljava/lang/String;Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getCategories ()Ljava/util/List;
+	public fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getInstalledVersionCode ()Ljava/lang/Long;
+	public final fun getInstalledVersionName ()Ljava/lang/String;
+	public final fun getLastUpdated ()J
+	public fun getName ()Ljava/lang/String;
+	public fun getPackageName ()Ljava/lang/String;
+	public final fun getPreferredSigner ()Ljava/lang/String;
+	public fun getRepoId ()J
+	public fun getSummary ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isCompatible ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppListSortOrder : java/lang/Enum {
+	public static final field LAST_UPDATED Lorg/fdroid/database/AppListSortOrder;
+	public static final field NAME Lorg/fdroid/database/AppListSortOrder;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/fdroid/database/AppListSortOrder;
+	public static fun values ()[Lorg/fdroid/database/AppListSortOrder;
+}
+
+public final class org/fdroid/database/AppManifest : org/fdroid/index/v2/PackageManifest {
+	public fun <init> (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Lorg/fdroid/index/v2/UsesSdkV2;
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun component5 ()Lorg/fdroid/index/v2/SignerV2;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;)Lorg/fdroid/database/AppManifest;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AppManifest;Ljava/lang/String;JLorg/fdroid/index/v2/UsesSdkV2;Ljava/lang/Integer;Lorg/fdroid/index/v2/SignerV2;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/database/AppManifest;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getFeatureNames ()Ljava/util/List;
+	public final fun getFeatures ()Ljava/util/List;
+	public fun getMaxSdkVersion ()Ljava/lang/Integer;
+	public fun getMinSdkVersion ()Ljava/lang/Integer;
+	public fun getNativecode ()Ljava/util/List;
+	public final fun getSigner ()Lorg/fdroid/index/v2/SignerV2;
+	public fun getTargetSdkVersion ()Ljava/lang/Integer;
+	public final fun getUsesSdk ()Lorg/fdroid/index/v2/UsesSdkV2;
+	public final fun getVersionCode ()J
+	public final fun getVersionName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppMetadata {
+	public static final field TABLE Ljava/lang/String;
+	public fun <init> (JLjava/lang/String;JJLjava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Z)V
+	public synthetic fun <init> (JLjava/lang/String;JJLjava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/util/Map;
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Ljava/lang/String;
+	public final fun component21 ()Ljava/lang/String;
+	public final fun component22 ()Ljava/util/List;
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Ljava/lang/String;
+	public final fun component25 ()Ljava/lang/String;
+	public final fun component26 ()Ljava/lang/String;
+	public final fun component27 ()Ljava/lang/String;
+	public final fun component28 ()Ljava/lang/String;
+	public final fun component29 ()Ljava/util/List;
+	public final fun component3 ()J
+	public final fun component30 ()Z
+	public final fun component4 ()J
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/Map;
+	public final fun component7 ()Ljava/util/Map;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;JJLjava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Z)Lorg/fdroid/database/AppMetadata;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AppMetadata;JLjava/lang/String;JJLjava/util/Map;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Lorg/fdroid/database/AppMetadata;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdded ()J
+	public final fun getAuthorEmail ()Ljava/lang/String;
+	public final fun getAuthorName ()Ljava/lang/String;
+	public final fun getAuthorPhone ()Ljava/lang/String;
+	public final fun getAuthorWebSite ()Ljava/lang/String;
+	public final fun getBitcoin ()Ljava/lang/String;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getChangelog ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getDonate ()Ljava/util/List;
+	public final fun getFlattrID ()Ljava/lang/String;
+	public final fun getIssueTracker ()Ljava/lang/String;
+	public final fun getLastUpdated ()J
+	public final fun getLiberapay ()Ljava/lang/String;
+	public final fun getLiberapayID ()Ljava/lang/String;
+	public final fun getLicense ()Ljava/lang/String;
+	public final fun getLitecoin ()Ljava/lang/String;
+	public final fun getLocalizedName ()Ljava/lang/String;
+	public final fun getLocalizedSummary ()Ljava/lang/String;
+	public final fun getName ()Ljava/util/Map;
+	public final fun getOpenCollective ()Ljava/lang/String;
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getPreferredSigner ()Ljava/lang/String;
+	public final fun getRepoId ()J
+	public final fun getSourceCode ()Ljava/lang/String;
+	public final fun getSummary ()Ljava/util/Map;
+	public final fun getTranslation ()Ljava/lang/String;
+	public final fun getVideo ()Ljava/util/Map;
+	public final fun getWebSite ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isCompatible ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppOverviewItem : org/fdroid/database/MinimalApp {
+	public final fun component1 ()J
+	public final fun component12 ()Z
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun component4 ()J
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdded ()J
+	public final fun getAntiFeatureKeys ()Ljava/util/List;
+	public final fun getCategories ()Ljava/util/List;
+	public fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getLastUpdated ()J
+	public fun getName ()Ljava/lang/String;
+	public final fun getName (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public fun getPackageName ()Ljava/lang/String;
+	public fun getRepoId ()J
+	public fun getSummary ()Ljava/lang/String;
+	public final fun getSummary (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isCompatible ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppPrefs : org/fdroid/PackagePreference {
+	public static final field TABLE Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;JLjava/lang/Long;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;JLjava/lang/Long;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;JLjava/lang/Long;Ljava/util/List;)Lorg/fdroid/database/AppPrefs;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AppPrefs;Ljava/lang/String;JLjava/lang/Long;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/database/AppPrefs;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIgnoreAllUpdates ()Z
+	public fun getIgnoreVersionCodeUpdate ()J
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getPreferredRepoId ()Ljava/lang/Long;
+	public fun getReleaseChannels ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun shouldIgnoreUpdate (J)Z
+	public fun toString ()Ljava/lang/String;
+	public final fun toggleIgnoreAllUpdates ()Lorg/fdroid/database/AppPrefs;
+	public final fun toggleIgnoreVersionCodeUpdate (J)Lorg/fdroid/database/AppPrefs;
+	public final fun toggleReleaseChannel (Ljava/lang/String;)Lorg/fdroid/database/AppPrefs;
+}
+
+public abstract interface class org/fdroid/database/AppPrefsDao {
+	public abstract fun getAppPrefs (Ljava/lang/String;)Landroidx/lifecycle/LiveData;
+	public abstract fun update (Lorg/fdroid/database/AppPrefs;)V
+}
+
+public final class org/fdroid/database/AppSearchItem : java/lang/Comparable {
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun compareTo (Lorg/fdroid/database/AppSearchItem;)I
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Ljava/util/Map;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/util/List;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAuthorName ()Ljava/lang/String;
+	public final fun getCategories ()Ljava/util/List;
+	public final fun getDescription ()Ljava/util/Map;
+	public final fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getLastUpdated ()J
+	public final fun getName ()Ljava/util/Map;
+	public final fun getPackageName ()Ljava/lang/String;
+	public final fun getRepoId ()J
+	public final fun getScore ()D
+	public final fun getSummary ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AppVersion : org/fdroid/index/v2/PackageVersion {
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAdded ()J
+	public final fun getAntiFeatureKeys ()Ljava/util/List;
+	public final fun getAntiFeatureReason (Ljava/lang/String;Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getFeatureNames ()Ljava/util/List;
+	public final fun getFile ()Lorg/fdroid/index/v2/FileV1;
+	public fun getHasKnownVulnerability ()Z
+	public final fun getManifest ()Lorg/fdroid/database/AppManifest;
+	public final fun getNativeCode ()Ljava/util/List;
+	public fun getPackageManifest ()Lorg/fdroid/index/v2/PackageManifest;
+	public final fun getPackageName ()Ljava/lang/String;
+	public fun getReleaseChannels ()Ljava/util/List;
+	public final fun getRepoId ()J
+	public fun getSigner ()Lorg/fdroid/index/v2/SignerV2;
+	public fun getSize ()Ljava/lang/Long;
+	public final fun getSrc ()Lorg/fdroid/index/v2/FileV2;
+	public final fun getUsesPermission ()Ljava/util/List;
+	public final fun getUsesPermissionSdk23 ()Ljava/util/List;
+	public fun getVersionCode ()J
+	public fun getVersionName ()Ljava/lang/String;
+	public final fun getWhatsNew (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isCompatible ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/database/AppWithIssue {
+	public abstract fun getInstallVersionName ()Ljava/lang/String;
+	public abstract fun getIssue ()Lorg/fdroid/database/AppIssue;
+	public abstract fun getPackageName ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/AvailableAppWithIssue : org/fdroid/database/AppWithIssue {
+	public fun <init> (Lorg/fdroid/database/AppOverviewItem;Ljava/lang/String;JLorg/fdroid/database/AppIssue;)V
+	public final fun component1 ()Lorg/fdroid/database/AppOverviewItem;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun component4 ()Lorg/fdroid/database/AppIssue;
+	public final fun copy (Lorg/fdroid/database/AppOverviewItem;Ljava/lang/String;JLorg/fdroid/database/AppIssue;)Lorg/fdroid/database/AvailableAppWithIssue;
+	public static synthetic fun copy$default (Lorg/fdroid/database/AvailableAppWithIssue;Lorg/fdroid/database/AppOverviewItem;Ljava/lang/String;JLorg/fdroid/database/AppIssue;ILjava/lang/Object;)Lorg/fdroid/database/AvailableAppWithIssue;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApp ()Lorg/fdroid/database/AppOverviewItem;
+	public final fun getInstallVersionCode ()J
+	public fun getInstallVersionName ()Ljava/lang/String;
+	public fun getIssue ()Lorg/fdroid/database/AppIssue;
+	public fun getPackageName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/Category : org/fdroid/database/RepoAttribute {
+	public static final field TABLE Ljava/lang/String;
+	public fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/database/Category;
+	public static synthetic fun copy$default (Lorg/fdroid/database/Category;JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/database/Category;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIcon ()Ljava/util/Map;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getRepoId ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/DbAppChecker {
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/Context;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/UpdateChecker;)V
+	public synthetic fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/Context;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/UpdateChecker;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getApps (Ljava/util/Map;)Lorg/fdroid/database/AppCheckResult;
+}
+
+public final class org/fdroid/database/DbUpdateChecker {
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/pm/PackageManager;)V
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/pm/PackageManager;Lorg/fdroid/CompatibilityChecker;)V
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/pm/PackageManager;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/UpdateChecker;)V
+	public synthetic fun <init> (Lorg/fdroid/database/FDroidDatabase;Landroid/content/pm/PackageManager;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/UpdateChecker;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getSuggestedVersion (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Z)Lorg/fdroid/database/AppVersion;
+	public static synthetic fun getSuggestedVersion$default (Lorg/fdroid/database/DbUpdateChecker;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ZILjava/lang/Object;)Lorg/fdroid/database/AppVersion;
+	public final fun getUpdatableApps ()Ljava/util/List;
+	public final fun getUpdatableApps (Ljava/util/List;)Ljava/util/List;
+	public final fun getUpdatableApps (Ljava/util/List;Z)Ljava/util/List;
+	public final fun getUpdatableApps (Ljava/util/List;ZZ)Ljava/util/List;
+	public static synthetic fun getUpdatableApps$default (Lorg/fdroid/database/DbUpdateChecker;Ljava/util/List;ZZILjava/lang/Object;)Ljava/util/List;
+}
+
+public abstract interface class org/fdroid/database/FDroidDatabase {
+	public abstract fun afterLocalesChanged (Landroidx/core/os/LocaleListCompat;)V
+	public static synthetic fun afterLocalesChanged$default (Lorg/fdroid/database/FDroidDatabase;Landroidx/core/os/LocaleListCompat;ILjava/lang/Object;)V
+	public abstract fun clearAllAppData ()V
+	public abstract fun getAppDao ()Lorg/fdroid/database/AppDao;
+	public abstract fun getAppPrefsDao ()Lorg/fdroid/database/AppPrefsDao;
+	public abstract fun getRepositoryDao ()Lorg/fdroid/database/RepositoryDao;
+	public abstract fun getVersionDao ()Lorg/fdroid/database/VersionDao;
+	public abstract fun runInTransaction (Ljava/lang/Runnable;)V
+	public abstract fun runInTransaction (Ljava/util/concurrent/Callable;)Ljava/lang/Object;
+}
+
+public final class org/fdroid/database/FDroidDatabase$DefaultImpls {
+	public static synthetic fun afterLocalesChanged$default (Lorg/fdroid/database/FDroidDatabase;Landroidx/core/os/LocaleListCompat;ILjava/lang/Object;)V
+}
+
+public final class org/fdroid/database/FDroidDatabaseHolder {
+	public static final field INSTANCE Lorg/fdroid/database/FDroidDatabaseHolder;
+	public static final fun getDb (Landroid/content/Context;)Lorg/fdroid/database/FDroidDatabase;
+	public static final fun getDb (Landroid/content/Context;Ljava/lang/String;)Lorg/fdroid/database/FDroidDatabase;
+	public static final fun getDb (Landroid/content/Context;Ljava/lang/String;Lorg/fdroid/database/FDroidFixture;)Lorg/fdroid/database/FDroidDatabase;
+	public static synthetic fun getDb$default (Landroid/content/Context;Ljava/lang/String;Lorg/fdroid/database/FDroidFixture;ILjava/lang/Object;)Lorg/fdroid/database/FDroidDatabase;
+}
+
+public abstract interface class org/fdroid/database/FDroidFixture {
+	public abstract fun prePopulateDb (Lorg/fdroid/database/FDroidDatabase;)V
+}
+
+public final class org/fdroid/database/InitialRepository {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JZ)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;JZ)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;JZI)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;JZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()J
+	public final fun component7 ()Z
+	public final fun component8 ()I
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;JZI)Lorg/fdroid/database/InitialRepository;
+	public static synthetic fun copy$default (Lorg/fdroid/database/InitialRepository;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;JZIILjava/lang/Object;)Lorg/fdroid/database/InitialRepository;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getCertificate ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getEnabled ()Z
+	public final fun getMirrors ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getVersion ()J
+	public final fun getWeight ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/KnownVulnerability : org/fdroid/database/AppIssue {
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lorg/fdroid/database/KnownVulnerability;
+	public static synthetic fun copy$default (Lorg/fdroid/database/KnownVulnerability;ZILjava/lang/Object;)Lorg/fdroid/database/KnownVulnerability;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFromPreferredRepo ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/database/MinimalApp {
+	public abstract fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getPackageName ()Ljava/lang/String;
+	public abstract fun getRepoId ()J
+	public abstract fun getSummary ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/NewRepository {
+	public fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Lorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Lorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lorg/fdroid/index/IndexFormatVersion;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Lorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/fdroid/database/NewRepository;
+	public static synthetic fun copy$default (Lorg/fdroid/database/NewRepository;Ljava/util/Map;Ljava/util/Map;Ljava/lang/String;Lorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/database/NewRepository;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getCertificate ()Ljava/lang/String;
+	public final fun getFormatVersion ()Lorg/fdroid/index/IndexFormatVersion;
+	public final fun getIcon ()Ljava/util/Map;
+	public final fun getName ()Ljava/util/Map;
+	public final fun getPassword ()Ljava/lang/String;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/NoCompatibleSigner : org/fdroid/database/AppIssue {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/Long;)Lorg/fdroid/database/NoCompatibleSigner;
+	public static synthetic fun copy$default (Lorg/fdroid/database/NoCompatibleSigner;Ljava/lang/Long;ILjava/lang/Object;)Lorg/fdroid/database/NoCompatibleSigner;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRepoIdWithCompatibleSigner ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/NotAvailable : org/fdroid/database/AppIssue {
+	public static final field INSTANCE Lorg/fdroid/database/NotAvailable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/ReleaseChannel : org/fdroid/database/RepoAttribute {
+	public static final field TABLE Ljava/lang/String;
+	public fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/database/ReleaseChannel;
+	public static synthetic fun copy$default (Lorg/fdroid/database/ReleaseChannel;JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/database/ReleaseChannel;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getIcon ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class org/fdroid/database/RepoAttribute {
+	public fun <init> ()V
+	public final fun getDescription (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public abstract fun getIcon ()Ljava/util/Map;
+	public final fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getName (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+}
+
+public final class org/fdroid/database/Repository {
+	public fun <init> (JLjava/lang/String;JLorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;JIJ)V
+	public fun <init> (JLjava/lang/String;JLorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;JIJLjava/lang/String;)V
+	public fun <init> (JLjava/lang/String;JLorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;JIJLjava/lang/String;Ljava/lang/String;)V
+	public fun <init> (JLjava/lang/String;JLorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;JIJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;JLorg/fdroid/index/IndexFormatVersion;Ljava/lang/String;JIJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getAllMirrors ()Ljava/util/List;
+	public final fun getAllMirrors (Z)Ljava/util/List;
+	public static synthetic fun getAllMirrors$default (Lorg/fdroid/database/Repository;ZILjava/lang/Object;)Ljava/util/List;
+	public final fun getAllOfficialMirrors ()Ljava/util/List;
+	public final fun getAllUserMirrors ()Ljava/util/List;
+	public final fun getAntiFeatures ()Ljava/util/Map;
+	public final fun getCategories ()Ljava/util/Map;
+	public final fun getCertificate ()Ljava/lang/String;
+	public final fun getDescription (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getDisabledMirrors ()Ljava/util/List;
+	public final fun getEnabled ()Z
+	public final fun getErrorCount ()I
+	public final fun getFingerprint ()Ljava/lang/String;
+	public final fun getFormatVersion ()Lorg/fdroid/index/IndexFormatVersion;
+	public final fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getLastETag ()Ljava/lang/String;
+	public final fun getLastError ()Ljava/lang/String;
+	public final fun getLastUpdated ()Ljava/lang/Long;
+	public final fun getMirrors ()Ljava/util/List;
+	public final fun getName (Landroidx/core/os/LocaleListCompat;)Ljava/lang/String;
+	public final fun getPassword ()Ljava/lang/String;
+	public final fun getReleaseChannels ()Ljava/util/Map;
+	public final fun getRepoId ()J
+	public final fun getShareUri ()Ljava/lang/String;
+	public final fun getTimestamp ()J
+	public final fun getUserMirrors ()Ljava/util/List;
+	public final fun getUsername ()Ljava/lang/String;
+	public final fun getVersion ()J
+	public final fun getWebBaseUrl ()Ljava/lang/String;
+	public final fun getWeight ()I
+	public fun hashCode ()I
+	public final fun isArchiveRepo ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/database/RepositoryDao {
+	public abstract fun clearAll ()V
+	public abstract fun deleteRepository (J)V
+	public abstract fun getLiveCategories ()Landroidx/lifecycle/LiveData;
+	public abstract fun getLiveRepositories ()Landroidx/lifecycle/LiveData;
+	public abstract fun getRepositories ()Ljava/util/List;
+	public abstract fun getRepository (J)Lorg/fdroid/database/Repository;
+	public abstract fun insert (Lorg/fdroid/database/InitialRepository;)J
+	public abstract fun insert (Lorg/fdroid/database/NewRepository;)J
+	public abstract fun setRepositoryEnabled (JZ)V
+	public abstract fun updateDisabledMirrors (JLjava/util/List;)V
+	public abstract fun updateUserMirrors (JLjava/util/List;)V
+	public abstract fun updateUsernameAndPassword (JLjava/lang/String;Ljava/lang/String;)V
+	public abstract fun walCheckpoint ()V
+}
+
+public final class org/fdroid/database/RepositoryKt {
+	public static final fun getDUMMY_TEST_REPO ()Lorg/fdroid/database/Repository;
+}
+
+public final class org/fdroid/database/UnavailableAppWithIssue : org/fdroid/database/AppWithIssue {
+	public fun <init> (Ljava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;J)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/CharSequence;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()J
+	public final fun copy (Ljava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;J)Lorg/fdroid/database/UnavailableAppWithIssue;
+	public static synthetic fun copy$default (Lorg/fdroid/database/UnavailableAppWithIssue;Ljava/lang/String;Ljava/lang/CharSequence;Ljava/lang/String;JILjava/lang/Object;)Lorg/fdroid/database/UnavailableAppWithIssue;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInstallVersionCode ()J
+	public fun getInstallVersionName ()Ljava/lang/String;
+	public fun getIssue ()Lorg/fdroid/database/AppIssue;
+	public final fun getName ()Ljava/lang/CharSequence;
+	public fun getPackageName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/UpdatableApp : org/fdroid/database/MinimalApp {
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lorg/fdroid/database/AppVersion;
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasKnownVulnerability ()Z
+	public fun getIcon (Landroidx/core/os/LocaleListCompat;)Lorg/fdroid/index/v2/FileV2;
+	public final fun getInstalledVersionCode ()J
+	public final fun getInstalledVersionName ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public fun getPackageName ()Ljava/lang/String;
+	public fun getRepoId ()J
+	public fun getSummary ()Ljava/lang/String;
+	public final fun getUpdate ()Lorg/fdroid/database/AppVersion;
+	public fun hashCode ()I
+	public final fun isFromPreferredRepo ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/database/UpdateInOtherRepo : org/fdroid/database/AppIssue {
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lorg/fdroid/database/UpdateInOtherRepo;
+	public static synthetic fun copy$default (Lorg/fdroid/database/UpdateInOtherRepo;JILjava/lang/Object;)Lorg/fdroid/database/UpdateInOtherRepo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRepoIdWithUpdate ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/fdroid/database/VersionDao {
+	public abstract fun getAppVersions (JLjava/lang/String;)Landroidx/lifecycle/LiveData;
+	public abstract fun getAppVersions (Ljava/lang/String;)Landroidx/lifecycle/LiveData;
+	public abstract fun insert (JLjava/lang/String;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract class org/fdroid/download/DownloaderFactory {
+	public fun <init> ()V
+	public abstract fun create (Lorg/fdroid/database/Repository;Landroid/net/Uri;Lorg/fdroid/IndexFile;Ljava/io/File;)Lorg/fdroid/download/Downloader;
+	protected abstract fun create (Lorg/fdroid/database/Repository;Ljava/util/List;Landroid/net/Uri;Lorg/fdroid/IndexFile;Ljava/io/File;Lorg/fdroid/download/Mirror;)Lorg/fdroid/download/Downloader;
+	public final fun createWithTryFirstMirror (Lorg/fdroid/database/Repository;Landroid/net/Uri;Lorg/fdroid/IndexFile;Ljava/io/File;)Lorg/fdroid/download/Downloader;
+}
+
+public final class org/fdroid/index/IndexFormatVersion : java/lang/Enum {
+	public static final field ONE Lorg/fdroid/index/IndexFormatVersion;
+	public static final field TWO Lorg/fdroid/index/IndexFormatVersion;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/fdroid/index/IndexFormatVersion;
+	public static fun values ()[Lorg/fdroid/index/IndexFormatVersion;
+}
+
+public abstract interface class org/fdroid/index/IndexUpdateListener {
+	public abstract fun onDownloadProgress (Lorg/fdroid/database/Repository;JJ)V
+	public abstract fun onUpdateProgress (Lorg/fdroid/database/Repository;II)V
+}
+
+public abstract class org/fdroid/index/IndexUpdateResult {
+}
+
+public final class org/fdroid/index/IndexUpdateResult$Error : org/fdroid/index/IndexUpdateResult {
+	public fun <init> (Ljava/lang/Exception;)V
+	public final fun component1 ()Ljava/lang/Exception;
+	public final fun copy (Ljava/lang/Exception;)Lorg/fdroid/index/IndexUpdateResult$Error;
+	public static synthetic fun copy$default (Lorg/fdroid/index/IndexUpdateResult$Error;Ljava/lang/Exception;ILjava/lang/Object;)Lorg/fdroid/index/IndexUpdateResult$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getE ()Ljava/lang/Exception;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/index/IndexUpdateResult$NotFound : org/fdroid/index/IndexUpdateResult {
+	public static final field INSTANCE Lorg/fdroid/index/IndexUpdateResult$NotFound;
+}
+
+public final class org/fdroid/index/IndexUpdateResult$Processed : org/fdroid/index/IndexUpdateResult {
+	public static final field INSTANCE Lorg/fdroid/index/IndexUpdateResult$Processed;
+}
+
+public final class org/fdroid/index/IndexUpdateResult$Unchanged : org/fdroid/index/IndexUpdateResult {
+	public static final field INSTANCE Lorg/fdroid/index/IndexUpdateResult$Unchanged;
+}
+
+public abstract class org/fdroid/index/IndexUpdater {
+	public fun <init> ()V
+	public abstract fun getFormatVersion ()Lorg/fdroid/index/IndexFormatVersion;
+	public final fun update (Lorg/fdroid/database/Repository;)Lorg/fdroid/index/IndexUpdateResult;
+	protected abstract fun updateRepo (Lorg/fdroid/database/Repository;)Lorg/fdroid/index/IndexUpdateResult;
+}
+
+public final class org/fdroid/index/RepoManager {
+	public fun <init> (Landroid/content/Context;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/download/HttpManager;)V
+	public fun <init> (Landroid/content/Context;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/download/HttpManager;Lorg/fdroid/index/RepoUriBuilder;)V
+	public fun <init> (Landroid/content/Context;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/download/HttpManager;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;)V
+	public fun <init> (Landroid/content/Context;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/download/HttpManager;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lkotlin/coroutines/CoroutineContext;)V
+	public synthetic fun <init> (Landroid/content/Context;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/download/HttpManager;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lkotlin/coroutines/CoroutineContext;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun abortAddingRepository ()V
+	public final fun addFetchedRepository ()V
+	public final fun deleteRepository (J)V
+	public final fun deleteUserMirror (JLorg/fdroid/download/Mirror;)V
+	public final fun fetchRepositoryPreview (Ljava/lang/String;)V
+	public final fun fetchRepositoryPreview (Ljava/lang/String;Ljava/net/Proxy;)V
+	public static synthetic fun fetchRepositoryPreview$default (Lorg/fdroid/index/RepoManager;Ljava/lang/String;Ljava/net/Proxy;ILjava/lang/Object;)V
+	public final fun getAddRepoState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getLiveAddRepoState ()Landroidx/lifecycle/LiveData;
+	public final fun getLiveRepositories ()Landroidx/lifecycle/LiveData;
+	public final fun getRepositories ()Ljava/util/List;
+	public final fun getRepositoriesState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getRepository (J)Lorg/fdroid/database/Repository;
+	public final fun isSwapUri (Landroid/net/Uri;)Z
+	public final fun reorderRepositories (Lorg/fdroid/database/Repository;Lorg/fdroid/database/Repository;)V
+	public final fun setArchiveRepoEnabled (Lorg/fdroid/database/Repository;ZLjava/net/Proxy;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun setArchiveRepoEnabled$default (Lorg/fdroid/index/RepoManager;Lorg/fdroid/database/Repository;ZLjava/net/Proxy;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setMirrorEnabled (JLorg/fdroid/download/Mirror;Z)V
+	public final fun setPreferredRepoId (Ljava/lang/String;J)Lkotlinx/coroutines/Job;
+	public final fun setRepositoryEnabled (JZ)V
+	public final fun updateUsernameAndPassword (JLjava/lang/String;Ljava/lang/String;)V
+}
+
+public final class org/fdroid/index/RepoUpdater {
+	public fun <init> (Ljava/io/File;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;)V
+	public synthetic fun <init> (Ljava/io/File;Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun update (Lorg/fdroid/database/Repository;)Lorg/fdroid/index/IndexUpdateResult;
+}
+
+public abstract interface class org/fdroid/index/RepoUriBuilder {
+	public abstract fun getUri (Lorg/fdroid/database/Repository;[Ljava/lang/String;)Landroid/net/Uri;
+}
+
+public abstract interface class org/fdroid/index/TempFileProvider {
+	public abstract fun createTempFile (Ljava/lang/String;)Ljava/io/File;
+}
+
+public final class org/fdroid/index/v1/IndexV1Updater : org/fdroid/index/IndexUpdater {
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/index/TempFileProvider;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;)V
+	public synthetic fun <init> (Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/index/TempFileProvider;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getFormatVersion ()Lorg/fdroid/index/IndexFormatVersion;
+}
+
+public final class org/fdroid/index/v1/IndexV1UpdaterKt {
+	public static final field SIGNED_FILE_NAME Ljava/lang/String;
+}
+
+public final class org/fdroid/index/v2/IndexV2Updater : org/fdroid/index/IndexUpdater {
+	public fun <init> (Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/index/TempFileProvider;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;)V
+	public synthetic fun <init> (Lorg/fdroid/database/FDroidDatabase;Lorg/fdroid/index/TempFileProvider;Lorg/fdroid/download/DownloaderFactory;Lorg/fdroid/index/RepoUriBuilder;Lorg/fdroid/CompatibilityChecker;Lorg/fdroid/index/IndexUpdateListener;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getFormatVersion ()Lorg/fdroid/index/IndexFormatVersion;
+}
+
+public final class org/fdroid/index/v2/IndexV2UpdaterKt {
+	public static final field SIGNED_FILE_NAME Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/AddRepoError : org/fdroid/repo/AddRepoState {
+	public fun <init> (Lorg/fdroid/repo/AddRepoError$ErrorType;Ljava/lang/Exception;)V
+	public synthetic fun <init> (Lorg/fdroid/repo/AddRepoError$ErrorType;Ljava/lang/Exception;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public final fun component2 ()Ljava/lang/Exception;
+	public final fun copy (Lorg/fdroid/repo/AddRepoError$ErrorType;Ljava/lang/Exception;)Lorg/fdroid/repo/AddRepoError;
+	public static synthetic fun copy$default (Lorg/fdroid/repo/AddRepoError;Lorg/fdroid/repo/AddRepoError$ErrorType;Ljava/lang/Exception;ILjava/lang/Object;)Lorg/fdroid/repo/AddRepoError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrorType ()Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public final fun getException ()Ljava/lang/Exception;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/AddRepoError$ErrorType : java/lang/Enum {
+	public static final field INVALID_FINGERPRINT Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static final field INVALID_INDEX Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static final field IO_ERROR Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static final field IS_ARCHIVE_REPO Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static final field UNKNOWN_SOURCES_DISALLOWED Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lorg/fdroid/repo/AddRepoError$ErrorType;
+	public static fun values ()[Lorg/fdroid/repo/AddRepoError$ErrorType;
+}
+
+public abstract class org/fdroid/repo/AddRepoState {
+}
+
+public final class org/fdroid/repo/Added : org/fdroid/repo/AddRepoState {
+	public fun <init> (Lorg/fdroid/database/Repository;Lorg/fdroid/index/IndexUpdateResult;)V
+	public final fun getRepo ()Lorg/fdroid/database/Repository;
+	public final fun getUpdateResult ()Lorg/fdroid/index/IndexUpdateResult;
+}
+
+public final class org/fdroid/repo/Adding : org/fdroid/repo/AddRepoState {
+	public static final field INSTANCE Lorg/fdroid/repo/Adding;
+}
+
+public abstract class org/fdroid/repo/FetchResult {
+}
+
+public final class org/fdroid/repo/FetchResult$IsExistingMirror : org/fdroid/repo/FetchResult {
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lorg/fdroid/repo/FetchResult$IsExistingMirror;
+	public static synthetic fun copy$default (Lorg/fdroid/repo/FetchResult$IsExistingMirror;JILjava/lang/Object;)Lorg/fdroid/repo/FetchResult$IsExistingMirror;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExistingRepoId ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/FetchResult$IsExistingRepository : org/fdroid/repo/FetchResult {
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lorg/fdroid/repo/FetchResult$IsExistingRepository;
+	public static synthetic fun copy$default (Lorg/fdroid/repo/FetchResult$IsExistingRepository;JILjava/lang/Object;)Lorg/fdroid/repo/FetchResult$IsExistingRepository;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExistingRepoId ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/FetchResult$IsNewMirror : org/fdroid/repo/FetchResult {
+	public fun <init> (J)V
+	public final fun copy (J)Lorg/fdroid/repo/FetchResult$IsNewMirror;
+	public static synthetic fun copy$default (Lorg/fdroid/repo/FetchResult$IsNewMirror;JILjava/lang/Object;)Lorg/fdroid/repo/FetchResult$IsNewMirror;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/FetchResult$IsNewRepoAndNewMirror : org/fdroid/repo/FetchResult {
+	public static final field INSTANCE Lorg/fdroid/repo/FetchResult$IsNewRepoAndNewMirror;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/FetchResult$IsNewRepository : org/fdroid/repo/FetchResult {
+	public static final field INSTANCE Lorg/fdroid/repo/FetchResult$IsNewRepository;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/Fetching : org/fdroid/repo/AddRepoState {
+	public fun <init> (Ljava/lang/String;Lorg/fdroid/database/Repository;Ljava/util/List;Lorg/fdroid/repo/FetchResult;Ljava/io/File;)V
+	public synthetic fun <init> (Ljava/lang/String;Lorg/fdroid/database/Repository;Ljava/util/List;Lorg/fdroid/repo/FetchResult;Ljava/io/File;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getApps ()Ljava/util/List;
+	public final fun getDone ()Z
+	public final fun getFetchResult ()Lorg/fdroid/repo/FetchResult;
+	public final fun getFetchUrl ()Ljava/lang/String;
+	public final fun getIndexFile ()Ljava/io/File;
+	public final fun getReceivedRepo ()Lorg/fdroid/database/Repository;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/fdroid/repo/None : org/fdroid/repo/AddRepoState {
+	public static final field INSTANCE Lorg/fdroid/repo/None;
+}
+
