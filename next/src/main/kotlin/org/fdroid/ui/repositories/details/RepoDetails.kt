@@ -51,7 +51,7 @@ import org.fdroid.ui.utils.getRepoDetailsInfo
 fun RepoDetails(
     info: RepoDetailsInfo,
     onShowAppsClicked: (String, Long) -> Unit,
-    onBack: () -> Unit,
+    onBackNav: (() -> Unit)?,
 ) {
     val context = LocalContext.current
     val repo = info.model.repo
@@ -91,7 +91,7 @@ fun RepoDetails(
     if (repo != null && deleteDialog) DeleteDialog({ deleteDialog = false }) {
         info.actions.deleteRepository()
         deleteDialog = false
-        onBack()
+        onBackNav?.invoke()
     }
     // Metered warning dialog
     val meteredLambda = showMeteredDialog
@@ -103,7 +103,7 @@ fun RepoDetails(
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                IconButton(onClick = onBack) {
+                if (onBackNav != null) IconButton(onClick = onBackNav) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.back),

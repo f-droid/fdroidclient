@@ -1,6 +1,5 @@
-package org.fdroid.ui.main.details
+package org.fdroid.ui.details
 
-import org.fdroid.ui.details.getHtmlDescription
 import org.junit.Test
 import kotlin.test.assertEquals
 

@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.navigation.NavigationKey
 
 @Composable
 fun CategoryList(

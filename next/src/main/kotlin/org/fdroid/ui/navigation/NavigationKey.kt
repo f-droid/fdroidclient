@@ -1,4 +1,4 @@
-package org.fdroid.ui
+package org.fdroid.ui.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
@@ -16,10 +16,16 @@ import org.fdroid.ui.lists.AppListType
 sealed interface NavigationKey : NavKey {
 
     @Serializable
-    data object Discover : NavigationKey
+    data object Discover : NavigationKey, MainNavKey {
+        override val label: Int = R.string.menu_discover
+        override val icon: ImageVector = Icons.Filled.Explore
+    }
 
     @Serializable
-    data object MyApps : NavigationKey
+    data object MyApps : NavigationKey, MainNavKey {
+        override val label: Int = R.string.menu_apps_my
+        override val icon: ImageVector = Icons.Filled.Apps
+    }
 
     @Serializable
     data class AppDetails(val packageName: String) : NavigationKey
@@ -44,18 +50,20 @@ sealed interface NavigationKey : NavKey {
 
 }
 
-enum class BottomNavDestinations(
-    val key: NavigationKey,
-    @StringRes val label: Int,
-    val icon: ImageVector,
-) {
-    DISCOVER(NavigationKey.Discover, R.string.menu_discover, Icons.Filled.Explore),
-    MY_APPS(NavigationKey.MyApps, R.string.menu_apps_my, Icons.Filled.Apps),
+sealed interface MainNavKey : NavKey {
+    @get:StringRes
+    val label: Int
+    val icon: ImageVector
 }
+
+val topLevelRoutes = listOf<MainNavKey>(
+    NavigationKey.Discover,
+    NavigationKey.MyApps,
+)
 
 sealed class NavDestinations(
     val id: NavigationKey,
-    @StringRes val label: Int,
+    @param:StringRes val label: Int,
     val icon: ImageVector,
 ) {
     object Repos :

@@ -64,10 +64,10 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.R
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.testApp

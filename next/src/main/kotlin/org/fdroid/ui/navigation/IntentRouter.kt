@@ -1,4 +1,4 @@
-package org.fdroid.ui
+package org.fdroid.ui.navigation
 
 import android.content.Intent
 import android.content.Intent.ACTION_MAIN
@@ -6,11 +6,9 @@ import android.content.Intent.ACTION_SHOW_APP_INFO
 import android.content.Intent.EXTRA_PACKAGE_NAME
 import android.os.Build.VERSION.SDK_INT
 import androidx.core.util.Consumer
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
 import mu.KotlinLogging
 
-class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Intent> {
+class IntentRouter(private val navigator: Navigator) : Consumer<Intent> {
     private val log = KotlinLogging.logger { }
     private val packageNameRegex = "[A-Za-z\\d_.]+".toRegex()
 
@@ -27,7 +25,7 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
         } else if (ACTION_SHOW_APP_INFO == intent.action) { // App Details
             val packageName = intent.getStringExtra(EXTRA_PACKAGE_NAME) ?: return
             if (packageName.matches(packageNameRegex)) {
-                backStack.add(NavigationKey.AppDetails(packageName))
+                navigator.navigate(NavigationKey.AppDetails(packageName))
             } else {
                 log.warn { "Malformed package name: $packageName" }
             }
@@ -36,27 +34,23 @@ class IntentRouter(private val backStack: NavBackStack<NavKey>) : Consumer<Inten
             if (uri.scheme == "market" && uri.host == "details") {
                 val packageName = uri.getQueryParameter("id") ?: return
                 if (packageName.matches(packageNameRegex)) {
-                    backStack.add(NavigationKey.AppDetails(packageName))
+                    navigator.navigate(NavigationKey.AppDetails(packageName))
                 } else {
                     log.warn { "Malformed package name: $packageName" }
                 }
             } else if (uri.path?.matches(packagesUrlRegex) == true) {
                 val packageName = uri.lastPathSegment ?: return
-                backStack.add(NavigationKey.AppDetails(packageName))
+                navigator.navigate(NavigationKey.AppDetails(packageName))
             } else if (uri.scheme == "fdroidrepos" ||
                 uri.scheme == "FDROIDREPOS" ||
                 (uri.scheme == "https" && uri.host == "fdroid.link")
             ) {
-                backStack.add(NavigationKey.AddRepo(uri.toString()))
+                navigator.navigate(NavigationKey.AddRepo(uri.toString()))
             }
         } else if (ACTION_MY_APPS == intent.action) {
-            val lastOnBackStack = backStack.lastOrNull()
+            val lastOnBackStack = navigator.last
             if (lastOnBackStack !is NavigationKey.MyApps) {
-                if (lastOnBackStack is NavigationKey.Discover) {
-                    // reset back stack when going to My Apps from Discover
-                    while (backStack.isNotEmpty()) backStack.removeLastOrNull()
-                }
-                backStack.add(NavigationKey.MyApps)
+                navigator.navigate(NavigationKey.MyApps)
             }
         } else {
             log.warn { "Unknown intent: $intent - uri: $uri $SDK_INT" }

@@ -255,8 +255,6 @@ private fun MyAppsListPreview() {
             myAppsInfo = getMyAppsInfo(myAppsModel),
             currentPackageName = null,
             onAppItemClick = {},
-            onNav = {},
-            isBigScreen = false,
         )
     }
 }

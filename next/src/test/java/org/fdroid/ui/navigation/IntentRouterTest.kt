@@ -1,13 +1,13 @@
-package org.fdroid.ui
+package org.fdroid.ui.navigation
 
 import android.content.Intent
 import android.content.Intent.ACTION_SHOW_APP_INFO
 import android.content.Intent.ACTION_VIEW
 import android.content.Intent.CATEGORY_BROWSABLE
 import android.content.Intent.EXTRA_PACKAGE_NAME
+import androidx.compose.runtime.mutableStateOf
 import androidx.core.net.toUri
 import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -18,8 +18,15 @@ import kotlin.test.assertEquals
 @RunWith(RobolectricTestRunner::class)
 class IntentRouterTest {
 
-    private val backstack: NavBackStack<NavKey> = NavBackStack()
-    private val intentRouter = IntentRouter(backstack)
+    val navigationState = NavigationState(
+        startRoute = NavigationKey.Discover,
+        topLevelRoute = mutableStateOf(NavigationKey.Discover),
+        backStacks = topLevelRoutes.associateWith { key ->
+            NavBackStack(key)
+        }
+    )
+    val navigator = Navigator(navigationState)
+    private val intentRouter = IntentRouter(navigator)
 
     @Test
     fun testBrowserUris() {
@@ -37,8 +44,7 @@ class IntentRouterTest {
                 data = url.toUri()
             }
             intentRouter.accept(i)
-            assertEquals(1, backstack.size)
-            assertEquals(NavigationKey.AppDetails(packageName), backstack.removeLastOrNull())
+            assertEquals(NavigationKey.AppDetails(packageName), navigator.last)
         }
     }
 
@@ -58,7 +64,7 @@ class IntentRouterTest {
                 data = url.toUri()
             }
             intentRouter.accept(i)
-            assertEquals(0, backstack.size)
+            assertEquals(NavigationKey.Discover, navigator.last)
         }
     }
 
@@ -70,8 +76,7 @@ class IntentRouterTest {
             putExtra(EXTRA_PACKAGE_NAME, packageName)
         }
         intentRouter.accept(i)
-        assertEquals(1, backstack.size)
-        assertEquals(NavigationKey.AppDetails(packageName), backstack.removeLastOrNull())
+        assertEquals(NavigationKey.AppDetails(packageName), navigator.last)
     }
 
     @Test
@@ -82,7 +87,7 @@ class IntentRouterTest {
             putExtra(EXTRA_PACKAGE_NAME, packageName)
         }
         intentRouter.accept(i)
-        assertEquals(0, backstack.size)
+        assertEquals(NavigationKey.Discover, navigator.last)
     }
 
     @Test
@@ -97,8 +102,7 @@ class IntentRouterTest {
                 data = uri.toUri()
             }
             intentRouter.accept(i)
-            assertEquals(1, backstack.size)
-            assertEquals(NavigationKey.AddRepo(uri), backstack.removeLastOrNull())
+            assertEquals(NavigationKey.AddRepo(uri), navigator.last)
         }
     }
 

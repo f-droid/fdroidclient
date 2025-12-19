@@ -43,22 +43,17 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.repo.RepoUpdateProgress
-import org.fdroid.ui.BottomBar
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.MainOverFlowMenu
-import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.categories.CategoryList
 import org.fdroid.ui.lists.AppListType
-import org.fdroid.ui.topBarMenuItems
+import org.fdroid.ui.navigation.NavigationKey
+import org.fdroid.ui.navigation.topBarMenuItems
 import org.fdroid.ui.utils.BigLoadingIndicator
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
     discoverModel: DiscoverModel,
-    numUpdates: Int,
-    hasIssues: Boolean,
-    isBigScreen: Boolean,
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
@@ -98,7 +93,7 @@ fun Discover(
                             contentDescription = stringResource(R.string.more),
                         )
                     }
-                    MainOverFlowMenu(menuExpanded, {
+                    DiscoverOverFlowMenu(menuExpanded, {
                         menuExpanded = false
                         onNav(it.id)
                     }) {
@@ -107,9 +102,6 @@ fun Discover(
                 },
                 scrollBehavior = scrollBehavior,
             )
-        },
-        bottomBar = {
-            if (!isBigScreen) BottomBar(numUpdates, hasIssues, NavigationKey.Discover, onNav)
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
@@ -222,9 +214,6 @@ fun FirstStartDiscoverPreview() {
                 NetworkState(true, isMetered = false),
                 RepoUpdateProgress(1, true, 0.25f),
             ),
-            numUpdates = 0,
-            hasIssues = false,
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -240,9 +229,6 @@ fun LoadingDiscoverPreview() {
     FDroidContent {
         Discover(
             discoverModel = LoadingDiscoverModel,
-            numUpdates = 23,
-            hasIssues = true,
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -258,9 +244,6 @@ private fun NoEnabledReposPreview() {
     FDroidContent {
         Discover(
             discoverModel = NoEnabledReposDiscoverModel,
-            numUpdates = 0,
-            hasIssues = true,
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},

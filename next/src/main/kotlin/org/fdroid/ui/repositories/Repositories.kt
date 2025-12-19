@@ -141,10 +141,12 @@ fun Repositories(
 )
 @Composable
 fun RepositoriesScaffoldLoadingPreview() {
-    FDroidContent {
-        val model = RepositoryModel(null, false, "never")
-        val info = getRepositoriesInfo(model)
-        Repositories(info) {}
+    HintHost {
+        FDroidContent {
+            val model = RepositoryModel(null, false, "never")
+            val info = getRepositoriesInfo(model)
+            Repositories(info) {}
+        }
     }
 }
 

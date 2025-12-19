@@ -39,15 +39,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
-import org.fdroid.ui.BottomBar
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.NavigationKey
 import org.fdroid.ui.lists.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.getMyAppsInfo
@@ -59,8 +56,6 @@ fun MyApps(
     myAppsInfo: MyAppsInfo,
     currentPackageName: String?,
     onAppItemClick: (String) -> Unit,
-    onNav: (NavKey) -> Unit,
-    isBigScreen: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val myAppsModel = myAppsInfo.model
@@ -158,14 +153,6 @@ fun MyApps(
                 scrollBehavior = scrollBehavior,
             )
         },
-        bottomBar = {
-            if (!isBigScreen) BottomBar(
-                numUpdates = updatableApps?.size ?: 0,
-                hasIssues = !myAppsModel.appsWithIssue.isNullOrEmpty(),
-                currentNavKey = NavigationKey.MyApps,
-                onNav = onNav,
-            )
-        },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
         val lazyListState = rememberLazyListState()
@@ -192,7 +179,7 @@ fun MyApps(
                 currentPackageName = currentPackageName,
                 lazyListState = lazyListState,
                 onAppItemClick = onAppItemClick,
-                modifier = modifier.padding(paddingValues),
+                modifier = Modifier.padding(paddingValues),
             )
         }
     }
@@ -213,8 +200,6 @@ fun MyAppsLoadingPreview() {
             myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
-            onNav = {},
-            isBigScreen = false,
         )
     }
 }
@@ -228,8 +213,6 @@ fun MyAppsPreview() {
             myAppsInfo = getMyAppsInfo(myAppsModel),
             currentPackageName = null,
             onAppItemClick = {},
-            onNav = {},
-            isBigScreen = false,
         )
     }
 }

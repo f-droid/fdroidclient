@@ -39,7 +39,6 @@ import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.utils.normalize
-import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 import java.text.Collator
 import java.util.Locale
@@ -51,7 +50,6 @@ class DiscoverViewModel @Inject constructor(
     private val app: Application,
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
-    updatesManager: UpdatesManager,
     networkMonitor: NetworkMonitor,
     private val settingsManager: SettingsManager,
     private val repoManager: RepoManager,
@@ -65,8 +63,6 @@ class DiscoverViewModel @Inject constructor(
         CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
     private val collator = Collator.getInstance(Locale.getDefault())
 
-    val numUpdates = updatesManager.numUpdates
-    val hasAppIssues = updatesManager.appsWithIssues.map { !it.isNullOrEmpty() }
     private val newApps = db.getAppDao().getNewAppsFlow().map { list ->
         val proxyConfig = settingsManager.proxyConfig
         list.mapNotNull {

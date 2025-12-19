@@ -1,4 +1,4 @@
-package org.fdroid.ui
+package org.fdroid.ui.discover
 
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -9,9 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
+import org.fdroid.ui.navigation.NavDestinations
+import org.fdroid.ui.navigation.moreMenuItems
 
 @Composable
-fun MainOverFlowMenu(
+fun DiscoverOverFlowMenu(
     menuExpanded: Boolean,
     onItemClicked: (NavDestinations) -> Unit,
     onDismissRequest: () -> Unit,
