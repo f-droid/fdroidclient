@@ -14,8 +14,6 @@
     <string name="first_start_metered">However, you are on mobile data and we\'ll need to download more than 10 MB. Tap the button below when ready to download.</string>
     <string name="first_start_button">Download app repository</string>
     <string name="no_repos_enabled">No repositories enabled.\nEnable or add at least one repository to see apps.</string>
-    <string name="no_app_selected">No app selected</string>
-    <string name="no_repository_selected">No repository selected</string>
 
     <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>

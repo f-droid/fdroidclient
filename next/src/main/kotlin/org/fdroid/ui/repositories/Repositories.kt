@@ -47,6 +47,7 @@ import org.fdroid.ui.utils.repoItems
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Repositories(
     info: RepositoryInfo,
+    isBigScreen: Boolean,
     onBackClicked: () -> Unit,
 ) {
     val hintController = rememberHintController(
@@ -68,7 +69,7 @@ fun Repositories(
     }
     val hintAnchor = rememberHintAnchorState(hint)
     LaunchedEffect(info.model.showOnboarding) {
-        if (info.model.showOnboarding) {
+        if (!isBigScreen && info.model.showOnboarding) {
             hintController.show(hintAnchor)
             info.onOnboardingSeen()
         }
@@ -145,7 +146,7 @@ fun RepositoriesScaffoldLoadingPreview() {
         FDroidContent {
             val model = RepositoryModel(null, false, "never")
             val info = getRepositoriesInfo(model)
-            Repositories(info) {}
+            Repositories(info, true) {}
         }
     }
 }
@@ -160,7 +161,7 @@ private fun RepositoriesScaffoldPreview() {
         FDroidContent {
             val model = RepositoryModel(repoItems, false, "42min. ago")
             val info = getRepositoriesInfo(model, repoItems[0].repoId)
-            Repositories(info) { }
+            Repositories(info, true) { }
         }
     }
 }

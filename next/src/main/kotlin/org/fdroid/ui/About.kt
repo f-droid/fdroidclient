@@ -40,12 +40,12 @@ import org.fdroid.ui.utils.openUriSafe
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun About(onBackClicked: () -> Unit) {
+fun About(onBackClicked: (() -> Unit)?) {
     Scaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
+                    if (onBackClicked != null) IconButton(onClick = onBackClicked) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Default.ArrowBack,
                             contentDescription = stringResource(R.string.back),
@@ -66,37 +66,7 @@ fun About(onBackClicked: () -> Unit) {
                 .verticalScroll(scrollableState)
         ) {
             AboutHeader(modifier = Modifier.padding(top = 32.dp))
-            SelectionContainer {
-                Text(
-                    text = stringResource(R.string.about_text),
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(top = 24.dp),
-                )
-            }
-            Column(modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)) {
-                val uriHandler = LocalUriHandler.current
-                Text(
-                    text = stringResource(R.string.links),
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-                Text(
-                    text = stringResource(R.string.menu_website),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier
-                        .padding(top = 4.dp)
-                        .clickable { uriHandler.openUriSafe("https://f-droid.org") }
-                )
-                Text(
-                    text = stringResource(R.string.about_source),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier
-                        .padding(top = 4.dp)
-                        .clickable { uriHandler.openUriSafe("https://gitlab.com/fdroid") }
-                )
-            }
+            AboutContent()
             Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
         }
     }
@@ -122,6 +92,41 @@ fun AboutHeader(modifier: Modifier = Modifier) {
                     .alpha(0.75f)
             )
         }
+    }
+}
+
+@Composable
+fun AboutContent() {
+    SelectionContainer {
+        Text(
+            text = stringResource(R.string.about_text),
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(top = 24.dp),
+        )
+    }
+    Column(modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)) {
+        val uriHandler = LocalUriHandler.current
+        Text(
+            text = stringResource(R.string.links),
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.bodyLarge,
+        )
+        Text(
+            text = stringResource(R.string.menu_website),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .clickable { uriHandler.openUriSafe("https://f-droid.org") }
+        )
+        Text(
+            text = stringResource(R.string.about_source),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .clickable { uriHandler.openUriSafe("https://gitlab.com/fdroid") }
+        )
     }
 }
 

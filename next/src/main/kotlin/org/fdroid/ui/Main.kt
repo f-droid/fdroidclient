@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
@@ -22,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -31,7 +29,6 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.viktormykhailiv.compose.hints.HintHost
-import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
@@ -41,6 +38,7 @@ import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsViewModel
 import org.fdroid.ui.details.AppDetails
 import org.fdroid.ui.details.AppDetailsViewModel
+import org.fdroid.ui.details.NoAppSelected
 import org.fdroid.ui.discover.Discover
 import org.fdroid.ui.discover.DiscoverViewModel
 import org.fdroid.ui.lists.AppList
@@ -57,6 +55,7 @@ import org.fdroid.ui.navigation.Navigator
 import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
+import org.fdroid.ui.repositories.NoRepoSelected
 import org.fdroid.ui.repositories.Repositories
 import org.fdroid.ui.repositories.RepositoriesViewModel
 import org.fdroid.ui.repositories.RepositoryInfo
@@ -98,7 +97,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
         entry<NavigationKey.Discover>(
             metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                Text(stringResource(R.string.no_app_selected))
+                NoAppSelected()
             },
         ) {
             val viewModel = hiltViewModel<DiscoverViewModel>()
@@ -122,9 +121,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             )
         }
         entry<NavigationKey.MyApps>(
-            metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                Text(stringResource(R.string.no_app_selected))
-            },
+            metadata = ListDetailSceneStrategy.listPane("appdetails"),
         ) {
             val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
             val myAppsInfo = object : MyAppsInfo {
@@ -176,9 +173,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
             )
         }
         entry<NavigationKey.AppList>(
-            metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                Text(stringResource(R.string.no_app_selected))
-            },
+            metadata = ListDetailSceneStrategy.listPane("appdetails"),
         ) {
             val viewModel = hiltViewModel<AppListViewModel, AppListViewModel.Factory>(
                 creationCallback = { factory ->
@@ -211,7 +206,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         }
         entry<NavigationKey.Repos>(
             metadata = ListDetailSceneStrategy.listPane("repos") {
-                Text(text = stringResource(R.string.no_repository_selected))
+                NoRepoSelected()
             },
         ) {
             val viewModel = hiltViewModel<RepositoriesViewModel>()
@@ -250,7 +245,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     toRepoId: Long,
                 ) = viewModel.onRepositoriesFinishedMoving(fromRepoId, toRepoId)
             }
-            Repositories(info) {
+            Repositories(info, isBigScreen) {
                 navigator.goBack()
             }
         }
@@ -314,8 +309,15 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 onBackClicked = { navigator.goBack() },
             )
         }
-        entry(NavigationKey.About) {
-            About { navigator.goBack() }
+        entry(
+            key = NavigationKey.About,
+            metadata = ListDetailSceneStrategy.detailPane("appdetails"),
+        ) {
+            About(
+                onBackClicked = if (isBigScreen) null else {
+                    { navigator.goBack() }
+                },
+            )
         }
     }
     val viewModel = hiltViewModel<MainViewModel>()
