@@ -53,11 +53,11 @@ fun RepoDetailsHeader(
     } else {
         repo.timestamp.asRelativeTimeString()
     }
-    val lastIndexUpdate = stringResource(R.string.repo_last_update_upstream, lastIndexTime)
+    val lastPublishedTime = stringResource(R.string.repo_last_update_upstream, lastIndexTime)
 
-    val lastUpdatedTime = repo.lastUpdated?.asRelativeTimeString()
+    val lastDownloadedTime = repo.lastUpdated?.asRelativeTimeString()
         ?: stringResource(R.string.repositories_last_update_never)
-    val lastUpdated = stringResource(R.string.last_updated, lastUpdatedTime)
+    val lastUpdated = stringResource(R.string.repo_last_update_downloaded, lastDownloadedTime)
 
     Column(
         verticalArrangement = spacedBy(8.dp),
@@ -90,7 +90,7 @@ fun RepoDetailsHeader(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = lastIndexUpdate,
+                    text = lastPublishedTime,
                     style = MaterialTheme.typography.bodySmall,
                 )
                 Text(

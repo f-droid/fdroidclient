@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.ui.utils.asRelativeTimeString
 
 @Composable
@@ -14,6 +15,7 @@ fun RepositoriesPresenter(
     repoSortingMapFlow: StateFlow<Map<Long, Int>>,
     showOnboardingFlow: StateFlow<Boolean>,
     lastUpdateFlow: StateFlow<Long>,
+    networkStateFlow: StateFlow<NetworkState>,
 ): RepositoryModel {
     val repositories = repositoriesFlow.collectAsState().value
     val repoSortingMap = repoSortingMapFlow.collectAsState().value
@@ -27,6 +29,7 @@ fun RepositoriesPresenter(
             context.getString(R.string.repositories_last_update_never)
         } else {
             lastUpdated.asRelativeTimeString()
-        }
+        },
+        networkState = networkStateFlow.collectAsState().value,
     )
 }

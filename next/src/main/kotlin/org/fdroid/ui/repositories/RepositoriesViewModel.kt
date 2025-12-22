@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.database.Repository
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
@@ -29,6 +30,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RepositoriesViewModel @Inject constructor(
     app: Application,
+    networkMonitor: NetworkMonitor,
     private val repoManager: RepoManager,
     private val updateManager: UpdatesManager,
     private val settingsManager: SettingsManager,
@@ -61,6 +63,7 @@ class RepositoriesViewModel @Inject constructor(
                 repoSortingMapFlow = repoSortingMap,
                 showOnboardingFlow = showOnboarding,
                 lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
+                networkStateFlow = networkMonitor.networkState,
             )
         }
     }

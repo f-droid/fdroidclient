@@ -36,6 +36,7 @@ import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
@@ -144,7 +145,12 @@ fun Repositories(
 fun RepositoriesScaffoldLoadingPreview() {
     HintHost {
         FDroidContent {
-            val model = RepositoryModel(null, false, "never")
+            val model = RepositoryModel(
+                repositories = null,
+                showOnboarding = false,
+                lastCheckForUpdate = "never",
+                networkState = NetworkState(isOnline = true, isMetered = false),
+            )
             val info = getRepositoriesInfo(model)
             Repositories(info, true) {}
         }
@@ -159,7 +165,12 @@ fun RepositoriesScaffoldLoadingPreview() {
 private fun RepositoriesScaffoldPreview() {
     HintHost {
         FDroidContent {
-            val model = RepositoryModel(repoItems, false, "42min. ago")
+            val model = RepositoryModel(
+                repositories = repoItems,
+                showOnboarding = false,
+                lastCheckForUpdate = "42min. ago",
+                networkState = NetworkState(isOnline = true, isMetered = false),
+            )
             val info = getRepositoriesInfo(model, repoItems[0].repoId)
             Repositories(info, true) { }
         }

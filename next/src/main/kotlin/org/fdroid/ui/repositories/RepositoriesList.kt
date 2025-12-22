@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.ui.utils.DraggableItem
+import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.dragContainer
 import org.fdroid.ui.utils.rememberDragDropState
 
@@ -39,6 +40,7 @@ fun RepositoriesList(
 ) {
     val repositories = info.model.repositories ?: return
     var showDisableRepoDialog by remember { mutableStateOf<Long?>(null) }
+    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
     val currentRepositoryId = info.currentRepositoryId
     val dragDropState = rememberDragDropState(
         lazyListState = listState,
@@ -89,7 +91,9 @@ fun RepositoriesList(
                     isSelected = isSelected,
                     onRepoEnabled = { enabled ->
                         if (enabled) {
-                            info.onRepositoryEnabled(repoItem.repoId, true)
+                            if (info.model.networkState.isMetered) showMeteredDialog = {
+                                info.onRepositoryEnabled(repoItem.repoId, true)
+                            } else info.onRepositoryEnabled(repoItem.repoId, true)
                         } else {
                             showDisableRepoDialog = repoItem.repoId
                         }
@@ -135,4 +139,11 @@ fun RepositoriesList(
             }
         )
     }
+    // Metered warning dialog
+    val meteredLambda = showMeteredDialog
+    if (meteredLambda != null) MeteredConnectionDialog(
+        numBytes = null,
+        onConfirm = { meteredLambda() },
+        onDismiss = { showMeteredDialog = null },
+    )
 }

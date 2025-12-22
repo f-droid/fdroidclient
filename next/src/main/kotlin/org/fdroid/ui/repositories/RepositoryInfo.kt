@@ -1,5 +1,7 @@
 package org.fdroid.ui.repositories
 
+import org.fdroid.download.NetworkState
+
 interface RepositoryInfo {
     val model: RepositoryModel
     val currentRepositoryId: Long?
@@ -15,4 +17,5 @@ data class RepositoryModel(
     val repositories: List<RepositoryItem>?,
     val showOnboarding: Boolean,
     val lastCheckForUpdate: String,
+    val networkState: NetworkState,
 )
