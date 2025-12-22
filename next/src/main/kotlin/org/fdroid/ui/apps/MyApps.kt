@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
@@ -108,7 +108,7 @@ fun MyApps(
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
                     IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
                         Icon(
-                            imageVector = Icons.Default.MoreVert,
+                            imageVector = Icons.AutoMirrored.Default.Sort,
                             contentDescription = stringResource(R.string.more),
                         )
                     }
