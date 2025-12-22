@@ -1,17 +1,14 @@
 package org.fdroid.ui.lists
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.plus
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -158,9 +155,7 @@ fun AppList(
             LazyListState()
         }
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             val apps = appListInfo.model.apps
             if (apps == null) BigLoadingIndicator()
@@ -170,12 +165,13 @@ fun AppList(
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxSize()
+                        .padding(paddingValues)
                         .padding(16.dp),
                 )
             } else LazyColumn(
                 state = listState,
-                contentPadding = PaddingValues(vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = paddingValues + PaddingValues(top = 8.dp),
+                verticalArrangement = spacedBy(8.dp),
                 modifier = Modifier.then(
                     if (currentPackageName == null) Modifier
                     else Modifier.selectableGroup()
@@ -202,9 +198,6 @@ fun AppList(
                             .padding(horizontal = 8.dp)
                             .then(interactionModifier)
                     )
-                }
-                item(contentType = "S") {
-                    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
                 }
             }
             // Bottom Sheet

@@ -179,7 +179,7 @@ fun MyApps(
                 currentPackageName = currentPackageName,
                 lazyListState = lazyListState,
                 onAppItemClick = onAppItemClick,
-                modifier = Modifier.padding(paddingValues),
+                paddingValues = paddingValues,
             )
         }
     }

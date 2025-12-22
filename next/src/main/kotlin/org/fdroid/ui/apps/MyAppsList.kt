@@ -3,6 +3,7 @@ package org.fdroid.ui.apps
 import androidx.annotation.RestrictTo
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -37,6 +38,7 @@ fun MyAppsList(
     currentPackageName: String?,
     lazyListState: LazyListState,
     onAppItemClick: (String) -> Unit,
+    paddingValues: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
     val updatableApps = myAppsInfo.model.appUpdates
@@ -51,6 +53,7 @@ fun MyAppsList(
     var showIssueIgnoreDialog by remember { mutableStateOf<AppWithIssueItem?>(null) }
     LazyColumn(
         state = lazyListState,
+        contentPadding = paddingValues,
         modifier = modifier
             .then(
                 if (currentPackageName == null) Modifier

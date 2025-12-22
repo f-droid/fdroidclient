@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -131,8 +132,10 @@ fun Repositories(
         else RepositoriesList(
             info = info,
             listState = listState,
+            // we split up top and bottom padding to not cause bugs with list drag and drop
+            paddingValues = PaddingValues(bottom = paddingValues.calculateBottomPadding()),
             modifier = Modifier
-                .padding(paddingValues),
+                .padding(top = paddingValues.calculateTopPadding()),
         )
     }
 }
