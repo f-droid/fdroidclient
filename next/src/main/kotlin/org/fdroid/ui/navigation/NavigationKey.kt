@@ -1,5 +1,6 @@
 package org.fdroid.ui.navigation
 
+import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apps
@@ -72,6 +73,12 @@ sealed class NavDestinations(
     object Settings :
         NavDestinations(NavigationKey.Settings, R.string.menu_settings, Icons.Filled.Settings)
 
+    class AllApps(title: String) : NavDestinations(
+        id = NavigationKey.AppList(AppListType.All(title)),
+        label = R.string.app_list_all,
+        icon = Icons.Filled.Apps,
+    )
+
     object About : NavDestinations(NavigationKey.About, R.string.menu_about, Icons.Filled.Info)
 }
 
@@ -80,6 +87,7 @@ val topBarMenuItems = listOf(
     NavDestinations.Settings,
 )
 
-val moreMenuItems = listOf(
+fun getMoreMenuItems(context: Context) = listOf(
+    NavDestinations.AllApps(context.getString(R.string.app_list_all)),
     NavDestinations.About,
 )

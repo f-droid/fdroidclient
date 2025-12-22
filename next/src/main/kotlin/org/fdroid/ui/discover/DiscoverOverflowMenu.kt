@@ -6,11 +6,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import org.fdroid.ui.navigation.NavDestinations
-import org.fdroid.ui.navigation.moreMenuItems
+import org.fdroid.ui.navigation.getMoreMenuItems
 
 @Composable
 fun DiscoverOverFlowMenu(
@@ -22,7 +23,7 @@ fun DiscoverOverFlowMenu(
         expanded = menuExpanded,
         onDismissRequest = onDismissRequest
     ) {
-        moreMenuItems.forEach { dest ->
+        getMoreMenuItems(LocalContext.current).forEach { dest ->
             DropdownMenuItem(
                 text = { Text(stringResource(dest.label)) },
                 onClick = { onItemClicked(dest) },
