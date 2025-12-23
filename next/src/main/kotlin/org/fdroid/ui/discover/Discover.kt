@@ -52,6 +52,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
     discoverModel: DiscoverModel,
+    isBigScreen: Boolean,
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
@@ -124,10 +125,9 @@ fun Discover(
                         searchResults = discoverModel.searchResults,
                         onSearch = onSearch,
                         onNav = {
-                            scope.launch {
-                                // workaround for crash when navigating back:
-                                // IllegalStateException: LayoutCoordinate operations are only valid
-                                // when isAttached is true
+                            // workaround for search taking up entire screen
+                            // still a bit buggy though
+                            if (isBigScreen) scope.launch {
                                 searchBarState.animateToCollapsed()
                             }
                             onNav(it)
@@ -201,6 +201,7 @@ fun FirstStartDiscoverPreview() {
                 NetworkState(true, isMetered = false),
                 RepoUpdateProgress(1, true, 0.25f),
             ),
+            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -216,6 +217,7 @@ fun LoadingDiscoverPreview() {
     FDroidContent {
         Discover(
             discoverModel = LoadingDiscoverModel,
+            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -231,6 +233,7 @@ private fun NoEnabledReposPreview() {
     FDroidContent {
         Discover(
             discoverModel = NoEnabledReposDiscoverModel,
+            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
