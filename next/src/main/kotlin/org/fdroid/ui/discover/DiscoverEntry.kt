@@ -13,7 +13,6 @@ import org.fdroid.ui.navigation.Navigator
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.discoverEntry(
     navigator: Navigator,
-    isBigScreen: Boolean,
 ) {
     entry<NavigationKey.Discover>(
         metadata = ListDetailSceneStrategy.listPane("appdetails") {
@@ -23,7 +22,6 @@ fun EntryProviderScope<NavKey>.discoverEntry(
         val viewModel = hiltViewModel<DiscoverViewModel>()
         Discover(
             discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
-            isBigScreen = isBigScreen,
             onListTap = {
                 navigator.navigate(NavigationKey.AppList(it))
             },

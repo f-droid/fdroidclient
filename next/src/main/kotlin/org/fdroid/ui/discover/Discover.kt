@@ -1,11 +1,7 @@
 package org.fdroid.ui.discover
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -27,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,12 +32,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
-import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.categories.CategoryList
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.topBarMenuItems
@@ -52,7 +45,6 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
     discoverModel: DiscoverModel,
-    isBigScreen: Boolean,
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
@@ -104,89 +96,43 @@ fun Discover(
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        val scope = rememberCoroutineScope()
-        Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .focusable() // workaround for https://issuetracker.google.com/issues/445720462
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(paddingValues)
-        ) {
-            when (discoverModel) {
-                is FirstStartDiscoverModel -> FirstStart(
-                    networkState = discoverModel.networkState,
-                    repoUpdateState = discoverModel.repoUpdateState,
+        when (discoverModel) {
+            is FirstStartDiscoverModel -> FirstStart(
+                networkState = discoverModel.networkState,
+                repoUpdateState = discoverModel.repoUpdateState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
+            )
+            is LoadingDiscoverModel -> BigLoadingIndicator(Modifier.padding(paddingValues))
+            is LoadedDiscoverModel -> {
+                DiscoverContent(
+                    discoverModel = discoverModel,
+                    searchBarState = searchBarState,
+                    onSearch = onSearch,
+                    onSearchCleared = onSearchCleared,
+                    onListTap = onListTap,
+                    onAppTap = onAppTap,
+                    onNav = onNav,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(paddingValues),
                 )
-                is LoadingDiscoverModel -> BigLoadingIndicator()
-                is LoadedDiscoverModel -> {
-                    AppsSearch(
-                        searchBarState = searchBarState,
-                        searchResults = discoverModel.searchResults,
-                        onSearch = onSearch,
-                        onNav = {
-                            // workaround for search taking up entire screen
-                            // still a bit buggy though
-                            if (isBigScreen) scope.launch {
-                                searchBarState.animateToCollapsed()
-                            }
-                            onNav(it)
-                        },
-                        onSearchCleared = onSearchCleared,
-                        modifier = Modifier
-                            .padding(top = 16.dp, bottom = 4.dp)
-                            .padding(horizontal = 16.dp)
-                            .align(Alignment.CenterHorizontally),
-                    )
-                    if (discoverModel.newApps.isNotEmpty()) {
-                        val listNew = AppListType.New(stringResource(R.string.app_list_new))
-                        AppCarousel(
-                            title = listNew.title,
-                            apps = discoverModel.newApps,
-                            onTitleTap = { onListTap(listNew) },
-                            onAppTap = onAppTap,
-                        )
-                    }
-                    val listRecentlyUpdated = AppListType.RecentlyUpdated(
-                        stringResource(R.string.app_list_recently_updated),
-                    )
-                    AppCarousel(
-                        title = listRecentlyUpdated.title,
-                        apps = discoverModel.recentlyUpdatedApps,
-                        onTitleTap = { onListTap(listRecentlyUpdated) },
-                        onAppTap = onAppTap,
-                    )
-                    if (!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
-                        val listMostDownloaded = AppListType.MostDownloaded(
-                            stringResource(R.string.app_list_most_downloaded),
-                        )
-                        AppCarousel(
-                            title = listMostDownloaded.title,
-                            apps = discoverModel.mostDownloadedApps,
-                            onTitleTap = { onListTap(listMostDownloaded) },
-                            onAppTap = onAppTap,
-                        )
-                    }
-                }
-                NoEnabledReposDiscoverModel -> {
+            }
+            NoEnabledReposDiscoverModel -> {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = modifier
+                        .fillMaxSize()
+                        .padding(paddingValues)
+                ) {
                     Text(
                         text = stringResource(R.string.no_repos_enabled),
                         textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(horizontal = 16.dp, vertical = 64.dp)
+                        modifier = Modifier.padding(16.dp)
                     )
                 }
-            }
-            AnimatedVisibility(discoverModel is LoadedDiscoverModel) {
-                CategoryList(
-                    categoryMap = (discoverModel as LoadedDiscoverModel).categories,
-                    onNav = onNav,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 16.dp)
-                        .fillMaxWidth()
-                )
             }
         }
     }
@@ -201,7 +147,6 @@ fun FirstStartDiscoverPreview() {
                 NetworkState(true, isMetered = false),
                 RepoUpdateProgress(1, true, 0.25f),
             ),
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -217,7 +162,6 @@ fun LoadingDiscoverPreview() {
     FDroidContent {
         Discover(
             discoverModel = LoadingDiscoverModel,
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},
@@ -233,7 +177,6 @@ private fun NoEnabledReposPreview() {
     FDroidContent {
         Discover(
             discoverModel = NoEnabledReposDiscoverModel,
-            isBigScreen = false,
             onSearch = {},
             onSearchCleared = {},
             onListTap = {},

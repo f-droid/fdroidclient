@@ -14,8 +14,10 @@ import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExpandedDockedSearchBar
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +26,7 @@ import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
 import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -34,6 +37,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
@@ -50,7 +54,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 const val SEARCH_THRESHOLD = 2
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun AppsSearch(
     searchBarState: SearchBarState,
     searchResults: SearchResults?,
@@ -90,20 +94,18 @@ fun AppsSearch(
     val listState = rememberSaveable(searchResults, saver = LazyListState.Saver) {
         LazyListState(0, 0)
     }
-    ExpandedFullScreenSearchBar(
-        state = searchBarState,
-        inputField = {
-            AppSearchInputField(
-                searchBarState = searchBarState,
-                textFieldState = textFieldState,
-                onSearch = onSearch,
-                onSearchCleared = {
-                    textFieldState.setTextAndPlaceCursorAtEnd("")
-                    onSearchCleared()
-                },
-            )
-        },
-    ) {
+    val inputField = @Composable {
+        AppSearchInputField(
+            searchBarState = searchBarState,
+            textFieldState = textFieldState,
+            onSearch = onSearch,
+            onSearchCleared = {
+                textFieldState.setTextAndPlaceCursorAtEnd("")
+                onSearchCleared()
+            },
+        )
+    }
+    val results = @Composable {
         if (searchResults == null) {
             if (textFieldState.text.length >= SEARCH_THRESHOLD) BigLoadingIndicator()
         } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {
@@ -167,6 +169,20 @@ fun AppsSearch(
                 }
             }
         }
+    }
+    val windowAdaptiveInfo = currentWindowAdaptiveInfo()
+    val isBigScreen =
+        windowAdaptiveInfo.windowSizeClass.isWidthAtLeastBreakpoint(WIDTH_DP_MEDIUM_LOWER_BOUND)
+    if (isBigScreen) {
+        ExpandedDockedSearchBar(
+            state = searchBarState,
+            inputField = inputField,
+        ) { results() }
+    } else {
+        ExpandedFullScreenSearchBar(
+            state = searchBarState,
+            inputField = inputField,
+        ) { results() }
     }
 }
 

@@ -71,7 +71,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
     val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
-        discoverEntry(navigator, isBigScreen)
+        discoverEntry(navigator)
         myAppsEntry(navigator, isBigScreen)
         appDetailsEntry(navigator, isBigScreen)
         appListEntry(navigator, isBigScreen)

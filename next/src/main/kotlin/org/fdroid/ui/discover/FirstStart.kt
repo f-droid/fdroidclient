@@ -1,8 +1,9 @@
 package org.fdroid.ui.discover
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.Arrangement.Center
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,7 +38,11 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun ColumnScope.FirstStart(networkState: NetworkState, repoUpdateState: RepoUpdateState?) {
+fun FirstStart(
+    networkState: NetworkState,
+    repoUpdateState: RepoUpdateState?,
+    modifier: Modifier = Modifier,
+) {
     val context = LocalContext.current
     var override by rememberSaveable { mutableStateOf(false) }
     // reset override on error, so user can press button again for re-try
@@ -47,73 +52,75 @@ fun ColumnScope.FirstStart(networkState: NetworkState, repoUpdateState: RepoUpda
         ) override = false
         // TODO it would be nice to surface normal update errors better and also let the user retry
     }
-    if ((!networkState.isOnline || networkState.isMetered) && !override) {
-        // offline or metered, not overridden
-        val res = if (networkState.isMetered) {
-            stringResource(R.string.first_start_metered)
+    Column(verticalArrangement = Center, modifier = modifier) {
+        if ((!networkState.isOnline || networkState.isMetered) && !override) {
+            // offline or metered, not overridden
+            val res = if (networkState.isMetered) {
+                stringResource(R.string.first_start_metered)
+            } else {
+                stringResource(R.string.first_start_offline)
+            }
+            Text(
+                text = stringResource(R.string.first_start_intro),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            )
+            Text(
+                text = res,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            )
+            Button(
+                onClick = { override = true },
+                modifier = Modifier.align(CenterHorizontally),
+            ) {
+                Text(stringResource(R.string.first_start_button))
+            }
         } else {
-            stringResource(R.string.first_start_offline)
-        }
-        Text(
-            text = stringResource(R.string.first_start_intro),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
+            // happy path or user set override
+            LaunchedEffect(Unit) {
+                RepoUpdateWorker.updateNow(context)
+            }
+            Text(
+                text = stringResource(R.string.first_start_loading),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            )
+            // use thicker stroke for larger circle
+            val stroke = Stroke(
+                width = with(LocalDensity.current) {
+                    6.dp.toPx()
+                },
+                cap = StrokeCap.Round,
+            )
+            val progressModifier = Modifier
                 .padding(16.dp)
-                .fillMaxWidth()
-        )
-        Text(
-            text = res,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        )
-        Button(
-            onClick = { override = true },
-            modifier = Modifier.align(CenterHorizontally),
-        ) {
-            Text(stringResource(R.string.first_start_button))
-        }
-    } else {
-        // happy path or user set override
-        LaunchedEffect(Unit) {
-            RepoUpdateWorker.updateNow(context)
-        }
-        Text(
-            text = stringResource(R.string.first_start_loading),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        )
-        // use thicker stroke for larger circle
-        val stroke = Stroke(
-            width = with(LocalDensity.current) {
-                6.dp.toPx()
-            },
-            cap = StrokeCap.Round,
-        )
-        val progressModifier = Modifier
-            .padding(16.dp)
-            .size(128.dp)
-            .align(CenterHorizontally)
-        // show indeterminate circle if we don't have any progress (may take a bit to start)
-        val progress = (repoUpdateState as? RepoUpdateProgress)?.progress ?: 0f
-        if (progress == 0f) CircularWavyProgressIndicator(
-            wavelength = 24.dp,
-            stroke = stroke,
-            trackStroke = stroke,
-            modifier = progressModifier,
-        ) else {
-            // animate real progress (download and DB insertion)
-            val animatedProgress by animateFloatAsState(targetValue = progress)
-            CircularWavyProgressIndicator(
-                progress = { animatedProgress },
+                .size(128.dp)
+                .align(CenterHorizontally)
+            // show indeterminate circle if we don't have any progress (may take a bit to start)
+            val progress = (repoUpdateState as? RepoUpdateProgress)?.progress ?: 0f
+            if (progress == 0f) CircularWavyProgressIndicator(
                 wavelength = 24.dp,
                 stroke = stroke,
                 trackStroke = stroke,
                 modifier = progressModifier,
-            )
+            ) else {
+                // animate real progress (download and DB insertion)
+                val animatedProgress by animateFloatAsState(targetValue = progress)
+                CircularWavyProgressIndicator(
+                    progress = { animatedProgress },
+                    wavelength = 24.dp,
+                    stroke = stroke,
+                    trackStroke = stroke,
+                    modifier = progressModifier,
+                )
+            }
         }
     }
 }
@@ -145,7 +152,8 @@ private fun UpdatePreview() {
         Column {
             FirstStart(
                 networkState = NetworkState(isOnline = true, isMetered = false),
-                repoUpdateState = RepoUpdateProgress(1L, false, 0.5f)
+                repoUpdateState = RepoUpdateProgress(1L, false, 0.5f),
+                modifier = Modifier.fillMaxSize(),
             )
         }
     }
