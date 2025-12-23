@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -45,7 +46,7 @@ fun NoRepoSelected() {
             )
             Text(
                 text = stringResource(R.string.repo_list_info_text),
-                modifier = Modifier.fillMaxSize(fraction = 0.7f)
+                modifier = Modifier.fillMaxWidth(fraction = 0.7f)
             )
         }
     }

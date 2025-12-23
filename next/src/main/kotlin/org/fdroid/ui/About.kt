@@ -2,36 +2,51 @@ package org.fdroid.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.Forum
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MonetizationOn
+import androidx.compose.material.icons.filled.Translate
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.BuildConfig.VERSION_NAME
@@ -41,6 +56,7 @@ import org.fdroid.ui.utils.openUriSafe
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun About(onBackClicked: (() -> Unit)?) {
+    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold(
         topBar = {
             TopAppBar(
@@ -55,33 +71,46 @@ fun About(onBackClicked: (() -> Unit)?) {
                 title = {
                     Text(stringResource(R.string.about_title_full))
                 },
+                scrollBehavior = scrollBehavior,
             )
         },
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        val scrollableState = rememberScrollState()
+        AboutContent(Modifier.fillMaxSize(), paddingValues)
+    }
+}
+
+@Composable
+fun AboutContent(modifier: Modifier = Modifier, paddingValues: PaddingValues = PaddingValues()) {
+    val scrollableState = rememberScrollState()
+    Box(
+        modifier = modifier.verticalScroll(scrollableState)
+    ) {
         Column(
+            verticalArrangement = spacedBy(8.dp),
             modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .padding(top = paddingValues.calculateTopPadding())
-                .verticalScroll(scrollableState)
+                .padding(paddingValues)
+                .padding(16.dp)
         ) {
-            AboutHeader(modifier = Modifier.padding(top = 32.dp))
-            AboutContent()
-            Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
+            AboutHeader()
+            AboutText()
         }
     }
 }
 
 @Composable
-fun AboutHeader(modifier: Modifier = Modifier) {
+private fun AboutHeader(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.fillMaxWidth()
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_launcher),
-            modifier = Modifier.semantics { hideFromAccessibility() },
             contentDescription = null, // decorative element
+            modifier = Modifier
+                .fillMaxWidth(0.25f)
+                .aspectRatio(1f)
+                .semantics { hideFromAccessibility() }
         )
         SelectionContainer {
             Text(
@@ -96,43 +125,80 @@ fun AboutHeader(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AboutContent() {
+private fun AboutText() {
     SelectionContainer {
         Text(
             text = stringResource(R.string.about_text),
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(top = 24.dp),
+            textAlign = TextAlign.Justify,
+            style = MaterialTheme.typography.bodyLarge.copy(hyphens = Hyphens.Auto),
+            modifier = Modifier.padding(top = 16.dp),
         )
     }
-    Column(modifier = Modifier.padding(top = 24.dp, bottom = 16.dp)) {
-        val uriHandler = LocalUriHandler.current
+    val uriHandler = LocalUriHandler.current
+    Text(
+        text = stringResource(R.string.links),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Justify,
+        style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.padding(top = 8.dp)
+    )
+    AboutLink(
+        text = stringResource(R.string.menu_website),
+        icon = Icons.Default.Home,
+        onClick = { uriHandler.openUriSafe("https://f-droid.org") },
+    )
+    AboutLink(
+        text = stringResource(R.string.about_forum),
+        icon = Icons.Default.Forum,
+        onClick = { uriHandler.openUriSafe("https://forum.f-droid.org") },
+    )
+    AboutLink(
+        text = stringResource(R.string.menu_translation),
+        icon = Icons.Default.Translate,
+        onClick = {
+            uriHandler.openUriSafe("https://f-droid.org/en/docs/Translation_and_Localization/")
+        },
+    )
+    AboutLink(
+        text = stringResource(R.string.donate_title),
+        icon = Icons.Default.MonetizationOn,
+        onClick = { uriHandler.openUriSafe("https://f-droid.org/donate/") },
+    )
+    AboutLink(
+        text = stringResource(R.string.about_source),
+        icon = Icons.Default.Code,
+        onClick = { uriHandler.openUriSafe("https://gitlab.com/fdroid/fdroidclient") },
+    )
+    Text(
+        text = stringResource(R.string.about_license),
+        fontWeight = FontWeight.Bold,
+        style = MaterialTheme.typography.bodyLarge,
+    )
+    SelectionContainer {
         Text(
-            text = stringResource(R.string.links),
-            fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.bodyLarge,
+            text = stringResource(R.string.about_license_text),
+            textAlign = TextAlign.Justify,
+            style = MaterialTheme.typography.bodyLarge.copy(hyphens = Hyphens.Auto),
         )
-        Text(
-            text = stringResource(R.string.menu_website),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier
-                .padding(top = 4.dp)
-                .clickable { uriHandler.openUriSafe("https://f-droid.org") }
+    }
+}
+
+@Composable
+private fun AboutLink(text: String, icon: ImageVector, onClick: () -> Unit) {
+    TextButton(onClick = onClick) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier.semantics { hideFromAccessibility() }
         )
-        Text(
-            text = stringResource(R.string.about_source),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier
-                .padding(top = 4.dp)
-                .clickable { uriHandler.openUriSafe("https://gitlab.com/fdroid") }
-        )
+        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+        Text(text = text)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun AboutPreview() {
+private fun AboutPreview() {
     FDroidContent {
         About {}
     }
@@ -140,4 +206,8 @@ fun AboutPreview() {
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun AboutPreviewDark() = AboutPreview()
+private fun AboutPreviewDark() {
+    FDroidContent {
+        About(null)
+    }
+}

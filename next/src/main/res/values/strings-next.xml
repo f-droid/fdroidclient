@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">F-Droid Next</string>
-    <string name="about_text">F-Droid is an installable catalogue of FOSS (Free and Open Source Software) applications for the Android platform. This app makes it easy to browse, install, and keep track of updates on your device.</string>
+    <string name="about_text">F-Droid distributes (Free and Open Source Software) apps for Android. All apps in its official app repository are built from their source code to ensure that they are completely transparent and only include Free Software.\n\nThis app makes it easy to browse and install apps from F-Droid or other repositories. It also helps you to keep your apps up to date.\n\nF-Droid is a non-profit volunteer project. Although every effort is made to ensure all apps are safe to install, you use it AT YOUR OWN RISK. The app’s source code is automatically checked for potential security or privacy issues. However, this is far from exhaustive and there are no guarantees.\n\nF-Droid respects your privacy. We don’t track you, or your device. We don’t track what you install. You don’t need an account to use this app, and it sends no additional identifying data when communicating with repositories, other than its version number.</string>
+    <string name="about_license_text">This program is Free Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
 
     <string name="menu_about">About</string>
     <string name="menu_discover">Discover</string>
