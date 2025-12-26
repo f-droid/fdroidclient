@@ -129,7 +129,7 @@ libs index test:
   script:
     - ./gradlew :libs:index:testDebugUnitTest
 
-app lint checkstyle:
+app lint:
   <<: *test-template
   stage: lint
   rules:
@@ -140,7 +140,21 @@ app lint checkstyle:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew :app:lint :app:checkstyle :app:ktlintCheck
+    - ./gradlew :app:lint :app:ktlintCheck
+
+app checkstyle:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
+  script:
+    - ./gradlew :app:checkstyle
+    - python3 tools/checkstyle-to-codeclimate.py --input app/build/reports/checkstyle/checkstyle.xml --output gl-checkstyle.json
+  artifacts:
+    reports:
+      codequality: gl-checkstyle.json
 
 libs lint ktlintCheck:
   <<: *test-template
