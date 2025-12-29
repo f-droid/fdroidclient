@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.Fdroidclient" parent="Theme.AppCompat.DayNight.NoActionBar" />
+    <style name="Theme.FDroid" parent="Theme.AppCompat.DayNight.NoActionBar" />
 </resources>

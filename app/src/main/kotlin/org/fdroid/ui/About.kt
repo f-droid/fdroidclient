@@ -105,7 +105,7 @@ private fun AboutHeader(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxWidth()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher),
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = null, // decorative element
             modifier = Modifier
                 .fillMaxWidth(0.25f)

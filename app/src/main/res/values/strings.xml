@@ -815,4 +815,185 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="expand">Expand</string>
     <string name="collapse">Collapse</string>
+
+
+    <!--
+
+    New strings to be merged into the above ones as soon as old code and usages were removed
+
+     -->
+
+
+    <string name="about_text">F-Droid distributes (Free and Open Source Software) apps for Android. All apps in its official app repository are built from their source code to ensure that they are completely transparent and only include Free Software.\n\nThis app makes it easy to browse and install apps from F-Droid or other repositories. It also helps you to keep your apps up to date.\n\nF-Droid is a non-profit volunteer project. Although every effort is made to ensure all apps are safe to install, you use it AT YOUR OWN RISK. The app’s source code is automatically checked for potential security or privacy issues. However, this is far from exhaustive and there are no guarantees.\n\nF-Droid respects your privacy. We don’t track you, or your device. We don’t track what you install. You don’t need an account to use this app, and it sends no additional identifying data when communicating with repositories, other than its version number.</string>
+    <string name="about_license_text">This program is Free Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
+
+    <string name="menu_about">About</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_apps_my">My apps</string>
+
+    <string name="first_start_loading">Retrieving apps…\n\nThis may take some time.</string>
+    <string name="first_start_intro">We need to download the latest app repository to get you started.</string>
+    <string name="first_start_offline">However, you seem to be offline. Connect to the internet and tap the button below when ready.</string>
+    <string name="first_start_metered">However, you are on mobile data and we\'ll need to download more than 10 MB. Tap the button below when ready to download.</string>
+    <string name="first_start_button">Download app repository</string>
+    <string name="no_repos_enabled">No repositories enabled.\nEnable or add at least one repository to see apps.</string>
+
+    <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
+    <string name="my_apps_header_apps_with_issue">Apps with issues</string>
+    <string name="my_apps_ignore_dialog_title">Hide app issue</string>
+    <string name="my_apps_ignore_dialog_text">Do you want to hide the issue with the app \"%1$s\"?</string>
+    <string name="my_apps_ignore_dialog_button">Hide</string>
+
+    <string name="app_list_new">New apps</string>
+    <string name="app_list_recently_updated">Recently updated</string>
+    <string name="app_list_most_downloaded">Most downloaded</string>
+    <string name="app_list_all">All apps</string>
+    <string name="app_list_author">Apps by %s</string>
+
+    <string name="search_placeholder">Search…</string>
+    <string name="search_no_results">No apps found.\n\nTry to use less search terms or add/enable more repositories.</string>
+    <string name="search_filter_no_results">No matching apps.\n\nTry to use less search terms or remove filters.</string>
+    <string name="search_my_apps_no_results">No matching apps.\n\nTry to use less search terms.</string>
+    <string name="sort_title">Sorting and compatibility</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_latest">Sort by latest</string>
+    <string name="filter_only_compatible">Apps compatible with this device</string>
+    <string name="filter_button_save">Save above as default</string>
+    <string name="filter_button_clear_all">Clear all filters</string>
+    <!-- Used for filtering lists of apps by certain criteria -->
+    <string name="filter">Filter</string>
+    <!-- Used for filter chips (e.g. categories) when they are currently selected -->
+    <string name="filter_selected">selected</string>
+    <string name="category">Category</string>
+
+    <string name="dialog_metered_title">Continue with mobile data?</string>
+    <!-- The placeholder will be replaced with a size string such as "13 MB" -->
+    <string name="dialog_metered_text">You are currently on a metered internet connection. Do you want to continue downloading %1$s?</string>
+    <string name="dialog_metered_text_no_size">You are currently on a metered internet connection. Do you want to continue downloading?</string>
+    <string name="dialog_metered_button">Download</string>
+    <string name="screenshots_metered">Tap to load screenshots via mobile data</string>
+
+    <string name="category_group_productivity">Productivity</string>
+    <string name="category_group_tools">Tools</string>
+    <string name="category_group_wallets">Finances &amp; Wallets</string>
+    <string name="category_group_media">Entertainment &amp; Media</string>
+    <string name="category_group_communication">Communication</string>
+    <string name="category_group_device">Device</string>
+    <string name="category_group_network">Network</string>
+    <string name="category_group_storage">Files &amp; Storage</string>
+    <string name="category_group_interests">Interests</string>
+    <string name="category_group_misc">Miscellaneous</string>
+
+    <string name="author_by">By %1$s</string>
+    <string name="last_updated">Last updated: %1$s</string>
+    <!-- The placeholder in round brackets will be replaced with the size of the app -->
+    <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Preparing installation…</string>
+    <string name="whats_new_title">What\'s new</string>
+    <string name="donate_title">Donate</string>
+    <string name="anti_features_title">This app has anti-features</string>
+    <string name="developer_contact">Developer contact</string>
+    <string name="technical_info">Technical information</string>
+    <string name="package_name">Package Name:</string>
+    <string name="installed_version">Installed Version:</string>
+    <string name="copy_link">Copy link</string>
+    <string name="app_no_compatible_versions">This app is not compatible with your device.</string>
+    <string name="app_no_compatible_signer">Can not update this app, because all versions have an incompatible signature.\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
+    <string name="app_no_compatible_signer_in_this_repo">Can not update this app, because there are no compatible versions in the preferred repository.\n\nTry changing the preferred repository.</string>
+    <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
+    <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred.</string>
+    <string name="app_issue_not_available_title">No longer available</string>
+    <string name="app_issue_not_available_text">This app is not receiving updates, because it is no longer in any enabled repository.\n\nIt may have been in a repository you removed or disabled. Or it was simply removed.</string>
+    <string name="app_issue_not_available_button">Show app info</string>
+    <string name="added_x_ago">Added %1$s</string>
+    <string name="size_colon">Size: %1$s</string>
+    <string name="sdk_versions_colon">SDK versions: %1$s</string>
+    <!-- The minimum SDK version the app can be installed on, e.g. only Android 10 or higher -->
+    <string name="sdk_min_version">%1$s (Min)</string>
+    <!-- The target SDK version of the app -->
+    <string name="sdk_target_version">%1$s (Target)</string>
+    <!-- The maximum SDK version the app can be installed on, e.g. only Android 10 or lower -->
+    <string name="sdk_max_version">%1$s (Max)</string>
+    <string name="signer_colon">Signer: %1$s</string>
+    <string name="architectures_colon">Architectures: %1$s</string>
+    <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>
+    <string name="app_details_incompatible_signer">Signature mismatch, can\'t install</string>
+    <string name="app_details_install_error_text">Sorry! There was an unexpected error installing this app.</string>
+
+    <string name="notification_title">Notifications</string>
+    <string name="notification_summary">Opens system notification settings</string>
+    <string name="notification_channel_install_success_title">Automatically installed apps</string>
+    <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically.</string>
+    <string name="notification_channel_updates_available_title">Available app updates</string>
+    <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found.</string>
+
+    <string name="notification_repo_update_default">Connecting to %1$s…</string>
+    <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="one">Saved %1$d app from %2$s</item>
+        <item quantity="other">Saved %1$d apps from %2$s</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="one">Installing %1$d app…</item>
+        <item quantity="other">Installing %1$d apps…</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="one">Updating %1$d app…</item>
+        <item quantity="other">Updating %1$d apps…</item>
+    </plurals>
+    <plurals name="notification_update_success_title">
+        <item quantity="one">%1$d app updated</item>
+        <item quantity="other">%1$d apps updated</item>
+    </plurals>
+    <string name="notification_installing_section_installing">Installing:</string>
+    <string name="notification_installing_section_confirmation">Needs user confirmation:</string>
+    <string name="notification_installing_section_installed">Installed:</string>
+    <string name="notification_installing_confirmation">Tap to confirm.</string>
+
+    <string name="onboarding_app_list_filter_title">Filter</string>
+    <string name="onboarding_app_list_filter_message">Here you can apply filters to the list of apps, e.g. showing only apps within a certain category or repository. Changing the sort order is also possible.</string>
+    <string name="got_it">Got it</string>
+    <string name="clear">Clear</string>
+    <string name="error">Error</string>
+    <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
+    <string name="repo_has_update_error">Had errors updating</string>
+    <string name="repo_has_update_error_intro">An error occurred while trying to update this repository:</string>
+    <string name="repo_last_update_upstream">Published %s</string>
+    <string name="repo_last_update_downloaded">Downloaded %s</string>
+    <string name="repo_basicauth_username">Username</string>
+    <string name="repo_basicauth_password">Password</string>
+    <string name="repo_basicauth_edit">Save Changes</string>
+    <string name="repo_force_update">Check for updates</string>
+
+    <string name="pref_dyn_colors_title">Use system colors</string>
+    <string name="pref_dyn_colors_summary">Apply dynamic colors from your system settings</string>
+    <string name="pref_language_summary">Opens system language settings</string>
+    <string name="pref_auto_updates_only_wifi">Only on WiFi</string>
+    <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
+    <string name="pref_auto_updates_only_never">Never</string>
+    <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on WiFi and the device isn\'t being used.</string>
+    <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used.</string>
+    <string name="pref_auto_updates_summary_never">Auto-updates disabled • Apps will need to be updated manually</string>
+    <string name="pref_repo_updates_title">Check for updates</string>
+    <string name="pref_repo_updates_summary_only_wifi">Periodically ask all repositories for app updates, but only when on WiFi.</string>
+    <string name="pref_repo_updates_summary_always">Periodically ask all repositories for app updates even when on mobile data.</string>
+    <string name="pref_repo_updates_summary_never">Do NOT check for updates • Apps will become outdated</string>
+    <string name="pref_category_network">Network</string>
+    <string name="pref_proxy_title">Connect via SOCKS proxy</string>
+    <string name="pref_proxy_disabled">Connect to the internet without proxy</string>
+    <string name="pref_proxy_enabled">Uses proxy %s to connect</string>
+    <string name="pref_proxy_hint">Proxy is expected in host:port format.</string>
+    <string name="pref_proxy_error">Proxy format invalid</string>
+
+    <string name="crash_report_text">An unexpected error occurred.
+        This is not your fault.
+        Would you like to e-mail the details to help us fix the issue?
+    </string>
+    <string name="crash_report_comment_hint">Tell us what happened right before the crash</string>
+    <string name="crash_report_button_send">Send report</string>
+    <string name="crash_report_error">Could not send report. No email program found :(</string>
+    <string name="crash_report_save">Save crash report as file</string>
+    <string name="crash_report_saved">Saved report to file</string>
+    <string name="crash_report_error_saving">Error saving crash report to file</string>
+
 </resources>
