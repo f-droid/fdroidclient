@@ -42,7 +42,8 @@ workflow:
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
     - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
   cache:
-    key: '${CI_PROJECT_PATH}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}'
+    # Use branch-scoped keys so caches are shared across commits on the same branch
+    key: "${CI_PROJECT_PATH}-${CI_COMMIT_REF_SLUG}"
     paths:
       - .gradle/wrapper
       - .gradle/caches
@@ -301,6 +302,7 @@ libs database schema:
   image: briar/ci-image-android-emulator:latest
   tags:
     - kvm
+  # Cache hits the storage limits in kvm runners quickly
   cache: []
   script:
     - ./gradlew assembleFullDebug
@@ -326,8 +328,7 @@ libs database schema:
     exit_codes: 137
 
 kvm 24 default x86:
-  <<: *test-template
-  <<: *kvm-connected-template
+  <<: [ *test-template, *kvm-connected-template ]
 
 pages:
   extends: .base
