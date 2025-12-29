@@ -21,7 +21,6 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.joinAll
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
@@ -110,7 +109,7 @@ class AppUpdateWorker @AssistedInject constructor(
             // and it will "share" the same notification.
             // This is easier than trying to tell the [AppInstallManager]
             // not to start a foreground service in this specific case.
-            updatesManager.updateAll().joinAll()
+            updatesManager.updateAll(false)
             // show success notification, if at least one app got installed
             val notificationState = appInstallManager.installNotificationState
             if (notificationState.numInstalled > 0) {

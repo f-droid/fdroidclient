@@ -5,13 +5,13 @@ import android.content.pm.PackageInfo
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
@@ -163,22 +163,31 @@ class UpdatesManager @Inject constructor(
         }
     }
 
-    suspend fun updateAll(): List<Job> {
-        val appsToUpdate = updates.value ?: updates.first() ?: return emptyList()
+    suspend fun updateAll(canAskPreApprovalNow: Boolean) {
+        val appsToUpdate = updates.value ?: updates.first() ?: return
         // we could do more in-depth checks regarding pre-approval, but this also works
-        val canAskPreApprovalNow = appsToUpdate.size == 1
+        val preApprovalNow = canAskPreApprovalNow && appsToUpdate.size == 1
         val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), 8)
         val semaphore = Semaphore(concurrencyLimit)
-        return appsToUpdate.map { update ->
+        // remember our own app, if it is to be updated as well
+        val updateLast = appsToUpdate.find { it.packageName == context.packageName }
+        appsToUpdate.mapNotNull { update ->
+            // don't update our own app just yet
+            if (update.packageName == context.packageName) return@mapNotNull null
             currentCoroutineContext().ensureActive()
             // launch a new co-routine for each app to update
             coroutineScope.launch {
                 // suspend here until we get a permit from the semaphore (there's free workers)
                 semaphore.withPermit {
                     currentCoroutineContext().ensureActive()
-                    updateApp(update, canAskPreApprovalNow)
+                    updateApp(update, preApprovalNow)
                 }
             }
+        }.joinAll()
+        currentCoroutineContext().ensureActive()
+        // now it is time to update our own app
+        updateLast?.let {
+            updateApp(it, preApprovalNow)
         }
     }
 

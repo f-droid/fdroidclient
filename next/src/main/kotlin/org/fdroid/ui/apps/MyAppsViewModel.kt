@@ -92,7 +92,7 @@ class MyAppsViewModel @Inject constructor(
 
     fun updateAll() {
         scope.launch {
-            updatesManager.updateAll()
+            updatesManager.updateAll(true)
         }
     }
 
