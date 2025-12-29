@@ -959,7 +959,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_has_update_error">Had errors updating</string>
     <string name="repo_has_update_error_intro">An error occurred while trying to update this repository:</string>
     <string name="repo_last_update_upstream">Published %s</string>
-    <string name="repo_last_update_downloaded">Downloaded %s</string>
+    <string name="repo_last_downloaded">Downloaded %s</string>
     <string name="repo_basicauth_username">Username</string>
     <string name="repo_basicauth_password">Password</string>
     <string name="repo_basicauth_edit">Save Changes</string>

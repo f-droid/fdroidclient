@@ -57,7 +57,7 @@ fun RepoDetailsHeader(
 
     val lastDownloadedTime = repo.lastUpdated?.asRelativeTimeString()
         ?: stringResource(R.string.repositories_last_update_never)
-    val lastUpdated = stringResource(R.string.repo_last_update_downloaded, lastDownloadedTime)
+    val lastUpdated = stringResource(R.string.repo_last_downloaded, lastDownloadedTime)
 
     Column(
         verticalArrangement = spacedBy(8.dp),

@@ -64,6 +64,9 @@ android {
             excludes += listOf("META-INF/LICENSE.md", "META-INF/LICENSE-notice.md")
         }
     }
+    lint {
+        lintConfig = file("lint.xml")
+    }
 }
 
 dependencies {

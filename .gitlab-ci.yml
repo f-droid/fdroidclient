@@ -61,11 +61,17 @@ workflow:
       - app/build/reports
       - app/build/outputs/*ml
       - app/build/outputs/apk
+      - legacy/core*
+      - legacy/*.log
+      - legacy/build/reports
+      - legacy/build/outputs/*ml
+      - legacy/build/outputs/apk
       - libs/*/build/reports
       - build/reports
     reports:
       junit:
         - app/build/**/TEST-*.xml
+        - legacy/build/**/TEST-*.xml
         - libs/*/build/**/TEST-*.xml
     expire_in: 1 week
     when: on_failure
@@ -89,17 +95,21 @@ app assembleRelease test:
     - changes:
         - app/**/*
         - libs/**/*
+        - legacy/**/*
   script:
-    - ./gradlew :app:assembleRelease :app:assembleDebug :app:testFullDebugUnitTest
+    - ./gradlew :app:assemble :app:testFullDebugUnitTest :legacy:assemble :legacy:testFullDebugUnitTest
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
       - app/build/reports
       - app/build/outputs/apk
       - libs/*/build/reports
+      - legacy/build/reports
+      - legacy/build/outputs/apk
     reports:
       junit:
         - app/build/test-results/*/TEST-*.xml
+        - legacy/build/test-results/*/TEST-*.xml
     expire_in: 1 week
     when: always
 
@@ -137,22 +147,23 @@ app lint:
     - <<: *always-on-these-changes
     - changes:
         - app/**/*
+        - legacy/**/*
   script:
     # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
+    - sed -i -e 's,textReport .*,textReport true,' legacy/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew :app:lint :app:ktlintCheck
+    - ./gradlew :app:lint :app:ktlintCheck :legacy:lint :legacy:ktlintCheck
 
-app checkstyle:
+legacy checkstyle:
   <<: *test-template
   stage: lint
   rules:
     - <<: *always-on-these-changes
     - changes:
-        - app/**/*
+        - legacy/**/*
   script:
-    - ./gradlew :app:checkstyle
-    - python3 tools/checkstyle-to-codeclimate.py --input app/build/reports/checkstyle/checkstyle.xml --output gl-checkstyle.json
+    - ./gradlew :legacy:checkstyle
+    - python3 tools/checkstyle-to-codeclimate.py --input legacy/build/reports/checkstyle/checkstyle.xml --output gl-checkstyle.json
   artifacts:
     reports:
       codequality: gl-checkstyle.json
@@ -165,12 +176,10 @@ libs lint ktlintCheck:
     - changes:
         - libs/**/*
   script:
-    # always report on lint errors to the build log
-    - sed -i -e 's,textReport .*,textReport true,' app/build.gradle
-    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint ktlintCheck checkLegacyAbi
+    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint :libs:ktlintCheck checkLegacyAbi
 
 # Reference: https://gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/-/blob/4121970daed111dda84cab4547e1f2951684653c/templates/pmd.yml#L52-92
-app lint pmd:
+legacy lint pmd:
   stage: lint
   image:
     name: registry.gitlab.com/gitlab-ci-utils/gitlab-pmd-cpd:latest
@@ -178,18 +187,18 @@ app lint pmd:
   rules:
     - <<: *always-on-these-changes
     - changes:
-        - app/**/*
+        - legacy/**/*
   parallel:
     matrix:
       - PMD_VARIANT: main
         PMD_RULESETS: "config/pmd/rules.xml,config/pmd/rules-main.xml"
         PMD_FILE_PATHS:
-          - "app/src/main/java"
+          - "legacy/src/main/java"
       - PMD_VARIANT: test
         PMD_RULESETS: "config/pmd/rules.xml,config/pmd/rules-test.xml"
         PMD_FILE_PATHS:
-          - "app/src/test/java"
-          - "app/src/androidTest/java"
+          - "legacy/src/test/java"
+          - "legacy/src/androidTest/java"
   before_script:
     - apt-get update
     - apt-get -qy install --no-install-recommends jq
@@ -259,17 +268,17 @@ app weblate merge conflict:
     - git diff --exit-code
     - exit $EXITVALUE
 
-app errorprone:
+legacy errorprone:
   extends: .base
   stage: lint
   rules:
     - <<: *always-on-these-changes
     - changes:
-        - app/**/*
+        - legacy/**/*
   script:
-    - sed -i "s@plugins {@plugins{\nid 'net.ltgt.errorprone' version '3.1.0'@" app/build.gradle
-    - cat config/errorprone.gradle >> app/build.gradle
-    - ./gradlew -Dorg.gradle.dependency.verification=lenient assembleDebug
+    - sed -i "s@plugins {@plugins{\nid 'net.ltgt.errorprone' version '3.1.0'@" legacy/build.gradle
+    - cat config/errorprone.gradle >> legacy/build.gradle
+    - ./gradlew -Dorg.gradle.dependency.verification=lenient :legacy:assembleDebug
 
 libs database schema:
   stage: lint
@@ -321,9 +330,9 @@ libs database schema:
     - ./gradlew installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
-    - ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
+    - ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
-    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done || exit 137
+    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done || exit 137
   allow_failure:
     exit_codes: 137
 
@@ -361,10 +370,10 @@ deploy_nightly:
         's,<string name="app_name">.*</string>,<string name="app_name">F-Nightly</string>,'
         app/src/main/res/values*/strings.xml
     # add this nightly repo as a enabled repo
-    - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' app/src/main/res/values/default_repos.xml
-    - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> app/src/main/res/values/default_repos.xml
-    - echo "<item>${CI_PROJECT_URL}-nightly/-/raw/master/fdroid/repo</item>" >> app/src/main/res/values/default_repos.xml
-    - cat config/nightly-repo/repo.xml >> app/src/main/res/values/default_repos.xml
+    - sed -i -e '/<\/string-array>/d' -e '/<\/resources>/d' legacy/src/main/res/values/default_repos.xml
+    - echo "<item>${CI_PROJECT_PATH}-nightly</item>" >> legacy/src/main/res/values/default_repos.xml
+    - echo "<item>${CI_PROJECT_URL}-nightly/-/raw/master/fdroid/repo</item>" >> legacy/src/main/res/values/default_repos.xml
+    - cat config/nightly-repo/repo.xml >> legacy/src/main/res/values/default_repos.xml
     - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
     - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
     - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," app/build.gradle
