@@ -10,6 +10,7 @@ import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkState
+import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.repo.RepoUpdateState
 import org.fdroid.ui.utils.flagEmoji
 import org.fdroid.ui.utils.generateQrBitmap
@@ -56,6 +57,8 @@ data class RepoDetailsModel(
     val showOfficialMirrors: Boolean = officialMirrors.size >= 2
 
     val showUserMirrors: Boolean = userMirrors.isNotEmpty()
+
+    val isUpdateButtonEnabled: Boolean = repo?.enabled == true && updateState !is RepoUpdateProgress
 
     fun shareRepo(context: Context) {
         require(repo != null) { "repo was null when sharing it" }

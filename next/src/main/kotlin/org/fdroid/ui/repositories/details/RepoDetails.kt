@@ -125,11 +125,14 @@ fun RepoDetails(
                         contentDescription = stringResource(R.string.show_repository_qr)
                     )
                 }
-                IconButton(enabled = repo.enabled, onClick = {
-                    if (info.model.networkState.isMetered) showMeteredDialog = {
-                        RepoUpdateWorker.updateNow(context, repo.repoId)
-                    } else RepoUpdateWorker.updateNow(context, repo.repoId)
-                }) {
+                IconButton(
+                    enabled = info.model.isUpdateButtonEnabled,
+                    onClick = {
+                        if (info.model.networkState.isMetered) showMeteredDialog = {
+                            RepoUpdateWorker.updateNow(context, repo.repoId)
+                        } else RepoUpdateWorker.updateNow(context, repo.repoId)
+                    },
+                ) {
                     Icon(
                         imageVector = Icons.Default.Update,
                         contentDescription = stringResource(R.string.repo_force_update)

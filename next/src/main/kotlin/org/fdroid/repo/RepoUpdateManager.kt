@@ -120,6 +120,7 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
                 if (!repo.enabled) return@forEach
                 currentCoroutineContext().ensureActive()
 
+                repoUpdateListener.onUpdateStarted(repo.repoId)
                 // show notification
                 val repoName = repo.getName(LocaleListCompat.getDefault())
                 val msg = context.getString(R.string.notification_repo_update_default, repoName)
@@ -159,6 +160,7 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
         val repo = repoManager.getRepository(repoId) ?: return IndexUpdateResult.NotFound
         _isUpdating.value = true
         return try {
+            repoUpdateListener.onUpdateStarted(repo.repoId)
             // show notification
             val repoName = repo.getName(LocaleListCompat.getDefault())
             val msg = context.getString(R.string.notification_repo_update_default, repoName)
@@ -191,6 +193,10 @@ internal class RepoUpdateListener(
     private val _updateState = MutableStateFlow<RepoUpdateState?>(null)
     val updateState = _updateState.asStateFlow()
     private var lastUpdateProgress = 0L
+
+    fun onUpdateStarted(repoId: Long) {
+        _updateState.update { RepoUpdateProgress(repoId, true, 0) }
+    }
 
     override fun onDownloadProgress(repo: Repository, bytesRead: Long, totalBytes: Long) {
         log.debug { "Downloading ${repo.address} ($bytesRead/$totalBytes)" }
