@@ -19,6 +19,7 @@
             https://ftp.gwdg.de/pub/android/fdroid/repo
             https://ftp.lysator.liu.se/pub/fdroid/repo
             https://mirror.cyberbits.eu/fdroid/repo
+            https://mirror.eu.ossplanet.net/fdroid/repo
             https://mirror.fcix.net/fdroid/repo
             https://mirror.kumi.systems/fdroid/repo
             https://mirror.level66.network/fdroid/repo
@@ -28,7 +29,6 @@
             https://plug-mirror.rcac.purdue.edu/fdroid/repo
             https://mirror.init7.net/fdroid/repo
             https://mirror.freedif.org/fdroid/repo
-            https://de.freedif.org/fdroid/repo
         </item>
         <!-- description -->
         <item>The official F-Droid Free Software repository. Everything in this repository is always built from the source code.
@@ -60,6 +60,7 @@
             https://ftp.gwdg.de/pub/android/fdroid/archive
             https://ftp.lysator.liu.se/pub/fdroid/archive
             https://mirror.cyberbits.eu/fdroid/archive
+            https://mirror.eu.ossplanet.net/fdroid/archive
             https://mirror.fcix.net/fdroid/archive
             https://mirror.kumi.systems/fdroid/archive
             https://mirror.level66.network/fdroid/archive
@@ -69,7 +70,6 @@
             https://plug-mirror.rcac.purdue.edu/fdroid/archive
             https://mirror.init7.net/fdroid/archive
             https://mirror.freedif.org/fdroid/archive
-            https://de.freedif.org/fdroid/archive
         </item>
         <!-- description -->
         <item>The archive repository of the F-Droid client. This contains older versions of
