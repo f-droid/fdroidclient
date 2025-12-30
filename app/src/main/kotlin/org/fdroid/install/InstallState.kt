@@ -20,6 +20,7 @@ sealed class InstallState(val showProgress: Boolean) {
         val version: AppVersion,
         val repo: Repository,
         override val sessionId: Int,
+        override val creationTimeMillis: Long = System.currentTimeMillis(),
         override val intent: PendingIntent,
     ) : InstallConfirmationState() {
         override val name: String = state.name
@@ -67,6 +68,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val iconDownloadRequest: DownloadRequest?,
         override val sessionId: Int,
         override val intent: PendingIntent,
+        override val creationTimeMillis: Long,
         val progress: Float,
     ) : InstallConfirmationState() {
         constructor(
@@ -82,6 +84,7 @@ sealed class InstallState(val showProgress: Boolean) {
             iconDownloadRequest = state.iconDownloadRequest,
             sessionId = sessionId,
             intent = intent,
+            creationTimeMillis = System.currentTimeMillis(),
             progress = progress
         )
     }
@@ -127,5 +130,14 @@ sealed class InstallStateWithInfo(showProgress: Boolean) : InstallState(showProg
 
 sealed class InstallConfirmationState() : InstallStateWithInfo(true) {
     abstract val sessionId: Int
+
+    /**
+     * The epoch time in milliseconds when this state was created.
+     * This is used to get a stable ordering on apps that require user confirmation.
+     * The reason this is needed is that we can only show a single confirmation dialog at a time.
+     * If we show more than one, the second one gets silently swallowed by the system
+     * and we don't receive any feedback, so installation process of several apps gets stuck.
+     */
+    abstract val creationTimeMillis: Long
     abstract val intent: PendingIntent
 }

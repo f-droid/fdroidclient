@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.download.NetworkState
+import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstallStateWithInfo
 import org.fdroid.ui.utils.normalize
@@ -87,6 +88,11 @@ fun MyAppsPresenter(
         }
     } ?: run { updateBytes = null }
     return MyAppsModel(
+        appToConfirm = installingApps.filter {
+            it.installState is InstallConfirmationState
+        }.minByOrNull {
+            (it.installState as InstallConfirmationState).creationTimeMillis
+        },
         installingApps = installingApps.sort(sortOrder),
         appUpdates = updates?.sort(sortOrder),
         appsWithIssue = withIssues?.sort(sortOrder),

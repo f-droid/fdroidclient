@@ -25,7 +25,6 @@ import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,18 +58,11 @@ fun MyApps(
     modifier: Modifier = Modifier,
 ) {
     val myAppsModel = myAppsInfo.model
-    val appToConfirm by remember(myAppsInfo.model.installingApps) {
-        derivedStateOf {
-            myAppsInfo.model.installingApps.find { app ->
-                app.installState is InstallConfirmationState
-            }
-        }
-    }
     // Ask user to confirm appToConfirm whenever it changes and we are in STARTED state.
     // In tests, waiting for RESUME didn't work, because the LaunchedEffect ran before.
     val lifecycleOwner = LocalLifecycleOwner.current
-    LaunchedEffect(appToConfirm) {
-        val app = appToConfirm
+    LaunchedEffect(myAppsModel.appToConfirm) {
+        val app = myAppsModel.appToConfirm
         if (app != null && lifecycleOwner.lifecycle.currentState.isAtLeast(STARTED)) {
             val state = app.installState as InstallConfirmationState
             myAppsInfo.confirmAppInstall(app.packageName, state)
