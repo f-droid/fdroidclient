@@ -252,11 +252,11 @@ content: |-
   cd Mdroidclient
 
   # Create agent configuration
-  mkdir -p .github
-  cp copilot-agent.yml .github/
+  mkdir -p .github/agents
+  cp .github/agents/my-agent.agent.md .github/agents/
 
   # Merge to main branch
-  git add .github/copilot-agent.yml
+  git add .github/agents/my-agent.agent.md
   git commit -m "Add MONTI Neural Droid Agent configuration"
   git push origin master
   ```
