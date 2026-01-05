@@ -17,15 +17,15 @@ android {
         applicationId = "org.fdroid"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2000000
+        versionName = "2.0-alpha0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         all {
-            buildConfigField("String", "ACRA_REPORT_EMAIL", "\"t+fdroidnext@grobox.de\"")
+            buildConfigField("String", "ACRA_REPORT_EMAIL", "\"reports@f-droid.org\"")
         }
         getByName("release") {
             isMinifyEnabled = true
