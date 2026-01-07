@@ -152,8 +152,6 @@ class UpdatesManager @Inject constructor(
                         lastUpdated = -1,
                         iconModel = PackageName(app.packageName, null),
                     )
-                }.also {
-                    log.error { "ISSUE: $it" }
                 }
             }
             _appsWithIssues.value = issueItems

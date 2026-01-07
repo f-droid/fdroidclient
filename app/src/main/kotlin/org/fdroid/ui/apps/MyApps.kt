@@ -70,6 +70,7 @@ fun MyApps(
     }
     val installingApps = myAppsModel.installingApps
     val updatableApps = myAppsModel.appUpdates
+    val appsWithIssue = myAppsModel.appsWithIssue
     val installedApps = myAppsModel.installedApps
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     var searchActive by rememberSaveable { mutableStateOf(false) }
@@ -151,6 +152,7 @@ fun MyApps(
         if (updatableApps == null && installedApps == null) BigLoadingIndicator()
         else if (installingApps.isEmpty() &&
             updatableApps.isNullOrEmpty() &&
+            appsWithIssue.isNullOrEmpty() &&
             installedApps.isNullOrEmpty()
         ) {
             Text(
