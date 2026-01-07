@@ -150,12 +150,13 @@ class SessionInstallManager @Inject constructor(
                         context.unregisterReceiver(this)
                     }
                 }
-                else -> { // some error, can't help it now, continue
-                    if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
-                        cont.resume(PreApprovalResult.UserAborted)
-                    } else {
-                        cont.resume(PreApprovalResult.Error(msg))
+                else -> {
+                    val result = when (status) {
+                        PackageInstaller.STATUS_FAILURE_ABORTED -> PreApprovalResult.UserAborted
+                        PackageInstaller.STATUS_FAILURE_BLOCKED -> PreApprovalResult.NotSupported
+                        else -> PreApprovalResult.Error(msg)
                     }
+                    cont.resume(result)
                     context.unregisterReceiver(this)
                 }
             }
