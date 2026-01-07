@@ -75,7 +75,7 @@ fun AppDetailsHeader(
     item: AppDetailsItem,
     innerPadding: PaddingValues,
 ) {
-    var showTopSpacer by rememberSaveable(item.app.packageName) { mutableStateOf(true) }
+    var showTopSpacer by rememberSaveable(item.featureGraphic) { mutableStateOf(true) }
     if (showTopSpacer) {
         Spacer(modifier = Modifier.padding(innerPadding))
     }
