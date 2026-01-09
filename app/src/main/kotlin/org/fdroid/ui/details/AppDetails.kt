@@ -66,6 +66,7 @@ import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.icons.License
+import org.fdroid.ui.icons.Litecoin
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BigLoadingIndicator
@@ -255,7 +256,7 @@ fun AppDetails(
                 }
                 item.litecoinUri?.let { litecoinUri ->
                     AppDetailsLink(
-                        icon = Icons.Default.CurrencyBitcoin,
+                        icon = Litecoin,
                         title = stringResource(R.string.menu_litecoin),
                         url = litecoinUri,
                         modifier = modifier
