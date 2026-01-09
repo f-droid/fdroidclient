@@ -31,6 +31,7 @@ import org.fdroid.download.coil.DownloadRequestFetcher
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.crash.CrashActivity
+import org.fdroid.ui.crash.NoRetryPolicy
 import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
 import javax.inject.Inject
@@ -72,6 +73,8 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
                 ReportField.STACK_TRACE,
             )
             reportSendFailureToast = getString(R.string.crash_report_error)
+            // either sending via email intent works, or it doesn't, but don't keep trying
+            retryPolicyClass = NoRetryPolicy::class.java
             sendReportsInDevMode = true
             dialog {
                 reportDialogClass = CrashActivity::class.java
