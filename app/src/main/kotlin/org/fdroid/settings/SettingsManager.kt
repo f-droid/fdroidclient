@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import me.zhanghai.compose.preference.createPreferenceFlow
+import me.zhanghai.compose.preference.isDefaultPreferenceFlowLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
@@ -51,7 +52,10 @@ class SettingsManager @Inject constructor(
     /**
      * This is mutable, so the settings UI can make changes to it.
      */
-    val prefsFlow by lazy { createPreferenceFlow(prefs) }
+    val prefsFlow by lazy {
+        isDefaultPreferenceFlowLongSupportEnabled = true
+        createPreferenceFlow(prefs)
+    }
     val theme get() = prefs.getString(PREF_KEY_THEME, PREF_DEFAULT_THEME)!!
     val themeFlow = prefsFlow.map { it.get<String>(PREF_KEY_THEME) }.distinctUntilChanged()
     val dynamicColorFlow: Flow<Boolean> = prefsFlow.map {
@@ -73,15 +77,12 @@ class SettingsManager @Inject constructor(
         }.distinctUntilChanged()
     var lastRepoUpdate: Long
         get() = try {
-            prefs.getInt(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
-                .toLong() * 1000
+            prefs.getLong(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
         } catch (_: Exception) {
-            // TODO remove Int hack, because preferences library crashes on Long
-            //  see: https://github.com/zhanghai/ComposePreference/issues/24
-            PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
+            PREF_DEFAULT_LAST_UPDATE_CHECK
         }
         set(value) {
-            prefs.edit { putInt(PREF_KEY_LAST_UPDATE_CHECK, (value / 1000).toInt()) }
+            prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
             _lastRepoUpdateFlow.update { value }
         }
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
