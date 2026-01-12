@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.CardDefaults
@@ -113,11 +114,13 @@ fun RepoDetailsHeader(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             ) {
                 Icon(Icons.Default.WarningAmber, null)
-                Text(
-                    text = stringResource(R.string.repo_has_update_error_intro) +
-                        "\n\n${repo.lastError}",
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                SelectionContainer {
+                    Text(
+                        text = stringResource(R.string.repo_has_update_error_intro) +
+                            "\n\n${repo.lastError}",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
         }
         if (repo.enabled) FDroidOutlineButton(
