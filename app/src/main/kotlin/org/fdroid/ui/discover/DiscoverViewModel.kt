@@ -88,7 +88,7 @@ class DiscoverViewModel @Inject constructor(
     }
     private val searchResults = MutableStateFlow<SearchResults?>(null)
     private val hasRepoIssues = repoManager.repositoriesState.map { repos ->
-        repos.any { it.errorCount >= 5 }
+        repos.any { it.enabled && it.errorCount >= 5 }
     }
 
     val localeList = LocaleListCompat.getDefault()

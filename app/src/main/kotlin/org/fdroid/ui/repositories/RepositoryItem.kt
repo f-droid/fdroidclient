@@ -28,5 +28,5 @@ data class RepositoryItem(
         errorCount = repo.errorCount,
     )
 
-    val hasIssue: Boolean = errorCount >= 3
+    val hasIssue: Boolean = enabled && errorCount >= 3
 }
