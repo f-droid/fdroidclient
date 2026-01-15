@@ -126,14 +126,14 @@ fun DetailsPresenter(
             )
         }
     }
-    val possibleUpdate = remember(versions, appPrefs) {
-        if (versions == null || appPrefs == null) {
+    val possibleUpdate = remember(versions, appPrefs, packageInfo) {
+        if (versions == null || appPrefs == null || packageInfo == null) {
             null
         } else {
             updateChecker.getUpdate(
                 versions = versions,
-                allowedSignersGetter = app.metadata.preferredSigner?.let { { setOf(it) } },
-                allowedReleaseChannels = appPrefs.releaseChannels,
+                packageInfo = packageInfo,
+                releaseChannels = appPrefs.releaseChannels,
                 // ignoring existing preferences to include ignored versions
                 preferencesGetter = null,
             )
@@ -143,7 +143,22 @@ fun DetailsPresenter(
         getLongVersionCode(packageInfo)
     }
     val installedVersion = packageInfo?.let {
-        versions?.find { it.versionCode == installedVersionCode }
+        val installedVersions = versions?.filter { it.versionCode == installedVersionCode }
+        when (installedVersions?.size) {
+            null -> null
+            0 -> null
+            1 -> installedVersions.first()
+            // more than version with the same version code, find a matching signer
+            else -> installedVersions.find {
+                val versionSigners = it.signer?.sha256?.toSet()
+                // F-Droid allows versions without a signer entry, allow those
+                if (versionSigners != null && installedSigner != null) {
+                    versionSigners.intersect(setOf(installedSigner)).isNotEmpty()
+                } else {
+                    true
+                }
+            }
+        }
     }
     val authorName = app.authorName
     val authorHasMoreThanOneApp = if (authorName == null) false else {
