@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
 import mu.KotlinLogging
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.NotificationManager
 import org.fdroid.database.AppVersion
 import org.fdroid.database.AvailableAppWithIssue
@@ -171,7 +172,20 @@ class UpdatesManager @Inject constructor(
         val updateLast = appsToUpdate.find { it.packageName == context.packageName }
         appsToUpdate.mapNotNull { update ->
             // don't update our own app just yet
-            if (update.packageName == context.packageName) return@mapNotNull null
+            if (update.packageName == context.packageName) {
+                // set app to update last to Starting as well, so it doesn't seem stuck
+                val app = db.getAppDao().getApp(update.repoId, update.packageName)
+                    ?: return@mapNotNull null
+                appInstallManager.setWaitingState(
+                    packageName = update.packageName,
+                    name = app.metadata.name.getBestLocale(LocaleListCompat.getDefault())
+                        ?: "Unknown",
+                    versionName = update.update.versionName,
+                    currentVersionName = update.installedVersionName,
+                    lastUpdated = update.update.added,
+                )
+                return@mapNotNull null
+            }
             currentCoroutineContext().ensureActive()
             // launch a new co-routine for each app to update
             coroutineScope.launch {

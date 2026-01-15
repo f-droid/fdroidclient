@@ -226,6 +226,7 @@ fun AppDetailsHeader(
         ) {
             Column {
                 val strRes = when (item.installState) {
+                    is InstallState.Waiting -> R.string.status_install_preparing
                     is InstallState.Starting -> R.string.status_install_preparing
                     is InstallState.PreApproved -> R.string.status_install_preparing
                     is InstallState.Downloading -> R.string.downloading

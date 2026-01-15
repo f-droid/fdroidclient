@@ -67,7 +67,7 @@ class AppInstallManager @Inject constructor(
                 // assign a category to each in progress state
                 val appStateCategory = when (state) {
                     is InstallState.Installing, is InstallState.PreApproved,
-                    is InstallState.Starting -> AppStateCategory.INSTALLING
+                    is InstallState.Waiting, is InstallState.Starting -> AppStateCategory.INSTALLING
                     is InstallState.Downloading -> {
                         numBytesDownloaded += state.downloadedBytes
                         numTotalBytes += state.totalBytes
@@ -123,7 +123,7 @@ class AppInstallManager @Inject constructor(
     ): InstallState {
         val packageName = appMetadata.packageName
         val currentState = apps.value[packageName]
-        if (currentState?.showProgress == true) {
+        if (currentState?.showProgress == true && currentState !is InstallState.Waiting) {
             log.warn { "Attempted to install $packageName with install in progress: $currentState" }
             return currentState
         }
@@ -157,6 +157,19 @@ class AppInstallManager @Inject constructor(
         apps.updateApp(packageName) { result }
         onStatesUpdated()
         return result
+    }
+
+    fun setWaitingState(
+        packageName: String,
+        name: String,
+        versionName: String,
+        currentVersionName: String,
+        lastUpdated: Long,
+    ) {
+        apps.updateApp(packageName) {
+            InstallState.Waiting(name, versionName, currentVersionName, lastUpdated)
+        }
+        onStatesUpdated()
     }
 
     @WorkerThread

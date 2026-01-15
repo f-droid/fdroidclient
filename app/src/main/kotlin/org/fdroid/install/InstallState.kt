@@ -7,6 +7,20 @@ import org.fdroid.download.DownloadRequest
 
 sealed class InstallState(val showProgress: Boolean) {
     data object Unknown : InstallState(false)
+
+    /**
+     * Used for our own app which will be updated last,
+     * so this is waiting for all other updates to complete.
+     */
+    data class Waiting(
+        override val name: String,
+        override val versionName: String,
+        override val currentVersionName: String? = null,
+        override val lastUpdated: Long,
+    ) : InstallStateWithInfo(true) {
+        override val iconDownloadRequest: DownloadRequest? = null
+    }
+
     data class Starting(
         override val name: String,
         override val versionName: String,
