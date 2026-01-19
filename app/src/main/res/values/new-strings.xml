@@ -4,24 +4,24 @@
     New strings to be added to strings.xml once reviewed
      -->
 
-    <string name="about_text">F-Droid distributes (Free and Open Source Software) apps for Android. All apps in its official app repository are built from their source code to ensure that they are completely transparent and only include Free Software.\n\nThis app makes it easy to browse and install apps from F-Droid or other repositories. It also helps you to keep your apps up to date.\n\nF-Droid is a non-profit volunteer project. Although every effort is made to ensure all apps are safe to install, you use it AT YOUR OWN RISK. The app’s source code is automatically checked for potential security or privacy issues. However, this is far from exhaustive and there are no guarantees.\n\nF-Droid respects your privacy. We don’t track you, or your device. We don’t track what you install. You don’t need an account to use this app, and it sends no additional identifying data when communicating with repositories, other than its version number.</string>
+    <string name="about_text">For 15 years, F-Droid has been more than an app store: It\'s been a community.\n\nApps on F-Droid are free and open source (FOSS), they respect your privacy and they are available for anyone to see the source code, build on and improve.\n\nWe have shown that app distribution can be transparent, privacy-respecting, and accountable, setting a standard that challenges the mobile ecosystem to do better.\n\nOur impact is measured not just in apps published, but in the freedom, trust, and digital rights we’ve helped protect.\n\nHelp us protect community-powered innovation and continue our mission of openness, privacy, and user empowerment.</string>
     <string name="about_license_text">This program is Free Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
 
     <string name="menu_about">About</string>
     <string name="menu_discover">Discover</string>
     <string name="menu_apps_my">My apps</string>
 
-    <string name="first_start_loading">Retrieving apps…\n\nThis may take some time.</string>
-    <string name="first_start_intro">We need to download the latest app repository to get you started.</string>
-    <string name="first_start_offline">However, you seem to be offline. Connect to the internet and tap the button below when ready.</string>
-    <string name="first_start_metered">However, you are on mobile data and we\'ll need to download more than 10 MB. Tap the button below when ready to download.</string>
-    <string name="first_start_button">Download app repository</string>
-    <string name="no_repos_enabled">No repositories enabled.\nEnable or add at least one repository to see apps.</string>
+    <string name="first_start_loading">Fetching repositories…</string>
+    <string name="first_start_intro">Fetch the repositories of apps to get started.</string>
+    <string name="first_start_offline">You\'re offline. Connect to the internet to fetch repositories.</string>
+    <string name="first_start_metered">You\'re on mobile data and more than 10 MB must be downloaded. Tap the button to fetch repositories anyway.</string>
+    <string name="first_start_button">Fetch repositories</string>
+    <string name="no_repos_enabled">No repositories available, add a repository to get started.</string>
 
-    <string name="my_apps_empty">No apps installed.\n\nInstall apps and they will appear here.</string>
+    <string name="my_apps_empty">Only apps installed by %1$s are shown here.</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>
-    <string name="my_apps_ignore_dialog_title">Hide app issue</string>
-    <string name="my_apps_ignore_dialog_text">Do you want to hide the issue with the app \"%1$s\"?</string>
+    <string name="my_apps_ignore_dialog_title">Hide issue</string>
+    <string name="my_apps_ignore_dialog_text">Hide issue with \"%1$s\"?</string>
     <string name="my_apps_ignore_dialog_button">Hide</string>
     <string name="my_apps_export_installed_apps">Export app list</string>
 
