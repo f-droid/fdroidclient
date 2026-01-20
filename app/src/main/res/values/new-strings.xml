@@ -4,24 +4,24 @@
     New strings to be added to strings.xml once reviewed
      -->
 
-    <string name="about_text">For 15 years, F-Droid has been more than an app store: It\'s been a community.\n\nApps on F-Droid are free and open source (FOSS), they respect your privacy and they are available for anyone to see the source code, build on and improve.\n\nWe have shown that app distribution can be transparent, privacy-respecting, and accountable, setting a standard that challenges the mobile ecosystem to do better.\n\nOur impact is measured not just in apps published, but in the freedom, trust, and digital rights we’ve helped protect.\n\nHelp us protect community-powered innovation and continue our mission of openness, privacy, and user empowerment.</string>
+    <string name="about_text">Apps on F-Droid are free and open source (FOSS), they respect your privacy and they are available for anyone to see the source code, build on and improve.\n\nApp distribution is transparent, privacy-respecting, and accountable, setting a standard that challenges the mobile ecosystem to do better.\n\nF-Droid\'s impact is measured not just in apps published, but in the freedom, trust, and digital rights it helped protect.\n\nHelp F-Droid to protect community-powered innovation and continue their mission of openness, privacy, and user empowerment.</string>
     <string name="about_license_text">This program is Free Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
 
     <string name="menu_about">About</string>
     <string name="menu_discover">Discover</string>
     <string name="menu_apps_my">My apps</string>
 
-    <string name="first_start_loading">Fetching repositories…</string>
-    <string name="first_start_intro">Fetch the repositories of apps to get started.</string>
-    <string name="first_start_offline">You\'re offline. Connect to the internet to fetch repositories.</string>
-    <string name="first_start_metered">You\'re on mobile data and more than 10 MB must be downloaded. Tap the button to fetch repositories anyway.</string>
+    <string name="first_start_loading">Fetching app repositories…</string>
+    <string name="first_start_intro">To get started, fetch the app repositories</string>
+    <string name="first_start_offline">You\'re offline. Connect to the Internet to start.</string>
+    <string name="first_start_metered">You\'re on mobile data and more than 10 MB must be downloaded. Tap Fetch repositories to start anyway.</string>
     <string name="first_start_button">Fetch repositories</string>
-    <string name="no_repos_enabled">No repositories available, add a repository to get started.</string>
+    <string name="no_repos_enabled">No repositories available, add a repository to get started</string>
 
-    <string name="my_apps_empty">Only apps installed by %1$s are shown here.</string>
+    <string name="my_apps_empty">Only apps installed by %1$s are shown here</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>
     <string name="my_apps_ignore_dialog_title">Hide issue</string>
-    <string name="my_apps_ignore_dialog_text">Hide issue with \"%1$s\"?</string>
+    <string name="my_apps_ignore_dialog_text">The issue with this version of \"%1$s\" will get ignored</string>
     <string name="my_apps_ignore_dialog_button">Hide</string>
     <string name="my_apps_export_installed_apps">Export app list</string>
 
@@ -37,9 +37,9 @@
     <string name="app_list_author">Apps by %s</string>
 
     <string name="search_placeholder">Search…</string>
-    <string name="search_no_results">No apps found.\n\nTry to use less search terms or add/enable more repositories.</string>
-    <string name="search_filter_no_results">No matching apps.\n\nTry to use less search terms or remove filters.</string>
-    <string name="search_my_apps_no_results">No matching apps.\n\nTry to use less search terms.</string>
+    <string name="search_no_results">No apps found\n\nTry to use less search terms or add/enable more repositories</string>
+    <string name="search_filter_no_results">No matching apps\n\nTry to use less search terms or remove filters</string>
+    <string name="search_my_apps_no_results">No matching apps\n\nTry to use less search terms</string>
     <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by latest</string>
@@ -54,8 +54,8 @@
 
     <string name="dialog_metered_title">Continue with mobile data?</string>
     <!-- The placeholder will be replaced with a size string such as "13 MB" -->
-    <string name="dialog_metered_text">You are currently on a metered internet connection. Do you want to continue downloading %1$s?</string>
-    <string name="dialog_metered_text_no_size">You are currently on a metered internet connection. Do you want to continue downloading?</string>
+    <string name="dialog_metered_text">Downloading %1$s may incur costs or use up your data</string>
+    <string name="dialog_metered_text_no_size">Downloading may incur costs or use up your data</string>
     <string name="dialog_metered_button">Download</string>
     <string name="screenshots_metered">Tap to load screenshots via mobile data</string>
 
@@ -83,13 +83,13 @@
     <string name="package_name">Package Name:</string>
     <string name="installed_version">Installed Version:</string>
     <string name="copy_link">Copy link</string>
-    <string name="app_no_compatible_versions">This app is not compatible with your device.</string>
-    <string name="app_no_compatible_signer">Can not update this app, because all versions have an incompatible signature.\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
-    <string name="app_no_compatible_signer_in_this_repo">Can not update this app, because there are no compatible versions in the preferred repository.\n\nTry changing the preferred repository.</string>
-    <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android.</string>
-    <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred.</string>
-    <string name="app_issue_not_available_title">No longer available</string>
-    <string name="app_issue_not_available_text">This app is not receiving updates, because it is no longer in any enabled repository.\n\nIt may have been in a repository you removed or disabled. Or it was simply removed.</string>
+    <string name="app_no_compatible_versions">This app is not compatible with your device</string>
+    <string name="app_no_compatible_signer">Can\'t update this app, because all versions have an incompatible signature\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
+    <string name="app_no_compatible_signer_in_this_repo">Can\'t update this app, because there are no compatible versions in the preferred repository\n\nTry changing the preferred repository</string>
+    <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android</string>
+    <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred</string>
+    <string name="app_issue_not_available_title">App no longer available</string>
+    <string name="app_issue_not_available_text">The app may have been removed or was in a repository you removed or disabled</string>
     <string name="app_issue_not_available_button">Show app info</string>
     <string name="app_issue_hint">The apps below need your attention. You can ignore an app issue by long pressing it.</string>
     <string name="added_x_ago">Added %1$s</string>
@@ -106,14 +106,14 @@
     <string name="architectures_colon">Architectures: %1$s</string>
     <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>
     <string name="app_details_incompatible_signer">Signature mismatch, can\'t install</string>
-    <string name="app_details_install_error_text">Sorry! There was an unexpected error installing this app.</string>
+    <string name="app_details_install_error_text">Sorry! There was an unexpected error installing this app</string>
 
     <string name="notification_title">Notifications</string>
     <string name="notification_summary">Opens system notification settings</string>
     <string name="notification_channel_install_success_title">Automatically installed apps</string>
-    <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically.</string>
+    <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically</string>
     <string name="notification_channel_updates_available_title">Available app updates</string>
-    <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found.</string>
+    <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found</string>
 
     <string name="notification_repo_update_default">Connecting to %1$s…</string>
     <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
@@ -136,7 +136,7 @@
     <string name="notification_installing_section_installing">Installing:</string>
     <string name="notification_installing_section_confirmation">Needs user confirmation:</string>
     <string name="notification_installing_section_installed">Installed:</string>
-    <string name="notification_installing_confirmation">Tap to confirm.</string>
+    <string name="notification_installing_confirmation">Tap to confirm</string>
 
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Here you can apply filters to the list of apps, e.g. showing only apps within a certain category or repository. Changing the sort order is also possible.</string>
@@ -144,8 +144,9 @@
     <string name="clear">Clear</string>
     <string name="error">Error</string>
     <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
+    <!-- This is used as a content description for visually impaired users in the list of repositories for those repos that had errors updating -->
     <string name="repo_has_update_error">Had errors updating</string>
-    <string name="repo_has_update_error_intro">An error occurred while trying to update this repository:</string>
+    <string name="repo_has_update_error_intro">An error occurred while updating this repository:</string>
     <string name="repo_last_update_upstream">Published %s</string>
     <string name="repo_last_downloaded">Downloaded %s</string>
     <string name="repo_basicauth_username">Username</string>
@@ -159,22 +160,22 @@
     <string name="pref_auto_updates_only_wifi">Only on WiFi</string>
     <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
     <string name="pref_auto_updates_only_never">Never</string>
-    <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on WiFi and the device isn\'t being used.</string>
-    <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used.</string>
+    <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on WiFi and the device isn\'t being used</string>
+    <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_never">Auto-updates disabled • Apps will need to be updated manually</string>
     <string name="pref_repo_updates_title">Check for updates</string>
-    <string name="pref_repo_updates_summary_only_wifi">Periodically ask all repositories for app updates, but only when on WiFi.</string>
-    <string name="pref_repo_updates_summary_always">Periodically ask all repositories for app updates even when on mobile data.</string>
-    <string name="pref_repo_updates_summary_never">Do NOT check for updates • Apps will become outdated</string>
+    <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories, but only when on WiFi</string>
+    <string name="pref_repo_updates_summary_always">Periodically fetch app updates from repositories even when on mobile data</string>
+    <string name="pref_repo_updates_summary_never">Don\'t check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
     <string name="pref_mirror_chooser_title">Download mirror selection</string>
     <string name="pref_mirror_chooser_summary_random">Random</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Prefer from other countries</string>
     <string name="pref_proxy_title">Connect via SOCKS proxy</string>
-    <string name="pref_proxy_disabled">Connect to the internet without proxy</string>
+    <string name="pref_proxy_disabled">Connect to the Internet without proxy</string>
     <string name="pref_proxy_enabled">Uses proxy %s to connect</string>
-    <string name="pref_proxy_hint">Proxy is expected in host:port format.</string>
-    <string name="pref_proxy_error">Proxy format invalid</string>
+    <string name="pref_proxy_hint">Proxy is expected in host:port format</string>
+    <string name="pref_proxy_error">Invalid proxy format</string>
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.

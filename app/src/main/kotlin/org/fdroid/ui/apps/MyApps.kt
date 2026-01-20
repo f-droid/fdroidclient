@@ -177,7 +177,8 @@ fun MyApps(
                 text = if (searchActive) {
                     stringResource(R.string.search_my_apps_no_results)
                 } else {
-                    stringResource(R.string.my_apps_empty)
+                    val appName = stringResource(R.string.app_name)
+                    stringResource(R.string.my_apps_empty, appName)
                 },
                 textAlign = TextAlign.Center,
                 modifier = Modifier

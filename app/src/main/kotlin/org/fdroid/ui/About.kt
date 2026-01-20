@@ -45,8 +45,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.Hyphens
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.BuildConfig.VERSION_NAME
@@ -129,8 +127,7 @@ private fun AboutText() {
     SelectionContainer {
         Text(
             text = stringResource(R.string.about_text),
-            textAlign = TextAlign.Justify,
-            style = MaterialTheme.typography.bodyLarge.copy(hyphens = Hyphens.Auto),
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(top = 16.dp),
         )
     }
@@ -138,7 +135,6 @@ private fun AboutText() {
     Text(
         text = stringResource(R.string.links),
         fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Justify,
         style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.padding(top = 8.dp)
     )
@@ -177,8 +173,7 @@ private fun AboutText() {
     SelectionContainer {
         Text(
             text = stringResource(R.string.about_license_text),
-            textAlign = TextAlign.Justify,
-            style = MaterialTheme.typography.bodyLarge.copy(hyphens = Hyphens.Auto),
+            style = MaterialTheme.typography.bodyLarge,
         )
     }
 }
