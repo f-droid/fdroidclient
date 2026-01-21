@@ -380,7 +380,8 @@ deploy_nightly:
     - cat config/nightly-repo/repo.xml >> legacy/src/main/res/values/default_repos.xml
     - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
     - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
-    - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," app/build.gradle
+    - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," legacy/build.gradle
+    - sed -i "s,^\(\s*versionCode =\) *[0-9].*,\1 $versionCode," app/build.gradle.kts
     # build the APKs!
     - rm -rf app/build/outputs/apk
     - ./gradlew :app:assembleBasicRelease :legacy:assembleFullDebug
