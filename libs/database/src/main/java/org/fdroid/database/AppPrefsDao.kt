@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import android.os.Build.VERSION.SDK_INT
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.map
@@ -30,9 +31,13 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
     fun getAppPrefsOrNull(packageName: String): AppPrefs?
 
     fun getPreferredRepos(packageNames: List<String>): Map<String, Long> {
-        return if (packageNames.size <= 999) getPreferredReposInternal(packageNames)
-        else HashMap<String, Long>(packageNames.size).also { map ->
-            packageNames.chunked(999).forEach { map.putAll(getPreferredReposInternal(it)) }
+        // since sqlite 3.32.0 the max variables number was increased to 32766
+        return if (packageNames.size <= 999 || SDK_INT >= 31) {
+            getPreferredReposInternal(packageNames)
+        } else {
+            HashMap<String, Long>(packageNames.size).also { map ->
+                packageNames.chunked(999).forEach { map.putAll(getPreferredReposInternal(it)) }
+            }
         }
     }
 

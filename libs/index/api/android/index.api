@@ -36,6 +36,8 @@ public final class org/fdroid/UpdateChecker {
 	public final fun getUpdate (Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;)Lorg/fdroid/index/v2/PackageVersion;
 	public static synthetic fun getUpdate$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Landroid/content/pm/PackageInfo;Ljava/util/List;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersion;
 	public static synthetic fun getUpdate$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/fdroid/index/v2/PackageVersion;
+	public final fun getUpdates (Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;)Lkotlin/sequences/Sequence;
+	public static synthetic fun getUpdates$default (Lorg/fdroid/UpdateChecker;Ljava/util/List;Lkotlin/jvm/functions/Function0;JLjava/util/List;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lkotlin/sequences/Sequence;
 }
 
 public final class org/fdroid/index/IndexConverter {

@@ -48,6 +48,7 @@ internal data class Version(
     override val releaseChannels: List<String>? = emptyList(),
     val antiFeatures: Map<String, LocalizedTextV2>? = null,
     val whatsNew: LocalizedTextV2? = null,
+    val appLabel: LocalizedTextV2? = null,
     val isCompatible: Boolean,
 ) : PackageVersion {
     internal companion object {

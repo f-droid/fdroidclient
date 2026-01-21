@@ -1,40 +1,54 @@
 [versions]
 compileSdk = "36"
-kotlin = "2.2.21"
-androidGradlePlugin = "8.11.1" # 8.12.0 pulls in aapt2 which has issue on buildserver
-androidKspPlugin = "2.2.21-2.0.4" # first version needs to match kotlin version
+kotlin = "2.3.0"
+androidGradlePlugin = "8.13.2"
+androidKspPlugin = "2.3.4"
+hilt = "2.57.2"
+hiltWork = "1.3.0"
+hiltNavigationCompose = "1.3.0"
 dokka = "2.1.0"
-mavenPublish = "0.34.0"
-jlleitschuhKtlint = "13.1.0"
+mavenPublish = "0.35.0"
+jlleitschuhKtlint = "14.0.1"
 
+kotlinxSerializationCore = "1.9.0"
 kotlinxSerializationJson = "1.9.0"
 kotlinxCoroutinesTest = "1.10.2"
 
-ktor = "3.3.1"
+ktor = "3.3.3"
 okhttp = "4.12.0"
-room = "2.8.3"
+room = "2.8.4"
 glide = "5.0.5"
 glideCompose = "1.0.0-beta08"
+coilCompose = "3.3.0"
+molecule = "2.2.0"
+hints = "2.0.1"
+composePreference = "2.1.1"
 
 androidxCoreKtx = "1.17.0"
 androidxAppcompat = "1.7.1"
 androidxPreferenceKtx = "1.2.1"
-androidxLifecycleLivedataKtx = "2.9.4"
-androidxWork = "2.10.5"
+androidxLifecycleLivedataKtx = "2.10.0"
+androidxWork = "2.11.0"
 androidxDocumentfile = "1.1.0"
 androidxLocalbroadcastmanager = "1.1.0"
+androidxHiltCompiler = "1.3.0"
 androidxRecyclerview = "1.4.0"
 androidxConstraintlayout = "2.2.1"
-androidxSwipeRefreshLayout = "1.1.0"
+androidxSwipeRefreshLayout = "1.2.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2025.09.01"
-androidxActivityCompose = "1.11.0"
+androidxComposeBom = "2025.12.01"
+androidxActivityCompose = "1.12.2"
 accompanistDrawablepainter = "0.37.3"
+
+# navigation3
+nav3Core = "1.0.0"
+lifecycleViewmodelNav3 = "2.10.0"
+material3AdaptiveNav3 = "1.0.0-alpha03"
+
 material = "1.13.0"
 
-#noinspection GradleDependency newer version need minSdk 24 or library desugering
-zxingCore = "3.3.3"
+zxingCore = "3.5.4"
 guardianprojectNetcipher = "2.2.0-alpha"
 guardianprojectPanic = "1.0"
 acra = "5.13.1"
@@ -42,7 +56,7 @@ adapterdelegates4 = "4.3.2"
 #noinspection GradleDependency Commons IO > 2.5 uses java.nio.file, which requires desugaring
 commonsIo = "2.6"
 commonsNet = "3.6"
-bouncycastle = "1.82"
+bouncycastle = "1.83"
 #noinspection NewerVersionAvailable upgrade to 3.6.1 failed BonjourManagerTest
 jmdns = "3.5.5"
 nanohttpd = "2.3.1"
@@ -53,21 +67,21 @@ rxandroid = "3.0.2"
 
 slf4jApi = "2.0.17"
 microutilsKotlinLogging = "3.0.5"
-logbackClassic = "1.5.19"
+logbackClassic = "1.5.22"
 logbackAndroid = "3.0.0"
 
 junit = "4.13.2"
 mockk = "1.14.6"
 robolectric = "4.16"
-androidxTestCore = "1.6.1"
-androidxTestRunner = "1.6.2"
-androidxTestExtJunit = "1.2.1"
+androidxTestCore = "1.7.0"
+androidxTestRunner = "1.7.0"
+androidxTestExtJunit = "1.3.0"
 androidxCoreTesting = "2.2.0"
-androidxTestCoreKtx = "1.6.1"
-androidxEspressoCore = "3.6.1"
-androidxTestRules = "1.6.1"
+androidxTestCoreKtx = "1.7.0"
+androidxEspressoCore = "3.7.0"
+androidxTestRules = "1.7.0"
 androidxTestUiautomator = "2.3.0"
-androidxTestMonitor = "1.7.2"
+androidxTestMonitor = "1.8.0"
 mockitoCore = "5.1.1"
 hamcrest = "2.2"
 goncalossilvaResources = "0.2.1"
@@ -77,11 +91,13 @@ json = "20220320"
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCoreKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidxLifecycleLivedataKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycleLivedataKtx" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidxConstraintlayout" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
 androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "androidxGridlayout" }
@@ -92,16 +108,27 @@ androidx-vectordrawable = { module = "androidx.vectordrawable:vectordrawable", v
 androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "androidxDocumentfile" }
 androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "androidxLocalbroadcastmanager" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "androidxWork" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidxWork" }
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "hiltWork" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version.ref = "androidxComposeBom" } # TODO remove -alpha
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material3-adaptive-navigation3 = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
+
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 accompanist-drawablepainter = { module = "com.google.accompanist:accompanist-drawablepainter", version.ref = "accompanistDrawablepainter" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
 
@@ -111,7 +138,14 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideCompose" }
 glide-annotations = { module = "com.github.bumptech.glide:annotations", version.ref = "glide" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
+molecule-runtime = { module = "app.cash.molecule:molecule-runtime", version.ref = "molecule" }
+compose-hints = { module = "com.viktormykhailiv:compose-hints", version.ref = "hints" }
+compose-preference = { module = "me.zhanghai.compose.preference:preference", version.ref = "composePreference" }
 guardianproject-netcipher = { module = "info.guardianproject.netcipher:netcipher", version.ref = "guardianprojectNetcipher" }
 guardianproject-panic = { module = "info.guardianproject.panic:panic", version.ref = "guardianprojectPanic" }
 nanohttpd = { module = "org.nanohttpd:nanohttpd", version.ref = "nanohttpd" }
@@ -119,6 +153,7 @@ jmdns = { module = "org.jmdns:jmdns", version.ref = "jmdns" }
 zxing-core = { module = "com.google.zxing:core", version.ref = "zxingCore" }
 acra-mail = { module = "ch.acra:acra-mail", version.ref = "acra" }
 acra-dialog = { module = "ch.acra:acra-dialog", version.ref = "acra" }
+acra-notification = { module = "ch.acra:acra-notification", version.ref = "acra" }
 adapterdelegates4 = { module = "com.hannesdorfmann:adapterdelegates4", version.ref = "adapterdelegates4" }
 bcprov-jdk15to18 = { module = "org.bouncycastle:bcprov-jdk15to18", version.ref = "bouncycastle" }
 bcpkix-jdk15to18 = { module = "org.bouncycastle:bcpkix-jdk15to18", version.ref = "bouncycastle" }
@@ -162,11 +197,14 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 hamcrest = { module = "org.hamcrest:hamcrest", version.ref = "hamcrest" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 json = { module = "org.json:json", version.ref = "json" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
+android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

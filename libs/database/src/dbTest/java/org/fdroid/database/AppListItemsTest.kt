@@ -6,6 +6,8 @@ import androidx.core.content.pm.PackageInfoCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.database.AppListSortOrder.NAME
@@ -17,7 +19,6 @@ import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestVersionUtils.getRandomPackageVersionV2
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.collections.map
 import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -74,8 +75,10 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
-                apps[0].installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[0].installedVersionCode
+            )
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
@@ -127,8 +130,10 @@ internal class AppListItemsTest : AppTest() {
         appDao.getAppListItems(pm, "A", "Two", NAME).getOrFail().let { apps ->
             assertEquals(1, apps.size)
             assertEquals(app2, apps[0])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
-                apps[0].installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[0].installedVersionCode
+            )
             assertEquals(packageInfo2.versionName, apps[0].installedVersionName)
         }
 
@@ -190,8 +195,10 @@ internal class AppListItemsTest : AppTest() {
             assertEquals(2, apps.size)
             assertEquals(app3a, apps[0])
             assertEquals(app2, apps[1])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
-                apps[1].installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo2),
+                apps[1].installedVersionCode
+            )
             assertEquals(packageInfo2.versionName, apps[1].installedVersionName)
         }
 
@@ -201,8 +208,10 @@ internal class AppListItemsTest : AppTest() {
             val sortedApps = apps.sortedBy { it.lastUpdated }
             assertEquals(app2, sortedApps[0])
             assertEquals(app3a, sortedApps[1])
-            assertEquals(PackageInfoCompat.getLongVersionCode(packageInfo2),
-                sortedApps[0].installedVersionCode)
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo2),
+                sortedApps[0].installedVersionCode
+            )
             assertEquals(packageInfo2.versionName, sortedApps[0].installedVersionName)
         }
 
@@ -578,6 +587,50 @@ internal class AppListItemsTest : AppTest() {
     }
 
     @Test
+    fun testGetInstalledAppListItemsFlow() = runBlocking {
+        // insert three apps
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName1, app1, locales)
+        appDao.insert(repoId, packageName2, app2, locales)
+        appDao.insert(repoId, packageName3, app3, locales)
+
+        // define packageInfo for each test
+        val packageInfo1 = PackageInfo().apply {
+            packageName = packageName1
+            versionName = getRandomString()
+            versionCode = Random.nextInt(1, Int.MAX_VALUE)
+        }
+        val packageInfo2 = PackageInfo().apply { packageName = packageName2 }
+        val packageInfo3 = PackageInfo().apply { packageName = packageName3 }
+
+        // all apps get returned, if we consider all of them installed
+        val pmInfoMap1 = mapOf(
+            packageName1 to packageInfo1,
+            packageName2 to packageInfo2,
+            packageName3 to packageInfo3,
+        )
+        assertEquals(3, appDao.getInstalledAppListItems(pmInfoMap1).first().size)
+
+        // one apps get returned, if we consider only that one installed
+        val pmInfoMap2 = mapOf(packageName1 to packageInfo1)
+        appDao.getInstalledAppListItems(pmInfoMap2).first().let { apps ->
+            assertEquals(1, apps.size)
+            assertEquals(app1, apps[0])
+            // version code and version name gets taken from supplied packageInfo
+            assertEquals(
+                PackageInfoCompat.getLongVersionCode(packageInfo1),
+                apps[0].installedVersionCode
+            )
+            assertEquals(packageInfo1.versionName, apps[0].installedVersionName)
+        }
+
+        // no app gets returned, if we consider none installed
+        appDao.getInstalledAppListItems(emptyMap()).first().let { apps ->
+            assertEquals(0, apps.size)
+        }
+    }
+
+    @Test
     fun testGetInstalledAppListItemsMaxVars() {
         // insert an app
         val repoId = repoDao.insertOrReplace(getRandomRepo())
@@ -592,12 +645,12 @@ internal class AppListItemsTest : AppTest() {
         }
         val packageInfo = packageInfoCreator(packageName)
 
-        // sqlite has a maximum number of 999 variables that can be used in a query
+        // sqlite (before 3.32.0) has a maximum number of 999 variables that can be used in a query
         // one additional package info is added to the package lists with each test case
         val listPackageInfo = listOf(packageInfo)
-        val packageInfoOk = MutableList(998) { packageInfoCreator(getRandomString()) }
-        val packageInfoNotOk1 = MutableList(999) { packageInfoCreator(getRandomString()) }
-        val packageInfoNotOk2 = MutableList(5000) { packageInfoCreator(getRandomString()) }
+        val packageInfoOk = MutableList(998) { packageInfoCreator("${it + 1}") }
+        val packageInfoNotOk1 = MutableList(999) { packageInfoCreator("${it + 1}") }
+        val packageInfoNotOk2 = MutableList(5000) { packageInfoCreator("${it + 1}") }
 
         // app gets returned no matter how many packages are installed
         every { pm.getInstalledPackages(0) } returns packageInfoOk + listPackageInfo
@@ -616,6 +669,51 @@ internal class AppListItemsTest : AppTest() {
         assertNotNull(appDao.getInstalledAppListItems(pm).getOrFail()[0].installedVersionName)
     }
 
+    @Test
+    fun testGetInstalledAppListItemsFlowMaxVars(): Unit = runBlocking {
+        // insert an app
+        val repoId = repoDao.insertOrReplace(getRandomRepo())
+        appDao.insert(repoId, packageName, app1, locales)
+
+        val packageInfoCreator = { name: String ->
+            PackageInfo().apply {
+                packageName = name
+                versionName = name
+                versionCode = Random.nextInt(1, Int.MAX_VALUE)
+            }
+        }
+        val packageInfo = packageInfoCreator(packageName)
+        // sqlite (before 3.32.0) has a maximum number of 999 variables that can be used in a query
+        // one additional package info is added to the package lists with each test case
+        val packageInfoOk = mutableMapOf<String, PackageInfo>().apply {
+            for (i in 2..999) set("$i", packageInfoCreator("$i"))
+            set(packageName, packageInfo)
+        }
+        val packageInfoNotOk1 = mutableMapOf<String, PackageInfo>().apply {
+            for (i in 2..1000) set("$i", packageInfoCreator("$i"))
+            set(packageName, packageInfo)
+        }
+        val packageInfoNotOk2 = mutableMapOf<String, PackageInfo>().apply {
+            for (i in 2..5000) set("$i", packageInfoCreator("$i"))
+            set(packageName, packageInfo)
+        }
+        // app gets returned no matter how many packages are installed
+        assertEquals(1, appDao.getInstalledAppListItems(packageInfoOk).first().size)
+        assertEquals(1, appDao.getInstalledAppListItems(packageInfoNotOk1).first().size)
+        assertEquals(1, appDao.getInstalledAppListItems(packageInfoNotOk2).first().size)
+
+        // ensure they have version info set
+        assertNotNull(
+            appDao.getInstalledAppListItems(packageInfoOk).first()[0].installedVersionName
+        )
+        assertNotNull(
+            appDao.getInstalledAppListItems(packageInfoNotOk1).first()[0].installedVersionName
+        )
+        assertNotNull(
+            appDao.getInstalledAppListItems(packageInfoNotOk2).first()[0].installedVersionName
+        )
+    }
+
     // region author tests
     @Test
     fun testAuthor_NoApp() {
@@ -625,8 +723,10 @@ internal class AppListItemsTest : AppTest() {
 
         assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
         assertTrue(appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail().isEmpty())
-        assertTrue(appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
-            .getOrFail().isEmpty())
+        assertTrue(
+            appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
+                .getOrFail().isEmpty()
+        )
     }
 
     @Test
@@ -640,8 +740,10 @@ internal class AppListItemsTest : AppTest() {
         assertFalse(appDao.hasAuthorMoreThanOneApp(author).getOrFail())
         val appsForAuthor = appDao.getAppListItemsForAuthor(pm, author, null, NAME).getOrFail()
         assertEquals(1, appsForAuthor.size)
-        assertEquals(1, appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
-            .getOrFail().size)
+        assertEquals(
+            1, appDao.getAppListItemsForAuthor(pm, author, null, LAST_UPDATED)
+                .getOrFail().size
+        )
         assertEquals(packageName, appsForAuthor[0].packageName)
     }
 

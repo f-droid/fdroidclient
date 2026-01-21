@@ -6,6 +6,7 @@ import org.fdroid.database.DbV2StreamReceiver
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.database.Repository
+import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexFormatVersion.ONE
@@ -33,6 +34,7 @@ public class IndexV2Updater(
 
     public override val formatVersion: IndexFormatVersion = TWO
     private val db: FDroidDatabaseInt = database as FDroidDatabaseInt
+    override val repoDao: RepositoryDaoInt = db.getRepositoryDao()
 
     override fun updateRepo(repo: Repository): IndexUpdateResult {
         val (_, entry) = getCertAndEntry(repo, repo.certificate)
@@ -61,7 +63,12 @@ public class IndexV2Updater(
             indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME"),
             destFile = file,
         ).apply {
-            setIndexUpdateListener(listener, repo)
+            if (listener != null) setListener { bytesRead, _ ->
+                // don't report a total for entry.jar,
+                // because we'll download another file afterwards
+                // and progress reporting would jump to 100% two times.
+                listener.onDownloadProgress(repo, bytesRead, -1)
+            }
         }
         try {
             downloader.download()
@@ -92,7 +99,6 @@ public class IndexV2Updater(
         try {
             downloader.download()
             file.inputStream().use { inputStream ->
-                val repoDao = db.getRepositoryDao()
                 db.runInTransaction {
                     // ensure somebody else hasn't updated the repo in the meantime
                     val currentTimestamp = repoDao.getRepository(repo.repoId)?.timestamp
@@ -108,6 +114,8 @@ public class IndexV2Updater(
                         ?: error("No repo prefs for ${repo.repoId}")
                     val updatedPrefs = repoPrefs.copy(
                         lastUpdated = System.currentTimeMillis(),
+                        errorCount = 0,
+                        lastError = null,
                     )
                     repoDao.updateRepositoryPreferences(updatedPrefs)
                 }

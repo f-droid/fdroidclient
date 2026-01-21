@@ -10,6 +10,7 @@ import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.PackagePreference
 import org.fdroid.UpdateChecker
 
+@Deprecated("Use DbAppChecker instead")
 public class DbUpdateChecker @JvmOverloads constructor(
     db: FDroidDatabase,
     private val packageManager: PackageManager,

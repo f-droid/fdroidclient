@@ -1,5 +1,6 @@
 package org.fdroid.database
 
+import android.os.Build.VERSION.SDK_INT
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -196,7 +197,8 @@ internal interface VersionDaoInt : VersionDao {
      * so takes [AppPrefs.ignoreVersionCodeUpdate] into account.
      */
     fun getVersions(packageNames: List<String>): List<Version> {
-        return if (packageNames.size <= 999) getVersionsInternal(packageNames)
+        // since sqlite 3.32.0 (in SDK 31 the max variables number was increased to 32766
+        return if (packageNames.size <= 999 || SDK_INT >= 31) getVersionsInternal(packageNames)
         else packageNames.chunked(999).flatMap { getVersionsInternal(it) }
     }
 

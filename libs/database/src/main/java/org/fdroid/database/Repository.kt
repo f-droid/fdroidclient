@@ -2,6 +2,7 @@ package org.fdroid.database
 
 import androidx.annotation.WorkerThread
 import androidx.core.os.LocaleListCompat
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -110,6 +111,7 @@ public data class Repository internal constructor(
         lastUpdated: Long,
         username: String? = null,
         password: String? = null,
+        lastError: String? = null,
     ) : this(
         repository = CoreRepository(
             repoId = repoId,
@@ -131,6 +133,7 @@ public data class Repository internal constructor(
             lastUpdated = lastUpdated,
             username = username,
             password = password,
+            lastError = lastError,
         )
     )
 
@@ -231,6 +234,8 @@ public data class Repository internal constructor(
         get() {
             return "https://fdroid.link/#$address?fingerprint=$fingerprint"
         }
+    public val errorCount: Int get() = preferences.errorCount
+    public val lastError: String? get() = preferences.lastError
 }
 
 // Dummy repo to use in Compose Previews and in tests
@@ -263,6 +268,8 @@ internal data class Mirror(
     val repoId: Long,
     val url: String,
     val countryCode: String? = null,
+    @ColumnInfo(defaultValue = "0")
+    val isPrimary: Boolean = false,
 ) {
     internal companion object {
         const val TABLE = "Mirror"
@@ -271,6 +278,7 @@ internal data class Mirror(
     fun toDownloadMirror(): org.fdroid.download.Mirror = org.fdroid.download.Mirror(
         baseUrl = url,
         countryCode = countryCode,
+        // TODO add isPrimary = isPrimary,
     )
 }
 
@@ -278,6 +286,7 @@ internal fun MirrorV2.toMirror(repoId: Long) = Mirror(
     repoId = repoId,
     url = url,
     countryCode = countryCode,
+    // TODO add isPrimary = isPrimary,
 )
 
 internal fun List<MirrorV2>.toMirrors(repoId: Long): List<Mirror> {
@@ -417,6 +426,9 @@ internal data class RepositoryPreferences(
     val disabledMirrors: List<String>? = null,
     val username: String? = null,
     val password: String? = null,
+    @ColumnInfo(defaultValue = "0")
+    val errorCount: Int = 0,
+    val lastError: String? = null,
 ) {
     internal companion object {
         const val TABLE = "RepositoryPreferences"
