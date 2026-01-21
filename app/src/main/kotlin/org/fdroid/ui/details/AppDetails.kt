@@ -92,10 +92,10 @@ fun AppDetails(
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     if (item == null) BigLoadingIndicator()
     else Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)
         },
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { innerPadding ->
         // react to install state changes
         LaunchedEffect(item.installState) {
