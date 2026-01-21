@@ -33,6 +33,7 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun CrashContent(
+    isOldCrash: Boolean,
     onCancel: () -> Unit,
     onSend: (String, String) -> Unit,
     textFieldState: TextFieldState,
@@ -60,16 +61,19 @@ fun CrashContent(
         )
         Column(verticalArrangement = spacedBy(16.dp)) {
             Text(
-                text = stringResource(R.string.crash_dialog_title),
+                text = if (isOldCrash) {
+                    stringResource(R.string.crash_dialog_title_old)
+                } else {
+                    stringResource(R.string.crash_dialog_title)
+                },
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Text(
                 text = stringResource(R.string.crash_report_text),
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier
             )
-            TextField(
+            if (!isOldCrash) TextField(
                 state = textFieldState,
                 placeholder = { Text(stringResource(R.string.crash_report_comment_hint)) },
                 modifier = Modifier.fillMaxWidth()
@@ -85,7 +89,8 @@ fun CrashContent(
                 Text(stringResource(R.string.cancel))
             }
             Button(onClick = {
-                onSend(textFieldState.text.toString(), "")
+                val text = if (isOldCrash) "old crash" else textFieldState.text.toString()
+                onSend(text, "")
             }) {
                 Text(stringResource(R.string.crash_report_button_send))
             }
@@ -97,6 +102,14 @@ fun CrashContent(
 @Composable
 private fun Preview() {
     FDroidContent {
-        Crash({}, { _, _ -> }, { _, _ -> true })
+        Crash(false, {}, { _, _ -> }, { _, _ -> true })
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewOld() {
+    FDroidContent {
+        Crash(true, {}, { _, _ -> }, { _, _ -> true })
     }
 }
