@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
+import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
@@ -63,6 +65,7 @@ fun AppsSearch(
     onSearchCleared: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val scope = rememberCoroutineScope()
     val textFieldState = rememberTextFieldState()
     SearchBar(
         state = searchBarState,
@@ -163,6 +166,11 @@ fun AppsSearch(
                             .fillMaxWidth()
                             .animateItem()
                             .clickable {
+                                // workaround for https://issuetracker.google.com/issues/471730911
+                                // still crashes sometimes, but at least back gesture works
+                                scope.launch {
+                                    searchBarState.animateToCollapsed()
+                                }
                                 onNav(NavigationKey.AppDetails(item.packageName))
                             }
                     )
