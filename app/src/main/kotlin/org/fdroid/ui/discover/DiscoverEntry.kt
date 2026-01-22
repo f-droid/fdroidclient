@@ -34,8 +34,6 @@ fun EntryProviderScope<NavKey>.discoverEntry(
                 }
             },
             onNav = { navKey -> navigator.navigate(navKey) },
-            onSearch = viewModel::search,
-            onSearchCleared = viewModel::onSearchCleared,
         )
     }
 }

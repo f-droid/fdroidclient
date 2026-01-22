@@ -29,6 +29,9 @@ sealed interface NavigationKey : NavKey {
     }
 
     @Serializable
+    data object Search : NavigationKey
+
+    @Serializable
     data class AppDetails(val packageName: String) : NavigationKey
 
     @Serializable

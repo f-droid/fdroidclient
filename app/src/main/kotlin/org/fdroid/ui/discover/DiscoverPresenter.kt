@@ -1,5 +1,6 @@
 package org.fdroid.ui.discover
 
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,7 @@ fun DiscoverPresenter(
     mostDownloadedAppsFlow: MutableStateFlow<List<AppDiscoverItem>?>,
     categoriesFlow: Flow<List<CategoryItem>>,
     repositoriesFlow: Flow<List<Repository>>,
-    searchResultsFlow: StateFlow<SearchResults?>,
+    searchTextFieldState: TextFieldState,
     isFirstStart: Boolean,
     networkState: NetworkState,
     repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
@@ -28,7 +29,6 @@ fun DiscoverPresenter(
     val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
     val mostDownloadedApps = mostDownloadedAppsFlow.collectAsState().value
     val categories = categoriesFlow.collectAsState(null).value
-    val searchResults = searchResultsFlow.collectAsState().value
 
     // We may not have any new apps, but there should always be recently updated apps,
     // because those don't have a freshness constraint.
@@ -48,7 +48,7 @@ fun DiscoverPresenter(
             recentlyUpdatedApps = recentlyUpdatedApps,
             mostDownloadedApps = mostDownloadedApps,
             categories = categories?.groupBy { it.group },
-            searchResults = searchResults,
+            searchTextFieldState = searchTextFieldState,
             hasRepoIssues = hasRepoIssuesFlow.collectAsState(false).value,
         )
     }
@@ -67,6 +67,6 @@ data class LoadedDiscoverModel(
     val recentlyUpdatedApps: List<AppDiscoverItem>,
     val mostDownloadedApps: List<AppDiscoverItem>?,
     val categories: Map<CategoryGroup, List<CategoryItem>>?,
-    val searchResults: SearchResults? = null,
+    val searchTextFieldState: TextFieldState,
     val hasRepoIssues: Boolean,
 ) : DiscoverModel()
