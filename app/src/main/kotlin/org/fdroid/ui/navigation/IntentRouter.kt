@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.Intent.ACTION_MAIN
 import android.content.Intent.ACTION_SHOW_APP_INFO
 import android.content.Intent.EXTRA_PACKAGE_NAME
-import android.os.Build.VERSION.SDK_INT
 import androidx.core.util.Consumer
 import mu.KotlinLogging
 
@@ -53,7 +52,7 @@ class IntentRouter(private val navigator: Navigator) : Consumer<Intent> {
                 navigator.navigate(NavigationKey.MyApps)
             }
         } else {
-            log.warn { "Unknown intent: $intent - uri: $uri $SDK_INT" }
+            log.warn { "Unknown intent: $intent - uri: $uri" }
         }
     }
 }

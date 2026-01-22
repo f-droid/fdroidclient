@@ -98,7 +98,11 @@ class AppDetailsViewModel @AssistedInject constructor(
             packageInfoFlow.value = if (packageInfo == null) {
                 AppInfo(packageName)
             } else {
-                val intent = packageManager.getLaunchIntentForPackage(packageName)
+                val intent = if (packageName == app.packageName) {
+                    null // we shouldn't launch ourselves, so no launch intent here
+                } else {
+                    packageManager.getLaunchIntentForPackage(packageName)
+                }
                 AppInfo(packageName, packageInfo, intent)
             }
         }

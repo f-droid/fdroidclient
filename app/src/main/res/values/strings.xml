@@ -710,6 +710,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="theme_follow_system">Follow system</string>
 
     <string name="crash_dialog_title">F-Droid has crashed</string>
+    <string name="crash_dialog_title_old">F-Droid had crashed</string>
     <string name="crash_dialog_text">An unexpected error occurred
         forcing the app to stop. Would you like to e-mail the
         details to help fix the issue?

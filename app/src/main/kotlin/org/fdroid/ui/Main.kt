@@ -29,6 +29,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.ui.apps.myAppsEntry
+import org.fdroid.ui.details.NoAppSelected
 import org.fdroid.ui.details.appDetailsEntry
 import org.fdroid.ui.discover.discoverEntry
 import org.fdroid.ui.lists.appListEntry
@@ -42,6 +43,8 @@ import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
 import org.fdroid.ui.repositories.repoEntry
+import org.fdroid.ui.search.ExpandedSearch
+import org.fdroid.ui.search.SearchViewModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
 
@@ -76,6 +79,21 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         appDetailsEntry(navigator, isBigScreen)
         appListEntry(navigator, isBigScreen)
         repoEntry(navigator, isBigScreen)
+        entry<NavigationKey.Search>(
+            metadata = ListDetailSceneStrategy.listPane("appdetails") {
+                NoAppSelected()
+            },
+        ) {
+            val viewModel = hiltViewModel<SearchViewModel>()
+            ExpandedSearch(
+                textFieldState = viewModel.textFieldState,
+                searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
+                onSearch = viewModel::search,
+                onNav = { navKey -> navigator.navigate(navKey) },
+                onBack = { navigator.goBack() },
+                onSearchCleared = viewModel::onSearchCleared,
+            )
+        }
         entry(NavigationKey.Settings) {
             val viewModel = hiltViewModel<SettingsViewModel>()
             Settings(

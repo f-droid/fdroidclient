@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -34,7 +35,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -75,44 +75,36 @@ fun AppDetailsHeader(
     item: AppDetailsItem,
     innerPadding: PaddingValues,
 ) {
-    var showTopSpacer by rememberSaveable(item.featureGraphic) { mutableStateOf(true) }
-    if (showTopSpacer) {
-        Spacer(modifier = Modifier.padding(innerPadding))
+    Box {
+        Spacer(modifier = Modifier.padding(top = innerPadding.calculateTopPadding()))
+        item.featureGraphic?.let { featureGraphic ->
+            AsyncImage(
+                model = featureGraphic,
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 196.dp)
+                    .graphicsLayer { alpha = 0.5f }
+                    .drawWithContent {
+                        val colors = listOf(
+                            Color.Black,
+                            Color.Transparent
+                        )
+                        drawContent()
+                        drawRect(
+                            brush = Brush.verticalGradient(colors),
+                            blendMode = BlendMode.DstIn
+                        )
+                    }
+                    .semantics { hideFromAccessibility() },
+            )
+        }
     }
     var showMeteredDialog by remember { mutableStateOf(false) }
-    item.featureGraphic?.let { featureGraphic ->
-        AsyncImage(
-            model = featureGraphic,
-            contentDescription = "",
-            contentScale = ContentScale.FillWidth,
-            onSuccess = {
-                showTopSpacer = false
-            },
-            onError = {
-                showTopSpacer = true
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(max = 196.dp)
-                .graphicsLayer { alpha = 0.5f }
-                .drawWithContent {
-                    val colors = listOf(
-                        Color.Black,
-                        Color.Transparent
-                    )
-                    drawContent()
-                    drawRect(
-                        brush = Brush.verticalGradient(colors),
-                        blendMode = BlendMode.DstIn
-                    )
-                }
-                .padding(bottom = 8.dp)
-                .semantics { hideFromAccessibility() },
-        )
-    }
     // Offline bar, if no internet
     if (!item.networkState.isOnline) {
-        OfflineBar(modifier = Modifier.absoluteOffset(y = (-16).dp))
+        OfflineBar(modifier = Modifier.absoluteOffset(y = (-8).dp))
     }
     // Header
     val version = item.suggestedVersion ?: item.versions?.first()?.version

@@ -23,8 +23,8 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import org.fdroid.R
-import org.fdroid.ui.discover.AppSearchInputField
-import org.fdroid.ui.discover.SEARCH_THRESHOLD
+import org.fdroid.ui.search.AppSearchInputField
+import org.fdroid.ui.search.SEARCH_THRESHOLD
 
 /**
  * This is a top app bar that isn't mean to ever expand with results, but for in-list filtering.

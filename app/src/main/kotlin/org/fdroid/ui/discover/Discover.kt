@@ -17,7 +17,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
-import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,14 +44,11 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
     discoverModel: DiscoverModel,
-    onSearch: suspend (String) -> Unit,
-    onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
     onAppTap: (AppDiscoverItem) -> Unit,
     onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val searchBarState = rememberSearchBarState()
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold(
         topBar = {
@@ -108,9 +104,6 @@ fun Discover(
             is LoadedDiscoverModel -> {
                 DiscoverContent(
                     discoverModel = discoverModel,
-                    searchBarState = searchBarState,
-                    onSearch = onSearch,
-                    onSearchCleared = onSearchCleared,
                     onListTap = onListTap,
                     onAppTap = onAppTap,
                     onNav = onNav,
@@ -147,8 +140,6 @@ fun FirstStartDiscoverPreview() {
                 NetworkState(true, isMetered = false),
                 RepoUpdateProgress(1, true, 0.25f),
             ),
-            onSearch = {},
-            onSearchCleared = {},
             onListTap = {},
             onAppTap = {},
             onNav = {},
@@ -162,8 +153,6 @@ fun LoadingDiscoverPreview() {
     FDroidContent {
         Discover(
             discoverModel = LoadingDiscoverModel,
-            onSearch = {},
-            onSearchCleared = {},
             onListTap = {},
             onAppTap = {},
             onNav = {},
@@ -177,8 +166,6 @@ private fun NoEnabledReposPreview() {
     FDroidContent {
         Discover(
             discoverModel = NoEnabledReposDiscoverModel,
-            onSearch = {},
-            onSearchCleared = {},
             onListTap = {},
             onAppTap = {},
             onNav = {},

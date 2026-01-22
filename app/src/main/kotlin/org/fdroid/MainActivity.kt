@@ -4,6 +4,7 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
                 // inform OnNewIntentListeners about the initial intent (otherwise would be missed)
                 if (savedInstanceState == null && intent != null) {
                     onNewIntent(intent)
+                } else if (savedInstanceState != null && intent != null) {
+                    Log.w("MainActivity", "Ignored intent due to savedInstanceState: $intent")
                 }
             }
         }

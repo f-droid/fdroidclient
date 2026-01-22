@@ -30,6 +30,7 @@ import org.fdroid.utils.getLogName
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun Crash(
+    isOldCrash: Boolean,
     onCancel: () -> Unit,
     onSend: (String, String) -> Unit,
     onSave: (Uri, String) -> Boolean,
@@ -65,7 +66,7 @@ fun Crash(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         modifier = modifier,
     ) { paddingValues ->
-        CrashContent(onCancel, onSend, textFieldState, Modifier.padding(paddingValues))
+        CrashContent(isOldCrash, onCancel, onSend, textFieldState, Modifier.padding(paddingValues))
     }
 }
 
@@ -73,6 +74,6 @@ fun Crash(
 @Composable
 private fun Preview() {
     FDroidContent {
-        Crash({}, { _, _ -> }, { _, _ -> true })
+        Crash(false, {}, { _, _ -> }, { _, _ -> true })
     }
 }

@@ -33,6 +33,7 @@ import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.repositories.details.ArchiveState.UNKNOWN
+import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 
 @HiltViewModel(assistedFactory = RepoDetailsViewModel.Factory::class)
@@ -42,6 +43,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
     networkMonitor: NetworkMonitor,
     private val db: FDroidDatabase,
     private val repoManager: RepoManager,
+    private val updateManager: UpdatesManager,
     repoUpdateManager: RepoUpdateManager,
     private val settingsManager: SettingsManager,
     private val onboardingManager: OnboardingManager,
@@ -95,6 +97,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
     override fun deleteRepository() {
         ioScope.launch {
             repoManager.deleteRepository(repoId)
+            updateManager.loadUpdates()
         }
     }
 

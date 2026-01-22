@@ -24,7 +24,9 @@ import org.fdroid.install.InstallNotificationState
 import org.fdroid.ui.navigation.IntentRouter.Companion.ACTION_MY_APPS
 import org.fdroid.updates.UpdateNotificationState
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class NotificationManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
 ) {

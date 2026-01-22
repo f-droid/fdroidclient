@@ -1,17 +1,15 @@
-package org.fdroid.ui.discover
+package org.fdroid.ui.search
 
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.placeCursorAtEnd
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.SearchBarState
-import androidx.compose.material3.SearchBarValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,6 +31,7 @@ fun AppSearchInputField(
     textFieldState: TextFieldState,
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val scope = rememberCoroutineScope()
     // set-up search as you type
@@ -50,30 +49,14 @@ fun AppSearchInputField(
             }
     }
     SearchBarDefaults.InputField(
-        modifier = Modifier,
+        modifier = modifier,
         searchBarState = searchBarState,
         textFieldState = textFieldState,
+        textStyle = MaterialTheme.typography.bodyLarge,
         onSearch = {
             scope.launch { onSearch(it) }
         },
         placeholder = { Text(stringResource(R.string.search_placeholder)) },
-        leadingIcon = {
-            if (searchBarState.currentValue == SearchBarValue.Expanded) {
-                IconButton(
-                    onClick = { scope.launch { searchBarState.animateToCollapsed() } }
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                        contentDescription = stringResource(R.string.back)
-                    )
-                }
-            } else {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = stringResource(R.string.menu_search),
-                )
-            }
-        },
         trailingIcon = {
             if (textFieldState.text.isNotEmpty()) {
                 IconButton(onClick = onSearchCleared) {

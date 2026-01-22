@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.SearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,14 +14,12 @@ import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.ui.categories.CategoryList
 import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.search.AppsSearch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DiscoverContent(
     discoverModel: LoadedDiscoverModel,
-    searchBarState: SearchBarState,
-    onSearch: suspend (String) -> Unit,
-    onSearchCleared: () -> Unit,
     onListTap: (AppListType) -> Unit,
     onAppTap: (AppDiscoverItem) -> Unit,
     onNav: (NavKey) -> Unit,
@@ -31,11 +28,8 @@ fun DiscoverContent(
     // workaround for https://issuetracker.google.com/issues/445720462)
     Column(modifier = modifier.focusable()) {
         AppsSearch(
-            searchBarState = searchBarState,
-            searchResults = discoverModel.searchResults,
-            onSearch = onSearch,
             onNav = onNav,
-            onSearchCleared = onSearchCleared,
+            textFieldState = discoverModel.searchTextFieldState,
             modifier = Modifier
                 .padding(top = 16.dp, bottom = 4.dp)
                 .padding(horizontal = 16.dp)

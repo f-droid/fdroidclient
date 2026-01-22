@@ -45,6 +45,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -54,10 +55,13 @@ import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.fromHtml
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import org.fdroid.LocaleChooser.getBestLocale
@@ -88,10 +92,10 @@ fun AppDetails(
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
     if (item == null) BigLoadingIndicator()
     else Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav)
         },
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { innerPadding ->
         // react to install state changes
         LaunchedEffect(item.installState) {
@@ -104,11 +108,15 @@ fun AppDetails(
             }
         }
         val scrollState = rememberScrollState()
+        var size by remember { mutableStateOf(IntSize.Zero) }
         Column(
             modifier = modifier
                 .verticalScroll(scrollState)
                 .fillMaxWidth()
-                .padding(bottom = innerPadding.calculateBottomPadding()),
+                .padding(bottom = innerPadding.calculateBottomPadding())
+                .onGloballyPositioned { coordinates ->
+                    size = coordinates.size
+                }
         ) {
             // Header is taking care of top innerPadding
             AppDetailsHeader(item, innerPadding)
@@ -150,8 +158,20 @@ fun AppDetails(
                 }
             }
             // Description
-            var descriptionExpanded by remember { mutableStateOf(false) }
             item.description?.let { description ->
+                val maxLines = 3
+                val textMeasurer = rememberTextMeasurer()
+                val allowExpand = remember(size.width, description) {
+                    textMeasurer.measure(
+                        text = description,
+                        constraints = Constraints.fixedWidth(size.width),
+                    ).lineCount > maxLines
+                }
+                var descriptionExpanded by remember(allowExpand) {
+                    // not expanded (false) by default,
+                    // but expanded (true) when expanding not allowed
+                    mutableStateOf(!allowExpand)
+                }
                 val htmlDescription = AnnotatedString.fromHtml(description)
                 AnimatedVisibility(
                     visible = descriptionExpanded,
@@ -167,31 +187,33 @@ fun AppDetails(
                         )
                     }
                 }
-                AnimatedVisibility(!descriptionExpanded) {
-                    Text(
-                        text = htmlDescription,
-                        maxLines = 3,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .padding(top = 8.dp),
-                    )
-                }
-                TextButton(onClick = { descriptionExpanded = !descriptionExpanded }) {
-                    Text(
-                        text = if (descriptionExpanded) {
-                            stringResource(R.string.less)
-                        } else {
-                            stringResource(R.string.more)
-                        },
-                        textAlign = Center,
-                        maxLines = if (descriptionExpanded) Int.MAX_VALUE else 3,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .padding(bottom = 8.dp),
-                    )
+                if (allowExpand) {
+                    AnimatedVisibility(!descriptionExpanded) {
+                        Text(
+                            text = htmlDescription,
+                            maxLines = maxLines,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
+                                .padding(top = 8.dp),
+                        )
+                    }
+                    TextButton(onClick = { descriptionExpanded = !descriptionExpanded }) {
+                        Text(
+                            text = if (descriptionExpanded) {
+                                stringResource(R.string.less)
+                            } else {
+                                stringResource(R.string.more)
+                            },
+                            textAlign = Center,
+                            maxLines = if (descriptionExpanded) Int.MAX_VALUE else 3,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
+                                .padding(bottom = 8.dp),
+                        )
+                    }
                 }
             }
             // Anti-features
