@@ -19,8 +19,8 @@ if not re.match(r'[0-9]+\.[0-9]+\.[0-9]+\Z', tag):
     sys.exit(1)
 print(f'Working off of {tag} release')
 
-vc_pat = re.compile(r"versionCode +([1-9][0-9]{6,})")
-versionCode = int(vc_pat.search(repo.git.show(f"{tag}:app/build.gradle")).group(1))
+vc_pat = re.compile(r"versionCode = +([1-9][0-9]{6,})")
+versionCode = int(vc_pat.search(repo.git.show(f"{tag}:app/build.gradle.kts")).group(1))
 print(f"Working off of {tag} release (versionCode {versionCode}).")
 
 if versionCode % 1000 == 0:
@@ -44,8 +44,8 @@ if not Path(default_file).exists():
 
 newvc = ((versionCode // 1000) + 1) * 1000
 print(f'New alpha versionCode: {newvc}')
-build_gradle = Path('app/build.gradle')
-build_gradle.write_text(vc_pat.sub(f'versionCode {newvc}', build_gradle.read_text()))
+build_gradle = Path('app/build.gradle.kts')
+build_gradle.write_text(vc_pat.sub(f'versionCode = {newvc}', build_gradle.read_text()))
 
 for f in projectdir.glob('metadata/*/changelogs/default.txt'):
     vcf = f.parent / f'{versionCode}{f.suffix}'
