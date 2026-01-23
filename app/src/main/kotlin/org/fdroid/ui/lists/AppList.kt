@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.plus
 import androidx.compose.foundation.lazy.LazyColumn
@@ -52,6 +53,7 @@ import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getAppListInfo
@@ -95,7 +97,10 @@ fun AppList(
         topBar = {
             if (searchActive) {
                 val onSearchCleared = { appListInfo.actions.onSearch("") }
-                TopSearchBar(onSearch = appListInfo.actions::onSearch, onSearchCleared) {
+                TopSearchBar(
+                    onSearch = appListInfo.actions::onSearch,
+                    onSearchCleared = onSearchCleared,
+                ) {
                     searchActive = false
                     onSearchCleared()
                 }
@@ -155,7 +160,7 @@ fun AppList(
             LazyListState()
         }
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().imePadding()
         ) {
             val apps = appListInfo.model.apps
             if (apps == null) BigLoadingIndicator()

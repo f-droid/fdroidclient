@@ -5,30 +5,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
-import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBarDefaults
-import androidx.compose.material3.SearchBarValue
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import kotlinx.coroutines.launch
-import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
@@ -44,41 +27,9 @@ fun ExpandedSearch(
     onBack: () -> Unit,
     onSearchCleared: () -> Unit,
 ) {
-    val scope = rememberCoroutineScope()
-    val searchBarState = rememberSearchBarState()
-    val focusRequester = remember { FocusRequester() }
-    val keyboardController = LocalSoftwareKeyboardController.current
     Scaffold(
         topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(onClick = {
-                        if (searchBarState.currentValue == SearchBarValue.Expanded) {
-                            keyboardController?.hide()
-                            scope.launch { searchBarState.animateToCollapsed() }
-                        } else {
-                            onBack()
-                        }
-                    }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
-                },
-                title = {
-                    AppSearchInputField(
-                        searchBarState = searchBarState,
-                        textFieldState = textFieldState,
-                        onSearch = onSearch,
-                        onSearchCleared = {
-                            textFieldState.setTextAndPlaceCursorAtEnd("")
-                            onSearchCleared()
-                        },
-                        modifier = Modifier.focusRequester(focusRequester)
-                    )
-                }
-            )
+            TopSearchBar(textFieldState, onSearch, onSearchCleared, onBack)
         }
     ) { paddingValues ->
         HorizontalDivider(
@@ -92,10 +43,6 @@ fun ExpandedSearch(
             paddingValues = paddingValues,
             modifier = Modifier
         )
-    }
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-        keyboardController?.show()
     }
 }
 

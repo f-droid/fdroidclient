@@ -44,7 +44,7 @@ import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.lists.TopSearchBar
+import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
@@ -84,7 +84,7 @@ fun MyApps(
     Scaffold(
         topBar = {
             if (searchActive) {
-                TopSearchBar(onSearch = myAppsInfo::search, onSearchCleared) {
+                TopSearchBar(onSearch = myAppsInfo::search, onSearchCleared = onSearchCleared) {
                     onBackPressedDispatcher?.onBackPressed()
                 }
             } else TopAppBar(
