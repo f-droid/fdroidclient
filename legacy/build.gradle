@@ -12,16 +12,6 @@ if (project.hasProperty('strict.release')) {
     apply from: '../config/pmd/pmd.gradle'
 }
 
-/* gets the version name from the latest Git tag */
-def getVersionName = { ->
-    def stdout = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags', '--always'
-        standardOutput = stdout
-    }
-    return stdout.toString().trim()
-}
-
 // yes, this actually needs both quotes https://stackoverflow.com/a/41391841
 def privilegedExtensionApplicationId = '"org.fdroid.fdroid.privileged"'
 
@@ -33,7 +23,7 @@ android {
 
     defaultConfig {
         versionCode 1023051
-        versionName getVersionName()
+        versionName "1.23.1"
         applicationId "org.fdroid"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
