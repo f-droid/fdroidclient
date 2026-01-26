@@ -87,6 +87,7 @@
     <string name="app_issue_not_available_button">Show app info</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
+    <string name="version_code_colon">Version code: %1$s</string>
     <string name="sdk_versions_colon">SDK versions: %1$s</string>
     <!-- The minimum SDK version the app can be installed on, e.g. only Android 10 or higher -->
     <string name="sdk_min_version">%1$s (Min)</string>
