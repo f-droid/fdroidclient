@@ -91,8 +91,7 @@ class UpdatesManager @Inject constructor(
         coroutineScope.launch {
             // refresh updates whenever installed apps change
             installedAppsCache.installedApps.collect {
-                // don't load updates on very first start or we may find issues too early
-                if (!settingsManager.isFirstStart) loadUpdates(it)
+                loadUpdates(it)
             }
         }
     }
@@ -155,7 +154,8 @@ class UpdatesManager @Inject constructor(
                     )
                 }
             }
-            _appsWithIssues.value = issueItems
+            // don't flag issues too early when we are still at first start
+            if (!settingsManager.isFirstStart) _appsWithIssues.value = issueItems
         } catch (e: Exception) {
             log.error(e) { "Error loading updates: " }
             return@launch

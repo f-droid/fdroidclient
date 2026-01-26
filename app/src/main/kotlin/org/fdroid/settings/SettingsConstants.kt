@@ -5,7 +5,7 @@ import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 
 object SettingsConstants {
 
-    const val PREF_KEY_LAST_UPDATE_CHECK = "lastRepoUpdateCheck"
+    const val PREF_KEY_LAST_UPDATE_CHECK = "lastUpdateCheck"
     const val PREF_DEFAULT_LAST_UPDATE_CHECK = -1L
 
     const val PREF_KEY_THEME = "theme"
