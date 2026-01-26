@@ -222,7 +222,9 @@ public class DbAppChecker(
                         packageManager.getInstallerPackageName(packageInfo.packageName)
                     }
                     // if there is another installer, we don't warn, but leave things to them
-                    if (installerPackageName != null) return null
+                    if (installerPackageName != null &&
+                        installerPackageName != context.packageName
+                    ) return null
                 }
                 return AvailableAppWithIssue(
                     app = app,
