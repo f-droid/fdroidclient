@@ -16,6 +16,7 @@ public class DbAppChecker(
     compatibilityChecker: CompatibilityChecker = CompatibilityCheckerImpl(context.packageManager),
     private val updateChecker: UpdateChecker = UpdateChecker(compatibilityChecker),
 ) {
+    private val packageManager = context.packageManager
     private val appDao = db.getAppDao() as AppDaoInt
     private val versionDao = db.getVersionDao() as VersionDaoInt
     private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
@@ -121,40 +122,19 @@ public class DbAppChecker(
                     issue = UpdateInOtherRepo(update.repoId),
                 )
             } else {
-                // no update with compatible signer available,
-                // check if there's a compatible signer available in a non-preferred repo
-                val repoIdWithCompatibleSigner = updates.find {
-                    val signers = it.signer?.sha256?.toSet()
-                    signers == null || signers.intersect(allowedSigners).isNotEmpty()
-                }?.repoId
-                if (repoIdWithCompatibleSigner == null) {
-                    // all updates are not compatible, we only warn about this,
-                    // if all versions in the preferred repo aren't compatible
-                    val allIncompatible = versions.all { version ->
-                        version.repoId != preferredRepoId ||
-                            !version.isOk(preferredRepoId, allowedSigners)
-                    }
-                    if (allIncompatible) {
-                        // most likely the wrong repo was preferred, try to find the right one
-                        val repoId = versions.find {
-                            // treat the current repo as preferred, so we only look at signers
-                            it.isOk(it.repoId, allowedSigners)
-                        }?.repoId
-                        AvailableAppWithIssue(
-                            app = app,
-                            installVersionName = packageInfo.versionName ?: "???",
-                            installVersionCode = getLongVersionCode(packageInfo),
-                            issue = NoCompatibleSigner(repoId),
-                        )
-                    } else null
-                } else {
-                    AvailableAppWithIssue(
-                        app = app,
-                        installVersionName = packageInfo.versionName ?: "???",
-                        installVersionCode = getLongVersionCode(packageInfo),
-                        issue = NoCompatibleSigner(repoIdWithCompatibleSigner),
-                    )
-                }
+                // no update with compatible signer available
+                getNoCompatibleSignerApp(
+                    // check if there's a compatible signer available in a non-preferred repo
+                    repoIdWithCompatibleSigner = updates.find {
+                        val signers = it.signer?.sha256?.toSet()
+                        signers == null || signers.intersect(allowedSigners).isNotEmpty()
+                    }?.repoId,
+                    app = app,
+                    versions = versions,
+                    packageInfo = packageInfo,
+                    preferredRepoId = preferredRepoId,
+                    allowedSigners = allowedSigners
+                )
             }
             appWithIssue?.let { appsWithIssue.add(it) }
         }
@@ -174,13 +154,13 @@ public class DbAppChecker(
     ): UnavailableAppWithIssue? {
         // check if we installed the app or are the current update owner of this app
         val weInstalledApp = if (SDK_INT >= 30) {
-            val installInfo = context.packageManager.getInstallSourceInfo(packageInfo.packageName)
+            val installInfo = packageManager.getInstallSourceInfo(packageInfo.packageName)
             context.packageName == installInfo.initiatingPackageName ||
                 context.packageName == installInfo.installingPackageName ||
                 (SDK_INT >= 34 && context.packageName == installInfo.updateOwnerPackageName)
         } else {
             @Suppress("DEPRECATION") // no other choice to use this for old API versions
-            val installer = context.packageManager.getInstallerPackageName(packageInfo.packageName)
+            val installer = packageManager.getInstallerPackageName(packageInfo.packageName)
             context.packageName == installer
         }
         if (weInstalledApp) {
@@ -194,13 +174,75 @@ public class DbAppChecker(
             // warn the user that this app isn't available anymore
             val notAvailable = UnavailableAppWithIssue(
                 packageName = packageInfo.packageName,
-                name = packageInfo.applicationInfo?.loadLabel(context.packageManager),
+                name = packageInfo.applicationInfo?.loadLabel(packageManager),
                 installVersionName = packageInfo.versionName ?: "???",
                 installVersionCode = getLongVersionCode(packageInfo),
             )
             return notAvailable
         }
         return null
+    }
+
+    /**
+     * Returns [AvailableAppWithIssue] with [NoCompatibleSigner],
+     * if the app has an update in a repo, but all versions have an incompatible signer.
+     *
+     * @param repoIdWithCompatibleSigner the ID of the [Repository]
+     * that does have a compatible signer.
+     * Null if no repository has a compatible signer.
+     */
+    private fun getNoCompatibleSignerApp(
+        repoIdWithCompatibleSigner: Long?,
+        app: AppOverviewItem,
+        versions: ArrayList<Version>,
+        packageInfo: PackageInfo,
+        preferredRepoId: Long,
+        allowedSigners: Set<String>,
+    ): AvailableAppWithIssue? {
+        return if (repoIdWithCompatibleSigner == null) {
+            // all updates are not compatible, we only warn about this,
+            // if all versions in the preferred repo aren't compatible
+            val allIncompatible = versions.all { version ->
+                version.repoId != preferredRepoId ||
+                    !version.isOk(preferredRepoId, allowedSigners)
+            }
+            if (allIncompatible) {
+                // possibly the wrong repo was preferred, try to find the right one
+                val repoId = versions.find {
+                    // treat the current repo as preferred, so we only look at signers
+                    it.isOk(it.repoId, allowedSigners)
+                }?.repoId
+                if (repoId == null) {
+                    // the app may have been installed with another installer
+                    val installerPackageName = if (SDK_INT >= 30) {
+                        packageManager.getInstallSourceInfo(packageInfo.packageName)
+                            .installingPackageName
+                    } else {
+                        @Suppress("DEPRECATION") // no other choice to use this for old API versions
+                        packageManager.getInstallerPackageName(packageInfo.packageName)
+                    }
+                    // if there is another installer, we don't warn, but leave things to them
+                    if (installerPackageName != null) return null
+                }
+                return AvailableAppWithIssue(
+                    app = app,
+                    installVersionName = packageInfo.versionName ?: "???",
+                    installVersionCode = getLongVersionCode(packageInfo),
+                    issue = NoCompatibleSigner(repoId),
+                )
+            } else {
+                // there was at least one compatible version in a repo,
+                // so there's hope the update will arrive there
+                null
+            }
+        } else {
+            AvailableAppWithIssue(
+                app = app,
+                installVersionName = packageInfo.versionName ?: "???",
+                installVersionCode = getLongVersionCode(packageInfo),
+                issue = NoCompatibleSigner(repoIdWithCompatibleSigner),
+            )
+        }
     }
 
     /**
