@@ -51,6 +51,10 @@ data class AppDetailsItem(
     val installedVersionCode: Long? = null,
     val installedVersionName: String? = null,
     /**
+     * Needed, because the [installedVersion] may not be available, e.g. not version from any repo.
+     */
+    val installedSigner: String? = null,
+    /**
      * The currently suggested version for installation.
      */
     val suggestedVersion: AppVersion? = null,
@@ -78,6 +82,7 @@ data class AppDetailsItem(
         installedVersion: AppVersion?,
         installedVersionCode: Long?,
         installedVersionName: String?,
+        installedSigner: String?,
         suggestedVersion: AppVersion?,
         possibleUpdate: AppVersion?,
         appPrefs: AppPrefs?,
@@ -117,6 +122,7 @@ data class AppDetailsItem(
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
         installedVersionName = installedVersionName,
+        installedSigner = installedSigner,
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,

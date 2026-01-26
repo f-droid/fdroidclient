@@ -44,6 +44,18 @@ fun TechnicalInfo(item: AppDetailsItem) {
                 }
             }
         }
+        val signer = item.installedSigner
+        if (signer != null) Row {
+            SelectionContainer {
+                Text(
+                    text = stringResource(
+                        R.string.signer_colon,
+                        signer.substring(0..15)
+                    ),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+        }
     }
 }
 

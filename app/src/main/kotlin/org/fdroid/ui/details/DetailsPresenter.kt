@@ -239,6 +239,7 @@ fun DetailsPresenter(
         installedVersion = installedVersion,
         installedVersionCode = installedVersionCode,
         installedVersionName = packageInfo?.versionName,
+        installedSigner = installedSigner,
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
