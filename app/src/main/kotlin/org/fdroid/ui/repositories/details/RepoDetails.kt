@@ -9,7 +9,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.filled.Update
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -134,7 +134,7 @@ fun RepoDetails(
                     },
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Update,
+                        imageVector = Icons.Default.Sync,
                         contentDescription = stringResource(R.string.repo_force_update)
                     )
                 }

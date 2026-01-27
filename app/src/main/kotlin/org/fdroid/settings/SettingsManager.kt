@@ -77,7 +77,11 @@ class SettingsManager @Inject constructor(
         }.distinctUntilChanged()
     var lastRepoUpdate: Long
         get() = try {
-            prefs.getLong(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
+            val t = prefs.getLong(PREF_KEY_LAST_UPDATE_CHECK, PREF_DEFAULT_LAST_UPDATE_CHECK)
+            // TODO for the stable release of 2.0 we can remove the migration code below
+            if (t == PREF_DEFAULT_LAST_UPDATE_CHECK) {
+                prefs.getLong("lastRepoUpdateCheck", PREF_DEFAULT_LAST_UPDATE_CHECK)
+            } else t
         } catch (_: Exception) {
             PREF_DEFAULT_LAST_UPDATE_CHECK
         }
@@ -87,7 +91,7 @@ class SettingsManager @Inject constructor(
         }
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
-    val isFirstStart get() = lastRepoUpdate <= PREF_DEFAULT_LAST_UPDATE_CHECK.toLong()
+    val isFirstStart get() = lastRepoUpdate <= PREF_DEFAULT_LAST_UPDATE_CHECK
 
     /**
      * A set of package name for which we should not show app issues.

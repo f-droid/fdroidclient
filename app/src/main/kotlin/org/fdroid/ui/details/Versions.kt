@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material3.Badge
@@ -147,8 +148,6 @@ fun Version(
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.error,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
                     )
                     item.version.size?.let { size ->
                         Text(
@@ -159,6 +158,17 @@ fun Version(
                             style = MaterialTheme.typography.bodySmall,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
+                        )
+                    }
+                    SelectionContainer {
+                        Text(
+                            text = stringResource(
+                                R.string.version_code_colon,
+                                item.version.versionCode.toString()
+                            ),
+                            style = MaterialTheme.typography.bodySmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.MiddleEllipsis,
                         )
                     }
                     val sdkString = buildString {
@@ -174,14 +184,16 @@ fun Version(
                             append(stringResource(R.string.sdk_max_version, sdk))
                         }
                     }
-                    if (sdkString.isNotEmpty()) Text(
-                        text = stringResource(R.string.sdk_versions_colon, sdkString),
-                        style = MaterialTheme.typography.bodySmall,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
+                    if (sdkString.isNotEmpty()) SelectionContainer {
+                        Text(
+                            text = stringResource(R.string.sdk_versions_colon, sdkString),
+                            style = MaterialTheme.typography.bodySmall,
+                            maxLines = 1,
+                            overflow = TextOverflow.StartEllipsis,
+                        )
+                    }
                     item.version.packageManifest.nativecode?.let { nativeCode ->
-                        if (nativeCode.isNotEmpty()) {
+                        if (nativeCode.isNotEmpty()) SelectionContainer {
                             Text(
                                 text = stringResource(
                                     R.string.architectures_colon,
@@ -194,15 +206,17 @@ fun Version(
                         }
                     }
                     item.version.signer?.let { signer ->
-                        Text(
-                            text = stringResource(
-                                R.string.signer_colon,
-                                signer.sha256[0].substring(0..15)
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
+                        SelectionContainer {
+                            Text(
+                                text = stringResource(
+                                    R.string.signer_colon,
+                                    signer.sha256[0].substring(0..15)
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
                     }
                 }
                 if (item.showInstallButton) {
