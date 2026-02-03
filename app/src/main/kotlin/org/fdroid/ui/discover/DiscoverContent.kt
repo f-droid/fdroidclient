@@ -68,7 +68,6 @@ fun DiscoverContent(
             categoryMap = discoverModel.categories,
             onNav = onNav,
             modifier = Modifier
-                .padding(16.dp)
                 .fillMaxWidth()
         )
     }
