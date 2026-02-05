@@ -2,6 +2,7 @@
 
 package org.fdroid.ui.lists
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -67,6 +68,8 @@ fun AppListPresenter(
         val matchesCompatibility = !filterIncompatible || it.isCompatible
         matchesCategories && matchesRepos && matchesQuery && matchesCompatibility
     }
+
+    @SuppressLint("NonObservableLocale") // the alternative isn't available here
     val locale = Locale.getDefault()
     return AppListModel(
         apps = if (sortBy == AppListSortOrder.NAME) {
