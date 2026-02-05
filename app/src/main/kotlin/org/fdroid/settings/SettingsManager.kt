@@ -2,9 +2,9 @@ package org.fdroid.settings
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import androidx.annotation.UiThread
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.ktor.client.engine.ProxyBuilder
 import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,6 +35,8 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.getAppListSortOrder
 import org.fdroid.settings.SettingsConstants.toSettings
+import java.net.InetSocketAddress
+import java.net.Proxy
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -112,12 +114,15 @@ class SettingsManager @Inject constructor(
         }
 
     val proxyConfig: ProxyConfig?
+        @UiThread
         get() {
             val proxyStr = prefs.getString(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
             return if (proxyStr.isNullOrBlank()) null
             else {
                 val (host, port) = proxyStr.split(':')
-                ProxyBuilder.socks(host, port.toInt())
+                // don't resolve hostname here, or we get NetworkOnMainThreadException
+                val address = InetSocketAddress.createUnresolved(host, port.toInt())
+                Proxy(Proxy.Type.SOCKS, address)
             }
         }
 
