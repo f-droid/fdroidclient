@@ -19,6 +19,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
+import org.fdroid.database.AppIssue
+import org.fdroid.database.NoCompatibleSigner
+import org.fdroid.database.UpdateInOtherRepo
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
@@ -29,15 +32,19 @@ fun InstalledAppRow(
     app: MyInstalledAppItem,
     isSelected: Boolean,
     modifier: Modifier = Modifier,
-    hasIssue: Boolean = false,
+    appIssue: AppIssue? = null,
 ) {
     Column(modifier = modifier) {
         ListItem(
             leadingContent = {
                 BadgedBox(badge = {
-                    if (hasIssue) BadgeIcon(
+                    if (appIssue != null) BadgeIcon(
                         icon = Icons.Filled.Error,
-                        color = MaterialTheme.colorScheme.error,
+                        color = if (appIssue is UpdateInOtherRepo) {
+                            MaterialTheme.colorScheme.inverseSurface
+                        } else {
+                            MaterialTheme.colorScheme.error
+                        },
                         contentDescription =
                         stringResource(R.string.my_apps_header_apps_with_issue),
                     )
@@ -83,7 +90,8 @@ fun InstalledAppRowPreview() {
         Column {
             InstalledAppRow(app, false)
             InstalledAppRow(app, true)
-            InstalledAppRow(app, false, hasIssue = true)
+            InstalledAppRow(app, false, appIssue = UpdateInOtherRepo(2L))
+            InstalledAppRow(app, false, appIssue = NoCompatibleSigner())
         }
     }
 }

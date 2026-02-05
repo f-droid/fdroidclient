@@ -190,7 +190,7 @@ fun MyAppsList(
                 val modifier = Modifier
                     .animateItem()
                     .then(interactionModifier)
-                InstalledAppRow(app, isSelected, modifier, hasIssue = true)
+                InstalledAppRow(app, isSelected, modifier, app.issue)
                 // Dialogs
                 val appToIgnore = showIssueIgnoreDialog
                 if (appToIgnore != null) IgnoreIssueDialog(
