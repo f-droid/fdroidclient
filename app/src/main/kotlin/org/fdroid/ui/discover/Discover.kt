@@ -3,6 +3,7 @@ package org.fdroid.ui.discover
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -61,9 +62,10 @@ fun Discover(
                         BadgedBox(badge = {
                             val hasRepoIssues =
                                 (discoverModel as? LoadedDiscoverModel)?.hasRepoIssues == true
-                            if (dest.id == NavigationKey.Repos && hasRepoIssues) Badge {
-                                Text("")
-                            }
+                            if (dest.id == NavigationKey.Repos && hasRepoIssues) Badge(
+                                content = null,
+                                modifier = Modifier.size(8.dp)
+                            )
                         }) {
                             IconButton(onClick = { onNav(dest.id) }) {
                                 Icon(
