@@ -3,6 +3,10 @@
 
     <string name="app_name_full">F-Droid</string>
     <string name="app_name_basic">F-Droid Basic</string>
+    <!-- The app name of nightly builds, shortened to fit reduced space for app names -->
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <!-- The app name of nightly builds, shortened to fit reduced space for app names -->
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
 
     <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new
         version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase
@@ -523,24 +527,24 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
 
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Connectivity</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Development</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Games</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Graphics</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Money</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navigation</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Phone &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Reading</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Science &amp; Education</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Security</string>
-    <string tools:ignore="UnusedResources" name="category_Sports_Health">Sports &amp; Health</string>
-    <string tools:ignore="UnusedResources" name="category_System">System</string>
-    <string tools:ignore="UnusedResources" name="category_Theming">Theming</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Time</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Writing</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">nightly</string>
+    <string name="category_Connectivity" tools:ignore="UnusedResources">Connectivity</string>
+    <string name="category_Development" tools:ignore="UnusedResources">Development</string>
+    <string name="category_Games" tools:ignore="UnusedResources">Games</string>
+    <string name="category_Graphics" tools:ignore="UnusedResources">Graphics</string>
+    <string name="category_Internet" tools:ignore="UnusedResources">Internet</string>
+    <string name="category_Money" tools:ignore="UnusedResources">Money</string>
+    <string name="category_Multimedia" tools:ignore="UnusedResources">Multimedia</string>
+    <string name="category_Navigation" tools:ignore="UnusedResources">Navigation</string>
+    <string name="category_Phone_SMS" tools:ignore="UnusedResources">Phone &amp; SMS</string>
+    <string name="category_Reading" tools:ignore="UnusedResources">Reading</string>
+    <string name="category_Science_Education" tools:ignore="UnusedResources">Science &amp; Education</string>
+    <string name="category_Security" tools:ignore="UnusedResources">Security</string>
+    <string name="category_Sports_Health" tools:ignore="UnusedResources">Sports &amp; Health</string>
+    <string name="category_System" tools:ignore="UnusedResources">System</string>
+    <string name="category_Theming" tools:ignore="UnusedResources">Theming</string>
+    <string name="category_Time" tools:ignore="UnusedResources">Time</string>
+    <string name="category_Writing" tools:ignore="UnusedResources">Writing</string>
+    <string name="category_Nightly" tools:ignore="UnusedResources">nightly</string>
 
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">View %d</item>

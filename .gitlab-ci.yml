@@ -97,7 +97,7 @@ app assembleRelease test:
         - libs/**/*
         - legacy/**/*
   script:
-    - ./gradlew :app:assemble :app:testFullDebugUnitTest :legacy:assemble :legacy:testFullDebugUnitTest
+    - ./gradlew :app:assembleDefault :app:testFullDebugUnitTest :legacy:assemble :legacy:testFullDebugUnitTest
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     paths:
@@ -327,7 +327,7 @@ libs database schema:
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
     - df -h
     - start-emulator.sh
-    - ./gradlew :app:installBasicDebug :legacy:installFullDebug
+    - ./gradlew :app:installBasicDefaultDebug :legacy:installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
     - ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
@@ -381,11 +381,10 @@ deploy_nightly:
     - export DB=`sed -n 's,.*version *= *\([0-9][0-9]*\).*,\1,p' libs/database/src/main/java/org/fdroid/database/FDroidDatabase.kt`
     - export versionCode=`printf '%d%05d' $DB $(date '+%s'| cut -b1-8)`
     - sed -i "s,^\(\s*versionCode\)  *[0-9].*,\1 $versionCode," legacy/build.gradle
-    - sed -i "s,^\(\s*versionCode =\) *[0-9].*,\1 $versionCode," app/build.gradle.kts
     # build the APKs!
-    - rm -rf app/build/outputs/apk
-    - ./gradlew :app:assembleBasicRelease :legacy:assembleFullDebug
-    - mv app/build/outputs/apk/basic/release/app-basic-release-unsigned.apk app/build/outputs/apk/basic/release/app-debug.apk
+    - rm -rf app/build/outputs/apk legacy/build/outputs/apk
+    - ./gradlew :app:assembleBasicNightly :legacy:assembleFullDebug
+    - mv app/build/outputs/apk/basicNightly/release/app-basic-nightly-release-unsigned.apk app/build/outputs/apk/basicNightly/release/app-debug.apk
 
     # taken from fdroiddata/.gitlab-ci.yml as a tmp workaround until this is released:
     # https://gitlab.com/fdroid/fdroidserver/-/merge_requests/1666

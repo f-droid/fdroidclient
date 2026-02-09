@@ -40,15 +40,24 @@ android {
             isDebuggable = true
         }
     }
-    flavorDimensions += "base"
+    flavorDimensions += listOf("variant", "release")
     productFlavors {
         create("basic") {
-            dimension = "base"
+            dimension = "variant"
             applicationIdSuffix = ".basic"
         }
         create("full") {
-            dimension = "base"
+            dimension = "variant"
             applicationIdSuffix = ".fdroid"
+        }
+        create("default") {
+            dimension = "release"
+        }
+        create("nightly") {
+            dimension = "release"
+            versionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
+            versionNameSuffix = "-$gitHash"
+            applicationIdSuffix = ".nightly"
         }
     }
     compileOptions {
@@ -66,6 +75,18 @@ android {
     }
     lint {
         lintConfig = file("lint.xml")
+    }
+}
+
+androidComponents {
+    beforeVariants { variantBuilder ->
+        if (variantBuilder.buildType == "debug" &&
+            variantBuilder.productFlavors.contains("release" to "nightly")
+        ) {
+            // no debug builds for nightly version,
+            // so we can test proguard minification in production
+            variantBuilder.enable = false
+        }
     }
 }
 
@@ -136,3 +157,13 @@ kotlin {
         jvmTarget = JvmTarget.JVM_17
     }
 }
+
+val gitHash: String
+    get() {
+        val process = ProcessBuilder("git", "rev-parse", "--short=8", "HEAD")
+            .directory(rootDir)
+            .redirectErrorStream(true)
+            .start()
+        process.waitFor() // Ensure the command completes
+        return process.inputStream.use { it.readBytes().decodeToString().trim() }
+    }
