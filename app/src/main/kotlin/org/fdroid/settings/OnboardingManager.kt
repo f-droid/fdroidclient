@@ -21,6 +21,7 @@ class OnboardingManager @Inject constructor(
         const val KEY_FILTER = "appFilter"
         const val KEY_REPO_LIST = "repoList"
         const val KEY_REPO_DETAILS = "repoDetails"
+        const val KEY_APP_ISSUE_HINT = "appIssueHint"
     }
 
     private val prefs = context.getSharedPreferences("onboarding", MODE_PRIVATE)
@@ -34,6 +35,9 @@ class OnboardingManager @Inject constructor(
     private val _showRepoDetailsOnboarding = Onboarding(KEY_REPO_DETAILS, prefs)
     val showRepoDetailsOnboarding = _showRepoDetailsOnboarding.flow
 
+    private val _showAppIssueHint = Onboarding(KEY_APP_ISSUE_HINT, prefs)
+    val showAppIssueHint = _showAppIssueHint.flow
+
     fun onFilterOnboardingSeen() {
         _showFilterOnboarding.onSeen(prefs)
     }
@@ -44,6 +48,10 @@ class OnboardingManager @Inject constructor(
 
     fun onRepoDetailsOnboardingSeen() {
         _showRepoDetailsOnboarding.onSeen(prefs)
+    }
+
+    fun onAppIssueHintSeen() {
+        _showAppIssueHint.onSeen(prefs)
     }
 }
 
