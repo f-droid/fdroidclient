@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -30,6 +31,7 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
@@ -75,7 +77,12 @@ fun UpdatableAppRow(
                 val size = app.update.size?.let {
                     Formatter.formatFileSize(LocalContext.current, it)
                 }
-                Text("${app.installedVersionName} → ${app.update.versionName} • $size")
+                val text = if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
+                    "${app.installedVersionName} → ${app.update.versionName} • $size"
+                } else {
+                    "$size • ${app.update.versionName} ← ${app.installedVersionName}"
+                }
+                Text(text)
             },
             trailingContent = {
                 if (app.whatsNew != null) IconButton(onClick = { isExpanded = !isExpanded }) {
@@ -132,6 +139,24 @@ fun UpdatableAppRowPreview() {
         Column {
             UpdatableAppRow(app1, false)
             UpdatableAppRow(app2, true)
+        }
+    }
+}
+
+@Preview(locale = "fa")
+@Composable
+private fun UpdatableAppRowRtl() {
+    val app1 = AppUpdateItem(
+        repoId = 1,
+        packageName = "A",
+        name = "App Update 123",
+        installedVersionName = "1.0.1",
+        update = getPreviewVersion("1.1.0", 123456789),
+        whatsNew = "This is new, all is new, nothing old.",
+    )
+    FDroidContent {
+        Column {
+            UpdatableAppRow(app1, false)
         }
     }
 }
