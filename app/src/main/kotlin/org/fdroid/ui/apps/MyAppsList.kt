@@ -20,7 +20,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -50,6 +52,16 @@ fun MyAppsList(
     val installingApps = myAppsInfo.model.installingApps
     val appsWithIssue = myAppsInfo.model.appsWithIssue
     val installedApps = myAppsInfo.model.installedApps
+    // scroll to top if new updatable apps were added
+    var previousNumUpdates by remember { mutableIntStateOf(0) }
+    LaunchedEffect(updatableApps) {
+        if (updatableApps != null && updatableApps.isNotEmpty()) {
+            if (updatableApps.size > previousNumUpdates) {
+                lazyListState.animateScrollToItem(0)
+            }
+            previousNumUpdates = updatableApps.size
+        }
+    }
     // allow us to hide "update all" button to avoid user pressing it twice
     var showUpdateAllButton by remember(updatableApps) {
         mutableStateOf(true)
