@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.updateAndGet
+import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.NotificationManager
@@ -38,6 +39,9 @@ import org.fdroid.download.DownloadRequest
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.getUri
 import org.fdroid.getCacheKey
+import org.fdroid.history.HistoryManager
+import org.fdroid.history.InstallEvent
+import org.fdroid.history.UninstallEvent
 import org.fdroid.utils.IoDispatcher
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -50,6 +54,7 @@ class AppInstallManager @Inject constructor(
     private val downloaderFactory: DownloaderFactory,
     private val sessionInstallManager: SessionInstallManager,
     private val notificationManager: NotificationManager,
+    private val historyManager: HistoryManager,
     @param:IoDispatcher private val scope: CoroutineScope,
 ) {
 
@@ -156,6 +161,18 @@ class AppInstallManager @Inject constructor(
         }
         apps.updateApp(packageName) { result }
         onStatesUpdated()
+        if (result is InstallState.Installed) {
+            val event = InstallEvent(
+                time = System.currentTimeMillis(),
+                packageName = packageName,
+                name = result.name,
+                versionName = result.versionName,
+                oldVersionName = result.currentVersionName,
+            )
+            scope.launch {
+                historyManager.append(event)
+            }
+        }
         return result
     }
 
@@ -361,10 +378,8 @@ class AppInstallManager @Inject constructor(
             sessionInstallManager.requestUserConfirmation(installState)
         }
         // keep track of this job, in case we need to cancel it
-        val result = trackJob(packageName, job)
+        val result = trackJob(packageName, job) // updates app state
         log.info { "User confirmation for $packageName $result" }
-        apps.updateApp(packageName) { result }
-        onStatesUpdated()
         return result
     }
 
@@ -419,7 +434,11 @@ class AppInstallManager @Inject constructor(
      * without issues everywhere.
      */
     @UiThread
-    fun onUninstallResult(packageName: String, activityResult: ActivityResult): InstallState {
+    fun onUninstallResult(
+        packageName: String,
+        name: String?,
+        activityResult: ActivityResult,
+    ): InstallState {
         val result = when (activityResult.resultCode) {
             Activity.RESULT_OK -> InstallState.Uninstalled
             Activity.RESULT_FIRST_USER -> InstallState.UserAborted
@@ -428,6 +447,16 @@ class AppInstallManager @Inject constructor(
         val code = activityResult.data?.getIntExtra("android.intent.extra.INSTALL_RESULT", -1)
         log.info { "Uninstall result received: ${activityResult.resultCode} => $result ($code)" }
         apps.updateApp(packageName) { result }
+        if (result == InstallState.Uninstalled) {
+            val event = UninstallEvent(
+                time = System.currentTimeMillis(),
+                packageName = packageName,
+                name = name,
+            )
+            scope.launch {
+                historyManager.append(event)
+            }
+        }
         return result
     }
 

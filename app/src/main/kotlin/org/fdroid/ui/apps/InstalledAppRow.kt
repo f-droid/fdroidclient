@@ -34,47 +34,45 @@ fun InstalledAppRow(
     modifier: Modifier = Modifier,
     appIssue: AppIssue? = null,
 ) {
-    Column(modifier = modifier) {
-        ListItem(
-            leadingContent = {
-                BadgedBox(badge = {
-                    if (appIssue != null) BadgeIcon(
-                        icon = Icons.Filled.Error,
-                        color = if (appIssue is UpdateInOtherRepo) {
-                            MaterialTheme.colorScheme.inverseSurface
-                        } else {
-                            MaterialTheme.colorScheme.error
-                        },
-                        contentDescription =
-                        stringResource(R.string.my_apps_header_apps_with_issue),
-                    )
-                }) {
-                    AsyncShimmerImage(
-                        model = app.iconModel,
-                        error = painterResource(R.drawable.ic_repo_app_default),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(48.dp)
-                            .semantics { hideFromAccessibility() },
-                    )
-                }
-            },
-            headlineContent = {
-                Text(app.name)
-            },
-            supportingContent = {
-                Text(app.installedVersionName)
-            },
-            colors = ListItemDefaults.colors(
-                containerColor = if (isSelected) {
-                    MaterialTheme.colorScheme.surfaceVariant
-                } else {
-                    Color.Transparent
-                }
-            ),
-            modifier = modifier,
-        )
-    }
+    ListItem(
+        leadingContent = {
+            BadgedBox(badge = {
+                if (appIssue != null) BadgeIcon(
+                    icon = Icons.Filled.Error,
+                    color = if (appIssue is UpdateInOtherRepo) {
+                        MaterialTheme.colorScheme.inverseSurface
+                    } else {
+                        MaterialTheme.colorScheme.error
+                    },
+                    contentDescription =
+                    stringResource(R.string.my_apps_header_apps_with_issue),
+                )
+            }) {
+                AsyncShimmerImage(
+                    model = app.iconModel,
+                    error = painterResource(R.drawable.ic_repo_app_default),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(48.dp)
+                        .semantics { hideFromAccessibility() },
+                )
+            }
+        },
+        headlineContent = {
+            Text(app.name)
+        },
+        supportingContent = {
+            Text(app.installedVersionName)
+        },
+        colors = ListItemDefaults.colors(
+            containerColor = if (isSelected) {
+                MaterialTheme.colorScheme.surfaceVariant
+            } else {
+                Color.Transparent
+            }
+        ),
+        modifier = modifier,
+    )
 }
 
 @Preview

@@ -128,7 +128,7 @@ fun MyAppsList(
                         onClick = { onAppItemClick(app.packageName) }
                     )
                 }
-                val modifier = Modifier.Companion
+                val modifier = Modifier
                     .animateItem()
                     .then(interactionModifier)
                 UpdatableAppRow(app, isSelected, modifier)
@@ -299,6 +299,7 @@ private fun MyAppsListPreview() {
             myAppsInfo = getMyAppsInfo(myAppsModel),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }

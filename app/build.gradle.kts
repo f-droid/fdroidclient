@@ -141,6 +141,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))
+    testImplementation(libs.mockk)
     testImplementation(libs.robolectric)
     testImplementation(libs.slf4j.simple)
 

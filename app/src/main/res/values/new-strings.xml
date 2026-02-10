@@ -24,6 +24,11 @@
     <string name="my_apps_ignore_dialog_text">Do you want to hide the issue with the app \"%1$s\"?</string>
     <string name="my_apps_ignore_dialog_button">Hide</string>
 
+    <string name="install_history_empty_state">This list is still empty\n\nWhen you install, update or uninstall apps, a record will appear here</string>
+    <string name="install_history_disabled_state">Install history is disabled\n\nInstallations, updates and uninstalls will not be recorded</string>
+    <string name="install_history_delete_ally">Delete install history</string>
+    <string name="install_history_delete_text">Delete the install history?</string>
+
     <string name="app_list_new">New apps</string>
     <string name="app_list_recently_updated">Recently updated</string>
     <string name="app_list_most_downloaded">Most downloaded</string>

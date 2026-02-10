@@ -152,7 +152,8 @@ class AppDetailsViewModel @AssistedInject constructor(
 
     @UiThread
     fun onUninstallResult(activityResult: ActivityResult) {
-        val result = appInstallManager.onUninstallResult(packageName, activityResult)
+        val name = appDetails.value?.name
+        val result = appInstallManager.onUninstallResult(packageName, name, activityResult)
         if (result is InstallState.Uninstalled) {
             // to reload packageInfoFlow with fresh packageInfo
             loadPackageInfoFlow()

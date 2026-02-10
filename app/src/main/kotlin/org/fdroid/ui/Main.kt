@@ -32,6 +32,8 @@ import org.fdroid.ui.apps.myAppsEntry
 import org.fdroid.ui.details.NoAppSelected
 import org.fdroid.ui.details.appDetailsEntry
 import org.fdroid.ui.discover.discoverEntry
+import org.fdroid.ui.history.History
+import org.fdroid.ui.history.HistoryViewModel
 import org.fdroid.ui.lists.appListEntry
 import org.fdroid.ui.navigation.BottomBar
 import org.fdroid.ui.navigation.IntentRouter
@@ -102,6 +104,16 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                     viewModel.onSaveLogcat(it)
                     navigator.goBack()
                 },
+                onBackClicked = { navigator.goBack() },
+            )
+        }
+        entry(NavigationKey.InstallationHistory) {
+            val viewModel = hiltViewModel<HistoryViewModel>()
+            History(
+                items = viewModel.items.collectAsStateWithLifecycle().value,
+                enabled = viewModel.useInstallHistory.collectAsStateWithLifecycle(null).value,
+                onEnabled = viewModel::useInstallHistory,
+                onDeleteAll = viewModel::deleteHistory,
                 onBackClicked = { navigator.goBack() },
             )
         }

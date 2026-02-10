@@ -96,7 +96,6 @@ fun UpdatableAppRow(
                     Color.Transparent
                 }
             ),
-            modifier = modifier,
         )
         AnimatedVisibility(
             visible = isExpanded,

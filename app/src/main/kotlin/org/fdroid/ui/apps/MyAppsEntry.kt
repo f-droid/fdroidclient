@@ -35,6 +35,7 @@ fun EntryProviderScope<NavKey>.myAppsEntry(
                     navigator.navigate(new)
                 }
             },
+            onNav = { navKey -> navigator.navigate(navKey) },
         )
     }
 }

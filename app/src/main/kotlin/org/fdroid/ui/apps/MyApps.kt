@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -39,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
@@ -56,6 +56,7 @@ fun MyApps(
     myAppsInfo: MyAppsInfo,
     currentPackageName: String?,
     onAppItemClick: (String) -> Unit,
+    onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val myAppsModel = myAppsInfo.model
@@ -146,6 +147,12 @@ fun MyApps(
                             },
                         )
                     }
+                    IconButton(onClick = { onNav(NavigationKey.InstallationHistory) }) {
+                        Icon(
+                            imageVector = Icons.Default.History,
+                            contentDescription = stringResource(R.string.install_history),
+                        )
+                    }
                     if (myAppsModel.installedApps != null) {
                         IconButton(onClick = myAppsInfo.actions::exportInstalledApps) {
                             Icon(
@@ -207,6 +214,7 @@ fun MyAppsLoadingPreview() {
             myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }
@@ -220,6 +228,7 @@ fun MyAppsPreview() {
             myAppsInfo = getMyAppsInfo(myAppsModel),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }
@@ -241,6 +250,7 @@ fun MyAppsEmptyPreview() {
             myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }

@@ -19,6 +19,7 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
@@ -28,6 +29,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
@@ -91,6 +93,16 @@ class SettingsManager @Inject constructor(
             prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
             _lastRepoUpdateFlow.update { value }
         }
+
+    var useInstallHistory: Boolean
+        get() = prefs.getBoolean(PREF_KEY_INSTALL_HISTORY, PREF_DEFAULT_INSTALL_HISTORY)
+        set(value) {
+            prefs.edit { putBoolean(PREF_KEY_INSTALL_HISTORY, value) }
+            _useInstallHistoryFlow.update { value }
+        }
+    private val _useInstallHistoryFlow = MutableStateFlow(useInstallHistory)
+    val useInstallHistoryFlow = _useInstallHistoryFlow.asStateFlow()
+
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
     val isFirstStart get() = lastRepoUpdate <= PREF_DEFAULT_LAST_UPDATE_CHECK

@@ -41,6 +41,9 @@ object SettingsConstants {
     }
 
     const val PREF_KEY_IGNORED_APP_ISSUES = "ignoredAppIssues"
+
+    const val PREF_KEY_INSTALL_HISTORY = "keepInstallHistory"
+    const val PREF_DEFAULT_INSTALL_HISTORY = false
 }
 
 fun String?.toAutoUpdateValue() = try {
