@@ -97,7 +97,9 @@ private fun Screenshots(phoneScreenshots: List<Any>) {
             pageCount = { phoneScreenshots.size },
         )
         Surface {
-            HorizontalPager(state = pagerState) { page ->
+            // The overscrollEffect was bouncing screenshots with each swipe.
+            // Maybe this was a bug and overscroll effect can be enabled again once fixed.
+            HorizontalPager(state = pagerState, overscrollEffect = null) { page ->
                 AsyncShimmerImage(
                     model = phoneScreenshots[page],
                     contentDescription = "",

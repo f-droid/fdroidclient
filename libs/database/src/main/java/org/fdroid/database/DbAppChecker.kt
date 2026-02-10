@@ -9,6 +9,7 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.UpdateChecker
 import org.fdroid.index.IndexUtils.getPackageSigner
+import java.util.concurrent.TimeUnit
 
 public class DbAppChecker(
     db: FDroidDatabase,
@@ -115,12 +116,15 @@ public class DbAppChecker(
                 )
             } else if (hasCompatibleSigner) {
                 // the signer is compatible, so the update must come from a non-preferred repo
-                AvailableAppWithIssue(
+                val now = System.currentTimeMillis()
+                // Only flag the compatible update in another repo, if older than a week.
+                // This is to prevent short delays in providing updates causing unneeded UX churn.
+                if (now - update.added > TimeUnit.DAYS.toMillis(7)) AvailableAppWithIssue(
                     app = app,
                     installVersionName = packageInfo.versionName ?: "???",
                     installVersionCode = getLongVersionCode(packageInfo),
                     issue = UpdateInOtherRepo(update.repoId),
-                )
+                ) else null
             } else {
                 // no update with compatible signer available
                 getNoCompatibleSignerApp(

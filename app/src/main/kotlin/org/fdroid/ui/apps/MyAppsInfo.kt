@@ -6,11 +6,7 @@ import org.fdroid.install.InstallConfirmationState
 
 interface MyAppsInfo {
     val model: MyAppsModel
-    fun updateAll()
-    fun changeSortOrder(sort: AppListSortOrder)
-    fun search(query: String)
-    fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
-    fun ignoreAppIssue(item: AppWithIssueItem)
+    val actions: MyAppsActions
 }
 
 data class MyAppsModel(
@@ -19,7 +15,17 @@ data class MyAppsModel(
     val installingApps: List<InstallingAppItem>,
     val appsWithIssue: List<AppWithIssueItem>? = null,
     val installedApps: List<InstalledAppItem>? = null,
+    val showAppIssueHint: Boolean,
     val sortOrder: AppListSortOrder = AppListSortOrder.NAME,
     val networkState: NetworkState,
     val appUpdatesBytes: Long? = null,
 )
+
+interface MyAppsActions {
+    fun updateAll()
+    fun changeSortOrder(sort: AppListSortOrder)
+    fun search(query: String)
+    fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
+    fun ignoreAppIssue(item: AppWithIssueItem)
+    fun onAppIssueHintSeen()
+}

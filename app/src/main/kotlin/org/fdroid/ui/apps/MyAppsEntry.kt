@@ -6,8 +6,6 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
-import org.fdroid.database.AppListSortOrder
-import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.Navigator
 
@@ -22,19 +20,7 @@ fun EntryProviderScope<NavKey>.myAppsEntry(
         val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
         val myAppsInfo = object : MyAppsInfo {
             override val model = myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
-
-            override fun updateAll() = myAppsViewModel.updateAll()
-            override fun changeSortOrder(sort: AppListSortOrder) =
-                myAppsViewModel.changeSortOrder(sort)
-
-            override fun search(query: String) = myAppsViewModel.search(query)
-            override fun confirmAppInstall(
-                packageName: String,
-                state: InstallConfirmationState,
-            ) = myAppsViewModel.confirmAppInstall(packageName, state)
-
-            override fun ignoreAppIssue(item: AppWithIssueItem) =
-                myAppsViewModel.ignoreAppIssue(item)
+            override val actions: MyAppsActions = myAppsViewModel
         }
         MyApps(
             myAppsInfo = myAppsInfo,

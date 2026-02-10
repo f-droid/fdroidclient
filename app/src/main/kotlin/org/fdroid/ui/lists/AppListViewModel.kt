@@ -86,6 +86,7 @@ class AppListViewModel @AssistedInject constructor(
     val appListModel: StateFlow<AppListModel> by lazy(LazyThreadSafetyMode.NONE) {
         moleculeScope.launchMolecule(mode = ContextClock) {
             AppListPresenter(
+                type = type,
                 appsFlow = apps,
                 sortByFlow = sortBy,
                 filterIncompatibleFlow = filterIncompatible,

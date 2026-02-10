@@ -22,6 +22,7 @@ import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.ui.apps.InstalledAppItem
 import org.fdroid.ui.apps.InstallingAppItem
+import org.fdroid.ui.apps.MyAppsActions
 import org.fdroid.ui.apps.MyAppsInfo
 import org.fdroid.ui.apps.MyAppsModel
 import org.fdroid.ui.categories.CategoryItem
@@ -268,11 +269,15 @@ fun getAppListInfo(model: AppListModel) = object : AppListInfo {
 
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
     override val model = model
-    override fun updateAll() {}
-    override fun changeSortOrder(sort: AppListSortOrder) {}
-    override fun search(query: String) {}
-    override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
-    override fun ignoreAppIssue(item: AppWithIssueItem) {}
+    override val actions: MyAppsActions
+        get() = object : MyAppsActions {
+            override fun updateAll() {}
+            override fun changeSortOrder(sort: AppListSortOrder) {}
+            override fun search(query: String) {}
+            override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
+            override fun ignoreAppIssue(item: AppWithIssueItem) {}
+            override fun onAppIssueHintSeen() {}
+        }
 }
 
 @RestrictTo(RestrictTo.Scope.TESTS)
@@ -348,6 +353,7 @@ internal val myAppsModel = MyAppsModel(
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3)
         )
     ),
+    showAppIssueHint = true,
     sortOrder = AppListSortOrder.NAME,
     networkState = NetworkState(isOnline = false, isMetered = false),
     appUpdatesBytes = null,

@@ -85,6 +85,7 @@
     <string name="app_issue_not_available_title">No longer available</string>
     <string name="app_issue_not_available_text">This app is not receiving updates, because it is no longer in any enabled repository.\n\nIt may have been in a repository you removed or disabled. Or it was simply removed.</string>
     <string name="app_issue_not_available_button">Show app info</string>
+    <string name="app_issue_hint">The apps below need your attention. You can ignore an app issue by long pressing it.</string>
     <string name="added_x_ago">Added %1$s</string>
     <string name="size_colon">Size: %1$s</string>
     <string name="version_code_colon">Version code: %1$s</string>

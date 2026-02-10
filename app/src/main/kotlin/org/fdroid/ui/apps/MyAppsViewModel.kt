@@ -28,6 +28,7 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstalledAppsCache
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
@@ -40,12 +41,13 @@ class MyAppsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val db: FDroidDatabase,
     private val settingsManager: SettingsManager,
-    private val installedAppsCache: InstalledAppsCache,
+    installedAppsCache: InstalledAppsCache,
+    private val onboardingManager: OnboardingManager,
     private val appInstallManager: AppInstallManager,
     private val networkMonitor: NetworkMonitor,
     private val updatesManager: UpdatesManager,
     private val repoManager: RepoManager,
-) : AndroidViewModel(app) {
+) : AndroidViewModel(app), MyAppsActions {
 
     private val log = KotlinLogging.logger { }
     private val localeList = LocaleListCompat.getDefault()
@@ -83,6 +85,7 @@ class MyAppsViewModel @Inject constructor(
                 appInstallStatesFlow = appInstallManager.appInstallStates,
                 appsWithIssuesFlow = updatesManager.appsWithIssues,
                 installedAppsFlow = installedAppItems,
+                showAppIssueHintFlow = onboardingManager.showAppIssueHint,
                 searchQueryFlow = searchQuery,
                 sortOrderFlow = sortOrder,
                 networkStateFlow = networkMonitor.networkState,
@@ -90,21 +93,21 @@ class MyAppsViewModel @Inject constructor(
         }
     }
 
-    fun updateAll() {
+    override fun updateAll() {
         scope.launch {
             updatesManager.updateAll(true)
         }
     }
 
-    fun search(query: String) {
+    override fun search(query: String) {
         searchQuery.value = query
     }
 
-    fun changeSortOrder(sort: AppListSortOrder) {
+    override fun changeSortOrder(sort: AppListSortOrder) {
         sortOrder.value = sort
     }
 
-    fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
+    override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
         log.info { "Asking user to confirm install of $packageName..." }
         scope.launch(Dispatchers.Main) {
             when (state) {
@@ -118,8 +121,10 @@ class MyAppsViewModel @Inject constructor(
         }
     }
 
-    fun ignoreAppIssue(item: AppWithIssueItem) {
+    override fun ignoreAppIssue(item: AppWithIssueItem) {
         settingsManager.ignoreAppIssue(item.packageName, item.installedVersionCode)
         updatesManager.loadUpdates()
     }
+
+    override fun onAppIssueHintSeen() = onboardingManager.onAppIssueHintSeen()
 }

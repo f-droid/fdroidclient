@@ -65,7 +65,7 @@ fun MyApps(
         val app = myAppsModel.appToConfirm
         if (app != null && lifecycleOwner.lifecycle.currentState.isAtLeast(STARTED)) {
             val state = app.installState as InstallConfirmationState
-            myAppsInfo.confirmAppInstall(app.packageName, state)
+            myAppsInfo.actions.confirmAppInstall(app.packageName, state)
         }
     }
     val installingApps = myAppsModel.installingApps
@@ -74,7 +74,7 @@ fun MyApps(
     val installedApps = myAppsModel.installedApps
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     var searchActive by rememberSaveable { mutableStateOf(false) }
-    val onSearchCleared = { myAppsInfo.search("") }
+    val onSearchCleared = { myAppsInfo.actions.search("") }
     // when search bar is shown, back button closes it again
     BackHandler(enabled = searchActive) {
         searchActive = false
@@ -84,7 +84,10 @@ fun MyApps(
     Scaffold(
         topBar = {
             if (searchActive) {
-                TopSearchBar(onSearch = myAppsInfo::search, onSearchCleared = onSearchCleared) {
+                TopSearchBar(
+                    onSearch = myAppsInfo.actions::search,
+                    onSearchCleared = onSearchCleared,
+                ) {
                     onBackPressedDispatcher?.onBackPressed()
                 }
             } else TopAppBar(
@@ -121,7 +124,7 @@ fun MyApps(
                                 )
                             },
                             onClick = {
-                                myAppsInfo.changeSortOrder(AppListSortOrder.NAME)
+                                myAppsInfo.actions.changeSortOrder(AppListSortOrder.NAME)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -137,7 +140,7 @@ fun MyApps(
                                 )
                             },
                             onClick = {
-                                myAppsInfo.changeSortOrder(LAST_UPDATED)
+                                myAppsInfo.actions.changeSortOrder(LAST_UPDATED)
                                 sortByMenuExpanded = false
                             },
                         )
@@ -186,6 +189,7 @@ fun MyAppsLoadingPreview() {
         installingApps = emptyList(),
         appUpdates = null,
         installedApps = null,
+        showAppIssueHint = false,
         sortOrder = AppListSortOrder.NAME,
         networkState = NetworkState(isOnline = false, isMetered = false),
     )
@@ -205,6 +209,27 @@ fun MyAppsPreview() {
     FDroidContent {
         MyApps(
             myAppsInfo = getMyAppsInfo(myAppsModel),
+            currentPackageName = null,
+            onAppItemClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+@RestrictTo(RestrictTo.Scope.TESTS)
+fun MyAppsEmptyPreview() {
+    FDroidContent {
+        val model = MyAppsModel(
+            installingApps = emptyList(),
+            appUpdates = emptyList(),
+            installedApps = emptyList(),
+            showAppIssueHint = false,
+            sortOrder = AppListSortOrder.NAME,
+            networkState = NetworkState(isOnline = false, isMetered = false),
+        )
+        MyApps(
+            myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
         )

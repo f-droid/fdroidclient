@@ -17,8 +17,8 @@ android {
         applicationId = "org.fdroid"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2000001
-        versionName = "2.0-alpha1"
+        versionCode = 2000002
+        versionName = "2.0-alpha2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
