@@ -166,6 +166,9 @@
     <string name="pref_repo_updates_summary_always">Periodically ask all repositories for app updates even when on mobile data.</string>
     <string name="pref_repo_updates_summary_never">Do NOT check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
+    <string name="pref_mirror_chooser_title">Download mirror selection</string>
+    <string name="pref_mirror_chooser_summary_random">Random</string>
+    <string name="pref_mirror_chooser_summary_prefer_foreign">Prefer from other countries</string>
     <string name="pref_proxy_title">Connect via SOCKS proxy</string>
     <string name="pref_proxy_disabled">Connect to the internet without proxy</string>
     <string name="pref_proxy_enabled">Uses proxy %s to connect</string>

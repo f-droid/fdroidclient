@@ -1,6 +1,7 @@
 package org.fdroid.utils
 
 import android.content.Context
+import org.fdroid.BuildConfig.FLAVOR
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.text.SimpleDateFormat
@@ -26,3 +27,6 @@ fun getLogName(context: Context): String {
     val time = sdf.format(Date())
     return "${context.packageName}-$time"
 }
+
+val isFull: Boolean get() = FLAVOR.startsWith("full")
+val isBasic: Boolean get() = FLAVOR.startsWith("basic")

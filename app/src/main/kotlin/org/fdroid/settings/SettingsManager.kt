@@ -21,6 +21,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
@@ -31,6 +32,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
@@ -125,6 +127,9 @@ class SettingsManager @Inject constructor(
             prefs.edit { putStringSet(PREF_KEY_IGNORED_APP_ISSUES, newValue.toSet()) }
         }
 
+    val mirrorChooser
+        get() = prefs.getString(PREF_KEY_MIRROR_CHOOSER, PREF_DEFAULT_MIRROR_CHOOSER)
+            .toMirrorChooserValue()
     val proxyConfig: ProxyConfig?
         @UiThread
         get() {

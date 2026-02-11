@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.ColorLens
+import androidx.compose.material.icons.filled.Lan
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SystemSecurityUpdate
@@ -59,17 +60,21 @@ import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Always
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.toAutoUpdateValue
+import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
@@ -322,6 +327,29 @@ fun Settings(
                 preferenceCategory(
                     key = "pref_category_network",
                     title = { Text(stringResource(R.string.pref_category_network)) },
+                )
+                listPreference(
+                    key = PREF_KEY_MIRROR_CHOOSER,
+                    defaultValue = PREF_DEFAULT_MIRROR_CHOOSER,
+                    title = {
+                        Text(stringResource(R.string.pref_mirror_chooser_title))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Lan,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = { strValue ->
+                        val strRes = strValue.toMirrorChooserValue().res
+                        Text(stringResource(strRes))
+                    },
+                    values = MirrorChooserValues.entries.map { it.name },
+                    valueToText = { value: String ->
+                        val strRes = value.toMirrorChooserValue().res
+                        AnnotatedString(res.getString(strRes))
+                    },
                 )
                 preferenceProxy(proxyState, showProxyError)
                 item {

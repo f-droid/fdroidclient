@@ -16,8 +16,15 @@ object DownloadModule {
 
     @Provides
     @Singleton
-    fun provideHttpManager(settingsManager: SettingsManager): HttpManager {
-        return HttpManager(userAgent = USER_AGENT, proxyConfig = settingsManager.proxyConfig)
+    fun provideHttpManager(
+        settingsManager: SettingsManager,
+        mirrorParameters: MirrorParameters,
+    ): HttpManager {
+        return HttpManager(
+            userAgent = USER_AGENT,
+            proxyConfig = settingsManager.proxyConfig,
+            mirrorParameterManager = mirrorParameters,
+        )
     }
 
     @Provides
