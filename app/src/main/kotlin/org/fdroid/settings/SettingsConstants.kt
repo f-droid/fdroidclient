@@ -43,6 +43,9 @@ object SettingsConstants {
     const val PREF_KEY_PROXY = "proxy"
     const val PREF_DEFAULT_PROXY = ""
 
+    const val PREF_KEY_PREVENT_SCREENSHOTS = "preventScreenshots"
+    const val PREF_DEFAULT_PREVENT_SCREENSHOTS = false
+
     const val PREF_KEY_SHOW_INCOMPATIBLE = "incompatibleVersions"
     const val PREF_DEFAULT_SHOW_INCOMPATIBLE = true
 

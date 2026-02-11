@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Lan
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Screenshot
 import androidx.compose.material.icons.filled.SystemSecurityUpdate
 import androidx.compose.material.icons.filled.SystemSecurityUpdateWarning
 import androidx.compose.material.icons.filled.Translate
@@ -64,12 +65,14 @@ import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
@@ -352,6 +355,27 @@ fun Settings(
                     },
                 )
                 preferenceProxy(proxyState, showProxyError)
+                preferenceCategory(
+                    key = "pref_category_privacy",
+                    title = { Text(stringResource(R.string.privacy)) },
+                )
+                switchPreference(
+                    key = PREF_KEY_PREVENT_SCREENSHOTS,
+                    defaultValue = PREF_DEFAULT_PREVENT_SCREENSHOTS,
+                    title = {
+                        Text(stringResource(R.string.preventScreenshots_title))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Screenshot,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = {
+                        Text(text = stringResource(R.string.preventScreenshots_summary))
+                    },
+                )
                 item {
                     OutlinedButton(
                         onClick = { launcher.launch("${getLogName(context)}.txt") },
