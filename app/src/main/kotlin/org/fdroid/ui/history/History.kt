@@ -2,12 +2,9 @@ package org.fdroid.ui.history
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,7 +23,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.TopAppBarButton
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,26 +42,18 @@ fun History(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    if (onBackClicked != null) IconButton(onClick = onBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
+                    if (onBackClicked != null) BackButton(onClick = onBackClicked)
                 },
                 title = {
                     Text(stringResource(R.string.install_history))
                 },
                 actions = {
-                    if (!items.isNullOrEmpty()) IconButton(
+                    if (!items.isNullOrEmpty()) TopAppBarButton(
+                        imageVector = Icons.Filled.Delete,
+                        contentDescription =
+                        stringResource(R.string.install_history_delete_ally),
                         onClick = { deleteAllDialogShown = true },
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Delete,
-                            contentDescription =
-                            stringResource(R.string.install_history_delete_ally),
-                        )
-                    }
+                    )
                 },
                 scrollBehavior = scrollBehavior,
             )

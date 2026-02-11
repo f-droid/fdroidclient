@@ -16,7 +16,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -47,6 +46,7 @@ import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 
@@ -97,19 +97,17 @@ fun MyApps(
                     Text(stringResource(R.string.menu_apps_my))
                 },
                 actions = {
-                    IconButton(onClick = { searchActive = true }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = stringResource(R.string.menu_search),
-                        )
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = stringResource(R.string.menu_search),
+                        onClick = { searchActive = true },
+                    )
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
-                    IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.Sort,
-                            contentDescription = stringResource(R.string.more),
-                        )
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.AutoMirrored.Default.Sort,
+                        contentDescription = stringResource(R.string.sort_search),
+                        onClick = { sortByMenuExpanded = !sortByMenuExpanded },
+                    )
                     DropdownMenu(
                         expanded = sortByMenuExpanded,
                         onDismissRequest = { sortByMenuExpanded = false },
@@ -147,20 +145,16 @@ fun MyApps(
                             },
                         )
                     }
-                    IconButton(onClick = { onNav(NavigationKey.InstallationHistory) }) {
-                        Icon(
-                            imageVector = Icons.Default.History,
-                            contentDescription = stringResource(R.string.install_history),
-                        )
-                    }
-                    if (myAppsModel.installedApps != null) {
-                        IconButton(onClick = myAppsInfo.actions::exportInstalledApps) {
-                            Icon(
-                                imageVector = Icons.Filled.Share,
-                                contentDescription = stringResource(R.string.menu_share),
-                            )
-                        }
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.Default.History,
+                        contentDescription = stringResource(R.string.install_history),
+                        onClick = { onNav(NavigationKey.InstallationHistory) },
+                    )
+                    if (myAppsModel.installedApps != null) TopAppBarButton(
+                        imageVector = Icons.Filled.Share,
+                        contentDescription = stringResource(R.string.menu_share),
+                        onClick = myAppsInfo.actions::exportInstalledApps,
+                    )
                 },
                 scrollBehavior = scrollBehavior,
             )

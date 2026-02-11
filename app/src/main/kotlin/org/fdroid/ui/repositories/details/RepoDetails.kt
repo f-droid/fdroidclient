@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode
@@ -40,9 +39,11 @@ import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OnboardingCard
+import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepoDetailsInfo
 
@@ -103,28 +104,21 @@ fun RepoDetails(
     Scaffold(topBar = {
         TopAppBar(
             navigationIcon = {
-                if (onBackNav != null) IconButton(onClick = onBackNav) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back),
-                    )
-                }
+                if (onBackNav != null) BackButton(onClick = onBackNav)
             },
             title = { },
             actions = {
                 if (repo == null) return@TopAppBar
-                IconButton(onClick = { info.model.shareRepo(context) }) {
-                    Icon(
-                        imageVector = Icons.Default.Share,
-                        contentDescription = stringResource(R.string.share_repository)
-                    )
-                }
-                IconButton(onClick = { qrCodeDialog = true }) {
-                    Icon(
-                        imageVector = Icons.Default.QrCode,
-                        contentDescription = stringResource(R.string.show_repository_qr)
-                    )
-                }
+                TopAppBarButton(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = stringResource(R.string.share_repository),
+                    onClick = { info.model.shareRepo(context) },
+                )
+                TopAppBarButton(
+                    imageVector = Icons.Default.QrCode,
+                    contentDescription = stringResource(R.string.show_repository_qr),
+                    onClick = { qrCodeDialog = true },
+                )
                 IconButton(
                     enabled = info.model.isUpdateButtonEnabled,
                     onClick = {

@@ -17,7 +17,6 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Badge
@@ -27,11 +26,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TooltipAnchorPosition.Companion.Below
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,8 +58,10 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.search.TopSearchBar
+import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
+import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.getAppListInfo
 import org.fdroid.ui.utils.getHintOverlayColor
 
@@ -113,41 +119,42 @@ fun AppList(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {
+                    BackButton(onClick = {
                         if (searchActive) searchActive = false else onBackClicked()
-                    }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
+                    })
                 },
                 actions = {
-                    IconButton(onClick = { searchActive = true }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = stringResource(R.string.menu_search),
-                        )
-                    }
-                    IconButton(
-                        onClick = { appListInfo.actions.toggleFilterVisibility() },
-                        modifier = Modifier.hintAnchor(
-                            state = hintAnchor,
-                            shape = RoundedCornerShape(16.dp),
-                        )
+                    TopAppBarButton(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = stringResource(R.string.menu_search),
+                        onClick = { searchActive = true },
+                    )
+                    TooltipBox(
+                        positionProvider =
+                        TooltipDefaults.rememberTooltipPositionProvider(Below),
+                        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
+                        state = rememberTooltipState(),
                     ) {
-                        val showFilterBadge =
-                            appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
-                                appListInfo.model.filteredCategoryIds.isNotEmpty()
-                        BadgedBox(badge = {
-                            if (showFilterBadge) Badge(
-                                containerColor = MaterialTheme.colorScheme.secondary,
+                        IconButton(
+                            onClick = { appListInfo.actions.toggleFilterVisibility() },
+                            modifier = Modifier.hintAnchor(
+                                state = hintAnchor,
+                                shape = RoundedCornerShape(16.dp),
                             )
-                        }) {
-                            Icon(
-                                imageVector = Icons.Filled.FilterList,
-                                contentDescription = stringResource(R.string.filter),
-                            )
+                        ) {
+                            val showFilterBadge =
+                                appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
+                                    appListInfo.model.filteredCategoryIds.isNotEmpty()
+                            BadgedBox(badge = {
+                                if (showFilterBadge) Badge(
+                                    containerColor = MaterialTheme.colorScheme.secondary,
+                                )
+                            }) {
+                                Icon(
+                                    imageVector = Icons.Filled.FilterList,
+                                    contentDescription = stringResource(R.string.filter),
+                                )
+                            }
                         }
                     }
                 },
@@ -160,7 +167,9 @@ fun AppList(
             LazyListState()
         }
         Column(
-            modifier = Modifier.fillMaxSize().imePadding()
+            modifier = Modifier
+                .fillMaxSize()
+                .imePadding()
         ) {
             val apps = appListInfo.model.apps
             if (apps == null) BigLoadingIndicator()

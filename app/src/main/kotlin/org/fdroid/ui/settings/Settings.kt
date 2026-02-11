@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Lan
@@ -29,7 +28,6 @@ import androidx.compose.material.icons.filled.UpdateDisabled
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -79,6 +77,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.toAutoUpdateValue
 import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
@@ -96,12 +95,7 @@ fun Settings(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
+                    BackButton(onClick = onBackClicked)
                 },
                 title = {
                     Text(stringResource(R.string.menu_settings))
