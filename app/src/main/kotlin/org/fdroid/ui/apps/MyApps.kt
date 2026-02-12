@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
@@ -44,6 +45,7 @@ import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.TopAppBarButton
@@ -145,16 +147,19 @@ fun MyApps(
                             },
                         )
                     }
+                    var menuExpanded by remember { mutableStateOf(false) }
                     TopAppBarButton(
-                        imageVector = Icons.Default.History,
-                        contentDescription = stringResource(R.string.install_history),
-                        onClick = { onNav(NavigationKey.InstallationHistory) },
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = stringResource(R.string.more),
+                        onClick = { menuExpanded = !menuExpanded },
                     )
-                    if (myAppsModel.installedApps != null) TopAppBarButton(
-                        imageVector = Icons.Filled.Share,
-                        contentDescription = stringResource(R.string.menu_share),
-                        onClick = myAppsInfo.actions::exportInstalledApps,
-                    )
+                    MyAppsOverFlowMenu(
+                        menuExpanded = menuExpanded,
+                        onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
+                        onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
+                    ) {
+                        menuExpanded = false
+                    }
                 },
                 scrollBehavior = scrollBehavior,
             )
