@@ -61,6 +61,9 @@ object SettingsConstants {
         AppListSortOrder.NAME -> "name"
     }
 
+    const val PREF_KEY_MY_APPS_SORT_ORDER = "myAppsSortOrder"
+    const val PREF_DEFAULT_MY_APPS_SORT_ORDER = "name"
+
     const val PREF_KEY_IGNORED_APP_ISSUES = "ignoredAppIssues"
 
     const val PREF_KEY_INSTALL_HISTORY = "keepInstallHistory"

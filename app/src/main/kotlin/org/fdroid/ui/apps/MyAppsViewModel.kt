@@ -16,6 +16,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
@@ -86,7 +87,7 @@ class MyAppsViewModel @Inject constructor(
         }
 
     private val searchQuery = savedStateHandle.getMutableStateFlow("query", "")
-    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
+    private val sortOrder = MutableStateFlow(settingsManager.myAppsSortOrder)
     val myAppsModel: StateFlow<MyAppsModel> by lazy(LazyThreadSafetyMode.NONE) {
         moleculeScope.launchMolecule(mode = ContextClock) {
             MyAppsPresenter(
@@ -114,6 +115,7 @@ class MyAppsViewModel @Inject constructor(
 
     override fun changeSortOrder(sort: AppListSortOrder) {
         sortOrder.value = sort
+        settingsManager.myAppsSortOrder = sort
     }
 
     override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
