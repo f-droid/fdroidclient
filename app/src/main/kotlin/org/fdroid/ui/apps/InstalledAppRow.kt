@@ -84,6 +84,7 @@ fun InstalledAppRowPreview() {
         packageName = "",
         name = Names.randomName,
         installedVersionName = "1.0.1",
+        installedVersionCode = 10001,
         lastUpdated = System.currentTimeMillis() - 5000,
     )
     FDroidContent {

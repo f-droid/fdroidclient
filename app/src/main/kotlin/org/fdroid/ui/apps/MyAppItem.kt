@@ -47,6 +47,7 @@ data class InstalledAppItem(
     override val packageName: String,
     override val name: String,
     override val installedVersionName: String,
+    val installedVersionCode: Long,
     override val lastUpdated: Long,
     override val iconModel: Any? = null,
 ) : MyInstalledAppItem()

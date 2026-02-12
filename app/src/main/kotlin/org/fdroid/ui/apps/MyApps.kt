@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -144,6 +145,14 @@ fun MyApps(
                                 sortByMenuExpanded = false
                             },
                         )
+                    }
+                    if (myAppsModel.installedApps != null) {
+                        IconButton(onClick = myAppsInfo.actions::exportInstalledApps) {
+                            Icon(
+                                imageVector = Icons.Filled.Share,
+                                contentDescription = stringResource(R.string.menu_share),
+                            )
+                        }
                     }
                 },
                 scrollBehavior = scrollBehavior,
