@@ -1,6 +1,8 @@
 package org.fdroid.ui.apps
 
 import android.app.Application
+import android.content.Intent
+import androidx.core.app.ShareCompat
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
@@ -31,7 +33,9 @@ import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
+import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.IoDispatcher
+import org.fdroid.R
 import javax.inject.Inject
 
 @HiltViewModel
@@ -69,6 +73,7 @@ class MyAppsViewModel @Inject constructor(
                         packageName = app.packageName,
                         name = app.name ?: "Unknown app",
                         installedVersionName = app.installedVersionName ?: "???",
+                        installedVersionCode = app.installedVersionCode ?: 0,
                         lastUpdated = app.lastUpdated,
                         iconModel = PackageName(app.packageName, backupModel),
                     )
@@ -127,4 +132,28 @@ class MyAppsViewModel @Inject constructor(
     }
 
     override fun onAppIssueHintSeen() = onboardingManager.onAppIssueHintSeen()
+
+    override fun exportInstalledApps() {
+        val apps = myAppsModel.value.installedApps ?: return
+        val context: Application = getApplication()
+        val res = context.resources
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("packageName,versionCode,versionName\n")
+        for (app in apps) {
+            stringBuilder.append(app.packageName).append(',')
+                .append(app.installedVersionCode).append(',')
+                .append(app.installedVersionName).append('\n')
+        }
+        val title = res.getString(R.string.send_installed_apps)
+        val intentBuilder = ShareCompat.IntentBuilder(context)
+            .setSubject(title)
+            .setChooserTitle(title)
+            .setText(stringBuilder.toString())
+            .setType("text/csv")
+        val chooserIntent = Intent.createChooser(
+            intentBuilder.getIntent(), title
+        )
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivitySafe(chooserIntent)
+    }
 }

@@ -28,4 +28,5 @@ interface MyAppsActions {
     fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
     fun ignoreAppIssue(item: AppWithIssueItem)
     fun onAppIssueHintSeen()
+    fun exportInstalledApps()
 }

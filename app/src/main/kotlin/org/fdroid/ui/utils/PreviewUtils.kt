@@ -277,6 +277,7 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo = object : MyAppsInfo {
             override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
             override fun ignoreAppIssue(item: AppWithIssueItem) {}
             override fun onAppIssueHintSeen() {}
+            override fun exportInstalledApps() {}
         }
 }
 
@@ -338,18 +339,21 @@ internal val myAppsModel = MyAppsModel(
             packageName = "D1",
             name = Names.randomName,
             installedVersionName = "1",
+            installedVersionCode = 1,
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(1)
         ),
         InstalledAppItem(
             packageName = "D2",
             name = Names.randomName,
             installedVersionName = "2",
+            installedVersionCode = 2,
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(2)
         ),
         InstalledAppItem(
             packageName = "D3",
             name = Names.randomName,
             installedVersionName = "3",
+            installedVersionCode = 3,
             lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3)
         )
     ),
