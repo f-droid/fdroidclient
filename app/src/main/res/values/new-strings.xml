@@ -37,16 +37,16 @@
     <string name="app_list_author">Apps by %s</string>
 
     <string name="search_placeholder">Search…</string>
-    <string name="search_no_results">No apps found\n\nTry to use less search terms or add/enable more repositories</string>
+    <string name="search_no_results">No apps found\n\nTry to use less search terms or add more repositories</string>
     <string name="search_filter_no_results">No matching apps\n\nTry to use less search terms or remove filters</string>
     <string name="search_my_apps_no_results">No matching apps\n\nTry to use less search terms</string>
     <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by latest</string>
     <string name="filter_only_compatible">Apps compatible with this device</string>
-    <string name="filter_button_save">Save above as default</string>
+    <string name="filter_button_save">Save as default</string>
     <string name="filter_button_clear_all">Clear all filters</string>
-    <!-- Used for filtering lists of apps by certain criteria -->
+    <!-- Used as a noun for the button description. The feature allows for filtering lists of apps by certain criteria -->
     <string name="filter">Filter</string>
     <!-- Used for filter chips (e.g. categories) when they are currently selected -->
     <string name="filter_selected">selected</string>
@@ -80,8 +80,8 @@
     <string name="anti_features_title">This app has anti-features</string>
     <string name="developer_contact">Developer contact</string>
     <string name="technical_info">Technical information</string>
-    <string name="package_name">Package Name:</string>
-    <string name="installed_version">Installed Version:</string>
+    <string name="package_name">Package name:</string>
+    <string name="installed_version">Installed version:</string>
     <string name="copy_link">Copy link</string>
     <string name="app_no_compatible_versions">This app is not compatible with your device</string>
     <string name="app_no_compatible_signer">Can\'t update this app, because all versions have an incompatible signature\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
@@ -97,11 +97,11 @@
     <string name="version_code_colon">Version code: %1$s</string>
     <string name="sdk_versions_colon">SDK versions: %1$s</string>
     <!-- The minimum SDK version the app can be installed on, e.g. only Android 10 or higher -->
-    <string name="sdk_min_version">%1$s (Min)</string>
+    <string name="sdk_min_version">%1$s (min)</string>
     <!-- The target SDK version of the app -->
-    <string name="sdk_target_version">%1$s (Target)</string>
+    <string name="sdk_target_version">%1$s (target)</string>
     <!-- The maximum SDK version the app can be installed on, e.g. only Android 10 or lower -->
-    <string name="sdk_max_version">%1$s (Max)</string>
+    <string name="sdk_max_version">%1$s (max)</string>
     <string name="signer_colon">Signer: %1$s</string>
     <string name="architectures_colon">Architectures: %1$s</string>
     <string name="app_details_incompatible_version">Incompatible • Installation likely to fail</string>
@@ -145,7 +145,7 @@
     <string name="error">Error</string>
     <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
     <!-- This is used as a content description for visually impaired users in the list of repositories for those repos that had errors updating -->
-    <string name="repo_has_update_error">Had errors updating</string>
+    <string name="repo_has_update_error">Update errors</string>
     <string name="repo_has_update_error_intro">An error occurred while updating this repository:</string>
     <string name="repo_last_update_upstream">Published %s</string>
     <string name="repo_last_downloaded">Downloaded %s</string>
@@ -157,14 +157,14 @@
     <string name="pref_dyn_colors_title">Use system colors</string>
     <string name="pref_dyn_colors_summary">Apply dynamic colors from your system settings</string>
     <string name="pref_language_summary">Opens system language settings</string>
-    <string name="pref_auto_updates_only_wifi">Only on WiFi</string>
+    <string name="pref_auto_updates_only_wifi">Only on Wi-Fi</string>
     <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
     <string name="pref_auto_updates_only_never">Never</string>
-    <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on WiFi and the device isn\'t being used</string>
+    <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on Wi-Fi and the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_never">Auto-updates disabled • Apps will need to be updated manually</string>
     <string name="pref_repo_updates_title">Check for updates</string>
-    <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories, but only when on WiFi</string>
+    <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories, but only when on Wi-Fi</string>
     <string name="pref_repo_updates_summary_always">Periodically fetch app updates from repositories even when on mobile data</string>
     <string name="pref_repo_updates_summary_never">Don\'t check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
@@ -173,7 +173,7 @@
     <string name="pref_mirror_chooser_summary_prefer_foreign">Prefer from other countries</string>
     <string name="pref_proxy_title">Connect via SOCKS proxy</string>
     <string name="pref_proxy_disabled">Connect to the Internet without proxy</string>
-    <string name="pref_proxy_enabled">Uses proxy %s to connect</string>
+    <string name="pref_proxy_enabled">Uses %s to connect</string>
     <string name="pref_proxy_hint">Proxy is expected in host:port format</string>
     <string name="pref_proxy_error">Invalid proxy format</string>
 
@@ -183,7 +183,7 @@
     </string>
     <string name="crash_report_comment_hint">Tell us what happened right before the crash</string>
     <string name="crash_report_button_send">Send report</string>
-    <string name="crash_report_error">Could not send report. No email program found :(</string>
+    <string name="crash_report_error">Could not send report. No email app found :(</string>
     <string name="crash_report_save">Save crash report as file</string>
     <string name="crash_report_saved">Saved report to file</string>
     <string name="crash_report_error_saving">Error saving crash report to file</string>
