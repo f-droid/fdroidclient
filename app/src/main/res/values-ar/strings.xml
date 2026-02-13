@@ -366,11 +366,11 @@
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="zero">لا شيء</item>
-        <item quantity="one">تطبيق واحد منصب</item>
-        <item quantity="two">تطبيقان منصبان</item>
-        <item quantity="few">%1$d تطبيقات منصبة</item>
-        <item quantity="many">%1$d تطبيقات منصبة</item>
-        <item quantity="other">%1$d تطبيقات منصبة</item>
+        <item quantity="one">تطبيق واحد مثبت</item>
+        <item quantity="two">تطبيقان مثبتان</item>
+        <item quantity="few">%1$d تطبيقات مثبتة</item>
+        <item quantity="many">%1$d تطبيقات مثبتة</item>
+        <item quantity="other">%1$d تطبيقات مثبتة</item>
     </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
@@ -669,4 +669,18 @@
     <string name="pref_export_log_summary">يُنشئ ملفًا مع إخراج logcat مفيد لتصحيح الأخطاء. حذارِ، قد يحتوي على معلومات حساسة!</string>
     <string name="export_log_success">حُفظ Logcat بنجاح</string>
     <string name="export_log_error">خطأ في حفظ logcat</string>
+    <string name="app_details_more_apps_interesting">قد يهمك أيضًا ما يلي:</string>
+    <string name="app_details_more_apps_by_author">تطبيقات أخرى من %1$s</string>
+    <string name="banner_updating_apps">تحديث التطبيقات</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="zero">يتوفر %1$d تحديث</item>
+        <item quantity="one">يتوفر تحديث</item>
+        <item quantity="two">يتوفر تحديث</item>
+        <item quantity="few">يتوفر %1$d تحديثات</item>
+        <item quantity="many">يتوفر %1$d تحديث</item>
+        <item quantity="other">يتوفر %1$d تحديث</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">انقر لتحديث الكل</string>
+    <string name="tts_repo_name">المستودع %1$s</string>
+    <string name="tts_author_name">المؤلف %1$s</string>
 </resources>

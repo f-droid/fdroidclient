@@ -1,0 +1,8 @@
+* rozhraní kompletně přepsáno pomocí Kotlin compose
+* vylepšeno vyhledávání, nyní prohledává i popisy a překlady
+* jednodušší objevování nových aplikací a zvýraznění nejstahovanějších
+* schválení instalace *před* stažením
+* více aktualizací/stahování v jednu chvíli
+* oznámení uživateli o problémech s aplikacemi (např. změna podpisového klíče)
+* volitelný barevný motiv Material You
+* vylepšeno filtrování seznamů

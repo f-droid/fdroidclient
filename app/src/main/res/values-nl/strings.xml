@@ -373,7 +373,7 @@
     <string name="app_details__no_versions__show_incompat_versions">Om niet compatibele versies hier toch te tonen, schakel de instelling \"%1$s\" in.</string>
     <string name="app_details__no_versions__no_compatible_signers">Geen versies met een compatibele ondertekening</string>
     <string name="app_details__no_versions__none_compatible_with_device">Geen versies compatibel met dit apparaat</string>
-    <string name="app_details__no_versions__explain_incompatible_signers">De geïnstalleerde versie is niet compatibel met beschikbare versies. Als u de app verwijdert kun u compatibele versies bekijken en installeren. Dit gebeurt vaak met apps die zijn geïnstalleerd via Google Play of andere bronnen, als ze zijn ondertekend door een ander certificaat.</string>
+    <string name="app_details__no_versions__explain_incompatible_signers">De geïnstalleerde versie is niet compatibel met andere beschikbare versies. Door de app te verwijderen zullen compatibele versies worden weergegeven, waarna je ze kan installeren. Dit gebeurt vaak wanneer uw apps via Google Play of andere bronnen geïnstalleerd zijn, en met een ander certificaat getekend zijn.</string>
     <string name="app_list__dismiss_app_update">Update genegeerd</string>
     <string name="app_list__dismiss_vulnerable_app">Kwetsbaarheid genegeerd</string>
     <string name="app_list__dismiss_downloading_app">Download geannuleerd</string>
@@ -427,7 +427,7 @@
     <string name="over_wifi">Via wifi</string>
     <string name="over_data">Via mobiel netwerk</string>
     <string name="over_network_always_summary">Gebruik altijd deze verbinding indien beschikbaar</string>
-    <string name="over_network_on_demand_summary">Gebruik deze verbinding alleen wanneer ik klik om te downloaden</string>
+    <string name="over_network_on_demand_summary">Gebruik enkel deze verbinding wanneer ik tik om te downloaden</string>
     <string name="over_network_never_summary">Download nooit iets via deze verbinding</string>
     <string name="antidisabledalgorithmlist">Deze app heeft een zwakke beveiligingshandtekening</string>
     <string name="antiknownvulnlist">Deze app bevat een bekend beveiligingslek</string>
@@ -517,7 +517,7 @@
     <string name="antitrack">Volgen</string>
     <string name="antinsfw">Onveilig voor werk</string>
     <string name="antinonfreead">Niet-vrije uitbreidingen</string>
-    <string name="app_list_results_hidden_antifeature_settings">Sommige programma\'s zijn verborgen op vanwege uw minpunten instellingen.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Een aantal resultaten zijn verborgen door je antifeature instellingen.</string>
     <string name="antiupstreamnonfree">Niet-vrije upstream</string>
     <string name="antinonfreedep">Niet-vrije afhankelijkheden</string>
     <string name="latest__empty_state__upgrading">Database upgraden…</string>
@@ -538,7 +538,7 @@
     <string name="repo_invalid">Ongeldige gegevensbank.
 \n
 \nNeem contact op met de beheerder en informeer ze over dit probleem.</string>
-    <string name="repo_exists">Dit archief is al toegevoegd.</string>
+    <string name="repo_exists">Deze repository is al toegevoegd.</string>
     <string name="repo_add_new_title">Voeg gegevensbank toe</string>
     <string name="targetsdk_or_later">doelen %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid kan op uw SD kaart zoeken naar opslagplaatsen en spiegels, maar heeft hiervoor toestemming nodig.</string>
@@ -592,14 +592,14 @@
     <string name="warning_no_compat_versions">Het gekozen archief bevat geen ondersteunde programma versies, om bij te werken, kies een archief met ondersteunde versies.</string>
     <string name="menu_share_apk">Deel APK bestand</string>
     <string name="auto_update_time_past">Bijwerken wanneer condities zijn toegepast</string>
-    <string name="repo_view_repo">Bekijk archief</string>
+    <string name="repo_view_repo">Bekijk repository</string>
     <string name="repo_mirror_add_info">Deze link (%s) leid naar de distributie locatie van een reeds bekend archief.</string>
     <string name="antitetherednetlist">Deze app is volledig afhankelijk van een bepaald exemplaar van een netwerkdienst</string>
     <string name="apk_permissions_mismatch">Programma vraagt onverwachte permissies: %s</string>
     <string name="repo_mirror_exists">Deze spiegelserver is al toegevoegd (%s).</string>
-    <string name="repo_scan_qr_code">Scan QR code</string>
-    <string name="repo_preview_included_apps">Bijgevoegde programma\'s:</string>
-    <string name="repo_add_repo_and_mirror">Voeg archief en \"distributie punt\" optie toe</string>
+    <string name="repo_scan_qr_code">Scan QR-code</string>
+    <string name="repo_preview_included_apps">Inbegrepen apps:</string>
+    <string name="repo_add_repo_and_mirror">Voeg repository en spiegeling toe</string>
     <string name="repo_and_mirror_add_both_info">Deze link (%s) leid naar een distributie punt van een reeds bekend archief. Zowel orgineel als distributie punt zullen worden toegevoegd.</string>
     <string name="auto_update_time">Eerstvolgende versie: %s</string>
     <string name="swap_bluetooth_permissions">Verleen toestemming voor Bluetooth of Apparaat in de buurt!</string>
@@ -629,4 +629,10 @@
     <string name="preferForeignSummary">Probeer eerst backup-servers in het buitenland, bijvoorbeeld als buitenlandse bescherming sterker is.</string>
     <string name="preferForeign">Voorkeur voor buitenlandse backup-servers</string>
     <string name="pref_export_log_summary">Maakt een bestand met logcat uitvoer, handig voor debuggen. Voorzichtig, het kan gevoelige informatie bevatten!</string>
+    <string name="app_details_more_apps_interesting">Dit kan u ook interesseren:</string>
+    <string name="app_details_more_apps_by_author">Meer apps van %1$s</string>
+    <string name="banner_updating_apps">Apps bijwerken</string>
+    <string name="notification_title_summary_app_update_available">Tik om alles te updaten</string>
+    <string name="tts_repo_name">Repository %1$s</string>
+    <string name="tts_author_name">Auteur %1$s</string>
 </resources>

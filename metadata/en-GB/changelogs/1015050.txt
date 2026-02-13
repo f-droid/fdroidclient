@@ -1,0 +1,5 @@
+* Total overhaul of downloading logic for improved performance and mirrors support.
+
+* Screenshots and graphics are now downloaded from mirrors.
+
+* Reduced a privacy leak with TLS Sessions

@@ -1,0 +1,7 @@
+* Fikset bruk av pakkebrønner og speil på eksterne lagringsmedia på nyere Android-versjoner
+* Forbedret Wifi-håndtering under «I nærheten»
+* Navigeringsmenyen husker nå posisjonen sin selv etter at F-Droid startes på nytt
+* Nytt språk: swahili
+* Fikset nedlasting av bilder fra pakkebrønner som fortsatt bruker index-v1
+* Fikset krasjer i forbindelse med swap, pakkebrønnhåndtering og mer
+* Nedgraderingsknappen ble fjernet, siden Android ikke tillater det lenger

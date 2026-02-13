@@ -1,0 +1,8 @@
+* Mye feilfiks
+* Viser nå pakkebrønnikoner i listen over pakkebrønner
+* Viser grunner til antifunksjonalitet (hvis tilgjengelig)
+* Oppgraderinger kan nå utføres uten tilsyn uten rettighetsutvidelsen (bare med F-Droid Basic inntil videre)
+* Viser nå appstørrelse på detaljskjermen (bare i ekspertmodus)
+* Litt mørkere appnavn for å gjøre det lettere å lese
+* Åpen/lukket-statusen til «Oppdater alle» i oppdateringsfanen bevares nå (@tunedal)
+* Aktive faner bevares etter at appen startes på nytt

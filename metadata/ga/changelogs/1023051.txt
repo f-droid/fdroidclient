@@ -1,6 +1,6 @@
-* dearadh ábhar 3 (le imeall-go-imeall, ach gan dathanna dinimiciúla) (Go raibh maith agat proletarius!)
-* scáileáin sonraí stórtha a athdhearadh (Go raibh maith agat Thore!)
-* Chuir onnmhairiú comhad logcat isteach i socruithe saineolaithe
-* nuashonraigh an sprioc SDK (Android 15 le haghaidh bunúsach agus Android 11 iomlán)
-* cuir backlink ó leathanach na haipe i socruithe an chórais (Go raibh maith agat j-m4!)
-* úsáid roghnóir aip chun aipeanna suiteáilte a roinnt agus stair a shuiteáil (Go raibh maith agat Thore!)
+* dearadh ábhair 3 (le imeall go imeall, ach gan dathanna dinimiciúla) (Go raibh maith agat, a proletarius!)
+* athdhearadh scáileáin sonraí an stórais (Go raibh maith agat, a Thore!)
+* easpórtáil comhad logcat curtha leis i socruithe saineolaithe
+* SDK sprice nuashonraithe (Android 15 don bhunleagan agus Android 11 don leagan iomlán)
+* nasc siar ó leathanach an aip a chur leis i socruithe an chórais (Go raibh maith agat, a j-m4!)
+* roghnóir aipeanna a úsáid chun aipeanna suiteáilte agus stair suiteála a roinnt (Go raibh maith agat, a Thore!)

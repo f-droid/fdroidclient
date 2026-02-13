@@ -1,0 +1,8 @@
+* eksperimentell støtte for avarkivering av apper på Android 15
+* nyinstallerte apper legges til automatisk på hjemmeskjermen på de fleste launchere (takk Dhina!)
+* egne del lenker- og del fil-knapper i appdetaljer
+* viser en melding når en appfil har flere rettigheter enn forventet
+* rydder opp i interne mellomlagre mer ofte for mer plass (takk DerGenaue!)
+* omorganisert donasjonsknapper så de er like som på nettsiden (takk Leo!)
+* la til en innstilling som foretrekker utenlandske speil
+* mange små feilfikser

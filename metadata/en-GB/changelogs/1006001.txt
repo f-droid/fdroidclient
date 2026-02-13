@@ -1,0 +1,7 @@
+* Switches added to RepoDetails to turn off any or all mirrors (#1696)
+
+* Choice of random mirror for each package/APK download
+
+* All APK downloads cached per-repo, not per-mirror
+
+* Handle Apache and NGINX ETags when checking if index is current (#1708)

@@ -1,0 +1,7 @@
+* omfattande översyn av swap-gränssnittet, för att förbereda omskrivning av guts
+* visa "ångra" efter att ha svept bort objekt från fliken Uppdateringar (tack @Hocuri!)
+* åtgärda problem med "Senaste"-visning orsakade av felaktig hantering av tidszoner #1757
+* ignorera alla oviktiga krascher i bakgrundstjänster
+* översyn av närliggande swap med hjälp av enhetens hotspot-AP
+* lägga till nya panikreaktioner: avinstallera appar och återställa lagringsplatser till standard
+* USB OTG flash-minnen kan användas som närliggande lagringsplatser och speglar

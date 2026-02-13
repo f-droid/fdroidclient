@@ -1,21 +1,21 @@
 v1.3.1
-* Athchóiriú mór ar na croíphluiméireachta in aice láimhe/Babhtáil
+* Athchóiriú mór ar phíobáil lárnach In aice láimhe/Malartaithe
 
-* Tacaíocht TLSv1.3, nuair a thacaíonn an gléas é
+* Tacaíocht TLSv1.3, nuair a thacaíonn an gléas leis
 
 v1.3
-* Cnaipí níos iontaofa agus nuashonruithe stádais
+* Cnaipí agus nuashonruithe stádais níos iontaofa
 
-* Athchóiriú a dhéanamh ar Shocruithe lena n-áirítear rialuithe nua úsáide sonraí
+* Athchóiriú ar Shocruithe lena n-áirítear rialuithe nua úsáide sonraí
 
-* Oibriú cúlra comhfhiosach ceallraí ar Android 5.0 agus níos nuaí
+* Oibriú cúlra atá feasach ar cheallraí ar Android 5.0 agus níos nuaí
 
-* Roinn mír roghchláir le haghaidh repos
+* Mír roghchláir a roinnt le haghaidh stórtha
 
-* Múch tuairiscí tuairteála sna Socruithe
+* Tuairiscí tuairteála a mhúchadh i Socruithe
 
-* Suiteáil breathnóir Stair nuair atá logáil cumasaithe
+* Amharcóir Staire a shuiteáil nuair a bhíonn logáil cumasaithe
 
-* Liosta Frithghnéithe Inchliceáilte, curtha leis NoSourceSince
+* Liosta Frith-Gnéithe Inchliceáilte, NoSourceSince curtha leis
 
 * Is é Android 4.0 an t-íosmhéid a dtacaítear leis anois

@@ -1,0 +1,7 @@
+* major overhaul of swap UI, to prepare for rewriting guts
+* show "undo" after swiping away items from the Updates tab (thanks @Hocuri!)
+* fix issues with "Latest" display caused by mishandling time zones #1757
+* ignore all unimportant crashes in background services
+* overhauled nearby swap using the device's hotspot AP
+* add new panic responses: app uninstalls and reset repos to default
+* USB OTG flash drives can be used as nearby repos and mirrors

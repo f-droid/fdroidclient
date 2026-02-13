@@ -623,4 +623,19 @@
     <string name="repo_basic_auth_password">Senha: ***</string>
     <string name="pref_export_log_title">Registo da depuração</string>
     <string name="repo_confirm_delete_mirror_title">Eliminar site réplica?</string>
+    <string name="app_details_more_apps_interesting">Talvez isto também lhe possa ser relevante:</string>
+    <string name="app_details_more_apps_by_author">Mais aplicações de %1$s</string>
+    <string name="banner_updating_apps">Aplicações em atualização</string>
+    <string name="repo_archive_check">Verificar por arquivo</string>
+    <string name="share_mirror">Partilhar link (mirror)</string>
+    <string name="show_repository_qr">Mostrar código QR do repositório</string>
+    <string name="repo_basic_auth_title">Autenticação básica</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d atualização disponível</item>
+        <item quantity="many">%1$d atualizações disponíveis</item>
+        <item quantity="other">%1$d atualizações disponíveis</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Toque para atualizar tudo</string>
+    <string name="tts_repo_name">Repositório %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
 </resources>

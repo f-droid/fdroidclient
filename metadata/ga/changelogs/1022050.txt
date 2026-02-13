@@ -1,8 +1,8 @@
-* tacaíocht thurgnamhach le haghaidh aipeanna gan chartlannú ar Android 15
-* cuir aipeanna nua-shuiteáilte go huathoibríoch ar an scáileán baile d’fhormhór na lainseálaithe (Go raibh maith agat Dhina!)
-* nasc a roinnt ar leithligh agus gníomhartha comhaid a roinnt i sonraí na haipe
-* taispeáin tósta nuair a bhíonn níos mó ceadanna ag APK ná mar a bhíothas ag súil leis
-* taisce inmheánach a ghlanadh níos minice chun spás a shaoradh (Go raibh maith agat DerGenaue!)
-* suaitheantais deonaithe a athordú chun an suíomh Gréasáin a mheaitseáil (Go raibh maith agat Leo!)
-* cuir leis na socruithe scoránaigh chun scátháin choigríche a roghnú
-* go leor ceartúcháin ar fhabhtanna beaga
+* tacaíocht thurgnamhach le haghaidh aipeanna a dhíchartlannú ar Android 15
+* aipeanna nua-shuiteáilte a chur leis an scáileán baile go huathoibríoch do fhormhór na lainseálaithe (Go raibh maith agat Dhina!)
+* nasc comhroinnte ar leithligh agus gníomhartha comhaid chomhroinnte i sonraí an aip
+* tósta a thaispeáint nuair a bhíonn níos mó ceadanna ag APK ná mar a bhíothas ag súil leis
+* taisceáin inmheánacha a ghlanadh níos minice chun spás a shaoradh (Go raibh maith agat DerGenaue!)
+* suaitheantais síntiús a athordú chun meaitseáil le suíomh Gréasáin (Go raibh maith agat Leo!)
+* socruithe a chur leis chun scátháin eachtracha a roghnú
+* go leor ceartúcháin bheaga ar fhabhtanna

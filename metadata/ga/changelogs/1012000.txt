@@ -1,12 +1,12 @@
-* Urramaíonn logánú cur síos ar aip liostaí teangacha Android go hiomlán anois
- Socruithe Teanga
+* Tá meas iomlán anois ag logánú cur síos ar an aip ar liostaí teangacha in Android
+Socruithe Teanga
 
-* Liostaíonn an Cluaisín is déanaí torthaí bunaithe ar na Socruithe Teanga
+* Liostaíonn an Cluaisín is Déanaí torthaí bunaithe ar na Socruithe Teanga
 
-* Taispeánann an táb is déanaí na torthaí is nuaí a ordaíodh ar dtús (@TheLastProject @IzzySoft)
+* Taispeánann an Cluaisín is Déanaí na torthaí anois in ord is nuaí ar dtús (@TheLastProject @IzzySoft)
 
-* Tacaíocht téama nuachóirithe agus ceangailte le téamaí ionsuite Android (@proletarius101)
+* Tacaíocht téamaí nuachóirithe agus ceangailte leis na téamaí Android ionsuite (@proletarius101)
 
-* Feabhsaíodh torthaí cuardaigh go mór (@Tvax @gcbrown76)
+* Torthaí cuardaigh feabhsaithe go mór (@Tvax @gcbrown76)
 
-* Lig do Android oibríochtaí glanta taisce cúlra a sceidealú go héifeachtach (@Isira-Seneviratne)
+* Lig do Android oibríochtaí glantacháin taisce cúlra a sceidealú go héifeachtúil (@Isira-Seneviratne)

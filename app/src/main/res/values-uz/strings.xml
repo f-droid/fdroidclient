@@ -56,4 +56,9 @@
     <string name="antitracklist">Bu ilova harakatlaringizni kuzatib boradi va hisobot beradi</string>
     <string name="back">Orqaga</string>
     <string name="cancel">Bekor qilish</string>
+    <string name="delete">Oʻchirish</string>
+    <string name="prompt_to_send_crash_reports">Buzilish hisobotlarini yuborishni taklif qiling</string>
+    <string name="prompt_to_send_crash_reports_summary">Nosozliklar haqida ma\'lumot to\'plang va ularni ishlab chiquvchiga yuborishni so\'rang</string>
+    <string name="cache_downloaded">Keshlangan ilovalarni saqlang</string>
+    <string name="unstable_updates">Barqaror yangilanishlar</string>
 </resources>

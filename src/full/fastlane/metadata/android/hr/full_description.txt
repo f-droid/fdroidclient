@@ -1,0 +1,13 @@
+F-Droid je nestalabilan katalog slobodnih (libre) softverskih aplikacija za Android. F-Droid klijent aplikacija omogućuje jednostavno pregledavanje, instalaciju i praćenje aktualiziranja na tvom uređaju.
+
+Povezuje se s bilo kojim F-Droid kompatibilnim repozitorijem. Zadani repozitorij je smješten na f-droid.org i sadrži isključivo prave slobodne softverske aplikacije.
+
+Sam Android je otvoren u smislu da se APK-ovi mogu instalirati s bilo kojeg mjesta, ali postoji mnogo dobrih razloga za korištenje F-Droida kao upravljača slobodnih aplikacija:
+
+* Dobivanje obavijesti kada postoje nove verzije
+* Opcionalno automatsko preuzimanje i instaliranje novih verzija
+* Praćenje starijih i beta verzija
+* Filtriranje aplikacija koje nisu kompatibilne s uređajem
+* Pronalaženje aplikacija po kategorijama i pretraživim opisima
+* Pristup povezanim URL-ovima za donacije, izvorni kod itd.
+* Sigurnost provjerom potpisa indeksa repozitorija i hash vrijednosti APK-a

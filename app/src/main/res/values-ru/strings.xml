@@ -634,4 +634,16 @@
     <string name="pref_export_log_summary">Создает файл с выводом logcat, полезный для отладки. Будьте бдительны, он может содержать конфиденциальную информацию!</string>
     <string name="export_log_success">Logcat успешно сохранен</string>
     <string name="export_log_error">Ошибка сохранения logcat</string>
+    <string name="app_details_more_apps_interesting">Это также может быть вам интересно:</string>
+    <string name="app_details_more_apps_by_author">Больше приложений от %1$s</string>
+    <string name="banner_updating_apps">Обновление приложений</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Доступно %1$d обновление</item>
+        <item quantity="few">Доступно %1$d обновления</item>
+        <item quantity="many">Доступно %1$d обновлений</item>
+        <item quantity="other">Доступно %1$d обновлений</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Нажмите, чтобы обновить все</string>
+    <string name="tts_repo_name">Репозиторий %1$s</string>
+    <string name="tts_author_name">Автор %1$s</string>
 </resources>

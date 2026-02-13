@@ -1,0 +1,13 @@
+* Appbeskrivelser støtter nå språklisten i Androids språkinnstillinger
+
+* Nyeste-fanen viser resultater basert på språkinnstillinger, med de nyeste først (@TheLastProject @IzzySoft)
+
+* Søkeresultatene har blitt gjort mye bedre (@Tvax @gcbrown76)
+
+* Mer pålitelig opprydning av mellomlageret
+
+* Effektiv bakgrunnsopprydning av mellomlageret (@Isira-Seneviratne)
+
+* Overhaling av URL-parsing for mer pålitelig bruk av pakkebrønner (@projectgus)
+
+* Frivillig innmelding til F-Droid Metrics lagt til

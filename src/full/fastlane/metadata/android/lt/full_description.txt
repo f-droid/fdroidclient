@@ -1,0 +1,13 @@
+F-Droid yra įdiegiamas laisvosios programinės įrangos programėlių katalogas, skirtas Android. F-Droid kliento programėlė palengvina atnaujinimų paiešką, diegimą ir jų sekimą jūsų įrenginyje.
+
+Ji prisijungia prie bet kurios suderinamos F-Droid saugyklos. Numatytoji saugykla yra talpinama f-droid.org svetainėje, kurioje laikoma tik bona fide laisvoji programinė įranga.
+
+Nors pati Android programinė įranga yra atvirojo kodo ir galite savo nuožiūra įdiegti APK, iš kur pageidaujate, bet vis tik yra daug svarių priežasčių, kodėl verta naudotis F-Droid laisvosios programinės įrangos programėlių tvarkykle:
+
+* Gaukite pranešimus apie atnaujinimus
+* Pasirinkite, ar norite atsisiųsti ir įdiegti atnaujinimus automatiškai
+* Atsekite senesnes ir beta versijas
+* Išfiltruokite su jūsų įrenginiu nesuderinimas programėles
+* Ieškokite programėlių pagal kategorijas ir aprašymus
+* Pasiekite susietus ekonominės paramos URL, šaltinio kodą ir t. t.
+* Būkite saugūs tikrindami saugyklų indekso parašus ir APK maišas (angl. APK hashes)

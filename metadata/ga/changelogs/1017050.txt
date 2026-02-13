@@ -1,8 +1,8 @@
-* Go leor ceartúcháin ar fhabht
-* Taispeáin deilbhíní stórtha i liosta na stórtha
-* Taispeáin cúiseanna Frithghnéithe (má tá siad ar fáil)
-* Uasghráduithe gan freastal gan síneadh faoi phribhléid (F-Droid Basic amháin faoi láthair)
-* Taispeáin méid na haipe ar scáileán sonraí na haipe (modh saineolaí amháin)
+* Go leor ceartúcháin fabhtanna
+* Taispeáin deilbhíní stórais i liosta na stórais
+* Taispeáin cúiseanna le Frith-Gnéithe (más ann dóibh)
+* Uasghráduithe gan mhaoirseacht gan síneadh pribhléideach (F-Droid Basic amháin faoi láthair)
+* Taispeáin méid an aip ar scáileán sonraí an aip (mód saineolaithe amháin)
 * Ainmneacha aipeanna beagán níos dorcha i liostaí aipeanna chun inléiteacht a fheabhsú
-* Athchóirigh staid oscailte/dúnta “Nuashonraigh Uile” sa chluaisín Nuashonruithe (@ tunedal)
-* Athchóirigh cluaisín gníomhach idir atosú app
+* Athchóirigh staid oscailte/dúnta "Nuashonraigh Gach Rud" sa chluaisín Nuashonruithe (@tunedal)
+* Athchóirigh an cluaisín gníomhach idir atosaithe aipeanna

@@ -1,0 +1,15 @@
+* Overhalte håndtering av pakkebrønner og speil, både brukergrensesnittet og koden
+
+* Forhåndsvis nye pakkebrønner
+
+* Installering med F-Droid og F-Droid Basic støtter nå automatiske oppdateringer i bakgrunnen
+
+* På Android 14 blir nå apper med ustøttede SDK-målversjoner som inkompatible, #2692
+
+* Langtrykk for å kopiere lenker, rettigheter og versjoner på «Appdetaljer»-skjermen (@Tobias_Groza)
+
+* Inkompatible apper vises nå bare etter at det skrus på i innstillinger, #41 (@pigpig)
+
+* Nye IPFS-gateway-innstillinger
+
+* Velg språk per app (@Licaon-Kter)

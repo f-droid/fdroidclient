@@ -633,4 +633,15 @@
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat útil para depuração. Cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_success">Logcat salvo com sucesso</string>
     <string name="export_log_error">Erro ao salvar logcat</string>
+    <string name="app_details_more_apps_interesting">Isto também possa interessá-lo:</string>
+    <string name="app_details_more_apps_by_author">Mais apps de %1$s</string>
+    <string name="banner_updating_apps">A atualizar apps</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d atualização disponível</item>
+        <item quantity="many">%1$d atualizações disponíveis</item>
+        <item quantity="other">%1$d atualizações disponíveis</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Toque para atualizar tudo</string>
+    <string name="tts_repo_name">Repositório %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
 </resources>

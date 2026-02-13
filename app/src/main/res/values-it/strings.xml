@@ -135,7 +135,7 @@
     <string name="swap">Invia app</string>
     <string name="swap_no_wifi_network">Nessuna rete disponibile</string>
     <string name="swap_view_available_networks">(Tocca per mostrare le reti disponibili)</string>
-    <string name="open_qr_code_scanner">Apri lo scanner per codici QR</string>
+    <string name="open_qr_code_scanner">Apri lo scanner di codici QR</string>
     <string name="swap_welcome">Benvenuto su F-Droid!</string>
     <string name="swap_confirm_connect">Vuoi ricevere le app da %1$s?</string>
     <string name="app_name_full">F-Droid</string>
@@ -411,7 +411,7 @@
     <string name="allow">Consenti</string>
     <string name="panic_settings_summary">Azioni da intraprendere in caso di emergenza</string>
     <string name="panic_exit_summary">Questa applicazione sarà chiusa</string>
-    <string name="panic_destructive_actions">Azioni distruttive</string>
+    <string name="panic_destructive_actions">Azioni irreversibili</string>
     <string name="panic_hide_title">Nascondi %s</string>
     <string name="panic_hide_summary">L\'applicazione si auto-nasconderà</string>
     <string name="panic_exit_title">Esci dall\'app</string>
@@ -477,7 +477,7 @@
     <string name="nearby_splash__request_permission">Cerca ora</string>
     <string name="not_visible_nearby">Nearby non attivato</string>
     <string name="swap_toast_using_path">Usando %1$s</string>
-    <string name="swap_toast_not_removable_storage">Quella scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
+    <string name="swap_toast_not_removable_storage">Questa scelta non corrisponde ad alcun dispositivo di archiviazione removibile, riprova!</string>
     <string name="swap_toast_find_removeable_storage">Seleziona scheda SD o USB</string>
     <string name="scan_removable_storage_summary">Cerca repository di pacchetti su archivi rimovibili come schede SD e chiavette USB</string>
     <string name="main_menu__updates">Aggiornamenti</string>
@@ -649,4 +649,19 @@
     <string name="repo_details_info_text">Un repository è una fonte di app.\n\nI mirror vengono usati per distribuire il carico di scaricamento delle app tra più server. I mirror più vicini a te potrebbero essere più veloci.\n\nI mirror ufficiali sono definiti dal proprietario del repository. Non possono essere eliminati, solo disattivati. Puoi definire mirror personalizzati aggiungendoli proprio come un repository normale.</string>
     <string name="repo_confirm_delete_mirror_body">Puoi continuare a installare app da questo repository usando gli altri mirror.</string>
     <string name="collapse">Riduci</string>
+    <string name="pref_export_log_summary">Crea un file con output logcat utile per il deubg. Attenzione, potrebbe contenere informazioni sensibili!</string>
+    <string name="export_log_success">Logcat salvato con successo</string>
+    <string name="export_log_error">Errore a salvare il logcat</string>
+    <string name="app_details_more_apps_interesting">Potrebbe interessarti anche:</string>
+    <string name="app_details_more_apps_by_author">Altre app di %1$s</string>
+    <string name="banner_updating_apps">Aggiornamento applicazioni</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d aggiornamento disponibile</item>
+        <item quantity="many">%1$d aggiornamenti disponibili</item>
+        <item quantity="other">%1$d aggiornamenti disponibili</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Tocca per aggiornare tutto</string>
+    <string name="tts_repo_name">Repository %1$s</string>
+    <string name="tts_author_name">Autore %1$s</string>
+    <string name="pref_export_log_title">Registrazione debug</string>
 </resources>

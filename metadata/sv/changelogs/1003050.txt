@@ -1,0 +1,19 @@
+* Mer pålitliga knappar och statusuppdateringar
+
+* Översyn av inställningar inklusive nya kontroller för dataanvändning
+
+* Batterimedveten bakgrundsdrift på Android 5.0 och senare
+
+* Dela menyalternativ för repositories
+
+* Stäng av kraschrapporter i inställningar
+
+* Installera historikvisaren när loggning är aktiverad
+
+* Klickbar lista över antifunktioner, tillagd NoSourceSince
+
+* Android 4.0 är nu det lägsta stödda
+
+* Stora förbättringar för anpassade whitelabel-versioner av F-Droid
+
+* Expertinställning för att skicka felsökningsversion+UUID vid nedladdning

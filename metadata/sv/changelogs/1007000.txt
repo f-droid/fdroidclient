@@ -1,0 +1,11 @@
+* Stor översyn av swap-gränssnittet, förbereder för omskrivning
+
+* Visa "Ångra" efter att ha svept bort objekt från fliken "Uppdateringar" (tack @Hocuri!)
+
+* Åtgärda ETag-hantering vid anslutning till NGINX-speglar #1737
+
+* Åtgärda problem med visning av "Senaste" orsakade av felaktig hantering av tidszoner #1757
+
+* Ignorera alla oviktiga krascher i bakgrundstjänster
+
+* Använd inte Privileged Extension om det är avstängt i "Inställningar"

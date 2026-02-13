@@ -18,7 +18,7 @@
     <string name="repo_add_url">Naslov skladišča</string>
     <string name="menu_manage">Upravljanje s skladišči</string>
     <string name="menu_search">Iskanje</string>
-    <string name="menu_add_repo">Novo skladišče</string>
+    <string name="menu_add_repo">Nov repozitorij</string>
     <string name="menu_install">Namesti</string>
     <string name="menu_uninstall">Odstrani</string>
     <string name="menu_website">Spletišče</string>
@@ -104,7 +104,7 @@
     <string name="add_key">Dodaj ključ</string>
     <string name="overwrite">Prepiši</string>
     <string name="updates__tts__download_app">Prenesi</string>
-    <string name="not_on_same_wifi">Vaša naprava ni na istem Wi-Fi kto lokalni repozitorij, ki ste ga ravnokar dodali. Poskusite se pridružiti temu omrežju: %s</string>
+    <string name="not_on_same_wifi">Vaša naprava ni na istem Wi-Fi kot lokalni repozitorij, ki ste ga ravnokar dodali. Poskusite se pridružiti temu omrežju: %s</string>
     <string name="keep_install_history_summary">Shrani dnevnik namestitev in odstranitev v zasebni shrambi</string>
     <string name="force_old_index">Prisilna uporaba starejšega načina formatiranja</string>
     <string name="force_old_index_summary">V primeru napak ali združljivostnih težav, uporabite XML aplikacijski index</string>
@@ -550,4 +550,5 @@
     <string name="antiothers">Druge slabe funkcije</string>
     <string name="app_error_open">Aplikacije ni bilo mogoče zagnati.</string>
     <string name="antinsfwlist">Ta aplikacija vsebuje vsebino, ki ne bi smela biti objavljena ali vidna povsod</string>
+    <string name="pref_export_log_title">Dnevnik za razhroščevanje</string>
 </resources>

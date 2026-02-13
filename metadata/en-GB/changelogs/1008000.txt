@@ -1,0 +1,3 @@
+* Fix seekbar preference on recent Android versions (thanks @dkanada)
+* Handle API 29 split-permissions: fine location now implies coarse location
+* Define backup rules to avoid saving the swap repo

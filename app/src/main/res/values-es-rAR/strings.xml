@@ -100,9 +100,9 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Descargar actualización para %1$d aplicacióne.</item>
-        <item quantity="many">Descargar actualización para %1$d aplicaciónes.</item>
-        <item quantity="other">Descargar actualización para %1$d aplicaciónes.</item>
+        <item quantity="one">Descargar actualización para %1$d aplicación:</item>
+        <item quantity="many">Descargar actualizaciones para %1$d aplicaciones:</item>
+        <item quantity="other">Descargar actualizaciones para %1$d aplicaciones:</item>
     </plurals>
     <string name="updates_disabled_by_settings">Actualizaciones deshabilitadas por configuración de Datos/WiFi</string>
     <string name="ok">Aceptar</string>
@@ -533,4 +533,5 @@
     <string name="antinonfreeassets">No-Libre Assets</string>
     <string name="antinsfw">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
     <string name="antiupstreamnonfree">Upstream No-Libre</string>
+    <string name="app_name_basic">F-Droid Basic</string>
 </resources>

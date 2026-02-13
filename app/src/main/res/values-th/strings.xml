@@ -575,4 +575,10 @@
         <item quantity="other">ดาวน์โหลดแอปโดยใช้จุดสิ้นสุดเว็บ IPFS: เปิดใช้งาน %1$d แล้ว</item>
     </plurals>
     <string name="repo_share_not_found">ไม่พบที่อยู่ repo ในข้อความที่แชร์</string>
+    <string name="pref_export_log_summary">สร้างไฟล์ที่มีข้อมูลจากคำสั่ง logcat มีประโยชน์สำหรับแก้ไขข้อผิดพลาด โปรดระวัง! ไฟล์นี้มีข้อมูลที่ละเอียดอ่อน!</string>
+    <string name="export_log_success">บันทึก Logcat สำเร็จ</string>
+    <string name="export_log_error">เกิดข้อผิดพลาดในการบันทึก logcat</string>
+    <string name="pref_export_log_title">บันทึกการแก้ไขข้อผิดพลาด</string>
+    <string name="app_details_more_apps_interesting">สิ่งนี้อาจเป็นที่น่าสนใจสำหรับคุณเช่นกัน:</string>
+    <string name="app_details_more_apps_by_author">แอปเพิ่มเติมโดย %1$s</string>
 </resources>

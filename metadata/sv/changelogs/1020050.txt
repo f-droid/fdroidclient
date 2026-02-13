@@ -1,0 +1,13 @@
+* Översyn av hur repositorier representeras för användare för att tydliggöra när en installation kommer från någon annanstans än f-droid.org.
+
+* Tillåt användare att ändra repositoriprioritet globalt och per app
+
+* Anpassade antifunktioner är nu aktiverade som standard, snarare än inaktiverade
+
+* Stöd för att ta emot repositori-URL:er via Dela
+
+* Alla aktiviteter respekterar dag/natt-temat
+
+* Uppdatera externa lagringsanvändningar för att fungera med targetSdkVersion 29
+
+* F-Droid Basic uppdaterad för att fungera med targetSdkVersion 34

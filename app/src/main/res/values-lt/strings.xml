@@ -583,4 +583,11 @@
     <string name="force_old_installer_title">Priverstinai naudoti seną diegimo programą</string>
     <string name="repo_num_apps_button">Rodyti programėles</string>
     <string name="auto_update_time">Anksčiausias kitas atnaujinimas: %s</string>
+    <string name="app_details_more_apps_by_author">Daugiau %1$s programėlių</string>
+    <string name="pref_export_log_title">Riktų šalinimo žurnalas</string>
+    <string name="pref_export_log_summary">Sukuria failą su logcat išvestimi, naudinga šalinant riktus. Atsargiai, jame gali būti jautrios informacijos!</string>
+    <string name="export_log_success">Logcat sėkmingai išsaugotas</string>
+    <string name="export_log_error">Klaida išsaugant logcat</string>
+    <string name="force_old_installer_summary">Išjungti Seanso įdiegimą, įskaitant automatinių foninių atnaujinimų palaikymą.</string>
+    <string name="app_details_more_apps_interesting">Jus taip pat gali dominti:</string>
 </resources>

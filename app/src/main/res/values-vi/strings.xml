@@ -24,7 +24,7 @@
     <string name="app_inst_known_source">Đã cài đặt (từ %s)</string>
     <string name="app_inst_unknown_source">Đã cài đặt (từ nguồn không xác định)</string>
     <string name="added_on">Đã thêm vào %s</string>
-    <string name="ok">Được rồi</string>
+    <string name="ok">OK</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
     <string name="repo_add_title">Thêm kho mới</string>
@@ -47,7 +47,7 @@
     <string name="menu_ignore_all">Bỏ qua tất cả bản cập nhật</string>
     <string name="menu_ignore_this">Bỏ qua bản cập nhật này</string>
     <string name="menu_website">Trang web</string>
-    <string name="menu_issues">Các vấn đề</string>
+    <string name="menu_issues">Báo lỗi</string>
     <string name="menu_source">Mã nguồn</string>
     <string name="menu_upgrade">Cập nhật</string>
     <string name="details_notinstalled">Chưa cài đặt</string>
@@ -124,13 +124,13 @@
     <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Đề xuất cập nhật lên cả phiên bản chưa ổn định</string>
     <string name="unstable_updates_summary">Ưu tiên cập nhật lên phiên bản mới nhất hiện có, kể cả phiên bản chưa ổn định</string>
-    <string name="links">Các đường dẫn</string>
+    <string name="links">Liên kết</string>
     <string name="back">Quay lại</string>
     <string name="local_repo_name_summary">Tên khai báo cho Kho ứng dụng nội bộ (của thiết bị): %s</string>
     <string name="about_source">Mã nguồn</string>
     <string name="app_incompatible">Không tương thích</string>
     <string name="invalid_url">URL không hợp lệ.</string>
-    <string name="menu_changelog">Lịch sử thay đổi</string>
+    <string name="menu_changelog">Ghi chú Phát hành</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -147,7 +147,7 @@
     </string>
     <string name="unknown">Không xác định</string>
     <string name="pref_language">Ngôn ngữ</string>
-    <string name="pref_language_default">Mặc định hệ thống</string>
+    <string name="pref_language_default">Theo hệ thống</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Điểm truy cập</string>
     <string name="category_Connectivity">Kết nối</string>
@@ -164,13 +164,13 @@
     <string name="empty_can_update_app_list">Chúc mừng!\nCác ứng dụng của bạn đã được cập nhật.</string>
     <string name="install_error_unknown">Cài đặt thất bại vì lỗi không xác định</string>
     <string name="uninstall_error_unknown">Gỡ cài đặt thất bại vì lỗi không xác định</string>
-    <string name="swap_join_same_wifi_desc">Để trao đổi ứng dụng qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.</string>
+    <string name="swap_join_same_wifi_desc">Để trao đổi app qua Wi-Fi, cả hai người phải ở trong cùng một mạng. Nếu không truy cập được vào cùng một mạng thì một người có thể tạo điểm truy cập Wi-Fi.</string>
     <string name="swap_success">Đã trao đổi thành công!</string>
     <string name="swap_active_hotspot">%1$s (điểm truy cập của bạn)</string>
     <string name="swap_switch_to_wifi">Chạm để chuyển sang mạng Wi-Fi</string>
     <string name="swap_dont_show_again">Không hiện lại</string>
     <string name="swap_scan_or_type_url">Một người phải quét mã, hoặc nhập URL của người kia vào trình duyệt.</string>
-    <string name="swap_choose_apps">Chọn ứng dụng</string>
+    <string name="swap_choose_apps">Chọn app</string>
     <string name="swap_scan_qr">Mã QR</string>
     <string name="swap_people_nearby">Chia sẻ lân cận</string>
     <string name="swap_scanning_for_peers">Đang tìm kiếm thiết bị lân cận…</string>
@@ -280,7 +280,7 @@
     <string name="app_list__dismiss_app_update">Đã bỏ qua bản cập nhật</string>
     <string name="app_list__dismiss_vulnerable_app">Đã bỏ qua lỗ hổng bảo mật</string>
     <string name="app_list__dismiss_downloading_app">Đã huỷ bỏ tải xuống</string>
-    <string name="installed_apps__activity_title">Ứng dụng đã cài đặt</string>
+    <string name="installed_apps__activity_title">App đã cài đặt</string>
     <string name="installed_app__updates_ignored">Đã bỏ qua bản cập nhật</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Đã bỏ qua cập nhật lên phiên bản %1$s</string>
     <string name="update_all">Cập nhật tất cả</string>
@@ -292,7 +292,7 @@
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">Cập nhật cho %1$d ứng dụng:</item>
     </plurals>
-    <string name="versions">Các phiên bản</string>
+    <string name="versions">Danh sách phiên bản</string>
     <string name="clear_search">Xoá tìm kiếm</string>
     <string name="repositories_summary">Thêm các nguồn ứng dụng khác</string>
     <string name="menu_video">Video</string>
@@ -301,7 +301,7 @@
     <string name="latest__empty_state__never_updated">Các ứng dụng mới nhất sẽ hiện lên ở đây sau khi Kho ứng dụng của bạn được cập nhật</string>
     <string name="latest__empty_state__no_enabled_repos">Khi bạn kích hoạt một Kho ứng dụng và để nó cập nhật, các ứng dụng mới nhất sẽ hiện lên ở đây</string>
     <string name="categories__empty_state__no_categories">Không có danh mục nào để hiển thị</string>
-    <string name="preference_category__my_apps">Ứng dụng của tôi</string>
+    <string name="preference_category__my_apps">App của tôi</string>
     <string name="details_new_in_version">Những điểm mới trong phiên bản %s</string>
     <string name="antifeatureswarning">Ứng dụng này có các tính năng bạn có thể không thích.</string>
     <string name="antifeatures">Tính năng không mong muốn</string>
@@ -355,7 +355,7 @@
         <item quantity="other">%1$d bản cập nhật</item>
     </plurals>
     <plurals name="notification_summary_installed">
-        <item quantity="other">Đã cài đặt %1$d ứng dụng</item>
+        <item quantity="other">Đã cài đặt %1$d app</item>
     </plurals>
     <string name="notification_title_summary_update_available">Có bản cập nhật</string>
     <string name="notification_title_summary_downloading">Đang tải…</string>
@@ -429,9 +429,9 @@
     <string name="swap_visible_hotspot">Có thể thấy qua điểm phát sóng</string>
     <string name="swap_error_cannot_start_bluetooth">Không thể khởi động Bluetooth!</string>
     <string name="nearby_splash__request_permission">Thử ngay</string>
-    <string name="share_repository">Chia sẻ kho</string>
+    <string name="share_repository">Chia sẻ kho mã nguồn</string>
     <string name="try_again">Hãy thử lại lần nữa</string>
-    <string name="antinosourcesince">Mã nguồn không còn nữa, không thể có cập nhật.</string>
+    <string name="antinosourcesince">Mã nguồn không còn nữa, không thể có cập nhật</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="updates_disabled_by_settings">Tất cả bản cập nhật bị vô hiệu hóa bởi cài đặt cho Wi-Fi/dữ liệu di động</string>
     <string name="send_installed_apps_csv">Danh sách các ứng dụng cài đặt qua F-Droid dưới dạng tệp CSV</string>
@@ -535,7 +535,7 @@
     <string name="app_details_repository_expand">Mở rộng danh sách ứng dụng</string>
     <string name="app_details_repository_button_prefer">Ưu tiên Kho ứng dụng</string>
     <string name="repo_error_adding_archive">Không thể thêm Phân kho cất giữ một cách trực tiếp. Hãy nhấn vào Kho ứng dụng trong danh sách và kích hoạt Phân kho cất giữ tại đó.</string>
-    <string name="useDnsCache">Sử dụng bộ nhớ đệm DNS</string>
+    <string name="useDnsCache">Dùng bộ nhớ đệm DNS</string>
     <string name="useDnsCacheSummary">Lưu thông tin DNS vào bộ nhớ đệm để giảm thiểu số lượt tra cứu DNS.</string>
     <string name="repo_archive_toggle">Phân kho cất giữ</string>
     <string name="repo_archive_toggle_description">Hiển thị các ứng dụng không còn hiện hành và các phiên bản cũ được cất giữ (archived)</string>
@@ -560,7 +560,7 @@
     <string name="repo_preview_included_apps">Ứng dụng đi kèm:</string>
     <string name="repo_mirror_add_info">URL bạn muốn thêm (%s) là bản dự phòng của một kho khác.</string>
     <string name="swap_connection_indexv0_error">Bạn đang kết nối với một người với bản F-Droid cũ. Họ phải nâng cấp ứng dụng mới kết nối được. Họ có thể dùng tính năng tráo đổi để cập nhật F-Droid từ máy bạn.</string>
-    <string name="force_old_installer_summary">Tắt Trình cài đặt trong phiên, gồm cả việc cập nhật trong nền</string>
+    <string name="force_old_installer_summary">Tắt Trình cài đặt trong phiên, gồm cả việc cập nhật trong nền.</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid có thể tìm các kho phần mềm và bản dự phòng của chúng ở thẻ nhớ của bạn, nhưng nó cần có quyền làm thế.</string>
     <string name="nearby_splace__external_storage_permission_button">Thử ngay</string>
     <string name="repo_and_mirror_add_both_info">URL bạn muốn thêm (%s) là bản dự phòng của một kho phần mềm mới. Cả hai sẽ được sử dụng.</string>
@@ -570,8 +570,8 @@
     <string name="auto_update_time_past">Cập nhật kế tiếp khi các điệu kiện được đáp ứng</string>
     <string name="copied_to_clipboard">Đã sao chép vào bản tạm</string>
     <string name="paste">Dán vào</string>
-    <string name="ipfsgw_title">Các Cổng IPFS</string>
-    <string name="turn_on_wifi">Mở lên wifi</string>
+    <string name="ipfsgw_title">Cổng IPFS</string>
+    <string name="turn_on_wifi">Bật wifi</string>
     <string name="copied_url_to_clipboard">Đã sao chép đường URL vào bản tạm</string>
     <string name="copied_permission_to_clipboard">Đã sao chép tên quyền cho phép vào bản tạm</string>
     <string name="repo_details_info_text">Kho ứng dụng (repository) lưu giữ thông tin cài đặt và cập nhật cho các ứng dụng\n\nMáy chủ chính thức (official mirror) cho một danh sách ứng dụng chỉ có thể được chỉ định bởi chủ sở hữu danh sách ấy. Nó không thể bị loại bỏ, mà chỉ có thể bị vô hiệu hóa.\n\nCùng với máy chủ chính thức, bạn có thể thêm các máy chủ khác mà cùng một danh sách ứng dụng. Các máy chủ này (gọi là máy chủ dự phòng - mirror) được dùng để phân bố kích cỡ của tệp cài đặt cho nhiều máy chủ khác nhau. Máy chủ dự phòng càng gần bạn càng khiến việc tải xuống nhanh hơn.</string>
@@ -586,10 +586,40 @@
     <string name="repo_last_update_index">Lần cuối cập nhật danh sách ứng dụng: %s</string>
     <string name="repo_last_update_check">Lần cuối tra cứu cập nhật cho danh sách ứng dụng: %s</string>
     <string name="pref_export_log_title">Log debug</string>
-    <string name="pref_export_log_summary">Tạo tệp log để bắt lỗi (debug). Lưu ý rằng tệp log có thể chứa thông tin riêng tư.</string>
+    <string name="pref_export_log_summary">Tạo tệp log để bắt lỗi (debug). Lưu ý rằng tệp log có thể chứa thông tin riêng tư!</string>
     <string name="export_log_success">Đã lưu tệp log</string>
     <string name="export_log_error">Lỗi khi lưu tệp log</string>
     <string name="repo_confirm_delete_mirror_body">Bạn vẫn có thể cài đặt các ứng dụng từ cùng danh sách bằng máy chủ khác.</string>
     <string name="preferForeign">Ưu tiên máy chủ nước ngoài</string>
     <string name="preferForeignSummary">Thử kết nối tới máy chủ nước ngoài trước, ví dụ như khi luật trong nước không cho tải về.</string>
+    <string name="app_details_more_apps_interesting">Những app bạn cũng có thể thích:</string>
+    <string name="app_details_more_apps_by_author">App khác bởi %1$s</string>
+    <string name="menu_share_apk">Chia sẻ tệp APK</string>
+    <string name="banner_updating_apps">Đang cập nhật các app</string>
+    <string name="share_mirror">Chia sẻ mirror</string>
+    <string name="show_repository_qr">Hiện mã QR kho mã nguồn</string>
+    <string name="repo_basic_auth_title">Xác thực cơ bản</string>
+    <string name="repo_basic_auth_username">Username: %s</string>
+    <string name="repo_basic_auth_password">Mật khẩu: ***</string>
+    <string name="repo_basic_auth_edit">Sửa</string>
+    <string name="swap_bluetooth_permissions">Vui lòng cấp quyền cho Bluetooth hoặc Thiết bị lân cận!</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">%1$d bản cập nhật mới</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Nhấn để cập nhật tất cả</string>
+    <string name="tts_repo_name">Kho mã nguồn %1$s</string>
+    <string name="tts_author_name">Tác giả %1$s</string>
+    <string name="warning_no_compat_versions">Kho mã nguồn đã chọn không có phiên bản ứng dụng tương thích. Để nhận được bản cập nhật, hãy ưu tiên kho mã nguồn có phiên bản tương thích.</string>
+    <string name="ipfsgw_explainer">Tải xuống app từ điểm cuối web IPFS. (Chỉ hoạt động đối với kho mã nguồn F-Droid có hỗ trợ IPFS.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="other">Tải xuống app bằng điểm cuối web IPFS: %1$d đã bật</item>
+    </plurals>
+    <string name="ipfsgw_summary_disabled">Tải xuống ứng dụng bằng điểm cuối web IPFS: đã tắt</string>
+    <string name="ipfsgw_add_title">Thêm cổng IPFS</string>
+    <string name="ipfsgw_add_add">Thêm</string>
+    <string name="ipfsgw_caption_official_gateways">Cổng IPFS chính thức</string>
+    <string name="ipfsgw_caption_custom_gateways">Tùy chỉnh cổng IPFS</string>
+    <string name="expand">Mở rộng</string>
+    <string name="collapse">Thu gọn</string>
+    <string name="crash_dialog_title_old">F-Droid bị treo</string>
 </resources>

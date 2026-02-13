@@ -1,17 +1,17 @@
-* Athchóirigh an Roghchlár Comhroinnte chun roghanna ionsuite ar nós In aice láimhe a úsáid
+* Athchóiriú ar an roghchlár Comhroinnte chun roghanna ionsuite cosúil le Nearby a úsáid
 
-* Sreabhadh oibre agus loingseoireacht in aice láimhe feabhsaithe le go leor ceartúcháin ar fhabht
+* Sreabhadh oibre agus nascleanúint fheabhsaithe in Nearby le neart ceartúcháin fabht
 
 * Feabhsuithe ar dhearadh ábhair (@proletarius101)
 
-* Tá feidhmchláir gan deilbhíní aipeanna PNG le feiceáil anois sa Chluaisín is déanaí (@ashutoshgngwr)
+* Taispeántar aipeanna gan deilbhíní aipeanna PNG anois sa Chluaisín is Déanaí (@ashutoshgngwr)
 
-* Bainistíocht deilbhín níos fearr le socruithe teoranta Sonraí / Wifi
+* Bainistíocht deilbhíní níos fearr le socruithe teoranta Sonraí/WiFi
 
-* Tacaigh le níos mó scanóirí barrachóid (@Lugerun)
+* Tacaíonn sé le níos mó scanóirí barrachóid (@Lugerun)
 
-* Ceadaigh roghnú na AntiFeatures a thaispeáint
+* Ceadaigh a roghnú cé na Frithghnéithe atá le taispeáint
 
-* Cuir bac ar repos a chur leis nuair a dhícheadaíonn riarthóir an ghléis "Foinsí Anaithnid"
+* Bac a chur le stórtha a chur leis nuair a chuireann riarthóir an ghléis cosc ar "Foinsí Anaithnid"
 
-* Bain "Ceadaigh Iarratais Brúigh" a leagan síos
+* Bain an socrú "Ceadaigh Iarratais Bhrú"

@@ -1,0 +1,17 @@
+* Temasupport kopplat till inbyggda Android-teman (@proletarius101)
+
+* Nya toppbannernotiser: "Inget internet" och "Ingen data eller WiFi aktiverat"
+
+* Förbättrad hantering av USB-OTG- och SD-kortrepositorier och speglar
+
+* Stoppa upprepade uppdateringar av Trichrome-biblioteket
+
+* Fler ändringar följer Material Design (@proletarius101)
+
+* Förbättra OpenCollective-märket (@ConnyDuck)
+
+* Översyn av ikoninläsning med Glide (@proletarius101)
+
+* Ny adaptiv ikon (@12people)
+
+* Kodmodernisering (@Isira-Seneviratne)

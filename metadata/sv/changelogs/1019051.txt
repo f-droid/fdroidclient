@@ -1,0 +1,15 @@
+* Översyn av repo och speglingshantering, både UX och kod
+
+* Visa förhandsgranskning av nya repo
+
+* Installation med F-Droid och F-Droid Basic har nu stöd för automatiska bakgrundsuppdateringar
+
+* Markera appar med ounderstödd Target SDK-version som inkompatibla på Android 14 #2692
+
+* Långt klick för att kopiera länkar, behörigheter och versioner på skärmen Appinformation (@Tobias_Groza)
+
+* Inkompatibla appar visas endast när de är tillåtna i Inställningar #41 (@pigpig)
+
+* Nya IPFS Gateway-inställningar
+
+* Språkval per app (@Licaon-Kter)

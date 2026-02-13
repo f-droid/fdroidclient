@@ -1,0 +1,17 @@
+* Overhalte «Del»-menyen så den bruker valg som «I nærheten»
+
+* Forbedret «I nærheten» med masse feilfiks
+
+* Material Design-forbedringer (@proletarius101)
+
+* Apper uten PNG-appikoner vises nå under «Nyeste» (@ashutoshgngwr)
+
+* Bedre ikonhåndtering ved begrenset data/Wifi
+
+* Støtter nå flere strekkodeskannere (@Lugerun)
+
+* Man kan nå velge hvilke former for antifunksjonalitet man vil se
+
+* Blokker nye pakkebrønner når enhetsadministratoren ikke tillater ukjente kilder
+
+* Fjernet «Allow Push Requests»-innstillingen

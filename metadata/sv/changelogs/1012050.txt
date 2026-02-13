@@ -1,0 +1,13 @@
+* Lokalisering av appbeskrivningar respekterar listor i Androids språkinställningar fullt ut
+
+* Fliken Senaste visar appar baserat på språkinställningarna, sorterade efter de nyaste först (@TheLastProject @IzzySoft)
+
+* Sökresultaten har förbättrats avsevärt (@Tvax @gcbrown76)
+
+* Mer tillförlitlig cacherensning
+
+* Schemalägg cacherensning effektivt (@Isira-Seneviratne)
+
+* Översyn av URL-parsning av repo för tillförlitlig tillägg av repo (@projectgus)
+
+* Opt-in F-Droid Metrics

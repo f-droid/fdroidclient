@@ -652,4 +652,17 @@
     <string name="pref_export_log_title">Dziennik debugowania</string>
     <string name="export_log_success">Logcat został zapisany</string>
     <string name="pref_export_log_summary">Tworzy plik z danymi wyjściowymi logcat przydatnymi do debugowania. Ostrożnie, może zawierać poufne informacje!</string>
+    <string name="app_details_more_apps_interesting">To również może Cię zainteresować:</string>
+    <string name="app_details_more_apps_by_author">Więcej aplikacji od %1$s</string>
+    <string name="banner_updating_apps">Aktualizowanie aplikacji</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Dostępna %1$d aktualizacja</item>
+        <item quantity="few">Dostępne %1$d aktualizacje</item>
+        <item quantity="many">Dostępne %1$d aktualizacji</item>
+        <item quantity="other">Dostępne %1$d aktualizacji</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Naciśnij, aby zaktualizować wszystkie</string>
+    <string name="tts_repo_name">Repozytorium %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid uległ awarii</string>
 </resources>

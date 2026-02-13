@@ -1,0 +1,7 @@
+* Nå støttes installasjon fra eksterne media, gjennom OTA, ZIP, mm.
+
+* Full støtte for APK-er signert med flere nøkler
+
+* Ny oversettelse til tibetisk
+
+* Fjern relaterte apper og kategorier etter at en pakkebrønn har blitt deaktivert

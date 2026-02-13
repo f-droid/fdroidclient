@@ -1,0 +1,15 @@
+* Overhaul repo and mirror handling, both UX and code
+
+* Show preview of new repos
+
+* Installing with F-Droid and F-Droid Basic now supports automatic background updates
+
+* On Android 14, mark apps with unsupported Target SDK Version as incompatible #2692
+
+* Long click to copy Links, Permissions and Versions on App Details screen (@Tobias_Groza)
+
+* Incompatible apps are only shown when allowed in Settings #41 (@pigpig)
+
+* New IPFS Gateways Settings
+
+* Per-app language selection (@Licaon-Kter)

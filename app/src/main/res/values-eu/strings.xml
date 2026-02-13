@@ -325,8 +325,8 @@
     <string name="updates__hide_updateable_apps">Ezkutatu aplikazioak</string>
     <string name="updates__show_updateable_apps">Erakutsi aplikazioak</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Deskargatu aplikazio %1$d-en eguneraketa.</item>
-        <item quantity="other">Deskargatu %1$d aplikazioen eguneraketak.</item>
+        <item quantity="one">Deskargatu eguneraketak aplikazio %1$d-entzat:</item>
+        <item quantity="other">Deskargatu eguneraketak %1$d aplikaziorentzat:</item>
     </plurals>
     <string name="details_new_in_version">%s bertsioan berria</string>
     <string name="antifeatureswarning">Aplikazio honek gustuko izan ez ditzakezun ezaugarriak ditu.</string>
@@ -644,4 +644,14 @@
     <string name="pref_export_log_summary">Arazketa egiteko erabilgarria den logcat fitxategi bat sortzen du. Kontuz, informazio sentikorra izan dezake!</string>
     <string name="export_log_success">Logcat behar bezala gorde da</string>
     <string name="export_log_error">Errorea logcat gordetzean</string>
+    <string name="app_details_more_apps_interesting">Hau ere interesgarria izan daiteke zuretzat:</string>
+    <string name="app_details_more_apps_by_author">%1$s-(r)en aplikazio gehiago</string>
+    <string name="banner_updating_apps">Aplikazioak eguneratzen</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Eguneraketa eskuragarri %1$d</item>
+        <item quantity="other">%1$d eguneraketa eskuragarri</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Sakatu guztiak eguneratzeko</string>
+    <string name="tts_repo_name">%1$s biltegia</string>
+    <string name="tts_author_name">%1$s egilea</string>
 </resources>

@@ -1,0 +1,8 @@
+* Många buggfixar
+* Visa arkivikoner i listan över arkiv
+* Visa orsaker till antifunktioner (där sådana finns)
+* Obevakade uppgraderingar utan privilegierad tillägg (endast F-Droid Basic för tillfället)
+* Visa appstorlek på appens detaljskärm (endast expertläge)
+* Något mörkare appnamn i applistor för att förbättra läsbarheten
+* Återställ öppet/stängt tillstånd för "Uppdatera alla" på fliken Uppdateringar (@tunedal)
+* Återställ aktiv flik mellan appomstarter

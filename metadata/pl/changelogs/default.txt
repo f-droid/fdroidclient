@@ -1,0 +1,6 @@
+* materiał design 3 (z krawędziami od krawędzi, ale bez dynamicznych kolorów) (Dzięki, proletarius!)
+* przeprojektowanie ekranów szczegółów repozytorium (Dzięki, Thore!)
+* dodano eksport plików logcat w ustawieniach eksperckich
+* aktualizacja docelowego SDK (Android 15 dla wersji podstawowej i Android 11 dla wersji pełnej)
+* dodano link zwrotny ze strony aplikacji w ustawieniach systemowych (Dzięki, j-m4!)
+* użycie selektora aplikacji do udostępniania zainstalowanych aplikacji i historii instalacji (dzięki, Thore!)

@@ -1,0 +1,9 @@
+* ny behörighetskonfiguration för Android 10 för att stoppa Okända källor-meddelanden #1833
+* Hantera nya "delade behörigheter": fin lokalisering innebär grov lokalisering
+* Åtgärda sökfältspreferenser på senare Android-versioner (tack @dkanada)
+* Ställ in säkerhetskopieringsregler för att undvika att spara växlingsrepo
+* tangentbordet öppnas när sökningen rensas
+* översättningssynkronisering med Android-strängar
+* tvinga gemensamma repo-domäner till HTTPS (GitLab, GitHub, Amazon)
+* standard krusningseffekt för länkar i appdetaljer
+* visa standardikon för appar utan ikon

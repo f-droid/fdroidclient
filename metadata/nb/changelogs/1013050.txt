@@ -1,0 +1,17 @@
+* Draktstøtte er nå koblet til de innebygde Android-draktene (@proletarius101)
+
+* Nye varselbannere: «Ikke koblet til internett» og «Data og WiFi skrudd av»
+
+* Bedre håndtering av USB-OTG- og SD-kort-pakkebrønner og speil
+
+* Stoppet gjentatte oppdateringer av Trichrome-biblioteket
+
+* Flere endringer som følger Material Design (@proletarius101)
+
+* Forbedret OpenCollective-merke (@ConnyDuck)
+
+* Overhalte ikoninnlasting med Glide (@proletarius101)
+
+* Nytt adaptivt ikon (@12people)
+
+* Kodemoderinisering (@Isira-Seneviratne)

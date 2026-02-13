@@ -1,0 +1,4 @@
+* hantera behörighetskonfiguration för Android 10 för att stoppa meddelanden från okända källor
+* tangentbordet öppnas när sökningen är avmarkerad
+* översättningssynkronisering med Android-strängar
+* tvinga gemensamma repo-domäner till HTTPS (GitLab, GitHub, Amazon)

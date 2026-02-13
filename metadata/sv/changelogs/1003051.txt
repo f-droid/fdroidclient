@@ -1,0 +1,21 @@
+v1.3.1
+* Stor översyn av kärn-Närliggande/Byt-rörsystem
+
+* Stöd för TLSv1.3, när enheten stöder det
+
+v1.3
+* Mer tillförlitliga knappar och statusuppdateringar
+
+* Översyn av inställningar inklusive nya kontroller för dataanvändning
+
+* Batterimedveten bakgrundsdrift på Android 5.0 och senare
+
+* Dela-menyalternativ för lagringsplatser
+
+* Stäng av kraschrapporter i inställningar
+
+* Installera historikvisaren när loggning är aktiverad
+
+* Klickbar lista över antifunktioner, tillagd NoSourceSince
+
+* Android 4.0 är nu det lägsta stödet

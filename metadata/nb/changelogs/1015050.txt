@@ -1,0 +1,5 @@
+* Fullstendig overhaling av nedlastingslogikken for bedre ytelse og bedre støtte for speil.
+
+* Skjermbilder og illustrasjonsbilder lastes nå ned fra speil.
+
+* Reduserte en privatlivslekkasje fra TLS-sesjoner

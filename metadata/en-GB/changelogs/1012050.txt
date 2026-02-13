@@ -1,0 +1,13 @@
+* App description localisation fully respects lists in Android Language Settings
+
+* Latest Tab shows apps based on the Language Settings, ordered newest first (@TheLastProject @IzzySoft)
+
+* Search results greatly improved (@Tvax @gcbrown76)
+
+* More reliable cache clean up
+
+* Efficiently schedule cache cleanup (@Isira-Seneviratne)
+
+* Overhaul repo URL parsing for reliable repo adding (@projectgus)
+
+* Opt-in F-Droid Metrics

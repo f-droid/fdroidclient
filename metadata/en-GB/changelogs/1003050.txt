@@ -1,0 +1,19 @@
+* More reliable buttons and status updates
+
+* Overhaul of Settings including new data usage controls
+
+* Battery conscious background operation on Android 5.0 and newer
+
+* Share menu item for repos
+
+* Turn off crash reports in Settings
+
+* Install History viewer when logging is enabled
+
+* Clickable Anti-Features list, added NoSourceSince
+
+* Android 4.0 is now the minimum supported 
+
+* Huge improvements for custom whitelabel F-Droid versions
+
+* Expert setting to send debug version+UUID on download

@@ -1,0 +1,17 @@
+* Theme support tied to built-in Android themes (@proletarius101)
+
+* New top banner notifications: "No Internet" and "No Data or Wi-Fi enabled"
+
+* Improved handling of USB-OTG and SD Card repos and mirrors
+
+* Stop repeated updates of Trichrome Library
+
+* More changes to follow Material Design (@proletarius101)
+
+* Improve OpenCollective badge (@ConnyDuck)
+
+* Overhaul icon loading using Glide (@proletarius101)
+
+* New adaptive icon (@12people)
+
+* Code modernisation (@Isira-Seneviratne)

@@ -609,4 +609,14 @@
     <string name="pref_export_log_summary">Opretter en fil med logcat-output – nyttigt til fejlfinding. Pas på, det kan indeholde følsomme oplysninger!</string>
     <string name="repo_basic_auth_title">Basal godkendelse</string>
     <string name="pref_export_log_title">Fejlfindingslog</string>
+    <string name="app_details_more_apps_interesting">Dette er måske også interessant for dig:</string>
+    <string name="app_details_more_apps_by_author">Flere apps af %1$s</string>
+    <string name="banner_updating_apps">Opdaterer apps</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d tilgængelig opdatering</item>
+        <item quantity="other">%1$d tilgængelige opdateringer</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Tryk for at opdatere alle</string>
+    <string name="tts_repo_name">Repository %1$s</string>
+    <string name="tts_author_name">Forfatter %1$s</string>
 </resources>

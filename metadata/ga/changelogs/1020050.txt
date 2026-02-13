@@ -1,13 +1,13 @@
-* Athchóiriú a dhéanamh ar an gcaoi a léirítear stórtha d’úsáideoirí le go mbeidh sé soiléir cén uair atá suiteáil ag teacht ó áit éigin eile ach f-droid.org.
+* Athchóiriú a dhéanamh ar an gcaoi a léirítear stórtha d'úsáideoirí chun a dhéanamh soiléir cathain a thagann suiteáil ó áit éigin eile seachas f-droid.org.
 
-* Lig d’úsáideoirí tosaíocht stórtha a athrú go domhanda agus in aghaidh na haipe
+* Ceadaigh d'úsáideoirí tosaíocht an stórtha a athrú go domhanda agus in aghaidh an aip
 
-* Tá Frithghnéithe an Chustaim cumasaithe anois de réir réamhshocraithe, seachas iad a bheith díchumasaithe
+* Tá Gnéithe Frith-Saincheaptha cumasaithe anois de réir réamhshocraithe, seachas díchumasaithe
 
-* Tacaíocht a fháil URLanna repo trí Share
+* Tacaíonn sé le URLanna stórtha a fháil trí Chomhroinnt
 
-* Tá meas ag gach gníomhaíocht ar théama lae/oíche
+* Urramaíonn gach gníomhaíocht an téama lae/oíche
 
 * Úsáidí stórála seachtracha a nuashonrú chun oibriú le targetSdkVersion 29
 
-* Nuashonraíodh F-Droid Basic chun oibriú le targetSdkVersion 34
+* F-Droid Basic nuashonraithe chun oibriú le targetSdkVersion 34

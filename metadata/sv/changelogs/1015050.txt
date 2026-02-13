@@ -1,0 +1,5 @@
+* Total översyn av nedladdningslogiken för förbättrad prestanda och stöd för speglar.
+
+* Skärmdumpar och grafik laddas nu ner från speglar.
+
+* Minskat integritetsläckage med TLS-sessioner

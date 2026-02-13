@@ -1,7 +1,7 @@
-* ollchóiriú ar Chomhéadain Babhtála, chun ullmhú le haghaidh athscríobh inní
-* taispeáin "Cealaigh" tar éis míreanna a swiping amach ón gcluaisín Nuashonruithe (buíochas le @Hocuri!)
-* fadhbanna a réiteach leis an taispeáint "Is déanaí" de bharr mí-láimhseáil criosanna ama #1757
-* neamhaird a dhéanamh ar gach timpiste neamhthábhachtach i seirbhísí cúlra
-* athchóiríodh babhtáil in aice láimhe ag baint úsáide as hotspot an ghléis
-* cuir freagraí scaoll nua leis: díshuiteálann an aip agus athshocraigh repos go réamhshocrú
-* Is féidir tiomántáin USB OTG a úsáid mar stórtha agus mar scátháin in aice láimhe
+* athchóiriú mór ar Chomhéadan Úsáideora an Mhalartaithe, chun ullmhú le haghaidh athscríobh na n-inneall
+* taispeáin "cealaigh" tar éis míreanna a shlaipeáil ón táb Nuashonruithe (go raibh maith agat @Hocuri!)
+* socraigh fadhbanna leis an taispeántas "Is Déanaí" de bharr mí-láimhseála criosanna ama #1757
+* neamhaird a dhéanamh ar aon tuairteanna neamhthábhachtacha i seirbhísí cúlra
+* athchóiriú déanta ar an malartú in aice láimhe ag baint úsáide as AP hotspot an ghléis
+* cuir freagraí scaoill nua leis: díshuiteálann aipeanna agus athshocraíonn stórtha go réamhshocraithe
+* is féidir tiomántáin splanc USB OTG a úsáid mar stórtha agus scátháin in aice láimhe

@@ -1,0 +1,7 @@
+* Bruk av varslingskanalene for finjustert kontroll (@Isira-Seneviratne)
+* Forbedret språkvalg med flere regionsinnstillinger (@spacecowboy/@bubu)
+* «Nyeste»-fanen vil vise bedre resultater på ikke-engelske enheter
+* Oppdateringer til kjernebibliotek (Jackson, androidx, gradle, mm)
+* Bedre hvitmerkingsstøtte
+
+Takk til de nye bidragsyterene! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

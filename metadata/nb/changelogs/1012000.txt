@@ -1,0 +1,12 @@
+* Appbeskrivelser støtter nå språklisten til Android
+  Språkinnstillinger
+
+* Nyeste-fanen viser resultater basert på språkinnstillinger
+
+* Nyeste-fanen viser nå resultatene fra nyest til eldst (@TheLastProject @IzzySoft)
+
+* Draktstøtte har blitt modernisert og knyttet til de innebygde Android-draktene (@proletarius101)
+
+* Søkeresultatene er gjort mye bedre (@Tvax @gcbrown76)
+
+* Nå kan Android effektiv planlegge bakgrunnsopprydning av mellomlageret (@Isira-Seneviratne)

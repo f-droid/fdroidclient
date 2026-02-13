@@ -1,0 +1,1 @@
+* USB OTG flash-minnen kan användas som närliggande repositories och speglar

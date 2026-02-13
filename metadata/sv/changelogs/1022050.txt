@@ -1,0 +1,8 @@
+* experimentellt stöd för att avarkivera appar på Android 15
+* lägg automatiskt till nyinstallerade appar på startskärmen för de flesta startprogram (Tack Dhina!)
+* separata delningslänkar och delningsfiler i appinformation
+* visa toast när APK har fler behörigheter än förväntat
+* rensa interna cacher oftare för att frigöra utrymme (Tack DerGenaue!)
+* ändra ordning på donationsmärken för att matcha webbplatsen (Tack Leo!)
+* lägg till inställningar för att växla för att föredra utländska speglar
+* många små buggfixar

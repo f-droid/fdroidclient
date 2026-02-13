@@ -577,7 +577,7 @@
     <string name="app_details_repositories">Förråd</string>
     <string name="app_details_repository_expand">Expandera lista över förråd</string>
     <string name="repo_share_not_found">Kunde inte hitta förrådsadress i delad text.</string>
-    <string name="app_list_no_suggested_version">Ingen version rekommenderas för installation.</string>
+    <string name="app_list_no_suggested_version">Ingen version rekommenderades för installation.</string>
     <string name="repo_mirror_exists">Den här spegeln var redan tillagd (%s).</string>
     <string name="antitetherednetlist">Denna app är helt beroende av en viss instans av en nätverkstjänst</string>
     <string name="menu_share_apk">Dela APK-fil</string>
@@ -587,7 +587,7 @@
     <string name="repo_archive_toggle_description">Visa arkiverade och föråldrade versioner av appar</string>
     <string name="repo_list_info_text">Ett förråd är en källa med appar. Den här listan visar alla nu tillagda förråd. Inaktiverade förråd används inte.\n\nOm en app finns i fler än ett förråd, kommer förrådet högre upp i listan föredras automatiskt. Du kan ändra ordningen genom att hålla in och dra för att flytta.</string>
     <string name="repo_archive_failed">Förrådets arkiv är inte tillgängligt just nu</string>
-    <string name="auto_update_time">Nästa tidigaste uppdatering: %s</string>
+    <string name="auto_update_time">Tidigast nästkommande uppdatering: %s</string>
     <string name="repo_disable_warning_button">Inaktivera</string>
     <string name="repo_disable_warning">Att inaktivera förrådet kommer ta bort dess status som \"föredragen\" från alla appar.</string>
     <string name="ipfsgw_title">IPFS-gateways</string>
@@ -629,4 +629,15 @@
         <item quantity="other">%d appar</item>
     </plurals>
     <string name="repo_last_update_index">Senaste förrådsuppdatering: %s</string>
+    <string name="app_details_more_apps_interesting">Detta kan också vara av intresse för dig:</string>
+    <string name="app_details_more_apps_by_author">Andra appar av %1$s</string>
+    <string name="banner_updating_apps">Uppdaterar appar</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d uppdatering tillgänglig</item>
+        <item quantity="other">%1$d uppdateringar tillgängliga</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Uppdatera alla</string>
+    <string name="tts_repo_name">Filförrådet %1$s</string>
+    <string name="tts_author_name">Författare %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid har kraschat</string>
 </resources>

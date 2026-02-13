@@ -1,0 +1,3 @@
+* Updated translations
+* Fixed button size issues #1678
+* Stopped random background crashes

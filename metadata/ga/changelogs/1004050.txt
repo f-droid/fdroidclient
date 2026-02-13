@@ -1,13 +1,13 @@
-* Athchóiriú ollmhór ar an liosta "Leaganacha" in "Sonraí Feidhme", agus go leor feabhsuithe Chomhéadain eile, a bhuíochas leis an ranníocóir nua @wsdfhjxc
+* Athchóiriú ollmhór ar an liosta "Leaganacha" i "Sonraí an Aipe", agus go leor feabhsuithe eile ar an Chomhéadan Úsáideora, a bhuíochas leis an rannpháirtí nua @wsdfhjxc
 
-* Deisigh loingseoireacht méarchláir/d-pad in go leor áiteanna, a bhuíochas don rannpháirtí nua @doeffinger
+* Socrú ar nascleanúint méarchláir/D-pad i go leor áiteanna, a bhuíochas leis an rannpháirtí nua @doeffinger
 
-* Taispeáin "Oscailte" a bhrú nuair a meáin suiteáilte agus viewable
+* Taispeáin an cnaipe "Oscail" nuair a bhíonn na meáin suiteáilte agus infheicthe
 
-* Cuir cnaipe Comhroinn le "Apps Suiteáilte" chun liosta CSV a onnmhairiú
+* Cuir an cnaipe Comhroinn le "Aipeanna Suiteáilte" chun liosta CSV a onnmhairiú
 
-* Cuir liosta APK inchliceáilte leis an leathanach innéacs HTML babhtála
+* Cuir liosta inchliceáilte de APKanna leis an leathanach innéacs HTML malartaithe
 
-* Atriail íoslódálacha innéacs ó scátháin
+* Déan iarracht arís íoslódálacha innéacs ó scátháin
 
-* Deisigh "Seol F-Droid trí Bluetooth" ar leaganacha Android le déanaí
+* Socrú ar "Seol F-Droid trí Bluetooth" ar leaganacha le déanaí de Android

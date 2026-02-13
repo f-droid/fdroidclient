@@ -93,11 +93,11 @@
         <item quantity="other">Nuashonraithe %1$d bliainta ó shin</item>
     </plurals>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Íoslódáil an aip le críochphointí gréasáin IPFS: %1$d cumasaithe</item>
-        <item quantity="two">Íoslódáil aipeanna le críochphointí gréasáin IPFS: %1$d cumasaithe</item>
-        <item quantity="few">Íoslódáil aipeanna le críochphointí gréasáin IPFS: %1$d cumasaithe</item>
-        <item quantity="many">Íoslódáil aipeanna le críochphointí gréasáin IPFS: %1$d cumasaithe</item>
-        <item quantity="other">Íoslódáil aipeanna le críochphointí gréasáin IPFS: %1$d cumasaithe</item>
+        <item quantity="one">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS: %1$d cumasaithe</item>
+        <item quantity="two">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS: %1$d cumasaithe</item>
+        <item quantity="few">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS: %1$d cumasaithe</item>
+        <item quantity="many">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS: %1$d cumasaithe</item>
+        <item quantity="other">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS: %1$d cumasaithe</item>
     </plurals>
     <string name="installIncompatible">App neamh-chomhoiriúnach le do ghléas, a shuiteáil ar aon nós?</string>
     <string name="version">Leagan</string>
@@ -663,4 +663,18 @@
     <string name="pref_export_log_title">Loga dífhabhtaithe</string>
     <string name="pref_export_log_summary">Cruthaíonn sé comhad le haschur logcat úsáideach le haghaidh dífhabhtaithe. Bí cúramach, d\'fhéadfadh faisnéis íogair a bheith ann!</string>
     <string name="export_log_success">D\'éirigh le sábháil Logcat</string>
+    <string name="app_details_more_apps_interesting">B’fhéidir go mbeadh suim agat sa mhéid seo freisin:</string>
+    <string name="app_details_more_apps_by_author">Tuilleadh aipeanna ó %1$s</string>
+    <string name="banner_updating_apps">Nuashonrú aipeanna</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d nuashonrú ar fáil</item>
+        <item quantity="two">%1$d nuashonruithe ar fáil</item>
+        <item quantity="few">%1$d nuashonruithe ar fáil</item>
+        <item quantity="many">%1$d nuashonruithe ar fáil</item>
+        <item quantity="other">%1$d nuashonruithe ar fáil</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Tapáil chun gach rud a nuashonrú</string>
+    <string name="tts_repo_name">Stór %1$s</string>
+    <string name="tts_author_name">Údar %1$s</string>
+    <string name="crash_dialog_title_old">Bhí F-Droid tar éis tuairteáil</string>
 </resources>

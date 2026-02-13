@@ -54,7 +54,7 @@
     <string name="antitracklist">Приложението следи и докладва действията ви</string>
     <string name="antinonfreeadlist">Приложението насърчава използване на добавки със затворен код</string>
     <string name="antinonfreenetlist">Приложението насърчава или изцяло зависи от несвободна мрежова услуга</string>
-    <string name="antinonfreedeplist">Приложението зависи от приложения със затворен код</string>
+    <string name="antinonfreedeplist">Приложението зависи от други приложения с несвободен код</string>
     <string name="antiupstreamnonfreelist">Изходният код не е напълно свободен</string>
     <string name="display">Изглед</string>
     <string name="expert">Експертен режим</string>
@@ -212,7 +212,7 @@
     <string name="enable">Включване</string>
     <string name="overwrite">Презаписване</string>
     <string name="menu_email">Изпращане на писмо до автора</string>
-    <string name="antinonfreeassetslist">Приложението съдържа ресурси със затворен код</string>
+    <string name="antinonfreeassetslist">Приложението съдържа несвободни ресурси</string>
     <string name="writing_index_jar">Записва се засекретеният индекс файл (index.jar)…</string>
     <string name="useTor">Използване на мрежата на Tor</string>
     <string name="useTorSummary">Използва се мрежата на Tor за повишаване на анонимността. Изисква Орбот</string>
@@ -453,7 +453,7 @@
     <string name="panic_app_setting_none">Няма</string>
     <string name="force_touch_apps_on">Показване не приложения, изискаващи екран с докосване, независимо от хардуерната поддръжка</string>
     <string name="antinosourcesince">Изходният код не е наличен вече, не е възможно обновяване</string>
-    <string name="antidisabledalgorithmlist">Приложението има слаба защита на подписа</string>
+    <string name="antidisabledalgorithmlist">Приложението има слаб подпис за защита</string>
     <string name="menu_select_for_wipe">Избиране за заличаване</string>
     <string name="about_forum">Форум за поддръжка</string>
     <string name="scan_removable_storage_summary">Търсят се хранилища върху външните носители като SD Card или USB</string>
@@ -504,7 +504,7 @@
     <string name="antitrack">Проследяване</string>
     <string name="antinonfreead">Несвободни добавки</string>
     <string name="antinonfreedep">Несвободни зависимости</string>
-    <string name="antinonfreeassets">Несвободни активи</string>
+    <string name="antinonfreeassets">Несвободни ресурси</string>
     <string name="antinonfreenet">Несвободни мрежови услуги</string>
     <string name="antiothers">Други анти-функции</string>
     <string name="antinsfw">Неподходящо за работа</string>
@@ -611,4 +611,15 @@
     <string name="pref_export_log_summary">Създава файл с изхода на logcat, полезен за отстраняване на грешки. Внимавайте, файлът може да съдържа чувствителна информация!</string>
     <string name="pref_export_log_title">Дневник</string>
     <string name="export_log_error">Грешка при запазване на днвеника</string>
+    <string name="app_details_more_apps_by_author">Други приложения от %1$s</string>
+    <string name="banner_updating_apps">Обновяване на приложения</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d налично издание</item>
+        <item quantity="other">%1$d налични издания</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Докоснете за обновяване на всички</string>
+    <string name="tts_repo_name">Хранилище %1$s</string>
+    <string name="tts_author_name">Автор %1$s</string>
+    <string name="app_details_more_apps_interesting">Може да представляват интерес:</string>
+    <string name="crash_dialog_title_old">F-Droid се срина</string>
 </resources>

@@ -1,0 +1,11 @@
+* Skrevet om pakkebrønnoppdatereren så oppdateringer i bakgrunnen er mer pålitelige
+* Skilt navnet og oppsummeringen fra hverandre i applisten for bedre leslighet
+* Viser advarsler når apper ikke kan oppdateres fra den foretrukne pakkebrønnen
+* Apper med SDK 24 som mål er inkompatible med Android 15-enheter
+* Bedre håndtering av speil i «Legg til pakkebrønn»-forhåndsvisningen(takk til Thore!)
+* Oppdatteringer i bakgrunnen på Xiaomi-enheter uten MIUI aktivert (takk til Irate!)
+* Rotsertifikater lagt til av brukeren stoles nå på (takk til B.!)
+* Fikset søk med diakretiske tegn (takk til Tobias!)
+* Oppdaterte antifunksjonalitetsbeskrivelser (takk til Licaon!)
+* La til fastbundede nettverkstjenester som antifunksjonalitet (takk til linsui!)
+* Ignorerer tomromstegn når speil legges til (takk til Tobias!)
