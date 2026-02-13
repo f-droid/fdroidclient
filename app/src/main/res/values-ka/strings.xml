@@ -48,7 +48,7 @@
     <string name="category_Writing">ჩაწერა</string>
     <string name="swap_dont_show_again">აღარ მაჩვენო</string>
     <string name="details_notinstalled">დაყენებული არაა</string>
-    <string name="pref_language_default">სისტემის ნაგულისხმები</string>
+    <string name="pref_language_default">სისტემის ნაგულისხმევი</string>
     <string name="category_Development">პროგრამირება</string>
     <string name="category_Graphics">გრაფიკა</string>
     <string name="category_Money">ფული</string>
@@ -64,7 +64,7 @@
     <string name="updates__tts__download_app">გადმოწერა</string>
     <string name="repo_details">რეპოზიტორია</string>
     <string name="antitracklist">აპი თვალყურს ადევნებს თქვანს აქტივობას და ანგარიშებს აგზავნის</string>
-    <string name="warning_no_internet">განახლება შეუძლებელია. ინტერნეტი ჩართულია?</string>
+    <string name="warning_no_internet">განახლება შეუძლებელია. ინტერნეტთან მიერთებული ბრძანდებით?</string>
     <string name="swap_send_fdroid">F-Droid გაგზავნა</string>
     <string name="notification_title_single_update_available">ხელმისაწვდომია განახლება</string>
     <string name="installIncompatible">აპი შეუთავსებელია თქვენს მოწყობილობასთან. მაინც დავაყენო\?</string>
@@ -113,4 +113,56 @@
     <string name="icon">ხატულა</string>
     <string name="panic_app_setting_none">არაფერი</string>
     <string name="repo_name">სახელი</string>
+    <plurals name="updates__download_updates_for_apps">
+        <item quantity="one">განახლების გადმოწერა %1$d აპისთვის:</item>
+        <item quantity="other">განახლების გადმოწერა %1$d აპისთვის:</item>
+    </plurals>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 აპი</item>
+        <item quantity="other">%d აპი</item>
+    </plurals>
+    <plurals name="button_view_all_apps_in_category">
+        <item quantity="one">%d-ის ნახვა</item>
+        <item quantity="other">ყველა %d-ის ნახვა</item>
+    </plurals>
+    <plurals name="notification_summary_more">
+        <item quantity="one">+ კიდევ %1$d …</item>
+        <item quantity="other">+ კიდევ %1$d …</item>
+    </plurals>
+    <plurals name="notification_summary_updates">
+        <item quantity="one">%1$d განახლება</item>
+        <item quantity="other">%1$d განახლება</item>
+    </plurals>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">ხელმისაწვდომია %1$d განახლება</item>
+        <item quantity="other">ხელმისაწვდომია %1$d განახლება</item>
+    </plurals>
+    <plurals name="notification_summary_installed">
+        <item quantity="one">დაყენებულია %1$d აპი</item>
+        <item quantity="other">დაყენებულია %1$d აპი</item>
+    </plurals>
+    <plurals name="tts_view_all_in_category">
+        <item quantity="one">%1$d აპის ნახვა %2$s კატეგორიიდან</item>
+        <item quantity="other">%1$d აპის ნახვა %2$s კატეგორიაში</item>
+    </plurals>
+    <plurals name="details_last_update_days">
+        <item quantity="one">განახლდა %1$d დღის წინ</item>
+        <item quantity="other">განახლდა %1$d დღის წინ</item>
+    </plurals>
+    <plurals name="details_last_update_weeks">
+        <item quantity="one">განახლდა %1$d კვირის წინ</item>
+        <item quantity="other">განახლდა %1$d კვირის წინ</item>
+    </plurals>
+    <plurals name="details_last_update_months">
+        <item quantity="one">განახლდა %1$d თვის წინ</item>
+        <item quantity="other">განახლდა %1$d თვის წინ</item>
+    </plurals>
+    <plurals name="details_last_update_years">
+        <item quantity="one">განახლდა %1$d წლის წინ</item>
+        <item quantity="other">განახლდა %1$d წლის წინ</item>
+    </plurals>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">აპების გადმოწერა IPFS ვების ბოლოწერტილების გამოყენებით: %1$d ჩართულია</item>
+        <item quantity="other">აპების გადმოწერა IPFS ვების ბოლოწერტილების გამოყენებით: %1$d ჩართულია</item>
+    </plurals>
 </resources>

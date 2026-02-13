@@ -538,7 +538,7 @@
 \nOta yhteyttä ylläpitäjään ja kerro ongelmasta.</string>
     <string name="repo_exists">Tämä ohjelmavarasto on jo lisätty.</string>
     <string name="targetsdk_or_later">kohteet %s</string>
-    <string name="nearby_splach__external_storage_permission_explainer">F-droid voi etsiä ohjelmavarastoja ja peilejä sinun SD-kortiltasi, mutta tarvitsee sinun suostumuksesi sitä varten.</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-droid voi etsiä ohjelmavarastoja ja peilejä SD-kortilta, mutta tarvitsee siihen sinulta luvan.</string>
     <string name="repo_state_fetching">Haetaan ohjelmavarasto…</string>
     <string name="copied_permission_to_clipboard">Käyttöoikeuden nimi kopioitu leikepöydälle</string>
     <string name="repo_io_error">Virhe yhdistyessä ohjelmavarastoon.</string>
@@ -611,4 +611,13 @@
     <string name="repo_last_update_index">Viimeisin ohjelmavaraston päivitys: %s</string>
     <string name="expand">Laajenna</string>
     <string name="collapse">Supista</string>
+    <string name="app_details_more_apps_interesting">Tämä saattaisi myös kiinnostaa sinua:</string>
+    <string name="app_details_more_apps_by_author">Lisää sovelluksia tekijältä %1$s</string>
+    <string name="banner_updating_apps">Sovelluksia päivitetään</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Yksi päivitys saatavilla</item>
+        <item quantity="other">%1$d päivitystä saatavilla</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Napauta päivittääksesi kaikki</string>
+    <string name="tts_author_name">Tekijä %1$s</string>
 </resources>

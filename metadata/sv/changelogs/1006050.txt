@@ -1,0 +1,13 @@
+* Senaste fliken markerar nu appar som tillhandahåller beskrivningar, översättningar och skärmdumpar
+
+* Automatisk nedladdning från speglar för att snabba upp nedladdningar och minska belastningen på f-droid.org
+
+* Inaktivera speglar med nya växlar i RepoDetails (#1696)
+
+* Effektivare nedladdningscachning (per repo; över olika webbservrar #1708)
+
+* Åtgärda installationer som kräver okända källor med privilegierad tillägg (#1702)
+
+* Åtgärda saknade ikoner för de som inte använder Wi-Fi (#1592)
+
+* Förbättrade översättningar för fliken Uppdateringar jämfört med inställning

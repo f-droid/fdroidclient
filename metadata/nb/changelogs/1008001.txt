@@ -1,0 +1,4 @@
+* håndtering av Android 10-rettighetsinnstillinger, for å hindre spørsmål om «ukjente kilder»
+* tastaturet vises når søkefeltet blir tømt
+* synkronisering av oversettinger med Android-tekster
+* tvunget bruk av HTTPS for vanlige domener (GitLab, GitHub, Amazon)

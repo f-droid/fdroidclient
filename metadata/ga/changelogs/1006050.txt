@@ -1,13 +1,13 @@
-* Leagann an Cluaisín is déanaí béim ar aipeanna a sholáthraíonn tuairiscí, aistriúcháin, scáileáin
+* Aibhsíonn an Cluaisín is Déanaí anois aipeanna a sholáthraíonn tuairiscí, aistriúcháin, agus scáileáin
 
-* Uath-íoslódáil ó scátháin, chun íoslódálacha a bhrostú agus chun an t-ualach a laghdú ar f-droid.org
+* Íoslódáil uathoibríoch ó scátháin, chun íoslódálacha a bhrostú agus an t-ualach ar f-droid.org a laghdú
 
-* Díchumasaigh scátháin ag baint úsáide as lasca nua in RepoDetails (#1696)
+* Díchumasaigh scátháin ag baint úsáide as lasca nua i RepoDetails (#1696)
 
-* Taisce íoslódála níos éifeachtaí (in aghaidh an repo; thar fhreastalaithe gréasáin éagsúla #1708)
+* Taisceadh íoslódála níos éifeachtaí (in aghaidh an stórais; trasna freastalaithe gréasáin éagsúla #1708)
 
-* Suiteáil a éilíonn Foinsí Anaithnid le Síneadh Pribhléideach (#1702)
+* Suiteálacha a éilíonn Foinsí Anaithnide le Síneadh Pribhléideach a shocrú (#1702)
 
-* Deisigh deilbhíní atá in easnamh dóibh siúd nach bhfuil ag baint úsáide as Wi-Fi (#1592)
+* Deisigh deilbhíní atá ar iarraidh dóibh siúd nach n-úsáideann Wi-Fi (#1592)
 
-* Aistriúcháin feabhsaithe do chluaisín Nuashonruithe vs rogha
+* Aistriúcháin fheabhsaithe don chluaisín Nuashonruithe i gcomparáid leis an rogha

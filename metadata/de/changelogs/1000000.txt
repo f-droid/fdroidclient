@@ -1,7 +1,7 @@
-* Installation von Medien-, OTA-, ZIP-Dateien, usw. möglich
+* Unterstützung für die Installation von Medien-, OTA-, ZIP- und anderen Dateien
 
-* Volle Unterstützung von durch mehrere Signaturen signierte APKs
+* Vollständige Unterstützung für APKs, die mit mehreren Signierschlüsseln signiert sind
 
 * Neue tibetische Übersetzung
 
-* Zugehörige Apps und Kategorien nach Abschalten eines Repos entfernen
+* Zugehörige Apps und Kategorien nach Deaktivieren eines Repos entfernen

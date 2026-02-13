@@ -1,0 +1,7 @@
+* Bruk av varslingskanalene for finjustert kontroll (@Isira-Seneviratne)
+* Deling av apper gjennom Direct Share fra appdetaljer (@fynngodau)
+* «Nyeste»-fanen vil vise bedre resultater på ikke-engelske enheter
+* Oppdateringer til kjernebibliotek (Jackson, androidx, gradle, mm)
+* Bedre hvitmerkingsstøtte
+
+Takk til de nye bidragsyterene! @fynngodau @projectgus @glennmen @Isira-Seneviratne

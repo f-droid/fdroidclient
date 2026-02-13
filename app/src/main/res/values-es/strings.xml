@@ -94,10 +94,10 @@
     </string>
     <string name="repos_unchanged">Todos los repositorios están actualizados</string>
     <string name="all_other_repos_fine">El resto de los repositorios no crearon errores.</string>
-    <string name="global_error_updating_repos">Error en la actualización: %s</string>
+    <string name="global_error_updating_repos">Hubo un error al actualizar: %s</string>
     <string name="no_permissions">Sin permisos</string>
-    <string name="no_handler_app">No tiene instalada ninguna aplicación que pueda manejar %s.</string>
-    <string name="theme">Tema</string>
+    <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda abrir «%s».</string>
+    <string name="theme">Esquema de colores</string>
     <string name="unsigned">No firmado</string>
     <string name="unverified">No verificado</string>
     <string name="repo_num_apps">Número de aplicaciones</string>
@@ -351,8 +351,8 @@
     <string name="menu_license">Licencia: %s</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d más…</item>
-        <item quantity="many">+%1$d muchos más…</item>
-        <item quantity="other">+%1$d muchos más…</item>
+        <item quantity="many">+%1$d más…</item>
+        <item quantity="other">+%1$d más…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d actualización</item>
@@ -517,9 +517,9 @@
     <string name="send_fdroid_metrics_json">Informe de métricas %s como archivo JSON</string>
     <string name="send_fdroid_metrics_report">Enviar informe de métricas %s</string>
     <string name="theme_follow_system">Usar el del sistema</string>
-    <string name="use_pure_black_dark_theme_summary">Recomendado sólo para pantallas OLED.</string>
-    <string name="use_pure_black_dark_theme">Usar un fondo negro puro en el tema oscuro</string>
-    <string name="banner_no_data_or_wifi">Sin datos o wifi permitidos</string>
+    <string name="use_pure_black_dark_theme_summary">Solo se recomienda para pantallas OLED.</string>
+    <string name="use_pure_black_dark_theme">Poner un fondo negro puro en modo oscuro</string>
+    <string name="banner_no_data_or_wifi">Sin conexión Wi-Fi o datos</string>
     <string name="banner_no_internet">Sin conexión a internet</string>
     <string name="share_apk_error">No se puede compartir el archivo de la aplicación</string>
     <string name="swap_wifi_vpn_conflict">¡Hay problemas con la VPN activa!</string>
@@ -529,15 +529,15 @@
     <string name="antiads">Anuncios</string>
     <string name="antitrack">Rastreo</string>
     <string name="antinonfreenet">Servicios de red no libres</string>
-    <string name="antidisabledalgorithm">Firmado usando un algoritmo no seguro</string>
+    <string name="antidisabledalgorithm">Firmado con un algoritmo inseguro</string>
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
     <string name="antiupstreamnonfree">Original no libre</string>
-    <string name="antinonfreeassets">Recursos no libres</string>
-    <string name="antinonfreedep">Dependencias no libres</string>
+    <string name="antinonfreeassets">Elementos sin licencia libre</string>
+    <string name="antinonfreedep">Dependencias sin licencia libre</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
     <string name="antiothers">Otras características indeseables</string>
-    <string name="antinsfw">No es seguro para el trabajo (NSFW)</string>
+    <string name="antinsfw">Contenido para adultos (+18)</string>
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
     <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
@@ -571,7 +571,7 @@
     <string name="copied_url_to_clipboard">URL copiada al portapapeles</string>
     <string name="force_old_installer_summary">Deshabilita el instalador de la sesión, incluido el soporte para las actualizaciones automáticas en segundo plano.</string>
     <string name="targetsdk_or_later">objetivos %s</string>
-    <string name="repo_num_apps_button">Mostrar las aplicaciones</string>
+    <string name="repo_num_apps_button">Ver aplicaciones</string>
     <string name="ipfsgw_caption_official_gateways">Puertas de enlace IPFS oficiales</string>
     <string name="ipfsgw_summary_disabled">Descarga de aplicaciones mediante puntos finales web IPFS: desactivado</string>
     <string name="ipfsgw_title">Puertas de enlace IPFS</string>
@@ -600,13 +600,11 @@
     <string name="repositories_last_update">Última actualización: %s</string>
     <string name="repositories_last_update_never">nunca</string>
     <string name="repo_list_info_title">Lista de repositorios</string>
-    <string name="repo_archive_toggle">Archivo del repositorio</string>
-    <string name="repo_archive_toggle_description">Mostrar aplicaciones archivadas y versiones obsoletas de aplicaciones</string>
+    <string name="repo_archive_toggle">Versiones históricas</string>
+    <string name="repo_archive_toggle_description">Muestra aplicaciones antiguas y versiones obsoletas de aplicaciones existentes</string>
     <string name="repo_disable_warning">Deshabilitar este repositorio eliminará su estado \"preferido\" de todas las aplicaciones.</string>
     <string name="repo_disable_warning_button">Desactivar</string>
-    <string name="repo_list_info_text">Un repositorio es una fuente de aplicaciones. Esta lista muestra todos los repositorios añadidos actualmente. Los repositorios desactivados no se utilizan.
-\n
-\nSi una aplicación está en más de un repositorio, se preferirá automáticamente el repositorio que esté más arriba en la lista. Puede reordenar los repositorios pulsando prolongadamente y arrastrándolos.</string>
+    <string name="repo_list_info_text">Un repositorio es una fuente de aplicaciones. Esta lista muestra todos los repositorios que has añadido. Los repositorios desactivados no se utilizan.\n\nSi una aplicación está en más de un repositorio se utilizará la versión del repositorio que esté más alto en la lista. Puedes reordenar el listado manteniendo pulsado y arrastrando cada entrada.</string>
     <string name="repo_mirror_add_info">La URL que está intentando añadir (%s) es una réplica de un repositorio existente.</string>
     <string name="repo_and_mirror_add_both_info">La URL que está intentando añadir (%s) es una réplica de un nuevo repositorio. Se añadirán tanto el repositorio original como un espejo.</string>
     <string name="repo_scan_qr_code">Escanear el código QR</string>
@@ -624,16 +622,16 @@
     <string name="menu_share_apk">Compartir archivo APK</string>
     <string name="preferForeign">Favorecer réplicas en el extranjero</string>
     <string name="preferForeignSummary">Pruebe primero con espejos situados fuera de su país, por ejemplo, si las protecciones extranjeras son más fuertes.</string>
-    <string name="no_handler_app_generic">No tienes ninguna aplicación disponible que pueda manejar esto.</string>
-    <string name="repo_archive_check">Verificar archivo</string>
+    <string name="no_handler_app_generic">No tienes instalada ninguna aplicación que pueda abrir esto.</string>
+    <string name="repo_archive_check">Buscar un archivo histórico</string>
     <plurals name="repo_num_apps_text">
         <item quantity="one">Una aplicación</item>
         <item quantity="many">%d aplicaciones</item>
         <item quantity="other">%d aplicaciones</item>
     </plurals>
     <string name="repo_basic_auth_title">Autenticación básica</string>
-    <string name="repo_details_info_text">Un repositorio es una fuente de aplicaciones.\n\nSe utilizan espejos para repartir la carga de la descarga de aplicaciones entre varios servidores. Los espejos más cercanos a ti pueden ser más rápidos.\n\nLos espejos oficiales son definidos por el propietario del repositorio. No se pueden eliminar, solo desactivar. Puedes definir espejos personalizados adicionales agregándolos de la misma manera que un repositorio normal.</string>
-    <string name="repo_archive_unknown">Este repositorio parece no tener un archivo.</string>
+    <string name="repo_details_info_text">Un repositorio es una fuente de aplicaciones.\n\nSe utilizan servidores de réplicas para repartir entre varios servidores el coste y la tarea de proporcionar los datos de descarga de aplicaciones. Los servidores de réplicas que estén más cerca también pueden ser los más rápidos.\n\nLos servicios de réplicas oficiales los asigna el propietario del repositorio, y no se pueden eliminar, solo desactivar. Puedes definir tus propios servicios de réplica añadiéndolos como un repositorio normal más.</string>
+    <string name="repo_archive_unknown">Este repositorio parece no tener un archivo de versiones históricas.</string>
     <string name="repo_last_update_index">Última actualización del repositorio: %s</string>
     <string name="repo_last_update_check">Última verificación de actualización del repositorio: %s</string>
     <string name="repo_confirm_delete_mirror_title">¿Eliminar espejo?</string>
@@ -649,4 +647,16 @@
     <string name="export_log_success">Logcat guardado correctamente</string>
     <string name="export_log_error">Error al guardar logcat</string>
     <string name="pref_export_log_summary">Crea un archivo con la salida logcat útil para la depuración. Cuidado, ¡podría contener información sensible!</string>
+    <string name="banner_updating_apps">Actualizando aplicaciones</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d actualización disponible</item>
+        <item quantity="many">%1$d actualizaciones disponibles</item>
+        <item quantity="other">%1$d actualizaciones disponibles</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Pulsa para actualizarlas todas</string>
+    <string name="app_details_more_apps_by_author">Otras aplicaciones de %1$s</string>
+    <string name="tts_repo_name">Repositorio %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="app_details_more_apps_interesting">También te podría interesar:</string>
+    <string name="crash_dialog_title_old">F-Droid se ha detenido</string>
 </resources>

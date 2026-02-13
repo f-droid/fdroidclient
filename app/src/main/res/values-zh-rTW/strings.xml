@@ -612,6 +612,20 @@
     <string name="expand">展開</string>
     <string name="collapse">折疊</string>
     <string name="repo_basic_auth_edit">編輯</string>
-    <string name="repo_confirm_delete_mirror_title">刪除鏡像？</string>
+    <string name="repo_confirm_delete_mirror_title">要刪除鏡像？</string>
     <string name="repo_confirm_delete_mirror_body">您可以使用其他鏡像來從此軟體庫繼續安裝應用程式。</string>
+    <string name="pref_export_log_title">除錯日誌</string>
+    <string name="pref_export_log_summary">建立一個包含 logcat 輸出的檔案，用於除錯。請注意，檔案可能包含敏感資訊！</string>
+    <string name="export_log_success">Logcat 儲存成功</string>
+    <string name="export_log_error">儲存 Logcat 時發生錯誤</string>
+    <string name="app_details_more_apps_by_author">%1$s 的更多應用程式</string>
+    <string name="app_details_more_apps_interesting">您可能也會對此感興趣：</string>
+    <string name="banner_updating_apps">更新應用程式</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">%1$d 個更新可用</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">點擊以全部更新</string>
+    <string name="tts_repo_name">軟體庫 %1$s</string>
+    <string name="tts_author_name">作者 %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid 當機</string>
 </resources>

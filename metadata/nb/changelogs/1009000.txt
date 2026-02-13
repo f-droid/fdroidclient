@@ -1,0 +1,5 @@
+* Fjernet «Android App Link» siden den ikke kan fungere med F-Droid, og den forårsaket DNS-lekkasjer.
+* Arkivpakkeprønner er nå satt til lavere prioritet enn hovedpakkebrønner (høyere i «Manage Repos»-menyen), som fikser problemer når F-Droid lette etter ikoner, skjermbilder, mm. i arkivet fremfor hovedpakkebrønnen.
+* Illustrasjonsbilder avskjæres ikke lenger(takk @ByteHamster!)
+* Navigasjonslinjen matcher nå i mørk drakt (takk @MatthieuB!)
+* Ryddet ut noe gammel kode (takk @Isira-Seneviratne!)

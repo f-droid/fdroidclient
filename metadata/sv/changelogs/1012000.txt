@@ -1,0 +1,12 @@
+* Lokalisering av appbeskrivningar respekterar nu fullt ut språklistor i Android
+Språkinställningar
+
+* Senaste fliken visar resultat baserat på språkinställningarna
+
+* Senaste fliken visar nu resultat sorterade efter nyaste först (@TheLastProject @IzzySoft)
+
+* Temasupport moderniserad och kopplad till de inbyggda Android-teman (@proletarius101)
+
+* Sökresultaten förbättrades avsevärt (@Tvax @gcbrown76)
+
+* Låt Android effektivt schemalägga rensning av bakgrundscachen (@Isira-Seneviratne)

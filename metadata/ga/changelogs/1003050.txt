@@ -1,19 +1,19 @@
-* Cnaipí níos iontaofa agus nuashonruithe stádais
+* Cnaipí agus nuashonruithe stádais níos iontaofa
 
-* Athchóiriú a dhéanamh ar Shocruithe lena n-áirítear rialuithe nua úsáide sonraí
+* Athchóiriú ar Shocruithe lena n-áirítear rialuithe nua úsáide sonraí
 
-* Oibriú cúlra comhfhiosach ceallraí ar Android 5.0 agus níos nuaí
+* Oibriú cúlra atá feasach ar cheallraí ar Android 5.0 agus níos nuaí
 
-* Roinn mír roghchláir le haghaidh repos
+* Mír roghchláir a chomhroinnt le haghaidh stórtha
 
-* Múch tuairiscí tuairteála sna Socruithe
+* Tuairiscí tuairteála a mhúchadh i Socruithe
 
-* Suiteáil breathnóir Stair nuair atá logáil cumasaithe
+* Amharcóir Staire a shuiteáil nuair a bhíonn logáil cumasaithe
 
-* Liosta Frithghnéithe Inchliceáilte, curtha leis NoSourceSince
+* Liosta Frith-Gnéithe Inchliceáilte, NoSourceSince curtha leis
 
 * Is é Android 4.0 an t-íosmhéid a dtacaítear leis anois
 
-* Feabhsuithe ollmhóra ar leaganacha saincheaptha lipéad bán F-Droid
+* Feabhsuithe ollmhóra do leaganacha saincheaptha lipéadaithe bána F-Droid
 
-* Sainshocrú chun leagan dífhabhtaithe + UUID a sheoladh le híoslódáil
+* Socrú saineolaithe chun leagan dífhabhtaithe + UUID a sheoladh ar íoslódáil

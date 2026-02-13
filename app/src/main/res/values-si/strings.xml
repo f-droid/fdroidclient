@@ -52,7 +52,7 @@
     <string name="install_history">ස්ථාපන ඉතිහාසය</string>
     <string name="install_history_summary">සියලුම ස්ථාපන සහ අස්ථාපනයන්හි පුද්ගලික ලොගය බලන්න</string>
     <string name="keep_install_history">ස්ථාපන ඉතිහාසය තබා ගන්න</string>
-    <string name="app_details">යෙදුම් විස්තර</string>
+    <string name="app_details">යෙදුම පිළිබද විස්තර</string>
     <string name="menu_add_repo">නව ගබඩාව</string>
     <string name="preference_manage_installed_apps">ස්ථාපිත යෙදුම් කළමනාකරණය කරන්න</string>
     <string name="category_Phone_SMS">දුරකථන සහ කෙටි පණිවිඩ සේවාව</string>
@@ -66,9 +66,9 @@
     <string name="category_Security">ආරක්ෂාව</string>
     <string name="category_Sports_Health">ක්‍රීඩා සහ සෞඛ්‍ය</string>
     <string name="crash_dialog_title">F-Droid බිඳ වැටී ඇත</string>
-    <string name="notification_title_single_update_available">යාවත්කාලීන අනුවාදය තිබේ</string>
+    <string name="notification_title_single_update_available">අප්ඩේට් ඇත</string>
     <string name="notification_action_update">යාවත්කාලීන කරන්න</string>
-    <string name="notification_title_summary_install_error">ස්ථාපනය අසාර්ථකයි</string>
+    <string name="notification_title_summary_install_error">ඉන්ස්ටොල් කිරීම අසාර්ථකයි</string>
     <string name="send_fdroid_metrics_json">%s ප්‍රමිතික වාර්තාව JSON ගොනුව ලෙස</string>
     <string name="send_to_fdroid_metrics">භාවිත දත්ත යවන්න</string>
     <string name="send_to_fdroid_metrics_summary">සතිපතා නිර්නාමික දත්ත F-Droid ප්‍රමිතික වෙත යවයි (ස්ථාපන ඉතිහාසය තබා ගැනීම අවශ්‍ය වේ)</string>
@@ -105,7 +105,7 @@
     <string name="warning_no_internet">යාවත්කාලීන කළ නොහැක, ඔබ අන්තර්ජාලයට සම්බන්ධද?</string>
     <string name="category_System">පද්ධතිය</string>
     <string name="crash_dialog_text">යෙදුම නතර කිරීමට බල කරමින් අනපේක්ෂිත දෝෂයක් සිදු විය. ගැටලුව විසඳා ගැනීමට උදවු කිරීමට විස්තර ඊමේල් කිරීමට ඔබ කැමතිද\?</string>
-    <string name="not_on_same_wifi">ඔබගේ උපාංගය ඔබ දැන් එක් කළ ස්ථානීය ගබඩාව හා සමාන Wi-Fi මත නොවේ! මෙම ජාලයට සම්බන්ධ වීමට උත්සාහ කරන්න: %s</string>
+    <string name="not_on_same_wifi">ඔබ දැන් එකතු කළ Local Repo හා ඔබගේ Wi-Fi ජාලය එකිනෙක සමාන නොවේ. මෙම ජාලයට සම්බන්ධ වීමට උත්සාහ කරන්න: %s</string>
     <string name="prompt_to_send_crash_reports_summary">බිඳ වැටීම් පිළිබඳ දත්ත රැස් කර ඒවා සංවර්ධකයා වෙත යැවීමට ඉල්ලා සිටින්න</string>
     <string name="swap_send_fdroid">F-Droid යවන්න</string>
     <string name="SignatureMismatch">නව අනුවාදය පැරණි එකට වෙනස් යතුරකින් අත්සන් කර ඇත. නව අනුවාදය ස්ථාපනය කිරීමට, පැරණි එක මුලින්ම අස්ථාපනය කළ යුතුය. කරුණාකර මෙය කර නැවත උත්සාහ කරන්න. (අස්ථාපනය කිරීම යෙදුම මගින් ගබඩා කර ඇති ඕනෑම අභ්‍යන්තර දත්ත මකා දමන බව සලකන්න)</string>

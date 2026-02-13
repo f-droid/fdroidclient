@@ -609,4 +609,14 @@
     <string name="pref_export_log_title">Regjistër diagnostikimesh</string>
     <string name="pref_export_log_summary">Sjell krijimin e një kartele me ç’jepet nga mjeti “logcat”, e dobishme për diagnostikime. Kujdes, mund të përmbajë hollësi me spec!</string>
     <string name="export_log_success">Ç’u prodhua nga “logcat” u ruajt me sukses</string>
+    <string name="app_details_more_apps_interesting">Kjo mund t’ju interesojë:</string>
+    <string name="app_details_more_apps_by_author">Më tepër aplikacione nga %1$s</string>
+    <string name="banner_updating_apps">Përditësim aplikacionesh</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d përditësim gati</item>
+        <item quantity="other">%1$d përditësime gati</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Prekeni që të përditësohen të tërë</string>
+    <string name="tts_repo_name">Depoja %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
 </resources>

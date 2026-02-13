@@ -1,0 +1,17 @@
+* Översyn av delningsmenyn för att använda inbyggda alternativ som Närliggande
+
+* Förbättrat arbetsflöde och navigering i Närliggande med många buggfixar
+
+* Förbättringar av materialdesign (@proletarius101)
+
+* Appar utan PNG-appikoner visas nu i Senaste fliken (@ashutoshgngwr)
+
+* Bättre ikonhantering med begränsade data-/WiFi-inställningar
+
+* Stöd för fler streckkodsläsare (@Lugerun)
+
+* Tillåt val av vilka AntiFeatures som ska visas
+
+* Blockera tillägg av lagringsplatser när enhetsadministratören inte tillåter "Okända källor"
+
+* Ta bort inställningen "Tillåt push-förfrågningar"

@@ -1,9 +1,11 @@
-* Nuashonraíodh repo le haghaidh nuashonruithe níos iontaofa
-* Roinneadh ainm agus achoimre i liostaí aipeanna
-* Rabhadh: Ní féidir apps a nuashonrú ón repo roghnaithe
-* Níl SDK 24 ag luí le Android 15
-* Feabhsúcháin ar "Add repo" (Go raibh maith agat Thore!)
-* Nuashonruithe gan duine do Xiaomi gan MIUI
-* Deisigh cuardach le diacritics (Go raibh maith agat Tobias!)
-* Frithghnéithe nuashonraithe (Go raibh maith agat Licaon & linsui!)
-* Neamhaird ar spásanna bána (Go raibh maith agat Tobias!)
+* Nuashonraitheoir stórais athscríofa chun nuashonruithe cúlra a dhéanamh níos iontaofa
+* Roinn an t-ainm agus an achoimre i liostaí aipeanna le haghaidh inléiteachta níos fearr
+* Taispeáin rabhadh nuair nach féidir aipeanna a nuashonrú ón stórais is fearr leat
+* Níl aipeanna atá dírithe ar SDK 24 comhoiriúnach le gléasanna Android 15
+* Láimhseáil scátháin i réamhamharc "Cuir stórais leis" níos fearr (Go raibh maith agat Thore!)
+* Cumasaigh nuashonruithe aipeanna gan faire ar ghléasanna Xiaomi nach bhfuil ag rith MIUI (Go raibh maith agat Irate!)
+* Muinín a chur i ndeimhnithe fréimhe a chuir úsáideoirí leis (Go raibh maith agat B.!)
+* Deisigh cuardach neamhíogair cás ina bhfuil diaicritics (Go raibh maith agat Tobias!)
+* Nuashonraigh tuairiscí frithghnéithe (Go raibh maith agat Licaon!)
+* Cuir frithghné líonra ceangailte leis (Go raibh maith agat linsui!)
+* Déan neamhaird de spásanna bána agus stórais scátháin á gcur leis (Go raibh maith agat Tobias!)

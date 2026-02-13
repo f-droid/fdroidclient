@@ -1,21 +1,19 @@
-v1.3.1
-* Stor fundamentsoverhaling for "I nærheten/Bytting"
-
-* TLSv1.3-støtte, hvis enhetsstøtten er der
-
-v1.3
 * Mer pålitelige knapper og statusoppdateringer
 
-* Innstillinger forbedret, nye databrukkontroller
+* Overhalte innstillinger, blant annet med nye databrukinnstilinger
 
-* Bakgrunnsoperasjoner tar hensyn til batteritilstand på Android 
+* Batteribevist bakgrunnsdrift på Android 5.0 og nyere
 
-* Deling av menyelement for pakkebrønner
+* «Del»-menyvalg på pakkebrønner
 
-* Krasjrapporter av i innstillinger
+* Mulighet til å skru av krasjrapporter i innstillinger
 
-* Installasjonshistorikkvisning ved påskrudd logging
+* Installasjonshistorikkviser når logging er skrudd på
 
-* Klikkbar antifunksjonsliste, ny NoSourceSince
+* Klikkbar antifunksjonalitetsliste, la til NoSourceSince
 
-* Ingen støtte for eldre enn Android 4.0
+* Android 4.0 er nå eldste versjon som støttes
+
+* Store forbedringer for egne whitelabel-versjoner av F-Droid
+
+* Avansert innstilling for å sende debug-versjon+UUID ved nedlasting

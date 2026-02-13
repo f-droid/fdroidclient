@@ -1,0 +1,5 @@
+* Stödet för "Android App Link" har tagits bort eftersom det inte fungerar med F-Droid och utlöste DNS-läckor.
+* Arkivrepos har nu lägre prioritet än repoet (högre upp på skärmen Hantera repos), vilket har åtgärdat problem där det sökte efter ikoner, skärmdumpar och annan information i arkivet snarare än i själva repoet.
+* Sluta beskära funktionens rubrikbild (tack @ByteHamster!)
+* Få navigeringsfältet att matcha mörkt läge (tack @MatthieuB!)
+* Rensade bort föråldrad kod (tack @Isira-Seneviratne!)

@@ -233,7 +233,7 @@
     <string name="app_details__no_versions__show_incompat_versions">За да се прикажат некомпатибилните верзии, овозможете ја поставката \"%1$s\".</string>
     <string name="added_on">Додадено на %s</string>
     <string name="app_list__name__downloading_in_progress">Преземање %1$s</string>
-    <string name="pref_language_default">Системски јазик</string>
+    <string name="pref_language_default">Стандарден јазик</string>
     <string name="preference_manage_installed_apps">Управување со инсталираните апликации</string>
     <string name="app_list__name__successfully_installed">%1$s инсталиран</string>
     <string name="app_recommended_version_installed">Верзија %1$s (Препорачано)</string>

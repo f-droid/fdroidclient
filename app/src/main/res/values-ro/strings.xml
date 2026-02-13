@@ -634,4 +634,16 @@
     <string name="export_log_error">Eroare la salvarea jurnalului</string>
     <string name="pref_export_log_summary">Creează un fișier jurnal util pentru depanarea. Atenție, ar putea conține informații sensibile!</string>
     <string name="pref_export_log_title">Jurnal de depanare</string>
+    <string name="app_details_more_apps_interesting">Acestea ar putea să vă intereseze:</string>
+    <string name="app_details_more_apps_by_author">Mai multe de la %1$s</string>
+    <string name="banner_updating_apps">Actualizare aplicații</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">O actualizare disponibilă</item>
+        <item quantity="few">%1$d actualizări disponibile</item>
+        <item quantity="other">%1$d de actualizări disponibile</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Atinge pentru actualizare</string>
+    <string name="tts_repo_name">Depozit %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid a dat o eroare</string>
 </resources>

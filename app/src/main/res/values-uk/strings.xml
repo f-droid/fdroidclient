@@ -634,4 +634,17 @@
     <string name="pref_export_log_summary">Створює файл з виводом logcat, корисний для налагодження. Обережно, може містити конфіденційну інформацію!</string>
     <string name="export_log_success">Logcat збережено</string>
     <string name="export_log_error">Помилка збереження logcat</string>
+    <string name="app_details_more_apps_interesting">Це також може бути вам цікаво:</string>
+    <string name="app_details_more_apps_by_author">Більше програм від %1$s</string>
+    <string name="banner_updating_apps">Оновлення програм</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Доступне оновлення %1$d</item>
+        <item quantity="few">Доступно %1$d оновлень</item>
+        <item quantity="many">Доступні %1$d оновлень</item>
+        <item quantity="other">Доступні %1$d оновлень</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Натисніть, щоб оновити все</string>
+    <string name="tts_repo_name">Репозиторій %1$s</string>
+    <string name="tts_author_name">Автор %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid розбився</string>
 </resources>

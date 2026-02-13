@@ -1,0 +1,7 @@
+Fullständig modernisering av nedladdnings-, index- och databaskod. Snabbare och mer robust med mindre bandbredd. Även mer underhållbart med en kraftigt förbättrad testsvit. Åtgärdar många krascher och långvariga buggar.
+
+* Fungerar bättre på prisvärda enheter med mindre minne
+
+* Åtgärdar #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Nytt språk: Kantonesiska (yue)

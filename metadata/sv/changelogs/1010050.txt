@@ -1,0 +1,7 @@
+* använd aviseringskanaler för finjusterad kontroll (@Isira-Seneviratne)
+* Förbättrat språkval med flera språkinställningar (@spacecowboy/@bubu)
+* Senaste fliken visar bättre resultat på enheter som inte talar engelska
+* uppdateringar av kärnbibliotek (Jackson, androidx, gradle, etc.)
+* polerat stöd för whitelabeling
+
+Tack till nya bidragsgivare! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

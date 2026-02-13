@@ -1,17 +1,17 @@
-* Baile Átha Troim nó scrios taisce go huathoibríoch nuair a bhíonn an spás stórála íseal
+* Bearr nó scrios an taisce go huathoibríoch nuair a bhíonn spás stórála gann
 
-* Feidhmíocht fheabhsaithe ar fheistí cuimhne íseal
+* Feabhsú ar fheidhmíocht ar fheistí le cuimhne íseal
 
-* Cuir meas ar gach íoslódálacha "Ar Wi-Fi amháin" rogha
+* Déan cinnte go n-urramaíonn gach íoslódáil an rogha "Ar Wi-Fi amháin"
 
-* Úsáid cuimhne a laghdú nuair a bhíonn gléas ag rith íseal
+* Laghdaigh úsáid cuimhne nuair a bhíonn an gléas ag rith gann
 
-* Cuir scátháin saincheaptha le haon repo trí naisc a chliceáil, cóid QR a scanadh, etc.
+* Cuir scátháin saincheaptha le haon stór trí chliceáil ar naisc, cóid QR a scanadh, srl.
 
-* Roghnú scátháin uathoibríoch feabhsaithe
+* Feabhsú ar roghnú scátháin uathoibríoch
 
-* Go leor Babhtáil / Ceartúcháin agus feabhsúcháin in aice láimhe
+* Neart ceartúcháin agus feabhsuithe ar Malartú/In aice láimhe
 
-* Deisigh cúis amháin le fógraí nuashonraithe a tharlú arís (#1271)
+* Socrú cúis amháin le fógraí nuashonraithe athfhillteacha (#1271)
 
-* Cuir ar F-Droid URLanna oícheanta F-Droid ó GitLab a aithint
+* Déan cinnte go n-aithníonn F-Droid URLanna oíche F-Droid ó GitLab

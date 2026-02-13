@@ -622,4 +622,15 @@
     <string name="export_log_success">Logcat guardat amb èxit</string>
     <string name="export_log_error">Error en desar el logcat</string>
     <string name="pref_export_log_summary">Crea un document amb l\'egressió de logcat que és útil per a depurar. Compte que pot contenir informació confidencial!</string>
+    <string name="app_details_more_apps_interesting">Potser això també us interessa:</string>
+    <string name="app_details_more_apps_by_author">Més aplicacions fetes per %1$s</string>
+    <string name="banner_updating_apps">Actualitzant aplicacions</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d actualització disponible</item>
+        <item quantity="many">%1$d actualitzacions disponibles</item>
+        <item quantity="other">%1$d actualitzacions disponibles</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Toqueu per a actualitzar-ho tot</string>
+    <string name="tts_repo_name">Repositori %1$s</string>
+    <string name="tts_author_name">Autor/a %1$s</string>
 </resources>

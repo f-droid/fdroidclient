@@ -389,7 +389,7 @@
     <string name="repo_add_title">加入新嘅存庫</string>
     <string name="repo_add_add">加入</string>
     <string name="menu_manage">存庫</string>
-    <string name="menu_add_repo">加新存庫</string>
+    <string name="menu_add_repo">New repository</string>
     <string name="menu_show_fdroid_metrics_report">顯示監測指數報告</string>
     <string name="latest__empty_state__never_updated">等您嘅 apps 清單更新咗之後，呢度就會顯示最新嘅 apps</string>
     <string name="latest__empty_state__no_enabled_repos">等您啟用並更新咗一個存庫之後，呢度就會顯示最新嘅 apps</string>

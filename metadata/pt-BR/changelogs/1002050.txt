@@ -8,10 +8,8 @@
 
 * Adiciona espelhos personalizados por meio de links, códigos QR, etc.
 
-* Melhoria na seleção automática de espelhos
-
 * Correções de erros "Permuta"/"Por perto"
 
-* Corrigido a repetição de notificações de atualização (#1271)
+* Corrigida a repetição de notificações de atualização (#1271)
 
 * Faz F-Droid reconhecer URLs de nightly do GitLab

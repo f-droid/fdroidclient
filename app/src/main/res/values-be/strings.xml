@@ -15,7 +15,7 @@
     <string name="update_interval">Інтэрвал аўтаматычнага абнаўлення</string>
     <string name="update_auto_download">Аўтаматычна атрымліваць абнаўленні</string>
     <string name="update_auto_download_summary">Абнаўленні спампуюцца аўтаматычна і вам будзе прапанавана ўсталяваць іх</string>
-    <string name="update_auto_install">Аўтаматычна ўсталеўваць абнаўленні</string>
+    <string name="update_auto_install">Аўтаматычна ўсталёўваць абнаўленні</string>
     <string name="update_auto_install_summary">Спампоўваць і абнаўляць ў фоне, паказваючы апавяшчэнні</string>
     <string name="notify">Паказваць даступныя абнаўленні</string>
     <string name="notify_on">Паказваць апавяшчэнні пра даступныя абнаўленні</string>
@@ -134,7 +134,7 @@
     <string name="repos_unchanged">Усе рэпазіторыі абноўленыя</string>
     <string name="all_other_repos_fine">Усе астатнія рэпазіторыі ў добрым стане.</string>
     <string name="global_error_updating_repos">Падчас абнаўлення адбылася памылка:  %s</string>
-    <string name="warning_no_internet">Не атрымалася абнавіцца. Ці злучаныя вы з Інтэрнэтам?</string>
+    <string name="warning_no_internet">Не атрымалася абнавіцца. Ці злучаныя вы з інтэрнэтам?</string>
     <string name="no_permissions">Няма дазволаў</string>
     <string name="permissions">Дазволы</string>
     <string name="no_handler_app">Вы не маеце праграм для апрацоўкі «%s».</string>
@@ -512,11 +512,11 @@
     <string name="theme_follow_system">Як у сістэме</string>
     <string name="send_to_fdroid_metrics">Адпраўляць данныя аб выкарыстанні</string>
     <string name="send_to_fdroid_metrics_summary">Адпраўляе ананімныя данныя аб выкарыстанні F-Droid (патрабуе Утрымліваць гісторыю ўсталёвак)</string>
-    <string name="send_fdroid_metrics_report">Адправіць %s Паведамленне Аб Выкарыстанні</string>
-    <string name="send_fdroid_metrics_json">%s Паведамленне Аб Выкарыстанні у JSON файле</string>
+    <string name="send_fdroid_metrics_report">Адправіць статыстыку аб выкарыстанні %s</string>
+    <string name="send_fdroid_metrics_json">Статыстыка аб выкарыстанні %s у JSON файле</string>
     <string name="install_history_and_metrics">Усталяваць гісторыю і інфармацыю аб выкарыстанні</string>
-    <string name="fdroid_metrics_report">%s Паведамленне Аб Выкарыстанні</string>
-    <string name="toast_metrics_in_install_history">%s Паведамленне аб выкарыстанні можна праглядзець ў праглядчыку Гісторыі Ўсталёвак</string>
+    <string name="fdroid_metrics_report">Статыстыка аб выкарыстанні %s</string>
+    <string name="toast_metrics_in_install_history">Статыстыку аб выкарыстанні %s можна праглядзець ў праглядчыку гісторыі ўсталёвак</string>
     <string name="swap_wifi_vpn_conflict">Канфліктуе з актыўным VPN!</string>
     <string name="antitrack">Сачэнне</string>
     <string name="antiknownvuln">Вядомая ўразлівасць</string>
@@ -543,7 +543,7 @@
     <string name="use_pure_black_dark_theme_summary">Рэкамендуецца толькі для OLED экранаў.</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="category_Nightly">Начныя зборкі</string>
-    <string name="warning_target_sdk">Гэта праграма было створана для старой версіі Android і не можа абнаўляцца аўтаматычна.</string>
+    <string name="warning_target_sdk">Гэта праграма была створана для старой версіі Android і не можа абнаўляцца аўтаматычна.</string>
     <string name="repo_last_update_downloaded">Спампавана апошняе абнаўленне</string>
     <string name="about_title_basic">Пра F-Droid Basic</string>
     <string name="antinsfwlist">Гэта праграма змяшчае змесціва, якое не павінна быць апублікаваным або бачным усюды</string>

@@ -4,7 +4,7 @@
     <string name="installIncompatible">Application non compatible avec votre appareil, l’installer quand même \?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
-    <string name="cache_downloaded">Conserver les applis en cache</string>
+    <string name="cache_downloaded">Conserver les applications en cache</string>
     <string name="updates">Mises à jour</string>
     <string name="other">Autre</string>
     <string name="update_interval">Intervalle de mise à jour automatique</string>
@@ -66,10 +66,10 @@
     <string name="display">Affichage</string>
     <string name="expert">Mode expert</string>
     <string name="expert_on">Affiche plus d\'infos et active des paramètres supplémentaires</string>
-    <string name="search_hint">Rechercher des applis</string>
+    <string name="search_hint">Rechercher des applications</string>
     <string name="appcompatibility">Compatibilité de l\'appli</string>
     <string name="show_incompat_versions">Inclure les versions incompatibles</string>
-    <string name="show_incompat_versions_on">Afficher les versions d\'applis qui sont incompatibles avec cet appareil</string>
+    <string name="show_incompat_versions_on">Afficher les versions d\'applications incompatibles avec l\'appareil</string>
     <string name="local_repo">Dépôt local</string>
     <string name="local_repo_running">F-Droid est prêt à l\'échange</string>
     <string name="touch_to_configure_local_repo">Appuyez pour afficher les détails et autoriser l\'échange d\'applications avec d\'autres personnes.</string>
@@ -77,7 +77,7 @@
     <string name="adding_apks_format">Ajout de %s au dépôt…</string>
     <string name="writing_index_jar">Écriture d\'un fichier d\'index signé (index.jar)…</string>
     <string name="linking_apks">Création de liens pour les APKs dans le dépôt…</string>
-    <string name="copying_icons">Copie des icônes des applis dans le dépôt…</string>
+    <string name="copying_icons">Copie des icônes d\'application dans le dépôt…</string>
     <string name="icon">Icône</string>
     <string name="next">Suivant</string>
     <string name="skip">Ignorer</string>
@@ -113,9 +113,7 @@
     <string name="repo_confirm_delete_body">Supprimer un dépôt signifie que ses applications et leurs mises à jour ne seront plus disponibles.
 \n
 \nNote : toutes les applications précédemment installées resteront sur votre appareil.</string>
-    <string name="repo_disabled_notification">%1$s a été désactivé.
-\n
-\nVous devrez réactiver ce dépôt pour installer des applis qu’il comprend.</string>
+    <string name="repo_disabled_notification">%1$s désactivé.\n\nVous devrez réactiver ce dépôt pour installer des applications.</string>
     <string name="not_on_same_wifi">Votre appareil n\'est pas connecté au même réseau Wifi que le Dépôt Local que vous venez d\'ajouter ! Essayez vous connectez à ce réseau : %s</string>
     <string name="requires_features">Nécessite : %1$s</string>
     <string name="category_Development">Développement</string>
@@ -129,12 +127,12 @@
     <string name="category_Security">Sécurité</string>
     <string name="category_System">Système</string>
     <string name="swap_join_same_wifi">Connectez-vous au même Wi-Fi que votre ami</string>
-    <string name="swap">Échanger des applis</string>
+    <string name="swap">Échange d\'applications</string>
     <string name="swap_no_wifi_network">Aucun réseau</string>
     <string name="swap_view_available_networks">Appuyez pour afficher les réseaux disponibles</string>
     <string name="open_qr_code_scanner">Ouvrir le lecteur de codes QR</string>
-    <string name="swap_welcome">Bienvenue dans F-Droid !</string>
-    <string name="swap_confirm_connect">Voulez-vous recevoir des applis de %1$s maintenant ?</string>
+    <string name="swap_welcome">Bienvenue dans F-Droid !</string>
+    <string name="swap_confirm_connect">Voulez-vous télécharger des applications de %1$s maintenant ?</string>
     <string name="app_name_full">F-Droid</string>
     <string name="unstable_updates">Mises à jour instables</string>
     <string name="unstable_updates_summary">Proposer les mises à jour vers des versions instables</string>
@@ -195,12 +193,12 @@
     <string name="swap_success">Échange réussi !</string>
     <string name="swap_active_hotspot">%1$s (votre point d\'accès)</string>
     <string name="swap_scan_or_type_url">Une personne doit balayer le code ou saisir l’URL de l’autre dans un navigateur.</string>
-    <string name="swap_choose_apps">Sélectionnez des applis</string>
+    <string name="swap_choose_apps">Choisissez des applications</string>
     <string name="swap_scan_qr">Code QR</string>
     <string name="swap_people_nearby">Personnes à proximité</string>
     <string name="swap_scanning_for_peers">Recherche des personnes à proximité…</string>
     <string name="swap_nearby">Échange d\'applications</string>
-    <string name="swap_intro">Connectez-vous et échangez des applis avec des personnes autour de vous.</string>
+    <string name="swap_intro">Connectez-vous et échangez des applications avec des personnes autour de vous.</string>
     <string name="swap_visible_bluetooth">Visible en Bluetooth</string>
     <string name="swap_setting_up_bluetooth">Activation du Bluetooth…</string>
     <string name="swap_not_visible_bluetooth">Non visible en Bluetooth</string>
@@ -209,7 +207,7 @@
     <string name="swap_not_visible_wifi">Non visible en Wi-Fi</string>
     <string name="swap_wifi_device_name">Nom de l’appareil</string>
     <string name="swap_send_fdroid">Envoyer F-Droid</string>
-    <string name="apps">Applis</string>
+    <string name="apps">Applications</string>
     <string name="swap_no_peers_nearby">Aucune personne n\'a été trouvée à proximité.</string>
     <string name="swap_connecting">Connexion</string>
     <string name="swap_confirm">Confirmez l\'échange</string>
@@ -272,7 +270,7 @@
     <string name="versions">Versions</string>
     <string name="app_details_donate_prompt_unknown_author">Offrez un café aux développeurs de %1$s !</string>
     <string name="app_details_donate_prompt">%1$s est créé par %2$s. Offrez-lui un café !</string>
-    <string name="repositories_summary">Ajouter des sources additionnelles d’applis</string>
+    <string name="repositories_summary">Ajouter des sources d\'applications supplémentaires</string>
     <string name="notification_title_single_update_available">Une mise à jour est disponible</string>
     <string name="notification_title_single_ready_to_install">Prêt à installer</string>
     <string name="notification_title_single_ready_to_install_update">Mise à jour prête pour installation</string>
@@ -315,7 +313,7 @@
         <item quantity="many">Télécharger les mises à jour pour %1$d applications :</item>
         <item quantity="other">Télécharger les mises à jour pour %1$d applications :</item>
     </plurals>
-    <string name="preference_category__my_apps">Mes applis</string>
+    <string name="preference_category__my_apps">Mes applications</string>
     <string name="preference_manage_installed_apps">Gérer les applis installées</string>
     <string name="details_new_in_version">Nouveautés de la version %s</string>
     <string name="antifeatureswarning">Cette application contient des fonctionnalités qui pourraient vous déplaire.</string>
@@ -341,12 +339,8 @@
     </plurals>
     <string name="latest__empty_state__no_recent_apps">Aucune application récente trouvée</string>
     <string name="categories__empty_state__no_categories">Aucune catégorie à afficher</string>
-    <string name="latest__empty_state__no_enabled_repos">Quand vous activez un dépôt et le mettez à jour, les dernières
-        applis s\'affichent ici
-    </string>
-    <string name="latest__empty_state__never_updated">Quand votre liste d\'applis est mise à jour, les dernières applis
-        s\'affichent ici
-    </string>
+    <string name="latest__empty_state__no_enabled_repos">Une fois le dépôt activé et mis à jour, les dernières applications devraient s\'afficher ici</string>
+    <string name="latest__empty_state__never_updated">Une fois votre liste d\'applications mise à jour, les dernières applications devraient apparaître ici</string>
     <string name="menu_video">Vidéo</string>
     <string name="details_last_updated_today">Mis à jour aujourd\'hui</string>
     <string name="app__tts__cancel_download">Annuler le téléchargement</string>
@@ -385,9 +379,9 @@
     <string name="by_author_format">par %s</string>
     <string name="download_404">Le fichier demandé n\'a pas été trouvé.</string>
     <string name="force_old_index">Forcer l\'ancien format d\'index</string>
-    <string name="force_old_index_summary">En cas de bogues ou de problèmes de compatibilité, utiliser l’index XML des applis</string>
+    <string name="force_old_index_summary">En cas de bug ou de problème de compatibilité, utilisez l’index XML des applications</string>
     <string name="app_list_download_ready">Téléchargé, prêt à installer</string>
-    <string name="status_inserting_x_apps">Enregistrement du détail des applis (%1$d/%2$d) depuis %3$s</string>
+    <string name="status_inserting_x_apps">Enregistrement des détails de l\'application (%1$d/%2$d) depuis %3$s</string>
     <string name="app_installed_media">Fichier installé sur %s</string>
     <string name="app_permission_storage">F-droid requiert l\'accès au stockage pour effectuer l\'installation. Veuillez accorder cette autorisation sur l\'écran suivant afin de poursuivre  l\'installation.</string>
     <string name="app_details__no_versions__none_compatible_with_device">Aucune version compatible avec votre appareil</string>
@@ -403,7 +397,7 @@
     <string name="updates__app_with_known_vulnerability__ignore">Ignorer</string>
     <string name="privacy">Confidentialité</string>
     <string name="preventScreenshots_title">Bloquer les captures d\'écran</string>
-    <string name="preventScreenshots_summary">Empêche les captures d’écran et cache le contenu des applis dans l’écran des applis récentes</string>
+    <string name="preventScreenshots_summary">Empêche les captures d’écran et masque le contenu des applications dans l’écran des applications récentes</string>
     <string name="panic_app_unknown_app">une application inconnue</string>
     <string name="panic_app_setting_summary">Aucune application n\'a été définie</string>
     <string name="panic_app_setting_none">Aucun</string>
@@ -434,7 +428,7 @@
     <string name="repo_exists_add_mirror">Il s\'agit d\'une copie de %1$s, l\'ajouter comme miroir ?</string>
     <string name="show_anti_feature_apps">Inclure les applications avec des antifonctions</string>
     <string name="show_anti_feature_apps_on">Afficher les applications qui ont des anti-fonctions connues</string>
-    <string name="force_touch_apps">Inclure les applis pour écrans tactiles</string>
+    <string name="force_touch_apps">Inclure les applications pour écrans tactiles</string>
     <string name="force_touch_apps_on">Afficher les applications qui requièrent un écran tactile, quel que soit votre appareil</string>
     <string name="repo_official_mirrors">Miroirs officiels</string>
     <string name="repo_user_mirrors">Miroirs administrés par des utilisateurs</string>
@@ -456,15 +450,15 @@
     <string name="install_history">Historique d’installation</string>
     <string name="install_history_summary">Afficher le journal privé des installations et désinstallations</string>
     <string name="send_version_and_uuid">Envoyer la version et l\'identifiant aux serveurs</string>
-    <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage de l\'App est nécessaire.</string>
+    <string name="send_version_and_uuid_summary">Inclure la version de cette application et un identifiant aléatoire unique lors du téléchargement. Pour prendre en compte vos modifications, un re-démarrage de l\'application est nécessaire.</string>
     <string name="share_repository">Partager le dépôt</string>
     <string name="send_install_history">Envoyer l’historique d\'installation</string>
-    <string name="send_installed_apps">Partager les applis installées</string>
+    <string name="send_installed_apps">Partager les applications installées</string>
     <string name="menu_open">Ouvrir</string>
-    <string name="antinosourcesince">Le code source n’est plus disponible, aucune mise à jour n’est possible.</string>
+    <string name="antinosourcesince">Le code source n’est plus disponible, aucune mise à jour n’est possible</string>
     <string name="send_history_csv">historique d’installation de %s sous forme de fichier CSV</string>
     <string name="updates_disabled_by_settings">Les mises à jour sont désactivées en raison des paramètres Données / Wifi</string>
-    <string name="send_installed_apps_csv">Applis installées via F-Droid comme fichier CSV</string>
+    <string name="send_installed_apps_csv">Applications installées par F-Droid sous forme de fichier CSV</string>
     <string name="about_forum">Forum d\'assistance</string>
     <string name="app_suggested">Conseillée</string>
     <string name="app_size">Taille : %1$s</string>
@@ -505,8 +499,8 @@
     <string name="notification_channel_installs_title">Installations</string>
     <string name="notification_channel_swaps_description">Affiche les notifications d\'échange d\'applications en P2P.</string>
     <string name="notification_channel_swaps_title">Échanges</string>
-    <string name="notification_channel_updates_description">Afficher les notifications de mise à jour des applis et des dépôts.</string>
-    <string name="notification_channel_installs_description">Affiche les notifications d’installation d’applis.</string>
+    <string name="notification_channel_updates_description">Affiche les notifications de mise à jour des applications et des dépôts.</string>
+    <string name="notification_channel_installs_description">Affiche les notifications d’installation d’application.</string>
     <string name="menu_show_install_history">Afficher l’historique des installations</string>
     <string name="send_to_fdroid_metrics_summary">Envoi hebdomadaire de données anonymes aux indicateurs métriques F-Droid (requiert la sauvegarde de l\'historique de téléchargement)</string>
     <string name="send_to_fdroid_metrics">Envoyer les données d\'utilisation</string>
@@ -607,7 +601,7 @@
 \nSi une app est disponible dans plus d\'un dépôt, le dépôt le plus haut dans la liste est préféré. Vous pouvez changer l\'ordre des dépôts avec un appui long puis en les faisant glisser.</string>
     <string name="repo_error_adding_archive">Les dépôts d\'archive ne peuvent pas être directement ajoutés. Appuyez sur le dépôt dans la liste puis activez l\'archive à cet emplacement.</string>
     <string name="repo_archive_failed">Dépôt d\'archive actuellement indisponible</string>
-    <string name="repo_add_repo_and_mirror">Ajouter des dépôts et des miroirs.</string>
+    <string name="repo_add_repo_and_mirror">Ajouter des dépôts et des miroirs</string>
     <string name="repo_view_repo">Voir les dépôts</string>
     <string name="repo_scan_qr_code">Scanner le QR code</string>
     <string name="repo_preview_included_apps">Applications incluses :</string>
@@ -649,4 +643,16 @@
     <string name="export_log_error">Erreur lors de l\'enregistrement du logcat</string>
     <string name="pref_export_log_summary">Crée un fichier avec une sortie logcat utile pour le débogage. Attention, il peut contenir des informations sensibles !</string>
     <string name="pref_export_log_title">Journal de débogage</string>
+    <string name="app_details_more_apps_interesting">Ceci pourrait également vous intéresser :</string>
+    <string name="app_details_more_apps_by_author">Plus d\'applications par %1$s</string>
+    <string name="banner_updating_apps">Mise à jour des applications</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d mise à jour disponible</item>
+        <item quantity="many">%1$d mises à jour disponibles</item>
+        <item quantity="other">%1$d mises à jour disponibles</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Appuyez pour tout mettre à jour</string>
+    <string name="tts_repo_name">Dépôt %1$s</string>
+    <string name="tts_author_name">Auteur %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid avait planté</string>
 </resources>

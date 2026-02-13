@@ -1,0 +1,6 @@
+* diseño 3 de material (con borde a borde, pero sin colores dinámicos (Gracias proletarius!)
+* rediseñado las pantallas de detalles del repositorio (Gracias Thore!)
+* añadida la exportación a archivo logcat en ajustes de expertos
+* actualizado el SDK objetivo (Android 15 para lo básico y Android 11 para lo completo)
+* agregado un backlink desde la página de la app en ajustes del sistema (Gracias j-m4!)
+* utiliza el selector de apps para compartir apps instaladas e historia de instalación (Gracias Thore!)

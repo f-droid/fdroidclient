@@ -1,0 +1,13 @@
+* Overhalte hvordan pakkebrønner vises til brukere for å gjøre det klarere om en installasjon kommer fra et annet sted enn f-droid.org.
+
+* Lar brukere endre pakkebrønnprioritet globalt og per app
+
+* Egendefinert antifunksjonalitet er nå skrudd på som standard
+
+* Kan nå motta pakkebrønn-URL-er via Del
+
+* Alle aktiviteter tar hensyn til lys/mørk modus
+
+* Oppdaterte bruk av ekstern lagring for å fungere med targetSdkVersion 29
+
+* F-Droid Basic oppdatert til å fungere med targetSdkVersion 34

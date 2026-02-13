@@ -1,0 +1,11 @@
+* Omskriven repo-uppdaterare för att göra bakgrundsuppdateringar mer tillförlitliga
+* Dela upp namn och sammanfattning i applistor för bättre läsbarhet
+* Visa varning när appar inte kan uppdateras från önskat repo
+* Appar som riktar sig mot SDK 24 är inkompatibla med Android 15-enheter
+* Hantera speglar bättre i förhandsgranskningen av "Lägg till repo" (Tack Thore!)
+* Aktivera obevakade appuppdateringar på Xiaomi-enheter som inte kör MIUI (Tack Irate!)
+* Lita på användartillagda rotcertifikat (Tack B.!)
+* Åtgärda skiftlägeskänslig sökning som innehåller diakritiska tecken (Tack Tobias!)
+* Uppdatera beskrivningar av antifunktioner (Tack Licaon!)
+* Lägg till tethered net antifunktion (Tack linsui!)
+* Ignorera mellanslag när du lägger till speglade repos (Tack Tobias!)

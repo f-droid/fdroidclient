@@ -1,17 +1,17 @@
-* Tacaíocht téama ceangailte le téamaí ionsuite Android (@proletarius101)
+* Tacaíocht téama ceangailte le téamaí Android ionsuite (@proletarius101)
 
-* Fógraí barrmheirge nua: "Gan Idirlíon" agus "Níl aon Sonraí ná wifi cumasaithe"
+* Fógraí meirge barr nua: "Gan Idirlíon" agus "Gan Sonraí ná Wi-Fi cumasaithe"
 
-* Láimhseáil feabhsaithe ar stórtha agus scátháin USB-OTG agus Cárta SD
+* Láimhseáil fheabhsaithe ar stórtha agus scátháin USB-OTG agus Cárta SD
 
-* Stop nuashonruithe arís agus arís eile ar Leabharlann Trichrome
+* Stop a chur le nuashonruithe arís agus arís eile ar Leabharlann Trichrome
 
-* Tuilleadh athruithe le leanúint Dearadh Ábhar (@proletarius101)
+* Tuilleadh athruithe le teacht Dearadh Ábhar (@proletarius101)
 
-* Feabhsaigh suaitheantas OpenCollective (@ConnyDuck)
+* Feabhas a chur ar suaitheantas OpenCollective (@ConnyDuck)
 
-* Athchóiriú ar an deilbhín ag baint úsáide as Glide (@proletarius101)
+* Athchóiriú ar luchtú deilbhíní ag baint úsáide as Glide (@proletarius101)
 
-* Deilbhín oiriúnaitheach nua (@12daoine)
+* Deilbhín oiriúnaitheach nua (@12people)
 
 * Nuachóiriú cód (@Isira-Seneviratne)

@@ -626,4 +626,19 @@
     <string name="repo_archive_check">Check for archive</string>
     <string name="expand">Expand</string>
     <string name="collapse">Collapse</string>
+    <string name="pref_export_log_title">Debug log</string>
+    <string name="pref_export_log_summary">Creates a file with logcat output useful for debugging. Careful, it could contain sensitive information!</string>
+    <string name="export_log_success">Logcat saved successfully</string>
+    <string name="export_log_error">Error saving logcat</string>
+    <string name="app_details_more_apps_interesting">This might also be interesting to you:</string>
+    <string name="app_details_more_apps_by_author">More apps by %1$s</string>
+    <string name="banner_updating_apps">Updating apps</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d update available</item>
+        <item quantity="other">%1$d updates available</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Tap to update all</string>
+    <string name="tts_repo_name">Repository %1$s</string>
+    <string name="tts_author_name">Author %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid had crashed</string>
 </resources>

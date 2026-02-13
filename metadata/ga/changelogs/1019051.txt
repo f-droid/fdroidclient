@@ -1,10 +1,10 @@
-* Athchóiriú a dhéanamh ar láimhseáil athcheannaigh agus scátháin, idir UX agus cód
+* Athchóiriú ar an stór agus ar láimhseáil scátháin, idir UX agus cód
 
-* Taispeáin réamhamharc ar stórtha nua
+* Réamhamharc ar stórtha nua a thaispeáint
 
 * Tacaíonn suiteáil le F-Droid agus F-Droid Basic anois le nuashonruithe uathoibríocha cúlra
 
-* Ar Android 14, marcáil aipeanna le Target SDK Version gan tacaíocht mar neamh-chomhoiriúnach #2692
+* Ar Android 14, marcáil aipeanna le Leagan SDK Sprioc neamhthacaithe mar neamh-chomhoiriúnach #2692
 
 * Cliceáil fada chun Naisc, Ceadanna agus Leaganacha a chóipeáil ar scáileán Sonraí an Aipe (@Tobias_Groza)
 
@@ -12,4 +12,4 @@
 
 * Socruithe Nua Geataí IPFS
 
-* Roghnú teanga in aghaidh an aip (@Licaon-Kter)
+* Rogha teanga in aghaidh an aipe (@Licaon-Kter)

@@ -1,0 +1,12 @@
+* Hantera implicita READ_EXTERNAL_STORAGE-behörigheter, som utlöser en 
+behörighetsfråga vid installationer med Privileged Extension (#1702)
+
+* Indexdata saneras för att minska eventuella hot från servern
+
+* "Läsningstidsgräns" utlöser spegling när läsningarna är långsamma
+
+* Åtgärda saknade ikoner för de som inte använder Wi-Fi (#1592)
+
+* Använd separata titlar för Uppdateringsinställningar och fliken Uppdateringar för att underlätta översättningen
+
+* UI-korrigeringar från @ConnyDuck (#1636, #1618)

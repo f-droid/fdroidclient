@@ -277,7 +277,7 @@
     <string name="privacy">تایبەتێتی</string>
     <string name="menu_open">کردنەوە</string>
     <string name="updates__show_updateable_apps">نەرمەکاڵاکان پیشان بدە</string>
-    <string name="panic_app_unknown_app">نەمەکاڵایەکی نەناسراو</string>
+    <string name="panic_app_unknown_app">نەرمەکاڵایەکی نەناسراو</string>
     <string name="proxy">پێشکار</string>
     <string name="download_404">پەڕگە داواکراوەکە نەدۆزرایەوە.</string>
     <string name="theme">ڕووکار</string>

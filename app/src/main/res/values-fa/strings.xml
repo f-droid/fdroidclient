@@ -32,7 +32,7 @@
     <string name="menu_uninstall">حذف نصب</string>
     <string name="menu_issues">اشکال‌ها</string>
     <string name="menu_source">کد مبدأ</string>
-    <string name="details_notinstalled">نصب نشده</string>
+    <string name="details_notinstalled">نصب نشده</string>
     <string name="antiadslist">این کاره دارای تبلیغات است</string>
     <string name="antitracklist">این کاره، فعّالیتتان را ردیابی و گزارش می‌کند</string>
     <string name="antinonfreeadlist">این کاره، افزونه‌های ناآزاد را تبلیغ می‌کند</string>
@@ -281,7 +281,7 @@
     <string name="latest__empty_state__no_enabled_repos">باید به محض به‌کار انداختن و به‌روز کردن یک مخزن، جدیدترین کاره‌ها در این‌جا نمایش یابند</string>
     <string name="categories__empty_state__no_categories">هیچ دسته‌ای برای نمایش نیست</string>
     <string name="preference_category__my_apps">کاره‌هایم</string>
-    <string name="preference_manage_installed_apps">مدیریت کاره‌های نصب شده</string>
+    <string name="preference_manage_installed_apps">مدیریت کاره‌های نصب شده</string>
     <string name="details_new_in_version">جدید در نگارش %s</string>
     <string name="antifeatureswarning">این کاره، ویژگی‌هایی دارد که شاید نپسندید.</string>
     <string name="antifeatures">پادویژگی‌ها</string>
@@ -302,7 +302,7 @@
     <string name="notification_content_single_downloading_update">بار گرفتن به‌روز رسانی «%1$s»…</string>
     <string name="notification_content_single_installing">نصب کردن «%1$s»…</string>
     <string name="notification_content_single_installed">با موفّقیت نصب شد</string>
-    <string name="notification_title_summary_update_available">به‌روز رسانی موجود است</string>
+    <string name="notification_title_summary_update_available">به‌روز رسانی موجود</string>
     <string name="notification_title_summary_downloading">بار گرفتن…</string>
     <string name="notification_title_summary_downloading_update">بار گرفتن به‌روز رسانی…</string>
     <string name="notification_title_summary_ready_to_install">آمادهٔ نصب</string>
@@ -611,4 +611,15 @@
     <string name="export_log_success">لاگ‌کت با موفّقیت ذخیره شد</string>
     <string name="export_log_error">خطا در ذخیره کردن لاگ‌کت</string>
     <string name="pref_export_log_summary">پرونده‌ای با خروجی لاگ‌کت می‌سازد که برای اشکال‌زدایی مفید است. مراقب باشید. ممکن است دارای اطّلاعات حسّاس باشد!</string>
+    <string name="app_details_more_apps_interesting">شاید این هم برایتان جالب باشد:</string>
+    <string name="app_details_more_apps_by_author">کاره‌های بیش‌تر از %1$s</string>
+    <string name="banner_updating_apps">به‌روز کردن کاره‌ها</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">به‌روز رسانی‌ موجود: %1$d</item>
+        <item quantity="other">به‌روز رسانی‌‌های موجود: %1$d</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">زدن برای به‌روز رسانی همه</string>
+    <string name="tts_repo_name">مخزن %1$s</string>
+    <string name="tts_author_name">نگارنده %1$s</string>
+    <string name="crash_dialog_title_old">اف‌دروید فروپاشید</string>
 </resources>

@@ -1,0 +1,6 @@
+* Material Design 3 (széltől szélig funkcióval, de dinamikus színek nélkül) (Köszönjük proletarius!)
+* Tárolórészletező képernyők újratervezése (Köszönjük Thore!)
+* Logcat exportálás hozzáadása a szekértői beállításokhoz
+* Cél SDK frissítése (Android 15 az alap F-Droidhoz, Android 11 a teljeshez)
+* Visszahivatkozás hozzáadása az alkalmazások oldalához a rendszerbeállításokban (Köszönjük j-m4!)
+* Alkalmazásválasztó használata az alkalmazások és az előzmények megosztásához (Köszönjük Thore!)

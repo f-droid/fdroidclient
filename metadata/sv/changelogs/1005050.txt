@@ -1,0 +1,13 @@
+* Stöd för växling via SD-kort
+
+* Buggfixar och förbättringar av Nearby Swap
+
+* Ytterligare förbättringar av "Appdetaljer"
+
+* Uppdatera språk och översättningar för Nearby och Swap
+
+* Förbättrad logik för val av appikoner
+
+* Lägg till repos via inbyggd additional_repos.xml från ROM, OEM, leverantör.
+
+* Visa versionskod i utökade versionslistposter i expertläge

@@ -617,4 +617,13 @@
     <string name="repo_confirm_delete_mirror_body">다른 미러를 사용하여 이 저장소에서 앱을 계속해서 설치할 수 있습니다.</string>
     <string name="preferForeign">외부 미러 선호</string>
     <string name="preferForeignSummary">강력한 국가 제한이 존재할 경우, 외부 미러를 먼저 사용해 보십시오.</string>
+    <string name="app_details_more_apps_interesting">이런 앱도 흥미로울 거에요:</string>
+    <string name="app_details_more_apps_by_author">%1$s의 앱 더 보기</string>
+    <string name="banner_updating_apps">앱 업데이트 중</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">업데이트 %1$d개 사용 가능</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">탭하여 모두 업데이트</string>
+    <string name="tts_repo_name">저장소 %1$s</string>
+    <string name="tts_author_name">저자 %1$s</string>
 </resources>

@@ -562,7 +562,7 @@
     <string name="repo_io_error">Viga ühenduse loomisel hoidlaga.</string>
     <string name="targetsdk_or_later">SDK versioon %s</string>
     <string name="turn_on_wifi">Lülita WiFi sisse</string>
-    <string name="copied_url_to_clipboard">URL on kopeeritud lõikelauale</string>
+    <string name="copied_url_to_clipboard">Võrguaadress on kopeeritud lõikelauale</string>
     <string name="copied_permission_to_clipboard">Õiguste nimi on kopeeritud lõikelauale</string>
     <string name="ipfsgw_title">IPFSi lüüsid</string>
     <string name="ipfsgw_explainer">Laadi rakendusi IPFS võrgu kaudu. (Toimib vaid siis, kui kasutatavatel tarkvarahoidlatel on IPFS võrgu tugi.)</string>
@@ -633,4 +633,15 @@
     <string name="export_log_success">Logcati väljundi salvestamine õnnestus</string>
     <string name="export_log_error">Logcati väljundi salvestamisel tekkis viga</string>
     <string name="pref_export_log_summary">Loob logcati väljundist faili, mis on abiks veaotsingul. Ettevaatust, failis võib olla privaatseid andmeid!</string>
+    <string name="app_details_more_apps_interesting">Lisaks võib sind huvitada:</string>
+    <string name="app_details_more_apps_by_author">Muud rakendused arendajalt %1$s</string>
+    <string name="banner_updating_apps">Uuendan rakendusi</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Saadaval on %1$d uuendus</item>
+        <item quantity="other">Saadaval on %1$d uuendust</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Klõpsa kõikide uuendamiseks</string>
+    <string name="tts_repo_name">Tarkvarahoidla: %1$s</string>
+    <string name="tts_author_name">Autor: %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid on jooksnud kokku</string>
 </resources>

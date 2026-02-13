@@ -1,12 +1,11 @@
-* Láimhseáil ceadanna intuigthe READ_EXTERNAL_STORAGE, a spreagann a
- leid ceadanna ar shuiteálacha le Síneadh Pribhléideach (#1702)
+* Láimhseáil ceadanna intuigthe READ_EXTERNAL_STORAGE, a spreagann pras ceadanna ar shuiteálacha le Síneadh Pribhléideach (#1702)
 
-* Sonraí innéacs sláintíochta chun bagairtí féideartha ón bhfreastalaí a laghdú
+* Sonraí innéacsaithe sláintithe chun bagairtí féideartha ón bhfreastalaí a laghdú
 
-* Spreagann "Am istigh Léigh" úsáid scátháin nuair a bhíonn léamh mall
+* Spreagann "Léamh-Am" úsáid scátháin nuair a bhíonn léamha mall
 
-* Deisigh deilbhíní atá in easnamh dóibh siúd nach bhfuil ag baint úsáide as Wi-Fi (#1592)
+* Deisigh deilbhíní atá ar iarraidh dóibh siúd nach n-úsáideann Wi-Fi (#1592)
 
-* Úsáid teidil ar leith le haghaidh Updates pref agus Update tab, chun cabhrú leis an aistriúchán
+* Úsáid teidil ar leithligh don rogha Nuashonruithe agus don chluaisín Nuashonruithe, chun cabhrú le haistriúchán
 
-* Ceartúcháin Chomhéadain ó @ConnyDuck (#1636, #1618)
+* Deisiúcháin Chomhéadain ó @ConnyDuck (#1636, #1618)

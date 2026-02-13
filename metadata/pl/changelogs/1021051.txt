@@ -1,0 +1,11 @@
+* Przepisano aktualizator repozytorium, aby aktualizacje w tle były bardziej niezawodne.
+* Rozdzielono nazwę i podsumowanie na listach aplikacji, aby poprawić czytelność.
+* Wyświetlanie ostrzeżenia, gdy aplikacje nie mogą być aktualizowane z preferowanego repozytorium.
+* Aplikacje przeznaczone dla SDK 24 są niekompatybilne z urządzeniami z systemem Android 15.
+* Lepsza obsługa kopii lustrzanych w podglądzie „Dodaj repozytorium” (dzięki, Thore!).
+* Włącz automatyczne aktualizacje aplikacji na urządzeniach Xiaomi, które nie korzystają z MIUI (dzięki, Irate!).
+* Zaufaj certyfikatom root dodanym przez użytkownika (dzięki, B.!).
+* Popraw wyszukiwanie bez rozróżniania wielkości liter zawierające znaki diakrytyczne (dzięki, Tobias!).
+* Zaktualizuj opisy funkcji antyfunkcyjnych (dzięki, Licaon!).
+* Dodaj funkcję antyfunkcyjną tethered net (dzięki, linsui!).
+* Ignorowanie spacji podczas dodawania repozytoriów lustrzanych (dzięki Tobias!)

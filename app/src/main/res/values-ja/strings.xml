@@ -164,7 +164,7 @@
     <string name="swap_choose_apps">アプリを選択</string>
     <string name="swap_scan_qr">QRコード</string>
     <string name="swap_people_nearby">近くの人</string>
-    <string name="swap_scanning_for_peers">近くの人を探しています</string>
+    <string name="swap_scanning_for_peers">近くの人を探しています…</string>
     <string name="swap_nearby">近くの人と交換</string>
     <string name="swap_intro">近くにいる人と接続してアプリを交換します。</string>
     <string name="swap_visible_bluetooth">Bluetooth経由で検知可能</string>
@@ -177,7 +177,7 @@
     <string name="swap_cant_find_peers">探している人が見つかりませんか？</string>
     <string name="swap_send_fdroid">F-Droidを送信</string>
     <string name="apps">アプリ</string>
-    <string name="swap_no_peers_nearby">交換できる近くにいる人が見つかりませんでした｡</string>
+    <string name="swap_no_peers_nearby">近くで交換できる人が見つかりませんでした。</string>
     <string name="swap_connecting">接続しています</string>
     <string name="swap_confirm">交換の確認</string>
     <string name="swap_qr_isnt_for_swap">読み取ったQRコードは交換コードではないようです。</string>
@@ -618,4 +618,14 @@
     <string name="export_log_error">Logcatの保存に問題が起きました</string>
     <string name="pref_export_log_title">デバックログ</string>
     <string name="pref_export_log_summary">デバッグで有用なlogcat出力ファイルを作成します。機微な情報が含まれている可能性がありますので、ご注意ください！</string>
+    <string name="app_details_more_apps_interesting">こちらも興味深いかもしれません:</string>
+    <string name="app_details_more_apps_by_author">%1$s によるより多くのアプリ</string>
+    <string name="banner_updating_apps">アプリの更新</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">%1$d 個の更新</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">タップして全て更新</string>
+    <string name="tts_repo_name">%1$s リポジトリ</string>
+    <string name="tts_author_name">管理者 %1$s</string>
+    <string name="crash_dialog_title_old">F-Droidがクラッシュしました</string>
 </resources>

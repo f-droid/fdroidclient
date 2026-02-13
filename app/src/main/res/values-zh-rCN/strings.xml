@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">此应用的新版本使用了与旧版本不同的密钥来签名。在安装新版本之前，必须先卸载旧版本。请先卸载旧版本再尝试安装。（请注意，卸载应用时将删除其所有内部数据）</string>
+    <string name="SignatureMismatch">此应用的新版本使用了与旧版本不同的密钥来签名。在安装新版本之前，必须先卸载旧版本。请先卸载旧版本再尝试安装。（请注意，卸载应用时将删除其全部内部数据）</string>
     <string name="installIncompatible">此应用与你的设备不兼容，是否继续安装？</string>
     <string name="version">版本</string>
     <string name="delete">删除</string>
@@ -87,9 +87,7 @@
     <string name="repo_not_yet_updated">该存储库尚未使用。 你需要启用它才能查看该存储库提供的应用。</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">删除存储库？</string>
-    <string name="repo_confirm_delete_body">删除存储库意味着来自该存储库的应用将不再可用。
-\n
-\n注意：之前安装的所有应用会保留在你的设备上。</string>
+    <string name="repo_confirm_delete_body">删除存储库意味着来自该存储库的应用将不再可用。 \n \n注意：之前安装的全部应用会保留在你的设备上。</string>
     <string name="repo_disabled_notification">已禁用 %1$s。
 \n
 \n需重新启用该存储库才能安装其中的应用。</string>
@@ -214,7 +212,7 @@
     <string name="newPerms">新权限</string>
     <string name="allPerms">全部</string>
     <string name="perm_costs_money">这可能会产生费用</string>
-    <string name="uninstall_update_confirm">你想要将此应用替换为出厂版本吗？这会移除所有数据。</string>
+    <string name="uninstall_update_confirm">你想要将此应用替换为出厂版本吗？这会移除全部数据。</string>
     <string name="uninstall_confirm">你想要卸载此应用吗？</string>
     <string name="download_error">下载失败！</string>
     <string name="perms_new_perm_prefix">新的：</string>
@@ -418,7 +416,7 @@
     <string name="swap_toast_could_not_enable_hotspot">无法启用 Wi-Fi 热点！</string>
     <string name="prompt_to_send_crash_reports">提示发送崩溃报告</string>
     <string name="prompt_to_send_crash_reports_summary">收集有关崩溃的数据并询问是否发送给本应用的开发者</string>
-    <string name="hide_all_notifications">隐藏所有通知</string>
+    <string name="hide_all_notifications">隐藏全部通知</string>
     <string name="install_history">安装历史</string>
     <string name="send_version_and_uuid">将版本和 UUID 发送到服务器</string>
     <string name="antinosourcesince">源代码不再可用，不可能有更新</string>
@@ -611,4 +609,14 @@
     <string name="export_log_error">保存 logcat 出错</string>
     <string name="pref_export_log_title">调试日志</string>
     <string name="pref_export_log_summary">创建对调试有帮助的 logcat 输出文件。小心，它可能包含敏感信息！</string>
+    <string name="app_details_more_apps_interesting">你或许也对这些感兴趣：</string>
+    <string name="app_details_more_apps_by_author">%1$s 的更多应用</string>
+    <string name="banner_updating_apps">正在更新应用</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">有 %1$d 个更新可用</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">轻按更新全部</string>
+    <string name="tts_repo_name">%1$s 存储库</string>
+    <string name="tts_author_name">作者 %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid 崩溃了</string>
 </resources>

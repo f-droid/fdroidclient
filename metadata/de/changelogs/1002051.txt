@@ -1,17 +1,17 @@
-* Cache bei knappem Speicher automatisch kürzen oder löschen
+* Verbessertes Caching bei knappem Speicher
 
 * Verbesserte Leistung auf Geräten mit wenig Speicher
 
-* Alle Downloads respektieren "Nur über WLAN"-Vorgabe
+* Alle Downloads berücksichtigen „Nur über WLAN“
 
 * Geringere Speicherauslastung bei wenig Speicher
 
-* Zu jedem Repo über Links, QR-Codes, usw. eigene Spiegel hinzufügen
+* Hinzufügen eigener Spiegelserver zu jedem Repo durch Klicken auf Links, QR-Codes usw.
 
-* Verbesserte automatische Spiegelwahl
+* Verbesserte automat. Spiegelserverauswahl
 
-* Viele Direkttausch-Korrekturen und -Neuerungen
+* Viele Korrekturen/Neuerungen für Direkttausch
 
-* Ursache für wiederkehrende Update-Hinweise beseitigt (#1271)
+* Wiederkehrende Update-Benachrichtigungen korrigiert (#1271)
 
-* F-Droid erkennt F-Droid-nightly-URLs von GitLab
+* F-Droid erkennt F-Droid-Nightly-URLs von GitLab

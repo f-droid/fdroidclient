@@ -155,7 +155,7 @@
     <string name="about_license">Licence</string>
     <string name="not_on_same_wifi">Vaše zařízení není na stejné síti Wi-Fi jako právě přidaný místní repozitář! Zkuste se připojit k této síti: %s</string>
     <string name="pref_language">Jazyk</string>
-    <string name="pref_language_default">Podle sytému</string>
+    <string name="pref_language_default">Podle systému</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Připojení</string>
@@ -204,7 +204,7 @@
     <string name="perms_new_perm_prefix">Nová:</string>
     <string name="perms_description_app">Poskytováno %1$s.</string>
     <string name="downloading">Stahování…</string>
-    <string name="interval_never">Žádné automatické aktualizace aplikace</string>
+    <string name="interval_never">Bez automatických aktualizací aplikací</string>
     <string name="interval_1h">Zjišťovat aktualizace každou hodinu</string>
     <string name="interval_4h">Zjišťovat aktualizace každé 4 hodiny</string>
     <string name="interval_12h">Zjišťovat aktualizace každých 12 hodin</string>
@@ -326,7 +326,7 @@
     <string name="latest__empty_state__no_enabled_repos">Jakmile povolíte repozitář a necháte jej aktualizovat, měly by se zde zobrazit nejnovější aplikace</string>
     <string name="categories__empty_state__no_categories">Žádné kategorie k zobrazení</string>
     <string name="details_new_in_version">Novinky ve verzi %s</string>
-    <string name="antifeatureswarning">Tato aplikace má funkce, které se vám nemusí líbit.</string>
+    <string name="antifeatureswarning">Tato aplikace má vlastnosti, které se vám nemusí líbit.</string>
     <string name="antifeatures">Anti-vlastnosti</string>
     <string name="download_404">Požadovaný soubor nebyl nalezen.</string>
     <string name="status_inserting_x_apps">Ukládání podrobností o aplikacích (%1$d/%2$d) z %3$s</string>
@@ -623,4 +623,17 @@
     <string name="export_log_error">Chyba při ukládání protokolu</string>
     <string name="pref_export_log_summary">Vytvoří soubor s výstupem protokolu. Užitečné pro ladění. Opatrně, může obsahovat citlivé informace!</string>
     <string name="pref_export_log_title">Ladicí protokol</string>
+    <string name="app_details_more_apps_interesting">Následující obsah by vás také mohl zajímat:</string>
+    <string name="app_details_more_apps_by_author">Další aplikace od vývojáře %1$s</string>
+    <string name="banner_updating_apps">Aktualizace aplikací</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">Je k dispozici %1$d aktualizace</item>
+        <item quantity="few">Jsou k dispozici %1$d aktualizace</item>
+        <item quantity="many">Je k dispozici %1$d aktualizací</item>
+        <item quantity="other">Je k dispozici %1$d aktualizací</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Klepnutím aktualizujete vše</string>
+    <string name="tts_repo_name">Repozitář %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid havaroval</string>
 </resources>

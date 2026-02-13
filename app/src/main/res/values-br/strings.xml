@@ -75,7 +75,7 @@
     <string name="category_Phone_SMS">Pellgomz ha SMS</string>
     <string name="swap_welcome">Donemat war F-Droid !</string>
     <string name="updates__tts__download_app">Pellgargañ</string>
-    <string name="warning_no_internet">Hizivadenn dibosupl, ha kevreet emaoc\'h da internet ?</string>
+    <string name="warning_no_internet">N\'heller ket hizivaat, ha kevreet emaoc\'h ouzh internet?</string>
     <string name="newPerms">Nevez</string>
     <string name="app_details">Munudoù an arload</string>
     <string name="unverified">Ket gwiriet</string>
@@ -98,5 +98,5 @@
     <string name="about_license">Aotre</string>
     <string name="app_recommended_version_installed">Stumm %1$s (erbedet)</string>
     <string name="swap_dont_show_again">Arabat skrammañ an dra-se din en-dro</string>
-    <string name="antitracklist">Heuliet ha treuzkaset e vez ho obererezh gant an arload-mañ</string>
+    <string name="antitracklist">Heuliet ha treuzkaset e vez hoc\'h obererezh gant an arload-mañ</string>
 </resources>

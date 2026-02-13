@@ -72,13 +72,13 @@
     <string name="category_Development">Programado</string>
     <string name="category_Games">Ludoj</string>
     <string name="category_Internet">Interreto</string>
-    <string name="category_Multimedia">Sono k video</string>
+    <string name="category_Multimedia">Sono kaj video</string>
     <string name="category_Navigation">Navigado</string>
-    <string name="category_Phone_SMS">Telefonio k SMS</string>
+    <string name="category_Phone_SMS">Telefonado kaj SMS</string>
     <string name="category_Reading">Legado</string>
-    <string name="category_Science_Education">Scienco k edukado</string>
+    <string name="category_Science_Education">Scienco kaj edukado</string>
     <string name="category_Security">Sekureco</string>
-    <string name="category_System">Sistem-iloj</string>
+    <string name="category_System">Operaciumaj iloj</string>
     <string name="swap_no_wifi_network">Ankoraŭ neniu reto</string>
     <string name="swap_view_available_networks">Tuŝu por montri disponeblajn retojn</string>
     <string name="open_qr_code_scanner">Malfermi QR-kod-skanilon</string>
@@ -160,7 +160,7 @@
     <string name="category_Graphics">Grafiko</string>
     <string name="category_Money">Financoj</string>
     <string name="category_Sports_Health">Sporto k sano</string>
-    <string name="category_Theming">Etosoj k aspekto</string>
+    <string name="category_Theming">Haŭtoj (etosoj)</string>
     <string name="category_Time">Tempo</string>
     <string name="category_Writing">Skribado</string>
     <string name="empty_installed_app_list">Neniu aplikaĵo instalita. \n \nEn via aparato estas aplikaĵoj, tamen ili ne estas disponeblaj el F‑Droid. Eble vi devas ĝisdatigi viajn deponejojn, aŭ la deponejoj vere ne enhavas viajn aplikaĵojn.</string>
@@ -611,4 +611,15 @@
     <string name="repo_details_info_text">Deponejo estas fonto de aplikaĵoj.\n\nSpegul-serviloj estas uzataj por disigi ŝargon de aplikaĵ-elŝutoj sur plurajn servilojn. Spegul-serviloj proksimaj al vi povas esti pli rapidaj.\n\nOficialaj spegul-serviloj estas difinitaj fare de la posedanto de deponejo. Ili estas neforigeblaj, vi povas nur malaktivigi ilin. Vi povas difini pliajn proprajn spegul-servilojn per aldoni ilin same kiel norman deponejon.</string>
     <string name="expand">Etendi</string>
     <string name="collapse">Maletendi</string>
+    <string name="app_details_more_apps_interesting">Eble ankaŭ interesos vin:</string>
+    <string name="app_details_more_apps_by_author">Pliaj aplikaĵoj de %1$s</string>
+    <string name="banner_updating_apps">Ĝisdatigado de aplikaĵoj</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d ĝisdatigo disponebla</item>
+        <item quantity="other">%1$d ĝisdatigoj disponeblaj</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Frapetu por ĝisdatigi ĉion</string>
+    <string name="tts_repo_name">Deponejo %1$s</string>
+    <string name="tts_author_name">Aŭtoro %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid estis paneinta</string>
 </resources>

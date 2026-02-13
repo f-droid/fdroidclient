@@ -619,4 +619,14 @@
     <string name="export_log_success">Logcat berhasil disimpan</string>
     <string name="pref_export_log_summary">Membuat berkas dengan keluaran logcat berguna untuk pengawakutuan. Hati-hati, ini dapat berisi informasi sensitif!</string>
     <string name="export_log_error">Terjadi kesalahan menyimpan logcat</string>
+    <string name="app_details_more_apps_interesting">Ini mungkin juga menarik bagi Anda:</string>
+    <string name="app_details_more_apps_by_author">Aplikasi lainnya dari %1$s</string>
+    <string name="banner_updating_apps">Memperbarui aplikasi</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="other">%1$d pembaruan tersedia</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Ketuk untuk memperbarui semua</string>
+    <string name="tts_repo_name">Repositori %1$s</string>
+    <string name="tts_author_name">Pembuat %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid telah mengalami kerusakan</string>
 </resources>

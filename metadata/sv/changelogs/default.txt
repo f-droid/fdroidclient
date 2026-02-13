@@ -1,0 +1,6 @@
+* Material Design 3 (med kant-till-kant-effekt, men utan dynamiska färger) (Tack proletarius!)
+* Omdesign av skärmarna för arkivets detaljer (Tack Thore!)
+* Lade till export av logcat-filer i expertinställningar
+* Uppdatera mål-SDK (Android 15 för basic och Android 11 för fullversionen)
+* Lägg till bakåtlänk från appens sida i systeminställningarna (Tack j-m4!)
+* Använd appväljaren för att dela installerade appar och installationshistorik (Tack Thore!)

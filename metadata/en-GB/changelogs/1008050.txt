@@ -1,0 +1,9 @@
+* new Android 10 permission config to stop Unknown Sources prompts #1833
+* Handle new "split permissions": fine location implies coarse location
+* Fix seekbar preference on recent Android versions (thanks @dkanada)
+* Set backup rules to avoid saving the swap repo
+* keyboard opens when search is cleared
+* translation sync with Android strings
+* force common repo domains to HTTPS (GitLab, GitHub, Amazon)
+* standard ripple effect to links on app details
+* display default icon for apps with no icon

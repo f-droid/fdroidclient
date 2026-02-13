@@ -1,0 +1,7 @@
+* använd aviseringskanaler för finjusterad kontroll (@Isira-Seneviratne)
+* dela appar med hjälp av direktdelning från appdetaljer (@fynngodau)
+* Senaste fliken visar bättre resultat på enheter som inte talar engelska
+* uppdateringar av kärnbibliotek (Jackson, androidx, gradle, etc.)
+* polerat stöd för whitelabeling
+
+Tack till nya bidragsgivare! @fynngodau @projectgus @glennmen @Isira-Seneviratne

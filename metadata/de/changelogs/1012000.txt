@@ -1,11 +1,11 @@
-* Lokalisierung der App-Beschreibung beachtet jetzt Sprachlisten in Android
+* Lokalisierung der App-Beschreibung beachtet nun Sprachlisten in Android-
   Spracheinstellungen
 
 * Tab "Neues" listet Ergebnisse basierend auf den Spracheinstellungen
 
 * Tab "Neues" zeigt nun neuere Ergebnisse zuerst (@TheLastProject @IzzySoft)
 
-* Modernisierung der Theme-Unterstützung und Anbindung an die Android-Designs (@proletarius101)
+* Modernisierung der Design-Unterstützung und Anbindung an die Android-Designs (@proletarius101)
 
 * Verbesserte Suchergebnisse (@Tvax @gcbrown76)
 

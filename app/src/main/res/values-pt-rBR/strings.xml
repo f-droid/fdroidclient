@@ -40,7 +40,7 @@
     <string name="repo_add_fingerprint">Impressão-digital (opcional)</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
     <string name="menu_manage">Repositórios</string>
-    <string name="menu_search">Pesquisar</string>
+    <string name="menu_search">Buscar</string>
     <string name="menu_add_repo">Novo repositório</string>
     <string name="menu_launch">Abrir</string>
     <string name="menu_share">Compartilhar</string>
@@ -62,7 +62,7 @@
     <string name="display">Aparência</string>
     <string name="expert">Modo de especialista</string>
     <string name="expert_on">Mostrar informações extras e ativar configurações adicionais</string>
-    <string name="search_hint">Pesquisar apps</string>
+    <string name="search_hint">Buscar apps</string>
     <string name="appcompatibility">Compatibilidade de apps</string>
     <string name="show_incompat_versions">Incluir versões incompatíveis</string>
     <string name="show_incompat_versions_on">Mostrar versões de apps que são incompatíveis com o dispositivo</string>
@@ -275,7 +275,7 @@
     <string name="notification_action_install">Instalar</string>
     <string name="app_version_x_available">Versão %1$s disponível</string>
     <string name="app_version_x_installed">Versão %1$s</string>
-    <string name="clear_search">Limpar pesquisa</string>
+    <string name="clear_search">Apagar busca</string>
     <string name="main_menu__latest_apps">Destaques</string>
     <string name="main_menu__categories">Categorias</string>
     <string name="main_menu__swap_nearby">Proximidade</string>
@@ -382,7 +382,7 @@
     <string name="preventScreenshots_title">Impedir capturas de tela</string>
     <string name="preventScreenshots_summary">Bloqueia as capturas de tela e esconde o conteúdo de apps da tela de recentes</string>
     <string name="panic_app_unknown_app">um app desconhecido</string>
-    <string name="panic_app_setting_summary">Nenhum app foi definido</string>
+    <string name="panic_app_setting_summary">Nenhum app foi configurado</string>
     <string name="panic_app_setting_none">Nenhum</string>
     <string name="panic_app_dialog_message">Tem certeza de que deseja permitir que %1$s acione ações destrutivas do botão de pânico?</string>
     <string name="allow">Permitir</string>
@@ -401,9 +401,9 @@
     <string name="hiding_dialog_title">Ocultar %s agora</string>
     <string name="hiding_dialog_message">Você tem certeza que quer remover %1$s da launcher? Para restaurar, será necessário digitar \"%2$d\" no app de %3$s falso.</string>
     <string name="hiding_dialog_warning">Atenção: Todos os atalhos de apps na tela inicial também serão removidos e precisarão ser adicionados novamente manualmente.</string>
-    <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisar</string>
-    <string name="hide_on_long_search_press_summary">Pressionar e segurar o botão de pesquisa ocultará o app</string>
-    <string name="sort_search">Ordenar pesquisa</string>
+    <string name="hide_on_long_search_press_title">Ocultar com o botão de busca</string>
+    <string name="hide_on_long_search_press_summary">Pressionar e segurar o botão de busca ocultará o app</string>
+    <string name="sort_search">Ordenar busca</string>
     <string name="menu_liberapay">Liberapay</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Pode ser difícil ler o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
@@ -452,7 +452,7 @@
     <string name="scan_removable_storage_toast">Analisando %s…</string>
     <string name="scan_removable_storage_summary">Procurar repositórios de pacotes em armazenamento removível, como cartões SD e pendrives</string>
     <string name="main_menu__updates">Atualizações</string>
-    <string name="nearby_splash__read_external_storage">Buscar o cartão de memória por repositórios e espelhos.</string>
+    <string name="nearby_splash__read_external_storage">Buscar por repositórios e espelhos no cartão de memória.</string>
     <string name="nearby_splash__request_permission">Buscar agora</string>
     <string name="not_visible_nearby">Troca por proximidade não ativada</string>
     <string name="not_visible_nearby_description">Antes de trocar com dispositivos próximos, torne o dispositivo visível.</string>
@@ -467,8 +467,8 @@
     <string name="panic_will_be_wiped">Será desinstalado e os dados apagados</string>
     <string name="panic_apps_to_uninstall">Apps desinstalados e os dados apagados</string>
     <string name="panic_add_apps_to_uninstall">Adicione apps para desinstalar e apagar</string>
-    <string name="panic_reset_repos_title">Redefinir repositórios</string>
-    <string name="panic_reset_repos_summary">Redefinir a configuração de repositório para o padrão</string>
+    <string name="panic_reset_repos_title">Reconfigurar repositórios</string>
+    <string name="panic_reset_repos_summary">Reconfigurar o repositório para o padrão</string>
     <string name="swap_visible_hotspot">Visível pelo ponto de acesso</string>
     <string name="swap_blank_wifi_ssid">(vazio)</string>
     <string name="swap_hidden_wifi_ssid">(oculto)</string>
@@ -479,7 +479,7 @@
     <string name="disabled">Desativado</string>
     <string name="swap_error_cannot_start_bluetooth">Não foi possível iniciar o Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">A troca por proximidade foi desativada pois estava parada.</string>
-    <string name="nearby_splash__document_tree">Buscar no USB OTG por repositórios e espelhos.</string>
+    <string name="nearby_splash__document_tree">Buscar por repositórios e espelhos no USB OTG.</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="notification_channel_updates_description">Mostra notificações de atualização de apps e de repositórios.</string>
     <string name="notification_channel_updates_title">Atualizações</string>
@@ -595,7 +595,7 @@
     <string name="auto_update_time_past">Próxima busca será quando as condições forem atendidas</string>
     <string name="antitetherednet">Serviços de rede vinculados</string>
     <string name="antitetherednetlist">Este app depende inteiramente de uma determinada instância de um serviço de rede</string>
-    <string name="swap_bluetooth_permissions">Por favor, conceda a permissão ao Bluetooth ou de Dispositivos Próximos!</string>
+    <string name="swap_bluetooth_permissions">Conceda a permissão ao Bluetooth ou de Dispositivos Próximos!</string>
     <string name="menu_share_apk">Compartilhar o arquivo APK</string>
     <string name="apk_permissions_mismatch">O app tem uma permissão inesperada: %s</string>
     <string name="preferForeign">Preferir espelhos estrangeiros</string>
@@ -615,7 +615,7 @@
     <string name="collapse">Minimizar</string>
     <string name="repo_basic_auth_title">Autenticação básica</string>
     <string name="repo_basic_auth_password">Senha: ***</string>
-    <string name="repo_details_info_text">Um repositório é uma fonte de apps.\n\nOs espelhos são usados para distribuir a carga de baixar apps entre vários servidores. Espelhos pertos de você podem ser mais rápidos.\n\nEspelhos oficiais são definidos pelo dono do repositório. Eles não podem ser apagados, somente desativados. Você pode definir espelhos adicionais da mesma forma que adiciona um repositório normal.</string>
+    <string name="repo_details_info_text">Um repositório é uma fonte de apps.\n\nOs espelhos são usados para distribuir a carga de baixar apps entre vários servidores. Espelhos pertos de você podem ser mais rápidos.\n\nEspelhos oficiais são definidos pelo dono do repositório. Eles não podem ser apagados, somente desativados. Você pode configurar espelhos adicionais da mesma forma que adiciona um repositório normal.</string>
     <string name="repo_confirm_delete_mirror_body">Você pode continuar instalando apps deste repositório usando os outros espelhos.</string>
     <string name="show_repository_qr">Mostrar código QR do repositório</string>
     <string name="repo_basic_auth_username">Nome de usuário: %s</string>
@@ -625,4 +625,16 @@
     <string name="pref_export_log_title">Registros de depuração</string>
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat, que é útil para a depuração. Tenha cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_error">Erro ao salvar o logcat</string>
+    <string name="app_details_more_apps_interesting">Isto também pode te interessar:</string>
+    <string name="app_details_more_apps_by_author">Mais apps de %1$s</string>
+    <string name="banner_updating_apps">Atualizando os apps</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d atualização disponível</item>
+        <item quantity="many">%1$d de atualizações disponíveis</item>
+        <item quantity="other">%1$d atualizações disponíveis</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Toque para atualizar tudo</string>
+    <string name="tts_repo_name">Repositório %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid travou</string>
 </resources>

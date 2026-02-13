@@ -607,4 +607,17 @@
     <string name="expand">Fella út</string>
     <string name="collapse">Fella saman</string>
     <string name="pref_export_log_title">Atvikaskráning</string>
+    <string name="app_details_more_apps_interesting">Þetta gæti einnig vakið áhuga þinn:</string>
+    <string name="app_details_more_apps_by_author">Fleiri forrit frá %1$s</string>
+    <string name="banner_updating_apps">Uppfæri forrit</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d uppfærsla tiltæk</item>
+        <item quantity="other">%1$d uppfærslur tiltækar</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Ýttu til að uppfæra allt</string>
+    <string name="tts_repo_name">Hugbúnaðarsafn %1$s</string>
+    <string name="tts_author_name">Höfundur %1$s</string>
+    <string name="pref_export_log_summary">Býr til skrá með úttaki frá logcat sem nýtist við villuleit. Farðu varlega, þetta gæti innihaldið viðkvæmar upplýsingar!</string>
+    <string name="export_log_success">Tókst að vista logcat-skrá</string>
+    <string name="export_log_error">Villa við að vista logcat-skrá</string>
 </resources>

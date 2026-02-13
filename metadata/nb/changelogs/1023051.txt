@@ -1,0 +1,6 @@
+* material design 3 (med kant-til-kant, men uten dynamiske farger) (Takk proletarius!)
+* omdesignet pakkebrønndetaljsidene (takk Thore!)
+* la til logcat fil eksport i ekspertinnstillingene
+* oppdaterte mål-SDK-et (Android 15 for grunnleggende, Android 11 for full)
+* la til tilbakelenke fra appside i systeminnstilingene (Takk j-m4!)
+* bruk appvelgeren for å dele installerte apper og installasjonshistorikk (Takk Thore!)

@@ -12,4 +12,4 @@ Android en sí es abierto en el sentido de que eres libre de instalar APKs desde
 * Filtra las apps incompatibles con el dispositivo
 * Encuentra apps a través de categorías y descripciones buscables
 * Accede a las URLs asociadas para donaciones, código fuente, etc.
-* Mantente seguro comprobando las firmas de los índices de repositorios y los hash de los APK.
+* Mantente seguro comprobando las firmas de los índices de repositorios y los hash de los APK

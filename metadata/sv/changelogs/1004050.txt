@@ -1,0 +1,13 @@
+* Stor översyn av listan "Versioner" i "Appdetaljer" och många andra förbättringar av användargränssnittet, tack vare den nya bidragsgivaren @wsdfhjxc
+
+* Åtgärda tangentbords-/D-pad-navigering på många ställen, tack vare den nya bidragsgivaren @doeffinger
+
+* Visa knappen "Öppna" när media är installerat och synligt
+
+* Lägg till delningsknappen i "Installerade appar" för att exportera CSV-listan
+
+* Lägg till en klickbar lista över APK:er på HTML-indexsidan för växling
+
+* Försök igen att indexera nedladdningar från speglar
+
+* Åtgärda "Skicka F-Droid via Bluetooth" på senare Android-versioner

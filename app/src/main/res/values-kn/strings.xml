@@ -518,7 +518,7 @@
     <string name="ipfsgw_explainer">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಫ್ರಮ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್. ( ಓನ್ಲಿ ವರ್ಕ್ಸ್ ಫಾರ್ ಎಫ್-ಡ್ರಾಯ್ಡ್ ರಿಪೋಸಿಟರೀಸ್ ವಿತ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಸಪೋರ್ಟ್.)</string>
     <plurals name="ipfsgw_summary">
         <item quantity="one">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: %1$d ಎನೇಬೆಲ್ಡ್</item>
-        <item quantity="other">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: %6$d ಎನೇಬೆಲ್ಡ್</item>
+        <item quantity="other">ಡೌನ್ಲೋಡ್ ಆ್ಯಪ್ಸ್ ಯೂಸಿಂಗ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ವೆಬ್ ಎಂಡ್ಪಾಯಿಂಟ್ಸ್: %1$d ಎನೇಬೆಲ್ಡ್</item>
     </plurals>
     <string name="menu_release_channel_beta">ಅಲೊ ಬೀಟ ಅಪ್ಡೇಟ್ಸ್</string>
     <string name="targetsdk_or_later">ಟಾರ್ಗೇಟ್%s</string>
@@ -584,4 +584,27 @@
     <string name="repo_enter_url">ರೆಪೊಸಿಟರಿ URL ಅನ್ನು ಹಸ್ತಚಾಲಿತವಾಗಿ ನಮೂದಿಸಿ</string>
     <string name="antinonfreeassets">ನಾನ್-ಫ್ರೀ ಅಸ್ಸೆಟ್ಸ್</string>
     <string name="antinosource">ಸೋರ್ಸ್ ಕೋಡ್ ನೊ ಲಾಂಗರ್ ಅವೆಲೇಬಲ್</string>
+    <string name="repo_basic_auth_edit">ಸಂಪಾದಿಸು</string>
+    <string name="expand">ವಿಸ್ತರಿಸು</string>
+    <string name="collapse">ಕುಗ್ಗಿಸು</string>
+    <string name="repo_view_repo">ರೆಪೊಸಿಟರಿಯನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <string name="repo_preview_included_apps">ಒಳಗೊಂಡಿರುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು:</string>
+    <string name="repo_confirm_delete_mirror_title">ಕನ್ನಡಿಯನ್ನು ಅಳಿಸುವುದೇ?</string>
+    <string name="share_mirror">ಕನ್ನಡಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="repo_basic_auth_title">ಮೂಲ ದೃಢೀಕರಣ</string>
+    <string name="repo_basic_auth_username">ಬಳಕೆದಾರ ಹೆಸರು: %s</string>
+    <string name="repo_basic_auth_password">ಪಾಸ್ವರ್ಡ್: ***</string>
+    <string name="pref_export_log_title">ಡೀಬಗ್ ಲಾಗ್</string>
+    <string name="banner_updating_apps">ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="tts_repo_name">ರೆಪೊಸಿಟರಿ %1$s</string>
+    <string name="tts_author_name">ಲೇಖಕ %1$s</string>
+    <string name="repo_scan_qr_code">QR ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="antitetherednet">ಟೆಥರ್ಡ್ ನೆಟ್ವರ್ಕ್ ಸೇವೆಗಳು</string>
+    <string name="menu_share_apk">APK ಫೈಲ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="preferForeign">ವಿದೇಶಿ ಕನ್ನಡಿಗರಿಗೆ ಆದ್ಯತೆ ನೀಡಿ</string>
+    <string name="repo_archive_check">ಆರ್ಕೈವ್ಗಾಗಿ ಪರಿಶೀಲಿಸಿ</string>
+    <string name="export_log_success">ಲಾಗ್‌ಕ್ಯಾಟ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="export_log_error">ಲಾಗ್‌ಕ್ಯಾಟ್ ಉಳಿಸುವಲ್ಲಿ ದೋಷ</string>
+    <string name="repo_add_repo_and_mirror">ರೆಪೊಸಿಟರಿ ಮತ್ತು ಕನ್ನಡಿಯನ್ನು ಸೇರಿಸಿ</string>
+    <string name="auto_update_time">ಆರಂಭಿಕ %s</string>
 </resources>

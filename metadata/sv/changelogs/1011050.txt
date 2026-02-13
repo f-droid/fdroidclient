@@ -1,0 +1,7 @@
+* Förbättrad länkning av URL:er i appbeskrivningar
+
+* Förbättrad hantering av SDCards och USG-OTG i Nearby
+
+* Moderniserad kod och bytt PNG till vektorer (tack @isira-seneviratne!)
+
+* Identifiera längre repo-URL:er för att stödja GitCDN/RawGit/etc. speglar

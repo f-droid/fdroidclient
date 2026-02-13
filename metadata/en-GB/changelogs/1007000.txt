@@ -1,0 +1,11 @@
+* Major overhaul of swap UI, preparing for rewrite
+
+* Show "Undo" after swiping away items from the "Updates" tab (thanks @Hocuri!)
+
+* Fix ETag handling when connecting to NGINX mirrors #1737
+
+* Fix issues with "Latest" display caused by mishandling time zones #1757
+
+* Ignore all unimportant crashes in background services
+
+* Do not use Privileged Extension if turned off in "Settings"

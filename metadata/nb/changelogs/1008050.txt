@@ -1,0 +1,9 @@
+* Ny Android 10-rettighetskonfigrasjon fikser «Ukjente kilder»-advarsler #1833
+* Håndtering av nye «delte rettigheter»: nøyaktig posisjon medfører grov posisjon
+* Fikset søkefeltsinnstillinger på nyere Android (takk @dkanada)
+* Satte reservekopiregler for å unngå å lagre swap-pakkebrønnen
+* Tastaturet vises når søkefeltet tømmes
+* Oversettelsessynkronisering med Android-tekster
+* Tvunget bruk av HTTP ved tilkobling til vanlige pakkebrønner (GitLab, GitHub, Amazon)
+* Standard bølgeeffekt på lenker til appdetaljer
+* Viser standardikon for apper uten ikon

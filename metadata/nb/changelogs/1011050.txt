@@ -1,0 +1,7 @@
+* Forbedret lenking av URL-er i appbeskrivelser
+
+* Forbedret håndtering av SD-kort og USB-OTG i Nearby
+
+* Modernisert kode og byttet ut PNG-er til vektorbilder (takk til @isira-seneviratne!)
+
+* Gjenkjenning av lengre pakkebrønnlenker for å støtte GitCDN/RawGit/mm-speil

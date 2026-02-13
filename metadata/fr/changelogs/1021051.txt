@@ -1,7 +1,7 @@
 * Réécriture de la mise à jour des dépôts pour rendre plus fiable la mise à jour en arrière-plan
- * Découpage du nom et du résumé dans la liste des applis pour une meilleure lisibilité
- * Affichage d'un avertissement quand une appli ne peut pas être mise à jour depuis son dépôt préféré
- * Les applis visant le SDK 24 sont incompatibles avec les appareils sous Android 15
+ * Découpage du nom et du résumé dans la liste des applications pour une meilleure lisibilité
+ * Affichage d'un avertissement quand une application ne peut pas être mise à jour depuis son dépôt préféré
+ * Les applications visant le SDK 24 sont incompatibles avec les appareils sous Android 15
  * Meilleure gestion des miroirs dans la prévisualisation de l'ajout d'un dépôt (merci Thore !)
  * Active les mises à jour non surveillées pour les appareils Xiaomi ne tournant pas sous MIUI (merci Irate !)
  * Faire confiance aux certificats racines ajoutés par l'utilisateur (merci B. !)

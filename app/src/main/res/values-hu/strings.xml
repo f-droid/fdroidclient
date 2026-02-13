@@ -369,7 +369,7 @@
     <string name="swap_qr_isnt_for_swap">A beolvasott QR-kód nem tűnik cserekódnak.</string>
     <string name="swap_connection_misc_error">Hiba történt az eszközhöz kapcsolódás során, nem lehet vele cserélni!</string>
     <string name="perms_description_app">A(z) %1$s által biztosítva.</string>
-    <string name="tts_category_name">Kategória %1$s</string>
+    <string name="tts_category_name">Kategória: %1$s</string>
     <string name="over_wifi">Wi-Fin keresztül</string>
     <string name="over_network_always_summary">Mindig ezt a kapcsolatot használja, ha elérhető</string>
     <string name="over_network_on_demand_summary">Csak akkor használja ezt a kapcsolatot, ha a letöltésre kattint</string>
@@ -613,4 +613,15 @@
     <string name="export_log_error">Hiba a logcat mentésekor</string>
     <string name="pref_export_log_title">Hibakeresési napló</string>
     <string name="pref_export_log_summary">Egy fájlt hoz létre a logcat kimenetével, amely hibakereséshez hasznos. Legyen óvatos, érzékeny információkat tartalmazhat!</string>
+    <string name="app_details_more_apps_interesting">További érdekességek:</string>
+    <string name="app_details_more_apps_by_author">%1$s további alkalmazásai</string>
+    <string name="banner_updating_apps">Alkalmazások frissítése</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">%1$d frissítés érhető el</item>
+        <item quantity="other">%1$d frissítés érhető el</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Koppintson az összes frissítéséhez</string>
+    <string name="tts_repo_name">Tároló: %1$s</string>
+    <string name="tts_author_name">Fejlesztő: %1$s</string>
+    <string name="crash_dialog_title_old">Az F-Droid összeomlott</string>
 </resources>
