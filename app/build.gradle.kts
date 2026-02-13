@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.compose.compiler)
+    alias(libs.plugins.screenshot)
 }
 
 android {
@@ -76,6 +77,8 @@ android {
     lint {
         lintConfig = file("lint.xml")
     }
+    @Suppress("UnstableApiUsage")
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 }
 
 androidComponents {
@@ -151,6 +154,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    screenshotTestImplementation(libs.screenshot.validation.api)
+    screenshotTestImplementation(libs.androidx.ui.tooling)
 }
 
 kotlin {

@@ -9,6 +9,7 @@ hiltNavigationCompose = "1.3.0"
 dokka = "2.1.0"
 mavenPublish = "0.35.0"
 jlleitschuhKtlint = "14.0.1"
+screenshot = "0.0.1-alpha13"
 
 kotlinxSerializationCore = "1.10.0"
 kotlinxSerializationJson = "1.10.0"
@@ -199,6 +200,8 @@ mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore
 json = { module = "org.json:json", version.ref = "json" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+screenshot-validation-api = { group = "com.android.tools.screenshot", name = "screenshot-validation-api", version.ref = "screenshot"}
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -212,3 +215,4 @@ jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", versi
 jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 jlleitschuh-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "jlleitschuhKtlint" }
+screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot"}
