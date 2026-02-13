@@ -95,7 +95,7 @@ private fun Preview() {
             versionName = "1.0.4",
             currentVersionName = null,
             lastUpdated = 23,
-            iconDownloadRequest = null,
+            iconModel = null,
             downloadedBytes = 25,
             totalBytes = 100,
             startMillis = System.currentTimeMillis(),
@@ -108,7 +108,7 @@ private fun Preview() {
             versionName = "2.0.1",
             currentVersionName = null,
             lastUpdated = 13,
-            iconDownloadRequest = null,
+            iconModel = null,
         )
     )
     val installingApp3 = InstallingAppItem(
@@ -119,7 +119,7 @@ private fun Preview() {
             versionName = "0.0.4",
             currentVersionName = null,
             lastUpdated = 13,
-            iconDownloadRequest = null,
+            iconModel = null,
         )
     )
     FDroidContent {

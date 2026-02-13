@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.LocaleListCompat
 import coil3.SingletonImageLoader
 import coil3.memory.MemoryCache
@@ -37,6 +38,7 @@ import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.DownloaderFactory
+import org.fdroid.download.PackageName
 import org.fdroid.download.getUri
 import org.fdroid.getCacheKey
 import org.fdroid.history.HistoryManager
@@ -67,7 +69,7 @@ class AppInstallManager @Inject constructor(
             val appStates = mutableListOf<AppState>()
             var numBytesDownloaded = 0L
             var numTotalBytes = 0L
-            // go throw all apps that have active state
+            // go through all apps that have active state
             apps.value.toMap().forEach { (packageName, state) ->
                 // assign a category to each in progress state
                 val appStateCategory = when (state) {
@@ -115,7 +117,7 @@ class AppInstallManager @Inject constructor(
      * Reasoning:
      * The system will swallow the second or third dialog we pop up
      * before the user could respond to the first.
-     * Also we are not allowed anymore to start other activities while in the background.
+     * Also, we are not allowed anymore to start other activities while in the background.
      */
     @UiThread
     suspend fun install(
@@ -132,7 +134,6 @@ class AppInstallManager @Inject constructor(
             log.warn { "Attempted to install $packageName with install in progress: $currentState" }
             return currentState
         }
-        val iconDownloadRequest = iconModel as? DownloadRequest
         currentCoroutineContext().ensureActive()
         val job = scope.async {
             startInstall(
@@ -140,7 +141,7 @@ class AppInstallManager @Inject constructor(
                 version = version,
                 currentVersionName = currentVersionName,
                 repo = repo,
-                iconDownloadRequest = iconDownloadRequest,
+                iconModel = iconModel,
                 canAskPreApprovalNow = canAskPreApprovalNow,
             )
         }
@@ -195,7 +196,7 @@ class AppInstallManager @Inject constructor(
         version: AppVersion,
         currentVersionName: String?,
         repo: Repository,
-        iconDownloadRequest: DownloadRequest?,
+        iconModel: Any?,
         canAskPreApprovalNow: Boolean,
     ): InstallState {
         val startingState = InstallState.Starting(
@@ -203,20 +204,16 @@ class AppInstallManager @Inject constructor(
             versionName = version.versionName,
             currentVersionName = currentVersionName,
             lastUpdated = version.added,
-            iconDownloadRequest = iconDownloadRequest,
+            iconModel = iconModel,
         )
         apps.updateApp(appMetadata.packageName) { startingState }
         log.info { "Started install of ${appMetadata.packageName}" }
         onStatesUpdated()
-        val coroutineContext = currentCoroutineContext()
-        // get the icon for pre-approval (usually in memory cache, so should be quick)
-        coroutineContext.ensureActive()
-        val icon = getIcon(iconDownloadRequest)
+        currentCoroutineContext().ensureActive()
         // request pre-approval from user (if available)
-        coroutineContext.ensureActive()
         val preApprovalResult = sessionInstallManager.requestPreapproval(
             app = appMetadata,
-            icon = icon,
+            iconGetter = { getIcon(iconModel) },
             isUpdate = currentVersionName != null,
             version = version,
             canRequestUserConfirmationNow = canAskPreApprovalNow,
@@ -232,11 +229,11 @@ class AppInstallManager @Inject constructor(
                         versionName = it.versionName,
                         currentVersionName = it.currentVersionName,
                         lastUpdated = it.lastUpdated,
-                        iconDownloadRequest = it.iconDownloadRequest,
+                        iconModel = it.iconModel,
                         result = preApprovalResult,
                     )
                 } as InstallState.PreApproved
-                downloadAndInstall(newState, version, currentVersionName, repo, iconDownloadRequest)
+                downloadAndInstall(newState, version, currentVersionName, repo, iconModel)
             }
             is PreApprovalResult.UserConfirmationRequired -> {
                 InstallState.PreApprovalConfirmationNeeded(
@@ -280,7 +277,7 @@ class AppInstallManager @Inject constructor(
                     version = installState.version,
                     currentVersionName = installState.currentVersionName,
                     repo = installState.repo,
-                    iconDownloadRequest = installState.iconDownloadRequest,
+                    iconModel = installState.iconModel,
                 )
             }
             // suspend/wait for this job and track it in case we want to cancel it
@@ -294,7 +291,7 @@ class AppInstallManager @Inject constructor(
         version: AppVersion,
         currentVersionName: String?,
         repo: Repository,
-        iconDownloadRequest: DownloadRequest?,
+        iconModel: Any?,
     ): InstallState {
         val sessionId = (state.result as? PreApprovalResult.Success)?.sessionId
         val coroutineContext = currentCoroutineContext()
@@ -312,7 +309,7 @@ class AppInstallManager @Inject constructor(
                     versionName = it.versionName,
                     currentVersionName = it.currentVersionName,
                     lastUpdated = it.lastUpdated,
-                    iconDownloadRequest = it.iconDownloadRequest,
+                    iconModel = it.iconModel,
                     downloadedBytes = bytesRead,
                     totalBytes = totalBytes,
                     startMillis = now,
@@ -333,7 +330,7 @@ class AppInstallManager @Inject constructor(
                 versionName = version.versionName,
                 currentVersionName = currentVersionName,
                 lastUpdated = version.added,
-                iconDownloadRequest = iconDownloadRequest,
+                iconModel = iconModel,
             )
         }
         currentCoroutineContext().ensureActive()
@@ -343,7 +340,7 @@ class AppInstallManager @Inject constructor(
                 versionName = it.versionName,
                 currentVersionName = it.currentVersionName,
                 lastUpdated = it.lastUpdated,
-                iconDownloadRequest = it.iconDownloadRequest,
+                iconModel = it.iconModel,
             )
         }
         val result =
@@ -500,21 +497,27 @@ class AppInstallManager @Inject constructor(
     /**
      * Gets icon for preapproval from memory cache.
      * In the unlikely event, that the icon isn't in the cache,
-     * we we download it with the given [iconDownloadRequest].
+     * we download it with the given [iconModel].
      */
-    private suspend fun getIcon(iconDownloadRequest: DownloadRequest?): Bitmap? {
-        return iconDownloadRequest?.let { downloadRequest ->
-            // try memory cache first and download, if not found
-            val memoryCache = SingletonImageLoader.get(context).memoryCache
-            val key = downloadRequest.getCacheKey()
-            memoryCache?.get(MemoryCache.Key(key))?.image?.toBitmap() ?: run {
-                // not found in cache, download icon
-                val request = ImageRequest.Builder(context)
-                    .data(downloadRequest)
-                    .size(Size.ORIGINAL)
-                    .build()
-                SingletonImageLoader.get(context).execute(request).image?.toBitmap()
+    private suspend fun getIcon(iconModel: Any?): Bitmap? {
+        return when (iconModel) {
+            is DownloadRequest -> {
+                // try memory cache first and download, if not found
+                val memoryCache = SingletonImageLoader.get(context).memoryCache
+                val key = iconModel.getCacheKey()
+                memoryCache?.get(MemoryCache.Key(key))?.image?.toBitmap() ?: run {
+                    // not found in cache, download icon
+                    val request = ImageRequest.Builder(context)
+                        .data(iconModel)
+                        .size(Size.ORIGINAL)
+                        .build()
+                    SingletonImageLoader.get(context).execute(request).image?.toBitmap()
+                }
             }
+            is PackageName -> {
+                context.packageManager.getApplicationIcon(iconModel.packageName).toBitmap()
+            }
+            else -> null
         }
     }
 
