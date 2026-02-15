@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalResources
@@ -50,25 +48,21 @@ fun CategoryList(
                     .fillMaxWidth()
                     .padding(16.dp, 2.dp),
             )
-            CompositionLocalProvider(
-                LocalMinimumInteractiveComponentSize provides 0.dp
+            FlowRow(
+                horizontalArrangement = Arrangement.Start,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .padding(24.dp, 8.dp, 4.dp, 20.dp)
             ) {
-                FlowRow(
-                    horizontalArrangement = Arrangement.Start,
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier
-                        .padding(24.dp, 8.dp, 4.dp, 20.dp)
-                ) {
-                    categories.forEach { category ->
-                        CategoryChip(
-                            categoryItem = category,
-                            onClick = {
-                                val type = AppListType.Category(category.name, category.id)
-                                val navKey = NavigationKey.AppList(type)
-                                onNav(navKey)
-                            },
-                        )
-                    }
+                categories.forEach { category ->
+                    CategoryChip(
+                        categoryItem = category,
+                        onClick = {
+                            val type = AppListType.Category(category.name, category.id)
+                            val navKey = NavigationKey.AppList(type)
+                            onNav(navKey)
+                        },
+                    )
                 }
             }
         }
