@@ -82,4 +82,8 @@
     <color name="md_theme_surfaceContainer">#ECEDF6</color>
     <color name="md_theme_surfaceContainerHigh">#E6E8F0</color>
     <color name="md_theme_surfaceContainerHighest">#E0E2EA</color>
+
+    <color name="call_to_action_banner__background">#FFB9B9</color>
+    <color name="call_to_action_banner__text">#540303</color>
+    <color name="call_to_action_banner__link">#0000ff</color>
 </resources>
