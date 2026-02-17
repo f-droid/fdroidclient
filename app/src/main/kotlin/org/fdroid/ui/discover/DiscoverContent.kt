@@ -25,12 +25,13 @@ fun DiscoverContent(
     onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // workaround for https://issuetracker.google.com/issues/445720462)
-    Column(modifier = modifier.focusable()) {
+    Column(modifier = modifier) {
         AppsSearch(
             onNav = onNav,
             textFieldState = discoverModel.searchTextFieldState,
             modifier = Modifier
+                // focusable is a workaround for https://issuetracker.google.com/issues/445720462
+                .focusable()
                 .padding(top = 16.dp, bottom = 4.dp)
                 .padding(horizontal = 16.dp)
                 .align(Alignment.CenterHorizontally),
