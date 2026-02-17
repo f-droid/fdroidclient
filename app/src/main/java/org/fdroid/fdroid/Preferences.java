@@ -116,6 +116,7 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
     public static final String PREF_USE_IPFS_GATEWAYS = "useIpfsGateways";
     public static final String PREF_IPFSGW_DISABLED_DEFAULTS_LIST = "ipfsGwDisabledDefaultsList";
     public static final String PREF_IPFSGW_USER_LIST = "ipfsGwUserList";
+    public static final String PREF_CALL_TO_ACTION_DISMISSED = "callToActionDismissed";
     public static final String PREF_EXPERT = "expert";
     public static final String PREF_FORCE_OLD_INDEX = "forceOldIndex";
     public static final String PREF_FORCE_OLD_INSTALLER = "forceOldInstaller";
@@ -710,6 +711,14 @@ public final class Preferences implements SharedPreferences.OnSharedPreferenceCh
                 Preferences.PREF_IPFSGW_USER_LIST,
                 Utils.toJsonStringArray(selectedList)
         ).apply();
+    }
+
+    public boolean getCallToActionDismissed() {
+        return preferences.getBoolean(PREF_CALL_TO_ACTION_DISMISSED, false);
+    }
+
+    public void setCallToActionDismissed() {
+        preferences.edit().putBoolean(PREF_CALL_TO_ACTION_DISMISSED, true).apply();
     }
 
     public List<String> getIpfsGwDisabledDefaults() {

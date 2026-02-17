@@ -805,4 +805,6 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="expand">Expand</string>
     <string name="collapse">Collapse</string>
+    <string name="call_to_action_keepandroidopen">F-Droid is under threat. Google is changing the way you install apps on your phone. We need your help.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>
