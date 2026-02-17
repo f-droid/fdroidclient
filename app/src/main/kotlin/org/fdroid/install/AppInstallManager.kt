@@ -392,7 +392,12 @@ class AppInstallManager @Inject constructor(
         packageName: String,
         installState: InstallState.UserConfirmationNeeded,
     ) {
-        val state = apps.value[packageName] ?: error("No state for $packageName $installState")
+        val state = apps.value[packageName] ?: run {
+            // We run this method with some delay, so there's the unlikely,
+            // but possible scenario that state got cleaned up already when this code runs.
+            log.warn { "No more state for $packageName $installState" }
+            return
+        }
         if (state !is InstallState.UserConfirmationNeeded) {
             log.debug { "State has changed. Now: $state" }
             return
