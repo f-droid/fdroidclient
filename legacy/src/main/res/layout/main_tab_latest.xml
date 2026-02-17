@@ -15,6 +15,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/call_to_action_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <org.fdroid.fdroid.views.StatusBanner
                 style="@style/StatusBanner"
                 android:layout_width="match_parent"

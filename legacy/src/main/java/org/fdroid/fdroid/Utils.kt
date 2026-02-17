@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.unit.Dp
 import androidx.core.view.DisplayCompat
 import androidx.core.view.ViewCompat
@@ -87,6 +88,15 @@ fun PaddingValues.copy(
         end = end ?: calculateEndPadding(dir),
         bottom = bottom ?: calculateBottomPadding(),
     )
+}
+
+// Duplicated from the `app` module.
+fun UriHandler.openUriSafe(uri: String) {
+    try {
+        openUri(uri)
+    } catch (e: Exception) {
+        Log.e("UriHandler", "Error opening $uri ", e)
+    }
 }
 
 class UiUtils {

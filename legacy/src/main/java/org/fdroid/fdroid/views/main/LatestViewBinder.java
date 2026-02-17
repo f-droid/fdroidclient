@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.compose.ui.platform.ComposeView;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -29,6 +30,7 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.DBHelper;
 import org.fdroid.fdroid.panic.HidingManager;
+import org.fdroid.fdroid.views.CallToActionBannerKt;
 import org.fdroid.fdroid.views.apps.AppListActivity;
 
 import java.util.Arrays;
@@ -67,6 +69,9 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
         Transformations.distinctUntilChanged(db.getAppDao().getAppOverviewItems(200)).observe(activity, this);
 
         View latestView = activity.getLayoutInflater().inflate(R.layout.main_tab_latest, parent, true);
+
+        ComposeView callToActionBanner = latestView.findViewById(R.id.call_to_action_banner);
+        CallToActionBannerKt.setContentCallToActionBanner(callToActionBanner);
 
         latestAdapter = new LatestAdapter(activity);
 
