@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.jetbrains.compose.compiler)
+    alias(libs.plugins.screenshot)
 }
 
 android {
@@ -17,8 +18,8 @@ android {
         applicationId = "org.fdroid"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2000002
-        versionName = "2.0-alpha2"
+        versionCode = 2000003
+        versionName = "2.0-alpha3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,15 +41,24 @@ android {
             isDebuggable = true
         }
     }
-    flavorDimensions += "base"
+    flavorDimensions += listOf("variant", "release")
     productFlavors {
         create("basic") {
-            dimension = "base"
+            dimension = "variant"
             applicationIdSuffix = ".basic"
         }
         create("full") {
-            dimension = "base"
+            dimension = "variant"
             applicationIdSuffix = ".fdroid"
+        }
+        create("default") {
+            dimension = "release"
+        }
+        create("nightly") {
+            dimension = "release"
+            versionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
+            versionNameSuffix = "-$gitHash"
+            applicationIdSuffix = ".nightly"
         }
     }
     compileOptions {
@@ -66,6 +76,20 @@ android {
     }
     lint {
         lintConfig = file("lint.xml")
+    }
+    @Suppress("UnstableApiUsage")
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
+}
+
+androidComponents {
+    beforeVariants { variantBuilder ->
+        if (variantBuilder.buildType == "debug" &&
+            variantBuilder.productFlavors.contains("release" to "nightly")
+        ) {
+            // no debug builds for nightly version,
+            // so we can test proguard minification in production
+            variantBuilder.enable = false
+        }
     }
 }
 
@@ -120,6 +144,7 @@ dependencies {
 
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))
+    testImplementation(libs.mockk)
     testImplementation(libs.robolectric)
     testImplementation(libs.slf4j.simple)
 
@@ -129,6 +154,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    screenshotTestImplementation(libs.screenshot.validation.api)
+    screenshotTestImplementation(libs.androidx.ui.tooling)
 }
 
 kotlin {
@@ -136,3 +164,19 @@ kotlin {
         jvmTarget = JvmTarget.JVM_17
     }
 }
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    metricsDestination = layout.buildDirectory.dir("compose_compiler")
+    stabilityConfigurationFiles.add(layout.projectDirectory.file("compose-stability.conf"))
+}
+
+val gitHash: String
+    get() {
+        val process = ProcessBuilder("git", "rev-parse", "--short=8", "HEAD")
+            .directory(rootDir)
+            .redirectErrorStream(true)
+            .start()
+        process.waitFor() // Ensure the command completes
+        return process.inputStream.use { it.readBytes().decodeToString().trim() }
+    }

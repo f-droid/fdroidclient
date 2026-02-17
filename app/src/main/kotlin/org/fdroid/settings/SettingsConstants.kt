@@ -1,7 +1,10 @@
 package org.fdroid.settings
 
+import androidx.annotation.StringRes
+import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 
 object SettingsConstants {
 
@@ -22,8 +25,26 @@ object SettingsConstants {
     const val PREF_KEY_AUTO_UPDATES = "appAutoUpdates"
     val PREF_DEFAULT_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name
 
+    enum class MirrorChooserValues {
+        Random {
+            override val res = R.string.pref_mirror_chooser_summary_random
+        },
+        PreferForeign {
+            override val res = R.string.pref_mirror_chooser_summary_prefer_foreign
+        };
+
+        @get:StringRes
+        abstract val res: Int
+    }
+
+    const val PREF_KEY_MIRROR_CHOOSER = "mirrorChooser"
+    val PREF_DEFAULT_MIRROR_CHOOSER = MirrorChooserValues.Random.name
+
     const val PREF_KEY_PROXY = "proxy"
     const val PREF_DEFAULT_PROXY = ""
+
+    const val PREF_KEY_PREVENT_SCREENSHOTS = "preventScreenshots"
+    const val PREF_DEFAULT_PREVENT_SCREENSHOTS = false
 
     const val PREF_KEY_SHOW_INCOMPATIBLE = "incompatibleVersions"
     const val PREF_DEFAULT_SHOW_INCOMPATIBLE = true
@@ -40,7 +61,13 @@ object SettingsConstants {
         AppListSortOrder.NAME -> "name"
     }
 
+    const val PREF_KEY_MY_APPS_SORT_ORDER = "myAppsSortOrder"
+    const val PREF_DEFAULT_MY_APPS_SORT_ORDER = "name"
+
     const val PREF_KEY_IGNORED_APP_ISSUES = "ignoredAppIssues"
+
+    const val PREF_KEY_INSTALL_HISTORY = "keepInstallHistory"
+    const val PREF_DEFAULT_INSTALL_HISTORY = false
 }
 
 fun String?.toAutoUpdateValue() = try {
@@ -48,4 +75,11 @@ fun String?.toAutoUpdateValue() = try {
     else AutoUpdateValues.valueOf(this)
 } catch (_: IllegalArgumentException) {
     AutoUpdateValues.OnlyWifi
+}
+
+fun String?.toMirrorChooserValue() = try {
+    if (this == null) MirrorChooserValues.Random
+    else MirrorChooserValues.valueOf(this)
+} catch (_: IllegalArgumentException) {
+    MirrorChooserValues.Random
 }

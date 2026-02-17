@@ -12,8 +12,6 @@ import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -40,6 +38,7 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.topBarMenuItems
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.TopAppBarButton
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -67,21 +66,19 @@ fun Discover(
                                 modifier = Modifier.size(8.dp)
                             )
                         }) {
-                            IconButton(onClick = { onNav(dest.id) }) {
-                                Icon(
-                                    imageVector = dest.icon,
-                                    contentDescription = stringResource(dest.label),
-                                )
-                            }
+                            TopAppBarButton(
+                                imageVector = dest.icon,
+                                contentDescription = stringResource(dest.label),
+                                onClick = { onNav(dest.id) },
+                            )
                         }
                     }
                     var menuExpanded by remember { mutableStateOf(false) }
-                    IconButton(onClick = { menuExpanded = !menuExpanded }) {
-                        Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = stringResource(R.string.more),
-                        )
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = stringResource(R.string.more),
+                        onClick = { menuExpanded = !menuExpanded },
+                    )
                     DiscoverOverFlowMenu(menuExpanded, {
                         menuExpanded = false
                         onNav(it.id)

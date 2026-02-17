@@ -19,7 +19,11 @@ import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MY_APPS_SORT_ORDER
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
@@ -28,7 +32,11 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MY_APPS_SORT_ORDER
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
@@ -91,6 +99,16 @@ class SettingsManager @Inject constructor(
             prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
             _lastRepoUpdateFlow.update { value }
         }
+
+    var useInstallHistory: Boolean
+        get() = prefs.getBoolean(PREF_KEY_INSTALL_HISTORY, PREF_DEFAULT_INSTALL_HISTORY)
+        set(value) {
+            prefs.edit { putBoolean(PREF_KEY_INSTALL_HISTORY, value) }
+            _useInstallHistoryFlow.update { value }
+        }
+    private val _useInstallHistoryFlow = MutableStateFlow(useInstallHistory)
+    val useInstallHistoryFlow = _useInstallHistoryFlow.asStateFlow()
+
     private val _lastRepoUpdateFlow = MutableStateFlow(lastRepoUpdate)
     val lastRepoUpdateFlow = _lastRepoUpdateFlow.asStateFlow()
     val isFirstStart get() = lastRepoUpdate <= PREF_DEFAULT_LAST_UPDATE_CHECK
@@ -113,6 +131,9 @@ class SettingsManager @Inject constructor(
             prefs.edit { putStringSet(PREF_KEY_IGNORED_APP_ISSUES, newValue.toSet()) }
         }
 
+    val mirrorChooser
+        get() = prefs.getString(PREF_KEY_MIRROR_CHOOSER, PREF_DEFAULT_MIRROR_CHOOSER)
+            .toMirrorChooserValue()
     val proxyConfig: ProxyConfig?
         @UiThread
         get() {
@@ -125,6 +146,10 @@ class SettingsManager @Inject constructor(
                 Proxy(Proxy.Type.SOCKS, address)
             }
         }
+    val preventScreenshotsFlow
+        get() = prefsFlow.map {
+            it.get<Boolean>(PREF_KEY_PREVENT_SCREENSHOTS) ?: PREF_DEFAULT_PREVENT_SCREENSHOTS
+        }.distinctUntilChanged()
 
     val filterIncompatible: Boolean
         get() = !prefs.getBoolean(PREF_KEY_SHOW_INCOMPATIBLE, PREF_DEFAULT_SHOW_INCOMPATIBLE)
@@ -132,6 +157,14 @@ class SettingsManager @Inject constructor(
         get() {
             val s = prefs.getString(PREF_KEY_APP_LIST_SORT_ORDER, PREF_DEFAULT_APP_LIST_SORT_ORDER)
             return getAppListSortOrder(s)
+        }
+    var myAppsSortOrder: AppListSortOrder
+        get() {
+            val s = prefs.getString(PREF_KEY_MY_APPS_SORT_ORDER, PREF_DEFAULT_MY_APPS_SORT_ORDER)
+            return getAppListSortOrder(s)
+        }
+        set(value) {
+            prefs.edit { putString(PREF_KEY_MY_APPS_SORT_ORDER, value.toSettings()) }
         }
 
     fun saveAppListFilter(sortOrder: AppListSortOrder, filterIncompatible: Boolean) {

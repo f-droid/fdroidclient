@@ -2,10 +2,12 @@ package org.fdroid.ui.apps
 
 import android.app.Application
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.core.app.ShareCompat
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
@@ -14,11 +16,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import mu.KotlinLogging
+import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
@@ -32,10 +38,9 @@ import org.fdroid.install.InstallState
 import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
-import org.fdroid.updates.UpdatesManager
 import org.fdroid.ui.utils.startActivitySafe
+import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
-import org.fdroid.R
 import javax.inject.Inject
 
 @HiltViewModel
@@ -82,7 +87,7 @@ class MyAppsViewModel @Inject constructor(
         }
 
     private val searchQuery = savedStateHandle.getMutableStateFlow("query", "")
-    private val sortOrder = savedStateHandle.getMutableStateFlow("sort", AppListSortOrder.NAME)
+    private val sortOrder = MutableStateFlow(settingsManager.myAppsSortOrder)
     val myAppsModel: StateFlow<MyAppsModel> by lazy(LazyThreadSafetyMode.NONE) {
         moleculeScope.launchMolecule(mode = ContextClock) {
             MyAppsPresenter(
@@ -110,6 +115,7 @@ class MyAppsViewModel @Inject constructor(
 
     override fun changeSortOrder(sort: AppListSortOrder) {
         sortOrder.value = sort
+        settingsManager.myAppsSortOrder = sort
     }
 
     override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {
@@ -134,26 +140,27 @@ class MyAppsViewModel @Inject constructor(
     override fun onAppIssueHintSeen() = onboardingManager.onAppIssueHintSeen()
 
     override fun exportInstalledApps() {
-        val apps = myAppsModel.value.installedApps ?: return
-        val context: Application = getApplication()
-        val res = context.resources
-        val stringBuilder = StringBuilder()
-        stringBuilder.append("packageName,versionCode,versionName\n")
-        for (app in apps) {
-            stringBuilder.append(app.packageName).append(',')
-                .append(app.installedVersionCode).append(',')
-                .append(app.installedVersionName).append('\n')
+        scope.launch {
+            val stringBuilder = StringBuilder().apply {
+                append("packageName,versionCode,versionName\n")
+                for (app in installedAppItems.first()) {
+                    append(app.packageName).append(',')
+                    append(app.installedVersionCode).append(',')
+                    append(app.installedVersionName).append('\n')
+                }
+            }
+            val title = application.resources.getString(R.string.send_installed_apps)
+            val intentBuilder = ShareCompat.IntentBuilder(application)
+                .setSubject(title)
+                .setChooserTitle(title)
+                .setText(stringBuilder.toString())
+                .setType("text/csv")
+            val chooserIntent = Intent.createChooser(intentBuilder.getIntent(), title).apply {
+                addFlags(FLAG_ACTIVITY_NEW_TASK)
+            }
+            withContext(Dispatchers.Main) {
+                application.startActivitySafe(chooserIntent)
+            }
         }
-        val title = res.getString(R.string.send_installed_apps)
-        val intentBuilder = ShareCompat.IntentBuilder(context)
-            .setSubject(title)
-            .setChooserTitle(title)
-            .setText(stringBuilder.toString())
-            .setType("text/csv")
-        val chooserIntent = Intent.createChooser(
-            intentBuilder.getIntent(), title
-        )
-        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivitySafe(chooserIntent)
     }
 }

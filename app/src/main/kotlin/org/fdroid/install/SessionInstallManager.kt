@@ -91,7 +91,7 @@ class SessionInstallManager @Inject constructor(
      */
     suspend fun requestPreapproval(
         app: AppMetadata,
-        icon: Bitmap?,
+        iconGetter: suspend () -> Bitmap?,
         isUpdate: Boolean,
         version: AppVersion,
         canRequestUserConfirmationNow: Boolean,
@@ -106,6 +106,7 @@ class SessionInstallManager @Inject constructor(
         } else if (SDK_INT >= 34) {
             log.info { "Requesting pre-approval for ${app.packageName}..." }
             try {
+                val icon = iconGetter()
                 preapproval(app, icon, canRequestUserConfirmationNow)
             } catch (e: Exception) {
                 log.error(e) { "Error requesting pre-approval for ${app.packageName}: " }
@@ -137,7 +138,7 @@ class SessionInstallManager @Inject constructor(
                     val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
                     val pendingIntent =
                         PendingIntent.getActivity(context, sessionId, intent, flags)
-                    // There should be no bugs on Android versions where this is supported
+                    // There should be no bugs on Android versions where this is supported,
                     // and we should be in the foreground right now,
                     // so fire up intent here and now.
                     if (canRequestUserConfirmationNow) {
@@ -219,7 +220,7 @@ class SessionInstallManager @Inject constructor(
                         versionName = state.versionName,
                         currentVersionName = state.currentVersionName,
                         lastUpdated = state.lastUpdated,
-                        iconDownloadRequest = state.iconDownloadRequest,
+                        iconModel = state.iconModel,
                     )
                     cont.resume(newState)
                 }
@@ -254,7 +255,7 @@ class SessionInstallManager @Inject constructor(
                             versionName = state.versionName,
                             currentVersionName = state.currentVersionName,
                             lastUpdated = state.lastUpdated,
-                            iconDownloadRequest = state.iconDownloadRequest,
+                            iconModel = state.iconModel,
                             result = PreApprovalResult.Error(msg),
                         )
                         cont.resume(newState)
@@ -312,14 +313,14 @@ class SessionInstallManager @Inject constructor(
                         versionName = state.versionName,
                         currentVersionName = state.currentVersionName,
                         lastUpdated = state.lastUpdated,
-                        iconDownloadRequest = state.iconDownloadRequest,
+                        iconModel = state.iconModel,
                         result = PreApprovalResult.Success(state.sessionId),
                     ) else InstallState.Installed(
                         name = state.name,
                         versionName = state.versionName,
                         currentVersionName = state.currentVersionName,
                         lastUpdated = state.lastUpdated,
-                        iconDownloadRequest = state.iconDownloadRequest,
+                        iconModel = state.iconModel,
                     )
                     cont.resume(newState)
                 }

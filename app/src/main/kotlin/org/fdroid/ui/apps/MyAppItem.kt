@@ -1,6 +1,7 @@
 package org.fdroid.ui.apps
 
 import org.fdroid.database.AppIssue
+import org.fdroid.download.DownloadRequest
 import org.fdroid.download.PackageName
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallStateWithInfo
@@ -18,7 +19,8 @@ data class InstallingAppItem(
 ) : MyAppItem() {
     override val name: String = installState.name
     override val lastUpdated: Long = installState.lastUpdated
-    override val iconModel: Any = PackageName(packageName, installState.iconDownloadRequest)
+    override val iconModel: Any =
+        PackageName(packageName, installState.iconModel as? DownloadRequest)
 }
 
 data class AppUpdateItem(

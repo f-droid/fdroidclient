@@ -14,11 +14,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.ColorLens
+import androidx.compose.material.icons.filled.Lan
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Screenshot
 import androidx.compose.material.icons.filled.SystemSecurityUpdate
 import androidx.compose.material.icons.filled.SystemSecurityUpdateWarning
 import androidx.compose.material.icons.filled.Translate
@@ -27,7 +28,6 @@ import androidx.compose.material.icons.filled.UpdateDisabled
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -59,18 +59,25 @@ import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Always
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.toAutoUpdateValue
+import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
@@ -88,12 +95,7 @@ fun Settings(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
+                    BackButton(onClick = onBackClicked)
                 },
                 title = {
                     Text(stringResource(R.string.menu_settings))
@@ -323,7 +325,51 @@ fun Settings(
                     key = "pref_category_network",
                     title = { Text(stringResource(R.string.pref_category_network)) },
                 )
+                listPreference(
+                    key = PREF_KEY_MIRROR_CHOOSER,
+                    defaultValue = PREF_DEFAULT_MIRROR_CHOOSER,
+                    title = {
+                        Text(stringResource(R.string.pref_mirror_chooser_title))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Lan,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = { strValue ->
+                        val strRes = strValue.toMirrorChooserValue().res
+                        Text(stringResource(strRes))
+                    },
+                    values = MirrorChooserValues.entries.map { it.name },
+                    valueToText = { value: String ->
+                        val strRes = value.toMirrorChooserValue().res
+                        AnnotatedString(res.getString(strRes))
+                    },
+                )
                 preferenceProxy(proxyState, showProxyError)
+                preferenceCategory(
+                    key = "pref_category_privacy",
+                    title = { Text(stringResource(R.string.privacy)) },
+                )
+                switchPreference(
+                    key = PREF_KEY_PREVENT_SCREENSHOTS,
+                    defaultValue = PREF_DEFAULT_PREVENT_SCREENSHOTS,
+                    title = {
+                        Text(stringResource(R.string.preventScreenshots_title))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Screenshot,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = {
+                        Text(text = stringResource(R.string.preventScreenshots_summary))
+                    },
+                )
                 item {
                     OutlinedButton(
                         onClick = { launcher.launch("${getLogName(context)}.txt") },

@@ -30,61 +30,59 @@ fun InstallingAppRow(
     isSelected: Boolean,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier) {
-        ListItem(
-            leadingContent = {
-                AsyncShimmerImage(
-                    model = app.iconModel,
-                    error = painterResource(R.drawable.ic_repo_app_default),
-                    contentDescription = null,
-                    modifier = Modifier.size(48.dp),
+    ListItem(
+        leadingContent = {
+            AsyncShimmerImage(
+                model = app.iconModel,
+                error = painterResource(R.drawable.ic_repo_app_default),
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+            )
+        },
+        headlineContent = {
+            Text(app.name)
+        },
+        supportingContent = {
+            val currentVersionName = app.installState.currentVersionName
+            if (currentVersionName == null) {
+                Text(app.installState.versionName)
+            } else {
+                Text("$currentVersionName → ${app.installState.versionName}")
+            }
+        },
+        trailingContent = {
+            if (app.installState is InstallState.Installed) {
+                Icon(
+                    imageVector = Icons.Default.CheckCircle,
+                    contentDescription = stringResource(R.string.app_installed),
+                    tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.padding(8.dp)
                 )
-            },
-            headlineContent = {
-                Text(app.name)
-            },
-            supportingContent = {
-                val currentVersionName = app.installState.currentVersionName
-                if (currentVersionName == null) {
-                    Text(app.installState.versionName)
+            } else if (app.installState is InstallState.Error) {
+                val desc = stringResource(R.string.notification_title_summary_install_error)
+                Icon(
+                    imageVector = Icons.Default.ErrorOutline,
+                    contentDescription = desc,
+                    tint = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(8.dp)
+                )
+            } else {
+                if (app.installState is InstallState.Downloading) {
+                    CircularProgressIndicator(progress = { app.installState.progress })
                 } else {
-                    Text("$currentVersionName → ${app.installState.versionName}")
+                    CircularProgressIndicator()
                 }
-            },
-            trailingContent = {
-                if (app.installState is InstallState.Installed) {
-                    Icon(
-                        imageVector = Icons.Default.CheckCircle,
-                        contentDescription = stringResource(R.string.app_installed),
-                        tint = MaterialTheme.colorScheme.secondary,
-                        modifier = Modifier.padding(8.dp)
-                    )
-                } else if (app.installState is InstallState.Error) {
-                    val desc = stringResource(R.string.notification_title_summary_install_error)
-                    Icon(
-                        imageVector = Icons.Default.ErrorOutline,
-                        contentDescription = desc,
-                        tint = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.padding(8.dp)
-                    )
-                } else {
-                    if (app.installState is InstallState.Downloading) {
-                        CircularProgressIndicator(progress = { app.installState.progress })
-                    } else {
-                        CircularProgressIndicator()
-                    }
-                }
-            },
-            colors = ListItemDefaults.colors(
-                containerColor = if (isSelected) {
-                    MaterialTheme.colorScheme.surfaceVariant
-                } else {
-                    Color.Transparent
-                }
-            ),
-            modifier = modifier,
-        )
-    }
+            }
+        },
+        colors = ListItemDefaults.colors(
+            containerColor = if (isSelected) {
+                MaterialTheme.colorScheme.surfaceVariant
+            } else {
+                Color.Transparent
+            }
+        ),
+        modifier = modifier,
+    )
 }
 
 @Preview
@@ -97,7 +95,7 @@ private fun Preview() {
             versionName = "1.0.4",
             currentVersionName = null,
             lastUpdated = 23,
-            iconDownloadRequest = null,
+            iconModel = null,
             downloadedBytes = 25,
             totalBytes = 100,
             startMillis = System.currentTimeMillis(),
@@ -110,7 +108,7 @@ private fun Preview() {
             versionName = "2.0.1",
             currentVersionName = null,
             lastUpdated = 13,
-            iconDownloadRequest = null,
+            iconModel = null,
         )
     )
     val installingApp3 = InstallingAppItem(
@@ -121,7 +119,7 @@ private fun Preview() {
             versionName = "0.0.4",
             currentVersionName = null,
             lastUpdated = 13,
-            iconDownloadRequest = null,
+            iconModel = null,
         )
     )
     FDroidContent {

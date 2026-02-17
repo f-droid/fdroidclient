@@ -9,15 +9,14 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,14 +38,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 
@@ -56,6 +58,7 @@ fun MyApps(
     myAppsInfo: MyAppsInfo,
     currentPackageName: String?,
     onAppItemClick: (String) -> Unit,
+    onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val myAppsModel = myAppsInfo.model
@@ -96,19 +99,17 @@ fun MyApps(
                     Text(stringResource(R.string.menu_apps_my))
                 },
                 actions = {
-                    IconButton(onClick = { searchActive = true }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = stringResource(R.string.menu_search),
-                        )
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = stringResource(R.string.menu_search),
+                        onClick = { searchActive = true },
+                    )
                     var sortByMenuExpanded by remember { mutableStateOf(false) }
-                    IconButton(onClick = { sortByMenuExpanded = !sortByMenuExpanded }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.Sort,
-                            contentDescription = stringResource(R.string.more),
-                        )
-                    }
+                    TopAppBarButton(
+                        imageVector = Icons.AutoMirrored.Default.Sort,
+                        contentDescription = stringResource(R.string.sort_search),
+                        onClick = { sortByMenuExpanded = !sortByMenuExpanded },
+                    )
                     DropdownMenu(
                         expanded = sortByMenuExpanded,
                         onDismissRequest = { sortByMenuExpanded = false },
@@ -146,13 +147,18 @@ fun MyApps(
                             },
                         )
                     }
-                    if (myAppsModel.installedApps != null) {
-                        IconButton(onClick = myAppsInfo.actions::exportInstalledApps) {
-                            Icon(
-                                imageVector = Icons.Filled.Share,
-                                contentDescription = stringResource(R.string.menu_share),
-                            )
-                        }
+                    var menuExpanded by remember { mutableStateOf(false) }
+                    TopAppBarButton(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = stringResource(R.string.more),
+                        onClick = { menuExpanded = !menuExpanded },
+                    )
+                    MyAppsOverFlowMenu(
+                        menuExpanded = menuExpanded,
+                        onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
+                        onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
+                    ) {
+                        menuExpanded = false
                     }
                 },
                 scrollBehavior = scrollBehavior,
@@ -171,7 +177,8 @@ fun MyApps(
                 text = if (searchActive) {
                     stringResource(R.string.search_my_apps_no_results)
                 } else {
-                    stringResource(R.string.my_apps_empty)
+                    val appName = stringResource(R.string.app_name)
+                    stringResource(R.string.my_apps_empty, appName)
                 },
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -207,6 +214,7 @@ fun MyAppsLoadingPreview() {
             myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }
@@ -220,6 +228,7 @@ fun MyAppsPreview() {
             myAppsInfo = getMyAppsInfo(myAppsModel),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }
@@ -241,6 +250,7 @@ fun MyAppsEmptyPreview() {
             myAppsInfo = getMyAppsInfo(model),
             currentPackageName = null,
             onAppItemClick = {},
+            onNav = {},
         )
     }
 }

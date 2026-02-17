@@ -16,6 +16,7 @@ plugins {
     alias libs.plugins.jetbrains.dokka apply false
     alias libs.plugins.jlleitschuh.ktlint apply false
     alias libs.plugins.vanniktech.maven.publish apply false
+    alias libs.plugins.screenshot apply false
 }
 allprojects {
     repositories {

@@ -3,7 +3,6 @@ package org.fdroid.install
 import android.app.PendingIntent
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
-import org.fdroid.download.DownloadRequest
 
 sealed class InstallState(val showProgress: Boolean) {
     data object Unknown : InstallState(false)
@@ -18,7 +17,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val currentVersionName: String? = null,
         override val lastUpdated: Long,
     ) : InstallStateWithInfo(true) {
-        override val iconDownloadRequest: DownloadRequest? = null
+        override val iconModel: Any? = null
     }
 
     data class Starting(
@@ -26,7 +25,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String? = null,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest? = null,
+        override val iconModel: Any? = null,
     ) : InstallStateWithInfo(true)
 
     data class PreApprovalConfirmationNeeded(
@@ -41,7 +40,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String = state.versionName
         override val currentVersionName: String? = state.currentVersionName
         override val lastUpdated: Long = state.lastUpdated
-        override val iconDownloadRequest: DownloadRequest? = state.iconDownloadRequest
+        override val iconModel: Any? = state.iconModel
     }
 
     data class PreApproved(
@@ -49,7 +48,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
         val result: PreApprovalResult,
     ) : InstallStateWithInfo(true)
 
@@ -58,7 +57,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
         val downloadedBytes: Long,
         val totalBytes: Long,
         val startMillis: Long,
@@ -71,7 +70,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
     ) : InstallStateWithInfo(true)
 
     data class UserConfirmationNeeded(
@@ -79,7 +78,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
         override val sessionId: Int,
         override val intent: PendingIntent,
         override val creationTimeMillis: Long,
@@ -95,7 +94,7 @@ sealed class InstallState(val showProgress: Boolean) {
             versionName = state.versionName,
             currentVersionName = state.currentVersionName,
             lastUpdated = state.lastUpdated,
-            iconDownloadRequest = state.iconDownloadRequest,
+            iconModel = state.iconModel,
             sessionId = sessionId,
             intent = intent,
             creationTimeMillis = System.currentTimeMillis(),
@@ -108,7 +107,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
     ) : InstallStateWithInfo(false)
 
     data object UserAborted : InstallState(false)
@@ -119,7 +118,7 @@ sealed class InstallState(val showProgress: Boolean) {
         override val versionName: String,
         override val currentVersionName: String?,
         override val lastUpdated: Long,
-        override val iconDownloadRequest: DownloadRequest?,
+        override val iconModel: Any?,
     ) : InstallStateWithInfo(false) {
         constructor(msg: String?, s: InstallStateWithInfo) : this(
             msg = msg,
@@ -127,7 +126,7 @@ sealed class InstallState(val showProgress: Boolean) {
             versionName = s.versionName,
             currentVersionName = s.currentVersionName,
             lastUpdated = s.lastUpdated,
-            iconDownloadRequest = s.iconDownloadRequest,
+            iconModel = s.iconModel,
         )
     }
 
@@ -139,7 +138,7 @@ sealed class InstallStateWithInfo(showProgress: Boolean) : InstallState(showProg
     abstract val versionName: String
     abstract val currentVersionName: String?
     abstract val lastUpdated: Long
-    abstract val iconDownloadRequest: DownloadRequest?
+    abstract val iconModel: Any?
 }
 
 sealed class InstallConfirmationState() : InstallStateWithInfo(true) {

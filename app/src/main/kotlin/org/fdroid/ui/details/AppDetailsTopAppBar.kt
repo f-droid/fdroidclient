@@ -1,12 +1,9 @@
 package org.fdroid.ui.details
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -22,6 +19,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import org.fdroid.R
+import org.fdroid.ui.utils.BackButton
+import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.startActivitySafe
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,30 +41,23 @@ fun AppDetailsTopAppBar(
             }
         },
         navigationIcon = {
-            if (onBackNav != null) IconButton(onClick = onBackNav) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.back),
-                )
-            }
+            if (onBackNav != null) BackButton(onClick = onBackNav)
         },
         actions = {
             val context = LocalContext.current
             item.actions.shareIntent?.let { shareIntent ->
-                IconButton(onClick = { context.startActivitySafe(shareIntent) }) {
-                    Icon(
-                        imageVector = Icons.Filled.Share,
-                        contentDescription = stringResource(R.string.menu_share),
-                    )
-                }
-            }
-            var expanded by remember { mutableStateOf(false) }
-            IconButton(onClick = { expanded = !expanded }) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = stringResource(R.string.more),
+                TopAppBarButton(
+                    imageVector = Icons.Filled.Share,
+                    contentDescription = stringResource(R.string.menu_share),
+                    onClick = { context.startActivitySafe(shareIntent) },
                 )
             }
+            var expanded by remember { mutableStateOf(false) }
+            TopAppBarButton(
+                imageVector = Icons.Filled.MoreVert,
+                contentDescription = stringResource(R.string.more),
+                onClick = { expanded = !expanded },
+            )
             AppDetailsMenu(item, expanded) { expanded = false }
         },
         scrollBehavior = scrollBehavior,

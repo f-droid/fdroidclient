@@ -52,6 +52,9 @@ sealed interface NavigationKey : NavKey {
     @Serializable
     data object About : NavigationKey
 
+    @Serializable
+    data object InstallationHistory : NavigationKey
+
 }
 
 sealed interface MainNavKey : NavKey {
