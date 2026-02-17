@@ -3,6 +3,7 @@ package org.fdroid.ui.categories
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,12 +27,12 @@ fun CategoryList(
     modifier: Modifier = Modifier
 ) {
     if (categoryMap != null && categoryMap.isNotEmpty()) Column(
-        modifier = modifier
+        modifier = modifier.padding(top = 20.dp)
     ) {
         Text(
             text = stringResource(R.string.main_menu__categories),
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = 8.dp, start = 4.dp),
+            modifier = Modifier.padding(bottom = 8.dp, start = 16.dp, end = 16.dp),
         )
         // we'll sort the groups here, because before we didn't have the context to get names
         val res = LocalResources.current
@@ -43,10 +44,15 @@ fun CategoryList(
             Text(
                 text = stringResource(group.name),
                 style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(4.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp, 2.dp),
             )
             FlowRow(
                 horizontalArrangement = Arrangement.Start,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .padding(24.dp, 8.dp, 4.dp, 20.dp)
             ) {
                 categories.forEach { category ->
                     CategoryChip(
