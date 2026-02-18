@@ -30,27 +30,37 @@ fun DiscoverPresenter(
     val mostDownloadedApps = mostDownloadedAppsFlow.collectAsState().value
     val categories = categoriesFlow.collectAsState(null).value
 
-    // We may not have any new apps, but there should always be recently updated apps,
-    // because those don't have a freshness constraint.
-    // So if we don't have those, we are still loading, have no enabled repo, or this is first start
-    return if (recentlyUpdatedApps.isNullOrEmpty()) {
-        val repositories = repositoriesFlow.collectAsState(null).value
-        if (repositories?.all { !it.enabled } == true) {
-            NoEnabledReposDiscoverModel
-        } else if (isFirstStart) {
-            FirstStartDiscoverModel(networkState, repoUpdateStateFlow.collectAsState().value)
-        } else {
-            LoadingDiscoverModel
-        }
-    } else {
+    return if (!mostDownloadedApps.isNullOrEmpty() ||
+        !newApps.isNullOrEmpty() ||
+        !categories.isNullOrEmpty() ||
+        !recentlyUpdatedApps.isNullOrEmpty()
+    ) {
+        // As soon as we loaded a list,
+        // we start showing it on screen and update when other lists load.
+        // This is to speed up the time to first content on initial screen.
         LoadedDiscoverModel(
             newApps = newApps ?: emptyList(),
-            recentlyUpdatedApps = recentlyUpdatedApps,
+            recentlyUpdatedApps = recentlyUpdatedApps ?: emptyList(),
             mostDownloadedApps = mostDownloadedApps,
             categories = categories?.groupBy { it.group },
             searchTextFieldState = searchTextFieldState,
             hasRepoIssues = hasRepoIssuesFlow.collectAsState(false).value,
         )
+    } else {
+        // everything is still null or empty, so figure out why
+        val repositories = repositoriesFlow.collectAsState(null).value
+        if (repositories?.all { !it.enabled } == true) {
+            NoEnabledReposDiscoverModel
+        } else if (isFirstStart || recentlyUpdatedApps?.size == 0) {
+            // There should always be recently updated apps,
+            // because those don't have a freshness constraint.
+            // In case the DB got cleared (e.g. though panic action or failed migration),
+            // the isFirstStart condition would be false,
+            // but we still want to go down first start path to update repos again.
+            FirstStartDiscoverModel(networkState, repoUpdateStateFlow.collectAsState().value)
+        } else {
+            LoadingDiscoverModel
+        }
     }
 }
 
