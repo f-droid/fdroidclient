@@ -1,3 +1,7 @@
+### 1.23.2 (2025-02-18)
+
+* Show banner for https://keepandroidopen.org
+
 ### 1.23.1 (2025-07-11)
 
 * Disable edge-to-edge for Android 10 and below since it caused issues there
