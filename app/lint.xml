@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <!-- Our translations are crowd-sourced -->
+    <!-- Our translations are managed in weblate which handles these things -->
     <issue id="MissingTranslation" severity="ignore" />
-    <issue id="ExtraTranslation" severity="warning" />
+    <issue id="UnusedQuantity" severity="ignore" />
+    <issue id="UnusedTranslation" severity="informational" />
+    <issue id="ExtraTranslation" severity="ignore" />
 
     <!-- Weblate doesn't handle these yet: https://github.com/WeblateOrg/weblate/issues/7520 -->
     <issue id="MissingQuantity" severity="error">
         <ignore path="src/main/res/values-cs" />
         <ignore path="src/main/res/values-lt" />
         <ignore path="src/main/res/values-sk" />
+    </issue>
+
+    <!-- We keep strings for all flavors in a single file, so tune this down  -->
+    <issue id="UnusedResources" severity="informational">
+        <ignore path="src/main/res/values/strings.xml" />
     </issue>
 </lint>

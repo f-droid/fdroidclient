@@ -76,6 +76,7 @@ android {
     }
     lint {
         lintConfig = file("lint.xml")
+        textReport = true
     }
     @Suppress("UnstableApiUsage")
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
