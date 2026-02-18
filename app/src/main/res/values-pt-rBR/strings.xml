@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">A versão nova foi assinada com uma chave diferente da antiga. Para instalar a versão nova, você precisa desinstalar a antiga primeiro. (Observa que a desinstalação apaga todos os dados internos armazenados pelo app)</string>
     <string name="installIncompatible">O app é incompatível com seu dispositivo. Quer tentar instalá-lo mesmo assim?</string>
@@ -625,4 +625,6 @@
     <string name="pref_export_log_title">Registros de depuração</string>
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat, que é útil para a depuração. Tenha cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_error">Erro ao salvar o logcat</string>
+    <string name="keepandroidopen">O F-Droid está sob ameaça. O Google está mudando a forma como você instala aplicativos no seu dispositivo. Precisamos da sua ajuda.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/pt-BR/</string>
 </resources>

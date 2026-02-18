@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Versioni i ri është nënshkruar me një tjetër kyç nga ai i vjetri. Për të instaluar versionin e ri, së pari duhet të çinstalohet versioni i vjetër. Ju lutemi, bëjeni dhe riprovoni. (Vini re që çinstalimi do të fshijë çfarëdo të dhëne të brendshme të ruajtur nga aplikacioni)</string>
@@ -609,4 +609,6 @@
     <string name="pref_export_log_title">Regjistër diagnostikimesh</string>
     <string name="pref_export_log_summary">Sjell krijimin e një kartele me ç’jepet nga mjeti “logcat”, e dobishme për diagnostikime. Kujdes, mund të përmbajë hollësi me spec!</string>
     <string name="export_log_success">Ç’u prodhua nga “logcat” u ruajt me sukses</string>
+    <string name="keepandroidopen">F-Droid është i kërcënuar. Google po ndryshon mënyrën se si instaloni aplikacione në pajisjen tuaj. Na duhet ndihma juaj.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/</string>
 </resources>

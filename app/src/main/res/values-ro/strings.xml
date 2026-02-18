@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="version">Versiune</string>
     <string name="delete">Ștergeți</string>
@@ -634,4 +634,6 @@
     <string name="export_log_error">Eroare la salvarea jurnalului</string>
     <string name="pref_export_log_summary">Creează un fișier jurnal util pentru depanarea. Atenție, ar putea conține informații sensibile!</string>
     <string name="pref_export_log_title">Jurnal de depanare</string>
+    <string name="keepandroidopen">F-Droid este în pericol. Google schimbă modul în care instalați aplicații pe dispozitiv. Avem nevoie de ajutorul dvs.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/</string>
 </resources>

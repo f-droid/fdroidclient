@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">Nová verze je podepsána jiným klíčem, než ta předchozí. Před instalací nové verze je nutné tu předchozí odinstalovat. Poté zopakujte instalaci. (Nezapomeňte, že při odinstalování aplikace budou všechna její data v interním úložišti smazána.)</string>
     <string name="installIncompatible">Aplikace není kompatibilní s vaším zařízením – chcete se přesto pokusit o instalaci\?</string>
@@ -623,4 +623,6 @@
     <string name="export_log_error">Chyba při ukládání protokolu</string>
     <string name="pref_export_log_summary">Vytvoří soubor s výstupem protokolu. Užitečné pro ladění. Opatrně, může obsahovat citlivé informace!</string>
     <string name="pref_export_log_title">Ladicí protokol</string>
+    <string name="keepandroidopen">F-Droid je v ohrožení. Google mění způsob, jakým na svá zařízení instalujete aplikace. Potřebujeme vaši pomoc.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/cs/</string>
 </resources>

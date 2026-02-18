@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name_full">F-Droid</string>
     <string name="version">Útgáfa</string>
@@ -607,4 +607,6 @@
     <string name="expand">Fella út</string>
     <string name="collapse">Fella saman</string>
     <string name="pref_export_log_title">Atvikaskráning</string>
+    <string name="keepandroidopen">F-Droid er núna ógnað. Google ætlar að breyta því hvernig þú mátt setja upp forrit á tækjunum þínum. Við þörfnumst hjálpar frá þér.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/</string>
 </resources>

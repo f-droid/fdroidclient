@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">Az új verzió a régitől eltérő kulccsal van aláírva. Az új verzió telepítéséhez először el kell távolítani a régit. Tegye ezt meg, és próbálja újra. (Figyelem: az eltávolítás törli az alkalmazás minden tárolt adatát.)</string>
     <string name="installIncompatible">Az alkalmazás nem kompatibilis ezzel az eszközzel, ennek ellenére is telepíti?</string>
@@ -613,4 +613,6 @@
     <string name="export_log_error">Hiba a logcat mentésekor</string>
     <string name="pref_export_log_title">Hibakeresési napló</string>
     <string name="pref_export_log_summary">Egy fájlt hoz létre a logcat kimenetével, amely hibakereséshez hasznos. Legyen óvatos, érzékeny információkat tartalmazhat!</string>
+    <string name="keepandroidopen">Az F-Droid veszélyben van. A Google megváltoztatja az alkalmazások telepítésének módját az eszközökön. Szükségünk van a segítségedre.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/</string>
 </resources>

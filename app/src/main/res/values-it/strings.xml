@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">La nuova versione è firmata con una chiave differente rispetto alla vecchia. Per
         installare la nuova versione occorre prima disinstallare quella precedente. Riprovare dopo averla disinstallata
@@ -649,4 +649,6 @@
     <string name="repo_details_info_text">Un repository è una fonte di app.\n\nI mirror vengono usati per distribuire il carico di scaricamento delle app tra più server. I mirror più vicini a te potrebbero essere più veloci.\n\nI mirror ufficiali sono definiti dal proprietario del repository. Non possono essere eliminati, solo disattivati. Puoi definire mirror personalizzati aggiungendoli proprio come un repository normale.</string>
     <string name="repo_confirm_delete_mirror_body">Puoi continuare a installare app da questo repository usando gli altri mirror.</string>
     <string name="collapse">Riduci</string>
+    <string name="keepandroidopen">F-Droid è in pericolo. Google sta cambiando il modo in cui installi le app sul tuo dispositivo. Abbiamo bisogno del tuo aiuto.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/it/</string>
 </resources>

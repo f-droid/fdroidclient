@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="installIncompatible">کاره با دستگاهتان ناسازگار است. به هر حال نصب شود؟</string>
     <string name="delete">حذف</string>
@@ -611,4 +611,6 @@
     <string name="export_log_success">لاگ‌کت با موفّقیت ذخیره شد</string>
     <string name="export_log_error">خطا در ذخیره کردن لاگ‌کت</string>
     <string name="pref_export_log_summary">پرونده‌ای با خروجی لاگ‌کت می‌سازد که برای اشکال‌زدایی مفید است. مراقب باشید. ممکن است دارای اطّلاعات حسّاس باشد!</string>
+    <string name="keepandroidopen">اف‌دروید در خطر است. گوگل دارد شیوهٔ نصب کاره‌ها را تغییر می‌دهد. نیازمند یاریتانیم.</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org</string>
 </resources>

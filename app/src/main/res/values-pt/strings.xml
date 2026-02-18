@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name_full">F-Droid</string>
     <string name="updates">Atualizações</string>
@@ -633,4 +633,5 @@
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat útil para depuração. Cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_success">Logcat salvo com sucesso</string>
     <string name="export_log_error">Erro ao salvar logcat</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/pt-BR/</string>
 </resources>

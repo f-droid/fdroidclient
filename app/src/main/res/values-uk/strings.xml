@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">Нову версію підписано іншим ключем, ніж поточну. Щоб установити нову версію, спочатку потрібно видалити поточну. Будь ласка, спробуйте ще раз. (Зауважте, що під час видалення буде стерто всі внутрішні дані в застосунку)</string>
     <string name="version">Версія</string>
@@ -634,4 +634,5 @@
     <string name="pref_export_log_summary">Створює файл з виводом logcat, корисний для налагодження. Обережно, може містити конфіденційну інформацію!</string>
     <string name="export_log_success">Logcat збережено</string>
     <string name="export_log_error">Помилка збереження logcat</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/uk/</string>
 </resources>

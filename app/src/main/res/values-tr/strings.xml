@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="SignatureMismatch">Yeni sürüm eskisinden farklı bir anahtarla imzalanmış. Yeni sürümü yüklemek için önce eskisinin kaldırılması gerekiyor. Lütfen bunu yapın ve tekrar deneyin. (Kaldırma işleminin uygulamanın tüm verilerini sileceğini unutmayın)</string>
     <string name="installIncompatible">Uygulama aygıtınızla uyumlu değil, yine de yüklensin mi\?</string>
@@ -628,4 +628,5 @@
     <string name="export_log_error">Logcat kaydedilirken hata oluştu</string>
     <string name="pref_export_log_summary">Hata ayıklamak için kullanılabilecek logcat çıktısı içeren bir dosya yaratır. Dikkatli olun, hassas bilgi içerebilir!</string>
     <string name="repo_basic_auth_title">Temel yetkilendirme</string>
+    <string name="keepandroidopenUrl">https://keepandroidopen.org/tr/</string>
 </resources>
