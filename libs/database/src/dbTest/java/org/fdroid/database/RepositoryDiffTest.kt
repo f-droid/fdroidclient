@@ -1,6 +1,7 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
 import org.fdroid.database.TestUtils.assertRepoEquals
