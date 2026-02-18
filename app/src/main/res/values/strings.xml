@@ -8,6 +8,53 @@
     <!-- The app name of nightly builds, shortened to fit reduced space for app names -->
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
 
+    <string name="menu_about">About</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_apps_my">My apps</string>
+
+    <string name="first_start_loading">Fetching app repositories…</string>
+
+    <string name="my_apps_empty">Only apps installed by %1$s are shown here</string>
+    <string name="my_apps_header_apps_with_issue">Apps with issues</string>
+    <string name="my_apps_ignore_dialog_title">Hide issue</string>
+    <string name="my_apps_ignore_dialog_text">The issue with this version of \"%1$s\" will get ignored</string>
+    <string name="my_apps_ignore_dialog_button">Hide</string>
+    <string name="my_apps_export_installed_apps">Export app list</string>
+
+    <string name="app_list_new">New apps</string>
+    <string name="app_list_recently_updated">Recently updated</string>
+    <string name="app_list_most_downloaded">Most downloaded</string>
+    <string name="app_list_all">All apps</string>
+    <string name="app_list_author">Apps by %s</string>
+
+    <string name="search_placeholder">Search…</string>
+    <string name="search_no_results">No apps found\n\nTry to use less search terms or add more repositories</string>
+
+    <string name="category_group_productivity">Productivity</string>
+    <string name="category_group_tools">Tools</string>
+    <string name="category_group_wallets">Finances &amp; Wallets</string>
+    <string name="category_group_media">Entertainment &amp; Media</string>
+    <string name="category_group_communication">Communication</string>
+    <string name="category_group_device">Device</string>
+    <string name="category_group_network">Network</string>
+    <string name="category_group_storage">Files &amp; Storage</string>
+    <string name="category_group_interests">Interests</string>
+    <string name="category_group_misc">Miscellaneous</string>
+
+    <!-- Used in app details page to show who is the author of the app -->
+    <string name="author_by">By %1$s</string>
+    <string name="last_updated">Last updated: %1$s</string>
+    <!-- The placeholder in round brackets will be replaced with the size of the app -->
+    <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Preparing installation…</string>
+    <string name="whats_new_title">What\'s new</string>
+    <string name="donate_title">Donate</string>
+    <string name="anti_features_title">This app has anti-features</string>
+    <string name="developer_contact">Developer contact</string>
+    <string name="technical_info">Technical information</string>
+    <string name="package_name">Package name:</string>
+    <string name="installed_version">Installed version:</string>
+
     <string name="SignatureMismatch">The new version is signed with a different key to the old one. To install the new
         version, the old one must be uninstalled first. Please do this and try again. (Note that uninstalling will erase
         any internal data stored by the app)
