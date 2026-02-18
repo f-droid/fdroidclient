@@ -29,6 +29,7 @@ import org.fdroid.ui.navigation.IntentRouter
 import org.fdroid.ui.navigation.MainNavKey
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.Navigator
+import org.fdroid.ui.navigation.extraNavigationEntries
 import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
@@ -115,6 +116,8 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
                 },
             )
         }
+        // flavor specific navigation destinations go here
+        extraNavigationEntries(navigator)
     }
     val showBottomBar = !isBigScreen && navigator.last is MainNavKey
     val viewModel = hiltViewModel<MainViewModel>()

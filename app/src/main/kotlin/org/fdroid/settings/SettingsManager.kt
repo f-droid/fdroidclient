@@ -2,6 +2,7 @@ package org.fdroid.settings
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import androidx.annotation.UiThread
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -59,7 +60,7 @@ class SettingsManager @Inject constructor(
 
     private val log = KotlinLogging.logger {}
 
-    private val prefs by lazy {
+    val prefs: SharedPreferences by lazy {
         context.getSharedPreferences("${context.packageName}_preferences", MODE_PRIVATE)
     }
 

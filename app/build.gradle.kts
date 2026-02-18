@@ -144,6 +144,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    "fullImplementation"(libs.guardianproject.panic)
+
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))
     testImplementation(libs.mockk)
