@@ -50,7 +50,7 @@ class RepoUpdateManager @VisibleForTesting internal constructor(
     private val repoUpdateListener: RepoUpdateListener =
         RepoUpdateListener(context, notificationManager),
     private val repoUpdater: RepoUpdater = RepoUpdater(
-        tempDir = context.cacheDir,
+        tempDir = context.cacheDir, // FIXME this causes disk I/O
         db = db,
         downloaderFactory = downloaderFactory,
         compatibilityChecker = compatibilityChecker,
