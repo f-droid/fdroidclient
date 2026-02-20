@@ -1,5 +1,6 @@
 package org.fdroid.ui.discover
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +37,7 @@ fun DiscoverContent(
                 .padding(horizontal = 16.dp)
                 .align(Alignment.CenterHorizontally),
         )
-        if (discoverModel.newApps.isNotEmpty()) {
+        AnimatedVisibility(discoverModel.newApps.isNotEmpty()) {
             val listNew = AppListType.New(stringResource(R.string.app_list_new))
             AppCarousel(
                 title = listNew.title,
@@ -45,20 +46,22 @@ fun DiscoverContent(
                 onAppTap = onAppTap,
             )
         }
-        val listRecentlyUpdated = AppListType.RecentlyUpdated(
-            stringResource(R.string.app_list_recently_updated),
-        )
-        AppCarousel(
-            title = listRecentlyUpdated.title,
-            apps = discoverModel.recentlyUpdatedApps,
-            onTitleTap = { onListTap(listRecentlyUpdated) },
-            onAppTap = onAppTap,
-        )
-        if (!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
+        AnimatedVisibility(!discoverModel.recentlyUpdatedApps.isEmpty()) {
+            val listRecentlyUpdated = AppListType.RecentlyUpdated(
+                stringResource(R.string.app_list_recently_updated),
+            )
+            AppCarousel(
+                title = listRecentlyUpdated.title,
+                apps = discoverModel.recentlyUpdatedApps,
+                onTitleTap = { onListTap(listRecentlyUpdated) },
+                onAppTap = onAppTap,
+            )
+        }
+        AnimatedVisibility(!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
             val listMostDownloaded = AppListType.MostDownloaded(
                 stringResource(R.string.app_list_most_downloaded),
             )
-            AppCarousel(
+            if (discoverModel.mostDownloadedApps != null) AppCarousel(
                 title = listMostDownloaded.title,
                 apps = discoverModel.mostDownloadedApps,
                 onTitleTap = { onListTap(listMostDownloaded) },

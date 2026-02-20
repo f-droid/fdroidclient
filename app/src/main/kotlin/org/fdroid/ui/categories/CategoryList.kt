@@ -1,5 +1,6 @@
 package org.fdroid.ui.categories
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,41 +25,43 @@ fun CategoryList(
     onNav: (NavKey) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (categoryMap != null && categoryMap.isNotEmpty()) Column(
-        modifier = modifier.padding(top = 20.dp)
-    ) {
-        Text(
-            text = stringResource(R.string.main_menu__categories),
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = 8.dp, start = 16.dp, end = 16.dp),
-        )
-        // we'll sort the groups here, because before we didn't have the context to get names
-        val res = LocalResources.current
-        val sortedMap = remember(categoryMap) {
-            val comparator = compareBy<CategoryGroup> { res.getString(it.name) }
-            categoryMap.toSortedMap(comparator)
-        }
-        sortedMap.forEach { (group, categories) ->
+    AnimatedVisibility(!categoryMap.isNullOrEmpty()) {
+        Column(
+            modifier = modifier.padding(top = 20.dp)
+        ) {
             Text(
-                text = stringResource(group.name),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp, 2.dp),
+                text = stringResource(R.string.main_menu__categories),
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp, start = 16.dp, end = 16.dp),
             )
-            ChipFlowRow(
-                modifier = Modifier
-                    .padding(start = 16.dp, bottom = 12.dp)
-            ) {
-                categories.forEach { category ->
-                    CategoryChip(
-                        categoryItem = category,
-                        onClick = {
-                            val type = AppListType.Category(category.name, category.id)
-                            val navKey = NavigationKey.AppList(type)
-                            onNav(navKey)
-                        },
-                    )
+            // we'll sort the groups here, because before we didn't have the context to get names
+            val res = LocalResources.current
+            val sortedMap = remember(categoryMap) {
+                val comparator = compareBy<CategoryGroup> { res.getString(it.name) }
+                categoryMap?.toSortedMap(comparator)
+            }
+            sortedMap?.forEach { (group, categories) ->
+                Text(
+                    text = stringResource(group.name),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp, 2.dp),
+                )
+                ChipFlowRow(
+                    modifier = Modifier
+                        .padding(start = 16.dp, bottom = 12.dp)
+                ) {
+                    categories.forEach { category ->
+                        CategoryChip(
+                            categoryItem = category,
+                            onClick = {
+                                val type = AppListType.Category(category.name, category.id)
+                                val navKey = NavigationKey.AppList(type)
+                                onNav(navKey)
+                            },
+                        )
+                    }
                 }
             }
         }
