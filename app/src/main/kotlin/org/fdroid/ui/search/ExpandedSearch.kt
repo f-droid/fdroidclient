@@ -29,7 +29,12 @@ fun ExpandedSearch(
 ) {
     Scaffold(
         topBar = {
-            TopSearchBar(textFieldState, onSearch, onSearchCleared, onBack)
+            TopSearchBar(
+                searchFieldState = textFieldState,
+                onSearch = onSearch,
+                onSearchCleared = onSearchCleared,
+                onHideSearch = onBack,
+            )
         }
     ) { paddingValues ->
         HorizontalDivider(

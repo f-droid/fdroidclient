@@ -106,10 +106,19 @@ fun AppList(
                 TopSearchBar(
                     onSearch = appListInfo.actions::onSearch,
                     onSearchCleared = onSearchCleared,
-                ) {
-                    searchActive = false
-                    onSearchCleared()
-                }
+                    onHideSearch = {
+                        searchActive = false
+                        onSearchCleared()
+                    },
+                    actions = {
+                        FilterButton(
+                            showFilterBadge =
+                            appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
+                                appListInfo.model.filteredCategoryIds.isNotEmpty(),
+                            toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
+                        )
+                    }
+                )
             } else TopAppBar(
                 title = {
                     Text(
@@ -129,34 +138,15 @@ fun AppList(
                         contentDescription = stringResource(R.string.menu_search),
                         onClick = { searchActive = true },
                     )
-                    TooltipBox(
-                        positionProvider =
-                        TooltipDefaults.rememberTooltipPositionProvider(Below),
-                        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
-                        state = rememberTooltipState(),
-                    ) {
-                        IconButton(
-                            onClick = { appListInfo.actions.toggleFilterVisibility() },
-                            modifier = Modifier.hintAnchor(
-                                state = hintAnchor,
-                                shape = RoundedCornerShape(16.dp),
-                            )
-                        ) {
-                            val showFilterBadge =
-                                appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
-                                    appListInfo.model.filteredCategoryIds.isNotEmpty()
-                            BadgedBox(badge = {
-                                if (showFilterBadge) Badge(
-                                    containerColor = MaterialTheme.colorScheme.secondary,
-                                )
-                            }) {
-                                Icon(
-                                    imageVector = Icons.Filled.FilterList,
-                                    contentDescription = stringResource(R.string.filter),
-                                )
-                            }
-                        }
-                    }
+                    FilterButton(
+                        showFilterBadge = appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
+                            appListInfo.model.filteredCategoryIds.isNotEmpty(),
+                        toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
+                        modifier = Modifier.hintAnchor(
+                            state = hintAnchor,
+                            shape = RoundedCornerShape(16.dp),
+                        )
+                    )
                 },
                 scrollBehavior = scrollBehavior,
             )
@@ -224,6 +214,36 @@ fun AppList(
                 ) {
                     AppsFilter(info = appListInfo)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun FilterButton(
+    showFilterBadge: Boolean,
+    toggleFilterVisibility: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    TooltipBox(
+        positionProvider =
+        TooltipDefaults.rememberTooltipPositionProvider(Below),
+        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
+        state = rememberTooltipState(),
+    ) {
+        IconButton(
+            onClick = toggleFilterVisibility,
+            modifier = modifier,
+        ) {
+            BadgedBox(badge = {
+                if (showFilterBadge) Badge(
+                    containerColor = MaterialTheme.colorScheme.secondary,
+                )
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.FilterList,
+                    contentDescription = stringResource(R.string.filter),
+                )
             }
         }
     }
