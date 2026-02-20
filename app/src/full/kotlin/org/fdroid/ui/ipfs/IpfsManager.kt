@@ -29,9 +29,9 @@ class IpfsManager @Inject constructor(
     private val _preferences = MutableStateFlow(loadPreferences())
     val preferences = _preferences.asStateFlow()
 
-    private var enabled: Boolean
+    var enabled: Boolean
         get() = prefs.getBoolean(PREF_USE_IPFS_GATEWAYS, false)
-        set(value) {
+        private set(value) {
             prefs.edit {
                 putBoolean(PREF_USE_IPFS_GATEWAYS, value)
             }
@@ -51,6 +51,14 @@ class IpfsManager @Inject constructor(
         set(value) {
             prefs.edit {
                 putString(PREF_IPFSGW_USER_LIST, toJsonStringArray(value))
+            }
+        }
+    val activeGateways: List<String>
+        get() = userGateways.toMutableList().apply {
+            for (gatewayUrl in DEFAULT_GATEWAYS) {
+                if (!disabledDefaultGateways.contains(gatewayUrl)) {
+                    add(gatewayUrl)
+                }
             }
         }
 
