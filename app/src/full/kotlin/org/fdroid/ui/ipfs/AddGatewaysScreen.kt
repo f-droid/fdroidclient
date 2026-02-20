@@ -1,9 +1,5 @@
-package org.fdroid.ui.settings
+package org.fdroid.ui.ipfs
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,48 +33,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
-import dagger.hilt.android.AndroidEntryPoint
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.settings.IpfsManager.Companion.DEFAULT_GATEWAYS
 import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
-import javax.inject.Inject
-
-@AndroidEntryPoint
-class IpfsGatewayAddActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var manager: IpfsManager
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
-        setContent {
-            FDroidContent {
-                IpfsGatewayAddScreen(
-                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
-                    onAddUserGateway = { url ->
-                        // don't allow adding default gateways to the user gateways list
-                        if (!DEFAULT_GATEWAYS.contains(url)) {
-                            val updatedUserGwList = manager.ipfsGwUserList.toMutableList()
-                            // don't allow double adding gateways
-                            if (!updatedUserGwList.contains(url)) {
-                                updatedUserGwList.add(url)
-                                manager.ipfsGwUserList = updatedUserGwList
-                            }
-                        }
-                        finish()
-                    },
-                )
-            }
-        }
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun IpfsGatewayAddScreen(
+fun AddGatewaysScreen(
     onBackClicked: () -> Unit,
     onAddUserGateway: (url: String) -> Unit,
 ) {
@@ -180,9 +142,9 @@ fun IpfsGatewayAddScreen(
 
 @Composable
 @Preview
-fun IpfsGatewayAddScreenPreview() {
+fun AddGatewaysScreenPreview() {
     FDroidContent {
-        IpfsGatewayAddScreen(
+        AddGatewaysScreen(
             onBackClicked = {},
             onAddUserGateway = {},
         )

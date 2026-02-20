@@ -1,11 +1,7 @@
-package org.fdroid.ui.settings
+package org.fdroid.ui.ipfs
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,35 +42,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import dagger.hilt.android.AndroidEntryPoint
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.settings.IpfsManager.Companion.DEFAULT_GATEWAYS
-import javax.inject.Inject
+import org.fdroid.ui.ipfs.IpfsManager.Companion.DEFAULT_GATEWAYS
 
-@AndroidEntryPoint
-class IpfsGatewaySettingsActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var manager: IpfsManager
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
-        setContent {
-            FDroidContent {
-                IpfsGatewaySettingsScreen(
-                    prefs = manager,
-                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
-                )
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun IpfsGatewaySettingsScreen(
+@OptIn(ExperimentalMaterial3Api::class)
+fun SettingsScreen(
     onBackClicked: () -> Unit,
     prefs: IPreferencesIpfs,
 ) {
@@ -257,9 +231,9 @@ private fun CaptionText(text: String) {
  *
  * copied from https://stackoverflow.com/a/66807899
  *
- * There is also an official API for consuming lifecycle events. However at the time of writing
+ * There is also an official API for consuming lifecycle events. However, at the time of writing
  * it's not stable and I also couldn't find any actually working code snippets demonstrating
- * it's use. "androidx.lifecycle:lifecycle-runtime-compose"
+ * its use. "androidx.lifecycle:lifecycle-runtime-compose"
  */
 @Composable
 fun LifecycleEventListener(onEvent: (owner: LifecycleOwner, event: Lifecycle.Event) -> Unit) {
@@ -281,7 +255,7 @@ fun LifecycleEventListener(onEvent: (owner: LifecycleOwner, event: Lifecycle.Eve
 
 @Composable
 @Preview
-fun IpfsGatewaySettingsScreenPreview() {
+fun SettingsScreenPreview() {
     val prefs = object : IPreferencesIpfs {
         override var isIpfsEnabled: Boolean
             get() = true
@@ -295,7 +269,7 @@ fun IpfsGatewaySettingsScreenPreview() {
     }
 
     FDroidContent {
-        IpfsGatewaySettingsScreen(
+        SettingsScreen(
             prefs = prefs,
             onBackClicked = {},
         )

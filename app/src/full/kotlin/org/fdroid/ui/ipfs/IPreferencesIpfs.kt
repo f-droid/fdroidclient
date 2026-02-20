@@ -1,4 +1,4 @@
-package org.fdroid.ui.settings
+package org.fdroid.ui.ipfs
 
 /**
  * Interface for accessing IPFS related preferences.

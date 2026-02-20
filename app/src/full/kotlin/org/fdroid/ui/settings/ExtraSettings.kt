@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.res.stringResource
 import me.zhanghai.compose.preference.preference
 import org.fdroid.R
+import org.fdroid.ui.ipfs.IpfsGatewaySettingsActivity
 import org.fdroid.ui.panic.PanicActivity
 
 fun LazyListScope.extraPrivacySettings(context: Context) {

@@ -1,4 +1,4 @@
-package org.fdroid.ui.settings
+package org.fdroid.ui.ipfs
 
 import androidx.core.content.edit
 import org.fdroid.settings.SettingsManager
