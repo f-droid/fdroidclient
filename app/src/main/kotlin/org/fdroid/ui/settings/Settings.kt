@@ -352,6 +352,7 @@ fun Settings(
                     },
                 )
                 preferenceProxy(proxyState, showProxyError)
+                extraNetworkSettings(context)
                 preferenceCategory(
                     key = "pref_category_privacy",
                     title = { Text(stringResource(R.string.privacy)) },

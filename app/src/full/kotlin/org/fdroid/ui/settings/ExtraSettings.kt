@@ -21,3 +21,16 @@ fun LazyListScope.extraPrivacySettings(context: Context) {
         },
     )
 }
+
+fun LazyListScope.extraNetworkSettings(context: Context) {
+    preference(
+        key = "ipfsGateways",
+        icon = {},
+        title = { Text(stringResource(R.string.ipfsgw_title)) },
+        summary = { Text(stringResource(R.string.ipfsgw_summary_new)) },
+        onClick = {
+            val intent = Intent(context, IpfsGatewaySettingsActivity::class.java)
+            context.startActivity(intent)
+        },
+    )
+}

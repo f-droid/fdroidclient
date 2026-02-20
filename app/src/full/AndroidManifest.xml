@@ -34,6 +34,16 @@
             android:name=".ui.panic.ExitActivity"
             android:exported="false"
             android:theme="@android:style/Theme.NoDisplay" />
+
+        <activity
+            android:name=".ui.settings.IpfsGatewaySettingsActivity"
+            android:configChanges="layoutDirection|locale"
+            android:label="@string/ipfsgw_title"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".ui.settings.IpfsGatewayAddActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
