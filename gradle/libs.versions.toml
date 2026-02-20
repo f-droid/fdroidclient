@@ -38,12 +38,12 @@ androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.2.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2026.01.01"
-androidxActivityCompose = "1.12.3"
+androidxComposeBom = "2026.02.00"
+androidxActivityCompose = "1.12.4"
 accompanistDrawablepainter = "0.37.3"
 
 # navigation3
-nav3Core = "1.0.0"
+nav3Core = "1.0.1"
 lifecycleViewmodelNav3 = "2.10.0"
 material3AdaptiveNav3 = "1.0.0-alpha03"
 
@@ -68,7 +68,7 @@ rxandroid = "3.0.2"
 
 slf4jApi = "2.0.17"
 microutilsKotlinLogging = "3.0.5"
-logbackClassic = "1.5.27"
+logbackClassic = "1.5.32"
 logbackAndroid = "3.0.0"
 
 junit = "4.13.2"
