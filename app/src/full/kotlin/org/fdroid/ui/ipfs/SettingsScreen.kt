@@ -1,7 +1,6 @@
 package org.fdroid.ui.ipfs
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,10 +48,12 @@ import org.fdroid.ui.ipfs.IpfsManager.Companion.DEFAULT_GATEWAYS
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun SettingsScreen(
+    onAddUserGateway: (url: String) -> Unit,
     onBackClicked: () -> Unit,
     prefs: IPreferencesIpfs,
 ) {
     val context = LocalContext.current
+    var showAddDialog by remember { mutableStateOf(false) }
     var ipfsEnabled by remember { mutableStateOf(prefs.isIpfsEnabled) }
 
     Scaffold(
@@ -75,7 +76,7 @@ fun SettingsScreen(
             if (ipfsEnabled) {
                 FloatingActionButton(
                     onClick = {
-                        context.startActivity(Intent(context, IpfsGatewayAddActivity::class.java))
+                        showAddDialog = true
                     },
                 ) {
                     Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
@@ -110,6 +111,7 @@ fun SettingsScreen(
                 Spacer(modifier = Modifier.height(64.dp))
             }
         }
+        if (showAddDialog) AddGatewaysDialog(onAddUserGateway) { showAddDialog = false }
     }
 }
 
@@ -271,6 +273,7 @@ fun SettingsScreenPreview() {
     FDroidContent {
         SettingsScreen(
             prefs = prefs,
+            onAddUserGateway = {},
             onBackClicked = {},
         )
     }

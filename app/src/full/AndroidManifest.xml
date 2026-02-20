@@ -40,10 +40,6 @@
             android:configChanges="layoutDirection|locale"
             android:label="@string/ipfsgw_title"
             android:launchMode="singleTask" />
-
-        <activity
-            android:name=".ui.ipfs.IpfsGatewayAddActivity"
-            android:launchMode="singleTask" />
     </application>
 
 </manifest>
