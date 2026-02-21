@@ -132,6 +132,8 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.3.0") { isTransitive = false }
     implementation(libs.zxing.core)
 
+    implementation(libs.okhttp)
+
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)

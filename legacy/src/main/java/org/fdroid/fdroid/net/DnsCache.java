@@ -1,7 +1,5 @@
 package org.fdroid.fdroid.net;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import org.fdroid.fdroid.Preferences;
@@ -14,8 +12,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public final class DnsCache {
-
-    private static final String TAG = "DnsCache";
 
     private volatile HashMap<String, List<InetAddress>> cache;
     private static final int DELAY_TIME = 1;
@@ -40,20 +36,9 @@ public final class DnsCache {
         }
     }
 
-    public static void setup() {
-        if (instance != null) {
-            final String error = "DnsCache can only be initialized once";
-            Log.e(TAG, error);
-            throw new RuntimeException(error);
-        }
-        instance = new DnsCache();
-    }
-
     public static DnsCache get() {
         if (instance == null) {
-            final String error = "DnsCache must be initialized first";
-            Log.e(TAG, error);
-            throw new RuntimeException(error);
+            instance = new DnsCache();
         }
         return instance;
     }

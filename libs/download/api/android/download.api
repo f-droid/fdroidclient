@@ -163,6 +163,7 @@ public abstract interface class org/fdroid/download/MirrorParameterManager {
 	public abstract fun getMirrorErrorCount (Ljava/lang/String;)I
 	public abstract fun incrementMirrorErrorCount (Ljava/lang/String;)V
 	public abstract fun preferForeignMirrors ()Z
+	public abstract fun shouldRetryRequest (Ljava/lang/String;)Z
 }
 
 public final class org/fdroid/download/NoResumeException : java/lang/Exception {

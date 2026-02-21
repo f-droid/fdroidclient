@@ -28,6 +28,8 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
+import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE
+import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE_DEFAULT
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
@@ -41,6 +43,8 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
+import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
+import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
 import org.fdroid.settings.SettingsConstants.getAppListSortOrder
 import org.fdroid.settings.SettingsConstants.toSettings
 import java.net.InetSocketAddress
@@ -150,6 +154,22 @@ class SettingsManager @Inject constructor(
         get() = prefsFlow.map {
             it.get<Boolean>(PREF_KEY_PREVENT_SCREENSHOTS) ?: PREF_DEFAULT_PREVENT_SCREENSHOTS
         }.distinctUntilChanged()
+
+    var useDnsCache: Boolean
+        get() {
+            return prefs.getBoolean(PREF_USE_DNS_CACHE, PREF_USE_DNS_CACHE_DEFAULT)
+        }
+        set(value) {
+            return prefs.edit { putBoolean(PREF_USE_DNS_CACHE, value) }
+        }
+
+    var dnsCache: String
+        get() {
+            return prefs.getString(PREF_DNS_CACHE, null) ?: PREF_DNS_CACHE_DEFAULT
+        }
+        set(value) {
+            return prefs.edit { putString(PREF_DNS_CACHE, value) }
+        }
 
     val filterIncompatible: Boolean
         get() = !prefs.getBoolean(PREF_KEY_SHOW_INCOMPATIBLE, PREF_DEFAULT_SHOW_INCOMPATIBLE)

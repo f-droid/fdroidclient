@@ -71,7 +71,6 @@ import org.fdroid.fdroid.nearby.PublicSourceDirProvider;
 import org.fdroid.fdroid.nearby.SDCardScannerService;
 import org.fdroid.fdroid.nearby.WifiStateChangeService;
 import org.fdroid.fdroid.net.ConnectivityMonitorService;
-import org.fdroid.fdroid.net.DnsCache;
 import org.fdroid.fdroid.net.DownloaderFactory;
 import org.fdroid.fdroid.panic.HidingManager;
 import org.fdroid.fdroid.receiver.DeviceStorageReceiver;
@@ -302,7 +301,6 @@ public class FDroidApp extends Application implements androidx.work.Configuratio
                     .build());
         }
         Preferences.setup(this);
-        DnsCache.setup();
         Languages.setLanguage(this);
         Preferences preferences = Preferences.get();
 

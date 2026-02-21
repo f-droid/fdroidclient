@@ -18,12 +18,14 @@ object DownloadModule {
     @Singleton
     fun provideHttpManager(
         settingsManager: SettingsManager,
-        mirrorParameters: MirrorParameters,
+        dns: DnsWithCache,
+        manager: FDroidMirrorParameterManager
     ): HttpManager {
         return HttpManager(
             userAgent = USER_AGENT,
             proxyConfig = settingsManager.proxyConfig,
-            mirrorParameterManager = mirrorParameters,
+            customDns = dns,
+            mirrorParameterManager = manager
         )
     }
 

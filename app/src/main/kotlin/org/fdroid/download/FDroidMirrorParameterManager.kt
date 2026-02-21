@@ -8,13 +8,24 @@ import org.fdroid.settings.SettingsConstants
 import org.fdroid.settings.SettingsManager
 import java.util.Locale
 import javax.inject.Inject
+import javax.inject.Singleton
+import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
-class MirrorParameters @Inject constructor(
+@OptIn(ExperimentalAtomicApi::class)
+@Singleton
+class FDroidMirrorParameterManager @Inject constructor(
     @param:ApplicationContext private val context: Context,
-    private val settingsManager: SettingsManager
+    private val settingsManager: SettingsManager,
+    private val dnsWithCache: DnsWithCache
 ) : MirrorParameterManager {
+
+    override fun shouldRetryRequest(mirrorUrl: String): Boolean {
+        return dnsWithCache.shouldRetryRequest(mirrorUrl)
+    }
+
     // TODO overhaul default MirrorChooser
     override fun incrementMirrorErrorCount(mirrorUrl: String) {}
+
     override fun getMirrorErrorCount(mirrorUrl: String): Int = 0
 
     override fun preferForeignMirrors(): Boolean {

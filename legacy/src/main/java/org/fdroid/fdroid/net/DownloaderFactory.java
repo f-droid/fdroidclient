@@ -37,7 +37,7 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
             Utils.getUserAgent(),
             FDroidApp.queryString,
             NetCipher.getProxy(),
-            new DnsWithCache(),
+            DnsWithCache.get(),
             new FDroidMirrorParameterManager());
 
     @NonNull
