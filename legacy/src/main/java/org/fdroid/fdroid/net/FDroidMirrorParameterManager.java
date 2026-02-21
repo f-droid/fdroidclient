@@ -10,6 +10,7 @@ import org.fdroid.download.MirrorParameterManager;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
 import org.fdroid.fdroid.data.App;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -64,6 +65,15 @@ public class FDroidMirrorParameterManager implements MirrorParameterManager {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Returns true or false depending on whether a particular mirror should be retried before
+     * moving on to the next one (based on checking dns results)
+     */
+    @Override
+    public boolean shouldRetryRequest(@NotNull String mirrorUrl) {
+        return DnsWithCache.get().shouldRetryRequest(mirrorUrl);
     }
 
     @Override

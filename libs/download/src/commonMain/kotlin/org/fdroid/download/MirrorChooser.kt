@@ -59,7 +59,7 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
                 mirror.getUrl(downloadRequest.indexFile.name)
             }
             try {
-                return request(mirror, url)
+                return executeRequest(mirror, url, request)
             } catch (e: ResponseException) {
                 // don't try other mirrors if we got Forbidden response, but supplied credentials
                 if (downloadRequest.hasCredentials && e.response.status == Forbidden) throw e
@@ -75,6 +75,14 @@ internal abstract class MirrorChooserImpl : MirrorChooser {
             }
         }
         error("Reached code that was thought to be unreachable.")
+    }
+
+    open suspend fun <T> executeRequest(
+        mirror: Mirror,
+        url: Url,
+        request: suspend (mirror: Mirror, url: Url) -> T,
+    ): T {
+        return request(mirror, url)
     }
 
     open fun handleException(e: Exception, mirror: Mirror, mirrorIndex: Int, mirrorCount: Int) {
@@ -186,8 +194,26 @@ internal class MirrorChooserWithParameters(
             mirrorList.addAll(unknownList)
             mirrorList.addAll(foreignList)
         }
-
         return mirrorList
+    }
+
+    override suspend fun <T> executeRequest(
+        mirror: Mirror,
+        url: Url,
+        request: suspend (mirror: Mirror, url: Url) -> T,
+    ): T {
+        return try {
+            request(mirror, url)
+        } catch (e: Exception) {
+            // in case of an exception, potentially attempt a single retry
+            if (mirrorParameterManager != null &&
+                mirrorParameterManager.shouldRetryRequest(url.host)
+            ) {
+                request(mirror, url)
+            } else {
+                throw e
+            }
+        }
     }
 
     override fun handleException(e: Exception, mirror: Mirror, mirrorIndex: Int, mirrorCount: Int) {

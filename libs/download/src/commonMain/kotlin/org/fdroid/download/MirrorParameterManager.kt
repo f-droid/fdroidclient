@@ -19,6 +19,12 @@ public interface MirrorParameterManager {
     public fun getMirrorErrorCount(mirrorUrl: String): Int
 
     /**
+     * Returns true or false depending on whether a particular mirror should be retried before
+     * moving on to the next one (typically based on checking dns results)
+     */
+    public fun shouldRetryRequest(mirrorUrl: String): Boolean
+
+    /**
      * Returns true or false depending on whether the location preference has been enabled. This
      * preference reflects whether mirrors matching your location should get priority.
      */

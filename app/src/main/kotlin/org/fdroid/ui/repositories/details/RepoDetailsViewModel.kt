@@ -25,6 +25,7 @@ import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.database.Repository
+import org.fdroid.download.DnsCache
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkMonitor
 import org.fdroid.index.RepoManager
@@ -46,6 +47,7 @@ class RepoDetailsViewModel @AssistedInject constructor(
     private val updateManager: UpdatesManager,
     repoUpdateManager: RepoUpdateManager,
     private val settingsManager: SettingsManager,
+    private val dnsCache: DnsCache,
     private val onboardingManager: OnboardingManager,
     @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app), RepoDetailsActions {
@@ -96,6 +98,14 @@ class RepoDetailsViewModel @AssistedInject constructor(
 
     override fun deleteRepository() {
         ioScope.launch {
+            // before deleting a repo, clear the related entries from the dns cache
+            val repo = repoManager.getRepository(repoId)
+            if (repo != null) {
+                val mirrors = repo.getMirrors()
+                for (mirror in mirrors) {
+                    dnsCache.remove(mirror.url.host)
+                }
+            }
             repoManager.deleteRepository(repoId)
             updateManager.loadUpdates()
         }

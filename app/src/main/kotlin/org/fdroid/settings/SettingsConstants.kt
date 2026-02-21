@@ -43,6 +43,12 @@ object SettingsConstants {
     const val PREF_KEY_PROXY = "proxy"
     const val PREF_DEFAULT_PROXY = ""
 
+    const val PREF_USE_DNS_CACHE = "useDnsCache"
+    const val PREF_USE_DNS_CACHE_DEFAULT = false
+
+    const val PREF_DNS_CACHE = "dnsCache"
+    const val PREF_DNS_CACHE_DEFAULT = ""
+
     const val PREF_KEY_PREVENT_SCREENSHOTS = "preventScreenshots"
     const val PREF_DEFAULT_PREVENT_SCREENSHOTS = false
 

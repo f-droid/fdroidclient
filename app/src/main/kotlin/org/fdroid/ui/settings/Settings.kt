@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.ColorLens
+import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Lan
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Save
@@ -74,6 +75,8 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
+import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
+import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
 import org.fdroid.settings.toAutoUpdateValue
 import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
@@ -352,6 +355,23 @@ fun Settings(
                 preferenceCategory(
                     key = "pref_category_privacy",
                     title = { Text(stringResource(R.string.privacy)) },
+                )
+                switchPreference(
+                    key = PREF_USE_DNS_CACHE,
+                    defaultValue = PREF_USE_DNS_CACHE_DEFAULT,
+                    title = {
+                        Text(stringResource(R.string.useDnsCache))
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Dns,
+                            contentDescription = null,
+                            modifier = Modifier.semantics { hideFromAccessibility() },
+                        )
+                    },
+                    summary = {
+                        Text(stringResource(R.string.useDnsCacheSummary))
+                    },
                 )
                 switchPreference(
                     key = PREF_KEY_PREVENT_SCREENSHOTS,
