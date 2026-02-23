@@ -3,7 +3,6 @@ package org.fdroid.ui.details
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -69,6 +68,7 @@ import org.fdroid.R
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
+import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.icons.Litecoin
 import org.fdroid.ui.lists.AppListType
@@ -378,7 +378,7 @@ fun AppDetails(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                 initiallyExpanded = true,
             ) {
-                FlowRow(modifier = Modifier.padding(start = 16.dp)) {
+                ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
                     item.categories.forEach { item ->
                         CategoryChip(item, onClick = {
                             val categoryNav = AppListType.Category(item.name, item.id)

@@ -2,7 +2,6 @@ package org.fdroid.ui.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.lists.AppListType
@@ -135,7 +135,7 @@ private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (Navigation
             style = MaterialTheme.typography.labelLarge,
             modifier = Modifier.padding(8.dp)
         )
-        FlowRow {
+        ChipFlowRow {
             categories.forEach { item ->
                 CategoryChip(categoryItem = item, onClick = {
                     val type = AppListType.Category(item.name, item.id)

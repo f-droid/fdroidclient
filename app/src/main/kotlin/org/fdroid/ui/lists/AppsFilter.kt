@@ -2,10 +2,10 @@ package org.fdroid.ui.lists
 
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,7 +40,9 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
+import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.getAppListInfo
@@ -58,15 +60,13 @@ fun AppsFilter(
             icon = Icons.AutoMirrored.Default.Sort,
             text = stringResource(R.string.sort_title),
         )
-        FlowRow(
-            horizontalArrangement = spacedBy(8.dp),
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+        ChipFlowRow(
+            modifier = Modifier.padding(start = 16.dp)
         ) {
             val byNameSelected = info.model.sortBy == AppListSortOrder.NAME
             FilterChip(
                 selected = byNameSelected,
+                modifier = Modifier.height(chipHeight),
                 leadingIcon = {
                     if (byNameSelected) {
                         Icon(
@@ -87,6 +87,7 @@ fun AppsFilter(
             val byLatestSelected = info.model.sortBy == AppListSortOrder.LAST_UPDATED
             FilterChip(
                 selected = byLatestSelected,
+                modifier = Modifier.height(chipHeight),
                 leadingIcon = {
                     if (byLatestSelected) {
                         Icon(
@@ -106,6 +107,7 @@ fun AppsFilter(
             )
             FilterChip(
                 selected = info.model.filterIncompatible,
+                modifier = Modifier.height(chipHeight),
                 leadingIcon = {
                     if (info.model.filterIncompatible) {
                         Icon(
@@ -141,7 +143,7 @@ fun AppsFilter(
                 icon = Icons.Default.Category,
                 text = stringResource(R.string.main_menu__categories),
             )
-            FlowRow(
+            ChipFlowRow(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -158,14 +160,14 @@ fun AppsFilter(
                 }
             }
         }
+
         if (info.model.repositories.isNotEmpty()) {
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
             FilterHeader(
                 icon = PackageVariant,
                 text = stringResource(R.string.app_details_repositories),
             )
-            FlowRow(
-                horizontalArrangement = spacedBy(8.dp),
+            ChipFlowRow(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
@@ -174,6 +176,7 @@ fun AppsFilter(
                     val selected = repo.repoId in info.model.filteredRepositoryIds
                     FilterChip(
                         selected = selected,
+                        modifier = Modifier.height(chipHeight),
                         leadingIcon = {
                             if (selected) {
                                 Icon(
