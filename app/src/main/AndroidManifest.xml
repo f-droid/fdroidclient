@@ -104,12 +104,14 @@
         <activity
             android:name="org.fdroid.ui.crash.CrashActivity"
             android:excludeFromRecents="true"
+            android:exported="false"
             android:finishOnTaskLaunch="true"
             android:launchMode="singleInstance"
             android:process=":acra"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:exported="false"
             android:screenOrientation="fullSensor"
             tools:ignore="DiscouragedApi"
             tools:replace="screenOrientation" />
