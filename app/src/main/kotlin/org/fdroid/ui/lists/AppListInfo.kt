@@ -18,6 +18,8 @@ data class AppListModel(
     val filterIncompatible: Boolean,
     val categories: List<CategoryItem>?,
     val filteredCategoryIds: Set<String>,
+    val antiFeatures: List<AntiFeatureItem>?,
+    val notSelectedAntiFeatureIds: Set<String>,
     val repositories: List<RepositoryItem>,
     val filteredRepositoryIds: Set<Long>,
 )
@@ -28,6 +30,8 @@ interface AppListActions {
     fun toggleFilterIncompatible()
     fun addCategory(categoryId: String)
     fun removeCategory(categoryId: String)
+    fun addAntiFeature(antiFeatureId: String)
+    fun removeAntiFeature(antiFeatureId: String)
     fun addRepository(repoId: Long)
     fun removeRepository(repoId: Long)
     fun saveFilters()

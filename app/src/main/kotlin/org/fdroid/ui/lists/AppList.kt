@@ -255,13 +255,15 @@ private fun Preview() {
     FDroidContent {
         val model = AppListModel(
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true,),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true,),
             ),
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = true,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            notSelectedAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -280,6 +282,8 @@ private fun PreviewLoading() {
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            notSelectedAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -298,6 +302,8 @@ private fun PreviewEmpty() {
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            notSelectedAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )

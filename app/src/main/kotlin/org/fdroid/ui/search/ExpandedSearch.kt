@@ -107,8 +107,8 @@ private fun AppsSearchPreview() {
                 CategoryItem("Money", "Money"),
             )
             val apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
             )
             ExpandedSearch(textFieldState, SearchResults(apps, categories), {}, {}, {}, {})
         }

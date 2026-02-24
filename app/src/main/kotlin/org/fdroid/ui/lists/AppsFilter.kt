@@ -17,9 +17,11 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.CrisisAlert
 import androidx.compose.material.icons.filled.PhonelinkErase
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SortByAlpha
+import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
@@ -31,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
@@ -40,8 +43,8 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
-import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.utils.AsyncShimmerImage
@@ -205,6 +208,54 @@ fun AppsFilter(
                 }
             }
         }
+
+        val antiFeatures = info.model.antiFeatures
+        if (antiFeatures != null) {
+            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+            FilterHeader(
+                icon = Icons.Default.WarningAmber,
+                text = stringResource(R.string.antifeatures),
+            )
+            ChipFlowRow(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+            ) {
+                antiFeatures.forEach { item ->
+                    val isSelected = item.id !in info.model.notSelectedAntiFeatureIds
+                    FilterChip(
+                        selected = isSelected,
+                        modifier = Modifier.height(chipHeight),
+                        leadingIcon = {
+                            if (isSelected) {
+                                Icon(
+                                    imageVector = Icons.Default.Check,
+                                    contentDescription = stringResource(R.string.filter_selected),
+                                )
+                            } else AsyncShimmerImage(
+                                model = item.iconModel,
+                                error = rememberVectorPainter(Icons.Default.CrisisAlert),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .semantics { hideFromAccessibility() },
+                            )
+                        },
+                        label = {
+                            Text(item.name)
+                        },
+                        onClick = {
+                            if (isSelected) {
+                                info.actions.removeAntiFeature(item.id)
+                            } else {
+                                info.actions.addAntiFeature(item.id)
+                            }
+                        },
+                    )
+                }
+            }
+        }
+
         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
         TextButton(
             onClick = info.actions::clearFilters,
@@ -242,8 +293,8 @@ private fun Preview() {
     FDroidContent {
         val model = AppListModel(
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
             ),
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = Random.nextBoolean(),
@@ -257,6 +308,12 @@ private fun Preview() {
                 CategoryItem("doesn't exist", "Foo bar"),
             ),
             filteredCategoryIds = setOf("Browser"),
+            antiFeatures = listOf(
+                AntiFeatureItem("foo1", "bar1", null),
+                AntiFeatureItem("foo2", "bar2", null),
+                AntiFeatureItem("foo3", "bar3", null),
+            ),
+            notSelectedAntiFeatureIds = setOf("foo2"),
             repositories = repoItems,
             filteredRepositoryIds = setOf(2),
         )

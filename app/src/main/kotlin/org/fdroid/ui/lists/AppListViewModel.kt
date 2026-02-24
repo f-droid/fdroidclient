@@ -65,6 +65,18 @@ class AppListViewModel @AssistedInject constructor(
             )
         }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
+    private val antiFeatures = db.getRepositoryDao().getAntiFeaturesFlow().map { antiFeatures ->
+        val collator = Collator.getInstance(Locale.getDefault())
+        val proxy = settingsManager.proxyConfig
+        antiFeatures.map { antiFeature ->
+            val repo = repoManager.getRepository(antiFeature.repoId)
+            AntiFeatureItem(
+                id = antiFeature.id,
+                name = antiFeature.getName(localeList) ?: "Unknown Anti-Feature",
+                iconModel = antiFeature.getIcon(localeList)?.getImageModel(repo, proxy)
+            )
+        }.sortedWith { a1, a2 -> collator.compare(a1.name, a2.name) }
+    }
     private val repositories = repoManager.repositoriesState.map { repositories ->
         val proxyConfig = settingsManager.proxyConfig
         repositories.mapNotNull {
@@ -80,6 +92,7 @@ class AppListViewModel @AssistedInject constructor(
     private val sortBy = MutableStateFlow(settingsManager.appListSortOrder)
     private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
+    private val notSelectedAntiFeatureIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
     val showOnboarding = onboardingManager.showFilterOnboarding
 
@@ -92,6 +105,8 @@ class AppListViewModel @AssistedInject constructor(
                 filterIncompatibleFlow = filterIncompatible,
                 categoriesFlow = categories,
                 filteredCategoryIdsFlow = filteredCategoryIds,
+                antiFeaturesFlow = antiFeatures,
+                notSelectedAntiFeatureIdsFlow = notSelectedAntiFeatureIds,
                 repositoriesFlow = repositories,
                 filteredRepositoryIdsFlow = filteredRepositoryIds,
                 searchQueryFlow = query,
@@ -143,6 +158,7 @@ class AppListViewModel @AssistedInject constructor(
                     iconModel
                 },
                 categoryIds = it.categories?.toSet(),
+                antiFeatureIds = it.antiFeatureKeys.toSet(),
             )
         }
     }
@@ -161,7 +177,7 @@ class AppListViewModel @AssistedInject constructor(
 
     override fun addCategory(categoryId: String) {
         filteredCategoryIds.update {
-            filteredCategoryIds.value.toMutableSet().apply {
+            it.toMutableSet().apply {
                 add(categoryId)
             }
         }
@@ -169,15 +185,31 @@ class AppListViewModel @AssistedInject constructor(
 
     override fun removeCategory(categoryId: String) {
         filteredCategoryIds.update {
-            filteredCategoryIds.value.toMutableSet().apply {
+            it.toMutableSet().apply {
                 remove(categoryId)
+            }
+        }
+    }
+
+    override fun addAntiFeature(antiFeatureId: String) {
+        notSelectedAntiFeatureIds.update {
+            it.toMutableSet().apply {
+                remove(antiFeatureId)
+            }
+        }
+    }
+
+    override fun removeAntiFeature(antiFeatureId: String) {
+        notSelectedAntiFeatureIds.update {
+            it.toMutableSet().apply {
+                add(antiFeatureId)
             }
         }
     }
 
     override fun addRepository(repoId: Long) {
         filteredRepositoryIds.update {
-            filteredRepositoryIds.value.toMutableSet().apply {
+            it.toMutableSet().apply {
                 add(repoId)
             }
         }
@@ -185,7 +217,7 @@ class AppListViewModel @AssistedInject constructor(
 
     override fun removeRepository(repoId: Long) {
         filteredRepositoryIds.update {
-            filteredRepositoryIds.value.toMutableSet().apply {
+            it.toMutableSet().apply {
                 remove(repoId)
             }
         }
@@ -198,6 +230,7 @@ class AppListViewModel @AssistedInject constructor(
     override fun clearFilters() {
         filterIncompatible.value = false
         filteredCategoryIds.value = emptySet()
+        notSelectedAntiFeatureIds.value = emptySet()
         filteredRepositoryIds.value = emptySet()
     }
 
