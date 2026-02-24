@@ -1,7 +1,6 @@
 package org.fdroid.ui.details
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -10,10 +9,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.TopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -21,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import org.fdroid.R
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.TopAppBarButton
+import org.fdroid.ui.utils.TopAppBarOverflowButton
 import org.fdroid.ui.utils.startActivitySafe
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,13 +48,9 @@ fun AppDetailsTopAppBar(
                     onClick = { context.startActivitySafe(shareIntent) },
                 )
             }
-            var expanded by remember { mutableStateOf(false) }
-            TopAppBarButton(
-                imageVector = Icons.Filled.MoreVert,
-                contentDescription = stringResource(R.string.more),
-                onClick = { expanded = !expanded },
-            )
-            AppDetailsMenu(item, expanded) { expanded = false }
+            TopAppBarOverflowButton { onDismissRequest ->
+                AppDetailsMenu(item, onDismissRequest)
+            }
         },
         scrollBehavior = scrollBehavior,
     )

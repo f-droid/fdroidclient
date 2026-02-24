@@ -9,7 +9,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.AccessTime
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
@@ -49,6 +48,7 @@ import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.TopAppBarButton
+import org.fdroid.ui.utils.TopAppBarOverflowButton
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 
@@ -147,18 +147,12 @@ fun MyApps(
                             },
                         )
                     }
-                    var menuExpanded by remember { mutableStateOf(false) }
-                    TopAppBarButton(
-                        imageVector = Icons.Default.MoreVert,
-                        contentDescription = stringResource(R.string.more),
-                        onClick = { menuExpanded = !menuExpanded },
-                    )
-                    MyAppsOverFlowMenu(
-                        menuExpanded = menuExpanded,
-                        onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
-                        onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
-                    ) {
-                        menuExpanded = false
+                    TopAppBarOverflowButton { onDismissRequest ->
+                        MyAppsOverFlowMenu(
+                            onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
+                            onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
+                            onDismissRequest = onDismissRequest,
+                        )
                     }
                 },
                 scrollBehavior = scrollBehavior,
