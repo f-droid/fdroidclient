@@ -115,7 +115,7 @@ class UpdatesManager @Inject constructor(
                     name = update.name ?: "Unknown app",
                     installedVersionName = update.installedVersionName,
                     update = update.update,
-                    whatsNew = update.update.getWhatsNew(localeList),
+                    whatsNew = update.update.getWhatsNew(localeList)?.trim(),
                     iconModel = PackageName(update.packageName, iconModel),
                 )
             }
