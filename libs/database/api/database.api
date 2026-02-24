@@ -2,11 +2,15 @@ public final class org/fdroid/database/AntiFeature : org/fdroid/database/RepoAtt
 	public static final field TABLE Ljava/lang/String;
 	public fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/util/Map;
 	public final fun copy (JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;)Lorg/fdroid/database/AntiFeature;
 	public static synthetic fun copy$default (Lorg/fdroid/database/AntiFeature;JLjava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lorg/fdroid/database/AntiFeature;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getIcon ()Ljava/util/Map;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getRepoId ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -587,6 +591,7 @@ public final class org/fdroid/database/Repository {
 public abstract interface class org/fdroid/database/RepositoryDao {
 	public abstract fun clearAll ()V
 	public abstract fun deleteRepository (J)V
+	public abstract fun getAntiFeaturesFlow ()Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getLiveCategories ()Landroidx/lifecycle/LiveData;
 	public abstract fun getLiveRepositories ()Landroidx/lifecycle/LiveData;
 	public abstract fun getRepositories ()Ljava/util/List;
