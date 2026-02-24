@@ -167,6 +167,9 @@ val testApp = AppDetailsItem(
     categories = listOf(
         CategoryItem("Multimedia", "Multimedia"),
         CategoryItem("Internet", "Internet"),
+        CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+        CategoryItem("Connectivity", "Connectivity"),
+        CategoryItem("Development", "Development"),
     ),
     antiFeatures = listOf(
         AntiFeature(
