@@ -92,7 +92,7 @@ class AppListViewModel @AssistedInject constructor(
     private val sortBy = MutableStateFlow(settingsManager.appListSortOrder)
     private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible)
     private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
-    private val notSelectedAntiFeatureIds = MutableStateFlow<Set<String>>(emptySet())
+    private val filteredAntiFeatureIds = MutableStateFlow<Set<String>>(emptySet())
     private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
     val showOnboarding = onboardingManager.showFilterOnboarding
 
@@ -106,7 +106,7 @@ class AppListViewModel @AssistedInject constructor(
                 categoriesFlow = categories,
                 filteredCategoryIdsFlow = filteredCategoryIds,
                 antiFeaturesFlow = antiFeatures,
-                notSelectedAntiFeatureIdsFlow = notSelectedAntiFeatureIds,
+                notSelectedAntiFeatureIdsFlow = filteredAntiFeatureIds,
                 repositoriesFlow = repositories,
                 filteredRepositoryIdsFlow = filteredRepositoryIds,
                 searchQueryFlow = query,
@@ -192,17 +192,17 @@ class AppListViewModel @AssistedInject constructor(
     }
 
     override fun addAntiFeature(antiFeatureId: String) {
-        notSelectedAntiFeatureIds.update {
+        filteredAntiFeatureIds.update {
             it.toMutableSet().apply {
-                remove(antiFeatureId)
+                add(antiFeatureId)
             }
         }
     }
 
     override fun removeAntiFeature(antiFeatureId: String) {
-        notSelectedAntiFeatureIds.update {
+        filteredAntiFeatureIds.update {
             it.toMutableSet().apply {
-                add(antiFeatureId)
+                remove(antiFeatureId)
             }
         }
     }
@@ -230,7 +230,7 @@ class AppListViewModel @AssistedInject constructor(
     override fun clearFilters() {
         filterIncompatible.value = false
         filteredCategoryIds.value = emptySet()
-        notSelectedAntiFeatureIds.value = emptySet()
+        filteredAntiFeatureIds.value = emptySet()
         filteredRepositoryIds.value = emptySet()
     }
 

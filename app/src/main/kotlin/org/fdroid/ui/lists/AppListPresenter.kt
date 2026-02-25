@@ -34,7 +34,7 @@ fun AppListPresenter(
     val categories = categoriesFlow.collectAsState(null).value
     val antiFeatures = antiFeaturesFlow.collectAsState(null).value
     val filteredCategoryIds = filteredCategoryIdsFlow.collectAsState().value
-    val notSelectedAntiFeatureIds = notSelectedAntiFeatureIdsFlow.collectAsState().value
+    val filteredAntiFeatureIds = notSelectedAntiFeatureIdsFlow.collectAsState().value
     val repositories = repositoriesFlow.collectAsState(emptyList()).value
     val filteredRepositoryIds = filteredRepositoryIdsFlow.collectAsState().value
     val searchQuery = searchQueryFlow.collectAsState().value.normalize()
@@ -73,8 +73,8 @@ fun AppListPresenter(
     val filteredApps = apps?.filter {
         val matchesCategories = filteredCategoryIds.isEmpty() ||
             (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
-        val matchesAntiFeatures = notSelectedAntiFeatureIds.isEmpty() ||
-            it.antiFeatureIds.intersect(notSelectedAntiFeatureIds).isEmpty()
+        val matchesAntiFeatures = filteredAntiFeatureIds.isEmpty() ||
+            it.antiFeatureIds.intersect(filteredAntiFeatureIds).isEmpty()
         val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
         val matchesQuery = searchQuery.isEmpty() ||
             it.name.normalize().contains(searchQuery, ignoreCase = true) ||
@@ -96,12 +96,15 @@ fun AppListPresenter(
         } else {
             filteredApps?.sortedByDescending { it.lastUpdated }
         },
+        showFilterBadge = filteredCategoryIds.isNotEmpty() ||
+            filteredAntiFeatureIds.isNotEmpty() ||
+            filteredRepositoryIds.isNotEmpty(),
         sortBy = sortBy,
         filterIncompatible = filterIncompatible,
         categories = availableCategories,
         filteredCategoryIds = filteredCategoryIds,
         antiFeatures = availableAntiFeatures,
-        notSelectedAntiFeatureIds = notSelectedAntiFeatureIds,
+        filteredAntiFeatureIds = filteredAntiFeatureIds,
         repositories = availableRepositories,
         filteredRepositoryIds = filteredRepositoryIds,
     )

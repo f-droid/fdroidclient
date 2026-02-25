@@ -112,9 +112,7 @@ fun AppList(
                     },
                     actions = {
                         FilterButton(
-                            showFilterBadge =
-                            appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
-                                appListInfo.model.filteredCategoryIds.isNotEmpty(),
+                            showFilterBadge = appListInfo.model.showFilterBadge,
                             toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
                         )
                     }
@@ -139,8 +137,7 @@ fun AppList(
                         onClick = { searchActive = true },
                     )
                     FilterButton(
-                        showFilterBadge = appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
-                            appListInfo.model.filteredCategoryIds.isNotEmpty(),
+                        showFilterBadge = appListInfo.model.showFilterBadge,
                         toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
                         modifier = Modifier.hintAnchor(
                             state = hintAnchor,
@@ -255,15 +252,16 @@ private fun Preview() {
     FDroidContent {
         val model = AppListModel(
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true,),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true,),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
             ),
+            showFilterBadge = true,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = true,
             categories = null,
             filteredCategoryIds = emptySet(),
             antiFeatures = null,
-            notSelectedAntiFeatureIds = emptySet(),
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -278,12 +276,13 @@ private fun PreviewLoading() {
     FDroidContent {
         val model = AppListModel(
             apps = null,
+            showFilterBadge = false,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
             antiFeatures = null,
-            notSelectedAntiFeatureIds = emptySet(),
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -298,12 +297,13 @@ private fun PreviewEmpty() {
     FDroidContent {
         val model = AppListModel(
             apps = emptyList(),
+            showFilterBadge = false,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
             antiFeatures = null,
-            notSelectedAntiFeatureIds = emptySet(),
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )

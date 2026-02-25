@@ -14,12 +14,13 @@ interface AppListInfo {
 
 data class AppListModel(
     val apps: List<AppListItem>?,
+    val showFilterBadge: Boolean,
     val sortBy: AppListSortOrder,
     val filterIncompatible: Boolean,
     val categories: List<CategoryItem>?,
     val filteredCategoryIds: Set<String>,
     val antiFeatures: List<AntiFeatureItem>?,
-    val notSelectedAntiFeatureIds: Set<String>,
+    val filteredAntiFeatureIds: Set<String>,
     val repositories: List<RepositoryItem>,
     val filteredRepositoryIds: Set<Long>,
 )
