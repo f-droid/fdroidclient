@@ -33,6 +33,7 @@ proguard/
 # More IDE stuff
 .idea/*
 !.idea/icon.svg
+!.idea/ktfmt.xml
 *.iml
 out
 .settings/

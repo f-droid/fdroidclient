@@ -46,214 +46,189 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun Versions(
-    item: AppDetailsItem,
-    scrollUp: suspend () -> Unit,
-) {
-    ExpandableSection(
-        icon = rememberVectorPainter(Icons.Default.AccessTime),
-        title = stringResource(R.string.versions),
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-    ) {
-        Column(modifier = Modifier) {
-            item.versions?.forEach { versionItem ->
-                Version(
-                    item = versionItem,
-                    isMetered = item.networkState.isMetered,
-                    installAction = { version: AppVersion ->
-                        item.actions.installAction(item.app, version, item.icon)
-                    },
-                    scrollUp = scrollUp,
-                )
-            }
-        }
+fun Versions(item: AppDetailsItem, scrollUp: suspend () -> Unit) {
+  ExpandableSection(
+    icon = rememberVectorPainter(Icons.Default.AccessTime),
+    title = stringResource(R.string.versions),
+    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+  ) {
+    Column(modifier = Modifier) {
+      item.versions?.forEach { versionItem ->
+        Version(
+          item = versionItem,
+          isMetered = item.networkState.isMetered,
+          installAction = { version: AppVersion ->
+            item.actions.installAction(item.app, version, item.icon)
+          },
+          scrollUp = scrollUp,
+        )
+      }
     }
+  }
 }
 
 @Composable
 fun Version(
-    item: VersionItem,
-    isMetered: Boolean,
-    installAction: (AppVersion) -> Unit,
-    scrollUp: suspend () -> Unit,
+  item: VersionItem,
+  isMetered: Boolean,
+  installAction: (AppVersion) -> Unit,
+  scrollUp: suspend () -> Unit,
 ) {
-    val isPreview = LocalInspectionMode.current
-    var expanded by rememberSaveable { mutableStateOf(isPreview) }
-    Column(modifier = Modifier.padding(bottom = 16.dp)) {
-        Row(
-            horizontalArrangement = spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .padding(bottom = 8.dp)
-                .clickable {
-                    expanded = !expanded
-                }
-        ) {
-            ExpandIconChevron(expanded)
-            Row {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = item.version.versionName,
-                        style = MaterialTheme.typography.titleMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                    Text(
-                        text = stringResource(
-                            R.string.added_x_ago,
-                            item.version.added.asRelativeTimeString(),
-                        ),
-                        style = MaterialTheme.typography.bodyMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                }
-                if (item.isInstalled) Badge(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(start = 8.dp)
-                ) {
-                    Text(
-                        text = stringResource(R.string.app_installed),
-                        modifier = Modifier.padding(2.dp)
-                    )
-                }
-                if (item.isSuggested) Badge(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(start = 8.dp)
-                ) {
-                    Text(
-                        text = stringResource(R.string.app_suggested),
-                        modifier = Modifier.padding(2.dp)
-                    )
-                }
-            }
+  val isPreview = LocalInspectionMode.current
+  var expanded by rememberSaveable { mutableStateOf(isPreview) }
+  Column(modifier = Modifier.padding(bottom = 16.dp)) {
+    Row(
+      horizontalArrangement = spacedBy(16.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = Modifier.padding(bottom = 8.dp).clickable { expanded = !expanded },
+    ) {
+      ExpandIconChevron(expanded)
+      Row {
+        Column(modifier = Modifier.weight(1f)) {
+          Text(
+            text = item.version.versionName,
+            style = MaterialTheme.typography.titleMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+          )
+          Text(
+            text = stringResource(R.string.added_x_ago, item.version.added.asRelativeTimeString()),
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+          )
         }
-        AnimatedVisibility(
-            visible = expanded,
-            modifier = Modifier
-                .semantics { liveRegion = LiveRegionMode.Polite }
-        ) {
-            val coroutineScope = rememberCoroutineScope()
-            var showMeteredDialog by remember { mutableStateOf(false) }
-            Row(
-                horizontalArrangement = spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    if (!item.isCompatible || !item.isSignerCompatible) Text(
-                        text = if (!item.isCompatible) {
-                            stringResource(R.string.app_details_incompatible_version)
-                        } else {
-                            stringResource(R.string.app_details_incompatible_signer)
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                    item.version.size?.let { size ->
-                        Text(
-                            text = stringResource(
-                                R.string.size_colon,
-                                Formatter.formatFileSize(LocalContext.current, size)
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                    SelectionContainer {
-                        Text(
-                            text = stringResource(
-                                R.string.version_code_colon,
-                                item.version.versionCode.toString()
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.MiddleEllipsis,
-                        )
-                    }
-                    val sdkString = buildString {
-                        item.version.packageManifest.minSdkVersion?.let { sdk ->
-                            append(stringResource(R.string.sdk_min_version, sdk))
-                        }
-                        item.version.packageManifest.targetSdkVersion?.let { sdk ->
-                            if (isNotEmpty()) append(" ")
-                            append(stringResource(R.string.sdk_target_version, sdk))
-                        }
-                        item.version.packageManifest.maxSdkVersion?.let { sdk ->
-                            if (isNotEmpty()) append(" ")
-                            append(stringResource(R.string.sdk_max_version, sdk))
-                        }
-                    }
-                    if (sdkString.isNotEmpty()) SelectionContainer {
-                        Text(
-                            text = stringResource(R.string.sdk_versions_colon, sdkString),
-                            style = MaterialTheme.typography.bodySmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.StartEllipsis,
-                        )
-                    }
-                    item.version.packageManifest.nativecode?.let { nativeCode ->
-                        if (nativeCode.isNotEmpty()) SelectionContainer {
-                            Text(
-                                text = stringResource(
-                                    R.string.architectures_colon,
-                                    nativeCode.joinToString(", ")
-                                ),
-                                style = MaterialTheme.typography.bodySmall,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                        }
-                    }
-                    item.version.signer?.let { signer ->
-                        SelectionContainer {
-                            Text(
-                                text = stringResource(
-                                    R.string.signer_colon,
-                                    signer.sha256[0].substring(0..15)
-                                ),
-                                style = MaterialTheme.typography.bodySmall,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                            )
-                        }
-                    }
-                }
-                if (item.showInstallButton) {
-                    val coroutineScope = rememberCoroutineScope()
-                    FDroidOutlineButton(
-                        text = stringResource(R.string.menu_install),
-                        onClick = {
-                            if (isMetered) {
-                                showMeteredDialog = true
-                            } else {
-                                installAction(item.version as AppVersion)
-                                coroutineScope.launch {
-                                    scrollUp()
-                                }
-                            }
-                        },
-                    )
-                }
-            }
-            if (showMeteredDialog) MeteredConnectionDialog(
-                numBytes = item.version.size,
-                onConfirm = {
-                    installAction(item.version as AppVersion)
-                    coroutineScope.launch {
-                        scrollUp()
-                    }
-                },
-                onDismiss = { showMeteredDialog = false },
-            )
-        }
+        if (item.isInstalled)
+          Badge(
+            containerColor = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(start = 8.dp),
+          ) {
+            Text(text = stringResource(R.string.app_installed), modifier = Modifier.padding(2.dp))
+          }
+        if (item.isSuggested)
+          Badge(
+            containerColor = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier.padding(start = 8.dp),
+          ) {
+            Text(text = stringResource(R.string.app_suggested), modifier = Modifier.padding(2.dp))
+          }
+      }
     }
+    AnimatedVisibility(
+      visible = expanded,
+      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+    ) {
+      val coroutineScope = rememberCoroutineScope()
+      var showMeteredDialog by remember { mutableStateOf(false) }
+      Row(horizontalArrangement = spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(modifier = Modifier.weight(1f)) {
+          if (!item.isCompatible || !item.isSignerCompatible)
+            Text(
+              text =
+                if (!item.isCompatible) {
+                  stringResource(R.string.app_details_incompatible_version)
+                } else {
+                  stringResource(R.string.app_details_incompatible_signer)
+                },
+              style = MaterialTheme.typography.bodySmall,
+              color = MaterialTheme.colorScheme.error,
+            )
+          item.version.size?.let { size ->
+            Text(
+              text =
+                stringResource(
+                  R.string.size_colon,
+                  Formatter.formatFileSize(LocalContext.current, size),
+                ),
+              style = MaterialTheme.typography.bodySmall,
+              maxLines = 1,
+              overflow = TextOverflow.Ellipsis,
+            )
+          }
+          SelectionContainer {
+            Text(
+              text =
+                stringResource(R.string.version_code_colon, item.version.versionCode.toString()),
+              style = MaterialTheme.typography.bodySmall,
+              maxLines = 1,
+              overflow = TextOverflow.MiddleEllipsis,
+            )
+          }
+          val sdkString = buildString {
+            item.version.packageManifest.minSdkVersion?.let { sdk ->
+              append(stringResource(R.string.sdk_min_version, sdk))
+            }
+            item.version.packageManifest.targetSdkVersion?.let { sdk ->
+              if (isNotEmpty()) append(" ")
+              append(stringResource(R.string.sdk_target_version, sdk))
+            }
+            item.version.packageManifest.maxSdkVersion?.let { sdk ->
+              if (isNotEmpty()) append(" ")
+              append(stringResource(R.string.sdk_max_version, sdk))
+            }
+          }
+          if (sdkString.isNotEmpty())
+            SelectionContainer {
+              Text(
+                text = stringResource(R.string.sdk_versions_colon, sdkString),
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+                overflow = TextOverflow.StartEllipsis,
+              )
+            }
+          item.version.packageManifest.nativecode?.let { nativeCode ->
+            if (nativeCode.isNotEmpty())
+              SelectionContainer {
+                Text(
+                  text =
+                    stringResource(R.string.architectures_colon, nativeCode.joinToString(", ")),
+                  style = MaterialTheme.typography.bodySmall,
+                  maxLines = 1,
+                  overflow = TextOverflow.Ellipsis,
+                )
+              }
+          }
+          item.version.signer?.let { signer ->
+            SelectionContainer {
+              Text(
+                text = stringResource(R.string.signer_colon, signer.sha256[0].substring(0..15)),
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+              )
+            }
+          }
+        }
+        if (item.showInstallButton) {
+          val coroutineScope = rememberCoroutineScope()
+          FDroidOutlineButton(
+            text = stringResource(R.string.menu_install),
+            onClick = {
+              if (isMetered) {
+                showMeteredDialog = true
+              } else {
+                installAction(item.version as AppVersion)
+                coroutineScope.launch { scrollUp() }
+              }
+            },
+          )
+        }
+      }
+      if (showMeteredDialog)
+        MeteredConnectionDialog(
+          numBytes = item.version.size,
+          onConfirm = {
+            installAction(item.version as AppVersion)
+            coroutineScope.launch { scrollUp() }
+          },
+          onDismiss = { showMeteredDialog = false },
+        )
+    }
+  }
 }
 
 @Preview
 @Composable
 fun VersionsPreview() {
-    FDroidContent {
-        Versions(testApp) {}
-    }
+  FDroidContent { Versions(testApp) {} }
 }

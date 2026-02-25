@@ -22,25 +22,18 @@ import org.fdroid.ui.FDroidContent
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun AddRepoProgressScreen(text: String, modifier: Modifier = Modifier) {
-    Column(
-        verticalArrangement = spacedBy(16.dp, CenterVertically),
-        horizontalAlignment = CenterHorizontally,
-        modifier = modifier
-            .padding(16.dp)
-            .fillMaxSize(),
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.headlineSmall,
-        )
-        CircularWavyProgressIndicator(modifier = Modifier.size(64.dp))
-    }
+  Column(
+    verticalArrangement = spacedBy(16.dp, CenterVertically),
+    horizontalAlignment = CenterHorizontally,
+    modifier = modifier.padding(16.dp).fillMaxSize(),
+  ) {
+    Text(text = text, style = MaterialTheme.typography.headlineSmall)
+    CircularWavyProgressIndicator(modifier = Modifier.size(64.dp))
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        AddRepoProgressScreen(stringResource(R.string.repo_state_fetching))
-    }
+  FDroidContent { AddRepoProgressScreen(stringResource(R.string.repo_state_fetching)) }
 }

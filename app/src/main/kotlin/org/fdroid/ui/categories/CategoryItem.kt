@@ -72,150 +72,153 @@ import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.ui.graphics.vector.ImageVector
 
 data class CategoryItem(val id: String, val name: String) {
-    val imageVector: ImageVector
-        get() = when (id) {
-            "AI Chat" -> Icons.Default.VoiceChat
-            "App Manager" -> Icons.Default.Apps
-            "App Store & Updater" -> Icons.Default.Storefront
-            "Battery" -> Icons.Default.BatteryChargingFull
-            "Bookmark" -> Icons.Default.Bookmarks
-            "Browser" -> Icons.Default.OpenInBrowser
-            "Calculator" -> Icons.Default.Calculate
-            "Calendar & Agenda" -> Icons.Default.CalendarMonth
-            "Clock" -> Icons.Default.AccessTime
-            "Cloud Storage & File Sync" -> Icons.Default.Cloud
-            "Connectivity" -> Icons.Default.SignalCellularAlt
-            "Development" -> Icons.Default.DeveloperMode
-            "DNS & Hosts" -> Icons.Default.Dns
-            "Draw" -> Icons.Default.Draw
-            "Ebook Reader" -> AutoMirrored.Default.MenuBook
-            "Email" -> Icons.Default.AlternateEmail
-            "File Encryption & Vault" -> Icons.Default.EnhancedEncryption
-            "File Transfer" -> Icons.Default.UploadFile
-            "Finance Manager" -> Icons.Default.MonetizationOn
-            "Firewall" -> Icons.Default.AppBlocking
-            "Flashlight" -> Icons.Default.FlashlightOn
-            "Forum" -> Icons.Default.Image
-            "Gallery" -> Icons.Default.PhotoSizeSelectActual
-            "Games" -> Icons.Default.Games
-            "Graphics" -> Icons.Default.Brush
-            "Habit Tracker" -> Icons.Default.TrackChanges
-            "Icon Pack" -> Icons.Default.Collections
-            "Internet" -> Icons.Default.Language
-            "Inventory" -> Icons.Default.AllInbox
-            "Keyboard & IME" -> Icons.Default.Keyboard
-            "Launcher" -> Icons.Default.Home
-            "Local Media Player" -> Icons.Default.LocalPlay
-            "Location Tracker & Sharer" -> Icons.Default.MyLocation
-            "Messaging" -> AutoMirrored.Default.Message
-            "Money" -> Icons.Default.Money
-            "Multimedia" -> Icons.Default.MusicVideo
-            "Music Practice Tool" -> Icons.Default.MusicNote
-            "Navigation" -> Icons.Default.Navigation
-            "Network Analyzer" -> Icons.Default.NetworkCheck
-            "News" -> Icons.Default.Newspaper
-            "Note" -> Icons.Default.NoteAlt
-            "Online Media Player" -> Icons.Default.Airplay
-            "Pass Wallet" -> Icons.Default.AccountBalanceWallet
-            "Password & 2FA" -> Icons.Default.Password
-            "Phone & SMS" -> Icons.Default.PermPhoneMsg
-            "Podcast" -> Icons.Default.Podcasts
-            "Public Transport" -> Icons.Default.DirectionsBus
-            "Reading" -> AutoMirrored.Default.MenuBook
-            "Recipe Manager" -> Icons.Default.RestaurantMenu
-            "Religion" -> Icons.Default.Church
-            "Science & Education" -> Icons.Default.Science
-            "Security" -> Icons.Default.Security
-            "Shopping List" -> Icons.Default.ShoppingCart
-            "Social Network" -> Icons.Default.Groups
-            "Sports & Health" -> Icons.Default.HealthAndSafety
-            "System" -> Icons.Default.Settings
-            "Task" -> Icons.Default.TaskAlt
-            "Text Editor" -> Icons.Default.EditNote
-            "Theming" -> Icons.Default.Style
-            "Time" -> Icons.Default.AccessTime
-            "Translation & Dictionary" -> Icons.Default.Translate
-            "Voice & Video Chat" -> Icons.Default.VideoChat
-            "Unit Convertor" -> Icons.Default.CurrencyExchange
-            "VPN & Proxy" -> Icons.Default.VpnLock
-            "Wallet" -> Icons.Default.Wallet
-            "Wallpaper" -> Icons.Default.Wallpaper
-            "Weather" -> Icons.Default.WbSunny
-            "Workout" -> Icons.Default.FitnessCenter
-            "Writing" -> Icons.Default.EditNote
-            else -> Icons.Default.Category
-        }
-    val group: CategoryGroup
-        get() = when (id) {
-            "AI Chat" -> CategoryGroups.tools
-            "App Manager" -> CategoryGroups.device
-            "App Store & Updater" -> CategoryGroups.device
-            "Battery" -> CategoryGroups.device
-            "Bookmark" -> CategoryGroups.storage
-            "Browser" -> CategoryGroups.productivity
-            "Calculator" -> CategoryGroups.tools
-            "Calendar & Agenda" -> CategoryGroups.productivity
-            "Clock" -> CategoryGroups.productivity
-            "Cloud Storage & File Sync" -> CategoryGroups.storage
-            "Connectivity" -> CategoryGroups.network
-            "Development" -> CategoryGroups.interests
-            "DNS & Hosts" -> CategoryGroups.network
-            "Draw" -> CategoryGroups.interests
-            "Ebook Reader" -> CategoryGroups.media
-            "Email" -> CategoryGroups.communication
-            "File Encryption & Vault" -> CategoryGroups.storage
-            "File Transfer" -> CategoryGroups.storage
-            "Finance Manager" -> CategoryGroups.wallets
-            "Firewall" -> CategoryGroups.device
-            "Flashlight" -> CategoryGroups.tools
-            "Forum" -> CategoryGroups.communication
-            "Gallery" -> CategoryGroups.storage
-            "Games" -> CategoryGroups.media
-            "Graphics" -> CategoryGroups.interests
-            "Habit Tracker" -> CategoryGroups.productivity
-            "Icon Pack" -> CategoryGroups.device
-            "Internet" -> CategoryGroups.productivity
-            "Inventory" -> CategoryGroups.tools
-            "Keyboard & IME" -> CategoryGroups.device
-            "Launcher" -> CategoryGroups.device
-            "Local Media Player" -> CategoryGroups.media
-            "Location Tracker & Sharer" -> CategoryGroups.tools
-            "Messaging" -> CategoryGroups.communication
-            "Money" -> CategoryGroups.wallets
-            "Multimedia" -> CategoryGroups.media
-            "Music Practice Tool" -> CategoryGroups.interests
-            "Navigation" -> CategoryGroups.tools
-            "Network Analyzer" -> CategoryGroups.tools
-            "News" -> CategoryGroups.interests
-            "Note" -> CategoryGroups.storage
-            "Online Media Player" -> CategoryGroups.media
-            "Pass Wallet" -> CategoryGroups.wallets
-            "Password & 2FA" -> CategoryGroups.device
-            "Phone & SMS" -> CategoryGroups.communication
-            "Podcast" -> CategoryGroups.media
-            "Public Transport" -> CategoryGroups.tools
-            "Reading" -> CategoryGroups.media
-            "Recipe Manager" -> CategoryGroups.interests
-            "Religion" -> CategoryGroups.interests
-            "Science & Education" -> CategoryGroups.interests
-            "Security" -> CategoryGroups.device
-            "Shopping List" -> CategoryGroups.tools
-            "Social Network" -> CategoryGroups.communication
-            "Sports & Health" -> CategoryGroups.interests
-            "System" -> CategoryGroups.device
-            "Task" -> CategoryGroups.productivity
-            "Text Editor" -> CategoryGroups.productivity
-            "Theming" -> CategoryGroups.device
-            "Time" -> CategoryGroups.productivity
-            "Translation & Dictionary" -> CategoryGroups.tools
-            "Voice & Video Chat" -> CategoryGroups.communication
-            "Unit Convertor" -> CategoryGroups.tools
-            "VPN & Proxy" -> CategoryGroups.network
-            "Wallet" -> CategoryGroups.wallets
-            "Wallpaper" -> CategoryGroups.device
-            "Weather" -> CategoryGroups.tools
-            "Workout" -> CategoryGroups.interests
-            "Writing" -> CategoryGroups.productivity
-            else -> CategoryGroups.misc
-        }
+  val imageVector: ImageVector
+    get() =
+      when (id) {
+        "AI Chat" -> Icons.Default.VoiceChat
+        "App Manager" -> Icons.Default.Apps
+        "App Store & Updater" -> Icons.Default.Storefront
+        "Battery" -> Icons.Default.BatteryChargingFull
+        "Bookmark" -> Icons.Default.Bookmarks
+        "Browser" -> Icons.Default.OpenInBrowser
+        "Calculator" -> Icons.Default.Calculate
+        "Calendar & Agenda" -> Icons.Default.CalendarMonth
+        "Clock" -> Icons.Default.AccessTime
+        "Cloud Storage & File Sync" -> Icons.Default.Cloud
+        "Connectivity" -> Icons.Default.SignalCellularAlt
+        "Development" -> Icons.Default.DeveloperMode
+        "DNS & Hosts" -> Icons.Default.Dns
+        "Draw" -> Icons.Default.Draw
+        "Ebook Reader" -> AutoMirrored.Default.MenuBook
+        "Email" -> Icons.Default.AlternateEmail
+        "File Encryption & Vault" -> Icons.Default.EnhancedEncryption
+        "File Transfer" -> Icons.Default.UploadFile
+        "Finance Manager" -> Icons.Default.MonetizationOn
+        "Firewall" -> Icons.Default.AppBlocking
+        "Flashlight" -> Icons.Default.FlashlightOn
+        "Forum" -> Icons.Default.Image
+        "Gallery" -> Icons.Default.PhotoSizeSelectActual
+        "Games" -> Icons.Default.Games
+        "Graphics" -> Icons.Default.Brush
+        "Habit Tracker" -> Icons.Default.TrackChanges
+        "Icon Pack" -> Icons.Default.Collections
+        "Internet" -> Icons.Default.Language
+        "Inventory" -> Icons.Default.AllInbox
+        "Keyboard & IME" -> Icons.Default.Keyboard
+        "Launcher" -> Icons.Default.Home
+        "Local Media Player" -> Icons.Default.LocalPlay
+        "Location Tracker & Sharer" -> Icons.Default.MyLocation
+        "Messaging" -> AutoMirrored.Default.Message
+        "Money" -> Icons.Default.Money
+        "Multimedia" -> Icons.Default.MusicVideo
+        "Music Practice Tool" -> Icons.Default.MusicNote
+        "Navigation" -> Icons.Default.Navigation
+        "Network Analyzer" -> Icons.Default.NetworkCheck
+        "News" -> Icons.Default.Newspaper
+        "Note" -> Icons.Default.NoteAlt
+        "Online Media Player" -> Icons.Default.Airplay
+        "Pass Wallet" -> Icons.Default.AccountBalanceWallet
+        "Password & 2FA" -> Icons.Default.Password
+        "Phone & SMS" -> Icons.Default.PermPhoneMsg
+        "Podcast" -> Icons.Default.Podcasts
+        "Public Transport" -> Icons.Default.DirectionsBus
+        "Reading" -> AutoMirrored.Default.MenuBook
+        "Recipe Manager" -> Icons.Default.RestaurantMenu
+        "Religion" -> Icons.Default.Church
+        "Science & Education" -> Icons.Default.Science
+        "Security" -> Icons.Default.Security
+        "Shopping List" -> Icons.Default.ShoppingCart
+        "Social Network" -> Icons.Default.Groups
+        "Sports & Health" -> Icons.Default.HealthAndSafety
+        "System" -> Icons.Default.Settings
+        "Task" -> Icons.Default.TaskAlt
+        "Text Editor" -> Icons.Default.EditNote
+        "Theming" -> Icons.Default.Style
+        "Time" -> Icons.Default.AccessTime
+        "Translation & Dictionary" -> Icons.Default.Translate
+        "Voice & Video Chat" -> Icons.Default.VideoChat
+        "Unit Convertor" -> Icons.Default.CurrencyExchange
+        "VPN & Proxy" -> Icons.Default.VpnLock
+        "Wallet" -> Icons.Default.Wallet
+        "Wallpaper" -> Icons.Default.Wallpaper
+        "Weather" -> Icons.Default.WbSunny
+        "Workout" -> Icons.Default.FitnessCenter
+        "Writing" -> Icons.Default.EditNote
+        else -> Icons.Default.Category
+      }
+
+  val group: CategoryGroup
+    get() =
+      when (id) {
+        "AI Chat" -> CategoryGroups.tools
+        "App Manager" -> CategoryGroups.device
+        "App Store & Updater" -> CategoryGroups.device
+        "Battery" -> CategoryGroups.device
+        "Bookmark" -> CategoryGroups.storage
+        "Browser" -> CategoryGroups.productivity
+        "Calculator" -> CategoryGroups.tools
+        "Calendar & Agenda" -> CategoryGroups.productivity
+        "Clock" -> CategoryGroups.productivity
+        "Cloud Storage & File Sync" -> CategoryGroups.storage
+        "Connectivity" -> CategoryGroups.network
+        "Development" -> CategoryGroups.interests
+        "DNS & Hosts" -> CategoryGroups.network
+        "Draw" -> CategoryGroups.interests
+        "Ebook Reader" -> CategoryGroups.media
+        "Email" -> CategoryGroups.communication
+        "File Encryption & Vault" -> CategoryGroups.storage
+        "File Transfer" -> CategoryGroups.storage
+        "Finance Manager" -> CategoryGroups.wallets
+        "Firewall" -> CategoryGroups.device
+        "Flashlight" -> CategoryGroups.tools
+        "Forum" -> CategoryGroups.communication
+        "Gallery" -> CategoryGroups.storage
+        "Games" -> CategoryGroups.media
+        "Graphics" -> CategoryGroups.interests
+        "Habit Tracker" -> CategoryGroups.productivity
+        "Icon Pack" -> CategoryGroups.device
+        "Internet" -> CategoryGroups.productivity
+        "Inventory" -> CategoryGroups.tools
+        "Keyboard & IME" -> CategoryGroups.device
+        "Launcher" -> CategoryGroups.device
+        "Local Media Player" -> CategoryGroups.media
+        "Location Tracker & Sharer" -> CategoryGroups.tools
+        "Messaging" -> CategoryGroups.communication
+        "Money" -> CategoryGroups.wallets
+        "Multimedia" -> CategoryGroups.media
+        "Music Practice Tool" -> CategoryGroups.interests
+        "Navigation" -> CategoryGroups.tools
+        "Network Analyzer" -> CategoryGroups.tools
+        "News" -> CategoryGroups.interests
+        "Note" -> CategoryGroups.storage
+        "Online Media Player" -> CategoryGroups.media
+        "Pass Wallet" -> CategoryGroups.wallets
+        "Password & 2FA" -> CategoryGroups.device
+        "Phone & SMS" -> CategoryGroups.communication
+        "Podcast" -> CategoryGroups.media
+        "Public Transport" -> CategoryGroups.tools
+        "Reading" -> CategoryGroups.media
+        "Recipe Manager" -> CategoryGroups.interests
+        "Religion" -> CategoryGroups.interests
+        "Science & Education" -> CategoryGroups.interests
+        "Security" -> CategoryGroups.device
+        "Shopping List" -> CategoryGroups.tools
+        "Social Network" -> CategoryGroups.communication
+        "Sports & Health" -> CategoryGroups.interests
+        "System" -> CategoryGroups.device
+        "Task" -> CategoryGroups.productivity
+        "Text Editor" -> CategoryGroups.productivity
+        "Theming" -> CategoryGroups.device
+        "Time" -> CategoryGroups.productivity
+        "Translation & Dictionary" -> CategoryGroups.tools
+        "Voice & Video Chat" -> CategoryGroups.communication
+        "Unit Convertor" -> CategoryGroups.tools
+        "VPN & Proxy" -> CategoryGroups.network
+        "Wallet" -> CategoryGroups.wallets
+        "Wallpaper" -> CategoryGroups.device
+        "Weather" -> CategoryGroups.tools
+        "Workout" -> CategoryGroups.interests
+        "Writing" -> CategoryGroups.productivity
+        else -> CategoryGroups.misc
+      }
 }

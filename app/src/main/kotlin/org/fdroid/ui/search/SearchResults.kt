@@ -30,119 +30,92 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BigLoadingIndicator
 
-data class SearchResults(
-    val apps: List<AppListItem>,
-    val categories: List<CategoryItem>,
-)
+data class SearchResults(val apps: List<AppListItem>, val categories: List<CategoryItem>)
 
 @Composable
 fun SearchResults(
-    searchResults: SearchResults?,
-    textFieldState: TextFieldState,
-    onNav: (NavigationKey) -> Unit,
-    paddingValues: PaddingValues,
-    modifier: Modifier,
+  searchResults: SearchResults?,
+  textFieldState: TextFieldState,
+  onNav: (NavigationKey) -> Unit,
+  paddingValues: PaddingValues,
+  modifier: Modifier,
 ) {
-    // rememberLazyListState done differently, so it refreshes for different searchResults
-    val listState = rememberSaveable(searchResults, saver = LazyListState.Saver) {
-        LazyListState(0, 0)
+  // rememberLazyListState done differently, so it refreshes for different searchResults
+  val listState =
+    rememberSaveable(searchResults, saver = LazyListState.Saver) { LazyListState(0, 0) }
+  if (searchResults == null) {
+    if (textFieldState.text.length >= SEARCH_THRESHOLD) {
+      BigLoadingIndicator(modifier.padding(paddingValues).imePadding())
     }
-    if (searchResults == null) {
-        if (textFieldState.text.length >= SEARCH_THRESHOLD) {
-            BigLoadingIndicator(
-                modifier
-                    .padding(paddingValues)
-                    .imePadding()
-            )
+  } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {
+    Column(modifier = modifier.padding(paddingValues).imePadding()) {
+      if (searchResults.categories.isNotEmpty()) {
+        CategoriesFlowRow(searchResults.categories, onNav)
+      }
+      Text(
+        text = stringResource(R.string.search_no_results),
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(16.dp).fillMaxWidth(),
+      )
+    }
+  } else {
+    LazyColumn(
+      state = listState,
+      contentPadding = paddingValues,
+      modifier = modifier.fillMaxSize().imePadding(),
+    ) {
+      if (searchResults.categories.isNotEmpty()) {
+        item(key = "categories", contentType = "category") {
+          CategoriesFlowRow(searchResults.categories, onNav)
         }
-    } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {
-        Column(
-            modifier = modifier
-                .padding(paddingValues)
-                .imePadding()
-        ) {
+      }
+      if (searchResults.apps.isNotEmpty()) {
+        item(key = "appsHeader", contentType = "appsHeader") {
+          Column {
             if (searchResults.categories.isNotEmpty()) {
-                CategoriesFlowRow(searchResults.categories, onNav)
+              HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
             }
             Text(
-                text = stringResource(R.string.search_no_results),
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
+              text = stringResource(R.string.apps),
+              style = MaterialTheme.typography.labelLarge,
+              modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp),
             )
+          }
         }
-    } else {
-        LazyColumn(
-            state = listState,
-            contentPadding = paddingValues,
-            modifier = modifier
-                .fillMaxSize()
-                .imePadding()
-        ) {
-            if (searchResults.categories.isNotEmpty()) {
-                item(
-                    key = "categories",
-                    contentType = "category",
-                ) {
-                    CategoriesFlowRow(searchResults.categories, onNav)
-                }
-            }
-            if (searchResults.apps.isNotEmpty()) {
-                item(
-                    key = "appsHeader",
-                    contentType = "appsHeader",
-                ) {
-                    Column {
-                        if (searchResults.categories.isNotEmpty()) {
-                            HorizontalDivider(
-                                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
-                            )
-                        }
-                        Text(
-                            text = stringResource(R.string.apps),
-                            style = MaterialTheme.typography.labelLarge,
-                            modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
-                        )
-                    }
-                }
-            }
-            items(
-                searchResults.apps,
-                key = { it.packageName },
-                contentType = { "app" },
-            ) { item ->
-                AppListRow(
-                    item = item,
-                    isSelected = false,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .animateItem()
-                        .clickable {
-                            onNav(NavigationKey.AppDetails(item.packageName))
-                        }
-                )
-            }
-        }
+      }
+      items(searchResults.apps, key = { it.packageName }, contentType = { "app" }) { item ->
+        AppListRow(
+          item = item,
+          isSelected = false,
+          modifier =
+            Modifier.fillMaxWidth().animateItem().clickable {
+              onNav(NavigationKey.AppDetails(item.packageName))
+            },
+        )
+      }
     }
+  }
 }
 
 @Composable
 private fun CategoriesFlowRow(categories: List<CategoryItem>, onNav: (NavigationKey) -> Unit) {
-    Column(modifier = Modifier.padding(horizontal = 8.dp)) {
-        Text(
-            text = stringResource(R.string.main_menu__categories),
-            style = MaterialTheme.typography.labelLarge,
-            modifier = Modifier.padding(8.dp)
+  Column(modifier = Modifier.padding(horizontal = 8.dp)) {
+    Text(
+      text = stringResource(R.string.main_menu__categories),
+      style = MaterialTheme.typography.labelLarge,
+      modifier = Modifier.padding(8.dp),
+    )
+    ChipFlowRow {
+      categories.forEach { item ->
+        CategoryChip(
+          categoryItem = item,
+          onClick = {
+            val type = AppListType.Category(item.name, item.id)
+            val navKey = NavigationKey.AppList(type)
+            onNav(navKey)
+          },
         )
-        ChipFlowRow {
-            categories.forEach { item ->
-                CategoryChip(categoryItem = item, onClick = {
-                    val type = AppListType.Category(item.name, item.id)
-                    val navKey = NavigationKey.AppList(type)
-                    onNav(navKey)
-                })
-            }
-        }
+      }
     }
+  }
 }

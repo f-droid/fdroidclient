@@ -18,50 +18,50 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun FDroidButton(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    imageVector: ImageVector? = null,
+  text: String,
+  onClick: () -> Unit,
+  modifier: Modifier = Modifier,
+  imageVector: ImageVector? = null,
 ) {
-    Button(
-        onClick = onClick,
-        shape = RoundedCornerShape(32.dp),
-        modifier = modifier.heightIn(min = ButtonDefaults.MinHeight)
-    ) {
-        if (imageVector != null) {
-            Icon(
-                imageVector = imageVector,
-                contentDescription = text,
-                modifier = Modifier.size(ButtonDefaults.IconSize),
-            )
-            Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-        }
-        Text(text = text)
+  Button(
+    onClick = onClick,
+    shape = RoundedCornerShape(32.dp),
+    modifier = modifier.heightIn(min = ButtonDefaults.MinHeight),
+  ) {
+    if (imageVector != null) {
+      Icon(
+        imageVector = imageVector,
+        contentDescription = text,
+        modifier = Modifier.size(ButtonDefaults.IconSize),
+      )
+      Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
     }
+    Text(text = text)
+  }
 }
 
 @Composable
 fun FDroidOutlineButton(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    imageVector: ImageVector? = null,
-    color: Color = MaterialTheme.colorScheme.primary,
+  text: String,
+  onClick: () -> Unit,
+  modifier: Modifier = Modifier,
+  imageVector: ImageVector? = null,
+  color: Color = MaterialTheme.colorScheme.primary,
 ) {
-    OutlinedButton(
-        onClick = onClick,
-        shape = RoundedCornerShape(32.dp),
-        modifier = modifier.heightIn(min = ButtonDefaults.MinHeight),
-        colors = ButtonDefaults.outlinedButtonColors(contentColor = color),
-    ) {
-        if (imageVector != null) {
-            Icon(
-                imageVector = imageVector,
-                contentDescription = text,
-                modifier = Modifier.size(ButtonDefaults.IconSize),
-            )
-            Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-        }
-        Text(text = text, maxLines = 1)
+  OutlinedButton(
+    onClick = onClick,
+    shape = RoundedCornerShape(32.dp),
+    modifier = modifier.heightIn(min = ButtonDefaults.MinHeight),
+    colors = ButtonDefaults.outlinedButtonColors(contentColor = color),
+  ) {
+    if (imageVector != null) {
+      Icon(
+        imageVector = imageVector,
+        contentDescription = text,
+        modifier = Modifier.size(ButtonDefaults.IconSize),
+      )
+      Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
     }
+    Text(text = text, maxLines = 1)
+  }
 }

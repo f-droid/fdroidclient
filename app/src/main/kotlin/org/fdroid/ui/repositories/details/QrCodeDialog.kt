@@ -24,36 +24,23 @@ import org.fdroid.R
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun QrCodeDialog(onDismissDialog: () -> Unit, generateQrCode: suspend () -> Bitmap?) {
-    val qrCodeBitmap: ImageBitmap? by produceState(null) {
-        value = generateQrCode()?.asImageBitmap()
-    }
-    AlertDialog(
-        title = {
-            Text(text = stringResource(R.string.share_repository))
-        },
-        text = {
-            val bitmap = qrCodeBitmap
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 128.dp)
-            ) {
-                if (bitmap == null) {
-                    LoadingIndicator()
-                } else {
-                    Image(
-                        bitmap = bitmap,
-                        contentDescription = stringResource(R.string.swap_scan_qr)
-                    )
-                }
-            }
-        },
-        onDismissRequest = onDismissDialog,
-        confirmButton = {
-            TextButton(onClick = onDismissDialog) {
-                Text(stringResource(R.string.ok))
-            }
-        },
-    )
+  val qrCodeBitmap: ImageBitmap? by produceState(null) { value = generateQrCode()?.asImageBitmap() }
+  AlertDialog(
+    title = { Text(text = stringResource(R.string.share_repository)) },
+    text = {
+      val bitmap = qrCodeBitmap
+      Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxWidth().heightIn(min = 128.dp),
+      ) {
+        if (bitmap == null) {
+          LoadingIndicator()
+        } else {
+          Image(bitmap = bitmap, contentDescription = stringResource(R.string.swap_scan_qr))
+        }
+      }
+    },
+    onDismissRequest = onDismissDialog,
+    confirmButton = { TextButton(onClick = onDismissDialog) { Text(stringResource(R.string.ok)) } },
+  )
 }

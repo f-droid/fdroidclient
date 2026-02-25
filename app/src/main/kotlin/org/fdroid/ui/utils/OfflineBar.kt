@@ -17,24 +17,20 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun OfflineBar(modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .background(MaterialTheme.colorScheme.errorContainer)
-            .fillMaxWidth()
-    ) {
-        Text(
-            text = stringResource(R.string.banner_no_internet),
-            style = MaterialTheme.typography.labelMedium,
-            modifier = Modifier.padding(4.dp)
-        )
-    }
+  Box(
+    contentAlignment = Alignment.Center,
+    modifier = modifier.background(MaterialTheme.colorScheme.errorContainer).fillMaxWidth(),
+  ) {
+    Text(
+      text = stringResource(R.string.banner_no_internet),
+      style = MaterialTheme.typography.labelMedium,
+      modifier = Modifier.padding(4.dp),
+    )
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        OfflineBar()
-    }
+  FDroidContent { OfflineBar() }
 }

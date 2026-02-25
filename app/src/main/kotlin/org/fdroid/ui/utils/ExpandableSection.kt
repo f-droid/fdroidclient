@@ -28,40 +28,40 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ExpandableSection(
-    icon: Painter?,
-    title: String,
-    modifier: Modifier = Modifier,
-    initiallyExpanded: Boolean = LocalInspectionMode.current,
-    content: @Composable () -> Unit,
+  icon: Painter?,
+  title: String,
+  modifier: Modifier = Modifier,
+  initiallyExpanded: Boolean = LocalInspectionMode.current,
+  content: @Composable () -> Unit,
 ) {
-    var sectionExpanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
-    Column(modifier = modifier.fillMaxWidth()) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = spacedBy(8.dp),
-            modifier = Modifier
-                .heightIn(min = 48.dp)
-                .clickable(onClick = { sectionExpanded = !sectionExpanded })
-        ) {
-            if (icon != null) Icon(
-                painter = icon,
-                contentDescription = null,
-                modifier = Modifier.semantics { hideFromAccessibility() },
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.weight(1f),
-            )
-            IconButton(onClick = { sectionExpanded = !sectionExpanded }) {
-                ExpandIconArrow(sectionExpanded)
-            }
-        }
-        AnimatedVisibility(
-            visible = sectionExpanded,
-            modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-        ) {
-            content()
-        }
+  var sectionExpanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
+  Column(modifier = modifier.fillMaxWidth()) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = spacedBy(8.dp),
+      modifier =
+        Modifier.heightIn(min = 48.dp).clickable(onClick = { sectionExpanded = !sectionExpanded }),
+    ) {
+      if (icon != null)
+        Icon(
+          painter = icon,
+          contentDescription = null,
+          modifier = Modifier.semantics { hideFromAccessibility() },
+        )
+      Text(
+        text = title,
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.weight(1f),
+      )
+      IconButton(onClick = { sectionExpanded = !sectionExpanded }) {
+        ExpandIconArrow(sectionExpanded)
+      }
     }
+    AnimatedVisibility(
+      visible = sectionExpanded,
+      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+    ) {
+      content()
+    }
+  }
 }

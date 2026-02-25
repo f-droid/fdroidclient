@@ -26,57 +26,57 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun BadgeIcon(
-    icon: ImageVector,
-    contentDescription: String,
-    color: Color = MaterialTheme.colorScheme.error
-) = Icon(
+  icon: ImageVector,
+  contentDescription: String,
+  color: Color = MaterialTheme.colorScheme.error,
+) =
+  Icon(
     imageVector = icon,
     tint = color,
     contentDescription = contentDescription,
-    modifier = Modifier
-        .clip(CircleShape)
+    modifier =
+      Modifier.clip(CircleShape)
         .background(MaterialTheme.colorScheme.surface)
         .padding(1.dp)
-        .size(24.dp)
-)
+        .size(24.dp),
+  )
 
 @Composable
-fun InstalledBadge() = BadgeIcon(
+fun InstalledBadge() =
+  BadgeIcon(
     icon = Icons.Filled.CheckCircle,
     contentDescription = stringResource(R.string.app_installed),
     color = MaterialTheme.colorScheme.secondary,
-)
+  )
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        Column {
-            BadgedBox(badge = {
-                BadgeIcon(
-                    icon = Icons.Filled.SecurityUpdate,
-                    contentDescription = stringResource(R.string.app_installed),
-                    color = MaterialTheme.colorScheme.error
-                )
-            }, modifier = Modifier.padding(16.dp)) {
-                Image(
-                    painter = painterResource(R.drawable.ic_launcher_foreground),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(48.dp),
-                )
-            }
-            BadgedBox(
-                badge = { InstalledBadge() },
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_launcher_foreground),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(48.dp),
-                )
-            }
-        }
+  FDroidContent {
+    Column {
+      BadgedBox(
+        badge = {
+          BadgeIcon(
+            icon = Icons.Filled.SecurityUpdate,
+            contentDescription = stringResource(R.string.app_installed),
+            color = MaterialTheme.colorScheme.error,
+          )
+        },
+        modifier = Modifier.padding(16.dp),
+      ) {
+        Image(
+          painter = painterResource(R.drawable.ic_launcher_foreground),
+          contentDescription = null,
+          modifier = Modifier.size(48.dp),
+        )
+      }
+      BadgedBox(badge = { InstalledBadge() }, modifier = Modifier.padding(16.dp)) {
+        Image(
+          painter = painterResource(R.drawable.ic_launcher_foreground),
+          contentDescription = null,
+          modifier = Modifier.size(48.dp),
+        )
+      }
     }
+  }
 }

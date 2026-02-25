@@ -38,140 +38,142 @@ import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 
 @HiltViewModel(assistedFactory = RepoDetailsViewModel.Factory::class)
-class RepoDetailsViewModel @AssistedInject constructor(
-    app: Application,
-    @Assisted private val repoId: Long,
-    networkMonitor: NetworkMonitor,
-    private val db: FDroidDatabase,
-    private val repoManager: RepoManager,
-    private val updateManager: UpdatesManager,
-    repoUpdateManager: RepoUpdateManager,
-    private val settingsManager: SettingsManager,
-    private val dnsCache: DnsCache,
-    private val onboardingManager: OnboardingManager,
-    @param:IoDispatcher private val ioScope: CoroutineScope,
+class RepoDetailsViewModel
+@AssistedInject
+constructor(
+  app: Application,
+  @Assisted private val repoId: Long,
+  networkMonitor: NetworkMonitor,
+  private val db: FDroidDatabase,
+  private val repoManager: RepoManager,
+  private val updateManager: UpdatesManager,
+  repoUpdateManager: RepoUpdateManager,
+  private val settingsManager: SettingsManager,
+  private val dnsCache: DnsCache,
+  private val onboardingManager: OnboardingManager,
+  @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app), RepoDetailsActions {
 
-    private val log = KotlinLogging.logger {}
-    private val moleculeScope =
-        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+  private val log = KotlinLogging.logger {}
+  private val moleculeScope =
+    CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
-    private val repoFlow = MutableStateFlow<Repository?>(null)
-    private val numAppsFlow: Flow<Int?> = repoFlow.map { repo ->
+  private val repoFlow = MutableStateFlow<Repository?>(null)
+  private val numAppsFlow: Flow<Int?> =
+    repoFlow
+      .map { repo ->
         if (repo != null) {
-            db.getAppDao().getNumberOfAppsInRepository(repo.repoId)
+          db.getAppDao().getNumberOfAppsInRepository(repo.repoId)
         } else null
-    }.flowOn(Dispatchers.IO).distinctUntilChanged()
-    private val archiveStateFlow = MutableStateFlow(UNKNOWN)
-    private val showOnboarding = onboardingManager.showRepoDetailsOnboarding
-    private val updateFlow = repoUpdateManager.repoUpdateState.map {
-        if (it?.repoId == repoId) it else null
+      }
+      .flowOn(Dispatchers.IO)
+      .distinctUntilChanged()
+  private val archiveStateFlow = MutableStateFlow(UNKNOWN)
+  private val showOnboarding = onboardingManager.showRepoDetailsOnboarding
+  private val updateFlow =
+    repoUpdateManager.repoUpdateState.map { if (it?.repoId == repoId) it else null }
+
+  val model: StateFlow<RepoDetailsModel> by
+    lazy(LazyThreadSafetyMode.NONE) {
+      moleculeScope.launchMolecule(mode = ContextClock) {
+        RepoDetailsPresenter(
+          repoFlow = repoFlow,
+          numAppsFlow = numAppsFlow,
+          archiveStateFlow = archiveStateFlow,
+          showOnboardingFlow = showOnboarding,
+          updateFlow = updateFlow,
+          networkStateFlow = networkMonitor.networkState,
+          proxyConfig = settingsManager.proxyConfig,
+        )
+      }
     }
 
-    val model: StateFlow<RepoDetailsModel> by lazy(LazyThreadSafetyMode.NONE) {
-        moleculeScope.launchMolecule(mode = ContextClock) {
-            RepoDetailsPresenter(
-                repoFlow = repoFlow,
-                numAppsFlow = numAppsFlow,
-                archiveStateFlow = archiveStateFlow,
-                showOnboardingFlow = showOnboarding,
-                updateFlow = updateFlow,
-                networkStateFlow = networkMonitor.networkState,
-                proxyConfig = settingsManager.proxyConfig,
-            )
+  init {
+    viewModelScope.launch {
+      repoManager.repositoriesState.collect { repos ->
+        val repo = repos.find { it.repoId == repoId }
+        onRepoChanged(repo)
+      }
+    }
+  }
+
+  private fun onRepoChanged(repo: Repository?) {
+    repoFlow.update { repo }
+    archiveStateFlow.update { repo?.archiveState() ?: UNKNOWN }
+  }
+
+  override fun deleteRepository() {
+    ioScope.launch {
+      // before deleting a repo, clear the related entries from the dns cache
+      val repo = repoManager.getRepository(repoId)
+      if (repo != null) {
+        val mirrors = repo.getMirrors()
+        for (mirror in mirrors) {
+          dnsCache.remove(mirror.url.host)
         }
+      }
+      repoManager.deleteRepository(repoId)
+      updateManager.loadUpdates()
     }
+  }
 
-    init {
-        viewModelScope.launch {
-            repoManager.repositoriesState.collect { repos ->
-                val repo = repos.find { it.repoId == repoId }
-                onRepoChanged(repo)
-            }
-        }
+  override fun updateUsernameAndPassword(username: String, password: String) {
+    ioScope.launch {
+      repoManager.updateUsernameAndPassword(repoId, username, password)
+      withContext(Dispatchers.Main) { RepoUpdateWorker.updateNow(application, repoId) }
     }
+  }
 
-    private fun onRepoChanged(repo: Repository?) {
-        repoFlow.update { repo }
-        archiveStateFlow.update { repo?.archiveState() ?: UNKNOWN }
+  override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
+    ioScope.launch { repoManager.setMirrorEnabled(repoId, mirror, enabled) }
+  }
+
+  override fun deleteUserMirror(mirror: Mirror) {
+    ioScope.launch { repoManager.deleteUserMirror(repoId, mirror) }
+  }
+
+  override fun setArchiveRepoEnabled(enabled: Boolean) {
+    ioScope.launch {
+      val repo = repoFlow.value ?: return@launch
+      archiveStateFlow.value = ArchiveState.LOADING
+      try {
+        val archiveRepoId =
+          repoManager.setArchiveRepoEnabled(
+            repository = repo,
+            enabled = enabled,
+            proxy = settingsManager.proxyConfig,
+          )
+        archiveStateFlow.value = enabled.toArchiveState()
+        if (enabled && archiveRepoId != null)
+          withContext(Dispatchers.Main) { RepoUpdateWorker.updateNow(application, archiveRepoId) }
+      } catch (e: Exception) {
+        log.error(e) { "Error toggling archive repo: " }
+        archiveStateFlow.value = repo.archiveState()
+      }
     }
+  }
 
-    override fun deleteRepository() {
-        ioScope.launch {
-            // before deleting a repo, clear the related entries from the dns cache
-            val repo = repoManager.getRepository(repoId)
-            if (repo != null) {
-                val mirrors = repo.getMirrors()
-                for (mirror in mirrors) {
-                    dnsCache.remove(mirror.url.host)
-                }
-            }
-            repoManager.deleteRepository(repoId)
-            updateManager.loadUpdates()
-        }
+  override fun onOnboardingSeen() = onboardingManager.onRepoDetailsOnboardingSeen()
+
+  private fun Repository.archiveState(): ArchiveState {
+    val isEnabled =
+      repoManager
+        .getRepositories()
+        .find { r -> r.isArchiveRepo && r.certificate == certificate }
+        ?.enabled
+    return when (isEnabled) {
+      true -> ArchiveState.ENABLED
+      false -> ArchiveState.DISABLED
+      null -> UNKNOWN
     }
+  }
 
-    override fun updateUsernameAndPassword(username: String, password: String) {
-        ioScope.launch {
-            repoManager.updateUsernameAndPassword(repoId, username, password)
-            withContext(Dispatchers.Main) {
-                RepoUpdateWorker.updateNow(application, repoId)
-            }
-        }
-    }
+  private fun Boolean.toArchiveState(): ArchiveState {
+    return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
+  }
 
-    override fun setMirrorEnabled(mirror: Mirror, enabled: Boolean) {
-        ioScope.launch {
-            repoManager.setMirrorEnabled(repoId, mirror, enabled)
-        }
-    }
-
-    override fun deleteUserMirror(mirror: Mirror) {
-        ioScope.launch {
-            repoManager.deleteUserMirror(repoId, mirror)
-        }
-    }
-
-    override fun setArchiveRepoEnabled(enabled: Boolean) {
-        ioScope.launch {
-            val repo = repoFlow.value ?: return@launch
-            archiveStateFlow.value = ArchiveState.LOADING
-            try {
-                val archiveRepoId = repoManager.setArchiveRepoEnabled(
-                    repository = repo,
-                    enabled = enabled,
-                    proxy = settingsManager.proxyConfig,
-                )
-                archiveStateFlow.value = enabled.toArchiveState()
-                if (enabled && archiveRepoId != null) withContext(Dispatchers.Main) {
-                    RepoUpdateWorker.updateNow(application, archiveRepoId)
-                }
-            } catch (e: Exception) {
-                log.error(e) { "Error toggling archive repo: " }
-                archiveStateFlow.value = repo.archiveState()
-            }
-        }
-    }
-
-    override fun onOnboardingSeen() = onboardingManager.onRepoDetailsOnboardingSeen()
-
-    private fun Repository.archiveState(): ArchiveState {
-        val isEnabled = repoManager.getRepositories().find { r ->
-            r.isArchiveRepo && r.certificate == certificate
-        }?.enabled
-        return when (isEnabled) {
-            true -> ArchiveState.ENABLED
-            false -> ArchiveState.DISABLED
-            null -> UNKNOWN
-        }
-    }
-
-    private fun Boolean.toArchiveState(): ArchiveState {
-        return if (this) ArchiveState.ENABLED else ArchiveState.DISABLED
-    }
-
-    @AssistedFactory
-    interface Factory {
-        fun create(repoId: Long): RepoDetailsViewModel
-    }
+  @AssistedFactory
+  interface Factory {
+    fun create(repoId: Long): RepoDetailsViewModel
+  }
 }

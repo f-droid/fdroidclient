@@ -14,70 +14,64 @@ import org.fdroid.ui.categories.CategoryItem
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun DiscoverFirstStartTest() = ScreenshotTest {
-    Discover(
-        discoverModel = FirstStartDiscoverModel(
-            networkState = NetworkState(isOnline = true, isMetered = false),
-            repoUpdateState = RepoUpdateProgress(1, true, 0.25f),
-        ),
-        onListTap = {},
-        onAppTap = {},
-        onNav = {},
-    )
+  Discover(
+    discoverModel =
+      FirstStartDiscoverModel(
+        networkState = NetworkState(isOnline = true, isMetered = false),
+        repoUpdateState = RepoUpdateProgress(1, true, 0.25f),
+      ),
+    onListTap = {},
+    onAppTap = {},
+    onNav = {},
+  )
 }
 
 @Composable
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 private fun DiscoverNoEnabledReposTest() = ScreenshotTest {
-    Discover(
-        discoverModel = NoEnabledReposDiscoverModel,
-        onListTap = {},
-        onAppTap = {},
-        onNav = {},
-    )
+  Discover(discoverModel = NoEnabledReposDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
 }
 
 @Composable
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 private fun DiscoverTest() {
-    val app1 = AppDiscoverItem(
-        packageName = "foo bar",
-        name = "New App!",
-        isInstalled = false,
-        imageModel = null,
-        lastUpdated = 10,
+  val app1 =
+    AppDiscoverItem(
+      packageName = "foo bar",
+      name = "New App!",
+      isInstalled = false,
+      imageModel = null,
+      lastUpdated = 10,
     )
-    val app2 = AppDiscoverItem(
-        packageName = "bar foo",
-        name = "Nice App!",
-        isInstalled = false,
-        imageModel = null,
-        lastUpdated = 9,
+  val app2 =
+    AppDiscoverItem(
+      packageName = "bar foo",
+      name = "Nice App!",
+      isInstalled = false,
+      imageModel = null,
+      lastUpdated = 9,
     )
-    val app3 = AppDiscoverItem(
-        packageName = "org.example",
-        name = "Downloaded App!",
-        isInstalled = false,
-        imageModel = null,
-        lastUpdated = 8,
+  val app3 =
+    AppDiscoverItem(
+      packageName = "org.example",
+      name = "Downloaded App!",
+      isInstalled = false,
+      imageModel = null,
+      lastUpdated = 8,
     )
-    ScreenshotTest {
-        val model = LoadedDiscoverModel(
-            newApps = listOf(app1),
-            recentlyUpdatedApps = listOf(app2),
-            mostDownloadedApps = listOf(app3),
-            categories = mapOf(
-                CategoryGroups.productivity to listOf(CategoryItem("Calculator", "Calculator"))
-            ),
-            searchTextFieldState = rememberTextFieldState(),
-            hasRepoIssues = false,
-        )
-        Discover(
-            discoverModel = model,
-            onListTap = {},
-            onAppTap = {},
-            onNav = {},
-        )
-    }
+  ScreenshotTest {
+    val model =
+      LoadedDiscoverModel(
+        newApps = listOf(app1),
+        recentlyUpdatedApps = listOf(app2),
+        mostDownloadedApps = listOf(app3),
+        categories =
+          mapOf(CategoryGroups.productivity to listOf(CategoryItem("Calculator", "Calculator"))),
+        searchTextFieldState = rememberTextFieldState(),
+        hasRepoIssues = false,
+      )
+    Discover(discoverModel = model, onListTap = {}, onAppTap = {}, onNav = {})
+  }
 }

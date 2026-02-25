@@ -14,6 +14,8 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.text.Collator
+import java.util.Locale
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,212 +38,191 @@ import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
-import java.text.Collator
-import java.util.Locale
 
 @HiltViewModel(assistedFactory = AppListViewModel.Factory::class)
-class AppListViewModel @AssistedInject constructor(
-    private val app: Application,
-    @Assisted val type: AppListType,
-    savedStateHandle: SavedStateHandle,
-    private val db: FDroidDatabase,
-    private val repoManager: RepoManager,
-    private val settingsManager: SettingsManager,
-    private val onboardingManager: OnboardingManager,
-    private val installedAppsCache: InstalledAppsCache,
+class AppListViewModel
+@AssistedInject
+constructor(
+  private val app: Application,
+  @Assisted val type: AppListType,
+  savedStateHandle: SavedStateHandle,
+  private val db: FDroidDatabase,
+  private val repoManager: RepoManager,
+  private val settingsManager: SettingsManager,
+  private val onboardingManager: OnboardingManager,
+  private val installedAppsCache: InstalledAppsCache,
 ) : AndroidViewModel(app), AppListActions {
 
-    private val moleculeScope =
-        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+  private val moleculeScope =
+    CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
-    private val localeList = LocaleListCompat.getDefault()
-    private val apps = MutableStateFlow<List<AppListItem>?>(null)
-    private val categories = db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
-        val collator = Collator.getInstance(Locale.getDefault())
-        categories.map { category ->
-            CategoryItem(
-                id = category.id,
-                name = category.getName(localeList) ?: "Unknown Category",
-            )
-        }.sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
-    }
-    private val antiFeatures = db.getRepositoryDao().getAntiFeaturesFlow().map { antiFeatures ->
-        val collator = Collator.getInstance(Locale.getDefault())
-        val proxy = settingsManager.proxyConfig
-        antiFeatures.map { antiFeature ->
-            val repo = repoManager.getRepository(antiFeature.repoId)
-            AntiFeatureItem(
-                id = antiFeature.id,
-                name = antiFeature.getName(localeList) ?: "Unknown Anti-Feature",
-                iconModel = antiFeature.getIcon(localeList)?.getImageModel(repo, proxy)
-            )
-        }.sortedWith { a1, a2 -> collator.compare(a1.name, a2.name) }
-    }
-    private val repositories = repoManager.repositoriesState.map { repositories ->
-        val proxyConfig = settingsManager.proxyConfig
-        repositories.mapNotNull {
-            if (it.enabled) RepositoryItem(it, localeList, proxyConfig)
-            else null
-        }.sortedBy { it.weight }
-    }
-    private val query = MutableStateFlow("")
-
-    private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
-    val showFilters = _showFilters.asStateFlow()
-
-    private val sortBy = MutableStateFlow(settingsManager.appListSortOrder)
-    private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible)
-    private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
-    private val filteredAntiFeatureIds = MutableStateFlow<Set<String>>(emptySet())
-    private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
-    val showOnboarding = onboardingManager.showFilterOnboarding
-
-    val appListModel: StateFlow<AppListModel> by lazy(LazyThreadSafetyMode.NONE) {
-        moleculeScope.launchMolecule(mode = ContextClock) {
-            AppListPresenter(
-                type = type,
-                appsFlow = apps,
-                sortByFlow = sortBy,
-                filterIncompatibleFlow = filterIncompatible,
-                categoriesFlow = categories,
-                filteredCategoryIdsFlow = filteredCategoryIds,
-                antiFeaturesFlow = antiFeatures,
-                notSelectedAntiFeatureIdsFlow = filteredAntiFeatureIds,
-                repositoriesFlow = repositories,
-                filteredRepositoryIdsFlow = filteredRepositoryIds,
-                searchQueryFlow = query,
-            )
+  private val localeList = LocaleListCompat.getDefault()
+  private val apps = MutableStateFlow<List<AppListItem>?>(null)
+  private val categories =
+    db.getRepositoryDao().getLiveCategories().asFlow().map { categories ->
+      val collator = Collator.getInstance(Locale.getDefault())
+      categories
+        .map { category ->
+          CategoryItem(id = category.id, name = category.getName(localeList) ?: "Unknown Category")
         }
+        .sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
-
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            apps.value = loadApps(type)
+  private val antiFeatures =
+    db.getRepositoryDao().getAntiFeaturesFlow().map { antiFeatures ->
+      val collator = Collator.getInstance(Locale.getDefault())
+      val proxy = settingsManager.proxyConfig
+      antiFeatures
+        .map { antiFeature ->
+          val repo = repoManager.getRepository(antiFeature.repoId)
+          AntiFeatureItem(
+            id = antiFeature.id,
+            name = antiFeature.getName(localeList) ?: "Unknown Anti-Feature",
+            iconModel = antiFeature.getIcon(localeList)?.getImageModel(repo, proxy),
+          )
         }
+        .sortedWith { a1, a2 -> collator.compare(a1.name, a2.name) }
+    }
+  private val repositories =
+    repoManager.repositoriesState.map { repositories ->
+      val proxyConfig = settingsManager.proxyConfig
+      repositories
+        .mapNotNull { if (it.enabled) RepositoryItem(it, localeList, proxyConfig) else null }
+        .sortedBy { it.weight }
+    }
+  private val query = MutableStateFlow("")
+
+  private val _showFilters = savedStateHandle.getMutableStateFlow("showFilters", false)
+  val showFilters = _showFilters.asStateFlow()
+
+  private val sortBy = MutableStateFlow(settingsManager.appListSortOrder)
+  private val filterIncompatible = MutableStateFlow(settingsManager.filterIncompatible)
+  private val filteredCategoryIds = MutableStateFlow<Set<String>>(emptySet())
+  private val filteredAntiFeatureIds = MutableStateFlow<Set<String>>(emptySet())
+  private val filteredRepositoryIds = MutableStateFlow<Set<Long>>(emptySet())
+  val showOnboarding = onboardingManager.showFilterOnboarding
+
+  val appListModel: StateFlow<AppListModel> by
+    lazy(LazyThreadSafetyMode.NONE) {
+      moleculeScope.launchMolecule(mode = ContextClock) {
+        AppListPresenter(
+          type = type,
+          appsFlow = apps,
+          sortByFlow = sortBy,
+          filterIncompatibleFlow = filterIncompatible,
+          categoriesFlow = categories,
+          filteredCategoryIdsFlow = filteredCategoryIds,
+          antiFeaturesFlow = antiFeatures,
+          notSelectedAntiFeatureIdsFlow = filteredAntiFeatureIds,
+          repositoriesFlow = repositories,
+          filteredRepositoryIdsFlow = filteredRepositoryIds,
+          searchQueryFlow = query,
+        )
+      }
     }
 
-    @WorkerThread
-    private suspend fun loadApps(type: AppListType): List<AppListItem> {
-        val appDao = db.getAppDao()
-        val proxyConfig = settingsManager.proxyConfig
-        return when (type) {
-            is AppListType.Author -> appDao.getAppsByAuthor(type.authorName)
-            is AppListType.Category -> appDao.getAppsByCategory(type.categoryId)
-            is AppListType.New -> appDao.getNewApps()
-            is AppListType.RecentlyUpdated -> appDao.getRecentlyUpdatedApps()
-            is AppListType.MostDownloaded -> {
-                val packageNames = app.assets.open("most_downloaded_apps.json").use { inputStream ->
-                    @OptIn(ExperimentalSerializationApi::class)
-                    Json.decodeFromStream<List<String>>(inputStream)
-                }
-                appDao.getApps(packageNames)
-            }
-            is AppListType.All -> appDao.getAllApps()
-            is AppListType.Repository -> appDao.getAppsByRepository(type.repoId)
-        }.mapNotNull {
-            val repository = repoManager.getRepository(it.repoId)
-                ?: return@mapNotNull null
-            val iconModel = it.getIcon(localeList)?.getImageModel(repository, proxyConfig)
-                as? DownloadRequest
-            val isInstalled = installedAppsCache.isInstalled(it.packageName)
-            AppListItem(
-                repoId = it.repoId,
-                packageName = it.packageName,
-                name = it.getName(localeList) ?: "Unknown App",
-                summary = it.getSummary(localeList) ?: "Unknown",
-                lastUpdated = it.lastUpdated,
-                isInstalled = isInstalled,
-                isCompatible = it.isCompatible,
-                iconModel = if (isInstalled) {
-                    PackageName(it.packageName, iconModel)
-                } else {
-                    iconModel
-                },
-                categoryIds = it.categories?.toSet(),
-                antiFeatureIds = it.antiFeatureKeys.toSet(),
-            )
-        }
-    }
+  init {
+    viewModelScope.launch(Dispatchers.IO) { apps.value = loadApps(type) }
+  }
 
-    override fun toggleFilterVisibility() {
-        _showFilters.update { !it }
+  @WorkerThread
+  private suspend fun loadApps(type: AppListType): List<AppListItem> {
+    val appDao = db.getAppDao()
+    val proxyConfig = settingsManager.proxyConfig
+    return when (type) {
+      is AppListType.Author -> appDao.getAppsByAuthor(type.authorName)
+      is AppListType.Category -> appDao.getAppsByCategory(type.categoryId)
+      is AppListType.New -> appDao.getNewApps()
+      is AppListType.RecentlyUpdated -> appDao.getRecentlyUpdatedApps()
+      is AppListType.MostDownloaded -> {
+        val packageNames =
+          app.assets.open("most_downloaded_apps.json").use { inputStream ->
+            @OptIn(ExperimentalSerializationApi::class)
+            Json.decodeFromStream<List<String>>(inputStream)
+          }
+        appDao.getApps(packageNames)
+      }
+      is AppListType.All -> appDao.getAllApps()
+      is AppListType.Repository -> appDao.getAppsByRepository(type.repoId)
+    }.mapNotNull {
+      val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+      val iconModel =
+        it.getIcon(localeList)?.getImageModel(repository, proxyConfig) as? DownloadRequest
+      val isInstalled = installedAppsCache.isInstalled(it.packageName)
+      AppListItem(
+        repoId = it.repoId,
+        packageName = it.packageName,
+        name = it.getName(localeList) ?: "Unknown App",
+        summary = it.getSummary(localeList) ?: "Unknown",
+        lastUpdated = it.lastUpdated,
+        isInstalled = isInstalled,
+        isCompatible = it.isCompatible,
+        iconModel =
+          if (isInstalled) {
+            PackageName(it.packageName, iconModel)
+          } else {
+            iconModel
+          },
+        categoryIds = it.categories?.toSet(),
+        antiFeatureIds = it.antiFeatureKeys.toSet(),
+      )
     }
+  }
 
-    override fun sortBy(sort: AppListSortOrder) {
-        sortBy.update { sort }
-    }
+  override fun toggleFilterVisibility() {
+    _showFilters.update { !it }
+  }
 
-    override fun toggleFilterIncompatible() {
-        filterIncompatible.update { !it }
-    }
+  override fun sortBy(sort: AppListSortOrder) {
+    sortBy.update { sort }
+  }
 
-    override fun addCategory(categoryId: String) {
-        filteredCategoryIds.update {
-            it.toMutableSet().apply {
-                add(categoryId)
-            }
-        }
-    }
+  override fun toggleFilterIncompatible() {
+    filterIncompatible.update { !it }
+  }
 
-    override fun removeCategory(categoryId: String) {
-        filteredCategoryIds.update {
-            it.toMutableSet().apply {
-                remove(categoryId)
-            }
-        }
-    }
+  override fun addCategory(categoryId: String) {
+    filteredCategoryIds.update { it.toMutableSet().apply { add(categoryId) } }
+  }
 
-    override fun addAntiFeature(antiFeatureId: String) {
-        filteredAntiFeatureIds.update {
-            it.toMutableSet().apply {
-                add(antiFeatureId)
-            }
-        }
-    }
+  override fun removeCategory(categoryId: String) {
+    filteredCategoryIds.update { it.toMutableSet().apply { remove(categoryId) } }
+  }
 
-    override fun removeAntiFeature(antiFeatureId: String) {
-        filteredAntiFeatureIds.update {
-            it.toMutableSet().apply {
-                remove(antiFeatureId)
-            }
-        }
-    }
+  override fun addAntiFeature(antiFeatureId: String) {
+    filteredAntiFeatureIds.update { it.toMutableSet().apply { add(antiFeatureId) } }
+  }
 
-    override fun addRepository(repoId: Long) {
-        filteredRepositoryIds.update {
-            it.toMutableSet().apply {
-                add(repoId)
-            }
-        }
-    }
+  override fun removeAntiFeature(antiFeatureId: String) {
+    filteredAntiFeatureIds.update { it.toMutableSet().apply { remove(antiFeatureId) } }
+  }
 
-    override fun removeRepository(repoId: Long) {
-        filteredRepositoryIds.update {
-            it.toMutableSet().apply {
-                remove(repoId)
-            }
-        }
-    }
+  override fun addRepository(repoId: Long) {
+    filteredRepositoryIds.update { it.toMutableSet().apply { add(repoId) } }
+  }
 
-    override fun saveFilters() {
-        settingsManager.saveAppListFilter(sortBy.value, filterIncompatible.value)
-    }
+  override fun removeRepository(repoId: Long) {
+    filteredRepositoryIds.update { it.toMutableSet().apply { remove(repoId) } }
+  }
 
-    override fun clearFilters() {
-        filterIncompatible.value = false
-        filteredCategoryIds.value = emptySet()
-        filteredAntiFeatureIds.value = emptySet()
-        filteredRepositoryIds.value = emptySet()
-    }
+  override fun saveFilters() {
+    settingsManager.saveAppListFilter(sortBy.value, filterIncompatible.value)
+  }
 
-    override fun onSearch(query: String) {
-        this.query.value = query
-    }
+  override fun clearFilters() {
+    filterIncompatible.value = false
+    filteredCategoryIds.value = emptySet()
+    filteredAntiFeatureIds.value = emptySet()
+    filteredRepositoryIds.value = emptySet()
+  }
 
-    override fun onOnboardingSeen() = onboardingManager.onFilterOnboardingSeen()
+  override fun onSearch(query: String) {
+    this.query.value = query
+  }
 
-    @AssistedFactory
-    interface Factory {
-        fun create(type: AppListType): AppListViewModel
-    }
+  override fun onOnboardingSeen() = onboardingManager.onFilterOnboardingSeen()
+
+  @AssistedFactory
+  interface Factory {
+    fun create(type: AppListType): AppListViewModel
+  }
 }

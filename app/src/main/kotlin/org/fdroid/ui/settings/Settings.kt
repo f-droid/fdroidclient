@@ -47,6 +47,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import java.lang.System.currentTimeMillis
+import java.util.concurrent.TimeUnit.HOURS
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.zhanghai.compose.preference.MapPreferences
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
@@ -84,341 +86,308 @@ import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
-import java.lang.System.currentTimeMillis
-import java.util.concurrent.TimeUnit.HOURS
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun Settings(
-    model: SettingsModel,
-    onSaveLogcat: (Uri?) -> Unit,
-    onBackClicked: () -> Unit,
-) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    BackButton(onClick = onBackClicked)
-                },
-                title = {
-                    Text(stringResource(R.string.menu_settings))
-                },
-            )
-        },
-    ) { paddingValues ->
-        val launcher = rememberLauncherForActivityResult(CreateDocument("text/plain")) {
-            onSaveLogcat(it)
-        }
-        val context = LocalContext.current
-        val res = LocalResources.current
-        ProvidePreferenceLocals(model.prefsFlow) {
-            val showProxyError = remember { mutableStateOf(false) }
-            val proxyState = rememberPreferenceState(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
-            LazyColumn(
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .fillMaxSize()
-            ) {
-                preferenceCategory(
-                    key = "pref_category_display",
-                    title = { Text(stringResource(R.string.display)) },
-                )
-                val themeToString = { value: String ->
-                    AnnotatedString(
-                        when (value) {
-                            "light" -> res.getString(R.string.theme_light)
-                            "dark" -> res.getString(R.string.theme_dark)
-                            "followSystem" -> res.getString(R.string.theme_follow_system)
-                            else -> error("Unknown value: $value")
-                        }
-                    )
-                }
-                listPreference(
-                    key = PREF_KEY_THEME,
-                    values = listOf(
-                        "light",
-                        "dark",
-                        "followSystem",
-                    ),
-                    valueToText = themeToString,
-                    defaultValue = PREF_DEFAULT_THEME,
-                    title = { Text(text = stringResource(R.string.theme)) },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.BrightnessMedium,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = { Text(text = "${themeToString(it)}") },
-                )
-                if (SDK_INT >= 31) switchPreference(
-                    key = PREF_KEY_DYNAMIC_COLORS,
-                    defaultValue = PREF_DEFAULT_DYNAMIC_COLORS,
-                    title = {
-                        Text(stringResource(R.string.pref_dyn_colors_title))
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.ColorLens,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = {
-                        Text(text = stringResource(R.string.pref_dyn_colors_summary))
-                    },
-                )
-                if (SDK_INT >= 33) preference(
-                    key = "languages",
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Translate,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    title = { Text(stringResource(R.string.pref_language)) },
-                    summary = { Text(stringResource(R.string.pref_language_summary)) },
-                    onClick = {
-                        val intent = Intent(ACTION_APP_LOCALE_SETTINGS).apply {
-                            setData(Uri.fromParts("package", context.packageName, null))
-                        }
-                        context.startActivitySafe(intent)
-                    },
-                )
-                if (SDK_INT >= 26) preference(
-                    key = "notifications",
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Notifications,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    title = { Text(stringResource(R.string.notification_title)) },
-                    summary = { Text(stringResource(R.string.notification_summary)) },
-                    onClick = {
-                        val intent = Intent(ACTION_APP_NOTIFICATION_SETTINGS).apply {
-                            putExtra(EXTRA_APP_PACKAGE, context.packageName)
-                        }
-                        context.startActivitySafe(intent)
-                    },
-                )
-                preferenceCategory(
-                    key = "pref_category_updates",
-                    title = { Text(stringResource(R.string.updates)) },
-                )
-                listPreference(
-                    key = PREF_KEY_REPO_UPDATES,
-                    defaultValue = PREF_DEFAULT_REPO_UPDATES,
-                    title = {
-                        Text(stringResource(R.string.pref_repo_updates_title))
-                    },
-                    icon = { strValue ->
-                        if (strValue != Never.name) Icon(
-                            imageVector = Icons.Default.SystemSecurityUpdate,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        ) else Icon(
-                            imageVector = Icons.Default.SystemSecurityUpdateWarning,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = { strValue ->
-                        if (strValue != Never.name) {
-                            val nextUpdate =
-                                model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
-                            val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
-                                stringResource(
-                                    R.string.auto_update_time,
-                                    stringResource(R.string.repositories_last_update_never)
-                                )
-                            } else if (nextUpdate - currentTimeMillis() <= 0) {
-                                stringResource(R.string.auto_update_time_past)
-                            } else {
-                                stringResource(
-                                    R.string.auto_update_time,
-                                    nextUpdate.asRelativeTimeString()
-                                )
-                            }
-                            val s = if (strValue == OnlyWifi.name) {
-                                stringResource(R.string.pref_repo_updates_summary_only_wifi)
-                            } else if (strValue == Always.name) {
-                                stringResource(R.string.pref_repo_updates_summary_always)
-                            } else error("Unknown value: $strValue")
-                            Text(s + "\n" + nextUpdateStr)
-                        } else {
-                            Text(
-                                text = stringResource(R.string.pref_repo_updates_summary_never),
-                                color = MaterialTheme.colorScheme.error,
-                            )
-                        }
-                    },
-                    values = AutoUpdateValues.entries.map { it.name },
-                    valueToText = { value: String ->
-                        AnnotatedString(
-                            when (value.toAutoUpdateValue()) {
-                                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
-                                Always -> res.getString(R.string.pref_auto_updates_only_always)
-                                Never -> res.getString(R.string.pref_auto_updates_only_never)
-                            }
-                        )
-                    },
-                )
-                listPreference(
-                    key = PREF_KEY_AUTO_UPDATES,
-                    defaultValue = PREF_DEFAULT_AUTO_UPDATES,
-                    title = {
-                        Text(stringResource(R.string.update_auto_install))
-                    },
-                    icon = { strValue ->
-                        Icon(
-                            imageVector = if (strValue != Never.name) {
-                                Icons.Default.Update
-                            } else {
-                                Icons.Default.UpdateDisabled
-                            },
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = { strValue ->
-                        val s = if (strValue != Never.name) {
-                            val nextUpdate =
-                                model.nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
-                            val nextUpdateStr = if (nextUpdate == Long.MAX_VALUE) {
-                                stringResource(
-                                    R.string.auto_update_time,
-                                    stringResource(R.string.repositories_last_update_never)
-                                )
-                            } else if (nextUpdate - currentTimeMillis() <= 0) {
-                                stringResource(R.string.auto_update_time_past)
-                            } else {
-                                stringResource(
-                                    R.string.auto_update_time,
-                                    nextUpdate.asRelativeTimeString()
-                                )
-                            }
-                            val s = if (strValue == OnlyWifi.name) {
-                                stringResource(R.string.pref_auto_updates_summary_only_wifi)
-                            } else if (strValue == Always.name) {
-                                stringResource(R.string.pref_auto_updates_summary_always)
-                            } else error("Unknown value: $strValue")
-                            s + "\n" + nextUpdateStr
-                        } else {
-                            stringResource(R.string.pref_auto_updates_summary_never)
-                        }
-                        Text(s)
-                    },
-                    values = AutoUpdateValues.entries.map { it.name },
-                    valueToText = { value: String ->
-                        AnnotatedString(
-                            when (value.toAutoUpdateValue()) {
-                                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
-                                Always -> res.getString(R.string.pref_auto_updates_only_always)
-                                Never -> res.getString(R.string.pref_auto_updates_only_never)
-                            }
-                        )
-                    },
-                )
-                preferenceCategory(
-                    key = "pref_category_network",
-                    title = { Text(stringResource(R.string.pref_category_network)) },
-                )
-                listPreference(
-                    key = PREF_KEY_MIRROR_CHOOSER,
-                    defaultValue = PREF_DEFAULT_MIRROR_CHOOSER,
-                    title = {
-                        Text(stringResource(R.string.pref_mirror_chooser_title))
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Lan,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = { strValue ->
-                        val strRes = strValue.toMirrorChooserValue().res
-                        Text(stringResource(strRes))
-                    },
-                    values = MirrorChooserValues.entries.map { it.name },
-                    valueToText = { value: String ->
-                        val strRes = value.toMirrorChooserValue().res
-                        AnnotatedString(res.getString(strRes))
-                    },
-                )
-                preferenceProxy(proxyState, showProxyError)
-                extraNetworkSettings(context)
-                preferenceCategory(
-                    key = "pref_category_privacy",
-                    title = { Text(stringResource(R.string.privacy)) },
-                )
-                switchPreference(
-                    key = PREF_USE_DNS_CACHE,
-                    defaultValue = PREF_USE_DNS_CACHE_DEFAULT,
-                    title = {
-                        Text(stringResource(R.string.useDnsCache))
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Dns,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = {
-                        Text(stringResource(R.string.useDnsCacheSummary))
-                    },
-                )
-                switchPreference(
-                    key = PREF_KEY_PREVENT_SCREENSHOTS,
-                    defaultValue = PREF_DEFAULT_PREVENT_SCREENSHOTS,
-                    title = {
-                        Text(stringResource(R.string.preventScreenshots_title))
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Screenshot,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        )
-                    },
-                    summary = {
-                        Text(text = stringResource(R.string.preventScreenshots_summary))
-                    },
-                )
-                extraPrivacySettings(context)
-                item {
-                    OutlinedButton(
-                        onClick = { launcher.launch("${getLogName(context)}.txt") },
-                        modifier = Modifier
-                            .padding(16.dp)
-                    ) {
-                        Icon(Icons.Default.Save, null)
-                        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                        Text(
-                            text = stringResource(R.string.pref_export_log_title),
-                        )
-                    }
-                }
-            }
-        }
+fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: () -> Unit) {
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = { BackButton(onClick = onBackClicked) },
+        title = { Text(stringResource(R.string.menu_settings)) },
+      )
     }
+  ) { paddingValues ->
+    val launcher =
+      rememberLauncherForActivityResult(CreateDocument("text/plain")) { onSaveLogcat(it) }
+    val context = LocalContext.current
+    val res = LocalResources.current
+    ProvidePreferenceLocals(model.prefsFlow) {
+      val showProxyError = remember { mutableStateOf(false) }
+      val proxyState = rememberPreferenceState(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
+      LazyColumn(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
+        preferenceCategory(
+          key = "pref_category_display",
+          title = { Text(stringResource(R.string.display)) },
+        )
+        val themeToString = { value: String ->
+          AnnotatedString(
+            when (value) {
+              "light" -> res.getString(R.string.theme_light)
+              "dark" -> res.getString(R.string.theme_dark)
+              "followSystem" -> res.getString(R.string.theme_follow_system)
+              else -> error("Unknown value: $value")
+            }
+          )
+        }
+        listPreference(
+          key = PREF_KEY_THEME,
+          values = listOf("light", "dark", "followSystem"),
+          valueToText = themeToString,
+          defaultValue = PREF_DEFAULT_THEME,
+          title = { Text(text = stringResource(R.string.theme)) },
+          icon = {
+            Icon(
+              imageVector = Icons.Default.BrightnessMedium,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          summary = { Text(text = "${themeToString(it)}") },
+        )
+        if (SDK_INT >= 31)
+          switchPreference(
+            key = PREF_KEY_DYNAMIC_COLORS,
+            defaultValue = PREF_DEFAULT_DYNAMIC_COLORS,
+            title = { Text(stringResource(R.string.pref_dyn_colors_title)) },
+            icon = {
+              Icon(
+                imageVector = Icons.Default.ColorLens,
+                contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+            },
+            summary = { Text(text = stringResource(R.string.pref_dyn_colors_summary)) },
+          )
+        if (SDK_INT >= 33)
+          preference(
+            key = "languages",
+            icon = {
+              Icon(
+                imageVector = Icons.Default.Translate,
+                contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+            },
+            title = { Text(stringResource(R.string.pref_language)) },
+            summary = { Text(stringResource(R.string.pref_language_summary)) },
+            onClick = {
+              val intent =
+                Intent(ACTION_APP_LOCALE_SETTINGS).apply {
+                  setData(Uri.fromParts("package", context.packageName, null))
+                }
+              context.startActivitySafe(intent)
+            },
+          )
+        if (SDK_INT >= 26)
+          preference(
+            key = "notifications",
+            icon = {
+              Icon(
+                imageVector = Icons.Default.Notifications,
+                contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+            },
+            title = { Text(stringResource(R.string.notification_title)) },
+            summary = { Text(stringResource(R.string.notification_summary)) },
+            onClick = {
+              val intent =
+                Intent(ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                  putExtra(EXTRA_APP_PACKAGE, context.packageName)
+                }
+              context.startActivitySafe(intent)
+            },
+          )
+        preferenceCategory(
+          key = "pref_category_updates",
+          title = { Text(stringResource(R.string.updates)) },
+        )
+        listPreference(
+          key = PREF_KEY_REPO_UPDATES,
+          defaultValue = PREF_DEFAULT_REPO_UPDATES,
+          title = { Text(stringResource(R.string.pref_repo_updates_title)) },
+          icon = { strValue ->
+            if (strValue != Never.name)
+              Icon(
+                imageVector = Icons.Default.SystemSecurityUpdate,
+                contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+            else
+              Icon(
+                imageVector = Icons.Default.SystemSecurityUpdateWarning,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.error,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+          },
+          summary = { strValue ->
+            if (strValue != Never.name) {
+              val nextUpdate = model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
+              val nextUpdateStr =
+                if (nextUpdate == Long.MAX_VALUE) {
+                  stringResource(
+                    R.string.auto_update_time,
+                    stringResource(R.string.repositories_last_update_never),
+                  )
+                } else if (nextUpdate - currentTimeMillis() <= 0) {
+                  stringResource(R.string.auto_update_time_past)
+                } else {
+                  stringResource(R.string.auto_update_time, nextUpdate.asRelativeTimeString())
+                }
+              val s =
+                if (strValue == OnlyWifi.name) {
+                  stringResource(R.string.pref_repo_updates_summary_only_wifi)
+                } else if (strValue == Always.name) {
+                  stringResource(R.string.pref_repo_updates_summary_always)
+                } else error("Unknown value: $strValue")
+              Text(s + "\n" + nextUpdateStr)
+            } else {
+              Text(
+                text = stringResource(R.string.pref_repo_updates_summary_never),
+                color = MaterialTheme.colorScheme.error,
+              )
+            }
+          },
+          values = AutoUpdateValues.entries.map { it.name },
+          valueToText = { value: String ->
+            AnnotatedString(
+              when (value.toAutoUpdateValue()) {
+                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
+                Always -> res.getString(R.string.pref_auto_updates_only_always)
+                Never -> res.getString(R.string.pref_auto_updates_only_never)
+              }
+            )
+          },
+        )
+        listPreference(
+          key = PREF_KEY_AUTO_UPDATES,
+          defaultValue = PREF_DEFAULT_AUTO_UPDATES,
+          title = { Text(stringResource(R.string.update_auto_install)) },
+          icon = { strValue ->
+            Icon(
+              imageVector =
+                if (strValue != Never.name) {
+                  Icons.Default.Update
+                } else {
+                  Icons.Default.UpdateDisabled
+                },
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          summary = { strValue ->
+            val s =
+              if (strValue != Never.name) {
+                val nextUpdate = model.nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
+                val nextUpdateStr =
+                  if (nextUpdate == Long.MAX_VALUE) {
+                    stringResource(
+                      R.string.auto_update_time,
+                      stringResource(R.string.repositories_last_update_never),
+                    )
+                  } else if (nextUpdate - currentTimeMillis() <= 0) {
+                    stringResource(R.string.auto_update_time_past)
+                  } else {
+                    stringResource(R.string.auto_update_time, nextUpdate.asRelativeTimeString())
+                  }
+                val s =
+                  if (strValue == OnlyWifi.name) {
+                    stringResource(R.string.pref_auto_updates_summary_only_wifi)
+                  } else if (strValue == Always.name) {
+                    stringResource(R.string.pref_auto_updates_summary_always)
+                  } else error("Unknown value: $strValue")
+                s + "\n" + nextUpdateStr
+              } else {
+                stringResource(R.string.pref_auto_updates_summary_never)
+              }
+            Text(s)
+          },
+          values = AutoUpdateValues.entries.map { it.name },
+          valueToText = { value: String ->
+            AnnotatedString(
+              when (value.toAutoUpdateValue()) {
+                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
+                Always -> res.getString(R.string.pref_auto_updates_only_always)
+                Never -> res.getString(R.string.pref_auto_updates_only_never)
+              }
+            )
+          },
+        )
+        preferenceCategory(
+          key = "pref_category_network",
+          title = { Text(stringResource(R.string.pref_category_network)) },
+        )
+        listPreference(
+          key = PREF_KEY_MIRROR_CHOOSER,
+          defaultValue = PREF_DEFAULT_MIRROR_CHOOSER,
+          title = { Text(stringResource(R.string.pref_mirror_chooser_title)) },
+          icon = {
+            Icon(
+              imageVector = Icons.Default.Lan,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          summary = { strValue ->
+            val strRes = strValue.toMirrorChooserValue().res
+            Text(stringResource(strRes))
+          },
+          values = MirrorChooserValues.entries.map { it.name },
+          valueToText = { value: String ->
+            val strRes = value.toMirrorChooserValue().res
+            AnnotatedString(res.getString(strRes))
+          },
+        )
+        preferenceProxy(proxyState, showProxyError)
+        extraNetworkSettings(context)
+        preferenceCategory(
+          key = "pref_category_privacy",
+          title = { Text(stringResource(R.string.privacy)) },
+        )
+        switchPreference(
+          key = PREF_USE_DNS_CACHE,
+          defaultValue = PREF_USE_DNS_CACHE_DEFAULT,
+          title = { Text(stringResource(R.string.useDnsCache)) },
+          icon = {
+            Icon(
+              imageVector = Icons.Default.Dns,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          summary = { Text(stringResource(R.string.useDnsCacheSummary)) },
+        )
+        switchPreference(
+          key = PREF_KEY_PREVENT_SCREENSHOTS,
+          defaultValue = PREF_DEFAULT_PREVENT_SCREENSHOTS,
+          title = { Text(stringResource(R.string.preventScreenshots_title)) },
+          icon = {
+            Icon(
+              imageVector = Icons.Default.Screenshot,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          summary = { Text(text = stringResource(R.string.preventScreenshots_summary)) },
+        )
+        extraPrivacySettings(context)
+        item {
+          OutlinedButton(
+            onClick = { launcher.launch("${getLogName(context)}.txt") },
+            modifier = Modifier.padding(16.dp),
+          ) {
+            Icon(Icons.Default.Save, null)
+            Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+            Text(text = stringResource(R.string.pref_export_log_title))
+          }
+        }
+      }
+    }
+  }
 }
 
 @Preview
 @Composable
 fun SettingsPreview() {
-    FDroidContent {
-        val model = SettingsModel(
-            prefsFlow = MutableStateFlow(MapPreferences()),
-            nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
-            nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
-        )
-        Settings(model, {}, {})
-    }
+  FDroidContent {
+    val model =
+      SettingsModel(
+        prefsFlow = MutableStateFlow(MapPreferences()),
+        nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
+        nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
+      )
+    Settings(model, {}, {})
+  }
 }

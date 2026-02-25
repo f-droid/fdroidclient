@@ -10,26 +10,20 @@ import org.fdroid.R
 
 @Composable
 fun IgnoreIssueDialog(appName: String, onIgnore: () -> Unit, onDismiss: () -> Unit) {
-    AlertDialog(
-        title = {
-            Text(text = stringResource(R.string.my_apps_ignore_dialog_title))
-        },
-        text = {
-            Text(text = stringResource(R.string.my_apps_ignore_dialog_text, appName))
-        },
-        onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onIgnore) {
-                Text(
-                    text = stringResource(R.string.my_apps_ignore_dialog_button),
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(android.R.string.cancel))
-            }
-        }
-    )
+  AlertDialog(
+    title = { Text(text = stringResource(R.string.my_apps_ignore_dialog_title)) },
+    text = { Text(text = stringResource(R.string.my_apps_ignore_dialog_text, appName)) },
+    onDismissRequest = onDismiss,
+    confirmButton = {
+      TextButton(onClick = onIgnore) {
+        Text(
+          text = stringResource(R.string.my_apps_ignore_dialog_button),
+          color = MaterialTheme.colorScheme.error,
+        )
+      }
+    },
+    dismissButton = {
+      TextButton(onClick = onDismiss) { Text(stringResource(android.R.string.cancel)) }
+    },
+  )
 }

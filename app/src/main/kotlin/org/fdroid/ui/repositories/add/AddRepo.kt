@@ -33,79 +33,81 @@ import org.fdroid.repo.RepoUpdateWorker
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddRepo(
-    state: AddRepoState,
-    networkStateFlow: StateFlow<NetworkState>,
-    proxyConfig: ProxyConfig?,
-    onFetchRepo: (String) -> Unit,
-    onAddRepo: () -> Unit,
-    onExistingRepo: (Long) -> Unit,
-    onRepoAdded: (String, Long) -> Unit,
-    onBackClicked: () -> Unit,
+  state: AddRepoState,
+  networkStateFlow: StateFlow<NetworkState>,
+  proxyConfig: ProxyConfig?,
+  onFetchRepo: (String) -> Unit,
+  onAddRepo: () -> Unit,
+  onExistingRepo: (Long) -> Unit,
+  onRepoAdded: (String, Long) -> Unit,
+  onBackClicked: () -> Unit,
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
-                    }
-                },
-                title = {
-                    Text(
-                        text = if (state is Fetching) {
-                            when (state.fetchResult) {
-                                is FetchResult.IsNewMirror,
-                                is FetchResult.IsExistingMirror -> {
-                                    stringResource(R.string.repo_add_mirror)
-                                }
-                                else -> stringResource(R.string.repo_add_new_title)
-                            }
-                        } else {
-                            stringResource(R.string.repo_add_new_title)
-                        },
-                    )
-                },
-            )
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = {
+          IconButton(onClick = onBackClicked) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+          }
         },
-    ) { paddingValues ->
-        when (state) {
-            None -> {
-                val networkState = networkStateFlow.collectAsStateWithLifecycle().value
-                AddRepoIntroContent(networkState, onFetchRepo, Modifier.padding(paddingValues))
-            }
-            is Fetching -> {
-                if (state.receivedRepo == null) {
-                    AddRepoProgressScreen(
-                        text = stringResource(R.string.repo_state_fetching),
-                        modifier = Modifier.padding(paddingValues)
-                    )
-                } else {
-                    AddRepoPreviewScreen(
-                        state = state,
-                        proxyConfig = proxyConfig,
-                        onAddRepo = onAddRepo,
-                        onExistingRepo = onExistingRepo,
-                        modifier = Modifier.padding(paddingValues),
-                    )
+        title = {
+          Text(
+            text =
+              if (state is Fetching) {
+                when (state.fetchResult) {
+                  is FetchResult.IsNewMirror,
+                  is FetchResult.IsExistingMirror -> {
+                    stringResource(R.string.repo_add_mirror)
+                  }
+                  else -> stringResource(R.string.repo_add_new_title)
                 }
-            }
-            Adding -> AddRepoProgressScreen(
-                text = stringResource(R.string.repo_state_adding),
-                modifier = Modifier.padding(paddingValues)
-            )
-            is Added -> {
-                val context = LocalContext.current
-                LaunchedEffect(state) {
-                    if (state.updateResult is IndexUpdateResult.Error) {
-                        // try updating newly added repo again
-                        RepoUpdateWorker.updateNow(context, state.repo.repoId)
-                    }
-                    // tell UI that repo got added, so it can show info on it
-                    val name = state.repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repo"
-                    onRepoAdded(name, state.repo.repoId)
-                }
-            }
-            is AddRepoError -> AddRepoErrorScreen(state, Modifier.padding(paddingValues))
-        }
+              } else {
+                stringResource(R.string.repo_add_new_title)
+              }
+          )
+        },
+      )
     }
+  ) { paddingValues ->
+    when (state) {
+      None -> {
+        val networkState = networkStateFlow.collectAsStateWithLifecycle().value
+        AddRepoIntroContent(networkState, onFetchRepo, Modifier.padding(paddingValues))
+      }
+      is Fetching -> {
+        if (state.receivedRepo == null) {
+          AddRepoProgressScreen(
+            text = stringResource(R.string.repo_state_fetching),
+            modifier = Modifier.padding(paddingValues),
+          )
+        } else {
+          AddRepoPreviewScreen(
+            state = state,
+            proxyConfig = proxyConfig,
+            onAddRepo = onAddRepo,
+            onExistingRepo = onExistingRepo,
+            modifier = Modifier.padding(paddingValues),
+          )
+        }
+      }
+      Adding ->
+        AddRepoProgressScreen(
+          text = stringResource(R.string.repo_state_adding),
+          modifier = Modifier.padding(paddingValues),
+        )
+      is Added -> {
+        val context = LocalContext.current
+        LaunchedEffect(state) {
+          if (state.updateResult is IndexUpdateResult.Error) {
+            // try updating newly added repo again
+            RepoUpdateWorker.updateNow(context, state.repo.repoId)
+          }
+          // tell UI that repo got added, so it can show info on it
+          val name = state.repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repo"
+          onRepoAdded(name, state.repo.repoId)
+        }
+      }
+      is AddRepoError -> AddRepoErrorScreen(state, Modifier.padding(paddingValues))
+    }
+  }
 }

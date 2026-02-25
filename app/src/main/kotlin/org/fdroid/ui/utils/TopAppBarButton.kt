@@ -17,23 +17,21 @@ import org.fdroid.R
 
 @Composable
 fun TopAppBarButton(imageVector: ImageVector, contentDescription: String, onClick: () -> Unit) {
-    TooltipBox(
-        positionProvider = TooltipDefaults.rememberTooltipPositionProvider(Below),
-        tooltip = { PlainTooltip { Text(contentDescription) } },
-        state = rememberTooltipState(),
-    ) {
-        IconButton(onClick = onClick) {
-            Icon(
-                imageVector = imageVector,
-                contentDescription = contentDescription,
-            )
-        }
+  TooltipBox(
+    positionProvider = TooltipDefaults.rememberTooltipPositionProvider(Below),
+    tooltip = { PlainTooltip { Text(contentDescription) } },
+    state = rememberTooltipState(),
+  ) {
+    IconButton(onClick = onClick) {
+      Icon(imageVector = imageVector, contentDescription = contentDescription)
     }
+  }
 }
 
 @Composable
-fun BackButton(onClick: () -> Unit) = TopAppBarButton(
+fun BackButton(onClick: () -> Unit) =
+  TopAppBarButton(
     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
     contentDescription = stringResource(R.string.back),
     onClick = onClick,
-)
+  )

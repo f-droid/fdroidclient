@@ -13,20 +13,18 @@ import org.fdroid.ui.navigation.NavDestinations
 import org.fdroid.ui.navigation.getMoreMenuItems
 
 @Composable
-fun DiscoverOverFlowMenu(
-    onItemClicked: (NavDestinations) -> Unit,
-) {
-    getMoreMenuItems(LocalContext.current).forEach { dest ->
-        DropdownMenuItem(
-            text = { Text(stringResource(dest.label)) },
-            onClick = { onItemClicked(dest) },
-            leadingIcon = {
-                Icon(
-                    imageVector = dest.icon,
-                    contentDescription = null,
-                    modifier = Modifier.semantics { hideFromAccessibility() },
-                )
-            }
+fun DiscoverOverFlowMenu(onItemClicked: (NavDestinations) -> Unit) {
+  getMoreMenuItems(LocalContext.current).forEach { dest ->
+    DropdownMenuItem(
+      text = { Text(stringResource(dest.label)) },
+      onClick = { onItemClicked(dest) },
+      leadingIcon = {
+        Icon(
+          imageVector = dest.icon,
+          contentDescription = null,
+          modifier = Modifier.semantics { hideFromAccessibility() },
         )
-    }
+      },
+    )
+  }
 }

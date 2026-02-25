@@ -15,7 +15,8 @@ import androidx.compose.ui.platform.LocalContext
 // https://www.figma.com/community/plugin/1034969338659738588
 // Unused code are and themes with contrast are removed
 
-private val lightScheme = lightColorScheme(
+private val lightScheme =
+  lightColorScheme(
     primary = primaryLight,
     onPrimary = onPrimaryLight,
     primaryContainer = primaryContainerLight,
@@ -51,9 +52,10 @@ private val lightScheme = lightColorScheme(
     surfaceContainer = surfaceContainerLight,
     surfaceContainerHigh = surfaceContainerHighLight,
     surfaceContainerHighest = surfaceContainerHighestLight,
-)
+  )
 
-private val darkScheme = darkColorScheme(
+private val darkScheme =
+  darkColorScheme(
     primary = primaryDark,
     onPrimary = onPrimaryDark,
     primaryContainer = primaryContainerDark,
@@ -89,27 +91,24 @@ private val darkScheme = darkColorScheme(
     surfaceContainer = surfaceContainerDark,
     surfaceContainerHigh = surfaceContainerHighDark,
     surfaceContainerHighest = surfaceContainerHighestDark,
-)
+  )
 
 @Composable
 fun FDroidContent(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColors: Boolean = false,
-    content: @Composable () -> Unit
+  darkTheme: Boolean = isSystemInDarkTheme(),
+  dynamicColors: Boolean = false,
+  content: @Composable () -> Unit,
 ) {
-    val colorScheme = when {
-        SDK_INT >= 31 && dynamicColors && darkTheme -> {
-            dynamicDarkColorScheme(LocalContext.current)
-        }
-        SDK_INT >= 31 && dynamicColors && !darkTheme -> {
-            dynamicLightColorScheme(LocalContext.current)
-        }
-        darkTheme -> darkScheme
-        else -> lightScheme
+  val colorScheme =
+    when {
+      SDK_INT >= 31 && dynamicColors && darkTheme -> {
+        dynamicDarkColorScheme(LocalContext.current)
+      }
+      SDK_INT >= 31 && dynamicColors && !darkTheme -> {
+        dynamicLightColorScheme(LocalContext.current)
+      }
+      darkTheme -> darkScheme
+      else -> lightScheme
     }
-    MaterialTheme(
-        colorScheme = colorScheme,
-    ) {
-        Surface(content = content)
-    }
+  MaterialTheme(colorScheme = colorScheme) { Surface(content = content) }
 }

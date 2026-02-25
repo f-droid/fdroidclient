@@ -6,26 +6,25 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import org.fdroid.ui.FDroidContent
 import javax.inject.Inject
+import org.fdroid.ui.FDroidContent
 
 @AndroidEntryPoint
 class IpfsGatewaySettingsActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var manager: IpfsManager
+  @Inject lateinit var manager: IpfsManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
-        setContent {
-            FDroidContent {
-                SettingsScreen(
-                    prefs = manager.preferences.collectAsStateWithLifecycle().value,
-                    actions = manager,
-                    onBackClicked = { onBackPressedDispatcher.onBackPressed() },
-                )
-            }
-        }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    enableEdgeToEdge()
+    super.onCreate(savedInstanceState)
+    setContent {
+      FDroidContent {
+        SettingsScreen(
+          prefs = manager.preferences.collectAsStateWithLifecycle().value,
+          actions = manager,
+          onBackClicked = { onBackPressedDispatcher.onBackPressed() },
+        )
+      }
     }
+  }
 }

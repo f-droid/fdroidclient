@@ -10,32 +10,36 @@ import org.fdroid.R
 
 @Composable
 fun ExpandIconChevron(isExpanded: Boolean) {
-    Icon(
-        imageVector = if (isExpanded) {
-            Icons.Default.ExpandLess
-        } else {
-            Icons.Default.ExpandMore
-        },
-        contentDescription = if (isExpanded) {
-            stringResource(R.string.collapse)
-        } else {
-            stringResource(R.string.expand)
-        },
-    )
+  Icon(
+    imageVector =
+      if (isExpanded) {
+        Icons.Default.ExpandLess
+      } else {
+        Icons.Default.ExpandMore
+      },
+    contentDescription =
+      if (isExpanded) {
+        stringResource(R.string.collapse)
+      } else {
+        stringResource(R.string.expand)
+      },
+  )
 }
 
 @Composable
 fun ExpandIconArrow(isExpanded: Boolean) {
-    Icon(
-        imageVector = if (isExpanded) {
-            Icons.Default.ExpandLess
-        } else {
-            Icons.Default.ExpandMore
-        },
-        contentDescription = if (isExpanded) {
-            stringResource(R.string.collapse)
-        } else {
-            stringResource(R.string.expand)
-        },
-    )
+  Icon(
+    imageVector =
+      if (isExpanded) {
+        Icons.Default.ExpandLess
+      } else {
+        Icons.Default.ExpandMore
+      },
+    contentDescription =
+      if (isExpanded) {
+        stringResource(R.string.collapse)
+      } else {
+        stringResource(R.string.expand)
+      },
+  )
 }

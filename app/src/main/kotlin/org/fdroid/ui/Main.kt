@@ -42,103 +42,98 @@ import org.fdroid.ui.settings.SettingsViewModel
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun Main(onListeningForIntent: () -> Unit = {}) {
-    val navigationState = rememberNavigationState(
-        startRoute = NavigationKey.Discover,
-        topLevelRoutes = topLevelRoutes,
-    )
-    val navigator = remember { Navigator(navigationState) }
-    // set up intent routing by listening to new intents from activity
-    val activity = (LocalActivity.current as ComponentActivity)
-    DisposableEffect(navigator) {
-        val intentListener = IntentRouter(navigator)
-        activity.addOnNewIntentListener(intentListener)
-        onListeningForIntent() // call this to get informed about initial intents we have missed
-        onDispose { activity.removeOnNewIntentListener(intentListener) }
+  val navigationState =
+    rememberNavigationState(startRoute = NavigationKey.Discover, topLevelRoutes = topLevelRoutes)
+  val navigator = remember { Navigator(navigationState) }
+  // set up intent routing by listening to new intents from activity
+  val activity = (LocalActivity.current as ComponentActivity)
+  DisposableEffect(navigator) {
+    val intentListener = IntentRouter(navigator)
+    activity.addOnNewIntentListener(intentListener)
+    onListeningForIntent() // call this to get informed about initial intents we have missed
+    onDispose { activity.removeOnNewIntentListener(intentListener) }
+  }
+  // Override the defaults so that there isn't a horizontal space between the panes.
+  val windowAdaptiveInfo = currentWindowAdaptiveInfo()
+  val directive =
+    remember(windowAdaptiveInfo) {
+      calculatePaneScaffoldDirective(windowAdaptiveInfo).copy(horizontalPartitionSpacerSize = 2.dp)
     }
-    // Override the defaults so that there isn't a horizontal space between the panes.
-    val windowAdaptiveInfo = currentWindowAdaptiveInfo()
-    val directive = remember(windowAdaptiveInfo) {
-        calculatePaneScaffoldDirective(windowAdaptiveInfo)
-            .copy(horizontalPartitionSpacerSize = 2.dp)
-    }
-    val isBigScreen = directive.maxHorizontalPartitions > 1
-    val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
+  val isBigScreen = directive.maxHorizontalPartitions > 1
+  val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
-    val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
-        discoverEntry(navigator)
-        myAppsEntry(navigator, isBigScreen)
-        appDetailsEntry(navigator, isBigScreen)
-        appListEntry(navigator, isBigScreen)
-        repoEntry(navigator, isBigScreen)
-        entry<NavigationKey.Search>(
-            metadata = ListDetailSceneStrategy.listPane("appdetails") {
-                NoAppSelected()
-            },
-        ) {
-            val viewModel = hiltViewModel<SearchViewModel>()
-            ExpandedSearch(
-                textFieldState = viewModel.textFieldState,
-                searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
-                onSearch = viewModel::search,
-                onNav = { navKey -> navigator.navigate(navKey) },
-                onBack = { navigator.goBack() },
-                onSearchCleared = viewModel::onSearchCleared,
-            )
-        }
-        entry(NavigationKey.Settings) {
-            val viewModel = hiltViewModel<SettingsViewModel>()
-            Settings(
-                model = viewModel.model,
-                onSaveLogcat = {
-                    viewModel.onSaveLogcat(it)
-                    navigator.goBack()
-                },
-                onBackClicked = { navigator.goBack() },
-            )
-        }
-        entry(NavigationKey.InstallationHistory) {
-            val viewModel = hiltViewModel<HistoryViewModel>()
-            History(
-                items = viewModel.items.collectAsStateWithLifecycle().value,
-                enabled = viewModel.useInstallHistory.collectAsStateWithLifecycle(null).value,
-                onEnabled = viewModel::useInstallHistory,
-                onDeleteAll = viewModel::deleteHistory,
-                onBackClicked = { navigator.goBack() },
-            )
-        }
-        entry(
-            key = NavigationKey.About,
-            metadata = ListDetailSceneStrategy.detailPane("appdetails"),
-        ) {
-            About(
-                onBackClicked = if (isBigScreen) null else {
-                    { navigator.goBack() }
-                },
-            )
-        }
-        // flavor specific navigation destinations go here
-        extraNavigationEntries(navigator)
-    }
-    val showBottomBar = !isBigScreen && navigator.last is MainNavKey
-    val viewModel = hiltViewModel<MainViewModel>()
-    val dynamicColors =
-        viewModel.dynamicColors.collectAsStateWithLifecycle(PREF_DEFAULT_DYNAMIC_COLORS).value
-    val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle().value
-    val hasAppIssues = viewModel.hasAppIssues.collectAsStateWithLifecycle(false).value
-    MainContent(
-        isBigScreen = isBigScreen,
-        dynamicColors = dynamicColors,
-        showBottomBar = showBottomBar,
-        currentNavKey = navigationState.topLevelRoute,
-        numUpdates = numUpdates,
-        hasAppIssues = hasAppIssues,
+  val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
+    discoverEntry(navigator)
+    myAppsEntry(navigator, isBigScreen)
+    appDetailsEntry(navigator, isBigScreen)
+    appListEntry(navigator, isBigScreen)
+    repoEntry(navigator, isBigScreen)
+    entry<NavigationKey.Search>(
+      metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
+    ) {
+      val viewModel = hiltViewModel<SearchViewModel>()
+      ExpandedSearch(
+        textFieldState = viewModel.textFieldState,
+        searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
+        onSearch = viewModel::search,
         onNav = { navKey -> navigator.navigate(navKey) },
-    ) { modifier ->
-        NavDisplay(
-            entries = navigationState.toEntries(entryProvider),
-            sceneStrategy = listDetailStrategy,
-            onBack = { navigator.goBack() },
-            modifier = modifier,
-        )
+        onBack = { navigator.goBack() },
+        onSearchCleared = viewModel::onSearchCleared,
+      )
     }
+    entry(NavigationKey.Settings) {
+      val viewModel = hiltViewModel<SettingsViewModel>()
+      Settings(
+        model = viewModel.model,
+        onSaveLogcat = {
+          viewModel.onSaveLogcat(it)
+          navigator.goBack()
+        },
+        onBackClicked = { navigator.goBack() },
+      )
+    }
+    entry(NavigationKey.InstallationHistory) {
+      val viewModel = hiltViewModel<HistoryViewModel>()
+      History(
+        items = viewModel.items.collectAsStateWithLifecycle().value,
+        enabled = viewModel.useInstallHistory.collectAsStateWithLifecycle(null).value,
+        onEnabled = viewModel::useInstallHistory,
+        onDeleteAll = viewModel::deleteHistory,
+        onBackClicked = { navigator.goBack() },
+      )
+    }
+    entry(key = NavigationKey.About, metadata = ListDetailSceneStrategy.detailPane("appdetails")) {
+      About(
+        onBackClicked =
+          if (isBigScreen) null
+          else {
+            { navigator.goBack() }
+          }
+      )
+    }
+    // flavor specific navigation destinations go here
+    extraNavigationEntries(navigator)
+  }
+  val showBottomBar = !isBigScreen && navigator.last is MainNavKey
+  val viewModel = hiltViewModel<MainViewModel>()
+  val dynamicColors =
+    viewModel.dynamicColors.collectAsStateWithLifecycle(PREF_DEFAULT_DYNAMIC_COLORS).value
+  val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle().value
+  val hasAppIssues = viewModel.hasAppIssues.collectAsStateWithLifecycle(false).value
+  MainContent(
+    isBigScreen = isBigScreen,
+    dynamicColors = dynamicColors,
+    showBottomBar = showBottomBar,
+    currentNavKey = navigationState.topLevelRoute,
+    numUpdates = numUpdates,
+    hasAppIssues = hasAppIssues,
+    onNav = { navKey -> navigator.navigate(navKey) },
+  ) { modifier ->
+    NavDisplay(
+      entries = navigationState.toEntries(entryProvider),
+      sceneStrategy = listDetailStrategy,
+      onBack = { navigator.goBack() },
+      modifier = modifier,
+    )
+  }
 }

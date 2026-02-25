@@ -48,106 +48,92 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 fun Screenshots(isMetered: Boolean, phoneScreenshots: List<Any>) {
-    var showEvenWhenMetered by remember { mutableStateOf(false) }
-    if (isMetered && !showEvenWhenMetered) Box(
-        contentAlignment = Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp)
-            .padding(horizontal = 16.dp)
-            .clickable { showEvenWhenMetered = true }
+  var showEvenWhenMetered by remember { mutableStateOf(false) }
+  if (isMetered && !showEvenWhenMetered)
+    Box(
+      contentAlignment = Center,
+      modifier =
+        Modifier.fillMaxWidth().padding(top = 8.dp).padding(horizontal = 16.dp).clickable {
+          showEvenWhenMetered = true
+        },
     ) {
-        Image(
-            painterResource(R.drawable.screenshots_placeholder),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(MaterialTheme.shapes.large)
-                .semantics { hideFromAccessibility() }
-        )
-        ElevatedButton(
-            onClick = { showEvenWhenMetered = true },
-            modifier = Modifier.padding(horizontal = 16.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.screenshots_metered),
-                textAlign = TextAlign.Center,
-            )
-        }
-    } else {
-        Screenshots(phoneScreenshots)
+      Image(
+        painterResource(R.drawable.screenshots_placeholder),
+        contentDescription = null,
+        contentScale = ContentScale.FillWidth,
+        modifier =
+          Modifier.fillMaxWidth().clip(MaterialTheme.shapes.large).semantics {
+            hideFromAccessibility()
+          },
+      )
+      ElevatedButton(
+        onClick = { showEvenWhenMetered = true },
+        modifier = Modifier.padding(horizontal = 16.dp),
+      ) {
+        Text(text = stringResource(R.string.screenshots_metered), textAlign = TextAlign.Center)
+      }
     }
+  else {
+    Screenshots(phoneScreenshots)
+  }
 }
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun Screenshots(phoneScreenshots: List<Any>) {
-    val carouselState = rememberCarouselState { phoneScreenshots.size }
-    var showScreenshot by remember { mutableStateOf<Int?>(null) }
-    val screenshotIndex = showScreenshot
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    if (screenshotIndex != null) ModalBottomSheet(
-        onDismissRequest = { showScreenshot = null },
-        sheetState = sheetState,
-        properties = ModalBottomSheetProperties(),
+  val carouselState = rememberCarouselState { phoneScreenshots.size }
+  var showScreenshot by remember { mutableStateOf<Int?>(null) }
+  val screenshotIndex = showScreenshot
+  val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+  if (screenshotIndex != null)
+    ModalBottomSheet(
+      onDismissRequest = { showScreenshot = null },
+      sheetState = sheetState,
+      properties = ModalBottomSheetProperties(),
     ) {
-        val pagerState = rememberPagerState(
-            initialPage = screenshotIndex,
-            pageCount = { phoneScreenshots.size },
-        )
-        Surface {
-            // The overscrollEffect was bouncing screenshots with each swipe.
-            // Maybe this was a bug and overscroll effect can be enabled again once fixed.
-            HorizontalPager(state = pagerState, overscrollEffect = null) { page ->
-                AsyncShimmerImage(
-                    model = phoneScreenshots[page],
-                    contentDescription = "",
-                    contentScale = ContentScale.Fit,
-                    placeholder = rememberVectorPainter(Icons.Default.Image),
-                    error = rememberVectorPainter(Icons.Default.Error),
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-        }
-    }
-    HorizontalUncontainedCarousel(
-        state = carouselState,
-        itemWidth = 120.dp,
-        itemSpacing = 2.dp,
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(240.dp)
-            .padding(vertical = 8.dp)
-    ) { index ->
-        AsyncShimmerImage(
-            model = phoneScreenshots[index],
+      val pagerState =
+        rememberPagerState(initialPage = screenshotIndex, pageCount = { phoneScreenshots.size })
+      Surface {
+        // The overscrollEffect was bouncing screenshots with each swipe.
+        // Maybe this was a bug and overscroll effect can be enabled again once fixed.
+        HorizontalPager(state = pagerState, overscrollEffect = null) { page ->
+          AsyncShimmerImage(
+            model = phoneScreenshots[page],
             contentDescription = "",
             contentScale = ContentScale.Fit,
             placeholder = rememberVectorPainter(Icons.Default.Image),
             error = rememberVectorPainter(Icons.Default.Error),
-            modifier = Modifier
-                .size(120.dp, 240.dp)
-                .clickable {
-                    showScreenshot = index
-                }
-        )
+            modifier = Modifier.fillMaxSize(),
+          )
+        }
+      }
     }
+  HorizontalUncontainedCarousel(
+    state = carouselState,
+    itemWidth = 120.dp,
+    itemSpacing = 2.dp,
+    contentPadding = PaddingValues(horizontal = 16.dp),
+    modifier = Modifier.fillMaxWidth().height(240.dp).padding(vertical = 8.dp),
+  ) { index ->
+    AsyncShimmerImage(
+      model = phoneScreenshots[index],
+      contentDescription = "",
+      contentScale = ContentScale.Fit,
+      placeholder = rememberVectorPainter(Icons.Default.Image),
+      error = rememberVectorPainter(Icons.Default.Error),
+      modifier = Modifier.size(120.dp, 240.dp).clickable { showScreenshot = index },
+    )
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        Screenshots(false, testApp.phoneScreenshots)
-    }
+  FDroidContent { Screenshots(false, testApp.phoneScreenshots) }
 }
 
 @Preview(widthDp = 300)
 @Composable
 private fun PreviewMetered() {
-    FDroidContent {
-        Screenshots(true, testApp.phoneScreenshots)
-    }
+  FDroidContent { Screenshots(true, testApp.phoneScreenshots) }
 }

@@ -20,59 +20,58 @@ import org.fdroid.ui.search.AppsSearch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DiscoverContent(
-    discoverModel: LoadedDiscoverModel,
-    onListTap: (AppListType) -> Unit,
-    onAppTap: (AppDiscoverItem) -> Unit,
-    onNav: (NavKey) -> Unit,
-    modifier: Modifier = Modifier,
+  discoverModel: LoadedDiscoverModel,
+  onListTap: (AppListType) -> Unit,
+  onAppTap: (AppDiscoverItem) -> Unit,
+  onNav: (NavKey) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier) {
-        AppsSearch(
-            onNav = onNav,
-            textFieldState = discoverModel.searchTextFieldState,
-            modifier = Modifier
-                // focusable is a workaround for https://issuetracker.google.com/issues/445720462
-                .focusable()
-                .padding(top = 16.dp, bottom = 4.dp)
-                .padding(horizontal = 16.dp)
-                .align(Alignment.CenterHorizontally),
-        )
-        AnimatedVisibility(discoverModel.newApps.isNotEmpty()) {
-            val listNew = AppListType.New(stringResource(R.string.app_list_new))
-            AppCarousel(
-                title = listNew.title,
-                apps = discoverModel.newApps,
-                onTitleTap = { onListTap(listNew) },
-                onAppTap = onAppTap,
-            )
-        }
-        AnimatedVisibility(!discoverModel.recentlyUpdatedApps.isEmpty()) {
-            val listRecentlyUpdated = AppListType.RecentlyUpdated(
-                stringResource(R.string.app_list_recently_updated),
-            )
-            AppCarousel(
-                title = listRecentlyUpdated.title,
-                apps = discoverModel.recentlyUpdatedApps,
-                onTitleTap = { onListTap(listRecentlyUpdated) },
-                onAppTap = onAppTap,
-            )
-        }
-        AnimatedVisibility(!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
-            val listMostDownloaded = AppListType.MostDownloaded(
-                stringResource(R.string.app_list_most_downloaded),
-            )
-            if (discoverModel.mostDownloadedApps != null) AppCarousel(
-                title = listMostDownloaded.title,
-                apps = discoverModel.mostDownloadedApps,
-                onTitleTap = { onListTap(listMostDownloaded) },
-                onAppTap = onAppTap,
-            )
-        }
-        CategoryList(
-            categoryMap = discoverModel.categories,
-            onNav = onNav,
-            modifier = Modifier
-                .fillMaxWidth()
+  Column(modifier = modifier) {
+    AppsSearch(
+      onNav = onNav,
+      textFieldState = discoverModel.searchTextFieldState,
+      modifier =
+        Modifier
+          // focusable is a workaround for https://issuetracker.google.com/issues/445720462
+          .focusable()
+          .padding(top = 16.dp, bottom = 4.dp)
+          .padding(horizontal = 16.dp)
+          .align(Alignment.CenterHorizontally),
+    )
+    AnimatedVisibility(discoverModel.newApps.isNotEmpty()) {
+      val listNew = AppListType.New(stringResource(R.string.app_list_new))
+      AppCarousel(
+        title = listNew.title,
+        apps = discoverModel.newApps,
+        onTitleTap = { onListTap(listNew) },
+        onAppTap = onAppTap,
+      )
+    }
+    AnimatedVisibility(!discoverModel.recentlyUpdatedApps.isEmpty()) {
+      val listRecentlyUpdated =
+        AppListType.RecentlyUpdated(stringResource(R.string.app_list_recently_updated))
+      AppCarousel(
+        title = listRecentlyUpdated.title,
+        apps = discoverModel.recentlyUpdatedApps,
+        onTitleTap = { onListTap(listRecentlyUpdated) },
+        onAppTap = onAppTap,
+      )
+    }
+    AnimatedVisibility(!discoverModel.mostDownloadedApps.isNullOrEmpty()) {
+      val listMostDownloaded =
+        AppListType.MostDownloaded(stringResource(R.string.app_list_most_downloaded))
+      if (discoverModel.mostDownloadedApps != null)
+        AppCarousel(
+          title = listMostDownloaded.title,
+          apps = discoverModel.mostDownloadedApps,
+          onTitleTap = { onListTap(listMostDownloaded) },
+          onAppTap = onAppTap,
         )
     }
+    CategoryList(
+      categoryMap = discoverModel.categories,
+      onNav = onNav,
+      modifier = Modifier.fillMaxWidth(),
+    )
+  }
 }

@@ -15,20 +15,17 @@ import org.fdroid.R
 
 @Composable
 fun TopAppBarOverflowButton(
-    menuItems: @Composable (ColumnScope.(onDismissRequest: () -> Unit) -> Unit),
+  menuItems: @Composable (ColumnScope.(onDismissRequest: () -> Unit) -> Unit)
 ) {
-    Box {
-        var menuExpanded by remember { mutableStateOf(false) }
-        TopAppBarButton(
-            Icons.Default.MoreVert,
-            contentDescription = stringResource(R.string.more),
-            onClick = { menuExpanded = !menuExpanded },
-        )
-        DropdownMenu(
-            expanded = menuExpanded,
-            onDismissRequest = { menuExpanded = false },
-        ) {
-            menuItems { menuExpanded = false }
-        }
+  Box {
+    var menuExpanded by remember { mutableStateOf(false) }
+    TopAppBarButton(
+      Icons.Default.MoreVert,
+      contentDescription = stringResource(R.string.more),
+      onClick = { menuExpanded = !menuExpanded },
+    )
+    DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
+      menuItems { menuExpanded = false }
     }
+  }
 }

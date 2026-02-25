@@ -40,107 +40,85 @@ import org.fdroid.ui.utils.getRepository
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun RepoDetailsHeader(
-    repo: Repository,
-    numberOfApps: Int?,
-    proxy: ProxyConfig?,
-    onShowAppsClicked: (String, Long) -> Unit,
+  repo: Repository,
+  numberOfApps: Int?,
+  proxy: ProxyConfig?,
+  onShowAppsClicked: (String, Long) -> Unit,
 ) {
-    val localeList = LocaleListCompat.getDefault()
-    val name = repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repo"
-    val description = repo.getDescription(localeList)?.replace("\n", " ")
+  val localeList = LocaleListCompat.getDefault()
+  val name = repo.getName(LocaleListCompat.getDefault()) ?: "Unknown Repo"
+  val description = repo.getDescription(localeList)?.replace("\n", " ")
 
-    val lastIndexTime = if (repo.timestamp < 0) {
-        stringResource(R.string.repositories_last_update_never)
+  val lastIndexTime =
+    if (repo.timestamp < 0) {
+      stringResource(R.string.repositories_last_update_never)
     } else {
-        repo.timestamp.asRelativeTimeString()
+      repo.timestamp.asRelativeTimeString()
     }
-    val lastPublishedTime = stringResource(R.string.repo_last_update_upstream, lastIndexTime)
+  val lastPublishedTime = stringResource(R.string.repo_last_update_upstream, lastIndexTime)
 
-    val lastDownloadedTime = repo.lastUpdated?.asRelativeTimeString()
-        ?: stringResource(R.string.repositories_last_update_never)
-    val lastUpdated = stringResource(R.string.repo_last_downloaded, lastDownloadedTime)
+  val lastDownloadedTime =
+    repo.lastUpdated?.asRelativeTimeString()
+      ?: stringResource(R.string.repositories_last_update_never)
+  val lastUpdated = stringResource(R.string.repo_last_downloaded, lastDownloadedTime)
 
-    Column(
-        verticalArrangement = spacedBy(8.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-    ) {
-        Row(
-            horizontalArrangement = spacedBy(8.dp),
-        ) {
-            RepoIcon(repo, proxy, Modifier.size(64.dp))
-            Column(horizontalAlignment = Alignment.Start) {
-                Text(
-                    text = name,
-                    maxLines = 1,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.headlineMediumEmphasized,
-                )
-                Text(
-                    text = repo.addressForUi,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                if (numberOfApps != null) Text(
-                    text = pluralStringResource(
-                        R.plurals.repo_num_apps_text,
-                        numberOfApps,
-                        numberOfApps,
-                    ),
-                    style = MaterialTheme.typography.bodySmall,
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = lastPublishedTime,
-                    style = MaterialTheme.typography.bodySmall,
-                )
-                Text(
-                    text = lastUpdated,
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            }
-        }
-        if (repo.lastError != null) ElevatedCard(
-            colors = CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.errorContainer,
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-        ) {
-            Row(
-                horizontalArrangement = spacedBy(16.dp),
-                verticalAlignment = CenterVertically,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            ) {
-                Icon(Icons.Default.WarningAmber, null)
-                SelectionContainer {
-                    Text(
-                        text = stringResource(R.string.repo_has_update_error_intro) +
-                            "\n\n${repo.lastError}",
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                }
-            }
-        }
-        if (repo.enabled) FDroidOutlineButton(
-            stringResource(R.string.repo_num_apps_button),
-            onClick = { onShowAppsClicked(name, repo.repoId) },
-            modifier = Modifier.fillMaxWidth(),
+  Column(verticalArrangement = spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+    Row(horizontalArrangement = spacedBy(8.dp)) {
+      RepoIcon(repo, proxy, Modifier.size(64.dp))
+      Column(horizontalAlignment = Alignment.Start) {
+        Text(
+          text = name,
+          maxLines = 1,
+          fontWeight = FontWeight.Bold,
+          style = MaterialTheme.typography.headlineMediumEmphasized,
         )
-        if (description?.isNotBlank() == true) {
-            Text(
-                text = description,
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
+        Text(text = repo.addressForUi, style = MaterialTheme.typography.bodyMedium)
+        if (numberOfApps != null)
+          Text(
+            text = pluralStringResource(R.plurals.repo_num_apps_text, numberOfApps, numberOfApps),
+            style = MaterialTheme.typography.bodySmall,
+          )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(text = lastPublishedTime, style = MaterialTheme.typography.bodySmall)
+        Text(text = lastUpdated, style = MaterialTheme.typography.bodySmall)
+      }
     }
+    if (repo.lastError != null)
+      ElevatedCard(
+        colors =
+          CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.errorContainer
+          ),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+      ) {
+        Row(
+          horizontalArrangement = spacedBy(16.dp),
+          verticalAlignment = CenterVertically,
+          modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+          Icon(Icons.Default.WarningAmber, null)
+          SelectionContainer {
+            Text(
+              text = stringResource(R.string.repo_has_update_error_intro) + "\n\n${repo.lastError}",
+              style = MaterialTheme.typography.bodyLarge,
+            )
+          }
+        }
+      }
+    if (repo.enabled)
+      FDroidOutlineButton(
+        stringResource(R.string.repo_num_apps_button),
+        onClick = { onShowAppsClicked(name, repo.repoId) },
+        modifier = Modifier.fillMaxWidth(),
+      )
+    if (description?.isNotBlank() == true) {
+      Text(text = description, style = MaterialTheme.typography.bodyMedium)
+    }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        RepoDetailsHeader(getRepository(), 45, null) { _, _ -> }
-    }
+  FDroidContent { RepoDetailsHeader(getRepository(), 45, null) { _, _ -> } }
 }

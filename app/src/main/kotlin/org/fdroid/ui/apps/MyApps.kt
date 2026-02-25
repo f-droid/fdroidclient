@@ -55,196 +55,186 @@ import org.fdroid.ui.utils.myAppsModel
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun MyApps(
-    myAppsInfo: MyAppsInfo,
-    currentPackageName: String?,
-    onAppItemClick: (String) -> Unit,
-    onNav: (NavKey) -> Unit,
-    modifier: Modifier = Modifier,
+  myAppsInfo: MyAppsInfo,
+  currentPackageName: String?,
+  onAppItemClick: (String) -> Unit,
+  onNav: (NavKey) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val myAppsModel = myAppsInfo.model
-    // Ask user to confirm appToConfirm whenever it changes and we are in STARTED state.
-    // In tests, waiting for RESUME didn't work, because the LaunchedEffect ran before.
-    val lifecycleOwner = LocalLifecycleOwner.current
-    LaunchedEffect(myAppsModel.appToConfirm) {
-        val app = myAppsModel.appToConfirm
-        if (app != null && lifecycleOwner.lifecycle.currentState.isAtLeast(STARTED)) {
-            val state = app.installState as InstallConfirmationState
-            myAppsInfo.actions.confirmAppInstall(app.packageName, state)
+  val myAppsModel = myAppsInfo.model
+  // Ask user to confirm appToConfirm whenever it changes and we are in STARTED state.
+  // In tests, waiting for RESUME didn't work, because the LaunchedEffect ran before.
+  val lifecycleOwner = LocalLifecycleOwner.current
+  LaunchedEffect(myAppsModel.appToConfirm) {
+    val app = myAppsModel.appToConfirm
+    if (app != null && lifecycleOwner.lifecycle.currentState.isAtLeast(STARTED)) {
+      val state = app.installState as InstallConfirmationState
+      myAppsInfo.actions.confirmAppInstall(app.packageName, state)
+    }
+  }
+  val installingApps = myAppsModel.installingApps
+  val updatableApps = myAppsModel.appUpdates
+  val appsWithIssue = myAppsModel.appsWithIssue
+  val installedApps = myAppsModel.installedApps
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  var searchActive by rememberSaveable { mutableStateOf(false) }
+  val onSearchCleared = { myAppsInfo.actions.search("") }
+  // when search bar is shown, back button closes it again
+  BackHandler(enabled = searchActive) {
+    searchActive = false
+    onSearchCleared()
+  }
+  val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+  Scaffold(
+    topBar = {
+      if (searchActive) {
+        TopSearchBar(onSearch = myAppsInfo.actions::search, onSearchCleared = onSearchCleared) {
+          onBackPressedDispatcher?.onBackPressed()
         }
-    }
-    val installingApps = myAppsModel.installingApps
-    val updatableApps = myAppsModel.appUpdates
-    val appsWithIssue = myAppsModel.appsWithIssue
-    val installedApps = myAppsModel.installedApps
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
-    var searchActive by rememberSaveable { mutableStateOf(false) }
-    val onSearchCleared = { myAppsInfo.actions.search("") }
-    // when search bar is shown, back button closes it again
-    BackHandler(enabled = searchActive) {
-        searchActive = false
-        onSearchCleared()
-    }
-    val onBackPressedDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
-    Scaffold(
-        topBar = {
-            if (searchActive) {
-                TopSearchBar(
-                    onSearch = myAppsInfo.actions::search,
-                    onSearchCleared = onSearchCleared,
-                ) {
-                    onBackPressedDispatcher?.onBackPressed()
-                }
-            } else TopAppBar(
-                title = {
-                    Text(stringResource(R.string.menu_apps_my))
-                },
-                actions = {
-                    TopAppBarButton(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = stringResource(R.string.menu_search),
-                        onClick = { searchActive = true },
-                    )
-                    var sortByMenuExpanded by remember { mutableStateOf(false) }
-                    TopAppBarButton(
-                        imageVector = Icons.AutoMirrored.Default.Sort,
-                        contentDescription = stringResource(R.string.sort_search),
-                        onClick = { sortByMenuExpanded = !sortByMenuExpanded },
-                    )
-                    DropdownMenu(
-                        expanded = sortByMenuExpanded,
-                        onDismissRequest = { sortByMenuExpanded = false },
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.sort_by_name)) },
-                            leadingIcon = {
-                                Icon(Icons.Filled.SortByAlpha, null)
-                            },
-                            trailingIcon = {
-                                RadioButton(
-                                    selected = myAppsModel.sortOrder == AppListSortOrder.NAME,
-                                    onClick = null,
-                                )
-                            },
-                            onClick = {
-                                myAppsInfo.actions.changeSortOrder(AppListSortOrder.NAME)
-                                sortByMenuExpanded = false
-                            },
-                        )
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.sort_by_latest)) },
-                            leadingIcon = {
-                                Icon(Icons.Filled.AccessTime, null)
-                            },
-                            trailingIcon = {
-                                RadioButton(
-                                    selected = myAppsModel.sortOrder == LAST_UPDATED,
-                                    onClick = null,
-                                )
-                            },
-                            onClick = {
-                                myAppsInfo.actions.changeSortOrder(LAST_UPDATED)
-                                sortByMenuExpanded = false
-                            },
-                        )
-                    }
-                    TopAppBarOverflowButton { onDismissRequest ->
-                        MyAppsOverFlowMenu(
-                            onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
-                            onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
-                            onDismissRequest = onDismissRequest,
-                        )
-                    }
-                },
-                scrollBehavior = scrollBehavior,
+      } else
+        TopAppBar(
+          title = { Text(stringResource(R.string.menu_apps_my)) },
+          actions = {
+            TopAppBarButton(
+              imageVector = Icons.Filled.Search,
+              contentDescription = stringResource(R.string.menu_search),
+              onClick = { searchActive = true },
             )
-        },
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        val lazyListState = rememberLazyListState()
-        if (updatableApps == null && installedApps == null) BigLoadingIndicator()
-        else if (installingApps.isEmpty() &&
-            updatableApps.isNullOrEmpty() &&
-            appsWithIssue.isNullOrEmpty() &&
-            installedApps.isNullOrEmpty()
-        ) {
-            Text(
-                text = if (searchActive) {
-                    stringResource(R.string.search_my_apps_no_results)
-                } else {
-                    val appName = stringResource(R.string.app_name)
-                    stringResource(R.string.my_apps_empty, appName)
+            var sortByMenuExpanded by remember { mutableStateOf(false) }
+            TopAppBarButton(
+              imageVector = Icons.AutoMirrored.Default.Sort,
+              contentDescription = stringResource(R.string.sort_search),
+              onClick = { sortByMenuExpanded = !sortByMenuExpanded },
+            )
+            DropdownMenu(
+              expanded = sortByMenuExpanded,
+              onDismissRequest = { sortByMenuExpanded = false },
+            ) {
+              DropdownMenuItem(
+                text = { Text(stringResource(R.string.sort_by_name)) },
+                leadingIcon = { Icon(Icons.Filled.SortByAlpha, null) },
+                trailingIcon = {
+                  RadioButton(
+                    selected = myAppsModel.sortOrder == AppListSortOrder.NAME,
+                    onClick = null,
+                  )
                 },
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .fillMaxSize()
-                    .padding(16.dp),
-            )
-        } else {
-            MyAppsList(
-                myAppsInfo = myAppsInfo,
-                currentPackageName = currentPackageName,
-                lazyListState = lazyListState,
-                onAppItemClick = onAppItemClick,
-                paddingValues = paddingValues,
-            )
-        }
+                onClick = {
+                  myAppsInfo.actions.changeSortOrder(AppListSortOrder.NAME)
+                  sortByMenuExpanded = false
+                },
+              )
+              DropdownMenuItem(
+                text = { Text(stringResource(R.string.sort_by_latest)) },
+                leadingIcon = { Icon(Icons.Filled.AccessTime, null) },
+                trailingIcon = {
+                  RadioButton(selected = myAppsModel.sortOrder == LAST_UPDATED, onClick = null)
+                },
+                onClick = {
+                  myAppsInfo.actions.changeSortOrder(LAST_UPDATED)
+                  sortByMenuExpanded = false
+                },
+              )
+            }
+            TopAppBarOverflowButton { onDismissRequest ->
+              MyAppsOverFlowMenu(
+                onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
+                onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
+                onDismissRequest = onDismissRequest,
+              )
+            }
+          },
+          scrollBehavior = scrollBehavior,
+        )
+    },
+    modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    val lazyListState = rememberLazyListState()
+    if (updatableApps == null && installedApps == null) BigLoadingIndicator()
+    else if (
+      installingApps.isEmpty() &&
+        updatableApps.isNullOrEmpty() &&
+        appsWithIssue.isNullOrEmpty() &&
+        installedApps.isNullOrEmpty()
+    ) {
+      Text(
+        text =
+          if (searchActive) {
+            stringResource(R.string.search_my_apps_no_results)
+          } else {
+            val appName = stringResource(R.string.app_name)
+            stringResource(R.string.my_apps_empty, appName)
+          },
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(paddingValues).fillMaxSize().padding(16.dp),
+      )
+    } else {
+      MyAppsList(
+        myAppsInfo = myAppsInfo,
+        currentPackageName = currentPackageName,
+        lazyListState = lazyListState,
+        onAppItemClick = onAppItemClick,
+        paddingValues = paddingValues,
+      )
     }
+  }
 }
 
 @Preview
 @Composable
 fun MyAppsLoadingPreview() {
-    val model = MyAppsModel(
-        installingApps = emptyList(),
-        appUpdates = null,
-        installedApps = null,
-        showAppIssueHint = false,
-        sortOrder = AppListSortOrder.NAME,
-        networkState = NetworkState(isOnline = false, isMetered = false),
+  val model =
+    MyAppsModel(
+      installingApps = emptyList(),
+      appUpdates = null,
+      installedApps = null,
+      showAppIssueHint = false,
+      sortOrder = AppListSortOrder.NAME,
+      networkState = NetworkState(isOnline = false, isMetered = false),
     )
-    FDroidContent {
-        MyApps(
-            myAppsInfo = getMyAppsInfo(model),
-            currentPackageName = null,
-            onAppItemClick = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    MyApps(
+      myAppsInfo = getMyAppsInfo(model),
+      currentPackageName = null,
+      onAppItemClick = {},
+      onNav = {},
+    )
+  }
 }
 
 @Preview
 @Composable
 @RestrictTo(RestrictTo.Scope.TESTS)
 fun MyAppsPreview() {
-    FDroidContent {
-        MyApps(
-            myAppsInfo = getMyAppsInfo(myAppsModel),
-            currentPackageName = null,
-            onAppItemClick = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    MyApps(
+      myAppsInfo = getMyAppsInfo(myAppsModel),
+      currentPackageName = null,
+      onAppItemClick = {},
+      onNav = {},
+    )
+  }
 }
 
 @Preview
 @Composable
 @RestrictTo(RestrictTo.Scope.TESTS)
 fun MyAppsEmptyPreview() {
-    FDroidContent {
-        val model = MyAppsModel(
-            installingApps = emptyList(),
-            appUpdates = emptyList(),
-            installedApps = emptyList(),
-            showAppIssueHint = false,
-            sortOrder = AppListSortOrder.NAME,
-            networkState = NetworkState(isOnline = false, isMetered = false),
-        )
-        MyApps(
-            myAppsInfo = getMyAppsInfo(model),
-            currentPackageName = null,
-            onAppItemClick = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    val model =
+      MyAppsModel(
+        installingApps = emptyList(),
+        appUpdates = emptyList(),
+        installedApps = emptyList(),
+        showAppIssueHint = false,
+        sortOrder = AppListSortOrder.NAME,
+        networkState = NetworkState(isOnline = false, isMetered = false),
+      )
+    MyApps(
+      myAppsInfo = getMyAppsInfo(model),
+      currentPackageName = null,
+      onAppItemClick = {},
+      onNav = {},
+    )
+  }
 }

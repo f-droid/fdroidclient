@@ -28,143 +28,133 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun BottomBar(
-    numUpdates: Int,
-    hasIssues: Boolean,
-    currentNavKey: NavKey,
-    onNav: (MainNavKey) -> Unit,
+  numUpdates: Int,
+  hasIssues: Boolean,
+  currentNavKey: NavKey,
+  onNav: (MainNavKey) -> Unit,
 ) {
-    val res = LocalResources.current
-    NavigationBar {
-        topLevelRoutes.forEach { dest ->
-            NavigationBarItem(
-                icon = { NavIcon(dest, numUpdates, hasIssues) },
-                label = { Text(stringResource(dest.label)) },
-                selected = dest == currentNavKey,
-                colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = MaterialTheme.colorScheme.primary,
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    selectedIconColor = contentColorFor(MaterialTheme.colorScheme.primary),
-                ),
-                onClick = {
-                    if (dest != currentNavKey) onNav(dest)
-                },
-                modifier = Modifier.semantics {
-                    if (dest == NavigationKey.MyApps) {
-                        if (numUpdates > 0) {
-                            stateDescription =
-                                res.getString(R.string.notification_channel_updates_available_title)
-                        } else if (hasIssues) {
-                            stateDescription =
-                                res.getString(R.string.my_apps_header_apps_with_issue)
-                        }
-                    }
-                }
-            )
-        }
+  val res = LocalResources.current
+  NavigationBar {
+    topLevelRoutes.forEach { dest ->
+      NavigationBarItem(
+        icon = { NavIcon(dest, numUpdates, hasIssues) },
+        label = { Text(stringResource(dest.label)) },
+        selected = dest == currentNavKey,
+        colors =
+          NavigationBarItemDefaults.colors(
+            indicatorColor = MaterialTheme.colorScheme.primary,
+            selectedTextColor = MaterialTheme.colorScheme.primary,
+            selectedIconColor = contentColorFor(MaterialTheme.colorScheme.primary),
+          ),
+        onClick = { if (dest != currentNavKey) onNav(dest) },
+        modifier =
+          Modifier.semantics {
+            if (dest == NavigationKey.MyApps) {
+              if (numUpdates > 0) {
+                stateDescription =
+                  res.getString(R.string.notification_channel_updates_available_title)
+              } else if (hasIssues) {
+                stateDescription = res.getString(R.string.my_apps_header_apps_with_issue)
+              }
+            }
+          },
+      )
     }
+  }
 }
 
 @Composable
 fun NavigationRail(
-    numUpdates: Int,
-    hasIssues: Boolean,
-    currentNavKey: NavKey,
-    onNav: (MainNavKey) -> Unit,
-    modifier: Modifier = Modifier,
+  numUpdates: Int,
+  hasIssues: Boolean,
+  currentNavKey: NavKey,
+  onNav: (MainNavKey) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val res = LocalResources.current
-    NavigationRail(modifier) {
-        topLevelRoutes.forEach { dest ->
-            NavigationRailItem(
-                icon = { NavIcon(dest, numUpdates, hasIssues) },
-                label = { Text(stringResource(dest.label)) },
-                selected = dest == currentNavKey,
-                colors = NavigationRailItemDefaults.colors(
-                    indicatorColor = MaterialTheme.colorScheme.primary,
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    selectedIconColor = contentColorFor(MaterialTheme.colorScheme.primary),
-                ),
-                onClick = {
-                    if (dest != currentNavKey) onNav(dest)
-                },
-                modifier = Modifier.semantics {
-                    if (dest == NavigationKey.MyApps) {
-                        if (numUpdates > 0) {
-                            stateDescription =
-                                res.getString(R.string.notification_channel_updates_available_title)
-                        } else if (hasIssues) {
-                            stateDescription =
-                                res.getString(R.string.my_apps_header_apps_with_issue)
-                        }
-                    }
-                }
-            )
-        }
+  val res = LocalResources.current
+  NavigationRail(modifier) {
+    topLevelRoutes.forEach { dest ->
+      NavigationRailItem(
+        icon = { NavIcon(dest, numUpdates, hasIssues) },
+        label = { Text(stringResource(dest.label)) },
+        selected = dest == currentNavKey,
+        colors =
+          NavigationRailItemDefaults.colors(
+            indicatorColor = MaterialTheme.colorScheme.primary,
+            selectedTextColor = MaterialTheme.colorScheme.primary,
+            selectedIconColor = contentColorFor(MaterialTheme.colorScheme.primary),
+          ),
+        onClick = { if (dest != currentNavKey) onNav(dest) },
+        modifier =
+          Modifier.semantics {
+            if (dest == NavigationKey.MyApps) {
+              if (numUpdates > 0) {
+                stateDescription =
+                  res.getString(R.string.notification_channel_updates_available_title)
+              } else if (hasIssues) {
+                stateDescription = res.getString(R.string.my_apps_header_apps_with_issue)
+              }
+            }
+          },
+      )
     }
+  }
 }
 
 @Composable
 private fun NavIcon(dest: MainNavKey, numUpdates: Int, hasIssues: Boolean) {
-    BadgedBox(
-        badge = {
-            if (dest == NavigationKey.MyApps && numUpdates > 0) {
-                Badge(containerColor = MaterialTheme.colorScheme.secondary) {
-                    Text(text = numUpdates.toString())
-                }
-            } else if (dest == NavigationKey.MyApps && hasIssues) {
-                Icon(
-                    imageVector = Icons.Default.Error,
-                    tint = MaterialTheme.colorScheme.error,
-                    contentDescription = stringResource(R.string.my_apps_header_apps_with_issue)
-                )
-            }
+  BadgedBox(
+    badge = {
+      if (dest == NavigationKey.MyApps && numUpdates > 0) {
+        Badge(containerColor = MaterialTheme.colorScheme.secondary) {
+          Text(text = numUpdates.toString())
         }
-    ) {
+      } else if (dest == NavigationKey.MyApps && hasIssues) {
         Icon(
-            dest.icon,
-            contentDescription = stringResource(dest.label)
+          imageVector = Icons.Default.Error,
+          tint = MaterialTheme.colorScheme.error,
+          contentDescription = stringResource(R.string.my_apps_header_apps_with_issue),
         )
+      }
     }
+  ) {
+    Icon(dest.icon, contentDescription = stringResource(dest.label))
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        Row {
-            NavigationRail(
-                numUpdates = 3,
-                hasIssues = false,
-                currentNavKey = NavigationKey.Discover,
-                onNav = {},
-            )
-            BottomBar(
-                numUpdates = 3,
-                hasIssues = false,
-                currentNavKey = NavigationKey.Discover,
-                onNav = {},
-            )
-        }
+  FDroidContent {
+    Row {
+      NavigationRail(
+        numUpdates = 3,
+        hasIssues = false,
+        currentNavKey = NavigationKey.Discover,
+        onNav = {},
+      )
+      BottomBar(
+        numUpdates = 3,
+        hasIssues = false,
+        currentNavKey = NavigationKey.Discover,
+        onNav = {},
+      )
     }
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewIssues() {
-    FDroidContent {
-        Row {
-            NavigationRail(
-                numUpdates = 0,
-                hasIssues = true,
-                currentNavKey = NavigationKey.MyApps,
-                onNav = {},
-            )
-            BottomBar(
-                numUpdates = 0,
-                hasIssues = true,
-                currentNavKey = NavigationKey.MyApps,
-                onNav = {},
-            )
-        }
+  FDroidContent {
+    Row {
+      NavigationRail(
+        numUpdates = 0,
+        hasIssues = true,
+        currentNavKey = NavigationKey.MyApps,
+        onNav = {},
+      )
+      BottomBar(numUpdates = 0, hasIssues = true, currentNavKey = NavigationKey.MyApps, onNav = {})
     }
+  }
 }

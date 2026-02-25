@@ -26,85 +26,68 @@ import org.fdroid.ui.utils.getRepository
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun RepoSettings(
-    repo: Repository,
-    archiveState: ArchiveState,
-    onToggleArchiveClicked: (Boolean) -> Unit,
-    onCredentialsUpdated: (String, String) -> Unit,
+  repo: Repository,
+  archiveState: ArchiveState,
+  onToggleArchiveClicked: (Boolean) -> Unit,
+  onCredentialsUpdated: (String, String) -> Unit,
 ) {
-    ExpandableSection(
-        icon = rememberVectorPainter(Icons.Default.Settings),
-        title = stringResource(R.string.menu_settings),
-        modifier = Modifier.padding(horizontal = 16.dp),
-    ) {
-        Column(verticalArrangement = spacedBy(16.dp)) {
-            when (archiveState) {
-                ArchiveState.UNKNOWN -> {
-                    Column(
-                        verticalArrangement = spacedBy(8.dp),
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        Text(stringResource(R.string.repo_archive_unknown))
-                        FDroidOutlineButton(
-                            text = stringResource(R.string.repo_archive_check),
-                            onClick = { onToggleArchiveClicked(true) },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    }
-                }
-                ArchiveState.LOADING -> {
-                    LinearWavyProgressIndicator(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 24.dp),
-                    )
-                }
-                else -> {
-                    FDroidSwitchRow(
-                        text = stringResource(R.string.repo_archive_toggle_description),
-                        checked = archiveState == ArchiveState.ENABLED,
-                        enabled = true,
-                        onCheckedChange = onToggleArchiveClicked,
-                    )
-                }
-            }
-            val username = repo.username
-            if (username != null && username.isNotBlank()) {
-                BasicAuth(username) { username, password ->
-                    onCredentialsUpdated(username, password)
-                }
-            }
+  ExpandableSection(
+    icon = rememberVectorPainter(Icons.Default.Settings),
+    title = stringResource(R.string.menu_settings),
+    modifier = Modifier.padding(horizontal = 16.dp),
+  ) {
+    Column(verticalArrangement = spacedBy(16.dp)) {
+      when (archiveState) {
+        ArchiveState.UNKNOWN -> {
+          Column(verticalArrangement = spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.repo_archive_unknown))
+            FDroidOutlineButton(
+              text = stringResource(R.string.repo_archive_check),
+              onClick = { onToggleArchiveClicked(true) },
+              modifier = Modifier.fillMaxWidth(),
+            )
+          }
         }
+        ArchiveState.LOADING -> {
+          LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp))
+        }
+        else -> {
+          FDroidSwitchRow(
+            text = stringResource(R.string.repo_archive_toggle_description),
+            checked = archiveState == ArchiveState.ENABLED,
+            enabled = true,
+            onCheckedChange = onToggleArchiveClicked,
+          )
+        }
+      }
+      val username = repo.username
+      if (!username.isNullOrBlank()) {
+        BasicAuth(username) { username, password -> onCredentialsUpdated(username, password) }
+      }
     }
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewUnknown() {
-    FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.UNKNOWN, {}) { _, _ -> }
-    }
+  FDroidContent { RepoSettings(getRepository(), ArchiveState.UNKNOWN, {}) { _, _ -> } }
 }
 
 @Preview
 @Composable
 private fun PreviewLoading() {
-    FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.LOADING, {}) { _, _ -> }
-    }
+  FDroidContent { RepoSettings(getRepository(), ArchiveState.LOADING, {}) { _, _ -> } }
 }
 
 @Preview
 @Composable
 private fun PreviewEnabled() {
-    FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.ENABLED, {}) { _, _ -> }
-    }
+  FDroidContent { RepoSettings(getRepository(), ArchiveState.ENABLED, {}) { _, _ -> } }
 }
 
 @Preview
 @Composable
 private fun PreviewDisabled() {
-    FDroidContent {
-        RepoSettings(getRepository(), ArchiveState.DISABLED, {}) { _, _ -> }
-    }
+  FDroidContent { RepoSettings(getRepository(), ArchiveState.DISABLED, {}) { _, _ -> } }
 }

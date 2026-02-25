@@ -10,32 +10,29 @@ import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.Navigator
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
-fun EntryProviderScope<NavKey>.myAppsEntry(
-    navigator: Navigator,
-    isBigScreen: Boolean,
-) {
-    entry<NavigationKey.MyApps>(
-        metadata = ListDetailSceneStrategy.listPane("appdetails"),
-    ) {
-        val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
-        val myAppsInfo = object : MyAppsInfo {
-            override val model = myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
-            override val actions: MyAppsActions = myAppsViewModel
+fun EntryProviderScope<NavKey>.myAppsEntry(navigator: Navigator, isBigScreen: Boolean) {
+  entry<NavigationKey.MyApps>(metadata = ListDetailSceneStrategy.listPane("appdetails")) {
+    val myAppsViewModel = hiltViewModel<MyAppsViewModel>()
+    val myAppsInfo =
+      object : MyAppsInfo {
+        override val model = myAppsViewModel.myAppsModel.collectAsStateWithLifecycle().value
+        override val actions: MyAppsActions = myAppsViewModel
+      }
+    MyApps(
+      myAppsInfo = myAppsInfo,
+      currentPackageName =
+        if (isBigScreen) {
+          (navigator.last as? NavigationKey.AppDetails)?.packageName
+        } else null,
+      onAppItemClick = {
+        val new = NavigationKey.AppDetails(it)
+        if (navigator.last is NavigationKey.AppDetails) {
+          navigator.replaceLast(new)
+        } else {
+          navigator.navigate(new)
         }
-        MyApps(
-            myAppsInfo = myAppsInfo,
-            currentPackageName = if (isBigScreen) {
-                (navigator.last as? NavigationKey.AppDetails)?.packageName
-            } else null,
-            onAppItemClick = {
-                val new = NavigationKey.AppDetails(it)
-                if (navigator.last is NavigationKey.AppDetails) {
-                    navigator.replaceLast(new)
-                } else {
-                    navigator.navigate(new)
-                }
-            },
-            onNav = { navKey -> navigator.navigate(navKey) },
-        )
-    }
+      },
+      onNav = { navKey -> navigator.navigate(navKey) },
+    )
+  }
 }

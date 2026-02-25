@@ -31,68 +31,60 @@ import org.fdroid.ui.categories.ChipFlowRow
 
 @Composable
 fun FilterSection(
-    icon: ImageVector,
-    title: String,
-    initiallyExpanded: Boolean,
-    onCollapsed: () -> Unit,
-    modifier: Modifier = Modifier,
-    content: @Composable (FlowRowScope.() -> Unit),
+  icon: ImageVector,
+  title: String,
+  initiallyExpanded: Boolean,
+  onCollapsed: () -> Unit,
+  modifier: Modifier = Modifier,
+  content: @Composable (FlowRowScope.() -> Unit),
 ) {
-    var expanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
-    val onExpand = {
-        expanded = !expanded
-        if (!expanded) onCollapsed()
+  var expanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
+  val onExpand = {
+    expanded = !expanded
+    if (!expanded) onCollapsed()
+  }
+  FilterHeader(icon = icon, text = title, modifier = Modifier.clickable { onExpand() }) {
+    IconButton(onClick = onExpand) {
+      Icon(
+        imageVector =
+          if (expanded) {
+            Icons.Default.Remove
+          } else {
+            Icons.Default.Add
+          },
+        contentDescription =
+          if (expanded) {
+            stringResource(R.string.collapse)
+          } else {
+            stringResource(R.string.expand)
+          },
+      )
     }
-    FilterHeader(icon = icon, text = title, modifier = Modifier.clickable { onExpand() }) {
-        IconButton(onClick = onExpand) {
-            Icon(
-                imageVector = if (expanded) {
-                    Icons.Default.Remove
-                } else {
-                    Icons.Default.Add
-                },
-                contentDescription = if (expanded) {
-                    stringResource(R.string.collapse)
-                } else {
-                    stringResource(R.string.expand)
-                },
-            )
-        }
-    }
-    AnimatedVisibility(expanded) {
-        ChipFlowRow(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-        ) {
-            content()
-        }
-    }
+  }
+  AnimatedVisibility(expanded) {
+    ChipFlowRow(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) { content() }
+  }
 }
 
 @Composable
 fun FilterHeader(
-    icon: ImageVector,
-    text: String,
-    modifier: Modifier = Modifier,
-    trailingContent: @Composable () -> Unit = {}
+  icon: ImageVector,
+  text: String,
+  modifier: Modifier = Modifier,
+  trailingContent: @Composable () -> Unit = {},
 ) {
-    Row(
-        horizontalArrangement = spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
-            modifier = Modifier.semantics { hideFromAccessibility() },
-        )
-        Text(
-            text = text,
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.weight(1f)
-        )
-        trailingContent()
-    }
+  Row(
+    horizontalArrangement = spacedBy(8.dp),
+    verticalAlignment = Alignment.CenterVertically,
+    modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+  ) {
+    Icon(
+      imageVector = icon,
+      contentDescription = null,
+      tint = MaterialTheme.colorScheme.primary,
+      modifier = Modifier.semantics { hideFromAccessibility() },
+    )
+    Text(text = text, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+    trailingContent()
+  }
 }

@@ -152,7 +152,7 @@ app lint:
     # always report on lint errors to the build log
     - sed -i -e 's,textReport .*,textReport true,' legacy/build.gradle
     # the tasks "lint", "test", etc don't always include everything
-    - ./gradlew :app:lint :app:ktlintCheck :legacy:lint :legacy:ktlintCheck
+    - ./gradlew :app:lint :app:ktfmtCheck :legacy:lint
 
 legacy checkstyle:
   <<: *test-template
@@ -168,7 +168,7 @@ legacy checkstyle:
     reports:
       codequality: gl-checkstyle.json
 
-libs lint ktlintCheck:
+libs lint:
   <<: *test-template
   stage: lint
   rules:
@@ -176,7 +176,10 @@ libs lint ktlintCheck:
     - changes:
         - libs/**/*
   script:
-    - ./gradlew :libs:database:lint :libs:download:lint :libs:index:lint :libs:ktlintCheck checkLegacyAbi
+    - ./gradlew \
+      :libs:core:lint       :libs:database:lint       :libs:download:lint       :libs:index:lint       :libs:sharedTest:lint \
+      :libs:core:ktfmtCheck :libs:database:ktfmtCheck :libs:download:ktfmtCheck :libs:index:ktfmtCheck :libs:sharedTest:ktfmtCheck \
+      checkLegacyAbi
 
 # Reference: https://gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/-/blob/4121970daed111dda84cab4547e1f2951684653c/templates/pmd.yml#L52-92
 legacy lint pmd:
