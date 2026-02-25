@@ -16,13 +16,18 @@ import androidx.compose.ui.res.stringResource
 import org.fdroid.R
 
 @Composable
-fun TopAppBarButton(imageVector: ImageVector, contentDescription: String, onClick: () -> Unit) {
+fun TopAppBarButton(
+  imageVector: ImageVector,
+  contentDescription: String,
+  enabled: Boolean = true,
+  onClick: () -> Unit,
+) {
   TooltipBox(
     positionProvider = TooltipDefaults.rememberTooltipPositionProvider(Below),
     tooltip = { PlainTooltip { Text(contentDescription) } },
     state = rememberTooltipState(),
   ) {
-    IconButton(onClick = onClick) {
+    IconButton(enabled = enabled, onClick = onClick) {
       Icon(imageVector = imageVector, contentDescription = contentDescription)
     }
   }
