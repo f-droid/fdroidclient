@@ -528,7 +528,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="repo_archive_toggle_description">Show archived apps and outdated versions of apps</string>
     <string name="repo_archive_unknown">This repository does not appear to have an archive.</string>
     <string name="repo_archive_check">Check for archive</string>
-    <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
+    <string name="repo_fingerprint">Signing key fingerprint (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="repo_official_mirrors">Official mirrors</string>
     <string name="repo_user_mirrors">User mirrors</string>
