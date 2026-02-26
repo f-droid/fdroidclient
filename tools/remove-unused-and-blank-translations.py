@@ -44,8 +44,6 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
     # should not be in the translation files anyway
     with open(str_path, 'rb') as fp:
         contents = fp.read()
-    contents = contents.replace(b' tools:ignore="UnusedResources"', b'') \
-                       .replace(b' xmlns:tools="http://schemas.android.com/tools"', b'')
     root = ElementTree.fromstring(contents)
 
     for e in root.findall('.//string'):
@@ -67,9 +65,11 @@ for d in sorted(glob.glob(os.path.join(resdir, 'values-*'))):
             count += 1
 
     result = re.sub(r' />', r'/>', ElementTree.tostring(root, encoding='utf-8').decode('utf-8'))
+    result = re.sub(r'xmlns:ns0=', r'xmlns:tools=', result)
+    result = re.sub(r' ns0:ignore=', r' tools:ignore=', result)
     result = re.sub(r'resources><string', r'resources>\n    <string', result)
     result = re.sub(r'[ \t]*<string name', r'    <string name', result)
-    result = re.sub(r'[ \t]*</resources>', r'</resources>', result)
+    result = re.sub(r'[ \t]*</resources>', r'</resources>\n', result)
 
     with open(str_path, 'w+') as f:
         f.write(re.sub(r"'", r'"', header))
