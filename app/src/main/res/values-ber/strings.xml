@@ -33,7 +33,6 @@
     <string name="app_list__dismiss_downloading_app">ⵉⵙⵙⵔ ⵓⴳⴰⵎ</string>
     <string name="app_list__name__downloading_in_progress">ⴷⴰ ⵉⵜⵜⴰⴳⵎ %1$s</string>
     <string name="app_new">ⴰⵎⴰⵢⵏⵓ</string>
-    <string name="repo_name">ⵉⵙⵎ</string>
     <string name="hiding_dialog_title">ⴼⴼⵔ %s ⴷⵖⵉ</string>
     <string name="panic_hide_title">ⴼⴼⵔ %s</string>
     <string name="panic_exit_summary">ⴰⴷ ⵜⴻⵜⵜⵓⵔⴳⵍ ⵜⵉⵙⵏⵙⵉ ⴰ</string>
@@ -89,7 +88,6 @@
     <string name="repo_add_url">ⴰⵏⵙⴰ ⵏ ⵜⵉⵙⴳⵉⵜ</string>
     <string name="more">ⵓⴳⴳⴰⵔ</string>
     <string name="links">ⵉⵣⴷⴰⵢⵏ</string>
-    <string name="repo_add_title">ⵔⵏⵉ ⵜⵙⴳⵉⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ</string>
     <string name="repo_add_mirror">ⵔⵏⵓ ⵜⵉⵙⵉⵜ</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">ⴰⴳⵎ ⵜⴰⵙⴷⵖⵉⵜ ⵉ %1$d ⵜⵓⵙⵏⵙⵉⵜ.</item>

@@ -57,7 +57,6 @@
     <string name="unsigned">ഒപ്പുവയ്‌ക്കാത്തത്</string>
     <string name="unverified">പരിശോധിച്ചിട്ടില്ലാത്തത്</string>
     <string name="repo_details">സംഭരണി</string>
-    <string name="repo_last_update">അവസാനം പുതുക്കിയത്</string>
     <string name="not_on_same_wifi">നിങ്ങളുടെ ഉപകരണം നിങ്ങൾ ഇപ്പോൾ ചേർത്ത പ്രാദേശിക റിപ്പോയുടെ അതേ വൈഫൈയിലല്ല! ഈ ശൃംഖലയില്‍ ചേരാൻ ശ്രമിക്കുക: %s</string>
     <string name="wifi">വൈഫൈ</string>
     <string name="category_Sports_Health">കായികവും ആരോഗ്യവും</string>
@@ -125,7 +124,6 @@
         <item quantity="one">%1$d പ്രയോഗത്തിനുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
         <item quantity="other">%1$d പ്രയോഗങ്ങള്‍ക്കുള്ള പുതുക്കലുകള്‍ ഡൌണ്‍ലോഡ് ചെയ്യുക.</item>
     </plurals>
-    <string name="repo_add_title">പുതിയ ആപ്പ് ശേഖരണം ചേര്‍ക്കുക</string>
     <string name="repo_add_add">ചേർക്കുക</string>
     <string name="links">കണ്ണികള്‍</string>
     <string name="versions">പതിപ്പുകള്‍</string>
@@ -165,7 +163,6 @@
     <string name="antinonfreeadlist">ഈ പ്രയോഗം സ്വതന്ത്രമല്ലാത്ത ആഡ്-ഓണുകള്‍ പ്രോത്സാഹിപ്പിക്കുന്നു</string>
     <string name="antinonfreenetlist">ഈ പ്രയോഗം സൗജന്യമല്ലാത്ത നെറ്റ്‌വര്‍ക് സേവനങ്ങള്‍ പ്രോത്സാഹിപ്പിക്കുന്നു അല്ലെങ്കിൽ പൂർണ്ണമായും ആശ്രയിക്കുന്നു</string>
     <string name="antinonfreedeplist">ഈ പ്രയോഗം സൗജന്യമല്ലാത്ത മറ്റു പ്രയോഗങ്ങളെ ആശ്രയിക്കുന്നു</string>
-    <string name="antiupstreamnonfreelist">അപ്സ്ട്രീം സോഴ്സ് കോഡ് പൂർണ്ണമായും സ്വതന്ത്രമല്ല</string>
     <string name="antinonfreeassetslist">ഈ പ്രയോഹം സ്വതന്ത്രമല്ലാത്ത ആസ്തികള്‍ ഉപയോഗിക്കുന്നു</string>
     <string name="display">പ്രദര്‍ശനം</string>
     <string name="expert">വിദഗ്ധ രീതി</string>
@@ -204,13 +201,8 @@
     <string name="permissions">അനുമതികൾ</string>
     <string name="no_handler_app">നിങ്ങൾക്ക് %s കൈകാര്യം ചെയ്യാൻ ഒരു പ്രയോഗവും ഇല്ല.</string>
     <string name="theme">തീം</string>
-    <string name="repo_url">വിലാസം</string>
-    <string name="repo_num_apps">പ്രയോഗങ്ങളുടെ എണ്ണം</string>
     <string name="repo_fingerprint">ഒപ്പിടുന്ന കീയുടെ (SHA-256) എന്ന ഫിംഗർപ്രിന്റ്</string>
     <string name="repo_description">വിവരണം</string>
-    <string name="repo_name">പേര്</string>
-    <string name="unsigned_description">ഈ പ്രയോഗങ്ങളുടെ പട്ടിക പരിശോധിക്കാൻ കഴിഞ്ഞില്ല. ഒപ്പു വെക്കാത്ത ഇൻഡെക്സുകളിൽ നിന്നും ഡൌൺലോഡ് ചെയ്ത പ്രയോഗങ്ങളുമായി നിങ്ങൾ ജാഗ്രത പാലിക്കണം.</string>
-    <string name="repo_not_yet_updated">ഈ ആപ്പ് ശേഖരണം ഇതുവരെ ഉപയോഗിച്ചിട്ടില്ല. ഇതിലുള്ള ആപ്പുകൾ കാണാന്‍ ഇത് സജ്ജമാക്കേണ്ടതുണ്ട്.</string>
     <string name="unknown">അജ്ഞാതം</string>
     <string name="repo_confirm_delete_title">ആപ്പ് ശേഖരണം ഒഴിവാക്കുക?</string>
     <string name="repo_confirm_delete_body">ഒരു ആപ്പ് ശേഖരണം നീക്കം ചെയ്‌താൽ അതില്‍ നിന്നുള്ള ആപ്പുകൾ ഇനി എഫ്-ഡ്രോയ്ഡില്‍ ലഭ്യമാകുകയില്ല.
@@ -236,7 +228,6 @@
 \n നിങ്ങളുടെ പ്രയോഗങ്ങളെല്ലാം കാലികമാണ് (അല്ലെങ്കിൽ നിങ്ങളുടെ സംഭരണികള്‍ കാലഹരണപ്പെട്ടതാണ്).</string>
     <string name="install_error_unknown">ഒരു അജ്ഞാത പിശക് കാരണം സ്ഥാപിക്കല്‍ പരാജയപ്പെട്ടു</string>
     <string name="uninstall_error_unknown">കാരണം ഒരു അജ്ഞാത പിശക് ഒഴിവാക്കല്‍ പരാജയപ്പെട്ടു</string>
-    <string name="system_install_denied_permissions">പ്രത്യേക അനുമതികൾ വിപുലീകരണത്തിന് നൽകിയിട്ടില്ല! ഒരു ബഗ് റിപ്പോർട്ട് സൃഷ്ടിക്കുക!</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ഇന്റർനെറ്റ് ഇല്ലേ? നിങ്ങളുടെ അടുത്തുള്ള ആളുകളിൽ നിന്ന് പ്രയോഗങ്ങള്‍ സ്വീകരിക്കൂ!</string>
     <string name="nearby_splash__find_people_button">സമീപത്തുള്ളവരെ കണ്ടെത്തുക</string>
     <string name="nearby_splash__both_parties_need_fdroid">നിയര്‍ബെെ ഉപയോഗിക്കാന്‍ രണ്ട് കൂട്ടരും %1$s ഉപയോഗിക്കേണ്ടതുണ്ട്.</string>
@@ -518,7 +509,6 @@
     <string name="app_list_results_hidden_antifeature_settings">നിങ്ങളുടെ ആന്റിഫീച്ചർ ക്രമീകരണങ്ങളനുസരിച്ച് ചില ഫലങ്ങൾ മറച്ചിരിക്കുന്നു.</string>
     <string name="antinsfw">എല്ലായിടത്തും പരസ്യപ്പെടുത്താനോ ദൃശ്യമാകാനോ പാടില്ലാത്ത ഉള്ളടക്കം ഈ പ്രയോഗത്തിൽ അടങ്ങിയിരിക്കുന്നു</string>
     <string name="antitrack">പിന്തുടരുക</string>
-    <string name="antiupstreamnonfree">സൗജന്യമല്ലാത്ത അപ്സ്ട്രീം</string>
     <string name="antidisabledalgorithm">സുരക്ഷിതമല്ലാത്ത അൽഗോരിതം ഉപയോഗിച്ചാണ് ഒപ്പിട്ടത്</string>
     <string name="antinonfreeassets">സൗജന്യമല്ലാത്ത ആസ്തികൾ</string>
     <string name="app_name_basic">എഫ്-ഡ്രോയ്ഡ് ലളിതം</string>
@@ -532,7 +522,6 @@
     <string name="repo_add_new_title">ശേഖരം ചേർക്കുക</string>
     <string name="targetsdk_or_later">ടാർഗെറ്റുകൾ %s</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid-ന് നിങ്ങളുടെ SD കാർഡിൽ റിപ്പോകളും മിററുകളും തിരയാൻ കഴിയും, എന്നാൽ അതിനായി നിങ്ങളുടെ അനുമതി ആവശ്യമാണ്.</string>
-    <string name="repo_last_update_downloaded">അവസാന അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്തു</string>
     <string name="latest__empty_state__upgrading">ഡാറ്റാബേസ് നവീകരിക്കുന്നു…</string>
     <string name="repo_num_apps_button">ആപ്പുകൾ കാണിക്കുക</string>
     <string name="swap_banner_message">ആപ്പുകൾ സ്വാപ്പ് ചെയ്യാൻ, നിങ്ങളുടെ വൈഫൈ ആരംഭിച്ച് നിങ്ങളുടെ സുഹൃത്തിന്റെ അതേ നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക.</string>
@@ -549,7 +538,6 @@
     <string name="repo_state_adding">ശേഖരം ചേർക്കുന്നു…</string>
     <string name="repo_enter_url">റിപ്പോസിറ്ററി URL സ്വമേധയാ നൽകുക</string>
     <string name="repo_io_error">റിപ്പോസിറ്ററിയിലേക്ക് ബന്ധിപ്പിക്കുന്നതിൽ പിശക്.</string>
-    <string name="repo_add_new_mirror">പുതിയ പ്രതിഫലനം ചേർക്കുക</string>
     <string name="repo_invalid">അസാധുവായ ശേഖരം.
 \n
 \nപരിപാലകനെ ബന്ധപ്പെടുകയും പ്രശ്നത്തെക്കുറിച്ച് അവരെ അറിയിക്കുകയും ചെയ്യുക.</string>

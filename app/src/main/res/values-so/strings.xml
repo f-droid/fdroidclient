@@ -2,7 +2,6 @@
 <resources>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">Aaladaadu kuma jirto WiFi-ga kaydka gudaha eed hada ku dartay! Iskuday inaad ku biirto WiFi-gan: %s</string>
-    <string name="repo_last_update">Midkii udambeeyay</string>
     <string name="unverified">Aan la</string>
     <string name="unsigned">Aan la</string>
     <string name="warning_no_internet">Lama cusboonaysiin karo, khadka makuu shaqaynayaa?</string>

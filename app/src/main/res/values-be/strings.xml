@@ -47,7 +47,6 @@
     <string name="ok">ОК</string>
     <string name="yes">Так</string>
     <string name="no">Не</string>
-    <string name="repo_add_title">Дадаць новы рэпазіторый</string>
     <string name="repo_add_add">Дадаць</string>
     <string name="links">Спасылкі</string>
     <string name="versions">Версіі</string>
@@ -91,7 +90,6 @@
     <string name="antinonfreeadlist">Гэтая праграма прапануе несвабодныя дапаўненні</string>
     <string name="antinonfreenetlist">Гэтая праграма прапануе або залежыць ад несвабодных сеткавых паслуг</string>
     <string name="antinonfreedeplist">Гэтая праграма залежыць ад іншых несвабодных праграм</string>
-    <string name="antiupstreamnonfreelist">Зыходны код не поўнасцю вольны</string>
     <string name="antinonfreeassetslist">У праграмы ёсць несвабоднае змесціва</string>
     <string name="display">Выгляд</string>
     <string name="expert">Экспертны рэжым</string>
@@ -126,7 +124,7 @@
     <string name="status_download_unknown_size">Спампоўванне
 \n%2$s з
 \n%1$s</string>
-    <string name="banner_updating_repositories">Абнаўленне рэпазіторыяў</string>
+    <string name="banner_updating_repositories">Ідзе абнаўленне рэпазіторыяў</string>
     <string name="status_processing_xml_percent">Апрацоўка %2$s / %3$s (%4$d%%) з %1$s</string>
     <string name="status_connecting_to_repo">Злучэнне з
 \n%1$s</string>
@@ -142,14 +140,8 @@
     <string name="unsigned">Не падпісана</string>
     <string name="unverified">Не праверана</string>
     <string name="repo_details">Рэпазіторый</string>
-    <string name="repo_url">Адрас</string>
-    <string name="repo_num_apps">Колькасць праграм</string>
     <string name="repo_fingerprint">Адбітак ключа подпісу (SHA-256)</string>
     <string name="repo_description">Апісанне</string>
-    <string name="repo_last_update">Апошняе абнаўленне</string>
-    <string name="repo_name">Назва</string>
-    <string name="unsigned_description">Гэта азначае, што спіс праграм немагчыма праверыць. Вы мусіце з асцярогай ставіцца да праграм, атрыманых з непадпісаных крыніц.</string>
-    <string name="repo_not_yet_updated">Гэты рэпазіторый яшчэ не выкарыстоўваўся. Уключыце яго, каб убачыць праграмы ў ім.</string>
     <string name="unknown">Невядома</string>
     <string name="repo_confirm_delete_title">Выдаліць рэпазіторый?</string>
     <string name="repo_confirm_delete_body">Калі выдаліць рэпазіторый, то праграмы ў ім больш не будуць даступныя.
@@ -189,7 +181,6 @@
 \nВа ўсіх праграм найноўшыя версіі.</string>
     <string name="install_error_unknown">На атрымалася ўсталяваць праз невядомую памылку</string>
     <string name="uninstall_error_unknown">На атрымалася выдаліць праз невядомую памылку</string>
-    <string name="system_install_denied_permissions">Пашырэнне не мае прывіліяваных дазволаў! Калі ласка, паведаміце пра памылку!</string>
     <string name="swap_join_same_wifi">Падлучыцеся да той самай сеткі Wi-Fi, што і ваш сябар</string>
     <string name="swap_join_same_wifi_desc">Для абмену праз Wi-Fi, пераканайцеся, што вы знаходзіцеся ў адной і той жа сетцы. Калі ж вы не маеце доступу да той жа сеткі, адзін з вас можа стварыць уласную сетку.</string>
     <string name="swap_join_this_hotspot">Дапамажыце вашым сябрам падлучыцца да вашай сеткі</string>
@@ -521,11 +512,10 @@
     <string name="antitrack">Сачэнне</string>
     <string name="antiknownvuln">Вядомая ўразлівасць</string>
     <string name="antiothers">Іншыя Анты-Функцыі</string>
-    <string name="banner_no_internet">Няма Сеткі</string>
+    <string name="banner_no_internet">Няма інтэрнэту</string>
     <string name="latest__empty_state__upgrading">Абнаўленне базы даных…</string>
     <string name="banner_no_data_or_wifi">Не ўключаны мабільныя даныя або Wi-Fi</string>
     <string name="antinonfreenet">Несвабодныя сеткавыя сэрвісы</string>
-    <string name="antiupstreamnonfree">Несвабодны бацькоўскі рэпазіторый</string>
     <string name="antinonfreeassets">Несвабодныя рэсурсы</string>
     <string name="antinosource">Зыходны код больш не даступны</string>
     <string name="share_apk_error">Не магчыма падзяліцца файлам прыкладання</string>
@@ -544,7 +534,6 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="category_Nightly">Начныя зборкі</string>
     <string name="warning_target_sdk">Гэта праграма была створана для старой версіі Android і не можа абнаўляцца аўтаматычна.</string>
-    <string name="repo_last_update_downloaded">Спампавана апошняе абнаўленне</string>
     <string name="about_title_basic">Пра F-Droid Basic</string>
     <string name="antinsfwlist">Гэта праграма змяшчае змесціва, якое не павінна быць апублікаваным або бачным усюды</string>
     <string name="app_error_open">Не атрымалася запусціць праграму.</string>
@@ -556,7 +545,6 @@
     <string name="repo_state_fetching">Атрыманне рэпазіторыя…</string>
     <string name="repo_io_error">Памылка падключэння да рэпазіторыя.</string>
     <string name="repo_enter_url">Увесці URL-спасылку на рэпазіторый уласнаручна</string>
-    <string name="repo_add_new_mirror">Дадаць як новае люстэрка</string>
     <string name="repo_intro">Рэпазіторый — гэта дадатковая крыніца праграм. Стандарты старонніх рэпазіторыяў, якія дадаюцца вамі, адрозніваюцца ад тых, што збіраюцца праз F-Droid. \n \nПераканайцеся, што рэпазіторыю, які вы дадаяце можна давяраць.</string>
     <string name="swap_banner_message">Каб падзяліцца праграмамі, запусціце Wi-Fi і падлучыцеся да адной і той жа сеткі як і сябар.</string>
     <string name="nearby_splace__external_storage_permission_button">Паспрабаваць</string>
@@ -631,4 +619,8 @@
     <string name="repo_basic_auth_password">Пароль: ***</string>
     <string name="repo_basic_auth_edit">Рэдагаваць</string>
     <string name="repo_last_update_check">Апошняя праверка абнаўлення рэпазіторыя: %s</string>
+    <string name="banner_updating_apps">Ідзе абнаўленне праграм</string>
+    <string name="no_handler_app_generic">Вы не маеце праграм для апрацоўкі гэтага.</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
 </resources>

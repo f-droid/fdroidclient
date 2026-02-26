@@ -1,0 +1,7 @@
+* Interface utilisateur entièrement réécrite avec Kotlin Compose
+* Recherche améliorée, permettant également d'effectuer des recherches dans les descriptions et les traductions
+* Découverte plus facile de nouvelles applications, avec mise en avant des applications les plus téléchargées
+* Plusieurs mises à jour/téléchargements simultanés
+* Notification des utilisateurs en cas de problèmes avec les applications
+* Thème de couleurs Material You
+* Filtrage amélioré des listes

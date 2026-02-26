@@ -45,10 +45,7 @@
     <string name="global_error_updating_repos">Gabim gjatë përditësimit: %s</string>
     <string name="permissions">Leje</string>
     <string name="theme">Temë</string>
-    <string name="repo_url">Adresë</string>
     <string name="repo_description">Përshkrim</string>
-    <string name="repo_last_update">Përditësimi i fundit më</string>
-    <string name="repo_name">Emër</string>
     <string name="pref_language">Gjuhë</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
@@ -96,7 +93,7 @@
     <string name="keep_install_history_summary">Ruaj një regjistër të krejt instalimeve dhe çinstalimeve në një depo private</string>
     <string name="force_old_index">Detyro përdorim formati të dikurshëm treguesi</string>
     <string name="force_old_index_summary">Në rast se ka të meta apo probleme përputhshmërie, përdorni treguesin XML të aplikacionit</string>
-    <string name="update_auto_download">Sill vetvetiu përditësime</string>
+    <string name="update_auto_download">Shkarko vetvetiu përditësimet</string>
     <string name="update_auto_download_summary">Përditësimet shkarkohen automatikisht dhe ju njoftoheni për t’i instaluar</string>
     <string name="update_auto_install">Instalo vetvetiu përditësime</string>
     <string name="update_auto_install_summary">Shkarkojini dhe instalojini aplikacionet në prapaskenë, duke shfaqur një njoftim</string>
@@ -148,7 +145,6 @@
         <item quantity="one">Shkarkoni përditësim për %1$d aplikacion:</item>
         <item quantity="other">Shkarkoni përditësime për %1$d aplikacione:</item>
     </plurals>
-    <string name="repo_add_title">Shtoni depo të re</string>
     <string name="repo_add_mirror">Shtoni pasqyrë</string>
     <string name="links">Lidhje</string>
     <string name="versions">Versione</string>
@@ -186,7 +182,6 @@
     <string name="antinonfreeadlist">Ky aplikacion rekomandon shtesa jo të lira</string>
     <string name="antinonfreenetlist">Ky aplikacion promovon ose varet tërësisht nga shërbim rrjeti jo të lirë</string>
     <string name="antinonfreedeplist">Ky aplikacion varet nga aplikacione të tjera jo të lira</string>
-    <string name="antiupstreamnonfreelist">Kodi burim origjinal s’është plotësisht i Lirë</string>
     <string name="antinonfreeassetslist">Ky aplikacion përmban elementë jo të lirë</string>
     <string name="display">Shfaqje</string>
     <string name="expert">Mënyrë ekspert</string>
@@ -232,7 +227,6 @@
     <string name="hide_on_long_search_press_summary">Prekja e zgjatur e butonit të kërkimit do të fshehë aplikacionin</string>
     <string name="download_404">S’u gjet kartela e domosdoshme.</string>
     <string name="banner_updating_repositories">Përditësim deposh</string>
-    <string name="repo_num_apps">Numër aplikacionesh</string>
     <string name="repo_official_mirrors">Pasqyra zyrtare</string>
     <string name="repo_user_mirrors">Pasqyra përdoruesi</string>
     <string name="unknown">I panjohur</string>
@@ -297,12 +291,10 @@
     <string name="repo_disabled_notification">U çaktivizua %1$s. \n \nQë të instaloni aplikacione prej saj, do t’ju duhet të riaktivizoni këtë depo.</string>
     <string name="panic_hide_warning_message">Në një akt paniku, kjo do të heqë %1$s nga nisësi. Munda ta rikthejë vetëm shtypja e “%2$d” te aplikacioni gjoja %3$s.</string>
     <string name="all_other_repos_fine">Krejt depot e tjera s’krijuan gabime.</string>
-    <string name="unsigned_description">Kjo do të thotë se lista e aplikacioneve s’u verifikua dot. Duhet të jeni i kujdesshëm me aplikacione të shkarkuar nga tregues të panënshkruar.</string>
     <string name="send_installed_apps_csv">Aplikacionet instaluar nga F-Droid si kartelë CSV</string>
     <string name="swap_toast_not_removable_storage">Ajo zgjedhje s’dha përputhje me ndonjë pajisje të heqshme depozitimesh, riprovoni!</string>
     <string name="install_history_summary">Shihni regjistrin privat të krejt instalimeve dhe çinstalimeve</string>
     <string name="nearby_splash__document_tree">Kërko te USB OTG për depo dhe pasqyra.</string>
-    <string name="system_install_denied_permissions">Zgjerimit s’i janë akorduar leje të privilegjuara! Ju lutemi, krijoni një njoftim të mete!</string>
     <string name="updates_disabled_by_settings">Krejt përditësimet të çaktivizuara nga rregullime për të dhëna/WiFi</string>
     <string name="crash_dialog_text">Ndodhi një gabim i papritur që e detyroi aplikacionin të ndalet. Do të donit të dërgoni me email hollësitë, për të ndihmuar në ndreqjen e problemit?</string>
     <plurals name="tts_view_all_in_category">
@@ -324,7 +316,6 @@
     <string name="preventScreenshots_summary">Bllokon bërje fotosh ekrani dhe fsheh lëndë aplikacioni prej skenës Aplikacione Së Fundi</string>
     <string name="hiding_dialog_warning">Sinjalizim: Do të hiqet gjithashtu çfarëdo shkurtoreje aplikacioni te skena e kreut dhe lypset të rishtohet dorazi.</string>
     <string name="panic_reset_repos_summary">Kaloje forcërisht ujdisjen e depos mbrapsht te parazgjedhjet</string>
-    <string name="repo_not_yet_updated">Kjo depo s’është përdorur ende. Që të shihni aplikacionet që sjell, lypset ta aktivizoni.</string>
     <string name="swap_join_same_wifi_desc">Që të shkëmbeni duke përdorur Wi-Fi, sigurohuni se gjendeni në të njëjtin rrjet. Nëse s’keni hyrje te po ai rrjet, njëri prej jush mund të krijojë një “hotspot” Wi-Fi.</string>
     <string name="swap_toast_find_removeable_storage">Zgjidhni kartën tuaj SD ose diskthin tuaj USB të heqshëm</string>
     <string name="not_visible_nearby_description">Para shkëmbimesh me pajisje atypari, bëjeni të dukshme pajisjen tuaj.</string>
@@ -498,7 +489,6 @@
     <string name="antinonfreenet">Shërbime Rrjeti Jo të Lira</string>
     <string name="antinonfreedep">Varësi Jo të Lira</string>
     <string name="antinonfreeassets">Elementë Jo të Lirë</string>
-    <string name="antiupstreamnonfree">“Upstream” Jo i Lirë</string>
     <string name="antiknownvuln">Cenueshmëri e Ditur</string>
     <string name="antiothers">Anti-Veçori të Tjera</string>
     <string name="antidisabledalgorithm">Nënshkruar Duke Përdorur Një Algoritëm Jo të Parrezik</string>
@@ -513,7 +503,6 @@
     <string name="app_name_basic">F-Droid Elementar</string>
     <string name="about_title_basic">Mbi F-Droid Elementar</string>
     <string name="antinsfwlist">Ky aplikacion përmban lëndë që s’duhet bërë publike apo të jetë e dukshme kudo</string>
-    <string name="repo_last_update_downloaded">U shkarkua përditësimi i fundit</string>
     <string name="app_error_open">S’u nis dot aplikacioni.</string>
     <string name="category_Nightly">të përnatshme</string>
     <string name="warning_target_sdk">Ky aplikacion qe montuar për një version më të vjetër të Android-it dhe s’mund të përditësohet automatikisht.</string>
@@ -523,7 +512,6 @@
     <string name="app_details_repository">Depo</string>
     <string name="app_details_repository_expand">Zgjero listë deposh</string>
     <string name="app_list_no_suggested_version">S’ka versioni të rekomanduar për instalim.</string>
-    <string name="repo_add_new_mirror">Shtojeni si pasqyrë të re</string>
     <string name="repo_state_adding">Po shtohet depo…</string>
     <string name="repo_enter_url">Jepeni dorazi URL-në e depos</string>
     <string name="repo_exists">Kjo depo qe shtuar tashmë.</string>
@@ -619,4 +607,47 @@
     <string name="notification_title_summary_app_update_available">Prekeni që të përditësohen të tërë</string>
     <string name="tts_repo_name">Depoja %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="crash_dialog_title_old">F-Droid u vithis</string>
+    <string name="call_to_action_keepandroidopen">F-Droid është i kërcënuar. Google po ndryshon mënyrën se si instaloni aplikacione në telefonin tuaj. Na duhet ndihma juaj.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="last_updated_with_size">Përditësuar së fundi më: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Po përgatitet instalimi…</string>
+    <string name="whats_new_title">Ç’ka të re</string>
+    <string name="donate_title">Dhuroni</string>
+    <string name="menu_about">Mbi</string>
+    <string name="menu_discover">Zbuloni</string>
+    <string name="menu_apps_my">Aplikacionet e mi</string>
+    <string name="first_start_loading">Po sillen depo aplikacionesh…</string>
+    <string name="my_apps_empty">Këtu shfaqen vetëm aplikacione të instaluar nga %1$s</string>
+    <string name="app_list_new">Aplikacione të reja</string>
+    <string name="app_list_recently_updated">Përditësuar së fundi</string>
+    <string name="app_list_most_downloaded">Më të shkarkuarat</string>
+    <string name="app_list_all">Krejt aplikacionet</string>
+    <string name="app_list_author">Aplikacione nga %s</string>
+    <string name="search_placeholder">Kërkoni…</string>
+    <string name="search_no_results">S’u gjetën aplikacione\n\nProvoni të përdorni më pak terma kërkimi, ose të shtoni më tepër depo</string>
+    <string name="category_group_tools">Mjete</string>
+    <string name="category_group_wallets">Financa &amp; Kuleta</string>
+    <string name="category_group_media">Spektakël &amp; Media</string>
+    <string name="category_group_communication">Komunikim</string>
+    <string name="category_group_device">Pajisje</string>
+    <string name="category_group_network">Rrjet</string>
+    <string name="category_group_storage">Kartela &amp; Depozitim</string>
+    <string name="category_group_interests">Interesa</string>
+    <string name="category_group_misc">Të ndryshme</string>
+    <string name="author_by">Nga %1$s</string>
+    <string name="last_updated">Përditësuar së fundi më: %1$s</string>
+    <string name="anti_features_title">Ky aplikacion përmban anti-veçori</string>
+    <string name="developer_contact">Kontakt zhvilluesi</string>
+    <string name="technical_info">Informacion teknik</string>
+    <string name="package_name">Emër pakete:</string>
+    <string name="installed_version">Version i instaluar:</string>
+    <string name="my_apps_header_apps_with_issue">Aplikacione me probleme</string>
+    <string name="my_apps_ignore_dialog_title">Fshihe problemin</string>
+    <string name="my_apps_ignore_dialog_text">Problemi me këtë version të “%1$s” do të shpërfillet</string>
+    <string name="my_apps_ignore_dialog_button">Fshihe</string>
+    <string name="my_apps_export_installed_apps">Eksportoni listë aplikacionesh</string>
+    <string name="category_group_productivity">Prodhimtari</string>
 </resources>

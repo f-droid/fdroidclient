@@ -28,7 +28,6 @@
     <string name="ok">AB</string>
     <string name="yes">Eja</string>
     <string name="no">Nono</string>
-    <string name="repo_add_title">Annanghe unu depòsitu nou</string>
     <string name="repo_add_add">Annanghe</string>
     <string name="cancel">Annulla</string>
     <string name="enable">Abìlita</string>
@@ -58,7 +57,6 @@
     <string name="antinonfreeadlist">Custa aplicatzione promovet estensiones (add-ons) non lìberas</string>
     <string name="antinonfreenetlist">Custa aplicatzione promovet o dipendet de su totu dae servìtzios de retza non lìberos</string>
     <string name="antinonfreedeplist">Custa aplicatzione dipendet dae àteras aplicatziones non lìberas</string>
-    <string name="antiupstreamnonfreelist">Su còdighe de orìgine originale no est lìberu de su totu</string>
     <string name="display">Ammustra</string>
     <string name="expert">Modalidade Espertu</string>
     <string name="expert_on">Ammustra àteras informatziones e abìlita àteras impostatziones</string>
@@ -94,13 +92,8 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Non firmadu</string>
     <string name="unverified">Non verificadu</string>
-    <string name="repo_num_apps">Nùmeru de aplicatziones</string>
     <string name="repo_fingerprint">Imprenta digitale de sa crae de intrada (SHA-256)</string>
     <string name="repo_description">Descritzione</string>
-    <string name="repo_last_update">Ùrtimu agiornamentu</string>
-    <string name="repo_name">Nùmene</string>
-    <string name="unsigned_description">Custu bolet nàrrere chi sa lista de sas aplicatziones no est istadu possìbile a la verificare. Depes istare atentu cun sas aplicatziones iscarrifìgadas dae ìnditzes non firmados.</string>
-    <string name="repo_not_yet_updated">Custu depòsitu no est istadu galu impreadu. Pro bìdere sas aplicatziones in intro, lu depes abilitare.</string>
     <string name="unknown">Disconnotu</string>
     <string name="repo_confirm_delete_title">Iscantzellare su depòsitu?</string>
     <string name="repo_confirm_delete_body">Iscantzellare unu depòsitu cheret nàrrere chi sas aplicatziones in intro no ant a èssere prus a disponimentu. \n \nDae cara: Totu sas aplicatziones giai installadas ant a abarrare in su dispositivu tuo.</string>
@@ -207,9 +200,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="system_install_denied_permissions">Sos permissos de sistema non sunt istados cuntzessos a s’estensione! Pro piaghere crea una sinnalatzione de errore!</string>
     <string name="repo_details">Depòsitu</string>
-    <string name="repo_url">Indiritzu</string>
     <string name="status_download_unknown_size">Iscarrighende \n%2$s dae \n%1$s</string>
     <string name="permissions">Permissos</string>
     <string name="more">De prus</string>
@@ -505,7 +496,6 @@
     <string name="antinosource">Còdighe de orìgine non prus a disponimentu</string>
     <string name="antinonfreeassets">Cumponentes non lìberos</string>
     <string name="antidisabledalgorithm">Firmadu impreende un\'algoritmu non seguru</string>
-    <string name="antiupstreamnonfree">A monte (upstream) non lìberu</string>
     <string name="antiothers">Àteras anti-funtzionalidades</string>
     <string name="antinsfw">Non segura pro su traballu</string>
     <string name="menu_release_channel_beta">Permite sos agiornamentos beta</string>
@@ -515,7 +505,6 @@
     <string name="antinsfwlist">Custa aplicatzione tenet cuntenutos chi non si diant dèpere publitzizare o fàghere in manera chi siant visìbiles in neddue</string>
     <string name="category_Nightly">versiones de isvilupu</string>
     <string name="warning_target_sdk">Custa aplicatzione est istada isvilupada pro una versione betza de Android e non si podet agiornare in automàticu.</string>
-    <string name="repo_last_update_downloaded">Ùrtimu agiornamentu iscarrigadu</string>
     <string name="app_error_open">No est istadu possìbile allùghere s\'aplicatzione.</string>
     <string name="repo_state_adding">Annanghe unu depòsitu…</string>
     <string name="repo_exists">Custu depòsitu est istadu giai annantu.</string>
@@ -538,7 +527,6 @@
     <string name="repo_io_error">Errore de connessione a su depòsitu.</string>
     <string name="ipfsgw_caption_custom_gateways">Ghennas de collegamentu personalizadas IPFS</string>
     <string name="paste">Incolla</string>
-    <string name="repo_add_new_mirror">Annanghe comente ispigru nou</string>
     <string name="repo_intro">Unu depòsitu est una fonte additzionale de aplicatziones. Sos de tertzos chi annanghes inoghe tenent istandards diferentes cunfronta a sos chi frunint sas aplicatziones cumpiladas dae F-Droid matessi. \n \nAssegura·ti chi su depòsitu chi ses annanghende siat fidadu.</string>
     <string name="swap_connection_indexv0_error">Ses chirchende de ti collegare a calicunu cun una versione betza de F-Droid. Pro si collegare depet agiornare s\'aplicatzione F-Droid sua. Podet impreare su cuncàmbiu pro agiornare s\'aplicatzione de F-Droid sua pro mèdiu de tene.</string>
     <string name="repo_num_apps_button">Mustra sas aplicatziones</string>

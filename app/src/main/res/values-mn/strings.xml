@@ -174,7 +174,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Хоёр тал ойролцоо ашиглахын тулд %1$s хэрэгтэй.</string>
     <string name="nearby_splash__find_people_button">Ойролцоох хүмүүсийг хайж олох</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Интернет байхгүй юу? Ойролцоох хүмүүсээс програм татаж аваарай!</string>
-    <string name="system_install_denied_permissions">Өргөтгөлд давуу эрх олгогдоогүй байна! Алдааны тайлан үүсгэнэ үү!</string>
     <string name="uninstall_error_unknown">Үл мэдэгдэх алдааны улмаас суулгаж чадсангүй</string>
     <string name="install_error_unknown">Үл мэдэгдэх алдааны улмаас суулгаж чадсангүй</string>
     <string name="empty_search_available_app_list">Тохирох програм алга байна.</string>
@@ -201,15 +200,10 @@
 \n
 \nТэмдэглэл: Өмнө суулгасан бүх програмууд таны төхөөрөмж дээр үлдэх болно.</string>
     <string name="repo_confirm_delete_title">Репозиторыг устгах уу?</string>
-    <string name="repo_not_yet_updated">Энэ санг хараахан ашиглаагүй байна. Түүгээр хангасан програмуудыг үзэхийн тулд та үүнийг идэвхжүүлэх хэрэгтэй.</string>
-    <string name="unsigned_description">Энэ нь програмын жагсаалтыг баталгаажуулах боломжгүй гэсэн үг юм. Та гарын үсэггүй индексүүдээс татаж авсан аппликешнүүдэд анхааралтай хандах хэрэгтэй.</string>
-    <string name="repo_name">Нэр</string>
     <string name="repo_user_mirrors">Хэрэглэгчийн толь</string>
     <string name="repo_official_mirrors">Албан ёсны толь</string>
     <string name="repo_description">Тодорхойлолт</string>
     <string name="repo_fingerprint">Гарын үсэг зурах түлхүүрийн хурууны хээ (SHA-256)</string>
-    <string name="repo_num_apps">Програмын тоо</string>
-    <string name="repo_url">Хаяг</string>
     <string name="theme">Сэдэв</string>
     <string name="no_handler_app">Танд %s-тэй ажиллах боломжтой апп байхгүй байна.</string>
     <string name="global_error_updating_repos">Шинэчлэх явцад гарсан алдаа: %s</string>
@@ -284,7 +278,6 @@
     <string name="antiknownvulnlist">Энэхүү програм нь мэдэгдэж буй аюулгүй байдлын эмзэг байдлыг агуулдаг</string>
     <string name="antidisabledalgorithmlist">Энэ апп аюулгүй байдлын гарын үсэг сул байна</string>
     <string name="antinonfreeassetslist">Энэ апп нь үнэгүй бус хөрөнгийг агуулдаг</string>
-    <string name="antiupstreamnonfreelist">Урсгал эх код нь бүхэлдээ Үнэгүй биш юм</string>
     <string name="antinonfreedeplist">Энэ програм нь бусад үнэгүй програмуудаас хамаарна</string>
     <string name="antinonfreenetlist">Энэхүү програм нь үнэгүй сүлжээний үйлчилгээг сурталчлах болно</string>
     <string name="antinonfreeadlist">Энэхүү програм нь үнэгүй нэмэлт бус нэмэлтүүдийг сурталчилдаг</string>
@@ -337,7 +330,6 @@
     <string name="links">Холбоосууд</string>
     <string name="repo_add_mirror">Толин тусгал нэмэх</string>
     <string name="repo_add_add">Нэмэх</string>
-    <string name="repo_add_title">Шинэ агуулах нэмэх</string>
     <string name="updates_disabled_by_settings">Бүх шинэчлэлтийг Data / WiFi тохиргоогоор идэвхгүйжүүлсэн</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">%1$d програмын шинэчлэлтийг татаж авах.</item>
@@ -441,7 +433,6 @@
     <string name="category_System">Систем</string>
     <string name="category_Sports_Health">Спорт ба эрүүл мэнд</string>
     <string name="not_on_same_wifi">Таны төхөөрөмж таны сая нэмсэн орон нутгийн репо-той ижил Wi-Fi сүлжээнд холбогдоогүй байна! Энэ сүлжээнд нэгдэж үзээрэй: %s</string>
-    <string name="repo_last_update">Сүүлийн шинэчлэлт</string>
     <string name="repo_details">Хадгалах сан</string>
     <string name="unverified">Баталгаажаагүй</string>
     <string name="unsigned">Гарын үсэггүй</string>

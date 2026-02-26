@@ -46,9 +46,7 @@
     <string name="theme">تھیم</string>
     <string name="unsigned">نا دستخطی</string>
     <string name="unverified">نا تصدیقی</string>
-    <string name="repo_url">پتہ</string>
     <string name="repo_description">تفصیل</string>
-    <string name="repo_name">ناں</string>
     <string name="unknown">نامعلوم</string>
     <string name="wifi_ap">ہوٹ‌سپوٹ</string>
     <string name="category_Time">سماں</string>
@@ -88,7 +86,6 @@
     <string name="category_Writing">لکھݨ</string>
     <string name="category_Games">کھیڈاں</string>
     <string name="newPerms">نویں</string>
-    <string name="repo_last_update">پچھلا نواں کرن</string>
     <string name="swap_send_fdroid">ایف‌ڈروئیڈ بھیجیو</string>
     <string name="installIncompatible">اَیپ تہاڈی ڈِوائیس نال انُکول نہیں اے، پھِر وی اینسٹال کرو؟</string>
     <string name="cache_downloaded">کیش کیتے اَیپ رکھو</string>
@@ -197,7 +194,6 @@
     <string name="app_list__dismiss_app_update">ناواں ورژن اݨڈٹھ کیتا گیا</string>
     <string name="app_list__dismiss_vulnerable_app">کمزوری نظر انداز کیتا گیا</string>
     <string name="send_installed_apps">اینسٹال کیتیاں اَیپاں نوں سانجھ کرو</string>
-    <string name="repo_add_title">نواں ذخیرہ شامل کرو</string>
     <string name="overwrite">اُتے لِکھو</string>
     <string name="menu_select_for_wipe">ہٹاؤݨ لئی چݨو</string>
     <string name="menu_ignore_all">سارے نویں ورژن نظر انداز کرو</string>
@@ -214,7 +210,6 @@
     <string name="hiding_dialog_title">ہݨے %s لُکاؤ</string>
     <string name="status_inserting_apps">اَیپ دے ویروے سامبھے جا رِہے اے</string>
     <string name="warning_no_internet">نواں کر نہیں سکی، اینٹرنیٹ جوڑن اے؟</string>
-    <string name="repo_num_apps">اَیپاں دی گݨتی</string>
     <string name="repo_official_mirrors">ہور سرکاری ذخیرے دے شیشے</string>
     <string name="repo_user_mirrors">ورتںوالے دے شیشے</string>
     <string name="repo_confirm_delete_title">ذخیرہ مٹاؤ؟</string>
@@ -301,7 +296,6 @@
     <string name="update_auto_download">خود بخود نویں ڈاؤن‌لوڈ لووُ</string>
     <string name="update_auto_install">خود بخود نویں ڈاؤن‌لوڈ اینسٹال کرو</string>
     <string name="scan_removable_storage_title">ہٹاؤݨکار سٹوریج نوں سکین کرو</string>
-    <string name="antiupstreamnonfree">انحصار نہیں مفت اے</string>
     <string name="details_new_in_version">ورژن %s وچ نواں</string>
     <string name="open_qr_code_scanner">کیوآر سکین والا کھُلھو</string>
     <string name="swap_toast_hotspot_enabled">وائی‌فائی ہوٹ‌سپوٹ چالو کیتا گیا</string>

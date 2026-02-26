@@ -40,8 +40,6 @@
     <string name="panic_reset_repos_summary">Bhanđár setup ko default par wápas force karè</string>
     <string name="hide_on_long_search_press_summary">Khoj button ko long press karne par app chipa diya jáyega</string>
     <string name="repo_details">Bhanđár</string>
-    <string name="repo_url">Pata</string>
-    <string name="repo_num_apps">Apps ki sankhya</string>
     <string name="repo_num_apps_button">Apps dikháyè</string>
     <string name="repo_official_mirrors">Official mirrors</string>
     <string name="repo_user_mirrors">User mirrors</string>
@@ -298,7 +296,6 @@
     <string name="antitrack">Tracking</string>
     <string name="antinonfreead">Non-Free Addons</string>
     <string name="antinonfreedep">Non-Free Nirbhartáyè</string>
-    <string name="antiupstreamnonfree">Upstream Non-Free</string>
     <string name="antinonfreeassets">Non-Free Assets</string>
     <string name="antidisabledalgorithm">Asurakśit Algorithm Se Sign Kiya Gaya</string>
     <string name="antinonfreenet">Non-Free Network Seváyè</string>
@@ -313,7 +310,6 @@
     <string name="antinonfreenetlist">Ye app kisi non-free network seva ko baŕháwa deta hai ya phir uspar púri tarha se nirbhar hai</string>
     <string name="antitetherednetlist">Ye app púri tarha se kisi network seva ke ek viśiśţ instance par nirbhar hai</string>
     <string name="antinonfreedeplist">Ye app dúsre non-free apps par nirbhar hai</string>
-    <string name="antiupstreamnonfreelist">Upstream source code púri tarha se free nahì hai</string>
     <string name="antinonfreeassetslist">Is app mè non-free assets maujúd haì</string>
     <string name="antiknownvulnlist">Is app ki surakśa mè ek avgat kamzori hai</string>
     <string name="antinosourcesince">Source code ab uplabdh nahì hai; updates mumkin nahì</string>
@@ -358,9 +354,6 @@
     <string name="repo_archive_toggle_description">Archive kiye hue apps aur apps ke outdated versions dikháyè</string>
     <string name="repo_fingerprint">Signing key ka angulánk (SHA-256)</string>
     <string name="repo_description">Varńan</string>
-    <string name="repo_last_update">Ákhiri update</string>
-    <string name="repo_last_update_downloaded">Ákhiri update download kiya gaya</string>
-    <string name="repo_name">Nám</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string tools:ignore="UnusedResources" name="category_Connectivity">Connectivity</string>
@@ -383,7 +376,6 @@
     <string name="empty_search_available_app_list">Koyi matching application uplabdh nahì.</string>
     <string name="install_error_unknown">Anján error ki wajah se install nákám raha</string>
     <string name="uninstall_error_unknown">Anján error ki wajah se uninstall nákám raha</string>
-    <string name="system_install_denied_permissions">Privileged ijázatè extension ko saùpi nahì gayi haì! Kripya ek bug report banáyè!</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Internet nahì hai? Apne ás-pás ke logò se apps páyè!</string>
     <string name="nearby_splash__find_people_button">Ás-pás ke log đhúnđhè</string>
     <string name="nearby_splash__both_parties_need_fdroid">Nazdík ka istemál karne ke liye donò pakśò ko %1$s ki zarúrat hai.</string>
@@ -523,7 +515,6 @@
     <string name="panic_hide_warning_message">Panic ghaţna mè ye launcher se %1$s haţa dega. Sirf nakli %3$s app mè \"%2$d\" likhkar ise restore kiya ja sakega.</string>
     <string name="panic_reset_repos_title">Bhanđárè reset karè</string>
     <string name="no_permissions">Ijázat nahì hai</string>
-    <string name="repo_not_yet_updated">Is bhanđár ka abhi tak istemál nahì kiya gaya hai. Iske diye jane wále apps dekhne ke liye ápko ise enable karna hoga.</string>
     <string name="hiding_calculator">Calculator</string>
     <string name="hiding_dialog_title">Abhi %s Chipáyè</string>
     <string name="hiding_dialog_message">Kya áp sac mè %1$s ko launcher se haţána cáhte haì? Sirf nakli %3$s app mè \"%2$d\" likhkar ise restore kiya ja sakega.</string>
@@ -551,7 +542,6 @@
     <string name="repo_list_info_text">Ek bhanđár, apps ka source hota hai. Is list mè is waqt joŕe hue sabhi bhanđárè dikháye gaye haì. Disable kiye hue bhanđárò ka istemál nahì kiya jata hai.
 \n
 \nAgar koyi app, ek se zyáda bhanđár mè ho, list mè únce pad par maujúd bhanđár ko apne áp preference diya jata hai. Áp long press aur drag karke bhanđárò ka kram badal sakte haì.</string>
-    <string name="unsigned_description">Iska matlab hai ki apps ki list pramáńit na ki ja saki. Ápko ahastákśarit indexes se download kiye gaye apps ke sáth satark rëhna cáhiye.</string>
     <string name="repo_confirm_delete_title">Bhanđár Miţáyè?</string>
     <string name="repo_disabled_notification">%1$s ko disable kar diya gaya hai.
 \n

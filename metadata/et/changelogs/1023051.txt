@@ -1,0 +1,6 @@
+* material design 3 (äärest ääreni paigutus) (tänud: proletarius!)
+* tarkvarahoidla üksikasjade vaate uus lahendus (tänud: Thore!)
+* ekspertide seadistustesse lisandus eksport faili logcati abil
+* siht-SDK versioon muutus (Android 15 lihtsamas variatsioonis ja Android 11 täisversioonis)
+* lisandus tagasilink süsteemiseadistuste rakenduse lehelt (tänud: j-m4!)
+* paigaldatud rakenduste ja rakenduste ajaloo jagamiseks on kasutusel rakendustevalija (tänud: Thore!)

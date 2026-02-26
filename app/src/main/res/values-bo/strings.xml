@@ -50,7 +50,6 @@
     <string name="unsigned">མིང་རྟགས་མ་བཀོད་པ།</string>
     <string name="unverified">ཁུངས་ལྡན་མིན་པ།</string>
     <string name="repo_details">མཛོད་ཁང་།</string>
-    <string name="repo_last_update">ཐ་མའི་གསར་བསྒྱུར།</string>
     <string name="not_on_same_wifi">ཁྱེད་རང་གི་ད་ལྟ་ཁ་སྣོན་བྱས་པའི་རེ་པོ་བསྟི་གནས་དང་ཡོ་བྱད་གཉིས་ཝཡེ་ཕཡེ་གཅིག་པའི་སྒང་ལ་མིན་འདུག དྲྭ་རྒྱ་འདིར་མཐུད་ཐབས་བྱེད་ཀྱི་ཡོད།:%s</string>
     <string name="wifi">ཝཡེ་ཕྷཡེ།</string>
     <string name="category_Sports_Health">རྩེད་རིགས་དང་འཕྲོད་བསྟེན།</string>
@@ -119,7 +118,6 @@
     <plurals name="updates__download_updates_for_apps">
         <item quantity="other">མཉེན་ཆས་%1$dའདིའི་ཆེད་དུ་གསར་བསྒྱུར་ཕབ་ལེན་བྱེད།</item>
     </plurals>
-    <string name="repo_add_title">མཛོད་ཁང་གསར་པ་ཁ་སྣོན།</string>
     <string name="repo_add_add">ཁ་སྣོན།</string>
     <string name="links">སྦྲེལ་མཐུད་ཁག</string>
     <string name="versions">ཐོན་རིམ་ཁག</string>
@@ -153,7 +151,6 @@
     <string name="antiadslist">མཉེན་ཆས་འདིའི་ནང་ཁྱབ་བསྒྲགས་ཡོད།</string>
     <string name="antinonfreenetlist">མཉེས་ཆས་འདིས་རིན་མེད་མ་ཡིན་པའི་དྲྭ་རྒྱའི་ཞབས་ཞུ་ཁྱབ་བསྒྲགས་བྱེད་ཀྱི་ཡོད།</string>
     <string name="antinonfreedeplist">མཉེན་ཆས་འདི་རིན་མེད་མ་ཡིན་པའི་མཉེན་ཆས་གཞན་ལ་བརྟེན་ནས་ཡོད།</string>
-    <string name="antiupstreamnonfreelist">འབྱུང་ཁུངས་ཨང་རྟགས་འདི་ཆ་ཚང་རིན་མེད་མ་རེད།</string>
     <string name="antinonfreeassetslist">མཉེན་ཆས་འདིའི་ནང་རིན་མེད་མ་ཡིན་པའི་རྒྱུ་ཆ་ཡོད།</string>
     <string name="display">གསལ་སྟོན།</string>
     <string name="expert">མཁས་པའི་ངང་ཚུལ།</string>
@@ -191,13 +188,8 @@
     <string name="permissions">ཆོག་མཆན།</string>
     <string name="no_handler_app">ཁྱེད་རང་ལ་ %s འདི་བེད་སྤྱོད་བྱེད་ཐུབ་པའི་མཉེན་ཆས་མིན་འདུག</string>
     <string name="theme">བརྗོད་གཞི།</string>
-    <string name="repo_url">ཁ་བྱང་།</string>
-    <string name="repo_num_apps">མཉེས་ཆས་ཀྱི་གྲངས།</string>
     <string name="repo_fingerprint">མིང་རྟགས་ལྡེ་མིག་གི་མཛུབ་ཐེལ་(SHA-256)</string>
     <string name="repo_description">འགྲེལ་བཤད།</string>
-    <string name="repo_name">མིང་།</string>
-    <string name="unsigned_description">འདིས་མཉེན་ཆས་ཁག་གི་ཐོ་གཞུང་རྣམས་ར་སྤྲོད་མི་ཐུབ་མེད། མིང་རྟགས་མེད་པའི་བརྡ་སྟོན་ཁག་ནས་ཕབ་ལེན་བྱེད་པའི་མཉེན་ཆས་རྣམས་ཁྱེད་ཀྱིས་ངེས་པར་དུ་ཟབ་ཟབ་གནང་རོགས།</string>
-    <string name="repo_not_yet_updated">མཛོད་ཁང་འདི་ད་བར་བེད་སྤྱོད་བཏང་མེད། ཁྱེད་ཀྱིས་འདི་སྒོ་ཕྱེས་ནས་མཉེན་ཆས་ལྟ་ཐུབ།</string>
     <string name="unknown">རྒྱུས་མེད།</string>
     <string name="repo_confirm_delete_title">མཛོད་ཁང་སུབས་སམ།</string>
     <string name="repo_confirm_delete_body">མཛོད་ཁང་སུབས་ན་འདིའི་ནང་གི་མཉེན་ཆས་རྣམས་ཨེཕ་རོཌ་ནང་་མེད་པ་ཆགས་ཀྱི་ཡོད་རེད།
@@ -273,7 +265,6 @@
     <string name="app_installed_media">ཡིག་ཆ་འགྲིག་བཅུག་འདི་ལ%s</string>
     <string name="app_permission_storage">ཨེཕ་རོཌ་གསོག་ཉར་ཁང་ནང་ལ་འདི་བཅུག་པའི་ཆེད་དུ་གསོག་ཉར་ཆོག་མཆན་དགོས། དྲྭ་ཤེལ་རྗེས་མ་དེའི་སྒང་ལ་སྒྲིག་བཅུག་བྱས་པ་དང་མཉམ་དུ་མུ་མཐུད་ཆོག་གི་རེད།</string>
     <string name="antinonfreeadlist">མཉེན་ཆས་འདི་རིན་མེད་མ་ཡིན་པའི་ཆ་རྐྱེན་འཕར་མ་རྒྱབ་སྐྱོར་བྱེད་ཀྱི་ཡོད།</string>
-    <string name="system_install_denied_permissions">མཇུག་མཐུད་དེ་ལ་ཁེ་ཕན་ཆོག་མཆན་སྤྲད་མེད། སྐྱོན་ཅན་ཡིན་པའི་བརྡ་གཏོང་རོགས།!</string>
     <string name="install_confirm_update">ད་ལྟ་ཡོད་བཞིན་པའི་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། གསར་བསྒྱུར་བྱས་ཟིན་པའི་མཉེན་ཆས་འདི་དག་རག་ཐུབ།:</string>
     <string name="install_confirm_update_system">ད་ལྟ་ཡོད་བཞིན་པའི་ནང་འགྲིག་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། གསར་བསྒྱུར་བྱས་ཟིན་པའི་མཉེན་ཆས་འདི་དག་རག་ཐུབ།:</string>
     <string name="install_confirm_update_no_perms">ད་ལྟ་ཡོད་བཞིན་པའི་མཉེན་ཆས་འདི་གསར་བསྒྱུར་འགྲིག་བཅུག་བྱེད་འདོད་དམ། ཁྱེད་རང་ལ་ཡོད་པའི་ཡིག་ཆ་བོར་བརླགས་ཤོར་གྱི་མེ་རེད། འདི་ལྟ་ཐུབ་པའི་ཆེད་དུ་དམིགས་བསལ་གྱི་དགོས་མཁོ་མེད།</string>

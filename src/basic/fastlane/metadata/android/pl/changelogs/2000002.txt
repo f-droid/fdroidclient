@@ -1,0 +1,8 @@
+* Interfejs przebudowany od podstaw przy użyciu Kotlin Compose
+* Ulepszono wyszukiwanie, teraz również szuka w opisach i tłumaczeniach
+* Łatwiejsze odkrywanie nowych aplikacji, w tym wyróżnianie najbardziej pobrań 
+* Zatwierdzenie instalacji *przed* pobraniem 
+* Wiele aktualizacji/pobierań jednocześnie 
+* Informowanie użytkownika o problemach z aplikacjami (np. zmiana klucza podpisu) 
+* Opcjonalny motyw kolorystyczny Material You 
+* Ulepszane filtrowanie list

@@ -71,9 +71,7 @@
         <item quantity="other">sken-tnt maṛṛa %d</item>
     </plurals>
     <string name="unknown">Arssen</string>
-    <string name="repo_name">Isem</string>
     <string name="repo_description">Aglam</string>
-    <string name="repo_url">Ansa</string>
     <string name="theme">Asgum</string>
     <string name="status_connecting_to_repo">Azday ɣer
 \n%1$s</string>
@@ -148,6 +146,5 @@
     </plurals>
     <string name="about_version">Taleqqimt</string>
     <string name="version">Taleqqimt</string>
-    <string name="repo_last_update">Asedɣi ameggaru</string>
     <string name="icon">Tignit</string>
 </resources>

@@ -33,7 +33,6 @@
     <string name="ok">OK</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
-    <string name="repo_add_title">Adicionar novo repositório</string>
     <string name="repo_add_add">Adicionar</string>
     <string name="links">Ligações</string>
     <string name="back">Voltar</string>
@@ -71,7 +70,6 @@
     <string name="antinonfreeadlist">Esta aplicação promove add-ons não livres</string>
     <string name="antinonfreenetlist">Esta app promove ou depende inteiramente de um serviço de rede não livre</string>
     <string name="antinonfreedeplist">Esta aplicação depende de outras aplicações não livres</string>
-    <string name="antiupstreamnonfreelist">O código-fonte não é totalmente livre</string>
     <string name="display">Tela</string>
     <string name="expert">Modo avançado</string>
     <string name="expert_on">Mostrar informações adicionais e ativar mais definições</string>
@@ -111,14 +109,8 @@
     <string name="unsigned">Não assinada</string>
     <string name="unverified">Não verificada</string>
     <string name="repo_details">Repositório</string>
-    <string name="repo_url">Endereço</string>
-    <string name="repo_num_apps">Número de aplicações</string>
     <string name="repo_fingerprint">Identificadores digitais da chave de assinatura (SHA-256)</string>
     <string name="repo_description">Descrição</string>
-    <string name="repo_last_update">Última atualização</string>
-    <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Isto significa que não foi possível verificar a lista de aplicações. Deve ter muito cuidado ao descarregar aplicações de índices não assinados.</string>
-    <string name="repo_not_yet_updated">Este repositório ainda não foi utilizado. Tem que o ativar para ver as aplicações que disponibiliza.</string>
     <string name="unknown">Desconhecido</string>
     <string name="repo_confirm_delete_title">Remover repositório?</string>
     <string name="repo_confirm_delete_body">Se remover um repositório, todas as aplicações aí disponibilizadas ficarão indisponíveis.
@@ -155,9 +147,6 @@
     <string name="empty_can_update_app_list">Parabéns! \nAs suas aplicações estão atualizadas.</string>
     <string name="install_error_unknown">Falha ao instalar devido a um erro desconhecido</string>
     <string name="uninstall_error_unknown">Falha ao desinstalar devido a um erro desconhecido</string>
-    <string name="system_install_denied_permissions">Não foram concedidas as permissões necessárias para a extensão. Por
-        favor reporte este erro!
-    </string>
     <string name="swap_join_same_wifi">Junte-se à mesma rede Wi-Fi da outra pessoa</string>
     <string name="swap_join_same_wifi_desc">Para trocar através de Wi-Fi, certifique-se que estão ambos na mesma rede. Se não estiverem na mesma rede, um de vós pode criar um ponto de acesso (hotspot) Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Ajude a outra pessoa a entrar no seu ponto de acesso</string>
@@ -519,13 +508,11 @@
     <string name="antinonfreead">Complementos não livres</string>
     <string name="app_list_results_hidden_antifeature_settings">Alguns resultados foram ocultados com base nas suas configurações de recursos indesejados.</string>
     <string name="antinonfreedep">Dependências não livres</string>
-    <string name="antiupstreamnonfree">Upstream não livre</string>
     <string name="antiknownvuln">Vulnerabilidade conhecida</string>
     <string name="antiothers">Outras características indesejadas</string>
     <string name="antinsfw">Não é seguro para o trabalho (NSFW)</string>
     <string name="menu_release_channel_beta">Permitir atualizações beta</string>
     <string name="latest__empty_state__upgrading">A atualizar a base de dados…</string>
-    <string name="repo_last_update_downloaded">Última atualização descarregada</string>
     <string name="warning_target_sdk">Esta app foi criada para uma versão do Android mais antiga e não pode ser automaticamente atualizada.</string>
     <string name="app_name_basic">F-Droid Básico</string>
     <string name="about_title_basic">Sobre o F-Droid Básico</string>
@@ -535,7 +522,6 @@
     <string name="force_old_installer_title">Forçar antigo instalador</string>
     <string name="force_old_installer_summary">Desativar o instalador da sessão, incluindo o suporte para atualizações automáticas em segundo plano.</string>
     <string name="repo_add_new_title">Adicionar repositório</string>
-    <string name="repo_add_new_mirror">Adicionar como novo espelho</string>
     <string name="targetsdk_or_later">Marcadores %s</string>
     <string name="copied_to_clipboard">Copiado para área de transferência</string>
     <string name="app_details_repository">Repositório</string>
@@ -638,4 +624,5 @@
     <string name="notification_title_summary_app_update_available">Toque para atualizar tudo</string>
     <string name="tts_repo_name">Repositório %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
+    <string name="crash_dialog_title_old">F-Droid travou</string>
 </resources>

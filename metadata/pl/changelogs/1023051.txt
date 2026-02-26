@@ -1,0 +1,6 @@
+* Material Design 3 (z krawędzią do krawędzi, ale bez kolorów dynamicznych) (Dziękujemy proletarius!)
+* przepracowanie ekranów szczegółów repozytorium (Dziękujemy Thore!)
+* dodano eksport pliku logcat w ustawieniach eksperta
+* zaktualizowano celowy SDK (Android 15 dla wersji podstawowej i Android 11 dla pełnej)
+* dodano powrót linku z strony aplikacji w ustawieniach systemowych (Dziękujemy j-m4!)
+* używanie wybieracza aplikacji do udostępniania zainstalowanych aplikacji i historii instalacji (Dziękujemy Thore!)

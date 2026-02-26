@@ -20,7 +20,6 @@
     <string name="ok">OK</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
-    <string name="repo_add_title">Új tároló hozzáadása</string>
     <string name="repo_add_add">Hozzáadás</string>
     <string name="cancel">Mégse</string>
     <string name="enable">Engedélyezés</string>
@@ -47,7 +46,6 @@
     <string name="antinonfreeadlist">Az alkalmazás nem szabad kiegészítőket támogat</string>
     <string name="antinonfreenetlist">Az alkalmazás nem szabad hálózati szolgáltatást támogat vagy teljesen attól függ</string>
     <string name="antinonfreedeplist">Az alkalmazás egyéb, nem szabad alkalmazásoktól függ</string>
-    <string name="antiupstreamnonfreelist">Az upstream forráskód nem teljesen szabad</string>
     <string name="display">Megjelenés</string>
     <string name="expert">Szakértő mód</string>
     <string name="expert_on">További információk megjelenítése, és további beállítások engedélyezése</string>
@@ -60,7 +58,6 @@
     <string name="no_permissions">Nincs engedély</string>
     <string name="no_handler_app">Nincs elérhető alkalmazás, ami képes ezt kezelni: %s.</string>
     <string name="theme">Téma</string>
-    <string name="repo_not_yet_updated">Ezt a tárolót még nem használta. Engedélyeznie kell, hogy megtekinthesse az általa kínált alkalmazásokat.</string>
     <string name="repo_confirm_delete_body">Egy tároló törlése azt jelenti, hogy a belőle származó alkalmazások többé nem lesznek elérhetőek.\n\nMegjegyzés: az összes, korábban telepített alkalmazás az eszközön marad.</string>
     <string name="repo_disabled_notification">%1$s letiltva.\n \nÚjra kell majd engedélyezni a tárolót, hogy alkalmazásokat telepíthessen belőle.</string>
     <string name="delete">Törlés</string>
@@ -113,12 +110,8 @@
     <string name="repo_details">Tároló</string>
     <string name="banner_updating_repositories">Tárolók frissítése</string>
     <string name="repos_unchanged">Minden tároló naprakész</string>
-    <string name="repo_url">Cím</string>
-    <string name="repo_num_apps">Alkalmazások száma</string>
     <string name="repo_fingerprint">Aláírókulcs ujjlenyomata (SHA-256)</string>
     <string name="repo_description">Leírás</string>
-    <string name="repo_last_update">Utolsó frissítés</string>
-    <string name="repo_name">Név</string>
     <string name="unknown">Ismeretlen</string>
     <string name="repo_confirm_delete_title">Törli a tárolót?</string>
     <string name="repo_searching_address">Csomagtároló keresése itt:\n%1$s</string>
@@ -281,7 +274,6 @@
     <string name="touch_to_configure_local_repo">Érintse meg a részletek megtekintéséhez, és a másokkal történő alkalmazáscsere lehetővé tételéhez.</string>
     <string name="linking_apks">APK-fájlok tárolóhoz csatolása…</string>
     <string name="download_404">A kért fájl nem található.</string>
-    <string name="unsigned_description">Ez azt jelenti, hogy az alkalmazások listája nem ellenőrizhető. Óvatosnak kell lennie a hitelesítetlen indexekből letöltött alkalmazásokkal.</string>
     <string name="repo_added">A(z) %1$s csomagtároló mentve.</string>
     <string name="by_author_format">Készítette: %s</string>
     <string name="force_old_index">Régi indexformátum kényszerítése</string>
@@ -354,7 +346,6 @@
         <item quantity="one">%d megtekintése</item>
         <item quantity="other">%d megtekintése</item>
     </plurals>
-    <string name="system_install_denied_permissions">A privilegizált engedélyek nem lettek megadva ehhez a kiterjesztéshez! Küldjön be hibajelentést!</string>
     <string name="swap_join_same_wifi_desc">A Wi-Fin keresztüli cseréhez győződjön meg róla, hogy ugyanazon a hálózaton vannak. Ha nem fér hozzá a hálózathoz, akkor az egyikük Wi-Fi hotspotot hozhat létre.</string>
     <string name="swap_join_this_hotspot">Segítsen a barátjának csatlakozni a hotspothoz</string>
     <string name="swap">Alkalmazások cseréje</string>
@@ -503,7 +494,6 @@
     <string name="antinonfreead">Nem szabad kiegészítők</string>
     <string name="antitrack">Követés</string>
     <string name="antinonfreenet">Nem szabad hálózati szolgáltatások</string>
-    <string name="antiupstreamnonfree">Nem szabad upstream forráskód</string>
     <string name="antinonfreeassets">Nem szabad erőforrások</string>
     <string name="antidisabledalgorithm">Nem biztonságos algoritmussal aláírt</string>
     <string name="antiknownvuln">Ismert sérülékenység</string>
@@ -518,7 +508,6 @@
     <string name="antinsfwlist">Ez az alkalmazás olyan tartalommal rendelkezik, amelyet nem szerencsés mindenhol megjeleníteni</string>
     <string name="warning_target_sdk">Ez az alkalmazás az Android egy régebbi verziójához készült, ezért nem lehet automatikusan frissíteni.</string>
     <string name="app_error_open">Nem sikerült elindítani az alkalmazást.</string>
-    <string name="repo_last_update_downloaded">Utolsó frissítés letöltve</string>
     <string name="turn_on_wifi">Wi-Fi bekapcsolása</string>
     <string name="repo_invalid">Érvénytelen tároló.\n\nLépjen kapcsolatba a karbantartóval, és értesítse a problémáról.</string>
     <string name="repo_io_error">Hiba a tárolóhoz való kapcsolódáskor.</string>
@@ -528,7 +517,6 @@
     <string name="repo_state_adding">Tároló hozzáadása…</string>
     <string name="repo_enter_url">Tároló webcímének kézi megadása</string>
     <string name="repo_exists">Ez a tároló már hozzá lett adva.</string>
-    <string name="repo_add_new_mirror">Hozzáadás új tükörként</string>
     <string name="repo_intro">Egy tároló egy további alkalmazásforrás. Az itt hozzáadott, harmadik féltől származó tárolók eltérő szabályokkal rendelkeznek, mint az F-Droid által biztosított alkalmazások tárolói.\n\nGyőződjön meg arról, hogy a hozzáadandó tároló megbízható.</string>
     <string name="nearby_splace__external_storage_permission_button">Kipróbálás</string>
     <string name="nearby_splach__external_storage_permission_explainer">Az F-Droid képes keresni a SD-kártyán lévő tárolókban és tükrökben, de ehhez engedélyre van szüksége.</string>
@@ -624,4 +612,46 @@
     <string name="tts_repo_name">Tároló: %1$s</string>
     <string name="tts_author_name">Fejlesztő: %1$s</string>
     <string name="crash_dialog_title_old">Az F-Droid összeomlott</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Alap</string>
+    <string name="menu_about">Rólunk</string>
+    <string name="menu_discover">Felfedezés</string>
+    <string name="menu_apps_my">Alkalmazásaim</string>
+    <string name="first_start_loading">Alkalmazás-tárolók lekérése…</string>
+    <string name="my_apps_empty">Csak a %1$s által telepített alkalmazások jelennek meg itt</string>
+    <string name="my_apps_header_apps_with_issue">Problémás alkalmazások</string>
+    <string name="my_apps_ignore_dialog_title">Probléma elrejtése</string>
+    <string name="my_apps_ignore_dialog_text">A \"%1$s\" ezen verziójával kapcsolatos probléma figyelmen kívül marad</string>
+    <string name="my_apps_ignore_dialog_button">Elrejt</string>
+    <string name="my_apps_export_installed_apps">Alkalmazások listájának exportálása</string>
+    <string name="app_list_new">Új alkalmazások</string>
+    <string name="app_list_recently_updated">Legutóbb frissítve</string>
+    <string name="app_list_most_downloaded">Leggyakrabban letöltött</string>
+    <string name="app_list_all">Minden alkalmazás</string>
+    <string name="app_list_author">Alkalmazások %s szerint</string>
+    <string name="search_placeholder">Keres…</string>
+    <string name="search_no_results">Nincs találat\n\nPróbáljon kevesebb keresési kifejezést használni, vagy adjon hozzá több adattárat</string>
+    <string name="category_group_productivity">Termelékenység</string>
+    <string name="category_group_tools">Eszközök</string>
+    <string name="category_group_wallets">Pénzügyek és pénztárcák</string>
+    <string name="category_group_media">Szórakozás és média</string>
+    <string name="category_group_communication">Kommunikáció</string>
+    <string name="category_group_device">Eszköz</string>
+    <string name="category_group_network">Hálózat</string>
+    <string name="category_group_storage">Fájlok és tárolók</string>
+    <string name="category_group_interests">Érdeklődési kör</string>
+    <string name="category_group_misc">Egyéb</string>
+    <string name="author_by">%1$s -től</string>
+    <string name="last_updated">Utolsó frissítés: %1$s</string>
+    <string name="last_updated_with_size">Utolsó frissítés: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Telepítés előkészítése…</string>
+    <string name="whats_new_title">Újdonságok</string>
+    <string name="donate_title">Adakozás</string>
+    <string name="anti_features_title">Az alkalmazás anti-funkciókkal rendelkezik</string>
+    <string name="developer_contact">Fejlesztői kapcsolat</string>
+    <string name="technical_info">Műszaki információk</string>
+    <string name="package_name">Csomag neve:</string>
+    <string name="installed_version">Telepített verzió:</string>
+    <string name="call_to_action_keepandroidopen">Az F-Droid veszélyben van. A Google megváltoztatja az alkalmazások telefonra történő telepítésének módját. Szükségünk van a segítségedre.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

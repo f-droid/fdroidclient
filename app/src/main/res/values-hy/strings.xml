@@ -58,10 +58,7 @@
         %1$sին
     </string>
     <string name="permissions">Թույլտվություններ</string>
-    <string name="repo_url">Հասցե</string>
     <string name="repo_description">Նկարագրություն</string>
-    <string name="repo_last_update">Վերջին թարմացում</string>
-    <string name="repo_name">Անուն</string>
     <string name="pref_language">Լեզու</string>
     <string name="pref_language_default">Համակարգի լռելյայնը</string>
     <string name="category_Connectivity">Կապ</string>
@@ -134,7 +131,6 @@
     <string name="no_permissions">Թույլտվություններ չկան</string>
     <string name="theme">Ոճ</string>
     <string name="unverified">Չվավերացված</string>
-    <string name="repo_num_apps">Ափփերի քանակ</string>
     <string name="unknown">Անհայտ</string>
     <string name="requires_features">Պահանջում է. %1$s</string>
     <string name="wifi">Wi-Fi</string>
@@ -170,7 +166,6 @@
     <string name="unstable_updates_summary">Առաջարկել թարմացումներ անկայուն տարբերակների համար</string>
     <string name="update_auto_download_summary">Ներբեռնել թարմացումները ետնապատկերում</string>
     <string name="login_title">Վավերացում է հարկավոր</string>
-    <string name="repo_add_title">Ավելացնել նոր շտեմարան</string>
     <string name="overwrite">Վրագրել</string>
     <string name="bluetooth_activity_not_found">Bluetoothով ուղարկելու մեթոդ չի գտնվել, ընտրի՛ր մեկը։</string>
     <string name="choose_bt_send">Ընտրիր Bluetoothով ուղարկելու մեթոդ</string>
@@ -187,9 +182,6 @@
     <string name="banner_updating_repositories">Թարմացնում եմ շտեմարանները</string>
     <string name="repos_unchanged">Բոլոր շտեմարանները արդի են</string>
     <string name="repo_details">Շտեմարան</string>
-    <string name="repo_not_yet_updated">Այս շտեմարանը դեռևս չի օգտագործվել։
-        Դու պետք ա այն ակտիվացնես՝ առաջարկվող ափփերը տեսնելու համար։
-    </string>
     <string name="repo_confirm_delete_title">Ջնջե՞լ շտեմարանը։</string>
     <string name="repo_added">Պահեցի փաթեթի շտեմարանը %1$s։</string>
     <string name="repo_searching_address">Փնտրում եմ փաթեթը շտեմարանում.
@@ -333,7 +325,6 @@
     <string name="app_list__name__downloading_in_progress">Ներբեռնում. %1$s</string>
     <string name="app_details_repository">Շտեմարան</string>
     <string name="app_details_repositories">Շտեմարաններ</string>
-    <string name="repo_add_new_mirror">Ավելացնել որպես նոր հայելի</string>
     <string name="repo_state_adding">Ավելացվում է շտեմարան…</string>
     <string name="repositories_last_update_never">երբեք</string>
     <string name="repo_enter_url">Մուտքագրեք շտեմարանի URL-ը ձեռքով</string>

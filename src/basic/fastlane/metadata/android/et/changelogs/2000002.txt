@@ -1,0 +1,8 @@
+* kasutajaliides on täielikult ümber kirjutatud Kotlin Compose'iga
+* tõhusam otsing, mis otsib ka kirjeldustest ja tõlgetest
+* uute rakenduste leidmine on lihtsam, samuti on nüüd esile tõstetud enim allalaaditud rakendused
+* paigalduse kinnitamine *enne* allalaadimist
+* mitme rakenduse samaaegne uuendamine/allalaadimine
+* kasutaja teavitamine rakendustega seotud probleemidest (nt allkirjastamisvõtme muutus)
+* soovi korral saad kasutada Material You värve
+* senisest parem loendite filtreerimine

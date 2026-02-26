@@ -1,4 +1,5 @@
-* Láimhseáil ceadanna intuigthe READ_EXTERNAL_STORAGE, a spreagann pras ceadanna ar shuiteálacha le Síneadh Pribhléideach (#1702)
+* Láimhseáil ceadanna intuigthe READ_EXTERNAL_STORAGE, a spreagann pras ceadanna ar
+shuiteálacha le Síneadh Pribhléideach (#1702)
 
 * Sonraí innéacsaithe sláintithe chun bagairtí féideartha ón bhfreastalaí a laghdú
 
@@ -6,6 +7,6 @@
 
 * Deisigh deilbhíní atá ar iarraidh dóibh siúd nach n-úsáideann Wi-Fi (#1592)
 
-* Úsáid teidil ar leithligh don rogha Nuashonruithe agus don chluaisín Nuashonruithe, chun cabhrú le haistriúchán
+* Úsáid teidil ar leithligh don rogha, chluaisín Nuashonruithe
 
 * Deisiúcháin Chomhéadain ó @ConnyDuck (#1636, #1618)

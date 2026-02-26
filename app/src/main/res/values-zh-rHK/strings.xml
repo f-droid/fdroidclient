@@ -26,7 +26,6 @@
     <string name="ok">確定</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="repo_add_title">加入軟件庫</string>
     <string name="repo_add_add">加入</string>
     <string name="cancel">取消</string>
     <string name="enable">啟用</string>
@@ -55,7 +54,6 @@
     <string name="antinonfreeadlist">此應用程式推廣非自由的附加元件</string>
     <string name="antinonfreenetlist">此應用程式推廣或唯獨依賴不可轉換或非自由的網絡服務</string>
     <string name="antinonfreedeplist">此應用程式依賴其他非自由的應用程式</string>
-    <string name="antiupstreamnonfreelist">上游原始碼並非完全自由</string>
     <string name="display">顯示</string>
     <string name="expert">進階模式</string>
     <string name="expert_on">顯示更多資訊及啟用更多設定</string>
@@ -80,10 +78,7 @@
     <string name="theme">主題</string>
     <string name="unsigned">未簽署</string>
     <string name="unverified">未經驗證</string>
-    <string name="repo_num_apps">應用程式數目</string>
     <string name="repo_description">描述</string>
-    <string name="repo_last_update">最近更新</string>
-    <string name="repo_name">名稱</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">刪除軟件庫？</string>
     <string name="repo_disabled_notification">已停用 %1$s。
@@ -204,7 +199,6 @@
     <string name="menu_flattr">Flattr</string>
     <string name="permissions">權限</string>
     <string name="repo_details">軟件庫</string>
-    <string name="repo_url">網址</string>
     <string name="login_name">使用者名稱</string>
     <string name="login_password">密碼</string>
     <string name="repo_edit_credentials">更改密碼</string>
@@ -216,7 +210,6 @@
     <string name="malformed_repo_uri">略過無效的倉庫 URI：%s</string>
     <string name="linking_apks">正在連接 APK 檔至軟件庫…</string>
     <string name="status_processing_xml_percent">正在從 %1$s 處理 %2$s / %3$s（%4$d%%）</string>
-    <string name="repo_not_yet_updated">此軟件庫仍未啟用。你需要將其啟用以檢視其應用程式。</string>
     <string name="swap_join_same_wifi">與你的朋友加入同一個 Wi-Fi 網絡</string>
     <string name="swap_join_same_wifi_desc">若要透過 Wi-Fi 進行交換，請確保雙方已加入同一個網絡。如果你不能加入同一個網絡，你可以建立一個 Wi-Fi 熱點。</string>
     <string name="swap_join_this_hotspot">協助你的朋友加入你的熱點</string>
@@ -228,9 +221,6 @@
     <string name="empty_installed_app_list">沒有安裝任何應用程式。
 \n
 \nF-Droid並未包含你裝置上的應用程式。這可能是由於你尚未更新你的軟件庫，或軟件庫中確實並未包含你的應用程式。</string>
-    <string name="system_install_denied_permissions">套件尚未得到系統權限！
-請提交一份錯誤報告！
-</string>
     <string name="perm_costs_money">這可能會產生費用</string>
     <string name="crash_dialog_title">F-Droid 已崩潰</string>
     <string name="crash_dialog_comment_prompt">你可以在此加入額外的資料及評論：</string>
@@ -242,7 +232,6 @@
     <string name="repo_fingerprint">鑰匙指紋（SHA-256）</string>
     <string name="writing_index_jar">正在寫入已簽署的目錄檔案（index.jar）…</string>
     <string name="menu_email">電郵作者</string>
-    <string name="unsigned_description">這表示 F-Droid 未能夠驗證應用程式清單。請多加留意從未經簽署索引下載的應用程式。</string>
     <string name="useTor">使用 Tor</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
     <string name="useTorSummary">強制下行流量通過 Tor 以加強對私隱的保障，需要 Orbot</string>
@@ -429,7 +418,6 @@
     <string name="has_disallow_install_unknown_sources">此用戶無法新增未知的來源，包括新的軟件庫</string>
     <string name="use_bluetooth">使用藍牙</string>
     <string name="swap_wifi_vpn_conflict">與使用中的VPN衝突！</string>
-    <string name="antiupstreamnonfree">上游非自由</string>
     <string name="antinonfreeassets">非自由資源</string>
     <string name="antidisabledalgorithm">使用不安全的算法簽署</string>
     <string name="antiothers">其他反功能</string>
@@ -518,7 +506,6 @@
     <string name="antinsfwlist">此應用程式的內容慎擇觀看場所，老闆出沒注意</string>
     <string name="app_name_basic">F-Droid 基礎版</string>
     <string name="about_title_basic">關於 F-Droid 基礎版</string>
-    <string name="repo_last_update_downloaded">最近下載更新</string>
     <string name="category_Nightly">定時組建</string>
     <string name="warning_target_sdk">此應用程式乃為較舊版本的 Android 建構，無法自動更新。</string>
     <string name="app_error_open">無法啟動應用程式。</string>
@@ -532,7 +519,6 @@
     <string name="repo_state_fetching">正在提取軟件庫…</string>
     <string name="repo_io_error">連線至軟件庫時發生錯誤。</string>
     <string name="repo_enter_url">手動輸入軟件庫 URL</string>
-    <string name="repo_add_new_mirror">加入為新鏡像</string>
     <string name="repo_intro">軟件庫乃應用程式的額外來源。您在此新增的第三方軟件庫，與提供 F-Droid 自行組建之應用程式的軟件庫，採用不同標準。
 \n
 \n請確保您所加入的軟件庫值得信賴。</string>

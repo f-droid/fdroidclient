@@ -26,7 +26,6 @@
     <string name="ok">У реду</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
-    <string name="repo_add_title">Додавање репозиторијума</string>
     <string name="repo_add_add">Додај</string>
     <string name="cancel">Откажи</string>
     <string name="enable">Омогући</string>
@@ -56,7 +55,6 @@
     <string name="antinonfreeadlist">Ова апликација промовише неслободне додатке</string>
     <string name="antinonfreenetlist">Ова апликација промовише неслободне мрежне услуге или у потпуности зависи од њих</string>
     <string name="antinonfreedeplist">Ова апликација зависи од других неслободних апликација</string>
-    <string name="antiupstreamnonfreelist">Оригинални изворни кôд није у потпуности слободан</string>
     <string name="display">Приказ</string>
     <string name="expert">Напредни режим</string>
     <string name="expert_on">Приказује додатне информације и подешавања</string>
@@ -92,13 +90,8 @@
     <string name="theme">Тема</string>
     <string name="unsigned">Непотписано</string>
     <string name="unverified">Неверификовано</string>
-    <string name="repo_num_apps">Број апликација</string>
     <string name="repo_fingerprint">Отисак кључа за потпис (SHA-256)</string>
     <string name="repo_description">Опис</string>
-    <string name="repo_last_update">Последње ажурирање</string>
-    <string name="repo_name">Назив</string>
-    <string name="unsigned_description">Ово значи да се листа апликација не може верификовати. Будите опрезни са апликацијама преузетим са непотписаних индекса.</string>
-    <string name="repo_not_yet_updated">Овај репозиторијум још није коришћен. Омогућите га да бисте видели апликације у њему.</string>
     <string name="unknown">Непознато</string>
     <string name="repo_confirm_delete_title">Избрисати репозиторијум?</string>
     <string name="repo_confirm_delete_body">Ако избришете репозиторијум, апликације у њему више неће бити доступне.\n\nНапомена: све раније инсталиране апликације ће остати на вашем уређају.</string>
@@ -202,8 +195,6 @@
     <string name="status_download_unknown_size">Преузимање\n%2$s од\n%1$s</string>
     <string name="permissions">Дозволе</string>
     <string name="repo_details">Репозиторијум</string>
-    <string name="repo_url">Адреса</string>
-    <string name="system_install_denied_permissions">Додатку није додељен повлашћен приступ. Молимо вас да направите извештај о грешци.</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
@@ -510,7 +501,6 @@
     <string name="antitrack">Праћење</string>
     <string name="antinonfreead">Неслободни додаци</string>
     <string name="antinonfreedep">Неслободне зависности</string>
-    <string name="antiupstreamnonfree">Неслободни апстрим</string>
     <string name="antinonfreeassets">Неслободни ресурси</string>
     <string name="antiknownvuln">Позната безбедносна претња</string>
     <string name="antinosource">Изворни кôд више није доступан</string>
@@ -523,7 +513,6 @@
     <string name="about_title_full">О F-Droid-у</string>
     <string name="about_title_basic">О F-Droid Basic-у</string>
     <string name="antinsfwlist">Ова апликација садржи садржај који не би требало бити јавно доступан</string>
-    <string name="repo_last_update_downloaded">Последње ажурирање је преузето</string>
     <string name="app_error_open">Није могуће покренути апликацију.</string>
     <string name="warning_target_sdk">Ова апликација је направљена за старију верзију Android-а и не може се аутоматски ажурирати.</string>
     <string name="app_name_basic">F-Droid Basic</string>
@@ -532,7 +521,6 @@
     <string name="repo_add_new_title">Додај репозиторијум</string>
     <string name="repo_intro">Репозиторијум је додатни извор апликација. Репозиторијуми трећих страна које додате овде имају другачије стандарде од оних које је обезбедио F-Droid.\n\nУверите се да је репозиторијум који додајете поуздан.</string>
     <string name="repo_state_fetching">Преузимање репозиторијума…</string>
-    <string name="repo_add_new_mirror">Додај као нови резервни извор</string>
     <string name="repo_state_adding">Додавање репозиторијума…</string>
     <string name="repo_exists">Овај репозиторијум је већ додат.</string>
     <string name="repo_invalid">Неважећи репозиторијум.\n\nКонтактирајте администратора и обавестите га о проблему.</string>
@@ -620,4 +608,8 @@
     <string name="repo_details_info_text">Репозиторијум је извор апликација.\n\nРезервни извори се користе за дистрибуцију оптерећења преузимања апликација на више сервера. Резервни извори који су вам ближи могу бити бржи.\n\nЗваничне резервне изворе дефинише власник репозиторијума. Не могу се избрисати, само онемогућити. Можете дефинисати додатне прилагођене резервне изворе тако што ћете их додати баш као нормални репозиторијум.</string>
     <string name="show_repository_qr">Прикажи QR кôд репозиторијума</string>
     <string name="pref_export_log_title">Дневник отклањања грешака</string>
+    <string name="menu_about">О програму</string>
+    <string name="menu_discover">Откриј</string>
+    <string name="menu_apps_my">Моји програми</string>
+    <string name="first_start_loading">Захватам складишта програма</string>
 </resources>

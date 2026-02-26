@@ -28,7 +28,6 @@
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nei</string>
-    <string name="repo_add_title">Legg til ny pakkebrønn</string>
     <string name="repo_add_add">Legg til</string>
     <string name="cancel">Avbryt</string>
     <string name="enable">Skru på</string>
@@ -58,7 +57,6 @@
     <string name="antinonfreeadlist">Dette programmet promoterer ufrie utvidelser</string>
     <string name="antinonfreenetlist">Dette programmet promoterer ufrie nettverkstjenester</string>
     <string name="antinonfreedeplist">Dette programmet avhenger av andre ufrie applikasjoner</string>
-    <string name="antiupstreamnonfreelist">Kildekoden er ikke helt fri</string>
     <string name="display">Vis</string>
     <string name="expert">Ekspertmodus</string>
     <string name="expert_on">Vis ekstra info og skru på ekstra innstillinger</string>
@@ -94,16 +92,8 @@
     <string name="theme">Utseende</string>
     <string name="unsigned">Usignert</string>
     <string name="unverified">Ubekreftet</string>
-    <string name="repo_num_apps">Antall programmer</string>
     <string name="repo_fingerprint">Fingeravtrykk tilhørende signeringsnøkkel (SHA-256)</string>
     <string name="repo_description">Beskrivelse</string>
-    <string name="repo_last_update">Siste oppdatering</string>
-    <string name="repo_name">Navn</string>
-    <string name="unsigned_description">Dette betyr at programlisten
-        ikke kunne bekreftes. Du bør være forsiktig
-        med programmer lastet ned fra usignerte lister.
-    </string>
-    <string name="repo_not_yet_updated">Denne pakkebrønnen har ikke blitt tatt i bruk enda. Du må skru den på for å se programmene den tilbyr.</string>
     <string name="unknown">Ukjent</string>
     <string name="repo_confirm_delete_title">Slett pakkebrønn?</string>
     <string name="repo_confirm_delete_body">Sletting av en pakkebrønn betyr at programmer derfra ikke lenger vil være tilgjengelige.
@@ -151,7 +141,6 @@
     <string name="banner_updating_repositories">Oppdaterer pakkebrønner</string>
     <string name="status_processing_xml_percent">Behandler %2$s / %3$s (%4$d%%) fra %1$s</string>
     <string name="repo_details">Pakkebrønn</string>
-    <string name="repo_url">Adresse</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemforvalg</string>
     <string name="wifi">Wi-Fi</string>
@@ -215,9 +204,6 @@
     </string>
     <string name="empty_can_update_app_list">Gratulerer!
 \nIngen foreldede programmer.</string>
-    <string name="system_install_denied_permissions">Tillegget har ikke blitt gitt priviligert tilgang. Send en
-        feilrapport om dette omgående!
-    </string>
     <string name="swap_join_same_wifi_desc">For å sirkulere ved bruk av Wi-Fi, forsikre deg om at dere er på samme nettverk. Hvis så ikke er tilfelle, kan du sette opp ditt eget mobiltrådløsnett.</string>
     <string name="swap_join_this_hotspot">Hjelp en venn å ta del i ditt mobiltrådløsnett</string>
     <string name="swap_success">Vellykket sirkulering!</string>
@@ -522,7 +508,6 @@
     <string name="antinonfreedep">Ufrie avhengigheter</string>
     <string name="antitrack">Sporing</string>
     <string name="app_list_results_hidden_antifeature_settings">Noen resultater ble utelatt som følge av dine antifunksjonsinnstillinger.</string>
-    <string name="antiupstreamnonfree">Kildekoden oppstrøms er ikke helt fri</string>
     <string name="antinonfreead">Ufrie tillegg</string>
     <string name="antiothers">Andre antifunksjoner</string>
     <string name="antinonfreenet">Ufrie nettverkstjenester</string>

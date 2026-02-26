@@ -18,7 +18,6 @@
     <string name="ok">Aceptar</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
-    <string name="repo_add_title">Engadir un novo repositorio</string>
     <string name="repo_add_add">Engadir</string>
     <string name="cancel">Cancelar</string>
     <string name="repo_add_url">Enderezo do repositorio</string>
@@ -112,12 +111,8 @@
     <string name="unsigned">Sen asinar</string>
     <string name="unverified">Sen verificar</string>
     <string name="repo_details">Repositorio</string>
-    <string name="repo_url">Enderezo</string>
-    <string name="repo_num_apps">Número de aplicacións</string>
     <string name="repo_fingerprint">Pegada dixital da chave (SHA-256)</string>
     <string name="repo_description">Descrición</string>
-    <string name="repo_last_update">Última actualización</string>
-    <string name="repo_name">Nome</string>
     <string name="category_Science_Education">Ciencia e educación</string>
     <string name="category_Reading">Lectura</string>
     <string name="category_Phone_SMS">Teléfono e SMS</string>
@@ -172,11 +167,8 @@
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
     <string name="unstable_updates_summary">Suxire actualizacións para versións inestábeis</string>
-    <string name="antiupstreamnonfreelist">O código fonte non é completamente libre</string>
     <string name="proxy_host">Servidor proxy</string>
     <string name="proxy_host_summary">Nome do teu proxy (p.ex. 127.0.0.1)</string>
-    <string name="unsigned_description">Isto significa que a listaxe das aplicacións poderían non ser verificadas. Terías que ter coidado cas aplicacións baixadas dende escolmas sen asinar.</string>
-    <string name="repo_not_yet_updated">Este repositorio aínda non se empregou. Terás que activalo para ollar as aplicacións que ofrece.</string>
     <string name="unknown">Descoñecida</string>
     <string name="repo_confirm_delete_title">Eliminar o repositorio?</string>
     <string name="repo_confirm_delete_body">Eliminar un repositorio implica que as túas aplicacións deixen de estar dispoñíbeis.
@@ -199,7 +191,6 @@
     <string name="empty_can_update_app_list">Parabéns!
 \nTódalas túas aplicacións están actualizadas.</string>
     <string name="install_error_unknown">Fallou a instalación por mor dun erro descoñecido</string>
-    <string name="system_install_denied_permissions">Os permisos con privilexios non foron garantidos para a extensión! Por favor, crea unha nova incidencia!</string>
     <string name="swap_join_same_wifi">Únete á mesma rede Wi-Fi que o teu amigo</string>
     <string name="swap_join_same_wifi_desc">Para intercambiar mediante Wi-Fi, asegúrate de estar na mesma rede. Se non tes acceso á mesma rede, un de vós pode crear un punto de acceso Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Axuda ó teu amigo a unirte ó punto de acceso</string>
@@ -520,7 +511,6 @@
     <string name="antinonfreedep">Dependencias non libres</string>
     <string name="share_apk_error">Non se puido compartilo ficheiro da aplicación</string>
     <string name="app_list_results_hidden_antifeature_settings">Algunhas apps foron ocultadas seguindo a súa configuración de funcións indesexadas. Prema para mudar.</string>
-    <string name="antiupstreamnonfree">Código fonte non libre</string>
     <string name="menu_release_channel_beta">Permitir Actualizacións Beta</string>
     <string name="latest__empty_state__upgrading">Actualizando base de datos…</string>
     <string name="app_name_basic">F-Droid básico</string>
@@ -531,7 +521,6 @@
     <string name="useDnsCache">Empregar caché DNS</string>
     <string name="useDnsCacheSummary">Empregar resultados da caché para minimizar as consultas DNS.</string>
     <string name="repo_list_info_title">Lista de repositorios</string>
-    <string name="repo_last_update_downloaded">Última actualización baixada</string>
     <string name="auto_update_time_past">Próxima actualización cando se cumpran as condicións</string>
     <string name="app_details_repository_expand">Expandir a lista de repositorios</string>
     <string name="app_list_no_suggested_version">Ningunha versión recomendada para a instalación.</string>

@@ -18,7 +18,6 @@
     <string name="ok">Gerai</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
-    <string name="repo_add_title">Pridėti naują saugyklą</string>
     <string name="repo_add_add">Pridėti</string>
     <string name="cancel">Atšaukti</string>
     <string name="enable">Įjungti</string>
@@ -46,11 +45,7 @@
     <string name="repos_unchanged">Visos saugyklos yra atnaujintos</string>
     <string name="global_error_updating_repos">Klaida atnaujinant: %s</string>
     <string name="theme">Apipavidalinimas</string>
-    <string name="repo_num_apps">Programėlių skaičius</string>
     <string name="repo_description">Aprašas</string>
-    <string name="repo_last_update">Paskutinis atnaujinimas</string>
-    <string name="repo_name">Pavadinimas</string>
-    <string name="repo_not_yet_updated">Ši saugykla dar nebuvo naudota. Norėdami matyti jos teikiamas programėles, turite ją įjungti.</string>
     <string name="repo_confirm_delete_title">Ištrinti saugyklą?</string>
     <string name="repo_confirm_delete_body">Ištrynus saugyklą, jos programėlių katalogas nebebus pasiekiamas.
 \n
@@ -161,7 +156,6 @@
     <string name="all_other_repos_fine">Visos kitos saugyklos nesukėlė klaidų.</string>
     <string name="no_permissions">Nereikia leidimų</string>
     <string name="permissions">Leidimai</string>
-    <string name="repo_url">Adresas</string>
     <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie kito belaidžio tinklo (Wi-Fi), nei tik ką pridėta vietinė saugykla! Pabandykite prisijungti prie šio tinklo: %s</string>
     <string name="by_author_format">sukūrė %s</string>
     <string name="prompt_to_send_crash_reports_summary">Rinkti duomenis apie strigtis ir klausti ar siųsti juos programėlės kūrėjui</string>
@@ -175,7 +169,7 @@
     <string name="over_network_always_summary">Visada naudoti šį ryšį, kuomet jis įjungtas</string>
     <string name="over_network_on_demand_summary">Naudoti šį ryšį tik kai spusteliu „Atsisiųsti“</string>
     <string name="over_network_never_summary">Niekada nieko nesisiųsti naudojant šį ryšį</string>
-    <string name="update_auto_download">Automatiškai atsisiųsti naujinimus</string>
+    <string name="update_auto_download">Automatiškai atsisiųsti atnaujinimus</string>
     <string name="update_auto_install">Automatiškai įdiegti atnaujinimus</string>
     <string name="update_auto_install_summary">Atsisiųsti ir atnaujinti programėles fone, rodant pranešimą</string>
     <string name="system_installer">Ypatingasis plėtinys</string>
@@ -428,7 +422,6 @@
     <string name="theme_follow_system">Sekti sistemos</string>
     <string name="banner_no_internet">Nėra interneto</string>
     <string name="swap_qr_isnt_for_swap">Nuskaitytas QR kodas neatrodo kaip apsikeitimo kodas.</string>
-    <string name="unsigned_description">Tai reiškia, kad programėlių sąrašo patikrinti nepavyko. Turėtumėte būti atsargūs su programėlėmis, atsisiųstomis iš nepasirašytų indeksų.</string>
     <string name="swap_join_same_wifi_desc">Norėdami keistis naudodami Wi-Fi, įsitikinkite, kad esate tame pačiame tinkle. Jei neturite prieigos prie to paties tinklo, vienas iš jūsų gali sukurti Wi-Fi prieigos tašką.</string>
     <string name="touch_to_configure_local_repo">Palieskite, kad peržiūrėtumėte išsamią informaciją ir leistumėte kitiems keistis jūsų programėlėmis.</string>
     <string name="use_pure_black_dark_theme">Naudoti visiškai juodą foną tamsioje temoje</string>
@@ -443,7 +436,6 @@
     <string name="prompt_to_send_crash_reports">Raginti siųsti gedimų ataskaitas</string>
     <string name="force_old_index_summary">Atsitikus klaidai ar nesuderinamumo atveju naudoti XML programėlės indeksą</string>
     <string name="banner_no_data_or_wifi">Nėra mobiliųjų duomenų ir WiFi</string>
-    <string name="antiupstreamnonfreelist">Pradinis programos kodas nėra visiškai laisvas</string>
     <string name="menu_show_install_history">Rodyti diegimo istoriją</string>
     <string name="menu_show_fdroid_metrics_report">Rodyti metrikų ataskaitą</string>
     <string name="repo_delete_to_overwrite">Pirmiausia ištrinkite %1$s, kad galėtumėte tai pridėti su konfliktuojančiu raktu.</string>
@@ -477,7 +469,6 @@
     <string name="swap_join_this_hotspot">Padėkite draugui prisijungti prie savo prieigos taško</string>
     <string name="swap_join_same_wifi">Prisijunkite prie to paties Wi-Fi kaip ir jūsų draugas</string>
     <string name="share_apk_error">Nepavyko bendrinti programėlės failo</string>
-    <string name="system_install_denied_permissions">Ypatingieji leidimai plėtiniui nebuvo suteikti! Sukurkite pranešimą apie klaidą!</string>
     <string name="empty_search_available_app_list">Atitinkančių paiešką programėlių nėra.</string>
     <string name="empty_installed_app_list">Nėra įdiegtų programėlių.
 \n
@@ -519,7 +510,6 @@
     <string name="nearby_splash__read_external_storage">Ieškoti saugyklų ir tinklaviečių SD kortelėje.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Abi pusės turi turėti %1$s, kad galėtų naudotis netoliese funkcija.</string>
     <string name="antinonfreedep">Ne atviro kodo priklausomieji</string>
-    <string name="antiupstreamnonfree">Ne atviro kodo pradinis kodas</string>
     <string name="antinonfreeassets">Ne atviro kodo resursai</string>
     <string name="antidisabledalgorithm">Pasirašyta naudojant nesaugų algoritmą</string>
     <string name="antinosource">Programos kodas nebepasiekiamas</string>
@@ -590,4 +580,7 @@
     <string name="export_log_error">Klaida išsaugant logcat</string>
     <string name="force_old_installer_summary">Išjungti Seanso įdiegimą, įskaitant automatinių foninių atnaujinimų palaikymą.</string>
     <string name="app_details_more_apps_interesting">Jus taip pat gali dominti:</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="repo_error_adding_archive">Negalima pridėti archyvinių saugyklų tiesiogiai. Palieskite saugyklą sąraše ir įjunkite archyvą.</string>
+    <string name="antitetherednet">Pririštojo tinklo paslaugos</string>
 </resources>

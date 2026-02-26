@@ -21,7 +21,6 @@
     <string name="ok">Ados</string>
     <string name="yes">Bai</string>
     <string name="no">Ez</string>
-    <string name="repo_add_title">Gehitu biltegi berria</string>
     <string name="repo_add_add">Gehitu</string>
     <string name="cancel">Utzi</string>
     <string name="enable">Gaitu</string>
@@ -54,10 +53,7 @@
     <string name="no_permissions">Ez dago baimenik</string>
     <string name="theme">Azala</string>
     <string name="unsigned">Sinatu gabea</string>
-    <string name="repo_num_apps">Aplikazio kopurua</string>
     <string name="repo_description">Deskribapena</string>
-    <string name="repo_last_update">Azken eguneraketa</string>
-    <string name="repo_name">Izena</string>
     <string name="unknown">Ezezaguna</string>
     <string name="repo_confirm_delete_title">Biltegia ezabatu?</string>
     <string name="app_name_full">F-Droid</string>
@@ -85,7 +81,6 @@
     <string name="antinonfreeadlist">Aplikazio honen libreak ez diren gehigarriak sustatzen ditu</string>
     <string name="antinonfreenetlist">Aplikazio honek libreak ez diren sareko zerbitzuak sustatzen ditu edo erabat menpekoa da</string>
     <string name="antinonfreedeplist">Aplikazio hau beste aplikazio ez libreen menpekoa da</string>
-    <string name="antiupstreamnonfreelist">Jatorrizko iturburu kodea ez da guztiz librea</string>
     <string name="local_repo_name">Zure biltegi lokalaren izena</string>
     <string name="local_repo_name_summary">Zure biltegi lokalak iragarritako izenburua: %s</string>
     <string name="local_repo_https_on">Erabili zifratutako HTTPS:// konexioa biltegi lokalarentzat</string>
@@ -137,15 +132,7 @@
     <string name="no_handler_app">Ez duzu %s tratatu dezakeen aplikaziorik eskura.</string>
     <string name="unverified">Egiaztatu gabea</string>
     <string name="repo_details">Biltegia</string>
-    <string name="repo_url">Helbidea</string>
     <string name="repo_fingerprint">Sinatzeko gakoaren hatz-marka (SHA-256)</string>
-    <string name="unsigned_description">Honek esan nahi du aplikazioen zerrenda
-        ezin izan dela egiaztatu. Sinatu gabeko jatorrietatik
-        deskargatutako aplikazioekin kontuz ibili behar zara.
-    </string>
-    <string name="repo_not_yet_updated">Biltegi hau ez da erabili oraindik.
-        Gaitu behar duzu dauzkan aplikazioak ikusteko.
-    </string>
     <string name="repo_confirm_delete_body">Biltegi bat ezabatzeak esan nahi du bertako aplikazioak ez direla eskuragarri izango.
 \n
 \nOharra: Aurretik instalatutako aplikazio guztiak gailuan jarraituko dute.</string>
@@ -185,9 +172,6 @@
     <string name="empty_can_update_app_list">Zorionak!\nZure aplikazioak egunean daude.</string>
     <string name="install_error_unknown">Instalazioak huts egin du errore ezezagun bat dela eta</string>
     <string name="uninstall_error_unknown">Ezin izan da desinstalatu errore ezezagun bat dela eta</string>
-    <string name="system_install_denied_permissions">Ez zaizkio pribilegiodun baimenak eman luzapenari! Mesedez eman
-        akatsaren berri!
-    </string>
     <string name="swap_join_this_hotspot">Lagundu adiskideari zure Wi-Fi gunera konektatzen</string>
     <string name="swap">Partekatu aplikazioak</string>
     <string name="swap_success">Ongi partekatu da!</string>
@@ -529,7 +513,6 @@
     <string name="antinonfreead">Libreak ez diren gehigarriak</string>
     <string name="antinonfreenet">Libreak ez diren sareko zerbitzuak</string>
     <string name="antinonfreedep">Libreak ez diren menpekotasunak</string>
-    <string name="antiupstreamnonfree">Librea ez den iturburua</string>
     <string name="antinonfreeassets">Libreak ez diren baliabideak</string>
     <string name="antidisabledalgorithm">Segurua ez den algoritmo batez sinatua</string>
     <string name="antiknownvuln">Ahultasun ezaguna</string>
@@ -541,7 +524,6 @@
     <string name="turn_on_wifi">Aktibatu wifia</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">F-Droid Basic-i buruz</string>
-    <string name="repo_last_update_downloaded">Azken eguneratzea deskargatu da</string>
     <string name="app_error_open">Ezin izan da abiarazi aplikazioa.</string>
     <string name="antinsfwlist">Aplikazio honek edonon argitaratu edo ikusgai egon behar ez den edukia du</string>
     <string name="repo_intro">Biltegi bat aplikazioen iturri gehigarria da. Hemen gehitzen dituzun hirugarrenen biltegiek estandar desberdinak dituzte F-Droidek berak sortutako aplikazioak eskaintzen dituztenek baino.
@@ -551,7 +533,6 @@
     <string name="swap_banner_message">Aplikazioak trukatzeko, abiarazi Wi-Fi eta konektatu zure lagunaren sare berera.</string>
     <string name="warning_target_sdk">Aplikazio hau Android bertsio zaharrago baterako sortu zen eta ezin da automatikoki eguneratu.</string>
     <string name="repo_add_new_title">Gehitu biltegia</string>
-    <string name="repo_add_new_mirror">Gehitu ispilu berri gisa</string>
     <string name="repo_state_fetching">Biltegia lortzen…</string>
     <string name="repo_state_adding">Biltegia gehitzen…</string>
     <string name="repo_exists">Biltegi hau dagoeneko gehitu da.</string>

@@ -19,7 +19,6 @@
     <string name="ok">جەزىملە</string>
     <string name="yes">ھەئە</string>
     <string name="no">ياق</string>
-    <string name="repo_add_title">يېڭى ئامبار قوش</string>
     <string name="repo_add_add">قوش</string>
     <string name="cancel">ۋاز كەچ</string>
     <string name="repo_add_url">خەزىنە ئادرېسى</string>
@@ -97,7 +96,6 @@
     <string name="unsigned">ئىمزالانمىغان</string>
     <string name="unverified">جەزىملەنمىگەن</string>
     <string name="repo_details">ئامبار</string>
-    <string name="repo_last_update">ئاخىرقى يېڭىلانما</string>
     <string name="not_on_same_wifi">ئۈسكۈنىڭىز سىز بايىلا يەرلىك ئامبار قوشقاندىكى سىمسىز-تورغا باغلانمىغان! بۇ تورغا باغلىنىپ سىناپ بېقىڭ: %s</string>
     <string name="wifi">سىمسىز-تور</string>
     <string name="category_Sports_Health">تەنتەربىيە &amp; ساغلاملىق</string>
@@ -198,12 +196,9 @@
     <string name="enable_proxy_title">د.ت.ت.ئا.ك. ۋاكالەتچىلىكىنى قوزغىتىش</string>
     <string name="privacy">مەخپىيەتلىك</string>
     <string name="permissions">تەستىقلار</string>
-    <string name="repo_url">مەنزىل</string>
-    <string name="repo_num_apps">ئۇيغۇلىما سانى</string>
     <string name="repo_description">بايان</string>
     <string name="repo_official_mirrors">رەسمى تەسۋىرلەر</string>
     <string name="repo_user_mirrors">ئىشلەتكۈچى تەسۋىرلىرى</string>
-    <string name="repo_name">ئاتى</string>
     <string name="unknown">نامەلۇم</string>
     <string name="repo_confirm_delete_title">ئامبارنى ئۆچۈرەمسىز؟</string>
     <string name="wifi_ap">قىزىقنۇقتا</string>

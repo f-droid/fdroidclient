@@ -13,7 +13,7 @@
     <string name="main_menu__categories">Kategorije</string>
     <string name="main_menu__swap_nearby">U blizini</string>
     <string name="update_interval">Interval automatskog ažuriranja</string>
-    <string name="update_auto_download">Automatski dohvati ažuriranja</string>
+    <string name="update_auto_download">Automatski preuzmi ažuriranja</string>
     <string name="update_auto_download_summary">Ažuriranja su preuzeta automatski i dobit ćete obavijest, da se mogu instalirati</string>
     <string name="notify">Prikaži dostupna ažuriranja</string>
     <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
@@ -43,7 +43,6 @@
     <string name="ok">U redu</string>
     <string name="yes">Da</string>
     <string name="no">Ne</string>
-    <string name="repo_add_title">Dodaj novi repozitorij</string>
     <string name="repo_add_add">Dodaj</string>
     <string name="links">Poveznice</string>
     <string name="more">Više</string>
@@ -85,7 +84,6 @@
     <string name="antinonfreeadlist">Ova aplikacija promovira ne-slobodne dodatke</string>
     <string name="antinonfreenetlist">Ova aplikacija promovira ili potpuno ovisi o ne-slobodnom mrežnom uslugom</string>
     <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim ne-slobodnim aplikacijama</string>
-    <string name="antiupstreamnonfreelist">Uzvodni izvorni kod nije u potpunosti otvoren/slobodan</string>
     <string name="antinonfreeassetslist">Ova aplikacija sadrži ne-slobodne resurse</string>
     <string name="display">Prikaz</string>
     <string name="expert">Napredno</string>
@@ -130,19 +128,8 @@
     <string name="unsigned">Nepotpisano</string>
     <string name="unverified">Neprovjereno</string>
     <string name="repo_details">Repozitorij</string>
-    <string name="repo_url">Adresa</string>
-    <string name="repo_num_apps">Broj aplikacija</string>
     <string name="repo_fingerprint">Otisak potpisnog ključa (SHA-256)</string>
     <string name="repo_description">Opis</string>
-    <string name="repo_last_update">Posljednje ažuriranje</string>
-    <string name="repo_name">Ime</string>
-    <string name="unsigned_description">Ovo znači da popis
-        aplikacija nije mogao biti provjeren. Trebali bi biti oprezni
-        s aplikacijama preuzetim sa nepotpisanih indeksa.
-    </string>
-    <string name="repo_not_yet_updated">Ovaj repozitorij nije do sad bio korišten.
-        Morate ga omogućiti kako bi vidjeli aplikacije na njemu.
-    </string>
     <string name="unknown">Nepoznato</string>
     <string name="repo_confirm_delete_title">Obrisati repozitorij?</string>
     <string name="repo_confirm_delete_body">Brisanje repozitorija znači, da aplikacije u repozitoriju više neće biti dostupne.
@@ -183,9 +170,6 @@
 \nVaše aplikacije su ažurirane.</string>
     <string name="install_error_unknown">Neuspjelo instaliranje zbog nepoznate greške</string>
     <string name="uninstall_error_unknown">Neuspjelo deinstaliranje zbog nepoznate greške</string>
-    <string name="system_install_denied_permissions">Proširenju nisu dodjeljene privilegirane ovlasti! Molimo stvorite
-        zapis o greški!
-    </string>
     <string name="swap_join_same_wifi">Spoji se na istu Wi-Fi mrežu kao i prijatelj</string>
     <string name="swap_join_same_wifi_desc">Kako biste razmjenjivali podatke preko Wi-Fi mreže, provjeri da ste na istoj mreži. Ako nemaš pristup istoj mreži, jedan od vas može izraditi Wi-Fi hotspot.</string>
     <string name="swap_join_this_hotspot">Pomogni prijatelju da se pridruži tvom hotspotu</string>
@@ -454,8 +438,8 @@
     <string name="download_404">Tražena datoteka nije pronađena.</string>
     <string name="hide_on_long_search_press_summary">Dugo pritiskanje gumba za pretraživanje sakriti će aplikaciju</string>
     <string name="hiding_dialog_warning">Upozorenje: Svaki će se prečac aplikacije na početnom zaslonu također ukloniti i biti će ga potrebno ručno dodati.</string>
-    <string name="panic_hide_warning_message">U slučaju uzbune, ovo će ukloniti %1$s s početnog zaslona. Upisivanjem \"%2$d\" u lažnoj aplikaciji %3$s možete obnoviti.</string>
-    <string name="hiding_dialog_message">Jeste li sigurni da želite ukloniti %1$s s početnog zaslona? možete vratiti samo upisivanjem \"%2$d\" u lažnoj aplikaciji %3$s.</string>
+    <string name="panic_hide_warning_message">U slučaju uzbune, ovo će ukloniti %1$s iz pokretača. Jedino upisivanje „%2$d” u lažnoj aplikaciji %3$s može to obnoviti.</string>
+    <string name="hiding_dialog_message">Stvarno želiš ukloniti %1$s iz pokretača? Jedino upisivanje „%2$d” u lažnoj aplikaciji %3$s može to obnoviti.</string>
     <string name="panic_reset_repos_summary">Prisilno vrati postavke repozitorija na zadane vrijednosti</string>
     <string name="panic_reset_repos_title">Ponovo namjesti repozitorije</string>
     <string name="panic_add_apps_to_uninstall">Dodajte aplikacije koje želite deinstalirati i izbrisati</string>
@@ -523,7 +507,6 @@
     <string name="antitrack">Praćenje</string>
     <string name="antiads">Oglasi</string>
     <string name="repo_io_error">Greška pri povezivanju s repozitorijem.</string>
-    <string name="repo_last_update_downloaded">Posljednje ažuriranje je preuzeto</string>
     <string name="ipfsgw_add_add">Dodaj</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">O F-Droid Basic</string>
@@ -647,4 +630,46 @@
     <string name="warning_no_compat_versions">Odabrani repozitorij nema kompatibilnih verzija aplikacije. Za primanje novih verzija odaberi repozitorij s kompatibilnim verzijama.</string>
     <string name="repo_list_info_text">Repozitorij je izvor aplikacija. Ovaj popis prikazuje sve trenutačno dodane repozitorije. Deaktivirani repozitoriji se ne koriste.\n\nAko se aplikacija nalazi u više repozitorija, automatski se preferira repozitorij koji je viši u popisu. Redoslijed repozitorija se može promijeniti dugim pritiskom i povlačenjem.</string>
     <string name="crash_dialog_title_old">F-Droid je prekinuo raditi</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Informacije</string>
+    <string name="menu_discover">Otkrij</string>
+    <string name="menu_apps_my">Moje aplikacije</string>
+    <string name="first_start_loading">Preuzimanje repozitorija aplikacije …</string>
+    <string name="my_apps_empty">Ovdje su prikazane samo aplikacije koje su instalirane od %1$s</string>
+    <string name="my_apps_header_apps_with_issue">Aplikacije s problemima</string>
+    <string name="my_apps_ignore_dialog_title">Sakrij problem</string>
+    <string name="my_apps_ignore_dialog_text">Problem s ovom verzijom „%1$s” će se ignorirati</string>
+    <string name="my_apps_ignore_dialog_button">Sakrij</string>
+    <string name="my_apps_export_installed_apps">Izvezi popis aplikacija</string>
+    <string name="app_list_new">Nove aplikacije</string>
+    <string name="app_list_recently_updated">Nedavno aktualizirane</string>
+    <string name="app_list_most_downloaded">Najviše preuzete</string>
+    <string name="app_list_all">Sve aplikacije</string>
+    <string name="app_list_author">Aplikacije od %s</string>
+    <string name="search_placeholder">Pretraga …</string>
+    <string name="search_no_results">Nije pronađena nijedna aplikacija\n\nPokušaj koristiti manje pojmova za pretraživanje ili dodaj više repozitorija</string>
+    <string name="category_group_productivity">Produktivnost</string>
+    <string name="category_group_tools">Alati</string>
+    <string name="category_group_wallets">Financije i novčanici</string>
+    <string name="category_group_media">Zabava i mediji</string>
+    <string name="category_group_communication">Komunikacija</string>
+    <string name="category_group_device">Uređaj</string>
+    <string name="category_group_network">Mreža</string>
+    <string name="category_group_storage">Datoteke i spremišta</string>
+    <string name="category_group_interests">Interesi</string>
+    <string name="category_group_misc">Razno</string>
+    <string name="author_by">Autor: %1$s</string>
+    <string name="last_updated">Zadnje aktualiziranje: %1$s</string>
+    <string name="last_updated_with_size">Zadnje aktualiziranje: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Pripremanje instalacije …</string>
+    <string name="whats_new_title">Što je novo</string>
+    <string name="donate_title">Doniraj</string>
+    <string name="developer_contact">Kontakt podaci programera</string>
+    <string name="technical_info">Tehničke informacije</string>
+    <string name="package_name">Ime paketa:</string>
+    <string name="installed_version">Instalirana verzija:</string>
+    <string name="call_to_action_keepandroidopen">F-Droid je ugrožen. Google mijenja način instaliranja aplikacija na mobitele. Trebamo tvoju pomoć.</string>
+    <string name="anti_features_title">Ova aplikacija sadrži ograničavajuće funkcije</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

@@ -27,7 +27,6 @@
     <string name="ok">אישור</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
-    <string name="repo_add_title">הוספת מאגר חדש</string>
     <string name="repo_add_add">הוספה</string>
     <string name="links">קישורים</string>
     <string name="cancel">ביטול</string>
@@ -62,7 +61,6 @@
     <string name="antinonfreeadlist">יישומון זה מקדם תוספים שאינם חופשיים</string>
     <string name="antinonfreenetlist">יישומון זה מקדם או תלוי בשירות רשת שאינו חופשי</string>
     <string name="antinonfreedeplist">יישומון זה תלוי ביישומונים אחרים שאינם חופשיים</string>
-    <string name="antiupstreamnonfreelist">קוד המקור בתצורתו המקורית אינו חופשי לחלוטין</string>
     <string name="display">תצוגה</string>
     <string name="expert">מצב מומחה</string>
     <string name="expert_on">הצגת מידע נוסף והפעלת הגדרות נוספות</string>
@@ -103,10 +101,7 @@
     <string name="theme">ערכת עיצוב</string>
     <string name="unsigned">לא חתום</string>
     <string name="unverified">לא מאומת</string>
-    <string name="repo_num_apps">מספר של יישומונים</string>
     <string name="repo_description">תיאור</string>
-    <string name="repo_last_update">עדכון אחרון</string>
-    <string name="repo_name">שם</string>
     <string name="unknown">לא ידוע</string>
     <string name="repo_confirm_delete_title">למחוק מאגר?</string>
     <string name="repo_added">מאגר חבילות שמור %1$s.</string>
@@ -205,8 +200,6 @@
     <string name="repo_exists_enable">%1$s כבר מותקן, נא לאמת כדי לאפשרו שוב.</string>
     <string name="repo_exists_and_enabled">%1$s כבר מותקן וזמין.</string>
     <string name="repo_fingerprint">טביעת אצבע של מפתח החתימה (SHA-256)</string>
-    <string name="unsigned_description">משמעות הדבר היא שאין אפשרות לאמת את רשימת היישומונים. יש לנקוט באמצעי זהירות עם יישומונים שהתקבלו ממפתחות בלתי חתומים.</string>
-    <string name="repo_not_yet_updated">מאגר זה לא היה בשימוש עדיין. יש לאפשר אותו כדי לצפות ביישומונים שהמאגר הזה מציע.</string>
     <string name="repo_confirm_delete_body">מחיקת מאגר זה משמעה כי יישומונים מתוכו לא יהיו זמינים עוד.
 \n
 \nהערה: כל היישומונים שהותקנו בעבר יישארו על המכשיר שלך.</string>
@@ -231,8 +224,6 @@
 \n%1$s</string>
     <string name="permissions">הרשאות</string>
     <string name="repo_details">מאגר</string>
-    <string name="repo_url">כתובת</string>
-    <string name="system_install_denied_permissions">ההרשאות המיוחדות לא הוענקו להרחבה! נא לדווח על באג!</string>
     <string name="login_title">נדרש אימות</string>
     <string name="login_name">שם משתמש</string>
     <string name="login_password">סיסמה</string>
@@ -284,9 +275,9 @@
     <string name="repositories_summary">הוספת מקורות נוספים ליישומונים</string>
     <string name="menu_video">וידאו</string>
     <string name="menu_license">רשיון: %s</string>
-    <string name="main_menu__latest_apps">עדכני ביותר</string>
+    <string name="main_menu__latest_apps">עדכניים</string>
     <string name="main_menu__categories">קטגוריות</string>
-    <string name="main_menu__swap_nearby">בקרבת מקום</string>
+    <string name="main_menu__swap_nearby">לידך</string>
     <string name="latest__empty_state__no_recent_apps">לא נמצאו יישומונים אחרונים</string>
     <string name="latest__empty_state__never_updated">לאחר עדכון רשימת היישומונים, העדכניים ביותר מביניהם אמורים להופיע כאן</string>
     <string name="latest__empty_state__no_enabled_repos">לאחר הפעלת מאגר ומשיכת עדכון ממנו, היישומונים העדכניים ביותר אמור להופיע כאן</string>
@@ -536,7 +527,6 @@
     <string name="antidisabledalgorithm">חתום באמצעות אלגוריתם בלתי מאובטח</string>
     <string name="antinosource">קוד המקור לא זמין עוד</string>
     <string name="antinonfreedep">תלויות מוגבלות</string>
-    <string name="antiupstreamnonfree">המקור מוגבל</string>
     <string name="antinonfreeassets">משאבים מוגבלים</string>
     <string name="antiknownvuln">חולשה מוכרת</string>
     <string name="antiothers">תכונות שליליות אחרות</string>
@@ -545,7 +535,6 @@
     <string name="latest__empty_state__upgrading">מסד הנתונים משתדרג…</string>
     <string name="app_name_basic">F-Droid בסיסי</string>
     <string name="about_title_basic">על F-Droid בסיסי</string>
-    <string name="repo_last_update_downloaded">העדכון האחרון התקבל</string>
     <string name="category_Nightly">לילי</string>
     <string name="warning_target_sdk">יישומון זה נבנה באמצעות גרסה ישנה יותר של Android ולא ניתן לעדכן אותו ידנית.</string>
     <string name="antinsfwlist">היישומון הזה מכיל תוכן שעדיף לא להפיץ או לצפות בו בכל מקום</string>
@@ -553,7 +542,6 @@
     <string name="swap_banner_message">כדי להחליף יישומונים, יש להפעיל את הרשת האלחוטית ולהתחבר לאותה רשת אלחוטית כמו חבריך.</string>
     <string name="turn_on_wifi">הפעלת רשת אלחוטית</string>
     <string name="repo_add_new_title">הוספת מאגר</string>
-    <string name="repo_add_new_mirror">הוספה כאתר מראה חדש</string>
     <string name="repo_intro">מאגר הוא מקור נוסף של יישומונים. ליישומוני צד־שלישי שיתווספו כאן יש תקנים אחרים לעומת אלו שמספקים יישומונים שנבנו על ידי F-Droid עצמם.
 \n
 \nנא לוודא שהמאגר שבחרת להוסיף מהימן.</string>
@@ -653,4 +641,20 @@
     <string name="export_log_success">Logcat נשמר בהצלחה</string>
     <string name="export_log_error">שגיאה בשמירת logcat</string>
     <string name="repo_details_info_text">מאגר הוא מקור ליישומונים.\n\nאתרי מראה משמשים לחלוקת עומס דרך הורדת יישומונים ממספר שרתים. אתרי מראה קרובים יותר אליך עשויים להיות מהירים יותר.\n\nאתרי מראה רשמיים מוגדרים על ידי בעל המאגר. לא ניתן למחוק אותם, רק להשבית אותם. ניתן להגדיר אתרי מראה נוספים מותאמים אישית על ידי הוספתם בדיוק כמו מאגר רגיל.</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly בסיסי</string>
+    <string name="app_details_more_apps_interesting">אולי גם זה יעניין אותך:</string>
+    <string name="app_details_more_apps_by_author">יישומונים נוספים מאת %1$s</string>
+    <string name="banner_updating_apps">היישומונים מתעדכנים</string>
+    <string name="crash_dialog_title_old">F-Droid קרס</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">עדכון זמין</item>
+        <item quantity="two">שני עדכונים זמינים</item>
+        <item quantity="other">%1$d עדכונים זמינים</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">יש לגעת כדי לעדכן הכול</string>
+    <string name="tts_repo_name">מאגר %1$s</string>
+    <string name="tts_author_name">יצירה של %1$s</string>
+    <string name="call_to_action_keepandroidopen">F-Droid תחת מתקפה. Google משנים את דרך התקנת היישומונים בטלפון שלך. אנו זקוקים לעזרתך.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

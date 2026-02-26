@@ -49,9 +49,7 @@
     <string name="panic_app_setting_none">ఏమీలేదు</string>
     <string name="allow">అనుమతించు</string>
     <string name="theme">అలంకారం</string>
-    <string name="repo_url">చిరునామా</string>
     <string name="repo_description">వివరణ</string>
-    <string name="repo_name">పేరు</string>
     <string name="allPerms">అన్నీ</string>
     <string name="keep_hour">1 గంట</string>
     <string name="keep_day">1 రోజు</string>
@@ -87,7 +85,6 @@
     <string name="unsigned">సంతకం లేనిది</string>
     <string name="unverified">ధృవీకరణ లేనిది</string>
     <string name="repo_details">రెపోజిటరి</string>
-    <string name="repo_last_update">చివరి నవీకరణ</string>
     <string name="category_System">వ్యవస్థ</string>
     <string name="swap_send_fdroid">ఎఫ్-డ్రాయిడ్ ను పంపు</string>
     <string name="crash_dialog_title">ఎఫ్-డ్రాయిడ్ ఇబ్బంది ఎదుర్కొంది</string>
@@ -140,7 +137,6 @@
     <string name="updates__app_with_known_vulnerability__ignore">పట్టించుకోకుండా</string>
     <string name="updates__hide_updateable_apps">అనువర్తనాలను దాచు</string>
     <string name="updates__show_updateable_apps">అనువర్తనాలను చూపు</string>
-    <string name="repo_add_title">క్రొత్త రిపోజిటరీని జోడించు</string>
     <string name="repo_add_mirror">అద్దం జోడించండి</string>
     <string name="versions">వెర్షన్లు</string>
     <string name="enable">అమలు చెయ్యి</string>
@@ -160,7 +156,6 @@
     <string name="antinonfreeadlist">ఈ అనువర్తనం ఉచితం కానీ పొడిగింతలను ప్రోత్సహిస్తుంది</string>
     <string name="antinonfreenetlist">ఈ అనువర్తనం ఉచితం కానీ నెట్వర్క్ సేవలను ప్రోత్సహిస్తుంది</string>
     <string name="antinonfreedeplist">ఈ అనువర్తనం ఇతర ఉచితం కానీ అనువర్తనాలపై ఆధారపడి ఉంటుంది</string>
-    <string name="antiupstreamnonfreelist">అప్స్ట్రీమ్ సోర్స్ కోడ్ పూర్తిగా ఉచితం కాదు</string>
     <string name="antinonfreeassetslist">ఈ అనువర్తనం ఉచితం కానీ ఆస్తులను కలిగి ఉంది</string>
     <string name="antidisabledalgorithmlist">ఈ అనువర్తనం బలహీన భద్రతా సంతకం కలిగి ఉంది</string>
     <string name="antiknownvulnlist">ఈ అనువర్తనం తెలిసిన భద్రతా దుర్బలత్వాన్ని కలిగి ఉంది</string>
@@ -196,7 +191,6 @@
     <string name="global_error_updating_repos">నవీకరణ సమయంలో లోపం: %s</string>
     <string name="no_permissions">అనుమతులు లేవు</string>
     <string name="permissions">అనుమతులు</string>
-    <string name="repo_num_apps">అనువర్తనాల సంఖ్య</string>
     <string name="unknown">తెలియదు</string>
     <string name="repo_confirm_delete_title">రిపోజిటరీని తొలగించాలా?</string>
     <string name="requires_features">అవసరం: %1$s</string>

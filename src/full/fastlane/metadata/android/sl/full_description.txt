@@ -1,0 +1,13 @@
+F-Droid je namestljiva knjižnica proste programske opreme za Android. Orodje F-Droid omogoča preprosto brskanje, nameščanje in spremljanje posodobitev v vaši napravi.
+
+Poveže se lahko s katerim koli skladiščem, združljivim s F-Droidom. Privzeto skladišče je gostovano na f-droid.org in vsebuje izključno preverjeno prosto programsko opremo.
+
+Android je odprt v tem smislu, da lahko nameščate APK-datoteke iz katerega koli vira, vendar obstaja več dobrih razlogov za uporabo F-Droida kot upravitelja proste programske opreme:
+
+* Obveščanje o razpoložljivih posodobitvah
+* Možnost samodejnega prenosa in namestitve posodobitev
+* Spremljanje starejših in beta različic
+* Filtriranje orodij, ki niso združljiva z napravo
+* Iskanje orodij po kategorijah in opisih
+* Dostop do povezanih povezav (donacije, izvorna koda ipd.)
+* Večja varnost s preverjanjem podpisov indeksa skladišča in hashov APK-datotek

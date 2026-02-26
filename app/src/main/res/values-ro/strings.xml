@@ -15,7 +15,6 @@
     <string name="ok">OK</string>
     <string name="yes">Da</string>
     <string name="no">Nu</string>
-    <string name="repo_add_title">Adaugă depozit nou de aplicații</string>
     <string name="repo_add_add">Adaugă</string>
     <string name="cancel">Anulați</string>
     <string name="enable">Activează</string>
@@ -29,9 +28,6 @@
     <string name="display">Interfață</string>
     <string name="expert">Setări expert</string>
     <string name="theme">Temă</string>
-    <string name="repo_num_apps">Număr de aplicații</string>
-    <string name="repo_last_update">Ultima actualizare</string>
-    <string name="repo_name">Nume</string>
     <string name="unknown">Necunoscut</string>
     <string name="requires_features">Necesită: %1$s</string>
     <string name="menu_email">Trimiteți un e-mail autorului</string>
@@ -115,7 +111,6 @@
 \n%1$s</string>
     <string name="repo_confirm_delete_title">Șterge depozit?</string>
     <string name="repo_description">Descriere</string>
-    <string name="repo_url">Adresă</string>
     <string name="unverified">Neverificat</string>
     <string name="no_permissions">Fără permisiuni</string>
     <string name="all_other_repos_fine">Nici un alt depozit nu a mai dat vreo eroare.</string>
@@ -136,7 +131,6 @@
     <string name="menu_manage">Depozite</string>
     <string name="repo_added">Depozit de pachete salvat %1$s.</string>
     <string name="pref_language">Limbă</string>
-    <string name="antiupstreamnonfreelist">Codul sursa originar nu este în totalitatea lui software liber</string>
     <string name="unsigned">Nesemnat</string>
     <string name="repo_fingerprint">Amprenta cheii de semnătură (SHA-256)</string>
     <string name="category_Connectivity">Conectivitate</string>
@@ -245,8 +239,6 @@
     <string name="repo_confirm_delete_body">Ștergerea unui depozit înseamnă ca aplicațiile din el nu vor mai fie disponibile.
 \n
 \nNotă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dumneavoastră.</string>
-    <string name="repo_not_yet_updated">Acest depozit nu a fost folosit încă. Trebuie sa îl activați pentru a putea vedea ce aplicații are disponibile.</string>
-    <string name="unsigned_description">Asta înseamnă că lista de aplicații nu a putut fi verificata. Ar trebui sa fiți atenți cu aplicațiile descărcate din indexuri nesemnate.</string>
     <string name="warning_no_internet">Nu se poate face actualizarea, există conexiune la Internet?</string>
     <string name="versions">Versiuni</string>
     <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpără-le o cafea!</string>
@@ -444,7 +436,6 @@
     <string name="send_version_and_uuid">Trimite serverului versiunea și identificatorul UUID</string>
     <string name="send_version_and_uuid_summary">Versiunea aplicației și un identificator aleator, unic, sunt trimise atunci când se fac descărcări. Setarea intră în vigoare la următoarea repornire a aplicației.</string>
     <string name="share_repository">Partajare depozit</string>
-    <string name="system_install_denied_permissions">Nu au fost date permisiuni privilegiate extensiei! Vă rugăm să creeați un raport de eroare!</string>
     <string name="swap_intro">Conectați-vă și faceți schimb de aplicații cu persoane din apropiere.</string>
     <string name="swap_join_same_wifi_desc">Pentru a face schimb prin Wi-Fi, asigurați-vă ca sunteți conectați la aceeași rețea. Dacă nu aveți acces la o rețea comună, unul(a) dintre voi poate crea un punct de acces Wi-Fi.</string>
     <string name="antinosourcesince">Codul sursă nu mai este disponibil, nu mai există posibilitatea de a actualiza</string>
@@ -517,7 +508,6 @@
     <string name="antinonfreedep">Dependențe ne-libere</string>
     <string name="antiads">Reclame</string>
     <string name="antitrack">Urmărire</string>
-    <string name="antiupstreamnonfree">Surse ne-libere</string>
     <string name="antidisabledalgorithm">Algoritm nesigur semnătură</string>
     <string name="antiknownvuln">Vulnerabilitate cunoscută</string>
     <string name="antinosource">Surse indisponibile</string>
@@ -532,14 +522,12 @@
     <string name="antinsfwlist">Această aplicație conține conținut care nu ar trebui să fie făcut public sau vizibil peste tot</string>
     <string name="about_title_basic">Despre F-Droid Basic</string>
     <string name="warning_target_sdk">Această aplicație a fost creată pentru o versiune mai veche de Android și nu poate fi actualizată automat.</string>
-    <string name="repo_last_update_downloaded">Ultima actualizare descărcată</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="category_Nightly">instabil</string>
     <string name="app_error_open">Nu s-a putut lansa aplicația.</string>
     <string name="swap_banner_message">Pentru a face schimb de aplicații, porniți Wi-Fi și conectați-vă la aceeași rețea ca și prietenul dvs.</string>
     <string name="turn_on_wifi">Porniți Wi-Fi</string>
     <string name="repo_add_new_title">Adaugă depozit</string>
-    <string name="repo_add_new_mirror">Adaugă ca server de rezervă</string>
     <string name="repo_intro">Un depozit este o sursă suplimentară de aplicații. Cele terțe pe care le adăugați aici au standarde diferite față de cele care oferă aplicațiile construite de F-Droid însuși.\n\nVă rugăm să vă asigurați că depozitul pe care îl adăugați este de încredere.</string>
     <string name="repo_state_adding">Se adaugă depozitul…</string>
     <string name="repo_state_fetching">Se descarcă depozitul…</string>
@@ -646,4 +634,46 @@
     <string name="tts_repo_name">Depozit %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
     <string name="crash_dialog_title_old">F-Droid a dat o eroare</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Despre</string>
+    <string name="menu_discover">Descoperă</string>
+    <string name="menu_apps_my">Aplicațiile mele</string>
+    <string name="first_start_loading">Se descarcă depozitele de aplicații…</string>
+    <string name="my_apps_empty">Doar aplicațiile instalate de %1$s sunt afișate aici</string>
+    <string name="my_apps_header_apps_with_issue">Aplicații cu probleme</string>
+    <string name="my_apps_ignore_dialog_title">Ascundeți problema</string>
+    <string name="my_apps_ignore_dialog_text">Problema cu această versiunea a \"%1$s\" va fi ignorată</string>
+    <string name="my_apps_ignore_dialog_button">Ascunde</string>
+    <string name="my_apps_export_installed_apps">Exportă lista de aplicații</string>
+    <string name="app_list_new">Aplicații noi</string>
+    <string name="app_list_recently_updated">Recent actualizate</string>
+    <string name="app_list_most_downloaded">Cele mai descărcate</string>
+    <string name="app_list_all">Toate aplicațiile</string>
+    <string name="app_list_author">Aplicații de la %s</string>
+    <string name="search_placeholder">Caută…</string>
+    <string name="search_no_results">Nu s-au găsit aplicații\n\nÎncercați să utilizați mai puțini termeni de căutare sau adăugați mai multe depozite</string>
+    <string name="category_group_productivity">Productivitate</string>
+    <string name="category_group_tools">Unelte</string>
+    <string name="category_group_wallets">Finanțe și Portofele</string>
+    <string name="category_group_media">Divertisment și media</string>
+    <string name="category_group_communication">Comunicare</string>
+    <string name="category_group_device">Dispozitiv</string>
+    <string name="category_group_network">Rețea</string>
+    <string name="category_group_storage">Fișiere și stocare</string>
+    <string name="category_group_interests">Pasiuni</string>
+    <string name="category_group_misc">Diverse</string>
+    <string name="author_by">De către %1$s</string>
+    <string name="last_updated">Ultima actualizare: %1$s</string>
+    <string name="last_updated_with_size">Ultima actualizare: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Pregătire instalare…</string>
+    <string name="whats_new_title">Noutăți</string>
+    <string name="donate_title">Donează</string>
+    <string name="anti_features_title">Această aplicație are caracteristici periculoase</string>
+    <string name="developer_contact">Contact dezvoltator</string>
+    <string name="technical_info">Informații tehnice</string>
+    <string name="package_name">Nume pachet:</string>
+    <string name="installed_version">Versiune instalată:</string>
+    <string name="call_to_action_keepandroidopen">F-Droid este în pericol. Google schimbă modul în care instalați aplicații pe dispozitiv. Avem nevoie de ajutorul dvs.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

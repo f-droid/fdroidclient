@@ -4,31 +4,31 @@
     <string name="more">Batafsil</string>
     <string name="less">Ozroq</string>
     <string name="menu_launch">Ochish</string>
-    <string name="main_menu__swap_nearby">Yaqin-atrofda</string>
-    <string name="skip">O\'tkazib yuborish</string>
+    <string name="main_menu__swap_nearby">Atrofdagilar</string>
+    <string name="skip">O\'tkazish</string>
     <string name="unverified">Tasdiqlanmagan</string>
     <string name="repo_details">Repozitoriy</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Ishlab chiqish</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Grafika</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Loyihalar</string>
+    <string tools:ignore="UnusedResources" name="category_Graphics">Tasvirlar</string>
     <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
     <string tools:ignore="UnusedResources" name="category_Money">Moliya</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
+    <string tools:ignore="UnusedResources" name="category_Multimedia">Audio va video</string>
     <string tools:ignore="UnusedResources" name="category_Phone_SMS">Qo\'ng\'iroqlar &amp; SMS</string>
     <string tools:ignore="UnusedResources" name="category_Science_Education">Fan &amp; taʼlim</string>
     <string tools:ignore="UnusedResources" name="category_Security">Xavfsizlik</string>
     <string tools:ignore="UnusedResources" name="category_Time">Vaqt</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Ofis</string>
-    <string name="swap_dont_show_again">Boshqa ko\'rsatmaslik</string>
+    <string tools:ignore="UnusedResources" name="category_Writing">Matn muharrirlari</string>
+    <string name="swap_dont_show_again">Boshqa ko\'rsatma</string>
     <string name="newPerms">Yangi</string>
     <string name="notification_action_update">Yangilash</string>
     <string name="notification_action_cancel">Bekor qilish</string>
     <string name="updates">Yangilanish</string>
-    <string name="ok">OK</string>
+    <string name="ok">HOP</string>
     <string name="yes">Ha</string>
-    <string name="menu_manage">Repozitoriylar</string>
+    <string name="menu_manage">Manbalar</string>
     <string name="menu_settings">Sozlamalar</string>
     <string name="menu_search">Qidiruv</string>
-    <string name="menu_add_repo">Yangi repozitoriylar</string>
+    <string name="menu_add_repo">Yangi manbalar</string>
     <string name="menu_share">Ulashish</string>
     <string name="menu_install">O\'rnatish</string>
     <string name="menu_uninstall">Oʻchirish</string>
@@ -38,12 +38,12 @@
     <string name="preference_manage_installed_apps">O\'rnatilgan ilovalarni boshqarish</string>
     <string name="next">Keyingi</string>
     <string name="pref_language">Til</string>
-    <string name="pref_language_default">Tizim tili</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Aloqa</string>
+    <string name="pref_language_default">Tizim standarti</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Bog\'lanishlar</string>
     <string tools:ignore="UnusedResources" name="category_Games">O\'yinlar</string>
     <string tools:ignore="UnusedResources" name="category_Reading">O\'qish</string>
     <string tools:ignore="UnusedResources" name="category_Navigation">Navigatsiya</string>
-    <string name="swap_welcome">F-droid ga Xush kelibsiz</string>
+    <string name="swap_welcome">F-droid ga Xush kelibsiz!</string>
     <string name="app_details">Ilova tafsilotlari</string>
     <string name="notification_action_install">O\'rnatish</string>
     <string name="app_list__name__downloading_in_progress">%1$s o\'rnatilmoqda</string>
@@ -51,7 +51,6 @@
     <string name="updates__tts__download_app">Yuklash</string>
     <string name="warning_no_internet">Yangilab bo\'lmadi, siz internetga ulanganmisiz?</string>
     <string name="unsigned">Imzosiz</string>
-    <string name="repo_last_update">So\'nggi yangilanish</string>
     <string name="details_notinstalled">Oʻrnatilmagan</string>
     <string name="antitracklist">Bu ilova harakatlaringizni kuzatib boradi va hisobot beradi</string>
     <string name="back">Orqaga</string>
@@ -61,4 +60,37 @@
     <string name="prompt_to_send_crash_reports_summary">Nosozliklar haqida ma\'lumot to\'plang va ularni ishlab chiquvchiga yuborishni so\'rang</string>
     <string name="cache_downloaded">Keshlangan ilovalarni saqlang</string>
     <string name="unstable_updates">Barqaror yangilanishlar</string>
+    <string name="app_name_full">F-Droid</string>
+    <string name="force_old_installer_title">Eski o‘rnatkichni majburlash</string>
+    <string name="force_old_installer_summary">Sessiya o‘rnatkichini o‘chirish, shu jumladan avtomatik fon yangilanishlarini.</string>
+    <string name="system_installer">Imtiyozli Modul</string>
+    <string name="system_installer_on">Ilovalarni o\'rnatish, yangilash, va o\'chirish uchun Imtiyozli modulni ishlatish</string>
+    <string name="over_network_always_summary">Mavjud bo\'lganda har doim ushbu ulanishdan foydalaning</string>
+    <string name="over_network_on_demand_summary">Bu ulanishdan faqat yuklab olishni bosganimda foydalaning</string>
+    <string name="update_auto_download">Yangilanishlarni avtomatik yuklab oling</string>
+    <string name="other">Boshqalar</string>
+    <string name="install_history">O\'rnatish tarixi</string>
+    <string name="install_history_and_metrics">O\'rnatish tarixi va ko\'rsatkichlari</string>
+    <string name="fdroid_metrics_report">%s ko\'rsatkichlari hisoboti</string>
+    <string name="keep_install_history">O\'rnatish tarixini saqlash</string>
+    <string name="over_wifi">Wi-Fi orqali</string>
+    <string name="over_data">Mobil internet orqali</string>
+    <string name="update_auto_install">Yangilanishlarni avtomatik o\'rnatish</string>
+    <string name="send_version_and_uuid">Versiyasi va UUID\'larni serverlarga jo\'natish</string>
+    <string name="send_install_history">O\'rnatish tarixini jo\'natish</string>
+    <string name="installed_version">O\'rnatilgan versiya:</string>
+    <string name="category_group_device">Qurulma</string>
+    <string name="my_apps_ignore_dialog_button">Yaxshirish</string>
+    <string name="menu_about">Haqida</string>
+    <string name="menu_apps_my">Mening ilovalarim</string>
+    <string name="my_apps_ignore_dialog_title">Xatolikni yaxshirish</string>
+    <string name="app_name_basic">F-Droid Asosiy</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Asosiy</string>
+    <string name="menu_discover">Topish</string>
+    <string name="my_apps_header_apps_with_issue">Xatoliklari bor ilovalar</string>
+    <string name="app_list_new">Yangi ilovalar</string>
+    <string name="search_no_results">Ilovalar topilmadi\n\nKamroq so\'zlardan yoki ko\'proq manbalardan foydalanishga harakat qiling</string>
+    <string name="search_placeholder">Qidirish…</string>
+    <string name="first_start_loading">Ilova manbalari yuklanmoqda…</string>
 </resources>

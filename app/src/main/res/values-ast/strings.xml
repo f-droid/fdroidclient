@@ -28,7 +28,6 @@
     <string name="ok">D\'acuerdu</string>
     <string name="yes">Sí</string>
     <string name="no">Non</string>
-    <string name="repo_add_title">Amiestu d\'un depósitu</string>
     <string name="repo_add_add">Amestar</string>
     <string name="cancel">Encaboxar</string>
     <string name="enable">Activar</string>
@@ -58,7 +57,6 @@
     <string name="antinonfreeadlist">Esta aplicación da puxu a complementos privativos</string>
     <string name="antinonfreenetlist">Esta aplicación da puxu a servicios de rede privativos</string>
     <string name="antinonfreedeplist">Esta aplicación depende d\'otres aplicaciones privatives</string>
-    <string name="antiupstreamnonfreelist">El códigu fonte nun ye llibre dafechu</string>
     <string name="display">Pantalla</string>
     <string name="expert">Mou pa espertos</string>
     <string name="expert_on">Show extra info and enable extra settings</string>
@@ -97,13 +95,8 @@
     <string name="theme">Estilu</string>
     <string name="unsigned">Nun se firmó</string>
     <string name="unverified">Nun se verificó</string>
-    <string name="repo_num_apps">Númberu d\'aplicaciones</string>
     <string name="repo_fingerprint">Buelga de la clave pa firmar (SHA-256)</string>
     <string name="repo_description">Descripción</string>
-    <string name="repo_last_update">Últimu anovamientu</string>
-    <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Esto significa que la llista d\'aplicaciones nun se pudo verificar. Habríes tener curiáu coles aplicaciones que baxes d\'índices ensin firmar.</string>
-    <string name="repo_not_yet_updated">Esti depósitu entá nun s\'usó. Tienes d\'activalu pa ver les aplicaciones que forne.</string>
     <string name="unknown">Unknown</string>
     <string name="repo_confirm_delete_title">¿Quies desaniciar el depósitu?</string>
     <string name="repo_confirm_delete_body">El desaniciu d\'un depósitu significa que les sos aplicaciones yá nun van tar disponibles.
@@ -217,9 +210,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="download_error">¡La descarga falló!</string>
-    <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension! Please create a bug report!</string>
     <string name="repo_details">Depósitu</string>
-    <string name="repo_url">Direición</string>
     <string name="perms_new_perm_prefix">Novedá:</string>
     <string name="status_download_unknown_size">Baxando\n%2$s de\n%1$s</string>
     <string name="more">Más</string>
@@ -458,7 +449,6 @@
     <string name="antiads">Anuncios</string>
     <string name="antitrack">Rastrexu</string>
     <string name="antinonfreead">Complementos privativos</string>
-    <string name="antiupstreamnonfree">Códigu fonte privativu</string>
     <string name="antiothers">Otres funciones indeseables</string>
     <string name="antinsfw">This app contains content that should not be publicized or visible everywhere</string>
     <string name="try_again">Retentar</string>

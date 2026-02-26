@@ -3,7 +3,6 @@
     <string name="system_installer_on">Cleachd Leudachan pribhleidean F-Droid airson pacaidean a stàladh, ùrachadh ’s a thoirt air falbh</string>
     <string name="system_installer">Leudachan pribhleidean F-Droid</string>
     <string name="install_history_and_metrics">Eachdraidh nan stàlaidhean ’s a’ mheatrachd</string>
-    <string name="system_install_denied_permissions">Cha deach na ceadan le pribhleidean a thoirt dhan leudachan! An cruthaich thu aithris air buga\?</string>
     <plurals name="details_last_update_years">
         <item quantity="one">Chaidh ùrachadh %1$d bhliadhna air ais</item>
         <item quantity="two">Chaidh ùrachadh %1$d bhliadhna air ais</item>
@@ -107,7 +106,6 @@
     <string name="antiknownvulnlist">Tha so-leòntachd tèarainteachd aithnichte am broinn na h-aplacaid seo</string>
     <string name="antidisabledalgorithmlist">Tha soidhneadh tèarainteachd lag aig an aplacaid seo</string>
     <string name="antinonfreeassetslist">Tha maoin nach eil saor am broinn na h-aplacaid seo</string>
-    <string name="antiupstreamnonfreelist">Chan eil bun-tùs an upstream saor gu tur</string>
     <string name="antinonfreedeplist">Tha an aplacaid seo an eisimeil air aplacaidean eile nach eil saor</string>
     <string name="antinonfreenetlist">Tha an aplacaid seo a’ brosnachadh no an eisimeil gu lèir air seirbheis lìonraidh nach eil saor</string>
     <string name="antinonfreeadlist">Brosnaichidh an aplacaid seo tuilleadain nach eil saor</string>
@@ -181,7 +179,6 @@
     <string name="links">Ceanglaichean</string>
     <string name="repo_add_mirror">Cuir sgàthan ris</string>
     <string name="repo_add_add">Cuir ris</string>
-    <string name="repo_add_title">Cuir ionad-tasgaidh ùr ris</string>
     <string name="no">Chan eil</string>
     <string name="yes">Tha</string>
     <string name="ok">Ceart ma-thà</string>
@@ -412,16 +409,10 @@
 \nAn aire: Fuirichidh na h-aplacaidean uile a stàlaich thu cheana air an uidheam agad.</string>
     <string name="repo_confirm_delete_title">A bheil thu airson an t-ionad-tasgaidh a sguabadh às?</string>
     <string name="unknown">Chan eil fhios</string>
-    <string name="repo_not_yet_updated">Cha deach an t-ionad-tasgaidh seo a cleachdadh fhathast. Feumaidh tu a chur an comas ach an seall thu na h-aplacaidean a bheir e dhut.</string>
-    <string name="unsigned_description">Is ciall dha nach b’ urrainn dhuinn liosta nan aplacaidean a dhearbhadh. Bu chòir dhut a bhith faiceallach le aplacaidean a chaidh a luchdadh a-nuas o inneacsan gun soidhneadh.</string>
-    <string name="repo_name">Ainm</string>
     <string name="repo_user_mirrors">Sgàthanan luchd-chleachdaidh</string>
     <string name="repo_official_mirrors">Sgàthanan oifigeil</string>
-    <string name="repo_last_update">An t-ùrachadh mu dheireadh</string>
     <string name="repo_description">Tuairisgeul</string>
     <string name="repo_fingerprint">Lorg-meòir na h-iuchrach soidhnidh (SHA-256)</string>
-    <string name="repo_num_apps">Àireamh de dh’aplacaidean</string>
-    <string name="repo_url">Seòladh</string>
     <string name="repo_details">Ionad-tasgaidh</string>
     <string name="unverified">Gun dearbhadh</string>
     <string name="unsigned">Gun soidhneadh</string>
@@ -534,7 +525,6 @@
     <string name="antinonfreead">Tuilleadain neo-shaor</string>
     <string name="antinonfreenet">Seirbheisean lìonraidh neo-shaor</string>
     <string name="antinonfreedep">Eisimeileachdan neo-shaor</string>
-    <string name="antiupstreamnonfree">Upstream neo-shaor</string>
     <string name="antinonfreeassets">Maoin neo-shaor</string>
     <string name="antidisabledalgorithm">Soidhneadh le algairim nach eil sàbhailte</string>
     <string name="antiknownvuln">So-leòntachd aithnichte</string>
@@ -544,7 +534,6 @@
     <string name="app_error_open">Cha b’ urrainn dhuinn an aplacaid a chur gu dol.</string>
     <string name="about_title_basic">Mu F-Droid bunasach</string>
     <string name="repo_add_new_title">Cuir ionad-tasgaidh ris</string>
-    <string name="repo_add_new_mirror">Cuir ris ’na sgàthan ùr</string>
     <string name="app_name_basic">F-Droid bunasach</string>
     <string name="category_Nightly">oidhcheil</string>
     <string name="turn_on_wifi">Cuir a’ WiFi air</string>
@@ -561,7 +550,6 @@
     <string name="repo_state_fetching">A’ faighinn an ionaid-thasgaidh…</string>
     <string name="repo_io_error">Mearachd a’ ceangal ris an ionad-tasgaidh.</string>
     <string name="repo_enter_url">Cuir a-steach URL an ionaid-thasgaidh a làimh</string>
-    <string name="repo_last_update_downloaded">An t-ùrachadh mu dheireadh a chaidh a luchdadh a-nuas</string>
     <string name="latest__empty_state__upgrading">Ag àrdachadh an stòir-dhàta…</string>
     <string name="repo_intro">’S e tùs a bharrachd do dh’aplacaidean a th’ ann an ionad-tasgaidh. Tha stannardan eadar-dhealaichte aig feadhainn threas-phàrtaidhean a chuireas tu ris an-seo na tha aig an fheadhainn a sholaireas aplacaidean a chaidh a thogail le F-Droid fhèin.
 \n

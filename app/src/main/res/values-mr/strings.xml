@@ -47,7 +47,6 @@
     <string name="enable">लागू</string>
     <string name="versions">आवृ</string>
     <string name="repo_add_mirror">प्रतिकृती</string>
-    <string name="repo_add_title">नवे भांडार</string>
     <string name="updates_disabled_by_settings">डेटा/ वायफाय द्वारे सर्व अद्ययावने</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">%1$d अँपसाठी अद्यावत डाउनलोड करा.</item>
@@ -127,7 +126,6 @@
     <string name="category_Sports_Health">खेळ आणि</string>
     <string name="wifi">वाय-फाय</string>
     <string name="not_on_same_wifi">तुमचे यंत्र तुमच्याद्वारे जोडल्या गेलेल्या स्थानीक भांडाराच्या वाई-फाई वर नाही ! या नेटवर्क मध्ये सामील होण्याचा प्रयत्न करा: %s</string>
-    <string name="repo_last_update">अंतिम अद्ययावत</string>
     <string name="unverified">असत्यापित</string>
     <string name="warning_no_internet">अद्यायवत शक्य नाही, तुम्ही इंटरनेटला जोडलेले आहात का ?</string>
     <string name="antitracklist">हे ऍप तुमच्या हालचालीवर पाळत ठेऊन नोंद करते</string>
@@ -211,7 +209,6 @@
     <string name="antinosourcesince">मूळ सांकेतिक शब्दसंग्रह आता उपलब्ध होणार नसल्याने, अद्ययावतन शक्य नाही.</string>
     <string name="antiknownvulnlist">या अँँप्पमध्ये एक ज्ञात सुरक्षितता भेद आढळला आहे</string>
     <string name="antidisabledalgorithmlist">या अँपची रक्षाप्रणाली स्वाक्षरी कुमकुवत आहे</string>
-    <string name="antiupstreamnonfreelist">बाह्यस्त्रोतातुन वापरला गेलेला काही मुळ सांकेतिक शब्दसंग्रह पुर्णतः खुला नाही</string>
     <string name="antinonfreeassetslist">या अँपमध्ये गैर मोफत सामग्री चा समावेश आहे</string>
     <string name="antinonfreedeplist">हे अँप इतर काही सशुल्क अँप्स वर अवलंबून आहे</string>
     <string name="antinonfreeadlist">हे अँप काही सशुल्क अँप्सचे प्रोत्साहन देखील करते</string>
@@ -286,8 +283,6 @@
     <string name="repo_official_mirrors">अधिकारीक</string>
     <string name="repo_description">विवरण</string>
     <string name="repo_fingerprint">बोटांच्या ठश्याची प्रमाण प्रणाली (SHA-256)</string>
-    <string name="repo_num_apps">एकूण अँप्सची</string>
-    <string name="repo_url">पत्ता</string>
     <string name="theme">धर्ती</string>
     <string name="no_handler_app">तुमच्याकडे असे कोणतेही अँप नाही जे
 \n%s वर नियंत्रण करेल.</string>

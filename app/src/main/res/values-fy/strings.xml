@@ -10,7 +10,6 @@
     <string name="perms_new_perm_prefix">Nij:</string>
     <string name="swap_visible_wifi">Sichtber via Wi-Fi</string>
     <string name="open_qr_code_scanner">QR Scanner Iepenje</string>
-    <string name="repo_name">Namme</string>
     <string name="theme">Tema</string>
     <string name="allow">Tastean</string>
     <string name="menu_opencollective">OpenCollective</string>
@@ -127,7 +126,6 @@
     <string name="crash_dialog_title">F-Droid is fêstrûn</string>
     <string name="swap_send_fdroid">F-Droid Stjoere</string>
     <string name="not_on_same_wifi">Jo apparaat sit net op itselde Wi-Fi as it lokale bewarplak dy jo krekt ta foecht ha! Probearje mei dit netwurk te ferbinen: %s</string>
-    <string name="repo_last_update">Lêste fernijing</string>
     <string name="repo_details">Bewarplak</string>
     <string name="unverified">Net ferifieare</string>
     <string name="unsigned">Net ûndertekene</string>

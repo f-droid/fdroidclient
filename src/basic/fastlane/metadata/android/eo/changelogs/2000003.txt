@@ -1,0 +1,8 @@
+• tute refaris fasadon uzante Kotlin Compose
+• plibonigis serĉon, ankaŭ priserĉante priskribojn kaj tradukojn
+• plifaciligis esploron de novaj aplikaĵoj, emfazante la plej ofte elŝutatajn
+• montrado de instal-peto antaŭ ol elŝuti
+• pluraj elŝutadoj/ĝisdatigoj samtempe
+• informi uzanton pri problemoj (ekz. pri ŝanĝo de subskriba ŝlosilo)
+• (malnepra) kolora haŭto Material You
+• plibonigis filtradon de listoj

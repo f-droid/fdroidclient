@@ -3,7 +3,7 @@
     <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla versionen avinstalleras först. Gör det och försök sedan igen. (Observera att all internt lagrad data som tillhör appen kommer att raderas när det avinstalleras)</string>
     <string name="installIncompatible">Appen är inkompatibel med din enhet, installera ändå?</string>
     <string name="version">Version</string>
-    <string name="delete">Ta bort</string>
+    <string name="delete">Radera</string>
     <string name="cache_downloaded">Behåll cachade appar</string>
     <string name="updates">Uppdateringar</string>
     <string name="other">Annat</string>
@@ -15,7 +15,7 @@
     <string name="local_repo_name">Namn på ditt lokala förråd</string>
     <string name="local_repo_name_summary">Den annonserade titeln på ditt lokala förråd: %s</string>
     <string name="local_repo_https_on">Använd krypterad HTTPS://-anslutning för lokalt förråd</string>
-    <string name="app_details">Appdetaljer</string>
+    <string name="app_details">Detaljer för appen</string>
     <string name="no_such_app">Hittade ingen sådan app.</string>
     <string name="about_title_full">Om F-Droid</string>
     <string name="about_site">Webbplats</string>
@@ -28,7 +28,6 @@
     <string name="ok">OK</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
-    <string name="repo_add_title">Lägg till nytt förråd</string>
     <string name="repo_add_add">Lägg till</string>
     <string name="cancel">Avbryt</string>
     <string name="enable">Aktivera</string>
@@ -39,9 +38,9 @@
     <string name="repo_add_url">Förrådsadress</string>
     <string name="repo_add_fingerprint">Fingeravtryck (valfritt)</string>
     <string name="malformed_repo_uri">Ignorera felaktig förråds-URI: %s</string>
-    <string name="menu_manage">Förråd</string>
+    <string name="menu_manage">Paketförråd</string>
     <string name="menu_search">Sök</string>
-    <string name="menu_add_repo">Nytt förråd</string>
+    <string name="menu_add_repo">Nytt paketförråd</string>
     <string name="menu_launch">Öppna</string>
     <string name="menu_share">Dela</string>
     <string name="menu_install">Installera</string>
@@ -58,7 +57,6 @@
     <string name="antinonfreeadlist">Denna app uppmuntrar icke-fria tillägg</string>
     <string name="antinonfreenetlist">Den här appen främjar eller är helt beroende av en icke-fri nätverkstjänst</string>
     <string name="antinonfreedeplist">Denna app är beroende av andra icke-fria appar</string>
-    <string name="antiupstreamnonfreelist">Källkoden från uppström är inte fullständigt fri</string>
     <string name="display">Visning</string>
     <string name="expert">Expertläge</string>
     <string name="expert_on">Visa extra info och aktivera extra inställningar</string>
@@ -96,15 +94,8 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Osignerad</string>
     <string name="unverified">Ej verifierad</string>
-    <string name="repo_num_apps">Antal appar</string>
     <string name="repo_fingerprint">Fingeravtryck för signeringsnyckel (SHA-256)</string>
     <string name="repo_description">Beskrivning</string>
-    <string name="repo_last_update">Senaste uppdatering</string>
-    <string name="repo_name">Namn</string>
-    <string name="unsigned_description">Detta betyder att listan med appar inte kunde verifieras. Du bör vara försiktig med appar som hämtats från osignerade index.</string>
-    <string name="repo_not_yet_updated">Detta förråd har inte använts ännu.
-        Du måste aktivera det för att se apparna det tillhandahåller.
-    </string>
     <string name="unknown">Okänd</string>
     <string name="repo_confirm_delete_title">Ta bort förråd?</string>
     <string name="repo_confirm_delete_body">Att radera ett förråd betyder att dess appar inte längre kommer att vara tillgängliga.
@@ -155,8 +146,7 @@
 \n%1$s</string>
     <string name="banner_updating_repositories">Uppdaterar filförråden</string>
     <string name="permissions">Behörigheter</string>
-    <string name="repo_details">Förråd</string>
-    <string name="repo_url">Adress</string>
+    <string name="repo_details">Paketförråd</string>
     <string name="pref_language">Språk</string>
     <string name="pref_language_default">Systemstandard</string>
     <string name="wifi">Wi-Fi</string>
@@ -177,7 +167,7 @@
     <string name="category_Connectivity">Anslutbarhet</string>
     <string name="category_Graphics">Grafik</string>
     <string name="category_Money">Pengar</string>
-    <string name="category_Sports_Health">Sport &amp; hälsa</string>
+    <string name="category_Sports_Health">Sport &amp; Hälsa</string>
     <string name="category_Theming">Temasättning</string>
     <string name="category_Time">Tid</string>
     <string name="category_Writing">Skrivande</string>
@@ -189,7 +179,6 @@
     <string name="empty_can_update_app_list">Grattis!\nDina appar är uppdaterade.</string>
     <string name="install_error_unknown">Misslyckades att installera på grund av ett okänt problem</string>
     <string name="uninstall_error_unknown">Det gick inte att avinstallera på grund av ett okänt fel</string>
-    <string name="system_install_denied_permissions">De privilegierade tillstånden har inte beviljats utökningen! Skapa en felrapport!</string>
     <string name="swap_join_same_wifi_desc">För att utbyta via Wi-Fi, se till att ni är på samma nätverk. Om ni inte har åtkomst till samma nätverk, kan en av er skapa en Wi-Fi-hotspot.</string>
     <string name="swap_join_this_hotspot">Hjälp din vän ansluta sig till din hotspot</string>
     <string name="swap_success">Utbyte lyckades!</string>
@@ -300,7 +289,7 @@
     <string name="notification_title_summary_ready_to_install_update">Uppdatering redo att installeras</string>
     <string name="notification_title_summary_installing">Installerar</string>
     <string name="notification_title_summary_installed">Installation lyckades</string>
-    <string name="notification_title_summary_install_error">Installation misslyckades</string>
+    <string name="notification_title_summary_install_error">Installationen misslyckades</string>
     <string name="notification_action_update">Uppdatering</string>
     <string name="notification_action_cancel">Avbryt</string>
     <string name="notification_action_install">Installera</string>
@@ -326,7 +315,7 @@
         <item quantity="one">Uppdaterades för %1$d dag sedan</item>
         <item quantity="other">Uppdaterades för %1$d dagar sedan</item>
     </plurals>
-    <string name="app_list__name__successfully_installed">%1$s installerad</string>
+    <string name="app_list__name__successfully_installed">%1$s installerade</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Inget internet? Få appar från personer nära dig!</string>
     <string name="nearby_splash__find_people_button">Hitta personer i närheten</string>
     <string name="nearby_splash__both_parties_need_fdroid">Båda parter behöver %1$s för att använda \"I närheten\".</string>
@@ -341,7 +330,7 @@
     <string name="app__tts__downloading_progress">Hämtar, %1$d%% färdigt</string>
     <plurals name="notification_summary_more">
         <item quantity="one">+%1$d till…</item>
-        <item quantity="other">+%1$d till…</item>
+        <item quantity="other">+%1$d fler…</item>
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d uppdatering</item>
@@ -434,9 +423,9 @@
     <string name="swap_toast_could_not_enable_hotspot">Kunde inte aktivera Wi-Fi-hotspot!</string>
     <string name="warning_scaning_qr_code">Din kamera verkar inte ha autofokus. Det kan bli svårt att skanna koden.</string>
     <string name="prompt_to_send_crash_reports">Fråga om att skicka kraschrapporter</string>
-    <string name="prompt_to_send_crash_reports_summary">Samla data om krascher och be att få skicka den till utvecklaren</string>
-    <string name="hide_all_notifications">Göm alla aviseringar</string>
-    <string name="hide_all_notifications_summary">Förhindra att alla åtgärder visas i statusfältet och aviseringsfönstret.</string>
+    <string name="prompt_to_send_crash_reports_summary">Samla in data om krascher och be att få skicka den till utvecklaren</string>
+    <string name="hide_all_notifications">Dölj alla aviseringar</string>
+    <string name="hide_all_notifications_summary">Förhindra att alla åtgärder att visas i statusfältet och aviseringsfönstret.</string>
     <string name="install_history">Installationshistorik</string>
     <string name="install_history_summary">Visa privat logg av samtliga installationer och avinstallationer</string>
     <string name="send_version_and_uuid">Sänd versionnummer och UUID till servrarna</string>
@@ -519,7 +508,6 @@
     <string name="antinonfreead">Icke-fria tillägg</string>
     <string name="antinosource">Källkoden är inte längre tillgänglig</string>
     <string name="antitrack">Spårning</string>
-    <string name="antiupstreamnonfree">Icke-fri uppströms</string>
     <string name="antiothers">Andra antifunktioner</string>
     <string name="antinsfw">Inte Säkert för Arbetet</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
@@ -528,7 +516,6 @@
     <string name="about_title_basic">Om F-Droid Standard</string>
     <string name="antinsfwlist">Den här appen innehåller innehåll som inte borde publiceras eller vara synlig någonstans</string>
     <string name="app_error_open">Kunde inte starta app.</string>
-    <string name="repo_last_update_downloaded">Senaste uppdateringen nerladdad</string>
     <string name="category_Nightly">nattlig</string>
     <string name="warning_target_sdk">Den här appen byggdes för en äldre version av Android och kan inte uppdateras automatiskt.</string>
     <string name="copied_to_clipboard">Kopierad till urklipp</string>
@@ -547,7 +534,6 @@
     <string name="copied_url_to_clipboard">Kopierad URL till urklipp</string>
     <string name="repo_io_error">Fel uppstod vid anslutning till förrådet.</string>
     <string name="repo_enter_url">Ange förråd-URL manuellt</string>
-    <string name="repo_add_new_mirror">Lägg till som ny spegel</string>
     <string name="swap_banner_message">För att byta appar, starta ditt WIFI och anslut till samma nätverk som din vän.</string>
     <string name="force_old_installer_summary">Inaktivera sessionsinstalleraren, inklusive stöd för automatiska bakgrundsuppdateringar.</string>
     <string name="repo_num_apps_button">Visa appar</string>
@@ -602,8 +588,8 @@
     <string name="swap_bluetooth_permissions">Vänligen ge tillstånd för Bluetooth eller enhet i närheten!</string>
     <string name="antitetherednet">Tjudringsnätverkstjänster</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverad</item>
-        <item quantity="other">Ladda ner appar med hjälp av IPFS webbslutpunkter: %1$d aktiverade</item>
+        <item quantity="one">Hämta appar med hjälp av IPFS-webbslutpunkter: %1$d aktiverad</item>
+        <item quantity="other">Hämta appar med hjälp av IPFS-webbslutpunkter: %1$d aktiverade</item>
     </plurals>
     <string name="export_log_success">Logcat har sparats</string>
     <string name="repo_archive_unknown">Detta förråd verkar inte ha något arkiv.</string>
@@ -640,4 +626,46 @@
     <string name="tts_repo_name">Filförrådet %1$s</string>
     <string name="tts_author_name">Författare %1$s</string>
     <string name="crash_dialog_title_old">F-Droid har kraschat</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Standard</string>
+    <string name="call_to_action_keepandroidopen">F-Droid är under hot. Google ändrar hur du installerar appar i din telefon. Vi behöver din hjälp.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="menu_about">Om</string>
+    <string name="menu_discover">Upptäck</string>
+    <string name="menu_apps_my">Mina appar</string>
+    <string name="first_start_loading">Hämtar appförråd…</string>
+    <string name="my_apps_empty">Endast appar installerade av %1$s visas här</string>
+    <string name="my_apps_header_apps_with_issue">Appar med problem</string>
+    <string name="my_apps_ignore_dialog_title">Dölj problemet</string>
+    <string name="my_apps_ignore_dialog_text">Problemet med denna version av \"%1$s\" kommer att ignoreras</string>
+    <string name="my_apps_ignore_dialog_button">Dölj</string>
+    <string name="my_apps_export_installed_apps">Exportera applista</string>
+    <string name="app_list_new">Nya appar</string>
+    <string name="app_list_recently_updated">Nyligen uppdaterade</string>
+    <string name="app_list_most_downloaded">Mest hämtade</string>
+    <string name="app_list_all">Alla appar</string>
+    <string name="app_list_author">Appar från %s</string>
+    <string name="search_placeholder">Sök…</string>
+    <string name="search_no_results">Inga appar hittades\n\nFörsök att använda färre söktermer eller lägga till fler förråd</string>
+    <string name="category_group_productivity">Produktivitet</string>
+    <string name="category_group_tools">Verktyg</string>
+    <string name="category_group_wallets">Ekonomi &amp; plånböcker</string>
+    <string name="category_group_media">Underhållning &amp; media</string>
+    <string name="category_group_communication">Kommunikation</string>
+    <string name="category_group_device">Enhet</string>
+    <string name="category_group_network">Nätverk</string>
+    <string name="category_group_storage">Filer &amp; lagring</string>
+    <string name="category_group_interests">Intressen</string>
+    <string name="category_group_misc">Diverse</string>
+    <string name="author_by">Av %1$s</string>
+    <string name="last_updated">Senast uppdaterad: %1$s</string>
+    <string name="last_updated_with_size">Senast uppdaterad: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Förbereder installationen…</string>
+    <string name="whats_new_title">Vad är nytt</string>
+    <string name="donate_title">Donera</string>
+    <string name="anti_features_title">Denna app har antifunktioner</string>
+    <string name="technical_info">Teknisk information</string>
+    <string name="package_name">Paketnamn:</string>
+    <string name="installed_version">Installerad version:</string>
+    <string name="developer_contact">Kontakta utvecklaren</string>
 </resources>

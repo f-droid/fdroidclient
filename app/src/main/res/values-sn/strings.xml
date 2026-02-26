@@ -45,7 +45,6 @@
     <string name="ok">OK</string>
     <string name="yes">Hongu</string>
     <string name="no">Kwete</string>
-    <string name="repo_add_title">Wedzera pfimbi itsva</string>
     <string name="repo_add_add">Wedzera</string>
     <string name="links">Kochekero</string>
     <string name="more">Zvimwe</string>
@@ -88,7 +87,6 @@
     <string name="antinonfreeadlist">App inosesedza zvinowedzerwa paapp ino zvinobhadharwa</string>
     <string name="antinonfreenetlist">App ino inosesedza zvirango zvemasaisai zvinobhadharwa</string>
     <string name="antinonfreedeplist">App ino inotemba nemamwe maapps anobhadharwa</string>
-    <string name="antiupstreamnonfreelist">Nyuko yemurau irikumberi haisi yemahara</string>
     <string name="antinonfreeassetslist">App ino inenhumbi dzinobhadharwa</string>
     <string name="display">Pangidzo</string>
     <string name="expert">Motowo wegodobori</string>
@@ -155,19 +153,8 @@
     <string name="unsigned">Isina kusainiwa</string>
     <string name="unverified">Isina kuwongororwa kururama</string>
     <string name="repo_details">Pfimbi</string>
-    <string name="repo_url">Kero</string>
-    <string name="repo_num_apps">Nhamba yema Apps</string>
     <string name="repo_fingerprint">Chidhindo chechigunwe chesvumbunuro yekusaina (SHA-256)</string>
     <string name="repo_description">Dudziro</string>
-    <string name="repo_last_update">Chapedzisira kunatsa</string>
-    <string name="repo_name">Zita</string>
-    <string name="unsigned_description">Izvi zvinoreva kuti rutarwa rwe
-        maApplication rwatadza kuwongororwa kururama. Unofanirwa kuchenjera
-        maApplications akatutunurwa kubva kumaindex asina kusainiwa.
-    </string>
-    <string name="repo_not_yet_updated">Pfimbi iyi haisati yashandiswa.
-        Unofanirwa kuibvimidza kuwona maApps aino yananisa.
-    </string>
     <string name="unknown">Haizivikanwe</string>
     <string name="repo_confirm_delete_title">Dzima Pfimbi?</string>
     <string name="repo_confirm_delete_body">Kudzima pfimbi kunoreva kuti
@@ -220,9 +207,6 @@
     <string name="empty_search_available_app_list">Hapana maApps akatevedzera aripo.</string>
     <string name="install_error_unknown">Tatadza kuvakirira nenhau yekanganiso isingazivikanwe</string>
     <string name="uninstall_error_unknown">Tatadza kubvisa kuvakirira nenhau yekanganiso isirikuzivikanwe</string>
-    <string name="system_install_denied_permissions">Mibvumo ine tambanudzo haina kupihwa kuchihesvuro! Chikumbiro, sika
-        dudziro rezvipfukuto!
-    </string>
     <string name="swap_join_same_wifi">Hakira paWi-Fi imwe chete seshamwari yako</string>
     <string name="swap_join_same_wifi_desc">Kuti utsinhana pamasaisai eWi-Fi, tanga mazvivimbisa kuti muripa masaisai mamwe chete. Kana usina hupindwa pamasaisai mamwe chete, mumwe wenyu anokwanisa kusika nzvimbo yake yemasaisai eWi-Fi.</string>
     <string name="swap_join_this_hotspot">Batsira shamwari yako kupinda panzvimbo yako yemasaisai</string>

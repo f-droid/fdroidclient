@@ -157,7 +157,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">Both parties need %1$s to use nearby.</string>
     <string name="nearby_splash__find_people_button">Find people nearby</string>
     <string name="nearby_splash__download_apps_from_people_nearby">No internet? Get apps from people near you!</string>
-    <string name="system_install_denied_permissions">The privileged permissions have not been granted to the extension! Please create a bug report!</string>
     <string name="uninstall_error_unknown">Failed to uninstall due to an unknown error</string>
     <string name="install_error_unknown">Failed to install due to an unknown error</string>
     <string name="empty_search_available_app_list">No matching applications available.</string>
@@ -185,15 +184,10 @@
 \nNote: All previously installed apps will remain on your device.</string>
     <string name="repo_confirm_delete_title">Delete repository?</string>
     <string name="unknown">Unknown</string>
-    <string name="repo_not_yet_updated">This repository has not been used yet. You need to enable it to view the apps it provides.</string>
-    <string name="unsigned_description">This means that the list of apps could not be verified. You should be careful with apps downloaded from unsigned indexes.</string>
-    <string name="repo_name">Name</string>
     <string name="repo_user_mirrors">User mirrors</string>
     <string name="repo_official_mirrors">Official mirrors</string>
     <string name="repo_description">Description</string>
     <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
-    <string name="repo_num_apps">Number of apps</string>
-    <string name="repo_url">Address</string>
     <string name="theme">Theme</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
     <string name="permissions">Permissions</string>
@@ -271,7 +265,6 @@
     <string name="antiknownvulnlist">This app contains a known security vulnerability</string>
     <string name="antidisabledalgorithmlist">This app has a weak security signature</string>
     <string name="antinonfreeassetslist">This app contains non-free assets</string>
-    <string name="antiupstreamnonfreelist">The upstream source code is not entirely Free</string>
     <string name="antinonfreedeplist">This app depends on other non-free apps</string>
     <string name="antinonfreenetlist">This app promotes or depends entirely on a non-free network service</string>
     <string name="antinonfreeadlist">This app promotes non-free add-ons</string>
@@ -324,7 +317,6 @@
     <string name="links">Links</string>
     <string name="repo_add_mirror">Add mirror</string>
     <string name="repo_add_add">Add</string>
-    <string name="repo_add_title">Add new repository</string>
     <string name="updates_disabled_by_settings">All updates disabled by data/Wi-Fi settings</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Download update for %1$d app:</item>
@@ -431,7 +423,6 @@
     <string name="category_Sports_Health">Sports &amp; Health</string>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">Your device is not on the same Wi-Fi as the Local Repo you just added! Try joining this network: %s</string>
-    <string name="repo_last_update">Last update</string>
     <string name="repo_details">Repository</string>
     <string name="unverified">Unverified</string>
     <string name="unsigned">Unsigned</string>
@@ -511,7 +502,6 @@
     <string name="latest__empty_state__upgrading">Upgrading database…</string>
     <string name="antinonfreeassets">Non-Free Assets</string>
     <string name="antinonfreedep">Non-Free Dependencies</string>
-    <string name="antiupstreamnonfree">Upstream Non-Free</string>
     <string name="antidisabledalgorithm">Signed Using An Unsafe Algorithm</string>
     <string name="share_apk_error">Could not share app file</string>
     <string name="antinonfreenet">Non-Free Network Services</string>
@@ -526,7 +516,6 @@
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">About F-Droid Basic</string>
     <string name="antinsfwlist">This app contains content that should not be publicized or visible everywhere</string>
-    <string name="repo_last_update_downloaded">Last update downloaded</string>
     <string name="category_Nightly">nightly</string>
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
     <string name="app_error_open">Could not launch app.</string>
@@ -540,7 +529,6 @@
     <string name="repo_state_fetching">Fetching repository…</string>
     <string name="repo_io_error">Error connecting to the repository.</string>
     <string name="repo_enter_url">Enter repository URL manually</string>
-    <string name="repo_add_new_mirror">Add as new mirror</string>
     <string name="repo_intro">A repository is an additional source of apps. Third-party ones you add here have different standards than those providing apps built by F-Droid itself.
 \n
 \nPlease ensure that the repository you are adding is trustworthy.</string>
