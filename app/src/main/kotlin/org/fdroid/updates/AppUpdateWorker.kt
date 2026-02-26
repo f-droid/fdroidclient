@@ -17,6 +17,7 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.Flow
@@ -28,115 +29,118 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallNotificationState
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
-import java.util.concurrent.TimeUnit
 
 @HiltWorker
-class AppUpdateWorker @AssistedInject constructor(
-    @Assisted appContext: Context,
-    @Assisted workerParams: WorkerParameters,
-    private val nm: NotificationManager,
-    private val updatesManager: UpdatesManager,
-    private val appInstallManager: AppInstallManager,
+class AppUpdateWorker
+@AssistedInject
+constructor(
+  @Assisted appContext: Context,
+  @Assisted workerParams: WorkerParameters,
+  private val nm: NotificationManager,
+  private val updatesManager: UpdatesManager,
+  private val appInstallManager: AppInstallManager,
 ) : CoroutineWorker(appContext, workerParams) {
 
-    companion object {
-        private val TAG = AppUpdateWorker::class.simpleName
+  companion object {
+    private val TAG = AppUpdateWorker::class.simpleName
 
-        @VisibleForTesting
-        internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
+    @VisibleForTesting internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
 
-        @JvmStatic
-        fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
-            val workManager = WorkManager.getInstance(context)
-            if (autoUpdate != AutoUpdateValues.Never) {
-                Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
-                val networkType = if (autoUpdate == AutoUpdateValues.Always) {
-                    NetworkType.CONNECTED
-                } else {
-                    NetworkType.UNMETERED
-                }
-                val constraints = Constraints.Builder()
-                    .setRequiresBatteryNotLow(true)
-                    .setRequiresStorageNotLow(true)
-                    .setRequiresDeviceIdle(true)
-                    .setRequiredNetworkType(networkType)
-                    .build()
-                val workRequest = PeriodicWorkRequestBuilder<AppUpdateWorker>(
-                    repeatInterval = TimeUnit.HOURS.toMillis(24),
-                    repeatIntervalTimeUnit = TimeUnit.MILLISECONDS,
-                    flexTimeInterval = 60,
-                    flexTimeIntervalUnit = TimeUnit.MINUTES,
-                )
-                    .setConstraints(constraints)
-                    .build()
-                workManager.enqueueUniquePeriodicWork(
-                    uniqueWorkName = UNIQUE_WORK_NAME_APP_UPDATE,
-                    existingPeriodicWorkPolicy = ExistingPeriodicWorkPolicy.UPDATE,
-                    request = workRequest,
-                )
-            } else {
-                Log.w(TAG, "Cancelling job due to settings!")
-                workManager.cancelUniqueWork(UNIQUE_WORK_NAME_APP_UPDATE)
-            }
-        }
-
-        fun getAutoUpdateWorkInfo(context: Context): Flow<WorkInfo?> {
-            return WorkManager.getInstance(context).getWorkInfosForUniqueWorkFlow(
-                UNIQUE_WORK_NAME_APP_UPDATE
-            ).map { it.getOrNull(0) }
-        }
-    }
-
-    private val log = KotlinLogging.logger { }
-
-    override suspend fun doWork(): Result {
-        log.info {
-            if (SDK_INT >= 31) {
-                "doWork $this stopReason: ${this.stopReason} runAttemptCount: $runAttemptCount"
-            } else {
-                "doWork $this runAttemptCount: $runAttemptCount"
-            }
-        }
-        try {
-            if (canStartForegroundService(applicationContext)) setForeground(getForegroundInfo())
-        } catch (e: Exception) {
-            log.error(e) { "Error while running setForeground: " }
-        }
-        return try {
-            currentCoroutineContext().ensureActive()
-            nm.cancelAppUpdatesAvailableNotification()
-            // Updating apps will try start a foreground service
-            // and it will "share" the same notification.
-            // This is easier than trying to tell the [AppInstallManager]
-            // not to start a foreground service in this specific case.
-            updatesManager.updateAll(false)
-            // show success notification, if at least one app got installed
-            val notificationState = appInstallManager.installNotificationState
-            if (notificationState.numInstalled > 0) {
-                nm.showInstallSuccessNotification(notificationState)
-            }
-            Result.success()
-        } catch (e: Exception) {
-            log.error(e) { "Error updating apps: " }
-            if (runAttemptCount <= 3) {
-                Result.retry()
-            } else {
-                log.warn { "Not retrying, already tried $runAttemptCount times." }
-                Result.failure()
-            }
-        } finally {
-            log.info {
-                if (SDK_INT >= 31) "finished doWork $this (stopReason: ${this.stopReason})"
-                else "finished doWork $this"
-            }
-        }
-    }
-
-    override suspend fun getForegroundInfo(): ForegroundInfo {
-        return ForegroundInfo(
-            NOTIFICATION_ID_APP_INSTALLS,
-            nm.getAppInstallNotification(InstallNotificationState()).build(),
-            if (SDK_INT >= 29) FOREGROUND_SERVICE_TYPE_MANIFEST else 0
+    @JvmStatic
+    fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
+      val workManager = WorkManager.getInstance(context)
+      if (autoUpdate != AutoUpdateValues.Never) {
+        Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
+        val networkType =
+          if (autoUpdate == AutoUpdateValues.Always) {
+            NetworkType.CONNECTED
+          } else {
+            NetworkType.UNMETERED
+          }
+        val constraints =
+          Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
+            .setRequiresStorageNotLow(true)
+            .setRequiresDeviceIdle(true)
+            .setRequiredNetworkType(networkType)
+            .build()
+        val workRequest =
+          PeriodicWorkRequestBuilder<AppUpdateWorker>(
+              repeatInterval = TimeUnit.HOURS.toMillis(24),
+              repeatIntervalTimeUnit = TimeUnit.MILLISECONDS,
+              flexTimeInterval = 60,
+              flexTimeIntervalUnit = TimeUnit.MINUTES,
+            )
+            .setConstraints(constraints)
+            .build()
+        workManager.enqueueUniquePeriodicWork(
+          uniqueWorkName = UNIQUE_WORK_NAME_APP_UPDATE,
+          existingPeriodicWorkPolicy = ExistingPeriodicWorkPolicy.UPDATE,
+          request = workRequest,
         )
+      } else {
+        Log.w(TAG, "Cancelling job due to settings!")
+        workManager.cancelUniqueWork(UNIQUE_WORK_NAME_APP_UPDATE)
+      }
     }
+
+    fun getAutoUpdateWorkInfo(context: Context): Flow<WorkInfo?> {
+      return WorkManager.getInstance(context)
+        .getWorkInfosForUniqueWorkFlow(UNIQUE_WORK_NAME_APP_UPDATE)
+        .map { it.getOrNull(0) }
+    }
+  }
+
+  private val log = KotlinLogging.logger {}
+
+  override suspend fun doWork(): Result {
+    log.info {
+      if (SDK_INT >= 31) {
+        "doWork $this stopReason: ${this.stopReason} runAttemptCount: $runAttemptCount"
+      } else {
+        "doWork $this runAttemptCount: $runAttemptCount"
+      }
+    }
+    try {
+      if (canStartForegroundService(applicationContext)) setForeground(getForegroundInfo())
+    } catch (e: Exception) {
+      log.error(e) { "Error while running setForeground: " }
+    }
+    return try {
+      currentCoroutineContext().ensureActive()
+      nm.cancelAppUpdatesAvailableNotification()
+      // Updating apps will try start a foreground service
+      // and it will "share" the same notification.
+      // This is easier than trying to tell the [AppInstallManager]
+      // not to start a foreground service in this specific case.
+      updatesManager.updateAll(false)
+      // show success notification, if at least one app got installed
+      val notificationState = appInstallManager.installNotificationState
+      if (notificationState.numInstalled > 0) {
+        nm.showInstallSuccessNotification(notificationState)
+      }
+      Result.success()
+    } catch (e: Exception) {
+      log.error(e) { "Error updating apps: " }
+      if (runAttemptCount <= 3) {
+        Result.retry()
+      } else {
+        log.warn { "Not retrying, already tried $runAttemptCount times." }
+        Result.failure()
+      }
+    } finally {
+      log.info {
+        if (SDK_INT >= 31) "finished doWork $this (stopReason: ${this.stopReason})"
+        else "finished doWork $this"
+      }
+    }
+  }
+
+  override suspend fun getForegroundInfo(): ForegroundInfo {
+    return ForegroundInfo(
+      NOTIFICATION_ID_APP_INSTALLS,
+      nm.getAppInstallNotification(InstallNotificationState()).build(),
+      if (SDK_INT >= 29) FOREGROUND_SERVICE_TYPE_MANIFEST else 0,
+    )
+  }
 }

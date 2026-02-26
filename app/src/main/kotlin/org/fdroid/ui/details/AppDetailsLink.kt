@@ -26,29 +26,28 @@ import org.fdroid.ui.utils.openUriSafe
 
 @Composable
 fun AppDetailsLink(icon: ImageVector, title: String, url: String, modifier: Modifier = Modifier) {
-    val uriHandler = LocalUriHandler.current
-    val haptics = LocalHapticFeedback.current
-    val clipboardManager = LocalClipboard.current
-    val coroutineScope = rememberCoroutineScope()
-    Row(
-        horizontalArrangement = spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .heightIn(min = 48.dp)
-            .fillMaxWidth()
-            .combinedClickable(
-                onClick = { uriHandler.openUriSafe(url) },
-                onLongClick = {
-                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                    val entry = ClipEntry(ClipData.newPlainText("", url))
-                    coroutineScope.launch {
-                        clipboardManager.setClipEntry(entry)
-                    }
-                },
-                onLongClickLabel = stringResource(R.string.copy_link),
-            ),
-    ) {
-        Icon(icon, null)
-        Text(title)
-    }
+  val uriHandler = LocalUriHandler.current
+  val haptics = LocalHapticFeedback.current
+  val clipboardManager = LocalClipboard.current
+  val coroutineScope = rememberCoroutineScope()
+  Row(
+    horizontalArrangement = spacedBy(8.dp),
+    verticalAlignment = Alignment.CenterVertically,
+    modifier =
+      modifier
+        .heightIn(min = 48.dp)
+        .fillMaxWidth()
+        .combinedClickable(
+          onClick = { uriHandler.openUriSafe(url) },
+          onLongClick = {
+            haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+            val entry = ClipEntry(ClipData.newPlainText("", url))
+            coroutineScope.launch { clipboardManager.setClipEntry(entry) }
+          },
+          onLongClickLabel = stringResource(R.string.copy_link),
+        ),
+  ) {
+    Icon(icon, null)
+    Text(title)
+  }
 }

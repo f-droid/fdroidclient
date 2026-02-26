@@ -26,36 +26,34 @@ import org.fdroid.ui.icons.PackageVariant
 
 @Composable
 fun NoRepoSelected() {
-    Box(
-        contentAlignment = Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp)
+  Box(
+    contentAlignment = Center,
+    modifier =
+      Modifier.fillMaxSize()
+        .verticalScroll(rememberScrollState())
+        .background(MaterialTheme.colorScheme.background)
+        .padding(16.dp),
+  ) {
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = spacedBy(32.dp),
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = spacedBy(32.dp)
-        ) {
-            Icon(
-                imageVector = PackageVariant,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.surfaceContainerHigh,
-                modifier = Modifier.size(64.dp)
-            )
-            Text(
-                text = stringResource(R.string.repo_list_info_text),
-                modifier = Modifier.fillMaxWidth(fraction = 0.7f)
-            )
-        }
+      Icon(
+        imageVector = PackageVariant,
+        contentDescription = null,
+        tint = MaterialTheme.colorScheme.surfaceContainerHigh,
+        modifier = Modifier.size(64.dp),
+      )
+      Text(
+        text = stringResource(R.string.repo_list_info_text),
+        modifier = Modifier.fillMaxWidth(fraction = 0.7f),
+      )
     }
+  }
 }
 
 @Preview(widthDp = 200, heightDp = 400)
 @Composable
 private fun Preview() {
-    FDroidContent {
-        NoRepoSelected()
-    }
+  FDroidContent { NoRepoSelected() }
 }

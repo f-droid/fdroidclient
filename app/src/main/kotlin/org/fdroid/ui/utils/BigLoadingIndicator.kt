@@ -15,18 +15,13 @@ import org.fdroid.ui.FDroidContent
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun BigLoadingIndicator(modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier.fillMaxSize()
-    ) {
-        LoadingIndicator(Modifier.size(128.dp))
-    }
+  Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize()) {
+    LoadingIndicator(Modifier.size(128.dp))
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        BigLoadingIndicator()
-    }
+  FDroidContent { BigLoadingIndicator() }
 }

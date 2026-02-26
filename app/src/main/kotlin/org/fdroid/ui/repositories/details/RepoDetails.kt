@@ -49,121 +49,118 @@ import org.fdroid.ui.utils.getRepoDetailsInfo
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun RepoDetails(
-    info: RepoDetailsInfo,
-    onShowAppsClicked: (String, Long) -> Unit,
-    onBackNav: (() -> Unit)?,
+  info: RepoDetailsInfo,
+  onShowAppsClicked: (String, Long) -> Unit,
+  onBackNav: (() -> Unit)?,
 ) {
-    val context = LocalContext.current
-    val repo = info.model.repo
+  val context = LocalContext.current
+  val repo = info.model.repo
 
-    val hintController = rememberHintController(
-        overlay = getHintOverlayColor(),
-    )
-    val hint = rememberHint {
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-            OnboardingCard(
-                title = stringResource(R.string.repo_details),
-                message = stringResource(R.string.repo_details_info_text),
-                modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
-                onGotIt = {
-                    info.actions.onOnboardingSeen()
-                    hintController.dismiss()
-                },
-            )
-        }
+  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hint = rememberHint {
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+      OnboardingCard(
+        title = stringResource(R.string.repo_details),
+        message = stringResource(R.string.repo_details_info_text),
+        modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+        onGotIt = {
+          info.actions.onOnboardingSeen()
+          hintController.dismiss()
+        },
+      )
     }
-    val hintAnchor = rememberHintAnchorState(hint)
-    LaunchedEffect(info.model.showOnboarding) {
-        if (info.model.showOnboarding) {
-            hintController.show(hintAnchor)
-            info.actions.onOnboardingSeen()
-        }
+  }
+  val hintAnchor = rememberHintAnchorState(hint)
+  LaunchedEffect(info.model.showOnboarding) {
+    if (info.model.showOnboarding) {
+      hintController.show(hintAnchor)
+      info.actions.onOnboardingSeen()
     }
+  }
 
-    var qrCodeDialog by remember { mutableStateOf(false) }
-    var deleteDialog by remember { mutableStateOf(false) }
-    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
-    // QrCode dialog
-    if (repo != null && qrCodeDialog) QrCodeDialog({ qrCodeDialog = false }) {
-        info.actions.generateQrCode(repo)
+  var qrCodeDialog by remember { mutableStateOf(false) }
+  var deleteDialog by remember { mutableStateOf(false) }
+  var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
+  // QrCode dialog
+  if (repo != null && qrCodeDialog)
+    QrCodeDialog({ qrCodeDialog = false }) { info.actions.generateQrCode(repo) }
+  // Repo delete dialog
+  if (repo != null && deleteDialog)
+    DeleteDialog({ deleteDialog = false }) {
+      info.actions.deleteRepository()
+      deleteDialog = false
+      onBackNav?.invoke()
     }
-    // Repo delete dialog
-    if (repo != null && deleteDialog) DeleteDialog({ deleteDialog = false }) {
-        info.actions.deleteRepository()
-        deleteDialog = false
-        onBackNav?.invoke()
-    }
-    // Metered warning dialog
-    val meteredLambda = showMeteredDialog
-    if (meteredLambda != null) MeteredConnectionDialog(
-        numBytes = null,
-        onConfirm = { meteredLambda() },
-        onDismiss = { showMeteredDialog = null },
+  // Metered warning dialog
+  val meteredLambda = showMeteredDialog
+  if (meteredLambda != null)
+    MeteredConnectionDialog(
+      numBytes = null,
+      onConfirm = { meteredLambda() },
+      onDismiss = { showMeteredDialog = null },
     )
-    Scaffold(topBar = {
-        TopAppBar(
-            navigationIcon = {
-                if (onBackNav != null) BackButton(onClick = onBackNav)
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = { if (onBackNav != null) BackButton(onClick = onBackNav) },
+        title = {},
+        actions = {
+          if (repo == null) return@TopAppBar
+          TopAppBarButton(
+            imageVector = Icons.Default.Share,
+            contentDescription = stringResource(R.string.share_repository),
+            onClick = { info.model.shareRepo(context) },
+          )
+          TopAppBarButton(
+            imageVector = Icons.Default.QrCode,
+            contentDescription = stringResource(R.string.show_repository_qr),
+            onClick = { qrCodeDialog = true },
+          )
+          IconButton(
+            enabled = info.model.isUpdateButtonEnabled,
+            onClick = {
+              if (info.model.networkState.isMetered)
+                showMeteredDialog = { RepoUpdateWorker.updateNow(context, repo.repoId) }
+              else RepoUpdateWorker.updateNow(context, repo.repoId)
             },
-            title = { },
-            actions = {
-                if (repo == null) return@TopAppBar
-                TopAppBarButton(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = stringResource(R.string.share_repository),
-                    onClick = { info.model.shareRepo(context) },
+          ) {
+            Icon(
+              imageVector = Icons.Default.Sync,
+              contentDescription = stringResource(R.string.repo_force_update),
+            )
+          }
+          TopAppBarOverflowButton { onDismissRequest ->
+            DropdownMenuItem(
+              text = { Text(stringResource(R.string.delete)) },
+              onClick = {
+                onDismissRequest()
+                deleteDialog = true
+              },
+              leadingIcon = {
+                Icon(
+                  imageVector = Icons.Default.Delete,
+                  contentDescription = null,
+                  modifier = Modifier.semantics { hideFromAccessibility() },
                 )
-                TopAppBarButton(
-                    imageVector = Icons.Default.QrCode,
-                    contentDescription = stringResource(R.string.show_repository_qr),
-                    onClick = { qrCodeDialog = true },
-                )
-                IconButton(
-                    enabled = info.model.isUpdateButtonEnabled,
-                    onClick = {
-                        if (info.model.networkState.isMetered) showMeteredDialog = {
-                            RepoUpdateWorker.updateNow(context, repo.repoId)
-                        } else RepoUpdateWorker.updateNow(context, repo.repoId)
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Sync,
-                        contentDescription = stringResource(R.string.repo_force_update)
-                    )
-                }
-                TopAppBarOverflowButton { onDismissRequest ->
-                    DropdownMenuItem(
-                        text = { Text(stringResource(R.string.delete)) },
-                        onClick = {
-                            onDismissRequest()
-                            deleteDialog = true
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = null,
-                                modifier = Modifier.semantics { hideFromAccessibility() },
-                            )
-                        }
-                    )
-                }
-            })
-    }) { paddingValues ->
-        if (repo == null) BigLoadingIndicator()
-        else RepoDetailsContent(
-            info = info,
-            onShowAppsClicked = onShowAppsClicked,
-            modifier = Modifier.padding(paddingValues)
-        )
+              },
+            )
+          }
+        },
+      )
     }
+  ) { paddingValues ->
+    if (repo == null) BigLoadingIndicator()
+    else
+      RepoDetailsContent(
+        info = info,
+        onShowAppsClicked = onShowAppsClicked,
+        modifier = Modifier.padding(paddingValues),
+      )
+  }
 }
 
 @Preview
 @Composable
 fun RepoDetailsScreenPreview() {
-    HintHost {
-        FDroidContent {
-            RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {})
-        }
-    }
+  HintHost { FDroidContent { RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {}) } }
 }

@@ -30,63 +30,56 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun AntiFeatures(
-    antiFeatures: List<AntiFeature>,
-) {
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.inverseSurface,
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+fun AntiFeatures(antiFeatures: List<AntiFeature>) {
+  ElevatedCard(
+    colors =
+      CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.inverseSurface),
+    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+  ) {
+    ExpandableSection(
+      icon = rememberVectorPainter(Icons.Default.WarningAmber),
+      title = stringResource(R.string.anti_features_title),
+      modifier = Modifier.padding(horizontal = 16.dp),
     ) {
-        ExpandableSection(
-            icon = rememberVectorPainter(Icons.Default.WarningAmber),
-            title = stringResource(R.string.anti_features_title),
-            modifier = Modifier.padding(horizontal = 16.dp),
-        ) {
-            Column {
-                antiFeatures.forEach { antiFeature ->
-                    ListItem(
-                        leadingContent = {
-                            AsyncShimmerImage(
-                                model = antiFeature.icon,
-                                contentDescription = "",
-                                colorFilter = tint(MaterialTheme.colorScheme.inverseOnSurface),
-                                error = rememberVectorPainter(Icons.Default.CrisisAlert),
-                                modifier = Modifier.size(32.dp),
-                            )
-                        },
-                        headlineContent = {
-                            Text(
-                                text = antiFeature.name,
-                                color = MaterialTheme.colorScheme.inverseOnSurface,
-                                style = MaterialTheme.typography.bodyMediumEmphasized,
-                            )
-                        },
-                        supportingContent = {
-                            antiFeature.reason?.let {
-                                Text(
-                                    text = antiFeature.reason,
-                                    color = MaterialTheme.colorScheme.inverseOnSurface,
-                                    style = MaterialTheme.typography.labelMedium,
-                                )
-                            }
-                        },
-                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-                        modifier = Modifier.padding(bottom = 8.dp),
-                    )
-                }
-            }
+      Column {
+        antiFeatures.forEach { antiFeature ->
+          ListItem(
+            leadingContent = {
+              AsyncShimmerImage(
+                model = antiFeature.icon,
+                contentDescription = "",
+                colorFilter = tint(MaterialTheme.colorScheme.inverseOnSurface),
+                error = rememberVectorPainter(Icons.Default.CrisisAlert),
+                modifier = Modifier.size(32.dp),
+              )
+            },
+            headlineContent = {
+              Text(
+                text = antiFeature.name,
+                color = MaterialTheme.colorScheme.inverseOnSurface,
+                style = MaterialTheme.typography.bodyMediumEmphasized,
+              )
+            },
+            supportingContent = {
+              antiFeature.reason?.let {
+                Text(
+                  text = antiFeature.reason,
+                  color = MaterialTheme.colorScheme.inverseOnSurface,
+                  style = MaterialTheme.typography.labelMedium,
+                )
+              }
+            },
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+            modifier = Modifier.padding(bottom = 8.dp),
+          )
         }
+      }
     }
+  }
 }
 
 @Preview
 @Composable
 fun AntiFeaturesPreview() {
-    FDroidContent {
-        AntiFeatures(testApp.antiFeatures!!)
-    }
+  FDroidContent { AntiFeatures(testApp.antiFeatures!!) }
 }

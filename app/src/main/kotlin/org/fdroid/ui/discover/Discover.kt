@@ -38,125 +38,108 @@ import org.fdroid.ui.utils.TopAppBarOverflowButton
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Discover(
-    discoverModel: DiscoverModel,
-    onListTap: (AppListType) -> Unit,
-    onAppTap: (AppDiscoverItem) -> Unit,
-    onNav: (NavKey) -> Unit,
-    modifier: Modifier = Modifier,
+  discoverModel: DiscoverModel,
+  onListTap: (AppListType) -> Unit,
+  onAppTap: (AppDiscoverItem) -> Unit,
+  onNav: (NavKey) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(stringResource(R.string.app_name))
-                },
-                actions = {
-                    topBarMenuItems.forEach { dest ->
-                        BadgedBox(badge = {
-                            val hasRepoIssues =
-                                (discoverModel as? LoadedDiscoverModel)?.hasRepoIssues == true
-                            if (dest.id == NavigationKey.Repos && hasRepoIssues) Badge(
-                                content = null,
-                                modifier = Modifier.size(8.dp)
-                            )
-                        }) {
-                            TopAppBarButton(
-                                imageVector = dest.icon,
-                                contentDescription = stringResource(dest.label),
-                                onClick = { onNav(dest.id) },
-                            )
-                        }
-                    }
-                    TopAppBarOverflowButton { onDismissRequest ->
-                        DiscoverOverFlowMenu {
-                            onDismissRequest()
-                            onNav(it.id)
-                        }
-                    }
-                },
-                scrollBehavior = scrollBehavior,
-            )
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = { Text(stringResource(R.string.app_name)) },
+        actions = {
+          topBarMenuItems.forEach { dest ->
+            BadgedBox(
+              badge = {
+                val hasRepoIssues = (discoverModel as? LoadedDiscoverModel)?.hasRepoIssues == true
+                if (dest.id == NavigationKey.Repos && hasRepoIssues)
+                  Badge(content = null, modifier = Modifier.size(8.dp))
+              }
+            ) {
+              TopAppBarButton(
+                imageVector = dest.icon,
+                contentDescription = stringResource(dest.label),
+                onClick = { onNav(dest.id) },
+              )
+            }
+          }
+          TopAppBarOverflowButton { onDismissRequest ->
+            DiscoverOverFlowMenu {
+              onDismissRequest()
+              onNav(it.id)
+            }
+          }
         },
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        when (discoverModel) {
-            is FirstStartDiscoverModel -> FirstStart(
-                networkState = discoverModel.networkState,
-                repoUpdateState = discoverModel.repoUpdateState,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
-            )
-            is LoadingDiscoverModel -> BigLoadingIndicator(Modifier.padding(paddingValues))
-            is LoadedDiscoverModel -> {
-                DiscoverContent(
-                    discoverModel = discoverModel,
-                    onListTap = onListTap,
-                    onAppTap = onAppTap,
-                    onNav = onNav,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
-                        .padding(paddingValues),
-                )
-            }
-            NoEnabledReposDiscoverModel -> {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                ) {
-                    Text(
-                        text = stringResource(R.string.no_repos_enabled),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
-            }
+        scrollBehavior = scrollBehavior,
+      )
+    },
+    modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    when (discoverModel) {
+      is FirstStartDiscoverModel ->
+        FirstStart(
+          networkState = discoverModel.networkState,
+          repoUpdateState = discoverModel.repoUpdateState,
+          modifier = Modifier.fillMaxSize().padding(paddingValues),
+        )
+      is LoadingDiscoverModel -> BigLoadingIndicator(Modifier.padding(paddingValues))
+      is LoadedDiscoverModel -> {
+        DiscoverContent(
+          discoverModel = discoverModel,
+          onListTap = onListTap,
+          onAppTap = onAppTap,
+          onNav = onNav,
+          modifier =
+            Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(paddingValues),
+        )
+      }
+      NoEnabledReposDiscoverModel -> {
+        Box(
+          contentAlignment = Alignment.Center,
+          modifier = modifier.fillMaxSize().padding(paddingValues),
+        ) {
+          Text(
+            text = stringResource(R.string.no_repos_enabled),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(16.dp),
+          )
         }
+      }
     }
+  }
 }
 
 @Preview
 @Composable
 fun FirstStartDiscoverPreview() {
-    FDroidContent {
-        Discover(
-            discoverModel = FirstStartDiscoverModel(
-                NetworkState(true, isMetered = false),
-                RepoUpdateProgress(1, true, 0.25f),
-            ),
-            onListTap = {},
-            onAppTap = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    Discover(
+      discoverModel =
+        FirstStartDiscoverModel(
+          NetworkState(true, isMetered = false),
+          RepoUpdateProgress(1, true, 0.25f),
+        ),
+      onListTap = {},
+      onAppTap = {},
+      onNav = {},
+    )
+  }
 }
 
 @Preview
 @Composable
 fun LoadingDiscoverPreview() {
-    FDroidContent {
-        Discover(
-            discoverModel = LoadingDiscoverModel,
-            onListTap = {},
-            onAppTap = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    Discover(discoverModel = LoadingDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
+  }
 }
 
 @Preview
 @Composable
 private fun NoEnabledReposPreview() {
-    FDroidContent {
-        Discover(
-            discoverModel = NoEnabledReposDiscoverModel,
-            onListTap = {},
-            onAppTap = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    Discover(discoverModel = NoEnabledReposDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
+  }
 }

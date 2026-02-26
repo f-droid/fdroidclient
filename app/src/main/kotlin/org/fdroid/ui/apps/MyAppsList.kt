@@ -41,252 +41,212 @@ import org.fdroid.ui.utils.myAppsModel
 
 @Composable
 fun MyAppsList(
-    myAppsInfo: MyAppsInfo,
-    currentPackageName: String?,
-    lazyListState: LazyListState,
-    onAppItemClick: (String) -> Unit,
-    paddingValues: PaddingValues,
-    modifier: Modifier = Modifier,
+  myAppsInfo: MyAppsInfo,
+  currentPackageName: String?,
+  lazyListState: LazyListState,
+  onAppItemClick: (String) -> Unit,
+  paddingValues: PaddingValues,
+  modifier: Modifier = Modifier,
 ) {
-    val updatableApps = myAppsInfo.model.appUpdates
-    val installingApps = myAppsInfo.model.installingApps
-    val appsWithIssue = myAppsInfo.model.appsWithIssue
-    val installedApps = myAppsInfo.model.installedApps
-    // scroll to top if new updatable apps were added
-    var previousNumUpdates by remember { mutableIntStateOf(0) }
-    LaunchedEffect(updatableApps) {
-        if (updatableApps != null && updatableApps.isNotEmpty()) {
-            if (updatableApps.size > previousNumUpdates) {
-                lazyListState.animateScrollToItem(0)
-            }
-            previousNumUpdates = updatableApps.size
-        }
+  val updatableApps = myAppsInfo.model.appUpdates
+  val installingApps = myAppsInfo.model.installingApps
+  val appsWithIssue = myAppsInfo.model.appsWithIssue
+  val installedApps = myAppsInfo.model.installedApps
+  // scroll to top if new updatable apps were added
+  var previousNumUpdates by remember { mutableIntStateOf(0) }
+  LaunchedEffect(updatableApps) {
+    if (updatableApps != null && updatableApps.isNotEmpty()) {
+      if (updatableApps.size > previousNumUpdates) {
+        lazyListState.animateScrollToItem(0)
+      }
+      previousNumUpdates = updatableApps.size
     }
-    // allow us to hide "update all" button to avoid user pressing it twice
-    var showUpdateAllButton by remember(updatableApps) {
-        mutableStateOf(true)
+  }
+  // allow us to hide "update all" button to avoid user pressing it twice
+  var showUpdateAllButton by remember(updatableApps) { mutableStateOf(true) }
+  var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
+  var showIssueIgnoreDialog by remember { mutableStateOf<AppWithIssueItem?>(null) }
+  LazyColumn(
+    state = lazyListState,
+    contentPadding = paddingValues,
+    modifier =
+      modifier.then(if (currentPackageName == null) Modifier else Modifier.selectableGroup()),
+  ) {
+    // Updates header with Update all button
+    if (!updatableApps.isNullOrEmpty()) {
+      if (!myAppsInfo.model.networkState.isOnline) {
+        item(key = "OfflineBar", contentType = "offlineBar") { OfflineBar() }
+      }
+      item(key = "A", contentType = "header") {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+          Text(
+            text = stringResource(R.string.updates),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(16.dp).weight(1f),
+          )
+          if (showUpdateAllButton)
+            Button(
+              onClick = {
+                val installLambda = {
+                  myAppsInfo.actions.updateAll()
+                  showUpdateAllButton = false
+                }
+                if (myAppsInfo.model.networkState.isMetered) {
+                  showMeteredDialog = installLambda
+                } else {
+                  installLambda()
+                }
+              },
+              modifier = Modifier.padding(end = 16.dp),
+            ) {
+              Text(stringResource(R.string.update_all))
+            }
+        }
+      }
+      // List of updatable apps
+      items(items = updatableApps, key = { it.packageName }, contentType = { "A" }) { app ->
+        val isSelected = app.packageName == currentPackageName
+        val interactionModifier =
+          if (currentPackageName == null) {
+            Modifier.clickable(onClick = { onAppItemClick(app.packageName) })
+          } else {
+            Modifier.selectable(
+              selected = isSelected,
+              onClick = { onAppItemClick(app.packageName) },
+            )
+          }
+        val modifier = Modifier.animateItem().then(interactionModifier)
+        UpdatableAppRow(app, isSelected, modifier)
+      }
     }
-    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
-    var showIssueIgnoreDialog by remember { mutableStateOf<AppWithIssueItem?>(null) }
-    LazyColumn(
-        state = lazyListState,
-        contentPadding = paddingValues,
-        modifier = modifier
-            .then(
-                if (currentPackageName == null) Modifier
-                else Modifier.selectableGroup()
-            ),
-    ) {
-        // Updates header with Update all button
-        if (!updatableApps.isNullOrEmpty()) {
-            if (!myAppsInfo.model.networkState.isOnline) {
-                item(key = "OfflineBar", contentType = "offlineBar") {
-                    OfflineBar()
-                }
-            }
-            item(key = "A", contentType = "header") {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = stringResource(R.string.updates),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .weight(1f),
-                    )
-                    if (showUpdateAllButton) Button(
-                        onClick = {
-                            val installLambda = {
-                                myAppsInfo.actions.updateAll()
-                                showUpdateAllButton = false
-                            }
-                            if (myAppsInfo.model.networkState.isMetered) {
-                                showMeteredDialog = installLambda
-                            } else {
-                                installLambda()
-                            }
-                        },
-                        modifier = Modifier.padding(end = 16.dp),
-                    ) {
-                        Text(stringResource(R.string.update_all))
-                    }
-                }
-            }
-            // List of updatable apps
-            items(
-                items = updatableApps,
-                key = { it.packageName },
-                contentType = { "A" },
-            ) { app ->
-                val isSelected = app.packageName == currentPackageName
-                val interactionModifier = if (currentPackageName == null) {
-                    Modifier.clickable(
-                        onClick = { onAppItemClick(app.packageName) }
-                    )
-                } else {
-                    Modifier.selectable(
-                        selected = isSelected,
-                        onClick = { onAppItemClick(app.packageName) }
-                    )
-                }
-                val modifier = Modifier
-                    .animateItem()
-                    .then(interactionModifier)
-                UpdatableAppRow(app, isSelected, modifier)
-            }
-        }
-        // Apps currently installing header
-        if (installingApps.isNotEmpty()) {
-            item(key = "B", contentType = "header") {
-                Text(
-                    text = stringResource(R.string.notification_title_summary_installing),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier
-                        .padding(16.dp)
-                )
-            }
-            // List of currently installing apps
-            items(
-                items = installingApps,
-                key = { it.packageName },
-                contentType = { "B" },
-            ) { app ->
-                val isSelected = app.packageName == currentPackageName
-                val interactionModifier = if (currentPackageName == null) {
-                    Modifier.clickable(
-                        onClick = { onAppItemClick(app.packageName) }
-                    )
-                } else {
-                    Modifier.selectable(
-                        selected = isSelected,
-                        onClick = { onAppItemClick(app.packageName) }
-                    )
-                }
-                val modifier = Modifier.Companion
-                    .animateItem()
-                    .then(interactionModifier)
-                InstallingAppRow(app, isSelected, modifier)
-            }
-        }
-        // Apps with issues
-        if (!appsWithIssue.isNullOrEmpty()) {
-            // header
-            item(key = "C", contentType = "header") {
-                Text(
-                    text = stringResource(R.string.my_apps_header_apps_with_issue),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(16.dp),
-                )
-            }
-            if (myAppsInfo.model.showAppIssueHint) item(key = "C-hint", contentType = "hint") {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
-                ) {
-                    Column(
-                        modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.app_issue_hint),
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            TextButton(onClick = { myAppsInfo.actions.onAppIssueHintSeen() }) {
-                                Text(stringResource(R.string.got_it))
-                            }
-                        }
-                    }
-                }
-            }
-            // list of apps with issues
-            items(
-                items = appsWithIssue,
-                key = { it.packageName },
-                contentType = { "C" },
-            ) { app ->
-                val isSelected = app.packageName == currentPackageName
-                var showNotAvailableDialog by remember { mutableStateOf(false) }
-                val onClick = {
-                    if (app.issue is NotAvailable) {
-                        showNotAvailableDialog = true
-                    } else {
-                        onAppItemClick(app.packageName)
-                    }
-                }
-                val interactionModifier = if (currentPackageName == null) {
-                    Modifier.combinedClickable(
-                        onClick = onClick,
-                        onLongClick = { showIssueIgnoreDialog = app },
-                        onLongClickLabel = stringResource(R.string.my_apps_ignore_dialog_title),
-                    )
-                } else {
-                    Modifier.selectable(
-                        selected = isSelected,
-                        onClick = onClick,
-                    )
-                }
-                val modifier = Modifier
-                    .animateItem()
-                    .then(interactionModifier)
-                InstalledAppRow(app, isSelected, modifier, app.issue)
-                // Dialogs
-                val appToIgnore = showIssueIgnoreDialog
-                if (appToIgnore != null) IgnoreIssueDialog(
-                    appName = appToIgnore.name,
-                    onIgnore = {
-                        myAppsInfo.actions.ignoreAppIssue(appToIgnore)
-                        showIssueIgnoreDialog = null
-                    },
-                    onDismiss = { showIssueIgnoreDialog = null },
-                ) else if (showNotAvailableDialog) NotAvailableDialog(app.packageName) {
-                    showNotAvailableDialog = false
-                }
-            }
-        }
-        // Installed apps header (only show when we have non-empty lists above)
-        val aboveNonEmpty = installingApps.isNotEmpty() ||
-            !updatableApps.isNullOrEmpty() ||
-            !appsWithIssue.isNullOrEmpty()
-        if (aboveNonEmpty && !installedApps.isNullOrEmpty()) {
-            item(key = "D", contentType = "header") {
-                Text(
-                    text = stringResource(R.string.installed_apps__activity_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(16.dp),
-                )
-            }
-        }
-        // List of installed apps
-        if (installedApps != null) items(
-            items = installedApps,
-            key = { it.packageName },
-            contentType = { "D" },
-        ) { app ->
-            val isSelected = app.packageName == currentPackageName
-            val interactionModifier = if (currentPackageName == null) {
-                Modifier.clickable(
-                    onClick = { onAppItemClick(app.packageName) }
-                )
-            } else {
-                Modifier.selectable(
-                    selected = isSelected,
-                    onClick = { onAppItemClick(app.packageName) }
-                )
-            }
-            val modifier = Modifier
-                .animateItem()
-                .then(interactionModifier)
-            InstalledAppRow(app, isSelected, modifier)
-        }
+    // Apps currently installing header
+    if (installingApps.isNotEmpty()) {
+      item(key = "B", contentType = "header") {
+        Text(
+          text = stringResource(R.string.notification_title_summary_installing),
+          style = MaterialTheme.typography.titleMedium,
+          modifier = Modifier.padding(16.dp),
+        )
+      }
+      // List of currently installing apps
+      items(items = installingApps, key = { it.packageName }, contentType = { "B" }) { app ->
+        val isSelected = app.packageName == currentPackageName
+        val interactionModifier =
+          if (currentPackageName == null) {
+            Modifier.clickable(onClick = { onAppItemClick(app.packageName) })
+          } else {
+            Modifier.selectable(
+              selected = isSelected,
+              onClick = { onAppItemClick(app.packageName) },
+            )
+          }
+        val modifier = Modifier.Companion.animateItem().then(interactionModifier)
+        InstallingAppRow(app, isSelected, modifier)
+      }
     }
-    val meteredLambda = showMeteredDialog
-    if (meteredLambda != null) MeteredConnectionDialog(
-        numBytes = myAppsInfo.model.appUpdatesBytes,
-        onConfirm = { meteredLambda() },
-        onDismiss = { showMeteredDialog = null },
+    // Apps with issues
+    if (!appsWithIssue.isNullOrEmpty()) {
+      // header
+      item(key = "C", contentType = "header") {
+        Text(
+          text = stringResource(R.string.my_apps_header_apps_with_issue),
+          style = MaterialTheme.typography.titleMedium,
+          modifier = Modifier.padding(16.dp),
+        )
+      }
+      if (myAppsInfo.model.showAppIssueHint)
+        item(key = "C-hint", contentType = "hint") {
+          Card(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
+          ) {
+            Column(modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
+              Text(
+                text = stringResource(R.string.app_issue_hint),
+                style = MaterialTheme.typography.bodyMedium,
+              )
+              Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                TextButton(onClick = { myAppsInfo.actions.onAppIssueHintSeen() }) {
+                  Text(stringResource(R.string.got_it))
+                }
+              }
+            }
+          }
+        }
+      // list of apps with issues
+      items(items = appsWithIssue, key = { it.packageName }, contentType = { "C" }) { app ->
+        val isSelected = app.packageName == currentPackageName
+        var showNotAvailableDialog by remember { mutableStateOf(false) }
+        val onClick = {
+          if (app.issue is NotAvailable) {
+            showNotAvailableDialog = true
+          } else {
+            onAppItemClick(app.packageName)
+          }
+        }
+        val interactionModifier =
+          if (currentPackageName == null) {
+            Modifier.combinedClickable(
+              onClick = onClick,
+              onLongClick = { showIssueIgnoreDialog = app },
+              onLongClickLabel = stringResource(R.string.my_apps_ignore_dialog_title),
+            )
+          } else {
+            Modifier.selectable(selected = isSelected, onClick = onClick)
+          }
+        val modifier = Modifier.animateItem().then(interactionModifier)
+        InstalledAppRow(app, isSelected, modifier, app.issue)
+        // Dialogs
+        val appToIgnore = showIssueIgnoreDialog
+        if (appToIgnore != null)
+          IgnoreIssueDialog(
+            appName = appToIgnore.name,
+            onIgnore = {
+              myAppsInfo.actions.ignoreAppIssue(appToIgnore)
+              showIssueIgnoreDialog = null
+            },
+            onDismiss = { showIssueIgnoreDialog = null },
+          )
+        else if (showNotAvailableDialog)
+          NotAvailableDialog(app.packageName) { showNotAvailableDialog = false }
+      }
+    }
+    // Installed apps header (only show when we have non-empty lists above)
+    val aboveNonEmpty =
+      installingApps.isNotEmpty() ||
+        !updatableApps.isNullOrEmpty() ||
+        !appsWithIssue.isNullOrEmpty()
+    if (aboveNonEmpty && !installedApps.isNullOrEmpty()) {
+      item(key = "D", contentType = "header") {
+        Text(
+          text = stringResource(R.string.installed_apps__activity_title),
+          style = MaterialTheme.typography.titleMedium,
+          modifier = Modifier.padding(16.dp),
+        )
+      }
+    }
+    // List of installed apps
+    if (installedApps != null)
+      items(items = installedApps, key = { it.packageName }, contentType = { "D" }) { app ->
+        val isSelected = app.packageName == currentPackageName
+        val interactionModifier =
+          if (currentPackageName == null) {
+            Modifier.clickable(onClick = { onAppItemClick(app.packageName) })
+          } else {
+            Modifier.selectable(
+              selected = isSelected,
+              onClick = { onAppItemClick(app.packageName) },
+            )
+          }
+        val modifier = Modifier.animateItem().then(interactionModifier)
+        InstalledAppRow(app, isSelected, modifier)
+      }
+  }
+  val meteredLambda = showMeteredDialog
+  if (meteredLambda != null)
+    MeteredConnectionDialog(
+      numBytes = myAppsInfo.model.appUpdatesBytes,
+      onConfirm = { meteredLambda() },
+      onDismiss = { showMeteredDialog = null },
     )
 }
 
@@ -294,12 +254,12 @@ fun MyAppsList(
 @Composable
 @RestrictTo(RestrictTo.Scope.TESTS)
 private fun MyAppsListPreview() {
-    FDroidContent {
-        MyApps(
-            myAppsInfo = getMyAppsInfo(myAppsModel),
-            currentPackageName = null,
-            onAppItemClick = {},
-            onNav = {},
-        )
-    }
+  FDroidContent {
+    MyApps(
+      myAppsInfo = getMyAppsInfo(myAppsModel),
+      currentPackageName = null,
+      onAppItemClick = {},
+      onNav = {},
+    )
+  }
 }

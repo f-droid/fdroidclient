@@ -8,6 +8,7 @@ import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import info.guardianproject.panic.PanicResponder
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,77 +23,75 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.utils.IoDispatcher
-import javax.inject.Inject
 
 @HiltViewModel
-class PanicSettingsViewModel @Inject constructor(
-    app: Application,
-    private val db: FDroidDatabase,
-    private val repoPreLoader: RepoPreLoader,
-    private val settingsManager: SettingsManager,
-    @param:IoDispatcher private val ioScope: CoroutineScope,
+class PanicSettingsViewModel
+@Inject
+constructor(
+  app: Application,
+  private val db: FDroidDatabase,
+  private val repoPreLoader: RepoPreLoader,
+  private val settingsManager: SettingsManager,
+  @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
-    private val log = KotlinLogging.logger {}
+  private val log = KotlinLogging.logger {}
 
-    val prefsFlow = settingsManager.prefsFlow
-    val appFlow = prefsFlow.map { it.get<String>("pref_panic_app") }.distinctUntilChanged()
-    val resetRepos get() = settingsManager.prefs.getBoolean("pref_panic_reset_repos", false)
-    val exitApp get() = settingsManager.prefs.getBoolean("pref_panic_exit", true)
+  val prefsFlow = settingsManager.prefsFlow
+  val appFlow = prefsFlow.map { it.get<String>("pref_panic_app") }.distinctUntilChanged()
+  val resetRepos
+    get() = settingsManager.prefs.getBoolean("pref_panic_reset_repos", false)
 
-    private val pm = app.packageManager
-    private val _state = MutableStateFlow(PanicSettingsState())
-    val state = _state.asStateFlow()
+  val exitApp
+    get() = settingsManager.prefs.getBoolean("pref_panic_exit", true)
 
-    init {
-        ioScope.launch {
-            val apps = listOf(null) + PanicResponder.resolveTriggerApps(pm).map { info ->
-                info.activityInfo.toPanicApp()
-            }
-            val selected = PanicResponder.getTriggerPackageName(application)
-            _state.value = PanicSettingsState(
-                panicApps = apps,
-                selectedPanicApp = if (selected == null) {
-                    null
-                } else {
-                    getPanicApp(selected)
-                },
-            )
-        }
-        // react to panic app changes right away
-        viewModelScope.launch {
-            appFlow.drop(1).collect { packageName ->
-                _state.update {
-                    it.copy(selectedPanicApp = getPanicApp(packageName))
-                }
-            }
-        }
+  private val pm = app.packageManager
+  private val _state = MutableStateFlow(PanicSettingsState())
+  val state = _state.asStateFlow()
+
+  init {
+    ioScope.launch {
+      val apps =
+        listOf(null) +
+          PanicResponder.resolveTriggerApps(pm).map { info -> info.activityInfo.toPanicApp() }
+      val selected = PanicResponder.getTriggerPackageName(application)
+      _state.value =
+        PanicSettingsState(
+          panicApps = apps,
+          selectedPanicApp =
+            if (selected == null) {
+              null
+            } else {
+              getPanicApp(selected)
+            },
+        )
     }
-
-    fun resetDb() {
-        val job = ioScope.launch {
-            db.getRepositoryDao().clearAll()
-            repoPreLoader.addPreloadedRepositories(db)
-        }
-        // hard wait for data to be cleared
-        runBlocking {
-            job.join()
-        }
+    // react to panic app changes right away
+    viewModelScope.launch {
+      appFlow.drop(1).collect { packageName ->
+        _state.update { it.copy(selectedPanicApp = getPanicApp(packageName)) }
+      }
     }
+  }
 
-    private fun getPanicApp(packageName: String?): PanicApp? {
-        if (packageName == null) return null
-        return pm.getPackageInfo(packageName, 0)?.applicationInfo?.toPanicApp()
-    }
+  fun resetDb() {
+    val job =
+      ioScope.launch {
+        db.getRepositoryDao().clearAll()
+        repoPreLoader.addPreloadedRepositories(db)
+      }
+    // hard wait for data to be cleared
+    runBlocking { job.join() }
+  }
 
-    private fun ApplicationInfo.toPanicApp() = PanicApp(
-        packageName = packageName,
-        name = loadLabel(pm).toString(),
-    )
+  private fun getPanicApp(packageName: String?): PanicApp? {
+    if (packageName == null) return null
+    return pm.getPackageInfo(packageName, 0)?.applicationInfo?.toPanicApp()
+  }
 
-    private fun ActivityInfo.toPanicApp() = PanicApp(
-        packageName = packageName,
-        name = loadLabel(pm).toString(),
-    )
+  private fun ApplicationInfo.toPanicApp() =
+    PanicApp(packageName = packageName, name = loadLabel(pm).toString())
 
+  private fun ActivityInfo.toPanicApp() =
+    PanicApp(packageName = packageName, name = loadLabel(pm).toString())
 }

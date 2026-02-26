@@ -23,48 +23,45 @@ import org.fdroid.ui.FDroidContent
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun OnboardingCard(
-    title: String,
-    message: String,
-    modifier: Modifier = Modifier,
-    onGotIt: () -> Unit = {},
+  title: String,
+  message: String,
+  modifier: Modifier = Modifier,
+  onGotIt: () -> Unit = {},
 ) {
-    val focusRequester = remember { FocusRequester() }
-    ElevatedCard(
-        modifier = modifier
-            .widthIn(max = TooltipDefaults.richTooltipMaxWidth)
+  val focusRequester = remember { FocusRequester() }
+  ElevatedCard(modifier = modifier.widthIn(max = TooltipDefaults.richTooltipMaxWidth)) {
+    Text(
+      text = title,
+      style = MaterialTheme.typography.titleSmall,
+      modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 8.dp),
+    )
+    Text(
+      text = message,
+      style = MaterialTheme.typography.bodyMedium,
+      modifier = Modifier.padding(horizontal = 16.dp),
+    )
+    TextButton(
+      onClick = onGotIt,
+      modifier =
+        Modifier.focusRequester(focusRequester).padding(vertical = 8.dp, horizontal = 16.dp),
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleSmall,
-            modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 8.dp)
-        )
-        Text(
-            text = message,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(horizontal = 16.dp)
-        )
-        TextButton(
-            onClick = onGotIt,
-            modifier = Modifier
-                .focusRequester(focusRequester)
-                .padding(vertical = 8.dp, horizontal = 16.dp)
-        ) {
-            Text(text = stringResource(R.string.got_it))
-        }
+      Text(text = stringResource(R.string.got_it))
     }
-    LaunchedEffect(Unit) { focusRequester.requestFocus() }
+  }
+  LaunchedEffect(Unit) { focusRequester.requestFocus() }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        OnboardingCard(
-            title = "Filter",
-            message = "Here you can apply filters to the list of apps," +
-                " e.g. showing only apps within a certain category or repository. " +
-                "Changing the sort order is also possible.",
-            modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
-        ) { }
-    }
+  FDroidContent {
+    OnboardingCard(
+      title = "Filter",
+      message =
+        "Here you can apply filters to the list of apps," +
+          " e.g. showing only apps within a certain category or repository. " +
+          "Changing the sort order is also possible.",
+      modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+    ) {}
+  }
 }

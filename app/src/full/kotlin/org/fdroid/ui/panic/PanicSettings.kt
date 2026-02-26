@@ -37,95 +37,86 @@ import org.fdroid.ui.utils.BackButton
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun PanicSettings(
-    prefsFlow: MutableStateFlow<Preferences>,
-    state: PanicSettingsState,
-    onBackClicked: () -> Unit,
+  prefsFlow: MutableStateFlow<Preferences>,
+  state: PanicSettingsState,
+  onBackClicked: () -> Unit,
 ) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    BackButton(onClick = onBackClicked)
-                },
-                title = {
-                    Text(stringResource(R.string.panic_settings))
-                },
-            )
-        },
-    ) { paddingValues ->
-        ProvidePreferenceLocals(prefsFlow) {
-            val res = LocalResources.current
-            LazyColumn(
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .fillMaxSize()
-            ) {
-                switchPreference(
-                    key = "pref_panic_exit",
-                    defaultValue = true,
-                    title = { Text(stringResource(R.string.panic_exit_title)) },
-                    summary = { Text(stringResource(R.string.panic_exit_summary)) },
-                )
-                preferenceCategory(
-                    key = "pref_panic_destructive_actions",
-                    title = { Text(stringResource(R.string.panic_destructive_actions)) },
-                )
-                listPreference(
-                    key = "pref_panic_app",
-                    defaultValue = null,
-                    icon = {
-                        if (state.selectedPanicApp == null) Icon(
-                            imageVector = Icons.Default.Cancel,
-                            contentDescription = null,
-                            modifier = Modifier.semantics { hideFromAccessibility() },
-                        ) else AsyncShimmerImage(
-                            model = state.selectedPanicApp.iconModel,
-                            error = painterResource(R.drawable.ic_repo_app_default),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(32.dp)
-                                .semantics { hideFromAccessibility() },
-                        )
-                    },
-                    title = { Text(stringResource(R.string.panic_app_setting_title)) },
-                    summary = {
-                        if (state.selectedPanicApp == null) {
-                            Text(stringResource(R.string.panic_app_setting_summary))
-                        } else {
-                            Text(state.selectedPanicApp.name)
-                        }
-                    },
-                    values = state.panicApps.map { it?.packageName },
-                    valueToText = { v ->
-                        val noApp = res.getString(R.string.panic_app_setting_none)
-                        val s = state.panicApps.find { v == it?.packageName }?.name ?: noApp
-                        AnnotatedString(s)
-                    }
-                )
-                switchPreference(
-                    key = "pref_panic_reset_repos",
-                    defaultValue = false,
-                    enabled = { state.actionsEnabled },
-                    title = { Text(stringResource(R.string.panic_reset_repos_title)) },
-                    summary = { Text(stringResource(R.string.panic_reset_repos_summary)) },
-                )
-            }
-        }
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = { BackButton(onClick = onBackClicked) },
+        title = { Text(stringResource(R.string.panic_settings)) },
+      )
     }
+  ) { paddingValues ->
+    ProvidePreferenceLocals(prefsFlow) {
+      val res = LocalResources.current
+      LazyColumn(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
+        switchPreference(
+          key = "pref_panic_exit",
+          defaultValue = true,
+          title = { Text(stringResource(R.string.panic_exit_title)) },
+          summary = { Text(stringResource(R.string.panic_exit_summary)) },
+        )
+        preferenceCategory(
+          key = "pref_panic_destructive_actions",
+          title = { Text(stringResource(R.string.panic_destructive_actions)) },
+        )
+        listPreference(
+          key = "pref_panic_app",
+          defaultValue = null,
+          icon = {
+            if (state.selectedPanicApp == null)
+              Icon(
+                imageVector = Icons.Default.Cancel,
+                contentDescription = null,
+                modifier = Modifier.semantics { hideFromAccessibility() },
+              )
+            else
+              AsyncShimmerImage(
+                model = state.selectedPanicApp.iconModel,
+                error = painterResource(R.drawable.ic_repo_app_default),
+                contentDescription = null,
+                modifier = Modifier.size(32.dp).semantics { hideFromAccessibility() },
+              )
+          },
+          title = { Text(stringResource(R.string.panic_app_setting_title)) },
+          summary = {
+            if (state.selectedPanicApp == null) {
+              Text(stringResource(R.string.panic_app_setting_summary))
+            } else {
+              Text(state.selectedPanicApp.name)
+            }
+          },
+          values = state.panicApps.map { it?.packageName },
+          valueToText = { v ->
+            val noApp = res.getString(R.string.panic_app_setting_none)
+            val s = state.panicApps.find { v == it?.packageName }?.name ?: noApp
+            AnnotatedString(s)
+          },
+        )
+        switchPreference(
+          key = "pref_panic_reset_repos",
+          defaultValue = false,
+          enabled = { state.actionsEnabled },
+          title = { Text(stringResource(R.string.panic_reset_repos_title)) },
+          summary = { Text(stringResource(R.string.panic_reset_repos_summary)) },
+        )
+      }
+    }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        val noApp = PanicApp(
-            packageName = Panic.PACKAGE_NAME_NONE,
-            name = LocalResources.current.getString(R.string.panic_app_setting_none),
-        )
-        val state = PanicSettingsState(
-            panicApps = listOf(noApp),
-            selectedPanicApp = noApp,
-        )
-        PanicSettings(MutableStateFlow(MapPreferences()), state, {})
-    }
+  FDroidContent {
+    val noApp =
+      PanicApp(
+        packageName = Panic.PACKAGE_NAME_NONE,
+        name = LocalResources.current.getString(R.string.panic_app_setting_none),
+      )
+    val state = PanicSettingsState(panicApps = listOf(noApp), selectedPanicApp = noApp)
+    PanicSettings(MutableStateFlow(MapPreferences()), state, {})
+  }
 }

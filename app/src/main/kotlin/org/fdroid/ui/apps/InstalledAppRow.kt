@@ -29,68 +29,68 @@ import org.fdroid.ui.utils.Names
 
 @Composable
 fun InstalledAppRow(
-    app: MyInstalledAppItem,
-    isSelected: Boolean,
-    modifier: Modifier = Modifier,
-    appIssue: AppIssue? = null,
+  app: MyInstalledAppItem,
+  isSelected: Boolean,
+  modifier: Modifier = Modifier,
+  appIssue: AppIssue? = null,
 ) {
-    ListItem(
-        leadingContent = {
-            BadgedBox(badge = {
-                if (appIssue != null) BadgeIcon(
-                    icon = Icons.Filled.Error,
-                    color = if (appIssue is UpdateInOtherRepo) {
-                        MaterialTheme.colorScheme.inverseSurface
-                    } else {
-                        MaterialTheme.colorScheme.error
-                    },
-                    contentDescription =
-                    stringResource(R.string.my_apps_header_apps_with_issue),
-                )
-            }) {
-                AsyncShimmerImage(
-                    model = app.iconModel,
-                    error = painterResource(R.drawable.ic_repo_app_default),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .semantics { hideFromAccessibility() },
-                )
-            }
-        },
-        headlineContent = {
-            Text(app.name)
-        },
-        supportingContent = {
-            Text(app.installedVersionName)
-        },
-        colors = ListItemDefaults.colors(
-            containerColor = if (isSelected) {
-                MaterialTheme.colorScheme.surfaceVariant
-            } else {
-                Color.Transparent
-            }
-        ),
-        modifier = modifier,
-    )
+  ListItem(
+    leadingContent = {
+      BadgedBox(
+        badge = {
+          if (appIssue != null)
+            BadgeIcon(
+              icon = Icons.Filled.Error,
+              color =
+                if (appIssue is UpdateInOtherRepo) {
+                  MaterialTheme.colorScheme.inverseSurface
+                } else {
+                  MaterialTheme.colorScheme.error
+                },
+              contentDescription = stringResource(R.string.my_apps_header_apps_with_issue),
+            )
+        }
+      ) {
+        AsyncShimmerImage(
+          model = app.iconModel,
+          error = painterResource(R.drawable.ic_repo_app_default),
+          contentDescription = null,
+          modifier = Modifier.size(48.dp).semantics { hideFromAccessibility() },
+        )
+      }
+    },
+    headlineContent = { Text(app.name) },
+    supportingContent = { Text(app.installedVersionName) },
+    colors =
+      ListItemDefaults.colors(
+        containerColor =
+          if (isSelected) {
+            MaterialTheme.colorScheme.surfaceVariant
+          } else {
+            Color.Transparent
+          }
+      ),
+    modifier = modifier,
+  )
 }
 
 @Preview
 @Composable
 fun InstalledAppRowPreview() {
-    val app = InstalledAppItem(
-        packageName = "",
-        name = Names.randomName,
-        installedVersionName = "1.0.1",
-        installedVersionCode = 10001,
-        lastUpdated = System.currentTimeMillis() - 5000,
+  val app =
+    InstalledAppItem(
+      packageName = "",
+      name = Names.randomName,
+      installedVersionName = "1.0.1",
+      installedVersionCode = 10001,
+      lastUpdated = System.currentTimeMillis() - 5000,
     )
-    FDroidContent {
-        Column {
-            InstalledAppRow(app, false)
-            InstalledAppRow(app, true)
-            InstalledAppRow(app, false, appIssue = UpdateInOtherRepo(2L))
-            InstalledAppRow(app, false, appIssue = NoCompatibleSigner())
-        }
+  FDroidContent {
+    Column {
+      InstalledAppRow(app, false)
+      InstalledAppRow(app, true)
+      InstalledAppRow(app, false, appIssue = UpdateInOtherRepo(2L))
+      InstalledAppRow(app, false, appIssue = NoCompatibleSigner())
     }
+  }
 }

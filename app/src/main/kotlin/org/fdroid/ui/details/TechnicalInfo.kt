@@ -18,51 +18,36 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 fun TechnicalInfo(item: AppDetailsItem) {
-    val items = mutableMapOf(
-        stringResource(R.string.package_name) to item.app.packageName
-    )
-    if (item.installedVersionCode != null) {
-        items[stringResource(R.string.installed_version)] =
-            "${item.installedVersionName} (${item.installedVersionCode})"
+  val items = mutableMapOf(stringResource(R.string.package_name) to item.app.packageName)
+  if (item.installedVersionCode != null) {
+    items[stringResource(R.string.installed_version)] =
+      "${item.installedVersionName} (${item.installedVersionCode})"
+  }
+  Column(
+    verticalArrangement = spacedBy(4.dp),
+    modifier = Modifier.padding(start = 16.dp, bottom = 16.dp),
+  ) {
+    items.forEach { (name, content) ->
+      Row(horizontalArrangement = spacedBy(2.dp)) {
+        Text(text = name, style = MaterialTheme.typography.bodyMedium)
+        SelectionContainer { Text(text = content, style = MaterialTheme.typography.bodyMedium) }
+      }
     }
-    Column(
-        verticalArrangement = spacedBy(4.dp),
-        modifier = Modifier
-            .padding(start = 16.dp, bottom = 16.dp),
-    ) {
-        items.forEach { (name, content) ->
-            Row(horizontalArrangement = spacedBy(2.dp)) {
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                SelectionContainer {
-                    Text(
-                        text = content,
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
-                }
-            }
+    val signer = item.installedSigner
+    if (signer != null)
+      Row {
+        SelectionContainer {
+          Text(
+            text = stringResource(R.string.signer_colon, signer.substring(0..15)),
+            style = MaterialTheme.typography.bodyMedium,
+          )
         }
-        val signer = item.installedSigner
-        if (signer != null) Row {
-            SelectionContainer {
-                Text(
-                    text = stringResource(
-                        R.string.signer_colon,
-                        signer.substring(0..15)
-                    ),
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            }
-        }
-    }
+      }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        TechnicalInfo(testApp)
-    }
+  FDroidContent { TechnicalInfo(testApp) }
 }

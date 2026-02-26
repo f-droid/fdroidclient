@@ -5,5 +5,5 @@ import javax.inject.Singleton
 
 @Singleton
 class DownloadRequestInterceptor @Inject constructor() {
-    fun intercept(request: DownloadRequest): DownloadRequest = request
+  fun intercept(request: DownloadRequest): DownloadRequest = request
 }

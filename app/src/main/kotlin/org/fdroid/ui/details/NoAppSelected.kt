@@ -17,25 +17,18 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun NoAppSelected() {
-    Box(
-        contentAlignment = Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
-        AboutContent(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth(fraction = 0.7f)
-                .padding(top = 32.dp)
-        )
-    }
+  Box(
+    contentAlignment = Center,
+    modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
+  ) {
+    AboutContent(
+      modifier = Modifier.fillMaxHeight().fillMaxWidth(fraction = 0.7f).padding(top = 32.dp)
+    )
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        NoAppSelected()
-    }
+  FDroidContent { NoAppSelected() }
 }

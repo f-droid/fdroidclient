@@ -30,86 +30,70 @@ import org.fdroid.ui.utils.TopAppBarButton
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun History(
-    items: List<HistoryItem>?,
-    enabled: Boolean?,
-    onEnabled: (Boolean) -> Unit,
-    onDeleteAll: () -> Unit,
-    onBackClicked: (() -> Unit)?,
+  items: List<HistoryItem>?,
+  enabled: Boolean?,
+  onEnabled: (Boolean) -> Unit,
+  onDeleteAll: () -> Unit,
+  onBackClicked: (() -> Unit)?,
 ) {
-    var deleteAllDialogShown by remember { mutableStateOf(false) }
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    if (onBackClicked != null) BackButton(onClick = onBackClicked)
-                },
-                title = {
-                    Text(stringResource(R.string.install_history))
-                },
-                actions = {
-                    if (!items.isNullOrEmpty()) TopAppBarButton(
-                        imageVector = Icons.Filled.Delete,
-                        contentDescription =
-                        stringResource(R.string.install_history_delete_ally),
-                        onClick = { deleteAllDialogShown = true },
-                    )
-                },
-                scrollBehavior = scrollBehavior,
+  var deleteAllDialogShown by remember { mutableStateOf(false) }
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = { if (onBackClicked != null) BackButton(onClick = onBackClicked) },
+        title = { Text(stringResource(R.string.install_history)) },
+        actions = {
+          if (!items.isNullOrEmpty())
+            TopAppBarButton(
+              imageVector = Icons.Filled.Delete,
+              contentDescription = stringResource(R.string.install_history_delete_ally),
+              onClick = { deleteAllDialogShown = true },
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        if (items == null) BigLoadingIndicator(modifier = Modifier.padding(paddingValues))
-        else HistoryList(items, enabled, onEnabled, paddingValues)
-        val onDismiss = { deleteAllDialogShown = false }
-        if (deleteAllDialogShown) AlertDialog(
-            title = {
-                Text(text = stringResource(R.string.install_history_delete_text))
-            },
-            onDismissRequest = onDismiss,
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        onDeleteAll()
-                        onDismiss()
-                    },
-                ) {
-                    Text(
-                        text = stringResource(R.string.delete),
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(android.R.string.cancel))
-                }
+        scrollBehavior = scrollBehavior,
+      )
+    },
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    if (items == null) BigLoadingIndicator(modifier = Modifier.padding(paddingValues))
+    else HistoryList(items, enabled, onEnabled, paddingValues)
+    val onDismiss = { deleteAllDialogShown = false }
+    if (deleteAllDialogShown)
+      AlertDialog(
+        title = { Text(text = stringResource(R.string.install_history_delete_text)) },
+        onDismissRequest = onDismiss,
+        confirmButton = {
+          TextButton(
+            onClick = {
+              onDeleteAll()
+              onDismiss()
             }
-        )
-    }
+          ) {
+            Text(text = stringResource(R.string.delete), color = MaterialTheme.colorScheme.error)
+          }
+        },
+        dismissButton = {
+          TextButton(onClick = onDismiss) { Text(stringResource(android.R.string.cancel)) }
+        },
+      )
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewLoading() {
-    FDroidContent {
-        History(null, true, {}, {}) { }
-    }
+  FDroidContent { History(null, true, {}, {}) {} }
 }
 
 @Preview
 @Composable
 private fun PreviewEmpty() {
-    FDroidContent {
-        History(emptyList(), true, {}, {}) { }
-    }
+  FDroidContent { History(emptyList(), true, {}, {}) {} }
 }
 
 @Preview
 @Composable
 private fun PreviewEmptyDisabled() {
-    FDroidContent {
-        History(emptyList(), false, {}, {}) { }
-    }
+  FDroidContent { History(emptyList(), false, {}, {}) {} }
 }

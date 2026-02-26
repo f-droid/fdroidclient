@@ -29,49 +29,47 @@ import org.fdroid.utils.getLogName
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun Crash(
-    isOldCrash: Boolean,
-    onCancel: () -> Unit,
-    onSend: (String, String) -> Unit,
-    onSave: (Uri, String) -> Boolean,
-    modifier: Modifier = Modifier
+  isOldCrash: Boolean,
+  onCancel: () -> Unit,
+  onSend: (String, String) -> Unit,
+  onSave: (Uri, String) -> Boolean,
+  modifier: Modifier = Modifier,
 ) {
-    val res = LocalResources.current
-    val coroutineScope = rememberCoroutineScope()
-    val textFieldState = rememberTextFieldState()
-    val snackbarHostState = remember { SnackbarHostState() }
-    val launcher = rememberLauncherForActivityResult(CreateDocument("application/json")) {
-        val success = it != null && onSave(it, textFieldState.text.toString())
-        val msg = if (success) res.getString(R.string.crash_report_saved)
+  val res = LocalResources.current
+  val coroutineScope = rememberCoroutineScope()
+  val textFieldState = rememberTextFieldState()
+  val snackbarHostState = remember { SnackbarHostState() }
+  val launcher =
+    rememberLauncherForActivityResult(CreateDocument("application/json")) {
+      val success = it != null && onSave(it, textFieldState.text.toString())
+      val msg =
+        if (success) res.getString(R.string.crash_report_saved)
         else res.getString(R.string.crash_report_error_saving)
-        coroutineScope.launch {
-            snackbarHostState.showSnackbar(msg)
-        }
+      coroutineScope.launch { snackbarHostState.showSnackbar(msg) }
     }
-    val context = LocalContext.current
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {},
-                actions = {
-                    TopAppBarButton(
-                        imageVector = Icons.Default.Save,
-                        contentDescription = stringResource(R.string.crash_report_save),
-                        onClick = { launcher.launch("${getLogName(context)}.json") },
-                    )
-                }
-            )
+  val context = LocalContext.current
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = {},
+        actions = {
+          TopAppBarButton(
+            imageVector = Icons.Default.Save,
+            contentDescription = stringResource(R.string.crash_report_save),
+            onClick = { launcher.launch("${getLogName(context)}.json") },
+          )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
-        modifier = modifier,
-    ) { paddingValues ->
-        CrashContent(isOldCrash, onCancel, onSend, textFieldState, Modifier.padding(paddingValues))
-    }
+      )
+    },
+    snackbarHost = { SnackbarHost(snackbarHostState) },
+    modifier = modifier,
+  ) { paddingValues ->
+    CrashContent(isOldCrash, onCancel, onSend, textFieldState, Modifier.padding(paddingValues))
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        Crash(false, {}, { _, _ -> }, { _, _ -> true })
-    }
+  FDroidContent { Crash(false, {}, { _, _ -> }, { _, _ -> true }) }
 }

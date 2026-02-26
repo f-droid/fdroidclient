@@ -19,57 +19,59 @@ import org.fdroid.ui.navigation.NavigationRail
 
 @Composable
 fun MainContent(
-    isBigScreen: Boolean,
-    dynamicColors: Boolean,
-    showBottomBar: Boolean,
-    currentNavKey: NavKey,
-    numUpdates: Int,
-    hasAppIssues: Boolean,
-    onNav: (MainNavKey) -> Unit,
-    content: @Composable (Modifier) -> Unit,
-) = FDroidContent(dynamicColors = dynamicColors) {
+  isBigScreen: Boolean,
+  dynamicColors: Boolean,
+  showBottomBar: Boolean,
+  currentNavKey: NavKey,
+  numUpdates: Int,
+  hasAppIssues: Boolean,
+  onNav: (MainNavKey) -> Unit,
+  content: @Composable (Modifier) -> Unit,
+) =
+  FDroidContent(dynamicColors = dynamicColors) {
     HintHost {
-        Scaffold(
-            bottomBar = if (showBottomBar) {
-                {
-                    BottomBar(
-                        numUpdates = numUpdates,
-                        hasIssues = hasAppIssues,
-                        currentNavKey = currentNavKey,
-                        onNav = onNav,
-                    )
-                }
-            } else {
-                {}
-            },
-        ) { paddingValues ->
-            Row {
-                // show nav rail only on big screen (at least two partitions)
-                if (isBigScreen) NavigationRail(
-                    numUpdates = numUpdates,
-                    hasIssues = hasAppIssues,
-                    currentNavKey = currentNavKey,
-                    onNav = onNav,
-                )
-                val modifier = if (isBigScreen) {
-                    // need to consume start insets or some phones leave a lot of space there
-                    Modifier.consumeWindowInsets(PaddingValues(start = 64.dp))
-                } else if (showBottomBar) {
-                    // we only apply the bottom padding here, so content stays above bottom bar,
-                    // but we need to consume the navigation bar height manually
-                    val bottom = with(LocalDensity.current) {
-                        WindowInsets.navigationBars.getBottom(this).toDp()
-                    }
-                    Modifier
-                        .consumeWindowInsets(PaddingValues(bottom = bottom))
-                        .padding(bottom = paddingValues.calculateBottomPadding())
-                } else {
-                    Modifier
-                }
-                // this needs to a have a fixed place or state saving breaks,
-                // so all moving pieces with conditionals are above
-                content(modifier)
+      Scaffold(
+        bottomBar =
+          if (showBottomBar) {
+            {
+              BottomBar(
+                numUpdates = numUpdates,
+                hasIssues = hasAppIssues,
+                currentNavKey = currentNavKey,
+                onNav = onNav,
+              )
             }
+          } else {
+            {}
+          }
+      ) { paddingValues ->
+        Row {
+          // show nav rail only on big screen (at least two partitions)
+          if (isBigScreen)
+            NavigationRail(
+              numUpdates = numUpdates,
+              hasIssues = hasAppIssues,
+              currentNavKey = currentNavKey,
+              onNav = onNav,
+            )
+          val modifier =
+            if (isBigScreen) {
+              // need to consume start insets or some phones leave a lot of space there
+              Modifier.consumeWindowInsets(PaddingValues(start = 64.dp))
+            } else if (showBottomBar) {
+              // we only apply the bottom padding here, so content stays above bottom bar,
+              // but we need to consume the navigation bar height manually
+              val bottom =
+                with(LocalDensity.current) { WindowInsets.navigationBars.getBottom(this).toDp() }
+              Modifier.consumeWindowInsets(PaddingValues(bottom = bottom))
+                .padding(bottom = paddingValues.calculateBottomPadding())
+            } else {
+              Modifier
+            }
+          // this needs to a have a fixed place or state saving breaks,
+          // so all moving pieces with conditionals are above
+          content(modifier)
         }
+      }
     }
-}
+  }

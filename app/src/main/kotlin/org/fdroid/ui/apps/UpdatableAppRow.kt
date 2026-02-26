@@ -41,121 +41,109 @@ import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.getPreviewVersion
 
 @Composable
-fun UpdatableAppRow(
-    app: AppUpdateItem,
-    isSelected: Boolean,
-    modifier: Modifier = Modifier
-) {
-    var isExpanded by remember { mutableStateOf(false) }
-    Column(modifier = modifier) {
-        ListItem(
-            leadingContent = {
-                BadgedBox(
-                    badge = {
-                        BadgeIcon(
-                            icon = Icons.Filled.NewReleases,
-                            color = MaterialTheme.colorScheme.secondary,
-                            contentDescription =
-                            stringResource(R.string.notification_title_single_update_available),
-                        )
-                    },
-                ) {
-                    AsyncShimmerImage(
-                        model = app.iconModel,
-                        error = painterResource(R.drawable.ic_repo_app_default),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(48.dp)
-                            .semantics { hideFromAccessibility() },
-                    )
-                }
-            },
-            headlineContent = {
-                Text(app.name)
-            },
-            supportingContent = {
-                val size = app.update.size?.let {
-                    Formatter.formatFileSize(LocalContext.current, it)
-                }
-                val text = if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-                    "${app.installedVersionName} → ${app.update.versionName} • $size"
-                } else {
-                    "$size • ${app.update.versionName} ← ${app.installedVersionName}"
-                }
-                Text(text)
-            },
-            trailingContent = {
-                if (app.whatsNew != null) IconButton(onClick = { isExpanded = !isExpanded }) {
-                    ExpandIconArrow(isExpanded)
-                }
-            },
-            colors = ListItemDefaults.colors(
-                containerColor = if (isSelected) {
-                    MaterialTheme.colorScheme.surfaceVariant
-                } else {
-                    Color.Transparent
-                }
-            ),
-        )
-        AnimatedVisibility(
-            visible = isExpanded,
-            modifier = Modifier
-                .padding(8.dp)
-                .semantics { liveRegion = LiveRegionMode.Polite }
+fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier = Modifier) {
+  var isExpanded by remember { mutableStateOf(false) }
+  Column(modifier = modifier) {
+    ListItem(
+      leadingContent = {
+        BadgedBox(
+          badge = {
+            BadgeIcon(
+              icon = Icons.Filled.NewReleases,
+              color = MaterialTheme.colorScheme.secondary,
+              contentDescription =
+                stringResource(R.string.notification_title_single_update_available),
+            )
+          }
         ) {
-            Card(modifier = Modifier.fillMaxWidth()) {
-                Text(
-                    text = app.whatsNew ?: "",
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier
-                        .padding(8.dp)
-                )
-            }
+          AsyncShimmerImage(
+            model = app.iconModel,
+            error = painterResource(R.drawable.ic_repo_app_default),
+            contentDescription = null,
+            modifier = Modifier.size(48.dp).semantics { hideFromAccessibility() },
+          )
         }
+      },
+      headlineContent = { Text(app.name) },
+      supportingContent = {
+        val size = app.update.size?.let { Formatter.formatFileSize(LocalContext.current, it) }
+        val text =
+          if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
+            "${app.installedVersionName} → ${app.update.versionName} • $size"
+          } else {
+            "$size • ${app.update.versionName} ← ${app.installedVersionName}"
+          }
+        Text(text)
+      },
+      trailingContent = {
+        if (app.whatsNew != null)
+          IconButton(onClick = { isExpanded = !isExpanded }) { ExpandIconArrow(isExpanded) }
+      },
+      colors =
+        ListItemDefaults.colors(
+          containerColor =
+            if (isSelected) {
+              MaterialTheme.colorScheme.surfaceVariant
+            } else {
+              Color.Transparent
+            }
+        ),
+    )
+    AnimatedVisibility(
+      visible = isExpanded,
+      modifier = Modifier.padding(8.dp).semantics { liveRegion = LiveRegionMode.Polite },
+    ) {
+      Card(modifier = Modifier.fillMaxWidth()) {
+        Text(
+          text = app.whatsNew ?: "",
+          style = MaterialTheme.typography.bodyMedium,
+          modifier = Modifier.padding(8.dp),
+        )
+      }
     }
+  }
 }
 
 @Preview
 @Composable
 fun UpdatableAppRowPreview() {
-    val app1 = AppUpdateItem(
-        repoId = 1,
-        packageName = "A",
-        name = "App Update 123",
-        installedVersionName = "1.0.1",
-        update = getPreviewVersion("1.1.0", 123456789),
-        whatsNew = "This is new, all is new, nothing old.",
+  val app1 =
+    AppUpdateItem(
+      repoId = 1,
+      packageName = "A",
+      name = "App Update 123",
+      installedVersionName = "1.0.1",
+      update = getPreviewVersion("1.1.0", 123456789),
+      whatsNew = "This is new, all is new, nothing old.",
     )
-    val app2 = AppUpdateItem(
-        repoId = 2,
-        packageName = "B",
-        name = "App Update 456",
-        installedVersionName = "1.0.1",
-        update = getPreviewVersion("1.1.0", 123456789),
-        whatsNew = "This is new, all is new, nothing old.",
+  val app2 =
+    AppUpdateItem(
+      repoId = 2,
+      packageName = "B",
+      name = "App Update 456",
+      installedVersionName = "1.0.1",
+      update = getPreviewVersion("1.1.0", 123456789),
+      whatsNew = "This is new, all is new, nothing old.",
     )
-    FDroidContent {
-        Column {
-            UpdatableAppRow(app1, false)
-            UpdatableAppRow(app2, true)
-        }
+  FDroidContent {
+    Column {
+      UpdatableAppRow(app1, false)
+      UpdatableAppRow(app2, true)
     }
+  }
 }
 
 @Preview(locale = "fa")
 @Composable
 private fun UpdatableAppRowRtl() {
-    val app1 = AppUpdateItem(
-        repoId = 1,
-        packageName = "A",
-        name = "App Update 123",
-        installedVersionName = "1.0.1",
-        update = getPreviewVersion("1.1.0", 123456789),
-        whatsNew = "This is new, all is new, nothing old.",
+  val app1 =
+    AppUpdateItem(
+      repoId = 1,
+      packageName = "A",
+      name = "App Update 123",
+      installedVersionName = "1.0.1",
+      update = getPreviewVersion("1.1.0", 123456789),
+      whatsNew = "This is new, all is new, nothing old.",
     )
-    FDroidContent {
-        Column {
-            UpdatableAppRow(app1, false)
-        }
-    }
+  FDroidContent { Column { UpdatableAppRow(app1, false) } }
 }

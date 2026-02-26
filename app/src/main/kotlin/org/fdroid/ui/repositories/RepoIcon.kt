@@ -12,10 +12,10 @@ import org.fdroid.ui.utils.AsyncShimmerImage
 
 @Composable
 fun RepoIcon(repo: Repository, proxy: ProxyConfig?, modifier: Modifier = Modifier) {
-    AsyncShimmerImage(
-        model = repo.getIcon(LocaleListCompat.getDefault())?.getImageModel(repo, proxy),
-        contentDescription = null,
-        error = painterResource(R.drawable.ic_repo_app_default),
-        modifier = modifier,
-    )
+  AsyncShimmerImage(
+    model = repo.getIcon(LocaleListCompat.getDefault())?.getImageModel(repo, proxy),
+    contentDescription = null,
+    error = painterResource(R.drawable.ic_repo_app_default),
+    modifier = modifier,
+  )
 }

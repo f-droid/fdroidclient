@@ -19,48 +19,35 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun FDroidSwitchRow(
-    text: String,
-    leadingContent: (@Composable () -> Unit)? = null,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit = {},
-    enabled: Boolean = true,
-    verticalPadding: Dp = 8.dp,
+  text: String,
+  leadingContent: (@Composable () -> Unit)? = null,
+  checked: Boolean,
+  onCheckedChange: (Boolean) -> Unit = {},
+  enabled: Boolean = true,
+  verticalPadding: Dp = 8.dp,
 ) {
-    Row(
-        horizontalArrangement = spacedBy(8.dp),
-        verticalAlignment = CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .toggleable(
-                value = checked,
-                enabled = enabled,
-                role = Role.Switch,
-                onValueChange = onCheckedChange,
-            )
-            // add padding after toggleable to have a larger touch area
-            .padding(vertical = verticalPadding),
-    ) {
-        leadingContent?.invoke()
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.weight(1f),
+  Row(
+    horizontalArrangement = spacedBy(8.dp),
+    verticalAlignment = CenterVertically,
+    modifier =
+      Modifier.fillMaxWidth()
+        .toggleable(
+          value = checked,
+          enabled = enabled,
+          role = Role.Switch,
+          onValueChange = onCheckedChange,
         )
-        Switch(
-            checked = checked,
-            onCheckedChange = null,
-            enabled = enabled,
-        )
-    }
+        // add padding after toggleable to have a larger touch area
+        .padding(vertical = verticalPadding),
+  ) {
+    leadingContent?.invoke()
+    Text(text = text, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+    Switch(checked = checked, onCheckedChange = null, enabled = enabled)
+  }
 }
 
 @Composable
 @Preview
 fun FDroidSwitchRowPreview() {
-    FDroidContent {
-        FDroidSwitchRow(
-            text = "Important setting",
-            checked = true,
-        )
-    }
+  FDroidContent { FDroidSwitchRow(text = "Important setting", checked = true) }
 }

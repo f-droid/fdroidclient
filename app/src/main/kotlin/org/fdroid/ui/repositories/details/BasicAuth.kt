@@ -31,55 +31,46 @@ import org.fdroid.ui.utils.FDroidOutlineButton
 
 @Composable
 fun BasicAuth(
-    username: String,
-    modifier: Modifier = Modifier,
-    onEditCredentials: (String, String) -> Unit,
+  username: String,
+  modifier: Modifier = Modifier,
+  onEditCredentials: (String, String) -> Unit,
 ) {
-    val usernameState = rememberTextFieldState(initialText = username)
-    val passwordState = rememberTextFieldState()
-    var showSaveButton by remember { mutableStateOf(true) }
-    Column(
-        verticalArrangement = spacedBy(8.dp),
-        modifier = modifier
-            .fillMaxWidth()
-            .imePadding()
+  val usernameState = rememberTextFieldState(initialText = username)
+  val passwordState = rememberTextFieldState()
+  var showSaveButton by remember { mutableStateOf(true) }
+  Column(verticalArrangement = spacedBy(8.dp), modifier = modifier.fillMaxWidth().imePadding()) {
+    Text(
+      text = stringResource(R.string.repo_basic_auth_title),
+      style = MaterialTheme.typography.titleMedium,
+    )
+    TextField(
+      state = usernameState,
+      label = { Text(stringResource(R.string.repo_basicauth_username)) },
+    )
+    TextField(
+      state = passwordState,
+      label = { Text(stringResource(R.string.repo_basicauth_password)) },
+    )
+    AnimatedVisibility(
+      visible = showSaveButton,
+      modifier = Modifier.align(Alignment.End).semantics { liveRegion = LiveRegionMode.Polite },
     ) {
-        Text(
-            text = stringResource(R.string.repo_basic_auth_title),
-            style = MaterialTheme.typography.titleMedium,
-        )
-        TextField(
-            state = usernameState,
-            label = { Text(stringResource(R.string.repo_basicauth_username)) }
-        )
-        TextField(
-            state = passwordState,
-            label = { Text(stringResource(R.string.repo_basicauth_password)) }
-        )
-        AnimatedVisibility(
-            visible = showSaveButton,
-            modifier = Modifier
-                .align(Alignment.End)
-                .semantics { liveRegion = LiveRegionMode.Polite },
-        ) {
-            FDroidOutlineButton(
-                text = stringResource(R.string.repo_basicauth_edit),
-                onClick = {
-                    val username = usernameState.text.toString()
-                    val password = passwordState.text.toString()
-                    onEditCredentials(username, password)
-                    showSaveButton = false
-                },
-                imageVector = Icons.Default.Save,
-            )
-        }
+      FDroidOutlineButton(
+        text = stringResource(R.string.repo_basicauth_edit),
+        onClick = {
+          val username = usernameState.text.toString()
+          val password = passwordState.text.toString()
+          onEditCredentials(username, password)
+          showSaveButton = false
+        },
+        imageVector = Icons.Default.Save,
+      )
     }
+  }
 }
 
 @Composable
 @Preview
 fun BasicAuthCardPreview() {
-    FDroidContent {
-        BasicAuth("username", Modifier.padding(16.dp)) { _, _ -> }
-    }
+  FDroidContent { BasicAuth("username", Modifier.padding(16.dp)) { _, _ -> } }
 }

@@ -11,29 +11,23 @@ import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.navigation.Navigator
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
-fun EntryProviderScope<NavKey>.discoverEntry(
-    navigator: Navigator,
-) {
-    entry<NavigationKey.Discover>(
-        metadata = ListDetailSceneStrategy.listPane("appdetails") {
-            NoAppSelected()
-        },
-    ) {
-        val viewModel = hiltViewModel<DiscoverViewModel>()
-        Discover(
-            discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
-            onListTap = {
-                navigator.navigate(NavigationKey.AppList(it))
-            },
-            onAppTap = {
-                val new = NavigationKey.AppDetails(it.packageName)
-                if (navigator.last is NavigationKey.AppDetails) {
-                    navigator.replaceLast(new)
-                } else {
-                    navigator.navigate(new)
-                }
-            },
-            onNav = { navKey -> navigator.navigate(navKey) },
-        )
-    }
+fun EntryProviderScope<NavKey>.discoverEntry(navigator: Navigator) {
+  entry<NavigationKey.Discover>(
+    metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
+  ) {
+    val viewModel = hiltViewModel<DiscoverViewModel>()
+    Discover(
+      discoverModel = viewModel.discoverModel.collectAsStateWithLifecycle().value,
+      onListTap = { navigator.navigate(NavigationKey.AppList(it)) },
+      onAppTap = {
+        val new = NavigationKey.AppDetails(it.packageName)
+        if (navigator.last is NavigationKey.AppDetails) {
+          navigator.replaceLast(new)
+        } else {
+          navigator.navigate(new)
+        }
+      },
+      onNav = { navKey -> navigator.navigate(navKey) },
+    )
+  }
 }

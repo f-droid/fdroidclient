@@ -12,26 +12,17 @@ import org.fdroid.R
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun DeleteDialog(onDismissDialog: () -> Unit, onDelete: () -> Unit) {
-    AlertDialog(
-        title = {
-            Text(text = stringResource(R.string.repo_confirm_delete_title))
-        },
-        text = {
-            Text(text = stringResource(R.string.repo_confirm_delete_body))
-        },
-        onDismissRequest = onDismissDialog,
-        confirmButton = {
-            TextButton(onClick = onDelete) {
-                Text(
-                    text = stringResource(R.string.delete),
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismissDialog) {
-                Text(stringResource(android.R.string.cancel))
-            }
-        }
-    )
+  AlertDialog(
+    title = { Text(text = stringResource(R.string.repo_confirm_delete_title)) },
+    text = { Text(text = stringResource(R.string.repo_confirm_delete_body)) },
+    onDismissRequest = onDismissDialog,
+    confirmButton = {
+      TextButton(onClick = onDelete) {
+        Text(text = stringResource(R.string.delete), color = MaterialTheme.colorScheme.error)
+      }
+    },
+    dismissButton = {
+      TextButton(onClick = onDismissDialog) { Text(stringResource(android.R.string.cancel)) }
+    },
+  )
 }

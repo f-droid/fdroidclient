@@ -22,59 +22,55 @@ import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.InstalledBadge
 
 @Composable
-fun AppListRow(
-    item: AppListItem,
-    isSelected: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    ListItem(
-        headlineContent = { Text(item.name) },
-        supportingContent = { Text(item.summary) },
-        leadingContent = {
-            BadgedBox(badge = { if (item.isInstalled) InstalledBadge() }) {
-                AsyncShimmerImage(
-                    model = item.iconModel,
-                    error = painterResource(R.drawable.ic_repo_app_default),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .semantics { hideFromAccessibility() },
-                )
-            }
-        },
-        colors = ListItemDefaults.colors(
-            containerColor = if (isSelected) {
-                MaterialTheme.colorScheme.surfaceVariant
-            } else {
-                Color.Transparent
-            }
-        ),
-        modifier = modifier,
-    )
+fun AppListRow(item: AppListItem, isSelected: Boolean, modifier: Modifier = Modifier) {
+  ListItem(
+    headlineContent = { Text(item.name) },
+    supportingContent = { Text(item.summary) },
+    leadingContent = {
+      BadgedBox(badge = { if (item.isInstalled) InstalledBadge() }) {
+        AsyncShimmerImage(
+          model = item.iconModel,
+          error = painterResource(R.drawable.ic_repo_app_default),
+          contentDescription = null,
+          modifier = Modifier.size(48.dp).semantics { hideFromAccessibility() },
+        )
+      }
+    },
+    colors =
+      ListItemDefaults.colors(
+        containerColor =
+          if (isSelected) {
+            MaterialTheme.colorScheme.surfaceVariant
+          } else {
+            Color.Transparent
+          }
+      ),
+    modifier = modifier,
+  )
 }
 
 @Preview
 @Composable
 fun AppListRowPreview() {
-    FDroidContent {
-        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true)
-        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true)
-        Column {
-            AppListRow(item1, false)
-            AppListRow(item2, true)
-        }
+  FDroidContent {
+    val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true)
+    val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true)
+    Column {
+      AppListRow(item1, false)
+      AppListRow(item2, true)
     }
+  }
 }
 
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun AppListRowPreviewNight() {
-    FDroidContent {
-        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, true)
-        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, false, true)
-        Column {
-            AppListRow(item1, false)
-            AppListRow(item2, true)
-        }
+  FDroidContent {
+    val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, true)
+    val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, false, true)
+    Column {
+      AppListRow(item1, false)
+      AppListRow(item2, true)
     }
+  }
 }

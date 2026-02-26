@@ -39,159 +39,131 @@ import org.fdroid.ui.ipfs.IpfsManager.Companion.DEFAULT_GATEWAYS
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun SettingsScreen(
-    prefs: IpfsPreferences,
-    actions: IpfsActions,
-    onBackClicked: () -> Unit,
-) {
-    var showAddDialog by remember { mutableStateOf(false) }
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
-                    }
-                },
-                title = {
-                    Text(
-                        text = stringResource(R.string.ipfsgw_title),
-                    )
-                },
-            )
+fun SettingsScreen(prefs: IpfsPreferences, actions: IpfsActions, onBackClicked: () -> Unit) {
+  var showAddDialog by remember { mutableStateOf(false) }
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = {
+          IconButton(onClick = onBackClicked) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+          }
         },
-        floatingActionButton = {
-            // it doesn't seam to be supported to disable FABs, so just hide it for now.
-            if (prefs.isIpfsEnabled) {
-                FloatingActionButton(
-                    onClick = {
-                        showAddDialog = true
-                    },
-                ) {
-                    Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
-                }
-            }
-        },
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .padding(paddingValues)
-                .verticalScroll(rememberScrollState())
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.ipfsgw_explainer),
-                        style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Switch(checked = prefs.isIpfsEnabled, onCheckedChange = actions::setIpfsEnabled)
-                }
-                DefaultGatewaysSettings(prefs, actions)
-                UserGatewaysSettings(prefs, actions)
-                // make sure FAB doesn't occlude the delete button of the last user gateway
-                Spacer(modifier = Modifier.height(64.dp))
-            }
+        title = { Text(text = stringResource(R.string.ipfsgw_title)) },
+      )
+    },
+    floatingActionButton = {
+      // it doesn't seam to be supported to disable FABs, so just hide it for now.
+      if (prefs.isIpfsEnabled) {
+        FloatingActionButton(onClick = { showAddDialog = true }) {
+          Icon(Icons.Filled.Add, stringResource(id = R.string.ipfsgw_add_add))
         }
-        if (showAddDialog) AddGatewaysDialog(actions::addUserGateway) { showAddDialog = false }
+      }
+    },
+  ) { paddingValues ->
+    Box(modifier = Modifier.padding(paddingValues).verticalScroll(rememberScrollState())) {
+      Column(modifier = Modifier.padding(16.dp)) {
+        Row(modifier = Modifier.fillMaxWidth()) {
+          Text(
+            text = stringResource(id = R.string.ipfsgw_explainer),
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.weight(1f),
+          )
+          Switch(checked = prefs.isIpfsEnabled, onCheckedChange = actions::setIpfsEnabled)
+        }
+        DefaultGatewaysSettings(prefs, actions)
+        UserGatewaysSettings(prefs, actions)
+        // make sure FAB doesn't occlude the delete button of the last user gateway
+        Spacer(modifier = Modifier.height(64.dp))
+      }
     }
+    if (showAddDialog) AddGatewaysDialog(actions::addUserGateway) { showAddDialog = false }
+  }
 }
 
 @Composable
 fun DefaultGatewaysSettings(prefs: IpfsPreferences, actions: IpfsActions) {
-    Column {
+  Column {
+    Text(
+      text = stringResource(id = R.string.ipfsgw_caption_official_gateways),
+      style = MaterialTheme.typography.bodySmall,
+      modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp),
+    )
+    for (gatewayUrl in DEFAULT_GATEWAYS) {
+      Row(modifier = Modifier.fillMaxWidth().padding(48.dp, 4.dp, 0.dp, 4.dp)) {
         Text(
-            text = stringResource(id = R.string.ipfsgw_caption_official_gateways),
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
+          text = gatewayUrl,
+          style = MaterialTheme.typography.bodyLarge,
+          modifier =
+            Modifier.weight(1f)
+              .align(Alignment.CenterVertically)
+              .alpha(if (prefs.isIpfsEnabled) 1f else 0.5f),
         )
-        for (gatewayUrl in DEFAULT_GATEWAYS) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(48.dp, 4.dp, 0.dp, 4.dp)
-            ) {
-                Text(
-                    text = gatewayUrl,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier
-                        .weight(1f)
-                        .align(Alignment.CenterVertically)
-                        .alpha(if (prefs.isIpfsEnabled) 1f else 0.5f)
-                )
-                Switch(
-                    checked = !prefs.disabledDefaultGateways.contains(gatewayUrl),
-                    onCheckedChange = { checked ->
-                        actions.setDefaultGatewayEnabled(gatewayUrl, checked)
-                    },
-                    enabled = prefs.isIpfsEnabled,
-                    modifier = Modifier.align(Alignment.CenterVertically)
-                )
-            }
-        }
+        Switch(
+          checked = !prefs.disabledDefaultGateways.contains(gatewayUrl),
+          onCheckedChange = { checked -> actions.setDefaultGatewayEnabled(gatewayUrl, checked) },
+          enabled = prefs.isIpfsEnabled,
+          modifier = Modifier.align(Alignment.CenterVertically),
+        )
+      }
     }
+  }
 }
 
 @Composable
 fun UserGatewaysSettings(prefs: IpfsPreferences, actions: IpfsActions) {
-    Column {
-        if (prefs.userGateways.isNotEmpty()) {
-            Text(
-                text = stringResource(id = R.string.ipfsgw_caption_custom_gateways),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp)
-            )
-        }
-        for (gatewayUrl in prefs.userGateways) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(48.dp, 4.dp, 0.dp, 4.dp)
-            ) {
-                Text(
-                    text = gatewayUrl,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier
-                        .weight(1f)
-                        .align(Alignment.CenterVertically)
-                        .alpha(if (prefs.isIpfsEnabled) 1f else 0.5f)
-                )
-                IconButton(
-                    onClick = { actions.removeUserGateway(gatewayUrl) },
-                    enabled = prefs.isIpfsEnabled,
-                    modifier = Modifier.align(Alignment.CenterVertically),
-                ) {
-                    Icon(
-                        Icons.Default.DeleteForever,
-                        contentDescription = "Localized description",
-                    )
-                }
-            }
-        }
+  Column {
+    if (prefs.userGateways.isNotEmpty()) {
+      Text(
+        text = stringResource(id = R.string.ipfsgw_caption_custom_gateways),
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier.padding(0.dp, 16.dp, 0.dp, 4.dp),
+      )
     }
+    for (gatewayUrl in prefs.userGateways) {
+      Row(modifier = Modifier.fillMaxWidth().padding(48.dp, 4.dp, 0.dp, 4.dp)) {
+        Text(
+          text = gatewayUrl,
+          style = MaterialTheme.typography.bodyLarge,
+          modifier =
+            Modifier.weight(1f)
+              .align(Alignment.CenterVertically)
+              .alpha(if (prefs.isIpfsEnabled) 1f else 0.5f),
+        )
+        IconButton(
+          onClick = { actions.removeUserGateway(gatewayUrl) },
+          enabled = prefs.isIpfsEnabled,
+          modifier = Modifier.align(Alignment.CenterVertically),
+        ) {
+          Icon(Icons.Default.DeleteForever, contentDescription = "Localized description")
+        }
+      }
+    }
+  }
 }
 
 @Composable
 @Preview
 fun SettingsScreenPreview() {
-    FDroidContent {
-        SettingsScreen(
-            prefs = IpfsPreferences(
-                isIpfsEnabled = true,
-                disabledDefaultGateways = listOf("https://4everland.io/ipfs/"),
-                userGateways = listOf("https://my.imaginary.gateway/ifps/")
-            ),
-            actions = object : IpfsActions {
-                override fun setIpfsEnabled(enabled: Boolean) {}
-                override fun setDefaultGatewayEnabled(url: String, enabled: Boolean) {}
-                override fun addUserGateway(url: String) {}
-                override fun removeUserGateway(url: String) {}
-            },
-            onBackClicked = {},
-        )
-    }
+  FDroidContent {
+    SettingsScreen(
+      prefs =
+        IpfsPreferences(
+          isIpfsEnabled = true,
+          disabledDefaultGateways = listOf("https://4everland.io/ipfs/"),
+          userGateways = listOf("https://my.imaginary.gateway/ifps/"),
+        ),
+      actions =
+        object : IpfsActions {
+          override fun setIpfsEnabled(enabled: Boolean) {}
+
+          override fun setDefaultGatewayEnabled(url: String, enabled: Boolean) {}
+
+          override fun addUserGateway(url: String) {}
+
+          override fun removeUserGateway(url: String) {}
+        },
+      onBackClicked = {},
+    )
+  }
 }

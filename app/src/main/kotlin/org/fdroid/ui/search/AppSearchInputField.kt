@@ -27,45 +27,43 @@ import org.fdroid.R
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 fun AppSearchInputField(
-    searchBarState: SearchBarState,
-    textFieldState: TextFieldState,
-    onSearch: suspend (String) -> Unit,
-    onSearchCleared: () -> Unit,
-    modifier: Modifier = Modifier,
+  searchBarState: SearchBarState,
+  textFieldState: TextFieldState,
+  onSearch: suspend (String) -> Unit,
+  onSearchCleared: () -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val scope = rememberCoroutineScope()
-    // set-up search as you type
-    LaunchedEffect(Unit) {
-        textFieldState.edit { placeCursorAtEnd() }
-        snapshotFlow { textFieldState.text }
-            .distinctUntilChanged()
-            .debounce(500)
-            .collectLatest {
-                if (it.isEmpty()) {
-                    onSearchCleared()
-                } else if (it.length >= SEARCH_THRESHOLD) {
-                    onSearch(textFieldState.text.toString())
-                }
-            }
-    }
-    SearchBarDefaults.InputField(
-        modifier = modifier,
-        searchBarState = searchBarState,
-        textFieldState = textFieldState,
-        textStyle = MaterialTheme.typography.bodyLarge,
-        onSearch = {
-            scope.launch { onSearch(it) }
-        },
-        placeholder = { Text(stringResource(R.string.search_placeholder)) },
-        trailingIcon = {
-            if (textFieldState.text.isNotEmpty()) {
-                IconButton(onClick = onSearchCleared) {
-                    Icon(
-                        imageVector = Icons.Filled.Clear,
-                        contentDescription = stringResource(R.string.clear_search),
-                    )
-                }
-            }
+  val scope = rememberCoroutineScope()
+  // set-up search as you type
+  LaunchedEffect(Unit) {
+    textFieldState.edit { placeCursorAtEnd() }
+    snapshotFlow { textFieldState.text }
+      .distinctUntilChanged()
+      .debounce(500)
+      .collectLatest {
+        if (it.isEmpty()) {
+          onSearchCleared()
+        } else if (it.length >= SEARCH_THRESHOLD) {
+          onSearch(textFieldState.text.toString())
         }
-    )
+      }
+  }
+  SearchBarDefaults.InputField(
+    modifier = modifier,
+    searchBarState = searchBarState,
+    textFieldState = textFieldState,
+    textStyle = MaterialTheme.typography.bodyLarge,
+    onSearch = { scope.launch { onSearch(it) } },
+    placeholder = { Text(stringResource(R.string.search_placeholder)) },
+    trailingIcon = {
+      if (textFieldState.text.isNotEmpty()) {
+        IconButton(onClick = onSearchCleared) {
+          Icon(
+            imageVector = Icons.Filled.Clear,
+            contentDescription = stringResource(R.string.clear_search),
+          )
+        }
+      }
+    },
+  )
 }

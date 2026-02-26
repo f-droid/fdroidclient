@@ -35,83 +35,67 @@ import org.fdroid.ui.utils.Names
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppCarousel(
-    title: String,
-    apps: List<AppDiscoverItem>,
-    modifier: Modifier = Modifier,
-    onTitleTap: () -> Unit,
-    onAppTap: (AppDiscoverItem) -> Unit,
+  title: String,
+  apps: List<AppDiscoverItem>,
+  modifier: Modifier = Modifier,
+  onTitleTap: () -> Unit,
+  onAppTap: (AppDiscoverItem) -> Unit,
 ) {
-    Column(
-        verticalArrangement = spacedBy(8.dp),
-        modifier = modifier
+  Column(verticalArrangement = spacedBy(8.dp), modifier = modifier) {
+    Row(
+      verticalAlignment = CenterVertically,
+      modifier =
+        Modifier.fillMaxWidth()
+          .clickable(onClick = onTitleTap)
+          .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        Row(
-            verticalAlignment = CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable(onClick = onTitleTap)
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.headlineSmall,
-            )
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                modifier = Modifier.semantics { hideFromAccessibility() },
-                contentDescription = null,
-            )
-        }
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = spacedBy(16.dp),
-        ) {
-            items(apps, key = { it.packageName }) { app ->
-                AppBox(app, onAppTap)
-            }
-        }
+      Text(text = title, style = MaterialTheme.typography.headlineSmall)
+      Icon(
+        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+        modifier = Modifier.semantics { hideFromAccessibility() },
+        contentDescription = null,
+      )
     }
+    LazyRow(
+      contentPadding = PaddingValues(horizontal = 16.dp),
+      horizontalArrangement = spacedBy(16.dp),
+    ) {
+      items(apps, key = { it.packageName }) { app -> AppBox(app, onAppTap) }
+    }
+  }
 }
 
 @Composable
 fun AppBox(app: AppDiscoverItem, onAppTap: (AppDiscoverItem) -> Unit) {
-    Column(
-        verticalArrangement = spacedBy(8.dp),
-        modifier = Modifier
-            .width(80.dp)
-            .clickable { onAppTap(app) },
-    ) {
-        BadgedBox(badge = { if (app.isInstalled) InstalledBadge() }) {
-            AsyncShimmerImage(
-                model = app.imageModel,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(76.dp)
-                    .clip(MaterialTheme.shapes.large)
-                    .semantics { hideFromAccessibility() },
-            )
-        }
-        Text(
-            text = app.name,
-            style = MaterialTheme.typography.bodySmall,
-            minLines = 2,
-            maxLines = 2,
-        )
+  Column(
+    verticalArrangement = spacedBy(8.dp),
+    modifier = Modifier.width(80.dp).clickable { onAppTap(app) },
+  ) {
+    BadgedBox(badge = { if (app.isInstalled) InstalledBadge() }) {
+      AsyncShimmerImage(
+        model = app.imageModel,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier =
+          Modifier.size(76.dp).clip(MaterialTheme.shapes.large).semantics {
+            hideFromAccessibility()
+          },
+      )
     }
+    Text(text = app.name, style = MaterialTheme.typography.bodySmall, minLines = 2, maxLines = 2)
+  }
 }
 
 @Preview
 @Composable
 fun AppCarouselPreview() {
-    val apps = listOf(
-        AppDiscoverItem("1", Names.randomName, false),
-        AppDiscoverItem("2", Names.randomName, true),
-        AppDiscoverItem("3", Names.randomName, false),
-        AppDiscoverItem("4", Names.randomName, false),
-        AppDiscoverItem("5", Names.randomName, false),
+  val apps =
+    listOf(
+      AppDiscoverItem("1", Names.randomName, false),
+      AppDiscoverItem("2", Names.randomName, true),
+      AppDiscoverItem("3", Names.randomName, false),
+      AppDiscoverItem("4", Names.randomName, false),
+      AppDiscoverItem("5", Names.randomName, false),
     )
-    FDroidContent {
-        AppCarousel("Preview Apps", apps, onTitleTap = {}) {}
-    }
+  FDroidContent { AppCarousel("Preview Apps", apps, onTitleTap = {}) {} }
 }

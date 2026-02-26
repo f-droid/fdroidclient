@@ -68,246 +68,227 @@ import org.fdroid.ui.utils.getHintOverlayColor
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppList(
-    appListInfo: AppListInfo,
-    currentPackageName: String?,
-    modifier: Modifier = Modifier,
-    onBackClicked: () -> Unit,
-    onItemClick: (String) -> Unit,
+  appListInfo: AppListInfo,
+  currentPackageName: String?,
+  modifier: Modifier = Modifier,
+  onBackClicked: () -> Unit,
+  onItemClick: (String) -> Unit,
 ) {
-    var searchActive by rememberSaveable { mutableStateOf(false) }
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  var searchActive by rememberSaveable { mutableStateOf(false) }
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
 
-    val hintController = rememberHintController(
-        overlay = getHintOverlayColor(),
+  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hint = rememberHint {
+    OnboardingCard(
+      title = stringResource(R.string.onboarding_app_list_filter_title),
+      message = stringResource(R.string.onboarding_app_list_filter_message),
+      modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+      onGotIt = {
+        appListInfo.actions.onOnboardingSeen()
+        hintController.dismiss()
+      },
     )
-    val hint = rememberHint {
-        OnboardingCard(
-            title = stringResource(R.string.onboarding_app_list_filter_title),
-            message = stringResource(R.string.onboarding_app_list_filter_message),
-            modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
-            onGotIt = {
-                appListInfo.actions.onOnboardingSeen()
-                hintController.dismiss()
-            },
-        )
+  }
+  val hintAnchor = rememberHintAnchorState(hint)
+  LaunchedEffect(appListInfo.showOnboarding) {
+    if (appListInfo.showOnboarding) {
+      hintController.show(hintAnchor)
+      appListInfo.actions.onOnboardingSeen()
     }
-    val hintAnchor = rememberHintAnchorState(hint)
-    LaunchedEffect(appListInfo.showOnboarding) {
-        if (appListInfo.showOnboarding) {
-            hintController.show(hintAnchor)
-            appListInfo.actions.onOnboardingSeen()
-        }
-    }
+  }
 
-    Scaffold(
-        topBar = {
-            if (searchActive) {
-                val onSearchCleared = { appListInfo.actions.onSearch("") }
-                TopSearchBar(
-                    onSearch = appListInfo.actions::onSearch,
-                    onSearchCleared = onSearchCleared,
-                    onHideSearch = {
-                        searchActive = false
-                        onSearchCleared()
-                    },
-                    actions = {
-                        FilterButton(
-                            showFilterBadge = appListInfo.model.showFilterBadge,
-                            toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
-                        )
-                    }
-                )
-            } else TopAppBar(
-                title = {
-                    Text(
-                        text = appListInfo.list.title,
-                        maxLines = 1,
-                        overflow = TextOverflow.MiddleEllipsis,
-                    )
-                },
-                navigationIcon = {
-                    BackButton(onClick = {
-                        if (searchActive) searchActive = false else onBackClicked()
-                    })
-                },
-                actions = {
-                    TopAppBarButton(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = stringResource(R.string.menu_search),
-                        onClick = { searchActive = true },
-                    )
-                    FilterButton(
-                        showFilterBadge = appListInfo.model.showFilterBadge,
-                        toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
-                        modifier = Modifier.hintAnchor(
-                            state = hintAnchor,
-                            shape = RoundedCornerShape(16.dp),
-                        )
-                    )
-                },
-                scrollBehavior = scrollBehavior,
+  Scaffold(
+    topBar = {
+      if (searchActive) {
+        val onSearchCleared = { appListInfo.actions.onSearch("") }
+        TopSearchBar(
+          onSearch = appListInfo.actions::onSearch,
+          onSearchCleared = onSearchCleared,
+          onHideSearch = {
+            searchActive = false
+            onSearchCleared()
+          },
+          actions = {
+            FilterButton(
+              showFilterBadge = appListInfo.model.showFilterBadge,
+              toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
             )
-        },
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        val listState = rememberSaveable(saver = LazyListState.Saver) {
-            LazyListState()
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .imePadding()
+          },
+        )
+      } else
+        TopAppBar(
+          title = {
+            Text(
+              text = appListInfo.list.title,
+              maxLines = 1,
+              overflow = TextOverflow.MiddleEllipsis,
+            )
+          },
+          navigationIcon = {
+            BackButton(onClick = { if (searchActive) searchActive = false else onBackClicked() })
+          },
+          actions = {
+            TopAppBarButton(
+              imageVector = Icons.Filled.Search,
+              contentDescription = stringResource(R.string.menu_search),
+              onClick = { searchActive = true },
+            )
+            FilterButton(
+              showFilterBadge = appListInfo.model.showFilterBadge,
+              toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
+              modifier = Modifier.hintAnchor(state = hintAnchor, shape = RoundedCornerShape(16.dp)),
+            )
+          },
+          scrollBehavior = scrollBehavior,
+        )
+    },
+    modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    val listState = rememberSaveable(saver = LazyListState.Saver) { LazyListState() }
+    Column(modifier = Modifier.fillMaxSize().imePadding()) {
+      val apps = appListInfo.model.apps
+      if (apps == null) BigLoadingIndicator()
+      else if (apps.isEmpty()) {
+        Text(
+          text = stringResource(R.string.search_filter_no_results),
+          textAlign = TextAlign.Center,
+          modifier = Modifier.fillMaxSize().padding(paddingValues).padding(16.dp),
+        )
+      } else
+        LazyColumn(
+          state = listState,
+          contentPadding = paddingValues + PaddingValues(top = 8.dp),
+          verticalArrangement = spacedBy(8.dp),
+          modifier =
+            Modifier.then(if (currentPackageName == null) Modifier else Modifier.selectableGroup()),
         ) {
-            val apps = appListInfo.model.apps
-            if (apps == null) BigLoadingIndicator()
-            else if (apps.isEmpty()) {
-                Text(
-                    text = stringResource(R.string.search_filter_no_results),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                        .padding(16.dp),
+          items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
+            val isSelected = currentPackageName == navItem.packageName
+            val interactionModifier =
+              if (currentPackageName == null) {
+                Modifier.clickable(onClick = { onItemClick(navItem.packageName) })
+              } else {
+                Modifier.selectable(
+                  selected = isSelected,
+                  onClick = { onItemClick(navItem.packageName) },
                 )
-            } else LazyColumn(
-                state = listState,
-                contentPadding = paddingValues + PaddingValues(top = 8.dp),
-                verticalArrangement = spacedBy(8.dp),
-                modifier = Modifier.then(
-                    if (currentPackageName == null) Modifier
-                    else Modifier.selectableGroup()
-                ),
-            ) {
-                items(apps, key = { it.packageName }, contentType = { "A" }) { navItem ->
-                    val isSelected = currentPackageName == navItem.packageName
-                    val interactionModifier = if (currentPackageName == null) {
-                        Modifier.clickable(
-                            onClick = { onItemClick(navItem.packageName) }
-                        )
-                    } else {
-                        Modifier.selectable(
-                            selected = isSelected,
-                            onClick = { onItemClick(navItem.packageName) }
-                        )
-                    }
-                    AppListRow(
-                        item = navItem,
-                        isSelected = isSelected,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .animateItem()
-                            .padding(horizontal = 8.dp)
-                            .then(interactionModifier)
-                    )
-                }
-            }
-            // Bottom Sheet
-            val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
-            if (appListInfo.showFilters) {
-                ModalBottomSheet(
-                    modifier = Modifier.fillMaxHeight(),
-                    sheetState = sheetState,
-                    onDismissRequest = { appListInfo.actions.toggleFilterVisibility() },
-                ) {
-                    AppsFilter(info = appListInfo)
-                }
-            }
+              }
+            AppListRow(
+              item = navItem,
+              isSelected = isSelected,
+              modifier =
+                Modifier.fillMaxWidth()
+                  .animateItem()
+                  .padding(horizontal = 8.dp)
+                  .then(interactionModifier),
+            )
+          }
         }
+      // Bottom Sheet
+      val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
+      if (appListInfo.showFilters) {
+        ModalBottomSheet(
+          modifier = Modifier.fillMaxHeight(),
+          sheetState = sheetState,
+          onDismissRequest = { appListInfo.actions.toggleFilterVisibility() },
+        ) {
+          AppsFilter(info = appListInfo)
+        }
+      }
     }
+  }
 }
 
 @Composable
 private fun FilterButton(
-    showFilterBadge: Boolean,
-    toggleFilterVisibility: () -> Unit,
-    modifier: Modifier = Modifier,
+  showFilterBadge: Boolean,
+  toggleFilterVisibility: () -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    TooltipBox(
-        positionProvider =
-        TooltipDefaults.rememberTooltipPositionProvider(Below),
-        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
-        state = rememberTooltipState(),
-    ) {
-        IconButton(
-            onClick = toggleFilterVisibility,
-            modifier = modifier,
-        ) {
-            BadgedBox(badge = {
-                if (showFilterBadge) Badge(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                )
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.FilterList,
-                    contentDescription = stringResource(R.string.filter),
-                )
-            }
-        }
+  TooltipBox(
+    positionProvider = TooltipDefaults.rememberTooltipPositionProvider(Below),
+    tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
+    state = rememberTooltipState(),
+  ) {
+    IconButton(onClick = toggleFilterVisibility, modifier = modifier) {
+      BadgedBox(
+        badge = { if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary) }
+      ) {
+        Icon(
+          imageVector = Icons.Filled.FilterList,
+          contentDescription = stringResource(R.string.filter),
+        )
+      }
     }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        val model = AppListModel(
-            apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
-            ),
-            showFilterBadge = true,
-            sortBy = AppListSortOrder.NAME,
-            filterIncompatible = true,
-            categories = null,
-            filteredCategoryIds = emptySet(),
-            antiFeatures = null,
-            filteredAntiFeatureIds = emptySet(),
-            repositories = emptyList(),
-            filteredRepositoryIds = emptySet(),
-        )
-        val info = getAppListInfo(model)
-        AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
-    }
+  FDroidContent {
+    val model =
+      AppListModel(
+        apps =
+          listOf(
+            AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
+            AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
+          ),
+        showFilterBadge = true,
+        sortBy = AppListSortOrder.NAME,
+        filterIncompatible = true,
+        categories = null,
+        filteredCategoryIds = emptySet(),
+        antiFeatures = null,
+        filteredAntiFeatureIds = emptySet(),
+        repositories = emptyList(),
+        filteredRepositoryIds = emptySet(),
+      )
+    val info = getAppListInfo(model)
+    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewLoading() {
-    FDroidContent {
-        val model = AppListModel(
-            apps = null,
-            showFilterBadge = false,
-            sortBy = AppListSortOrder.NAME,
-            filterIncompatible = false,
-            categories = null,
-            filteredCategoryIds = emptySet(),
-            antiFeatures = null,
-            filteredAntiFeatureIds = emptySet(),
-            repositories = emptyList(),
-            filteredRepositoryIds = emptySet(),
-        )
-        val info = getAppListInfo(model)
-        AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
-    }
+  FDroidContent {
+    val model =
+      AppListModel(
+        apps = null,
+        showFilterBadge = false,
+        sortBy = AppListSortOrder.NAME,
+        filterIncompatible = false,
+        categories = null,
+        filteredCategoryIds = emptySet(),
+        antiFeatures = null,
+        filteredAntiFeatureIds = emptySet(),
+        repositories = emptyList(),
+        filteredRepositoryIds = emptySet(),
+      )
+    val info = getAppListInfo(model)
+    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  }
 }
 
 @Preview
 @Composable
 private fun PreviewEmpty() {
-    FDroidContent {
-        val model = AppListModel(
-            apps = emptyList(),
-            showFilterBadge = false,
-            sortBy = AppListSortOrder.NAME,
-            filterIncompatible = false,
-            categories = null,
-            filteredCategoryIds = emptySet(),
-            antiFeatures = null,
-            filteredAntiFeatureIds = emptySet(),
-            repositories = emptyList(),
-            filteredRepositoryIds = emptySet(),
-        )
-        val info = getAppListInfo(model)
-        AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
-    }
+  FDroidContent {
+    val model =
+      AppListModel(
+        apps = emptyList(),
+        showFilterBadge = false,
+        sortBy = AppListSortOrder.NAME,
+        filterIncompatible = false,
+        categories = null,
+        filteredCategoryIds = emptySet(),
+        antiFeatures = null,
+        filteredAntiFeatureIds = emptySet(),
+        repositories = emptyList(),
+        filteredRepositoryIds = emptySet(),
+      )
+    val info = getAppListInfo(model)
+    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  }
 }

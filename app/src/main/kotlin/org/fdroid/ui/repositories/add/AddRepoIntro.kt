@@ -80,191 +80,166 @@ import org.fdroid.ui.utils.startActivitySafe
 
 @Composable
 fun AddRepoIntroContent(
-    networkState: NetworkState,
-    onFetchRepo: (String) -> Unit,
-    modifier: Modifier = Modifier
+  networkState: NetworkState,
+  onFetchRepo: (String) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val scrollState = rememberScrollState()
-    val context = LocalContext.current
-    val isPreview = LocalInspectionMode.current
-    var showPermissionWarning by remember { mutableStateOf(isPreview) }
-    val startForResult = rememberLauncherForActivityResult(ScanContract()) { result ->
-        if (result.contents != null) {
-            onFetchRepo(result.contents)
+  val scrollState = rememberScrollState()
+  val context = LocalContext.current
+  val isPreview = LocalInspectionMode.current
+  var showPermissionWarning by remember { mutableStateOf(isPreview) }
+  val startForResult =
+    rememberLauncherForActivityResult(ScanContract()) { result ->
+      if (result.contents != null) {
+        onFetchRepo(result.contents)
+      }
+    }
+
+  fun startScanning() {
+    startForResult.launch(
+      ScanOptions().apply {
+        setPrompt("")
+        setBeepEnabled(true)
+        setOrientationLocked(false)
+        setDesiredBarcodeFormats(QR_CODE)
+        addExtra(SCAN_TYPE, MIXED_SCAN)
+      }
+    )
+  }
+
+  val permissionLauncher =
+    rememberLauncherForActivityResult(contract = RequestPermission()) { isGranted: Boolean ->
+      showPermissionWarning = !isGranted
+      if (isGranted) startScanning()
+    }
+  var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
+  Column(
+    verticalArrangement = spacedBy(16.dp),
+    horizontalAlignment = CenterHorizontally,
+    modifier = modifier.imePadding().fillMaxSize().verticalScroll(scrollState).padding(16.dp),
+  ) {
+    if (!networkState.isOnline) OfflineBar()
+    Text(text = stringResource(R.string.repo_intro), style = MaterialTheme.typography.bodyLarge)
+    FDroidButton(
+      stringResource(R.string.repo_scan_qr_code),
+      imageVector = Icons.Filled.QrCode,
+      onClick = {
+        val scanLambda = {
+          if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
+            startScanning()
+          } else {
+            permissionLauncher.launch(CAMERA)
+          }
         }
-    }
-
-    fun startScanning() {
-        startForResult.launch(ScanOptions().apply {
-            setPrompt("")
-            setBeepEnabled(true)
-            setOrientationLocked(false)
-            setDesiredBarcodeFormats(QR_CODE)
-            addExtra(SCAN_TYPE, MIXED_SCAN)
-        })
-    }
-
-    val permissionLauncher = rememberLauncherForActivityResult(
-        contract = RequestPermission()
-    ) { isGranted: Boolean ->
-        showPermissionWarning = !isGranted
-        if (isGranted) startScanning()
-    }
-    var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
-    Column(
-        verticalArrangement = spacedBy(16.dp),
-        horizontalAlignment = CenterHorizontally,
-        modifier = modifier
-            .imePadding()
-            .fillMaxSize()
-            .verticalScroll(scrollState)
-            .padding(16.dp),
+        if (networkState.isMetered) showMeteredDialog = scanLambda else scanLambda()
+      },
+    )
+    AnimatedVisibility(
+      visible = showPermissionWarning,
+      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
     ) {
-        if (!networkState.isOnline) OfflineBar()
+      Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseSurface),
+        modifier =
+          Modifier.fillMaxWidth().clickable {
+            val intent =
+              Intent(ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                data = Uri.fromParts("package", context.packageName, null)
+              }
+            context.startActivitySafe(intent)
+          },
+      ) {
         Text(
-            text = stringResource(R.string.repo_intro),
-            style = MaterialTheme.typography.bodyLarge,
+          modifier = Modifier.padding(8.dp),
+          text = stringResource(R.string.permission_camera_denied),
+          textAlign = TextAlign.Center,
+          style = MaterialTheme.typography.bodyLarge,
         )
-        FDroidButton(
-            stringResource(R.string.repo_scan_qr_code),
-            imageVector = Icons.Filled.QrCode,
-            onClick = {
-                val scanLambda = {
-                    if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
-                        startScanning()
-                    } else {
-                        permissionLauncher.launch(CAMERA)
-                    }
-                }
-                if (networkState.isMetered) showMeteredDialog = scanLambda
-                else scanLambda()
+      }
+    }
+    var manualExpanded by rememberSaveable { mutableStateOf(isPreview) }
+    Row(
+      horizontalArrangement = SpaceBetween,
+      verticalAlignment = CenterVertically,
+      modifier =
+        Modifier.fillMaxWidth().heightIn(min = ButtonDefaults.MinHeight).clickable {
+          manualExpanded = !manualExpanded
+        },
+    ) {
+      Text(
+        text = stringResource(R.string.repo_enter_url),
+        style = MaterialTheme.typography.bodyMedium,
+        // avoid occupying the whole row
+        modifier = Modifier.weight(1f),
+      )
+      ExpandIconArrow(manualExpanded)
+    }
+    val textState = remember { mutableStateOf(TextFieldValue()) }
+    val focusRequester = remember { FocusRequester() }
+    val coroutineScope = rememberCoroutineScope()
+    AnimatedVisibility(
+      visible = manualExpanded,
+      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+    ) {
+      Column(horizontalAlignment = Alignment.End, verticalArrangement = spacedBy(16.dp)) {
+        TextField(
+          value = textState.value,
+          minLines = 2,
+          onValueChange = { textState.value = it },
+          keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
+          keyboardActions = KeyboardActions(onGo = { onFetchRepo(textState.value.text) }),
+          modifier =
+            Modifier.fillMaxWidth().focusRequester(focusRequester).onGloballyPositioned {
+              focusRequester.requestFocus()
+              coroutineScope.launch { scrollState.animateScrollTo(scrollState.maxValue) }
             },
         )
-        AnimatedVisibility(
-            visible = showPermissionWarning,
-            modifier = Modifier
-                .semantics { liveRegion = LiveRegionMode.Polite },
-        ) {
-            Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.inverseSurface,
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        val intent = Intent(ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                            data = Uri.fromParts("package", context.packageName, null)
-                        }
-                        context.startActivitySafe(intent)
-                    }
-            ) {
-                Text(
-                    modifier = Modifier.padding(8.dp),
-                    text = stringResource(R.string.permission_camera_denied),
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-            }
+        Row(horizontalArrangement = spacedBy(16.dp), verticalAlignment = CenterVertically) {
+          val clipboardManager = LocalClipboardManager.current
+          FDroidOutlineButton(
+            stringResource(id = R.string.paste),
+            imageVector = Icons.Default.ContentPaste,
+            onClick = {
+              if (clipboardManager.hasText()) {
+                textState.value = TextFieldValue(clipboardManager.getText()?.text ?: "")
+              }
+            },
+          )
+          Spacer(modifier = Modifier.weight(1f))
+          FDroidButton(
+            text = stringResource(R.string.repo_add_add),
+            onClick = {
+              if (networkState.isMetered) showMeteredDialog = { onFetchRepo(textState.value.text) }
+              else onFetchRepo(textState.value.text)
+            },
+          )
         }
-        var manualExpanded by rememberSaveable { mutableStateOf(isPreview) }
-        Row(
-            horizontalArrangement = SpaceBetween,
-            verticalAlignment = CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = ButtonDefaults.MinHeight)
-                .clickable { manualExpanded = !manualExpanded },
-        ) {
-            Text(
-                text = stringResource(R.string.repo_enter_url),
-                style = MaterialTheme.typography.bodyMedium,
-                // avoid occupying the whole row
-                modifier = Modifier.weight(1f),
-            )
-            ExpandIconArrow(manualExpanded)
-        }
-        val textState = remember { mutableStateOf(TextFieldValue()) }
-        val focusRequester = remember { FocusRequester() }
-        val coroutineScope = rememberCoroutineScope()
-        AnimatedVisibility(
-            visible = manualExpanded,
-            modifier = Modifier
-                .semantics { liveRegion = LiveRegionMode.Polite },
-        ) {
-            Column(
-                horizontalAlignment = Alignment.End,
-                verticalArrangement = spacedBy(16.dp),
-            ) {
-                TextField(
-                    value = textState.value,
-                    minLines = 2,
-                    onValueChange = { textState.value = it },
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
-                    keyboardActions = KeyboardActions(
-                        onGo = {
-                            onFetchRepo(textState.value.text)
-                        },
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .focusRequester(focusRequester)
-                        .onGloballyPositioned {
-                            focusRequester.requestFocus()
-                            coroutineScope.launch {
-                                scrollState.animateScrollTo(scrollState.maxValue)
-                            }
-                        },
-                )
-                Row(
-                    horizontalArrangement = spacedBy(16.dp),
-                    verticalAlignment = CenterVertically,
-                ) {
-                    val clipboardManager = LocalClipboardManager.current
-                    FDroidOutlineButton(
-                        stringResource(id = R.string.paste),
-                        imageVector = Icons.Default.ContentPaste,
-                        onClick = {
-                            if (clipboardManager.hasText()) {
-                                textState.value =
-                                    TextFieldValue(clipboardManager.getText()?.text ?: "")
-                            }
-                        },
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    FDroidButton(
-                        text = stringResource(R.string.repo_add_add),
-                        onClick = {
-                            if (networkState.isMetered) showMeteredDialog = {
-                                onFetchRepo(textState.value.text)
-                            } else onFetchRepo(textState.value.text)
-                        },
-                    )
-                }
-            }
-        }
+      }
     }
-    val meteredLambda = showMeteredDialog
-    if (meteredLambda != null) MeteredConnectionDialog(
-        numBytes = null,
-        onConfirm = { meteredLambda() },
-        onDismiss = { showMeteredDialog = null },
+  }
+  val meteredLambda = showMeteredDialog
+  if (meteredLambda != null)
+    MeteredConnectionDialog(
+      numBytes = null,
+      onConfirm = { meteredLambda() },
+      onDismiss = { showMeteredDialog = null },
     )
 }
 
 @Composable
 @Preview
 private fun Preview() {
-    FDroidContent {
-        val networkStateFlow = MutableStateFlow(NetworkState(isOnline = true, isMetered = false))
-        AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
-    }
+  FDroidContent {
+    val networkStateFlow = MutableStateFlow(NetworkState(isOnline = true, isMetered = false))
+    AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
+  }
 }
 
 @Composable
 @Preview(uiMode = UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 private fun PreviewNight() {
-    FDroidContent {
-        val networkStateFlow = MutableStateFlow(NetworkState(isOnline = false, isMetered = false))
-        AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
-    }
+  FDroidContent {
+    val networkStateFlow = MutableStateFlow(NetworkState(isOnline = false, isMetered = false))
+    AddRepo(None, networkStateFlow, null, {}, {}, {}, { _, _ -> }) {}
+  }
 }

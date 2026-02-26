@@ -1,5 +1,13 @@
 package org.fdroid.index.v1
 
+import java.io.ByteArrayInputStream
+import java.io.File
+import java.io.FileInputStream
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
+import kotlin.test.fail
 import kotlinx.serialization.SerializationException
 import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.v2.AntiFeatureV2
@@ -16,184 +24,181 @@ import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.v1compat
 import org.junit.Test
-import java.io.ByteArrayInputStream
-import java.io.File
-import java.io.FileInputStream
-import kotlin.test.assertContains
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
-import kotlin.test.assertNull
-import kotlin.test.fail
 
 internal class IndexV1StreamProcessorTest {
 
-    @Test
-    fun testEmpty() {
-        testStreamProcessing("$ASSET_PATH/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
-    }
+  @Test
+  fun testEmpty() {
+    testStreamProcessing("$ASSET_PATH/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
+  }
 
-    @Test(expected = OldIndexException::class)
-    fun testEmptyEqualTimestamp() {
-        testStreamProcessing(
-            "$ASSET_PATH/index-empty-v1.json",
-            TestDataEmptyV2.index.v1compat(),
-            TestDataEmptyV2.index.repo.timestamp,
+  @Test(expected = OldIndexException::class)
+  fun testEmptyEqualTimestamp() {
+    testStreamProcessing(
+      "$ASSET_PATH/index-empty-v1.json",
+      TestDataEmptyV2.index.v1compat(),
+      TestDataEmptyV2.index.repo.timestamp,
+    )
+  }
+
+  @Test(expected = OldIndexException::class)
+  fun testEmptyHigherTimestamp() {
+    testStreamProcessing(
+      "$ASSET_PATH/index-empty-v1.json",
+      TestDataEmptyV2.index.v1compat(),
+      TestDataEmptyV2.index.repo.timestamp + 1,
+    )
+  }
+
+  @Test
+  fun testMin() {
+    testStreamProcessing("$ASSET_PATH/index-min-v1.json", TestDataMinV2.index.v1compat())
+  }
+
+  @Test
+  fun testMid() {
+    testStreamProcessing("$ASSET_PATH/index-mid-v1.json", TestDataMidV2.indexCompat)
+  }
+
+  @Test
+  fun testMax() {
+    testStreamProcessing("$ASSET_PATH/index-max-v1.json", TestDataMaxV2.indexCompat)
+  }
+
+  @Test
+  fun testMalformedIndex() {
+    // empty dict
+    assertFailsWith<IllegalArgumentException> { testStreamError("{ }") }
+      .also { assertContains(it.message!!, "Failed requirement") }
+
+    // garbage input
+    assertFailsWith<SerializationException> { testStreamError("{ 23^^%*dfDFG568 }") }
+
+    // empty repo dict
+    assertFailsWith<SerializationException> {
+        testStreamError(
+          """
+          {
+              "repo": {}
+          }
+          """
+            .trimIndent()
         )
-    }
+      }
+      .also { assertContains(it.message!!, "timestamp") }
 
-    @Test(expected = OldIndexException::class)
-    fun testEmptyHigherTimestamp() {
-        testStreamProcessing(
-            "$ASSET_PATH/index-empty-v1.json",
-            TestDataEmptyV2.index.v1compat(),
-            TestDataEmptyV2.index.repo.timestamp + 1,
+    // timestamp not a number
+    assertFailsWith<SerializationException> {
+        testStreamError(
+          """
+          {
+              "repo": { "timestamp": "string" }
+          }
+          """
+            .trimIndent()
         )
-    }
+      }
+      .also { assertContains(it.message!!, "numeric literal") }
 
-    @Test
-    fun testMin() {
-        testStreamProcessing(
-            "$ASSET_PATH/index-min-v1.json",
-            TestDataMinV2.index.v1compat(),
-        )
-    }
+    // remember valid repo for further tests
+    val validRepo =
+      """
+      "repo": {
+          "timestamp": 42,
+          "version": 23,
+          "name": "foo",
+          "icon": "bar",
+          "address": "https://example.com",
+          "description": "desc"
+      }
+      """
+        .trimIndent()
 
-    @Test
-    fun testMid() {
-        testStreamProcessing("$ASSET_PATH/index-mid-v1.json", TestDataMidV2.indexCompat)
-    }
-
-    @Test
-    fun testMax() {
-        testStreamProcessing("$ASSET_PATH/index-max-v1.json", TestDataMaxV2.indexCompat)
-    }
-
-    @Test
-    fun testMalformedIndex() {
-        // empty dict
-        assertFailsWith<IllegalArgumentException> {
-            testStreamError("{ }")
-        }.also { assertContains(it.message!!, "Failed requirement") }
-
-        // garbage input
-        assertFailsWith<SerializationException> {
-            testStreamError("{ 23^^%*dfDFG568 }")
-        }
-
-        // empty repo dict
-        assertFailsWith<SerializationException> {
-            testStreamError(
-                """{
-                "repo": {}
-            }""".trimIndent()
-            )
-        }.also { assertContains(it.message!!, "timestamp") }
-
-        // timestamp not a number
-        assertFailsWith<SerializationException> {
-            testStreamError(
-                """{
-                "repo": { "timestamp": "string" }
-            }""".trimIndent()
-            )
-        }.also { assertContains(it.message!!, "numeric literal") }
-
-        // remember valid repo for further tests
-        val validRepo = """
-            "repo": {
-                    "timestamp": 42,
-                    "version": 23,
-                    "name": "foo",
-                    "icon": "bar",
-                    "address": "https://example.com",
-                    "description": "desc"
-                }
-        """.trimIndent()
-
-        // apps is dict
-        assertFailsWith<SerializationException> {
-            testStreamError(
-                """{
+    // apps is dict
+    assertFailsWith<SerializationException> {
+        testStreamError(
+          """{
                 $validRepo,
                 "requests": {"install": [], "uninstall": []},
                 "apps": {}
-            }""".trimIndent()
-            )
-        }.also { assertContains(it.message!!, "apps") }
+            }"""
+            .trimIndent()
+        )
+      }
+      .also { assertContains(it.message!!, "apps") }
 
-        // packages is list
-        assertFailsWith<SerializationException> {
-            testStreamError(
-                """{
+    // packages is list
+    assertFailsWith<SerializationException> {
+        testStreamError(
+          """{
                 $validRepo,
                 "requests": {"install": [], "uninstall": []},
                 "apps": [],
                 "packages": []
-            }""".trimIndent()
-            )
-        }.also { assertContains(it.message!!, "packages") }
+            }"""
+            .trimIndent()
+        )
+      }
+      .also { assertContains(it.message!!, "packages") }
+  }
 
+  private fun testStreamProcessing(
+    filePath: String,
+    indexV2: IndexV2,
+    lastTimestamp: Long = indexV2.repo.timestamp - 1,
+  ) {
+    val file = File(filePath)
+    val testStreamReceiver = TestStreamReceiver()
+    val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, lastTimestamp)
+    FileInputStream(file).use { streamProcessor.process(it) }
+    assertEquals(indexV2.repo, testStreamReceiver.repo)
+    assertEquals(indexV2.packages, testStreamReceiver.packages)
+  }
+
+  private fun testStreamError(index: String) {
+    val testStreamReceiver = TestStreamReceiver()
+    val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, -1)
+    ByteArrayInputStream(index.encodeToByteArray()).use { streamProcessor.process(it) }
+    assertNull(testStreamReceiver.repo)
+    assertEquals(0, testStreamReceiver.packages.size)
+  }
+
+  @Suppress("DEPRECATION")
+  private class TestStreamReceiver : IndexV1StreamReceiver {
+    var repo: RepoV2? = null
+    val packages = HashMap<String, PackageV2>()
+
+    override fun receive(repo: RepoV2, version: Long) {
+      this.repo = repo
     }
 
-    private fun testStreamProcessing(
-        filePath: String,
-        indexV2: IndexV2,
-        lastTimestamp: Long = indexV2.repo.timestamp - 1,
+    override fun receive(packageName: String, m: MetadataV2) {
+      packages[packageName] = PackageV2(metadata = m, versions = emptyMap())
+    }
+
+    override fun receive(packageName: String, v: Map<String, PackageVersionV2>) {
+      packages[packageName] = packages[packageName]!!.copy(versions = v)
+    }
+
+    override fun updateRepo(
+      antiFeatures: Map<String, AntiFeatureV2>,
+      categories: Map<String, CategoryV2>,
+      releaseChannels: Map<String, ReleaseChannelV2>,
     ) {
-        val file = File(filePath)
-        val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, lastTimestamp)
-        FileInputStream(file).use { streamProcessor.process(it) }
-        assertEquals(indexV2.repo, testStreamReceiver.repo)
-        assertEquals(indexV2.packages, testStreamReceiver.packages)
+      repo =
+        repo?.copy(
+          antiFeatures = antiFeatures,
+          categories = categories,
+          releaseChannels = releaseChannels,
+        ) ?: fail()
     }
 
-    private fun testStreamError(index: String) {
-        val testStreamReceiver = TestStreamReceiver()
-        val streamProcessor = IndexV1StreamProcessor(testStreamReceiver, -1)
-        ByteArrayInputStream(index.encodeToByteArray()).use { streamProcessor.process(it) }
-        assertNull(testStreamReceiver.repo)
-        assertEquals(0, testStreamReceiver.packages.size)
+    override fun updateAppMetadata(packageName: String, preferredSigner: String?) {
+      val currentPackage = packages[packageName] ?: fail()
+      packages[packageName] =
+        currentPackage.copy(
+          metadata = currentPackage.metadata.copy(preferredSigner = preferredSigner)
+        )
     }
-
-    @Suppress("DEPRECATION")
-    private class TestStreamReceiver : IndexV1StreamReceiver {
-        var repo: RepoV2? = null
-        val packages = HashMap<String, PackageV2>()
-
-        override fun receive(repo: RepoV2, version: Long) {
-            this.repo = repo
-        }
-
-        override fun receive(packageName: String, m: MetadataV2) {
-            packages[packageName] = PackageV2(
-                metadata = m,
-                versions = emptyMap(),
-            )
-        }
-
-        override fun receive(packageName: String, v: Map<String, PackageVersionV2>) {
-            packages[packageName] = packages[packageName]!!.copy(versions = v)
-        }
-
-        override fun updateRepo(
-            antiFeatures: Map<String, AntiFeatureV2>,
-            categories: Map<String, CategoryV2>,
-            releaseChannels: Map<String, ReleaseChannelV2>,
-        ) {
-            repo = repo?.copy(
-                antiFeatures = antiFeatures,
-                categories = categories,
-                releaseChannels = releaseChannels,
-            ) ?: fail()
-        }
-
-        override fun updateAppMetadata(packageName: String, preferredSigner: String?) {
-            val currentPackage = packages[packageName] ?: fail()
-            packages[packageName] = currentPackage.copy(
-                metadata = currentPackage.metadata.copy(preferredSigner = preferredSigner),
-            )
-        }
-    }
-
+  }
 }

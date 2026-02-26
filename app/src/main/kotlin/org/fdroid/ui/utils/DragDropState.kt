@@ -55,171 +55,163 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun rememberDragDropState(
-    lazyListState: LazyListState,
-    onMove: (Any, Any) -> Unit,
-    onEnd: (Any, Any) -> Unit
+  lazyListState: LazyListState,
+  onMove: (Any, Any) -> Unit,
+  onEnd: (Any, Any) -> Unit,
 ): DragDropState {
-    val scope = rememberCoroutineScope()
-    val state = remember(lazyListState) {
-        DragDropState(state = lazyListState, onMove = onMove, onEnd = onEnd, scope = scope)
+  val scope = rememberCoroutineScope()
+  val state =
+    remember(lazyListState) {
+      DragDropState(state = lazyListState, onMove = onMove, onEnd = onEnd, scope = scope)
     }
-    LaunchedEffect(state) {
-        while (true) {
-            val diff = state.scrollChannel.receive()
-            lazyListState.scrollBy(diff)
-        }
+  LaunchedEffect(state) {
+    while (true) {
+      val diff = state.scrollChannel.receive()
+      lazyListState.scrollBy(diff)
     }
-    return state
+  }
+  return state
 }
 
-class DragDropState internal constructor(
-    private val state: LazyListState,
-    private val scope: CoroutineScope,
-    private val onMove: (Any, Any) -> Unit,
-    private val onEnd: (Any, Any) -> Unit,
+class DragDropState
+internal constructor(
+  private val state: LazyListState,
+  private val scope: CoroutineScope,
+  private val onMove: (Any, Any) -> Unit,
+  private val onEnd: (Any, Any) -> Unit,
 ) {
-    private var movedFrom: LazyListItemInfo? = null
-    private var movedTo: LazyListItemInfo? = null
-    var draggingItemIndex by mutableStateOf<Int?>(null)
-        private set
+  private var movedFrom: LazyListItemInfo? = null
+  private var movedTo: LazyListItemInfo? = null
+  var draggingItemIndex by mutableStateOf<Int?>(null)
+    private set
 
-    internal val scrollChannel = Channel<Float>()
+  internal val scrollChannel = Channel<Float>()
 
-    private var draggingItemDraggedDelta by mutableFloatStateOf(0f)
-    private var draggingItemInitialOffset by mutableIntStateOf(0)
-    internal val draggingItemOffset: Float
-        get() =
-            draggingItemLayoutInfo?.let { item ->
-                draggingItemInitialOffset + draggingItemDraggedDelta - item.offset
-            } ?: 0f
+  private var draggingItemDraggedDelta by mutableFloatStateOf(0f)
+  private var draggingItemInitialOffset by mutableIntStateOf(0)
+  internal val draggingItemOffset: Float
+    get() =
+      draggingItemLayoutInfo?.let { item ->
+        draggingItemInitialOffset + draggingItemDraggedDelta - item.offset
+      } ?: 0f
 
-    private val draggingItemLayoutInfo: LazyListItemInfo?
-        get() = state.layoutInfo.visibleItemsInfo.firstOrNull { it.index == draggingItemIndex }
+  private val draggingItemLayoutInfo: LazyListItemInfo?
+    get() = state.layoutInfo.visibleItemsInfo.firstOrNull { it.index == draggingItemIndex }
 
-    internal var previousIndexOfDraggedItem by mutableStateOf<Int?>(null)
-        private set
+  internal var previousIndexOfDraggedItem by mutableStateOf<Int?>(null)
+    private set
 
-    internal var previousItemOffset = Animatable(0f)
-        private set
+  internal var previousItemOffset = Animatable(0f)
+    private set
 
-    internal fun onDragStart(offset: Offset) {
-        state.layoutInfo.visibleItemsInfo
-            .firstOrNull { item -> offset.y.toInt() in item.offset..(item.offset + item.size) }
-            ?.also {
-                movedFrom = it
-                draggingItemIndex = it.index
-                draggingItemInitialOffset = it.offset
-            }
+  internal fun onDragStart(offset: Offset) {
+    state.layoutInfo.visibleItemsInfo
+      .firstOrNull { item -> offset.y.toInt() in item.offset..(item.offset + item.size) }
+      ?.also {
+        movedFrom = it
+        draggingItemIndex = it.index
+        draggingItemInitialOffset = it.offset
+      }
+  }
+
+  internal fun onDragInterrupted() {
+    if (draggingItemIndex != null) {
+      previousIndexOfDraggedItem = draggingItemIndex
+      val startOffset = draggingItemOffset
+      scope.launch {
+        previousItemOffset.snapTo(startOffset)
+        previousItemOffset.animateTo(
+          0f,
+          spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 1f),
+        )
+        previousIndexOfDraggedItem = null
+      }
     }
+    draggingItemDraggedDelta = 0f
+    draggingItemIndex = null
+    draggingItemInitialOffset = 0
+    movedFrom = null
+    movedTo = null
+  }
 
-    internal fun onDragInterrupted() {
-        if (draggingItemIndex != null) {
-            previousIndexOfDraggedItem = draggingItemIndex
-            val startOffset = draggingItemOffset
-            scope.launch {
-                previousItemOffset.snapTo(startOffset)
-                previousItemOffset.animateTo(
-                    0f,
-                    spring(stiffness = Spring.StiffnessMediumLow, visibilityThreshold = 1f),
-                )
-                previousIndexOfDraggedItem = null
-            }
+  internal fun onDragEnd() {
+    val from = movedFrom ?: error("Moved from was null")
+    val to = movedTo ?: from
+    if (from.key != to.key && from.index != to.index) onEnd(from.key, to.key)
+    onDragInterrupted()
+  }
+
+  internal fun onDrag(offset: Offset) {
+    draggingItemDraggedDelta += offset.y
+
+    val draggingItem = draggingItemLayoutInfo ?: return
+    val startOffset = draggingItem.offset + draggingItemOffset
+    val endOffset = startOffset + draggingItem.size
+    val middleOffset = startOffset + (endOffset - startOffset) / 2f
+
+    val targetItem =
+      state.layoutInfo.visibleItemsInfo.find { item ->
+        middleOffset.toInt() in item.offset..item.offsetEnd && draggingItem.index != item.index
+      }
+    if (targetItem != null) {
+      if (
+        draggingItem.index == state.firstVisibleItemIndex ||
+          targetItem.index == state.firstVisibleItemIndex
+      ) {
+        state.requestScrollToItem(state.firstVisibleItemIndex, state.firstVisibleItemScrollOffset)
+      }
+      onMove(draggingItem.key, targetItem.key)
+      draggingItemIndex = targetItem.index
+      movedTo = targetItem
+    } else {
+      val overscroll =
+        when {
+          draggingItemDraggedDelta > 0 ->
+            (endOffset - state.layoutInfo.viewportEndOffset).coerceAtLeast(0f)
+          draggingItemDraggedDelta < 0 ->
+            (startOffset - state.layoutInfo.viewportStartOffset).coerceAtMost(0f)
+          else -> 0f
         }
-        draggingItemDraggedDelta = 0f
-        draggingItemIndex = null
-        draggingItemInitialOffset = 0
-        movedFrom = null
-        movedTo = null
+      if (overscroll != 0f) {
+        scrollChannel.trySend(overscroll)
+      }
     }
+  }
 
-    internal fun onDragEnd() {
-        val from = movedFrom ?: error("Moved from was null")
-        val to = movedTo ?: from
-        if (from.key != to.key && from.index != to.index) onEnd(from.key, to.key)
-        onDragInterrupted()
-    }
-
-    internal fun onDrag(offset: Offset) {
-        draggingItemDraggedDelta += offset.y
-
-        val draggingItem = draggingItemLayoutInfo ?: return
-        val startOffset = draggingItem.offset + draggingItemOffset
-        val endOffset = startOffset + draggingItem.size
-        val middleOffset = startOffset + (endOffset - startOffset) / 2f
-
-        val targetItem =
-            state.layoutInfo.visibleItemsInfo.find { item ->
-                middleOffset.toInt() in item.offset..item.offsetEnd &&
-                    draggingItem.index != item.index
-            }
-        if (targetItem != null) {
-            if (
-                draggingItem.index == state.firstVisibleItemIndex ||
-                targetItem.index == state.firstVisibleItemIndex
-            ) {
-                state.requestScrollToItem(
-                    state.firstVisibleItemIndex,
-                    state.firstVisibleItemScrollOffset,
-                )
-            }
-            onMove(draggingItem.key, targetItem.key)
-            draggingItemIndex = targetItem.index
-            movedTo = targetItem
-        } else {
-            val overscroll =
-                when {
-                    draggingItemDraggedDelta > 0 ->
-                        (endOffset - state.layoutInfo.viewportEndOffset).coerceAtLeast(0f)
-                    draggingItemDraggedDelta < 0 ->
-                        (startOffset - state.layoutInfo.viewportStartOffset).coerceAtMost(0f)
-                    else -> 0f
-                }
-            if (overscroll != 0f) {
-                scrollChannel.trySend(overscroll)
-            }
-        }
-    }
-
-    private val LazyListItemInfo.offsetEnd: Int
-        get() = this.offset + this.size
+  private val LazyListItemInfo.offsetEnd: Int
+    get() = this.offset + this.size
 }
 
 fun Modifier.dragContainer(dragDropState: DragDropState): Modifier {
-    return pointerInput(dragDropState) {
-        detectDragGesturesAfterLongPress(
-            onDrag = { change, offset ->
-                change.consume()
-                dragDropState.onDrag(offset = offset)
-            },
-            onDragStart = { offset -> dragDropState.onDragStart(offset) },
-            onDragEnd = { dragDropState.onDragEnd() },
-            onDragCancel = { dragDropState.onDragInterrupted() },
-        )
-    }
+  return pointerInput(dragDropState) {
+    detectDragGesturesAfterLongPress(
+      onDrag = { change, offset ->
+        change.consume()
+        dragDropState.onDrag(offset = offset)
+      },
+      onDragStart = { offset -> dragDropState.onDragStart(offset) },
+      onDragEnd = { dragDropState.onDragEnd() },
+      onDragCancel = { dragDropState.onDragInterrupted() },
+    )
+  }
 }
 
 @Composable
 fun LazyItemScope.DraggableItem(
-    dragDropState: DragDropState,
-    index: Int,
-    modifier: Modifier = Modifier,
-    content: @Composable ColumnScope.(isDragging: Boolean) -> Unit,
+  dragDropState: DragDropState,
+  index: Int,
+  modifier: Modifier = Modifier,
+  content: @Composable ColumnScope.(isDragging: Boolean) -> Unit,
 ) {
-    val dragging = index == dragDropState.draggingItemIndex
-    val draggingModifier =
-        if (dragging) {
-            LocalHapticFeedback.current.performHapticFeedback(HapticFeedbackType.LongPress)
-            Modifier
-                .zIndex(1f)
-                .graphicsLayer { translationY = dragDropState.draggingItemOffset }
-        } else if (index == dragDropState.previousIndexOfDraggedItem) {
-            Modifier
-                .zIndex(1f)
-                .graphicsLayer {
-                    translationY = dragDropState.previousItemOffset.value
-                }
-        } else {
-            Modifier // not animating here as this caused strange item jumps
-        }
-    Column(modifier = modifier.then(draggingModifier)) { content(dragging) }
+  val dragging = index == dragDropState.draggingItemIndex
+  val draggingModifier =
+    if (dragging) {
+      LocalHapticFeedback.current.performHapticFeedback(HapticFeedbackType.LongPress)
+      Modifier.zIndex(1f).graphicsLayer { translationY = dragDropState.draggingItemOffset }
+    } else if (index == dragDropState.previousIndexOfDraggedItem) {
+      Modifier.zIndex(1f).graphicsLayer { translationY = dragDropState.previousItemOffset.value }
+    } else {
+      Modifier // not animating here as this caused strange item jumps
+    }
+  Column(modifier = modifier.then(draggingModifier)) { content(dragging) }
 }

@@ -34,117 +34,112 @@ import org.fdroid.ui.utils.getRepository
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun AddRepoPreviewScreen(
-    state: Fetching,
-    proxyConfig: ProxyConfig?,
-    modifier: Modifier = Modifier,
-    onAddRepo: () -> Unit,
-    onExistingRepo: (Long) -> Unit,
+  state: Fetching,
+  proxyConfig: ProxyConfig?,
+  modifier: Modifier = Modifier,
+  onAddRepo: () -> Unit,
+  onExistingRepo: (Long) -> Unit,
 ) {
-    val localeList = LocaleListCompat.getDefault()
-    LazyColumn(
-        contentPadding = PaddingValues(horizontal = 8.dp),
-        verticalArrangement = spacedBy(8.dp),
-        modifier = modifier
-            .fillMaxWidth()
-    ) {
-        item {
-            RepoPreviewHeader(
-                state = state,
-                proxyConfig = proxyConfig,
-                onAddRepo = onAddRepo,
-                onExistingRepo = onExistingRepo,
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .padding(horizontal = 8.dp),
-                localeList = localeList,
-            )
-        }
-        if (state.fetchResult == null ||
-            state.fetchResult is IsNewRepository ||
-            state.fetchResult is IsNewRepoAndNewMirror
-        ) {
-            item {
-                Row(
-                    verticalAlignment = CenterVertically,
-                    horizontalArrangement = spacedBy(8.dp),
-                    modifier = Modifier
-                        .padding(top = 8.dp)
-                        .padding(horizontal = 8.dp),
-                ) {
-                    Text(
-                        text = stringResource(R.string.repo_preview_included_apps),
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
-                    Text(
-                        text = state.apps.size.toString(),
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
-                    if (!state.done) {
-                        LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
-                    }
-                }
-            }
-            items(items = state.apps, key = { it.packageName }) { app ->
-                val repo = state.receivedRepo ?: error("no repo")
-                // TODO this conversion ideally doesn't happen in the UI layer
-                val item = AppListItem(
-                    repoId = repo.repoId,
-                    packageName = app.packageName,
-                    name = app.name ?: "Unknown app",
-                    summary = app.summary ?: "",
-                    iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
-                    lastUpdated = 1L,
-                    isInstalled = false,
-                    isCompatible = true,
-                )
-                AppListRow(
-                    item = item,
-                    isSelected = false,
-                    modifier = Modifier
-                        .animateItem()
-                        .padding(horizontal = 8.dp)
-                        .fillMaxWidth()
-                )
-            }
-        }
+  val localeList = LocaleListCompat.getDefault()
+  LazyColumn(
+    contentPadding = PaddingValues(horizontal = 8.dp),
+    verticalArrangement = spacedBy(8.dp),
+    modifier = modifier.fillMaxWidth(),
+  ) {
+    item {
+      RepoPreviewHeader(
+        state = state,
+        proxyConfig = proxyConfig,
+        onAddRepo = onAddRepo,
+        onExistingRepo = onExistingRepo,
+        modifier = Modifier.padding(top = 16.dp).padding(horizontal = 8.dp),
+        localeList = localeList,
+      )
     }
+    if (
+      state.fetchResult == null ||
+        state.fetchResult is IsNewRepository ||
+        state.fetchResult is IsNewRepoAndNewMirror
+    ) {
+      item {
+        Row(
+          verticalAlignment = CenterVertically,
+          horizontalArrangement = spacedBy(8.dp),
+          modifier = Modifier.padding(top = 8.dp).padding(horizontal = 8.dp),
+        ) {
+          Text(
+            text = stringResource(R.string.repo_preview_included_apps),
+            style = MaterialTheme.typography.bodyLarge,
+          )
+          Text(text = state.apps.size.toString(), style = MaterialTheme.typography.bodyLarge)
+          if (!state.done) {
+            LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
+          }
+        }
+      }
+      items(items = state.apps, key = { it.packageName }) { app ->
+        val repo = state.receivedRepo ?: error("no repo")
+        // TODO this conversion ideally doesn't happen in the UI layer
+        val item =
+          AppListItem(
+            repoId = repo.repoId,
+            packageName = app.packageName,
+            name = app.name ?: "Unknown app",
+            summary = app.summary ?: "",
+            iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
+            lastUpdated = 1L,
+            isInstalled = false,
+            isCompatible = true,
+          )
+        AppListRow(
+          item = item,
+          isSelected = false,
+          modifier = Modifier.animateItem().padding(horizontal = 8.dp).fillMaxWidth(),
+        )
+      }
+    }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    val address = "https://example.org"
-    val repo = getRepository(address)
-    val app1 = object : MinimalApp {
-        override val repoId = 0L
-        override val packageName = "org.example"
-        override val name: String = "App 1 with a long name"
-        override val summary: String = "Summary of App1 which can also be a bit longer"
-        override fun getIcon(localeList: LocaleListCompat): FileV2? = null
-    }
-    val app2 = object : MinimalApp {
-        override val repoId = 0L
-        override val packageName = "com.example"
-        override val name: String = "App 2 with a name that is even longer than the first app"
-        override val summary: String =
-            "Summary of App2 which can also be a bit longer, even longer than other apps."
+  val address = "https://example.org"
+  val repo = getRepository(address)
+  val app1 =
+    object : MinimalApp {
+      override val repoId = 0L
+      override val packageName = "org.example"
+      override val name: String = "App 1 with a long name"
+      override val summary: String = "Summary of App1 which can also be a bit longer"
 
-        override fun getIcon(localeList: LocaleListCompat): FileV2? = null
+      override fun getIcon(localeList: LocaleListCompat): FileV2? = null
     }
-    val app3 = object : MinimalApp {
-        override val repoId = 0L
-        override val packageName = "net.example"
-        override val name: String = "App 3"
-        override val summary: String = "short summary"
+  val app2 =
+    object : MinimalApp {
+      override val repoId = 0L
+      override val packageName = "com.example"
+      override val name: String = "App 2 with a name that is even longer than the first app"
+      override val summary: String =
+        "Summary of App2 which can also be a bit longer, even longer than other apps."
 
-        override fun getIcon(localeList: LocaleListCompat): FileV2? = null
+      override fun getIcon(localeList: LocaleListCompat): FileV2? = null
     }
-    FDroidContent {
-        AddRepoPreviewScreen(
-            Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository),
-            proxyConfig = null,
-            onAddRepo = { },
-            onExistingRepo = {},
-        )
+  val app3 =
+    object : MinimalApp {
+      override val repoId = 0L
+      override val packageName = "net.example"
+      override val name: String = "App 3"
+      override val summary: String = "short summary"
+
+      override fun getIcon(localeList: LocaleListCompat): FileV2? = null
     }
+  FDroidContent {
+    AddRepoPreviewScreen(
+      Fetching(address, repo, listOf(app1, app2, app3), IsNewRepository),
+      proxyConfig = null,
+      onAddRepo = {},
+      onExistingRepo = {},
+    )
+  }
 }

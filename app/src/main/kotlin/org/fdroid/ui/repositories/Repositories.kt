@@ -47,135 +47,118 @@ import org.fdroid.ui.utils.repoItems
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
-fun Repositories(
-    info: RepositoryInfo,
-    isBigScreen: Boolean,
-    onBackClicked: () -> Unit,
-) {
-    val hintController = rememberHintController(
-        overlay = getHintOverlayColor(),
-    )
-    val hint = rememberHint {
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-            OnboardingCard(
-                title = stringResource(R.string.repo_list_info_title),
-                message = stringResource(R.string.repo_list_info_text),
-                modifier = Modifier
-                    .padding(horizontal = 32.dp, vertical = 8.dp),
-                onGotIt = {
-                    info.onOnboardingSeen()
-                    hintController.dismiss()
-                },
-            )
-        }
-    }
-    val hintAnchor = rememberHintAnchorState(hint)
-    LaunchedEffect(info.model.showOnboarding) {
-        if (!isBigScreen && info.model.showOnboarding) {
-            hintController.show(hintAnchor)
-            info.onOnboardingSeen()
-        }
-    }
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
-    val listState = rememberLazyListState()
-    val showFab by remember {
-        derivedStateOf {
-            val firstVisibleItemIndex = listState.firstVisibleItemIndex
-            val firstVisibleItemScrollOffset = listState.firstVisibleItemScrollOffset
-            if (firstVisibleItemIndex == 0 && firstVisibleItemScrollOffset == 0) {
-                true
-            } else if (listState.isScrollInProgress) {
-                false
-            } else {
-                listState.canScrollForward
-            }
-        }
-    }
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    IconButton(onClick = onBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
-                },
-                title = {
-                    Text(stringResource(R.string.app_details_repositories))
-                },
-                subtitle = {
-                    val lastUpdated = info.model.lastCheckForUpdate
-                    Text(stringResource(R.string.repo_last_update_check, lastUpdated))
-                },
-                scrollBehavior = scrollBehavior,
-            )
+fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -> Unit) {
+  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hint = rememberHint {
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+      OnboardingCard(
+        title = stringResource(R.string.repo_list_info_title),
+        message = stringResource(R.string.repo_list_info_text),
+        modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+        onGotIt = {
+          info.onOnboardingSeen()
+          hintController.dismiss()
         },
-        floatingActionButton = {
-            AnimatedVisibility(showFab) {
-                FloatingActionButton(
-                    onClick = info::onAddRepo,
-                    modifier = Modifier
-                        .padding(16.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = stringResource(R.string.menu_add_repo),
-                    )
-                }
-            }
-        },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        if (info.model.repositories == null) BigLoadingIndicator()
-        else RepositoriesList(
-            info = info,
-            listState = listState,
-            // we split up top and bottom padding to not cause bugs with list drag and drop
-            paddingValues = PaddingValues(bottom = paddingValues.calculateBottomPadding()),
-            modifier = Modifier
-                .padding(top = paddingValues.calculateTopPadding()),
-        )
+      )
     }
+  }
+  val hintAnchor = rememberHintAnchorState(hint)
+  LaunchedEffect(info.model.showOnboarding) {
+    if (!isBigScreen && info.model.showOnboarding) {
+      hintController.show(hintAnchor)
+      info.onOnboardingSeen()
+    }
+  }
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  val listState = rememberLazyListState()
+  val showFab by remember {
+    derivedStateOf {
+      val firstVisibleItemIndex = listState.firstVisibleItemIndex
+      val firstVisibleItemScrollOffset = listState.firstVisibleItemScrollOffset
+      if (firstVisibleItemIndex == 0 && firstVisibleItemScrollOffset == 0) {
+        true
+      } else if (listState.isScrollInProgress) {
+        false
+      } else {
+        listState.canScrollForward
+      }
+    }
+  }
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = {
+          IconButton(onClick = onBackClicked) {
+            Icon(
+              imageVector = Icons.AutoMirrored.Default.ArrowBack,
+              contentDescription = stringResource(R.string.back),
+            )
+          }
+        },
+        title = { Text(stringResource(R.string.app_details_repositories)) },
+        subtitle = {
+          val lastUpdated = info.model.lastCheckForUpdate
+          Text(stringResource(R.string.repo_last_update_check, lastUpdated))
+        },
+        scrollBehavior = scrollBehavior,
+      )
+    },
+    floatingActionButton = {
+      AnimatedVisibility(showFab) {
+        FloatingActionButton(onClick = info::onAddRepo, modifier = Modifier.padding(16.dp)) {
+          Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = stringResource(R.string.menu_add_repo),
+          )
+        }
+      }
+    },
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    if (info.model.repositories == null) BigLoadingIndicator()
+    else
+      RepositoriesList(
+        info = info,
+        listState = listState,
+        // we split up top and bottom padding to not cause bugs with list drag and drop
+        paddingValues = PaddingValues(bottom = paddingValues.calculateBottomPadding()),
+        modifier = Modifier.padding(top = paddingValues.calculateTopPadding()),
+      )
+  }
 }
 
-@Preview(
-    showBackground = true,
-    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
-)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
 @Composable
 fun RepositoriesScaffoldLoadingPreview() {
-    HintHost {
-        FDroidContent {
-            val model = RepositoryModel(
-                repositories = null,
-                showOnboarding = false,
-                lastCheckForUpdate = "never",
-                networkState = NetworkState(isOnline = true, isMetered = false),
-            )
-            val info = getRepositoriesInfo(model)
-            Repositories(info, true) {}
-        }
+  HintHost {
+    FDroidContent {
+      val model =
+        RepositoryModel(
+          repositories = null,
+          showOnboarding = false,
+          lastCheckForUpdate = "never",
+          networkState = NetworkState(isOnline = true, isMetered = false),
+        )
+      val info = getRepositoriesInfo(model)
+      Repositories(info, true) {}
     }
+  }
 }
 
-@Preview(
-    showBackground = true,
-    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
-)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
 @Composable
 private fun RepositoriesScaffoldPreview() {
-    HintHost {
-        FDroidContent {
-            val model = RepositoryModel(
-                repositories = repoItems,
-                showOnboarding = false,
-                lastCheckForUpdate = "42min. ago",
-                networkState = NetworkState(isOnline = true, isMetered = false),
-            )
-            val info = getRepositoriesInfo(model, repoItems[0].repoId)
-            Repositories(info, true) { }
-        }
+  HintHost {
+    FDroidContent {
+      val model =
+        RepositoryModel(
+          repositories = repoItems,
+          showOnboarding = false,
+          lastCheckForUpdate = "42min. ago",
+          networkState = NetworkState(isOnline = true, isMetered = false),
+        )
+      val info = getRepositoriesInfo(model, repoItems[0].repoId)
+      Repositories(info, true) {}
     }
+  }
 }

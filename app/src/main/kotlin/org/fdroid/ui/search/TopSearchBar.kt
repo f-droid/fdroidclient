@@ -24,34 +24,32 @@ import org.fdroid.ui.utils.BackButton
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 fun TopSearchBar(
-    searchFieldState: TextFieldState = rememberTextFieldState(),
-    actions: @Composable (RowScope.() -> Unit) = {},
-    onSearch: suspend (String) -> Unit,
-    onSearchCleared: () -> Unit,
-    onHideSearch: () -> Unit,
+  searchFieldState: TextFieldState = rememberTextFieldState(),
+  actions: @Composable (RowScope.() -> Unit) = {},
+  onSearch: suspend (String) -> Unit,
+  onSearchCleared: () -> Unit,
+  onHideSearch: () -> Unit,
 ) {
-    val focusRequester = remember { FocusRequester() }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    TopAppBar(
-        navigationIcon = {
-            BackButton(onClick = onHideSearch)
+  val focusRequester = remember { FocusRequester() }
+  val keyboardController = LocalSoftwareKeyboardController.current
+  TopAppBar(
+    navigationIcon = { BackButton(onClick = onHideSearch) },
+    title = {
+      AppSearchInputField(
+        searchBarState = rememberSearchBarState(),
+        textFieldState = searchFieldState,
+        onSearch = onSearch,
+        onSearchCleared = {
+          searchFieldState.setTextAndPlaceCursorAtEnd("")
+          onSearchCleared()
         },
-        title = {
-            AppSearchInputField(
-                searchBarState = rememberSearchBarState(),
-                textFieldState = searchFieldState,
-                onSearch = onSearch,
-                onSearchCleared = {
-                    searchFieldState.setTextAndPlaceCursorAtEnd("")
-                    onSearchCleared()
-                },
-                modifier = Modifier.focusRequester(focusRequester)
-            )
-        },
-        actions = actions,
-    )
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-        keyboardController?.show()
-    }
+        modifier = Modifier.focusRequester(focusRequester),
+      )
+    },
+    actions = actions,
+  )
+  LaunchedEffect(Unit) {
+    focusRequester.requestFocus()
+    keyboardController?.show()
+  }
 }

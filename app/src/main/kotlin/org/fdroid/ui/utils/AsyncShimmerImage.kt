@@ -29,90 +29,84 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun AsyncShimmerImage(
-    model: Any?,
-    contentDescription: String?,
-    modifier: Modifier = Modifier,
-    colorFilter: ColorFilter? = null,
-    contentScale: ContentScale = ContentScale.Fit,
-    error: Painter = painterResource(R.drawable.ic_repo_app_default),
-    placeholder: Painter = error,
+  model: Any?,
+  contentDescription: String?,
+  modifier: Modifier = Modifier,
+  colorFilter: ColorFilter? = null,
+  contentScale: ContentScale = ContentScale.Fit,
+  error: Painter = painterResource(R.drawable.ic_repo_app_default),
+  placeholder: Painter = error,
 ) {
-    Box(modifier = modifier) {
-        SubcomposeAsyncImage(
-            model = model,
-            loading = {
-                Image(
-                    painter = placeholder,
-                    contentDescription = contentDescription,
-                    colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
-                    contentScale = contentScale,
-                    modifier = Modifier
-                        .matchParentSize()
-                        .shimmer(),
-                )
-            },
-            error = {
-                Image(
-                    painter = error,
-                    contentDescription = contentDescription,
-                    colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
-                    contentScale = contentScale,
-                    modifier = Modifier.matchParentSize(),
-                )
-            },
-            colorFilter = colorFilter,
-            contentScale = contentScale,
-            contentDescription = contentDescription,
-            modifier = Modifier.matchParentSize()
+  Box(modifier = modifier) {
+    SubcomposeAsyncImage(
+      model = model,
+      loading = {
+        Image(
+          painter = placeholder,
+          contentDescription = contentDescription,
+          colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
+          contentScale = contentScale,
+          modifier = Modifier.matchParentSize().shimmer(),
         )
-    }
+      },
+      error = {
+        Image(
+          painter = error,
+          contentDescription = contentDescription,
+          colorFilter = colorFilter ?: tint(MaterialTheme.colorScheme.onSurface),
+          contentScale = contentScale,
+          modifier = Modifier.matchParentSize(),
+        )
+      },
+      colorFilter = colorFilter,
+      contentScale = contentScale,
+      contentDescription = contentDescription,
+      modifier = Modifier.matchParentSize(),
+    )
+  }
 }
 
 @Composable
 @Preview
 private fun Preview() {
-    FDroidContent {
-        Image(
-            painter = painterResource(R.drawable.ic_repo_app_default),
-            contentDescription = null,
-            modifier = Modifier
-                .size(128.dp)
-                .shimmer(),
-        )
-    }
+  FDroidContent {
+    Image(
+      painter = painterResource(R.drawable.ic_repo_app_default),
+      contentDescription = null,
+      modifier = Modifier.size(128.dp).shimmer(),
+    )
+  }
 }
 
 @Composable
 fun Modifier.shimmer(): Modifier {
-    val shimmerColors = listOf(
-        Color.Transparent,
-        MaterialTheme.colorScheme.background.copy(alpha = 0.6f),
-        Color.Transparent
+  val shimmerColors =
+    listOf(
+      Color.Transparent,
+      MaterialTheme.colorScheme.background.copy(alpha = 0.6f),
+      Color.Transparent,
     )
-    val transition = rememberInfiniteTransition(label = "Shimmer")
-    val translateAnim by transition.animateFloat(
-        initialValue = -400f,
-        targetValue = 1200f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(
-                durationMillis = 2000,
-                easing = FastOutLinearInEasing,
-            )
+  val transition = rememberInfiniteTransition(label = "Shimmer")
+  val translateAnim by
+    transition.animateFloat(
+      initialValue = -400f,
+      targetValue = 1200f,
+      animationSpec =
+        infiniteRepeatable(
+          animation = tween(durationMillis = 2000, easing = FastOutLinearInEasing)
         ),
-        label = "Translate"
+      label = "Translate",
     )
-    return this.drawWithCache {
-        val brush = Brush.linearGradient(
-            colors = shimmerColors,
-            start = Offset(translateAnim, 0f),
-            end = Offset(translateAnim + size.width / 1.5f, size.height)
-        )
-        onDrawWithContent {
-            drawContent()
-            drawRect(
-                brush = brush,
-                size = size,
-            )
-        }
+  return this.drawWithCache {
+    val brush =
+      Brush.linearGradient(
+        colors = shimmerColors,
+        start = Offset(translateAnim, 0f),
+        end = Offset(translateAnim + size.width / 1.5f, size.height),
+      )
+    onDrawWithContent {
+      drawContent()
+      drawRect(brush = brush, size = size)
     }
+  }
 }

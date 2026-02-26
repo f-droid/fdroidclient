@@ -9,6 +9,7 @@ import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,96 +26,87 @@ import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
-import javax.inject.Inject
 
 @HiltViewModel
-class RepositoriesViewModel @Inject constructor(
-    app: Application,
-    networkMonitor: NetworkMonitor,
-    private val repoManager: RepoManager,
-    private val updateManager: UpdatesManager,
-    private val settingsManager: SettingsManager,
-    private val onboardingManager: OnboardingManager,
-    @param:IoDispatcher private val ioScope: CoroutineScope,
+class RepositoriesViewModel
+@Inject
+constructor(
+  app: Application,
+  networkMonitor: NetworkMonitor,
+  private val repoManager: RepoManager,
+  private val updateManager: UpdatesManager,
+  private val settingsManager: SettingsManager,
+  private val onboardingManager: OnboardingManager,
+  @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
-    private val log = KotlinLogging.logger { }
-    private val localeList = LocaleListCompat.getDefault()
-    private val moleculeScope =
-        CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
-    private val repos = MutableStateFlow<List<RepositoryItem>?>(null)
-    private val repoSortingMap = MutableStateFlow<Map<Long, Int>>(emptyMap())
-    private val showOnboarding = onboardingManager.showRepositoriesOnboarding
+  private val log = KotlinLogging.logger {}
+  private val localeList = LocaleListCompat.getDefault()
+  private val moleculeScope =
+    CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+  private val repos = MutableStateFlow<List<RepositoryItem>?>(null)
+  private val repoSortingMap = MutableStateFlow<Map<Long, Int>>(emptyMap())
+  private val showOnboarding = onboardingManager.showRepositoriesOnboarding
 
-    init {
-        viewModelScope.launch {
-            repoManager.repositoriesState.collect {
-                onRepositoriesChanged(it)
-            }
-        }
+  init {
+    viewModelScope.launch { repoManager.repositoriesState.collect { onRepositoriesChanged(it) } }
+  }
+
+  // define below init, because this only defines repoSortingMap
+  val model: StateFlow<RepositoryModel> by
+    lazy(LazyThreadSafetyMode.NONE) {
+      moleculeScope.launchMolecule(mode = ContextClock) {
+        RepositoriesPresenter(
+          context = application,
+          repositoriesFlow = repos,
+          repoSortingMapFlow = repoSortingMap,
+          showOnboardingFlow = showOnboarding,
+          lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
+          networkStateFlow = networkMonitor.networkState,
+        )
+      }
     }
 
-    // define below init, because this only defines repoSortingMap
-    val model: StateFlow<RepositoryModel> by lazy(LazyThreadSafetyMode.NONE) {
-        moleculeScope.launchMolecule(mode = ContextClock) {
-            RepositoriesPresenter(
-                context = application,
-                repositoriesFlow = repos,
-                repoSortingMapFlow = repoSortingMap,
-                showOnboardingFlow = showOnboarding,
-                lastUpdateFlow = settingsManager.lastRepoUpdateFlow,
-                networkStateFlow = networkMonitor.networkState,
-            )
-        }
+  private fun onRepositoriesChanged(repositories: List<Repository>) {
+    log.info("onRepositoriesChanged(${repositories.size})")
+    repos.update {
+      repositories.mapNotNull {
+        if (it.isArchiveRepo) null else RepositoryItem(it, localeList, settingsManager.proxyConfig)
+      }
     }
-
-    private fun onRepositoriesChanged(repositories: List<Repository>) {
-        log.info("onRepositoriesChanged(${repositories.size})")
-        repos.update {
-            repositories.mapNotNull {
-                if (it.isArchiveRepo) null
-                else RepositoryItem(it, localeList, settingsManager.proxyConfig)
-            }
-        }
-        repoSortingMap.update {
-            // just add repos to sortingMap, because they are already pre-sorted by weight
-            mutableMapOf<Long, Int>().apply {
-                repositories.forEachIndexed { index, repository ->
-                    this[repository.repoId] = index
-                }
-            }
-        }
+    repoSortingMap.update {
+      // just add repos to sortingMap, because they are already pre-sorted by weight
+      mutableMapOf<Long, Int>().apply {
+        repositories.forEachIndexed { index, repository -> this[repository.repoId] = index }
+      }
     }
+  }
 
-    fun onRepositoryEnabled(repoId: Long, enabled: Boolean) {
-        ioScope.launch {
-            repoManager.setRepositoryEnabled(repoId, enabled)
-            updateManager.loadUpdates()
-            if (enabled) withContext(Dispatchers.Main) {
-                RepoUpdateWorker.updateNow(application, repoId)
-            }
-        }
+  fun onRepositoryEnabled(repoId: Long, enabled: Boolean) {
+    ioScope.launch {
+      repoManager.setRepositoryEnabled(repoId, enabled)
+      updateManager.loadUpdates()
+      if (enabled) withContext(Dispatchers.Main) { RepoUpdateWorker.updateNow(application, repoId) }
     }
+  }
 
-    fun onRepositoriesMoved(fromRepoId: Long, toRepoId: Long) {
-        log.info { "onRepositoriesMoved($fromRepoId, $toRepoId)" }
-        repoSortingMap.update {
-            repoSortingMap.value.toMutableMap().apply {
-                val toIndex = get(toRepoId) ?: error("No position for toRepoId $toRepoId")
-                replace(toRepoId, replace(fromRepoId, toIndex)!!)
-            }
-        }
+  fun onRepositoriesMoved(fromRepoId: Long, toRepoId: Long) {
+    log.info { "onRepositoriesMoved($fromRepoId, $toRepoId)" }
+    repoSortingMap.update {
+      repoSortingMap.value.toMutableMap().apply {
+        val toIndex = get(toRepoId) ?: error("No position for toRepoId $toRepoId")
+        replace(toRepoId, replace(fromRepoId, toIndex)!!)
+      }
     }
+  }
 
-    fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {
-        log.info { "onRepositoriesFinishedMoving($fromRepoId, $toRepoId)" }
-        val fromRepo = repoManager.getRepository(fromRepoId)
-            ?: error("No repo for repoId $fromRepoId")
-        val toRepo = repoManager.getRepository(toRepoId)
-            ?: error("No repo for repoId $toRepoId")
-        log.info { "  ${fromRepo.address} => ${toRepo.address}" }
-        repoManager.reorderRepositories(fromRepo, toRepo)
-    }
+  fun onRepositoriesFinishedMoving(fromRepoId: Long, toRepoId: Long) {
+    log.info { "onRepositoriesFinishedMoving($fromRepoId, $toRepoId)" }
+    val fromRepo = repoManager.getRepository(fromRepoId) ?: error("No repo for repoId $fromRepoId")
+    val toRepo = repoManager.getRepository(toRepoId) ?: error("No repo for repoId $toRepoId")
+    log.info { "  ${fromRepo.address} => ${toRepo.address}" }
+    repoManager.reorderRepositories(fromRepo, toRepo)
+  }
 
-    fun onOnboardingSeen() = onboardingManager.onRepositoriesOnboardingSeen()
+  fun onOnboardingSeen() = onboardingManager.onRepositoriesOnboardingSeen()
 }

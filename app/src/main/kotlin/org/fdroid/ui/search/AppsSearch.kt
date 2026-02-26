@@ -24,60 +24,51 @@ import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.navigation.NavigationKey
 
-/**
- * The minimum amount of characters we start auto-searching for.
- */
+/** The minimum amount of characters we start auto-searching for. */
 const val SEARCH_THRESHOLD = 2
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppsSearch(
-    textFieldState: TextFieldState,
-    onNav: (NavigationKey) -> Unit,
-    modifier: Modifier = Modifier,
+  textFieldState: TextFieldState,
+  onNav: (NavigationKey) -> Unit,
+  modifier: Modifier = Modifier,
 ) {
-    val searchBarState = rememberSearchBarState()
-    SearchBar(
-        state = searchBarState,
-        inputField = {
-            // InputField is different from ExpandedFullScreenSearchBar to separate onSearch()
-            SearchBarDefaults.InputField(
-                searchBarState = searchBarState,
-                textFieldState = textFieldState,
-                placeholder = {
-                    Text(
-                        text = stringResource(R.string.search_placeholder),
-                        // we hide the placeholder, because TalkBack is already saying "Search"
-                        modifier = Modifier.semantics { hideFromAccessibility() },
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = null,
-                        modifier = Modifier.semantics { hideFromAccessibility() },
-                    )
-                },
-                onSearch = { },
-                modifier = Modifier
-                    .onFocusChanged {
-                        if (it.isFocused) onNav(NavigationKey.Search)
-                    },
-            )
+  val searchBarState = rememberSearchBarState()
+  SearchBar(
+    state = searchBarState,
+    inputField = {
+      // InputField is different from ExpandedFullScreenSearchBar to separate onSearch()
+      SearchBarDefaults.InputField(
+        searchBarState = searchBarState,
+        textFieldState = textFieldState,
+        placeholder = {
+          Text(
+            text = stringResource(R.string.search_placeholder),
+            // we hide the placeholder, because TalkBack is already saying "Search"
+            modifier = Modifier.semantics { hideFromAccessibility() },
+          )
         },
-        modifier = modifier.clickable {
-            onNav(NavigationKey.Search)
+        leadingIcon = {
+          Icon(
+            imageVector = Icons.Default.Search,
+            contentDescription = null,
+            modifier = Modifier.semantics { hideFromAccessibility() },
+          )
         },
-    )
+        onSearch = {},
+        modifier = Modifier.onFocusChanged { if (it.isFocused) onNav(NavigationKey.Search) },
+      )
+    },
+    modifier = modifier.clickable { onNav(NavigationKey.Search) },
+  )
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        val textFieldState = rememberTextFieldState()
-        Box(Modifier.fillMaxSize()) {
-            AppsSearch(textFieldState, {})
-        }
-    }
+  FDroidContent {
+    val textFieldState = rememberTextFieldState()
+    Box(Modifier.fillMaxSize()) { AppsSearch(textFieldState, {}) }
+  }
 }

@@ -22,36 +22,30 @@ import org.fdroid.ui.utils.startActivitySafe
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDetailsTopAppBar(
-    item: AppDetailsItem,
-    topAppBarState: TopAppBarState,
-    scrollBehavior: TopAppBarScrollBehavior,
-    onBackNav: (() -> Unit)?,
+  item: AppDetailsItem,
+  topAppBarState: TopAppBarState,
+  scrollBehavior: TopAppBarScrollBehavior,
+  onBackNav: (() -> Unit)?,
 ) {
-    TopAppBar(
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Transparent,
-        ),
-        title = {
-            if (topAppBarState.overlappedFraction == 1f) {
-                Text(item.name, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            }
-        },
-        navigationIcon = {
-            if (onBackNav != null) BackButton(onClick = onBackNav)
-        },
-        actions = {
-            val context = LocalContext.current
-            item.actions.shareIntent?.let { shareIntent ->
-                TopAppBarButton(
-                    imageVector = Icons.Filled.Share,
-                    contentDescription = stringResource(R.string.menu_share),
-                    onClick = { context.startActivitySafe(shareIntent) },
-                )
-            }
-            TopAppBarOverflowButton { onDismissRequest ->
-                AppDetailsMenu(item, onDismissRequest)
-            }
-        },
-        scrollBehavior = scrollBehavior,
-    )
+  TopAppBar(
+    colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
+    title = {
+      if (topAppBarState.overlappedFraction == 1f) {
+        Text(item.name, maxLines = 1, overflow = TextOverflow.Ellipsis)
+      }
+    },
+    navigationIcon = { if (onBackNav != null) BackButton(onClick = onBackNav) },
+    actions = {
+      val context = LocalContext.current
+      item.actions.shareIntent?.let { shareIntent ->
+        TopAppBarButton(
+          imageVector = Icons.Filled.Share,
+          contentDescription = stringResource(R.string.menu_share),
+          onClick = { context.startActivitySafe(shareIntent) },
+        )
+      }
+      TopAppBarOverflowButton { onDismissRequest -> AppDetailsMenu(item, onDismissRequest) }
+    },
+    scrollBehavior = scrollBehavior,
+  )
 }

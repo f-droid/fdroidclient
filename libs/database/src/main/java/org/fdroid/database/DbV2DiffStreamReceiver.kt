@@ -6,33 +6,32 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.index.v2.IndexV2DiffStreamReceiver
 
 internal class DbV2DiffStreamReceiver(
-    private val db: FDroidDatabaseInt,
-    private val repoId: Long,
-    private val compatibilityChecker: CompatibilityChecker,
+  private val db: FDroidDatabaseInt,
+  private val repoId: Long,
+  private val compatibilityChecker: CompatibilityChecker,
 ) : IndexV2DiffStreamReceiver {
 
-    private val locales: LocaleListCompat = LocaleListCompat.getDefault()
+  private val locales: LocaleListCompat = LocaleListCompat.getDefault()
 
-    override fun receiveRepoDiff(version: Long, repoJsonObject: JsonObject) {
-        db.getRepositoryDao().updateRepository(repoId, version, repoJsonObject)
+  override fun receiveRepoDiff(version: Long, repoJsonObject: JsonObject) {
+    db.getRepositoryDao().updateRepository(repoId, version, repoJsonObject)
+  }
+
+  override fun receivePackageMetadataDiff(packageName: String, packageJsonObject: JsonObject?) {
+    db.getAppDao().updateApp(repoId, packageName, packageJsonObject, locales)
+  }
+
+  override fun receiveVersionsDiff(
+    packageName: String,
+    versionsDiffMap: Map<String, JsonObject?>?,
+  ) {
+    db.getVersionDao().update(repoId, packageName, versionsDiffMap) {
+      compatibilityChecker.isCompatible(it)
     }
+  }
 
-    override fun receivePackageMetadataDiff(packageName: String, packageJsonObject: JsonObject?) {
-        db.getAppDao().updateApp(repoId, packageName, packageJsonObject, locales)
-    }
-
-    override fun receiveVersionsDiff(
-        packageName: String,
-        versionsDiffMap: Map<String, JsonObject?>?,
-    ) {
-        db.getVersionDao().update(repoId, packageName, versionsDiffMap) {
-            compatibilityChecker.isCompatible(it)
-        }
-    }
-
-    @Synchronized
-    override fun onStreamEnded() {
-        db.afterUpdatingRepo(repoId)
-    }
-
+  @Synchronized
+  override fun onStreamEnded() {
+    db.afterUpdatingRepo(repoId)
+  }
 }

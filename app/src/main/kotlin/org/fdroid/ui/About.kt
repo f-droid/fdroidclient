@@ -54,155 +54,138 @@ import org.fdroid.ui.utils.openUriSafe
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun About(onBackClicked: (() -> Unit)?) {
-    val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                navigationIcon = {
-                    if (onBackClicked != null) IconButton(onClick = onBackClicked) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                            contentDescription = stringResource(R.string.back),
-                        )
-                    }
-                },
-                title = {
-                    Text(stringResource(R.string.about_title_full))
-                },
-                scrollBehavior = scrollBehavior,
-            )
+  val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        navigationIcon = {
+          if (onBackClicked != null)
+            IconButton(onClick = onBackClicked) {
+              Icon(
+                imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                contentDescription = stringResource(R.string.back),
+              )
+            }
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    ) { paddingValues ->
-        AboutContent(Modifier.fillMaxSize(), paddingValues)
-    }
+        title = { Text(stringResource(R.string.about_title_full)) },
+        scrollBehavior = scrollBehavior,
+      )
+    },
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+  ) { paddingValues ->
+    AboutContent(Modifier.fillMaxSize(), paddingValues)
+  }
 }
 
 @Composable
 fun AboutContent(modifier: Modifier = Modifier, paddingValues: PaddingValues = PaddingValues()) {
-    val scrollableState = rememberScrollState()
-    Box(
-        modifier = modifier.verticalScroll(scrollableState)
+  val scrollableState = rememberScrollState()
+  Box(modifier = modifier.verticalScroll(scrollableState)) {
+    Column(
+      verticalArrangement = spacedBy(8.dp),
+      modifier = Modifier.padding(paddingValues).padding(16.dp),
     ) {
-        Column(
-            verticalArrangement = spacedBy(8.dp),
-            modifier = Modifier
-                .padding(paddingValues)
-                .padding(16.dp)
-        ) {
-            AboutHeader()
-            AboutText()
-        }
+      AboutHeader()
+      AboutText()
     }
+  }
 }
 
 @Composable
 private fun AboutHeader(modifier: Modifier = Modifier) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.fillMaxWidth()
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = null, // decorative element
-            modifier = Modifier
-                .fillMaxWidth(0.25f)
-                .aspectRatio(1f)
-                .semantics { hideFromAccessibility() }
-        )
-        SelectionContainer {
-            Text(
-                text = "${stringResource(R.string.about_version)} $VERSION_NAME",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .alpha(0.75f)
-            )
-        }
+  Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.fillMaxWidth()) {
+    Image(
+      painter = painterResource(id = R.drawable.ic_launcher_foreground),
+      contentDescription = null, // decorative element
+      modifier = Modifier.fillMaxWidth(0.25f).aspectRatio(1f).semantics { hideFromAccessibility() },
+    )
+    SelectionContainer {
+      Text(
+        text = "${stringResource(R.string.about_version)} $VERSION_NAME",
+        style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.padding(top = 16.dp).alpha(0.75f),
+      )
     }
+  }
 }
 
 @Composable
 private fun AboutText() {
-    SelectionContainer {
-        Text(
-            text = stringResource(R.string.about_text),
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.padding(top = 16.dp),
-        )
-    }
-    val uriHandler = LocalUriHandler.current
+  SelectionContainer {
     Text(
-        text = stringResource(R.string.links),
-        fontWeight = FontWeight.Bold,
-        style = MaterialTheme.typography.bodyLarge,
-        modifier = Modifier.padding(top = 8.dp)
+      text = stringResource(R.string.about_text),
+      style = MaterialTheme.typography.bodyLarge,
+      modifier = Modifier.padding(top = 16.dp),
     )
-    AboutLink(
-        text = stringResource(R.string.menu_website),
-        icon = Icons.Default.Home,
-        onClick = { uriHandler.openUriSafe("https://f-droid.org") },
-    )
-    AboutLink(
-        text = stringResource(R.string.about_forum),
-        icon = Icons.Default.Forum,
-        onClick = { uriHandler.openUriSafe("https://forum.f-droid.org") },
-    )
-    AboutLink(
-        text = stringResource(R.string.menu_translation),
-        icon = Icons.Default.Translate,
-        onClick = {
-            uriHandler.openUriSafe("https://f-droid.org/en/docs/Translation_and_Localization/")
-        },
-    )
-    AboutLink(
-        text = stringResource(R.string.donate_title),
-        icon = Icons.Default.MonetizationOn,
-        onClick = { uriHandler.openUriSafe("https://f-droid.org/donate/") },
-    )
-    AboutLink(
-        text = stringResource(R.string.about_source),
-        icon = Icons.Default.Code,
-        onClick = { uriHandler.openUriSafe("https://gitlab.com/fdroid/fdroidclient") },
-    )
+  }
+  val uriHandler = LocalUriHandler.current
+  Text(
+    text = stringResource(R.string.links),
+    fontWeight = FontWeight.Bold,
+    style = MaterialTheme.typography.bodyLarge,
+    modifier = Modifier.padding(top = 8.dp),
+  )
+  AboutLink(
+    text = stringResource(R.string.menu_website),
+    icon = Icons.Default.Home,
+    onClick = { uriHandler.openUriSafe("https://f-droid.org") },
+  )
+  AboutLink(
+    text = stringResource(R.string.about_forum),
+    icon = Icons.Default.Forum,
+    onClick = { uriHandler.openUriSafe("https://forum.f-droid.org") },
+  )
+  AboutLink(
+    text = stringResource(R.string.menu_translation),
+    icon = Icons.Default.Translate,
+    onClick = {
+      uriHandler.openUriSafe("https://f-droid.org/en/docs/Translation_and_Localization/")
+    },
+  )
+  AboutLink(
+    text = stringResource(R.string.donate_title),
+    icon = Icons.Default.MonetizationOn,
+    onClick = { uriHandler.openUriSafe("https://f-droid.org/donate/") },
+  )
+  AboutLink(
+    text = stringResource(R.string.about_source),
+    icon = Icons.Default.Code,
+    onClick = { uriHandler.openUriSafe("https://gitlab.com/fdroid/fdroidclient") },
+  )
+  Text(
+    text = stringResource(R.string.about_license),
+    fontWeight = FontWeight.Bold,
+    style = MaterialTheme.typography.bodyLarge,
+  )
+  SelectionContainer {
     Text(
-        text = stringResource(R.string.about_license),
-        fontWeight = FontWeight.Bold,
-        style = MaterialTheme.typography.bodyLarge,
+      text = stringResource(R.string.about_license_text),
+      style = MaterialTheme.typography.bodyLarge,
     )
-    SelectionContainer {
-        Text(
-            text = stringResource(R.string.about_license_text),
-            style = MaterialTheme.typography.bodyLarge,
-        )
-    }
+  }
 }
 
 @Composable
 private fun AboutLink(text: String, icon: ImageVector, onClick: () -> Unit) {
-    TextButton(onClick = onClick) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            modifier = Modifier.semantics { hideFromAccessibility() }
-        )
-        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-        Text(text = text)
-    }
+  TextButton(onClick = onClick) {
+    Icon(
+      imageVector = icon,
+      contentDescription = null,
+      modifier = Modifier.semantics { hideFromAccessibility() },
+    )
+    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+    Text(text = text)
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun AboutPreview() {
-    FDroidContent {
-        About {}
-    }
+  FDroidContent { About {} }
 }
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun AboutPreviewDark() {
-    FDroidContent {
-        About(null)
-    }
+  FDroidContent { About(null) }
 }

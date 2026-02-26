@@ -33,83 +33,75 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 fun CrashContent(
-    isOldCrash: Boolean,
-    onCancel: () -> Unit,
-    onSend: (String, String) -> Unit,
-    textFieldState: TextFieldState,
-    modifier: Modifier = Modifier
+  isOldCrash: Boolean,
+  onCancel: () -> Unit,
+  onSend: (String, String) -> Unit,
+  textFieldState: TextFieldState,
+  modifier: Modifier = Modifier,
 ) {
-    val scrollState = rememberScrollState()
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween,
-        modifier = modifier
-            .fillMaxSize()
-            .imePadding()
-            .padding(horizontal = 16.dp)
-            .verticalScroll(scrollState)
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_crash),
-            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
-            contentDescription = null, // decorative element
-            modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .aspectRatio(1f)
-                .padding(vertical = 16.dp)
-                .semantics { hideFromAccessibility() },
+  val scrollState = rememberScrollState()
+  Column(
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.SpaceBetween,
+    modifier =
+      modifier.fillMaxSize().imePadding().padding(horizontal = 16.dp).verticalScroll(scrollState),
+  ) {
+    Image(
+      painter = painterResource(id = R.drawable.ic_crash),
+      colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
+      contentDescription = null, // decorative element
+      modifier =
+        Modifier.fillMaxWidth(0.5f).aspectRatio(1f).padding(vertical = 16.dp).semantics {
+          hideFromAccessibility()
+        },
+    )
+    Column(verticalArrangement = spacedBy(16.dp)) {
+      Text(
+        text =
+          if (isOldCrash) {
+            stringResource(R.string.crash_dialog_title_old)
+          } else {
+            stringResource(R.string.crash_dialog_title)
+          },
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier.align(Alignment.CenterHorizontally),
+      )
+      Text(
+        text = stringResource(R.string.crash_report_text),
+        style = MaterialTheme.typography.bodyLarge,
+      )
+      if (!isOldCrash)
+        TextField(
+          state = textFieldState,
+          placeholder = { Text(stringResource(R.string.crash_report_comment_hint)) },
+          modifier = Modifier.fillMaxWidth(),
         )
-        Column(verticalArrangement = spacedBy(16.dp)) {
-            Text(
-                text = if (isOldCrash) {
-                    stringResource(R.string.crash_dialog_title_old)
-                } else {
-                    stringResource(R.string.crash_dialog_title)
-                },
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = stringResource(R.string.crash_report_text),
-                style = MaterialTheme.typography.bodyLarge,
-            )
-            if (!isOldCrash) TextField(
-                state = textFieldState,
-                placeholder = { Text(stringResource(R.string.crash_report_comment_hint)) },
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-        Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp)
-        ) {
-            OutlinedButton(onClick = onCancel) {
-                Text(stringResource(R.string.cancel))
-            }
-            Button(onClick = {
-                val text = if (isOldCrash) "old crash" else textFieldState.text.toString()
-                onSend(text, "")
-            }) {
-                Text(stringResource(R.string.crash_report_button_send))
-            }
-        }
     }
+    Row(
+      horizontalArrangement = Arrangement.SpaceEvenly,
+      modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+    ) {
+      OutlinedButton(onClick = onCancel) { Text(stringResource(R.string.cancel)) }
+      Button(
+        onClick = {
+          val text = if (isOldCrash) "old crash" else textFieldState.text.toString()
+          onSend(text, "")
+        }
+      ) {
+        Text(stringResource(R.string.crash_report_button_send))
+      }
+    }
+  }
 }
 
 @Preview
 @Composable
 private fun Preview() {
-    FDroidContent {
-        Crash(false, {}, { _, _ -> }, { _, _ -> true })
-    }
+  FDroidContent { Crash(false, {}, { _, _ -> }, { _, _ -> true }) }
 }
 
 @Preview
 @Composable
 private fun PreviewOld() {
-    FDroidContent {
-        Crash(true, {}, { _, _ -> }, { _, _ -> true })
-    }
+  FDroidContent { Crash(true, {}, { _, _ -> }, { _, _ -> true }) }
 }
