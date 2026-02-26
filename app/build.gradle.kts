@@ -18,8 +18,8 @@ android {
         applicationId = "org.fdroid"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2000003
-        versionName = "2.0-alpha3"
+        versionCode = 2000004
+        versionName = "2.0-alpha4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -76,6 +76,7 @@ android {
     }
     lint {
         lintConfig = file("lint.xml")
+        textReport = true
     }
     @Suppress("UnstableApiUsage")
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
@@ -143,6 +144,8 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    "fullImplementation"(libs.guardianproject.panic)
 
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))

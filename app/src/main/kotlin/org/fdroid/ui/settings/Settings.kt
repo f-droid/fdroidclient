@@ -352,6 +352,7 @@ fun Settings(
                     },
                 )
                 preferenceProxy(proxyState, showProxyError)
+                extraNetworkSettings(context)
                 preferenceCategory(
                     key = "pref_category_privacy",
                     title = { Text(stringResource(R.string.privacy)) },
@@ -390,6 +391,7 @@ fun Settings(
                         Text(text = stringResource(R.string.preventScreenshots_summary))
                     },
                 )
+                extraPrivacySettings(context)
                 item {
                     OutlinedButton(
                         onClick = { launcher.launch("${getLogName(context)}.txt") },
@@ -417,6 +419,6 @@ fun SettingsPreview() {
             nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
             nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
         )
-        Settings(model, {}, { })
+        Settings(model, {}, {})
     }
 }

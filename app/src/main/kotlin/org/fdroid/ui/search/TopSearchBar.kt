@@ -1,5 +1,6 @@
 package org.fdroid.ui.search
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
@@ -24,6 +25,7 @@ import org.fdroid.ui.utils.BackButton
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 fun TopSearchBar(
     searchFieldState: TextFieldState = rememberTextFieldState(),
+    actions: @Composable (RowScope.() -> Unit) = {},
     onSearch: suspend (String) -> Unit,
     onSearchCleared: () -> Unit,
     onHideSearch: () -> Unit,
@@ -45,7 +47,8 @@ fun TopSearchBar(
                 },
                 modifier = Modifier.focusRequester(focusRequester)
             )
-        }
+        },
+        actions = actions,
     )
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()

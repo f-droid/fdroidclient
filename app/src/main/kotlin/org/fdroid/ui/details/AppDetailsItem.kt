@@ -126,8 +126,8 @@ data class AppDetailsItem(
         suggestedVersion = suggestedVersion,
         possibleUpdate = possibleUpdate,
         appPrefs = appPrefs,
-        whatsNew = suggestedVersion?.getWhatsNew(localeList)
-            ?: installedVersion?.getWhatsNew(localeList),
+        whatsNew = suggestedVersion?.getWhatsNew(localeList)?.trim()
+            ?: installedVersion?.getWhatsNew(localeList)?.trim(),
         antiFeatures = installedVersion?.getAntiFeatures(repository, localeList, proxy)
             ?: suggestedVersion?.getAntiFeatures(repository, localeList, proxy)
             ?: (versions?.first()?.version as? AppVersion).getAntiFeatures(

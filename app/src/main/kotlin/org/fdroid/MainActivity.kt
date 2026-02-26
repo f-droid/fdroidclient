@@ -4,7 +4,6 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager.LayoutParams.FLAG_SECURE
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -45,10 +44,10 @@ class MainActivity : AppCompatActivity() {
         setContent {
             Main {
                 // inform OnNewIntentListeners about the initial intent (otherwise would be missed)
-                if (savedInstanceState == null && intent != null) {
+                if (intent != null) {
                     onNewIntent(intent)
-                } else if (savedInstanceState != null && intent != null) {
-                    Log.w("MainActivity", "Ignored intent due to savedInstanceState: $intent")
+                    // set intent to null to avoid re-processing on configuration changes
+                    intent = null
                 }
             }
         }

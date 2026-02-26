@@ -325,8 +325,8 @@ public abstract class RepoAttribute {
     )],
 )
 public data class AntiFeature(
-    internal val repoId: Long,
-    internal val id: String,
+    public val repoId: Long,
+    public val id: String,
     override val icon: LocalizedFileV2 = emptyMap(),
     override val name: LocalizedTextV2,
     override val description: LocalizedTextV2 = emptyMap(),

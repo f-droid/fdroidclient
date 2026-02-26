@@ -14,6 +14,7 @@ import javax.inject.Singleton
 class DownloaderFactoryImpl @Inject constructor(
     private val httpManager: HttpManager,
     private val settingsManager: SettingsManager,
+    private val interceptor: DownloadRequestInterceptor,
 ) : DownloaderFactory() {
     override fun create(
         repo: Repository,
@@ -47,7 +48,7 @@ class DownloaderFactoryImpl @Inject constructor(
             @Suppress("DEPRECATION") // v1 only
             HttpDownloader(httpManager, request, destFile)
         } else {
-            HttpDownloaderV2(httpManager, request, destFile)
+            HttpDownloaderV2(httpManager, interceptor.intercept(request), destFile)
         }
     }
 }

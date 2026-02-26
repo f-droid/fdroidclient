@@ -124,7 +124,7 @@ fun AppDetails(
                 AppDetailsWarnings(item, Modifier.padding(horizontal = 16.dp))
             }
             // What's New
-            if (item.installedVersion != null &&
+            if (item.installedVersionCode != null &&
                 (item.whatsNew != null || item.app.changelog != null)
             ) {
                 ElevatedCard(

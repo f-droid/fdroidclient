@@ -258,6 +258,8 @@ fun getAppListInfo(model: AppListModel) = object : AppListInfo {
         override fun toggleFilterIncompatible() {}
         override fun addCategory(categoryId: String) {}
         override fun removeCategory(categoryId: String) {}
+        override fun addAntiFeature(antiFeatureId: String) {}
+        override fun removeAntiFeature(antiFeatureId: String) {}
         override fun addRepository(repoId: Long) {}
         override fun removeRepository(repoId: Long) {}
         override fun saveFilters() {}

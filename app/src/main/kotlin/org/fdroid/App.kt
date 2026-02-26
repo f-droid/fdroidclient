@@ -2,6 +2,7 @@ package org.fdroid
 
 import android.app.Application
 import android.content.Context
+import android.os.Build.VERSION.SDK_INT
 import androidx.compose.runtime.Composer
 import androidx.compose.runtime.ExperimentalComposeRuntimeApi
 import androidx.compose.runtime.tooling.ComposeStackTraceMode
@@ -95,10 +96,20 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
         }
         applyNewTheme(settingsManager.theme)
         // bail out here if we are the ACRA process to not initialize anything in crash process
-        if (ACRA.isACRASenderServiceProcess()) return
+        if (isAcraProces()) return
 
         RepoUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.repoUpdates)
         AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
+    }
+
+    private fun isAcraProces(): Boolean {
+        return if (SDK_INT >= 28) {
+            val processName = getProcessName().split(':')
+            processName.size > 1 && processName[1] == "acra"
+        } else {
+            // FIXME this does disk I/O
+            ACRA.isACRASenderServiceProcess()
+        }
     }
 
     override fun newImageLoader(context: Context): ImageLoader {

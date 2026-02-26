@@ -10,4 +10,5 @@ data class AppListItem(
     val isCompatible: Boolean,
     val iconModel: Any? = null,
     val categoryIds: Set<String>? = null,
+    val antiFeatureIds: Set<String> = emptySet(),
 )

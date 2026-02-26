@@ -21,7 +21,9 @@ fun AppListPresenter(
     sortByFlow: StateFlow<AppListSortOrder>,
     filterIncompatibleFlow: StateFlow<Boolean>,
     categoriesFlow: Flow<List<CategoryItem>>,
+    antiFeaturesFlow: Flow<List<AntiFeatureItem>>,
     filteredCategoryIdsFlow: StateFlow<Set<String>>,
+    notSelectedAntiFeatureIdsFlow: StateFlow<Set<String>>,
     repositoriesFlow: Flow<List<RepositoryItem>>,
     filteredRepositoryIdsFlow: StateFlow<Set<Long>>,
     searchQueryFlow: StateFlow<String>,
@@ -30,7 +32,9 @@ fun AppListPresenter(
     val sortBy = sortByFlow.collectAsState().value
     val filterIncompatible = filterIncompatibleFlow.collectAsState().value
     val categories = categoriesFlow.collectAsState(null).value
+    val antiFeatures = antiFeaturesFlow.collectAsState(null).value
     val filteredCategoryIds = filteredCategoryIdsFlow.collectAsState().value
+    val filteredAntiFeatureIds = notSelectedAntiFeatureIdsFlow.collectAsState().value
     val repositories = repositoriesFlow.collectAsState(emptyList()).value
     val filteredRepositoryIds = filteredRepositoryIdsFlow.collectAsState().value
     val searchQuery = searchQueryFlow.collectAsState().value.normalize()
@@ -40,7 +44,7 @@ fun AppListPresenter(
         apps?.flatMap { it.categoryIds ?: emptySet() }?.toSet()?.takeIf { it.size > 1 }
             ?: emptySet()
     }
-    val filteredCategories = remember(categories, apps) {
+    val availableCategories = remember(categories, apps) {
         categories?.filter {
             if (type is AppListType.Category) {
                 // don't show category for list we are currently seeing, because all apps are in it
@@ -48,6 +52,15 @@ fun AppListPresenter(
             } else {
                 it.id in availableCategoryIds
             }
+        }
+    }
+    val availableAntiFeatureIds = remember(apps) {
+        apps?.flatMap { it.antiFeatureIds }?.toSet()?.takeIf { it.size > 1 }
+            ?: emptySet()
+    }
+    val availableAntiFeatures = remember(antiFeatures, apps) {
+        antiFeatures?.filter {
+            it.id in availableAntiFeatureIds
         }
     }
     val availableRepositories = remember(apps) {
@@ -60,13 +73,19 @@ fun AppListPresenter(
     val filteredApps = apps?.filter {
         val matchesCategories = filteredCategoryIds.isEmpty() ||
             (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
+        val matchesAntiFeatures = filteredAntiFeatureIds.isEmpty() ||
+            it.antiFeatureIds.intersect(filteredAntiFeatureIds).isEmpty()
         val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
         val matchesQuery = searchQuery.isEmpty() ||
             it.name.normalize().contains(searchQuery, ignoreCase = true) ||
             it.summary.normalize().contains(searchQuery, ignoreCase = true) ||
             it.packageName.contains(searchQuery, ignoreCase = true)
         val matchesCompatibility = !filterIncompatible || it.isCompatible
-        matchesCategories && matchesRepos && matchesQuery && matchesCompatibility
+        matchesCategories &&
+            matchesAntiFeatures &&
+            matchesRepos &&
+            matchesQuery &&
+            matchesCompatibility
     }
 
     @SuppressLint("NonObservableLocale") // the alternative isn't available here
@@ -77,10 +96,15 @@ fun AppListPresenter(
         } else {
             filteredApps?.sortedByDescending { it.lastUpdated }
         },
+        showFilterBadge = filteredCategoryIds.isNotEmpty() ||
+            filteredAntiFeatureIds.isNotEmpty() ||
+            filteredRepositoryIds.isNotEmpty(),
         sortBy = sortBy,
         filterIncompatible = filterIncompatible,
-        categories = filteredCategories,
+        categories = availableCategories,
         filteredCategoryIds = filteredCategoryIds,
+        antiFeatures = availableAntiFeatures,
+        filteredAntiFeatureIds = filteredAntiFeatureIds,
         repositories = availableRepositories,
         filteredRepositoryIds = filteredRepositoryIds,
     )

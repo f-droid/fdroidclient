@@ -860,6 +860,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
         <item quantity="other">Download apps using IPFS web endpoints: %1$d enabled</item>
     </plurals>
     <string name="ipfsgw_summary_disabled">Download apps using IPFS web endpoints: disabled</string>
+    <string name="ipfsgw_summary_new">Download apps using IPFS web endpoints</string>
     <string name="ipfsgw_add_title">Add IPFS gateway</string>
     <string name="ipfsgw_add_add">Add</string>
     <string name="ipfsgw_caption_official_gateways">Official IPFS gateways</string>

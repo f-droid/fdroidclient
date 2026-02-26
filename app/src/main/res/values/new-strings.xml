@@ -26,12 +26,15 @@
     <string name="sort_by_latest">Sort by latest</string>
     <string name="filter_only_compatible">Apps compatible with this device</string>
     <string name="filter_button_save">Save as default</string>
+    <!-- Shown above filter options such as categories, repositories and anti-features -->
+    <string name="filter_intro">"Filter apps by"</string>
     <string name="filter_button_clear_all">Clear all filters</string>
     <!-- Used as a noun for the button description. The feature allows for filtering lists of apps by certain criteria -->
     <string name="filter">Filter</string>
     <!-- Used for filter chips (e.g. categories) when they are currently selected -->
     <string name="filter_selected">selected</string>
     <string name="category">Category</string>
+    <string name="filter_antifeatures">Hide anti-features</string>
 
     <string name="dialog_metered_title">Continue with mobile data?</string>
     <!-- The placeholder will be replaced with a size string such as "13 MB" -->

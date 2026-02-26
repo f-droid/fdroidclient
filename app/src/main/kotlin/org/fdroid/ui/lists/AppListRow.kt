@@ -57,8 +57,8 @@ fun AppListRow(
 @Composable
 fun AppListRowPreview() {
     FDroidContent {
-        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true, null)
-        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true, null)
+        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true)
+        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true)
         Column {
             AppListRow(item1, false)
             AppListRow(item2, true)
@@ -70,8 +70,8 @@ fun AppListRowPreview() {
 @Composable
 fun AppListRowPreviewNight() {
     FDroidContent {
-        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, true, null)
-        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, false, true, null)
+        val item1 = AppListItem(1, "1", "This is app 1", "It has summary 2", 0, true, true)
+        val item2 = AppListItem(2, "2", "This is app 2", "It has summary 2", 0, false, true)
         Column {
             AppListRow(item1, false)
             AppListRow(item2, true)

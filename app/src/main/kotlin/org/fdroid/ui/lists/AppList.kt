@@ -106,10 +106,17 @@ fun AppList(
                 TopSearchBar(
                     onSearch = appListInfo.actions::onSearch,
                     onSearchCleared = onSearchCleared,
-                ) {
-                    searchActive = false
-                    onSearchCleared()
-                }
+                    onHideSearch = {
+                        searchActive = false
+                        onSearchCleared()
+                    },
+                    actions = {
+                        FilterButton(
+                            showFilterBadge = appListInfo.model.showFilterBadge,
+                            toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
+                        )
+                    }
+                )
             } else TopAppBar(
                 title = {
                     Text(
@@ -129,34 +136,14 @@ fun AppList(
                         contentDescription = stringResource(R.string.menu_search),
                         onClick = { searchActive = true },
                     )
-                    TooltipBox(
-                        positionProvider =
-                        TooltipDefaults.rememberTooltipPositionProvider(Below),
-                        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
-                        state = rememberTooltipState(),
-                    ) {
-                        IconButton(
-                            onClick = { appListInfo.actions.toggleFilterVisibility() },
-                            modifier = Modifier.hintAnchor(
-                                state = hintAnchor,
-                                shape = RoundedCornerShape(16.dp),
-                            )
-                        ) {
-                            val showFilterBadge =
-                                appListInfo.model.filteredRepositoryIds.isNotEmpty() ||
-                                    appListInfo.model.filteredCategoryIds.isNotEmpty()
-                            BadgedBox(badge = {
-                                if (showFilterBadge) Badge(
-                                    containerColor = MaterialTheme.colorScheme.secondary,
-                                )
-                            }) {
-                                Icon(
-                                    imageVector = Icons.Filled.FilterList,
-                                    contentDescription = stringResource(R.string.filter),
-                                )
-                            }
-                        }
-                    }
+                    FilterButton(
+                        showFilterBadge = appListInfo.model.showFilterBadge,
+                        toggleFilterVisibility = appListInfo.actions::toggleFilterVisibility,
+                        modifier = Modifier.hintAnchor(
+                            state = hintAnchor,
+                            shape = RoundedCornerShape(16.dp),
+                        )
+                    )
                 },
                 scrollBehavior = scrollBehavior,
             )
@@ -229,19 +216,52 @@ fun AppList(
     }
 }
 
+@Composable
+private fun FilterButton(
+    showFilterBadge: Boolean,
+    toggleFilterVisibility: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    TooltipBox(
+        positionProvider =
+        TooltipDefaults.rememberTooltipPositionProvider(Below),
+        tooltip = { PlainTooltip { Text(stringResource(R.string.filter)) } },
+        state = rememberTooltipState(),
+    ) {
+        IconButton(
+            onClick = toggleFilterVisibility,
+            modifier = modifier,
+        ) {
+            BadgedBox(badge = {
+                if (showFilterBadge) Badge(
+                    containerColor = MaterialTheme.colorScheme.secondary,
+                )
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.FilterList,
+                    contentDescription = stringResource(R.string.filter),
+                )
+            }
+        }
+    }
+}
+
 @Preview
 @Composable
 private fun Preview() {
     FDroidContent {
         val model = AppListModel(
             apps = listOf(
-                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true, null),
-                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true, null),
+                AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
+                AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
             ),
+            showFilterBadge = true,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = true,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -256,10 +276,13 @@ private fun PreviewLoading() {
     FDroidContent {
         val model = AppListModel(
             apps = null,
+            showFilterBadge = false,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )
@@ -274,10 +297,13 @@ private fun PreviewEmpty() {
     FDroidContent {
         val model = AppListModel(
             apps = emptyList(),
+            showFilterBadge = false,
             sortBy = AppListSortOrder.NAME,
             filterIncompatible = false,
             categories = null,
             filteredCategoryIds = emptySet(),
+            antiFeatures = null,
+            filteredAntiFeatureIds = emptySet(),
             repositories = emptyList(),
             filteredRepositoryIds = emptySet(),
         )

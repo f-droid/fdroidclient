@@ -12,6 +12,7 @@ import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
+import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import org.fdroid.database.DbDiffUtils.diffAndUpdateListTable
@@ -56,6 +57,11 @@ public interface RepositoryDao {
      * Returns a live data of all categories declared by all [Repository]s.
      */
     public fun getLiveCategories(): LiveData<List<Category>>
+
+    /**
+     * Returns a live data of all anti-features declared by all [Repository]s.
+     */
+    public fun getAntiFeaturesFlow(): Flow<List<AntiFeature>>
 
     /**
      * Enables or disables the repository with the given [repoId].
@@ -271,6 +277,14 @@ internal interface RepositoryDaoInt : RepositoryDao {
         WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)"""
     )
     override fun getLiveCategories(): LiveData<List<Category>>
+
+    @RewriteQueriesToDropUnusedColumns
+    @Query(
+        """SELECT * FROM ${AntiFeature.TABLE}
+        JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)"""
+    )
+    override fun getAntiFeaturesFlow(): Flow<List<AntiFeature>>
 
     /**
      * Updates an existing repo with new data from a full index update.

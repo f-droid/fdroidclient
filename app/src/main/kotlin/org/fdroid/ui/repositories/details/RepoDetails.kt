@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Sync
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -44,6 +42,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.TopAppBarButton
+import org.fdroid.ui.utils.TopAppBarOverflowButton
 import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepoDetailsInfo
 
@@ -132,21 +131,11 @@ fun RepoDetails(
                         contentDescription = stringResource(R.string.repo_force_update)
                     )
                 }
-                var menuExpanded by remember { mutableStateOf(false) }
-                IconButton(onClick = { menuExpanded = !menuExpanded }) {
-                    Icon(
-                        Icons.Default.MoreVert,
-                        contentDescription = stringResource(R.string.more),
-                    )
-                }
-                DropdownMenu(
-                    expanded = menuExpanded,
-                    onDismissRequest = { menuExpanded = false }
-                ) {
+                TopAppBarOverflowButton { onDismissRequest ->
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.delete)) },
                         onClick = {
-                            menuExpanded = false
+                            onDismissRequest()
                             deleteDialog = true
                         },
                         leadingIcon = {
