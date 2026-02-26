@@ -22,7 +22,6 @@
     <string name="ok">OK</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
-    <string name="repo_add_title">Dodaj nowe repozytorium</string>
     <string name="repo_add_add">Dodaj</string>
     <string name="cancel">Anuluj</string>
     <string name="enable">Włącz</string>
@@ -45,7 +44,6 @@
     <string name="antinonfreeadlist">Ta aplikacja promuje niewolne dodatki</string>
     <string name="antinonfreenetlist">Ta aplikacja promuje lub całkowicie zależy od niewolnej usługi sieciowej</string>
     <string name="antinonfreedeplist">Ta aplikacja wymaga innych, niewolnych aplikacji</string>
-    <string name="antiupstreamnonfreelist">Upstreamowy kod źródłowy nie jest w pełni wolny</string>
     <string name="display">Wyświetlanie</string>
     <string name="expert">Ustawienia zaawansowane</string>
     <string name="expert_on">Pokaż dodatkowe informacje i włącz dodatkowe ustawienia</string>
@@ -77,11 +75,8 @@
     <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
     <string name="theme">Motyw</string>
     <string name="unverified">Niezweryfikowane</string>
-    <string name="repo_num_apps">Liczba aplikacji</string>
     <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego (SHA-256)</string>
     <string name="repo_description">Opis</string>
-    <string name="repo_last_update">Ostatnia aktualizacja</string>
-    <string name="repo_name">Nazwa</string>
     <string name="unknown">Nieznana</string>
     <string name="repo_confirm_delete_title">Czy usunąć repozytorium?</string>
     <string name="repo_confirm_delete_body">Usunięcie repozytorium oznacza, że aplikacje z niego nie będą dłużej dostępne w F-Droid.
@@ -131,8 +126,6 @@
     <string name="status_processing_xml_percent">Przetwarzanie %2$s / %3$s (%4$d%%) z %1$s</string>
     <string name="no_permissions">Brak uprawnień</string>
     <string name="unsigned">Niepodpisane</string>
-    <string name="unsigned_description">Oznacza to, że lista aplikacji nie mogła zostać zweryfikowana. Powinieneś być ostrożny podczas pobierania aplikacji z niepodpisanych repozytoriów.</string>
-    <string name="repo_not_yet_updated">To repozytorium nie zostało jeszcze użyte. Musisz je włączyć, aby zobaczyć, jakie aplikacje dostarcza.</string>
     <string name="repo_disabled_notification">Wyłączono %1$s.
 \n
 \nBędziesz musiał ponownie włączyć to repozytorium, aby instalować z niego aplikacje.</string>
@@ -216,9 +209,7 @@
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
     <string name="download_error">Pobieranie nie powiodło się!</string>
-    <string name="system_install_denied_permissions">Uprzywilejowane uprawnienia nie zostały przyznane rozszerzeniu. Prosimy o zgłoszenie błędu.</string>
     <string name="repo_details">Repozytorium</string>
-    <string name="repo_url">Adres</string>
     <string name="more">Więcej</string>
     <string name="less">Mniej</string>
     <string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
@@ -529,7 +520,6 @@
     <string name="antinonfreead">Niewolne dodatki</string>
     <string name="antinonfreenet">Niewolne usługi sieciowe</string>
     <string name="antinonfreedep">Niewolne zależności</string>
-    <string name="antiupstreamnonfree">Niewolne upstream</string>
     <string name="antidisabledalgorithm">Podpisany przy użyciu niebezpiecznego algorytmu</string>
     <string name="antiknownvuln">Znana podatność</string>
     <string name="antinosource">Kod źródłowy jest już niedostępny</string>
@@ -544,14 +534,12 @@
     <string name="about_title_basic">O F-Droid Basic</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="antinsfwlist">Ta aplikacja zawiera treści, które nie powinny być publikowane ani widoczne wszędzie</string>
-    <string name="repo_last_update_downloaded">Ostatnia pobrana aktualizacja</string>
     <string name="warning_target_sdk">Ta aplikacja została skompilowana dla starszej wersji Androida i nie może być aktualizowana automatycznie.</string>
     <string name="category_Nightly">nightly</string>
     <string name="app_error_open">Nie udało się uruchomić aplikacji</string>
     <string name="swap_banner_message">Aby zamienić aplikacje, włącz Wi-Fi i połącz się z tą samą siecią co druga osoba.</string>
     <string name="turn_on_wifi">Włącz Wi-Fi</string>
     <string name="repo_add_new_title">Dodaj repozytorium</string>
-    <string name="repo_add_new_mirror">Dodaj nowy serwer lustrzany</string>
     <string name="repo_intro">Repozytorium jest dodatkowym źródłem aplikacji. Dodane tutaj aplikacje innych firm mają inne standardy niż te dostarczające aplikacje zbudowane przez samego F-Droid.
 \n
 \nUpewnij się, że dodawane przez Ciebie repozytorium jest godne zaufania.</string>
@@ -665,4 +653,46 @@
     <string name="tts_repo_name">Repozytorium %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
     <string name="crash_dialog_title_old">F-Droid uległ awarii</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="call_to_action_keepandroidopen">F-Droid jest zagrożony. Google zmienia sposób, w jaki instalujesz aplikacje na swoim telefonie. Potrzebujemy Twojej pomocy.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="menu_about">O aplikacji</string>
+    <string name="menu_discover">Odkryj</string>
+    <string name="menu_apps_my">Moje aplikacje</string>
+    <string name="first_start_loading">Pobieranie repozytoriów aplikacji…</string>
+    <string name="my_apps_empty">Tutaj wyświetlane są tylko aplikacje zainstalowane przez %1$s</string>
+    <string name="my_apps_header_apps_with_issue">Aplikacje z problemami</string>
+    <string name="my_apps_ignore_dialog_title">Ukryj problem</string>
+    <string name="my_apps_ignore_dialog_text">Problem z tą wersją „%1$s” zostanie zignorowany</string>
+    <string name="my_apps_ignore_dialog_button">Ukryj</string>
+    <string name="my_apps_export_installed_apps">Eksportuj listę aplikacji</string>
+    <string name="app_list_new">Nowe aplikacje</string>
+    <string name="app_list_recently_updated">Ostatnio zaktualizowane</string>
+    <string name="app_list_most_downloaded">Najczęściej pobierane</string>
+    <string name="app_list_all">Wszystkie aplikacje</string>
+    <string name="app_list_author">Aplikacje od %s</string>
+    <string name="search_placeholder">Szukaj…</string>
+    <string name="search_no_results">Nie znaleziono aplikacji\n\nSpróbuj użyć mniejszej liczby terminów wyszukiwania lub dodaj więcej repozytoriów</string>
+    <string name="category_group_productivity">Produktywność</string>
+    <string name="category_group_tools">Narzędzia</string>
+    <string name="category_group_wallets">Finanse i portfele</string>
+    <string name="category_group_media">Rozrywka i multimedia</string>
+    <string name="category_group_communication">Komunikacja</string>
+    <string name="category_group_device">Urządzenie</string>
+    <string name="category_group_network">Sieć</string>
+    <string name="category_group_storage">Pliki i pamięć</string>
+    <string name="category_group_interests">Zainteresowania</string>
+    <string name="category_group_misc">Różne</string>
+    <string name="author_by">Przez %1$s</string>
+    <string name="last_updated">Ostatnia aktualizacja: %1$s</string>
+    <string name="last_updated_with_size">Ostatnia aktualizacja: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Przygotowywanie instalacji…</string>
+    <string name="whats_new_title">Co nowego</string>
+    <string name="donate_title">Wesprzyj</string>
+    <string name="anti_features_title">Ta aplikacja ma niepożądane funkcje</string>
+    <string name="developer_contact">Kontakt z programistą</string>
+    <string name="technical_info">Informacje techniczne</string>
+    <string name="package_name">Nazwa pakietu:</string>
+    <string name="installed_version">Zainstalowana wersja:</string>
 </resources>

@@ -57,7 +57,6 @@
     <string name="preference_manage_installed_apps">ස්ථාපිත යෙදුම් කළමනාකරණය කරන්න</string>
     <string name="category_Phone_SMS">දුරකථන සහ කෙටි පණිවිඩ සේවාව</string>
     <string name="notification_action_install">ස්ථාපනය කරන්න</string>
-    <string name="repo_last_update">අවසාන යාවත්කාලීන කිරීම</string>
     <string name="category_Graphics">ග්රැෆික්ස්</string>
     <string name="category_Money">මුදල</string>
     <string name="category_Navigation">සංචලනය</string>

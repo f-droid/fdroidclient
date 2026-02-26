@@ -63,7 +63,6 @@
     <string name="download_404">Сіз сұраған файл табылмады.</string>
     <string name="share_repository">Репозиториді бөлісу</string>
     <string name="permissions">Рұқсаттар</string>
-    <string name="repo_num_apps">Қолданбалар саны</string>
     <string name="unknown">Белгісіз</string>
     <string name="pref_language">Тіл</string>
     <string name="category_Security">Қауіпсіздік</string>
@@ -110,7 +109,6 @@
     <string name="swap_confirm_connect">%1$s құрылғысынан қосымшалар жүктеп алғыңыз келе ме\?</string>
     <string name="swap_stopping_hotspot">Тарату нүктесі тоқтауда…</string>
     <string name="downloading">Жүктелуде…</string>
-    <string name="repo_last_update">Соңғы жаңарту</string>
     <string name="panic_exit_title">Қолданбадан шығу</string>
     <string name="hiding_calculator">Калькулятор</string>
     <string name="swap_toast_could_not_enable_hotspot">Wi-Fi тарату нүктесін қосу мүмкін емес!</string>
@@ -185,7 +183,6 @@
         <item quantity="other">+%1$d мәлімдеме…</item>
     </plurals>
     <string name="allPerms">Бәрі</string>
-    <string name="repo_name">Атау</string>
     <string name="pref_language_default">Жүйедегідей</string>
     <string name="repo_confirm_delete_title">Репозитори жойылсын ба?</string>
     <string name="adding_apks_format">%s репозиториге қосуда…</string>
@@ -201,8 +198,6 @@
     <string name="less">Азырақ</string>
     <string tools:ignore="UnusedResources" name="category_Writing">Мәтін</string>
     <string name="more">Толығырақ</string>
-    <string name="enable_nfc_send">NFC арқылы жіберуді қосу…</string>
-    <string name="repo_url">Мекенжай</string>
     <string name="uninstall_error_notify_title">%s жойылмады</string>
     <string name="icon">Таңбаша</string>
     <string name="use_pure_black_dark_theme_summary">Тек OLED экрандары үшін ұсынылады.</string>
@@ -210,7 +205,6 @@
     <string name="swap_toast_hotspot_enabled">Wi-Fi тарату нүктесі қосулы</string>
     <string tools:ignore="UnusedResources" name="category_Theming">Кейіптер</string>
     <string name="repo_description">Сипаттама</string>
-    <string name="swap_nfc_title">Алмасу үшін басыңыз</string>
     <string name="swap_setting_up_bluetooth">Bluetooth бапталуда…</string>
     <string name="force_old_index">Ескі индекс пішімін міндетті қолдану</string>
     <string name="keep_install_history">Орнату тарихын сақтау</string>
@@ -267,7 +261,6 @@
     <string name="app_details">Қолданба ақпары</string>
     <string name="app_size">Өлшемі: %1$s</string>
     <string name="update_all">Бәрін жаңарту</string>
-    <string name="repo_add_title">Жаңа репозиториді қосу</string>
     <string name="repo_state_adding">Репозитори қосылуда…</string>
     <string name="next">Келесі</string>
     <string name="warning_no_internet">Жаңартылмады. Құрылғыңыз интернетке қосылған ба?</string>

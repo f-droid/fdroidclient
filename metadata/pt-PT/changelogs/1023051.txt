@@ -1,0 +1,6 @@
+* Design Material 3 (com edge-to-edge, mas sem cores dinâmicas) (proletarius!)
+* Redesign dos ecrãs dos detalhes dos repositórios (Thore!)
+* Foi adicionado a exportação do logcat nas configurações de especialistas
+* A Target SDK foi atualizada (Android 15 para Básico e Android 11 para versão completa)
+* Foi adicionado um botão de voltar na página da app nas configurações do sistema (j-m4!)
+* Usar selecionador de apps para partilhar apps instaladas e o histórico de instalação (Thore!)

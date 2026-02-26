@@ -2,13 +2,13 @@ F-Droid wird 1.0!
 
 Diese Version beinhaltet wichtige Änderungen:
 
-* Komplett überholter App-Update-Vorgang
+* Komplett überarbeiteter App-Update-Vorgang
 
 * Komplett übersetzbare Zusammenfassungen und Beschreibungen
 
 * „Was ist neu“ zur Anzeige aktueller Änderungen 
 
-* Screenshots und Feature-Grafiken
+* Bildschirmfotos und Funktionsgrafiken
 
 * Installation von OTA-, ZIP-Dateien usw.
 

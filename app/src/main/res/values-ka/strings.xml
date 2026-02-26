@@ -26,7 +26,6 @@
     <string name="next">შემდეგი</string>
     <string name="skip">გამოტოვება</string>
     <string name="unverified">შეუმოწმებელი</string>
-    <string name="repo_last_update">ბოლო განახლება</string>
     <string name="category_Connectivity">შეერთება</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Navigation">ნავიგაცია</string>
@@ -93,7 +92,6 @@
     <string name="hiding_calculator">კალკულატორი</string>
     <string name="permissions">წვდომები</string>
     <string name="theme">თემა</string>
-    <string name="repo_url">მისამართი</string>
     <string name="repo_description">აღწერა</string>
     <string name="unknown">უცნობი</string>
     <string name="antitrack">ტრეკინგი</string>
@@ -112,7 +110,6 @@
     <string name="main_menu__updates">განახლებები</string>
     <string name="icon">ხატულა</string>
     <string name="panic_app_setting_none">არაფერი</string>
-    <string name="repo_name">სახელი</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">განახლების გადმოწერა %1$d აპისთვის:</item>
         <item quantity="other">განახლების გადმოწერა %1$d აპისთვის:</item>

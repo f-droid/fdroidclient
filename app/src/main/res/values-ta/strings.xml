@@ -31,7 +31,6 @@
     <string name="ok">சரி</string>
     <string name="yes">ஆம்</string>
     <string name="no">வேண்டாம்</string>
-    <string name="repo_add_title">புதிய களஞ்சியத்தைச் சேர்</string>
     <string name="repo_add_add">சேர்</string>
     <string name="links">இணைப்புகள்</string>
     <string name="more">மேலும்</string>
@@ -101,7 +100,6 @@
     <string name="permissions">அனுமதிகள்</string>
     <string name="wifi">அருகலை (Wi-Fi)</string>
     <string name="requires_features">தேவை: %1$s</string>
-    <string name="repo_last_update">கடைசி புதுப்பிப்பு</string>
     <string name="useTor">டார் பயன்படுத்து</string>
     <string name="bad_fingerprint">மோசமான கைரேகை</string>
     <string name="swap_starting">தொடங்குகிறது…</string>
@@ -118,8 +116,6 @@
     <string name="perms_new_perm_prefix">புதிய:</string>
     <string name="category_System">அமைப்பு</string>
     <string name="category_Graphics">வரைகலை</string>
-    <string name="repo_name">பெயர்</string>
-    <string name="repo_url">முகவரி</string>
     <string name="unsigned">கையொப்பமிடவில்லை</string>
     <string name="icon">சின்னம்</string>
     <string name="app_name_full">எஃப்-ட்ராய்டு (F-Droid)</string>
@@ -171,10 +167,8 @@
     <string name="prompt_to_send_crash_reports">சிதைவறிக்கைகளை அனுப்பத் தூண்டு</string>
     <string name="details_new_in_version">%s பதிப்பில் புதியது</string>
     <string name="panic_hide_summary">செயலி தன்னை மறைக்கும்</string>
-    <string name="antiupstreamnonfreelist">மேல்நீரோட்ட மூல குறியீடு முற்றிலும் இலவசம் அல்ல</string>
     <string name="nearby_splash__find_people_button">அருகிலுள்ளவர்களைக் கண்டறி</string>
     <string name="nearby_splash__download_apps_from_people_nearby">இணையம் இல்லையா? உமக்கருகிலுள்ளவர்களிடமிருந்து செயலிகளைப் பெறுங்கள்!</string>
-    <string name="system_install_denied_permissions">சலுகை பெற்ற அனுமதிகள் நீட்டிப்பு க்கு வழங்கப்படவில்லை! பிழை அறிக்கையை உருவாக்கவும்!</string>
     <string name="uninstall_error_unknown">தெரியாத பிழைகாரணமாக நிறுவல்நீக்க முடியவில்லை</string>
     <string name="install_error_unknown">தெரியாத பிழைகாரணமாக நிறுவுவதில் தோல்வி</string>
     <string name="empty_search_available_app_list">பொருந்தும் செயலிகள் எவையுங்கிடைக்கவில்லை.</string>
@@ -189,7 +183,6 @@
     </plurals>
     <string name="wifi_ap">பகிரலை</string>
     <string name="share_repository">பங்கு களஞ்சியம்</string>
-    <string name="unsigned_description">அதாவது செயலிகளின் பட்டியலைச் சரிபார்க்க முடியவில்லை. ஒப்பமிடப்படா குறியீடுகளிலிருந்து பதிவிறக்கப்பட்ட செயலிகளிலிடம் நீங்கள் கவனமாக இருக்க வேண்டும்.</string>
     <string name="global_error_updating_repos">புதுப்பித்தலின் போது பிழை: %s</string>
     <string name="repos_unchanged">அனைத்து களஞ்சியங்களும் புதுப்பித்த நிலையில் உள்ளன</string>
     <string name="status_connecting_to_repo">இதனுடன் இணைக்கிறது
@@ -203,12 +196,10 @@
     <string name="panic_app_dialog_message">அழிவுகரமான பீதி பொத்தான் செயல்களைத் தூண்டுவதற்கு %1$s அனுமதிக்க விரும்புகிறீர்களா\?</string>
     <string name="enable_proxy_title">HTTP பதிலியை இயக்கு</string>
     <string name="repo_confirm_delete_title">களஞ்சியத்தை நீக்கவா?</string>
-    <string name="repo_not_yet_updated">இக்களஞ்சியம் இன்னும் பயன்படுத்தப்படவில்லை. அது வழங்கும் செயலிகளைப் பார்க்க நீங்கள் அதை இயக்க வேண்டும்.</string>
     <string name="repo_user_mirrors">பயனர் கண்ணாடிகள்</string>
     <string name="repo_official_mirrors">அதிகாரப்பூர்வ கண்ணாடிகள்</string>
     <string name="repo_description">விரித்துரைத்தல்</string>
     <string name="repo_fingerprint">கையொப்பமிடும் விசையின் கைரேகை (SHA-256)</string>
-    <string name="repo_num_apps">செயலி எண்ணிக்கை</string>
     <string name="use_pure_black_dark_theme_summary">ஓலெட் திரைகளுக்கு மட்டுமே பரிந்துரைக்கப்படுகிறது.</string>
     <string name="use_pure_black_dark_theme">இருண்ட தோற்றத்தில் தூய கருப்பு பின்னணியைப் பயன்படுத்து</string>
     <string name="theme">தோற்றம்</string>
@@ -512,7 +503,6 @@
     <string name="antinonfreedep">இலவசமற்ற சார்புகள்</string>
     <string name="antiknownvuln">அறிந்த பிழை</string>
     <string name="antinosource">மூலக் குறியீடு இனி கிடைக்காது</string>
-    <string name="antiupstreamnonfree">இலவசமற்ற மேல்நிலை</string>
     <string name="has_disallow_install_unknown_sources">அறியா ஆதாரங்கள் இப்பயனரால் சேர்க்கப்படமுடியாது, அது புது களஞ்சியங்களையும் உள்ளடக்கும்</string>
     <string name="antinonfreead">இலவசமற்ற துணைநிரல்கள்</string>
     <string name="antinonfreeassets">இலவசமற்ற சொத்துக்கள்</string>
@@ -549,7 +539,6 @@
     <string name="repo_preview_included_apps">பயன்பாடுகள் சேர்க்கப்பட்டுள்ளன:</string>
     <string name="repo_exists">இந்த களஞ்சியம் ஏற்கனவே சேர்க்கப்பட்டது.</string>
     <string name="repo_num_apps_button">பயன்பாடுகளைக் காட்டு</string>
-    <string name="repo_last_update_downloaded">கடைசி புதுப்பிப்பு பதிவிறக்கம் செய்யப்பட்டது</string>
     <string name="turn_on_wifi">வைஃபை இயக்கவும்</string>
     <string name="force_old_installer_summary">தானியங்கி பின்னணி புதுப்பிப்புகளுக்கான உதவி உட்பட அமர்வு நிறுவியை முடக்கவும்.</string>
     <string name="app_details_repository_button_prefer">களஞ்சியத்தை விரும்புங்கள்</string>

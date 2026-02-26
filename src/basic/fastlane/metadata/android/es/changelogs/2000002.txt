@@ -1,0 +1,8 @@
+* IU reescrito desde cero con Kotlin compose
+* mejor búsqueda, también búsqueda en descripciones y traducciones
+* más fácil de descubrir nuevas aplicaciones, también destacando las más descargadas
+* aprobación de instalación *antes* de la descarga
+* múltiples actualizaciones/descargas al mismo tiempo
+* notificar al usuario de problemas con aplicaciones (por ejemplo, al cambiar la clave de firma)
+* tema de color Material You opcional
+* mejorada la filtración de listas

@@ -57,7 +57,6 @@
     <string name="bluetooth_activity_not_found">Geen Bluetooth stuur metode gevind, kies een!</string>
     <string name="choose_bt_send">Kies Bluetooth stuur metode</string>
     <string name="repo_add_fingerprint">Vingerafdruk (opsioneel)</string>
-    <string name="repo_add_title">Skep \'n nuwe argief</string>
     <string name="enable">Aktiveer</string>
     <string name="add_key">Nuwe sleutel</string>
     <string name="repo_add_url">Argief adres</string>
@@ -90,7 +89,6 @@
     <string name="antinonfreeadlist">Hierdie program bevorder nie-vrye toevoegsels</string>
     <string name="antinonfreenetlist">Hierdie program bevorder nie-vrye netwerk dienste</string>
     <string name="antinonfreedeplist">Hierdie program is afhanklik van ander nie-vrye programme</string>
-    <string name="antiupstreamnonfreelist">Die stroomop bronkode is nie heeltemal vry nie</string>
     <string name="antinonfreeassetslist">Hierdie program bevat nie-vrye bates</string>
     <string name="display">Wys</string>
     <string name="expert">Expertmodus</string>
@@ -132,18 +130,8 @@
     <string name="permissions">Toestemmings</string>
     <string name="unverified">Onbevestig</string>
     <string name="repo_details">Argief</string>
-    <string name="repo_url">Adres</string>
-    <string name="repo_num_apps">Aantal programme</string>
     <string name="repo_fingerprint">Fingerafdruk van die ondertekenings sleutel (SHA-256)</string>
     <string name="repo_description">Beskrywing</string>
-    <string name="repo_last_update">Laaste opdatering</string>
-    <string name="repo_name">Naam</string>
-    <string name="unsigned_description">Dit beteken dat die lys van programme nie bevestig kon word nie.
-        Jy moet versigtig wees met programme afkomstig van ongetekende indekse.
-    </string>
-    <string name="repo_not_yet_updated">Hierdie argief is nog nie gebruik nie.
-        Jy moet dit aktiveer om die progamme wat dit bied te sien.
-    </string>
     <string name="unknown">Onbekend</string>
     <string name="repo_confirm_delete_title">Vee argief uit?</string>
     <string name="repo_confirm_delete_body">Skrapping van \'n bewaarplek beteken programme daaruit sal nie meer beskikbaar wees nie.
@@ -189,9 +177,6 @@
     <string name="empty_can_update_app_list">Geluk!\nJou programme is op datum.</string>
     <string name="install_error_unknown">Installasie onsuksesvol vanweë \'n onbekende fout</string>
     <string name="uninstall_error_unknown">Deïnstallasie onsuksesvol vanweë \'n onbekende fout</string>
-    <string name="system_install_denied_permissions">Die voorreg toestemming is nie toegestaan vir die uitbreiding nie!
-        Skep asseblief \'n foutverslag!
-    </string>
     <string name="swap_join_same_wifi">Sluit aan by die dieselfde Wi-Fi as jou vriend</string>
     <string name="swap_join_same_wifi_desc">Om te deel met behulp van Wi-Fi, sorg dat jy op dieselfde netwerk is. Indien jy nie toegang het tot dieselfde netwerk nie, kan een van julle \'n Wi-Fi Hotspot skep.</string>
     <string name="swap_join_this_hotspot">Help jou vriend om aan te sluit by jou hotspot</string>

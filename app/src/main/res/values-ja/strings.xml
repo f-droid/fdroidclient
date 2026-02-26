@@ -28,7 +28,6 @@
     <string name="ok">了解</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
-    <string name="repo_add_title">新しいリポジトリの追加</string>
     <string name="repo_add_add">追加</string>
     <string name="cancel">キャンセル</string>
     <string name="enable">有効</string>
@@ -58,7 +57,6 @@
     <string name="antinonfreeadlist">このアプリは不自由なアドオンを推奨します</string>
     <string name="antinonfreenetlist">このアプリは不自由なネットワークサービスを宣伝または完全に依存しています</string>
     <string name="antinonfreedeplist">このアプリは他の不自由なアプリに依拠しています</string>
-    <string name="antiupstreamnonfreelist">アップストリームのソースコードは一部不自由です</string>
     <string name="display">表示</string>
     <string name="expert">上級者モード</string>
     <string name="expert_on">拡張情報を表示し、拡張設定を有効にする</string>
@@ -97,13 +95,8 @@
     <string name="theme">テーマ</string>
     <string name="unsigned">未署名</string>
     <string name="unverified">未検証</string>
-    <string name="repo_num_apps">アプリ数</string>
     <string name="repo_fingerprint">署名鍵のフィンガープリント(SHA-256)</string>
     <string name="repo_description">説明</string>
-    <string name="repo_last_update">最終更新日</string>
-    <string name="repo_name">名称</string>
-    <string name="unsigned_description">アプリの一覧を検証出来ませんでした｡ 未署名のインデックスからアプリをダウンロードする際は注意してください。</string>
-    <string name="repo_not_yet_updated">このリポジトリはまだ使用されていません。アプリを表示するには、リポジトリを有効にしてください。</string>
     <string name="unknown">不明</string>
     <string name="repo_confirm_delete_title">リポジトリを削除しますか？</string>
     <string name="repo_confirm_delete_body">リポジトリを削除すると、アプリをF-Droidから入手できなくなります。
@@ -220,8 +213,6 @@
     <string name="menu_litecoin">ライトコイン</string>
     <string name="menu_flattr">Flattr</string>
     <string name="repo_details">リポジトリ</string>
-    <string name="repo_url">アドレス</string>
-    <string name="system_install_denied_permissions">特権が拡張機能に付与されていません！バグレポートを送ってください！</string>
     <string name="more">詳細を表示</string>
     <string name="less">詳細を隠す</string>
     <string name="status_download_unknown_size">ダウンロード中
@@ -245,7 +236,7 @@
     <string name="useTor">Torを使用</string>
     <string name="useTorSummary">強制的にTorを経由した通信でダウンロードして匿名性を向上。Orbotが必要</string>
     <string name="swap_stopping_wifi">Wi-Fiを停止しています…</string>
-    <string name="update_auto_download">自動的に更新を取得</string>
+    <string name="update_auto_download">更新を自動的にダウンロード</string>
     <string name="update_auto_download_summary">自動的に更新をダウンロードして、インストール通知を表示</string>
     <string name="download_pending">ダウンロードの開始を待機しています…</string>
     <string name="keep_hour">1時間</string>
@@ -506,7 +497,6 @@
     <string name="app_list_results_hidden_antifeature_settings">一部のアプリは好ましくない機能の設定に基づいて非表示になっています。変更するにはタッチしてください。</string>
     <string name="antiknownvuln">既知の脆弱性</string>
     <string name="antinonfreeassets">不自由なアセット</string>
-    <string name="antiupstreamnonfree">不自由なアップストリーム</string>
     <string name="antidisabledalgorithm">安全でないアルゴリズムによる署名</string>
     <string name="antinosource">ソースコードはもう入手できません</string>
     <string name="antiothers">他の好ましくない機能</string>
@@ -518,14 +508,12 @@
     <string name="category_Nightly">ナイトリービルド</string>
     <string name="warning_target_sdk">このアプリは古いバージョンのAndroid向けにビルドされたため、自動更新はできません。</string>
     <string name="app_error_open">アプリを起動できませんでした。</string>
-    <string name="repo_last_update_downloaded">最後に更新したアップデート</string>
     <string name="antinsfwlist">このアプリは公にするのに不適切な内容を含みます</string>
     <string name="repo_state_adding">リポジトリを追加しています…</string>
     <string name="repo_exists">このリポジトリはすでに追加されています。</string>
     <string name="repo_add_new_title">リポジトリの追加</string>
     <string name="repo_state_fetching">リポジトリを取得しています…</string>
     <string name="repo_enter_url">リポジトリの URL を入力</string>
-    <string name="repo_add_new_mirror">新しいミラーとして追加</string>
     <string name="repo_intro">リポジトリは、アプリ入手の追加ソースです。ここに追加したサードパーティーのリポジトリは、F-Droid 自身がビルドして提供するアプリとは異なる基準で運用されています。
 \n
 \n追加しているリポジトリが信頼できることを確認してください。</string>
@@ -628,4 +616,46 @@
     <string name="tts_repo_name">%1$s リポジトリ</string>
     <string name="tts_author_name">管理者 %1$s</string>
     <string name="crash_dialog_title_old">F-Droidがクラッシュしました</string>
+    <string name="app_name_full_nightly">完全なナイトリー</string>
+    <string name="app_name_basic_nightly">完全な基本ナイトリー</string>
+    <string name="menu_about">約</string>
+    <string name="menu_discover">発見</string>
+    <string name="menu_apps_my">マイアプリ</string>
+    <string name="first_start_loading">アプリのリポジトリを取得中…</string>
+    <string name="my_apps_empty">%1$s によりインストールされたアプリのみがここに表示されます</string>
+    <string name="my_apps_header_apps_with_issue">問題があるアプリ</string>
+    <string name="my_apps_ignore_dialog_title">問題を非表示</string>
+    <string name="my_apps_ignore_dialog_text">当該バージョンの “%1$s” に関する問題が無視されます</string>
+    <string name="my_apps_ignore_dialog_button">非表示</string>
+    <string name="my_apps_export_installed_apps">アプリ一覧をエクスポート</string>
+    <string name="app_list_new">新たなアプリ</string>
+    <string name="app_list_recently_updated">最近の更新</string>
+    <string name="app_list_most_downloaded">最もダウンロードされた</string>
+    <string name="app_list_all">全てのアプリ</string>
+    <string name="app_list_author">%s によるアプリ</string>
+    <string name="search_placeholder">検索…</string>
+    <string name="search_no_results">アプリが見つかりませんでした\n\nリポジトリを追加するか検索語を減らしてみて下さい</string>
+    <string name="category_group_productivity">生産性</string>
+    <string name="category_group_tools">ツール</string>
+    <string name="category_group_wallets">財布＆財務</string>
+    <string name="category_group_media">エンタメ＆メディア</string>
+    <string name="category_group_communication">交流</string>
+    <string name="category_group_device">デバイス</string>
+    <string name="category_group_network">通信</string>
+    <string name="category_group_storage">ファイル＆ストレージ</string>
+    <string name="category_group_interests">趣味</string>
+    <string name="category_group_misc">その他</string>
+    <string name="author_by">%1$s による</string>
+    <string name="last_updated">最終更新: %1$s</string>
+    <string name="last_updated_with_size">最終更新: %1$s (%2$s)</string>
+    <string name="status_install_preparing">インストールの準備中…</string>
+    <string name="whats_new_title">新着情報</string>
+    <string name="donate_title">寄附</string>
+    <string name="anti_features_title">このアプリには好ましくない機能が含まれます</string>
+    <string name="developer_contact">開発者へ連絡</string>
+    <string name="technical_info">技術情報</string>
+    <string name="package_name">パッケージ名:</string>
+    <string name="installed_version">インストールされたバージョン:</string>
+    <string name="call_to_action_keepandroidopen">Googleは端末へのアプリ導入方法を変更しようとしています。F-Droidが危機に瀕しています。皆様のご支援を必要としております。</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

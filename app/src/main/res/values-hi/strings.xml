@@ -33,7 +33,6 @@
     <string name="ok">ठीक है</string>
     <string name="yes">हाँ</string>
     <string name="no">नहीं</string>
-    <string name="repo_add_title">नया कोष जोड़े</string>
     <string name="repo_add_add">जोड़े</string>
     <string name="links">संधियां</string>
     <string name="more">ज़्यादा</string>
@@ -137,7 +136,6 @@
     <string name="app_list__name__downloading_in_progress">%1$s डाउनलोड हो रहा है</string>
     <string name="warning_no_internet">अपडेट नही हो पा रहा। क्या आप इंटरनेट से जुड़े हैं?</string>
     <string name="unverified">असत्यापित</string>
-    <string name="repo_last_update">अंतिम अपडेट</string>
     <string name="wifi">वाई-फ़ाई</string>
     <string name="category_Sports_Health">खेल-कूद एवं स्वास्थ्य</string>
     <string name="notification_title_single_update_available">अदपडेट उपलब्ध है</string>
@@ -204,7 +202,6 @@
     <string name="antinonfreeadlist">यह ऐप नॉन-फ्री ऐड-ऑन को बढ़ावा देता है</string>
     <string name="antinonfreenetlist">यह ऐप पूरी तरह से गैर-मुक्त नेटवर्क सेवाओं का प्रचार करता है या उन पर निर्भर करता है</string>
     <string name="antinonfreedeplist">यह ऐप अन्य नॉन-फ्री ऐप पर निर्भर करता है</string>
-    <string name="antiupstreamnonfreelist">अपस्ट्रीम सोर्स कोड पूरी तरह से फ्री नहीं है</string>
     <string name="antinonfreeassetslist">इस ऐप में गैर-मुक्त संपत्ति है</string>
     <string name="display">प्रदर्शन</string>
     <string name="expert">विशेषज्ञ साधन</string>
@@ -242,12 +239,8 @@
     <string name="permissions">अनुमतियां</string>
     <string name="no_handler_app">आपके पास कोई भी उपलब्ध ऐप नहीं है जो %s को संभाल सके।</string>
     <string name="theme">विषय</string>
-    <string name="repo_url">पता</string>
-    <string name="repo_num_apps">ऐप्स की संख्या</string>
     <string name="repo_fingerprint">फ़िंगरप्रिंट साइनिंग कुंजी (SHA-256)</string>
     <string name="repo_description">विवरण</string>
-    <string name="repo_name">नाम</string>
-    <string name="unsigned_description">इसका मतलब है कि ऐप्स की सूची को सत्यापित नहीं किया जा सकता है। आपको अहस्ताक्षरित अनुक्रमित से डाउनलोड किए गए एप्लिकेशन से सावधान रहना चाहिए।</string>
     <string name="update_auto_download">स्वचालित रूप से अपडेटस् प्राप्त करें</string>
     <string name="update_auto_download_summary">अपडेट स्वचालित रूप से डाउनलोड हो जाते हैं और आपको उन्हें स्थापित करने के लिए सूचित किया जाता है</string>
     <string name="update_auto_install">स्वचालित रूप से अद्यतन स्थापित करें</string>
@@ -384,7 +377,6 @@
     <string name="swap_blank_wifi_ssid">(खाली)</string>
     <string name="swap_hidden_wifi_ssid">(छिपा हुआ)</string>
     <string name="disabled">बंद किया गया</string>
-    <string name="repo_not_yet_updated">इस रिपॉजिटरी का उपयोग अभी तक नहीं किया गया है। आपको इस रेपो की एप्प्स देखने की लिए इसे चालू करना होगा।</string>
     <string name="repo_confirm_delete_title">डिलीट रिपॉजिटरी ?</string>
     <string name="category_Theming">विषय</string>
     <string name="empty_can_update_app_list">बधाई हो!
@@ -467,7 +459,6 @@
     <string name="nearby_splash__both_parties_need_fdroid">दोनों पक्षों को आस-पास का उपयोग के लिए %1$s की आवश्यकता है।</string>
     <string name="nearby_splash__find_people_button">आस-पास के लोगों को खोजें</string>
     <string name="nearby_splash__download_apps_from_people_nearby">इंटरनेट नहीं है? अपने आस-पास के लोगों से ऐप्स प्राप्त करें!</string>
-    <string name="system_install_denied_permissions">एक्सटेंशन को विशेषाधिकार प्राप्त नहीं है! कृपया एक बग रिपोर्ट बनाएं!</string>
     <string name="uninstall_error_unknown">अज्ञात त्रुटि के कारण अनइंस्टॉल करने में विफल</string>
     <string name="install_error_unknown">अज्ञात त्रुटि के कारण इंस्टॉल करने में विफल</string>
     <string name="empty_search_available_app_list">कोई भी अनुकूल ऐप्स उपलब्ध नहीं है।</string>
@@ -509,7 +500,6 @@
     <string name="antitrack">नज़र रखना</string>
     <string name="antinonfreenet">गैर-मुक्त नेटवर्क सेवाएं</string>
     <string name="antinonfreedep">गैर-मुक्त निर्भरताएं</string>
-    <string name="antiupstreamnonfree">अपस्ट्रीम गैर-मुक्त</string>
     <string name="antinonfreeassets">गैर-मुक्त Assets</string>
     <string name="antiknownvuln">ज्ञात भेद्यता</string>
     <string name="antinonfreead">गैर-मुक्त एडॉन्स</string>
@@ -524,7 +514,6 @@
     <string name="menu_release_channel_beta">बीटा अपडेट की अनुमति दें</string>
     <string name="latest__empty_state__upgrading">डेटाबेस का नवीनीकरण किया जा रहा…</string>
     <string name="about_title_basic">एफ-ड्रॉइड बेसिक के बारे में</string>
-    <string name="repo_last_update_downloaded">अंतिम अपडेट डाउनलोड किया गया</string>
     <string name="app_name_basic">एफ-ड्रॉइड बेसिक</string>
     <string name="antinsfwlist">इस एप्लिकेशन में ऐसी सामग्री है जिसे हर जगह प्रचारित या दृश्यमान नहीं किया जाना चाहिए</string>
     <string name="warning_target_sdk">यह एप्लिकेशन Android के पुराने संस्करण के लिए बनाया गया था और स्वचालित रूप से अपडेट नहीं किया जा सकता है।</string>
@@ -538,7 +527,6 @@
     <string name="repo_add_new_title">रिपॉज़िटरी जोड़ें</string>
     <string name="repo_state_fetching">रिपॉज़िटरी लाया जा रहा है…</string>
     <string name="repo_enter_url">रिपॉज़िटरी का URL खुद जोड़ें</string>
-    <string name="repo_add_new_mirror">नए दर्पण के रूप में जोड़ें</string>
     <string name="repo_intro">एक रिपॉज़िटरी, ऐप्स का एक अतिरिक्त स्रोत होता है। जो तृतीय-पक्ष रिपॉज़िटरियाँ आप यहाँ जोड़ेंगे, उनके लिए मानक, F-Droid द्वारा बनाए ऐप प्रदान करने वालों से अलग होगा।
 \n
 \nकृपया सुनिश्चित करें कि जो रिपॉज़िटरी आप जोड़े जा रहे हैं वह विश्वसनीय है।</string>

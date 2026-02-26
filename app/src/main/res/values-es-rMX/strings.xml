@@ -26,7 +26,6 @@
     <string name="category_Sports_Health">Deportes &amp; Salud</string>
     <string name="wifi">Wi-Fi</string>
     <string name="not_on_same_wifi">¡Tu dispositivo no está en la misma Conexión Wi-Fi que el repositorio local que acabas de agregar! Intente unirse a esta red: %s</string>
-    <string name="repo_last_update">Ultima actualización</string>
     <string name="repo_details">Repositorio</string>
     <string name="unverified">Sin verificar</string>
     <string name="unsigned">Sin firma</string>
@@ -100,7 +99,6 @@
     <string name="scan_removable_storage_title">Escanear almacenamiento extraíble</string>
     <string name="local_repo_https_on">Usar conexión HTTPS:// encriptada para repositorio local</string>
     <string name="antinonfreeassetslist">Esta aplicación contiene activos no libres</string>
-    <string name="antiupstreamnonfreelist">El código fuente ascendente no es totalmente gratuito</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras aplicaciones no gratuitas</string>
     <string name="antinonfreenetlist">Esta aplicación promueve servicios de red no libres</string>
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no gratuitos</string>
@@ -152,7 +150,6 @@
     <string name="links">Enlaces</string>
     <string name="repo_add_mirror">Añadir espejo</string>
     <string name="repo_add_add">Agregar</string>
-    <string name="repo_add_title">Agregar nuevo repositorio</string>
     <string name="updates_disabled_by_settings">Todas las actualizaciones desactivadas por los ajustes de Data/WiFi</string>
     <string name="updates__show_updateable_apps">Mostrar aplicaciones</string>
     <string name="updates__hide_updateable_apps">Ocultar aplicaciones</string>
@@ -310,7 +307,6 @@
         <item quantity="many">Descargar actualizaciones para %1$d aplicaciones.</item>
         <item quantity="other">Descargar actualizaciones para %1$d aplicaciones.</item>
     </plurals>
-    <string name="repo_add_new_mirror">Añadir como nuevo espejo</string>
     <string name="repo_state_fetching">Obteniendo repositorio…</string>
     <string name="repo_state_adding">Añadiendo repositorio…</string>
     <string name="repo_exists">Este repositorio ya está añadido.</string>

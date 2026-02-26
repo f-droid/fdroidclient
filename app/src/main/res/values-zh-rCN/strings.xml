@@ -22,7 +22,6 @@
     <string name="ok">确定</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="repo_add_title">添加新的存储库</string>
     <string name="repo_add_add">添加</string>
     <string name="cancel">取消</string>
     <string name="enable">启用</string>
@@ -52,7 +51,6 @@
     <string name="antinonfreeadlist">此应用推广非自由的附加组件</string>
     <string name="antinonfreenetlist">此应用推广或完全依赖于非自由的网络服务</string>
     <string name="antinonfreedeplist">此应用依赖于其它非自由应用</string>
-    <string name="antiupstreamnonfreelist">上游源代码不是完全自由的</string>
     <string name="display">显示</string>
     <string name="expert">专家模式</string>
     <string name="expert_on">显示额外信息并启用额外选项</string>
@@ -78,13 +76,8 @@
     <string name="theme">主题</string>
     <string name="unsigned">未签名</string>
     <string name="unverified">未验证</string>
-    <string name="repo_num_apps">应用数量</string>
     <string name="repo_fingerprint">签名密钥的指纹 (SHA-256)</string>
     <string name="repo_description">描述</string>
-    <string name="repo_last_update">最近更新</string>
-    <string name="repo_name">名称</string>
-    <string name="unsigned_description">这意味着无法验证应用列表。对于从未签名索引中下载的应用，应谨慎处理。</string>
-    <string name="repo_not_yet_updated">该存储库尚未使用。 你需要启用它才能查看该存储库提供的应用。</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">删除存储库？</string>
     <string name="repo_confirm_delete_body">删除存储库意味着来自该存储库的应用将不再可用。 \n \n注意：之前安装的全部应用会保留在你的设备上。</string>
@@ -147,7 +140,6 @@
     <string name="global_error_updating_repos">更新出错：%s</string>
     <string name="permissions">权限</string>
     <string name="repo_details">存储库</string>
-    <string name="repo_url">地址</string>
     <string name="repo_added">已保存存储库 %1$s。</string>
     <string name="repo_searching_address">正在 %1$s 中查找存储库</string>
     <string name="pref_language">语言</string>
@@ -168,7 +160,6 @@
 \n你的应用是最新的啦。</string>
     <string name="install_error_unknown">由于未知错误导致安装失败</string>
     <string name="uninstall_error_unknown">由于未知错误导致卸载失败</string>
-    <string name="system_install_denied_permissions">该扩展没有获得超级权限！请报告错误！</string>
     <string name="swap_join_same_wifi">与你的朋友连上同一个 Wi-Fi</string>
     <string name="swap_join_same_wifi_desc">要通过 Wi-Fi 交换，先确认处于同一个网络中。如果不是使用同一个网络，可创建一个 Wi-Fi 热点。</string>
     <string name="swap_join_this_hotspot">帮助你的朋友加入你的热点</string>
@@ -238,7 +229,7 @@
     <string name="useTor">使用 Tor</string>
     <string name="useTorSummary">强制下载流量通过 Tor 以增强隐私保障。需要 Orbot</string>
     <string name="swap_stopping_wifi">正在停止 Wi-Fi…</string>
-    <string name="update_auto_download">自动获取更新</string>
+    <string name="update_auto_download">自动下载更新</string>
     <string name="update_auto_download_summary">自动下载更新并显示安装通知</string>
     <string name="download_pending">正在等待开始下载…</string>
     <string name="keep_hour">1 小时</string>
@@ -499,7 +490,6 @@
     <string name="antitrack">追踪用户</string>
     <string name="antinonfreeassets">非自由资产</string>
     <string name="antinonfreedep">非自由依赖项</string>
-    <string name="antiupstreamnonfree">上游代码非自由</string>
     <string name="antidisabledalgorithm">使用不安全算法签名</string>
     <string name="antinosource">源代码不再可用</string>
     <string name="antiothers">其他负面特征</string>
@@ -510,7 +500,6 @@
     <string name="about_title_basic">关于 F-Droid 基础版</string>
     <string name="category_Nightly">每夜版</string>
     <string name="antinsfwlist">此应用包含不应公开或随处可见的内容</string>
-    <string name="repo_last_update_downloaded">上次更新已下载</string>
     <string name="warning_target_sdk">此应用是为旧版本 Android 构建的，无法自动更新。</string>
     <string name="app_error_open">无法启动应用。</string>
     <string name="repo_state_fetching">正在获取仓库…</string>
@@ -523,7 +512,6 @@
     <string name="repo_io_error">连接仓库出错。</string>
     <string name="repo_add_new_title">添加仓库</string>
     <string name="turn_on_wifi">打开 Wi-Fi</string>
-    <string name="repo_add_new_mirror">添加为新镜像</string>
     <string name="swap_banner_message">要交换应用，请启动 Wi-Fi，并连接到和你的好友相同的网络。</string>
     <string name="repo_intro">仓库是额外的应用来源。 你在此添加的第三方仓库和那些提供由 F-Droid 自行构建应用的仓库在标准方面并不一样。
 \n
@@ -619,4 +607,46 @@
     <string name="tts_repo_name">%1$s 存储库</string>
     <string name="tts_author_name">作者 %1$s</string>
     <string name="crash_dialog_title_old">F-Droid 崩溃了</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly 基础版</string>
+    <string name="call_to_action_keepandroidopen">F-Droid 正面临威胁。Google 正在改变您在您的设备上安装应用的方式。我们需要您的帮助。</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_discover">发现</string>
+    <string name="menu_apps_my">我的应用</string>
+    <string name="first_start_loading">正在获取应用存储库…</string>
+    <string name="my_apps_empty">此处只显示 %1$s 安装的应用</string>
+    <string name="my_apps_header_apps_with_issue">有问题的应用</string>
+    <string name="my_apps_ignore_dialog_title">隐藏问题</string>
+    <string name="my_apps_ignore_dialog_text">将忽略“%1$s” 这个版本的这个问题</string>
+    <string name="my_apps_ignore_dialog_button">隐藏</string>
+    <string name="my_apps_export_installed_apps">导出应用列表</string>
+    <string name="app_list_new">新应用</string>
+    <string name="app_list_recently_updated">最近更新</string>
+    <string name="app_list_most_downloaded">下载最多</string>
+    <string name="app_list_all">所有应用</string>
+    <string name="app_list_author">%s 的应用</string>
+    <string name="search_placeholder">搜索…</string>
+    <string name="search_no_results">没找到应用\n\n试试减少搜索词或添加更多存储库</string>
+    <string name="category_group_productivity">生产力</string>
+    <string name="category_group_tools">工具</string>
+    <string name="category_group_wallets">财务和钱包</string>
+    <string name="category_group_media">娱乐和媒体</string>
+    <string name="category_group_communication">通信</string>
+    <string name="category_group_device">设备</string>
+    <string name="category_group_network">网络</string>
+    <string name="category_group_storage">文件和存储</string>
+    <string name="category_group_interests">兴趣</string>
+    <string name="category_group_misc">杂项</string>
+    <string name="author_by">由 %1$s 开发</string>
+    <string name="last_updated">上次更新：%1$s</string>
+    <string name="last_updated_with_size">上次更新： %1$s (%2$s)</string>
+    <string name="status_install_preparing">正在准备安装…</string>
+    <string name="whats_new_title">新版变化</string>
+    <string name="donate_title">捐赠</string>
+    <string name="anti_features_title">此应用有负面特征</string>
+    <string name="developer_contact">开发者联系方式</string>
+    <string name="technical_info">技术信息</string>
+    <string name="package_name">安装包名：</string>
+    <string name="installed_version">已安装版本：</string>
 </resources>

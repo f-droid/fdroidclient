@@ -21,7 +21,6 @@
     <string name="ok">OK</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
-    <string name="repo_add_title">Προσθήκη νέου αποθετηρίου</string>
     <string name="repo_add_add">Προσθήκη</string>
     <string name="cancel">Άκυρο</string>
     <string name="enable">Ενεργοποίηση</string>
@@ -51,7 +50,6 @@
     <string name="antinonfreeadlist">Αυτή η εφαρμογή προωθεί μη-ελεύθερα πρόσθετα</string>
     <string name="antinonfreenetlist">Αυτή η εφαρμογή προωθεί ή εξαρτάται εξ ολοκλήρου από μια μη δωρεάν υπηρεσία δικτύου</string>
     <string name="antinonfreedeplist">Αυτή η εφαρμογή εξαρτάται από άλλες μη-ελεύθερες εφαρμογές</string>
-    <string name="antiupstreamnonfreelist">Ο αρχικός πηγαίος κώδικας δεν είναι εξ ολοκλήρου ελεύθερος</string>
     <string name="display">Εμφάνιση</string>
     <string name="expert">Για προχωρημένους</string>
     <string name="expert_on">Προβολή επιπλέον πληροφοριών και ενεργοποίηση επιπλέον ρυθμίσεων</string>
@@ -63,23 +61,12 @@
 \n%2$s / %3$s (%4$d%%) από
 \n %1$s</string>
     <string name="status_connecting_to_repo">Σύνδεση με\n%1$s</string>
-    <string name="no_permissions">Χωρίς δικαιώματα</string>
+    <string name="no_permissions">Χωρίς άδειες</string>
     <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
     <string name="theme">Θέμα</string>
     <string name="unsigned">Μη υπογεγραμμένη</string>
-    <string name="repo_num_apps">Αριθμός εφαρμογών</string>
     <string name="repo_fingerprint">Αποτύπωμα του κλειδιού υπογραφής (SHA-256)</string>
     <string name="repo_description">Περιγραφή</string>
-    <string name="repo_last_update">Τελευταία ενημέρωση</string>
-    <string name="repo_name">Όνομα</string>
-    <string name="unsigned_description">Αυτό σημαίνει ότι ο κατάλογος
-        των εφαρμογών δεν μπορεί να επαληθευτεί. Θα πρέπει να
-        είστε προσεκτικοί με εφαρμογές που λαμβάνετε από
-        ανυπόγραφα αποθετήρια.
-    </string>
-    <string name="repo_not_yet_updated">Αυτό το αποθετήριο δεν έχει χρησιμοποιηθεί ακόμη.
-        Θα πρέπει να το ενεργοποιήσετε για να δείτε τις εφαρμογές που παρέχει.
-    </string>
     <string name="unknown">Άγνωστο</string>
     <string name="repo_confirm_delete_title">Διαγραφή αποθετηρίου;</string>
     <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.
@@ -131,7 +118,7 @@
     <string name="status_download_unknown_size">Λήψη
 \n%2$s από
 \n%1$s</string>
-    <string name="banner_updating_repositories">Ενημέρωση αποθετηρίων</string>
+    <string name="banner_updating_repositories">Γίνεται ενημέρωση αποθετηρίων</string>
     <string name="status_processing_xml_percent">Επεξεργασία %2$s / %3$s (%4$d%%) από %1$s</string>
     <string name="repos_unchanged">Όλα τα αποθετήρια είναι ενημερωμένα</string>
     <string name="all_other_repos_fine">Τα υπόλοιπα αποθετήρια δεν δημιούργησαν σφάλματα.</string>
@@ -139,7 +126,6 @@
     <string name="permissions">Άδειες</string>
     <string name="unverified">Μη επαληθευμένη</string>
     <string name="repo_details">Αποθετήριο</string>
-    <string name="repo_url">Διεύθυνση</string>
     <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δε θα είναι πλέον διαθέσιμες.
 \n
 \nΣημείωση: Όλες οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
@@ -158,7 +144,7 @@
     <string name="category_Money">Οικονομικά</string>
     <string name="category_Multimedia">Πολυμέσα</string>
     <string name="category_Navigation">Πλοήγηση</string>
-    <string name="category_Phone_SMS">Τηλέφωνο &amp; μηνύματα</string>
+    <string name="category_Phone_SMS">Τηλέφωνο &amp; SMS</string>
     <string name="category_Reading">Ανάγνωση</string>
     <string name="category_Science_Education">Επιστήμη &amp; Εκπαίδευση</string>
     <string name="category_Security">Ασφάλεια</string>
@@ -174,9 +160,6 @@
     <string name="empty_can_update_app_list">Συγχαρητήρια!\nΌλες οι εφαρμογές σας είναι ενημερωμένες (ή τα αποθετήρια σας δεν έχουν ανανεωθεί).</string>
     <string name="install_error_unknown">Απέτυχε η εγκατάσταση λόγω άγνωστου προβλήματος</string>
     <string name="uninstall_error_unknown">Αποτυχία απεγκατάστασης λόγω άγνωστου σφάλματος</string>
-    <string name="system_install_denied_permissions">Τα δικαιώματα συστήματος δεν έχουν χορηγηθεί στην επέκταση!
-        Παρακαλώ δημιουργήστε μια αναφορά σφάλματος!
-    </string>
     <string name="swap_join_same_wifi">Γίνετε μέλος του ίδιου ασύρματου δικτύου με τον φίλο σας</string>
     <string name="swap">Ανταλλαγή εφαρμογών</string>
     <string name="swap_success">Ανταλλαγή επιτυχής!</string>
@@ -285,7 +268,7 @@
     <string name="app_version_x_available">Η Έκδοση %1$s είναι διαθέσιμη</string>
     <string name="app_version_x_installed">Έκδοση %1$s</string>
     <string name="app_recommended_version_installed">Έκδοση %1$s (συνιστάται)</string>
-    <string name="app_new">Νέα</string>
+    <string name="app_new">Νέο</string>
     <string name="app__tts__cancel_download">Ακύρωση λήψης</string>
     <string name="app__install_downloaded_update">Ενημέρωση</string>
     <string name="installed_apps__activity_title">Εγκατεστημένες εφαρμογές</string>
@@ -526,7 +509,6 @@
     <string name="antiothers">Άλλα Ανεπιθύμητα Χαρακτηριστικά</string>
     <string name="app_list_results_hidden_antifeature_settings">Κάποιες εφαρμογές κρύφτηκαν βάσει των ρυθμίσεων Ανεπιθύμητων Χαρακτηριστικών σας. Πατήστε για αλλαγή.</string>
     <string name="has_disallow_install_unknown_sources">Δεν είναι δυνατή η προσθήκη άγνωστων πηγών από αυτόν τον χρήστη, που περιλαμβάνει νέα repos</string>
-    <string name="antiupstreamnonfree">Upstream Μη Δωρεάν</string>
     <string name="share_apk_error">Δεν ήταν δυνατή η κοινή χρήση του αρχείου εφαρμογής</string>
     <string name="antidisabledalgorithm">Υπογραφή με χρήση μη ασφαλούς αλγόριθμου</string>
     <string name="antinsfw">Δεν είναι ασφαλές για τη δουλειά</string>
@@ -535,7 +517,6 @@
     <string name="app_name_basic">F-Drοid Basic</string>
     <string name="about_title_basic">Σχετικά με το F-Droid Basic</string>
     <string name="category_Nightly">νυχτερινές</string>
-    <string name="repo_last_update_downloaded">Έγινε λήψη της τελευταίας ενημέρωσης</string>
     <string name="app_error_open">Δεν ήταν δυνατή η εκκίνηση της εφαρμογής.</string>
     <string name="antinsfwlist">Αυτή η εφαρμογή περιέχει περιεχόμενο που δεν πρέπει να δημοσιοποιείται ή να είναι ορατό παντού</string>
     <string name="warning_target_sdk">Αυτή η εφαρμογή δημιουργήθηκε για μια παλαιότερη έκδοση του Android και δεν μπορεί να ενημερωθεί αυτόματα.</string>
@@ -589,7 +570,6 @@
     <string name="turn_on_wifi">Ενεργοποιήστε το Wi-Fi</string>
     <string name="targetsdk_or_later">στόχοι %s</string>
     <string name="repo_add_new_title">Προσθήκη αποθετηρίου</string>
-    <string name="repo_add_new_mirror">Προσθήκη ως νέο mirror</string>
     <string name="force_old_installer_title">Αναγκάστε τον παλιό εγκαταστάτη</string>
     <string name="force_old_installer_summary">Απενεργοποιήστε το πρόγραμμα εγκατάστασης περιόδου λειτουργίας, συμπεριλαμβανομένης της υποστήριξης για αυτόματες ενημερώσεις στο παρασκήνιο.</string>
     <string name="ipfsgw_title">Πύλες IPFS</string>
@@ -632,6 +612,60 @@
     </plurals>
     <string name="tts_author_name">Δημιουργός: %1$s</string>
     <string name="tts_repo_name">Αποθετήριο: %1$s</string>
-    <string name="expand">Ανάπτυξη</string>
+    <string name="expand">Επέκταση</string>
     <string name="pref_export_log_title">Αρχείο καταγραφής εντοπισμού σφαλμάτων</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/el</string>
+    <string name="menu_about">Σχετικά με</string>
+    <string name="menu_discover">Ανακαλύψτε</string>
+    <string name="menu_apps_my">Οι εφαρμογές μου</string>
+    <string name="first_start_loading">Ανάκτηση αποθετηρίων εφαρμογών…</string>
+    <string name="my_apps_empty">Μόνο εφαρμογές που εγκαταστάθηκαν από %1$s εμφανίζονται εδώ</string>
+    <string name="my_apps_header_apps_with_issue">Εφαρμογές με ζητήματα</string>
+    <string name="my_apps_ignore_dialog_title">Απόκρυψη ζητήματος</string>
+    <string name="my_apps_ignore_dialog_text">Το ζήτημα με αυτήν την έκδοση του \"%1$s\" θα αγνοηθεί</string>
+    <string name="my_apps_ignore_dialog_button">Απόκρυψη</string>
+    <string name="my_apps_export_installed_apps">Εξαγωγή λίστας εφαρμογών</string>
+    <string name="app_list_new">Νέες εφαρμογές</string>
+    <string name="app_list_recently_updated">Πρόσφατα ενημερωμένες</string>
+    <string name="app_list_most_downloaded">Περισσότερες λήψεις</string>
+    <string name="app_list_all">Όλες οι εφαρμογές</string>
+    <string name="app_list_author">Εφαρμογές από %s</string>
+    <string name="search_placeholder">Αναζήτησε…</string>
+    <string name="search_no_results">Δεν βρέθηκαν εφαρμογές\n\nΔοκιμάστε να χρησιμοποιήσετε λιγότερους όρους αναζήτησης ή προσθέστε περισσότερα αποθετήρια</string>
+    <string name="category_group_productivity">Παραγωγικότητα</string>
+    <string name="category_group_tools">Εργαλεία</string>
+    <string name="category_group_wallets">Οικονομικά &amp; Πορτοφόλια</string>
+    <string name="category_group_media">Ψυχαγωγία &amp; Μέσα</string>
+    <string name="category_group_communication">Επικοινωνία</string>
+    <string name="category_group_device">Συσκευή</string>
+    <string name="category_group_network">Δίκτυο</string>
+    <string name="category_group_storage">Αρχεία &amp; Αποθηκευτικός Χώρος</string>
+    <string name="category_group_interests">Ενδιαφέροντα</string>
+    <string name="category_group_misc">Διάφορα</string>
+    <string name="author_by">Από %1$s</string>
+    <string name="last_updated">Τελευταία ενημέρωση: %1$s</string>
+    <string name="last_updated_with_size">Τελευταία ενημέρωση: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Προετοιμασία εγκατάστασης…</string>
+    <string name="whats_new_title">Τι νέο υπάρχει</string>
+    <string name="donate_title">Δωρεά</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="developer_contact">Επικοινωνία με προγραμματιστή</string>
+    <string name="technical_info">Τεχνικές πληροφορίες</string>
+    <string name="package_name">Όνομα πακέτου:</string>
+    <string name="installed_version">Εγκατεστημένη έκδοση:</string>
+    <string name="app_details_more_apps_by_author">Περισσότερες εφαρμογές από %1$s</string>
+    <string name="banner_updating_apps">Γίνεται ενημέρωση εφαρμογών</string>
+    <string name="no_handler_app_generic">Δεν έχετε καμία διαθέσιμη εφαρμογή που να μπορεί να το χειριστεί αυτό.</string>
+    <string name="app_details_more_apps_interesting">Αυτή μπορεί επίσης να σας ενδιαφέρει:</string>
+    <string name="collapse">Σύμπτυξη</string>
+    <string name="notification_title_summary_app_update_available">Πατήστε για ενημέρωση όλων</string>
+    <string name="anti_features_title">Αυτή η εφαρμογή έχει ανεπιθύμητα χαρακτηριστικά</string>
+    <string name="repo_basic_auth_title">Βασικός έλεγχος ταυτότητας</string>
+    <string name="crash_dialog_title_old">Το F-Droid είχε κρασάρει</string>
+    <string name="call_to_action_keepandroidopen">Το F-Droid είναι υπό απειλή. Η Google αλλάζει τον τρόπο με τον οποίο εγκαθιστάτε εφαρμογές στο τηλέφωνό σας. Χρειαζόμαστε τη βοήθειά σας.</string>
+    <string name="export_log_error">Σφάλμα αποθήκευσης logcat</string>
+    <string name="export_log_success">Το logcat αποθηκεύτηκε με επιτυχία</string>
+    <string name="pref_export_log_summary">Δημιουργεί ένα αρχείο με έξοδο του logcat χρήσιμο για αποσφαλμάτωση. Προσοχή, ίσως να περιλαμβάνει ευαίσθητες πληροφορίες!</string>
+    <string name="ipfsgw_summary_new">Λήψη εφαρμογών με χρήση τελικών σημείων ιστού IPFS</string>
 </resources>

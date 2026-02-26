@@ -79,7 +79,6 @@
     <string name="category_Sports_Health">وەرزش و تەندروستی</string>
     <string name="category_System">سیستەم</string>
     <string name="crash_dialog_title">ئێف-درۆید تێکشکا</string>
-    <string name="repo_last_update">دوایین نوێکردنەوە</string>
     <string name="app_name_full">ئێف-درۆید</string>
     <string name="notification_title_summary_installed">بە سەرکەوتوویی دامەزراوە</string>
     <string name="swap_qr_isnt_for_swap">ئەو QR کۆدەی کە سکانت کردووە لە کۆدی سواپ ناچێت.</string>
@@ -282,6 +281,5 @@
     <string name="download_404">پەڕگە داواکراوەکە نەدۆزرایەوە.</string>
     <string name="theme">ڕووکار</string>
     <string name="repo_num_apps_button">پیشاندانی نەرمەواڵەکان</string>
-    <string name="repo_num_apps">ژمارەی نەرمەواڵەکان</string>
     <string name="banner_no_internet">ئینتەرنێت نییە</string>
 </resources>

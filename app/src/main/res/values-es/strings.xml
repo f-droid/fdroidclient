@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión, primero hay que desinstalar la antigua. Por favor, hazlo e inténtalo de nuevo. (Tenga en cuenta que la desinstalación borrará todos los datos internos almacenados por la aplicación)</string>
+    <string name="SignatureMismatch">La nueva versión está firmada con una clave diferente a la antigua. Para instalar la nueva versión hay que desinstalar la antigua. Desinstala la aplicación e inténtalo de nuevo. (Ten en cuenta que la desinstalación borrará cualquier dato interno almacenado por la aplicación)</string>
     <string name="installIncompatible">La aplicación no es compatible con el dispositivo. ¿Quiere instalarla de todos modos\?</string>
     <string name="version">Versión</string>
     <string name="delete">Eliminar</string>
@@ -30,7 +30,6 @@
     <string name="ok">Aceptar</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
-    <string name="repo_add_title">Agregar nuevo repositorio</string>
     <string name="repo_add_add">Agregar</string>
     <string name="cancel">Cancelar</string>
     <string name="enable">Habilitar</string>
@@ -60,7 +59,6 @@
     <string name="antinonfreeadlist">Esta aplicación promueve complementos no libres</string>
     <string name="antinonfreenetlist">Esta aplicación promueve o depende totalmente de un servicio de red no gratuito</string>
     <string name="antinonfreedeplist">Esta aplicación depende de otras no libres</string>
-    <string name="antiupstreamnonfreelist">El código fuente original no es totalmente libre</string>
     <string name="display">Presentación</string>
     <string name="expert">Modo experto</string>
     <string name="expert_on">Mostrar información extra y habilitar los ajustes extra</string>
@@ -97,16 +95,11 @@
     <string name="global_error_updating_repos">Hubo un error al actualizar: %s</string>
     <string name="no_permissions">Sin permisos</string>
     <string name="no_handler_app">No tienes instalada ninguna aplicación que pueda abrir «%s».</string>
-    <string name="theme">Esquema de colores</string>
+    <string name="theme">Tema</string>
     <string name="unsigned">No firmado</string>
     <string name="unverified">No verificado</string>
-    <string name="repo_num_apps">Número de aplicaciones</string>
     <string name="repo_fingerprint">Huella digital de la clave de firmado del repo (SHA-256)</string>
     <string name="repo_description">Descripción</string>
-    <string name="repo_last_update">Última actualización</string>
-    <string name="repo_name">Nombre</string>
-    <string name="unsigned_description">Esto significa que la lista de aplicaciones no ha podido verificarse. Debería tener cuidado con aplicaciones descargadas desde índices no firmados.</string>
-    <string name="repo_not_yet_updated">Todavía no se ha usado este repositorio. Para ver las aplicaciones que ofrece tiene que activarlo.</string>
     <string name="unknown">Desconocido</string>
     <string name="repo_confirm_delete_title">¿Eliminar repositorio?</string>
     <string name="repo_confirm_delete_body">Borrar un repositorio significa que sus aplicaciones ya no estarán disponibles.
@@ -226,11 +219,7 @@
     <string name="status_download_unknown_size">Descargando\n%2$s de\n%1$s</string>
     <string name="permissions">Permisos</string>
     <string name="repo_details">Repositorio</string>
-    <string name="repo_url">Dirección</string>
     <string name="download_error">¡Descarga fallida!</string>
-    <string name="system_install_denied_permissions">¡No se han concedido permisos de sistema a la extensión! ¡Por
-        favor, informa sobre este fallo!
-    </string>
     <string name="menu_settings">Ajustes</string>
     <string name="login_title">Se requiere autenticación</string>
     <string name="login_name">Nombre de usuario</string>
@@ -248,7 +237,7 @@
     <string name="swap_stopping_wifi">Deteniendo wifi…</string>
     <string name="useTor">Usar Tor</string>
     <string name="useTorSummary">Forzar el tráfico de descarga a través de Tor para mejorar la privacidad. Requiere Orbot</string>
-    <string name="update_auto_download">Obtener actualizaciones automáticamente</string>
+    <string name="update_auto_download">Descargar actualizaciones automáticamente</string>
     <string name="update_auto_download_summary">Las actualizaciones se descargarán automáticamente y se le avisará para que las instale</string>
     <string name="download_pending">Esperando a que empiece la descarga…</string>
     <string name="keep_day">Un día</string>
@@ -321,7 +310,7 @@
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
         <item quantity="one">Descargar actualización para %1$d aplicación:</item>
-        <item quantity="many">Descargar actualizaciones para %1$d aplicaciones:</item>
+        <item quantity="many">Descargar actualizaciones para %1$d de aplicaciones:</item>
         <item quantity="other">Descargar actualizaciones para %1$d aplicaciones:</item>
     </plurals>
     <string name="details_new_in_version">Novedades en la versión %s</string>
@@ -356,12 +345,12 @@
     </plurals>
     <plurals name="notification_summary_updates">
         <item quantity="one">%1$d actualización</item>
-        <item quantity="many">%1$d actualizaciones</item>
+        <item quantity="many">%1$d de actualizaciones</item>
         <item quantity="other">%1$d actualizaciones</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplicación instalada</item>
-        <item quantity="many">%1$d aplicaciones instaladas</item>
+        <item quantity="many">%1$d de aplicaciones instaladas</item>
         <item quantity="other">%1$d aplicaciones instaladas</item>
     </plurals>
     <plurals name="details_last_update_weeks">
@@ -532,7 +521,6 @@
     <string name="antidisabledalgorithm">Firmado con un algoritmo inseguro</string>
     <string name="antinosource">El código fuente ya no está disponible</string>
     <string name="antinonfreead">Complementos no libres</string>
-    <string name="antiupstreamnonfree">Original no libre</string>
     <string name="antinonfreeassets">Elementos sin licencia libre</string>
     <string name="antinonfreedep">Dependencias sin licencia libre</string>
     <string name="antiknownvuln">Vulnerabilidad conocida</string>
@@ -541,7 +529,6 @@
     <string name="menu_release_channel_beta">Permitir actualizaciones beta</string>
     <string name="latest__empty_state__upgrading">Actualizando la base de datos…</string>
     <string name="antinsfwlist">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
-    <string name="repo_last_update_downloaded">Última actualización descargada</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Acerca de F-Droid Basic</string>
     <string name="warning_target_sdk">Esta aplicación se creó para una versión anterior de Android y no se puede actualizar automáticamente.</string>
@@ -558,7 +545,6 @@
 \nContacta con el administrador e informarle de la incidencia.</string>
     <string name="swap_banner_message">Para intercambiar aplicaciones, conéctate a la misma red Wi-Fi que tu amigo.</string>
     <string name="repo_add_new_title">Agregar repositorio</string>
-    <string name="repo_add_new_mirror">Agregar como nuevo espejo</string>
     <string name="repo_state_fetching">Obteniendo repositorio…</string>
     <string name="repo_state_adding">Agregando repositorio…</string>
     <string name="repo_io_error">Error al conectar con el repositorio.</string>
@@ -571,7 +557,7 @@
     <string name="copied_url_to_clipboard">URL copiada al portapapeles</string>
     <string name="force_old_installer_summary">Deshabilita el instalador de la sesión, incluido el soporte para las actualizaciones automáticas en segundo plano.</string>
     <string name="targetsdk_or_later">objetivos %s</string>
-    <string name="repo_num_apps_button">Ver aplicaciones</string>
+    <string name="repo_num_apps_button">Mostrar aplicaciones</string>
     <string name="ipfsgw_caption_official_gateways">Puertas de enlace IPFS oficiales</string>
     <string name="ipfsgw_summary_disabled">Descarga de aplicaciones mediante puntos finales web IPFS: desactivado</string>
     <string name="ipfsgw_title">Puertas de enlace IPFS</string>
@@ -626,7 +612,7 @@
     <string name="repo_archive_check">Buscar un archivo histórico</string>
     <plurals name="repo_num_apps_text">
         <item quantity="one">Una aplicación</item>
-        <item quantity="many">%d aplicaciones</item>
+        <item quantity="many">%d de aplicaciones</item>
         <item quantity="other">%d aplicaciones</item>
     </plurals>
     <string name="repo_basic_auth_title">Autenticación básica</string>
@@ -654,9 +640,51 @@
         <item quantity="other">%1$d actualizaciones disponibles</item>
     </plurals>
     <string name="notification_title_summary_app_update_available">Pulsa para actualizarlas todas</string>
-    <string name="app_details_more_apps_by_author">Otras aplicaciones de %1$s</string>
+    <string name="app_details_more_apps_by_author">Más aplicaciones de %1$s</string>
     <string name="tts_repo_name">Repositorio %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
     <string name="app_details_more_apps_interesting">También te podría interesar:</string>
-    <string name="crash_dialog_title_old">F-Droid se ha detenido</string>
+    <string name="crash_dialog_title_old">F-Droid ha fallado inesperadamente</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="call_to_action_keepandroidopen">F-Droid está bajo amenaza. Google está cambiando la manera en la que instala las apps en su teléfono. Necesitamos su ayuda.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/es/</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_discover">Descubrir</string>
+    <string name="menu_apps_my">Mis aplicaciones</string>
+    <string name="first_start_loading">Buscando repositorios de aplicaciones…</string>
+    <string name="my_apps_empty">Solo las apps instaladas por %1$s se mostrarán aquí</string>
+    <string name="my_apps_header_apps_with_issue">Aplicaciones con problemas</string>
+    <string name="my_apps_ignore_dialog_title">Ocultar problema</string>
+    <string name="my_apps_ignore_dialog_text">El problema con esta versión de \"%1$s\" será ignorado</string>
+    <string name="my_apps_ignore_dialog_button">Ocultar</string>
+    <string name="my_apps_export_installed_apps">Exportar lista de aplicaciones</string>
+    <string name="app_list_new">Nuevas aplicaciones</string>
+    <string name="app_list_recently_updated">Recientemente actualizado</string>
+    <string name="app_list_most_downloaded">Más descargado</string>
+    <string name="app_list_all">Todas las apps</string>
+    <string name="app_list_author">Aplicaciones por %s</string>
+    <string name="search_placeholder">Buscar…</string>
+    <string name="search_no_results">No se encontraron apps\n\nIntenta usar menos términos de búsqueda o agrega más repositorios</string>
+    <string name="category_group_productivity">Productividad</string>
+    <string name="category_group_tools">Herramientas</string>
+    <string name="category_group_wallets">Financias y Carteras</string>
+    <string name="category_group_media">Entretenimiento y Medios</string>
+    <string name="category_group_communication">Comunicación</string>
+    <string name="category_group_device">Dispositivo</string>
+    <string name="category_group_network">Red</string>
+    <string name="category_group_storage">Archivos y Almacenamiento</string>
+    <string name="category_group_interests">Intereses</string>
+    <string name="category_group_misc">Misceláneo</string>
+    <string name="author_by">Por %1$s</string>
+    <string name="last_updated">Últimamente actualizado: %1$s</string>
+    <string name="last_updated_with_size">Últimamente actualizado: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Preparando instalación…</string>
+    <string name="whats_new_title">Que hay de nuevo</string>
+    <string name="donate_title">Donar</string>
+    <string name="anti_features_title">Esta app tiene características indeseadas</string>
+    <string name="developer_contact">Contacto del desarrollador</string>
+    <string name="technical_info">Información Técnica</string>
+    <string name="package_name">Nombre del paquete:</string>
+    <string name="installed_version">Versión instalada:</string>
 </resources>

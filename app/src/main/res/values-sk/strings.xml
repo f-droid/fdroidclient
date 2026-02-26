@@ -33,7 +33,6 @@
     <string name="ok">OK</string>
     <string name="yes">Áno</string>
     <string name="no">Nie</string>
-    <string name="repo_add_title">Pridať nový repozitár</string>
     <string name="repo_add_add">Pridať</string>
     <string name="cancel">Zrušiť</string>
     <string name="enable">Zapnúť</string>
@@ -61,7 +60,6 @@
     <string name="antinonfreeadlist">Táto aplikácia propaguje neslobodné doplnky</string>
     <string name="antinonfreenetlist">Táto aplikácia propaguje alebo je plne závislá na nemenných alebo neslobodných sieťových službách</string>
     <string name="antinonfreedeplist">Táto aplikácia závisí na iných neslobodných aplikáciách</string>
-    <string name="antiupstreamnonfreelist">Originálny zdrojový kód nie je úplne slobodný</string>
     <string name="display">Zobraziť</string>
     <string name="expert">Expert mód</string>
     <string name="expert_on">Ukázať extra info a zapnúť extra nastavenia</string>
@@ -101,18 +99,8 @@
     <string name="theme">Téma</string>
     <string name="unsigned">Nepodpísané</string>
     <string name="unverified">Neoverené</string>
-    <string name="repo_num_apps">Počet aplikácií</string>
     <string name="repo_fingerprint">Odtlačok podpisového kľúča (SHA-256)</string>
     <string name="repo_description">Popis</string>
-    <string name="repo_last_update">Posledná aktualizácia</string>
-    <string name="repo_name">Názov</string>
-    <string name="unsigned_description">To znamená, že zoznam
-        aplikácií nemohol byť overený. Mali by ste byť opatrný
-        s aplikáciami prevzatými z nepodpísaných indexov.
-    </string>
-    <string name="repo_not_yet_updated">Tento repozitár ešte nebol nepoužitý.
-        Pre zobrazenie aplikácií je nutné aktualizovať jeho obsah.
-    </string>
     <string name="unknown">Neznáme</string>
     <string name="repo_confirm_delete_title">Zmazať repozitár?</string>
     <string name="repo_confirm_delete_body">Odstránenie repozitára znamená, že aplikácie z neho už nebudú prístupné.
@@ -212,9 +200,6 @@
     <string name="swap_not_visible_wifi">Nie je viditeľný cez Wi-Fi</string>
     <string name="perm_costs_money">Môže stáť peniaze</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="system_install_denied_permissions">Oprávnené povolenia neboli rozšíreniu udelené! Prosím vytvorte
-        hlásenie chýb!
-    </string>
     <string name="login_title">Vyžaduje sa overenie</string>
     <string name="login_name">Prihlasovacie meno</string>
     <string name="login_password">Heslo</string>
@@ -230,7 +215,6 @@
     <string name="status_inserting_apps">Ukladanie detailov aplikácie</string>
     <string name="permissions">Povolenia</string>
     <string name="repo_details">Repozitár</string>
-    <string name="repo_url">Adresa</string>
     <string name="empty_search_available_app_list">Výrazu nezodpovedá žiadna dostupná aplikácia.</string>
     <string name="swap_join_same_wifi_desc">Pre výmenu cez wifi sa uistite, že ste v rovnakej sieti. Ak nemáte prístup do rovnakej siete, možete vytvoriť na jednom zo zariadení Wi-Fi Hotspot.</string>
     <string name="swap_join_this_hotspot">Pomôžte kamarátovi pripojiť sa k vášmu hotspotu</string>
@@ -539,7 +523,6 @@
     <string name="antiads">Reklamy</string>
     <string name="antinonfreenet">Neslobodné sieťové služby</string>
     <string name="antinonfreedep">Neslobodné závislosti</string>
-    <string name="antiupstreamnonfree">Neslobodný upstream</string>
     <string name="antitrack">Sledovanie</string>
     <string name="has_disallow_install_unknown_sources">Neznáme zdroje nemôžu byť pridané týmto užívateľom, to zahŕňa aj nové repozitáre</string>
     <string name="menu_show_install_history">Ukázať históriu inštalácií</string>
@@ -576,5 +559,4 @@
     <string name="repo_state_adding">Pridávanie repozitára…</string>
     <string name="repo_error_adding_archive">Archívne repozitáre nemožno pridávať priamo. Ťuknite na repozitár v zozname a povoľte archív tam.</string>
     <string name="repo_add_new_title">Pridať repozitár</string>
-    <string name="repo_add_new_mirror">Pridať ako nové zrkadlo</string>
 </resources>

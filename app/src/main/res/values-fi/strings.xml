@@ -27,7 +27,6 @@
     <string name="ok">OK</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
-    <string name="repo_add_title">Lisää uusi sovelluslähde</string>
     <string name="repo_add_add">Lisää</string>
     <string name="cancel">Peruuta</string>
     <string name="enable">Ota käyttöön</string>
@@ -84,7 +83,6 @@
     <string name="global_error_updating_repos">Virhe päivityksen aikana: %s</string>
     <string name="theme">Teema</string>
     <string name="unverified">Vahvistamaton</string>
-    <string name="repo_not_yet_updated">Tätä sovelluslähdettä ei ole vielä käytetty. Sinun tulee ottaa se ensin käyttöön, nähdäksesi sovellukset joita se tarjoaa.</string>
     <string name="repo_confirm_delete_body">Ohjelmavaraston poistaminen tarkoittaa, että sieltä olevat sovellukset eivät ole enää saatavissa. \n \nHuomautus: Kaikki aikaisemmin asentamasi sovellukset säilyvät laitteellasi.</string>
     <string name="repo_disabled_notification">%1$s poistettu käytöstä. \n \nSinun pitää ottaa tämä ohjelmavarasto uudelleen käyttöön asentaaksesi sieltä sovelluksia.</string>
     <string name="requires_features">Vaatii: %1$s</string>
@@ -151,7 +149,6 @@
     <string name="menu_changelog">Muutosloki</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="antiupstreamnonfreelist">Yläjuoksun lähdekoodi ei ole kokonaan vapaata</string>
     <string name="expert_on">Näytä lisätietoja ja ota käyttöön lisäasetukset</string>
     <string name="show_incompat_versions_on">Näytä sovelluksen versiot, jotka eivät ole yhteensopivia laitteen kanssa</string>
     <string name="useTor">Käytä Tor-verkkoa</string>
@@ -165,11 +162,7 @@
     <string name="repo_confirm_delete_title">Poistetaanko ohjelmavarasto?</string>
     <string name="update_auto_install">Asenna päivitykset automaattisesti</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="repo_url">Osoite</string>
-    <string name="repo_num_apps">Sovelluksien lukumäärä</string>
     <string name="repo_description">Kuvaus</string>
-    <string name="repo_last_update">Viimeisin päivitys</string>
-    <string name="repo_name">Nimi</string>
     <string name="unknown">Tuntematon</string>
     <string name="repo_added">Tallennettiin ohjelmavarasto %1$s.</string>
     <string name="not_on_same_wifi">Laitteesi ei ole samassa Wi-Fi-verkossa kuin juuri lisäämäsi paikallinen ohjelmavarasto! Kokeile liittyä verkkoon: %s</string>
@@ -209,7 +202,6 @@
 \n
 \nLaitteessasi on sovelluksia, mutta ne eivät ole saatavilla F-Droidissa. Tämä voi johtua joko siitä, että sovelluslähteesi tarvitsee päivittää tai sovelluslähteissä ei yksinkertaisesti ole sovelluksiasi saatavilla.</string>
     <string name="empty_can_update_app_list">Onnittelut! \nSovelluksesi ovat ajan tasalla.</string>
-    <string name="unsigned_description">Tämä tarkoittaa, ettei sovelluslistausta voitu vahvistaa. Ole varovainen ladatessasi sovelluksia varmentamattomista hakemistoista.</string>
     <string name="empty_search_available_app_list">Haulla ei löytynyt sovelluksia.</string>
     <string name="install_error_unknown">Asennus epäonnistui tuntemattoman virheen vuoksi</string>
     <string name="uninstall_error_unknown">Poistaminen epäonnistui tuntemattoman virheen vuoksi</string>
@@ -255,7 +247,6 @@
     <string name="status_download_unknown_size">Ladataan
 \n%2$s lähteestä
 \n%1$s</string>
-    <string name="system_install_denied_permissions">Laajennukselle ei ole myönnetty etuoikeutettuja käyttöoikeuksia! Luo virheraportti!</string>
     <string name="versions">Versiot</string>
     <string name="warning_no_internet">Ei voida päivittää. Oletko yhteydessä Internetiin?</string>
     <string name="app_version_x_available">Versio %1$s saatavilla</string>
@@ -508,7 +499,6 @@
     <string name="antitrack">Seuranta</string>
     <string name="antinonfreead">Ei-vapaat lisäosat</string>
     <string name="antinonfreenet">Ei-vapaat verkkopalvelut</string>
-    <string name="antiupstreamnonfree">Yläjuoksu ei-vapaa</string>
     <string name="antinonfreeassets">Ei-vapaa sisältö</string>
     <string name="antidisabledalgorithm">Allekirjoitettu turvattomalla algoritmilla</string>
     <string name="antiknownvuln">Tunnettu haavoittuvuus</string>
@@ -517,14 +507,12 @@
     <string name="antinsfw">Ei sovellu työpaikalle</string>
     <string name="latest__empty_state__upgrading">Päivitetään tietokantaa…</string>
     <string name="menu_release_channel_beta">Salli beetapäivitykset</string>
-    <string name="repo_last_update_downloaded">Viimeisin päivitys ladattu</string>
     <string name="category_Nightly">yöllinen</string>
     <string name="warning_target_sdk">Sovellus tehtiin vanhalle Androidin versiolle, eikä sitä voida päivittää automaattisesti.</string>
     <string name="antinsfwlist">Sovellus sisältää sisältöä, joka ei sovi näkyville joka paikkaan</string>
     <string name="app_error_open">Sovellusta ei voitu käynnistää.</string>
     <string name="about_title_basic">Tietoja F-Droid Basicista</string>
     <string name="repo_add_new_title">Lisää ohjelmavarasto</string>
-    <string name="repo_add_new_mirror">Lataa uutena peilipalvelimena</string>
     <string name="app_name_basic">F-Droidin alkeet</string>
     <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
     <string name="copied_url_to_clipboard">URL-osoite kopioitu leikepöydälle</string>

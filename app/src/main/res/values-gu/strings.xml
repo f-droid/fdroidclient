@@ -67,7 +67,6 @@
     <string name="notification_action_update">અપડેટ</string>
     <string name="antitracklist">આ અનુપ્રયોગ તમારી પ્રવૃત્તિઓ પર નજર રાખે છે અને જાણ કરે છે</string>
     <string name="updates__tts__download_app">ડાઉનલોડ કરો</string>
-    <string name="repo_last_update">છેલ્લું અદ્યતન</string>
     <string name="wifi">વાઈ-ફાઈ</string>
     <string name="swap_send_fdroid">ઍફ઼-ડ્રૉઇડ મોકલો</string>
     <string name="not_on_same_wifi">તમારું ઉપકરણ એ જ વાઈ-ફાઈ પર નથી જેના પણ તમારા દ્વારા ઉમેરેલો સ્થાનિક ભંડાર છે! આ માળખામાં જોડાવાનો પ્રયાસ કરો :- %s</string>
@@ -114,9 +113,7 @@
     <string name="privacy">ગોપનીયતા</string>
     <string name="allow">પરવાનગી આપો</string>
     <string name="permissions">પરવાનગીઓ</string>
-    <string name="repo_url">સરનામું</string>
     <string name="repo_description">વર્ણન</string>
-    <string name="repo_name">નામ</string>
     <string name="unknown">અજ્ઞાત</string>
     <string name="repo_disable_warning_button">અક્ષમ કરો</string>
     <string name="wifi_ap">હૉટસ્પૉટ</string>

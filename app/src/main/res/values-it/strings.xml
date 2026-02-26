@@ -29,7 +29,6 @@
     <string name="ok">OK</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
-    <string name="repo_add_title">Aggiungi nuovo repository</string>
     <string name="repo_add_add">Aggiungi</string>
     <string name="cancel">Annulla</string>
     <string name="enable">Attiva</string>
@@ -59,7 +58,6 @@
     <string name="antinonfreeadlist">Questa app promuove add-on non liberi</string>
     <string name="antinonfreenetlist">Questa app promuove o dipende completamente da un servizio di rete non libero</string>
     <string name="antinonfreedeplist">Questa app dipende da altre app non libere</string>
-    <string name="antiupstreamnonfreelist">Il codice sorgente a monte non è completamente libero</string>
     <string name="display">Mostra</string>
     <string name="expert">Modalità esperto</string>
     <string name="expert_on">Mostra ulteriori informazioni e attiva le impostazioni avanzate</string>
@@ -99,18 +97,8 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Non firmato</string>
     <string name="unverified">Non verificato</string>
-    <string name="repo_num_apps">Numero di app</string>
     <string name="repo_fingerprint">Impronta digitale della chiave (SHA-256)</string>
     <string name="repo_description">Descrizione</string>
-    <string name="repo_last_update">Ultimo aggiornamento</string>
-    <string name="repo_name">Nome</string>
-    <string name="unsigned_description">Ciò significa che l\'elenco di
-        applicazioni non può essere verificato. È consigliabile prestare attenzione
-        alle applicazioni scaricate da indici non firmati.
-    </string>
-    <string name="repo_not_yet_updated">Questo repository non è ancora stato utilizzato.
-        Devi attivarlo per vedere le applicazioni che fornisce.
-    </string>
     <string name="unknown">Sconosciuta</string>
     <string name="repo_confirm_delete_title">Eliminare il repository?</string>
     <string name="repo_confirm_delete_body">L\'eliminazione di un repository comporta che le app contenute in esso non saranno più disponibili.
@@ -209,7 +197,6 @@
     <string name="status_processing_xml_percent">Elaborazione %2$s/%3$s (%4$d%%) di %1$s</string>
     <string name="status_inserting_apps">Salvataggio dettagli applicazione</string>
     <string name="repo_details">Repository</string>
-    <string name="repo_url">Indirizzo</string>
     <string name="repo_added">Salvato il repository del pacchetto %1$s.</string>
     <string name="repo_searching_address">Ricerca del repository del pacchetto su
 \n%1$s</string>
@@ -230,9 +217,6 @@
     <string name="empty_can_update_app_list">Congratulazioni!\nLe tue app sono aggiornate.</string>
     <string name="install_error_unknown">Installazione fallita a causa di un errore sconosciuto</string>
     <string name="uninstall_error_unknown">Disinstallazione fallita a causa di un errore sconosciuto</string>
-    <string name="system_install_denied_permissions">I privilegi non sono stati concessi all\'estensione! Per favore
-        segnala questo problema!
-    </string>
     <string name="swap_join_same_wifi_desc">Per scambiare usando il Wi-Fi, assicuratevi di trovarvi sulla stessa rete. Se non avete accesso alla stessa rete, uno dei due può creare un Hotspot Wi-Fi.</string>
     <string name="swap_join_this_hotspot">Aiuta il tuo amico a collegarsi al tuo hotspot</string>
     <string name="swap_success">Scambio avvenuto!</string>
@@ -539,14 +523,12 @@
     <string name="antinonfreeassets">Risorse non libere</string>
     <string name="antidisabledalgorithm">Firmato usando un algoritmo non sicuro</string>
     <string name="antinosource">Il codice sorgente non è più disponibile</string>
-    <string name="antiupstreamnonfree">Non libero a monte</string>
     <string name="antiothers">Altre anti-caratteristiche</string>
     <string name="antinsfw">Non sicura per il lavoro</string>
     <string name="menu_release_channel_beta">Permetti aggiornamenti Beta</string>
     <string name="latest__empty_state__upgrading">Aggiornamento database…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Informazioni su F-Droid Basic</string>
-    <string name="repo_last_update_downloaded">Ultimo aggiornamento scaricato</string>
     <string name="category_Nightly">nightly</string>
     <string name="warning_target_sdk">Questa app è stata creata per una versione precedente di Android e non può essere aggiornata automaticamente.</string>
     <string name="antinsfwlist">Questa app ha contenuti che non dovrebbero essere pubblicizzati o visibili ovunque</string>
@@ -554,7 +536,6 @@
     <string name="swap_banner_message">Per scambiare le app, accendi il Wi-Fi e connettiti alla stessa rete del tuo amico.</string>
     <string name="turn_on_wifi">Accendi il wifi</string>
     <string name="repo_add_new_title">Aggiungi repository</string>
-    <string name="repo_add_new_mirror">Aggiungi come nuovo mirror</string>
     <string name="repo_intro">Un repository è una fonte aggiuntiva di app. Quelli di terze parti che aggiungi qui, hanno standard diversi rispetto a quelli che forniscono app compilate da F-Droid stesso.
 \n
 \nAssicurati che il repository che stai aggiungendo sia affidabile.</string>
@@ -664,4 +645,5 @@
     <string name="tts_repo_name">Repository %1$s</string>
     <string name="tts_author_name">Autore %1$s</string>
     <string name="pref_export_log_title">Registrazione debug</string>
+    <string name="crash_dialog_title_old">F-Droid è crashata</string>
 </resources>

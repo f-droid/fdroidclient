@@ -27,7 +27,6 @@
     <string name="ok">OK</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
-    <string name="repo_add_title">Thêm kho mới</string>
     <string name="repo_add_add">Thêm</string>
     <string name="cancel">Hủy</string>
     <string name="enable">Bật</string>
@@ -56,8 +55,7 @@
     <string name="antinonfreeadlist">Ứng dụng này khuyến khích các phần mở rộng không tự do</string>
     <string name="antinonfreenetlist">Ứng dụng này khuyến khích hoặc phụ thuộc hoàn toàn vào một dịch vụ không miễn phí</string>
     <string name="antinonfreedeplist">Ứng dụng này phụ thuộc vào các ứng dụng không tự do khác</string>
-    <string name="antiupstreamnonfreelist">Mã nguồn không hoàn toàn tự do</string>
-    <string name="display">Hiển thị</string>
+    <string name="display">Giao diện</string>
     <string name="expert">Chế độ nâng cao</string>
     <string name="expert_on">Hiện thêm thông tin và bật các cài đặt bổ sung</string>
     <string name="search_hint">Tìm kiếm ứng dụng</string>
@@ -89,17 +87,11 @@
     <string name="no_handler_app">Bạn không có ứng dụng nào để xử lý %s.</string>
     <string name="theme">Chủ đề</string>
     <string name="unverified">Chưa kiểm tra</string>
-    <string name="repo_num_apps">Số ứng dụng</string>
     <string name="repo_description">Mô tả</string>
-    <string name="repo_last_update">Cập nhật lần cuối vào</string>
-    <string name="repo_name">Tên</string>
-    <string name="repo_not_yet_updated">Kho ứng dụng này chưa được sử dụng. Sau khi kích hoạt, bạn mới có thể xem được
-        các ứng dụng trong kho.
-    </string>
     <string name="repo_confirm_delete_title">Xoá danh sách ứng dụng?</string>
     <string name="repo_confirm_delete_body">Nếu xoá danh sách ứng dụng, các ứng dụng ở trong danh sách sẽ không xuất hiện nữa. \n\nCác ứng dụng cài đặt từ danh sách vẫn sẽ còn trên thiết bị bạn.</string>
     <string name="repo_disabled_notification">Đã vô hiệu hóa %1$s. \n\nBạn cần phải kích hoạt danh sách này để cài đặt các ứng dụng từ đấy.</string>
-    <string name="repo_added">Đã lưu lại danh sách ứng dụng %1$s.</string>
+    <string name="repo_added">Đã lưu kho mã nguồn gói %1$s.</string>
     <string name="repo_searching_address">Đang tìm kho ứng dụng tại địa chỉ
 \n%1$s</string>
     <string name="not_on_same_wifi">Thiết bị của bạn hiện không cùng mạng Wi-Fi với Kho ứng dụng nội bộ mới thêm. Thử kết nối mạng này: %s</string>
@@ -142,9 +134,6 @@
     <string name="banner_updating_repositories">Đang cập nhật các kho</string>
     <string name="status_processing_xml_percent">Đang xử lí %2$s / %3$s (%4$d%%) từ %1$s</string>
     <string name="unsigned">Chưa được ký</string>
-    <string name="unsigned_description">Điều này nghĩa là danh sách ứng dụng không được kiểm duyệt. Bạn hãy cẩn thận khi
-        tải ứng dụng từ mục lục không có chữ kí điện tử.
-    </string>
     <string name="unknown">Không xác định</string>
     <string name="pref_language">Ngôn ngữ</string>
     <string name="pref_language_default">Theo hệ thống</string>
@@ -217,13 +206,11 @@
     <string name="theme_dark">Tối</string>
     <string name="all_other_repos_fine">Tất cả các kho khác không có lỗi.</string>
     <string name="swap_join_this_hotspot">Giúp đỡ bạn của bạn vào điểm truy cập</string>
-    <string name="more">Thêm</string>
-    <string name="less">Ít hơn</string>
+    <string name="more">Mở rộng</string>
+    <string name="less">Thu gọn</string>
     <string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
     <string name="permissions">Quyền</string>
     <string name="repo_details">Kho ứng dụng</string>
-    <string name="repo_url">Địa chỉ</string>
-    <string name="system_install_denied_permissions">Phần mở rộng chưa được cấp đặc quyền! Hãy tạo một báo cáo lỗi!</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="repo_add_fingerprint">Mã kiểm tra (không bắt buộc)</string>
     <string name="bad_fingerprint">Vân tay không hợp lệ</string>
@@ -234,7 +221,7 @@
     <string name="repo_error_empty_username">Tên người dùng trống, không đổi được mật khẩu</string>
     <string name="about_license">Giấy phép</string>
     <string name="status_inserting_apps">Đang lưu chi tiết ứng dụng</string>
-    <string name="menu_email">Gửi e-mail cho nhà phát triển</string>
+    <string name="menu_email">Gửi email đến tác giả</string>
     <string name="useTor">Tải xuống qua Tor</string>
     <string name="useTorSummary">Bắt buộc tải xuống thông qua Tor để tăng tính riêng tư và bảo mật. (Yêu cầu có ứng dụng Orbot)</string>
     <string name="main_menu__swap_nearby">Gần đây</string>
@@ -249,7 +236,7 @@
     <string name="updates__tts__download_app">Tải xuống</string>
     <string name="warning_no_internet">Không thể cập nhật, bạn đã kết nối Internet chưa?</string>
     <string name="crash_dialog_title">F-Droid đã bị dừng đột ngột</string>
-    <string name="crash_dialog_text">Ứng dụng buộc phải dừng vì có lỗi đột ngột xảy ra. Bạn có muốn gửi thông tin qua e-mail để giúp khắc phục vấn đề này không?</string>
+    <string name="crash_dialog_text">Ứng dụng buộc phải dừng vì có lỗi đột ngột xảy ra. Bạn có muốn gửi thông tin qua email để giúp khắc phục vấn đề này không?</string>
     <string name="notification_title_single_update_available">Có bản cập nhật</string>
     <string name="notification_title_summary_install_error">Cài đặt thất bại</string>
     <string name="by_author_format">bởi %s</string>
@@ -257,7 +244,7 @@
     <string name="keep_install_history_summary">Lưu giữ lịch sử cài đặt và gỡ cài đặt trong thư mục riêng tư</string>
     <string name="force_old_index">Bắt buộc tệp lưu trữ Kho ứng dụng sử dụng định dạng cũ</string>
     <string name="force_old_index_summary">Bạn nên sử dụng tùy chọn này trong trường hợp Kho ứng dụng bị lỗi hoặc không tương thích với hệ thống</string>
-    <string name="update_auto_download">Tự động tải xuống bản cập nhật, không cài đặt</string>
+    <string name="update_auto_download">Tự động tải xuống các bản cập nhật</string>
     <string name="update_auto_download_summary">Tự động tải xuống bản cập nhật và nhắc nhở bạn nhấn nút Cài đặt của hệ thống</string>
     <string name="update_auto_install">Tự động tải xuống và cài đặt các bản cập nhật</string>
     <string name="update_auto_install_summary">Tự động tải xuống và cập nhật ứng dụng trong nền và hiển thị thông báo</string>
@@ -500,7 +487,6 @@
     <string name="antidisabledalgorithm">Được ký bằng thuật toán không an toàn</string>
     <string name="antinonfreedep">Phụ thuộc vào những thứ không tự do</string>
     <string name="antinonfreead">Phần mở rộng không tự do</string>
-    <string name="antiupstreamnonfree">Dự án mẹ không tự do</string>
     <string name="antinonfreeassets">Các phần không tự do</string>
     <string name="antiknownvuln">Lỗ hổng bảo mật đã biết</string>
     <string name="antinosource">Mã nguồn không còn nữa</string>
@@ -511,19 +497,17 @@
     <string name="antiothers">Các Tính Năng Không Mong Muốn Khác</string>
     <string name="antinsfw">Không an toàn khi làm việc</string>
     <string name="latest__empty_state__upgrading">Đang nâng cấp cơ sở dữ liệu…</string>
-    <string name="menu_release_channel_beta">Cho phép cập nhật lên bản beta</string>
+    <string name="menu_release_channel_beta">Cập nhật các phiên bản beta</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Về F-Droid Basic</string>
     <string name="category_Nightly">hàng ngày</string>
     <string name="app_error_open">Không thể chạy ứng dụng.</string>
     <string name="warning_target_sdk">Ứng dụng này được tạo cho phiên bản Android cũ hơn và không thể cập nhật tự động.</string>
-    <string name="repo_last_update_downloaded">Bản cập nhật cuối cùng đã tải xuống</string>
     <string name="antinsfwlist">Ứng dụng này chứa nội dung không nên công khai hoặc có thể nhìn thấy ở mọi nơi</string>
     <string name="app_details_repository">Kho ứng dụng</string>
     <string name="app_list_no_suggested_version">Không có phiên bản khuyến nghị cho cài đặt.</string>
     <string name="app_details_repository_preferred">(ưu tiên)</string>
     <string name="repo_add_new_title">Thêm kho phần mềm</string>
-    <string name="repo_add_new_mirror">Thêm làm kho phụ</string>
     <string name="repo_state_fetching">Đang lấy kho phần mềm…</string>
     <string name="repo_state_adding">Đang thêm kho phần mềm…</string>
     <string name="repo_enter_url">Nhập thủ công URL kho ứng dụng</string>
@@ -593,7 +577,7 @@
     <string name="preferForeign">Ưu tiên máy chủ nước ngoài</string>
     <string name="preferForeignSummary">Thử kết nối tới máy chủ nước ngoài trước, ví dụ như khi luật trong nước không cho tải về.</string>
     <string name="app_details_more_apps_interesting">Những app bạn cũng có thể thích:</string>
-    <string name="app_details_more_apps_by_author">App khác bởi %1$s</string>
+    <string name="app_details_more_apps_by_author">Ứng dụng khác từ %1$s</string>
     <string name="menu_share_apk">Chia sẻ tệp APK</string>
     <string name="banner_updating_apps">Đang cập nhật các app</string>
     <string name="share_mirror">Chia sẻ mirror</string>
@@ -622,4 +606,46 @@
     <string name="expand">Mở rộng</string>
     <string name="collapse">Thu gọn</string>
     <string name="crash_dialog_title_old">F-Droid bị treo</string>
+    <string name="technical_info">Thông tin kỹ thuật</string>
+    <string name="category_group_productivity">Năng suất</string>
+    <string name="category_group_tools">Công cụ</string>
+    <string name="category_group_wallets">Tài chính &amp; Ví</string>
+    <string name="category_group_media">Giải trí &amp; Media</string>
+    <string name="category_group_communication">Liên lạc</string>
+    <string name="category_group_device">Thiết bị</string>
+    <string name="category_group_network">Kết nối mạng</string>
+    <string name="category_group_storage">Tệp &amp; Lưu trữ</string>
+    <string name="category_group_interests">Sở thích</string>
+    <string name="category_group_misc">Linh tinh</string>
+    <string name="author_by">Bởi %1$s</string>
+    <string name="last_updated">Lần cuối cập nhật: %1$s</string>
+    <string name="last_updated_with_size">Lần cuối cập nhật: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Chuẩn bị cài đặt…</string>
+    <string name="whats_new_title">Có gì mới</string>
+    <string name="donate_title">Ủng hộ</string>
+    <string name="developer_contact">Liên hệ nhà phát triển</string>
+    <string name="package_name">Tên gói:</string>
+    <string name="installed_version">Phiên bản đã cài đặt:</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_list_new">Mới ra mắt</string>
+    <string name="app_list_recently_updated">Mới cập nhật</string>
+    <string name="app_list_most_downloaded">Được tải nhiều nhất</string>
+    <string name="app_list_all">Tất cả ứng dụng</string>
+    <string name="app_list_author">Ứng dụng từ %s</string>
+    <string name="search_placeholder">Tìm…</string>
+    <string name="menu_discover">Khám phá</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Giới thiệu</string>
+    <string name="menu_apps_my">Của tôi</string>
+    <string name="first_start_loading">Đang mở kho mã nguồn…</string>
+    <string name="anti_features_title">Tính năng không mong muốn</string>
+    <string name="my_apps_empty">Chỉ những ứng dụng đã được cài đặt bởi %1$s mới hiện ở đây</string>
+    <string name="my_apps_header_apps_with_issue">Ứng dụng có vấn đề</string>
+    <string name="my_apps_ignore_dialog_title">Ẩn các vấn đề</string>
+    <string name="my_apps_ignore_dialog_text">Vấn đề với phiên bản này của \"%1$s\" sẽ được bỏ qua</string>
+    <string name="my_apps_ignore_dialog_button">Ẩn</string>
+    <string name="my_apps_export_installed_apps">Xuất danh sách ứng dụng</string>
+    <string name="search_no_results">Không tìm thấy ứng dụng\n\nHãy thử sử dụng ít từ khóa tìm kiếm hơn hoặc thêm nhiều kho mã nguồn hơn</string>
+    <string name="call_to_action_keepandroidopen">F-Droid đang bị đe dọa. Google đang thay đổi cách bạn cài đặt ứng dụng trên điện thoại. Chúng tôi cần sự giúp đỡ của bạn.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

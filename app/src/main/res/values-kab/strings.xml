@@ -39,7 +39,6 @@
     <string name="more">Ugar</string>
     <string name="less">Drus</string>
     <string name="repo_details">Akufi</string>
-    <string name="repo_last_update">Aleqqem aneggaru</string>
     <string name="category_System">Anagraw</string>
     <string name="notification_title_single_update_available">Amucceḍ yewjed</string>
     <string name="notification_title_summary_install_error">Yecceḍ usebeddi</string>
@@ -82,9 +81,7 @@
     <string name="proxy">Apruksi</string>
     <string name="permissions">Tisirag</string>
     <string name="theme">Asentel</string>
-    <string name="repo_url">Tansa</string>
     <string name="repo_description">Aglam</string>
-    <string name="repo_name">Isem</string>
     <string name="unknown">Arussin</string>
     <string name="swap_success">Yedda!</string>
     <string name="swap_connecting">Tuqqna ɣer</string>
@@ -120,7 +117,6 @@
     <string name="app_version_x_available">Lqem %1$s yella</string>
     <string name="app_version_x_installed">Lqem %1$s</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ttu</string>
-    <string name="repo_add_title">Rnu akufi amaynut</string>
     <string name="overwrite">Sfeɛj</string>
     <string name="repositories_summary">Rnu iɣbula nniḍen n yisnasen</string>
     <string name="menu_changelog">Aɣmis n ibeddilen</string>
@@ -212,7 +208,6 @@
     <string name="banner_updating_repositories">Aleqqem n ikufiyen</string>
     <string name="status_connecting_to_repo">Tuqqna ɣer \n%1$s</string>
     <string name="global_error_updating_repos">Tuccḍa di uleqqem: %s</string>
-    <string name="repo_num_apps">Amḍan n isnasen</string>
     <string name="share_repository">Bḍu akufi-a</string>
     <string name="requires_features">Ilaq: %1$s</string>
     <string name="swap_no_wifi_network">Ulac tuqqna</string>

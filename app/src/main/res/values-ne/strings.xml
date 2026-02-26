@@ -70,7 +70,6 @@
     <string name="wifi">Wi-Fi</string>
     <string name="apps">अनुप्रयोग</string>
     <string name="updates">अद्यावधिकहरू</string>
-    <string name="repo_last_update">अन्तिम अद्यावधिक</string>
     <string name="unverified">अप्रमाणित</string>
     <string tools:ignore="UnusedResources" name="category_Sports_Health">खेलकुद र स्वास्थ्य</string>
     <string name="repo_details">भण्डार</string>

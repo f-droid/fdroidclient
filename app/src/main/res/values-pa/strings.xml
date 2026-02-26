@@ -95,12 +95,10 @@
     <string name="swap_scan_qr">QR ਕੋਡ</string>
     <string name="notification_action_cancel">ਰੱਦ ਕਰੋ</string>
     <string name="apps">ਐਪਾਂ</string>
-    <string name="repo_name">ਨਾਮ</string>
     <string name="panic_app_setting_summary">ਕੋਈ ਐਪ ਸੈੱਟ ਨਹੀਂ ਕੀਤੀ ਗਈ ਹੈ</string>
     <string name="repo_details">ਰਿਪੌਜ਼ਟਰੀ</string>
     <string name="category_Sports_Health">ਖੇਡਾਂ ਅਤੇ ਸਿਹਤ</string>
     <string name="uninstall_error_unknown">ਕਿਸੇ ਅਗਿਆਤ ਤਰੁੱਟੀ ਕਾਰਨ ਅਨ-ਇੰਸਟਾਲ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ</string>
-    <string name="system_install_denied_permissions">ਐਕਸਟੈਂਸ਼ਨ ਨੂੰ ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ ਪ੍ਰਾਪਤ ਅਨੁਮਤੀਆਂ ਨਹੀਂ ਦਿੱਤੀਆਂ ਗਈਆਂ ਹਨ! ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਬੱਗ ਰਿਪੋਰਟ ਬਣਾਓ!</string>
     <string name="share_apk_error">ਐਪ ਫ਼ਾਈਲ ਨੂੰ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="nearby_splash__both_parties_need_fdroid">ਦੋਵਾਂ ਧਿਰਾਂ ਨੂੰ ਨੇੜਲੇ ਵਰਤਣ ਲਈ %1$s ਦੀ ਲੋੜ ਹੈ।</string>
     <string name="nearby_splash__document_tree">ਰਿਪੋਜ਼ ਅਤੇ ਮਿਰਰ ਲਈ USB OTG ਖੋਜੋ।</string>
@@ -111,7 +109,6 @@
     <string name="swap_cant_find_peers">ਨਹੀਂ ਲੱਭ ਸਕਦੇ ਜਿਸਨੂੰ ਤੁਸੀਂ ਲੱਭ ਰਹੇ ਹੋ\?</string>
     <string name="uninstall_error_notify_title">%s ਨੂੰ ਅਨ-ਇੰਸਟਾਲ ਕਰਨ ਵਿੱਚ ਤਰੁੱਟੀ</string>
     <string name="has_disallow_install_unknown_sources">ਇਸ ਉਪਭੋਗਤਾ ਦੁਆਰਾ ਅਗਿਆਤ ਸਰੋਤ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ ਹਨ, ਜਿਸ ਵਿੱਚ ਨਵੇਂ ਰੈਪੋ ਸ਼ਾਮਲ ਹਨ</string>
-    <string name="antiupstreamnonfreelist">ਅੱਪਸਟ੍ਰੀਮ ਸਰੋਤ ਕੋਡ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫਤ ਨਹੀਂ ਹੈ</string>
     <string name="theme">ਥੀਮ</string>
     <string name="repo_user_mirrors">ਉਪਭੋਗਤਾ ਮਿਰਰ</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ਇੰਟਰਨੈੱਟ ਨਹੀਂ ਹੈ? ਆਪਣੇ ਨੇੜੇ ਦੇ ਲੋਕਾਂ ਤੋਂ ਐਪਸ ਪ੍ਰਾਪਤ ਕਰੋ!</string>
@@ -202,7 +199,6 @@
     <string name="menu_opencollective">OpenCollective</string>
     <string name="antiads">ਵਿਗਿਆਪਨ</string>
     <string name="antinonfreedep">ਗੈਰ-ਮੁਕਤ ਨਿਰਭਰਤਾ</string>
-    <string name="antiupstreamnonfree">ਅੱਪਸਟ੍ਰੀਮ ਗੈਰ-ਮੁਫ਼ਤ</string>
     <string name="antinonfreeassets">ਗੈਰ-ਮੁਫ਼ਤ ਸੰਪਤੀਆਂ</string>
     <string name="antiknownvuln">ਜਾਣੀ ਜਾਂਦੀ ਕਮਜ਼ੋਰੀ</string>
     <string name="antidisabledalgorithmlist">ਇਸ ਐਪ ਵਿੱਚ ਇੱਕ ਕਮਜ਼ੋਰ ਸੁਰੱਖਿਆ ਦਸਤਖਤ ਹਨ</string>
@@ -230,7 +226,6 @@
     <string name="unsigned">ਅਣਹਸਤਾਖਰਿਤ</string>
     <string name="global_error_updating_repos">ਅੱਪਡੇਟ ਦੌਰਾਨ ਤਰੁੱਟੀ: %s</string>
     <string name="no_handler_app">ਤੁਹਾਡੇ ਕੋਲ ਕੋਈ ਵੀ ਉਪਲਬਧ ਐਪ ਨਹੀਂ ਹੈ ਜੋ %s ਨੂੰ ਸੰਭਾਲ ਸਕੇ।</string>
-    <string name="repo_last_update">ਆਖਰੀ ਅੱਪਡੇਟ</string>
     <string name="repo_fingerprint">ਹਸਤਾਖਰਿਤ ਕੁੰਜੀ ਦਾ ਫਿੰਗਰਪ੍ਰਿੰਟ (SHA-256)</string>
     <string name="repo_description">ਵਰਣਨ</string>
     <string name="repo_official_mirrors">ਅਧਿਕਾਰਤ ਮਿਰਰ</string>
@@ -354,7 +349,6 @@
     <string name="repo_add_add">ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="malformed_repo_uri">ਨੁਕਸਦਾਰ ਰੈਪੋ URI ਨੂੰ ਅਣਡਿੱਠ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ: %s</string>
     <string name="has_disallow_install_unknown_sources_globally">ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਪ੍ਰਸ਼ਾਸਕ ਅਗਿਆਤ ਸਰੋਤਾਂ ਤੋਂ ਐਪਾਂ ਨੂੰ ਸਥਾਪਤ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਵਿੱਚ ਨਵੇਂ ਰਿਪੋਜ਼ ਸ਼ਾਮਲ ਹਨ</string>
-    <string name="repo_add_title">ਨਵੀਂ ਰਿਪੌਜ਼ਿਟਰੀ ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="menu_open">ਖੋਲ੍ਹੋ</string>
     <string name="repositories_summary">ਐਪਾਂ ਦੇ ਵਾਧੂ ਸਰੋਤ ਸ਼ਾਮਲ ਕਰੋ</string>
     <string name="menu_changelog">ਬਦਲਾਅ ਸੂਚੀ</string>
@@ -430,11 +424,7 @@
     <string name="panic_app_unknown_app">ਇੱਕ ਅਣਜਾਣ ਐਪ</string>
     <string name="all_other_repos_fine">ਹੋਰ ਸਾਰੇ ਰਿਪੋਜ਼ ਨੇ ਤਰੁੱਟੀਆਂ ਨਹੀਂ ਦਰਸਾਈਆਂ।</string>
     <string name="use_pure_black_dark_theme_summary">ਸਿਰਫ਼ OLED ਸਕ੍ਰੀਨਾਂ ਲਈ ਸਿਫ਼ਾਰਿਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।</string>
-    <string name="repo_url">ਪਤਾ</string>
-    <string name="repo_num_apps">ਐਪਸ ਦੀ ਸੰਖਿਆ</string>
-    <string name="unsigned_description">ਇਸ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਐਪਸ ਦੀ ਸੂਚੀ ਦੀ ਪੁਸ਼ਟੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਤੁਹਾਨੂੰ ਗੈਰਹਸਤਾਖਰਿਤ ਇੰਡੈਕਸਾਂ ਤੋਂ ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ ਐਪਾਂ ਤੋਂ ਸਾਵਧਾਨ ਰਹਿਣਾ ਚਾਹੀਦਾ ਹੈ।</string>
     <string name="repo_added">ਸਾਂਭਿਆ ਪੈਕੇਜ ਰਿਪੌਜ਼ਟਰੀ %1$s।</string>
-    <string name="repo_not_yet_updated">ਇਹ ਰਿਪੌਜ਼ਟਰੀ ਅਜੇ ਤੱਕ ਵਰਤੀ ਨਹੀਂ ਗਈ ਹੈ। ਤੁਹਾਨੂੰ ਇਸ ਦੁਆਰਾ ਪ੍ਰਦਾਨ ਕੀਤੀਆਂ ਐਪਾਂ ਨੂੰ ਦੇਖਣ ਲਈ ਇਸਨੂੰ ਸਮਰੱਥ ਕਰਨ ਦੀ ਲੋੜ ਹੈ।</string>
     <string name="repo_confirm_delete_body">ਰਿਪੌਜ਼ਟਰੀ ਨੂੰ ਮਿਟਾਉਣ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਇਸ ਤੋਂ ਐਪਸ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੋਣਗੇ।
 \n
 \nਨੋਟ: ਪਹਿਲਾਂ ਸਥਾਪਿਤ ਕੀਤੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਤੁਹਾਡੀ ਡਿਵਾਈਸ \'ਤੇ ਰਹਿਣਗੀਆਂ।</string>
@@ -525,7 +515,6 @@
     <string name="theme_dark">ਗੂੜ੍ਹਾ</string>
     <string name="app_name_basic">ਐਫ-ਡਰਾਇਡ ਬੇਸਿਕ</string>
     <string name="about_title_basic">ਐਫ-ਡਰਾਇਡ ਬੇਸਿਕ ਬਾਰੇ</string>
-    <string name="repo_last_update_downloaded">ਤਾਜ਼ਾ ਅੱਪਡੇਟ ਡਾਊਨਲੋਡ ਕੀਤਾ ਗਿਆ</string>
     <string name="warning_target_sdk">ਇਹ ਐਪ ਐਂਡਰਾਇਡ ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਬਣਾਈ ਗਈ ਸੀ ਅਤੇ ਇਸ ਨੂੰ ਆਪਣੇ-ਆਪ ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
     <string name="antinsfwlist">ਇਸ ਐਪ ਵਿੱਚ ਅਜਿਹੀ ਸਮੱਗਰੀ ਹੈ ਜਿਸਦਾ ਪ੍ਰਚਾਰ ਨਹੀਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਜਾਂ ਹਰ ਥਾਂ ਦਿਖਾਈ ਨਹੀਂ ਦੇਣਾ ਚਾਹੀਦਾ</string>
     <string name="category_Nightly">ਨਾਈਟਲੀ</string>

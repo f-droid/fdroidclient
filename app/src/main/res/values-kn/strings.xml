@@ -31,9 +31,7 @@
     <string name="category_Games">ಆಟಗಳು</string>
     <string name="wifi">ವೈ-ಫೈ</string>
     <string name="pref_language">ಭಾಷೆ</string>
-    <string name="repo_name">ಹೆಸರು</string>
     <string name="repo_description">ವಿವರಣೆ</string>
-    <string name="repo_url">ವಿಳಾಸ</string>
     <string name="next">ಮುಂದೆ</string>
     <string name="details_new_in_version">%s ನೇ ಆವೃತ್ತಿಯಲ್ಲಿ ಹೊಸತು</string>
     <string name="main_menu__swap_nearby">ಹತ್ತಿರವೇನಿದೆ</string>
@@ -119,7 +117,6 @@
         <item quantity="one">%1$d ಅಪ್ಲಿಕೇಶನ್‌ಗಾಗಿ ನವೀಕರಣವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</item>
         <item quantity="other">%1$d ಅಪ್ಲಿಕೇಶನ್‌ಗಾಗಿ ನನವೀಕರಣಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.</item>
     </plurals>
-    <string name="repo_add_title">ಹೊಸ ಭಂಡಾರವನ್ನು ಸೇರಿಸಿ</string>
     <string name="enable">ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
     <string name="add_key">ಕೀಲಿಯನ್ನು ಸೇರಿಸಿ</string>
     <string name="overwrite">ತಿದ್ದಿ ಬರೆಯಿರಿ</string>
@@ -157,7 +154,6 @@
     <string name="antinonfreeadlist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ</string>
     <string name="antinonfreenetlist">ದಿಸ್ ಆ್ಯಪ್ ಪ್ರಮೋಟ್ಸ್ ಆರ್ ಡಿಪೆಂಡ್ಸ್ ಎಂಟೈರ್ಲಿ ಆನ್ ಎ ನಾನ್-ಚಾrj</string>
     <string name="antinonfreedeplist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಇತರ ಉಚಿತವಲ್ಲದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ</string>
-    <string name="antiupstreamnonfreelist">ಅಪ್ಸ್ಟ್ರೀಮ್ ಮೂಲ ಕೋಡ್ ಸಂಪೂರ್ಣವಾಗಿ ಉಚಿತವಲ್ಲ</string>
     <string name="antinonfreeassetslist">ಈ ಅಪ್ಲಿಕೇಶನ್ ಉಚಿತವಲ್ಲದ ಸ್ವತ್ತುಗಳನ್ನು ಒಳಗೊಂಡಿದೆ</string>
     <string name="display">ಪ್ರದರ್ಶಿಸಿ</string>
     <string name="expert">ತಜ್ಞ ಮೋಡ್</string>
@@ -256,7 +252,6 @@
     <string name="theme">ಥೀಮ್</string>
     <string name="unsigned">ಸಹಿ ಮಾಡಲಾಗಿಲ್ಲ</string>
     <string name="unverified">ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ</string>
-    <string name="repo_last_update">ಕೊನೆಯ ನವೀಕರಣ</string>
     <string name="unknown">ಅಪರಿಚಿತ</string>
     <string name="wifi_ap">ಹಾಟ್ಸ್ಪಾಟ್</string>
     <string name="category_Development">ಅಭಿವೃದ್ಧಿ</string>
@@ -412,7 +407,6 @@
     <string name="nearby_splash__read_external_storage">ರೆಪೊಸಿಟರಿ ಮತ್ತು ಕನ್ನಡಿಗಳಿಗಾಗಿ ಎಸ್‌ಡಿ ಕಾರ್ಡ್ ಹುಡುಕಿ.</string>
     <string name="nearby_splash__both_parties_need_fdroid">ಹತ್ತಿರದಲ್ಲಿ ಬಳಸಲು ಎರಡೂ ಪಕ್ಷಗಳಿಗೆ %1$s ಅಗತ್ಯವಿದೆ.</string>
     <string name="nearby_splash__download_apps_from_people_nearby">ಇಂಟರ್ನೆಟ್ ಇಲ್ಲವೇ? ನಿಮ್ಮ ಹತ್ತಿರದ ಜನರಿಂದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಪಡೆಯಿರಿ!</string>
-    <string name="system_install_denied_permissions">ವಿಸ್ತರಣೆಗೆ ಸವಲತ್ತು ಅನುಮತಿಗಳನ್ನು ನೀಡಲಾಗಿಲ್ಲ! ದಯವಿಟ್ಟು ದೋಷ ವರದಿಯನ್ನು ರಚಿಸಿ!</string>
     <string name="uninstall_error_unknown">ಅಜ್ಞಾತ ದೋಷದಿಂದಾಗಿ ಅಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ</string>
     <string name="install_error_unknown">ಅಜ್ಞಾತ ದೋಷದಿಂದಾಗಿ ಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ</string>
     <string name="empty_search_available_app_list">ಹೊಂದಾಣಿಕೆಯ ಯಾವುದೇ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ.</string>
@@ -438,12 +432,9 @@
 \n
 \nಗಮನಿಸಿ: ಈ ಹಿಂದೆ ಸ್ಥಾಪಿಸಲಾದ ಎಲ್ಲಾ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.</string>
     <string name="repo_confirm_delete_title">ಭಂಡಾರವನ್ನು ಅಳಿಸುವುದೇ?</string>
-    <string name="repo_not_yet_updated">ಈ ಭಂಡಾರವನ್ನು ಇನ್ನೂ ಬಳಸಲಾಗಿಲ್ಲ. ಅದು ಒದಗಿಸುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಲು ನೀವು ಅದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗಿದೆ.</string>
-    <string name="unsigned_description">ಇದರರ್ಥ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಪಟ್ಟಿಯನ್ನು ಪರಿಶೀಲಿಸಲಾಗುವುದಿಲ್ಲ. ಸಹಿ ಮಾಡದ ಸೂಚಿಕೆಗಳಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳೊಂದಿಗೆ ನೀವು ಜಾಗರೂಕರಾಗಿರಬೇಕು.</string>
     <string name="repo_user_mirrors">ಬಳಕೆದಾರ ಕನ್ನಡಿಗಳು</string>
     <string name="repo_official_mirrors">ಅಧಿಕೃತ ಕನ್ನಡಿಗಳು</string>
     <string name="repo_fingerprint">ಸಹಿ ಮಾಡುವ ಕೀಲಿಯ ಫಿಂಗರ್‌ಪ್ರಿಂಟ್ (SHA-256)</string>
-    <string name="repo_num_apps">ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಸಂಖ್ಯೆ</string>
     <string name="no_handler_app">%s ಅನ್ನು ನಿಭಾಯಿಸಬಲ್ಲ ಲಭ್ಯವಿರುವ ಯಾವುದೇ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ ಬಳಿ ಇಲ್ಲ.</string>
     <string name="global_error_updating_repos">ನವೀಕರಣದ ಸಮಯದಲ್ಲಿ ದೋಷ: %s</string>
     <string name="all_other_repos_fine">ಎಲ್ಲಾ ಇತರ ಭಂಡಾರಗಳು ದೋಷಗಳನ್ನು ರಚಿಸಲಿಲ್ಲ.</string>
@@ -510,7 +501,6 @@
     <string name="swap_wifi_vpn_conflict">ಸಕ್ರಿಯ ವಿ.ಪಿ.ಎನ್ ಜೊತೆಗೆ ಸಂಘರ್ಷಿಸುತ್ತದೆ!</string>
     <string name="app_name_basic">ಎಫ್-ಡ್ರಾಯ್ಡ್ ಬೇಸಿಕ್</string>
     <string name="ipfsgw_caption_custom_gateways">ಕಸ್ಟಮೈಜ್ ಐ ಪಿ ಎಫ್ ಎಸ್ ಗೇಟ್ವೇಸ್</string>
-    <string name="repo_last_update_downloaded">ಲಾಸ್ಟ್ ಅಪ್‌ಡೇಟ್ ಡೌನ್‌ಲೋಡ್</string>
     <string name="repo_disable_warning">ಡಿಸೇಬ್ಲಿಂಗ್ ದಿಸ್ ರೆಪೊಸಿಟರಿ ವಿಲ್ ರಿಮೋವ್ ಇಟ್ಸ್ \"ಪ್ರಿಫರ್ಡ್\" ಸ್ಥಿತಿ ಫ್ರಾಮ್ ಆಲ್ ಅಲ್ ಅಪ್ಪ್ಸ್.</string>
     <string name="share_apk_error">ಅಪ್ಲಿಕೇಶನ್ ಫೈಲ್ ಹಂಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
     <string name="warning_target_sdk">ಈ ಅಪ್ಲಿಕೇಶನ್ ಹಳಈ ಅಪ್ಲಿಕೇಶನ್‌ನು ಹಳೆಯ ಆಂಡ್ರಾಯ್ಡ್ ಆವೃತ್ತಿಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ ಮತ್ತು ಸ್ವಯಂಮತ್ತಾಯವಾಗಿ ನವೀಕರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
@@ -548,13 +538,11 @@
     <string name="antitrack">ಟ್ರ್ಯಾಕಿಂಗ್</string>
     <string name="antinonfreead">ನಾನ್-ಫ್ರೀ ಆಡ್ಆನ್ಸ</string>
     <string name="force_old_installer_summary">ಡಿಸೇಬಲ್ ದ ಸೆಶನ್ ಇನ್ಸ್ಟಾಲರ್, ಇನ್ಕ್ಲೂಡಿಂಗ್ ಸಪೋರ್ಟ್ ಫಾರ್ ಆಟೋಮ್ಯಾಟಿಕ್ background ಅಪ್ಡೇಟ್ಸ್.</string>
-    <string name="repo_add_new_mirror">ಆಡ್ ಆಸ್ ನ್ಯೂ ಮಿರರ್</string>
     <string name="repo_state_adding">ರೆಪೊಸಿಟರಿಯನ್ನು ಸೇರಿಸಲಾಗುತ್ತಿದೆ…</string>
     <string name="repo_invalid">ಅಮಾನ್ಯವಾದ ರೆಪೊಸಿಟರಿ. ನಿರ್ವಾಹಕರನ್ನು ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ಸಮಸ್ಯೆಯ ಬಗ್ಗೆ ಅವರಿಗೆ ತಿಳಿಸಿ.</string>
     <string name="latest__empty_state__upgrading">ಅಪ್ಗ್ರೇಡಿಂಗ್ ಡಾಟಾ ಬೇಸ್…</string>
     <string name="antinonfreenet">ನಾನ್-ಫ್ರೀ ನೆಟ್ವರ್ಕ್ ಸರ್ವೀಸಸ್</string>
     <string name="antinonfreedep">ನಾನ್-ಫ್ರೀ ಡಿಪೆಂಡೆನ್ಸಿಸ್</string>
-    <string name="antiupstreamnonfree">ಅಪ್ಸ್ಟ್ರೀಮ್ ನಾನ್-ಫ್ರೀ</string>
     <string name="antidisabledalgorithm">ಸೈನ್ಡ್ ಯುಸಿಂಗ್ ಆನ್ ಆನ್ಸೇಫ್ ಆಲ್ಗೋರಿಥಂ</string>
     <string name="antinsfw">ನಾಟ್ ಸೇಫ್ ಫಾರ್ ವರ್ಕ್</string>
     <string name="antiothers">ಅದರ್ ಆಂಟಿ-ಫೀಚರ್ಸ್</string>
