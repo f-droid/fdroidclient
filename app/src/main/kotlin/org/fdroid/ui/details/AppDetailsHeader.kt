@@ -3,6 +3,7 @@ package org.fdroid.ui.details
 import android.text.format.Formatter
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
@@ -12,7 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -75,14 +76,17 @@ import org.fdroid.ui.utils.testApp
 fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
   Box {
     Spacer(modifier = Modifier.padding(top = innerPadding.calculateTopPadding()))
+    var showFeatureGraphic by remember { mutableStateOf(true) }
     item.featureGraphic?.let { featureGraphic ->
       AsyncImage(
         model = featureGraphic,
         contentDescription = null,
         contentScale = ContentScale.FillWidth,
+        onError = { showFeatureGraphic = false },
         modifier =
           Modifier.fillMaxWidth()
-            .heightIn(max = 196.dp)
+            .animateContentSize()
+            .height(if (showFeatureGraphic) 196.dp else 0.dp)
             .graphicsLayer { alpha = 0.5f }
             .drawWithContent {
               val colors = listOf(Color.Black, Color.Transparent)
