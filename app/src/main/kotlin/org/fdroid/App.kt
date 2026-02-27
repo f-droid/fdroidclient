@@ -14,8 +14,10 @@ import coil3.disk.DiskCache
 import coil3.disk.directory
 import coil3.key.Keyer
 import coil3.memory.MemoryCache
+import coil3.request.NullRequestDataException
 import coil3.request.crossfade
 import coil3.util.DebugLogger
+import coil3.util.Logger
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import org.acra.ACRA
@@ -122,9 +124,20 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
       .diskCache {
         DiskCache.Builder().directory(context.cacheDir.resolve("coil")).maxSizePercent(0.05).build()
       }
-      .logger(if (BuildConfig.DEBUG) DebugLogger() else null)
+      .logger(if (BuildConfig.DEBUG) CoilLogger() else null)
       .build()
   }
 }
 
 fun DownloadRequest.getCacheKey() = indexFile.sha256 ?: (mirrors[0].baseUrl + indexFile.name)
+
+/** The entire purpose of this class is to not spam the log with huge [NullRequestDataException]. */
+private class CoilLogger : Logger {
+  private val logger = DebugLogger()
+  override var minLevel: Logger.Level = logger.minLevel
+
+  override fun log(tag: String, level: Logger.Level, message: String?, throwable: Throwable?) {
+    if (throwable is NullRequestDataException) logger.log(tag, Logger.Level.Info, message, null)
+    else logger.log(tag, level, message, throwable)
+  }
+}
