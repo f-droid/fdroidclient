@@ -1,5 +1,7 @@
 package org.fdroid.ui.details
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -44,7 +46,15 @@ fun AppDetailsTopAppBar(
           onClick = { context.startActivitySafe(shareIntent) },
         )
       }
-      TopAppBarOverflowButton { onDismissRequest -> AppDetailsMenu(item, onDismissRequest) }
+      // the launcher needs to be at least here,
+      // because if the menu is dismissed we don't get the result
+      val uninstallLauncher =
+        rememberLauncherForActivityResult(StartActivityForResult()) {
+          item.actions.onUninstallResult(it)
+        }
+      TopAppBarOverflowButton { onDismissRequest ->
+        AppDetailsMenu(item, uninstallLauncher, onDismissRequest)
+      }
     },
     scrollBehavior = scrollBehavior,
   )
