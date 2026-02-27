@@ -78,10 +78,10 @@ public abstract interface class org/fdroid/database/AppDao {
 	public static synthetic fun getNewAppsFlow$default (Lorg/fdroid/database/AppDao;JILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getNumberOfAppsInCategory (Ljava/lang/String;)I
 	public abstract fun getNumberOfAppsInRepository (J)I
-	public abstract fun getRecentlyUpdatedApps (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public abstract fun getRecentlyUpdatedAppsFlow (I)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public abstract fun getRecentlyUpdatedApps (IJLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;IJLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun getRecentlyUpdatedAppsFlow (IJ)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IJILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 	public abstract fun getRepositoryIdsForApp (Ljava/lang/String;)Ljava/util/List;
 	public abstract fun hasAuthorMoreThanOneApp (Ljava/lang/String;)Landroidx/lifecycle/LiveData;
 	public abstract fun insert (JLjava/lang/String;Lorg/fdroid/index/v2/MetadataV2;Landroidx/core/os/LocaleListCompat;)V
@@ -94,8 +94,8 @@ public final class org/fdroid/database/AppDao$DefaultImpls {
 	public static synthetic fun getAppOverviewItems$default (Lorg/fdroid/database/AppDao;Ljava/lang/String;IILjava/lang/Object;)Landroidx/lifecycle/LiveData;
 	public static synthetic fun getNewApps$default (Lorg/fdroid/database/AppDao;JLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public static synthetic fun getNewAppsFlow$default (Lorg/fdroid/database/AppDao;JILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
-	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun getRecentlyUpdatedApps$default (Lorg/fdroid/database/AppDao;IJLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getRecentlyUpdatedAppsFlow$default (Lorg/fdroid/database/AppDao;IJILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun insert$default (Lorg/fdroid/database/AppDao;JLjava/lang/String;Lorg/fdroid/index/v2/MetadataV2;Landroidx/core/os/LocaleListCompat;ILjava/lang/Object;)V
 }
 
