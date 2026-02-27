@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
@@ -18,6 +19,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -50,6 +52,7 @@ constructor(
   private val app: Application,
   @Assisted private val packageName: String,
   @param:IoDispatcher private val scope: CoroutineScope,
+  @param:IoDispatcher private val dispatcher: CoroutineDispatcher,
   private val db: FDroidDatabase,
   private val repoManager: RepoManager,
   private val repoPreLoader: RepoPreLoader,
@@ -70,7 +73,7 @@ constructor(
       moleculeScope.launchMolecule(mode = ContextClock) {
         DetailsPresenter(
           db = db,
-          scope = scope,
+          dispatcher = dispatcher,
           repoManager = repoManager,
           repoPreLoader = repoPreLoader,
           updateChecker = updateChecker,
@@ -86,31 +89,30 @@ constructor(
     }
 
   init {
-    loadPackageInfoFlow()
+    viewModelScope.launch(dispatcher) { loadPackageInfoFlow() }
   }
 
+  @WorkerThread
   private fun loadPackageInfoFlow() {
     val packageManager = app.packageManager
-    scope.launch {
-      val packageInfo =
-        try {
-          @Suppress("DEPRECATION") packageManager.getPackageInfo(packageName, GET_SIGNATURES)
-        } catch (_: PackageManager.NameNotFoundException) {
-          null
-        }
-      packageInfoFlow.value =
-        if (packageInfo == null) {
-          AppInfo(packageName)
-        } else {
-          val intent =
-            if (packageName == app.packageName) {
-              null // we shouldn't launch ourselves, so no launch intent here
-            } else {
-              packageManager.getLaunchIntentForPackage(packageName)
-            }
-          AppInfo(packageName, packageInfo, intent)
-        }
-    }
+    val packageInfo =
+      try {
+        @Suppress("DEPRECATION") packageManager.getPackageInfo(packageName, GET_SIGNATURES)
+      } catch (_: PackageManager.NameNotFoundException) {
+        null
+      }
+    packageInfoFlow.value =
+      if (packageInfo == null) {
+        AppInfo(packageName)
+      } else {
+        val intent =
+          if (packageName == app.packageName) {
+            null // we shouldn't launch ourselves, so no launch intent here
+          } else {
+            packageManager.getLaunchIntentForPackage(packageName)
+          }
+        AppInfo(packageName, packageInfo, intent)
+      }
   }
 
   @UiThread
@@ -163,7 +165,7 @@ constructor(
     val result = appInstallManager.onUninstallResult(packageName, name, activityResult)
     if (result is InstallState.Uninstalled) {
       // to reload packageInfoFlow with fresh packageInfo
-      loadPackageInfoFlow()
+      viewModelScope.launch(dispatcher) { loadPackageInfoFlow() }
     }
   }
 

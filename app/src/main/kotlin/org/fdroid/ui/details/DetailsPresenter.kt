@@ -11,7 +11,7 @@ import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.asFlow
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import org.fdroid.UpdateChecker
@@ -37,7 +37,7 @@ private const val TAG = "DetailsPresenter"
 @Composable
 fun DetailsPresenter(
   db: FDroidDatabase,
-  scope: CoroutineScope,
+  dispatcher: CoroutineDispatcher,
   repoManager: RepoManager,
   repoPreLoader: RepoPreLoader,
   updateChecker: UpdateChecker,
@@ -57,7 +57,7 @@ fun DetailsPresenter(
   val appDao = db.getAppDao()
   val app =
     produceState<App?>(null, currentRepoId) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           if (currentRepoId == null) {
             val flow = appDao.getApp(packageName).asFlow()
             flow.collect { value = it }
@@ -69,7 +69,7 @@ fun DetailsPresenter(
       .value ?: return null
   val versions =
     produceState<List<AppVersion>?>(null, currentRepoId) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           if (currentRepoId == null) {
             db.getVersionDao().getAppVersions(app.repoId, packageName).asFlow().collect {
               value = it
@@ -84,7 +84,7 @@ fun DetailsPresenter(
       .value
   val appPrefs =
     produceState<AppPrefs?>(null, packageName) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           db.getAppPrefsDao().getAppPrefs(packageName).asFlow().collect { value = it }
         }
       }
@@ -113,12 +113,12 @@ fun DetailsPresenter(
     }
   val repo =
     produceState<Repository?>(null) {
-        withContext(scope.coroutineContext) { value = repoManager.getRepository(app.repoId) }
+        withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
       }
       .value ?: return null
   val repositories =
     produceState(emptyList(), packageName) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           val repos =
             appDao.getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
               repoManager.getRepository(repoId)
@@ -175,7 +175,7 @@ fun DetailsPresenter(
     if (authorName == null) false
     else {
       produceState(false) {
-          withContext(scope.coroutineContext) {
+          withContext(dispatcher) {
             db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow().collect { value = it }
           }
         }

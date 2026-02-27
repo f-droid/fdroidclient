@@ -9,7 +9,7 @@ import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.time.measureTimedValue
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
@@ -37,7 +37,7 @@ constructor(
   private val repoManager: RepoManager,
   private val settingsManager: SettingsManager,
   private val installedAppsCache: InstalledAppsCache,
-  @param:IoDispatcher private val ioScope: CoroutineScope,
+  @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) {
 
   private val log = KotlinLogging.logger {}
@@ -57,7 +57,7 @@ constructor(
     }
 
   suspend fun search(term: String) =
-    withContext(ioScope.coroutineContext) {
+    withContext(ioDispatcher) {
       // we need a way to make the app crash for testing, e.g. the crash reporter
       if (term == "CrashMe") error("BOOOOOOOOM!!!")
 
