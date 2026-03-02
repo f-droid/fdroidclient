@@ -60,8 +60,6 @@ constructor(
     internal val log = KotlinLogging.logger {}
     internal const val READ_BUFFER = 8 * 1024
     private const val TIMEOUT_MILLIS_HIGH = 300_000L
-
-    public fun isInvalidHttpUrl(url: String): Boolean = url.toHttpUrlOrNull() == null
   }
 
   private var httpClient = getNewHttpClient(proxyConfig)

@@ -13,6 +13,7 @@ kotlin {
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
   abiValidation { enabled = true }
 
+  jvm()
   android {
     namespace = "org.fdroid.index"
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -26,7 +27,6 @@ kotlin {
       }
     }
 
-    withJava()
     compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
 
     withHostTest {
@@ -54,7 +54,6 @@ kotlin {
         implementation(libs.goncalossilva.resources)
       }
     }
-    // JVM is disabled for now, because Android app is including it instead of Android library
     jvmMain { dependencies {} }
     jvmTest { dependencies { implementation(libs.junit) } }
     androidMain {

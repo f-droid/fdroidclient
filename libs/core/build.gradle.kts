@@ -12,11 +12,11 @@ kotlin {
   abiValidation { enabled = true }
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
 
+  jvm()
   android {
     namespace = "org.fdroid.core"
     compileSdk = libs.versions.compileSdk.get().toInt()
     minSdk = 21
-    withJava()
     withHostTestBuilder {}.configure {}
     withDeviceTestBuilder { sourceSetTreeName = "test" }
     compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }

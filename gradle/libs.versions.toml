@@ -1,9 +1,9 @@
 [versions]
 compileSdk = "36"
 kotlin = "2.3.10"
-androidGradlePlugin = "8.13.2"
+androidGradlePlugin = "9.1.0"
 androidKspPlugin = "2.3.4"
-hilt = "2.57.2"
+hilt = "2.59.2"
 hiltWork = "1.3.0"
 hiltNavigationCompose = "1.3.0"
 dokka = "2.1.0"
@@ -20,7 +20,7 @@ okhttp = "4.12.0"
 room = "2.8.4"
 glide = "5.0.5"
 glideCompose = "1.0.0-beta08"
-coilCompose = "3.3.0"
+coilCompose = "3.4.0"
 molecule = "2.2.0"
 hints = "2.0.1"
 composePreference = "2.1.1"
@@ -38,7 +38,7 @@ androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.2.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2026.02.00"
+androidxComposeBom = "2026.02.01"
 androidxActivityCompose = "1.12.4"
 accompanistDrawablepainter = "0.37.3"
 
@@ -85,7 +85,7 @@ androidxTestUiautomator = "2.3.0"
 androidxTestMonitor = "1.8.0"
 mockitoCore = "5.1.1"
 hamcrest = "2.2"
-goncalossilvaResources = "0.2.1"
+goncalossilvaResources = "0.15.0"
 turbine = "1.2.1"
 json = "20220320"
 
@@ -209,7 +209,6 @@ android-multiplatform-library = { id = "com.android.kotlin.multiplatform.library
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

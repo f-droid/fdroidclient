@@ -7,6 +7,13 @@ import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertIs
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlin.test.fail
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.DbTest
 import org.fdroid.database.Repository
@@ -19,220 +26,209 @@ import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
 import org.fdroid.index.v2.FileV2
+import org.fdroid.test.TestUtils.getRes
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertIs
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 internal class IndexV1UpdaterTest : DbTest() {
 
-    @get:Rule
-    var tmpFolder: TemporaryFolder = TemporaryFolder()
+  @get:Rule var tmpFolder: TemporaryFolder = TemporaryFolder()
 
-    private val tempFileProvider: TempFileProvider = mockk()
-    private val downloaderFactory: DownloaderFactory = mockk()
-    private val downloader: Downloader = mockk()
-    private val compatibilityChecker: CompatibilityChecker = CompatibilityChecker { true }
-    private lateinit var indexUpdater: IndexV1Updater
+  private val tempFileProvider: TempFileProvider = mockk()
+  private val downloaderFactory: DownloaderFactory = mockk()
+  private val downloader: Downloader = mockk()
+  private val compatibilityChecker: CompatibilityChecker = CompatibilityChecker { true }
+  private lateinit var indexUpdater: IndexV1Updater
 
-    @Before
-    override fun createDb() {
-        super.createDb()
-        indexUpdater = IndexV1Updater(
-            database = db,
-            tempFileProvider = tempFileProvider,
-            downloaderFactory = downloaderFactory,
-            compatibilityChecker = compatibilityChecker,
-        )
+  @Before
+  override fun createDb() {
+    super.createDb()
+    indexUpdater =
+      IndexV1Updater(
+        database = db,
+        tempFileProvider = tempFileProvider,
+        downloaderFactory = downloaderFactory,
+        compatibilityChecker = compatibilityChecker,
+      )
+  }
+
+  @Test
+  fun testIndexV1Processing() {
+    val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL, certificate = TESTY_CERT)
+    val repo = repoDao.getRepository(repoId) ?: fail()
+    downloadIndex(repo, TESTY_JAR)
+    val result = indexUpdater.update(repo).noError()
+    assertIs<IndexUpdateResult.Processed>(result)
+
+    // repo got updated
+    val updatedRepo = repoDao.getRepository(repoId) ?: fail()
+    assertEquals(TESTY_CERT, updatedRepo.certificate)
+    assertEquals(TESTY_FINGERPRINT, updatedRepo.fingerprint)
+
+    // some assertions ported from old IndexV1UpdaterTest
+    assertEquals(1, repoDao.getRepositories().size)
+    assertEquals(63, appDao.countApps())
+    listOf("fake.app.one", "org.adaway", "This_does_not_exist").forEach { packageName ->
+      assertNull(appDao.getApp(packageName).getOrAwaitValue())
     }
-
-    @Test
-    fun testIndexV1Processing() {
-        val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL, certificate = TESTY_CERT)
-        val repo = repoDao.getRepository(repoId) ?: fail()
-        downloadIndex(repo, TESTY_JAR)
-        val result = indexUpdater.update(repo).noError()
-        assertIs<IndexUpdateResult.Processed>(result)
-
-        // repo got updated
-        val updatedRepo = repoDao.getRepository(repoId) ?: fail()
-        assertEquals(TESTY_CERT, updatedRepo.certificate)
-        assertEquals(TESTY_FINGERPRINT, updatedRepo.fingerprint)
-
-        // some assertions ported from old IndexV1UpdaterTest
-        assertEquals(1, repoDao.getRepositories().size)
-        assertEquals(63, appDao.countApps())
-        listOf("fake.app.one", "org.adaway", "This_does_not_exist").forEach { packageName ->
-            assertNull(appDao.getApp(packageName).getOrAwaitValue())
-        }
-        appDao.getAppMetadata().forEach { app ->
-            val numVersions = versionDao.getVersions(listOf(app.packageName)).size
-            assertTrue(numVersions > 0)
-        }
-        assertEquals(1497639511824, updatedRepo.timestamp)
-        assertEquals(TESTY_CANONICAL_URL, updatedRepo.address)
-        assertEquals("non-public test repo", updatedRepo.repository.name.values.first())
-        assertEquals(18, updatedRepo.version)
-        assertEquals("/icons/fdroid-icon.png", updatedRepo.repository.icon?.values?.first()?.name)
-        val description = "This is a repository of apps to be used with F-Droid. " +
-            "Applications in this repository are either official binaries built " +
-            "by the original application developers, or are binaries built " +
-            "from source by the admin of f-droid.org using the tools on " +
-            "https://gitlab.com/u/fdroid. "
-        assertEquals(description, updatedRepo.repository.description.values.first())
-        assertEquals(
-            setOf(TESTY_CANONICAL_URL, "http://frkcchxlcvnb4m5a.onion/fdroid/repo"),
-            updatedRepo.mirrors.map { it.url }.toSet(),
-        )
-
-        // Make sure the per-apk anti features which are new in index v1 get added correctly.
-        val wazeVersion = versionDao.getVersions(listOf("com.waze")).find {
-            it.manifest.versionCode == 1019841L
-        }
-        assertNotNull(wazeVersion)
-        assertEquals(setOf(ANTI_FEATURE_KNOWN_VULNERABILITY), wazeVersion.antiFeatures?.keys)
-
-        val protoVersion = versionDao.getAppVersions("io.proto.player").getOrFail().find {
-            it.version.versionCode == 1110L
-        }
-        assertNotNull(protoVersion)
-        assertEquals("/io.proto.player-1.apk", protoVersion.version.file.name)
-        val perms = protoVersion.usesPermission.map { it.name }
-        assertTrue(perms.contains(Manifest.permission.READ_EXTERNAL_STORAGE))
-        assertTrue(perms.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE))
-        assertFalse(perms.contains(Manifest.permission.READ_CALENDAR))
-        val icon = appDao.getApp("com.autonavi.minimap").getOrFail()?.icon?.values?.first()?.name
-        assertEquals("/com.autonavi.minimap/en-US/icon.png", icon)
-
-        // update again and get unchanged
-        downloadIndex(updatedRepo, TESTY_JAR)
-        val result2 = indexUpdater.update(updatedRepo).noError()
-        assertIs<IndexUpdateResult.Unchanged>(result2)
+    appDao.getAppMetadata().forEach { app ->
+      val numVersions = versionDao.getVersions(listOf(app.packageName)).size
+      assertTrue(numVersions > 0)
     }
+    assertEquals(1497639511824, updatedRepo.timestamp)
+    assertEquals(TESTY_CANONICAL_URL, updatedRepo.address)
+    assertEquals("non-public test repo", updatedRepo.repository.name.values.first())
+    assertEquals(18, updatedRepo.version)
+    assertEquals("/icons/fdroid-icon.png", updatedRepo.repository.icon?.values?.first()?.name)
+    val description =
+      "This is a repository of apps to be used with F-Droid. " +
+        "Applications in this repository are either official binaries built " +
+        "by the original application developers, or are binaries built " +
+        "from source by the admin of f-droid.org using the tools on " +
+        "https://gitlab.com/u/fdroid. "
+    assertEquals(description, updatedRepo.repository.description.values.first())
+    assertEquals(
+      setOf(TESTY_CANONICAL_URL, "http://frkcchxlcvnb4m5a.onion/fdroid/repo"),
+      updatedRepo.mirrors.map { it.url }.toSet(),
+    )
 
-    @Test
-    fun testIndexV1WithWrongCert() {
-        val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
-        val repo = repoDao.getRepository(repoId) ?: fail()
-        downloadIndex(repo, TESTY_JAR)
-        val result = indexUpdater.update(repo)
-        assertIs<IndexUpdateResult.Error>(result)
-        assertIs<SigningException>(result.e)
+    // Make sure the per-apk anti features which are new in index v1 get added correctly.
+    val wazeVersion =
+      versionDao.getVersions(listOf("com.waze")).find { it.manifest.versionCode == 1019841L }
+    assertNotNull(wazeVersion)
+    assertEquals(setOf(ANTI_FEATURE_KNOWN_VULNERABILITY), wazeVersion.antiFeatures?.keys)
 
-        // check that the DB transaction was rolled back and the DB wasn't changed
-        // except for adding the error to the repo
-        val expectedRepo = repo.copy(
-            preferences = repo.preferences.copy(
-                errorCount = 1,
-                lastError = "Signing certificate does not match"
-            ),
-        )
-        assertEquals(expectedRepo, repoDao.getRepository(repoId) ?: fail())
-        assertEquals(0, appDao.countApps())
-        assertEquals(0, versionDao.countAppVersions())
-    }
+    val protoVersion =
+      versionDao.getAppVersions("io.proto.player").getOrFail().find {
+        it.version.versionCode == 1110L
+      }
+    assertNotNull(protoVersion)
+    assertEquals("/io.proto.player-1.apk", protoVersion.version.file.name)
+    val perms = protoVersion.usesPermission.map { it.name }
+    assertTrue(perms.contains(Manifest.permission.READ_EXTERNAL_STORAGE))
+    assertTrue(perms.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+    assertFalse(perms.contains(Manifest.permission.READ_CALENDAR))
+    val icon = appDao.getApp("com.autonavi.minimap").getOrFail()?.icon?.values?.first()?.name
+    assertEquals("/com.autonavi.minimap/en-US/icon.png", icon)
 
-    @Test
-    fun testIndexV1WithOldTimestamp() {
-        val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
-        val repo = repoDao.getRepository(repoId) ?: fail()
-        val futureRepo =
-            repo.copy(repository = repo.repository.copy(timestamp = System.currentTimeMillis()))
-        downloadIndex(futureRepo, TESTY_JAR)
-        val result = indexUpdater.update(futureRepo)
-        assertIs<IndexUpdateResult.Error>(result)
-        assertIs<OldIndexException>(result.e)
-        assertFalse((result.e as OldIndexException).isSameTimestamp)
-    }
+    // update again and get unchanged
+    downloadIndex(updatedRepo, TESTY_JAR)
+    val result2 = indexUpdater.update(updatedRepo).noError()
+    assertIs<IndexUpdateResult.Unchanged>(result2)
+  }
 
-    @Test
-    fun testIndexV1WithCorruptAppPackageName() {
-        val result = testBadTestyJar("testy.at.or.at_corrupt_app_package_name_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-    }
+  @Test
+  fun testIndexV1WithWrongCert() {
+    val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
+    val repo = repoDao.getRepository(repoId) ?: fail()
+    downloadIndex(repo, TESTY_JAR)
+    val result = indexUpdater.update(repo)
+    assertIs<IndexUpdateResult.Error>(result)
+    assertIs<SigningException>(result.e)
 
-    @Test
-    fun testIndexV1WithCorruptPackageName() {
-        val result = testBadTestyJar("testy.at.or.at_corrupt_package_name_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-    }
+    // check that the DB transaction was rolled back and the DB wasn't changed
+    // except for adding the error to the repo
+    val expectedRepo =
+      repo.copy(
+        preferences =
+          repo.preferences.copy(errorCount = 1, lastError = "Signing certificate does not match")
+      )
+    assertEquals(expectedRepo, repoDao.getRepository(repoId) ?: fail())
+    assertEquals(0, appDao.countApps())
+    assertEquals(0, versionDao.countAppVersions())
+  }
 
-    @Test
-    fun testIndexV1WithBadTestyJarNoManifest() {
-        val result = testBadTestyJar("testy.at.or.at_no-MANIFEST.MF_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-        assertIs<SigningException>(result.e)
-    }
+  @Test
+  fun testIndexV1WithOldTimestamp() {
+    val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
+    val repo = repoDao.getRepository(repoId) ?: fail()
+    val futureRepo =
+      repo.copy(repository = repo.repository.copy(timestamp = System.currentTimeMillis()))
+    downloadIndex(futureRepo, TESTY_JAR)
+    val result = indexUpdater.update(futureRepo)
+    assertIs<IndexUpdateResult.Error>(result)
+    assertIs<OldIndexException>(result.e)
+    assertFalse((result.e as OldIndexException).isSameTimestamp)
+  }
 
-    @Test
-    fun testIndexV1WithBadTestyJarNoSigningCert() {
-        val result = testBadTestyJar("testy.at.or.at_no-.RSA_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-    }
+  @Test
+  fun testIndexV1WithCorruptAppPackageName() {
+    val result = testBadTestyJar("testy.at.or.at_corrupt_app_package_name_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+  }
 
-    @Test
-    fun testIndexV1WithBadTestyJarNoSignature() {
-        val result = testBadTestyJar("testy.at.or.at_no-.SF_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-    }
+  @Test
+  fun testIndexV1WithCorruptPackageName() {
+    val result = testBadTestyJar("testy.at.or.at_corrupt_package_name_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+  }
 
-    @Test
-    fun testIndexV1WithBadTestyJarNoSignatureFiles() {
-        val result = testBadTestyJar("testy.at.or.at_no-signature_index-v1.jar")
-        assertIs<IndexUpdateResult.Error>(result)
-        assertIs<SigningException>(result.e)
-    }
+  @Test
+  fun testIndexV1WithBadTestyJarNoManifest() {
+    val result = testBadTestyJar("testy.at.or.at_no-MANIFEST.MF_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+    assertIs<SigningException>(result.e)
+  }
 
-    @Suppress("DEPRECATION")
-    private fun downloadIndex(repo: Repository, jar: String) {
-        val uri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
-        val indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME")
+  @Test
+  fun testIndexV1WithBadTestyJarNoSigningCert() {
+    val result = testBadTestyJar("testy.at.or.at_no-.RSA_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+  }
 
-        val jarFile = tmpFolder.newFile()
-        assets.open(jar).use { inputStream ->
-            jarFile.outputStream().use { inputStream.copyTo(it) }
-        }
-        every { tempFileProvider.createTempFile(null) } returns jarFile
-        every {
-            downloaderFactory.createWithTryFirstMirror(repo, uri, indexFile, jarFile)
-        } returns downloader
-        every { downloader.cacheTag = null } just Runs
-        every { downloader.download() } just Runs
-        every { downloader.hasChanged() } returns true
-        every { downloader.cacheTag } returns null
-    }
+  @Test
+  fun testIndexV1WithBadTestyJarNoSignature() {
+    val result = testBadTestyJar("testy.at.or.at_no-.SF_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+  }
 
-    private fun testBadTestyJar(jar: String): IndexUpdateResult {
-        val repoId = repoDao.insertEmptyRepo("http://example.org")
-        val repo = repoDao.getRepository(repoId) ?: fail()
-        downloadIndex(repo, jar)
-        return indexUpdater.update(repo)
-    }
+  @Test
+  fun testIndexV1WithBadTestyJarNoSignatureFiles() {
+    val result = testBadTestyJar("testy.at.or.at_no-signature_index-v1.jar")
+    assertIs<IndexUpdateResult.Error>(result)
+    assertIs<SigningException>(result.e)
+  }
 
-    /**
-     * Easier for debugging, if we throw the index error.
-     */
-    private fun IndexUpdateResult.noError(): IndexUpdateResult {
-        if (this is IndexUpdateResult.Error) throw e
-        return this
-    }
+  @Suppress("DEPRECATION")
+  private fun downloadIndex(repo: Repository, jar: String) {
+    val uri = Uri.parse("${repo.address}/$SIGNED_FILE_NAME")
+    val indexFile = FileV2.fromPath("/$SIGNED_FILE_NAME")
 
+    val jarFile = tmpFolder.newFile()
+    getRes(jar).use { inputStream -> jarFile.outputStream().use { inputStream.copyTo(it) } }
+    every { tempFileProvider.createTempFile(null) } returns jarFile
+    every { downloaderFactory.createWithTryFirstMirror(repo, uri, indexFile, jarFile) } returns
+      downloader
+    every { downloader.cacheTag = null } just Runs
+    every { downloader.download() } just Runs
+    every { downloader.hasChanged() } returns true
+    every { downloader.cacheTag } returns null
+  }
+
+  private fun testBadTestyJar(jar: String): IndexUpdateResult {
+    val repoId = repoDao.insertEmptyRepo("http://example.org")
+    val repo = repoDao.getRepository(repoId) ?: fail()
+    downloadIndex(repo, jar)
+    return indexUpdater.update(repo)
+  }
+
+  /** Easier for debugging, if we throw the index error. */
+  private fun IndexUpdateResult.noError(): IndexUpdateResult {
+    if (this is IndexUpdateResult.Error) throw e
+    return this
+  }
 }
 
 private const val TESTY_CANONICAL_URL = "http://testy.at.or.at/fdroid/repo"
 private const val TESTY_JAR = "testy.at.or.at_index-v1.jar"
 private const val TESTY_FINGERPRINT =
-    "818e469465f96b704e27be2fee4c63ab9f83ddf30e7a34c7371a4728d83b0bc1"
-private const val TESTY_CERT = "308204e1308202c9a0030201020204483450fa300d06092a864886f70d01010b" +
+  "818e469465f96b704e27be2fee4c63ab9f83ddf30e7a34c7371a4728d83b0bc1"
+private const val TESTY_CERT =
+  "308204e1308202c9a0030201020204483450fa300d06092a864886f70d01010b" +
     "050030213110300e060355040b1307462d44726f6964310d300b060355040313" +
     "04736f7661301e170d3136303832333133333131365a170d3434303130393133" +
     "333131365a30213110300e060355040b1307462d44726f6964310d300b060355" +

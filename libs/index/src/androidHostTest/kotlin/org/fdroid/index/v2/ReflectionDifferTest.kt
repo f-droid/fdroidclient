@@ -13,7 +13,6 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.IndexParser
 import org.fdroid.index.IndexParser.json
 import org.fdroid.index.parseV2
@@ -22,6 +21,7 @@ import org.fdroid.test.DiffUtils.cleanMetadata
 import org.fdroid.test.DiffUtils.cleanRepo
 import org.fdroid.test.DiffUtils.cleanVersion
 import org.fdroid.test.LOCALE
+import org.fdroid.test.TestUtils.ASSET_PATH
 
 internal class ReflectionDifferTest {
 

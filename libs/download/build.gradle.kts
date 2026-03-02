@@ -11,12 +11,13 @@ kotlin {
   explicitApi()
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
   abiValidation { enabled = true }
+
+  jvm()
   android {
     namespace = "org.fdroid.download"
     compileSdk = libs.versions.compileSdk.get().toInt()
     minSdk = 21
 
-    withJava()
     compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
 
     withHostTest { packaging { resources.excludes.add("META-INF/*") } }
@@ -24,7 +25,7 @@ kotlin {
       instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
       instrumentationRunnerArguments["disableAnalytics"] = "true"
     }
-
+    androidResources { enable = true }
     lint {
       checkReleaseBuilds = false
       abortOnError = true
@@ -51,7 +52,6 @@ kotlin {
         implementation(libs.mockk)
       }
     }
-    // JVM is disabled for now, because Android app is including it instead of Android library
     jvmMain { dependencies { implementation(libs.ktor.client.cio) } }
     jvmTest { dependencies { implementation(libs.junit) } }
     androidMain {

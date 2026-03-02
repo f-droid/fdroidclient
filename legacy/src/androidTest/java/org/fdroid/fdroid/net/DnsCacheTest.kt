@@ -1,10 +1,10 @@
 package org.fdroid.fdroid.net
 
-import org.fdroid.fdroid.Preferences
-import org.junit.Assert
 import java.net.InetAddress
 import java.util.Arrays
-import kotlin.test.Test
+import org.fdroid.fdroid.Preferences
+import org.junit.Assert
+import org.junit.Test
 
 class DnsCacheTest {
 

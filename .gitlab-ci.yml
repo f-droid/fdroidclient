@@ -129,7 +129,7 @@ libs download test:
     - changes:
         - libs/download/**/*
   script:
-    - ./gradlew :libs:download:testDebugUnitTest
+    - ./gradlew :libs:download:testAndroidHostTest
 
 libs index test:
   <<: *test-template
@@ -138,7 +138,7 @@ libs index test:
     - changes:
         - libs/index/**/*
   script:
-    - ./gradlew :libs:index:testDebugUnitTest
+    - ./gradlew :libs:index:testAndroidHostTest
 
 app lint:
   <<: *test-template
@@ -176,7 +176,7 @@ libs lint:
     - changes:
         - libs/**/*
   script:
-    - ./gradlew :libs:core:lint       :libs:database:lint       :libs:download:lint       :libs:index:lint       :libs:sharedTest:lint
+    - ./gradlew :libs:core:lint       :libs:database:lint       :libs:download:lint       :libs:index:lint
     - ./gradlew :libs:core:ktfmtCheck :libs:database:ktfmtCheck :libs:download:ktfmtCheck :libs:index:ktfmtCheck :libs:sharedTest:ktfmtCheck
     - ./gradlew checkLegacyAbi
 
@@ -332,9 +332,9 @@ libs database schema:
     - ./gradlew :app:installBasicDefaultDebug :legacy:installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
-    - ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck
+    - ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
-    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedCheck :libs:index:connectedCheck && break; done || exit 137
+    - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest && break; done || exit 137
   allow_failure:
     exit_codes: 137
 

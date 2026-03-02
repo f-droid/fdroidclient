@@ -4,7 +4,6 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.android.ksp)
   alias(libs.plugins.android.hilt)
-  alias(libs.plugins.jetbrains.kotlin.android)
   alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
   alias(libs.plugins.jetbrains.compose.compiler)
   alias(libs.plugins.screenshot)

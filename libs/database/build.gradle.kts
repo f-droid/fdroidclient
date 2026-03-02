@@ -1,5 +1,4 @@
 plugins {
-  alias(libs.plugins.jetbrains.kotlin.android)
   alias(libs.plugins.android.library)
   alias(libs.plugins.android.ksp)
   alias(libs.plugins.jetbrains.dokka)
@@ -26,14 +25,14 @@ android {
   }
   sourceSets {
     getByName("androidTest") {
-      java.srcDirs("src/dbTest/java")
+      kotlin.directories += "src/dbTest/java"
       // Adds exported schema location as test app assets.
-      assets.srcDirs(files("$projectDir/schemas"))
+      assets.directories += "$projectDir/schemas"
     }
     getByName("test") {
-      java.srcDirs("src/dbTest/java")
+      kotlin.directories += "src/dbTest/java"
       // Adds exported schema location as test app assets.
-      assets.srcDirs(files("$projectDir/schemas"))
+      assets.directories += "$projectDir/schemas"
     }
   }
   compileOptions {
@@ -41,7 +40,6 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
   testOptions {
-    targetSdk = 34 // relevant for instrumentation tests (targetSdk 21 fails on Android 14)
     unitTests { isIncludeAndroidResources = true }
   }
   androidResources {
@@ -60,8 +58,6 @@ android {
 
 kotlin {
   explicitApi()
-  @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-  abiValidation { enabled = true }
   compilerOptions {
     jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     optIn.add("kotlin.RequiresOptIn")

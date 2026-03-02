@@ -37,8 +37,8 @@ import org.fdroid.database.Repository
 import org.fdroid.database.RepositoryDaoInt
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.HttpManager
-import org.fdroid.download.HttpManager.Companion.isInvalidHttpUrl
 import org.fdroid.download.NotFoundException
+import org.fdroid.download.isInvalidHttpUrl
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoUpdater

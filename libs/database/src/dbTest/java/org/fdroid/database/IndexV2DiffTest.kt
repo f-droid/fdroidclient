@@ -1,6 +1,9 @@
 package org.fdroid.database
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import java.io.ByteArrayInputStream
+import java.io.InputStream
+import kotlin.test.assertFailsWith
 import kotlinx.serialization.SerializationException
 import org.fdroid.index.IndexParser
 import org.fdroid.index.parseV2
@@ -11,204 +14,225 @@ import org.fdroid.test.TestDataMaxV2.PACKAGE_NAME_3
 import org.fdroid.test.TestDataMaxV2.app3
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestUtils.getRes
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.ByteArrayInputStream
-import java.io.InputStream
-import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 internal class IndexV2DiffTest : DbTest() {
 
-    @Test
-    @Ignore("use for testing specific index on demand")
-    fun testBrokenIndexDiff() {
-        val endPath = "tmp/index-end.json"
-        val endIndex = IndexParser.parseV2(assets.open(endPath))
-        testDiff(
-            startPath = "tmp/index-start.json",
-            diffPath = "tmp/diff.json",
-            endIndex = endIndex,
-        )
-    }
+  @Test
+  @Ignore("use for testing specific index on demand")
+  fun testBrokenIndexDiff() {
+    val endPath = "tmp/index-end.json"
+    val endIndex = IndexParser.parseV2(getRes(endPath))
+    testDiff(startPath = "tmp/index-start.json", diffPath = "tmp/diff.json", endIndex = endIndex)
+  }
 
-    @Test
-    fun testEmptyToMin() = testDiff(
-        startPath = "index-empty-v2.json",
-        diffPath = "diff-empty-min/23.json",
-        endIndex = TestDataMinV2.index,
+  @Test
+  fun testEmptyToMin() =
+    testDiff(
+      startPath = "index-empty-v2.json",
+      diffPath = "diff-empty-min/23.json",
+      endIndex = TestDataMinV2.index,
     )
 
-    @Test
-    fun testEmptyToMid() = testDiff(
-        startPath = "index-empty-v2.json",
-        diffPath = "diff-empty-mid/23.json",
-        endIndex = TestDataMidV2.index,
+  @Test
+  fun testEmptyToMid() =
+    testDiff(
+      startPath = "index-empty-v2.json",
+      diffPath = "diff-empty-mid/23.json",
+      endIndex = TestDataMidV2.index,
     )
 
-    @Test
-    fun testEmptyToMax() = testDiff(
-        startPath = "index-empty-v2.json",
-        diffPath = "diff-empty-max/23.json",
-        endIndex = TestDataMaxV2.index,
+  @Test
+  fun testEmptyToMax() =
+    testDiff(
+      startPath = "index-empty-v2.json",
+      diffPath = "diff-empty-max/23.json",
+      endIndex = TestDataMaxV2.index,
     )
 
-    @Test
-    fun testMinToMid() = testDiff(
-        startPath = "index-min-v2.json",
-        diffPath = "diff-empty-mid/42.json",
-        endIndex = TestDataMidV2.index,
+  @Test
+  fun testMinToMid() =
+    testDiff(
+      startPath = "index-min-v2.json",
+      diffPath = "diff-empty-mid/42.json",
+      endIndex = TestDataMidV2.index,
     )
 
-    @Test
-    fun testMinToMax() = testDiff(
-        startPath = "index-min-v2.json",
-        diffPath = "diff-empty-max/42.json",
-        endIndex = TestDataMaxV2.index,
+  @Test
+  fun testMinToMax() =
+    testDiff(
+      startPath = "index-min-v2.json",
+      diffPath = "diff-empty-max/42.json",
+      endIndex = TestDataMaxV2.index,
     )
 
-    @Test
-    fun testMidToMax() = testDiff(
-        startPath = "index-mid-v2.json",
-        diffPath = "diff-empty-max/1337.json",
-        endIndex = TestDataMaxV2.index,
+  @Test
+  fun testMidToMax() =
+    testDiff(
+      startPath = "index-mid-v2.json",
+      diffPath = "diff-empty-max/1337.json",
+      endIndex = TestDataMaxV2.index,
     )
 
-    @Test
-    fun testMinRemoveApp() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": null
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(packages = emptyMap()),
-        )
-    }
-
-    @Test
-    fun testMinNoMetadataRemoveVersion() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": {
-                "added": 0
-              },
-              "versions": {
-                "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": null
+  @Test
+  fun testMinRemoveApp() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": null
+                }
               }
-            }
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = TestDataMinV2.index.packages.mapValues {
-                    it.value.copy(versions = emptyMap())
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex = TestDataMinV2.index.copy(packages = emptyMap()),
+    )
+  }
+
+  @Test
+  fun testMinNoMetadataRemoveVersion() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": {
+                      "added": 0
+                    },
+                    "versions": {
+                      "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf": null
+                    }
+                  }
                 }
-            ),
-        )
-    }
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex =
+        TestDataMinV2.index.copy(
+          packages = TestDataMinV2.index.packages.mapValues { it.value.copy(versions = emptyMap()) }
+        ),
+    )
+  }
 
-    @Test
-    fun testMinNoVersionsUnknownKey() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": {
-                "added": 42
-              },
-              "unknownKey": "should get ignored" 
-            }
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = TestDataMinV2.index.packages.mapValues {
-                    it.value.copy(metadata = it.value.metadata.copy(added = 42))
+  @Test
+  fun testMinNoVersionsUnknownKey() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": {
+                      "added": 42
+                    },
+                    "unknownKey": "should get ignored" 
+                  }
                 }
-            ),
-        )
-    }
-
-    @Test
-    fun testMinRemoveMetadata() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": null
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex =
+        TestDataMinV2.index.copy(
+          packages =
+            TestDataMinV2.index.packages.mapValues {
+              it.value.copy(metadata = it.value.metadata.copy(added = 42))
             }
-          },
-          "unknownKey": "should get ignored" 
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = emptyMap()
-            ),
-        )
-    }
+        ),
+    )
+  }
 
-    @Test
-    fun testMinRemoveVersions() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "versions": null
-            }
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = TestDataMinV2.index.packages.mapValues {
-                    it.value.copy(versions = emptyMap())
+  @Test
+  fun testMinRemoveMetadata() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": null
+                  }
+                },
+                "unknownKey": "should get ignored" 
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex = TestDataMinV2.index.copy(packages = emptyMap()),
+    )
+  }
+
+  @Test
+  fun testMinRemoveVersions() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "versions": null
+                  }
                 }
-            ),
-        )
-    }
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex =
+        TestDataMinV2.index.copy(
+          packages = TestDataMinV2.index.packages.mapValues { it.value.copy(versions = emptyMap()) }
+        ),
+    )
+  }
 
-    @Test
-    @Ignore("Removing all packages via diff currently not supported") // TODO
-    fun testMinRemovePackages() {
-        val diffJson = """{
-          "packages": null
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = emptyMap(),
-            ),
-        )
-    }
+  @Test
+  @Ignore("Removing all packages via diff currently not supported") // TODO
+  fun testMinRemovePackages() {
+    val diffJson =
+      """
+      {
+                "packages": null
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex = TestDataMinV2.index.copy(packages = emptyMap()),
+    )
+  }
 
-    @Test
-    fun testMinNoMetadataNoVersion() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-            }
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index,
-        )
-    }
+  @Test
+  fun testMinNoMetadataNoVersion() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                  }
+                }
+              }
+      """
+        .trimIndent()
+    testJsonDiff(startPath = "index-min-v2.json", diff = diffJson, endIndex = TestDataMinV2.index)
+  }
 
-    @Test
-    fun testMaxRemoveOptionals() {
-        val diffJson = """{
+  @Test
+  fun testMaxRemoveOptionals() {
+    val diffJson =
+      """{
           "packages": {
             "$PACKAGE_NAME_3": {
                 "metadata": {
@@ -247,111 +271,124 @@ internal class IndexV2DiffTest : DbTest() {
                   }
                 }
             }
-        }""".trimIndent()
-        val packages = TestDataMaxV2.index.packages.toMutableMap()
-        val versions = packages[PACKAGE_NAME_3]!!.versions.toMutableMap()
-        val version = versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"]!!
-        versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"] = version
-            .copy(
-                src = null,
-                releaseChannels = emptyList(),
-                antiFeatures = emptyMap(),
-                whatsNew = emptyMap(),
-                manifest = version.manifest.copy(
-                    usesSdk = null,
-                    maxSdkVersion = null,
-                    signer = null,
-                    usesPermission = emptyList(),
-                    usesPermissionSdk23 = emptyList(),
-                    nativecode = emptyList(),
-                    features = emptyList(),
-                )
-            )
-        packages[PACKAGE_NAME_3] = app3.copy(
-            metadata = app3.metadata.copy(
-                name = null,
-                summary = null,
-                description = null,
-                categories = emptyList(),
-                donate = emptyList(),
-                icon = null,
-                featureGraphic = null,
-                promoGraphic = null,
-                tvBanner = null,
-                video = null,
-                screenshots = null,
-            ),
-            versions = versions,
-        )
-        testJsonDiff(
-            startPath = "index-max-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMaxV2.index.copy(packages = packages),
-        )
-    }
+        }"""
+        .trimIndent()
+    val packages = TestDataMaxV2.index.packages.toMutableMap()
+    val versions = packages[PACKAGE_NAME_3]!!.versions.toMutableMap()
+    val version = versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"]!!
+    versions["8c89ce2f42f4a89af8ca6e1ea220f9dfdee220724d8a9cc067d510ac6f3e0d06"] =
+      version.copy(
+        src = null,
+        releaseChannels = emptyList(),
+        antiFeatures = emptyMap(),
+        whatsNew = emptyMap(),
+        manifest =
+          version.manifest.copy(
+            usesSdk = null,
+            maxSdkVersion = null,
+            signer = null,
+            usesPermission = emptyList(),
+            usesPermissionSdk23 = emptyList(),
+            nativecode = emptyList(),
+            features = emptyList(),
+          ),
+      )
+    packages[PACKAGE_NAME_3] =
+      app3.copy(
+        metadata =
+          app3.metadata.copy(
+            name = null,
+            summary = null,
+            description = null,
+            categories = emptyList(),
+            donate = emptyList(),
+            icon = null,
+            featureGraphic = null,
+            promoGraphic = null,
+            tvBanner = null,
+            video = null,
+            screenshots = null,
+          ),
+        versions = versions,
+      )
+    testJsonDiff(
+      startPath = "index-max-v2.json",
+      diff = diffJson,
+      endIndex = TestDataMaxV2.index.copy(packages = packages),
+    )
+  }
 
-    @Test
-    fun testAppDenyKeyList() {
-        val diffRepoIdJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": {
-                "repoId": 1
+  @Test
+  fun testAppDenyKeyList() {
+    val diffRepoIdJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": {
+                      "repoId": 1
+                    }
+                  }
+                }
               }
-            }
-          }
-        }""".trimIndent()
-        assertFailsWith<SerializationException> {
-            testJsonDiff(
-                startPath = "index-min-v2.json",
-                diff = diffRepoIdJson,
-                endIndex = TestDataMinV2.index,
-            )
-        }
-        val diffPackageNameJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": {
-                "packageName": "foo"
+      """
+        .trimIndent()
+    assertFailsWith<SerializationException> {
+      testJsonDiff(
+        startPath = "index-min-v2.json",
+        diff = diffRepoIdJson,
+        endIndex = TestDataMinV2.index,
+      )
+    }
+    val diffPackageNameJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": {
+                      "packageName": "foo"
+                    }
+                  }
+                }
               }
-            }
-          }
-        }""".trimIndent()
-        assertFailsWith<SerializationException> {
-            testJsonDiff(
-                startPath = "index-min-v2.json",
-                diff = diffPackageNameJson,
-                endIndex = TestDataMinV2.index,
-            )
-        }
+      """
+        .trimIndent()
+    assertFailsWith<SerializationException> {
+      testJsonDiff(
+        startPath = "index-min-v2.json",
+        diff = diffPackageNameJson,
+        endIndex = TestDataMinV2.index,
+      )
     }
+  }
 
-    @Test
-    fun testVersionsDenyKeyList() {
-        assertFailsWith<SerializationException> {
-            testJsonDiff(
-                startPath = "index-min-v2.json",
-                diff = getMinVersionJson(""""packageName": "foo""""),
-                endIndex = TestDataMinV2.index,
-            )
-        }
-        assertFailsWith<SerializationException> {
-            testJsonDiff(
-                startPath = "index-min-v2.json",
-                diff = getMinVersionJson(""""repoId": 1"""),
-                endIndex = TestDataMinV2.index,
-            )
-        }
-        assertFailsWith<SerializationException> {
-            testJsonDiff(
-                startPath = "index-min-v2.json",
-                diff = getMinVersionJson(""""versionId": "bar""""),
-                endIndex = TestDataMinV2.index,
-            )
-        }
+  @Test
+  fun testVersionsDenyKeyList() {
+    assertFailsWith<SerializationException> {
+      testJsonDiff(
+        startPath = "index-min-v2.json",
+        diff = getMinVersionJson(""""packageName": "foo""""),
+        endIndex = TestDataMinV2.index,
+      )
     }
+    assertFailsWith<SerializationException> {
+      testJsonDiff(
+        startPath = "index-min-v2.json",
+        diff = getMinVersionJson(""""repoId": 1"""),
+        endIndex = TestDataMinV2.index,
+      )
+    }
+    assertFailsWith<SerializationException> {
+      testJsonDiff(
+        startPath = "index-min-v2.json",
+        diff = getMinVersionJson(""""versionId": "bar""""),
+        endIndex = TestDataMinV2.index,
+      )
+    }
+  }
 
-    private fun getMinVersionJson(insert: String) = """{
+  private fun getMinVersionJson(insert: String) =
+    """{
       "packages": {
         "org.fdroid.min1": {
           "versions": {
@@ -360,87 +397,97 @@ internal class IndexV2DiffTest : DbTest() {
             }
         }
       }
-    }""".trimIndent()
+    }"""
+      .trimIndent()
 
-    @Test
-    fun testMidRemoveScreenshots() {
-        val diffRepoIdJson = """{
-          "packages": {
-            "org.fdroid.fdroid": {
-              "metadata": {
-                "screenshots": null
-              }
-            }
-          }
-        }""".trimIndent()
-        val fdroidPackage = TestDataMidV2.packages["org.fdroid.fdroid"]!!.copy(
-            metadata = TestDataMidV2.packages["org.fdroid.fdroid"]!!.metadata.copy(
-                screenshots = null,
-            )
-        )
-        testJsonDiff(
-            startPath = "index-mid-v2.json",
-            diff = diffRepoIdJson,
-            endIndex = TestDataMidV2.index.copy(
-                packages = mapOf(
-                    TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1,
-                    TestDataMidV2.PACKAGE_NAME_2 to fdroidPackage,
-                )
-            ),
-        )
-    }
-
-    @Test
-    fun testMinAddChinese() {
-        val diffJson = """{
-          "packages": {
-            "org.fdroid.min1": {
-              "metadata": {
-                "name": { "zh-CN": "自由软件仓库" },
-                "summary": { "ja": "这个仓库中的" },
-                "description": { "ko-KR": "切始终是从" }
-              }
-            }
-          }
-        }""".trimIndent()
-        testJsonDiff(
-            startPath = "index-min-v2.json",
-            diff = diffJson,
-            endIndex = TestDataMinV2.index.copy(
-                packages = TestDataMinV2.index.packages.mapValues {
-                    it.value.copy(
-                        metadata = it.value.metadata.copy(
-                            // zero whitespaces (to separate tokens) will be added in testJsonDiff()
-                            name = mapOf("zh-CN" to "自由软件仓库"),
-                            summary = mapOf("ja" to "这个仓库中的"),
-                            description = mapOf("ko-KR" to "切始终是从"),
-                        )
-                    )
+  @Test
+  fun testMidRemoveScreenshots() {
+    val diffRepoIdJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.fdroid": {
+                    "metadata": {
+                      "screenshots": null
+                    }
+                  }
                 }
-            ),
-        )
-    }
+              }
+      """
+        .trimIndent()
+    val fdroidPackage =
+      TestDataMidV2.packages["org.fdroid.fdroid"]!!.copy(
+        metadata = TestDataMidV2.packages["org.fdroid.fdroid"]!!.metadata.copy(screenshots = null)
+      )
+    testJsonDiff(
+      startPath = "index-mid-v2.json",
+      diff = diffRepoIdJson,
+      endIndex =
+        TestDataMidV2.index.copy(
+          packages =
+            mapOf(
+              TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1,
+              TestDataMidV2.PACKAGE_NAME_2 to fdroidPackage,
+            )
+        ),
+    )
+  }
 
-    private fun testJsonDiff(startPath: String, diff: String, endIndex: IndexV2) {
-        testDiff(startPath, ByteArrayInputStream(diff.toByteArray()), endIndex)
-    }
+  @Test
+  fun testMinAddChinese() {
+    val diffJson =
+      """
+      {
+                "packages": {
+                  "org.fdroid.min1": {
+                    "metadata": {
+                      "name": { "zh-CN": "自由软件仓库" },
+                      "summary": { "ja": "这个仓库中的" },
+                      "description": { "ko-KR": "切始终是从" }
+                    }
+                  }
+                }
+              }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-min-v2.json",
+      diff = diffJson,
+      endIndex =
+        TestDataMinV2.index.copy(
+          packages =
+            TestDataMinV2.index.packages.mapValues {
+              it.value.copy(
+                metadata =
+                  it.value.metadata.copy(
+                    // zero whitespaces (to separate tokens) will be added in testJsonDiff()
+                    name = mapOf("zh-CN" to "自由软件仓库"),
+                    summary = mapOf("ja" to "这个仓库中的"),
+                    description = mapOf("ko-KR" to "切始终是从"),
+                  )
+              )
+            }
+        ),
+    )
+  }
 
-    private fun testDiff(startPath: String, diffPath: String, endIndex: IndexV2) {
-        testDiff(startPath, assets.open(diffPath), endIndex)
-    }
+  private fun testJsonDiff(startPath: String, diff: String, endIndex: IndexV2) {
+    testDiff(startPath, ByteArrayInputStream(diff.toByteArray()), endIndex)
+  }
 
-    private fun testDiff(startPath: String, diffStream: InputStream, endIndex: IndexV2) {
-        // stream start index into the DB
-        val repoId = streamIndexV2IntoDb(startPath)
+  private fun testDiff(startPath: String, diffPath: String, endIndex: IndexV2) {
+    testDiff(startPath, getRes(diffPath), endIndex)
+  }
 
-        // apply diff stream to the DB
-        val streamReceiver = DbV2DiffStreamReceiver(db, repoId) { true }
-        val streamProcessor = IndexV2DiffStreamProcessor(streamReceiver)
-        db.runInTransaction {
-            streamProcessor.process(42, diffStream) {}
-        }
-        // assert that changed DB data is equal to given endIndex
-        assertDbEquals(repoId, endIndex)
-    }
+  private fun testDiff(startPath: String, diffStream: InputStream, endIndex: IndexV2) {
+    // stream start index into the DB
+    val repoId = streamIndexV2IntoDb(startPath)
 
+    // apply diff stream to the DB
+    val streamReceiver = DbV2DiffStreamReceiver(db, repoId) { true }
+    val streamProcessor = IndexV2DiffStreamProcessor(streamReceiver)
+    db.runInTransaction { streamProcessor.process(42, diffStream) {} }
+    // assert that changed DB data is equal to given endIndex
+    assertDbEquals(repoId, endIndex)
+  }
 }

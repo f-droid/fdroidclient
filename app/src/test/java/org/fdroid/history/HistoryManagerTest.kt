@@ -8,10 +8,10 @@ import io.mockk.mockk
 import io.mockk.verify
 import java.io.FileOutputStream
 import kotlin.random.Random
-import kotlin.test.Test
 import kotlin.test.assertEquals
 import org.fdroid.settings.SettingsManager
 import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
 private const val MAX_EVENTS = 10

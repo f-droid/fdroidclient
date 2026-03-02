@@ -1,7 +1,6 @@
 package org.fdroid.repo
 
 import android.content.Context
-import android.content.res.AssetManager
 import android.net.Uri
 import android.os.UserManager
 import android.os.UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES
@@ -68,6 +67,7 @@ import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.decodeHex
 import org.fdroid.test.TestUtils.getRandomString
+import org.fdroid.test.TestUtils.getRes
 import org.fdroid.test.VerifierConstants
 import org.junit.Rule
 import org.junit.Test
@@ -90,7 +90,6 @@ internal class RepoAdderTest {
   private val digest = mockk<MessageDigest>()
 
   private val repoAdder: RepoAdder
-  private val assets: AssetManager = context.resources.assets
   private val localeList = LocaleListCompat.getDefault()
 
   init {
@@ -486,9 +485,7 @@ internal class RepoAdderTest {
     every { downloader.download() } answers
       {
         jarFile.outputStream().use { outputStream ->
-          assets.open("diff-empty-min/entry.jar").use { inputStream ->
-            inputStream.copyTo(outputStream)
-          }
+          getRes("diff-empty-min/entry.jar").use { inputStream -> inputStream.copyTo(outputStream) }
         }
       }
     coEvery {
@@ -601,9 +598,7 @@ internal class RepoAdderTest {
     every { downloader.download() } answers
       {
         jarFile.outputStream().use { outputStream ->
-          assets.open("diff-empty-min/entry.jar").use { inputStream ->
-            inputStream.copyTo(outputStream)
-          }
+          getRes("diff-empty-min/entry.jar").use { inputStream -> inputStream.copyTo(outputStream) }
         }
       }
     coEvery {
@@ -662,7 +657,7 @@ internal class RepoAdderTest {
     every { downloader.download() } answers
       {
         jarFile.outputStream().use { outputStream ->
-          assets.open("guardianproject_entry.jar").use { inputStream ->
+          getRes("guardianproject_entry.jar").use { inputStream ->
             inputStream.copyTo(outputStream)
           }
         }
@@ -737,7 +732,7 @@ internal class RepoAdderTest {
     every { downloaderV1.download() } answers
       {
         jarFile.outputStream().use { outputStream ->
-          assets.open("testy.at.or.at_index-v1.jar").use { inputStream ->
+          getRes("testy.at.or.at_index-v1.jar").use { inputStream ->
             inputStream.copyTo(outputStream)
           }
         }
@@ -898,7 +893,7 @@ internal class RepoAdderTest {
 
     val jarFile = folder.newFile()
 
-    val indexInputStream = assets.open(indexFile)
+    val indexInputStream = getRes(indexFile)
     val indexDigestStream = DigestInputStream(indexInputStream, digest)
 
     every { tempFileProvider.createTempFile(any()) } returns jarFile
@@ -914,7 +909,7 @@ internal class RepoAdderTest {
     every { downloader.download() } answers
       {
         jarFile.outputStream().use { outputStream ->
-          assets.open(entryJar).use { inputStream -> inputStream.copyTo(outputStream) }
+          getRes(entryJar).use { inputStream -> inputStream.copyTo(outputStream) }
         }
       }
     coEvery {

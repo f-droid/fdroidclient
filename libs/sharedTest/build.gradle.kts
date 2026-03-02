@@ -1,28 +1,29 @@
 plugins {
-  alias(libs.plugins.jetbrains.kotlin.android)
-  alias(libs.plugins.android.library)
+  alias(libs.plugins.jetbrains.kotlin.multiplatform)
+  alias(libs.plugins.android.multiplatform.library)
   alias(libs.plugins.ktfmt)
 }
 
-// not really an Android library, but index is not publishing for JVM at the moment
-android {
-  namespace = "org.fdroid.test"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-  defaultConfig { minSdk = 21 }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+kotlin {
+  jvm()
+  android {
+    namespace = "org.fdroid.test"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    minSdk = 21
+    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
   }
-}
+  sourceSets {
+    commonMain {
+      resources.srcDir("src/commonMain/resources")
+      dependencies {
+        implementation(project(":libs:download"))
+        implementation(project(":libs:index"))
 
-kotlin { compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 } }
-
-dependencies {
-  implementation(project(":libs:download"))
-  implementation(project(":libs:index"))
-
-  implementation(libs.kotlin.test)
-  implementation(libs.kotlinx.serialization.json)
+        implementation(libs.kotlin.test)
+        implementation(libs.kotlinx.serialization.json)
+      }
+    }
+  }
 }
 
 ktfmt { googleStyle() }

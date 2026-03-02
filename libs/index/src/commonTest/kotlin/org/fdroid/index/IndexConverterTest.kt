@@ -12,28 +12,26 @@ import org.fdroid.test.TestDataMinV2
 import org.fdroid.test.TestUtils.sorted
 import org.fdroid.test.v1compat
 
-internal const val ASSET_PATH = "../sharedTest/src/main/assets"
-
 internal class IndexConverterTest {
 
   @Test
   fun testEmpty() {
-    testConversation("$ASSET_PATH/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
+    testConversation("index-empty-v1.json", TestDataEmptyV2.index.v1compat())
   }
 
   @Test
   fun testMin() {
-    testConversation("$ASSET_PATH/index-min-v1.json", TestDataMinV2.index.v1compat())
+    testConversation("index-min-v1.json", TestDataMinV2.index.v1compat())
   }
 
   @Test
   fun testMid() {
-    testConversation("$ASSET_PATH/index-mid-v1.json", TestDataMidV2.indexCompat)
+    testConversation("index-mid-v1.json", TestDataMidV2.indexCompat)
   }
 
   @Test
   fun testMax() {
-    testConversation("$ASSET_PATH/index-max-v1.json", TestDataMaxV2.indexCompat)
+    testConversation("index-max-v1.json", TestDataMaxV2.indexCompat)
   }
 
   private fun testConversation(file: String, expectedIndex: IndexV2) {

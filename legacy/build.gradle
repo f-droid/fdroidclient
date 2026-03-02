@@ -1,6 +1,8 @@
+import com.android.build.api.variant.ResValue
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.compose'
 }
 
@@ -52,10 +54,11 @@ android {
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "PRIVILEGED_EXTENSION_PACKAGE_NAME", privilegedExtensionApplicationId
-            buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"' // String needs both quotes
+            buildConfigField "String", "ACRA_REPORT_EMAIL", '"reports@f-droid.org"'
+            // String needs both quotes
             buildConfigField "String", "ACRA_REPORT_FILE_NAME", '"ACRA-report.stacktrace.json"'
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
         }
         debug {
             getIsDefault().set(true)
@@ -63,7 +66,7 @@ android {
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'src/androidTest/proguard-rules.pro'
             println 'buildTypes.debug defaultConfig.versionCode ' + defaultConfig.versionCode
         }
     }
@@ -81,8 +84,14 @@ android {
             applicationIdSuffix ".basic"
         }
     }
-    applicationVariants.configureEach { variant ->
-        variant.resValue "string", "applicationId", variant.applicationId
+
+    androidComponents {
+        onVariants(selector().all()) { variant ->
+            variant.resValues.put(
+                    variant.makeResValueKey("string", "applicationId"),
+                    new ResValue(variant.applicationId.get(), null)
+            )
+        }
     }
 
     compileOptions {
@@ -91,8 +100,10 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = '17'
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
 
     aaptOptions {
@@ -101,6 +112,7 @@ android {
 
     buildFeatures {
         buildConfig true
+        resValues = true
         compose true
         aidl true
     }

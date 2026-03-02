@@ -10,11 +10,11 @@ import kotlin.test.assertTrue
 import kotlin.test.fail
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestUtils.ASSET_PATH
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder

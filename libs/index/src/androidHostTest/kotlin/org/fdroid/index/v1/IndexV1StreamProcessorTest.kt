@@ -9,7 +9,6 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 import kotlin.test.fail
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.IndexV2
@@ -22,6 +21,7 @@ import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestUtils.ASSET_PATH
 import org.fdroid.test.v1compat
 import org.junit.Test
 

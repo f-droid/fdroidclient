@@ -1,5 +1,6 @@
 package org.fdroid.test
 
+import java.io.InputStream
 import kotlin.random.Random
 import org.fdroid.index.v2.IndexV2
 import org.fdroid.index.v2.LocalizedFileListV2
@@ -7,6 +8,13 @@ import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.Screenshots
 
 object TestUtils {
+
+  const val ASSET_PATH = "../sharedTest/src/commonMain/resources"
+
+  fun getRes(file: String): InputStream {
+    val classLoader = TestUtils.javaClass.classLoader ?: error("no classloader")
+    return classLoader.getResourceAsStream(file) ?: error("no resource $file")
+  }
 
   fun String.decodeHex(): ByteArray {
     check(length % 2 == 0) { "Must have an even length" }
