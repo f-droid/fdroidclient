@@ -12,6 +12,6 @@
 
 * Lots of Swap/Nearby bugfixes and improvements
 
-* Fix one cause of reoccurring update notifications (#1271)
+* Fix one cause of re-occurring update notifications (#1271)
 
 * Make F-Droid recognise F-Droid nightly URLs from GitLab

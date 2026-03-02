@@ -427,7 +427,7 @@
     <string name="repo_num_apps_button">Taispeáin feidhmchláir</string>
     <string name="repo_archive_toggle">Cartlann stórtha</string>
     <string name="repo_archive_toggle_description">Taispeáin feidhmchláir chartlannaithe agus leaganacha as dáta d\'fheidhmchláir</string>
-    <string name="repo_fingerprint">Méarlorg na heochrach sínithe (SHA-256)</string>
+    <string name="repo_fingerprint">Méarlorg eochrach sínithe (SHA-256)</string>
     <string name="repo_description">Cur síos</string>
     <string name="repo_official_mirrors">Scátháin oifigiúla</string>
     <string name="repo_user_mirrors">Scátháin úsáideora</string>
@@ -707,6 +707,7 @@
     <string name="technical_info">Faisnéis theicniúil</string>
     <string name="package_name">Ainm an phacáiste:</string>
     <string name="installed_version">Leagan suiteáilte:</string>
-    <string name="call_to_action_keepandroidopen">Tá F-Droid faoi bhagairt. Tá Google ag athrú an chaoi a suiteálann tú aipeanna ar do ghuthán. Teastaíonn do chabhair uainn.</string>
+    <string name="call_to_action_keepandroidopen">Tá F-Droid faoi bhagairt. Tá Google ag athrú an chaoi a suiteálann tú aipeanna ar do ghléas. Teastaíonn do chabhair uainn.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Íoslódáil aipeanna ag baint úsáide as críochphointí gréasáin IPFS</string>
 </resources>

@@ -65,13 +65,11 @@
     <string name="no_handler_app">Δεν έχετε καμία διαθέσιμη εφαρμογή που μπορεί να χειριστεί %s.</string>
     <string name="theme">Θέμα</string>
     <string name="unsigned">Μη υπογεγραμμένη</string>
-    <string name="repo_fingerprint">Αποτύπωμα του κλειδιού υπογραφής (SHA-256)</string>
+    <string name="repo_fingerprint">Αποτύπωμα κλειδιού υπογραφής (SHA-256)</string>
     <string name="repo_description">Περιγραφή</string>
     <string name="unknown">Άγνωστο</string>
     <string name="repo_confirm_delete_title">Διαγραφή αποθετηρίου;</string>
-    <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.
-\n
-\n Θα χρειαστεί να ενεργοποιήσετε ξανά αυτό το αποθετήριο για να εγκαταστήσετε εφαρμογές από αυτό.</string>
+    <string name="repo_disabled_notification">Απενεργοποιημένο %1$s.\n\nΘα χρειαστεί να ενεργοποιήσετε ξανά αυτό το αποθετήριο για να εγκαταστήσετε εφαρμογές από αυτό.</string>
     <string name="not_on_same_wifi">Η συσκευή σας δεν είναι συνδεδεμένη στο ίδιο ασύρματο δίκτυο με το τοπικό αποθετήριο που μόλις προσθέσατε! Δοκιμάστε να συνδεθείτε στο δίκτυο: %s</string>
     <string name="requires_features">Απαιτεί: %1$s</string>
     <string name="app_name_full">F-Droid</string>
@@ -126,9 +124,7 @@
     <string name="permissions">Άδειες</string>
     <string name="unverified">Μη επαληθευμένη</string>
     <string name="repo_details">Αποθετήριο</string>
-    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δε θα είναι πλέον διαθέσιμες.
-\n
-\nΣημείωση: Όλες οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
+    <string name="repo_confirm_delete_body">Διαγράφοντας ένα αποθετήριο σημαίνει ότι εφαρμογές από αυτό δε θα είναι πλέον διαθέσιμες.\n\nΣημείωση: Όλες οι ήδη εγκατεστημένες εφαρμογές θα παραμείνουν στη συσκευή σας.</string>
     <string name="repo_added">Αποθηκευμένο αποθετήριο πακέτου %1$s.</string>
     <string name="repo_searching_address">Αναζήτηση για αποθετήριο πακέτου στο
 \n%1$s</string>
@@ -557,7 +553,7 @@
     <string name="ipfsgw_caption_official_gateways">Επίσημες πύλες IPFS</string>
     <string name="ipfsgw_caption_custom_gateways">Προσαρμοσμένες πύλες IPFS</string>
     <string name="repo_exists">Αυτό το αποθετήριο έχει ήδη προστεθεί.</string>
-    <string name="repo_archive_failed">Το αρχείο αποθετηρίων δεν είναι προς το παρόν διαθέσιμο</string>
+    <string name="repo_archive_failed">Το αρχείο αποθετηρίου δεν είναι προς το παρόν διαθέσιμο</string>
     <string name="repositories_last_update">Τελευταία ενημέρωση: %s</string>
     <string name="repositories_last_update_never">ποτέ</string>
     <string name="paste">Επικόλληση</string>
@@ -568,7 +564,7 @@
     <string name="useDnsCache">Χρήση DNS Cache</string>
     <string name="useDnsCacheSummary">Χρησιμοποιήστε αποθηκευμένα αποτελέσματα για να ελαχιστοποιήσετε τα ερωτήματα DNS.</string>
     <string name="turn_on_wifi">Ενεργοποιήστε το Wi-Fi</string>
-    <string name="targetsdk_or_later">στόχοι %s</string>
+    <string name="targetsdk_or_later">στοχεύει %s</string>
     <string name="repo_add_new_title">Προσθήκη αποθετηρίου</string>
     <string name="force_old_installer_title">Αναγκάστε τον παλιό εγκαταστάτη</string>
     <string name="force_old_installer_summary">Απενεργοποιήστε το πρόγραμμα εγκατάστασης περιόδου λειτουργίας, συμπεριλαμβανομένης της υποστήριξης για αυτόματες ενημερώσεις στο παρασκήνιο.</string>
@@ -599,9 +595,9 @@
         <item quantity="other">%d εφαρμογές</item>
     </plurals>
     <string name="repo_last_update_index">Τελευταία ενημέρωση αποθετηρίου: %s</string>
-    <string name="repo_last_update_check">Τελευταίος έλεγχος για ενημερώσεις αποθετηρίου: %s</string>
-    <string name="repo_confirm_delete_mirror_title">Διαγραφή mirror;</string>
-    <string name="share_mirror">Κοινοποίηση mirror</string>
+    <string name="repo_last_update_check">Τελευταίος έλεγχος για ενημέρωση αποθετηρίου: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Διαγραφή ειδώλου;</string>
+    <string name="share_mirror">Κοινοποίηση ειδώλου</string>
     <string name="show_repository_qr">Εμφάνιση κώδικα QR του αποθετηρίου</string>
     <string name="repo_basic_auth_username">Όνομα χρήστη: %s</string>
     <string name="repo_basic_auth_password">Κωδικός πρόσβασης: ***</string>
@@ -663,9 +659,11 @@
     <string name="anti_features_title">Αυτή η εφαρμογή έχει ανεπιθύμητα χαρακτηριστικά</string>
     <string name="repo_basic_auth_title">Βασικός έλεγχος ταυτότητας</string>
     <string name="crash_dialog_title_old">Το F-Droid είχε κρασάρει</string>
-    <string name="call_to_action_keepandroidopen">Το F-Droid είναι υπό απειλή. Η Google αλλάζει τον τρόπο με τον οποίο εγκαθιστάτε εφαρμογές στο τηλέφωνό σας. Χρειαζόμαστε τη βοήθειά σας.</string>
+    <string name="call_to_action_keepandroidopen">Το F-Droid είναι υπό απειλή. Η Google αλλάζει τον τρόπο με τον οποίο εγκαθιστάτε εφαρμογές στη συσκευή σας. Χρειαζόμαστε τη βοήθειά σας.</string>
     <string name="export_log_error">Σφάλμα αποθήκευσης logcat</string>
     <string name="export_log_success">Το logcat αποθηκεύτηκε με επιτυχία</string>
     <string name="pref_export_log_summary">Δημιουργεί ένα αρχείο με έξοδο του logcat χρήσιμο για αποσφαλμάτωση. Προσοχή, ίσως να περιλαμβάνει ευαίσθητες πληροφορίες!</string>
     <string name="ipfsgw_summary_new">Λήψη εφαρμογών με χρήση τελικών σημείων ιστού IPFS</string>
+    <string name="repo_confirm_delete_mirror_body">Μπορείτε να συνεχίσετε την εγκατάσταση εφαρμογών από αυτό το αποθετήριο χρησιμοποιώντας άλλα είδωλα.</string>
+    <string name="repo_details_info_text">Ένα αποθετήριο είναι μια πηγή εφαρμογών.\n\nΧρησιμοποιούνται είδωλα για την κατανομή του φόρτου λήψης των εφαρμογών σε πολλαπλούς διακομιστές. Είδωλα πιο κοντά σε εσάς ίσως είναι γρηγορότερα.\n\nΕπίσημα είδωλα δηλώνονται από τον κάτοχο του αποθετηρίου. Δεν μπορούν να διαγραφούν, μόνο να απενεργοποιηθούν. Μπορείτε να δηλώσετε πρόσθετα προσαρμοσμένα είδωλα προσθέτοντας τα όπως ένα κανονικό αποθετήριο.</string>
 </resources>

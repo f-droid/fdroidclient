@@ -549,7 +549,7 @@
     <string name="copied_url_to_clipboard">URL je kopiran u međuspremnik</string>
     <string name="copied_permission_to_clipboard">Ime dozvole je kopirano u međuspremnik</string>
     <string name="paste">Umetni</string>
-    <string name="ipfsgw_summary_disabled">Preuzimanje aplikacija pomoću web URL adresa IPFS-a: onemogućeno</string>
+    <string name="ipfsgw_summary_disabled">Preuzmi aplikacija pomoću web URL adresa IPFS-a: deaktivirano</string>
     <string name="ipfsgw_explainer">Preuzmi aplikacije s web URL adresa IPFS-a. (Radi samo za F-Droid repozitorije s IPFS podrškom.)</string>
     <string name="ipfsgw_title">IPFS posrednici</string>
     <string name="ipfsgw_add_title">Dodaj IPFS posrednika</string>
@@ -669,7 +669,8 @@
     <string name="technical_info">Tehničke informacije</string>
     <string name="package_name">Ime paketa:</string>
     <string name="installed_version">Instalirana verzija:</string>
-    <string name="call_to_action_keepandroidopen">F-Droid je ugrožen. Google mijenja način instaliranja aplikacija na mobitele. Trebamo tvoju pomoć.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid je ugrožen. Google mijenja način instaliranja aplikacija na tvoj uređaj. Trebamo tvoju pomoć.</string>
     <string name="anti_features_title">Ova aplikacija sadrži ograničavajuće funkcije</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Preuzmi aplikacija putem web URL adrese IPSF-a</string>
 </resources>

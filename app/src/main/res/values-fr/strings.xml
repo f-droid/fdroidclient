@@ -99,7 +99,7 @@
     <string name="theme">Thème</string>
     <string name="unsigned">Non signé</string>
     <string name="unverified">Non vérifié</string>
-    <string name="repo_fingerprint">Empreinte de la clé utilisée pour signer le dépôt (SHA-256)</string>
+    <string name="repo_fingerprint">Empreinte digitale de la clé de signature (SHA-256)</string>
     <string name="repo_description">Description</string>
     <string name="unknown">Inconnu</string>
     <string name="repo_confirm_delete_title">Supprimer le dépôt ?</string>
@@ -637,7 +637,7 @@
     <string name="crash_dialog_title_old">F-Droid avait planté</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="call_to_action_keepandroidopen">F-Droid est menacé. Google modifie la façon dont vous installez les applications sur votre téléphone. Nous avons besoin de votre aide.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid est menacé. Google modifie la manière dont vous installez les applications sur votre appareil. Nous avons besoin de votre aide.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">À propos</string>
     <string name="menu_discover">Découvrir</string>
@@ -677,4 +677,5 @@
     <string name="technical_info">Informations techniques</string>
     <string name="package_name">Nom du paquet :</string>
     <string name="installed_version">Version installée :</string>
+    <string name="ipfsgw_summary_new">Télécharger des applications en utilisant des points de terminaison IPFS</string>
 </resources>

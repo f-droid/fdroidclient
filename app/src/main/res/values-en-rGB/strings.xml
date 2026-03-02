@@ -187,7 +187,7 @@
     <string name="repo_user_mirrors">User mirrors</string>
     <string name="repo_official_mirrors">Official mirrors</string>
     <string name="repo_description">Description</string>
-    <string name="repo_fingerprint">Fingerprint of the signing key (SHA-256)</string>
+    <string name="repo_fingerprint">Signing key fingerprint (SHA-256)</string>
     <string name="theme">Theme</string>
     <string name="no_handler_app">You don\'t have any available app that can handle %s.</string>
     <string name="permissions">Permissions</string>
@@ -384,7 +384,7 @@
     <string name="update_auto_install_summary">Download and update apps in the background, showing a notification</string>
     <string name="update_auto_install">Automatically install updates</string>
     <string name="update_auto_download_summary">Updates are downloaded automatically and you are notified to install them</string>
-    <string name="update_auto_download">Automatically fetch updates</string>
+    <string name="update_auto_download">Automatically download updates</string>
     <string name="over_network_never_summary">Never download anything using this connection</string>
     <string name="over_network_on_demand_summary">Only use this connection when I click to download</string>
     <string name="over_network_always_summary">Always use this connection when available</string>

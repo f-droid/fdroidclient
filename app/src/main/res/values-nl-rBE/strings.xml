@@ -494,4 +494,23 @@
     <string name="force_old_installer_summary">Schakel de sessie-installatieprogramma uit, inclusief ondersteuning voor automatische achtergrondupdates.</string>
     <string name="app_details_repository">Repository</string>
     <string name="app_details_repositories">Repositories</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basis</string>
+    <string name="menu_about">Over</string>
+    <string name="menu_discover">Ontdekken</string>
+    <string name="menu_apps_my">Mijn apps</string>
+    <string name="first_start_loading">App repositories aan het binnenhalen…</string>
+    <string name="my_apps_empty">Enkel apps geïnstalleerd door %1$s worden hier getoond</string>
+    <string name="my_apps_header_apps_with_issue">Apps met problemen</string>
+    <string name="my_apps_ignore_dialog_title">Verberg probleem</string>
+    <string name="my_apps_ignore_dialog_text">Het probleem met deze versie van\" %1$s\" zal genegeerd worden</string>
+    <string name="my_apps_ignore_dialog_button">Verberg</string>
+    <string name="my_apps_export_installed_apps">Exporteer app-lijst</string>
+    <string name="app_list_new">Nieuwe apps</string>
+    <string name="app_list_recently_updated">Recent geüpdatet</string>
+    <string name="app_list_most_downloaded">Meest gedownload</string>
+    <string name="app_list_all">Alle aps</string>
+    <string name="app_list_author">Apps door %s</string>
+    <string name="search_placeholder">Zoeken…</string>
+    <string name="search_no_results">Geen apps gevonden\n\nProbeer minder zoektermen of voeg meer repositories toe</string>
 </resources>

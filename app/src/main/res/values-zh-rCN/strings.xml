@@ -76,7 +76,7 @@
     <string name="theme">主题</string>
     <string name="unsigned">未签名</string>
     <string name="unverified">未验证</string>
-    <string name="repo_fingerprint">签名密钥的指纹 (SHA-256)</string>
+    <string name="repo_fingerprint">签名密钥指纹 (SHA-256)</string>
     <string name="repo_description">描述</string>
     <string name="unknown">未知</string>
     <string name="repo_confirm_delete_title">删除存储库？</string>
@@ -649,4 +649,5 @@
     <string name="technical_info">技术信息</string>
     <string name="package_name">安装包名：</string>
     <string name="installed_version">已安装版本：</string>
+    <string name="ipfsgw_summary_new">用 IPFS web 端点下载应用</string>
 </resources>

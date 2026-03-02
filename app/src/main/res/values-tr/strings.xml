@@ -95,7 +95,7 @@
     <string name="theme">Tema</string>
     <string name="unsigned">İmzalanmamış</string>
     <string name="unverified">Doğrulanmamış</string>
-    <string name="repo_fingerprint">İmza anahtarının parmak izi (SHA-256)</string>
+    <string name="repo_fingerprint">İmzalama anahtarı parmak izi (SHA-256)</string>
     <string name="repo_description">Açıklama</string>
     <string name="unknown">Bilinmiyor</string>
     <string name="repo_confirm_delete_title">Depo silinsin mi?</string>
@@ -108,7 +108,7 @@
     <string name="repo_added">Paket deposu %1$s kaydedildi.</string>
     <string name="repo_searching_address">%1$s konumunda paket deposu
 \naranıyor</string>
-    <string name="not_on_same_wifi">Aygıtınız az önce eklediğiniz Yerel Depo ile aynı kablosuz ağda değil! Bu ağa katılmayı deneyin: %s</string>
+    <string name="not_on_same_wifi">Cihazınız, az önce eklediğiniz Yerel Depo ile aynı Wi-Fi ağına bağlı değil! Bu ağa bağlanmayı deneyin: %s</string>
     <string name="requires_features">Gerektirdiği: %1$s</string>
     <string name="category_Development">Geliştirme</string>
     <string name="category_Games">Oyunlar</string>
@@ -158,7 +158,7 @@
     <string name="permissions">İzinler</string>
     <string name="repo_details">Depo</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_language_default">Sistem öntanımlı</string>
+    <string name="pref_language_default">Sistem varsayılanı</string>
     <string name="wifi">Kablosuz</string>
     <string name="category_Connectivity">Bağlanabilirlik</string>
     <string name="category_Graphics">Çizim</string>
@@ -251,7 +251,7 @@
     <string name="keep_install_history">Yükleme geçmişi tut</string>
     <string name="keep_install_history_summary">Tüm yükleme ve kaldırmaların günlüğünü özel olarak sakla</string>
     <string name="update_auto_install">Güncellemeleri otomatik olarak yükle</string>
-    <string name="warning_no_internet">Güncellenemiyor, internete bağlı mısınız?</string>
+    <string name="warning_no_internet">Güncelleme başarısız. İnternet bağlantınızı kontrol edin.</string>
     <string name="update_auto_install_summary">Bir bildirim göstererek arka planda uygulamaları indir ve güncelle</string>
     <string name="versions">Sürümler</string>
     <string name="app_details_donate_prompt_unknown_author">%1$s geliştiricilerine bir kahve alın!</string>
@@ -278,7 +278,7 @@
     <string name="notification_title_summary_ready_to_install_update">Güncelleme yüklenmeye hazır</string>
     <string name="notification_title_summary_installing">Yükleniyor</string>
     <string name="notification_title_summary_installed">Yükleme başarılı</string>
-    <string name="notification_title_summary_install_error">Yükleme başarısız</string>
+    <string name="notification_title_summary_install_error">Yükleme başarısız oldu</string>
     <string name="notification_action_update">Güncelle</string>
     <string name="notification_action_cancel">İptal</string>
     <string name="notification_action_install">Yükle</string>
@@ -640,22 +640,22 @@
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Temel</string>
     <string name="first_start_loading">Uygulama depolarını getiriliyor…</string>
-    <string name="my_apps_empty">Burada sadece %1$s tarafından yüklenmiş uygulamalar gösterilir</string>
-    <string name="my_apps_header_apps_with_issue">Problemli uygulamalar</string>
-    <string name="my_apps_ignore_dialog_title">Problemi gizle</string>
+    <string name="my_apps_empty">Bu listede sadece %1$s ile yüklenen uygulamalar görüntülenir</string>
+    <string name="my_apps_header_apps_with_issue">Sorunlu uygulamalar</string>
+    <string name="my_apps_ignore_dialog_title">Sorunu gizle</string>
     <string name="my_apps_ignore_dialog_text">\"%1$s\" uygulamasının bu sürümündeki problem yok sayılacak</string>
     <string name="my_apps_export_installed_apps">Uygulama listesini dışa aktar</string>
     <string name="app_list_new">Yeni uygulamalar</string>
-    <string name="app_list_recently_updated">Yeni güncellenmiş</string>
+    <string name="app_list_recently_updated">Yakın zamanda güncellenmiş</string>
     <string name="app_list_most_downloaded">En çok indirilenler</string>
     <string name="app_list_all">Tüm uygulamalar</string>
     <string name="app_list_author">%s tarafından uygulamalar</string>
     <string name="search_placeholder">Ara…</string>
-    <string name="search_no_results">Herhangi bir uygulama bulunamadı \n\nDaha az arama terimi girmeyi ya da daha fazla depo eklemeyi deneyin</string>
-    <string name="category_group_wallets">Finans &amp; Cüzdan</string>
+    <string name="search_no_results">Herhangi bir uygulama bulunamadı \n\nDaha az arama terimi kullanmayı ya da daha fazla depo eklemeyi deneyin</string>
+    <string name="category_group_wallets">Finans ve Cüzdanlar</string>
     <string name="category_group_device">Cihaz</string>
     <string name="category_group_network">Ağ</string>
-    <string name="category_group_storage">Dosya &amp; Depolama</string>
+    <string name="category_group_storage">Dosyalar ve Depolama</string>
     <string name="category_group_misc">Çeşitli</string>
     <string name="last_updated">En son güncelleme: %1$s</string>
     <string name="last_updated_with_size">En son güncelleme: %1$s (%2$s)</string>
@@ -667,6 +667,7 @@
     <string name="technical_info">Teknik bilgi</string>
     <string name="package_name">Paket ismi:</string>
     <string name="installed_version">Yüklü sürüm:</string>
-    <string name="call_to_action_keepandroidopen">F-Droid tehlike altında! Google, sizin kendi telefonunuza nasıl uygulama yükleyeceğinizi değiştirmeye çalışıyor. Yardımına ihtiyacımız var!</string>
+    <string name="call_to_action_keepandroidopen">F-Droid tehlike altında! Google, sizin kendi cihazınıza nasıl uygulama yükleyeceğinizi değiştirmeye çalışıyor. Yardımına ihtiyacımız var!</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">IPFS HTTP ağ geçitleri (web gateway’leri) üzerinden uygulama indirme</string>
 </resources>
