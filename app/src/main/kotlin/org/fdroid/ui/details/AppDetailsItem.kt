@@ -62,7 +62,7 @@ data class AppDetailsItem(
   val antiFeatures: List<AntiFeature>? = null,
   val issue: AppIssue? = null,
   val authorHasMoreThanOneApp: Boolean = false,
-  val proxy: ProxyConfig?,
+  val proxy: ProxyConfig? = null,
 ) {
   constructor(
     repository: Repository,

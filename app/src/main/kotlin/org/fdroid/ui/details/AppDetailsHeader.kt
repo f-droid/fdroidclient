@@ -106,7 +106,7 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
     OfflineBar(modifier = Modifier.absoluteOffset(y = (-8).dp))
   }
   // Header
-  val version = item.suggestedVersion ?: item.versions?.first()?.version
+  val version = item.suggestedVersion ?: item.versions?.firstOrNull()?.version
   Row(
     modifier = Modifier.padding(horizontal = 16.dp),
     horizontalArrangement = spacedBy(16.dp),

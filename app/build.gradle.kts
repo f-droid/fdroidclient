@@ -151,6 +151,9 @@ dependencies {
   androidTestImplementation(libs.androidx.espresso.core)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
+  androidTestImplementation(libs.androidx.test.uiautomator)
+  androidTestImplementation(libs.coil.test)
+  androidTestImplementation(libs.coil.network.okhttp)
 
   screenshotTestImplementation(libs.screenshot.validation.api)
   screenshotTestImplementation(libs.androidx.ui.tooling)
