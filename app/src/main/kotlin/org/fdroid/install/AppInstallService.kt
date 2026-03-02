@@ -7,6 +7,7 @@ import android.os.Build.VERSION.SDK_INT
 import android.os.IBinder
 import androidx.core.app.ServiceCompat
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import mu.KotlinLogging
 import org.fdroid.NotificationManager
@@ -16,8 +17,9 @@ import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
 class AppInstallService : Service() {
 
   companion object {
-    var isServiceRunning = false
-      private set
+    private val _isServiceRunning = AtomicBoolean(false)
+    val isServiceRunning
+      get() = _isServiceRunning.get()
   }
 
   private val log = KotlinLogging.logger {}
@@ -26,8 +28,8 @@ class AppInstallService : Service() {
 
   override fun onCreate() {
     log.info { "onCreate" }
-    isServiceRunning = true
-    super.onCreate() // apparently importing for injection
+    _isServiceRunning.set(true)
+    super.onCreate() // apparently important for injection
   }
 
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -48,8 +50,13 @@ class AppInstallService : Service() {
 
   override fun onBind(intent: Intent): IBinder? = null
 
+  override fun onTimeout(startId: Int, fgsType: Int) {
+    log.info { "onTimeout($startId, $fgsType)" }
+    stopSelf()
+  }
+
   override fun onDestroy() {
     log.info { "onDestroy" }
-    isServiceRunning = false
+    _isServiceRunning.set(false)
   }
 }
