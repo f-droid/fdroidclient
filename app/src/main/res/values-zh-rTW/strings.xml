@@ -616,7 +616,7 @@
     <string name="tts_repo_name">軟體庫 %1$s</string>
     <string name="tts_author_name">作者 %1$s</string>
     <string name="crash_dialog_title_old">F-Droid 當機</string>
-    <string name="call_to_action_keepandroidopen">F-Droid 有事：Google 正顛覆您在您的手機上安裝應用程式的方式，亟需眾人合力平反。請出手襄助</string>
+    <string name="call_to_action_keepandroidopen">F-Droid 有事：Google 正顛覆您在您的裝置上安裝應用程式的方式，亟需眾人合力平反。請出手襄助</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/zh-TW</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
@@ -658,4 +658,5 @@
     <string name="my_apps_ignore_dialog_title">隱藏問題</string>
     <string name="my_apps_ignore_dialog_text">將忽略此版本中「%1$s」相關的問題</string>
     <string name="my_apps_ignore_dialog_button">隱藏</string>
+    <string name="ipfsgw_summary_new">使用 IPFS web 端點下載應用程式</string>
 </resources>

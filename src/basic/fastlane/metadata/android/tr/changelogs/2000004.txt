@@ -1,0 +1,8 @@
+* Kullanıcı arayüzü (UI) Kotlin Compose ile sıfırdan yeniden yazıldı
+* Açıklamalar ve çeviriler içinde de arama yapabilen geliştirilmiş arama özelliği
+* Yeni uygulamaları keşfetmek daha kolay, ayrıca en çok indirilenler de öne çıkarılıyor
+* İndirme işleminden *önce* kurulum onayı
+* Aynı anda birden fazla güncelleme/indirme işlemi
+* Uygulamalarla ilgili sorunlarda kullanıcıyı bilgilendirme (ör. imza anahtarının değişmesi)
+* İsteğe bağlı Material You renk teması
+* Geliştirilmiş liste filtreleme

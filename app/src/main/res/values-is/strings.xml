@@ -651,4 +651,5 @@
     <string name="technical_info">Tæknilegar upplýsingar</string>
     <string name="package_name">Heiti pakka:</string>
     <string name="installed_version">Uppsett útgáfa:</string>
+    <string name="ipfsgw_summary_new">Sækja forrit með IPFS-endapunktum á vef</string>
 </resources>

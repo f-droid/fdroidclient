@@ -2,7 +2,7 @@
 
 * Overhaul of Settings including new data usage controls
 
-* Battery conscious background operation on Android 5.0 and newer
+* Battery-conscious background operation on Android 5.0 and newer
 
 * Share menu item for repos
 
@@ -12,7 +12,7 @@
 
 * Clickable Anti-Features list, added NoSourceSince
 
-* Android 4.0 is now the minimum supported 
+* Android 4.0 is now the minimum supported version 
 
 * Huge improvements for custom whitelabel F-Droid versions
 

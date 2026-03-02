@@ -1,0 +1,8 @@
+* écrans réécrits entièrement avec Kotlin compose
+* recherche améliorée, cherchant aussi dans les descriptions et les traductions
+* découverte de nouvelles applis plus facile, en mettant aussi en avant celles les plus téléchargées
+* validation de l'installation *avant* le téléchargement
+* mises à jour / téléchargements multiples en même temps
+* notifications à l'utilisateur de soucis avec les applications (par ex. un changement de clé de signature)
+* thème de couleur optionnel Material You
+* amélioration des filtres dans les listes

@@ -584,12 +584,12 @@
     <string name="ipfsgw_explainer">نزّل التطبيقات من نقاط نهاية الويب IPFS. (يعمل فقط مع مستودعات F-Droid التي تدعم IPFS.)</string>
     <string name="ipfsgw_add_title">أضِف بوابة IPFS</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="zero">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
-        <item quantity="one">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
-        <item quantity="two">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
+        <item quantity="zero">نزّل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
+        <item quantity="one">نزّل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
+        <item quantity="two">نزّل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
         <item quantity="few">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
-        <item quantity="many">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
-        <item quantity="other">تنزيل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
+        <item quantity="many">نزّل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
+        <item quantity="other">نزّل التطبيقات باستخدام نقاط نهاية الويب IPFS : مُفعّل %1$d</item>
     </plurals>
     <string name="repo_share_not_found">تعذر العثور على عنوان المستودع في النص المشترك.</string>
     <string name="useDnsCache">استخدم ذاكرة مخبّأة ل DNS</string>
@@ -711,7 +711,8 @@
     <string name="package_name">اسم الحزمة:</string>
     <string name="installed_version">الإصدار المُثبَّت:</string>
     <string name="crash_dialog_title_old">F-Droid إنهار</string>
-    <string name="call_to_action_keepandroidopen">متجر F-Droid مهدد بالخطر. جوجل بصدد تغيير الطريقة التي تثبت بها التطبيقات على هاتفك. نحن بحاجة لمساعدتكم.</string>
+    <string name="call_to_action_keepandroidopen">متجر F-Droid مهدد بالخطر. جوجل بصدد تغيير الطريقة التي تثبت بها التطبيقات على جهازك. نحن بحاجة لمساعدتكم.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="ipfsgw_summary_new">نزّل التطبيقات باستخدام نقاط نهاية ويب IPFS</string>
 </resources>

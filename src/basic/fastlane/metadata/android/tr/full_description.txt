@@ -1,14 +1,15 @@
-NOT: F-Droid İstemcisinin Temel sürümünün düşürülmüş özellikleri mevcuttur (mesela nearby share ve panik özelliği yok). Android 13'ü hedef alır ve özel eklenti veya root gerektirmeden gözetimsiz güncellemeler yapabilir.
-F-Droid, Android için özgür yazılım uygulamalarının kurulabilir bir kataloğudur. F-Droid istemcisi, aygıtınızdaki güncellemelere göz atmayı, onları kurmayı ve izlemeyi kolaylaştırır.
+NOT: F-Droid İstemcisinin Basic (Temel) sürümü daraltılmış bir özellik setine sahiptir (örneğin yakındakilerle paylaşım ve panik özelliği yoktur). Android 13'ü hedefler ve ayrıcalıklı bir eklentiye veya root erişimine ihtiyaç duymadan katılımsız (arka planda otomatik) güncellemeler yapabilir.
 
-Herhangi bir F-Droid uyumlu depoya bağlanır. Öntanımlı depo, yalnızca iyi niyetli özgür yazılımları içeren f-droid.org adresidir.
+F-Droid, Android için kurulabilir bir özgür yazılım uygulamaları kataloğudur. F-Droid istemci uygulaması, cihazınızda uygulamalara göz atmayı, bunları yüklemeyi ve güncellemelerini takip etmeyi kolaylaştırır.
 
-Android'in kendisi, APK'ları istediğiniz yerden kurmakta özgür olduğunuz anlamında açıktır. Ancak özgür yazılım uygulama yöneticisi olarak F-Droid'i kullanmanız için birçok iyi neden vardır:
+F-Droid uyumlu tüm depolara (repository) bağlanabilir. Yalnızca hakiki özgür yazılımları barındıran varsayılan depo f-droid.org adresinde yer almaktadır.
 
-* Güncellemeler olduğunda bildirim alma
-* İsteğe bağlı güncellemeleri otomatik olarak indirme ve kurma
-* Eski ve beta sürümleri takip etme
-* Aygıt ile uyumlu olmayan uygulamaları filtreleme
-* Kategoriler ve aranabilir açıklamalar aracılığıyla uygulamaları bulma
-* Bağış, kaynak kod vb. projeyle ilgili bağlantılara kolayca erişme
-* Depo dizin imzalarını ve APK karmalarını kontrol ederek güvende kalın
+İstediğiniz herhangi bir yerden APK yüklemekte özgür olmanız anlamında Android'in kendisi de açık bir sistemdir, ancak F-Droid'i özgür yazılım uygulama yöneticiniz olarak kullanmanız için pek çok geçerli neden vardır:
+
+* Güncellemeler hazır olduğunda bildirim alın
+* İsteğe bağlı olarak güncellemeleri otomatik indirip yükleyin
+* Eski sürümleri ve beta sürümlerini takip edin
+* Cihazınızla uyumlu olmayan uygulamaları gizlemek için filtreleyin
+* Kategoriler ve aranabilir açıklamalar yardımıyla uygulamaları bulun
+* Bağış, kaynak kodu vb. için ilgili bağlantılara (URL) erişin
+* Depo indeks imzalarını ve APK hash (özet) değerlerini kontrol ederek güvende kalın

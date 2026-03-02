@@ -5,7 +5,7 @@
     <string name="installIncompatible">Aplikacion i papërputhshëm me pajisjen tuaj, të instalohet sido qoftë?</string>
     <string name="version">Version</string>
     <string name="delete">Fshi</string>
-    <string name="updates">Përditësime</string>
+    <string name="updates">Përditësimet</string>
     <string name="other">Të tjera</string>
     <string name="update_interval">Interval përditësimesh të vetvetishme</string>
     <string name="about_title_full">Mbi F-Droid-in</string>
@@ -14,7 +14,7 @@
     <string name="added_on">Shtuar më %s</string>
     <string name="ok">OK</string>
     <string name="main_menu__categories">Kategori</string>
-    <string name="main_menu__swap_nearby">Atypari</string>
+    <string name="main_menu__swap_nearby">Këtupari</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
     <string name="repo_add_add">Shtoje</string>
@@ -36,7 +36,7 @@
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
     <string name="menu_flattr">Flattr</string>
-    <string name="details_notinstalled">Jo i instaluar</string>
+    <string name="details_notinstalled">I painstaluar</string>
     <string name="icon">Ikonë</string>
     <string name="skip">Anashkaloje</string>
     <string name="status_download">Po shkarkohet \n%2$s / %3$s (%4$d%%) nga \n%1$s</string>
@@ -610,7 +610,7 @@
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
     <string name="crash_dialog_title_old">F-Droid u vithis</string>
-    <string name="call_to_action_keepandroidopen">F-Droid është i kërcënuar. Google po ndryshon mënyrën se si instaloni aplikacione në telefonin tuaj. Na duhet ndihma juaj.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid është i kërcënuar. Google po ndryshon mënyrën se si instaloni aplikacione në pajisjen tuaj. Na duhet ndihma juaj.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="last_updated_with_size">Përditësuar së fundi më: %1$s (%2$s)</string>
     <string name="status_install_preparing">Po përgatitet instalimi…</string>
@@ -650,4 +650,5 @@
     <string name="my_apps_ignore_dialog_button">Fshihe</string>
     <string name="my_apps_export_installed_apps">Eksportoni listë aplikacionesh</string>
     <string name="category_group_productivity">Prodhimtari</string>
+    <string name="ipfsgw_summary_new">Shkarkoni aplikacione duke përdorur pikëmbarime web IPFS</string>
 </resources>

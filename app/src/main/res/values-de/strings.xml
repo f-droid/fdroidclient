@@ -95,7 +95,7 @@
     <string name="theme">Design</string>
     <string name="unsigned">Nicht signiert</string>
     <string name="unverified">Ungeprüft</string>
-    <string name="repo_fingerprint">Fingerabdruck des Signierschlüssels (SHA-256)</string>
+    <string name="repo_fingerprint">Signierschlüssel-Fingerabdruck (SHA-256)</string>
     <string name="repo_description">Beschreibung</string>
     <string name="unknown">Unbekannt</string>
     <string name="repo_confirm_delete_title">Paketquelle löschen?</string>
@@ -620,7 +620,7 @@
     <string name="crash_dialog_title_old">F-Droid ist abgestürzt</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="call_to_action_keepandroidopen">F-Droid ist in Gefahr. Google ändert die Art und Weise, wie du Apps auf deinem Smartphone installierst. Wir brauchen deine Hilfe.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid ist in Gefahr. Google ändert die Art und Weise, wie du Apps auf deinem Gerät installierst. Wir brauchen deine Hilfe.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">Über</string>
     <string name="menu_discover">Entdecken</string>
@@ -660,4 +660,5 @@
     <string name="technical_info">Technische Informationen</string>
     <string name="package_name">Paketname:</string>
     <string name="installed_version">Installierte Version:</string>
+    <string name="ipfsgw_summary_new">Download von Apps über IPFS-Webendpunkte</string>
 </resources>

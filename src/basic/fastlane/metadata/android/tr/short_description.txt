@@ -1,1 +1,1 @@
-Özgürlük ve gizliliğe saygılı uygulama mağazası için sade bir istemci uygulaması
+Özgürlüğe ve gizliliğe saygılı uygulama mağazası için en sade istemci uygulaması

@@ -666,4 +666,5 @@
     <string name="technical_info">Tehniline teave</string>
     <string name="package_name">Paketi nimi:</string>
     <string name="installed_version">Paigaldatud versioon:</string>
+    <string name="ipfsgw_summary_new">Laadi rakendusi IPFS võrgu otspunktide kaudu</string>
 </resources>

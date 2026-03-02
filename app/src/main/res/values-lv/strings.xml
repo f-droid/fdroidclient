@@ -624,7 +624,7 @@
     <string name="notification_title_summary_app_update_available">Piesist, lai atjauninātu visas</string>
     <string name="tts_repo_name">Glabātava %1$s</string>
     <string name="tts_author_name">Izstrādāja %1$s</string>
-    <string name="call_to_action_keepandroidopen">F-Droid ir apdraudēts. Google maina lietotņu uzstādīšanas tālrunī veidu . Mums ir nepieciešama Tava palīdzība.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid ir apdraudēts. Google maina lietotņu uzstādīšanas ierīcē veidu . Mums ir nepieciešama Tava palīdzība.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">Par</string>
     <string name="menu_discover">Atklāt</string>
@@ -664,4 +664,5 @@
     <string name="my_apps_ignore_dialog_title">Paslēpt nepilnību</string>
     <string name="my_apps_ignore_dialog_text">Nepilnība šajā “%1$s” versijā netiks ņemta vērā</string>
     <string name="category_group_interests">Intereses</string>
+    <string name="ipfsgw_summary_new">Lejupielādēt lietotnes no IPFS tīmekļa galamērķiem</string>
 </resources>

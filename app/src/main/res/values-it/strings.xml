@@ -646,4 +646,6 @@
     <string name="tts_author_name">Autore %1$s</string>
     <string name="pref_export_log_title">Registrazione debug</string>
     <string name="crash_dialog_title_old">F-Droid è crashata</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
 </resources>

@@ -75,7 +75,7 @@
     <string name="no_handler_app">Nie masz żadnej dostępnej aplikacji, która może obsłużyć %s</string>
     <string name="theme">Motyw</string>
     <string name="unverified">Niezweryfikowane</string>
-    <string name="repo_fingerprint">Suma kontrolna podpisu cyfrowego (SHA-256)</string>
+    <string name="repo_fingerprint">Odcisk palca klucza podpisu (SHA-256)</string>
     <string name="repo_description">Opis</string>
     <string name="unknown">Nieznana</string>
     <string name="repo_confirm_delete_title">Czy usunąć repozytorium?</string>
@@ -655,7 +655,7 @@
     <string name="crash_dialog_title_old">F-Droid uległ awarii</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="call_to_action_keepandroidopen">F-Droid jest zagrożony. Google zmienia sposób, w jaki instalujesz aplikacje na swoim telefonie. Potrzebujemy Twojej pomocy.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid jest zagrożony. Google zmienia sposób, w jaki instalujesz aplikacje na swoim urządzeniu. Potrzebujemy Twojej pomocy.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">O aplikacji</string>
     <string name="menu_discover">Odkryj</string>
@@ -695,4 +695,5 @@
     <string name="technical_info">Informacje techniczne</string>
     <string name="package_name">Nazwa pakietu:</string>
     <string name="installed_version">Zainstalowana wersja:</string>
+    <string name="ipfsgw_summary_new">Pobieraj aplikacje za pomocą endpointów IPFS</string>
 </resources>

@@ -137,7 +137,7 @@
     <string name="useTorSummary">Paksa lalu lintas pengunduhan melalui Tor untuk meningkatkan privasi. Membutuhkan Orbot</string>
     <string name="status_inserting_apps">Menyimpan detail aplikasi</string>
     <string name="all_other_repos_fine">Tidak terjadi kesalahan untuk repo lainnya.</string>
-    <string name="repo_fingerprint">Sidik jari dari kunci penanda tangan (SHA-256)</string>
+    <string name="repo_fingerprint">Tanda tangan kunci sidik jari (SHA-256)</string>
     <string name="repo_disabled_notification">%1$s dinonaktifkan.
 \n
 \nAnda perlu mengaktifkan kembali repositori ini untuk memasang aplikasinya.</string>
@@ -655,6 +655,7 @@
     <string name="technical_info">Informasi Teknis</string>
     <string name="package_name">Nama paket:</string>
     <string name="installed_version">Versi terpasang:</string>
-    <string name="call_to_action_keepandroidopen">F-Droid terancam. Google sedang mengubah cara Anda menginstal aplikasi di ponsel Anda. Kami membutuhkan bantuan Anda.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid terancam. Google sedang mengubah cara Anda memasang aplikasi di perangkat Anda. Kami membutuhkan bantuan Anda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/id/</string>
+    <string name="ipfsgw_summary_new">Unduh aplikasi menggunakan titik akhir web IPFS</string>
 </resources>

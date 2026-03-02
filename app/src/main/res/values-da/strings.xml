@@ -608,4 +608,5 @@
     <string name="notification_title_summary_app_update_available">Tryk for at opdatere alle</string>
     <string name="tts_repo_name">Repository %1$s</string>
     <string name="tts_author_name">Forfatter %1$s</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
 </resources>

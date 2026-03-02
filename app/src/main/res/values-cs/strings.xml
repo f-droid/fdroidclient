@@ -76,7 +76,7 @@
     <string name="theme">Motiv</string>
     <string name="unsigned">Nepodepsáno</string>
     <string name="unverified">Neověřeno</string>
-    <string name="repo_fingerprint">Otisk podpisového klíče repozitáře (SHA-256)</string>
+    <string name="repo_fingerprint">Otisk podpisového klíče (SHA-256)</string>
     <string name="repo_description">Popis</string>
     <string name="repo_confirm_delete_title">Odebrat repozitář?</string>
     <string name="repo_confirm_delete_body">Po odebrání repozitáře nebudou nabízené aplikace nadále dostupné.\n\nPozn.: Všechny dříve nainstalované aplikace budou na tomto zařízení ponechány beze změn.</string>
@@ -656,7 +656,7 @@
     <string name="author_by">Od %1$s</string>
     <string name="last_updated">Naposledy aktualizováno: %1$s</string>
     <string name="last_updated_with_size">Naposledy aktualizováno: %1$s (%2$s)</string>
-    <string name="status_install_preparing">Příprava instlaace…</string>
+    <string name="status_install_preparing">Příprava instalace…</string>
     <string name="whats_new_title">Co je nového</string>
     <string name="donate_title">Přispějte</string>
     <string name="anti_features_title">Tato aplikace má anti-vlastnosti</string>
@@ -664,6 +664,7 @@
     <string name="technical_info">Technické informace</string>
     <string name="package_name">Název balíčku:</string>
     <string name="installed_version">Nainstalovaná verze:</string>
-    <string name="call_to_action_keepandroidopen">F-Droid je v ohrožení. Google mění způsob, jakým instalujete aplikace na svůj telefon. Potřebujeme vaši pomoc.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid je v ohrožení. Google mění způsob, jakým instalujete aplikace na své zařízení. Potřebujeme vaši pomoc.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Stáhněte si aplikace pomocí webových koncových bodů IPFS</string>
 </resources>
