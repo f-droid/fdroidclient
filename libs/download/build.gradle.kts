@@ -1,20 +1,41 @@
 plugins {
   alias(libs.plugins.jetbrains.kotlin.multiplatform)
-  alias(libs.plugins.android.library)
+  alias(libs.plugins.android.multiplatform.library)
   alias(libs.plugins.jetbrains.dokka)
   alias(libs.plugins.vanniktech.maven.publish)
   alias(libs.plugins.ktfmt)
 }
 
 kotlin {
-  androidTarget {
-    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
-    publishLibraryVariants("release")
-  }
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
   explicitApi()
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
   abiValidation { enabled = true }
+  android {
+    namespace = "org.fdroid.download"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    minSdk = 21
+
+    withJava()
+    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
+
+    withHostTest { packaging { resources.excludes.add("META-INF/*") } }
+    withDeviceTest {
+      instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+      instrumentationRunnerArguments["disableAnalytics"] = "true"
+    }
+
+    lint {
+      checkReleaseBuilds = false
+      abortOnError = true
+
+      htmlReport = true
+      xmlReport = false
+      textReport = true
+
+      lintConfig = file("lint.xml")
+    }
+  }
   sourceSets {
     commonMain {
       dependencies {
@@ -47,7 +68,7 @@ kotlin {
         implementation("javax.inject:javax.inject:1")
       }
     }
-    androidUnitTest {
+    getByName("androidHostTest") {
       dependencies {
         implementation(kotlin("test"))
         implementation(libs.json)
@@ -56,7 +77,7 @@ kotlin {
       }
     }
     val commonTest by getting
-    androidInstrumentedTest {
+    getByName("androidDeviceTest") {
       dependsOn(commonTest)
       dependencies {
         implementation(project(":libs:sharedTest"))
@@ -65,34 +86,6 @@ kotlin {
         implementation(libs.mockk.android)
       }
     }
-  }
-}
-
-android {
-  namespace = "org.fdroid.download"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-  defaultConfig {
-    minSdk = 21
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments["disableAnalytics"] = "true"
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-  lint {
-    checkReleaseBuilds = false
-    abortOnError = true
-
-    htmlReport = true
-    xmlReport = false
-    textReport = true
-
-    lintConfig = file("lint.xml")
-  }
-  testOptions {
-    targetSdk = 34 // needed for instrumentation tests
-    packaging { resources.excludes.add("META-INF/*") }
   }
 }
 

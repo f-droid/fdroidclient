@@ -1,43 +1,30 @@
 plugins {
   alias(libs.plugins.jetbrains.kotlin.multiplatform)
-  alias(libs.plugins.android.library)
+  alias(libs.plugins.android.multiplatform.library)
   alias(libs.plugins.jetbrains.dokka)
   alias(libs.plugins.vanniktech.maven.publish)
   alias(libs.plugins.ktfmt)
 }
 
 kotlin {
-  androidTarget {
-    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
-    publishLibraryVariants("release")
-  }
   explicitApi()
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
   abiValidation { enabled = true }
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
+
+  android {
+    namespace = "org.fdroid.core"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    minSdk = 21
+    withJava()
+    withHostTestBuilder {}.configure {}
+    withDeviceTestBuilder { sourceSetTreeName = "test" }
+    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
+  }
+
   sourceSets {
     commonMain { dependencies {} }
     commonTest { dependencies { implementation(kotlin("test")) } }
-  }
-}
-
-android {
-  namespace = "org.fdroid.core"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-  defaultConfig {
-    minSdk = 21
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments["disableAnalytics"] = "true"
-  }
-  buildTypes {
-    getByName("release") {
-      isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-    }
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
   }
 }
 

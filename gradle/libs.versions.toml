@@ -205,6 +205,7 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-ksp = { id = "com.google.devtools.ksp", version.ref = "androidKspPlugin" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
