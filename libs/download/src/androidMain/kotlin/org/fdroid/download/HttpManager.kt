@@ -17,7 +17,7 @@ import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.internal.tls.OkHostnameVerifier
 
-internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*> {
+internal actual fun getHttpClientEngineFactory(customDns: CustomDns?): HttpClientEngineFactory<*> {
   return object : HttpClientEngineFactory<OkHttpConfig> {
     private val connectionSpecs =
       listOf(
