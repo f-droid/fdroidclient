@@ -6,6 +6,7 @@ import androidx.annotation.GuardedBy
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -47,6 +48,7 @@ public object FDroidDatabaseHolder {
     context: Context,
     name: String = "fdroid_db",
     fixture: FDroidFixture? = null,
+    logSlowQueries: Boolean = false,
   ): FDroidDatabase {
     // if the INSTANCE is not null, then return it,
     // if it is, then create the database
@@ -61,6 +63,15 @@ public object FDroidDatabaseHolder {
               fallbackToDestructiveMigration(false)
               // Add our [FixtureCallback] if a fixture was provided
               if (fixture != null) addCallback(FixtureCallback(fixture))
+
+              if (logSlowQueries) {
+                openHelperFactory(
+                  TimingOpenHelperFactory(
+                    FrameworkSQLiteOpenHelperFactory(),
+                    slowQueryThresholdMs = 2000
+                  )
+                )
+              }
             }
         val instance = builder.build()
         this.instance = instance
