@@ -40,9 +40,48 @@
     <string name="notification_action_install">Quraşdır</string>
     <string name="newPerms">Yeni</string>
     <string name="pref_language">Dil</string>
-    <string name="pref_language_default">İlkin Sistem</string>
+    <string name="pref_language_default">Sistem varsayılanı</string>
     <string name="notification_action_update">Yenilə</string>
     <string tools:ignore="UnusedResources" name="category_Games">Oyunlar</string>
     <string tools:ignore="UnusedResources" name="category_Internet">İnternet</string>
     <string name="notification_action_cancel">Ləğv et</string>
+    <string name="app_name_full">F-Droid</string>
+    <string name="preference_manage_installed_apps">Quraşdırılmış proqramları idarə et</string>
+    <string name="details_notinstalled">Quraşdırılmayıb</string>
+    <string name="next">Növbəti</string>
+    <string name="skip">Keç</string>
+    <string name="category_Connectivity" tools:ignore="UnusedResources">Şəbəkə və Əlaqə</string>
+    <string name="category_Development" tools:ignore="UnusedResources">Proqramlaşdırma</string>
+    <string name="category_Graphics" tools:ignore="UnusedResources">Qrafika</string>
+    <string name="category_Money" tools:ignore="UnusedResources">Maliyyə</string>
+    <string name="category_Multimedia" tools:ignore="UnusedResources">Multimedia</string>
+    <string name="category_Navigation" tools:ignore="UnusedResources">Naviqasiya</string>
+    <string name="category_Phone_SMS" tools:ignore="UnusedResources">Zəng &amp; SMS</string>
+    <string name="category_Reading" tools:ignore="UnusedResources">Mütaliə</string>
+    <string name="category_Science_Education" tools:ignore="UnusedResources">Elm &amp; Təhsil</string>
+    <string name="category_Security" tools:ignore="UnusedResources">Təhlükəsizlik</string>
+    <string name="category_Time" tools:ignore="UnusedResources">Zaman</string>
+    <string name="category_Writing" tools:ignore="UnusedResources">Yazı</string>
+    <string name="swap_welcome">F-Droid-ə xoş gəlmişsiniz!</string>
+    <string name="swap_dont_show_again">Bunu bir daha göstərmə</string>
+    <string name="app_details">Tətbiq məlumatları</string>
+    <string name="app_list__name__downloading_in_progress">%1$s yüklənir</string>
+    <string name="app_list__name__successfully_installed">%1$s quraşdırıldı</string>
+    <string name="updates__tts__download_app">Yüklə</string>
+    <string name="more">Daha çox</string>
+    <string name="less">Daha az</string>
+    <string name="antitracklist">Bu tətbiq fəaliyyətinizi izləyir və bu barədə hesabat verir</string>
+    <string name="warning_no_internet">Yeniləmə uğursuz oldu. İnternetə qoşulmusunuzmu?</string>
+    <string name="unsigned">İmzalanmamış</string>
+    <string name="unverified">Təsdiqlənməmiş</string>
+    <string name="repo_details">Repozitoriya</string>
+    <string name="not_on_same_wifi">Cihazınız əlavə etdiyiniz Lokal Repo ilə eyni Wi-Fi-da deyil! Bu şəbəkəyə qoşulun: %s</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="category_Sports_Health" tools:ignore="UnusedResources">İdman &amp; Sağlamlıq</string>
+    <string name="category_System" tools:ignore="UnusedResources">Sistem</string>
+    <string name="swap_send_fdroid">F-Droid-i göndər</string>
+    <string name="crash_dialog_title">F-Droid çökdü</string>
+    <string name="crash_dialog_text">Gözlənilməz xəta yarandı. Həll üçün təfərrüatları bizə e-poçtla yollamaq istəyirsinizmi?</string>
+    <string name="notification_title_single_update_available">Yeniləmə mövcuddur</string>
+    <string name="notification_title_summary_install_error">Quraşdırılmadı</string>
 </resources>

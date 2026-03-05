@@ -652,6 +652,7 @@
     <string name="technical_info">Műszaki információk</string>
     <string name="package_name">Csomag neve:</string>
     <string name="installed_version">Telepített verzió:</string>
-    <string name="call_to_action_keepandroidopen">Az F-Droid veszélyben van. A Google megváltoztatja az alkalmazások telefonra történő telepítésének módját. Szükségünk van a segítségedre.</string>
+    <string name="call_to_action_keepandroidopen">Az F-Droid veszélyben van. A Google megváltoztatja az alkalmazások eszközre történő telepítésének módját. Szükségünk van a segítségedre.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Alkalmazások letöltése IPFS webes végpontok használatával</string>
 </resources>

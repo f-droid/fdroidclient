@@ -95,7 +95,7 @@
     <string name="theme">테마</string>
     <string name="unsigned">서명되지 않음</string>
     <string name="unverified">검증되지 않음</string>
-    <string name="repo_fingerprint">서명 키(SHA-256)의 지문</string>
+    <string name="repo_fingerprint">서명 키 지문 (SHA-256)</string>
     <string name="repo_description">설명</string>
     <string name="unknown">알 수 없음</string>
     <string name="repo_confirm_delete_title">저장소를 삭제하시겠습니까?</string>
@@ -657,4 +657,5 @@
     <string name="my_apps_ignore_dialog_button">숨기기</string>
     <string name="developer_contact">개발자 연락처</string>
     <string name="menu_discover">탐색</string>
+    <string name="ipfsgw_summary_new">IPFS 웹 엔드포인트를 사용하여 앱 다운로드</string>
 </resources>

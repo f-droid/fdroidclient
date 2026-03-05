@@ -1,0 +1,6 @@
+* muundo wa nyenzo 3 (wenye ukingo hadi ukingo, lakini bila rangi zinazobadilika) (Asante proletarius!)
+*tengeneza upya skrini za maelezo ya hazina (Asante Thore!)
+* imeongeza usafirishaji wa faili ya logcat katika mipangilio ya kitaalam
+* sasisha SDK inayolengwa (Android 15 kwa msingi na Android 11 kwa kamili)
+* Ongeza kiungo cha nyuma kutoka ukurasa wa programu katika mipangilio ya mfumo (Asante j-m4!)
+*tumia kichagua programu kwa kushiriki programu zilizosakinishwa na historia ya usakinishaji( Asante Thore!)
