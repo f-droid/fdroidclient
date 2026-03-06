@@ -1,8 +1,0 @@
-• tute refarita uzant-fasado per Kotlin
-• plibonigita serĉo, ankaŭ priserĉas priskribojn kaj tradukojn
-• pli facile trovi novajn aplikaĵojn, emfazi la plej ofte elŝutatajn
-• konfim-peto antaŭ ol elŝuti
-• pluraj ĝisdatigadoj/elŝutadoj samtempe
-• informi uzantojn pri problemojn (ekz. ŝanĝo de subskriba ŝlosilo)
-• malnepra haŭto Material You
-• plibonigita filtrado sur listoj

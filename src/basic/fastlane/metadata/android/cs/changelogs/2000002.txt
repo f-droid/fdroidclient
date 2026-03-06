@@ -1,8 +1,0 @@
-* rozhraní přepracováno od základu pomocí Kotlin Compose
-* vylepšené vyhledávání, včetně vyhledávání v popisech a překladech
-* snazší objevování nových aplikací, včetně zvýraznění nejstahovanějších aplikací
-* schválení instalace *před* stažením
-* více aktualizací/stahování současně
-* upozornění uživatele na problémy s aplikacemi (např. změna podpisového klíče)
-* volitelný barevný motiv Material You
-* vylepšené filtrování seznamů
