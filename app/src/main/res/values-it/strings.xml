@@ -107,7 +107,7 @@
     <string name="repo_disabled_notification">%1$s disattivato.
 \n
 \nDovrai riattivare nuovamente questo repository per installare le app contenute.</string>
-    <string name="not_on_same_wifi">Il tuo dispositivo non è nella stessa rete Wi-Fi del repository locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
+    <string name="not_on_same_wifi">Il tuo dispositivo non è sulla stessa rete Wi-Fi del repository locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
     <string name="requires_features">Richiede: %1$s</string>
     <string name="category_Development">Sviluppo</string>
     <string name="category_Games">Giochi</string>
@@ -201,7 +201,7 @@
     <string name="repo_searching_address">Ricerca del repository del pacchetto su
 \n%1$s</string>
     <string name="pref_language">Lingua</string>
-    <string name="pref_language_default">Predefinita di Sistema</string>
+    <string name="pref_language_default">Predefinita di sistema</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
     <string name="category_Connectivity">Connettività</string>
@@ -241,7 +241,7 @@
     <string name="useTorSummary">Forza lo scaricamento attraverso Tor per aumentare la privacy. Richiede Orbot</string>
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
     <string name="update_auto_download_summary">Gli aggiornamenti vengono scaricati automaticamente e ti sarai notificato per installarli</string>
-    <string name="update_auto_download">Ottieni automaticamente gli aggiornamenti</string>
+    <string name="update_auto_download">Scarica automaticamente gli aggiornamenti</string>
     <string name="download_pending">In attesa di avviare lo scaricamento…</string>
     <string name="keep_hour">1 ora</string>
     <string name="keep_day">1 giorno</string>
@@ -297,7 +297,7 @@
     <string name="antifeatureswarning">Questa app ha caratteristiche che potrebbero non piacerti.</string>
     <string name="antifeatures">Anti-caratteristiche</string>
     <string name="by_author_format">da %s</string>
-    <string name="app_list__name__downloading_in_progress">Scaricamento di %1$s</string>
+    <string name="app_list__name__downloading_in_progress">Scaricando %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s installato</string>
     <string name="updates__tts__download_app">Scarica</string>
     <string name="app_recommended_version_installed">Versione %1$s (consigliata)</string>
@@ -648,4 +648,45 @@
     <string name="crash_dialog_title_old">F-Droid è crashata</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_discover">Scopri</string>
+    <string name="menu_apps_my">Le mie app</string>
+    <string name="first_start_loading">Recuperando i repository delle app…</string>
+    <string name="my_apps_empty">Solo le app installate da %1$s sono mostrate qui</string>
+    <string name="my_apps_header_apps_with_issue">App con problemi</string>
+    <string name="my_apps_ignore_dialog_title">Nascondi problema</string>
+    <string name="my_apps_ignore_dialog_text">Il problema con questa versione di \"%1$s\" sarà ignorato</string>
+    <string name="my_apps_ignore_dialog_button">Nascondi</string>
+    <string name="my_apps_export_installed_apps">Esporta lista app</string>
+    <string name="app_list_new">Nuove app</string>
+    <string name="app_list_recently_updated">Aggiornate di recente</string>
+    <string name="app_list_most_downloaded">Più scaricate</string>
+    <string name="app_list_all">Tutte le app</string>
+    <string name="app_list_author">App per %s</string>
+    <string name="search_placeholder">Cerca…</string>
+    <string name="search_no_results">Nessuna app trovata\n\nProva a usare meno termini di ricerca o aggiungere più repository</string>
+    <string name="category_group_productivity">Produttività</string>
+    <string name="category_group_tools">Strumenti</string>
+    <string name="category_group_wallets">Finanze e Portafogli</string>
+    <string name="category_group_media">Intrattenimento e Media</string>
+    <string name="category_group_communication">Comunicazione</string>
+    <string name="category_group_device">Dispositivo</string>
+    <string name="category_group_network">Rete</string>
+    <string name="category_group_storage">Archiviazione</string>
+    <string name="category_group_interests">Interessi</string>
+    <string name="category_group_misc">Miscellanea</string>
+    <string name="author_by">Da %1$s</string>
+    <string name="last_updated">Ultimo aggiornamento: %1$s</string>
+    <string name="last_updated_with_size">Ultimo aggiornamento: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Preparando l\'installazione…</string>
+    <string name="whats_new_title">Novità</string>
+    <string name="donate_title">Dona</string>
+    <string name="anti_features_title">Questa app presenta anti-caratteristiche</string>
+    <string name="developer_contact">Contatti dello sviluppatore</string>
+    <string name="technical_info">Informazioni tecniche</string>
+    <string name="package_name">Nome del pacchetto:</string>
+    <string name="installed_version">Versione installata:</string>
+    <string name="menu_about">Informazioni</string>
+    <string name="ipfsgw_summary_new">Scarica le app usando gli endpoint IPFS</string>
+    <string name="call_to_action_keepandroidopen">F-Droid sta venendo minacciato. Google sta cambiando il modo nel quale installi applicazioni sul tuo dispositivo. Ci serve il tuo aiuto.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

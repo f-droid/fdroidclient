@@ -637,7 +637,7 @@
     <string name="crash_dialog_title_old">Сбой F-Droid</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="call_to_action_keepandroidopen">F-Droid в опасности. Google меняет способ установки приложений на устройства. Нам нужна ваша помощь.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid в опасности. Google меняет способ установки приложений на вашем устройстве. Нам нужна ваша помощь.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/ru/</string>
     <string name="menu_about">О программе</string>
     <string name="menu_apps_my">Мои приложения</string>
@@ -677,4 +677,5 @@
     <string name="package_name">Название пакета:</string>
     <string name="installed_version">Установленная версия:</string>
     <string name="menu_discover">Исследовать</string>
+    <string name="ipfsgw_summary_new">Загрузка приложений из конечных веб-точек IPFS</string>
 </resources>

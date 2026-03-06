@@ -676,4 +676,5 @@
     <string name="installed_version">Versiune instalată:</string>
     <string name="call_to_action_keepandroidopen">F-Droid este în pericol. Google schimbă modul în care instalați aplicații pe dispozitiv. Avem nevoie de ajutorul dvs.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Descărcați aplicații de la locațiile IPFS web</string>
 </resources>

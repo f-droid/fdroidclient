@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="installIncompatible">יישומון זה אינו תואם את מכשירך. לנסות ולהתקין אותו בכל מקרה\?</string>
+    <string name="installIncompatible">היישומון לא תואם למכשיר שלך, להתקין בכל זאת?</string>
     <string name="version">גרסה</string>
     <string name="delete">מחיקה</string>
     <string name="cache_downloaded">שמירת יישומונים במטמון</string>
@@ -655,6 +655,45 @@
     <string name="notification_title_summary_app_update_available">יש לגעת כדי לעדכן הכול</string>
     <string name="tts_repo_name">מאגר %1$s</string>
     <string name="tts_author_name">יצירה של %1$s</string>
-    <string name="call_to_action_keepandroidopen">F-Droid תחת מתקפה. Google משנים את דרך התקנת היישומונים בטלפון שלך. אנו זקוקים לעזרתך.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid תחת מתקפה. Google משנים את דרך התקנת היישומונים במכשיר שלך. אנו זקוקים לעזרתך.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="menu_about">על אודות</string>
+    <string name="menu_discover">חשיפה</string>
+    <string name="menu_apps_my">היישומונים שלי</string>
+    <string name="first_start_loading">מאגרי יישומונים מתקבלים…</string>
+    <string name="my_apps_empty">רק יישומונים שהותקנו על ידי %1$s יופיעו כאן</string>
+    <string name="my_apps_header_apps_with_issue">יישומונים עם בעיות</string>
+    <string name="my_apps_ignore_dialog_title">הסתרת בעיה</string>
+    <string name="my_apps_ignore_dialog_text">הבעיה עם הגרסה הזאת של „%1$s” תוסתר</string>
+    <string name="my_apps_ignore_dialog_button">הסתרה</string>
+    <string name="my_apps_export_installed_apps">ייצוא רשימת יישומונים</string>
+    <string name="app_list_new">יישומונים חדשים</string>
+    <string name="app_list_recently_updated">עודכנו לאחרונה</string>
+    <string name="app_list_most_downloaded">הכי מורדים</string>
+    <string name="app_list_all">כל היישמונים</string>
+    <string name="app_list_author">יישמונים על ידי %s</string>
+    <string name="search_placeholder">חפש…</string>
+    <string name="search_no_results">לא נמצאו יישומונים\n\nנסו להשתמש בפחות מילות חיפוש או להוסיף עוד מאגרים</string>
+    <string name="category_group_productivity">הפקה</string>
+    <string name="category_group_tools">כלים</string>
+    <string name="category_group_wallets">כלכלה וארנקים</string>
+    <string name="category_group_media">בידור ומדיה</string>
+    <string name="category_group_communication">תקשורת</string>
+    <string name="category_group_device">מכשיר</string>
+    <string name="category_group_network">רשת</string>
+    <string name="category_group_storage">קבצים ואחסון</string>
+    <string name="category_group_interests">תחומי עניין</string>
+    <string name="category_group_misc">שונות</string>
+    <string name="author_by">על ידי %1$s</string>
+    <string name="last_updated">עדכון אחרון: %1$s</string>
+    <string name="last_updated_with_size">עדכון אחרון: %1$s (%2$s)</string>
+    <string name="status_install_preparing">בהכנות להתקנה…</string>
+    <string name="whats_new_title">מה חדש</string>
+    <string name="donate_title">תרומה</string>
+    <string name="anti_features_title">ליישומון הזה יש יכולות שליליות</string>
+    <string name="developer_contact">יצירת קשר עם המפתחים</string>
+    <string name="technical_info">פירוט טכני</string>
+    <string name="package_name">שם החבילה:</string>
+    <string name="installed_version">גרסה מותקנת:</string>
+    <string name="ipfsgw_summary_new">הורידו יישומונים בעזרת IPFS web endpoints</string>
 </resources>

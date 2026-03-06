@@ -18,7 +18,7 @@
     <string name="notify">Prikaži dostupna ažuriranja</string>
     <string name="notify_on">Pokaži obavijest kad su dostupna ažuriranja</string>
     <string name="system_installer">Proširenje za dozvole</string>
-    <string name="system_installer_on">Koristi proširenje za dozvole za instaliranje, aktualiziranje i uklanjanje paketa</string>
+    <string name="system_installer_on">Koristi „Proširenje za dozvole” za instaliranje, aktualiziranje i uklanjanje paketa</string>
     <string name="local_repo_name">Ime Vašeg lokalnog repozitorija</string>
     <string name="local_repo_name_summary">Oglašeno ime Vašeg lokalnog repozitorija: %s</string>
     <string name="local_repo_https_on">Koristi šrifriranu HTTPS:// vezu za lokalni repozitorij</string>

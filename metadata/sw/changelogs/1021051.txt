@@ -1,0 +1,11 @@
+* Kisasisho cha repo kilichoandikwa upya ili kufanya masasisho ya usuli kuwa ya kuaminika zaidi
+* Gawanya jina na muhtasari katika orodha za api kwa usomaji bora
+* Onyesha onyo wakati api haziwezi kusasishwa kutoka kwa repo inayopendekezwa
+* Api zinazolenga SDK 24 haziambatani na vifaa vya Android 15
+* Kushughulikia vioo katika onyesho la kukagua la "Ongeza ghala" vyema (Asante  Thore!)
+* Wezesha masasisho ya api ambayo hayajashughulikiwa kwenye vifaa vya Xiaomi visivyotumia MIUI (Asante Irate!)
+* Amini vyeti vya mizizi vilivyoongezwa na mtumiaji (Asante B.!)
+* Rekebisha utafutaji usiojali kesi ulio na alama ya kutofautisha matamshi ya herufi (Asante Tobias!)
+* Sasisha maelezo ya anti-feature (Asante Licaon!)
+* Ongeza anti-feature ya tethered net (Asante linsui!)
+* Puuza nafasi nyeupe wakati wa kuongeza vioo vya maghala (Asante Tobias!)

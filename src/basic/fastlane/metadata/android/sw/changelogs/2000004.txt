@@ -1,0 +1,8 @@
+*UI imeandikwa upya kutoka mwanzo na kotlin compose
+* Utafutaji ulioboreshwa, pia kutafuta katika maelezo na tafsiri
+*rahisi zaidi kugundua programu mpya, pia kuangazia zile zilizopakuliwa zaidi
+* idhini ya ufungaji*kabla ya*kupakua 
+* masasisho/upakuaji mwingi kwa wakati mmoja
+* kumjulisha mtumiaji kuhusu matatizo na programu (k.m. ufunguo wa kusaini umebadilishwa)
+* hiari Nyenzo Unapaka rangi mandhari
+* uchujaji bora wa orodha

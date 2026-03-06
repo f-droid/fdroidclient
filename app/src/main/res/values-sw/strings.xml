@@ -624,4 +624,11 @@
     <string name="app_list_most_downloaded">Iliyopakuliwa zaidi</string>
     <string name="app_list_author">Programu na %s</string>
     <string name="search_no_results">Hakuna programu zilizopatikana\n\nJaribu kutumia maneno machache ya utafutaji au uongeze hazina zaidi</string>
+    <string name="author_by">Na %1$s</string>
+    <string name="last_updated_with_size">Ilisasishwa mwisho: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Inatayarisha usakinishaji…</string>
+    <string name="anti_features_title">Programu hii ina vipengele vya kupinga</string>
+    <string name="developer_contact">Mawasiliano ya msanidi programu</string>
+    <string name="technical_info">Maelezo ya kiufundi</string>
+    <string name="app_details_more_apps_by_author">Appi zaidi kufikia %1$s</string>
 </resources>
