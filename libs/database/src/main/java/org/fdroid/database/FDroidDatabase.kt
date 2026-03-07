@@ -16,7 +16,7 @@ import org.fdroid.LocaleChooser.getBestLocale
   // When bumping this version, please make sure to add one (or more) migration(s) below!
   // Consider also providing tests for that migration.
   // Don't forget to commit the new schema to the git repo as well.
-  version = 10,
+  version = 11,
   entities =
     [
       // repo
@@ -50,6 +50,7 @@ import org.fdroid.LocaleChooser.getBestLocale
       AutoMigration(7, 8, CountryCodeMigration::class),
       // 8 to 9 is a manual migration
       AutoMigration(9, 10),
+      AutoMigration(10, 11),
       // add future migrations above!
     ],
 )

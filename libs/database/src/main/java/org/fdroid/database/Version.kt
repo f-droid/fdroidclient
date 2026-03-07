@@ -6,6 +6,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Ignore
+import androidx.room.Index
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.VersionedStringType.PERMISSION
@@ -227,6 +228,13 @@ internal enum class VersionedStringType {
 @Entity(
   tableName = VersionedString.TABLE,
   primaryKeys = ["repoId", "packageName", "versionId", "type", "name"],
+  indices =
+    [
+      // In addition to primary key, as reordering the primary key so `versionId` is first:
+      //  * Requires complex migration, dropping and recreating the table.
+      //  * May be queries which want `repoId` first (though this is unlikely for this table)
+      Index("versionId")
+    ],
   foreignKeys =
     [
       ForeignKey(

@@ -11,6 +11,7 @@ import androidx.room.ForeignKey
 import androidx.room.Fts4
 import androidx.room.FtsOptions
 import androidx.room.Ignore
+import androidx.room.Index
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
@@ -37,6 +38,12 @@ public interface MinimalApp {
 @Entity(
   tableName = AppMetadata.TABLE,
   primaryKeys = ["repoId", "packageName"],
+  indices =
+    [
+      // Supports the "More apps by ..." button in AppDetails, which links to the "Apps by ..."
+      // list.
+      Index("authorName")
+    ],
   foreignKeys =
     [
       ForeignKey(
@@ -424,6 +431,13 @@ internal interface IFile {
 @Entity(
   tableName = LocalizedFile.TABLE,
   primaryKeys = ["repoId", "packageName", "type", "locale"],
+  indices =
+    [
+      // In addition to primary key, as reordering the primary key so `packageName` is first:
+      //  * Requires complex migration, dropping and recreating the table.
+      //  * May be queries which want `repoId` first (though this is unlikely for this table)
+      Index("packageName")
+    ],
   foreignKeys =
     [
       ForeignKey(
@@ -498,6 +512,15 @@ internal data class LocalizedIcon(
 @Entity(
   tableName = LocalizedFileList.TABLE,
   primaryKeys = ["repoId", "packageName", "type", "locale", "name"],
+  indices =
+    [
+      // In addition to primary key, as reordering the primary key so `packageName` is first:
+      //  * Requires complex migration, dropping and recreating the table.
+      //  * May be queries which want `repoId` first (though this is unlikely for this table)
+      //
+      // This includes `repoId` so it can be used as a covering index in specific queries.
+      Index("packageName", "repoId")
+    ],
   foreignKeys =
     [
       ForeignKey(
