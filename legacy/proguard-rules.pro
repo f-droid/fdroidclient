@@ -2,6 +2,7 @@
 -dontoptimize
 -keepattributes SourceFile,LineNumberTable,Exceptions
 -keep class org.fdroid.fdroid.** {*;}
+-keep class kotlin.LazyKt
 -dontwarn android.test.**
 
 -dontwarn javax.naming.**
