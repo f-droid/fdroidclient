@@ -144,6 +144,8 @@ dependencies {
   testImplementation(libs.mockk)
   testImplementation(libs.robolectric)
   testImplementation(libs.slf4j.simple)
+  testImplementation(libs.turbine)
+  testImplementation(libs.kotlinx.coroutines.test)
 
   androidTestImplementation(libs.kotlin.test)
   androidTestImplementation(libs.kotlin.reflect)

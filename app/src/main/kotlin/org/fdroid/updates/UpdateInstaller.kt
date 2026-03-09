@@ -13,6 +13,7 @@ import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
+import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
@@ -39,6 +40,8 @@ constructor(
   private val appInstallManager: AppInstallManager,
   @param:IoDispatcher private val coroutineScope: CoroutineScope,
 ) {
+  private val log = KotlinLogging.logger {}
+
   companion object {
     private const val UNKNOWN_APP_NAME = "Unknown"
     private const val MAX_CONCURRENT_UPDATES = 8
@@ -73,11 +76,20 @@ constructor(
   ) {
     val concurrencyLimit = min(Runtime.getRuntime().availableProcessors(), MAX_CONCURRENT_UPDATES)
     val semaphore = Semaphore(concurrencyLimit)
-
+    var num = 0
+    log.info { "Updating ${apps.size} apps with concurrency limit $concurrencyLimit" }
     apps
       .map { update ->
         coroutineScope.launch {
+          // acquire a permit for the update, so we don't run too many in parallel
+          // FIXME a job is considered completed when we need to ask for user approval,
+          //  so as the user approves updates one by one, more updates will start,
+          //  which may lead to too many concurrent updates.
+          //  In practice, no adverse effects were observed even with ~50 updates,
+          //  so maybe not high priority.
           semaphore.withPermit {
+            num += 1
+            log.info { "Starting update for ${update.packageName} (${num}/${apps.size})" }
             currentCoroutineContext().ensureActive()
             updateApp(update, canRequestPreApproval)
           }
