@@ -125,13 +125,24 @@ constructor(
    */
   @UiThread
   suspend fun install(
-    appMetadata: AppMetadata,
+    appMetadata: AppMetadata?,
     version: AppVersion,
     currentVersionName: String?,
-    repo: Repository,
+    repo: Repository?,
     iconModel: Any?,
     canAskPreApprovalNow: Boolean,
   ): InstallState {
+    if (appMetadata == null || repo == null) {
+      log.error { "Can't install app without metadata for ${version.packageName}" }
+      return InstallState.Error(
+        msg = "App ${version.packageName} no longer in DB.",
+        name = version.packageName,
+        versionName = version.versionName,
+        currentVersionName = currentVersionName,
+        lastUpdated = version.added,
+        iconModel = iconModel,
+      )
+    }
     val packageName = appMetadata.packageName
     val currentState = apps.value[packageName]
     if (currentState?.showProgress == true && currentState !is InstallState.Waiting) {
