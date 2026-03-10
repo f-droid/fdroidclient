@@ -134,14 +134,20 @@ constructor(
   ): InstallState {
     if (appMetadata == null || repo == null) {
       log.error { "Can't install app without metadata for ${version.packageName}" }
-      return InstallState.Error(
-        msg = "App ${version.packageName} no longer in DB.",
-        name = version.packageName,
-        versionName = version.versionName,
-        currentVersionName = currentVersionName,
-        lastUpdated = version.added,
-        iconModel = iconModel,
-      )
+      val error =
+        InstallState.Error(
+          msg = "App ${version.packageName} no longer in DB.",
+          name = version.packageName,
+          versionName = version.versionName,
+          currentVersionName = currentVersionName,
+          lastUpdated = version.added,
+          iconModel = iconModel,
+        )
+      // Write the terminal state so any prior Waiting state is cleared and the
+      // service stop logic in onStatesUpdated() has a chance to run.
+      apps.updateApp(version.packageName) { error }
+      onStatesUpdated()
+      return error
     }
     val packageName = appMetadata.packageName
     val currentState = apps.value[packageName]
@@ -173,6 +179,14 @@ constructor(
         job.await()
       } catch (_: CancellationException) {
         InstallState.UserAborted
+      } catch (e: Exception) {
+        log.error(e) { "Unexpected install job failure for $packageName" }
+        val currentState = apps.value[packageName]
+        if (currentState is InstallStateWithInfo) {
+          InstallState.Error(msg = "${e::class.java.simpleName} ${e.message}", s = currentState)
+        } else {
+          InstallState.UserAborted
+        }
       } finally {
         // remove job as it has completed
         jobs.remove(packageName)
@@ -282,7 +296,13 @@ constructor(
       return null
     }
     log.info { "Requesting pre-approval confirmation for $packageName" }
-    val result = sessionInstallManager.requestUserConfirmation(installState)
+    val result =
+      try {
+        sessionInstallManager.requestUserConfirmation(installState)
+      } catch (e: Exception) {
+        log.error(e) { "Pre-approval confirmation failed for $packageName: " }
+        InstallState.Error(msg = "${e::class.java.simpleName} ${e.message}", s = installState)
+      }
     log.info { "Pre-approval confirmation for $packageName $result" }
     apps.updateApp(packageName) { result }
     onStatesUpdated()
@@ -299,7 +319,7 @@ constructor(
           )
         }
       // suspend/wait for this job and track it in case we want to cancel it
-      return trackJob(packageName, job)
+      trackJob(packageName, job)
     } else result
   }
 
@@ -420,7 +440,14 @@ constructor(
     val sessionInfo =
       context.packageManager.packageInstaller.getSessionInfo(installState.sessionId)
         ?: run {
-          log.error { "Session ${installState.sessionId} does not exist anymore" }
+          // Session is gone — the installation already concluded or was abandoned externally.
+          // Transition to a terminal state so the stale UserConfirmationNeeded doesn't
+          // keep the service alive indefinitely.
+          log.error { "Session ${installState.sessionId} for $packageName is gone" }
+          apps.updateApp(packageName) {
+            InstallState.Error("Installation session is gone", installState)
+          }
+          onStatesUpdated()
           return
         }
     if (sessionInfo.progress <= installState.progress) {
