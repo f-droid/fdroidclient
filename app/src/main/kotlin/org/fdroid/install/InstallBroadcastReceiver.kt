@@ -13,8 +13,7 @@ import mu.KotlinLogging
 
 class InstallBroadcastReceiver(
   private val sessionId: Int,
-  private val listener:
-    InstallBroadcastReceiver.(status: Int, confirmIntent: Intent?, msg: String?) -> Unit,
+  private val listener: InstallBroadcastListener,
 ) : BroadcastReceiver() {
 
   private val log = KotlinLogging.logger {}
