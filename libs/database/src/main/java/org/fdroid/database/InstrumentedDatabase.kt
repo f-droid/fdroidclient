@@ -2,11 +2,12 @@ package org.fdroid.database
 
 import android.database.Cursor
 import android.os.CancellationSignal
-import android.os.SystemClock
 import android.util.Log
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 import androidx.sqlite.db.SupportSQLiteQuery
+import kotlin.time.Duration
+import kotlin.time.measureTimedValue
 
 /**
  * Only use this in debug mode or for local builds, not for release builds.
@@ -56,12 +57,8 @@ internal class TimingDatabase(
 ) : SupportSQLiteDatabase by delegate {
 
   private fun logQueryIfRequired(query: String, closure: () -> Cursor): Cursor {
-    val start = SystemClock.elapsedRealtime()
-    val cursor = closure()
-    val count = cursor.count
-    println(count)
-    val duration = SystemClock.elapsedRealtime() - start
-    if (duration > thresholdMs) {
+    val (cursor, duration) = measureTimedValue { closure() }
+    if (duration.inWholeMilliseconds > thresholdMs) {
       logSlowQuery(query, duration)
       explainQueryPlan(query)
     } else {
@@ -70,7 +67,7 @@ internal class TimingDatabase(
       } else {
         Log.d(
           "TimingDatabase",
-          "Query took $duration but threshold for logging is $thresholdMs. Skipping.",
+          "Query took $duration but threshold for logging is ${thresholdMs}ms. Skipping.",
         )
       }
 
@@ -93,8 +90,8 @@ internal class TimingDatabase(
 
   override fun query(query: String): Cursor = logQueryIfRequired(query) { delegate.query(query) }
 
-  private fun logSlowQuery(sql: String, duration: Long) {
-    Log.w("TimingDatabase", "Slow query (${duration}ms): $sql")
+  private fun logSlowQuery(sql: String, duration: Duration) {
+    Log.w("TimingDatabase", "Slow query ($duration): $sql")
   }
 
   private fun explainQueryPlan(sql: String) {

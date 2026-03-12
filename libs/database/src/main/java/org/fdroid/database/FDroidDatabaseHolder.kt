@@ -68,7 +68,7 @@ public object FDroidDatabaseHolder {
                 openHelperFactory(
                   TimingOpenHelperFactory(
                     FrameworkSQLiteOpenHelperFactory(),
-                    slowQueryThresholdMs = 2000
+                    slowQueryThresholdMs = 500,
                   )
                 )
               }
