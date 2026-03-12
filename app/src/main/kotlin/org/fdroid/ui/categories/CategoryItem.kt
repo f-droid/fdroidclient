@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Church
 import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.material.icons.filled.Collections
+import androidx.compose.material.icons.filled.Contacts
 import androidx.compose.material.icons.filled.CurrencyExchange
 import androidx.compose.material.icons.filled.DeveloperMode
 import androidx.compose.material.icons.filled.DirectionsBus
@@ -51,10 +52,12 @@ import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.PermPhoneMsg
 import androidx.compose.material.icons.filled.PhotoSizeSelectActual
 import androidx.compose.material.icons.filled.Podcasts
+import androidx.compose.material.icons.filled.Radio
 import androidx.compose.material.icons.filled.RestaurantMenu
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.SettingsRemote
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.SignalCellularAlt
 import androidx.compose.material.icons.filled.Storefront
@@ -86,6 +89,7 @@ data class CategoryItem(val id: String, val name: String) {
         "Clock" -> Icons.Default.AccessTime
         "Cloud Storage & File Sync" -> Icons.Default.Cloud
         "Connectivity" -> Icons.Default.SignalCellularAlt
+        "Contact" -> Icons.Default.Contacts
         "Development" -> Icons.Default.DeveloperMode
         "DNS & Hosts" -> Icons.Default.Dns
         "Draw" -> Icons.Default.Draw
@@ -122,9 +126,11 @@ data class CategoryItem(val id: String, val name: String) {
         "Phone & SMS" -> Icons.Default.PermPhoneMsg
         "Podcast" -> Icons.Default.Podcasts
         "Public Transport" -> Icons.Default.DirectionsBus
+        "Radio" -> Icons.Default.Radio
         "Reading" -> AutoMirrored.Default.MenuBook
         "Recipe Manager" -> Icons.Default.RestaurantMenu
         "Religion" -> Icons.Default.Church
+        "Remote Controller" -> Icons.Default.SettingsRemote
         "Science & Education" -> Icons.Default.Science
         "Security" -> Icons.Default.Security
         "Shopping List" -> Icons.Default.ShoppingCart
@@ -161,6 +167,7 @@ data class CategoryItem(val id: String, val name: String) {
         "Clock" -> CategoryGroups.productivity
         "Cloud Storage & File Sync" -> CategoryGroups.storage
         "Connectivity" -> CategoryGroups.network
+        "Contact" -> CategoryGroups.communication
         "Development" -> CategoryGroups.interests
         "DNS & Hosts" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests
@@ -197,9 +204,11 @@ data class CategoryItem(val id: String, val name: String) {
         "Phone & SMS" -> CategoryGroups.communication
         "Podcast" -> CategoryGroups.media
         "Public Transport" -> CategoryGroups.tools
+        "Radio" -> CategoryGroups.media
         "Reading" -> CategoryGroups.media
         "Recipe Manager" -> CategoryGroups.interests
         "Religion" -> CategoryGroups.interests
+        "Remote Controller" -> CategoryGroups.tools
         "Science & Education" -> CategoryGroups.interests
         "Security" -> CategoryGroups.device
         "Shopping List" -> CategoryGroups.tools
