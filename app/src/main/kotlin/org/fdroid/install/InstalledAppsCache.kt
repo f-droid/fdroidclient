@@ -8,12 +8,12 @@ import android.content.IntentFilter
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
-import androidx.annotation.UiThread
+import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
+import androidx.core.content.ContextCompat.registerReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -33,7 +33,6 @@ constructor(
   private val packageManager = context.packageManager
   private val _installedApps = MutableStateFlow<Map<String, PackageInfo>>(emptyMap())
   val installedApps = _installedApps.asStateFlow()
-  private var loadJob: Job? = null
 
   init {
     val intentFilter =
@@ -42,30 +41,18 @@ constructor(
         addAction(Intent.ACTION_PACKAGE_REMOVED)
         addDataScheme("package")
       }
-    context.registerReceiver(this, intentFilter)
-    loadInstalledApps()
+    registerReceiver(context, this, intentFilter, RECEIVER_NOT_EXPORTED)
+    ioScope.launch {
+      log.info { "Loading installed apps..." }
+      @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
+      val installedPackages = packageManager.getInstalledPackages(GET_SIGNATURES)
+      _installedApps.update { installedPackages.associateBy { it.packageName } }
+    }
   }
 
   fun isInstalled(packageName: String): Boolean {
     // TODO on first start this may have to wait for installed apps to load
     return _installedApps.value.contains(packageName)
-  }
-
-  @UiThread
-  private fun loadInstalledApps() {
-    if (loadJob?.isActive == true) {
-      // TODO this may give us a stale cache if an app was changed
-      //  while the system had already assembled the data, but we didn't return yet
-      log.warn { "Already loading apps, not loading again." }
-      return
-    }
-    loadJob =
-      ioScope.launch {
-        log.info { "Loading installed apps..." }
-        @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
-        val installedPackages = packageManager.getInstalledPackages(GET_SIGNATURES)
-        _installedApps.update { installedPackages.associateBy { it.packageName } }
-      }
   }
 
   override fun onReceive(context: Context, intent: Intent) {
