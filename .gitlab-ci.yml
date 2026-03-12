@@ -24,7 +24,7 @@ workflow:
     - test -e /etc/apt/sources.list.d/trixie-backports.list
       || echo "deb http://deb.debian.org/debian trixie-backports main" >> /etc/apt/sources.list
     - apt update
-    - apt-get -qy install -t trixie-backports --no-install-recommends git sdkmanager openjdk-21-jdk-headless
+    - apt-get -qy install -t trixie-backports --no-install-recommends git git-lfs sdkmanager openjdk-21-jdk-headless
 
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
 
@@ -255,7 +255,7 @@ app weblate merge conflict:
         - metadata/*
   script:
     - apt-get update
-    - apt-get -qy install --no-install-recommends ca-certificates git
+    - apt-get -qy install --no-install-recommends ca-certificates git git-lfs
     - git config user.name "$CI_PIPELINE_ID/$CI_JOB_ID"
     - git config user.email $CI_PROJECT_PATH@f-droid.org
     - git fetch https://hosted.weblate.org/git/f-droid/f-droid
@@ -293,7 +293,7 @@ libs database schema:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
   before_script:
     - apt-get update
-    - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git sdkmanager
+    - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git git-lfs sdkmanager
     - export ANDROID_HOME=/opt/android-sdk
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
     - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;$ANDROID_COMPILE_SDK.0.0"
