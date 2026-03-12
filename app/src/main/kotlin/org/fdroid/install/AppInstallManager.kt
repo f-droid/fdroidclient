@@ -213,8 +213,8 @@ constructor(
         iconModel = iconModel,
       )
     apps.updateApp(appMetadata.packageName) { startingState }
-    log.info { "Started install of ${appMetadata.packageName}" }
     onStatesUpdated()
+    log.info { "Started install of ${appMetadata.packageName}" }
     currentCoroutineContext().ensureActive()
     // request pre-approval from user (if available)
     val preApprovalResult =
@@ -242,6 +242,7 @@ constructor(
               result = preApprovalResult,
             )
           } as InstallState.PreApproved
+        onStatesUpdated()
         downloadAndInstall(newState, version, currentVersionName, repo, iconModel)
       }
       is PreApprovalResult.UserConfirmationRequired -> {
@@ -350,6 +351,7 @@ constructor(
           iconModel = it.iconModel,
         )
       }
+    onStatesUpdated()
     val result = sessionInstallManager.install(sessionId, version.packageName, newState, file)
     log.debug { "Install result: $result" }
     return if (result is InstallState.PreApproved && result.result is PreApprovalResult.Error) {
@@ -448,6 +450,7 @@ constructor(
     val code = activityResult.data?.getIntExtra("android.intent.extra.INSTALL_RESULT", -1)
     log.info { "Uninstall result received: ${activityResult.resultCode} => $result ($code)" }
     apps.updateApp(packageName) { result }
+    // not running onStatesUpdated() because we only track installs there
     if (result == InstallState.Uninstalled) {
       val event =
         UninstallEvent(time = System.currentTimeMillis(), packageName = packageName, name = name)
@@ -463,6 +466,7 @@ constructor(
       log.info { "Cleaning up state for $packageName $state" }
       jobs.remove(packageName)?.cancel()
       apps.update { oldApps -> oldApps.toMutableMap().apply { remove(packageName) } }
+      onStatesUpdated()
     }
   }
 
@@ -471,6 +475,7 @@ constructor(
     val serviceIntent = Intent(context, AppInstallService::class.java)
     // stop foreground service, if no app is installing and it is still running
     if (!notificationState.isInstallingSomeApp && AppInstallService.isServiceRunning) {
+      log.info { "Stopping ${AppInstallService::class.simpleName}..." }
       context.stopService(serviceIntent)
     }
     if (notificationState.isInProgress) {

@@ -4,7 +4,6 @@ plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.android.ksp)
   alias(libs.plugins.android.hilt)
-  alias(libs.plugins.jetbrains.kotlin.android)
   alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
   alias(libs.plugins.jetbrains.compose.compiler)
   alias(libs.plugins.screenshot)
@@ -19,8 +18,8 @@ android {
     applicationId = "org.fdroid"
     minSdk = 24
     targetSdk = 36
-    versionCode = 2000004
-    versionName = "2.0-alpha4"
+    versionCode = 2000005
+    versionName = "2.0-alpha5"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -152,6 +151,9 @@ dependencies {
   androidTestImplementation(libs.androidx.espresso.core)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
+  androidTestImplementation(libs.androidx.test.uiautomator)
+  androidTestImplementation(libs.coil.test)
+  androidTestImplementation(libs.coil.network.okhttp)
 
   screenshotTestImplementation(libs.screenshot.validation.api)
   screenshotTestImplementation(libs.androidx.ui.tooling)

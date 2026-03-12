@@ -22,7 +22,7 @@ import androidx.room.RoomWarnings.Companion.QUERY_MISMATCH
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.SQLiteStatement
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.DAYS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonNull
@@ -39,6 +39,8 @@ import org.fdroid.index.v2.LocalizedFileListV2
 import org.fdroid.index.v2.LocalizedFileV2
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.index.v2.ReflectionDiffer.applyDiff
+
+private const val NEW_DAYS = 14L
 
 public interface AppDao {
   /**
@@ -108,14 +110,19 @@ public interface AppDao {
    * @param maxAgeInDays the number of days that is still considered "new". Apps older than this
    *   won't be returned.
    */
-  public suspend fun getNewApps(maxAgeInDays: Long = 14): List<AppOverviewItem>
+  public suspend fun getNewApps(maxAgeInDays: Long = NEW_DAYS): List<AppOverviewItem>
 
   /**
    * Get apps that were recently updated. This excludes apps returned by [getNewApps].
    *
    * @param limit only return that many apps and not more.
+   * @param newInDays the number of days that is still considered "new", should be the same as
+   *   [getNewApps].
    */
-  public suspend fun getRecentlyUpdatedApps(limit: Int = 200): List<AppOverviewItem>
+  public suspend fun getRecentlyUpdatedApps(
+    limit: Int = 200,
+    newInDays: Long = NEW_DAYS,
+  ): List<AppOverviewItem>
 
   /** Get all apps from the repository identified by [repoId]. */
   public suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
@@ -124,10 +131,13 @@ public interface AppDao {
   public suspend fun getApps(packageNames: List<String>): List<AppOverviewItem>
 
   /** Same as [getNewApps], but returns an observable [Flow]. */
-  public fun getNewAppsFlow(maxAgeInDays: Long = 14): Flow<List<AppOverviewItem>>
+  public fun getNewAppsFlow(maxAgeInDays: Long = NEW_DAYS): Flow<List<AppOverviewItem>>
 
   /** Same as [getRecentlyUpdatedApps], but returns an observable [Flow]. */
-  public fun getRecentlyUpdatedAppsFlow(limit: Int = 200): Flow<List<AppOverviewItem>>
+  public fun getRecentlyUpdatedAppsFlow(
+    limit: Int = 200,
+    newInDays: Long = NEW_DAYS,
+  ): Flow<List<AppOverviewItem>>
 
   /** Returns apps for the given [packageNames]. */
   public fun getAppsFlow(packageNames: List<String>): Flow<List<AppOverviewItem>>
@@ -483,18 +493,18 @@ internal interface AppDaoInt : AppDao {
   @Transaction
   override suspend fun getNewApps(maxAgeInDays: Long): List<AppOverviewItem> {
     val query =
-      getAppsQuery("app.added = app.lastUpdated AND app.lastUpdated > ?") { statement ->
-        statement.bindLong(1, System.currentTimeMillis() - TimeUnit.DAYS.toMillis(maxAgeInDays))
+      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
+        statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getApps(query)
   }
 
   @Transaction
-  override suspend fun getRecentlyUpdatedApps(limit: Int): List<AppOverviewItem> {
+  override suspend fun getRecentlyUpdatedApps(limit: Int, newInDays: Long): List<AppOverviewItem> {
     val query =
-      getAppsQuery("app.added != app.lastUpdated ORDER BY app.lastUpdated DESC LIMIT ?") { statement
-        ->
-        statement.bindInt(1, limit)
+      getAppsQuery("app.added < ? ORDER BY app.lastUpdated DESC LIMIT ?") { statement ->
+        statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(newInDays))
+        statement.bindInt(2, limit)
       }
     return getApps(query)
   }
@@ -520,18 +530,20 @@ internal interface AppDaoInt : AppDao {
 
   override fun getNewAppsFlow(maxAgeInDays: Long): Flow<List<AppOverviewItem>> {
     val query =
-      getAppsQuery("app.added = app.lastUpdated AND app.lastUpdated > ? ORDER BY app.added DESC") {
-        statement ->
-        statement.bindLong(1, System.currentTimeMillis() - TimeUnit.DAYS.toMillis(maxAgeInDays))
+      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
+        statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getAppsFlow(query)
   }
 
-  override fun getRecentlyUpdatedAppsFlow(limit: Int): Flow<List<AppOverviewItem>> {
+  override fun getRecentlyUpdatedAppsFlow(
+    limit: Int,
+    newInDays: Long,
+  ): Flow<List<AppOverviewItem>> {
     val query =
-      getAppsQuery("app.added != app.lastUpdated ORDER BY app.lastUpdated DESC LIMIT ?") { statement
-        ->
-        statement.bindInt(1, limit)
+      getAppsQuery("app.added < ? ORDER BY app.lastUpdated DESC LIMIT ?") { statement ->
+        statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(newInDays))
+        statement.bindInt(2, limit)
       }
     return getAppsFlow(query)
   }

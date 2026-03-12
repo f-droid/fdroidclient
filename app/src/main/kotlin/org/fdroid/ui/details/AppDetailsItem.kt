@@ -62,7 +62,7 @@ data class AppDetailsItem(
   val antiFeatures: List<AntiFeature>? = null,
   val issue: AppIssue? = null,
   val authorHasMoreThanOneApp: Boolean = false,
-  val proxy: ProxyConfig?,
+  val proxy: ProxyConfig? = null,
 ) {
   constructor(
     repository: Repository,
@@ -161,17 +161,28 @@ data class AppDetailsItem(
 
   /** Specifies what main button should be shown. */
   val mainButtonState: MainButtonState
-    get() {
-      return if (installState.showProgress) {
+    get() =
+      if (installState.showProgress) {
         MainButtonState.PROGRESS
       } else if (installedVersionCode == null) { // app is not installed
-        if (suggestedVersion == null) MainButtonState.NONE else MainButtonState.INSTALL
-      } else { // app is installed
-        if (suggestedVersion == null || suggestedVersion.versionCode <= installedVersionCode)
+        if (versions == null) {
+          MainButtonState.LOADING
+        } else if (suggestedVersion == null) {
           MainButtonState.NONE
-        else MainButtonState.UPDATE
+        } else {
+          MainButtonState.INSTALL
+        }
+      } else { // app is installed
+        if (versions == null) {
+          MainButtonState.LOADING
+        } else if (
+          suggestedVersion == null || suggestedVersion.versionCode <= installedVersionCode
+        ) {
+          MainButtonState.NONE
+        } else {
+          MainButtonState.UPDATE
+        }
       }
-    }
 
   /** True if all available versions for this app are incompatible with this device. */
   val isIncompatible: Boolean = versions?.all { !it.isCompatible } ?: false
@@ -245,9 +256,15 @@ data class VersionItem(
 )
 
 enum class MainButtonState {
+  /** Versions are still loading, so we don't know if there will be an update */
+  LOADING,
+  /** App doesn't suggest install nor update */
   NONE,
+  /** App is not installed, but can be */
   INSTALL,
+  /** App is installed and can get updated */
   UPDATE,
+  /** An installation or update is in progress, so no button actions should be taken now. */
   PROGRESS,
 }
 
@@ -262,8 +279,8 @@ private fun AppVersion?.getAntiFeatures(
   repository: Repository,
   localeList: LocaleListCompat,
   proxy: ProxyConfig?,
-): List<AntiFeature>? {
-  return this?.antiFeatureKeys?.mapNotNull { key ->
+): List<AntiFeature>? =
+  this?.antiFeatureKeys?.mapNotNull { key ->
     val antiFeature = repository.getAntiFeatures()[key] ?: return@mapNotNull null
     AntiFeature(
       id = key,
@@ -272,7 +289,6 @@ private fun AppVersion?.getAntiFeatures(
       reason = getAntiFeatureReason(key, localeList),
     )
   }
-}
 
 @VisibleForTesting
 internal fun getHtmlDescription(description: String?): String? {

@@ -12,7 +12,6 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -116,19 +115,16 @@ fun RepoDetails(
             contentDescription = stringResource(R.string.show_repository_qr),
             onClick = { qrCodeDialog = true },
           )
-          IconButton(
+          TopAppBarButton(
+            imageVector = Icons.Default.Sync,
+            contentDescription = stringResource(R.string.repo_force_update),
             enabled = info.model.isUpdateButtonEnabled,
             onClick = {
               if (info.model.networkState.isMetered)
                 showMeteredDialog = { RepoUpdateWorker.updateNow(context, repo.repoId) }
               else RepoUpdateWorker.updateNow(context, repo.repoId)
             },
-          ) {
-            Icon(
-              imageVector = Icons.Default.Sync,
-              contentDescription = stringResource(R.string.repo_force_update),
-            )
-          }
+          )
           TopAppBarOverflowButton { onDismissRequest ->
             DropdownMenuItem(
               text = { Text(stringResource(R.string.delete)) },

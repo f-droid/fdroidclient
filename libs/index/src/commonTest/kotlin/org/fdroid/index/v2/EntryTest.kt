@@ -5,7 +5,6 @@ import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.IndexParser
 import org.fdroid.test.TestDataEntry
 import org.junit.Test
@@ -14,22 +13,22 @@ internal class EntryTest {
 
   @Test
   fun testEmpty() {
-    testEntryEquality("$ASSET_PATH/entry-empty-v2.json", TestDataEntry.empty)
+    testEntryEquality("entry-empty-v2.json", TestDataEntry.empty)
   }
 
   @Test
   fun testEmptyToMin() {
-    testEntryEquality("$ASSET_PATH/diff-empty-min/$DATA_FILE_NAME", TestDataEntry.emptyToMin)
+    testEntryEquality("diff-empty-min/$DATA_FILE_NAME", TestDataEntry.emptyToMin)
   }
 
   @Test
   fun testEmptyToMid() {
-    testEntryEquality("$ASSET_PATH/diff-empty-mid/$DATA_FILE_NAME", TestDataEntry.emptyToMid)
+    testEntryEquality("diff-empty-mid/$DATA_FILE_NAME", TestDataEntry.emptyToMid)
   }
 
   @Test
   fun testEmptyToMax() {
-    testEntryEquality("$ASSET_PATH/diff-empty-max/$DATA_FILE_NAME", TestDataEntry.emptyToMax)
+    testEntryEquality("diff-empty-max/$DATA_FILE_NAME", TestDataEntry.emptyToMax)
   }
 
   @Test

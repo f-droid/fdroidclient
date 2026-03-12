@@ -3,6 +3,7 @@ package org.fdroid.ui.details
 import android.content.Intent
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
@@ -25,13 +26,13 @@ import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
 @Composable
-fun AppDetailsMenu(item: AppDetailsItem, onDismiss: () -> Unit) {
+fun AppDetailsMenu(
+  item: AppDetailsItem,
+  uninstallLauncher: ActivityResultLauncher<Intent>,
+  onDismiss: () -> Unit,
+) {
   val res = LocalResources.current
   val context = LocalContext.current
-  val uninstallLauncher =
-    rememberLauncherForActivityResult(StartActivityForResult()) {
-      item.actions.onUninstallResult(it)
-    }
   if (item.appPrefs != null)
     DropdownMenuItem(
       leadingIcon = { Icon(Icons.Default.Preview, null) },
@@ -101,12 +102,16 @@ fun AppDetailsMenu(item: AppDetailsItem, onDismiss: () -> Unit) {
 @Preview
 @Composable
 fun AppDetailsMenuPreview() {
-  FDroidContent { Column { AppDetailsMenu(testApp) {} } }
+  val uninstallLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {}
+  FDroidContent { Column { AppDetailsMenu(testApp, uninstallLauncher) {} } }
 }
 
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun AppDetailsMenuAllIgnoredPreview() {
+  val uninstallLauncher = rememberLauncherForActivityResult(StartActivityForResult()) {}
   val appPrefs = testApp.appPrefs!!.toggleIgnoreAllUpdates()
-  FDroidContent { Column { AppDetailsMenu(testApp.copy(appPrefs = appPrefs)) {} } }
+  FDroidContent {
+    Column { AppDetailsMenu(testApp.copy(appPrefs = appPrefs), uninstallLauncher) {} }
+  }
 }

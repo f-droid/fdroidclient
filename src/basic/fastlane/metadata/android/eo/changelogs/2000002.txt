@@ -1,8 +1,0 @@
-• tute refarita uzant-fasado uzante Kotlin Compose
-• plibonigita serĉo, ankaŭ serĉante en priskriboj kaj tradukoj
-• plifaciligita malkovro de novaj aplikaĵoj, emfazo de plej ofte elŝutataj
-• instalpeto antaŭ ol elŝuti
-• pluraj elŝutadoj/ĝisdatigadoj samtempe
-• sciigi uzanton pri problemoj pri aplikaĵoj (ekz. pri ŝanĝo de subskriba ŝlosilo)
-• (malnepra) kolor-etoso Material You
-• plibonigita filtrado en listoj

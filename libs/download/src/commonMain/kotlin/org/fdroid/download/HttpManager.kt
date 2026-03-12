@@ -37,10 +37,8 @@ import java.io.ByteArrayOutputStream
 import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.io.readByteArray
 import mu.KotlinLogging
-import okhttp3.Dns
-import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 
-internal expect fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*>
+internal expect fun getHttpClientEngineFactory(customDns: CustomDns?): HttpClientEngineFactory<*>
 
 public open class HttpManager
 @JvmOverloads
@@ -48,7 +46,7 @@ constructor(
   private val userAgent: String,
   queryString: String? = null,
   proxyConfig: ProxyConfig? = null,
-  customDns: Dns? = null,
+  customDns: CustomDns? = null,
   private val mirrorParameterManager: MirrorParameterManager? = null,
   private val highTimeouts: Boolean = false,
   private val mirrorChooser: MirrorChooser = MirrorChooserWithParameters(mirrorParameterManager),
@@ -58,10 +56,7 @@ constructor(
 
   public companion object {
     internal val log = KotlinLogging.logger {}
-    internal const val READ_BUFFER = 8 * 1024
     private const val TIMEOUT_MILLIS_HIGH = 300_000L
-
-    public fun isInvalidHttpUrl(url: String): Boolean = url.toHttpUrlOrNull() == null
   }
 
   private var httpClient = getNewHttpClient(proxyConfig)

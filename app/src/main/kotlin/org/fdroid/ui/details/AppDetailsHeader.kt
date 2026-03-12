@@ -3,6 +3,7 @@ package org.fdroid.ui.details
 import android.text.format.Formatter
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
@@ -12,7 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
@@ -32,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
@@ -74,14 +76,17 @@ import org.fdroid.ui.utils.testApp
 fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
   Box {
     Spacer(modifier = Modifier.padding(top = innerPadding.calculateTopPadding()))
+    var showFeatureGraphic by remember { mutableStateOf(true) }
     item.featureGraphic?.let { featureGraphic ->
       AsyncImage(
         model = featureGraphic,
         contentDescription = null,
         contentScale = ContentScale.FillWidth,
+        onError = { showFeatureGraphic = false },
         modifier =
           Modifier.fillMaxWidth()
-            .heightIn(max = 196.dp)
+            .animateContentSize()
+            .height(if (showFeatureGraphic) 196.dp else 0.dp)
             .graphicsLayer { alpha = 0.5f }
             .drawWithContent {
               val colors = listOf(Color.Black, Color.Transparent)
@@ -93,12 +98,15 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
     }
   }
   var showMeteredDialog by remember { mutableStateOf(false) }
+  AnimatedVisibility(item.mainButtonState == MainButtonState.LOADING) {
+    LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth().absoluteOffset(y = (-8).dp))
+  }
   // Offline bar, if no internet
   if (!item.networkState.isOnline) {
     OfflineBar(modifier = Modifier.absoluteOffset(y = (-8).dp))
   }
   // Header
-  val version = item.suggestedVersion ?: item.versions?.first()?.version
+  val version = item.suggestedVersion ?: item.versions?.firstOrNull()?.version
   Row(
     modifier = Modifier.padding(horizontal = 16.dp),
     horizontalArrangement = spacedBy(16.dp),
@@ -166,7 +174,7 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
   // check user confirmation ON_RESUME to work around Android bug
   val lifecycleOwner = LocalLifecycleOwner.current
   val currentInstallState by rememberUpdatedState(item.installState)
-  var numChecks by remember { mutableStateOf(0) }
+  var numChecks by remember { mutableIntStateOf(0) }
   DisposableEffect(lifecycleOwner) {
     val observer = LifecycleEventObserver { _, event ->
       if (event == Lifecycle.Event.ON_RESUME) {
@@ -189,7 +197,7 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
   }
   // Main Buttons
   val buttonLineModifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
-  if (item.mainButtonState == MainButtonState.PROGRESS) {
+  AnimatedVisibility(item.mainButtonState == MainButtonState.PROGRESS) {
     Row(modifier = buttonLineModifier, verticalAlignment = CenterVertically) {
       Column {
         val strRes =
@@ -239,7 +247,14 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
         }
       }
     }
-  } else if (item.showOpenButton || item.mainButtonState != MainButtonState.NONE)
+  }
+  AnimatedVisibility(
+    item.mainButtonState == MainButtonState.INSTALL ||
+      item.mainButtonState == MainButtonState.UPDATE ||
+      (item.showOpenButton &&
+        item.mainButtonState != MainButtonState.LOADING &&
+        item.mainButtonState != MainButtonState.PROGRESS)
+  ) {
     Row(horizontalArrangement = spacedBy(8.dp, CenterHorizontally), modifier = buttonLineModifier) {
       if (item.showOpenButton) {
         val context = LocalContext.current
@@ -271,6 +286,7 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
         }
       }
     }
+  }
   if (showMeteredDialog)
     MeteredConnectionDialog(
       numBytes = version?.size,
@@ -285,7 +301,18 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
 @Preview
 @Composable
 fun AppDetailsHeaderPreview() {
-  FDroidContent { Column { AppDetailsHeader(testApp, PaddingValues(top = 16.dp)) } }
+  FDroidContent { Column { AppDetailsHeader(testApp, PaddingValues(top = 8.dp)) } }
+}
+
+@Preview
+@Composable
+private fun PreviewLoading() {
+  FDroidContent {
+    Column {
+      val app = testApp.copy(versions = null)
+      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+    }
+  }
 }
 
 @Preview

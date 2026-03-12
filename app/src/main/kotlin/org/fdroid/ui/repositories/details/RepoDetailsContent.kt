@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Fingerprint
@@ -90,12 +91,14 @@ private fun FingerprintExpandable(fingerprint: String) {
     title = stringResource(R.string.repo_fingerprint),
     modifier = Modifier.padding(horizontal = 16.dp),
   ) {
-    Text(
-      text = fingerprint,
-      fontFamily = FontFamily.Monospace,
-      style = MaterialTheme.typography.bodyMedium,
-      modifier = Modifier.padding(8.dp),
-    )
+    SelectionContainer {
+      Text(
+        text = fingerprint,
+        fontFamily = FontFamily.Monospace,
+        style = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier.padding(8.dp),
+      )
+    }
   }
 }
 

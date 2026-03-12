@@ -10,6 +10,7 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.UpdateChecker
 import org.fdroid.index.IndexUtils.getPackageSigner
+import org.fdroid.index.v2.SignerV2
 
 public class DbAppChecker(
   db: FDroidDatabase,
@@ -39,14 +40,13 @@ public class DbAppChecker(
     // and make them accessible per packageName
     val packageNames = packageInfoMap.keys.toList()
     val versionsByPackage = HashMap<String, ArrayList<Version>>(packageNames.size)
-    // TODO add test for an app ignoring all updates, this won't return versions here
     versionDao.getVersions(packageNames).forEach { version ->
       val versions = versionsByPackage.getOrPut(version.packageName) { ArrayList() }
       versions.add(version)
     }
     // go through all apps (packages) and check for updates
     val preferredRepos = appPrefsDao.getPreferredRepos(packageNames)
-    packageInfoMap.forEach packages@{ (packageName, packageInfo) ->
+    packageInfoMap.forEach processPackage@{ (packageName, packageInfo) ->
       // get versions for this app and try to find an update in them
       val versions = versionsByPackage[packageName]
       val flags = packageInfo.applicationInfo?.flags ?: 0
@@ -56,10 +56,10 @@ public class DbAppChecker(
         getUnavailableApp(packageInfo, preferredRepos)?.let { unavailableApp ->
           appsWithIssue.add(unavailableApp)
         }
-        return@packages // continue
+        return@processPackage // continue
       }
       // we ignore system apps without version
-      if (versions == null) return@packages // continue
+      if (versions == null) return@processPackage // continue
       // get all updates from the versions we found
       // these can be from other repos, have incompatible signers or just are KnownVuln
       val updates =
@@ -74,7 +74,7 @@ public class DbAppChecker(
           )
           .toList()
       // if there are no updates available, there's nothing left to do for us
-      if (updates.isEmpty()) return@packages
+      if (updates.isEmpty()) return@processPackage
       // we have updates, so now get some data for us to judge those updates
 
       // get preferred repo for the current app
@@ -98,61 +98,69 @@ public class DbAppChecker(
               installedVersionName = packageInfo.versionName ?: "???",
             )
             ?.let { app -> updatableApps.add(app) }
-          return@packages
+          return@processPackage
         }
       }
-
-      // we do have update(s), but there's an issue with them, find out what
-      // for simplicity, we only consider the issue of the most recent version
-      val update = updates[0]
-      val updateSigners = update.signer?.sha256?.toSet()
-      val hasCompatibleSigner =
-        updateSigners == null || updateSigners.intersect(allowedSigners).isNotEmpty()
-      val app = appDao.getAppOverviewItem(preferredRepoId, packageName) ?: return@packages
-
-      // find out the specific issue
+      // we do have update(s), but there's an issue with them, find out the specific issue
       val appWithIssue =
-        if (update.hasKnownVulnerability) {
-          AvailableAppWithIssue(
-            app = app,
-            installVersionName = packageInfo.versionName ?: "???",
-            installVersionCode = getLongVersionCode(packageInfo),
-            issue = KnownVulnerability(preferredRepoId == update.repoId),
-          )
-        } else if (hasCompatibleSigner) {
-          // the signer is compatible, so the update must come from a non-preferred repo
-          val now = System.currentTimeMillis()
-          // Only flag the compatible update in another repo, if older than a week.
-          // This is to prevent short delays in providing updates causing unneeded UX churn.
-          if (now - update.added > TimeUnit.DAYS.toMillis(7))
-            AvailableAppWithIssue(
-              app = app,
-              installVersionName = packageInfo.versionName ?: "???",
-              installVersionCode = getLongVersionCode(packageInfo),
-              issue = UpdateInOtherRepo(update.repoId),
-            )
-          else null
-        } else {
-          // no update with compatible signer available
-          getNoCompatibleSignerApp(
-            // check if there's a compatible signer available in a non-preferred repo
-            repoIdWithCompatibleSigner =
-              updates
-                .find {
-                  val signers = it.signer?.sha256?.toSet()
-                  signers == null || signers.intersect(allowedSigners).isNotEmpty()
-                }
-                ?.repoId,
-            app = app,
-            versions = versions,
-            packageInfo = packageInfo,
-            preferredRepoId = preferredRepoId,
-            allowedSigners = allowedSigners,
-          )
+        appDao.getAppOverviewItem(preferredRepoId, packageName)?.let { app ->
+          getAppWithIssue(updates, versions, app, packageInfo, preferredRepoId, allowedSigners)
         }
       appWithIssue?.let { appsWithIssue.add(it) }
     }
     return AppCheckResult(updates = updatableApps, issues = appsWithIssue)
+  }
+
+  /**
+   * Finds out what the issue with the available update is and return a [AvailableAppWithIssue] if
+   * necessary.
+   */
+  private fun getAppWithIssue(
+    updates: List<Version>,
+    allVersions: List<Version>,
+    app: AppOverviewItem,
+    packageInfo: PackageInfo,
+    preferredRepoId: Long,
+    allowedSigners: Set<String>,
+  ): AvailableAppWithIssue? {
+    // for simplicity, we only consider the issue of the most recent version
+    val update = updates[0]
+    val hasCompatibleSigner = update.signer.isCompatibleWith(allowedSigners)
+    return when {
+      // Update has known vulnerability
+      update.hasKnownVulnerability ->
+        AvailableAppWithIssue(
+          app = app,
+          installVersionName = packageInfo.versionName ?: "???",
+          installVersionCode = getLongVersionCode(packageInfo),
+          issue = KnownVulnerability(preferredRepoId == update.repoId),
+        )
+      // The signer is compatible, so the update must come from a non-preferred repo.
+      hasCompatibleSigner -> {
+        // Only flag the compatible update in another repo, if older than a week.
+        // This is to prevent short delays in providing updates causing unneeded UX churn.
+        val now = System.currentTimeMillis()
+        if (now - update.added > TimeUnit.DAYS.toMillis(7))
+          AvailableAppWithIssue(
+            app = app,
+            installVersionName = packageInfo.versionName ?: "???",
+            installVersionCode = getLongVersionCode(packageInfo),
+            issue = UpdateInOtherRepo(update.repoId),
+          )
+        else null
+      }
+      // the update doesn't have a compatible signer, look deeper into signing compatibility
+      else ->
+        getNoCompatibleSignerApp(
+          repoIdWithCompatibleSigner =
+            updates.find { it.signer.isCompatibleWith(allowedSigners) }?.repoId,
+          app = app,
+          versions = allVersions,
+          packageInfo = packageInfo,
+          preferredRepoId = preferredRepoId,
+          allowedSigners = allowedSigners,
+        )
+    }
   }
 
   /**
@@ -164,17 +172,7 @@ public class DbAppChecker(
     preferredRepos: Map<String, Long>,
   ): UnavailableAppWithIssue? {
     // check if we installed the app or are the current update owner of this app
-    val weInstalledApp =
-      if (SDK_INT >= 30) {
-        val installInfo = packageManager.getInstallSourceInfo(packageInfo.packageName)
-        context.packageName == installInfo.initiatingPackageName ||
-          context.packageName == installInfo.installingPackageName ||
-          (SDK_INT >= 34 && context.packageName == installInfo.updateOwnerPackageName)
-      } else {
-        @Suppress("DEPRECATION") // no other choice to use this for old API versions
-        val installer = packageManager.getInstallerPackageName(packageInfo.packageName)
-        context.packageName == installer
-      }
+    val weInstalledApp = weInstalledApp(packageInfo.packageName)
     if (weInstalledApp) {
       // we had installed this app, check if we maybe just got no versions
       val app =
@@ -207,7 +205,7 @@ public class DbAppChecker(
   private fun getNoCompatibleSignerApp(
     repoIdWithCompatibleSigner: Long?,
     app: AppOverviewItem,
-    versions: ArrayList<Version>,
+    versions: List<Version>,
     packageInfo: PackageInfo,
     preferredRepoId: Long,
     allowedSigners: Set<String>,
@@ -262,17 +260,7 @@ public class DbAppChecker(
     }
   }
 
-  /**
-   * @return true if this version is an update from the preferred repo with a compatible signer and
-   *   not a known vulnerable version.
-   */
-  private fun Version.isOk(preferredRepoId: Long, signers: Set<String>): Boolean {
-    val ourSigners = signer?.sha256?.toSet()
-    return preferredRepoId == repoId &&
-      !hasKnownVulnerability &&
-      (ourSigners == null || ourSigners.intersect(signers).isNotEmpty())
-  }
-
+  /** The given [version] is a normal update, so return a [UpdatableApp] for it. */
   private fun getUpdatableApp(
     version: Version,
     installedVersionCode: Long,
@@ -298,5 +286,31 @@ public class DbAppChecker(
       summary = appOverviewItem.summary,
       localizedIcon = appOverviewItem.localizedIcon,
     )
+  }
+
+  /**
+   * @return true if this version is an update from the preferred repo with a compatible signer and
+   *   not a known vulnerable version.
+   */
+  private fun Version.isOk(preferredRepoId: Long, signers: Set<String>): Boolean {
+    return preferredRepoId == repoId && !hasKnownVulnerability && signer.isCompatibleWith(signers)
+  }
+
+  private fun SignerV2?.isCompatibleWith(allowedSigners: Set<String>): Boolean {
+    val signers = this?.sha256?.toSet()
+    return signers == null || signers.intersect(allowedSigners).isNotEmpty()
+  }
+
+  private fun weInstalledApp(packageName: String): Boolean {
+    return if (SDK_INT >= 30) {
+      val installInfo = packageManager.getInstallSourceInfo(packageName)
+      val ourPackage = context.packageName
+      ourPackage == installInfo.initiatingPackageName ||
+        ourPackage == installInfo.installingPackageName ||
+        (SDK_INT >= 34 && ourPackage == installInfo.updateOwnerPackageName)
+    } else {
+      @Suppress("DEPRECATION")
+      context.packageName == packageManager.getInstallerPackageName(packageName)
+    }
   }
 }

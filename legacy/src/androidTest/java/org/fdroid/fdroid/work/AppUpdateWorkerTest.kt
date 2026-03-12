@@ -18,6 +18,10 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.verify
+import java.io.IOException
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+import kotlin.test.fail
 import kotlinx.coroutines.runBlocking
 import org.fdroid.fdroid.AppUpdateManager
 import org.fdroid.fdroid.FDroidApp
@@ -31,12 +35,8 @@ import org.fdroid.fdroid.work.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_APP_UPD
 import org.fdroid.fdroid.work.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_AUTO_APP_UPDATE
 import org.junit.Assume.assumeTrue
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.IOException
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.test.fail
 
 @RunWith(AndroidJUnit4::class)
 class AppUpdateWorkerTest {

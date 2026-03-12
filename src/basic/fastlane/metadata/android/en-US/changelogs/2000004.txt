@@ -1,8 +1,0 @@
-* UI rewritten from scratch with Kotlin compose
-* improved search, also searching in descriptions and translations
-* easier to discover new apps, also highlighting the most downloaded ones
-* installation approval *before* downloading
-* multiple updates/downloads at the same time
-* notifying user of issues with apps (e.g. signing key changed)
-* optional Material You color theme
-* improved filtering of lists

@@ -1,34 +1,80 @@
 package org.fdroid.ui.discover
 
+import android.content.pm.PackageInfo
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.core.os.LocaleListCompat
+import io.ktor.client.engine.ProxyConfig
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.fdroid.database.AppOverviewItem
 import org.fdroid.database.Repository
+import org.fdroid.download.DownloadRequest
 import org.fdroid.download.NetworkState
+import org.fdroid.download.PackageName
+import org.fdroid.download.getImageModel
+import org.fdroid.index.RepoManager
 import org.fdroid.repo.RepoUpdateState
-import org.fdroid.ui.categories.CategoryGroup
+import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 
 @Composable
 fun DiscoverPresenter(
-  newAppsFlow: Flow<List<AppDiscoverItem>>,
-  recentlyUpdatedAppsFlow: Flow<List<AppDiscoverItem>>,
-  mostDownloadedAppsFlow: MutableStateFlow<List<AppDiscoverItem>?>,
+  newAppsFlow: Flow<List<AppOverviewItem>>,
+  recentlyUpdatedAppsFlow: Flow<List<AppOverviewItem>>,
+  mostDownloadedAppsFlow: Flow<List<AppOverviewItem>>,
   categoriesFlow: Flow<List<CategoryItem>>,
-  repositoriesFlow: Flow<List<Repository>>,
+  installedAppsFlow: StateFlow<Map<String, PackageInfo>>,
   searchTextFieldState: TextFieldState,
   isFirstStart: Boolean,
   networkState: NetworkState,
   repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
   hasRepoIssuesFlow: Flow<Boolean>,
+  repoManager: RepoManager,
+  settingsManager: SettingsManager,
 ): DiscoverModel {
-  val newApps = newAppsFlow.collectAsState(null).value
-  val recentlyUpdatedApps = recentlyUpdatedAppsFlow.collectAsState(null).value
-  val mostDownloadedApps = mostDownloadedAppsFlow.collectAsState().value
+  val localeList = LocaleListCompat.getDefault()
+  val installedApps = installedAppsFlow.collectAsState().value
+
+  fun AppOverviewItem.toAppDiscoverItem(
+    repository: Repository,
+    proxyConfig: ProxyConfig?,
+  ): AppDiscoverItem {
+    val isInstalled = installedApps.contains(packageName)
+    val imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig) as? DownloadRequest
+    return AppDiscoverItem(
+      packageName = packageName,
+      name = getName(localeList) ?: "Unknown App",
+      lastUpdated = lastUpdated,
+      isInstalled = isInstalled,
+      imageModel =
+        if (isInstalled) {
+          PackageName(packageName, imageModel)
+        } else {
+          imageModel
+        },
+    )
+  }
+
+  val proxyConfig = settingsManager.proxyConfig
+  val newApps =
+    newAppsFlow.collectAsState(null).value?.mapNotNull {
+      val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+      it.toAppDiscoverItem(repository, proxyConfig)
+    }
+  val recentlyUpdatedApps =
+    recentlyUpdatedAppsFlow.collectAsState(null).value?.mapNotNull {
+      val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+      it.toAppDiscoverItem(repository, proxyConfig)
+    }
+  val mostDownloadedApps =
+    mostDownloadedAppsFlow.collectAsState(null).value?.mapNotNull {
+      val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
+      it.toAppDiscoverItem(repository, proxyConfig)
+    }
   val categories = categoriesFlow.collectAsState(null).value
+  val repositoriesFlow = repoManager.repositoriesState
 
   return if (
     !mostDownloadedApps.isNullOrEmpty() ||
@@ -64,23 +110,3 @@ fun DiscoverPresenter(
     }
   }
 }
-
-sealed class DiscoverModel
-
-data class FirstStartDiscoverModel(
-  val networkState: NetworkState,
-  val repoUpdateState: RepoUpdateState?,
-) : DiscoverModel()
-
-data object LoadingDiscoverModel : DiscoverModel()
-
-data object NoEnabledReposDiscoverModel : DiscoverModel()
-
-data class LoadedDiscoverModel(
-  val newApps: List<AppDiscoverItem>,
-  val recentlyUpdatedApps: List<AppDiscoverItem>,
-  val mostDownloadedApps: List<AppDiscoverItem>?,
-  val categories: Map<CategoryGroup, List<CategoryItem>>?,
-  val searchTextFieldState: TextFieldState,
-  val hasRepoIssues: Boolean,
-) : DiscoverModel()

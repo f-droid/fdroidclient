@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
@@ -82,7 +83,7 @@ fun Screenshots(isMetered: Boolean, phoneScreenshots: List<Any>) {
 @OptIn(ExperimentalMaterial3Api::class)
 private fun Screenshots(phoneScreenshots: List<Any>) {
   val carouselState = rememberCarouselState { phoneScreenshots.size }
-  var showScreenshot by remember { mutableStateOf<Int?>(null) }
+  var showScreenshot by rememberSaveable { mutableStateOf<Int?>(null) }
   val screenshotIndex = showScreenshot
   val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
   if (screenshotIndex != null)

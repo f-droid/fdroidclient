@@ -10,8 +10,8 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonObject
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.IndexParser
+import org.fdroid.test.TestUtils.ASSET_PATH
 import org.junit.Test
 
 internal class IndexV2DiffStreamProcessorTest {

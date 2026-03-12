@@ -6,7 +6,6 @@ import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.IndexParser.parseV2
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
@@ -17,27 +16,27 @@ internal class IndexV2Test {
 
   @Test
   fun testEmpty() {
-    testIndexEquality("$ASSET_PATH/index-empty-v2.json", TestDataEmptyV2.index)
+    testIndexEquality("index-empty-v2.json", TestDataEmptyV2.index)
   }
 
   @Test
   fun testMin() {
-    testIndexEquality("$ASSET_PATH/index-min-v2.json", TestDataMinV2.index)
+    testIndexEquality("index-min-v2.json", TestDataMinV2.index)
   }
 
   @Test
   fun testMinReordered() {
-    testIndexEquality("$ASSET_PATH/index-min-reordered-v2.json", TestDataMinV2.index)
+    testIndexEquality("index-min-reordered-v2.json", TestDataMinV2.index)
   }
 
   @Test
   fun testMid() {
-    testIndexEquality("$ASSET_PATH/index-mid-v2.json", TestDataMidV2.index)
+    testIndexEquality("index-mid-v2.json", TestDataMidV2.index)
   }
 
   @Test
   fun testMax() {
-    testIndexEquality("$ASSET_PATH/index-max-v2.json", TestDataMaxV2.index)
+    testIndexEquality("index-max-v2.json", TestDataMaxV2.index)
   }
 
   @Test

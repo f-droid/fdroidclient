@@ -145,23 +145,7 @@ val testApp =
         categories = listOf("Internet", "Multimedia"),
         isCompatible = true,
       ),
-    actions =
-      AppDetailsActions(
-        installAction = { _, _, _ -> },
-        requestUserConfirmation = { _ -> },
-        checkUserConfirmation = { _ -> },
-        cancelInstall = {},
-        onUninstallResult = { _ -> },
-        onRepoChanged = {},
-        onPreferredRepoChanged = {},
-        allowBetaVersions = {},
-        ignoreAllUpdates = {},
-        ignoreThisUpdate = {},
-        shareApk = Intent(),
-        uninstallIntent = Intent(),
-        launchIntent = Intent(),
-        shareIntent = Intent(),
-      ),
+    actions = getAppDetailsActions(),
     installState = InstallState.Unknown,
     networkState = NetworkState(isOnline = false, isMetered = false),
     appPrefs = AppPrefs("org.schabi.newpipe"),
@@ -244,6 +228,24 @@ val testApp =
     suggestedVersion = null,
     possibleUpdate = testVersion1,
     proxy = null,
+  )
+
+fun getAppDetailsActions() =
+  AppDetailsActions(
+    installAction = { _, _, _ -> },
+    requestUserConfirmation = { _ -> },
+    checkUserConfirmation = { _ -> },
+    cancelInstall = {},
+    onUninstallResult = { _ -> },
+    onRepoChanged = {},
+    onPreferredRepoChanged = {},
+    allowBetaVersions = {},
+    ignoreAllUpdates = {},
+    ignoreThisUpdate = {},
+    shareApk = Intent(),
+    uninstallIntent = Intent(),
+    launchIntent = Intent(),
+    shareIntent = Intent(),
   )
 
 fun getPreviewVersion(versionName: String, size: Long? = null) =

@@ -1,21 +1,44 @@
 plugins {
+  alias(libs.plugins.android.multiplatform.library)
   alias(libs.plugins.jetbrains.kotlin.multiplatform)
   alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
-  alias(libs.plugins.android.library)
   alias(libs.plugins.jetbrains.dokka)
   alias(libs.plugins.vanniktech.maven.publish)
   alias(libs.plugins.ktfmt)
 }
 
 kotlin {
-  androidTarget {
-    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
-    publishLibraryVariants("release")
-  }
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
   explicitApi()
   @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
   abiValidation { enabled = true }
+
+  jvm()
+  android {
+    namespace = "org.fdroid.index"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    minSdk = 21
+
+    @Suppress("UnstableApiUsage")
+    optimization {
+      consumerKeepRules.apply {
+        publish = true
+        file("consumer-rules.pro")
+      }
+    }
+
+    compilerOptions { jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17 }
+
+    withHostTest {
+      isIncludeAndroidResources = true
+      packaging { resources.excludes.add("META-INF/*") }
+    }
+    withDeviceTest {
+      instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+      instrumentationRunnerArguments["disableAnalytics"] = "true"
+    }
+  }
+
   sourceSets {
     commonMain {
       dependencies {
@@ -31,7 +54,6 @@ kotlin {
         implementation(libs.goncalossilva.resources)
       }
     }
-    // JVM is disabled for now, because Android app is including it instead of Android library
     jvmMain { dependencies {} }
     jvmTest { dependencies { implementation(libs.junit) } }
     androidMain {
@@ -40,13 +62,13 @@ kotlin {
         implementation(libs.androidx.core.ktx)
       }
     }
-    androidUnitTest {
+    getByName("androidHostTest") {
       dependencies {
         implementation(libs.junit)
         implementation(libs.mockk)
       }
     }
-    androidInstrumentedTest {
+    getByName("androidDeviceTest") {
       dependencies {
         implementation(project(":libs:sharedTest"))
         implementation(kotlin("test"))
@@ -55,22 +77,6 @@ kotlin {
       }
     }
   }
-}
-
-android {
-  namespace = "org.fdroid.index"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-  defaultConfig {
-    minSdk = 21
-    consumerProguardFiles("consumer-rules.pro")
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments["disableAnalytics"] = "true"
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-  testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
 ktfmt { googleStyle() }

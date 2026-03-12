@@ -14,9 +14,10 @@ import okhttp3.ConnectionSpec.Companion.CLEARTEXT
 import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.Dns
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.internal.tls.OkHostnameVerifier
 
-internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngineFactory<*> {
+internal actual fun getHttpClientEngineFactory(customDns: CustomDns?): HttpClientEngineFactory<*> {
   return object : HttpClientEngineFactory<OkHttpConfig> {
     private val connectionSpecs =
       listOf(
@@ -49,6 +50,10 @@ internal actual fun getHttpClientEngineFactory(customDns: Dns?): HttpClientEngin
         }
       }
   }
+}
+
+public fun isInvalidHttpUrl(url: String): Boolean {
+  return url.toHttpUrlOrNull() == null
 }
 
 public suspend fun HttpManager.getInputStream(request: DownloadRequest): InputStream {

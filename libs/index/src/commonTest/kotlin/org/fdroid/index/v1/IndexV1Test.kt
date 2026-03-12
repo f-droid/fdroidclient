@@ -6,7 +6,6 @@ import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlinx.serialization.SerializationException
-import org.fdroid.index.ASSET_PATH
 import org.fdroid.index.IndexParser.parseV1
 import org.fdroid.test.TestDataEmptyV1
 import org.fdroid.test.TestDataMaxV1
@@ -17,7 +16,7 @@ internal class IndexV1Test {
 
   @Test
   fun testIndexEmptyV1() {
-    val indexRes = Resource("$ASSET_PATH/index-empty-v1.json")
+    val indexRes = Resource("index-empty-v1.json")
     val indexStr = indexRes.readText()
     val index = parseV1(indexStr)
     assertEquals(TestDataEmptyV1.index, index)
@@ -25,7 +24,7 @@ internal class IndexV1Test {
 
   @Test
   fun testIndexMinV1() {
-    val indexRes = Resource("$ASSET_PATH/index-min-v1.json")
+    val indexRes = Resource("index-min-v1.json")
     val indexStr = indexRes.readText()
     val index = parseV1(indexStr)
     assertEquals(TestDataMinV1.index, index)
@@ -33,7 +32,7 @@ internal class IndexV1Test {
 
   @Test
   fun testIndexMidV1() {
-    val indexRes = Resource("$ASSET_PATH/index-mid-v1.json")
+    val indexRes = Resource("index-mid-v1.json")
     val indexStr = indexRes.readText()
     val index = parseV1(indexStr)
     assertEquals(TestDataMidV1.index, index)
@@ -41,7 +40,7 @@ internal class IndexV1Test {
 
   @Test
   fun testIndexMaxV1() {
-    val indexRes = Resource("$ASSET_PATH/index-max-v1.json")
+    val indexRes = Resource("index-max-v1.json")
     val indexStr = indexRes.readText()
     val index = parseV1(indexStr)
     assertEquals(TestDataMaxV1.index, index)
@@ -123,14 +122,14 @@ internal class IndexV1Test {
 
   @Test
   fun testGuardianProjectV1() {
-    val indexRes = Resource("$ASSET_PATH/guardianproject_index-v1.json")
+    val indexRes = Resource("guardianproject_index-v1.json")
     val indexStr = indexRes.readText()
     parseV1(indexStr)
   }
 
   @Test
   fun testLocalizedV1() {
-    val indexRes = Resource("$ASSET_PATH/localized.json")
+    val indexRes = Resource("localized.json")
     val indexStr = indexRes.readText()
     parseV1(indexStr)
   }

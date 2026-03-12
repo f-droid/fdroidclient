@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -121,7 +122,11 @@ constructor(
     }
 
   init {
-    viewModelScope.launch(Dispatchers.IO) { apps.value = loadApps(type) }
+    viewModelScope.launch(Dispatchers.IO) {
+      apps.value = loadApps(type)
+      // reload apps when installed apps change, but drop first we get right away
+      installedAppsCache.installedApps.drop(1).collect { apps.value = loadApps(type) }
+    }
   }
 
   @WorkerThread

@@ -11,7 +11,7 @@ import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.asFlow
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import org.fdroid.UpdateChecker
@@ -37,7 +37,7 @@ private const val TAG = "DetailsPresenter"
 @Composable
 fun DetailsPresenter(
   db: FDroidDatabase,
-  scope: CoroutineScope,
+  dispatcher: CoroutineDispatcher,
   repoManager: RepoManager,
   repoPreLoader: RepoPreLoader,
   updateChecker: UpdateChecker,
@@ -57,7 +57,7 @@ fun DetailsPresenter(
   val appDao = db.getAppDao()
   val app =
     produceState<App?>(null, currentRepoId) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           if (currentRepoId == null) {
             val flow = appDao.getApp(packageName).asFlow()
             flow.collect { value = it }
@@ -67,33 +67,9 @@ fun DetailsPresenter(
         }
       }
       .value ?: return null
-  val repo =
-    produceState<Repository?>(null) {
-        withContext(scope.coroutineContext) { value = repoManager.getRepository(app.repoId) }
-      }
-      .value ?: return null
-  val repositories =
-    produceState(emptyList(), packageName) {
-        withContext(scope.coroutineContext) {
-          val repos =
-            appDao.getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
-              repoManager.getRepository(repoId)
-            }
-          // show repo chooser only if
-          // * app is in more than one repo, or
-          // * app is from a non-default repo
-          value =
-            if (repos.size > 1) repos
-            else if (repo.address in repoPreLoader.defaultRepoAddresses) emptyList() else repos
-        }
-      }
-      .value
-  val installState =
-    appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
-
   val versions =
     produceState<List<AppVersion>?>(null, currentRepoId) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           if (currentRepoId == null) {
             db.getVersionDao().getAppVersions(app.repoId, packageName).asFlow().collect {
               value = it
@@ -108,7 +84,7 @@ fun DetailsPresenter(
       .value
   val appPrefs =
     produceState<AppPrefs?>(null, packageName) {
-        withContext(scope.coroutineContext) {
+        withContext(dispatcher) {
           db.getAppPrefsDao().getAppPrefs(packageName).asFlow().collect { value = it }
         }
       }
@@ -117,7 +93,6 @@ fun DetailsPresenter(
     remember(packageName, appPrefs) {
       appPrefs?.preferredRepoId ?: app.repoId // DB loads preferred repo first, so we remember it
     }
-
   val installedSigner =
     remember(packageInfo?.packageName) {
       @Suppress("DEPRECATION") // so far we had issues with the new way of getting sigs
@@ -136,6 +111,30 @@ fun DetailsPresenter(
         )
       }
     }
+  val repo =
+    produceState<Repository?>(null) {
+        withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
+      }
+      .value ?: return null
+  val repositories =
+    produceState(emptyList(), packageName) {
+        withContext(dispatcher) {
+          val repos =
+            appDao.getRepositoryIdsForApp(packageName).mapNotNull { repoId ->
+              repoManager.getRepository(repoId)
+            }
+          // show repo chooser only if
+          // * app is in more than one repo, or
+          // * app is from a non-default repo
+          value =
+            if (repos.size > 1) repos
+            else if (repo.address in repoPreLoader.defaultRepoAddresses) emptyList() else repos
+        }
+      }
+      .value
+  val installState =
+    appInstallManager.getAppFlow(packageName).collectAsState(InstallState.Unknown).value
+
   val possibleUpdate =
     remember(versions, appPrefs, packageInfo) {
       if (versions == null || appPrefs == null || packageInfo == null) {
@@ -176,7 +175,7 @@ fun DetailsPresenter(
     if (authorName == null) false
     else {
       produceState(false) {
-          withContext(scope.coroutineContext) {
+          withContext(dispatcher) {
             db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow().collect { value = it }
           }
         }

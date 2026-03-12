@@ -1,11 +1,11 @@
 package org.fdroid.database
 
-import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import org.fdroid.test.TestRepoUtils.getRandomLocalizedFileV2
 import org.fdroid.test.TestUtils.getRandomList
 import org.fdroid.test.TestUtils.getRandomString
+import org.junit.Test
 
 internal class ConvertersTest {
 
