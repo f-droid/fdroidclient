@@ -291,7 +291,7 @@ libs database schema:
         - libs/database/**/*
   variables:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
-  script:
+  before_script:
     - apt-get update
     - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git sdkmanager
     - export ANDROID_HOME=/opt/android-sdk
@@ -299,7 +299,10 @@ libs database schema:
     - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;$ANDROID_COMPILE_SDK.0.0"
     - sdkmanager "build-tools;34.0.0" # something (AGP?) still pulls in old build-tools
     - sdkmanager "build-tools;35.0.0" # something (AGP?) still pulls in old build-tools
+    - git lfs install
+  script:
     - ./gradlew :libs:database:kspDebugKotlin
+    - git status
     - git --no-pager diff --exit-code
 
 # Run the tests in the emulator.  Each step is broken out to run on
