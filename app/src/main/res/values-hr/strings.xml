@@ -80,7 +80,7 @@
     <string name="menu_flattr">Flattr</string>
     <string name="details_notinstalled">Nije instalirano</string>
     <string name="antiadslist">Ova aplikacija sadržava oglase</string>
-    <string name="antitracklist">Ova aplikacija prati i javlja tvoju aktivnost</string>
+    <string name="antitracklist">Ova aplikacija prati tvoje aktivnosti i o njima izvještava</string>
     <string name="antinonfreeadlist">Ova aplikacija promovira ne-slobodne dodatke</string>
     <string name="antinonfreenetlist">Ova aplikacija promovira ili potpuno ovisi o ne-slobodnom mrežnom uslugom</string>
     <string name="antinonfreedeplist">Ova aplikacija ovisi o drugim ne-slobodnim aplikacijama</string>
@@ -258,7 +258,7 @@
     <string name="app_list__name__downloading_in_progress">Preuzima se %1$s</string>
     <string name="app_list__name__successfully_installed">Aplikacija %1$s je instalirana</string>
     <string name="updates__tts__download_app">Preuzmi</string>
-    <string name="warning_no_internet">Nije moguće ažurirati, jeste li spojeni na internet?</string>
+    <string name="warning_no_internet">Nije moguće aktualizirati. Imaš li vezu s internetom?</string>
     <string name="notification_title_single_update_available">Dostupno ažuriranje</string>
     <string name="notification_title_summary_install_error">Instalacija nije uspjela</string>
     <string name="by_author_format">Autor: %s</string>

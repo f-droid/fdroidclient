@@ -615,7 +615,7 @@
     <string name="repo_confirm_delete_mirror_body">Vous pouvez continuer à installer des applications de ce dépôt en utilisant les autres miroirs.</string>
     <string name="repo_basic_auth_password">Mot de passe : ***</string>
     <string name="repo_archive_check">Rechercher une archive</string>
-    <string name="repo_basic_auth_title">Authentification de base</string>
+    <string name="repo_basic_auth_title">Authentification basic</string>
     <string name="repo_basic_auth_edit">Modifier</string>
     <string name="expand">Développer</string>
     <string name="collapse">Réduire</string>
@@ -646,7 +646,7 @@
     <string name="my_apps_empty">Seules les applications installées par %1$s sont affichées ici</string>
     <string name="my_apps_header_apps_with_issue">Applications présentant des problèmes</string>
     <string name="my_apps_ignore_dialog_title">Masquer le problème</string>
-    <string name="my_apps_ignore_dialog_text">Le problème lié à cette version de « %1$s » sera ignoré.</string>
+    <string name="my_apps_ignore_dialog_text">Le problème lié à cette version de « %1$s » sera ignoré</string>
     <string name="my_apps_ignore_dialog_button">Masquer</string>
     <string name="my_apps_export_installed_apps">Liste d\'applications exportées</string>
     <string name="app_list_new">Nouvelles applications</string>

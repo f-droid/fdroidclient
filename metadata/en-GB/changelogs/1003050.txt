@@ -1,6 +1,6 @@
 * More reliable buttons and status updates
 
-* Overhaul of Settings including new data usage controls
+* Overhaul of Settings, including new data usage controls
 
 * Battery-conscious background operation on Android 5.0 and newer
 

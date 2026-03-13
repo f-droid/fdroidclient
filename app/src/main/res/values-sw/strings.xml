@@ -631,4 +631,27 @@
     <string name="developer_contact">Mawasiliano ya msanidi programu</string>
     <string name="technical_info">Maelezo ya kiufundi</string>
     <string name="app_details_more_apps_by_author">Appi zaidi kufikia %1$s</string>
+    <string name="pref_export_log_title">Kumbukumbu ya utatuzi</string>
+    <string name="export_log_success">Logcat imehifadhiwa kwa mafanikio</string>
+    <string name="export_log_error">Hitilafu ya kuhifadhi logcat</string>
+    <string name="preferForeignSummary">Jaribu vioo vilivyo nje ya nchi yako kwanza, k.m. ikiwa ulinzi wa kigeni ni imara zaidi.</string>
+    <string name="preferForeign">Pendelea vioo vya nje .</string>
+    <string name="banner_updating_apps">Inasasisha programu</string>
+    <string name="no_handler_app_generic">Huna programu yoyote inayoweza kushughulikia hii.</string>
+    <string name="repo_details_info_text">Hazina ni chanzo cha programu.\n\nVioo (mirrors) hutumika kusambaza mzigo wa kupakua programu kwenye seva nyingi. Vioo vilivyo karibu na wewe vinaweza kuwa vya haraka zaidi.\n\nVioo rasmi hufafanuliwa na mmiliki wa hazina. Haviwezi kufutwa, vinaweza tu kuzimwa. Unaweza kufafanua vioo vingine vya ziada vya kawaida kwa kuviongeza kama hazina ya kawaida.</string>
+    <string name="repo_archive_check">Angalia kumbukumbu</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">1 Api</item>
+        <item quantity="other">%d api</item>
+    </plurals>
+    <string name="repo_last_update_index">Sasisho la mwisho la repo: %s</string>
+    <string name="repo_confirm_delete_mirror_title">Futa kioo ?</string>
+    <string name="share_mirror">Shiriki kioo</string>
+    <string name="show_repository_qr">Onyesha msimbo wa QR wa repository</string>
+    <string name="repo_basic_auth_title">Uthibitishaji wa msingi</string>
+    <string name="repo_basic_auth_username">Jina la mtumiaji: %s</string>
+    <string name="repo_basic_auth_password">Nenosiri: ***</string>
+    <string name="repo_basic_auth_edit">Hariri</string>
+    <string name="notification_title_summary_app_update_available">Gusa ili kusasisha zote</string>
+    <string name="expand">Panua</string>
 </resources>

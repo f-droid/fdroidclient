@@ -628,7 +628,7 @@
     <string name="crash_dialog_title_old">F-Droid har kraschat</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Standard</string>
-    <string name="call_to_action_keepandroidopen">F-Droid är under hot. Google ändrar hur du installerar appar i din telefon. Vi behöver din hjälp.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid är under hot. Google ändrar hur du installerar appar i din enhet. Vi behöver din hjälp.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">Om</string>
     <string name="menu_discover">Upptäck</string>
@@ -668,4 +668,5 @@
     <string name="package_name">Paketnamn:</string>
     <string name="installed_version">Installerad version:</string>
     <string name="developer_contact">Kontakta utvecklaren</string>
+    <string name="ipfsgw_summary_new">Ladda ner appar med IPFS webbendpoints</string>
 </resources>

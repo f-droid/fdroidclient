@@ -427,7 +427,7 @@
     <string name="send_installed_apps">Deila uppsettum forritum</string>
     <string name="send_installed_apps_csv">Forrit uppsett af F-Droid sem CSV-skrá</string>
     <string name="menu_open">Opna</string>
-    <string name="app_suggested">Tillögur</string>
+    <string name="app_suggested">Mælt með</string>
     <string name="app_size">Stærð: %1$s</string>
     <string name="scan_removable_storage_title">Skanna útskiptanlega geymslumiðla</string>
     <string name="scan_removable_storage_toast">Skoða %s…</string>
