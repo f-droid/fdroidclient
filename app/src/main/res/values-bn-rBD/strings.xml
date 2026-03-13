@@ -5,7 +5,7 @@
     <string name="ok">ঠিক আছে</string>
     <string name="yes">হ্যাঁ</string>
     <string name="no">না</string>
-    <string name="back">ফিরে</string>
+    <string name="back">পেছনে</string>
     <string name="theme_dark">অন্ধকার</string>
     <string name="theme_light">হালকা</string>
     <string name="status_inserting_apps">অ্যাপের বিবরণ সংরক্ষণ করা হচ্ছে</string>
@@ -28,13 +28,13 @@
     <string name="menu_share">শেয়ার করো</string>
     <string name="menu_install">ইনস্টল করো</string>
     <string name="menu_uninstall">আনইনস্টল করো</string>
-    <string name="menu_upgrade">আপডেট</string>
+    <string name="menu_upgrade">হালনাগাদ</string>
     <string name="main_menu__latest_apps">সর্বশেষ</string>
     <string name="main_menu__categories">বিভাগ</string>
     <string name="main_menu__swap_nearby">কাছাকাছি</string>
     <string name="preference_manage_installed_apps">ইন্সটলকৃত অ্যাপ ব্যবস্থাপনা</string>
     <string name="details_notinstalled">ইন্সটল করা নেই</string>
-    <string name="next">পরেরটা</string>
+    <string name="next">পরবর্তী</string>
     <string name="pref_language">ভাষা</string>
     <string name="category_Connectivity">যোগাযোগ</string>
     <string name="category_Development">ডেভেলপমেন্ট</string>
@@ -178,7 +178,7 @@
     <string name="use_pure_black_dark_theme">অন্ধকার রঙে সম্পূর্ণ কালো পটভূমি ব্যবহার করো</string>
     <string name="no_handler_app">এমন কোনো অ্যাপ এই মুহূর্তে তোমার কাছে নেই যা %s চালাতে পারবে।</string>
     <string name="no_permissions">কোনো অনুমতি নেই</string>
-    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, তুমি কী ইন্টারনেটের সাথে সংযুক্ত?</string>
+    <string name="warning_no_internet">হালনাগাদ করা যাচ্ছে না, আপনি কী ইন্টারনেটের সাথে সংযুক্ত?</string>
     <string name="global_error_updating_repos">হালনাগাদের সময় ত্রুটি: %s</string>
     <string name="all_other_repos_fine">অন্যান্য ভাণ্ডার আয়না বানায়নি।</string>
     <string name="repos_unchanged">সব ভাণ্ডার হালনাগাদকৃত</string>
@@ -502,4 +502,14 @@
     <string name="antiknownvuln">পরিচিত দুর্বলতা</string>
     <string name="antiads">বিজ্ঞাপন</string>
     <string name="force_old_installer_title">জোরপূর্বক পুরনো ইন্সটলার ব্যবহার করুন</string>
+    <string name="menu_about">সম্পর্কে</string>
+    <string name="menu_discover">আবিষ্কার করুন</string>
+    <string name="menu_apps_my">আমার অ্যাপসমূহ</string>
+    <string name="my_apps_ignore_dialog_button">লুকান</string>
+    <string name="app_list_new">নতুন অ্যাপস</string>
+    <string name="app_list_all">সমস্ত অ্যাপস</string>
+    <string name="app_list_most_downloaded">সর্বাধিক ডাউনলোডকৃত</string>
+    <string name="search_placeholder">অনুসন্ধান করুন</string>
+    <string name="category_group_tools">সরঞ্জামসমূহ</string>
+    <string name="category_group_interests">পছন্দসমূহ</string>
 </resources>

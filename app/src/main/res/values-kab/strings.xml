@@ -390,4 +390,10 @@
     <string name="ipfsgw_add_add">Rnu</string>
     <string name="repo_num_apps_button">Sken-d isnasen</string>
     <string name="repo_state_adding">Timerniwt n ukufi…</string>
+    <string name="menu_about">Ɣef</string>
+    <string name="menu_discover">Snirem</string>
+    <string name="my_apps_ignore_dialog_button">Seggelmes</string>
+    <string name="search_placeholder">Nadi…</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="category_group_network">Aẓeṭṭa</string>
 </resources>

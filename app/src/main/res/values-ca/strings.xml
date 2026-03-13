@@ -91,7 +91,7 @@
     <string name="theme">Tema</string>
     <string name="unsigned">Sense empremta digital</string>
     <string name="unverified">No verificat</string>
-    <string name="repo_fingerprint">L\'empremta digital de la clau de signatura (SHA-256)</string>
+    <string name="repo_fingerprint">Empremta digital de la clau de signatura (SHA-256)</string>
     <string name="repo_description">Descripció</string>
     <string name="unknown">Desconegut</string>
     <string name="repo_confirm_delete_title">Voleu suprimir el dipòsit?</string>
@@ -556,7 +556,7 @@
         <item quantity="other">Mostra aplicacions %1$d de la categoria %2$s</item>
     </plurals>
     <string name="ipfsgw_caption_official_gateways">Passarel·les IPFS Oficials</string>
-    <string name="ipfsgw_caption_custom_gateways">Passarel·les IPFS a mida</string>
+    <string name="ipfsgw_caption_custom_gateways">Passarel·les IPFS personalitzades</string>
     <string name="paste">Enganxa</string>
     <string name="ipfsgw_title">Passarel·les IPFS</string>
     <string name="ipfsgw_add_title">Afegir una passarel·la IPFS</string>
@@ -662,6 +662,7 @@
     <string name="package_name">Nom del paquet:</string>
     <string name="installed_version">Versió instal·lada:</string>
     <string name="crash_dialog_title_old">L\'F-Droid ha fallat</string>
-    <string name="call_to_action_keepandroidopen">F-Droid està sota amenaça. Google està canviant la manera d\'instal·lar aplicacions al telèfon. Necessitem la vostra ajuda.</string>
+    <string name="call_to_action_keepandroidopen">F-Droid està sota amenaça. Google està canviant la manera d\'instal·lar apps al dispositiu. Necessitem la vostra ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/ca/</string>
+    <string name="ipfsgw_summary_new">Baixar apps des de nodes IPFS</string>
 </resources>

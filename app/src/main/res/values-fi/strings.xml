@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version vanha täytyy poistaa ensin. Tee tämä ja yritä uudelleen (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon)</string>
+    <string name="SignatureMismatch">Uusi versio on allekirjoitettu eri avaimella kuin vanha. Asentaaksesi uuden version, vanha täytyy ensin poistaa. Toimi näin ja yritä uudelleen. (Huomaa, että poistaminen hävittää kaiken sovelluksen sisäisen tiedon.)</string>
     <string name="installIncompatible">Sovellus ei ole yhteensopiva laitteesi kanssa. Asennetaanko silti?</string>
     <string name="version">Versio</string>
     <string name="delete">Poista</string>
@@ -139,7 +139,7 @@
     <string name="links">Linkit</string>
     <string name="more">Lisää</string>
     <string name="less">Vähemmän</string>
-    <string name="update_auto_download">Nouda päivitykset automaattisesti</string>
+    <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>
     <string name="repo_error_empty_username">Ei käyttäjänimeä, tunnistetietoja ei muutettu</string>
     <string name="bad_fingerprint">Virheellinen sormenjälki</string>
@@ -194,7 +194,7 @@
     <string name="status_connecting_to_repo">Yhdistetään osoitteeseen
 \n%1$s</string>
     <string name="no_handler_app">Sinulla ei ole yhtään sovellusta, joka voi käsitellä %s.</string>
-    <string name="repo_fingerprint">Allekirjoitusvarmenteen sormenjälki (SHA-256)</string>
+    <string name="repo_fingerprint">Allekirjoitusavaimen sormenjälki (SHA-256)</string>
     <string name="repo_searching_address">Etsitään ohjelmavarastoa osoitteesta \n%1$s</string>
     <string name="category_Connectivity">Yhteydet</string>
     <string name="category_Graphics">Grafiikka</string>
@@ -513,7 +513,7 @@
     <string name="app_error_open">Sovellusta ei voitu käynnistää.</string>
     <string name="about_title_basic">Tietoja F-Droid Basicista</string>
     <string name="repo_add_new_title">Lisää ohjelmavarasto</string>
-    <string name="app_name_basic">F-Droidin alkeet</string>
+    <string name="app_name_basic">F-Droid Basic</string>
     <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
     <string name="copied_url_to_clipboard">URL-osoite kopioitu leikepöydälle</string>
     <string name="turn_on_wifi">Laita Wi-Fi päälle</string>
@@ -587,7 +587,7 @@
     <string name="preferForeignSummary">Kokeile ensin peilejä, jotka sijaitsevat maasi ulkopuolella, esim. jos ulkomaiset suojat ovat vahvempia.</string>
     <string name="no_handler_app_generic">Sinulla ei ole saatavilla olevaa sovellusta, joka voisi käsitellä tätä.</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">1 sovellus</item>
+        <item quantity="one">Yksi sovellus</item>
         <item quantity="other">%d sovellusta</item>
     </plurals>
     <string name="repo_basic_auth_username">Käyttäjätunnus: %s</string>
@@ -608,4 +608,35 @@
     </plurals>
     <string name="notification_title_summary_app_update_available">Napauta päivittääksesi kaikki</string>
     <string name="tts_author_name">Tekijä %1$s</string>
+    <string name="menu_about">Tietoa</string>
+    <string name="menu_apps_my">Omat sovellukset</string>
+    <string name="my_apps_ignore_dialog_button">Piilota</string>
+    <string name="my_apps_export_installed_apps">Vie sovelllusluettelo</string>
+    <string name="app_list_new">Uudet sovellukset</string>
+    <string name="app_list_recently_updated">Hiljattain päivitetyt</string>
+    <string name="app_list_most_downloaded">Eniten ladatut</string>
+    <string name="app_list_all">Kaikki sovellukset</string>
+    <string name="app_list_author">Tekjiän %s sovellukset</string>
+    <string name="search_placeholder">Etsi…</string>
+    <string name="category_group_wallets">Raha ja lompakot</string>
+    <string name="category_group_media">Viihde ja media</string>
+    <string name="category_group_communication">Viestintä</string>
+    <string name="category_group_device">Laite</string>
+    <string name="category_group_network">Verkko</string>
+    <string name="category_group_storage">Tiedostot ja tallennus</string>
+    <string name="category_group_misc">Sekalaiset</string>
+    <string name="author_by">Tekijältä %1$s</string>
+    <string name="last_updated">Viimeksi päivitetty: %1$s</string>
+    <string name="last_updated_with_size">Viimeksi päivitetty: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Valmistellaan asennusta…</string>
+    <string name="whats_new_title">Uutta</string>
+    <string name="donate_title">Lahjoita</string>
+    <string name="anti_features_title">Tässä sovelluksessa on haittaominaisuuksia</string>
+    <string name="developer_contact">Kehittäjän yhteystiedot</string>
+    <string name="technical_info">Teknistä tietoa</string>
+    <string name="package_name">Paketin nimi:</string>
+    <string name="installed_version">Asennettu versio:</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="call_to_action_keepandroidopen">F-Droid on uhattuna. Google on muuttamassa sovellusten asentamistapaa. Tarvitsemme apuasi.</string>
+    <string name="crash_dialog_title_old">F-Droid kaatui</string>
 </resources>

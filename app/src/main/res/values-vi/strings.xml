@@ -648,4 +648,5 @@
     <string name="search_no_results">Không tìm thấy ứng dụng\n\nHãy thử sử dụng ít từ khóa tìm kiếm hơn hoặc thêm nhiều kho mã nguồn hơn</string>
     <string name="call_to_action_keepandroidopen">F-Droid đang bị đe dọa. Google đang thay đổi cách bạn cài đặt ứng dụng trên điện thoại. Chúng tôi cần sự giúp đỡ của bạn.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">Tải ứng dụng bằng điểm đầu cuối IPFS</string>
 </resources>
