@@ -37,40 +37,80 @@ private fun DiscoverNoEnabledReposTest() = ScreenshotTest {
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 private fun DiscoverTest() {
-  val app1 =
-    AppDiscoverItem(
-      packageName = "foo bar",
-      name = "New App!",
-      isInstalled = false,
-      imageModel = null,
-      lastUpdated = 10,
+  val newApps =
+    listOf(
+      AppDiscoverItem(
+        packageName = "net.thunderbird.android",
+        name = "Thunderbird: Free Your Inbox",
+        isInstalled = true,
+      ),
+      AppDiscoverItem(
+        packageName = "io.element.android.x",
+        name = "Element X - Secure Chat & Call",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(
+        packageName = "org.breezyweather",
+        name = "Breezy Weather",
+        isInstalled = true,
+      ),
     )
-  val app2 =
-    AppDiscoverItem(
-      packageName = "bar foo",
-      name = "Nice App!",
-      isInstalled = false,
-      imageModel = null,
-      lastUpdated = 9,
+  val recentlyUpdatedApps =
+    listOf(
+      AppDiscoverItem(packageName = "helium314.keyboard", name = "HeliBoard", isInstalled = true),
+      AppDiscoverItem(
+        packageName = "dev.imranr.obtainium.fdroid",
+        name = "Obtainium",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(packageName = "com.fsck.k9", name = "K-9 Mail", isInstalled = false),
+      AppDiscoverItem(
+        packageName = "com.github.andreyasadchy.xtra",
+        name = "Xtra",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(packageName = "com.github.libretube", name = "LibreTube", isInstalled = false),
     )
-  val app3 =
-    AppDiscoverItem(
-      packageName = "org.example",
-      name = "Downloaded App!",
-      isInstalled = false,
-      imageModel = null,
-      lastUpdated = 8,
+  val mostDownloadedApps =
+    listOf(
+      AppDiscoverItem(
+        packageName = "com.inspiredandroid.linuxcommandbibliotheca",
+        name = "Linux Command Library",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(packageName = "com.junkfood.seal", name = "Seal", isInstalled = false),
+      AppDiscoverItem(
+        packageName = "com.kunzisoft.keepass.libre",
+        name = "KeePassDX Passkey Vault",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(
+        packageName = "app.organicmaps",
+        name = "Organic Maps・Offline Map & GPS",
+        isInstalled = false,
+      ),
+      AppDiscoverItem(packageName = "at.bitfire.davdroid", name = "DAVx⁵", isInstalled = false),
+    )
+  val categories =
+    mapOf(
+      CategoryGroups.communication to
+        listOf(
+          CategoryItem(id = "Contact", name = "Contact"),
+          CategoryItem(id = "Email", name = "Email"),
+          CategoryItem(id = "Forum", name = "Forum"),
+          CategoryItem(id = "Messaging", name = "Messaging"),
+          CategoryItem(id = "Phone & SMS", name = "Phone & SMS"),
+        )
     )
   ScreenshotTest {
     val model =
       LoadedDiscoverModel(
-        newApps = listOf(app1),
-        recentlyUpdatedApps = listOf(app2),
-        mostDownloadedApps = listOf(app3),
-        categories =
-          mapOf(CategoryGroups.productivity to listOf(CategoryItem("Calculator", "Calculator"))),
+        newApps = newApps,
+        recentlyUpdatedApps = recentlyUpdatedApps,
+        mostDownloadedApps = mostDownloadedApps,
+        categories = categories,
         searchTextFieldState = rememberTextFieldState(),
-        hasRepoIssues = false,
+        hasRepoIssues = true,
       )
     Discover(discoverModel = model, onListTap = {}, onAppTap = {}, onNav = {})
   }
