@@ -109,20 +109,27 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
  */
 @Composable
 fun VersionLine(app: AppUpdateItem) {
-  val size = app.update.size?.let { Formatter.formatFileSize(LocalContext.current, it) }
+  VersionLine(app.installedVersionName, app.update.versionName, app.update.size)
+}
+
+@Composable
+fun VersionLine(fromVersion: String?, toVersion: String, numBytes: Long? = null) {
+  val size = numBytes?.let { Formatter.formatFileSize(LocalContext.current, it) }
   val test = buildAnnotatedString {
     if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-      append(app.installedVersionName)
+      if (fromVersion != null) {
+        append(fromVersion)
+      }
     } else {
-      append("\u202A${app.update.versionName}\u202C")
+      append("\u202A${toVersion}\u202C")
     }
-    appendInlineContent("arrowId", " → ")
+    if (fromVersion != null) appendInlineContent("arrowId", " → ")
     if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-      append("\u202A${app.update.versionName}\u202C")
-    } else {
-      append("\u202A${app.installedVersionName}\u202C")
+      append("\u202A${toVersion}\u202C")
+    } else if (fromVersion != null) {
+      append("\u202A${fromVersion}\u202C")
     }
-    append(" • $size")
+    if (size != null) append(" • $size")
   }
   val inlineContent =
     mapOf(
@@ -143,7 +150,7 @@ fun VersionLine(app: AppUpdateItem) {
         },
       )
     )
-  Text(test, inlineContent = inlineContent)
+  Text(test, inlineContent = if (fromVersion == null) mapOf() else inlineContent)
 }
 
 @Preview

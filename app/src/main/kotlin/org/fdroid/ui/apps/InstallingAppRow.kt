@@ -37,12 +37,7 @@ fun InstallingAppRow(app: InstallingAppItem, isSelected: Boolean, modifier: Modi
     },
     headlineContent = { Text(app.name) },
     supportingContent = {
-      val currentVersionName = app.installState.currentVersionName
-      if (currentVersionName == null) {
-        Text(app.installState.versionName)
-      } else {
-        Text("$currentVersionName → ${app.installState.versionName}")
-      }
+      VersionLine(app.installState.currentVersionName, app.installState.versionName)
     },
     trailingContent = {
       if (app.installState is InstallState.Installed) {
@@ -106,7 +101,7 @@ private fun Preview() {
         InstallState.Installed(
           name = "Installing App 2",
           versionName = "2.0.1",
-          currentVersionName = null,
+          currentVersionName = "2.0.0",
           lastUpdated = 13,
           iconModel = null,
         ),
@@ -119,7 +114,7 @@ private fun Preview() {
           msg = "error msg",
           name = "Installing App 2",
           versionName = "0.0.4",
-          currentVersionName = null,
+          currentVersionName = "0.0.1",
           lastUpdated = 13,
           iconModel = null,
         ),
@@ -129,6 +124,47 @@ private fun Preview() {
       InstallingAppRow(installingApp1, false)
       InstallingAppRow(installingApp2, true)
       InstallingAppRow(installingApp3, false)
+    }
+  }
+}
+
+@Preview(locale = "fa")
+@Composable
+private fun PreviewRtl() {
+  val installingApp1 =
+    InstallingAppItem(
+      packageName = "A1",
+      installState =
+        InstallState.Downloading(
+          name = "Installing App 1",
+          versionName = "1.0.4",
+          currentVersionName = "1.0.3",
+          lastUpdated = 23,
+          iconModel = null,
+          downloadedBytes = 25,
+          totalBytes = 100,
+          startMillis = System.currentTimeMillis(),
+        ),
+    )
+  val installingApp2 =
+    InstallingAppItem(
+      packageName = "A2",
+      installState =
+        InstallState.Downloading(
+          name = "Installing App 2",
+          versionName = "2.1.2",
+          currentVersionName = null,
+          lastUpdated = 23,
+          iconModel = null,
+          downloadedBytes = 25,
+          totalBytes = 100,
+          startMillis = System.currentTimeMillis(),
+        ),
+    )
+  FDroidContent {
+    Column {
+      InstallingAppRow(installingApp1, false)
+      InstallingAppRow(installingApp2, false)
     }
   }
 }
