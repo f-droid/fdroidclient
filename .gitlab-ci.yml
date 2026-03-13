@@ -229,6 +229,22 @@ legacy lint pmd:
       codequality: gl-pmd-${PMD_VARIANT}-report.json
     when: always
 
+app screenshots:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
+  script:
+    - ./gradlew :app:validateBasicDefaultDebugScreenshotTest
+  artifacts:
+    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    when: always
+    paths:
+      - app/build/reports/screenshotTest
+    expire_in: 1 week
+
 app tools scripts:
   stage: lint
   image: debian:trixie-slim
