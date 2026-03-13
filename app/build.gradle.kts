@@ -149,7 +149,10 @@ dependencies {
 
   androidTestImplementation(libs.kotlin.test)
   androidTestImplementation(libs.kotlin.reflect)
+  androidTestImplementation(libs.mockk.android)
+  androidTestImplementation(libs.androidx.test.core.ktx)
   androidTestImplementation(libs.androidx.test.ext.junit)
+  androidTestImplementation(libs.androidx.work.testing)
   androidTestImplementation(libs.androidx.espresso.core)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
