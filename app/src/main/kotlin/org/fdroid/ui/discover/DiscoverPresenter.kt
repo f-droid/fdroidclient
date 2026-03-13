@@ -95,7 +95,7 @@ fun DiscoverPresenter(
     )
   } else {
     // everything is still null or empty, so figure out why
-    val repositories = repositoriesFlow.collectAsState(null).value
+    val repositories = repositoriesFlow.collectAsState().value
     if (repositories?.all { !it.enabled } == true) {
       NoEnabledReposDiscoverModel
     } else if (isFirstStart || recentlyUpdatedApps?.size == 0) {

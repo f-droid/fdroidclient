@@ -87,8 +87,8 @@ constructor(
     repoManager.repositoriesState.map { repositories ->
       val proxyConfig = settingsManager.proxyConfig
       repositories
-        .mapNotNull { if (it.enabled) RepositoryItem(it, localeList, proxyConfig) else null }
-        .sortedBy { it.weight }
+        ?.mapNotNull { if (it.enabled) RepositoryItem(it, localeList, proxyConfig) else null }
+        ?.sortedBy { it.weight } ?: emptyList()
     }
   private val query = MutableStateFlow("")
 

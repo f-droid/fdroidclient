@@ -91,7 +91,7 @@ constructor(
   init {
     viewModelScope.launch {
       repoManager.repositoriesState.collect { repos ->
-        val repo = repos.find { it.repoId == repoId }
+        val repo = repos?.find { it.repoId == repoId } ?: error("repos were still null")
         onRepoChanged(repo)
       }
     }
