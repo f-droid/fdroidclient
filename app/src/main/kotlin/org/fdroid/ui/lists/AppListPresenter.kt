@@ -10,7 +10,8 @@ import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
-import org.fdroid.ui.utils.normalize
+import org.fdroid.ui.search.SearchHelper.fixQuery
+import org.fdroid.ui.search.SearchHelper.normalize
 
 @Composable
 fun AppListPresenter(
@@ -35,7 +36,7 @@ fun AppListPresenter(
   val filteredAntiFeatureIds = notSelectedAntiFeatureIdsFlow.collectAsState().value
   val repositories = repositoriesFlow.collectAsState(emptyList()).value
   val filteredRepositoryIds = filteredRepositoryIdsFlow.collectAsState().value
-  val searchQuery = searchQueryFlow.collectAsState().value.normalize()
+  val searchQuery = fixQuery(searchQueryFlow.collectAsState().value)
 
   val availableCategoryIds =
     remember(apps) {

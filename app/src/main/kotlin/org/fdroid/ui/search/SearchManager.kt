@@ -26,7 +26,7 @@ import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
-import org.fdroid.ui.utils.normalize
+import org.fdroid.ui.search.SearchHelper.normalize
 import org.fdroid.utils.IoDispatcher
 
 @Singleton
