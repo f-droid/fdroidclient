@@ -76,7 +76,7 @@ constructor(
                 } else "$it"
               }
             // add * to enable prefix matches
-            if (isCjk) newString else "$newString*"
+            if (isCjk) newString.trimEnd() else "$newString*"
           }
           .let { firstPassQuery ->
             // if we had more than one word, make a more complex query

@@ -146,6 +146,7 @@ dependencies {
   testImplementation(libs.slf4j.simple)
   testImplementation(libs.turbine)
   testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.androidx.core.testing)
 
   androidTestImplementation(libs.kotlin.test)
   androidTestImplementation(libs.kotlin.reflect)
