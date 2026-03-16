@@ -12,6 +12,9 @@ object SearchHelper {
     return Normalizer.normalize(this, NFKD).replace(normalizerRegex, "")
   }
 
+  /** Removes zero-width spaces from the string. Useful when string is copy and pasted. */
+  fun String.removeZeroWhiteSpace(): String = this.replace("\u200B", "")
+
   /**
    * Normalize the query by removing diacritics and adding zero-width spaces after ideographic
    * characters.

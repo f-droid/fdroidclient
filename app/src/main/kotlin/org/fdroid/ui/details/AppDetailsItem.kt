@@ -21,6 +21,7 @@ import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallState
 import org.fdroid.install.SessionInstallManager
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.search.SearchHelper.removeZeroWhiteSpace
 
 data class AppDetailsItem(
   val app: AppMetadata,
@@ -91,9 +92,9 @@ data class AppDetailsItem(
     networkState = networkState,
     preferredRepoId = preferredRepoId,
     repositories = repositories,
-    name = dbApp.name ?: "Unknown App",
-    summary = dbApp.summary,
-    description = getHtmlDescription(dbApp.getDescription(localeList)),
+    name = dbApp.name?.removeZeroWhiteSpace() ?: "Unknown App",
+    summary = dbApp.summary?.removeZeroWhiteSpace() ?: "",
+    description = getHtmlDescription(dbApp.getDescription(localeList)?.removeZeroWhiteSpace()),
     icon =
       if (installedVersionCode == null) {
         dbApp.getIcon(localeList)?.getImageModel(repository, proxy)
