@@ -3,6 +3,8 @@ package org.fdroid.ui.details
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -45,6 +47,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -111,7 +114,11 @@ fun AppDetails(
           modifier
             .verticalScroll(scrollState)
             .fillMaxWidth()
-            .padding(bottom = innerPadding.calculateBottomPadding())
+            .padding(
+              start = innerPadding.calculateStartPadding(LocalLayoutDirection.current),
+              end = innerPadding.calculateEndPadding(LocalLayoutDirection.current),
+              bottom = innerPadding.calculateBottomPadding(),
+            )
             .onGloballyPositioned { coordinates -> size = coordinates.size }
       ) {
         // Header is taking care of top innerPadding
@@ -232,7 +239,7 @@ fun AppDetails(
                 icon = Icons.Default.Link,
                 title = donation,
                 url = donation,
-                modifier = modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
               )
             }
             item.liberapayUri?.let { liberapayUri ->
@@ -240,7 +247,7 @@ fun AppDetails(
                 icon = Icons.Default.ChangeHistory,
                 title = "LiberaPay",
                 url = liberapayUri,
-                modifier = modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
               )
             }
             item.openCollectiveUri?.let { openCollectiveUri ->
@@ -248,7 +255,7 @@ fun AppDetails(
                 icon = Icons.Default.Groups,
                 title = "OpenCollective",
                 url = openCollectiveUri,
-                modifier = modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
               )
             }
             item.bitcoinUri?.let { bitcoinUri ->
@@ -256,7 +263,7 @@ fun AppDetails(
                 icon = Icons.Default.CurrencyBitcoin,
                 title = stringResource(R.string.menu_bitcoin),
                 url = bitcoinUri,
-                modifier = modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
               )
             }
             item.litecoinUri?.let { litecoinUri ->
@@ -264,7 +271,7 @@ fun AppDetails(
                 icon = Litecoin,
                 title = stringResource(R.string.menu_litecoin),
                 url = litecoinUri,
-                modifier = modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
               )
             }
           }
