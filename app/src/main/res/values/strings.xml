@@ -14,7 +14,7 @@
     <string name="menu_apps_my">My apps</string>
 
     <string name="first_start_loading">Fetching app repositories…</string>
-    <string name="first_start_intro">To get started, fetch the app repositories</string>
+    <string name="first_start_intro">To get started, fetch app repositories</string>
     <string name="first_start_offline">You\'re offline. Connect to the Internet to start.</string>
     <string name="first_start_metered">You\'re on mobile data and more than 10 MB will be downloaded. Tap Fetch repositories to start anyway.</string>
     <string name="first_start_button">Fetch repositories</string>
