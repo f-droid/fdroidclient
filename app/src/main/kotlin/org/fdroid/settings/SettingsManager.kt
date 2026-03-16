@@ -25,6 +25,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_DB_REPAIR_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MY_APPS_SORT_ORDER
@@ -40,6 +41,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
+import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_DB_REPAIR_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MY_APPS_SORT_ORDER
@@ -107,6 +109,12 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     set(value) {
       prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
       _lastRepoUpdateFlow.update { value }
+    }
+
+  var lastDbRepairCheck: Long
+    get() = prefs.getLong(PREF_KEY_LAST_DB_REPAIR_CHECK, PREF_DEFAULT_LAST_DB_REPAIR_CHECK)
+    set(value) {
+      prefs.edit { putLong(PREF_KEY_LAST_DB_REPAIR_CHECK, value) }
     }
 
   var useInstallHistory: Boolean

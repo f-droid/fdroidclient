@@ -80,6 +80,9 @@ object SettingsConstants {
 
   const val PREF_KEY_INSTALL_HISTORY = "keepInstallHistory"
   const val PREF_DEFAULT_INSTALL_HISTORY = false
+
+  const val PREF_KEY_LAST_DB_REPAIR_CHECK = "lastDbRepairCheck"
+  const val PREF_DEFAULT_LAST_DB_REPAIR_CHECK = -1L
 }
 
 fun String?.toAutoUpdateValue() =

@@ -19,11 +19,8 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import coil3.util.Logger
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.acra.ACRA
+import javax.inject.Inject
 import org.acra.ReportField
 import org.acra.config.dialog
 import org.acra.config.mailSender
@@ -31,7 +28,6 @@ import org.acra.data.StringFormat.JSON
 import org.acra.ktx.initAcra
 import org.fdroid.BuildConfig.APPLICATION_ID
 import org.fdroid.BuildConfig.VERSION_NAME
-import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.LocalIconFetcher
 import org.fdroid.download.PackageName
@@ -42,20 +38,19 @@ import org.fdroid.ui.crash.CrashActivity
 import org.fdroid.ui.crash.NoRetryPolicy
 import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
-import org.fdroid.utils.IoDispatcher
 
 @HiltAndroidApp
 class App : Application(), Configuration.Provider, SingletonImageLoader.Factory {
+
+  // careful with injecting too many dependencies here, especially DO NO inject anything that needs
+  // the database, because this class gets instantiated in other contexts and that may lead to a
+  // locked database crash
 
   @Inject lateinit var settingsManager: SettingsManager
 
   @Inject lateinit var workerFactory: HiltWorkerFactory
 
   @Inject lateinit var downloadRequestFetcherFactory: DownloadRequestFetcher.Factory
-
-  @Inject lateinit var db: FDroidDatabase
-
-  @IoDispatcher @Inject lateinit var coroutineScope: CoroutineScope
 
   override val workManagerConfiguration: Configuration
     get() = Configuration.Builder().setWorkerFactory(workerFactory).build()
@@ -105,12 +100,6 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
 
     RepoUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.repoUpdates)
     AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
-
-    // check Fts integrity on worker thread after startup to avoid blocking all DB access
-    coroutineScope.launch {
-      delay(5000) // give the app some time to start up before doing this
-      db.repairFtsIfNeeded()
-    }
   }
 
   private fun isAcraProces(): Boolean {
