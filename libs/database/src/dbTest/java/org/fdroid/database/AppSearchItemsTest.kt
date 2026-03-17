@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlinx.coroutines.runBlocking
+import org.fdroid.database.SearchQueryRewriter.rewriteQuery
 import org.fdroid.index.v2.MetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
 import org.junit.Test
@@ -17,7 +18,7 @@ internal class AppSearchItemsTest : DbTest() {
   fun findsByName() = runBlocking {
     populateDbWithExtractedApps()
     assertSearchTopResult(
-      query = "duckduckgo* browser*",
+      query = "duckduckgo browser",
       packageName = "com.duckduckgo.mobile.android",
     )
     assertSearchTopResult(query = "F-Droid*", packageName = "org.fdroid.fdroid")
@@ -26,14 +27,14 @@ internal class AppSearchItemsTest : DbTest() {
   @Test
   fun findsBySummary() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "alternative* frontend*", packageName = "com.github.libretube")
+    assertSearchTopResult(query = "alternative frontend", packageName = "com.github.libretube")
   }
 
   @Test
   fun findsByDescription() = runBlocking {
     populateDbWithExtractedApps()
     assertSearchTopResult(
-      query = "privacy* essentials*",
+      query = "privacy essentials",
       packageName = "com.duckduckgo.mobile.android",
     )
   }
@@ -41,27 +42,26 @@ internal class AppSearchItemsTest : DbTest() {
   @Test
   fun findsByAuthor() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "rahul* patel*", packageName = "com.aurora.store")
-    assertSearchTopResult(query = "bitfire*", packageName = "at.bitfire.davdroid")
-    assertSearchTopResult(query = "艾*", packageName = "com.aistra.hail")
+    assertSearchTopResult(query = "rahul patel", packageName = "com.aurora.store")
+    assertSearchTopResult(query = "bitfire", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "艾星", packageName = "com.aistra.hail")
   }
 
   @Test
   fun findsByPackageName() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "org* fdroid*", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "org.fdroid.fdroid", packageName = "org.fdroid.fdroid")
   }
 
   @Test
   fun findsCamelCase() = runBlocking {
     populateDbWithExtractedApps()
     assertSearchTopResult(
-      // this is the actual query used by the search manager when searching for "game pad"
-      query = "game* pad* OR gamepad* OR \"game* pad*\"",
+      query = "game pad",
       packageName = "io.github.kitswas.virtualgamepadmobile",
     )
     assertSearchTopResult(
-      query = "cal* dav* OR caldav* OR \"cal* dav*\"",
+      query = "cal dav",
       packageName = "at.bitfire.davdroid",
     )
   }
@@ -70,52 +70,52 @@ internal class AppSearchItemsTest : DbTest() {
   fun findsGermanText() = runBlocking {
     populateDbWithExtractedApps()
     assertSearchTopResult(
-      query = "privatsphäre* vereinfacht*",
+      query = "privatsphäre vereinfacht",
       packageName = "com.duckduckgo.mobile.android",
     )
-    assertSearchTopResult(query = "installierbar*", packageName = "org.fdroid.fdroid")
-    assertSearchTopResult(query = "Synchronisierungs-App*", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "installierbar", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "Synchronisierungs-App", packageName = "at.bitfire.davdroid")
   }
 
   @Test
   fun findsPortugueseText() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "loja* privacidade*", packageName = "org.fdroid.fdroid")
-    assertSearchTopResult(query = "sincronização*", packageName = "at.bitfire.davdroid")
-    assertSearchTopResult(query = "catálogo* instalável*", packageName = "org.fdroid.fdroid")
-    assertSearchTopResult(query = "catalogo* instalavel*", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "loja privacidade", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "sincronização", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "catálogo instalável", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "catalogo instalavel", packageName = "org.fdroid.fdroid")
   }
 
   @Test
   fun findsChineseText() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "地* 图*", packageName = "app.organicmaps")
-    assertSearchResultsContain(query = "隐* 私*", packageName = "com.duckduckgo.mobile.android")
-    assertSearchResultsContain(query = "隐* 私*", packageName = "org.fdroid.fdroid")
-    assertSearchTopResult(query = "阅* 读*", packageName = "com.capyreader.app")
-    assertSearchResultsContain(query = "同* 步*", packageName = "com.nextcloud.android.beta")
-    assertSearchResultsContain(query = "同* 步*", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "地图", packageName = "app.organicmaps")
+    assertSearchResultsContain(query = "隐私", packageName = "com.duckduckgo.mobile.android")
+    assertSearchResultsContain(query = "隐私", packageName = "org.fdroid.fdroid")
+    assertSearchTopResult(query = "阅读", packageName = "com.capyreader.app")
+    assertSearchResultsContain(query = "同步", packageName = "com.nextcloud.android.beta")
+    assertSearchResultsContain(query = "同步", packageName = "at.bitfire.davdroid")
   }
 
   @Test
   fun findsJapaneseText() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "同* 期*", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "同期", packageName = "at.bitfire.davdroid")
   }
 
   @Test
   fun findsKoreanText() = runBlocking {
     populateDbWithExtractedApps()
-    assertSearchTopResult(query = "동기* 클라이*", packageName = "at.bitfire.davdroid")
+    assertSearchTopResult(query = "동기 클라이", packageName = "at.bitfire.davdroid")
   }
 
   private suspend fun assertSearchTopResult(query: String, packageName: String) {
-    val items = appDao.getAppSearchItems(query)
+    val items = appDao.getAppSearchItems(rewriteQuery(query))
     assertEquals(packageName, items.firstOrNull()?.packageName)
   }
 
   private suspend fun assertSearchResultsContain(query: String, packageName: String) {
-    val items = appDao.getAppSearchItems(query)
+    val items = appDao.getAppSearchItems(rewriteQuery(query))
     assertTrue(
       items.any { it.packageName == packageName },
       "Query '$query' did not find $packageName, but ${items.map { it.packageName }}",
