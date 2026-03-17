@@ -110,16 +110,17 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
           key = "pref_category_display",
           title = { Text(stringResource(R.string.display)) },
         )
-        val themeToString = { value: String ->
-          AnnotatedString(
-            when (value) {
-              "light" -> res.getString(R.string.theme_light)
-              "dark" -> res.getString(R.string.theme_dark)
-              "followSystem" -> res.getString(R.string.theme_follow_system)
-              else -> error("Unknown value: $value")
-            }
-          )
-        }
+        val themeToString =
+          @Composable { value: String ->
+            AnnotatedString(
+              when (value) {
+                "light" -> res.getString(R.string.theme_light)
+                "dark" -> res.getString(R.string.theme_dark)
+                "followSystem" -> res.getString(R.string.theme_follow_system)
+                else -> error("Unknown value: $value")
+              }
+            )
+          }
         listPreference(
           key = PREF_KEY_THEME,
           values = listOf("light", "dark", "followSystem"),

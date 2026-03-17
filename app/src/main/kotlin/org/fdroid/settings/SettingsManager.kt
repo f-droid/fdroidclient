@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import me.zhanghai.compose.preference.createPreferenceFlow
-import me.zhanghai.compose.preference.isDefaultPreferenceFlowLongSupportEnabled
+import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
@@ -66,7 +66,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
 
   /** This is mutable, so the settings UI can make changes to it. */
   val prefsFlow by lazy {
-    isDefaultPreferenceFlowLongSupportEnabled = true
+    isDefaultPreferenceFlowAndroidLongSupportEnabled = true
     createPreferenceFlow(prefs)
   }
   val theme
