@@ -169,7 +169,7 @@ data class CategoryItem(val id: String, val name: String) {
         "File Encryption & Vault" -> CategoryGroups.storage
         "File Transfer" -> CategoryGroups.storage
         "Finance Manager" -> CategoryGroups.wallets
-        "Firewall" -> CategoryGroups.device
+        "Firewall" -> CategoryGroups.network
         "Flashlight" -> CategoryGroups.tools
         "Forum" -> CategoryGroups.communication
         "Gallery" -> CategoryGroups.storage
