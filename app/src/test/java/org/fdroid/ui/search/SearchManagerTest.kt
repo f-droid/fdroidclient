@@ -97,7 +97,17 @@ internal class SearchManagerTest {
 
     searchManager.search("測試")
 
-    assertEquals("測* 試*", querySlot.captured)
+    assertEquals("測* 試* OR \"測\u200B試*\" OR 測試*", querySlot.captured)
+  }
+
+  @Test
+  fun searchBuildsMultiWordCjkQuery() = runTest {
+    val querySlot = slot<String>()
+    coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
+
+    searchManager.search("測試 艾星")
+
+    assertEquals("測* 試* 艾* 星* OR \"測\u200B試*\" \"艾\u200B星*\" OR 測試* 艾星*", querySlot.captured)
   }
 
   @Test

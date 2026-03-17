@@ -18,6 +18,7 @@ import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.database.SearchQueryRewriter.rewriteQuery
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.PackageName
 import org.fdroid.download.getImageModel
@@ -62,30 +63,7 @@ constructor(
       if (term == "CrashMe") error("BOOOOOOOOM!!!")
 
       val sanitized = term.replace(Regex.fromLiteral("\""), "")
-      val splits = sanitized.split(' ').filter { it.isNotBlank() }
-      val query =
-        splits
-          .joinToString(" ") { word ->
-            var isCjk = false
-            // go through word and separate CJK chars (if needed)
-            val newString =
-              word.toList().joinToString("") {
-                if (Character.isIdeographic(it.code)) {
-                  isCjk = true
-                  "$it* "
-                } else "$it"
-              }
-            // add * to enable prefix matches
-            if (isCjk) newString.trimEnd() else "$newString*"
-          }
-          .let { firstPassQuery ->
-            // if we had more than one word, make a more complex query
-            if (splits.size > 1) {
-              "$firstPassQuery " + // search* term* (implicit AND and prefix search)
-                "OR ${splits.joinToString("")}* " + // camel case prefix
-                "OR \"${splits.joinToString("* ")}*\"" // phrase query
-            } else firstPassQuery
-          }
+      val query = rewriteQuery(sanitized)
       log.info { "Searching for: $query" }
       val timedApps = measureTimedValue {
         try {
