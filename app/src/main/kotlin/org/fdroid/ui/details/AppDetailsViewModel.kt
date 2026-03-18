@@ -191,7 +191,11 @@ constructor(
       scope.launch {
         appDetails.value?.phoneScreenshots?.forEach { screenshot ->
           if (screenshot is DownloadRequest) {
-            diskCache.remove(screenshot.getCacheKey())
+            try {
+              diskCache.remove(screenshot.getCacheKey())
+            } catch (e: Exception) {
+              log.error(e) { "Failed to remove screenshot from disk cache: " }
+            }
           }
         }
       }
