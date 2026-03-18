@@ -255,9 +255,11 @@ internal constructor(
     return map.ifEmpty { null }
   }
 
+  @Deprecated("Use metadata.name.getBestLocale(localeList) instead.")
   public override val name: String?
     get() = metadata.localizedName
 
+  @Deprecated("Use metadata.summary.getBestLocale(localeList) instead.")
   public override val summary: String?
     get() = metadata.localizedSummary
 
