@@ -157,7 +157,7 @@ constructor(
         repoId = it.repoId,
         packageName = it.packageName,
         name = it.getName(localeList) ?: "Unknown App",
-        summary = it.getSummary(localeList) ?: "Unknown",
+        summary = it.getSummary(localeList) ?: "",
         lastUpdated = it.lastUpdated,
         isInstalled = isInstalled,
         isCompatible = it.isCompatible,
