@@ -140,9 +140,10 @@ internal fun MetadataV2.toAppMetadata(
  * the sqlite tokenizers available to us either handle those languages or do diacritics removals.
  * Since we can't remove diacritics here ourselves, we help the tokenizer for CJK languages instead.
  */
-internal fun LocalizedTextV2?.zero(): LocalizedTextV2? {
+internal fun LocalizedTextV2?.zero(localeAllowList: Set<String>? = null): LocalizedTextV2? {
   if (this == null) return null
   return toMutableMap().mapValues { (locale, text) ->
+    if (localeAllowList != null && locale !in localeAllowList) return@mapValues text
     if (locale.startsWith("zh") || locale.startsWith("ja") || locale.startsWith("ko")) {
       StringBuilder()
         .apply {
