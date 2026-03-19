@@ -91,7 +91,8 @@ constructor(
   init {
     viewModelScope.launch {
       repoManager.repositoriesState.collect { repos ->
-        val repo = repos?.find { it.repoId == repoId } ?: error("repos were still null")
+        // when a repo gets deleted, we won't find it in the list and thus repo will be null
+        val repo = repos?.find { it.repoId == repoId }
         onRepoChanged(repo)
       }
     }
