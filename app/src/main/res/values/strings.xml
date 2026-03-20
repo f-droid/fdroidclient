@@ -34,9 +34,9 @@
     <string name="app_list_author">Apps by %s</string>
 
     <string name="search_placeholder">Search…</string>
-    <string name="search_no_results">No apps found\n\nTry to use less search terms or add more repositories</string>
-    <string name="search_filter_no_results">No matching apps\n\nTry to use fewer search terms or remove filters</string>
-    <string name="search_my_apps_no_results">No matching apps\n\nTry to use fewer search terms</string>
+    <string name="search_no_results">No apps found\n\nTry using fewer search terms or add more repositories</string>
+    <string name="search_filter_no_results">No matching apps\n\nTry using fewer search terms or remove filters</string>
+    <string name="search_my_apps_no_results">No matching apps\n\nTry using fewer search terms</string>
     <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by last update</string>
@@ -226,8 +226,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="about_title_full">About F-Droid</string>
     <string name="about_title_basic">About F-Droid Basic</string>
-    <string name="about_text">Apps on F-Droid are free and open source software (FOSS), they respect your privacy, and they are available for anyone to see the source code, build on and improve.\n\nApp distribution is transparent, privacy-respecting, and accountable, setting a standard that challenges the mobile ecosystem to do better.\n\nF-Droid\'s impact is measured not just in apps published, but in the freedom, trust, and digital rights it helped protect.\n\nHelp F-Droid to protect community-powered innovation and continue their mission of openness, privacy, and user empowerment.</string>
-    <string name="about_license_text">This program is Free Software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
+    <string name="about_text">Apps on F-Droid are free and open source software (FOSS), they respect your privacy, and they\'re available for anyone to see the source code, build on and improve.\n\nApp distribution is transparent, privacy-respecting, and accountable, setting a standard that challenges the mobile ecosystem to do better.\n\nF-Droid\'s impact is measured not just in apps published, but in the freedom, trust, and digital rights it helps protect.\n\nHelp F-Droid to protect community-powered innovation and continue our mission of openness, privacy, and user empowerment.</string>
+    <string name="about_license_text">This program is Free Software. You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.</string>
     <string name="about_version">Version</string>
     <string name="about_site">Website</string>
     <string name="about_forum">Support forum</string>
@@ -864,11 +864,11 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="crash_report_text">An unexpected error occurred.
         This is not your fault.
-        Would you like to e-mail the details to help us fix the issue?
+        Would you like to e-mail us the details to help fix the issue?
     </string>
     <string name="crash_report_comment_hint">Tell us what happened right before the crash</string>
     <string name="crash_report_button_send">Send report</string>
-    <string name="crash_report_error">Could not send report. No email app found :(</string>
+    <string name="crash_report_error">Could not send report. No e-mail app found :(</string>
     <string name="crash_report_save">Save crash report as file</string>
     <string name="crash_report_saved">Saved report to file</string>
     <string name="crash_report_error_saving">Error saving crash report to file</string>
@@ -962,9 +962,9 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="details_last_updated_today">Updated today</string>
     <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
-    <string name="permission_camera_denied">Scanning the QR code can only work if you grant camera permission. Tap to grant it in settings.</string>
+    <string name="permission_camera_denied">Please grant camera permission to continue scanning the QR code. Tap to grant camera permission in settings.</string>
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
-    <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, prefer a repository with compatible versions.</string>
+    <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, select a preferred repository with compatible versions.</string>
     <string name="undo">Undo</string>
     <string name="error">Error</string>
     <string name="app_list__dismiss_installing_app">Installation cancelled</string>
