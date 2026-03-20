@@ -188,7 +188,7 @@ data class CategoryItem(val id: String, val name: String) {
         "Multimedia" -> CategoryGroups.media
         "Music Practice Tool" -> CategoryGroups.interests
         "Navigation" -> CategoryGroups.tools
-        "Network Analyzer" -> CategoryGroups.tools
+        "Network Analyzer" -> CategoryGroups.network
         "News" -> CategoryGroups.interests
         "Note" -> CategoryGroups.storage
         "Online Media Player" -> CategoryGroups.media
