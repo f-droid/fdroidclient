@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,10 +53,10 @@ fun MyAppsList(
   val installingApps = myAppsInfo.model.installingApps
   val appsWithIssue = myAppsInfo.model.appsWithIssue
   val installedApps = myAppsInfo.model.installedApps
-  // scroll to top if new updatable apps were added
-  var previousNumUpdates by remember { mutableIntStateOf(0) }
+  // scroll to top if new updatable apps were added (saveable, so doesn't scroll on screen rotation)
+  var previousNumUpdates by rememberSaveable { mutableIntStateOf(0) }
   LaunchedEffect(updatableApps) {
-    if (updatableApps != null && updatableApps.isNotEmpty()) {
+    if (!updatableApps.isNullOrEmpty()) {
       if (updatableApps.size > previousNumUpdates) {
         lazyListState.animateScrollToItem(0)
       }
