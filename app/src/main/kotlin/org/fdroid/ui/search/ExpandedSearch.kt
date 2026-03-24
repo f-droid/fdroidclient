@@ -1,6 +1,8 @@
 package org.fdroid.ui.search
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.TextFieldState
@@ -11,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryItem
@@ -35,11 +38,15 @@ fun ExpandedSearch(
         onSearchCleared = onSearchCleared,
         onHideSearch = onBack,
       )
-    }
+    },
   ) { paddingValues ->
     HorizontalDivider(
       color = SearchBarDefaults.colors().dividerColor,
-      modifier = Modifier.padding(top = paddingValues.calculateTopPadding()),
+      modifier = Modifier.padding(
+        start = paddingValues.calculateStartPadding(LocalLayoutDirection.current),
+        end = paddingValues.calculateEndPadding(LocalLayoutDirection.current),
+        top = paddingValues.calculateTopPadding(),
+      ),
     )
     SearchResults(
       searchResults = searchResults,

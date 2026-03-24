@@ -72,7 +72,7 @@ fun AddRepo(
     when (state) {
       None -> {
         val networkState = networkStateFlow.collectAsStateWithLifecycle().value
-        AddRepoIntroContent(networkState, onFetchRepo, Modifier.padding(paddingValues))
+        AddRepoIntroContent(networkState, onFetchRepo, paddingValues)
       }
       is Fetching -> {
         if (state.receivedRepo == null) {

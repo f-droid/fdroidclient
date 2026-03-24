@@ -1,6 +1,7 @@
 package org.fdroid.ui.search
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
@@ -43,7 +44,7 @@ fun TopSearchBar(
           searchFieldState.setTextAndPlaceCursorAtEnd("")
           onSearchCleared()
         },
-        modifier = Modifier.focusRequester(focusRequester),
+        modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
       )
     },
     actions = actions,

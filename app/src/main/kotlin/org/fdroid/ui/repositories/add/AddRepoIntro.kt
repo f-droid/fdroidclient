@@ -13,10 +13,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.SpaceBetween
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
@@ -46,10 +50,11 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -82,7 +87,7 @@ import org.fdroid.ui.utils.startActivitySafe
 fun AddRepoIntroContent(
   networkState: NetworkState,
   onFetchRepo: (String) -> Unit,
-  modifier: Modifier = Modifier,
+  paddingValues: PaddingValues = PaddingValues(),
 ) {
   val scrollState = rememberScrollState()
   val context = LocalContext.current
@@ -116,7 +121,16 @@ fun AddRepoIntroContent(
   Column(
     verticalArrangement = spacedBy(16.dp),
     horizontalAlignment = CenterHorizontally,
-    modifier = modifier.imePadding().fillMaxSize().verticalScroll(scrollState).padding(16.dp),
+    modifier =
+      Modifier.padding(
+          top = paddingValues.calculateTopPadding(),
+          start = paddingValues.calculateStartPadding(LocalLayoutDirection.current),
+          end = paddingValues.calculateEndPadding(LocalLayoutDirection.current),
+        )
+        .padding(horizontal = 16.dp)
+        .imePadding()
+        .fillMaxSize()
+        .verticalScroll(scrollState),
   ) {
     if (!networkState.isOnline) OfflineBar()
     Text(text = stringResource(R.string.repo_intro), style = MaterialTheme.typography.bodyLarge)
@@ -189,7 +203,7 @@ fun AddRepoIntroContent(
           keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
           keyboardActions = KeyboardActions(onGo = { onFetchRepo(textState.value.text) }),
           modifier =
-            Modifier.fillMaxWidth().focusRequester(focusRequester).onGloballyPositioned {
+            Modifier.fillMaxWidth().focusRequester(focusRequester).onPlaced {
               focusRequester.requestFocus()
               coroutineScope.launch { scrollState.animateScrollTo(scrollState.maxValue) }
             },
@@ -214,6 +228,7 @@ fun AddRepoIntroContent(
             },
           )
         }
+        Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding()))
       }
     }
   }
