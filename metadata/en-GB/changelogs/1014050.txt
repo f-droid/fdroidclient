@@ -6,7 +6,7 @@
 
 * Apps without PNG app icons now show in Latest Tab (@ashutoshgngwr)
 
-* Better icon management with limited Data/Wi-Fi settings
+* Better icon management with limited Data/WiFi settings
 
 * Support more barcode scanners (@Lugerun)
 

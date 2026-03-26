@@ -303,7 +303,7 @@
     <string name="preference_category__my_apps">Mes applications</string>
     <string name="preference_manage_installed_apps">Gérer les applis installées</string>
     <string name="details_new_in_version">Nouveautés de la version %s</string>
-    <string name="antifeatureswarning">Cette application contient des fonctionnalités qui pourraient vous déplaire.</string>
+    <string name="antifeatureswarning">Cette application comporte des fonctionnalités qui pourraient vous déplaire.</string>
     <string name="antifeatures">Antifonctions</string>
     <plurals name="button_view_all_apps_in_category">
         <item quantity="one">Afficher (%d)</item>
@@ -522,7 +522,7 @@
     <string name="latest__empty_state__upgrading">Mise à jour de la base de données…</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">À propos de F-Droid Basic</string>
-    <string name="antinsfwlist">Cette application contient des informations qui ne doivent pas être rendues publiques ou visibles partout</string>
+    <string name="antinsfwlist">Cette application comporte des informations qui ne devraient pas être rendues publiques ou être visibles partout</string>
     <string name="warning_target_sdk">Cette application a été conçue pour une ancienne version d\'Android et ne peut pas être mise à jour automatiquement.</string>
     <string name="category_Nightly">Versions bêta quotidiennes</string>
     <string name="app_error_open">Impossible de lancer l\'application.</string>

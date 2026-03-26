@@ -583,4 +583,25 @@
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="repo_error_adding_archive">Negalima pridėti archyvinių saugyklų tiesiogiai. Palieskite saugyklą sąraše ir įjunkite archyvą.</string>
     <string name="antitetherednet">Pririštojo tinklo paslaugos</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Apie</string>
+    <string name="menu_discover">Atraskite</string>
+    <string name="menu_apps_my">Mano programėlės</string>
+    <string name="first_start_loading">Gaunamos programėlių saugyklos…</string>
+    <string name="my_apps_empty">Čia rodomos tik %1$s įdiegtos programėlės</string>
+    <string name="my_apps_header_apps_with_issue">Programėlės su problemomis</string>
+    <string name="my_apps_ignore_dialog_title">Slėpti problemą</string>
+    <string name="my_apps_ignore_dialog_text">Šios „%1$s“ versijos problema bus ignoruojama</string>
+    <string name="my_apps_ignore_dialog_button">Slėpti</string>
+    <string name="my_apps_export_installed_apps">Eksportuoti programėlių sąrašą</string>
+    <string name="app_list_new">Naujos programėlės</string>
+    <string name="app_list_recently_updated">Neseniai atnaujintos</string>
+    <string name="app_list_most_downloaded">Daugiausiai atsisiuntimų</string>
+    <string name="app_list_all">Visos programėlės</string>
+    <string name="app_list_author">%s sukurtos programėlės</string>
+    <string name="search_placeholder">Ieškoti…</string>
+    <string name="search_no_results">Nerastos programėlės\n\nPamėginkite naudoti mažiau paieškos žodžių arba įtraukite daugiau saugyklų</string>
+    <string name="category_group_productivity">Produktyvumas</string>
+    <string name="category_group_tools">Įrankiai</string>
+    <string name="category_group_wallets">Finansai ir piniginės</string>
 </resources>

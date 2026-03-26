@@ -104,7 +104,7 @@
     <string name="repo_added">Paketquelle %1$s gespeichert.</string>
     <string name="repo_searching_address">Nach Paketquelle wird gesucht unter
 \n%1$s</string>
-    <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte Paketquelle! Versuche dich mit dem folgenden Netzwerk zu verbinden: %s</string>
+    <string name="not_on_same_wifi">Dieses Gerät befindet sich nicht im selben WLAN, wie die eben hinzugefügte lokale Paketquelle! Versuche dich mit dem folgenden Netzwerk zu verbinden: %s</string>
     <string name="requires_features">Erfordert: %1$s</string>
     <string name="category_Development">Entwicklung</string>
     <string name="category_Games">Spiele</string>

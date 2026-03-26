@@ -31,7 +31,7 @@
     <string name="menu_ignore_this">تجاهل هذا التحديث</string>
     <string name="menu_source">المصدر البرمجي</string>
     <string name="local_repo">المستودع المحلي</string>
-    <string name="deleting_repo">يتم حذف المستودع الحالي…</string>
+    <string name="deleting_repo">يحذف المستودع الحالي…</string>
     <string name="next">التالي</string>
     <string name="skip">تخطي</string>
     <string name="theme">السمة</string>
@@ -71,7 +71,7 @@
     <string name="login_password">كلمة المرور</string>
     <string name="repo_edit_credentials">غيّر كلمة المرور</string>
     <string name="repo_error_empty_username">اسم المستخدم فارغ، لم يتم تغيير بيانات التوثيق</string>
-    <string name="no_such_app">لم يتم العثور على مثل هذا التطبيق.</string>
+    <string name="no_such_app">لم يُعثر على مثل هذا التطبيق.</string>
     <string name="about_title_full">معلومات عن اف-درويد</string>
     <string name="about_source">المصدر البرمجي</string>
     <string name="about_license">الرخصة</string>
@@ -89,10 +89,10 @@
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
     <string name="menu_website">الموقع الإلكتروني</string>
-    <string name="menu_issues">الأخطاء</string>
+    <string name="menu_issues">العلل</string>
     <string name="menu_changelog">سجل التغييرات</string>
     <string name="menu_upgrade">حدِّث</string>
-    <string name="menu_bitcoin">عملة البيتكوين (BitCoin)</string>
+    <string name="menu_bitcoin">بيتكوين (Bitcoin)</string>
     <string name="menu_litecoin">عملة اللايت كوين (Litecoin)</string>
     <string name="menu_flattr">حساب فلاتر (Flattr)</string>
     <string name="details_notinstalled">لم يُثبَّت</string>
@@ -205,9 +205,9 @@
     <string name="swap_connection_misc_error">حدث خطأ أثناء الاتصال بالجهاز، ولا يمكن أن يجري المبادلة معه!</string>
     <string name="install_confirm">يحتاج الوصول إلى</string>
     <string name="install_confirm_update">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيحصل التطبيق المحدث على حق الوصول إلى:</string>
-    <string name="install_confirm_update_system">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن تفقد بياناتك الحالية. سيحصل التطبيق المحدث على حق الوصول إلى:</string>
+    <string name="install_confirm_update_system">أتريد تثبيت تحديث لهذا التطبيق المضمن؟ لن تفقد بياناتك الحالية. سيحصل التطبيق المحدَّث على حق الوصول إلى:</string>
     <string name="install_confirm_update_no_perms">هل تريد تثبيت تحديث لهذا التطبيق الحالي؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
-    <string name="install_confirm_update_system_no_perms">هل تريد تثبيت تحديث لهذا التطبيق المضمن؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
+    <string name="install_confirm_update_system_no_perms">أتريد تثبيت تحديث لهذا التطبيق المضمن؟ لن يتم فقد بياناتك الحالية. كما أنه لا يتطلب أي دخول خاص.</string>
     <string name="newPerms">جديد</string>
     <string name="allPerms">الكل</string>
     <string name="perm_costs_money">قد يكلفك ذلك ماليًا</string>
@@ -264,7 +264,7 @@
     <string name="notification_content_single_installed">تم التثبيت بنجاح</string>
     <string name="notification_title_summary_ready_to_install">جاهز للتثبيت</string>
     <string name="notification_title_summary_ready_to_install_update">التحديث جاهز للتثبيت</string>
-    <string name="notification_title_summary_installing">في صدد التثبيت</string>
+    <string name="notification_title_summary_installing">يثبِّت</string>
     <string name="notification_title_summary_installed">تم التثبيت بنجاح</string>
     <string name="notification_title_summary_install_error">فشل التثبيت</string>
     <string name="notification_action_install">ثبِّت</string>
@@ -279,7 +279,7 @@
     <string name="updates__show_updateable_apps">أظهِر التطبيقات</string>
     <string name="clear_search">مسح البحث</string>
     <string name="menu_video">فيديو</string>
-    <string name="latest__empty_state__no_recent_apps">لم يتم العثور على تطبيقات حالية</string>
+    <string name="latest__empty_state__no_recent_apps">لم يُعثر على تطبيقات حديثة</string>
     <string name="antifeatureswarning">لدى هذا التطبيق ميزات قد لا تعجبك.</string>
     <string name="notification_title_single_update_available">يتوفر تحديث</string>
     <string name="notification_content_single_downloading">جارِ تنزيل \"%1$s\"…</string>
@@ -335,7 +335,7 @@
     <string name="app_list__dismiss_vulnerable_app">تخطي الحساسية</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">لقد وجدنا ثغرة أمنية في %1$s. انقر هنا لقراءة المزيد في قسم الخصائص المكروهة.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">لقد وجدنا ثغرة في %1$s. نوصي بالتحديث إلى أحدث إصدار جديد في الحال.</string>
-    <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الأخيرة سوف تظهر هنا</string>
+    <string name="latest__empty_state__never_updated">حينما يتم تحديث قائمة البرامج، التطبيقات الحديثة سوف تظهر هنا</string>
     <string name="latest__empty_state__no_enabled_repos">حينما تُفعّل مستودع وتتركه يُحدِّث، سوف تظهر التطبيقات الأخيرة هنا</string>
     <string name="antifeatures">خصائص مكروهة</string>
     <string name="status_inserting_x_apps">حفظ تفاصيل التطبيقات (%1$d/%2$d) من %3$s</string>
@@ -365,10 +365,10 @@
     </plurals>
     <string name="privacy">الخصوصية</string>
     <string name="preventScreenshots_title">منع أخذ لقطة للشاشة</string>
-    <string name="preventScreenshots_summary">أخفاء لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الأخيرة</string>
+    <string name="preventScreenshots_summary">يحظر لقطات الشاشة حتى لايتم استخدامها ويخفي محتوى التطبيق من شاشة التطبيقات الحديثة</string>
     <string name="panic_app_setting_title">زر الهلع للتطبيق</string>
     <string name="panic_app_unknown_app">تطبيق غير معروف</string>
-    <string name="panic_app_setting_summary">لم يتم تحديد اي تطبيق</string>
+    <string name="panic_app_setting_summary">لم يُعيّن أي تطبيق</string>
     <string name="panic_app_setting_none">لا شيء</string>
     <string name="panic_app_dialog_title">أكّد تطبيق الهلع</string>
     <string name="panic_app_dialog_message">هل أنت متأكد من أنك تريد السماح ل %1$s بتشغيل إجراءات زر الهلع المدمرة؟</string>
@@ -537,7 +537,7 @@
     <string name="antinonfreedep">تبعيات غير حرة</string>
     <string name="antinosource">المصدر البرمجي لم يعد متوفر</string>
     <string name="antinonfreeassets">الأصول غير الحرة</string>
-    <string name="antidisabledalgorithm">تم التوقيع باستخدام خوارزمية غير آمنة</string>
+    <string name="antidisabledalgorithm">وقِّع باستخدام خوارزمية غير آمنة</string>
     <string name="antiknownvuln">مشكلة ثغرة معروفة</string>
     <string name="app_list_results_hidden_antifeature_settings">يتم إخفاء بعض التطبيقات استنادًا إلى إعدادات \"خصائص مكروهة\" الخاصة بك. المس للتغيير.</string>
     <string name="antiothers">خصائص مكروهة أخرى</string>
@@ -546,14 +546,12 @@
     <string name="menu_release_channel_beta">اسمح بتحديثات النسخة التجريبية</string>
     <string name="app_error_open">تعذر تشغيل التطبيق.</string>
     <string name="category_Nightly">الليلي</string>
-    <string name="warning_target_sdk">تم إنشاء هذا التطبيق لإصدار أقدم من Android ولا يمكن تحديثه تلقائيًا.</string>
+    <string name="warning_target_sdk">بُنيا هذا التطبيق لإصدار أقدم من أندرويد ولا يمكن تحديثه تلقائيًا.</string>
     <string name="app_name_basic">إف-درويد البسيط</string>
     <string name="about_title_basic">حول إف-درويد البسيط</string>
     <string name="antinsfwlist">يتضمن هذا التطبيق محتوى لا ينبغي نشره أو إبرازه في كل مكان</string>
     <string name="repo_add_new_title">أضف مستودع</string>
-    <string name="repo_intro">يعد المستودع مصدرًا إضافيًا للتطبيقات. تتمتع تطبيقات الجهات الخارجية التي تضيفها هنا بمعايير مختلفة عن تلك التي توفر التطبيقات التي تم إنشاؤها بواسطة F-Droid نفسها.
-\n
-\nيرجى التأكد من أن المستودع الذي تضيفه جدير بالثقة.</string>
+    <string name="repo_intro">يعد المستودع مصدرًا إضافيًا للتطبيقات. تتمتع تطبيقات الجهات الخارجية التي تضيفها هنا بمعايير مختلفة عن تلك التي توفر التطبيقات بُنيت بواسطة F-Droid نفسها. \n \nيُرجى التأكد من أن المستودع الذي تضيفه جدير بالثقة.</string>
     <string name="repo_state_fetching">جارٍ جلب المستودع…</string>
     <string name="repo_invalid">مستودع غير صالح.
 \n
@@ -623,7 +621,7 @@
     <string name="auto_update_time">التحديث التالي الأقدم: %s</string>
     <string name="auto_update_time_past">التحديث القادم عند استيفاء الشروط</string>
     <string name="antitetherednet">خدمات الشبكة المقيدة</string>
-    <string name="antitetherednetlist">يعتمد هذا التطبيق كليًا على مثيل معين من خدمة الشبكة</string>
+    <string name="antitetherednetlist">يعتمد هذا التطبيق كليًّا على مثيل معين من خدمة الشبكة</string>
     <string name="swap_bluetooth_permissions">الرجاء منح البلوتوث أو Nearby إذنًا!</string>
     <string name="menu_share_apk">شارك ملف APK</string>
     <string name="apk_permissions_mismatch">التطبيق لديه إذن غير متوقع: %s</string>

@@ -1,0 +1,8 @@
+* a felhasználói felületet a Kotlin Compose segítségével teljesen átírtuk
+* továbbfejlesztett keresőfunkció, amely a leírásokban és a fordításokban is keres
+* könnyebb új alkalmazások felfedezése, a legnépszerűbbek kiemelésével
+* a telepítés jóváhagyása a letöltés *előtt*
+* több frissítés/letöltés egyszerre
+* értesítés az alkalmazásokkal kapcsolatos problémákról (pl. az aláírási kulcs megváltozása)
+* választható Material You színséma
+* továbbfejlesztett listaszűrés

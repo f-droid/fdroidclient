@@ -648,4 +648,8 @@
     <string name="call_to_action_keepandroidopen">F-Droid er truet. Google ændrer hvordan du kan installere apps på din enhed. Vi har brug for din hjælp.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="ipfsgw_summary_new">Hent apps ved brug af IPFS-webendpoints</string>
+    <string name="search_no_results">Ingen apps fundet\n\nPrøv færre søgeord eller tilføj flere repositories</string>
+    <string name="category_group_wallets">Økonomi og tegnebøger</string>
+    <string name="developer_contact">Udviklerkontakt</string>
+    <string name="first_start_loading">Henter app-repositories…</string>
 </resources>
