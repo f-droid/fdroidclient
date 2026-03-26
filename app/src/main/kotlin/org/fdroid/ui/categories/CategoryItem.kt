@@ -155,7 +155,7 @@ data class CategoryItem(val id: String, val name: String) {
         "App Store & Updater" -> CategoryGroups.device
         "Battery" -> CategoryGroups.device
         "Bookmark" -> CategoryGroups.storage
-        "Browser" -> CategoryGroups.productivity
+        "Browser" -> CategoryGroups.network
         "Calculator" -> CategoryGroups.tools
         "Calendar & Agenda" -> CategoryGroups.productivity
         "Clock" -> CategoryGroups.productivity
@@ -177,7 +177,7 @@ data class CategoryItem(val id: String, val name: String) {
         "Graphics" -> CategoryGroups.interests
         "Habit Tracker" -> CategoryGroups.productivity
         "Icon Pack" -> CategoryGroups.device
-        "Internet" -> CategoryGroups.productivity
+        "Internet" -> CategoryGroups.network
         "Inventory" -> CategoryGroups.tools
         "Keyboard & IME" -> CategoryGroups.device
         "Launcher" -> CategoryGroups.device
