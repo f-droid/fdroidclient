@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name_full">F-Droid</string>
+    <string name="updates">اپڈیٹ اک</string>
+    <string name="yes">ہاو</string>
+    <string name="no">آخہ</string>
+    <string name="back">پدی</string>
+    <string name="cancel">کینسل</string>
+    <string name="menu_manage">توشہ غاک</string>
+    <string name="menu_settings">سیٹنگ اک</string>
+    <string name="menu_search">پٹ</string>
+    <string name="menu_add_repo">پوسکنو توشہ اس</string>
+    <string name="menu_launch">مل</string>
+    <string name="menu_share">بشخ</string>
+    <string name="menu_install">انسٹال</string>
+    <string name="menu_uninstall">کشبو</string>
+    <string name="menu_upgrade">اپڈیٹ</string>
+    <string name="main_menu__latest_apps">پوسکن</string>
+    <string name="category_Money" tools:ignore="UnusedResources">پیسہ</string>
+    <string name="category_Multimedia" tools:ignore="UnusedResources">ملٹی میڈیا</string>
+    <string name="category_Internet" tools:ignore="UnusedResources">انٹرنیٹ</string>
+    <string name="category_Graphics" tools:ignore="UnusedResources">گرافک</string>
+    <string name="category_Games" tools:ignore="UnusedResources">گوازیک</string>
+    <string name="app_list__name__downloading_in_progress">%1$s ڈاون لوڈ</string>
+    <string name="app_list__name__successfully_installed">%1$s انسٹال مس</string>
+    <string name="updates__tts__download_app">ڈاون لوڈ</string>
+    <string name="more">پین</string>
+    <string name="unverified">تصدیق مفروک</string>
+    <string name="repo_details">توشہ</string>
+    <string name="category_Sports_Health" tools:ignore="UnusedResources">گوازی و صحت</string>
 </resources>

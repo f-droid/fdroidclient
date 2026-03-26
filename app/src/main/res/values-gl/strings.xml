@@ -583,4 +583,16 @@
     <string name="ipfsgw_add_title">Engadir unha porta de enlace IPFS</string>
     <string name="ipfsgw_add_add">Engadir</string>
     <string name="ipfsgw_caption_official_gateways">Portas IPFS oficiais</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_discover">Descubrir</string>
+    <string name="menu_apps_my">As miñas aplicacións</string>
+    <string name="app_list_all">Todas as aplicacións</string>
+    <string name="app_list_author">Aplicacións por %s</string>
+    <string name="search_placeholder">Buscar…</string>
+    <string name="search_no_results">Non se atoparon aplicacións\n\nIntente usar menos termos de busca ou engadir máis repositorios</string>
+    <string name="category_group_productivity">Produtividade</string>
+    <string name="category_group_tools">Ferramentas</string>
+    <string name="category_group_wallets">Finanzas e carteiras</string>
 </resources>

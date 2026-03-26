@@ -95,7 +95,7 @@
     <string name="theme">テーマ</string>
     <string name="unsigned">未署名</string>
     <string name="unverified">未検証</string>
-    <string name="repo_fingerprint">署名鍵のフィンガープリント(SHA-256)</string>
+    <string name="repo_fingerprint">署名鍵フィンガープリント(SHA-256)</string>
     <string name="repo_description">説明</string>
     <string name="unknown">不明</string>
     <string name="repo_confirm_delete_title">リポジトリを削除しますか？</string>
@@ -658,4 +658,5 @@
     <string name="installed_version">インストールされたバージョン:</string>
     <string name="call_to_action_keepandroidopen">Googleは端末へのアプリ導入方法を変更しようとしています。F-Droidが危機に瀕しています。皆様のご支援を必要としております。</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="ipfsgw_summary_new">IPFSウェブ・エンドポイント経由でアプリをダウンロード</string>
 </resources>

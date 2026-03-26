@@ -495,7 +495,7 @@
     <string name="send_to_fdroid_metrics">Poslať údaje o používaní</string>
     <string name="send_to_fdroid_metrics_summary">Anonymne odošle údaje každý týždeň do F-Droid Metriky (vyžaduje Keep históriu inštalácii)</string>
     <string name="toast_metrics_in_install_history">%s správa metriky je viditeľná v prehliadači histórie inštalácii</string>
-    <string name="send_fdroid_metrics_report">Poslať %s správu metriky</string>
+    <string name="send_fdroid_metrics_report">Odoslať %s hlásenie metriky</string>
     <string name="app_list_results_hidden_antifeature_settings">Niektoré výsledky boli schované na základe Vašich nastavení anti-funkcií.</string>
     <string name="banner_no_internet">Bez internetu</string>
     <string name="use_pure_black_dark_theme">Použiť čisto čierne pozadie v tmavej téme</string>
@@ -599,7 +599,7 @@
     <string name="technical_info">Technické informácie</string>
     <string name="package_name">Názov balíčku:</string>
     <string name="installed_version">Nainštalované verzie:</string>
-    <string name="pref_export_log_title">Ladiaci protokol</string>
+    <string name="pref_export_log_title">Protokol ladenia</string>
     <string name="pref_export_log_summary">Vytvorí súbor s výstupom protokolu. Užitočné pre ladenie. Opatrne, môže obsahovať citlivé informácie!</string>
     <string name="export_log_success">Protokol úspešné uložený</string>
 </resources>

@@ -188,10 +188,10 @@
     </string>
     <string name="swap_choose_apps">Odaberi aplikacije</string>
     <string name="swap_scan_qr">QR kod</string>
-    <string name="swap_people_nearby">Ljudi u blizini</string>
-    <string name="swap_scanning_for_peers">Tražim ljude u blizini…</string>
+    <string name="swap_people_nearby">Osobe u blizini</string>
+    <string name="swap_scanning_for_peers">Traženje osoba u blizini…</string>
     <string name="swap_nearby">Obližnja razmjena</string>
-    <string name="swap_intro">Spojite se i mjenjajte aplikacije s ljudima blizu Vas.</string>
+    <string name="swap_intro">Spoji se i razmjenjuj aplikacije s osobama u tvojoj blizini.</string>
     <string name="swap_visible_bluetooth">Vidljiv preko Bluetootha</string>
     <string name="swap_setting_up_bluetooth">Postavljanje Bluetootha …</string>
     <string name="swap_not_visible_bluetooth">Nije vidljivo preko Bluetootha</string>
@@ -203,7 +203,7 @@
     <string name="swap_cant_find_peers">Ne možete naći koga tražite?</string>
     <string name="swap_send_fdroid">Pošalji F-Droid</string>
     <string name="apps">Aplikacije</string>
-    <string name="swap_no_peers_nearby">Nisu pronađeni ljudi u blizini za razmjenu.</string>
+    <string name="swap_no_peers_nearby">Nisu pronađene osobe u blizini za razmjenu.</string>
     <string name="swap_connecting">Povezivanje</string>
     <string name="swap_confirm">Potvrdi razmjenu</string>
     <string name="swap_qr_isnt_for_swap">Čini se da QR kod koji ste skenirali nije kod za razmjenu.</string>
@@ -429,8 +429,8 @@
     <string name="nearby_splash__document_tree">Pretraži repozitorije i zrcala repozitorija na USB OTG uređaju.</string>
     <string name="nearby_splash__read_external_storage">Pretraži repozitorije i zrcala repozitorija na SD kartici.</string>
     <string name="nearby_splash__both_parties_need_fdroid">Oba uređaja trebaju %1$s za korištenje blizinske razmjene.</string>
-    <string name="nearby_splash__find_people_button">Pronađi ljude u blizini</string>
-    <string name="nearby_splash__download_apps_from_people_nearby">Nemaš internet? Preuzmi aplikacije od ljudi u tvojoj blizini!</string>
+    <string name="nearby_splash__find_people_button">Pronađi osobe u blizini</string>
+    <string name="nearby_splash__download_apps_from_people_nearby">Nemaš internet? Preuzmi aplikacije od osoba u tvojoj blizini!</string>
     <string name="share_repository">Podijeli repozitorij</string>
     <string name="repo_user_mirrors">Korisnička zrcala repozitorija</string>
     <string name="repo_official_mirrors">Službena zrcaljenja repozitorija</string>

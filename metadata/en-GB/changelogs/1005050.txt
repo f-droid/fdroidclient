@@ -1,4 +1,4 @@
-* Swapping via SD cards supported
+* Swapping via SD cards is supported
 
 * Nearby Swap bugfixes and improvements
 

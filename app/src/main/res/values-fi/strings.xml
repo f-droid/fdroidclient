@@ -639,4 +639,11 @@
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="call_to_action_keepandroidopen">F-Droid on uhattuna. Google on muuttamassa sovellusten asentamistapaa. Tarvitsemme apuasi.</string>
     <string name="crash_dialog_title_old">F-Droid kaatui</string>
+    <string name="first_start_loading">Noudetaan ohjelmavarastoja…</string>
+    <string name="my_apps_empty">Vain henkilön %1$s asentamat sovellukset näytetään täällä</string>
+    <string name="my_apps_header_apps_with_issue">Sovellukset, joissa on ongelmia</string>
+    <string name="my_apps_ignore_dialog_title">Piilota tapaus</string>
+    <string name="my_apps_ignore_dialog_text">Ongelma sovelluksen \"%1$s\" versiossa ohitetaan</string>
+    <string name="category_group_productivity">Tuottavuus</string>
+    <string name="category_group_tools">Työkalut</string>
 </resources>

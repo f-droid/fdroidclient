@@ -652,4 +652,5 @@
     <string name="installed_version">Instalita versio:</string>
     <string name="call_to_action_keepandroidopen">F-Droid estas endanĝeriginta. Google ŝanĝas manieron kiel vi instalas aplikaĵojn en via aparato. Ni bezonas vian helpon.</string>
     <string name="ipfsgw_summary_new">Elŝuti aplikaĵojn el IPFS-ret-finpunktoj</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

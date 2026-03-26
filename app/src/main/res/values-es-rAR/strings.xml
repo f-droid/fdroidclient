@@ -524,4 +524,9 @@
     <string name="antinonfreeassets">No-Libre Assets</string>
     <string name="antinsfw">Esta aplicación incluye contenido que no debe publicitarse ni verse en todas partes</string>
     <string name="app_name_basic">F-Droid Basic</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Básico</string>
+    <string name="menu_about">Sobre</string>
+    <string name="menu_discover">Descubrir</string>
+    <string name="menu_apps_my">Mis apps</string>
 </resources>
