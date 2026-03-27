@@ -135,6 +135,14 @@
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
             tools:node="remove" />
+
+        <receiver
+            android:name="org.fdroid.install.UnarchivePackageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.UNARCHIVE_PACKAGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

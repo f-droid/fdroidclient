@@ -11,6 +11,7 @@ import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.UpdateChecker
 import org.fdroid.database.DbAppChecker
+import org.fdroid.database.DbUpdateChecker
 import org.fdroid.database.FDroidDatabase
 
 @Module
@@ -37,5 +38,16 @@ object UpdatesModule {
     compatibilityChecker: CompatibilityChecker,
   ): DbAppChecker {
     return DbAppChecker(db, context, compatibilityChecker, updateChecker)
+  }
+
+  @Provides
+  @Singleton
+  fun provideDbUpdateChecker(
+    @ApplicationContext context: Context,
+    db: FDroidDatabase,
+    updateChecker: UpdateChecker,
+    compatibilityChecker: CompatibilityChecker,
+  ): DbUpdateChecker {
+    return DbUpdateChecker(db, context.packageManager, compatibilityChecker, updateChecker)
   }
 }
