@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Preferences;
@@ -65,13 +65,13 @@ public class ScreenShotsActivity extends AppCompatActivity {
         List<FileV2> screenshots = Utils.fileV2FromStrings(list);
         int startPosition = getIntent().getIntExtra(EXTRA_START_POSITION, 0);
 
-        ViewPager viewPager = findViewById(R.id.screenshot_view_pager);
-        ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(getSupportFragmentManager(), repoId, screenshots);
+        ViewPager2 viewPager = findViewById(R.id.screenshot_view_pager);
+        ScreenShotPagerAdapter adapter = new ScreenShotPagerAdapter(this, repoId, screenshots);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(startPosition);
 
         // display some nice animation while swiping
-        viewPager.setPageTransformer(true, new DepthPageTransformer());
+        viewPager.setPageTransformer(new DepthPageTransformer());
     }
 
     @Override
@@ -86,25 +86,25 @@ public class ScreenShotsActivity extends AppCompatActivity {
         allowDownload = Preferences.get().isBackgroundDownloadAllowed();
     }
 
-    private static class ScreenShotPagerAdapter extends FragmentStatePagerAdapter {
+    private static class ScreenShotPagerAdapter extends FragmentStateAdapter {
 
         private final long repoId;
         private final List<FileV2> screenshots;
 
-        ScreenShotPagerAdapter(FragmentManager fragmentManager, long repoId, List<FileV2> screenshots) {
-            super(fragmentManager);
+        ScreenShotPagerAdapter(@NonNull FragmentActivity fragmentActivity, long repoId, List<FileV2> screenshots) {
+            super(fragmentActivity);
             this.repoId = repoId;
             this.screenshots = screenshots;
         }
 
         @NonNull
         @Override
-        public Fragment getItem(int position) {
+        public Fragment createFragment(int position) {
             return ScreenShotPageFragment.newInstance(repoId, screenshots.get(position));
         }
 
         @Override
-        public int getCount() {
+        public int getItemCount() {
             return screenshots.size();
         }
     }
@@ -152,7 +152,7 @@ public class ScreenShotsActivity extends AppCompatActivity {
         }
     }
 
-    public static class DepthPageTransformer implements ViewPager.PageTransformer {
+    public static class DepthPageTransformer implements ViewPager2.PageTransformer {
 
         public void transformPage(@NonNull View view, float position) {
             int pageWidth = view.getWidth();

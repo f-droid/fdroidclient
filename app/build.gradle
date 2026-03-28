@@ -183,6 +183,7 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.lifecycle.livedata.ktx
     implementation libs.androidx.work.runtime
+    implementation libs.androidx.viewpager2
     implementation libs.guava // somehow needed for work-runtime to function
 
     implementation libs.material

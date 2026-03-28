@@ -29,6 +29,7 @@ androidxActivityCompose = "1.10.1"
 accompanistDrawablepainter = "0.36.0"
 material = "1.12.0"
 
+viewpager2 = "1.1.0"
 #noinspection GradleDependency newer version need minSdk 24 or library desugering
 zxingCore = "3.3.3"
 guardianprojectNetcipher = "2.2.0-alpha"
@@ -70,6 +71,7 @@ turbine = "1.0.0"
 json = "20220320"
 
 [libraries]
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
