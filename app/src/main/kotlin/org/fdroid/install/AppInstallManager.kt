@@ -4,17 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_DELETE
-import android.graphics.Bitmap
 import androidx.activity.result.ActivityResult
 import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.os.LocaleListCompat
-import coil3.SingletonImageLoader
-import coil3.memory.MemoryCache
-import coil3.request.ImageRequest
-import coil3.size.Size
-import coil3.toBitmap
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -40,11 +33,8 @@ import org.fdroid.NotificationManager
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
-import org.fdroid.download.DownloadRequest
 import org.fdroid.download.DownloaderFactory
-import org.fdroid.download.PackageName
 import org.fdroid.download.getUri
-import org.fdroid.getCacheKey
 import org.fdroid.history.HistoryManager
 import org.fdroid.history.InstallEvent
 import org.fdroid.history.UninstallEvent
@@ -59,6 +49,7 @@ constructor(
   private val sessionInstallManager: SessionInstallManager,
   private val notificationManager: NotificationManager,
   private val historyManager: HistoryManager,
+  private val iconResolver: InstallIconResolver,
   @param:IoDispatcher private val scope: CoroutineScope,
 ) {
 
@@ -125,13 +116,29 @@ constructor(
    */
   @UiThread
   suspend fun install(
-    appMetadata: AppMetadata,
+    appMetadata: AppMetadata?,
     version: AppVersion,
     currentVersionName: String?,
-    repo: Repository,
+    repo: Repository?,
     iconModel: Any?,
     canAskPreApprovalNow: Boolean,
   ): InstallState {
+    if (appMetadata == null || repo == null) {
+      log.error { "Can't install app without metadata for ${version.packageName}" }
+      val error =
+        InstallState.Error(
+          msg = "App ${version.packageName} no longer in DB.",
+          name = version.packageName,
+          versionName = version.versionName,
+          currentVersionName = currentVersionName,
+          lastUpdated = version.added,
+          iconModel = iconModel,
+        )
+      // Write the terminal state so any prior Waiting state is cleared and the
+      // service stop logic in onStatesUpdated() has a chance to run.
+      updateAppState(version.packageName, error)
+      return error
+    }
     val packageName = appMetadata.packageName
     val currentState = apps.value[packageName]
     if (currentState?.showProgress == true && currentState !is InstallState.Waiting) {
@@ -162,12 +169,19 @@ constructor(
         job.await()
       } catch (_: CancellationException) {
         InstallState.UserAborted
+      } catch (e: Exception) {
+        log.error(e) { "Unexpected install job failure for $packageName" }
+        val currentState = apps.value[packageName]
+        if (currentState is InstallStateWithInfo) {
+          InstallState.Error(msg = "${e::class.java.simpleName} ${e.message}", s = currentState)
+        } else {
+          InstallState.UserAborted
+        }
       } finally {
         // remove job as it has completed
         jobs.remove(packageName)
       }
-    apps.updateApp(packageName) { result }
-    onStatesUpdated()
+    updateAppState(packageName, result)
     if (result is InstallState.Installed) {
       val event =
         InstallEvent(
@@ -189,10 +203,10 @@ constructor(
     currentVersionName: String,
     lastUpdated: Long,
   ) {
-    apps.updateApp(packageName) {
-      InstallState.Waiting(name, versionName, currentVersionName, lastUpdated)
-    }
-    onStatesUpdated()
+    updateAppState(
+      packageName,
+      InstallState.Waiting(name, versionName, currentVersionName, lastUpdated),
+    )
   }
 
   @WorkerThread
@@ -212,15 +226,14 @@ constructor(
         lastUpdated = version.added,
         iconModel = iconModel,
       )
-    apps.updateApp(appMetadata.packageName) { startingState }
-    onStatesUpdated()
+    updateAppState(appMetadata.packageName, startingState)
     log.info { "Started install of ${appMetadata.packageName}" }
     currentCoroutineContext().ensureActive()
     // request pre-approval from user (if available)
     val preApprovalResult =
       sessionInstallManager.requestPreapproval(
         app = appMetadata,
-        iconGetter = { getIcon(iconModel) },
+        iconGetter = { iconResolver.resolve(iconModel) },
         isUpdate = currentVersionName != null,
         version = version,
         canRequestUserConfirmationNow = canAskPreApprovalNow,
@@ -232,7 +245,7 @@ constructor(
       is PreApprovalResult.Success,
       PreApprovalResult.NotSupported -> {
         val newState =
-          apps.checkAndUpdateApp(appMetadata.packageName) {
+          updateAndGetAppState(appMetadata.packageName) {
             InstallState.PreApproved(
               name = it.name,
               versionName = it.versionName,
@@ -241,8 +254,8 @@ constructor(
               iconModel = it.iconModel,
               result = preApprovalResult,
             )
-          } as InstallState.PreApproved
-        onStatesUpdated()
+          }
+            as InstallState.PreApproved
         downloadAndInstall(newState, version, currentVersionName, repo, iconModel)
       }
       is PreApprovalResult.UserConfirmationRequired -> {
@@ -271,10 +284,15 @@ constructor(
       return null
     }
     log.info { "Requesting pre-approval confirmation for $packageName" }
-    val result = sessionInstallManager.requestUserConfirmation(installState)
+    val result =
+      try {
+        sessionInstallManager.requestUserConfirmation(installState)
+      } catch (e: Exception) {
+        log.error(e) { "Pre-approval confirmation failed for $packageName: " }
+        InstallState.Error(msg = "${e::class.java.simpleName} ${e.message}", s = installState)
+      }
     log.info { "Pre-approval confirmation for $packageName $result" }
-    apps.updateApp(packageName) { result }
-    onStatesUpdated()
+    updateAppState(packageName, result)
     return if (result is InstallState.PreApproved) {
       // move us off the UiThread, so we can download/install this app now
       val job =
@@ -288,7 +306,7 @@ constructor(
           )
         }
       // suspend/wait for this job and track it in case we want to cancel it
-      return trackJob(packageName, job)
+      trackJob(packageName, job)
     } else result
   }
 
@@ -310,7 +328,7 @@ constructor(
     val now = System.currentTimeMillis()
     downloader.setListener { bytesRead, totalBytes ->
       coroutineContext.ensureActive()
-      apps.checkAndUpdateApp(version.packageName) {
+      updateAndGetAppState(version.packageName) {
         InstallState.Downloading(
           name = it.name,
           versionName = it.versionName,
@@ -322,7 +340,6 @@ constructor(
           startMillis = now,
         )
       }
-      onStatesUpdated()
     }
     try {
       downloader.download()
@@ -342,7 +359,7 @@ constructor(
     }
     currentCoroutineContext().ensureActive()
     val newState =
-      apps.checkAndUpdateApp(version.packageName) {
+      updateAndGetAppState(version.packageName) {
         InstallState.Installing(
           name = it.name,
           versionName = it.versionName,
@@ -351,7 +368,6 @@ constructor(
           iconModel = it.iconModel,
         )
       }
-    onStatesUpdated()
     val result = sessionInstallManager.install(sessionId, version.packageName, newState, file)
     log.debug { "Install result: $result" }
     return if (result is InstallState.PreApproved && result.result is PreApprovalResult.Error) {
@@ -409,7 +425,14 @@ constructor(
     val sessionInfo =
       context.packageManager.packageInstaller.getSessionInfo(installState.sessionId)
         ?: run {
-          log.error { "Session ${installState.sessionId} does not exist anymore" }
+          // Session is gone — the installation already concluded or was abandoned externally.
+          // Transition to a terminal state so the stale UserConfirmationNeeded doesn't
+          // keep the service alive indefinitely.
+          log.error { "Session ${installState.sessionId} for $packageName is gone" }
+          updateAppState(
+            packageName,
+            InstallState.Error("Installation session is gone", installState),
+          )
           return
         }
     if (sessionInfo.progress <= installState.progress) {
@@ -494,28 +517,18 @@ constructor(
     }
   }
 
-  /**
-   * Gets icon for preapproval from memory cache. In the unlikely event, that the icon isn't in the
-   * cache, we download it with the given [iconModel].
-   */
-  private suspend fun getIcon(iconModel: Any?): Bitmap? {
-    return when (iconModel) {
-      is DownloadRequest -> {
-        // try memory cache first and download, if not found
-        val memoryCache = SingletonImageLoader.get(context).memoryCache
-        val key = iconModel.getCacheKey()
-        memoryCache?.get(MemoryCache.Key(key))?.image?.toBitmap()
-          ?: run {
-            // not found in cache, download icon
-            val request = ImageRequest.Builder(context).data(iconModel).size(Size.ORIGINAL).build()
-            SingletonImageLoader.get(context).execute(request).image?.toBitmap()
-          }
-      }
-      is PackageName -> {
-        context.packageManager.getApplicationIcon(iconModel.packageName).toBitmap()
-      }
-      else -> null
-    }
+  private fun updateAppState(packageName: String, state: InstallState) {
+    apps.updateApp(packageName) { state }
+    onStatesUpdated()
+  }
+
+  private fun updateAndGetAppState(
+    packageName: String,
+    function: (InstallStateWithInfo) -> InstallStateWithInfo,
+  ): InstallStateWithInfo {
+    val state = apps.checkAndUpdateApp(packageName, function)
+    onStatesUpdated()
+    return state
   }
 
   private fun MutableStateFlow<Map<String, InstallState>>.updateApp(

@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResult
 import androidx.annotation.VisibleForTesting
 import androidx.core.os.LocaleListCompat
 import io.ktor.client.engine.ProxyConfig
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.App
 import org.fdroid.database.AppIssue
 import org.fdroid.database.AppMetadata
@@ -21,6 +22,7 @@ import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallState
 import org.fdroid.install.SessionInstallManager
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.search.SearchHelper.removeZeroWhiteSpace
 
 data class AppDetailsItem(
   val app: AppMetadata,
@@ -91,9 +93,9 @@ data class AppDetailsItem(
     networkState = networkState,
     preferredRepoId = preferredRepoId,
     repositories = repositories,
-    name = dbApp.name ?: "Unknown App",
-    summary = dbApp.summary,
-    description = getHtmlDescription(dbApp.getDescription(localeList)),
+    name = dbApp.metadata.name.getBestLocale(localeList)?.removeZeroWhiteSpace() ?: "Unknown App",
+    summary = dbApp.metadata.summary.getBestLocale(localeList)?.removeZeroWhiteSpace() ?: "",
+    description = getHtmlDescription(dbApp.getDescription(localeList)?.removeZeroWhiteSpace()),
     icon =
       if (installedVersionCode == null) {
         dbApp.getIcon(localeList)?.getImageModel(repository, proxy)

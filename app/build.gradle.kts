@@ -18,8 +18,8 @@ android {
     applicationId = "org.fdroid"
     minSdk = 24
     targetSdk = 36
-    versionCode = 2000005
-    versionName = "2.0-alpha5"
+    versionCode = 2000006
+    versionName = "2.0-alpha6"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -144,10 +144,16 @@ dependencies {
   testImplementation(libs.mockk)
   testImplementation(libs.robolectric)
   testImplementation(libs.slf4j.simple)
+  testImplementation(libs.turbine)
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.androidx.core.testing)
 
   androidTestImplementation(libs.kotlin.test)
   androidTestImplementation(libs.kotlin.reflect)
+  androidTestImplementation(libs.mockk.android)
+  androidTestImplementation(libs.androidx.test.core.ktx)
   androidTestImplementation(libs.androidx.test.ext.junit)
+  androidTestImplementation(libs.androidx.work.testing)
   androidTestImplementation(libs.androidx.espresso.core)
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)

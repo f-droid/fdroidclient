@@ -14,6 +14,7 @@ import org.fdroid.test.TestDataMaxV2.PACKAGE_NAME_3
 import org.fdroid.test.TestDataMaxV2.app3
 import org.fdroid.test.TestDataMidV2
 import org.fdroid.test.TestDataMinV2
+import org.fdroid.test.TestDataMinV2.PACKAGE_NAME
 import org.fdroid.test.TestUtils.getRes
 import org.junit.Ignore
 import org.junit.Test
@@ -31,52 +32,58 @@ internal class IndexV2DiffTest : DbTest() {
   }
 
   @Test
-  fun testEmptyToMin() =
+  fun testEmptyToMin() {
     testDiff(
       startPath = "index-empty-v2.json",
       diffPath = "diff-empty-min/23.json",
       endIndex = TestDataMinV2.index,
     )
+  }
 
   @Test
-  fun testEmptyToMid() =
+  fun testEmptyToMid() {
     testDiff(
       startPath = "index-empty-v2.json",
       diffPath = "diff-empty-mid/23.json",
       endIndex = TestDataMidV2.index,
     )
+  }
 
   @Test
-  fun testEmptyToMax() =
+  fun testEmptyToMax() {
     testDiff(
       startPath = "index-empty-v2.json",
       diffPath = "diff-empty-max/23.json",
       endIndex = TestDataMaxV2.index,
     )
+  }
 
   @Test
-  fun testMinToMid() =
+  fun testMinToMid() {
     testDiff(
       startPath = "index-min-v2.json",
       diffPath = "diff-empty-mid/42.json",
       endIndex = TestDataMidV2.index,
     )
+  }
 
   @Test
-  fun testMinToMax() =
+  fun testMinToMax() {
     testDiff(
       startPath = "index-min-v2.json",
       diffPath = "diff-empty-max/42.json",
       endIndex = TestDataMaxV2.index,
     )
+  }
 
   @Test
-  fun testMidToMax() =
+  fun testMidToMax() {
     testDiff(
       startPath = "index-mid-v2.json",
       diffPath = "diff-empty-max/1337.json",
       endIndex = TestDataMaxV2.index,
     )
+  }
 
   @Test
   fun testMinRemoveApp() {
@@ -450,20 +457,55 @@ internal class IndexV2DiffTest : DbTest() {
               }
       """
         .trimIndent()
-    testJsonDiff(
-      startPath = "index-min-v2.json",
-      diff = diffJson,
-      endIndex =
+    val metadata =
+      TestDataMinV2.index.packages[PACKAGE_NAME]!!
+        .metadata
+        .copy(
+          // zero whitespaces (to separate tokens) will be added in testJsonDiff()
+          name = mapOf("zh-CN" to "自由软件仓库"),
+          summary = mapOf("ja" to "这个仓库中的"),
+          description = mapOf("ko-KR" to "切始终是从"),
+        )
+    val endIndex =
+      TestDataMinV2.index.copy(
+        packages = TestDataMinV2.index.packages.mapValues { it.value.copy(metadata = metadata) }
+      )
+    val repoId = testJsonDiff(startPath = "index-min-v2.json", diff = diffJson, endIndex = endIndex)
+
+    // now apply another diff to ensure we don't add zero whitespace multiple times
+    val newDiffJson =
+      """
+      {
+        "packages": {
+          "org.fdroid.min1": {
+            "metadata": {
+              "name": { "en-US": "foo bar" },
+              "summary": { "en-US": "foo bar" },
+              "description": { "en-US": "foo bar" }
+            }
+          }
+        }
+      }
+      """
+        .trimIndent()
+    // apply diff stream to the DB
+    val streamReceiver = DbV2DiffStreamReceiver(db, repoId) { true }
+    val streamProcessor = IndexV2DiffStreamProcessor(streamReceiver)
+    val diffStream = ByteArrayInputStream(newDiffJson.toByteArray())
+    db.runInTransaction { streamProcessor.process(42, diffStream) {} }
+    // assert that changed DB data is equal to given endIndex
+    assertDbEquals(
+      repoId = repoId,
+      index =
         TestDataMinV2.index.copy(
           packages =
             TestDataMinV2.index.packages.mapValues {
               it.value.copy(
                 metadata =
-                  it.value.metadata.copy(
-                    // zero whitespaces (to separate tokens) will be added in testJsonDiff()
-                    name = mapOf("zh-CN" to "自由软件仓库"),
-                    summary = mapOf("ja" to "这个仓库中的"),
-                    description = mapOf("ko-KR" to "切始终是从"),
+                  metadata.copy(
+                    name = mapOf("en-US" to "foo bar", "zh-CN" to "自由软件仓库"),
+                    summary = mapOf("en-US" to "foo bar", "ja" to "这个仓库中的"),
+                    description = mapOf("en-US" to "foo bar", "ko-KR" to "切始终是从"),
                   )
               )
             }
@@ -471,15 +513,15 @@ internal class IndexV2DiffTest : DbTest() {
     )
   }
 
-  private fun testJsonDiff(startPath: String, diff: String, endIndex: IndexV2) {
-    testDiff(startPath, ByteArrayInputStream(diff.toByteArray()), endIndex)
+  private fun testJsonDiff(startPath: String, diff: String, endIndex: IndexV2): Long {
+    return testDiff(startPath, ByteArrayInputStream(diff.toByteArray()), endIndex)
   }
 
-  private fun testDiff(startPath: String, diffPath: String, endIndex: IndexV2) {
-    testDiff(startPath, getRes(diffPath), endIndex)
+  private fun testDiff(startPath: String, diffPath: String, endIndex: IndexV2): Long {
+    return testDiff(startPath, getRes(diffPath), endIndex)
   }
 
-  private fun testDiff(startPath: String, diffStream: InputStream, endIndex: IndexV2) {
+  private fun testDiff(startPath: String, diffStream: InputStream, endIndex: IndexV2): Long {
     // stream start index into the DB
     val repoId = streamIndexV2IntoDb(startPath)
 
@@ -489,5 +531,6 @@ internal class IndexV2DiffTest : DbTest() {
     db.runInTransaction { streamProcessor.process(42, diffStream) {} }
     // assert that changed DB data is equal to given endIndex
     assertDbEquals(repoId, endIndex)
+    return repoId
   }
 }

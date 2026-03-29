@@ -28,6 +28,7 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
+import kotlinx.serialization.json.jsonObject
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppListSortOrder.LAST_UPDATED
 import org.fdroid.database.AppListSortOrder.NAME
@@ -280,16 +281,26 @@ internal interface AppDaoInt : AppDao {
       }
       // diff metadata
       val diffedApp = applyDiff(metadata, jsonObject)
-      val containsName = jsonObject.containsKey("name")
-      val containsSummary = jsonObject.containsKey("summary")
-      val containsDescription = jsonObject.containsKey("description")
+      val containsName = jsonObject["name"] is JsonObject
+      val containsSummary = jsonObject["summary"] is JsonObject
+      val containsDescription = jsonObject["description"] is JsonObject
       val updatedApp =
         if (containsName || containsSummary || containsDescription) {
+          // applies zero whitespace hack (needed for Fts search) for new/changed locales only
+          // also updates localizedName and localizedSummary cache
           diffedApp.copy(
-            name = if (containsName) diffedApp.name.zero() else diffedApp.name,
-            summary = if (containsSummary) diffedApp.summary.zero() else diffedApp.summary,
+            name =
+              if (containsName) {
+                diffedApp.name.zero(jsonObject["name"]?.jsonObject?.keys)
+              } else diffedApp.name,
+            summary =
+              if (containsSummary) {
+                diffedApp.summary.zero(jsonObject["summary"]?.jsonObject?.keys)
+              } else diffedApp.summary,
             description =
-              if (containsDescription) diffedApp.description.zero() else diffedApp.description,
+              if (containsDescription) {
+                diffedApp.description.zero(jsonObject["description"]?.jsonObject?.keys)
+              } else diffedApp.description,
             localizedName = diffedApp.name.getBestLocale(locales),
             localizedSummary = diffedApp.summary.getBestLocale(locales),
           )

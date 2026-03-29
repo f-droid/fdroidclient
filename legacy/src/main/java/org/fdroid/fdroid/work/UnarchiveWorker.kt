@@ -84,7 +84,7 @@ class UnarchiveWorker(
             // get all the objects our InstallManagerService requires
             val repoManager = FDroidApp.getRepoManager(applicationContext)
             // repos may not have loaded yet, so we use the flow and wait for repos to be ready
-            val repo = repoManager.repositoriesState.first().find { it.repoId == version.repoId }
+            val repo = repoManager.repositoriesState.first()?.find { it.repoId == version.repoId }
             val dbApp = db.getAppDao().getApp(version.repoId, packageName)
             val app = App(dbApp, packageInfo)
             val apk = Apk(version, repo)

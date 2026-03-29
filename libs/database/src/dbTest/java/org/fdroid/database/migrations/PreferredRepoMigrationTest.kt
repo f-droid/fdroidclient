@@ -1,4 +1,4 @@
-package org.fdroid.database
+package org.fdroid.database.migrations
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
@@ -24,19 +24,19 @@ internal class PreferredRepoMigrationTest {
   val helper: MigrationTestHelper =
     MigrationTestHelper(
       instrumentation = InstrumentationRegistry.getInstrumentation(),
-      databaseClass = FDroidDatabaseInt::class.java,
+      databaseClass = _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
       specs = emptyList(),
       openFactory = FrameworkSQLiteOpenHelperFactory(),
     )
 
   @Test
   fun migrateRepos() {
-    helper.createDatabase(TEST_DB, 6).use { db ->
+    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 6).use { db ->
       // Database has schema version 6. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       val repoId =
         db.insert(
-          CoreRepository.TABLE,
+          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
           SQLiteDatabase.CONFLICT_FAIL,
           ContentValues().apply {
             put("name", localizedTextV2toString(mapOf("en-US" to "foo")))
@@ -47,7 +47,7 @@ internal class PreferredRepoMigrationTest {
           },
         )
       db.insert(
-        RepositoryPreferences.TABLE,
+        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
         SQLiteDatabase.CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -65,26 +65,26 @@ internal class PreferredRepoMigrationTest {
           put("lastUpdated", Random.nextLong())
           put("isCompatible", true)
         }
-      db.insert(AppMetadata.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiMetadata)
+      db.insert(_root_ide_package_.org.fdroid.database.AppMetadata.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiMetadata)
       val oeffiPrefs =
         ContentValues().apply {
           put("packageName", "de.schildbach.oeffi")
           put("ignoreVersionCodeUpdate", 0)
           put("preferredRepoId", 42) // repo doesn't exist
         }
-      db.insert(AppPrefs.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiPrefs)
+      db.insert(_root_ide_package_.org.fdroid.database.AppPrefs.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiPrefs)
     }
 
     // Re-open the database with version 2, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(TEST_DB, 7, true).close()
+    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 7, true).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
     Room.databaseBuilder(
         ApplicationProvider.getApplicationContext(),
-        FDroidDatabaseInt::class.java,
-        TEST_DB,
+        _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
+        _root_ide_package_.org.fdroid.database.migrations.TEST_DB,
       )
-      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
+      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db ->

@@ -77,7 +77,9 @@ constructor(
         .sortedWith { c1, c2 -> collator.compare(c1.name, c2.name) }
     }
   private val hasRepoIssues =
-    repoManager.repositoriesState.map { repos -> repos.any { it.enabled && it.errorCount >= 5 } }
+    repoManager.repositoriesState.map { repos ->
+      repos?.any { it.enabled && it.errorCount >= 5 } ?: false
+    }
 
   val localeList = LocaleListCompat.getDefault()
   val discoverModel: StateFlow<DiscoverModel> by

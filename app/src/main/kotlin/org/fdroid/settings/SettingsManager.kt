@@ -18,13 +18,14 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import me.zhanghai.compose.preference.createPreferenceFlow
-import me.zhanghai.compose.preference.isDefaultPreferenceFlowLongSupportEnabled
+import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_DB_REPAIR_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MY_APPS_SORT_ORDER
@@ -40,6 +41,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
+import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_DB_REPAIR_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MY_APPS_SORT_ORDER
@@ -64,7 +66,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
 
   /** This is mutable, so the settings UI can make changes to it. */
   val prefsFlow by lazy {
-    isDefaultPreferenceFlowLongSupportEnabled = true
+    isDefaultPreferenceFlowAndroidLongSupportEnabled = true
     createPreferenceFlow(prefs)
   }
   val theme
@@ -107,6 +109,12 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     set(value) {
       prefs.edit { putLong(PREF_KEY_LAST_UPDATE_CHECK, value) }
       _lastRepoUpdateFlow.update { value }
+    }
+
+  var lastDbRepairCheck: Long
+    get() = prefs.getLong(PREF_KEY_LAST_DB_REPAIR_CHECK, PREF_DEFAULT_LAST_DB_REPAIR_CHECK)
+    set(value) {
+      prefs.edit { putLong(PREF_KEY_LAST_DB_REPAIR_CHECK, value) }
     }
 
   var useInstallHistory: Boolean

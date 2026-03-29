@@ -87,8 +87,8 @@ constructor(
     repoManager.repositoriesState.map { repositories ->
       val proxyConfig = settingsManager.proxyConfig
       repositories
-        .mapNotNull { if (it.enabled) RepositoryItem(it, localeList, proxyConfig) else null }
-        .sortedBy { it.weight }
+        ?.mapNotNull { if (it.enabled) RepositoryItem(it, localeList, proxyConfig) else null }
+        ?.sortedBy { it.weight } ?: emptyList()
     }
   private val query = MutableStateFlow("")
 
@@ -157,7 +157,7 @@ constructor(
         repoId = it.repoId,
         packageName = it.packageName,
         name = it.getName(localeList) ?: "Unknown App",
-        summary = it.getSummary(localeList) ?: "Unknown",
+        summary = it.getSummary(localeList) ?: "",
         lastUpdated = it.lastUpdated,
         isInstalled = isInstalled,
         isCompatible = it.isCompatible,

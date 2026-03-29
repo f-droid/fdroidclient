@@ -24,7 +24,7 @@ workflow:
     - test -e /etc/apt/sources.list.d/trixie-backports.list
       || echo "deb http://deb.debian.org/debian trixie-backports main" >> /etc/apt/sources.list
     - apt update
-    - apt-get -qy install -t trixie-backports --no-install-recommends git sdkmanager openjdk-21-jdk-headless
+    - apt-get -qy install -t trixie-backports --no-install-recommends git git-lfs sdkmanager openjdk-21-jdk-headless
 
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
 
@@ -229,6 +229,22 @@ legacy lint pmd:
       codequality: gl-pmd-${PMD_VARIANT}-report.json
     when: always
 
+app screenshots:
+  <<: *test-template
+  stage: lint
+  rules:
+    - <<: *always-on-these-changes
+    - changes:
+        - app/**/*
+  script:
+    - ./gradlew :app:validateBasicDefaultDebugScreenshotTest
+  artifacts:
+    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    when: always
+    paths:
+      - app/build/reports/screenshotTest
+    expire_in: 1 week
+
 app tools scripts:
   stage: lint
   image: debian:trixie-slim
@@ -255,7 +271,7 @@ app weblate merge conflict:
         - metadata/*
   script:
     - apt-get update
-    - apt-get -qy install --no-install-recommends ca-certificates git
+    - apt-get -qy install --no-install-recommends ca-certificates git git-lfs
     - git config user.name "$CI_PIPELINE_ID/$CI_JOB_ID"
     - git config user.email $CI_PROJECT_PATH@f-droid.org
     - git fetch https://hosted.weblate.org/git/f-droid/f-droid
@@ -291,15 +307,18 @@ libs database schema:
         - libs/database/**/*
   variables:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
-  script:
+  before_script:
     - apt-get update
-    - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git sdkmanager
+    - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git git-lfs sdkmanager
     - export ANDROID_HOME=/opt/android-sdk
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
     - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;$ANDROID_COMPILE_SDK.0.0"
     - sdkmanager "build-tools;34.0.0" # something (AGP?) still pulls in old build-tools
     - sdkmanager "build-tools;35.0.0" # something (AGP?) still pulls in old build-tools
+    - git lfs install
+  script:
     - ./gradlew :libs:database:kspDebugKotlin
+    - git status
     - git --no-pager diff --exit-code
 
 # Run the tests in the emulator.  Each step is broken out to run on
@@ -329,7 +348,6 @@ libs database schema:
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
     - df -h
     - start-emulator.sh
-    - ./gradlew :app:installBasicDefaultDebug :legacy:installFullDebug
     - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
     - ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest

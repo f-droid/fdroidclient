@@ -1,8 +1,8 @@
-package org.fdroid.database
+package org.fdroid.database.migrations
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
+import android.database.sqlite.SQLiteDatabase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.room.testing.MigrationTestHelper
@@ -23,13 +23,13 @@ import org.junit.runner.RunWith
 private const val TEST_DB = "fts-test"
 
 @RunWith(AndroidJUnit4::class)
-internal class FtsAddColumnsMigrationTest {
+internal class FtsCaseInsensitiveMigrationTest {
 
   @get:Rule
   val helper: MigrationTestHelper =
     MigrationTestHelper(
       instrumentation = InstrumentationRegistry.getInstrumentation(),
-      databaseClass = FDroidDatabaseInt::class.java,
+      databaseClass = _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
       specs = emptyList(),
       openFactory = FrameworkSQLiteOpenHelperFactory(),
     )
@@ -41,10 +41,10 @@ internal class FtsAddColumnsMigrationTest {
   private val repo =
     ContentValues().apply {
       put("repoId", 1)
-      put("name", Converters.localizedTextV2toString(mapOf("de" to "a", "en-US" to "b")))
+      put("name", _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("de" to "a", "en-US" to "b")))
       put("address", getRandomString())
       put("certificate", "abcdef")
-      put("description", Converters.localizedTextV2toString(mapOf("de" to "aa", "en-US" to "bb")))
+      put("description", _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("de" to "aa", "en-US" to "bb")))
       put("version", Random.nextLong())
       put("timestamp", Random.nextLong())
     }
@@ -60,17 +60,17 @@ internal class FtsAddColumnsMigrationTest {
     ContentValues().apply {
       put("packageName", "de.schildbach.oeffi")
       put("repoId", 1)
-      put("name", Converters.localizedTextV2toString(mapOf("de" to "Öffi", "en-US" to "Offi")))
+      put("name", _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("de" to "Öffi", "en-US" to "Offi")))
       put(
         "description",
-        Converters.localizedTextV2toString(
+        _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(
           mapOf("de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport")
         ),
       )
       put("license", "GPL-3.0")
       put(
         "summary",
-        Converters.localizedTextV2toString(
+        _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(
           mapOf(
             "de" to "Der König des Fahrplandschungels!",
             "en-US" to " King of public transit planning!",
@@ -103,18 +103,18 @@ internal class FtsAddColumnsMigrationTest {
       put("repoId", 1)
       put(
         "name",
-        Converters.localizedTextV2toString(mapOf("de" to "Transportr", "en-US" to "Transportr")),
+        _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("de" to "Transportr", "en-US" to "Transportr")),
       )
       put(
         "description",
-        Converters.localizedTextV2toString(
+        _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(
           mapOf("de" to "Öffentlicher Nahverkehr", "en-US" to "Public Transport")
         ),
       )
       put("license", "GPL-3.0")
       put(
         "summary",
-        Converters.localizedTextV2toString(
+        _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(
           mapOf(
             "de" to "Freier Assistent für den öffentlichen Nahverkehr ohne Werbung",
             "en-US" to "Free Public Transport Assistant without Ads or Tracking",
@@ -146,42 +146,33 @@ internal class FtsAddColumnsMigrationTest {
 
   @Test
   fun testMigration() = runBlocking {
-    helper.createDatabase(TEST_DB, 8).use { db ->
-      // Database has schema version 8. Insert some data using SQL queries.
+    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 5).use { db ->
+      // Database has schema version 5. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
-      db.insert(CoreRepository.TABLE, CONFLICT_FAIL, repo)
-      db.insert(RepositoryPreferences.TABLE, CONFLICT_FAIL, repoPrefs)
-      db.insert(AppMetadata.TABLE, CONFLICT_FAIL, oeffiMetadata)
-      db.insert(AppMetadata.TABLE, CONFLICT_FAIL, transportrMetadata)
-      db.insert(Version.TABLE, CONFLICT_FAIL, oeffiVersion)
-      db.insert(Version.TABLE, CONFLICT_FAIL, transportrVersion)
+      db.insert(_root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, repo)
+      db.insert(_root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, repoPrefs)
+      db.insert(_root_ide_package_.org.fdroid.database.AppMetadata.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiMetadata)
+      db.insert(_root_ide_package_.org.fdroid.database.AppMetadata.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, transportrMetadata)
+      db.insert(_root_ide_package_.org.fdroid.database.Version.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, oeffiVersion)
+      db.insert(_root_ide_package_.org.fdroid.database.Version.Companion.TABLE, SQLiteDatabase.CONFLICT_FAIL, transportrVersion)
 
-      // default search with no diacritics
-      assertSearch(db, "*Transport*", 1)
-      assertSearch(db, "Transportr", 1)
-      assertSearch(db, "*f*", 2)
-      // no or wrong diacritics
+      // Show that search is case sensitive for diacritics
+      assertSearch(db, "Öffi", 1)
+      assertSearch(db, "öffi", 0)
+      // using no diacritics does match any case
       assertSearch(db, "Offi", 0)
       assertSearch(db, "offi", 0)
-      assertSearch(db, "õffi", 0)
-      assertSearch(db, "*Offi*", 0)
-      assertSearch(db, "*offi*", 0)
-      assertSearch(db, "Konig", 0)
-      // correct diacritics
-      assertSearch(db, "*Öffi*", 1)
-      assertSearch(db, "*öffi*", 1)
-      assertSearch(db, "Öffi", 1)
-      assertSearch(db, "öffi", 1)
-      // both apps have "öff" in their name or summary
-      assertSearch(db, "*öff*", 2)
+      // it's case sensitive so only "öffentlichen" from Transportr is found
+      assertSearch(db, "öff*", 1)
       assertSearch(db, "König", 1)
     }
 
-    helper.runMigrationsAndValidate(TEST_DB, 9, true, MIGRATION_8_9).close()
+    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 6, true, _root_ide_package_.org.fdroid.database.MIGRATION_5_6).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
-    Room.databaseBuilder(context, FDroidDatabaseInt::class.java, TEST_DB)
+    Room.databaseBuilder(context, _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java, _root_ide_package_.org.fdroid.database.migrations.TEST_DB)
       .allowMainThreadQueries()
+      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_8_9) // was added later
       .build()
       .use { db ->
         // assert that apps are still there
@@ -189,39 +180,9 @@ internal class FtsAddColumnsMigrationTest {
         assertEquals(2, metadata.size)
         // default search with no diacritics
         assertGetAppListItems(db, "*Transport*", 2)
-        assertGetAppListItems(db, "Transportr", 1)
-        assertGetAppListItems(db, "*f*", 2)
-        // no or wrong diacritics also produces results now
-        assertGetAppListItems(db, "Offi", 1)
-        assertGetAppListItems(db, "offi", 1)
-        assertGetAppListItems(db, "õffi", 1)
-        assertGetAppListItems(db, "*Offi*", 1)
-        assertGetAppListItems(db, "*offi*", 1)
-        assertGetAppListItems(db, "Konig", 1)
-        // correct diacritics still produces results
-        assertGetAppListItems(db, "*Öffi*", 1)
-        assertGetAppListItems(db, "*öffi*", 1)
-        assertGetAppListItems(db, "Öffi", 1)
-        assertGetAppListItems(db, "öffi", 1)
-        // both apps have "öff" in their name or summary
-        assertGetAppListItems(db, "*öff*", 2)
-        assertGetAppListItems(db, "König", 1)
 
-        // a new app also gets updated in the index
-        assertGetAppListItems(db, "Rosa", 0)
-        assertGetAppListItems(db, "Elefant", 0)
-        val newApp =
-          AppMetadata(
-            repoId = 1,
-            packageName = "org.example",
-            added = 23,
-            lastUpdated = 42,
-            name = mapOf("de_DE" to "Rosa Elefant"),
-            isCompatible = true,
-          )
-        db.getAppDao().insert(newApp)
-        assertGetAppListItems(db, "Rosa", 1)
-        assertGetAppListItems(db, "Elefant", 1)
+        // other tests here were removed, because MIGRATION_8_9 changed this once again
+        // and has its own test
       }
   }
 
@@ -231,9 +192,7 @@ internal class FtsAddColumnsMigrationTest {
     }
   }
 
-  private fun assertGetAppListItems(db: FDroidDatabaseInt, query: String, expected: Int) {
-    db.getAppDao().getAppListItems(query).getOrFail().let { result ->
-      assertEquals(expected, result.size, "${result.map { it.name }}")
-    }
+  private fun assertGetAppListItems(db: org.fdroid.database.FDroidDatabaseInt, query: String, expected: Int) {
+    db.getAppDao().getAppListItems(query).getOrFail().let { assertEquals(expected, it.size) }
   }
 }

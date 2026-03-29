@@ -14,6 +14,7 @@ import androidx.lifecycle.asFlow
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.UpdateChecker
 import org.fdroid.database.App
 import org.fdroid.database.AppPrefs
@@ -184,8 +185,9 @@ fun DetailsPresenter(
   val issue =
     remember(appsWithIssues) { appsWithIssues?.find { it.packageName == packageName }?.issue }
   val locales = LocaleListCompat.getDefault()
+  val name = app.metadata.name.getBestLocale(locales)
   Log.d(TAG, "Presenting app details:")
-  Log.d(TAG, "   app '${app.name}' ($packageName) in ${repo.address}")
+  Log.d(TAG, "   app '$name' ($packageName) in ${repo.address}")
   Log.d(TAG, "   versions: ${versions?.size}")
   Log.d(TAG, "   appPrefs: $appPrefs")
   Log.d(TAG, "   installState: $installState")
@@ -234,7 +236,7 @@ fun DetailsPresenter(
             }
           },
         launchIntent = packagePair.launchIntent,
-        shareIntent = getShareIntent(repo, packageName, app.name ?: ""),
+        shareIntent = getShareIntent(repo, packageName, name ?: ""),
       ),
     installState = installState,
     networkState = networkStateFlow.collectAsState().value,

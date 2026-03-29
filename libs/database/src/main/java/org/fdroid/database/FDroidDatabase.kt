@@ -1,6 +1,8 @@
 package org.fdroid.database
 
 import android.content.res.Resources
+import android.util.Log
+import androidx.annotation.WorkerThread
 import androidx.core.os.ConfigurationCompat.getLocales
 import androidx.core.os.LocaleListCompat
 import androidx.room.AutoMigration
@@ -16,7 +18,7 @@ import org.fdroid.LocaleChooser.getBestLocale
   // When bumping this version, please make sure to add one (or more) migration(s) below!
   // Consider also providing tests for that migration.
   // Don't forget to commit the new schema to the git repo as well.
-  version = 10,
+  version = 11,
   entities =
     [
       // repo
@@ -50,11 +52,14 @@ import org.fdroid.LocaleChooser.getBestLocale
       AutoMigration(7, 8, CountryCodeMigration::class),
       // 8 to 9 is a manual migration
       AutoMigration(9, 10),
+      AutoMigration(10, 11),
       // add future migrations above!
     ],
 )
 @TypeConverters(Converters::class)
 internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Closeable {
+  private val TAG = "FDroidDatabaseInt"
+
   abstract override fun getRepositoryDao(): RepositoryDaoInt
 
   abstract override fun getAppDao(): AppDaoInt
@@ -91,6 +96,30 @@ internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Clos
       getAppDao().clearAll()
       getRepositoryDao().resetTimestamps()
       getRepositoryDao().resetETags()
+    }
+  }
+
+  @WorkerThread
+  override fun repairFtsIfNeeded() {
+    // check DB integrity
+    val db = openHelper.writableDatabase
+    db.query("PRAGMA integrity_check;").use { cursor ->
+      if (cursor.moveToNext()) {
+        val result = cursor.getString(0)
+        if (result == "ok") {
+          Log.d(TAG, "Database integrity check passed.")
+        } else if (result.contains("malformed inverted index for FTS4 table")) {
+          // FTS4 index somehow corrupted, need to rebuild
+          Log.w(TAG, "Database integrity check failed: $result. Attempting to rebuild FTS index...")
+          db.execSQL(
+            "INSERT INTO ${AppMetadataFts.TABLE}(${AppMetadataFts.TABLE}) VALUES('rebuild')"
+          )
+        } else {
+          Log.w(TAG, "Database integrity check failed: $result")
+        }
+      } else {
+        Log.w(TAG, "Database integrity check returned no results.")
+      }
     }
   }
 
@@ -144,4 +173,11 @@ public interface FDroidDatabase {
    * so we won't try to apply diffs.
    */
   public fun clearAllAppData()
+
+  /**
+   * This is a workaround for a bug(?) in FTS4 that can cause the FTS index to get out of sync with
+   * the underlying data. Call from a worker thread, so this can run async. We don't run this when
+   * the DB is opened to not block subsequent DB access and speed up cold start time.
+   */
+  @WorkerThread public fun repairFtsIfNeeded()
 }

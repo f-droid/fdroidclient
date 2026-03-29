@@ -69,9 +69,10 @@ constructor(
       coroutineContext = coroutineContext,
     )
 
-  private val _repositoriesState: MutableStateFlow<List<Repository>> = MutableStateFlow(emptyList())
-  public val repositoriesState: StateFlow<List<Repository>> = _repositoriesState.asStateFlow()
-  public val liveRepositories: LiveData<List<Repository>> = _repositoriesState.asLiveData()
+  private val _repositoriesState: MutableStateFlow<List<Repository>?> = MutableStateFlow(null)
+  /** The list is only null initially before the repos were loaded from the DB. */
+  public val repositoriesState: StateFlow<List<Repository>?> = _repositoriesState.asStateFlow()
+  public val liveRepositories: LiveData<List<Repository>?> = _repositoriesState.asLiveData()
 
   public val addRepoState: StateFlow<AddRepoState> = repoAdder.addRepoState.asStateFlow()
   public val liveAddRepoState: LiveData<AddRepoState> = repoAdder.addRepoState.asLiveData()
@@ -105,7 +106,7 @@ constructor(
    */
   public fun getRepository(repoId: Long): Repository? {
     repoCountDownLatch.await()
-    return repositoriesState.value.firstOrNull { repo -> repo.repoId == repoId }
+    return repositoriesState.value?.firstOrNull { repo -> repo.repoId == repoId }
   }
 
   /**
@@ -114,7 +115,7 @@ constructor(
    */
   public fun getRepositories(): List<Repository> {
     repoCountDownLatch.await()
-    return repositoriesState.value
+    return repositoriesState.value ?: error("Repositories were loaded, but still null")
   }
 
   /**
@@ -148,10 +149,10 @@ constructor(
     // while this will get updated automatically, getting the update may be slow,
     // so to speed up the UI, we emit the state change right away (deletion is unlikely to fail)
     _repositoriesState.update {
-      it.filter { repo ->
+      it?.filter { repo ->
         // keep only repos that are not the deleted one
         repo.repoId != repoId
-      }
+      } ?: error("Repositories were null when trying to delete a repo")
     }
     db.runInTransaction {
       // find and remove archive repo if existing
@@ -186,7 +187,8 @@ constructor(
       // if repo was added, update state right away, so it becomes available asap
       if (addedRepo != null)
         withContext(Dispatchers.Main) {
-          _repositoriesState.update { it.toMutableList().apply { add(addedRepo) } }
+          // as soon as the list has loaded, it should never be null
+          _repositoriesState.update { it!!.toMutableList().apply { add(addedRepo) } }
         }
     }
   }

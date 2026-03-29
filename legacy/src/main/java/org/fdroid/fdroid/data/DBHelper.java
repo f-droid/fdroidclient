@@ -35,6 +35,7 @@ import androidx.annotation.WorkerThread;
 import org.fdroid.database.FDroidDatabase;
 import org.fdroid.database.FDroidDatabaseHolder;
 import org.fdroid.database.InitialRepository;
+import org.fdroid.fdroid.BuildConfig;
 import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.work.RepoUpdateWorker;
@@ -64,7 +65,7 @@ public class DBHelper {
     static final int REPO_XML_ITEM_COUNT = 7;
 
     public static FDroidDatabase getDb(Context context) {
-        return FDroidDatabaseHolder.getDb(context, "fdroid_db", db -> prePopulateDb(context, db));
+        return FDroidDatabaseHolder.getDb(context, "fdroid_db", db -> prePopulateDb(context, db), BuildConfig.DEBUG);
     }
 
     @WorkerThread

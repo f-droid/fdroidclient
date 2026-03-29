@@ -66,7 +66,7 @@ class RepoDetailsViewModel(
     private val appDao = DBHelper.getDb(app).getAppDao()
 
     val repoFlow: StateFlow<Repository?> = repoManager.repositoriesState.map { reposState ->
-        reposState.find { repo -> repo.repoId == repoId }
+        reposState?.find { repo -> repo.repoId == repoId }
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),

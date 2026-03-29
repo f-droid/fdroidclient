@@ -11,7 +11,8 @@ import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstallStateWithInfo
-import org.fdroid.ui.utils.normalize
+import org.fdroid.ui.search.SearchHelper.fixQuery
+import org.fdroid.ui.search.SearchHelper.normalize
 
 // TODO add tests for this, similar to DetailsPresenter
 @Composable
@@ -29,7 +30,7 @@ fun MyAppsPresenter(
   val appInstallStates = appInstallStatesFlow.collectAsState().value
   val appsWithIssues = appsWithIssuesFlow.collectAsState().value
   val installedApps = installedAppsFlow.collectAsState(null).value
-  val searchQuery = searchQueryFlow.collectAsState().value.normalize()
+  val searchQuery = fixQuery(searchQueryFlow.collectAsState().value)
   val sortOrder = sortOrderFlow.collectAsState().value
   val processedPackageNames = mutableSetOf<String>()
 

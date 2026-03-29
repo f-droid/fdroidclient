@@ -43,7 +43,7 @@ constructor(
 
   companion object {
     private val TAG = AppUpdateWorker::class.simpleName
-
+    @VisibleForTesting internal const val MAX_RUN_ATTEMPTS = 3
     @VisibleForTesting internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
 
     @JvmStatic
@@ -109,7 +109,7 @@ constructor(
     return try {
       currentCoroutineContext().ensureActive()
       nm.cancelAppUpdatesAvailableNotification()
-      // Updating apps will try start a foreground service
+      // Updating apps will try start a foreground service,
       // and it will "share" the same notification.
       // This is easier than trying to tell the [AppInstallManager]
       // not to start a foreground service in this specific case.
@@ -122,7 +122,7 @@ constructor(
       Result.success()
     } catch (e: Exception) {
       log.error(e) { "Error updating apps: " }
-      if (runAttemptCount <= 3) {
+      if (runAttemptCount <= MAX_RUN_ATTEMPTS) {
         Result.retry()
       } else {
         log.warn { "Not retrying, already tried $runAttemptCount times." }

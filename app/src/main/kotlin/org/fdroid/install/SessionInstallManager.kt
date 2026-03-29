@@ -44,6 +44,7 @@ class SessionInstallManager
 constructor(
   @param:ApplicationContext private val context: Context,
   @param:IoDispatcher private val coroutineScope: CoroutineScope,
+  private val receiverFactory: InstallBroadcastReceiverFactory,
 ) {
 
   private val log = KotlinLogging.logger {}
@@ -128,7 +129,7 @@ constructor(
     val name = app.name.getBestLocale(LocaleListCompat.getDefault()) ?: ""
 
     val receiver =
-      InstallBroadcastReceiver(sessionId) { status, intent, msg ->
+      receiverFactory.create(sessionId) { status, intent, msg ->
         when (status) {
           PackageInstaller.STATUS_SUCCESS -> {
             cont.resume(PreApprovalResult.Success(sessionId))
@@ -209,7 +210,7 @@ constructor(
       }
     // set-up receiver for install result
     val receiver =
-      InstallBroadcastReceiver(sessionId) { status, intent, msg ->
+      receiverFactory.create(sessionId) { status, intent, msg ->
         context.unregisterReceiver(this)
         when (status) {
           PackageInstaller.STATUS_SUCCESS -> {
@@ -301,7 +302,7 @@ constructor(
     suspendCancellableCoroutine { cont ->
       val isPreApproval = state is InstallState.PreApprovalConfirmationNeeded
       val receiver =
-        InstallBroadcastReceiver(state.sessionId) { status, _, msg ->
+        receiverFactory.create(state.sessionId) { status, _, msg ->
           context.unregisterReceiver(this)
           when (status) {
             PackageInstaller.STATUS_SUCCESS -> {

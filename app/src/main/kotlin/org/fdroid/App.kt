@@ -19,8 +19,8 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import coil3.util.Logger
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 import org.acra.ACRA
+import javax.inject.Inject
 import org.acra.ReportField
 import org.acra.config.dialog
 import org.acra.config.mailSender
@@ -41,6 +41,10 @@ import org.fdroid.updates.AppUpdateWorker
 
 @HiltAndroidApp
 class App : Application(), Configuration.Provider, SingletonImageLoader.Factory {
+
+  // careful with injecting too many dependencies here, especially DO NO inject anything that needs
+  // the database, because this class gets instantiated in other contexts and that may lead to a
+  // locked database crash
 
   @Inject lateinit var settingsManager: SettingsManager
 

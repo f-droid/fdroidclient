@@ -5,6 +5,7 @@ import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST
 import android.os.Build.VERSION.SDK_INT
 import android.util.Log
 import androidx.annotation.UiThread
+import androidx.annotation.VisibleForTesting
 import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
@@ -49,7 +50,8 @@ constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
   companion object {
-    private const val UNIQUE_WORK_NAME_REPO_AUTO_UPDATE = "repoAutoUpdate"
+    @VisibleForTesting internal const val UNIQUE_WORK_NAME_REPO_AUTO_UPDATE = "repoAutoUpdate"
+    @VisibleForTesting internal const val MAX_RUN_ATTEMPTS = 3
 
     /**
      * Use this to trigger a manual repo update if the app is currently in the foreground.

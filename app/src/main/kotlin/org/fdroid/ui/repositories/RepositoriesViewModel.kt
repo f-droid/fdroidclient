@@ -49,7 +49,9 @@ constructor(
   private val showOnboarding = onboardingManager.showRepositoriesOnboarding
 
   init {
-    viewModelScope.launch { repoManager.repositoriesState.collect { onRepositoriesChanged(it) } }
+    viewModelScope.launch {
+      repoManager.repositoriesState.collect { if (it != null) onRepositoriesChanged(it) }
+    }
   }
 
   // define below init, because this only defines repoSortingMap

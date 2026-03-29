@@ -17,8 +17,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
-import java.text.Normalizer
-import java.text.Normalizer.Form.NFKD
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
@@ -51,14 +49,6 @@ fun UriHandler.openUriSafe(uri: String) {
   } catch (e: Exception) {
     Log.e("UriHandler", "Error opening $uri ", e)
   }
-}
-
-private val normalizerRegex = "\\p{M}".toRegex()
-
-/** Normalizes the string by removing any diacritics that may appear. */
-fun String.normalize(): String {
-  if (Normalizer.isNormalized(this, NFKD)) return this
-  return Normalizer.normalize(this, NFKD).replace(normalizerRegex, "")
 }
 
 /**

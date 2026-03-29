@@ -11,6 +11,7 @@ import androidx.room.ForeignKey
 import androidx.room.Fts4
 import androidx.room.FtsOptions
 import androidx.room.Ignore
+import androidx.room.Index
 import androidx.room.Relation
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.Converters.fromStringToMapOfLocalizedTextV2
@@ -37,6 +38,12 @@ public interface MinimalApp {
 @Entity(
   tableName = AppMetadata.TABLE,
   primaryKeys = ["repoId", "packageName"],
+  indices =
+    [
+      // Supports the "More apps by ..." button in AppDetails, which links to the "Apps by ..."
+      // list.
+      Index("authorName")
+    ],
   foreignKeys =
     [
       ForeignKey(
@@ -133,9 +140,10 @@ internal fun MetadataV2.toAppMetadata(
  * the sqlite tokenizers available to us either handle those languages or do diacritics removals.
  * Since we can't remove diacritics here ourselves, we help the tokenizer for CJK languages instead.
  */
-internal fun LocalizedTextV2?.zero(): LocalizedTextV2? {
+internal fun LocalizedTextV2?.zero(localeAllowList: Set<String>? = null): LocalizedTextV2? {
   if (this == null) return null
   return toMutableMap().mapValues { (locale, text) ->
+    if (localeAllowList != null && locale !in localeAllowList) return@mapValues text
     if (locale.startsWith("zh") || locale.startsWith("ja") || locale.startsWith("ko")) {
       StringBuilder()
         .apply {
@@ -248,9 +256,11 @@ internal constructor(
     return map.ifEmpty { null }
   }
 
+  @Deprecated("Use metadata.name.getBestLocale(localeList) instead.")
   public override val name: String?
     get() = metadata.localizedName
 
+  @Deprecated("Use metadata.summary.getBestLocale(localeList) instead.")
   public override val summary: String?
     get() = metadata.localizedSummary
 
@@ -424,6 +434,13 @@ internal interface IFile {
 @Entity(
   tableName = LocalizedFile.TABLE,
   primaryKeys = ["repoId", "packageName", "type", "locale"],
+  indices =
+    [
+      // In addition to primary key, as reordering the primary key so `packageName` is first:
+      //  * Requires complex migration, dropping and recreating the table.
+      //  * May be queries which want `repoId` first (though this is unlikely for this table)
+      Index("packageName")
+    ],
   foreignKeys =
     [
       ForeignKey(
@@ -498,6 +515,15 @@ internal data class LocalizedIcon(
 @Entity(
   tableName = LocalizedFileList.TABLE,
   primaryKeys = ["repoId", "packageName", "type", "locale", "name"],
+  indices =
+    [
+      // In addition to primary key, as reordering the primary key so `packageName` is first:
+      //  * Requires complex migration, dropping and recreating the table.
+      //  * May be queries which want `repoId` first (though this is unlikely for this table)
+      //
+      // This includes `repoId` so it can be used as a covering index in specific queries.
+      Index("packageName", "repoId")
+    ],
   foreignKeys =
     [
       ForeignKey(
