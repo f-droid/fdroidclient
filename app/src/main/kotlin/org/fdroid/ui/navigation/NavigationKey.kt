@@ -1,12 +1,12 @@
 package org.fdroid.ui.navigation
 
-import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.SwapHorizontalCircle
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
@@ -45,6 +45,10 @@ sealed interface NavigationKey : NavKey {
   @Serializable data object About : NavigationKey
 
   @Serializable data object InstallationHistory : NavigationKey
+
+  // Full flavor special destinations kept here for simplicity
+
+  @Serializable data object Nearby : NavigationKey
 }
 
 sealed interface MainNavKey : NavKey {
@@ -73,9 +77,15 @@ sealed class NavDestinations(
     )
 
   object About : NavDestinations(NavigationKey.About, R.string.menu_about, Icons.Filled.Info)
+
+  // Full flavor special destinations kept here for simplicity
+
+  object Nearby :
+    NavDestinations(
+      id = NavigationKey.Nearby,
+      label = R.string.main_menu__swap_nearby,
+      icon = Icons.Filled.SwapHorizontalCircle,
+    )
 }
 
 val topBarMenuItems = listOf(NavDestinations.Repos, NavDestinations.Settings)
-
-fun getMoreMenuItems(context: Context) =
-  listOf(NavDestinations.AllApps(context.getString(R.string.app_list_all)), NavDestinations.About)

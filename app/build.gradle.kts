@@ -137,7 +137,15 @@ dependencies {
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
 
+  "fullImplementation"(libs.material)
+  "fullImplementation"(libs.androidx.documentfile)
+  "fullImplementation"(libs.androidx.localbroadcastmanager)
   "fullImplementation"(libs.guardianproject.panic)
+  "fullImplementation"(libs.bcpkix.jdk15to18)
+  "fullImplementation"(libs.jmdns)
+  "fullImplementation"(libs.nanohttpd)
+  "fullImplementation"(libs.commons.io)
+  "fullImplementation"(libs.commons.net)
 
   testImplementation(libs.junit)
   testImplementation(kotlin("test"))
