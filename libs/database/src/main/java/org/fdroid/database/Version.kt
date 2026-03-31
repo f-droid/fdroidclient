@@ -45,7 +45,7 @@ internal data class Version(
   val packageName: String,
   val versionId: String,
   override val added: Long,
-  @Embedded(prefix = "file_") val file: FileV1,
+  @Embedded(prefix = "file_") override val file: FileV1,
   @Embedded(prefix = "src_") val src: FileV2? = null,
   @Embedded(prefix = "manifest_") val manifest: AppManifest,
   override val releaseChannels: List<String>? = emptyList(),
@@ -126,7 +126,7 @@ internal constructor(
   public val manifest: AppManifest
     get() = version.manifest
 
-  public val file: FileV1
+  public override val file: FileV1
     get() = version.file
 
   public val src: FileV2?
