@@ -7,7 +7,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import io.ktor.client.engine.ProxyConfig
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.measureTimedValue
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.firstOrNull
@@ -73,6 +75,8 @@ constructor(
 
   init {
     coroutineScope.launch {
+      // delay initial check for updates a bit, so we don't hammer the DB during start-up
+      delay(1500)
       // Auto-refresh updates when installed apps change.
       installedAppsCache.installedApps.collect { loadUpdates(it) }
     }
@@ -81,28 +85,30 @@ constructor(
   /** Loads available updates and app issues for the given [packageInfoMap]. */
   fun loadUpdates(
     packageInfoMap: Map<String, PackageInfo> = installedAppsCache.installedApps.value
-  ) =
-    coroutineScope.launch {
-      if (packageInfoMap.isEmpty()) return@launch
-      val localeList = LocaleListCompat.getDefault()
-      try {
-        log.info { "Checking for updates (${packageInfoMap.size} apps)..." }
-        val proxyConfig = settingsManager.proxyConfig
-        val updateCheckResult = dbAppChecker.getApps(packageInfoMap = packageInfoMap)
-        processAvailableUpdates(updateCheckResult.updates, localeList, proxyConfig)
-        processAppIssues(updateCheckResult.issues, localeList, proxyConfig)
-      } catch (e: Exception) {
-        log.error(e) { "Error loading updates" }
-      }
+  ) = coroutineScope.launch {
+    if (packageInfoMap.isEmpty()) return@launch
+    val localeList = LocaleListCompat.getDefault()
+    try {
+      log.info { "Checking for updates (${packageInfoMap.size} apps)..." }
+      val proxyConfig = settingsManager.proxyConfig
+      val (updateCheckResult, duration) =
+        measureTimedValue { dbAppChecker.getApps(packageInfoMap = packageInfoMap) }
+      log.debug { "Checking for updates took $duration" }
+      processAvailableUpdates(updateCheckResult.updates, localeList, proxyConfig)
+      processAppIssues(updateCheckResult.issues, localeList, proxyConfig)
+    } catch (e: Exception) {
+      log.error(e) { "Error loading updates" }
     }
+  }
 
   private fun processAvailableUpdates(
     updates: List<UpdatableApp>,
     localeList: LocaleListCompat,
     proxyConfig: ProxyConfig?,
   ) {
-    val updateItems =
-      updates.map { update -> update.toAppUpdateItem(localeList, proxyConfig, repoManager) }
+    val updateItems = updates.map { update ->
+      update.toAppUpdateItem(localeList, proxyConfig, repoManager)
+    }
     _updates.value = updateItems
     _numUpdates.value = updateItems.size
     updateNotificationIfShowing(updateItems)
