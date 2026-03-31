@@ -83,12 +83,13 @@ constructor(
       // TODO we could do better error handling, e.g. when metadata or repo are null
       //  or install state is an error, also maybe show a Toast to user on error
       appInstallManager.install(
-        appMetadata = db.getAppDao().getApp(version.repoId, packageName)?.metadata,
-        version = version,
-        currentVersionName = null,
-        repo = repoManager.getRepository(version.repoId),
-        iconModel = null,
-        canAskPreApprovalNow = true,
+          packageName = packageName,
+          appMetadata = db.getAppDao().getApp(version.repoId, packageName)?.metadata,
+          version = version,
+          currentVersionName = null,
+          repo = repoManager.getRepository(version.repoId),
+          iconModel = null,
+          canAskPreApprovalNow = true,
       )
       Result.success()
     }

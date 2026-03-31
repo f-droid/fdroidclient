@@ -62,23 +62,25 @@ internal class UpdateInstallerTest {
   }
 
   @Test
-  fun `updateAll returns early when updates list is empty`() =
-    testScope.runTest {
-      val installer = createUpdateInstaller()
+  fun `updateAll returns early when updates list is empty`() = testScope.runTest {
+    val installer = createUpdateInstaller()
 
-      installer.updateAll(emptyList(), canAskPreApprovalNow = false)
-      advanceUntilIdle()
+    installer.updateAll(emptyList(), canAskPreApprovalNow = false)
+    advanceUntilIdle()
 
-      coVerify(exactly = 0) { appInstallManager.install(any(), any(), any(), any(), any(), any()) }
-      verify(exactly = 0) { appInstallManager.setWaitingState(any(), any(), any(), any(), any()) }
+    coVerify(exactly = 0) {
+      appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
     }
+    verify(exactly = 0) { appInstallManager.setWaitingState(any(), any(), any(), any(), any()) }
+  }
 
   @Test
   fun `updateAll preApproval is true for single app and forced false for multiple`() =
     testScope.runTest {
       every { repoManager.getRepository(1L) } returns makeRepository()
-      coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any()) } returns
-        mockk()
+      coEvery {
+        appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
+      } returns mockk()
 
       // single app + canAsk=true -> canAskPreApprovalNow=true
       val ver = makeAppVersion(versionName = "5.0", versionCode = 50)
@@ -98,6 +100,7 @@ internal class UpdateInstallerTest {
 
       coVerify(exactly = 1) {
         appInstallManager.install(
+          packageName = "com.example.app",
           appMetadata =
             match { metadata ->
               metadata.packageName == "com.example.app" && metadata.repoId == 1L
@@ -121,6 +124,7 @@ internal class UpdateInstallerTest {
 
       coVerify(exactly = 2) {
         appInstallManager.install(
+          packageName = any(),
           appMetadata = any(),
           version = any(),
           currentVersionName = any(),
@@ -132,69 +136,71 @@ internal class UpdateInstallerTest {
     }
 
   @Test
-  fun `updateAll updates own app last and sets waiting state`() =
-    testScope.runTest {
-      val otherPkg = "com.example.other"
-      every { repoManager.getRepository(1L) } returns makeRepository()
-      coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any()) } returns
-        mockk()
+  fun `updateAll updates own app last and sets waiting state`() = testScope.runTest {
+    val otherPkg = "com.example.other"
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    coEvery {
+      appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
+    } returns mockk()
 
-      val ownVersion =
-        makeAppVersion(packageName = OWN_PACKAGE_NAME, versionName = "3.0", added = 9999L)
-      every { appDao.getApp(1L, OWN_PACKAGE_NAME) } returns makeApp(packageName = OWN_PACKAGE_NAME)
-      every { appDao.getApp(1L, otherPkg) } returns makeApp(packageName = otherPkg)
-      every {
-        appInstallManager.setWaitingState(
+    val ownVersion =
+      makeAppVersion(packageName = OWN_PACKAGE_NAME, versionName = "3.0", added = 9999L)
+    every { appDao.getApp(1L, OWN_PACKAGE_NAME) } returns makeApp(packageName = OWN_PACKAGE_NAME)
+    every { appDao.getApp(1L, otherPkg) } returns makeApp(packageName = otherPkg)
+    every {
+      appInstallManager.setWaitingState(
+        packageName = OWN_PACKAGE_NAME,
+        name = any(),
+        versionName = any(),
+        currentVersionName = any(),
+        lastUpdated = any(),
+      )
+    } just runs
+
+    val updates =
+      listOf(
+        makeAppUpdateItem(
           packageName = OWN_PACKAGE_NAME,
-          name = any(),
-          versionName = any(),
-          currentVersionName = any(),
-          lastUpdated = any(),
-        )
-      } just runs
+          installedVersionName = "2.0",
+          update = ownVersion,
+        ),
+        makeAppUpdateItem(packageName = otherPkg),
+      )
 
-      val updates =
-        listOf(
-          makeAppUpdateItem(
-            packageName = OWN_PACKAGE_NAME,
-            installedVersionName = "2.0",
-            update = ownVersion,
-          ),
-          makeAppUpdateItem(packageName = otherPkg),
-        )
+    createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
+    advanceUntilIdle()
 
-      createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
-      advanceUntilIdle()
-
-      verify(exactly = 1) {
-        appInstallManager.setWaitingState(
-          packageName = OWN_PACKAGE_NAME,
-          name = any(),
-          versionName = "3.0",
-          currentVersionName = "2.0",
-          lastUpdated = 9999L,
-        )
-      }
-
-      coVerifyOrder {
-        appInstallManager.install(
-          appMetadata = match { metadata -> metadata.packageName == otherPkg },
-          version = any(),
-          currentVersionName = any(),
-          repo = any(),
-          iconModel = any(),
-          canAskPreApprovalNow = any(),
-        )
-        appInstallManager.install(
-          appMetadata = match { metadata -> metadata.packageName == OWN_PACKAGE_NAME },
-          version = any(),
-          currentVersionName = any(),
-          repo = any(),
-          iconModel = any(),
-          canAskPreApprovalNow = any(),
-        )
-      }
+    verify(exactly = 1) {
+      appInstallManager.setWaitingState(
+        packageName = OWN_PACKAGE_NAME,
+        name = any(),
+        versionName = "3.0",
+        currentVersionName = "2.0",
+        lastUpdated = 9999L,
+      )
     }
+
+    coVerifyOrder {
+      appInstallManager.install(
+        packageName = otherPkg,
+        appMetadata = match { metadata -> metadata.packageName == otherPkg },
+        version = any(),
+        currentVersionName = any(),
+        repo = any(),
+        iconModel = any(),
+        canAskPreApprovalNow = any(),
+      )
+      appInstallManager.install(
+        packageName = OWN_PACKAGE_NAME,
+        appMetadata = match { metadata -> metadata.packageName == OWN_PACKAGE_NAME },
+        version = any(),
+        currentVersionName = any(),
+        repo = any(),
+        iconModel = any(),
+        canAskPreApprovalNow = any(),
+      )
+    }
+  }
 
   @Test
   fun `updateApp continues with null values if app missing in DB or repo missing`() =
@@ -208,22 +214,27 @@ internal class UpdateInstallerTest {
             update = ver,
           )
         )
-      coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any()) } returns
-        mockk()
+      coEvery {
+        appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
+      } returns mockk()
 
       // repo is null
       every { repoManager.getRepository(1L) } returns null
       every { appDao.getApp(1L, "com.example.app") } returns makeApp()
       createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
       advanceUntilIdle()
-      coVerify(exactly = 1) { appInstallManager.install(any(), any(), any(), null, any(), any()) }
+      coVerify(exactly = 1) {
+        appInstallManager.install(any(), any(), any(), any(), null, any(), any())
+      }
 
       // app is null
       every { repoManager.getRepository(1L) } returns makeRepository()
       every { appDao.getApp(1L, "com.example.app") } returns null
       createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
       advanceUntilIdle()
-      coVerify(exactly = 1) { appInstallManager.install(null, any(), any(), any(), any(), any()) }
+      coVerify(exactly = 1) {
+        appInstallManager.install(any(), null, any(), any(), any(), any(), any())
+      }
     }
 
   private fun makeAppUpdateItem(

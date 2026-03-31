@@ -53,7 +53,7 @@ data class AppDetailsItem(
    */
   val installedSigner: String? = null,
   /** The currently suggested version for installation. */
-  val suggestedVersion: AppVersion? = null,
+  val suggestedVersion: PackageVersion? = null,
   /**
    * Similar to [suggestedVersion], but doesn't obey [appPrefs] for ignoring versions. This is
    * useful for (un-)ignoring this version.
@@ -225,8 +225,8 @@ data class AppDetailsItem(
   val bitcoinUri = app.bitcoin?.let { "bitcoin:$it" }
 }
 
-class AppDetailsActions(
-  val installAction: (AppMetadata, AppVersion, Any?) -> Unit,
+data class AppDetailsActions(
+  val installAction: (AppMetadata, PackageVersion, Any?) -> Unit,
   val requestUserConfirmation: (InstallState.UserConfirmationNeeded) -> Unit,
   /**
    * A workaround for Android 10, 11, 12 and 13 where tapping outside the confirmation dialog

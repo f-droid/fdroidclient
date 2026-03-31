@@ -13,6 +13,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkState
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
@@ -81,6 +82,7 @@ val testVersion1 =
   object : PackageVersion {
     override val versionCode: Long = 42
     override val versionName: String = "42.23.0-alpha1337-33d2252b90"
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
     override val size: Long = 1024 * 1024 * 42
     override val signer: SignerV2 =
@@ -100,6 +102,7 @@ val testVersion2 =
   object : PackageVersion {
     override val versionCode: Long = 23
     override val versionName: String = "23.42.0"
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
     override val size: Long = 1024 * 1024 * 23
     override val signer: SignerV2 =
@@ -252,6 +255,7 @@ fun getPreviewVersion(versionName: String, size: Long? = null) =
   object : PackageVersion {
     override val versionCode: Long = 23
     override val versionName: String = versionName
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(3)
     override val size: Long? = size
     override val signer: SignerV2? = null

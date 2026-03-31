@@ -114,12 +114,13 @@ constructor(
   private suspend fun updateApp(update: AppUpdateItem, canAskPreApprovalNow: Boolean) {
     val app = db.getAppDao().getApp(update.repoId, update.packageName)
     appInstallManager.install(
-      appMetadata = app?.metadata,
-      version = update.update as AppVersion,
-      currentVersionName = update.installedVersionName,
-      repo = repoManager.getRepository(update.repoId),
-      iconModel = update.iconModel,
-      canAskPreApprovalNow = canAskPreApprovalNow,
+        packageName = update.packageName,
+        appMetadata = app?.metadata,
+        version = update.update as AppVersion,
+        currentVersionName = update.installedVersionName,
+        repo = repoManager.getRepository(update.repoId),
+        iconModel = update.iconModel,
+        canAskPreApprovalNow = canAskPreApprovalNow,
     )
   }
 }
