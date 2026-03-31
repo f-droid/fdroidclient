@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Dns
@@ -89,7 +90,7 @@ private fun UserMirrorRow(
   modifier: Modifier = Modifier,
 ) {
   ListItem(
-    headlineContent = { Text(item.url) },
+    headlineContent = { SelectionContainer { Text(item.url) } },
     supportingContent = {
       Row(horizontalArrangement = spacedBy(16.dp)) {
         FDroidOutlineButton(
