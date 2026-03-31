@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.annotation.RestrictTo
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import java.util.concurrent.TimeUnit.DAYS
+import java.util.concurrent.TimeUnit.HOURS
+import java.util.concurrent.TimeUnit.MINUTES
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
@@ -424,7 +426,7 @@ val repoItems =
       address = "http://example.org",
       name = "F-Droid",
       icon = null,
-      timestamp = System.currentTimeMillis() - 1_111_111,
+      timestamp = System.currentTimeMillis() - MINUTES.toMillis(18),
       lastUpdated = System.currentTimeMillis() - 9_999_999,
       weight = 1,
       enabled = true,
@@ -435,7 +437,7 @@ val repoItems =
       address = "http://example.org",
       name = "Guardian Project Repository",
       icon = null,
-      timestamp = System.currentTimeMillis() - 9_999_999,
+      timestamp = System.currentTimeMillis() - HOURS.toMillis(2),
       lastUpdated = System.currentTimeMillis() - 99_999_999,
       weight = 2,
       enabled = true,
@@ -446,7 +448,7 @@ val repoItems =
       address = "http://example.net",
       name = "My first Repo",
       icon = null,
-      timestamp = System.currentTimeMillis() - 888_888,
+      timestamp = System.currentTimeMillis() - MINUTES.toMillis(14),
       lastUpdated = System.currentTimeMillis(),
       weight = 3,
       enabled = true,
