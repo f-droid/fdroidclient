@@ -110,6 +110,9 @@ public class SwapSuccessView extends SwapView {
                 if (packageV1.getVersionCode() != null) {
                     apk.versionCode = packageV1.getVersionCode();
                 }
+                if (packageV1.getTargetSdkVersion() != null) {
+                    apk.targetSdkVersion = packageV1.getTargetSdkVersion();
+                }
                 apk.versionName = packageV1.getVersionName();
                 apk.apkFile = new FileV1("/" + packageV1.getApkName(), packageV1.getHash(), packageV1.getSize(), null);
                 ArrayList<String> permissions =
@@ -300,7 +303,6 @@ public class SwapSuccessView extends SwapView {
                     progressView.hide();
                     progressView.setIndeterminate(true);
                 }
-                progressView.show();
 
                 if (app.name != null) {
                     nameView.setText(app.name);

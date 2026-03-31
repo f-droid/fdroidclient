@@ -71,6 +71,8 @@ android {
         debug {
             getIsDefault().set(true)
             manifestPlaceholders = [applicationLabel: APP_NAME_DEBUG]
+            minifyEnabled false
+            shrinkResources false
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
             // testProguardFiles gets partially ignored for instrumentation tests
