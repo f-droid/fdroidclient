@@ -8,29 +8,26 @@ import android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS
 import android.provider.Settings.EXTRA_APP_PACKAGE
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BrightnessMedium
+import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Lan
 import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Screenshot
 import androidx.compose.material.icons.filled.SystemSecurityUpdate
 import androidx.compose.material.icons.filled.SystemSecurityUpdateWarning
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material.icons.filled.UpdateDisabled
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -46,7 +43,6 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit.HOURS
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -364,16 +360,20 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
           summary = { Text(text = stringResource(R.string.preventScreenshots_summary)) },
         )
         extraPrivacySettings(context)
-        item {
-          OutlinedButton(
-            onClick = { launcher.launch("${getLogName(context)}.txt") },
-            modifier = Modifier.padding(16.dp),
-          ) {
-            Icon(Icons.Default.Save, null)
-            Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-            Text(text = stringResource(R.string.pref_export_log_title))
-          }
-        }
+        item { HorizontalDivider() }
+        preference(
+          key = "debugLog",
+          icon = {
+            Icon(
+              imageVector = Icons.Default.BugReport,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          title = { Text(stringResource(R.string.pref_export_log_title)) },
+          summary = { Text(stringResource(R.string.pref_export_log_summary)) },
+          onClick = { launcher.launch("${getLogName(context)}.txt") },
+        )
       }
     }
   }
