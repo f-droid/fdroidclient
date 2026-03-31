@@ -14,7 +14,7 @@
     <string name="menu_apps_my">My apps</string>
 
     <string name="first_start_loading">Fetching app repositories…</string>
-    <string name="first_start_intro">To get started, fetch app repositories</string>
+    <string name="first_start_intro">To get started, sync app repositories</string>
     <string name="first_start_offline">You\'re offline. Connect to the Internet to start.</string>
     <string name="first_start_metered">You\'re on mobile data and more than 10 MB will be downloaded. Tap Fetch repositories to start anyway.</string>
     <string name="first_start_button">Fetch repositories</string>
@@ -173,7 +173,7 @@
     <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_never">Auto-updates disabled • Apps will need to be updated manually</string>
     <string name="pref_repo_updates_title">Check for updates</string>
-    <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories, but only when on Wi-Fi</string>
+    <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories only when on Wi-Fi</string>
     <string name="pref_repo_updates_summary_always">Periodically fetch app updates from repositories even when on mobile data</string>
     <string name="pref_repo_updates_summary_never">Don\'t check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
@@ -236,8 +236,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="dialog_metered_title">Continue with mobile data?</string>
     <!-- The placeholder will be replaced with a size string such as "13 MB" -->
-    <string name="dialog_metered_text">Downloading %1$s may incur costs or use up your data</string>
-    <string name="dialog_metered_text_no_size">Downloading may incur costs or use up your data</string>
+    <string name="dialog_metered_text">Downloading %1$s may incur charges depending on your data plan</string>
+    <string name="dialog_metered_text_no_size">Downloading may incur charges depending on your data plan</string>
     <string name="dialog_metered_button">Download</string>
     <string name="screenshots_metered">Tap to load screenshots via mobile data</string>
 
@@ -262,8 +262,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="app_no_compatible_versions">This app is not compatible with your device</string>
     <string name="app_no_compatible_signer">Can\'t update this app, because all versions have an incompatible signature\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>
     <string name="app_no_compatible_signer_in_this_repo">Can\'t update this app, because there are no compatible versions in the preferred repository\n\nTry changing the preferred repository</string>
-    <string name="app_no_auto_update">Auto-update not available, because app targets old version of Android</string>
-    <string name="app_issue_update_other_repo">An update is available in another repository, but will not get installed, because that repository is not preferred</string>
+    <string name="app_no_auto_update">Auto-update not available because this app was built for an old version of Android without automatic update support</string>
+    <string name="app_issue_update_other_repo">An update is available in another repository. Change preferred repository to update</string>
     <string name="app_issue_not_available_title">App no longer available</string>
     <string name="app_issue_not_available_text">The app may have been removed or was in a repository you removed or disabled</string>
     <string name="app_issue_not_available_button">Show app info</string>
@@ -962,7 +962,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
 
     <string name="details_last_updated_today">Updated today</string>
     <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
-    <string name="permission_camera_denied">Please grant camera permission to continue scanning the QR code. Tap to grant camera permission in settings.</string>
+    <string name="permission_camera_denied">Grant camera permission to scan the QR code. Tap to grant camera permission in settings.</string>
     <string name="warning_target_sdk">This app was built for an older version of Android and cannot be updated automatically.</string>
     <string name="warning_no_compat_versions">The selected repository has no compatible app versions. To receive updates, select a preferred repository with compatible versions.</string>
     <string name="undo">Undo</string>
