@@ -19,28 +19,19 @@ import org.fdroid.ui.navigation.NavigationRail
 
 @Composable
 fun MainContent(
+  model: MainModel,
   isBigScreen: Boolean,
-  dynamicColors: Boolean,
   showBottomBar: Boolean,
   currentNavKey: NavKey,
-  numUpdates: Int,
-  hasAppIssues: Boolean,
   onNav: (MainNavKey) -> Unit,
   content: @Composable (Modifier) -> Unit,
 ) =
-  FDroidContent(dynamicColors = dynamicColors) {
+  FDroidContent(dynamicColors = model.dynamicColors) {
     HintHost {
       Scaffold(
         bottomBar =
           if (showBottomBar) {
-            {
-              BottomBar(
-                numUpdates = numUpdates,
-                hasIssues = hasAppIssues,
-                currentNavKey = currentNavKey,
-                onNav = onNav,
-              )
-            }
+            { BottomBar(model = model, currentNavKey = currentNavKey, onNav = onNav) }
           } else {
             {}
           }
@@ -49,8 +40,8 @@ fun MainContent(
           // show nav rail only on big screen (at least two partitions)
           if (isBigScreen)
             NavigationRail(
-              numUpdates = numUpdates,
-              hasIssues = hasAppIssues,
+              numUpdates = model.numUpdates,
+              hasIssues = model.hasAppIssues,
               currentNavKey = currentNavKey,
               onNav = onNav,
             )

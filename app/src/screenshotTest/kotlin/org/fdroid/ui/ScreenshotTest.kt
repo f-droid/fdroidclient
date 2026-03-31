@@ -8,18 +8,23 @@ import org.fdroid.ui.navigation.NavigationKey
 @Composable
 fun ScreenshotTest(
   showBottomBar: Boolean = true,
+  smallBottomBar: Boolean = false,
   currentNavKey: NavKey = NavigationKey.Discover,
   numUpdates: Int = 3,
   hasAppIssues: Boolean = true,
   content: @Composable (Modifier) -> Unit,
 ) {
   MainContent(
+    model =
+      MainModel(
+        dynamicColors = false,
+        smallBottomBar = smallBottomBar,
+        numUpdates = numUpdates,
+        hasAppIssues = hasAppIssues,
+      ),
     isBigScreen = false,
-    dynamicColors = false,
     showBottomBar = showBottomBar,
     currentNavKey = currentNavKey,
-    numUpdates = numUpdates,
-    hasAppIssues = hasAppIssues,
     onNav = {},
     content = content,
   )

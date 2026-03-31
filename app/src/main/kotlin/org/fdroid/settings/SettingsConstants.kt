@@ -17,6 +17,9 @@ object SettingsConstants {
   const val PREF_KEY_DYNAMIC_COLORS = "dynamicColors"
   const val PREF_DEFAULT_DYNAMIC_COLORS = false
 
+  const val PREF_KEY_SMALL_BOTTOM_BAR = "smallBottomBar"
+  const val PREF_DEFAULT_SMALL_BOTTOM_BAR = false
+
   enum class AutoUpdateValues {
     OnlyWifi,
     Always,

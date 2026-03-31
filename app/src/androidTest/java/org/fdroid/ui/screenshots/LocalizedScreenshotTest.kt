@@ -16,6 +16,7 @@ import kotlin.test.assertTrue
 import kotlin.test.fail
 import org.fdroid.BuildConfig.FLAVOR_variant
 import org.fdroid.ui.MainContent
+import org.fdroid.ui.MainModel
 import org.fdroid.ui.navigation.NavigationKey
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -61,12 +62,16 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
         override = DeviceConfigurationOverride.Locales(locales = localeList)
       ) {
         MainContent(
+          model =
+            MainModel(
+              dynamicColors = false,
+              smallBottomBar = false,
+              numUpdates = numUpdates,
+              hasAppIssues = hasAppIssues,
+            ),
           isBigScreen = false,
-          dynamicColors = false,
           showBottomBar = showBottomBar,
           currentNavKey = currentNavKey,
-          numUpdates = numUpdates,
-          hasAppIssues = hasAppIssues,
           onNav = {},
           content = content,
         )

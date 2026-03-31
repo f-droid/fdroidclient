@@ -33,6 +33,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SMALL_BOTTOM_BAR
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE_DEFAULT
@@ -49,6 +50,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
+import org.fdroid.settings.SettingsConstants.PREF_KEY_SMALL_BOTTOM_BAR
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
@@ -76,6 +78,10 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
   val dynamicColorFlow: Flow<Boolean> =
     prefsFlow
       .map { it.get<Boolean>(PREF_KEY_DYNAMIC_COLORS) ?: PREF_DEFAULT_DYNAMIC_COLORS }
+      .distinctUntilChanged()
+  val smallBottomBarFlow: Flow<Boolean> =
+    prefsFlow
+      .map { it.get<Boolean>(PREF_KEY_SMALL_BOTTOM_BAR) ?: PREF_DEFAULT_SMALL_BOTTOM_BAR }
       .distinctUntilChanged()
   val repoUpdates
     get() = prefs.getString(PREF_KEY_REPO_UPDATES, PREF_DEFAULT_REPO_UPDATES).toAutoUpdateValue()
