@@ -77,6 +77,7 @@ public data class Screenshots(
 public interface PackageVersion {
   public val versionCode: Long
   public val versionName: String
+  public val file: FileV1
   public val added: Long
   public val size: Long?
   public val signer: SignerV2?
@@ -90,7 +91,7 @@ public const val ANTI_FEATURE_KNOWN_VULNERABILITY: String = "KnownVuln"
 @Serializable
 public data class PackageVersionV2(
   override val added: Long,
-  val file: FileV1,
+  override val file: FileV1,
   val src: FileV2? = null,
   val manifest: ManifestV2,
   override val releaseChannels: List<String> = emptyList(),
