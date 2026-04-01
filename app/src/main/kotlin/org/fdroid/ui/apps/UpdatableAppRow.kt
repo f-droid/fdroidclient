@@ -109,12 +109,17 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
  */
 @Composable
 fun VersionLine(app: AppUpdateItem) {
-  VersionLine(app.installedVersionName, app.update.versionName, app.update.size)
+  VersionLineWithSize(app.installedVersionName, app.update.versionName, app.update.size)
 }
 
 @Composable
-fun VersionLine(fromVersion: String?, toVersion: String, numBytes: Long? = null) {
+fun VersionLineWithSize(fromVersion: String?, toVersion: String, numBytes: Long? = null) {
   val size = numBytes?.let { Formatter.formatFileSize(LocalContext.current, it) }
+  VersionLine(fromVersion, toVersion, size)
+}
+
+@Composable
+fun VersionLine(fromVersion: String?, toVersion: String, extraText: String? = null) {
   val test = buildAnnotatedString {
     if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
       if (fromVersion != null) {
@@ -129,7 +134,7 @@ fun VersionLine(fromVersion: String?, toVersion: String, numBytes: Long? = null)
     } else if (fromVersion != null) {
       append("\u202A${fromVersion}\u202C")
     }
-    if (size != null) append(" • $size")
+    if (extraText != null) append(" • $extraText")
   }
   val inlineContent =
     mapOf(
