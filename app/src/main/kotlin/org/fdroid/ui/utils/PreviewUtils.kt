@@ -34,6 +34,7 @@ import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
 import org.fdroid.ui.details.VersionItem
+import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
 import org.fdroid.ui.lists.AppListItem
@@ -121,6 +122,23 @@ val testVersion2 =
       }
     override val hasKnownVulnerability: Boolean = false
   }
+
+val categoryItems =
+  listOf(
+    CategoryItem("Multimedia", "Multimedia"),
+    CategoryItem("Internet", "Internet"),
+    CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+    CategoryItem("Connectivity", "Connectivity"),
+    CategoryItem("Development", "Development"),
+    CategoryItem("App Store & Updater", "App Store & Updater"),
+    CategoryItem("Browser", "Browser"),
+    CategoryItem("Calendar & Agenda", "Calendar & Agenda"),
+    CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+    CategoryItem("Connectivity", "Connectivity"),
+    CategoryItem("Development", "Development"),
+    CategoryItem("doesn't exist", "Foo bar"),
+  )
+
 val testApp =
   AppDetailsItem(
     app =
@@ -163,14 +181,7 @@ val testApp =
         "Therefore this app can be used on devices without Google Services installed. " +
         "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
         LoremIpsum(128).values.joinToString(" "),
-    categories =
-      listOf(
-        CategoryItem("Multimedia", "Multimedia"),
-        CategoryItem("Internet", "Internet"),
-        CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
-        CategoryItem("Connectivity", "Connectivity"),
-        CategoryItem("Development", "Development"),
-      ),
+    categories = categoryItems.subList(0, 5),
     antiFeatures =
       listOf(
         AntiFeature(
@@ -354,6 +365,31 @@ fun getAppListInfo(
     override val showFilters: Boolean = showFilters
     override val showOnboarding: Boolean = showOnboarding
   }
+
+fun getAppListModel(
+  sortBy: AppListSortOrder = AppListSortOrder.NAME,
+  filterIncompatible: Boolean = true,
+  filteredCategoryIds: Set<String> = setOf("Browser"),
+  filteredAntiFeatureIds: Set<String> = setOf("KnownVuln"),
+  filteredRepositoryIds: Set<Long> = setOf(2),
+) =
+  AppListModel(
+    apps = appListItems,
+    showFilterBadge = true,
+    sortBy = sortBy,
+    filterIncompatible = filterIncompatible,
+    categories = categoryItems,
+    filteredCategoryIds = filteredCategoryIds,
+    antiFeatures =
+      listOf(
+        AntiFeatureItem("Ads", "Ads", null),
+        AntiFeatureItem("KnownVuln", "Known Vulnerability", null),
+        AntiFeatureItem("NoSourceSince", "No Source Since", null),
+      ),
+    filteredAntiFeatureIds = filteredAntiFeatureIds,
+    repositories = repoItems,
+    filteredRepositoryIds = filteredRepositoryIds,
+  )
 
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
   object : MyAppsInfo {

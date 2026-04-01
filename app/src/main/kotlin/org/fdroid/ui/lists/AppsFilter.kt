@@ -38,18 +38,16 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlin.random.Random
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
-import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.getAppListInfo
-import org.fdroid.ui.utils.repoItems
+import org.fdroid.ui.utils.getAppListModel
 
 @Composable
 fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
@@ -246,38 +244,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
 @Preview
 private fun Preview() {
   FDroidContent {
-    val model =
-      AppListModel(
-        apps =
-          listOf(
-            AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
-            AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
-          ),
-        showFilterBadge = true,
-        sortBy = AppListSortOrder.NAME,
-        filterIncompatible = Random.nextBoolean(),
-        categories =
-          listOf(
-            CategoryItem("App Store & Updater", "App Store & Updater"),
-            CategoryItem("Browser", "Browser"),
-            CategoryItem("Calendar & Agenda", "Calendar & Agenda"),
-            CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
-            CategoryItem("Connectivity", "Connectivity"),
-            CategoryItem("Development", "Development"),
-            CategoryItem("doesn't exist", "Foo bar"),
-          ),
-        filteredCategoryIds = setOf("Browser"),
-        antiFeatures =
-          listOf(
-            AntiFeatureItem("foo1", "bar1", null),
-            AntiFeatureItem("foo2", "bar2", null),
-            AntiFeatureItem("foo3", "bar3", null),
-          ),
-        filteredAntiFeatureIds = setOf("foo2"),
-        repositories = repoItems,
-        filteredRepositoryIds = setOf(2),
-      )
-    val info = getAppListInfo(model)
+    val info = getAppListInfo(getAppListModel())
     AppsFilter(info)
   }
 }
