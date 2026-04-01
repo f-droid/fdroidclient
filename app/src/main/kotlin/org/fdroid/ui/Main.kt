@@ -33,7 +33,7 @@ import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
 import org.fdroid.ui.repositories.repoEntry
-import org.fdroid.ui.search.ExpandedSearch
+import org.fdroid.ui.search.GlobalSearch
 import org.fdroid.ui.search.SearchViewModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
@@ -71,7 +71,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
     ) {
       val viewModel = hiltViewModel<SearchViewModel>()
-      ExpandedSearch(
+      GlobalSearch(
         textFieldState = viewModel.textFieldState,
         searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
         onSearch = viewModel::search,
