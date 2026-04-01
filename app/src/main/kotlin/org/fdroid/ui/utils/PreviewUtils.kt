@@ -522,17 +522,22 @@ fun getRepoDetailsInfo(
       }
   }
 
-fun getRepository(address: String = "https://example.org/repo") =
+fun getRepository(
+  address: String = "https://example.org/repo",
+  username: String? = "foo",
+  password: String? = "bar",
+  lastError: String? = "NotFoundException FooBar technical blabla",
+) =
   Repository(
     repoId = 42L,
     address = address,
-    timestamp = 42L,
+    timestamp = System.currentTimeMillis() - DAYS.toMillis(4),
     formatVersion = IndexFormatVersion.ONE,
     certificate = "010203",
     version = 20001L,
     weight = 42,
-    lastUpdated = 1337,
-    username = "foo",
-    password = "bar",
-    lastError = "NotFoundException FooBar technical blabla",
+    lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3),
+    username = username,
+    password = password,
+    lastError = lastError,
   )
