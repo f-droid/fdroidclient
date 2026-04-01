@@ -170,16 +170,15 @@ internal class MirrorChooserWithParameters(
     val sortedList: List<Mirror> =
       availableMirrorList.toMutableList().apply { shuffle() }.sortedWith(mirrorComparator)
 
-    val domesticList: List<Mirror> =
-      sortedList.filter { mirror ->
-        !mirror.countryCode.isNullOrEmpty() && currentLocation == mirror.countryCode
-      }
-    val foreignList: List<Mirror> =
-      sortedList.filter { mirror ->
-        !mirror.countryCode.isNullOrEmpty() && currentLocation != mirror.countryCode
-      }
-    val unknownList: List<Mirror> =
-      sortedList.filter { mirror -> mirror.countryCode.isNullOrEmpty() }
+    val domesticList: List<Mirror> = sortedList.filter { mirror ->
+      !mirror.countryCode.isNullOrEmpty() && currentLocation == mirror.countryCode
+    }
+    val foreignList: List<Mirror> = sortedList.filter { mirror ->
+      !mirror.countryCode.isNullOrEmpty() && currentLocation != mirror.countryCode
+    }
+    val unknownList: List<Mirror> = sortedList.filter { mirror ->
+      mirror.countryCode.isNullOrEmpty()
+    }
 
     if (foreignMirrorsPreferred) {
       mirrorList.addAll(foreignList)

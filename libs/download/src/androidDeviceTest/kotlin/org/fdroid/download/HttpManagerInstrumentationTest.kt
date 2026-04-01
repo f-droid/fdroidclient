@@ -103,15 +103,14 @@ internal class HttpManagerInstrumentationTest {
     )
     val clientFactory =
       object : HttpClientEngineFactory<OkHttpConfig> {
-        override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine =
-          OkHttp.create {
-            block()
-            config {
-              val restricted12 = ConnectionSpec.Builder(RESTRICTED_TLS).tlsVersions(TLS_1_2).build()
-              val modern12 = ConnectionSpec.Builder(MODERN_TLS).tlsVersions(TLS_1_2).build()
-              connectionSpecs(listOf(restricted12, modern12))
-            }
+        override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine = OkHttp.create {
+          block()
+          config {
+            val restricted12 = ConnectionSpec.Builder(RESTRICTED_TLS).tlsVersions(TLS_1_2).build()
+            val modern12 = ConnectionSpec.Builder(MODERN_TLS).tlsVersions(TLS_1_2).build()
+            connectionSpecs(listOf(restricted12, modern12))
           }
+        }
       }
     val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = clientFactory)
     val mirror = Mirror("https://www.howsmyssl.com")

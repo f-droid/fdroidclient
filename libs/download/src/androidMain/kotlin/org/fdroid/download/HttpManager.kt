@@ -26,29 +26,28 @@ internal actual fun getHttpClientEngineFactory(customDns: CustomDns?): HttpClien
         CLEARTEXT, // needed for swap connections, allowed in fdroidclient:app as well
       )
 
-    override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine =
-      OkHttp.create {
-        block()
-        config {
-          if (proxy.isTor()) { // don't allow DNS requests when using Tor
-            dns(NoDns())
-          } else if (customDns != null) {
-            dns(customDns)
-          }
-          hostnameVerifier { hostname, session ->
-            try {
-              session?.sessionContext?.sessionTimeout = 10
-            } catch (e: NullPointerException) {
-              // com.android.org.conscrypt.AbstractSessionContext.setSessionTimeout()
-              // can throw this internally, so let's not crash due to this
-              Log.e("HttpManager", "Error setting session timeout: ", e)
-            }
-            // use default hostname verifier
-            OkHostnameVerifier.verify(hostname, session)
-          }
-          connectionSpecs(connectionSpecs)
+    override fun create(block: OkHttpConfig.() -> Unit): HttpClientEngine = OkHttp.create {
+      block()
+      config {
+        if (proxy.isTor()) { // don't allow DNS requests when using Tor
+          dns(NoDns())
+        } else if (customDns != null) {
+          dns(customDns)
         }
+        hostnameVerifier { hostname, session ->
+          try {
+            session?.sessionContext?.sessionTimeout = 10
+          } catch (e: NullPointerException) {
+            // com.android.org.conscrypt.AbstractSessionContext.setSessionTimeout()
+            // can throw this internally, so let's not crash due to this
+            Log.e("HttpManager", "Error setting session timeout: ", e)
+          }
+          // use default hostname verifier
+          OkHostnameVerifier.verify(hostname, session)
+        }
+        connectionSpecs(connectionSpecs)
       }
+    }
   }
 }
 
