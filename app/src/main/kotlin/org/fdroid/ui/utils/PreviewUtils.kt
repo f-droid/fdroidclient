@@ -36,6 +36,7 @@ import org.fdroid.ui.details.AppDetailsItem
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
+import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListModel
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.repositories.RepositoryInfo
@@ -273,7 +274,52 @@ fun getPreviewVersion(versionName: String, size: Long? = null) =
     override val hasKnownVulnerability: Boolean = false
   }
 
-fun getAppListInfo(model: AppListModel) =
+val appListItems =
+  listOf(
+    AppListItem(
+      repoId = 1,
+      packageName = "org.example.camera",
+      name = "Open Camera",
+      summary = "Camera app with manual controls",
+      lastUpdated = 1,
+      isInstalled = false,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 1,
+      packageName = "org.example.notes",
+      name = "Simple Notes",
+      summary = "Fast and offline note taking",
+      lastUpdated = 2,
+      isInstalled = true,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 2,
+      packageName = "org.example.music",
+      name = "Wave Player",
+      summary = "Music player with playlist support",
+      lastUpdated = 3,
+      isInstalled = true,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 2,
+      packageName = "org.example.reader",
+      name = "Book Reader",
+      summary = "Read EPUB and PDF files",
+      lastUpdated = 4,
+      isInstalled = false,
+      isCompatible = true,
+    ),
+  )
+
+fun getAppListInfo(
+  model: AppListModel,
+  list: AppListType = AppListType.New("New"),
+  showFilters: Boolean = false,
+  showOnboarding: Boolean = false,
+) =
   object : AppListInfo {
     override val model: AppListModel = model
     override val actions: AppListActions =
@@ -304,9 +350,9 @@ fun getAppListInfo(model: AppListModel) =
 
         override fun onOnboardingSeen() {}
       }
-    override val list: AppListType = AppListType.New("New")
-    override val showFilters: Boolean = false
-    override val showOnboarding: Boolean = false
+    override val list: AppListType = list
+    override val showFilters: Boolean = showFilters
+    override val showOnboarding: Boolean = showOnboarding
   }
 
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
