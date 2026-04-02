@@ -11,6 +11,8 @@ public data class Mirror
 constructor(
   val baseUrl: String,
   val countryCode: String? = null,
+  val ipv4Addresses: List<String> = emptyList(),
+  val ipv6Addresses: List<String> = emptyList(),
   /**
    * If this is true, this as an IPFS HTTP gateway that only accepts CIDv1 and not regular paths. So
    * use this mirror only, if you have a CIDv1 available for supplying it to [getUrl].

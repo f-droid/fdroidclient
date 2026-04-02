@@ -1,0 +1,27 @@
+{
+  "repo": {
+    "name": {
+      "en-US": "DnsTest"
+    },
+    "address": "https://dns-test.org/repo",
+    "mirrors": [
+      {
+        "url": "https://dns-test.org/repo",
+        "countryCode": "us",
+        "dnsA": [
+          "16.15.191.37",
+          "16.15.191.44"
+        ]
+      },
+      {
+        "url": "https://dns-test.com/repo",
+        "countryCode": "nl",
+        "dnsAAAA": [
+          "2600:1f60:80a0::100f:db9b",
+          "2600:1f60:80a0::100f:df70"
+        ]
+      }
+    ],
+    "timestamp": 99
+  }
+}

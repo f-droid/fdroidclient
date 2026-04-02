@@ -45,6 +45,10 @@ class DnsCache @Inject constructor(private val settingsManager: SettingsManager)
     }
   }
 
+  fun keys(): Set<String> {
+    return cache.keys
+  }
+
   private fun cacheWrite() {
     if (writeScheduled.compareAndSet(expectedValue = false, newValue = true)) {
       MainScope().launch {

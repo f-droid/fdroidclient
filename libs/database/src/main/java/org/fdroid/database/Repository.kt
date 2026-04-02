@@ -10,6 +10,8 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import java.util.concurrent.TimeUnit
+import kotlin.String
+import kotlin.collections.List
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.index.IndexFormatVersion
 import org.fdroid.index.IndexUtils.getFingerprint
@@ -275,6 +277,8 @@ internal data class Mirror(
   val repoId: Long,
   val url: String,
   val countryCode: String? = null,
+  val dnsA: List<String>? = null,
+  val dnsAAAA: List<String>? = null,
   @ColumnInfo(defaultValue = "0") val isPrimary: Boolean = false,
 ) {
   internal companion object {
@@ -285,6 +289,8 @@ internal data class Mirror(
     org.fdroid.download.Mirror(
       baseUrl = url,
       countryCode = countryCode,
+      ipv4Addresses = dnsA ?: emptyList(),
+      ipv6Addresses = dnsAAAA ?: emptyList(),
       // TODO add isPrimary = isPrimary,
     )
 }
@@ -294,6 +300,8 @@ internal fun MirrorV2.toMirror(repoId: Long) =
     repoId = repoId,
     url = url,
     countryCode = countryCode,
+    dnsA = dnsA ?: emptyList(),
+    dnsAAAA = dnsAAAA ?: emptyList(),
     // TODO add isPrimary = isPrimary,
   )
 

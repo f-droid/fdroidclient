@@ -198,6 +198,14 @@ internal class MirrorChooserWithParameters(
     url: Url,
     request: suspend (mirror: Mirror, url: Url) -> T,
   ): T {
+    // check mirror for ips and pre-load dns cache
+    if (!mirror.ipv4Addresses.isEmpty() || !mirror.ipv6Addresses.isEmpty()) {
+      mirrorParameterManager?.cacheMirrorIpAddresses(
+        url.host,
+        mirror.ipv4Addresses,
+        mirror.ipv6Addresses,
+      )
+    }
     return try {
       request(mirror, url)
     } catch (e: Exception) {

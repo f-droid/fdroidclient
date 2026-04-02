@@ -9,6 +9,9 @@ import org.fdroid.index.IndexParser
 import org.fdroid.index.parseV2
 import org.fdroid.index.v2.IndexV2
 import org.fdroid.index.v2.IndexV2DiffStreamProcessor
+import org.fdroid.index.v2.MirrorV2
+import org.fdroid.index.v2.RepoV2
+import org.fdroid.test.LOCALE
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMaxV2.PACKAGE_NAME_3
 import org.fdroid.test.TestDataMaxV2.app3
@@ -82,6 +85,142 @@ internal class IndexV2DiffTest : DbTest() {
       startPath = "index-mid-v2.json",
       diffPath = "diff-empty-max/1337.json",
       endIndex = TestDataMaxV2.index,
+    )
+  }
+
+  // add more dnsA/dnsAAAA results to mirrors
+  @Test
+  fun testAddDns() {
+    val diffJson =
+      """
+      {
+        "repo": {
+          "mirrors": [
+            {
+              "url": "https://dns-test.org/repo",
+              "countryCode": "us",
+              "dnsA": [
+                "16.15.191.37",
+                "16.15.191.44",
+                "16.15.199.90",
+                "16.15.219.121"
+              ]
+            },
+            {
+              "url": "https://dns-test.com/repo",
+              "countryCode": "nl",
+              "dnsAAAA": [
+                "2600:1f60:80a0::100f:db9b",
+                "2600:1f60:80a0::100f:df70",
+                "2600:1f60:80a0::100f:df7b",
+                "2600:1f60:80c0::100f:b9f4"
+              ]
+            }
+          ]
+        }
+      }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-base-dns-v2.json",
+      diff = diffJson,
+      endIndex = TestDataAddDnsV2.index,
+    )
+  }
+
+  // remove dnsA/dnsAAAA results from mirrors
+  @Test
+  fun testRemoveDns() {
+    val diffJson =
+      """
+      {
+        "repo": {
+          "mirrors": [
+            {
+              "url": "https://dns-test.org/repo",
+              "countryCode": "us",
+              "dnsA": []
+            },
+            {
+              "url": "https://dns-test.com/repo",
+              "countryCode": "nl",
+              "dnsAAAA": []
+            }
+          ]
+        }
+      }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-base-dns-v2.json",
+      diff = diffJson,
+      endIndex = TestDataRemoveDnsV2.index,
+    )
+  }
+
+  // set dnsA/dnsAAAA results from mirrors to null
+  @Test
+  fun testNullDns() {
+    val diffJson =
+      """
+      {
+        "repo": {
+          "mirrors": [
+            {
+              "url": "https://dns-test.org/repo",
+              "countryCode": "us",
+              "dnsA": null
+            },
+            {
+              "url": "https://dns-test.com/repo",
+              "countryCode": "nl",
+              "dnsAAAA": null
+            }
+          ]
+        }
+      }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-base-dns-v2.json",
+      diff = diffJson,
+      endIndex = TestDataRemoveDnsV2.index,
+    )
+  }
+
+  // replace dnsA results with dnsAAAA results and vice versa
+  @Test
+  fun testSwapDns() {
+    val diffJson =
+      """
+      {
+        "repo": {
+          "mirrors": [
+            {
+              "url": "https://dns-test.org/repo",
+              "countryCode": "us",
+              "dnsAAAA": [
+                "2600:1f60:80a0::100f:db9b",
+                "2600:1f60:80a0::100f:df70"
+              ]
+            },
+            {
+              "url": "https://dns-test.com/repo",
+              "countryCode": "nl",
+              "dnsA": [
+                "16.15.191.37",
+                "16.15.191.44"
+              ]
+            }
+          ]
+        }
+      }
+      """
+        .trimIndent()
+    testJsonDiff(
+      startPath = "index-base-dns-v2.json",
+      diff = diffJson,
+      endIndex = TestDataSwapDnsV2.index,
     )
   }
 
@@ -532,5 +671,78 @@ internal class IndexV2DiffTest : DbTest() {
     // assert that changed DB data is equal to given endIndex
     assertDbEquals(repoId, endIndex)
     return repoId
+  }
+
+  object TestDataAddDnsV2 {
+
+    val repo =
+      RepoV2(
+        timestamp = 99,
+        name = mapOf(LOCALE to "DnsTest"),
+        address = "https://dns-test.org/repo",
+        mirrors =
+          listOf(
+            MirrorV2(
+              "https://dns-test.org/repo",
+              "us",
+              dnsA = listOf("16.15.191.37", "16.15.191.44", "16.15.199.90", "16.15.219.121"),
+            ),
+            MirrorV2(
+              "https://dns-test.com/repo",
+              "nl",
+              dnsAAAA =
+                listOf(
+                  "2600:1f60:80a0::100f:db9b",
+                  "2600:1f60:80a0::100f:df70",
+                  "2600:1f60:80a0::100f:df7b",
+                  "2600:1f60:80c0::100f:b9f4",
+                ),
+            ),
+          ),
+      )
+
+    val index = IndexV2(repo = repo)
+  }
+
+  object TestDataRemoveDnsV2 {
+
+    val repo =
+      RepoV2(
+        timestamp = 99,
+        name = mapOf(LOCALE to "DnsTest"),
+        address = "https://dns-test.org/repo",
+        mirrors =
+          listOf(
+            MirrorV2("https://dns-test.org/repo", "us", dnsA = emptyList()),
+            MirrorV2("https://dns-test.com/repo", "nl", dnsAAAA = emptyList()),
+          ),
+      )
+
+    val index = IndexV2(repo = repo)
+  }
+
+  object TestDataSwapDnsV2 {
+
+    val repo =
+      RepoV2(
+        timestamp = 99,
+        name = mapOf(LOCALE to "DnsTest"),
+        address = "https://dns-test.org/repo",
+        mirrors =
+          listOf(
+            MirrorV2(
+              "https://dns-test.org/repo",
+              "us",
+              dnsAAAA = listOf("2600:1f60:80a0::100f:db9b", "2600:1f60:80a0::100f:df70"),
+            ),
+            MirrorV2(
+              "https://dns-test.com/repo",
+              "nl",
+              dnsA = listOf("16.15.191.37", "16.15.191.44"),
+            ),
+          ),
+      )
+
+    val index = IndexV2(repo = repo)
   }
 }

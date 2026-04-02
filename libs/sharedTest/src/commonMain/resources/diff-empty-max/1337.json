@@ -27,11 +27,23 @@
     "mirrors": [
       {
         "url": "https://max-v1.com",
-        "countryCode": "us"
+        "countryCode": "us",
+        "dnsA": [
+          "16.15.191.37",
+          "16.15.191.44",
+          "16.15.199.90",
+          "16.15.219.121"
+        ]
       },
       {
         "url": "https://max-v1.org/repo",
-        "countryCode": "nl"
+        "countryCode": "nl",
+        "dnsAAAA": [
+          "2600:1f60:80a0::100f:db9b",
+          "2600:1f60:80a0::100f:df70",
+          "2600:1f60:80a0::100f:df7b",
+          "2600:1f60:80c0::100f:b9f4"
+        ]
       }
     ],
     "timestamp": 9223372036854775807,

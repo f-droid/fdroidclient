@@ -764,7 +764,24 @@ object TestDataMaxV2 {
           "de" to "Dies ist ein Repo mit maximaler Datendichte.",
         ),
       mirrors =
-        listOf(MirrorV2("https://max-v1.com", "us"), MirrorV2("https://max-v1.org/repo", "nl")),
+        listOf(
+          MirrorV2(
+            "https://max-v1.com",
+            "us",
+            dnsA = listOf("16.15.191.37", "16.15.191.44", "16.15.199.90", "16.15.219.121"),
+          ),
+          MirrorV2(
+            "https://max-v1.org/repo",
+            "nl",
+            dnsAAAA =
+              listOf(
+                "2600:1f60:80a0::100f:db9b",
+                "2600:1f60:80a0::100f:df70",
+                "2600:1f60:80a0::100f:df7b",
+                "2600:1f60:80c0::100f:b9f4",
+              ),
+          ),
+        ),
       antiFeatures =
         mapOf(
           "VeryBad" to AntiFeatureV2(name = emptyMap()),

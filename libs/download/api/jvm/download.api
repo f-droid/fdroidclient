@@ -82,18 +82,24 @@ public final class org/fdroid/download/Mirror {
 	public static final field Companion Lorg/fdroid/download/Mirror$Companion;
 	public fun <init> (Ljava/lang/String;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Z)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Z
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Z)Lorg/fdroid/download/Mirror;
-	public static synthetic fun copy$default (Lorg/fdroid/download/Mirror;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lorg/fdroid/download/Mirror;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Z)Lorg/fdroid/download/Mirror;
+	public static synthetic fun copy$default (Lorg/fdroid/download/Mirror;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZILjava/lang/Object;)Lorg/fdroid/download/Mirror;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromStrings (Ljava/util/List;)Ljava/util/List;
 	public final fun getBaseUrl ()Ljava/lang/String;
 	public final fun getCountryCode ()Ljava/lang/String;
 	public final fun getFDroidLinkUrl (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getIpv4Addresses ()Ljava/util/List;
+	public final fun getIpv6Addresses ()Ljava/util/List;
 	public final fun getUrl ()Lio/ktor/http/Url;
 	public final fun getUrl (Ljava/lang/String;)Lio/ktor/http/Url;
 	public fun hashCode ()I
@@ -114,6 +120,7 @@ public abstract interface class org/fdroid/download/MirrorChooser {
 }
 
 public abstract interface class org/fdroid/download/MirrorParameterManager {
+	public abstract fun cacheMirrorIpAddresses (Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
 	public abstract fun getCurrentLocation ()Ljava/lang/String;
 	public abstract fun getMirrorErrorCount (Ljava/lang/String;)I
 	public abstract fun incrementMirrorErrorCount (Ljava/lang/String;)V
