@@ -22,9 +22,16 @@ class DnsCacheTest {
   private val url2 = "fdroid.org"
   private val url3 = "fdroid.net"
 
-  private val ip1 = InetAddress.getByName("127.0.0.1")
-  private val ip2 = InetAddress.getByName("127.0.0.2")
-  private val ip3 = InetAddress.getByName("127.0.0.3")
+
+  private val ip1String = "127.0.0.1"
+  private val ip2String = "127.0.0.2"
+  private val ip3String = "1a00:2b00:0:0:0::1"
+  private val ip4String = "1a00:2b00:0:0:0::2"
+
+  private val ip1 = InetAddress.getByName(ip1String)
+  private val ip2 = InetAddress.getByName(ip2String)
+  private val ip3 = InetAddress.getByName(ip3String)
+  private val ip4 = InetAddress.getByName(ip4String)
 
   private val list1 = listOf(ip1, ip2, ip3)
   private val list2 = listOf(ip2)
@@ -71,6 +78,28 @@ class DnsCacheTest {
     // confirm result was removed from cache
     val testList4 = testObject.lookup(url2)
     assertNull(testList4)
+  }
+
+  @Test
+  fun preloadCacheTest() {
+    // test setup
+    settings.useDnsCache = true
+    val testCache = DnsCache(settings)
+    val testObject = DnsWithCache(settings, testCache)
+
+    val ipv4Strings = listOf(ip1String, ip2String)
+    val ipv6Strings = listOf(ip3String, ip4String)
+
+    testObject.populateCacheWithStrings(url1,ipv4Strings, ipv6Strings)
+    val resultList1 = testObject.lookup(url1)
+    assertEquals(4, resultList1.size)
+
+    val ipv4 = listOf(ip1, ip2)
+    val ipv6 = listOf(ip3, ip4)
+
+    testObject.populateCacheWithIps(url2, ipv4,ipv6)
+    val resultList2 = testObject.lookup(url2)
+    assertEquals(4, resultList2.size)
   }
 
   @Test

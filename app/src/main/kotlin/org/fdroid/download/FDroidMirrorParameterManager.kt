@@ -21,6 +21,14 @@ constructor(
   private val dnsWithCache: DnsWithCache,
 ) : MirrorParameterManager {
 
+  override fun cacheMirrorIpAddresses(
+    mirrorUrl: String,
+    ipv4Addresses: List<String>,
+    ipv6Addresses: List<String>
+  ) {
+    dnsWithCache.populateCacheWithStrings(mirrorUrl, ipv4Addresses, ipv6Addresses)
+  }
+
   override fun shouldRetryRequest(mirrorUrl: String): Boolean {
     return dnsWithCache.shouldRetryRequest(mirrorUrl)
   }

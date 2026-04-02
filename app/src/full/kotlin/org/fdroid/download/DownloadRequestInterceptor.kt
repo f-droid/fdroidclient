@@ -12,7 +12,8 @@ class DownloadRequestInterceptor @Inject constructor(private val ipfsManager: Ip
       // because have a CIDv1 and IPFS is enabled in preferences
       val newMirrors =
         request.mirrors.toMutableList().apply {
-          val gatewayMirrors = ipfsManager.activeGateways.map { Mirror(it, null, true) }
+          val gatewayMirrors =
+            ipfsManager.activeGateways.map { Mirror(baseUrl = it, isIpfsGateway = true) }
           addAll(gatewayMirrors)
         }
       request.copy(mirrors = newMirrors)

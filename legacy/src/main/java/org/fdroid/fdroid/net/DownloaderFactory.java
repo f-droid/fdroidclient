@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import info.guardianproject.netcipher.NetCipher;
@@ -50,7 +51,8 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
 
     @NonNull
     @Override
-    @SuppressLint("MissingPermission") // we'd need to ask for Bluetooth permission, but code unmaintained
+    @SuppressLint("MissingPermission")
+    // we'd need to ask for Bluetooth permission, but code unmaintained
     protected Downloader create(@NonNull Repository repo, @NonNull List<Mirror> mirrors, @NonNull Uri uri,
                                 @NonNull IndexFile indexFile, @NonNull File destFile,
                                 @Nullable Mirror tryFirst) throws IOException {
@@ -97,7 +99,12 @@ public class DownloaderFactory extends org.fdroid.download.DownloaderFactory {
     private static List<Mirror> loadIpfsGateways(Preferences prefs) {
         List<Mirror> mirrorList = new ArrayList<>();
         for (String gatewayUrl : prefs.getActiveIpfsGateways()) {
-            mirrorList.add(new Mirror(gatewayUrl, null, true));
+            mirrorList.add(new Mirror(gatewayUrl,
+                    null,
+                    Collections.emptyList(),
+                    Collections.emptyList(),
+                    true
+            ));
         }
         return mirrorList;
     }

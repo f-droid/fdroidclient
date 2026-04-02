@@ -18,6 +18,16 @@ public interface MirrorParameterManager {
   public fun getMirrorErrorCount(mirrorUrl: String): Int
 
   /**
+   * Cache the ip addresses for a mirror to bypass DNS lookups. The interface assumes the mirror
+   * will include the ip addresses in string format so they will need to be converted.
+   */
+  public fun cacheMirrorIpAddresses(
+    mirrorUrl: String,
+    ipv4Addresses: List<String>,
+    ipv6Addresses: List<String>,
+  )
+
+  /**
    * Returns true or false depending on whether a particular mirror should be retried before moving
    * on to the next one (typically based on checking dns results)
    */

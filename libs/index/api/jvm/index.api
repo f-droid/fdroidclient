@@ -784,14 +784,18 @@ public final class org/fdroid/index/v2/MetadataV2$Companion {
 
 public final class org/fdroid/index/v2/MirrorV2 {
 	public static final field Companion Lorg/fdroid/index/v2/MirrorV2$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/fdroid/index/v2/MirrorV2;
-	public static synthetic fun copy$default (Lorg/fdroid/index/v2/MirrorV2;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/fdroid/index/v2/MirrorV2;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lorg/fdroid/index/v2/MirrorV2;
+	public static synthetic fun copy$default (Lorg/fdroid/index/v2/MirrorV2;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/fdroid/index/v2/MirrorV2;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCountryCode ()Ljava/lang/String;
+	public final fun getDnsA ()Ljava/util/List;
+	public final fun getDnsAAAA ()Ljava/util/List;
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

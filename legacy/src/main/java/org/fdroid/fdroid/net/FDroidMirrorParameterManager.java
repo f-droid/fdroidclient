@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
@@ -65,6 +66,15 @@ public class FDroidMirrorParameterManager implements MirrorParameterManager {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public void cacheMirrorIpAddresses(
+            @NotNull String mirrorUrl,
+            @NotNull List<@NotNull String> ipv4Addresses,
+            @NotNull List<@NotNull String> ipv6Addresses
+    ) {
+        // TODO: is it necessary to implement this in the legacy code?
     }
 
     /**

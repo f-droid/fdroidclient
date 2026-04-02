@@ -116,7 +116,7 @@ internal class RepositoryDiffTest : DbTest() {
       """
         .trimIndent()
     testDiff(repo, json) { repos ->
-      val expectedMirrors = setOf(Mirror(repos[0].repoId, "foo", "bar"))
+      val expectedMirrors = setOf(Mirror(repos[0].repoId, "foo", "bar", emptyList(), emptyList()))
       assertEquals(expectedMirrors, repos[0].mirrors.toSet())
       assertRepoEquals(repo.copy(mirrors = listOf(MirrorV2("foo", "bar"))), repos[0])
     }

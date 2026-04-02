@@ -4,6 +4,7 @@ import java.net.InetAddress
 import java.net.UnknownHostException
 import javax.inject.Inject
 import javax.inject.Singleton
+import mu.KotlinLogging
 import okhttp3.Dns
 import org.fdroid.settings.SettingsManager
 
@@ -17,11 +18,51 @@ constructor(private val settingsManager: SettingsManager, private val cache: Dns
       return Dns.SYSTEM.lookup(hostname)
     }
     var ipList = cache.lookup(hostname)
-    if (ipList == null) {
+    if (ipList.isNullOrEmpty()) {
       ipList = Dns.SYSTEM.lookup(hostname)
       cache.insert(hostname, ipList)
     }
     return ipList
+  }
+
+  /**
+   * these methods provide a way to pre-load the cache with values from other sources such as
+   * the mirror info from the index, further reducing the needs to do DNS lookups
+   */
+  fun populateCacheWithStrings(hostname: String, ipv4List: List<String>, ipv6List: List<String>) {
+    val ipv4ConvertedList = stringListToIpList(ipv4List)
+    val ipv6ConvertedList = stringListToIpList(ipv6List)
+    populateCacheWithIps(hostname, ipv4ConvertedList, ipv6ConvertedList)
+  }
+
+  fun populateCacheWithIps(hostname: String, ipv4List: List<InetAddress>, ipv6List: List<InetAddress>) {
+    // at this time, the DNS cache only supports a single collection because that's what the DNS
+    // lookup method returns. since these values are being inserted manually, it's possible that
+    // the cache might end up with values that wouldn't have been returned by the lookup method.
+    // if that becomes an issue, logic could be added here to filter the values that are inserted.
+    val mergedList = mutableListOf<InetAddress>()
+    mergedList.addAll(ipv4List)
+    mergedList.addAll(ipv6List)
+    if (!cache.keys().contains(hostname) && !mergedList.isEmpty()) {
+      cache.insert(hostname, mergedList)
+    }
+  }
+
+  private fun stringListToIpList(ipList: List<String>): List<InetAddress> {
+    val log = KotlinLogging.logger {}
+    try {
+      return ipList.mapNotNull {
+        try {
+          InetAddress.getByName(it)
+        } catch (e: UnknownHostException) {
+          log.warn { "Unexpected format for IP address: $it" }
+          null
+        }
+      }
+    } catch (e: Exception) {
+      log.warn { "Failed to parse list of IP addresses, returning empty list" }
+      return emptyList()
+    }
   }
 
   /**
