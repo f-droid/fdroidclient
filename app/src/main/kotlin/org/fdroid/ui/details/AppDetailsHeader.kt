@@ -1,10 +1,12 @@
 package org.fdroid.ui.details
 
+import android.content.res.Configuration
 import android.text.format.Formatter
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.Arrangement.SpaceBetween
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -53,12 +55,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil3.compose.AsyncImage
+import kotlin.math.roundToLong
 import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
@@ -73,7 +77,13 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
+/** Timestamp [now] gets passed in for screenshot tests to have a stable download speed. */
+fun AppDetailsHeader(
+  item: AppDetailsItem,
+  innerPadding: PaddingValues,
+  now: Long = System.currentTimeMillis(),
+) {
+  val context = LocalContext.current
   Box {
     Spacer(modifier = Modifier.padding(top = innerPadding.calculateTopPadding()))
     var showFeatureGraphic by remember { mutableStateOf(true) }
@@ -196,53 +206,78 @@ fun AppDetailsHeader(item: AppDetailsItem, innerPadding: PaddingValues) {
     onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
   }
   // Main Buttons
+  val state = item.installState
   val buttonLineModifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
   AnimatedVisibility(item.mainButtonState == MainButtonState.PROGRESS) {
-    Row(modifier = buttonLineModifier, verticalAlignment = CenterVertically) {
-      Column {
-        val strRes =
-          when (item.installState) {
-            is InstallState.Waiting -> R.string.status_install_preparing
-            is InstallState.Starting -> R.string.status_install_preparing
-            is InstallState.PreApproved -> R.string.status_install_preparing
-            is InstallState.Downloading -> R.string.downloading
-            is InstallState.Installing -> R.string.installing
-            is InstallState.UserConfirmationNeeded -> R.string.installing
-            else -> -1
-          }
-        if (strRes >= 0)
-          Text(text = stringResource(strRes), style = MaterialTheme.typography.bodyMedium)
-        Row(verticalAlignment = CenterVertically) {
-          if (item.installState is InstallState.Downloading) {
-            val animatedProgress by
-              animateFloatAsState(
-                targetValue = item.installState.progress,
-                animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
-              )
-            LinearWavyProgressIndicator(
-              stopSize = 0.dp,
-              progress = { animatedProgress },
-              modifier = Modifier.weight(1f),
+    Column(modifier = buttonLineModifier) {
+      val strRes =
+        when (state) {
+          is InstallState.Waiting -> R.string.status_install_preparing
+          is InstallState.Starting -> R.string.status_install_preparing
+          is InstallState.PreApproved -> R.string.status_install_preparing
+          is InstallState.Installing -> R.string.installing
+          is InstallState.UserConfirmationNeeded -> R.string.installing
+          else -> -1 // Downloading is specially handled below
+        }
+      if (strRes >= 0) {
+        Text(
+          text = stringResource(strRes),
+          style = MaterialTheme.typography.bodyMedium,
+          overflow = TextOverflow.Ellipsis,
+          maxLines = 1,
+        )
+      } else if (state is InstallState.Downloading) {
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = SpaceBetween) {
+          val secondsPassed = ((now - state.startMillis) / 1000f).takeIf { it > 0 } ?: 1f
+          val averageSpeed = (state.downloadedBytes / secondsPassed).roundToLong()
+          val speedStr = Formatter.formatFileSize(context, averageSpeed) + "/s"
+          val remainingStr =
+            Formatter.formatFileSize(context, state.totalBytes - state.downloadedBytes)
+          Text(
+            text = stringResource(R.string.status_downloading, speedStr),
+            style = MaterialTheme.typography.bodyMedium,
+            overflow = TextOverflow.StartEllipsis,
+            maxLines = 1,
+            modifier = Modifier.padding(end = 8.dp),
+          )
+          Text(
+            text = stringResource(R.string.status_downloading_remaining, remainingStr),
+            style = MaterialTheme.typography.bodyMedium,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+          )
+        }
+      }
+      Row(verticalAlignment = CenterVertically) {
+        if (state is InstallState.Downloading) {
+          val animatedProgress by
+            animateFloatAsState(
+              targetValue = state.progress,
+              animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
             )
-          } else {
-            LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
+          LinearWavyProgressIndicator(
+            stopSize = 0.dp,
+            progress = { animatedProgress },
+            modifier = Modifier.weight(1f),
+          )
+        } else {
+          LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
+        }
+        var cancelled by remember { mutableStateOf(false) }
+        IconButton(
+          onClick = {
+            if (!cancelled) item.actions.cancelInstall()
+            cancelled = true
           }
-          var cancelled by remember { mutableStateOf(false) }
-          IconButton(
-            onClick = {
-              if (!cancelled) item.actions.cancelInstall()
-              cancelled = true
-            }
-          ) {
-            AnimatedVisibility(cancelled) {
-              CircularProgressIndicator(modifier = Modifier.size(24.dp))
-            }
-            AnimatedVisibility(!cancelled) {
-              Icon(
-                imageVector = Icons.Default.Cancel,
-                contentDescription = stringResource(R.string.cancel),
-              )
-            }
+        ) {
+          AnimatedVisibility(cancelled) {
+            CircularProgressIndicator(modifier = Modifier.size(24.dp))
+          }
+          AnimatedVisibility(!cancelled) {
+            Icon(
+              imageVector = Icons.Default.Cancel,
+              contentDescription = stringResource(R.string.cancel),
+            )
           }
         }
       }
@@ -306,10 +341,95 @@ fun AppDetailsHeaderPreview() {
 
 @Preview
 @Composable
+private fun InstallPreview() {
+  FDroidContent {
+    Column {
+      AppDetailsHeader(
+        testApp.copy(
+          installedVersion = null,
+          installedVersionCode = null,
+          installedVersionName = null,
+          suggestedVersion = testApp.versions?.first()?.version,
+          networkState = NetworkState(true, isMetered = true),
+        ),
+        PaddingValues(top = 8.dp),
+      )
+    }
+  }
+}
+
+@Preview
+@Composable
+private fun UpdatePreview() {
+  FDroidContent {
+    Column {
+      AppDetailsHeader(
+        testApp.copy(
+          suggestedVersion = testApp.versions?.first()?.version,
+          networkState = NetworkState(true, isMetered = true),
+        ),
+        PaddingValues(top = 8.dp),
+      )
+    }
+  }
+}
+
+@Preview
+@Composable
 private fun PreviewLoading() {
   FDroidContent {
     Column {
       val app = testApp.copy(versions = null)
+      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+    }
+  }
+}
+
+@Preview
+@Composable
+private fun PreviewDownloading() {
+  FDroidContent {
+    Column {
+      val app =
+        testApp.copy(
+          installState =
+            InstallState.Downloading(
+              name = "",
+              versionName = "",
+              currentVersionName = "",
+              lastUpdated = 23L,
+              iconModel = null,
+              downloadedBytes = 1024 * 1024 * 3,
+              totalBytes = 1024 * 1024 * 8,
+              startMillis = System.currentTimeMillis() - 9000,
+            ),
+          networkState = NetworkState(true, isMetered = true),
+        )
+      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+    }
+  }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL)
+@Composable
+private fun PreviewDownloadingNight() {
+  FDroidContent {
+    Column {
+      val app =
+        testApp.copy(
+          installState =
+            InstallState.Downloading(
+              name = "",
+              versionName = "",
+              currentVersionName = "",
+              lastUpdated = 23L,
+              iconModel = null,
+              downloadedBytes = 1024 * 1024 * 3,
+              totalBytes = 1024 * 1024 * 8,
+              startMillis = System.currentTimeMillis() - 9000,
+            ),
+          networkState = NetworkState(true, isMetered = true),
+        )
       AppDetailsHeader(app, PaddingValues(top = 8.dp))
     }
   }
