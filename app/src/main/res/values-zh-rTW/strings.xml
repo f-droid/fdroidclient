@@ -386,7 +386,7 @@
     <string name="panic_hide_warning_title">記住如何還原</string>
     <string name="panic_hide_warning_message">在緊急情況下，這會被從啟動器中移除 %1$s。只有在仿造的 %3$s 應用程式中輸入 \"%2$d\" 才可以將其還原。</string>
     <string name="hiding_calculator">計算機</string>
-    <string name="hiding_dialog_title">立即隱藏 %s</string>
+    <string name="hiding_dialog_title">立刻隱藏 %s</string>
     <string name="hiding_dialog_message">您確定要從啟動器移除 %1$s 嗎？只有在仿造的 %3$s 應用程式中輸入 \"%2$d\" 才能還原。</string>
     <string name="hiding_dialog_warning">警告：主畫面上任何的應用程式捷徑也將被移除，並需要重新手動新增。</string>
     <string name="hide_on_long_search_press_title">隱藏搜尋按鈕</string>
@@ -527,9 +527,7 @@
     <string name="copied_url_to_clipboard">已複製 URL 到剪貼簿</string>
     <string name="repo_io_error">聯接倉庫時出錯。</string>
     <string name="repo_enter_url">手動輸入倉庫網址</string>
-    <string name="repo_intro">倉庫是額外的程式來源。您添加的第三方倉庫的標準跟那些提供由F-droid自行構建的程式標準不同。
-\n
-\n請確保您所添加的倉庫是可信的。</string>
+    <string name="repo_intro">倉庫是額外的程式來源。您新增的第三方倉庫的標準跟那些提供由F-droid自行建置的程式標準不同。 \n \n請確保您所新增的倉庫是可信的。</string>
     <string name="swap_banner_message">要交換程式，請開啟您的 wifi 並與您的朋友連線到同一個網路。</string>
     <string name="swap_connection_indexv0_error">您正在嘗試使用過時的版本連線到某處。要連線，他們必須升級他們的 F-Droid 應用程式。他們可以使用交換來更新來自您的 F-Droid 應用程式。</string>
     <string name="repo_num_apps_button">顯示應用程式</string>
@@ -637,8 +635,8 @@
     <string name="category_group_tools">工具</string>
     <string name="category_group_wallets">財經與錢包</string>
     <string name="category_group_media">娛樂與媒體</string>
-    <string name="category_group_communication">通訊科技</string>
-    <string name="category_group_device">裝置設備</string>
+    <string name="category_group_communication">通訊</string>
+    <string name="category_group_device">裝置</string>
     <string name="category_group_network">網路</string>
     <string name="category_group_storage">檔案與儲存</string>
     <string name="category_group_interests">興趣</string>
@@ -646,7 +644,7 @@
     <string name="last_updated">最後更新: %1$s</string>
     <string name="last_updated_with_size">最後更新: %1$s (%2$s)</string>
     <string name="status_install_preparing">正在準備安裝…</string>
-    <string name="whats_new_title">更新亮點</string>
+    <string name="whats_new_title">有什麼新事物</string>
     <string name="author_by">由 %1$s 提供</string>
     <string name="donate_title">課金</string>
     <string name="anti_features_title">此應用程式包含負面功能</string>
@@ -659,4 +657,6 @@
     <string name="my_apps_ignore_dialog_text">將忽略此版本中「%1$s」相關的問題</string>
     <string name="my_apps_ignore_dialog_button">隱藏</string>
     <string name="ipfsgw_summary_new">使用 IPFS web 端點下載應用程式</string>
+    <string name="filter_button_save">儲存為預設</string>
+    <string name="clear">清除</string>
 </resources>

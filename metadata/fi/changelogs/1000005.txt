@@ -1,0 +1,3 @@
+* Korjattu ongelma joka estää käännökset näkymästä Android versioilla >= 7.0
+
+* Korjattu DB upgrade crash versiosta 1.0-alpha3 versioon 1.0-alpha4 #1181

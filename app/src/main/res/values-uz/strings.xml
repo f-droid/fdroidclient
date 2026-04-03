@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="no">Yo\'q</string>
+    <string name="no">Yoʻq</string>
     <string name="more">Batafsil</string>
     <string name="less">Ozroq</string>
     <string name="menu_launch">Ochish</string>
-    <string name="main_menu__swap_nearby">Atrofdagilar</string>
-    <string name="skip">O\'tkazish</string>
+    <string name="main_menu__swap_nearby">Yaqin atrofda</string>
+    <string name="skip">Oʻtkazish</string>
     <string name="unverified">Tasdiqlanmagan</string>
     <string name="repo_details">Repozitoriy</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Loyihalar</string>
+    <string tools:ignore="UnusedResources" name="category_Development">Dasturlash</string>
     <string tools:ignore="UnusedResources" name="category_Graphics">Tasvirlar</string>
     <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
     <string tools:ignore="UnusedResources" name="category_Money">Moliya</string>
@@ -22,24 +22,24 @@
     <string name="newPerms">Yangi</string>
     <string name="notification_action_update">Yangilash</string>
     <string name="notification_action_cancel">Bekor qilish</string>
-    <string name="updates">Yangilanish</string>
-    <string name="ok">HOP</string>
+    <string name="updates">Yangilanishlar</string>
+    <string name="ok">OK</string>
     <string name="yes">Ha</string>
-    <string name="menu_manage">Manbalar</string>
+    <string name="menu_manage">Repozitoriylar</string>
     <string name="menu_settings">Sozlamalar</string>
     <string name="menu_search">Qidiruv</string>
-    <string name="menu_add_repo">Yangi manbalar</string>
+    <string name="menu_add_repo">Yangi repozitoriy</string>
     <string name="menu_share">Ulashish</string>
-    <string name="menu_install">O\'rnatish</string>
+    <string name="menu_install">Oʻrnatish</string>
     <string name="menu_uninstall">Oʻchirish</string>
     <string name="menu_upgrade">Yangilash</string>
-    <string name="main_menu__latest_apps">So\'nggi</string>
-    <string name="main_menu__categories">Toifalar</string>
-    <string name="preference_manage_installed_apps">O\'rnatilgan ilovalarni boshqarish</string>
+    <string name="main_menu__latest_apps">Soʻnggi</string>
+    <string name="main_menu__categories">Kategoriyalar</string>
+    <string name="preference_manage_installed_apps">Oʻrnatilgan ilovalarni boshqarish</string>
     <string name="next">Keyingi</string>
     <string name="pref_language">Til</string>
-    <string name="pref_language_default">Tizim standarti</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Bog\'lanishlar</string>
+    <string name="pref_language_default">Tizim tili</string>
+    <string tools:ignore="UnusedResources" name="category_Connectivity">Aloqa</string>
     <string tools:ignore="UnusedResources" name="category_Games">O\'yinlar</string>
     <string tools:ignore="UnusedResources" name="category_Reading">O\'qish</string>
     <string tools:ignore="UnusedResources" name="category_Navigation">Navigatsiya</string>
@@ -60,7 +60,7 @@
     <string name="prompt_to_send_crash_reports_summary">Nosozliklar haqida ma\'lumot to\'plang va ularni ishlab chiquvchiga yuborishni so\'rang</string>
     <string name="cache_downloaded">Keshlangan ilovalarni saqlang</string>
     <string name="unstable_updates">Barqaror yangilanishlar</string>
-    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_full">F‑Droid</string>
     <string name="force_old_installer_title">Eski o‘rnatkichni majburlash</string>
     <string name="force_old_installer_summary">Sessiya o‘rnatkichini o‘chirish, shu jumladan avtomatik fon yangilanishlarini.</string>
     <string name="system_installer">Imtiyozli Modul</string>

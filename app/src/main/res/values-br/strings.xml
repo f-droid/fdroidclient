@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="notification_action_cancel">Nullañ</string>
-    <string name="notification_title_summary_install_error">C\'hwited eo bet ar staliadur</string>
+    <string name="notification_title_summary_install_error">Staliadur c\'hwitet</string>
     <string name="updates">Hizivadennoù</string>
     <string name="yes">Ya</string>
     <string name="next">A-heul</string>
@@ -37,7 +37,7 @@
     <string name="more">Muioc\'h</string>
     <string name="less">Nebeutoc\'h</string>
     <string name="menu_search">Klask</string>
-    <string name="menu_add_repo">Teurel Nevez</string>
+    <string name="menu_add_repo">Mirva nevez</string>
     <string name="menu_launch">Digeriñ</string>
     <string name="menu_share">Rannañ</string>
     <string name="menu_install">Staliañ</string>
@@ -82,7 +82,7 @@
     <string name="swap_send_fdroid">Kas F-Droid</string>
     <string name="hide_all_notifications">Kuzhat holl kemennoù</string>
     <string name="crash_dialog_title">Harzet eo bet F-Droid en un doare dic\'hortoz</string>
-    <string name="notification_title_single_update_available">Un hizivadenn \'zo hegerz</string>
+    <string name="notification_title_single_update_available">Un hizivadur zo hegerz</string>
     <string name="install_history">Istor ar staliadurioù</string>
     <string name="other">All</string>
     <string name="over_wifi">Dre Wi-Fi</string>
@@ -98,4 +98,5 @@
     <string name="app_recommended_version_installed">Stumm %1$s (erbedet)</string>
     <string name="swap_dont_show_again">Arabat skrammañ an dra-se din en-dro</string>
     <string name="antitracklist">Heuliet ha treuzkaset e vez hoc\'h obererezh gant an arload-mañ</string>
+    <string name="app_name_full">F-Droid</string>
 </resources>

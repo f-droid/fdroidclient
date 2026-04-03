@@ -411,9 +411,9 @@
     <string name="over_data">Putem mobilne mreže</string>
     <string name="over_wifi">Putem Wi-Fi mreže</string>
     <string name="send_history_csv">%s povijest instalacija kao CSV datoteka</string>
-    <string name="show_anti_feature_apps_on">Prikaži aplikacije koji imaju poznate ograničavajuće funkcije</string>
-    <string name="show_anti_feature_apps">Uključi ograničavajuće funkcije</string>
-    <string name="antifeatures">Ograničavajuće funkcije</string>
+    <string name="show_anti_feature_apps_on">Prikaži aplikacije koji imaju poznate nepoželjne funkcije</string>
+    <string name="show_anti_feature_apps">Uključi nepoželjne funkcije</string>
+    <string name="antifeatures">Nepoželjne funkcije</string>
     <string name="app__tts__downloading_progress">Preuzimanje, %1$d %% gotovo</string>
     <string name="not_visible_nearby">Funkcija u blizini nije uključena</string>
     <string name="use_bluetooth">Koristi Bluetooth</string>
@@ -453,7 +453,7 @@
     <string name="menu_select_for_wipe">Označi za brisanje</string>
     <string name="updates_disabled_by_settings">Sva ažuriranja su onemogućena zbog postavki Mobilnih podataka / Wi-Fi</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Pronašli smo sigurnosnu prijetnju u %1$s. Preporučujemo da odmah ažuriraš ovu aplikaciju na najnoviju verziju.</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Pronašli smo sigurnosnu prijetnju u %1$s. Dodirni i saznaj više o tome u odjeljku Ograničavajuće funkcije.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Pronašli smo sigurnosnu prijetnju u %1$s. Dodirni i saznaj više o tome u odjeljku Nepoželjne funkcije.</string>
     <string name="app_permission_storage">F-Droid zahtjeva dopuštenje pristupa pohrani kako bi ovo instalirao u pohranu uređaja. Dopustite pristup pohrani na sljedećem zaslonu kako biste nastavili s instalacijom.</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Instalirana verzija nije kompatibilna s nijednom dostupnom verzijom. Deinstaliranje aplikacije omogućiti će vam pregled i instaliranje kompatibilnih verzija. Ovo se često događa s aplikacijama instaliranim putem Google Play ili drugih izvora, ako su potpisane drugim certifikatom.</string>
     <string name="app_details__no_versions__show_incompat_versions">Za prikaz nekompatibilnih verzija omogućite postavku \"%1$s\".</string>
@@ -523,7 +523,7 @@
     <string name="menu_release_channel_beta">Dozvoli ažuriranja beta verzija</string>
     <string name="repositories_last_update">Zadnje ažuriranje: %s</string>
     <string name="app_error_open">Nije bio moguće pokrenuti aplikaciju.</string>
-    <string name="app_list_results_hidden_antifeature_settings">Neke su aplikacije skrivene na temelju tvojih postavki za ograničavajuće funkcije (Anti-Features). Dodirni za mijenjanje.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Neke su aplikacije skrivene na temelju tvojih postavki za nepoželjne funkcije (Anti-Features). Dodirni za mijenjanje.</string>
     <string name="app_list_no_suggested_version">Nijedna verzija se ne preporučuje za instalaciju.</string>
     <string name="antinsfwlist">Ova aplikacija sadrži sadržaj koji ne bi trebao biti objavljen ili svugdje vidljiv</string>
     <plurals name="repo_num_apps_text">
@@ -585,7 +585,7 @@
     <string name="antiknownvuln">Poznata ranjivost</string>
     <string name="antinosource">Izvorni kod više nije dostupan</string>
     <string name="antinsfw">Nije prikladno na poslu</string>
-    <string name="antiothers">Druge ograničavajuće funkcije</string>
+    <string name="antiothers">Druge nepoželjne funkcije</string>
     <string name="antitetherednetlist">Ova aplikacija u potpunosti ovisi o određenoj instanci mrežne usluge</string>
     <string name="useDnsCache">Koristi privremenu memoriju DNS-a</string>
     <string name="useDnsCacheSummary">Koristi spremljene rezultate za smanjivanje broja DNS upita.</string>
@@ -670,7 +670,7 @@
     <string name="package_name">Ime paketa:</string>
     <string name="installed_version">Instalirana verzija:</string>
     <string name="call_to_action_keepandroidopen">F-Droid je ugrožen. Google mijenja način instaliranja aplikacija na tvoj uređaj. Trebamo tvoju pomoć.</string>
-    <string name="anti_features_title">Ova aplikacija sadrži ograničavajuće funkcije</string>
+    <string name="anti_features_title">Ova aplikacija sadrži nepoželjne funkcije</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="ipfsgw_summary_new">Preuzmi aplikacija putem web URL adrese IPSF-a</string>
 </resources>

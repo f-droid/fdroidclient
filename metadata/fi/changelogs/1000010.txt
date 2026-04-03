@@ -1,0 +1,21 @@
+F-Droid on 1.0!
+
+Tämä versio sisältää monia pieniä muutoksia:
+
+* Täysin uudistettu sovellusten päivitysnäkymä 
+
+* Täysin käännettävät sovelluksien tiedot
+
+* "Mitä uutta" näkymä näyttämään muutokset versioissa
+
+* Näyttökuvat ja toimintografiikat
+
+* Tuki median asennukselle, OTA, ZIP, yms tiedostot
+
+* Parannettu suojaus seurannalta (HTTP ETag, TLS, etc.)
+
+* Täysin taustalla toimivat päivitykset Oikeutetun Laajennuksen avulla
+
+* Korostetut osoitteet sovelluskehittäjille
+
+* Paljon nopeammat indeksointipäivitykset

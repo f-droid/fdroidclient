@@ -1,0 +1,7 @@
+* U ndreq përdorim deposh dhe pasqyrash nga Depozitë e Jashtme në hedhje të freskëta në qarkullim të Android-it
+* U përmirësua administrim WiFi për Atypari
+* Shtylla e lëvizjeve tani mban mend pozicionin e vet, kur riniset F-Droid-i
+* Gjuhë e re: Suahili
+* Ndreqje shkarkimi figurash për depo që përdorin ende index-v1
+* Ndreqje vithisjesh të lidhura me swap-in, administrim deposh, etj
+* U hoq butoni “Downgrade”, Android-i s’e lejon më

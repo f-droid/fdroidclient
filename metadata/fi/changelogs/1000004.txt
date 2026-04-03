@@ -1,0 +1,7 @@
+* Pyyhkäisyeleet lisätty Päivitykset- näkymään
+
+* Näytä toiminnot joilla on tunnettuja haavoittuvuuksia
+
+* Käännöksiä päivitetty
+
+* Tumman tilan korjauksia
