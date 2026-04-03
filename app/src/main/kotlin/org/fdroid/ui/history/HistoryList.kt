@@ -55,7 +55,11 @@ fun HistoryList(
           modifier = Modifier.padding(16.dp).fillMaxWidth().clickable { onEnabled(!enabled) },
         ) {
           Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(16.dp)) {
-            Text(text = "Use install history", fontSize = 19.sp, modifier = Modifier.weight(1f))
+            Text(
+              text = stringResource(R.string.install_history_switch),
+              fontSize = 19.sp,
+              modifier = Modifier.weight(1f),
+            )
             Switch(enabled, onCheckedChange = onEnabled)
           }
         }

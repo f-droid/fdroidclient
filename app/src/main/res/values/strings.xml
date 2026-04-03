@@ -1009,6 +1009,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="ipfsgw_caption_official_gateways">Official IPFS gateways</string>
     <string name="ipfsgw_caption_custom_gateways">Custom IPFS gateways</string>
 
+    <string name="install_history_switch">Use installation history</string>
     <string name="install_history_empty_state">This list is still empty\n\nWhen you install, update or uninstall apps, a record will appear here</string>
     <string name="install_history_disabled_state">Installation history is disabled\n\nInstallations, updates and uninstalls will not be recorded</string>
     <string name="install_history_delete_ally">Delete installation history</string>
