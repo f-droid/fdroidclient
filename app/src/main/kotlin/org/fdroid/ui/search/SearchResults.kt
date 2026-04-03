@@ -1,8 +1,10 @@
 package org.fdroid.ui.search
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -10,17 +12,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
+import org.fdroid.search.SavedSearch
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.categories.ChipFlowRow
@@ -36,6 +46,8 @@ data class SearchResults(val apps: List<AppListItem>, val categories: List<Categ
 fun SearchResults(
   searchResults: SearchResults?,
   textFieldState: TextFieldState,
+  savedSearches: List<SavedSearch>?,
+  onClearSavedSearches: () -> Unit,
   onNav: (NavigationKey) -> Unit,
   paddingValues: PaddingValues,
   modifier: Modifier,
@@ -44,7 +56,41 @@ fun SearchResults(
   val listState =
     rememberSaveable(searchResults, saver = LazyListState.Saver) { LazyListState(0, 0) }
   if (searchResults == null) {
-    if (textFieldState.text.length >= SEARCH_THRESHOLD) {
+    if (textFieldState.text.length < SEARCH_THRESHOLD) {
+      if (!savedSearches.isNullOrEmpty()) {
+        LazyColumn(contentPadding = paddingValues, modifier = modifier.fillMaxSize().imePadding()) {
+          item {
+            Row {
+              Text(
+                text = stringResource(R.string.search_history),
+                style = MaterialTheme.typography.labelLarge,
+                modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp).weight(1f),
+              )
+              TextButton(onClick = onClearSavedSearches) { Text(stringResource(R.string.clear)) }
+            }
+          }
+          items(savedSearches) { item ->
+            ListItem(
+              leadingContent = {
+                Icon(
+                  Icons.Default.History,
+                  contentDescription = null,
+                  modifier =
+                    Modifier.clip(CircleShape)
+                      .background(MaterialTheme.colorScheme.surfaceContainer)
+                      .padding(8.dp),
+                )
+              },
+              headlineContent = { Text(item.query) },
+              modifier =
+                Modifier.fillMaxWidth().animateItem().clickable {
+                  textFieldState.edit { replace(0, length, item.query) }
+                },
+            )
+          }
+        }
+      }
+    } else {
       BigLoadingIndicator(modifier.padding(paddingValues).imePadding())
     }
   } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {

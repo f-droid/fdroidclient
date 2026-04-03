@@ -1,7 +1,6 @@
 package org.fdroid.ui.discover
 
 import android.content.pm.PackageInfo
-import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.core.os.LocaleListCompat
@@ -26,7 +25,6 @@ fun DiscoverPresenter(
   mostDownloadedAppsFlow: Flow<List<AppOverviewItem>>,
   categoriesFlow: Flow<List<CategoryItem>>,
   installedAppsFlow: StateFlow<Map<String, PackageInfo>>,
-  searchTextFieldState: TextFieldState,
   isFirstStart: Boolean,
   networkState: NetworkState,
   repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
@@ -91,7 +89,6 @@ fun DiscoverPresenter(
       recentlyUpdatedApps = recentlyUpdatedApps ?: emptyList(),
       mostDownloadedApps = mostDownloadedApps,
       categories = categories?.groupBy { it.group },
-      searchTextFieldState = searchTextFieldState,
       hasRepoIssues = hasRepoIssuesFlow.collectAsState(false).value,
     )
   } else {

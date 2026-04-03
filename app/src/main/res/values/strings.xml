@@ -34,6 +34,7 @@
     <string name="app_list_author">Apps by %s</string>
 
     <string name="search_placeholder">Search…</string>
+    <string name="search_history">Recent searches</string>
     <string name="search_no_results">No apps found\n\nTry using fewer search terms or add more repositories</string>
     <string name="search_filter_no_results">No matching apps\n\nTry using fewer search terms or remove filters</string>
     <string name="search_my_apps_no_results">No matching apps\n\nTry using fewer search terms</string>

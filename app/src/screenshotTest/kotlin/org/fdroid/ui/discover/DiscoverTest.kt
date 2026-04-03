@@ -1,7 +1,6 @@
 package org.fdroid.ui.discover
 
 import android.content.res.Configuration
-import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.android.tools.screenshot.PreviewTest
@@ -132,7 +131,6 @@ private fun getLoadedModel(): LoadedDiscoverModel {
     recentlyUpdatedApps = recentlyUpdatedApps,
     mostDownloadedApps = mostDownloadedApps,
     categories = categories,
-    searchTextFieldState = TextFieldState(),
     hasRepoIssues = true,
   )
 }

@@ -31,7 +31,6 @@ import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.search.SearchManager
 
 @HiltViewModel
 class DiscoverViewModel
@@ -42,7 +41,6 @@ constructor(
   private val db: FDroidDatabase,
   networkMonitor: NetworkMonitor,
   private val settingsManager: SettingsManager,
-  private val searchManager: SearchManager,
   private val repoManager: RepoManager,
   private val repoUpdateManager: RepoUpdateManager,
   private val installedAppsCache: InstalledAppsCache,
@@ -94,7 +92,6 @@ constructor(
           mostDownloadedAppsFlow = mostDownloadedApps,
           categoriesFlow = categories,
           installedAppsFlow = installedAppsCache.installedApps,
-          searchTextFieldState = searchManager.textFieldState,
           isFirstStart = settingsManager.isFirstStart,
           // not observing the flow, but just taking the current value,
           // because we kick off repo updates from the UI depending on this state

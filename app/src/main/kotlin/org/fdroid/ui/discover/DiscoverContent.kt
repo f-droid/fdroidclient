@@ -5,6 +5,7 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +30,7 @@ fun DiscoverContent(
   Column(modifier = modifier) {
     AppsSearch(
       onNav = onNav,
-      textFieldState = discoverModel.searchTextFieldState,
+      textFieldState = rememberTextFieldState(),
       modifier =
         Modifier
           // focusable is a workaround for https://issuetracker.google.com/issues/445720462

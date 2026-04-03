@@ -72,9 +72,10 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     ) {
       val viewModel = hiltViewModel<SearchViewModel>()
       GlobalSearch(
-        textFieldState = viewModel.textFieldState,
         searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
+        savedSearches = viewModel.savedSearchesFlow.collectAsStateWithLifecycle().value,
         onSearch = viewModel::search,
+        onClearSavedSearches = viewModel::onClearSearchHistory,
         onNav = { navKey -> navigator.navigate(navKey) },
         onBack = { navigator.goBack() },
         onSearchCleared = viewModel::onSearchCleared,
