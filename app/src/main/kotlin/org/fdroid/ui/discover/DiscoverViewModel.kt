@@ -31,7 +31,7 @@ import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.ui.search.SearchManager
+import org.fdroid.search.SearchManager
 
 @HiltViewModel
 class DiscoverViewModel

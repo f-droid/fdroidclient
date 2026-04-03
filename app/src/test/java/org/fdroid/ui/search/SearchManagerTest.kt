@@ -26,6 +26,7 @@ import org.fdroid.database.RepositoryDao
 import org.fdroid.download.PackageName
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
+import org.fdroid.search.SearchManager
 import org.fdroid.settings.SettingsManager
 import org.junit.Rule
 import org.junit.Test
@@ -57,13 +58,13 @@ internal class SearchManagerTest {
   }
 
   private val searchManager =
-    SearchManager(
-      db = db,
-      repoManager = repoManager,
-      settingsManager = settingsManager,
-      installedAppsCache = installedAppsCache,
-      ioDispatcher = Dispatchers.Unconfined,
-    )
+      SearchManager(
+          db = db,
+          repoManager = repoManager,
+          settingsManager = settingsManager,
+          installedAppsCache = installedAppsCache,
+          ioDispatcher = Dispatchers.Unconfined,
+      )
 
   @Test
   fun searchCrashMeThrows() = runTest {
