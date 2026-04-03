@@ -8,7 +8,7 @@ import com.android.tools.screenshot.PreviewTest
 @Composable
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true, heightDp = 1200)
-fun AboutTest() = ScreenshotTest(showBottomBar = false) { About {} }
+fun AboutTest() = ScreenshotTest(showBottomBar = false) { About("2.0.0-beta1") {} }
 
 @Composable
 @PreviewTest
@@ -18,4 +18,4 @@ fun AboutTest() = ScreenshotTest(showBottomBar = false) { About {} }
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
   heightDp = 1200,
 )
-fun AboutNightTest() = ScreenshotTest(showBottomBar = false) { About {} }
+fun AboutNightTest() = ScreenshotTest(showBottomBar = false) { About("2.0.0-beta1") {} }

@@ -53,7 +53,7 @@ import org.fdroid.ui.utils.openUriSafe
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun About(onBackClicked: (() -> Unit)?) {
+fun About(version: String = VERSION_NAME, onBackClicked: (() -> Unit)?) {
   val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
   Scaffold(
     topBar = {
@@ -73,26 +73,30 @@ fun About(onBackClicked: (() -> Unit)?) {
     },
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
-    AboutContent(Modifier.fillMaxSize(), paddingValues)
+    AboutContent(version, Modifier.fillMaxSize(), paddingValues)
   }
 }
 
 @Composable
-fun AboutContent(modifier: Modifier = Modifier, paddingValues: PaddingValues = PaddingValues()) {
+fun AboutContent(
+  version: String,
+  modifier: Modifier = Modifier,
+  paddingValues: PaddingValues = PaddingValues(),
+) {
   val scrollableState = rememberScrollState()
   Box(modifier = modifier.verticalScroll(scrollableState)) {
     Column(
       verticalArrangement = spacedBy(8.dp),
       modifier = Modifier.padding(paddingValues).padding(16.dp),
     ) {
-      AboutHeader()
+      AboutHeader(version)
       AboutText()
     }
   }
 }
 
 @Composable
-private fun AboutHeader(modifier: Modifier = Modifier) {
+private fun AboutHeader(version: String, modifier: Modifier = Modifier) {
   Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.fillMaxWidth()) {
     Image(
       painter = painterResource(id = R.drawable.ic_launcher_foreground),
@@ -101,7 +105,7 @@ private fun AboutHeader(modifier: Modifier = Modifier) {
     )
     SelectionContainer {
       Text(
-        text = "${stringResource(R.string.about_version)} $VERSION_NAME",
+        text = "${stringResource(R.string.about_version)} $version",
         style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.padding(top = 16.dp).alpha(0.75f),
       )
@@ -187,5 +191,5 @@ private fun AboutPreview() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun AboutPreviewDark() {
-  FDroidContent { About(null) }
+  FDroidContent { About {} }
 }
