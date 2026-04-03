@@ -604,4 +604,25 @@
     <string name="category_group_productivity">Produktyvumas</string>
     <string name="category_group_tools">Įrankiai</string>
     <string name="category_group_wallets">Finansai ir piniginės</string>
+    <string name="category_group_media">Pramogos ir multimedija</string>
+    <string name="category_group_communication">Komunikacija</string>
+    <string name="category_group_device">Įrenginys</string>
+    <string name="category_group_network">Tinklas</string>
+    <string name="category_group_storage">Failai ir saugykla</string>
+    <string name="category_group_interests">Pomėgiai</string>
+    <string name="category_group_misc">Kiti</string>
+    <string name="author_by">Sukurta %1$s</string>
+    <string name="last_updated">Paskutinį kartą atnaujinta: %1$s</string>
+    <string name="last_updated_with_size">Paskutinį kartą atnaujinta: %1$s (%2$s)</string>
+    <string name="status_install_preparing">Įdiegimas ruošiamas…</string>
+    <string name="whats_new_title">Kas nauja</string>
+    <string name="donate_title">Aukoti</string>
+    <string name="anti_features_title">Ši programa turi neigiamų savybių</string>
+    <string name="developer_contact">Kūrėjo sutartis</string>
+    <string name="technical_info">Techninė informacija</string>
+    <string name="package_name">Paketo pavadinimas:</string>
+    <string name="installed_version">Įdiegta versija:</string>
+    <string name="antitetherednetlist">Ši programėlė yra visiškai priklausoma nuo konkretaus tinklo paslaugos pavyzdžio</string>
+    <string name="preferForeign">Teikti pirmenybę užsienio replikoms</string>
+    <string name="preferForeignSummary">Pirmiau išbandyti replikas, kurios yra ne jūsų šalyje, pvz., jei užsienio apsaugos priemonės yra stipresnės.</string>
 </resources>

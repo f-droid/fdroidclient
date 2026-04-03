@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="SignatureMismatch">Nová verzia je podpísaná iným kľúčom ako tá stará. Pred inštaláciou novej verzie je
         nutné starú odinštalovať. Urobte to a skúste znovu. (Pozor! Odinštalovanie zmaže všetky interné dáta uložené
         aplikáciou)
@@ -602,4 +602,92 @@
     <string name="pref_export_log_title">Protokol ladenia</string>
     <string name="pref_export_log_summary">Vytvorí súbor s výstupom protokolu. Užitočné pre ladenie. Opatrne, môže obsahovať citlivé informácie!</string>
     <string name="export_log_success">Protokol úspešné uložený</string>
+    <string name="export_log_error">Chyba pri ukladaní logcat</string>
+    <string name="app_details_more_apps_interesting">Toto by vás mohlo tiež zaujímať:</string>
+    <string name="app_details_more_apps_by_author">Ďalšie aplikácie od %1$s</string>
+    <string name="repo_add_repo_and_mirror">Pridať repozitár a zrkadlo</string>
+    <string name="repo_view_repo">Zobraziť repozitár</string>
+    <string name="repo_scan_qr_code">Naskenujte QR kód</string>
+    <string name="repo_preview_included_apps">Obsiahnuté aplikácie:</string>
+    <string name="repo_mirror_exists">Toto zrkadlo už bolo pridané (%s).</string>
+    <string name="repo_mirror_add_info">URL, ktorú sa snažíte pridať (%s), je zrkadlom existujúceho repozitára.</string>
+    <string name="repo_and_mirror_add_both_info">URL, ktorú sa snažíte pridať (%s), je zrkadlom nového repozitára. Pridá sa tak pôvodný repozitár, ako aj jeho zrkadlo.</string>
+    <string name="menu_share_apk">Zdieľať súbor APK</string>
+    <string name="antitetherednet">Služby pripojenej siete</string>
+    <string name="antitetherednetlist">Táto aplikácia je úplne závislá od konkrétnej inštancie sieťovej služby</string>
+    <string name="preferForeign">Uprednostňovať zahraničné zrkadlá</string>
+    <string name="preferForeignSummary">Najprv vyskúšajte zrkadlá, ktoré sa nachádzajú mimo vašej krajiny, napr. ak sú zahraničné bezpečnostné opatrenia prísnejšie.</string>
+    <string name="banner_updating_apps">Aktualizácia aplikácií</string>
+    <string name="apk_permissions_mismatch">Aplikácia má neočakávané oprávnenie: %s</string>
+    <string name="no_handler_app_generic">Nemáte k dispozícii žiadnu aplikáciu, ktorá by to zvládla.</string>
+    <string name="repo_list_info_text">Repozitár je zdroj aplikácií. V tomto zozname sú zobrazené všetky aktuálne pridané repozitáre. Deaktivované repozitáre sa nepoužívajú.\n\nAk sa aplikácia nachádza vo viacerých repozitároch, automaticky sa uprednostní ten, ktorý je v zozname vyššie. Poradie repozitárov môžete zmeniť dlhým stlačením a ich presunutím.</string>
+    <string name="repo_details_info_text">Repozitár je zdroj aplikácií.\n\nZrkadlá slúžia na rozloženie zaťaženia pri sťahovaní aplikácií medzi viaceré servery. Zrkadlá, ktoré sú bližšie k vám, môžu byť rýchlejšie.\n\nOficiálne zrkadlá určuje vlastník repozitára. Nie je možné ich odstrániť, len deaktivovať. Ďalšie vlastné zrkadlá môžete definovať tak, že ich pridáte rovnako ako bežný repozitár.</string>
+    <string name="repo_num_apps_button">Zobraziť aplikácie</string>
+    <string name="repo_archive_toggle">Archív repozitára</string>
+    <string name="repo_archive_toggle_description">Zobraziť archivované aplikácie a zastarané verzie aplikácií</string>
+    <string name="repo_archive_unknown">Zdá sa, že tento repozitár nemá žiadny archív.</string>
+    <string name="repo_archive_check">Skontrolovať archív</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d aplikácia</item>
+        <item quantity="few">%d aplikácie</item>
+        <item quantity="many">%d aplikácií</item>
+        <item quantity="other">%d aplikácií</item>
+    </plurals>
+    <string name="repo_last_update_index">Posledná aktualizácia repozitára: %s</string>
+    <string name="repo_last_update_check">Posledná kontrola aktualizácie repozitára: %s</string>
+    <string name="repo_archive_failed">Archív repozitára nie je momentálne k dispozícii</string>
+    <string name="repo_confirm_delete_mirror_title">Odstrániť zrkadlo?</string>
+    <string name="repo_confirm_delete_mirror_body">Aplikácie z tohto repozitára môžete naďalej inštalovať prostredníctvom iných zrkadiel.</string>
+    <string name="repo_disable_warning">Deaktiváciou tohto repozitára sa zruší jeho status „predvoleného“ vo všetkých aplikáciách.</string>
+    <string name="repo_disable_warning_button">Vypnúť</string>
+    <string name="share_mirror">Zrkadlo na zdieľanie</string>
+    <string name="show_repository_qr">Zobraziť QR kód repozitára</string>
+    <string name="repo_basic_auth_title">Základné overovanie</string>
+    <string name="repo_basic_auth_username">Používateľské meno: %s</string>
+    <string name="repo_basic_auth_password">Heslo: ***</string>
+    <string name="repo_basic_auth_edit">Upraviť</string>
+    <string name="targetsdk_or_later">cieľové hodnoty %s</string>
+    <string name="category_Nightly" tools:ignore="UnusedResources">Skóre vydanie</string>
+    <string name="nearby_splach__external_storage_permission_explainer">F-Droid môže vyhľadávať repozitáre a zrkadlá na vašej SD karte, ale na to potrebuje vaše povolenie.</string>
+    <string name="nearby_splace__external_storage_permission_button">Vyskúšajte to</string>
+    <string name="swap_banner_message">Ak chcete si vymeniť aplikácie, zapnite Wi-Fi a pripojte sa k tej istej sieti ako váš priateľ.</string>
+    <string name="swap_bluetooth_permissions">Prosím, udelte oprávnenie pre Bluetooth alebo zariadenia v okolí!</string>
+    <string name="swap_connection_indexv0_error">Snažíte sa pripojiť k niekomu, kto má zastaranú verziu aplikácie F-Droid. Aby sa mohli pripojiť, musia si aktualizovať aplikáciu F-Droid. Pomocou funkcie „swap“ si môžu aktualizovať aplikáciu F-Droid od vás.</string>
+    <string name="auto_update_time">Najskoršia nasledujúca aktualizácia: %s</string>
+    <string name="auto_update_time_past">Ďalšia aktualizácia, keď budú splnené podmienky</string>
+    <string name="crash_dialog_title_old">F-Droid sa zrútil</string>
+    <plurals name="notification_summary_app_updates">
+        <item quantity="one">K dispozícii je %1$d aktualizácia</item>
+        <item quantity="few">K dispozícii sú %1$d aktualizácie</item>
+        <item quantity="many">K dispozícii je %1$d aktualizácií</item>
+        <item quantity="other">K dispozícii je %1$d aktualizácií</item>
+    </plurals>
+    <string name="notification_title_summary_app_update_available">Kliknite na tlačidlo na aktualizáciu všetkých položiek</string>
+    <string name="tts_repo_name">Repozitár %1$s</string>
+    <string name="tts_author_name">Autor %1$s</string>
+    <string name="warning_target_sdk">Táto aplikácia bola vytvorená pre staršiu verziu systému Android a nie je možné ju automaticky aktualizovať.</string>
+    <string name="warning_no_compat_versions">Vybrané úložisko neobsahuje žiadne kompatibilné verzie aplikácie. Ak chcete dostávať aktualizácie, vyberte si úložisko s kompatibilnými verziami.</string>
+    <string name="turn_on_wifi">Zapnúť Wi-Fi</string>
+    <string name="copied_to_clipboard">Skopírované do schránky</string>
+    <string name="copied_url_to_clipboard">URL bola skopírovaná do schránky</string>
+    <string name="copied_permission_to_clipboard">Názov povolenia bol skopírovaný do schránky</string>
+    <string name="paste">Vložiť</string>
+    <string name="ipfsgw_title">Brány IPFS</string>
+    <string name="ipfsgw_explainer">Stiahnite si aplikácie z webových koncových bodov IPFS. (Funguje len pre repozitáre F-Droid s podporou IPFS.)</string>
+    <plurals name="ipfsgw_summary">
+        <item quantity="one">Sťahovanie aplikácie prostredníctvom webových koncových bodov IPFS: %1$d je povolené</item>
+        <item quantity="few">Sťahovanie aplikácií prostredníctvom webových koncových bodov IPFS: %1$d je povolené</item>
+        <item quantity="many">Sťahovanie aplikácií prostredníctvom webových koncových bodov IPFS: %1$d je povolené</item>
+        <item quantity="other">Sťahovanie aplikácií prostredníctvom webových koncových bodov IPFS: %1$d je povolené</item>
+    </plurals>
+    <string name="ipfsgw_summary_disabled">Sťahovanie aplikácií prostredníctvom webových koncových bodov IPFS: vypnuté</string>
+    <string name="ipfsgw_summary_new">Stiahnite si aplikácie pomocou webových koncových bodov IPFS</string>
+    <string name="ipfsgw_add_title">Pridať bránu IPFS</string>
+    <string name="ipfsgw_add_add">Pridať</string>
+    <string name="ipfsgw_caption_official_gateways">Oficiálne brány IPFS</string>
+    <string name="ipfsgw_caption_custom_gateways">Vlastné brány IPFS</string>
+    <string name="expand">Rozbaliť</string>
+    <string name="collapse">Zložiť</string>
+    <string name="call_to_action_keepandroidopen">F-Droid je ohrozený. Spoločnosť Google mení spôsob inštalácie aplikácií do vášho zariadenia. Potrebujeme vašu pomoc.</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
 </resources>

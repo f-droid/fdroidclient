@@ -1,0 +1,13 @@
+F-Droid je inštalovateľný katalóg bezplatných softvérových aplikácií pre Android. Klientska aplikácia F-Droid uľahčuje prehliadanie, inštaláciu a sledovanie aktualizácií na vašom zariadení.
+
+Pripája sa k akýmkoľvek úložiskám kompatibilným s F-Droid. Predvolené úložisko je hosťované na f-droid.org, ktorý obsahuje iba skutočne voľný softvér.
+
+Samotný Android je otvorený v tom zmysle, že si môžete inštalovať súbory APK odkiaľkoľvek, ale existuje veľa dobrých dôvodov, prečo používať F-Droid ako správcu bezplatných softvérových aplikácií:
+
+* Získajte upozornenia, keď sú k dispozícii aktualizácie
+* Voliteľne stiahnite a nainštalujte aktualizácie automaticky
+* Sledujte staršie a beta verzie
+* Odfiltrujte aplikácie nekompatibilné so zariadením
+* Nájdite aplikácie prostredníctvom kategórií a vyhľadávateľných popisov
+* Prístup k priradeným adresám URL pre dary, zdrojový kód atď.
+* Zostaňte v bezpečí kontrolou podpisov v indexe úložiska a hashov APK

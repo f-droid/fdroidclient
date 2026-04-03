@@ -646,4 +646,9 @@
     <string name="my_apps_ignore_dialog_text">Ongelma sovelluksen \"%1$s\" versiossa ohitetaan</string>
     <string name="category_group_productivity">Tuottavuus</string>
     <string name="category_group_tools">Työkalut</string>
+    <string name="app_name_full_nightly">F-Öinen</string>
+    <string name="app_name_basic_nightly">F-Öinen Perus</string>
+    <string name="menu_discover">Löydä</string>
+    <string name="first_start_intro">Aloita synkronoimalla sovellusten pakettivarastot</string>
+    <string name="first_start_offline">Olet offline-tilassa. Yhdistä Internetiin aloittaaksesi.</string>
 </resources>

@@ -1,0 +1,8 @@
+* Mjaft ndreqje të metash
+* Shfaq ikona deposh te listë deposh
+* Shfaq arsye për Anti-Veçori (kur ka)
+* Përmirësime automatike pa zgjerim të privilegjuar (hëpërhë vetëm për F-Droid Basic)
+* Shfaq madhësi aplikacioni te skenë hollësish aplikacioni (vetëm nën mënyrën ekspert)
+* Emra pakëz më të errët aplikacionesh te listë aplikacionesh, për të përmirësuar leximin
+* Rikthe gjendje hapur/mbyllur për “Përditësoji Krejt” te skeda Përditësime (@tunedal)
+* Rikthe skedën aktive me rinisjesh aplikacioni
