@@ -31,9 +31,12 @@ import org.fdroid.install.InstalledAppsCache
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.lists.AppListItem
-import org.fdroid.ui.search.SearchHelper.normalize
+import org.fdroid.search.SearchHelper.normalize
 import org.fdroid.ui.search.SearchResults
 import org.fdroid.utils.IoDispatcher
+
+/** The minimum amount of characters we start auto-searching for. */
+const val SEARCH_THRESHOLD = 2
 
 @Singleton
 class SearchManager

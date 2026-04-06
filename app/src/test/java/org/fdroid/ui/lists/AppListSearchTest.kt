@@ -26,7 +26,7 @@ import org.robolectric.RobolectricTestRunner
  * This is the in-memory [String.contains]-based counterpart of AppSearchItemsTest, which covers the
  * DB FTS4 path.
  *
- * [AppListPresenter] uses [org.fdroid.ui.search.SearchHelper.fixQuery] on the incoming query before
+ * [AppListPresenter] uses [org.fdroid.search.SearchHelper.fixQuery] on the incoming query before
  * matching, which:
  * - strips diacritics via NFKD normalization (enables diacritic-insensitive search), and
  * - inserts zero-width spaces (U+200B) after each ideographic character (enables CJK matching

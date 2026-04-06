@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.fdroid.R
+import org.fdroid.search.SEARCH_THRESHOLD
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)

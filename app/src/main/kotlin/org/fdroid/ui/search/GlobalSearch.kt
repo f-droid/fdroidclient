@@ -12,7 +12,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,14 +37,13 @@ fun GlobalSearch(
     topBar = {
       TopSearchBar(
         searchFieldState = textFieldState,
+        shouldRequestFocus = false,
         onSearch = onSearch,
         onSearchCleared = onSearchCleared,
         onHideSearch = onBack,
       )
     }
   ) { paddingValues ->
-    // clear search results when leaving screen
-    DisposableEffect(Unit) { onDispose { onSearchCleared() } }
     HorizontalDivider(
       color = SearchBarDefaults.colors().dividerColor,
       modifier =
@@ -56,13 +54,12 @@ fun GlobalSearch(
         ),
     )
     SearchResults(
+      paddingValues = paddingValues,
       searchResults = searchResults,
       textFieldState = textFieldState,
       savedSearches = savedSearches,
       onClearSavedSearches = onClearSavedSearches,
       onNav = onNav,
-      paddingValues = paddingValues,
-      modifier = Modifier,
     )
   }
 }

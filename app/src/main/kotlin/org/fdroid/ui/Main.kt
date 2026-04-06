@@ -6,7 +6,6 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
-import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
@@ -16,7 +15,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.ui.NavDisplay
 import org.fdroid.ui.apps.myAppsEntry
 import org.fdroid.ui.details.NoAppSelected
 import org.fdroid.ui.details.appDetailsEntry
@@ -59,7 +57,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       calculatePaneScaffoldDirective(windowAdaptiveInfo).copy(horizontalPartitionSpacerSize = 2.dp)
     }
   val isBigScreen = directive.maxHorizontalPartitions > 1
-  val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
   val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
     discoverEntry(navigator)
@@ -115,21 +112,15 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     // flavor specific navigation destinations go here
     extraNavigationEntries(navigator)
   }
-  val showBottomBar = !isBigScreen && navigator.last is MainNavKey
   val viewModel = hiltViewModel<MainViewModel>()
-  val mainModel = viewModel.mainModel.collectAsStateWithLifecycle().value
   MainContent(
-    model = mainModel,
+    model = viewModel.mainModel.collectAsStateWithLifecycle().value,
+    navEntries = navigationState.toEntries(entryProvider),
+    directive = directive,
     isBigScreen = isBigScreen,
-    showBottomBar = showBottomBar,
+    showBottomBar = !isBigScreen && navigator.last is MainNavKey,
     currentNavKey = navigationState.topLevelRoute,
-    onNav = { navKey -> navigator.navigate(navKey) },
-  ) { modifier ->
-    NavDisplay(
-      entries = navigationState.toEntries(entryProvider),
-      sceneStrategy = listDetailStrategy,
-      onBack = { navigator.goBack() },
-      modifier = modifier,
-    )
-  }
+    onNav = navigator::navigate,
+    onBack = navigator::goBack,
+  )
 }

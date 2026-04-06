@@ -11,8 +11,8 @@ import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstallStateWithInfo
-import org.fdroid.ui.search.SearchHelper.fixQuery
-import org.fdroid.ui.search.SearchHelper.normalize
+import org.fdroid.search.SearchHelper.fixQuery
+import org.fdroid.search.SearchHelper.normalize
 
 // TODO add tests for this, similar to DetailsPresenter
 @Composable

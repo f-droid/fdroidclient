@@ -22,7 +22,7 @@ import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.InstallState
 import org.fdroid.install.SessionInstallManager
 import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.ui.search.SearchHelper.removeZeroWhiteSpace
+import org.fdroid.search.SearchHelper.removeZeroWhiteSpace
 
 data class AppDetailsItem(
   val app: AppMetadata,

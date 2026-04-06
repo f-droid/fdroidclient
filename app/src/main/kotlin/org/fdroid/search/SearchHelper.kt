@@ -1,4 +1,4 @@
-package org.fdroid.ui.search
+package org.fdroid.search
 
 import java.text.Normalizer
 import java.text.Normalizer.Form.NFKD

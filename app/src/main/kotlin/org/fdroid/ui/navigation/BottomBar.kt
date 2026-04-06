@@ -4,8 +4,12 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Badge
@@ -37,9 +41,13 @@ import org.fdroid.ui.MainModel
 @Composable
 fun BottomBar(model: MainModel, currentNavKey: NavKey, onNav: (MainNavKey) -> Unit) {
   val res = LocalResources.current
+  val modifier =
+    Modifier.consumeWindowInsets(
+      WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom)
+    )
   val bottom = with(LocalDensity.current) { WindowInsets.navigationBars.getBottom(this).toDp() }
   NavigationBar(
-    modifier = if (model.smallBottomBar) Modifier.heightIn(max = 56.dp + bottom) else Modifier
+    modifier = if (model.smallBottomBar) modifier.heightIn(max = 48.dp + bottom) else modifier
   ) {
     topLevelRoutes.forEach { dest ->
       NavigationBarItem(

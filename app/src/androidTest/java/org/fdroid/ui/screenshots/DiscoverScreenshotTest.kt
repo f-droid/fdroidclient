@@ -1,10 +1,8 @@
 package org.fdroid.ui.screenshots
 
-import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.core.os.LocaleListCompat
 import org.fdroid.ui.discover.Discover
 import org.fdroid.ui.discover.LoadedDiscoverModel
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -26,7 +24,6 @@ class DiscoverScreenshotTest(localeName: String) : LocalizedScreenshotTest(local
           recentlyUpdatedApps = getRecentlyUpdatedApps(localeList),
           mostDownloadedApps = getMostDownloadedApps(localeList),
           categories = getCategoryItems(localeList).groupBy { it.group },
-          searchTextFieldState = rememberTextFieldState(),
           hasRepoIssues = false,
         )
       Discover(discoverModel = model, onListTap = {}, onAppTap = {}, onNav = {})

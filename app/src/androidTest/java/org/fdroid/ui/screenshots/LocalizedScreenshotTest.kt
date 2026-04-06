@@ -1,11 +1,12 @@
 package org.fdroid.ui.screenshots
 
+import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.DeviceConfigurationOverride
 import androidx.compose.ui.test.Locales
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
@@ -54,7 +55,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
     currentNavKey: NavKey = NavigationKey.Discover,
     numUpdates: Int = 3,
     hasAppIssues: Boolean = true,
-    content: @Composable (Modifier) -> Unit,
+    content: @Composable () -> Unit,
   ) {
     val localeList = LocaleList(localeName)
     composeRule.setContent {
@@ -69,11 +70,13 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
               numUpdates = numUpdates,
               hasAppIssues = hasAppIssues,
             ),
+          navEntries = listOf(NavEntry(currentNavKey) { content() }),
+          directive = PaneScaffoldDirective.Default,
           isBigScreen = false,
           showBottomBar = showBottomBar,
           currentNavKey = currentNavKey,
           onNav = {},
-          content = content,
+          onBack = {},
         )
       }
     }

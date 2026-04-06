@@ -14,7 +14,7 @@ import org.fdroid.ui.utils.categoryItems
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchEmptyTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState()
     GlobalSearch(
       textFieldState = textFieldState,
@@ -32,7 +32,7 @@ fun GlobalSearchEmptyTest() =
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchEmptyStateTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val savedSearches =
       listOf(SavedSearch(1, "Browser"), SavedSearch(2, "media player"), SavedSearch(3, "email app"))
     val textFieldState = rememberTextFieldState()
@@ -52,7 +52,7 @@ fun GlobalSearchEmptyStateTest() =
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchLoadingTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState("foo bar")
     GlobalSearch(
       textFieldState = textFieldState,
@@ -70,7 +70,7 @@ fun GlobalSearchLoadingTest() =
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchNoResultsTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState("foo")
     GlobalSearch(
       textFieldState = textFieldState,
@@ -88,7 +88,7 @@ fun GlobalSearchNoResultsTest() =
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchResultsTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState("foo bar")
     GlobalSearch(
       textFieldState = textFieldState,
@@ -106,7 +106,7 @@ fun GlobalSearchResultsTest() =
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun GlobalSearchOnlyCategoriesTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState("foo bar")
     GlobalSearch(
       textFieldState = textFieldState,
@@ -128,7 +128,7 @@ fun GlobalSearchOnlyCategoriesTest() =
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
 )
 fun GlobalSearchResultsNightTest() =
-  ScreenshotTest(showBottomBar = false) {
+  ScreenshotTest {
     val textFieldState = rememberTextFieldState("foo bar")
     GlobalSearch(
       textFieldState = textFieldState,
