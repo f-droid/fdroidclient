@@ -1,6 +1,5 @@
 package org.fdroid.ui.discover
 
-import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.android.tools.screenshot.PreviewTest
@@ -39,24 +38,6 @@ private fun DiscoverNoEnabledReposTest() = ScreenshotTest {
 private fun DiscoverTest() {
   ScreenshotTest {
     Discover(discoverModel = getLoadedModel(), onListTap = {}, onAppTap = {}, onNav = {})
-  }
-}
-
-@Composable
-@PreviewTest
-@Preview(
-  showBackground = true,
-  showSystemUi = true,
-  uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
-)
-private fun DiscoverSmallBottomBarTest() {
-  ScreenshotTest(smallBottomBar = true) {
-    Discover(
-      discoverModel = getLoadedModel().copy(hasRepoIssues = false),
-      onListTap = {},
-      onAppTap = {},
-      onNav = {},
-    )
   }
 }
 

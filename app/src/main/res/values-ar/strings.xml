@@ -851,8 +851,6 @@
         <item quantity="many">حُدِّث %1$d تطبيقًا</item>
         <item quantity="other">حُدِّث %1$d تطبيق</item>
     </plurals>
-    <string name="pref_compact_bottom_bar_title">شريط تنقل مضغوط</string>
-    <string name="pref_compact_bottom_bar_summary">يقلل حجم شريط التنقل السفلي ويخفي تسمياته</string>
-    <string name="status_downloading">ينزل ب %1$s</string>
+W    <string name="status_downloading">ينزل ب %1$s</string>
     <string name="status_downloading_remaining">%1$s متبقي</string>
 </resources>

@@ -82,7 +82,6 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       val viewModel = hiltViewModel<SettingsViewModel>()
       Settings(
         model = viewModel.model,
-        isBigScreen = isBigScreen,
         onSaveLogcat = {
           viewModel.onSaveLogcat(it)
           navigator.goBack()

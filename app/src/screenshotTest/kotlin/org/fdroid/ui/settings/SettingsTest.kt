@@ -15,7 +15,7 @@ import org.fdroid.ui.ScreenshotTest
 @Preview(showBackground = true, showSystemUi = true, heightDp = 1400)
 fun SettingsTest() =
   ScreenshotTest(showBottomBar = false) {
-    Settings(model = getSettingsModel(), isBigScreen = false, onSaveLogcat = {}, onBackClicked = {})
+    Settings(model = getSettingsModel(), onSaveLogcat = {}, onBackClicked = {})
   }
 
 @Composable
@@ -28,7 +28,7 @@ fun SettingsTest() =
 )
 fun SettingsNightTest() =
   ScreenshotTest(showBottomBar = false) {
-    Settings(model = getSettingsModel(), isBigScreen = false, onSaveLogcat = {}, onBackClicked = {})
+    Settings(model = getSettingsModel(), onSaveLogcat = {}, onBackClicked = {})
   }
 
 private fun getSettingsModel(

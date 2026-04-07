@@ -714,8 +714,6 @@
     <string name="pref_dyn_colors_title">Usa i colori di sistema</string>
     <string name="pref_dyn_colors_summary">Applica colori dinamici dalle impostazioni di sistema</string>
     <string name="pref_language_summary">Apri le impostazioni di lingua del sistema</string>
-    <string name="pref_compact_bottom_bar_title">Barra di navigazione compatta</string>
-    <string name="pref_compact_bottom_bar_summary">Riduci la dimensione e nascondi le etichette della barra inferiore di navigazione</string>
     <string name="pref_auto_updates_only_wifi">Solo con Wi-Fi</string>
     <string name="pref_auto_updates_only_always">Sempre (anche con connessione dati mobile)</string>
     <string name="pref_auto_updates_only_never">Mai</string>

@@ -66,7 +66,6 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
           model =
             MainModel(
               dynamicColors = false,
-              smallBottomBar = false,
               numUpdates = numUpdates,
               hasAppIssues = hasAppIssues,
             ),
