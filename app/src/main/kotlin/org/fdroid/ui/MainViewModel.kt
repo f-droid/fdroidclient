@@ -1,12 +1,16 @@
 package org.fdroid.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import app.cash.molecule.AndroidUiDispatcher
+import app.cash.molecule.RecompositionMode.ContextClock
+import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.concurrent.TimeUnit.DAYS
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
@@ -23,11 +27,22 @@ constructor(
   updatesManager: UpdatesManager,
   @param:IoDispatcher val coroutineScope: CoroutineScope,
 ) : ViewModel() {
-  val dynamicColors = settingsManager.dynamicColorFlow
-  val numUpdates = updatesManager.numUpdates
-  val hasAppIssues = updatesManager.appsWithIssues.map { !it.isNullOrEmpty() }
 
   private val log = KotlinLogging.logger {}
+  private val moleculeScope =
+    CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
+
+  val mainModel: StateFlow<MainModel> by
+    lazy(LazyThreadSafetyMode.NONE) {
+      moleculeScope.launchMolecule(mode = ContextClock) {
+        MainPresenter(
+          dynamicColorsFlow = settingsManager.dynamicColorFlow,
+          smallBottomBarFlow = settingsManager.smallBottomBarFlow,
+          numUpdatesFlow = updatesManager.numUpdates,
+          appsWithIssuesFlow = updatesManager.appsWithIssues,
+        )
+      }
+    }
 
   init {
     // only check for Fts integrity once a day, because it is an expensive operation

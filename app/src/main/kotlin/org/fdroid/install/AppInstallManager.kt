@@ -31,13 +31,13 @@ import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.NotificationManager
 import org.fdroid.database.AppMetadata
-import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloaderFactory
 import org.fdroid.download.getUri
 import org.fdroid.history.HistoryManager
 import org.fdroid.history.InstallEvent
 import org.fdroid.history.UninstallEvent
+import org.fdroid.index.v2.PackageVersion
 import org.fdroid.utils.IoDispatcher
 
 @Singleton
@@ -81,18 +81,17 @@ constructor(
             else -> null
           }
         // track app state for in progress apps
-        val appState =
-          appStateCategory?.let {
-            // all states that get a category above must be InstallStateWithInfo
-            state as InstallStateWithInfo
-            AppState(
-              packageName = packageName,
-              category = it,
-              name = state.name,
-              installVersionName = state.versionName,
-              currentVersionName = state.currentVersionName,
-            )
-          }
+        val appState = appStateCategory?.let {
+          // all states that get a category above must be InstallStateWithInfo
+          state as InstallStateWithInfo
+          AppState(
+            packageName = packageName,
+            category = it,
+            name = state.name,
+            installVersionName = state.versionName,
+            currentVersionName = state.currentVersionName,
+          )
+        }
         if (appState != null) appStates.add(appState)
       }
       return InstallNotificationState(
@@ -116,19 +115,20 @@ constructor(
    */
   @UiThread
   suspend fun install(
+    packageName: String,
     appMetadata: AppMetadata?,
-    version: AppVersion,
+    version: PackageVersion,
     currentVersionName: String?,
     repo: Repository?,
     iconModel: Any?,
     canAskPreApprovalNow: Boolean,
   ): InstallState {
     if (appMetadata == null || repo == null) {
-      log.error { "Can't install app without metadata for ${version.packageName}" }
+      log.error { "Can't install app without metadata for $packageName" }
       val error =
         InstallState.Error(
-          msg = "App ${version.packageName} no longer in DB.",
-          name = version.packageName,
+          msg = "App $packageName no longer in DB.",
+          name = packageName,
           versionName = version.versionName,
           currentVersionName = currentVersionName,
           lastUpdated = version.added,
@@ -136,27 +136,25 @@ constructor(
         )
       // Write the terminal state so any prior Waiting state is cleared and the
       // service stop logic in onStatesUpdated() has a chance to run.
-      updateAppState(version.packageName, error)
+      updateAppState(packageName, error)
       return error
     }
-    val packageName = appMetadata.packageName
     val currentState = apps.value[packageName]
     if (currentState?.showProgress == true && currentState !is InstallState.Waiting) {
       log.warn { "Attempted to install $packageName with install in progress: $currentState" }
       return currentState
     }
     currentCoroutineContext().ensureActive()
-    val job =
-      scope.async {
-        startInstall(
-          appMetadata = appMetadata,
-          version = version,
-          currentVersionName = currentVersionName,
-          repo = repo,
-          iconModel = iconModel,
-          canAskPreApprovalNow = canAskPreApprovalNow,
-        )
-      }
+    val job = scope.async {
+      startInstall(
+        appMetadata = appMetadata,
+        version = version,
+        currentVersionName = currentVersionName,
+        repo = repo,
+        iconModel = iconModel,
+        canAskPreApprovalNow = canAskPreApprovalNow,
+      )
+    }
     // keep track of this job, in case we want to cancel it
     return trackJob(packageName, job)
   }
@@ -212,7 +210,7 @@ constructor(
   @WorkerThread
   private suspend fun startInstall(
     appMetadata: AppMetadata,
-    version: AppVersion,
+    version: PackageVersion,
     currentVersionName: String?,
     repo: Repository,
     iconModel: Any?,
@@ -256,7 +254,14 @@ constructor(
             )
           }
             as InstallState.PreApproved
-        downloadAndInstall(newState, version, currentVersionName, repo, iconModel)
+        downloadAndInstall(
+          state = newState,
+          packageName = appMetadata.packageName,
+          version = version,
+          currentVersionName = currentVersionName,
+          repo = repo,
+          iconModel = iconModel,
+        )
       }
       is PreApprovalResult.UserConfirmationRequired -> {
         InstallState.PreApprovalConfirmationNeeded(
@@ -295,16 +300,16 @@ constructor(
     updateAppState(packageName, result)
     return if (result is InstallState.PreApproved) {
       // move us off the UiThread, so we can download/install this app now
-      val job =
-        scope.async {
-          downloadAndInstall(
-            state = result,
-            version = installState.version,
-            currentVersionName = installState.currentVersionName,
-            repo = installState.repo,
-            iconModel = installState.iconModel,
-          )
-        }
+      val job = scope.async {
+        downloadAndInstall(
+          state = result,
+          packageName = packageName,
+          version = installState.version,
+          currentVersionName = installState.currentVersionName,
+          repo = installState.repo,
+          iconModel = installState.iconModel,
+        )
+      }
       // suspend/wait for this job and track it in case we want to cancel it
       trackJob(packageName, job)
     } else result
@@ -313,7 +318,8 @@ constructor(
   @WorkerThread
   private suspend fun downloadAndInstall(
     state: InstallState.PreApproved,
-    version: AppVersion,
+    packageName: String,
+    version: PackageVersion,
     currentVersionName: String?,
     repo: Repository,
     iconModel: Any?,
@@ -328,7 +334,7 @@ constructor(
     val now = System.currentTimeMillis()
     downloader.setListener { bytesRead, totalBytes ->
       coroutineContext.ensureActive()
-      updateAndGetAppState(version.packageName) {
+      updateAndGetAppState(packageName) {
         InstallState.Downloading(
           name = it.name,
           versionName = it.versionName,
@@ -359,7 +365,7 @@ constructor(
     }
     currentCoroutineContext().ensureActive()
     val newState =
-      updateAndGetAppState(version.packageName) {
+      updateAndGetAppState(packageName) {
         InstallState.Installing(
           name = it.name,
           versionName = it.versionName,
@@ -368,12 +374,12 @@ constructor(
           iconModel = it.iconModel,
         )
       }
-    val result = sessionInstallManager.install(sessionId, version.packageName, newState, file)
+    val result = sessionInstallManager.install(sessionId, packageName, newState, file)
     log.debug { "Install result: $result" }
     return if (result is InstallState.PreApproved && result.result is PreApprovalResult.Error) {
       // if pre-approval failed (e.g. due to app label mismatch),
       // then try to install again, this time not using the pre-approved session
-      sessionInstallManager.install(null, version.packageName, newState, file)
+      sessionInstallManager.install(null, packageName, newState, file)
     } else {
       result
     }

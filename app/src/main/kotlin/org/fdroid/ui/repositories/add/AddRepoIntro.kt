@@ -120,115 +120,121 @@ fun AddRepoIntroContent(
   var showMeteredDialog by remember { mutableStateOf<(() -> Unit)?>(null) }
   Column(
     verticalArrangement = spacedBy(16.dp),
-    horizontalAlignment = CenterHorizontally,
     modifier =
       Modifier.padding(
           top = paddingValues.calculateTopPadding(),
           start = paddingValues.calculateStartPadding(LocalLayoutDirection.current),
           end = paddingValues.calculateEndPadding(LocalLayoutDirection.current),
         )
-        .padding(horizontal = 16.dp)
         .imePadding()
         .fillMaxSize()
         .verticalScroll(scrollState),
   ) {
     if (!networkState.isOnline) OfflineBar()
-    Text(text = stringResource(R.string.repo_intro), style = MaterialTheme.typography.bodyLarge)
-    FDroidButton(
-      stringResource(R.string.repo_scan_qr_code),
-      imageVector = Icons.Filled.QrCode,
-      onClick = {
-        val scanLambda = {
-          if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
-            startScanning()
-          } else {
-            permissionLauncher.launch(CAMERA)
-          }
-        }
-        if (networkState.isMetered) showMeteredDialog = scanLambda else scanLambda()
-      },
-    )
-    AnimatedVisibility(
-      visible = showPermissionWarning,
-      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+    Column(
+      horizontalAlignment = CenterHorizontally,
+      verticalArrangement = spacedBy(16.dp),
+      modifier = Modifier.padding(horizontal = 16.dp),
     ) {
-      Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseSurface),
+      Text(text = stringResource(R.string.repo_intro), style = MaterialTheme.typography.bodyLarge)
+      FDroidButton(
+        stringResource(R.string.repo_scan_qr_code),
+        imageVector = Icons.Filled.QrCode,
+        onClick = {
+          val scanLambda = {
+            if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
+              startScanning()
+            } else {
+              permissionLauncher.launch(CAMERA)
+            }
+          }
+          if (networkState.isMetered) showMeteredDialog = scanLambda else scanLambda()
+        },
+      )
+      AnimatedVisibility(
+        visible = showPermissionWarning,
+        modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+      ) {
+        Card(
+          colors =
+            CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseSurface),
+          modifier =
+            Modifier.fillMaxWidth().clickable {
+              val intent =
+                Intent(ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                  data = Uri.fromParts("package", context.packageName, null)
+                }
+              context.startActivitySafe(intent)
+            },
+        ) {
+          Text(
+            modifier = Modifier.padding(8.dp),
+            text = stringResource(R.string.permission_camera_denied),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.bodyLarge,
+          )
+        }
+      }
+      var manualExpanded by rememberSaveable { mutableStateOf(isPreview) }
+      Row(
+        horizontalArrangement = SpaceBetween,
+        verticalAlignment = CenterVertically,
         modifier =
-          Modifier.fillMaxWidth().clickable {
-            val intent =
-              Intent(ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                data = Uri.fromParts("package", context.packageName, null)
-              }
-            context.startActivitySafe(intent)
+          Modifier.fillMaxWidth().heightIn(min = ButtonDefaults.MinHeight).clickable {
+            manualExpanded = !manualExpanded
           },
       ) {
         Text(
-          modifier = Modifier.padding(8.dp),
-          text = stringResource(R.string.permission_camera_denied),
-          textAlign = TextAlign.Center,
-          style = MaterialTheme.typography.bodyLarge,
+          text = stringResource(R.string.repo_enter_url),
+          style = MaterialTheme.typography.bodyMedium,
+          // avoid occupying the whole row
+          modifier = Modifier.weight(1f),
         )
+        ExpandIconArrow(manualExpanded)
       }
-    }
-    var manualExpanded by rememberSaveable { mutableStateOf(isPreview) }
-    Row(
-      horizontalArrangement = SpaceBetween,
-      verticalAlignment = CenterVertically,
-      modifier =
-        Modifier.fillMaxWidth().heightIn(min = ButtonDefaults.MinHeight).clickable {
-          manualExpanded = !manualExpanded
-        },
-    ) {
-      Text(
-        text = stringResource(R.string.repo_enter_url),
-        style = MaterialTheme.typography.bodyMedium,
-        // avoid occupying the whole row
-        modifier = Modifier.weight(1f),
-      )
-      ExpandIconArrow(manualExpanded)
-    }
-    val textState = remember { mutableStateOf(TextFieldValue()) }
-    val focusRequester = remember { FocusRequester() }
-    val coroutineScope = rememberCoroutineScope()
-    AnimatedVisibility(
-      visible = manualExpanded,
-      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-    ) {
-      Column(horizontalAlignment = Alignment.End, verticalArrangement = spacedBy(16.dp)) {
-        TextField(
-          value = textState.value,
-          minLines = 2,
-          onValueChange = { textState.value = it },
-          keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
-          keyboardActions = KeyboardActions(onGo = { onFetchRepo(textState.value.text) }),
-          modifier =
-            Modifier.fillMaxWidth().focusRequester(focusRequester).onPlaced {
-              focusRequester.requestFocus()
-              coroutineScope.launch { scrollState.animateScrollTo(scrollState.maxValue) }
-            },
-        )
-        Row(horizontalArrangement = spacedBy(16.dp), verticalAlignment = CenterVertically) {
-          val clipboardManager = LocalClipboardManager.current
-          FDroidOutlineButton(
-            stringResource(id = R.string.paste),
-            imageVector = Icons.Default.ContentPaste,
-            onClick = {
-              if (clipboardManager.hasText()) {
-                textState.value = TextFieldValue(clipboardManager.getText()?.text ?: "")
-              }
-            },
+      val textState = remember { mutableStateOf(TextFieldValue()) }
+      val focusRequester = remember { FocusRequester() }
+      val coroutineScope = rememberCoroutineScope()
+      AnimatedVisibility(
+        visible = manualExpanded,
+        modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+      ) {
+        Column(horizontalAlignment = Alignment.End, verticalArrangement = spacedBy(16.dp)) {
+          TextField(
+            value = textState.value,
+            minLines = 2,
+            onValueChange = { textState.value = it },
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Go),
+            keyboardActions = KeyboardActions(onGo = { onFetchRepo(textState.value.text) }),
+            modifier =
+              Modifier.fillMaxWidth().focusRequester(focusRequester).onPlaced {
+                focusRequester.requestFocus()
+                coroutineScope.launch { scrollState.animateScrollTo(scrollState.maxValue) }
+              },
           )
-          Spacer(modifier = Modifier.weight(1f))
-          FDroidButton(
-            text = stringResource(R.string.repo_add_add),
-            onClick = {
-              if (networkState.isMetered) showMeteredDialog = { onFetchRepo(textState.value.text) }
-              else onFetchRepo(textState.value.text)
-            },
-          )
+          Row(horizontalArrangement = spacedBy(16.dp), verticalAlignment = CenterVertically) {
+            val clipboardManager = LocalClipboardManager.current
+            FDroidOutlineButton(
+              stringResource(id = R.string.paste),
+              imageVector = Icons.Default.ContentPaste,
+              onClick = {
+                if (clipboardManager.hasText()) {
+                  textState.value = TextFieldValue(clipboardManager.getText()?.text ?: "")
+                }
+              },
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            FDroidButton(
+              text = stringResource(R.string.repo_add_add),
+              onClick = {
+                if (networkState.isMetered)
+                  showMeteredDialog = { onFetchRepo(textState.value.text) }
+                else onFetchRepo(textState.value.text)
+              },
+            )
+          }
+          Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding()))
         }
-        Spacer(modifier = Modifier.height(paddingValues.calculateBottomPadding()))
       }
     }
   }

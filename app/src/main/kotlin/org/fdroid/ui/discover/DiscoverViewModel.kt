@@ -53,6 +53,8 @@ constructor(
     CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
   private val collator = Collator.getInstance(Locale.getDefault())
 
+  private val newAppsFlow = db.getAppDao().getNewAppsFlow()
+  private val recentlyUpdatedAppsFlow = db.getAppDao().getRecentlyUpdatedAppsFlow()
   private val mostDownloadedApps =
     flow {
         val packageNames =
@@ -87,8 +89,8 @@ constructor(
       @SuppressLint("StateFlowValueCalledInComposition") // see comment below
       moleculeScope.launchMolecule(mode = ContextClock) {
         DiscoverPresenter(
-          newAppsFlow = db.getAppDao().getNewAppsFlow(),
-          recentlyUpdatedAppsFlow = db.getAppDao().getRecentlyUpdatedAppsFlow(),
+          newAppsFlow = newAppsFlow,
+          recentlyUpdatedAppsFlow = recentlyUpdatedAppsFlow,
           mostDownloadedAppsFlow = mostDownloadedApps,
           categoriesFlow = categories,
           installedAppsFlow = installedAppsCache.installedApps,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<org.fdroid.fdroid.nearby.SwapSuccessView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swap="http://schemas.android.com/apk/res-auto"
+    swap:toolbarColor="@color/swap_bright_blue"
+    swap:toolbarTitle="@string/swap_success"
+    android:id="@+id/swap_success"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</org.fdroid.fdroid.nearby.SwapSuccessView>

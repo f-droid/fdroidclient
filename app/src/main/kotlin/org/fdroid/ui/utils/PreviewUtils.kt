@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.annotation.RestrictTo
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import java.util.concurrent.TimeUnit.DAYS
+import java.util.concurrent.TimeUnit.HOURS
+import java.util.concurrent.TimeUnit.MINUTES
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
@@ -13,6 +15,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkState
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
@@ -31,8 +34,10 @@ import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
 import org.fdroid.ui.details.VersionItem
+import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
+import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListModel
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.repositories.RepositoryInfo
@@ -81,6 +86,7 @@ val testVersion1 =
   object : PackageVersion {
     override val versionCode: Long = 42
     override val versionName: String = "42.23.0-alpha1337-33d2252b90"
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
     override val size: Long = 1024 * 1024 * 42
     override val signer: SignerV2 =
@@ -100,6 +106,7 @@ val testVersion2 =
   object : PackageVersion {
     override val versionCode: Long = 23
     override val versionName: String = "23.42.0"
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(4)
     override val size: Long = 1024 * 1024 * 23
     override val signer: SignerV2 =
@@ -115,6 +122,23 @@ val testVersion2 =
       }
     override val hasKnownVulnerability: Boolean = false
   }
+
+val categoryItems =
+  listOf(
+    CategoryItem("Multimedia", "Multimedia"),
+    CategoryItem("Internet", "Internet"),
+    CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+    CategoryItem("Connectivity", "Connectivity"),
+    CategoryItem("Development", "Development"),
+    CategoryItem("App Store & Updater", "App Store & Updater"),
+    CategoryItem("Browser", "Browser"),
+    CategoryItem("Calendar & Agenda", "Calendar & Agenda"),
+    CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
+    CategoryItem("Connectivity", "Connectivity"),
+    CategoryItem("Development", "Development"),
+    CategoryItem("doesn't exist", "Foo bar"),
+  )
+
 val testApp =
   AppDetailsItem(
     app =
@@ -157,14 +181,7 @@ val testApp =
         "Therefore this app can be used on devices without Google Services installed. " +
         "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
         LoremIpsum(128).values.joinToString(" "),
-    categories =
-      listOf(
-        CategoryItem("Multimedia", "Multimedia"),
-        CategoryItem("Internet", "Internet"),
-        CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
-        CategoryItem("Connectivity", "Connectivity"),
-        CategoryItem("Development", "Development"),
-      ),
+    categories = categoryItems.subList(0, 5),
     antiFeatures =
       listOf(
         AntiFeature(
@@ -252,6 +269,7 @@ fun getPreviewVersion(versionName: String, size: Long? = null) =
   object : PackageVersion {
     override val versionCode: Long = 23
     override val versionName: String = versionName
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23)
     override val added: Long = System.currentTimeMillis() - DAYS.toMillis(3)
     override val size: Long? = size
     override val signer: SignerV2? = null
@@ -267,7 +285,52 @@ fun getPreviewVersion(versionName: String, size: Long? = null) =
     override val hasKnownVulnerability: Boolean = false
   }
 
-fun getAppListInfo(model: AppListModel) =
+val appListItems =
+  listOf(
+    AppListItem(
+      repoId = 1,
+      packageName = "org.example.camera",
+      name = "Open Camera",
+      summary = "Camera app with manual controls",
+      lastUpdated = 1,
+      isInstalled = false,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 1,
+      packageName = "org.example.notes",
+      name = "Simple Notes",
+      summary = "Fast and offline note taking",
+      lastUpdated = 2,
+      isInstalled = true,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 2,
+      packageName = "org.example.music",
+      name = "Wave Player",
+      summary = "Music player with playlist support",
+      lastUpdated = 3,
+      isInstalled = true,
+      isCompatible = true,
+    ),
+    AppListItem(
+      repoId = 2,
+      packageName = "org.example.reader",
+      name = "Book Reader",
+      summary = "Read EPUB and PDF files",
+      lastUpdated = 4,
+      isInstalled = false,
+      isCompatible = true,
+    ),
+  )
+
+fun getAppListInfo(
+  model: AppListModel,
+  list: AppListType = AppListType.New("New"),
+  showFilters: Boolean = false,
+  showOnboarding: Boolean = false,
+) =
   object : AppListInfo {
     override val model: AppListModel = model
     override val actions: AppListActions =
@@ -298,10 +361,35 @@ fun getAppListInfo(model: AppListModel) =
 
         override fun onOnboardingSeen() {}
       }
-    override val list: AppListType = AppListType.New("New")
-    override val showFilters: Boolean = false
-    override val showOnboarding: Boolean = false
+    override val list: AppListType = list
+    override val showFilters: Boolean = showFilters
+    override val showOnboarding: Boolean = showOnboarding
   }
+
+fun getAppListModel(
+  sortBy: AppListSortOrder = AppListSortOrder.NAME,
+  filterIncompatible: Boolean = true,
+  filteredCategoryIds: Set<String> = setOf("Browser"),
+  filteredAntiFeatureIds: Set<String> = setOf("KnownVuln"),
+  filteredRepositoryIds: Set<Long> = setOf(2),
+) =
+  AppListModel(
+    apps = appListItems,
+    showFilterBadge = true,
+    sortBy = sortBy,
+    filterIncompatible = filterIncompatible,
+    categories = categoryItems,
+    filteredCategoryIds = filteredCategoryIds,
+    antiFeatures =
+      listOf(
+        AntiFeatureItem("Ads", "Ads", null),
+        AntiFeatureItem("KnownVuln", "Known Vulnerability", null),
+        AntiFeatureItem("NoSourceSince", "No Source Since", null),
+      ),
+    filteredAntiFeatureIds = filteredAntiFeatureIds,
+    repositories = repoItems,
+    filteredRepositoryIds = filteredRepositoryIds,
+  )
 
 fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
   object : MyAppsInfo {
@@ -420,7 +508,7 @@ val repoItems =
       address = "http://example.org",
       name = "F-Droid",
       icon = null,
-      timestamp = System.currentTimeMillis() - 1_111_111,
+      timestamp = System.currentTimeMillis() - MINUTES.toMillis(18),
       lastUpdated = System.currentTimeMillis() - 9_999_999,
       weight = 1,
       enabled = true,
@@ -431,7 +519,7 @@ val repoItems =
       address = "http://example.org",
       name = "Guardian Project Repository",
       icon = null,
-      timestamp = System.currentTimeMillis() - 9_999_999,
+      timestamp = System.currentTimeMillis() - HOURS.toMillis(2),
       lastUpdated = System.currentTimeMillis() - 99_999_999,
       weight = 2,
       enabled = true,
@@ -442,7 +530,7 @@ val repoItems =
       address = "http://example.net",
       name = "My first Repo",
       icon = null,
-      timestamp = System.currentTimeMillis() - 888_888,
+      timestamp = System.currentTimeMillis() - MINUTES.toMillis(14),
       lastUpdated = System.currentTimeMillis(),
       weight = 3,
       enabled = true,
@@ -516,17 +604,22 @@ fun getRepoDetailsInfo(
       }
   }
 
-fun getRepository(address: String = "https://example.org/repo") =
+fun getRepository(
+  address: String = "https://example.org/repo",
+  username: String? = "foo",
+  password: String? = "bar",
+  lastError: String? = "NotFoundException FooBar technical blabla",
+) =
   Repository(
     repoId = 42L,
     address = address,
-    timestamp = 42L,
+    timestamp = System.currentTimeMillis() - DAYS.toMillis(4),
     formatVersion = IndexFormatVersion.ONE,
     certificate = "010203",
     version = 20001L,
     weight = 42,
-    lastUpdated = 1337,
-    username = "foo",
-    password = "bar",
-    lastError = "NotFoundException FooBar technical blabla",
+    lastUpdated = System.currentTimeMillis() - DAYS.toMillis(3),
+    username = username,
+    password = password,
+    lastError = lastError,
   )

@@ -58,8 +58,9 @@ fun DiscoverPresenter(
   }
 
   val proxyConfig = settingsManager.proxyConfig
-  val newApps =
-    newAppsFlow.collectAsState(null).value?.mapNotNull {
+  // load carousel content in reverse order because that looked best with AnimatedVisibility
+  val mostDownloadedApps =
+    mostDownloadedAppsFlow.collectAsState(null).value?.mapNotNull {
       val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
       it.toAppDiscoverItem(repository, proxyConfig)
     }
@@ -68,8 +69,8 @@ fun DiscoverPresenter(
       val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
       it.toAppDiscoverItem(repository, proxyConfig)
     }
-  val mostDownloadedApps =
-    mostDownloadedAppsFlow.collectAsState(null).value?.mapNotNull {
+  val newApps =
+    newAppsFlow.collectAsState(null).value?.mapNotNull {
       val repository = repoManager.getRepository(it.repoId) ?: return@mapNotNull null
       it.toAppDiscoverItem(repository, proxyConfig)
     }

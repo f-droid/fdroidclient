@@ -17,7 +17,6 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.ui.apps.myAppsEntry
 import org.fdroid.ui.details.NoAppSelected
 import org.fdroid.ui.details.appDetailsEntry
@@ -34,7 +33,7 @@ import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
 import org.fdroid.ui.repositories.repoEntry
-import org.fdroid.ui.search.ExpandedSearch
+import org.fdroid.ui.search.GlobalSearch
 import org.fdroid.ui.search.SearchViewModel
 import org.fdroid.ui.settings.Settings
 import org.fdroid.ui.settings.SettingsViewModel
@@ -72,7 +71,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
     ) {
       val viewModel = hiltViewModel<SearchViewModel>()
-      ExpandedSearch(
+      GlobalSearch(
         textFieldState = viewModel.textFieldState,
         searchResults = viewModel.searchResults.collectAsStateWithLifecycle().value,
         onSearch = viewModel::search,
@@ -85,6 +84,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       val viewModel = hiltViewModel<SettingsViewModel>()
       Settings(
         model = viewModel.model,
+        isBigScreen = isBigScreen,
         onSaveLogcat = {
           viewModel.onSaveLogcat(it)
           navigator.goBack()
@@ -116,17 +116,12 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
   }
   val showBottomBar = !isBigScreen && navigator.last is MainNavKey
   val viewModel = hiltViewModel<MainViewModel>()
-  val dynamicColors =
-    viewModel.dynamicColors.collectAsStateWithLifecycle(PREF_DEFAULT_DYNAMIC_COLORS).value
-  val numUpdates = viewModel.numUpdates.collectAsStateWithLifecycle().value
-  val hasAppIssues = viewModel.hasAppIssues.collectAsStateWithLifecycle(false).value
+  val mainModel = viewModel.mainModel.collectAsStateWithLifecycle().value
   MainContent(
+    model = mainModel,
     isBigScreen = isBigScreen,
-    dynamicColors = dynamicColors,
     showBottomBar = showBottomBar,
     currentNavKey = navigationState.topLevelRoute,
-    numUpdates = numUpdates,
-    hasAppIssues = hasAppIssues,
     onNav = { navKey -> navigator.navigate(navKey) },
   ) { modifier ->
     NavDisplay(

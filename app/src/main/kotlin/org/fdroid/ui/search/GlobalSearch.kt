@@ -16,13 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.navigation.NavigationKey
+import org.fdroid.ui.utils.appListItems
+import org.fdroid.ui.utils.categoryItems
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun ExpandedSearch(
+fun GlobalSearch(
   textFieldState: TextFieldState,
   searchResults: SearchResults?,
   onSearch: suspend (String) -> Unit,
@@ -64,7 +64,7 @@ fun ExpandedSearch(
 private fun AppsSearchLoadingPreview() {
   FDroidContent {
     val textFieldState = rememberTextFieldState("foo bar")
-    Box(Modifier.fillMaxSize()) { ExpandedSearch(textFieldState, null, {}, {}, {}, {}) }
+    Box(Modifier.fillMaxSize()) { GlobalSearch(textFieldState, null, {}, {}, {}, {}) }
   }
 }
 
@@ -75,7 +75,7 @@ private fun AppsSearchEmptyPreview() {
   FDroidContent {
     val textFieldState = rememberTextFieldState("foo")
     Box(Modifier.fillMaxSize()) {
-      ExpandedSearch(textFieldState, SearchResults(emptyList(), emptyList()), {}, {}, {}, {})
+      GlobalSearch(textFieldState, SearchResults(emptyList(), emptyList()), {}, {}, {}, {})
     }
   }
 }
@@ -87,14 +87,14 @@ private fun AppsSearchOnlyCategoriesPreview() {
   FDroidContent {
     val textFieldState = rememberTextFieldState()
     Box(Modifier.fillMaxSize()) {
-      val categories =
-        listOf(
-          CategoryItem("Bookmark", "Bookmark"),
-          CategoryItem("Browser", "Browser"),
-          CategoryItem("Calculator", "Calc"),
-          CategoryItem("Money", "Money"),
-        )
-      ExpandedSearch(textFieldState, SearchResults(emptyList(), categories), {}, {}, {}, {})
+      GlobalSearch(
+        textFieldState = textFieldState,
+        searchResults = SearchResults(emptyList(), categoryItems.subList(3, 5)),
+        onSearch = {},
+        onNav = {},
+        onBack = {},
+        onSearchCleared = {},
+      )
     }
   }
 }
@@ -106,19 +106,14 @@ private fun AppsSearchPreview() {
   FDroidContent {
     val textFieldState = rememberTextFieldState()
     Box(Modifier.fillMaxSize()) {
-      val categories =
-        listOf(
-          CategoryItem("Bookmark", "Bookmark"),
-          CategoryItem("Browser", "Browser"),
-          CategoryItem("Calculator", "Calc"),
-          CategoryItem("Money", "Money"),
-        )
-      val apps =
-        listOf(
-          AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
-          AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
-        )
-      ExpandedSearch(textFieldState, SearchResults(apps, categories), {}, {}, {}, {})
+      GlobalSearch(
+        textFieldState = textFieldState,
+        searchResults = SearchResults(appListItems, categoryItems.subList(0, 4)),
+        onSearch = {},
+        onNav = {},
+        onBack = {},
+        onSearchCleared = {},
+      )
     }
   }
 }

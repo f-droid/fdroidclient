@@ -24,17 +24,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.fdroid.R
 import org.fdroid.history.InstallEvent
+import org.fdroid.ui.apps.VersionLine
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
 import org.fdroid.ui.utils.asRelativeTimeString
@@ -115,17 +114,9 @@ fun HistoryList(
           headlineContent = { Text(item.event.name ?: item.event.packageName) },
           supportingContent = {
             val dateStr = item.event.time.asRelativeTimeString()
-            val text =
-              if (item.event is InstallEvent) {
-                if (item.event.oldVersionName == null) {
-                  "${item.event.versionName} • $dateStr"
-                } else if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-                  "${item.event.oldVersionName} → ${item.event.versionName} • $dateStr"
-                } else {
-                  "$dateStr • ${item.event.versionName} ← ${item.event.oldVersionName}"
-                }
-              } else dateStr
-            Text(text)
+            if (item.event is InstallEvent) {
+              VersionLine(item.event.oldVersionName, item.event.versionName, dateStr)
+            } else Text(dateStr)
           },
           colors = ListItemDefaults.colors(containerColor = Color.Transparent),
           modifier = if (enabled == false) Modifier.alpha(0.5f) else Modifier,

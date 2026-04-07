@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material3.ListItem
@@ -52,7 +53,7 @@ private fun OfficialMirrorRow(
 ) {
   ListItem(
     leadingContent = { Text(text = item.emoji, modifier = Modifier.width(20.dp)) },
-    headlineContent = { Text(item.url) },
+    headlineContent = { SelectionContainer { Text(item.url) } },
     trailingContent = { Switch(checked = item.isEnabled, onCheckedChange = null) },
     colors = ListItemDefaults.colors(MaterialTheme.colorScheme.background),
     modifier =

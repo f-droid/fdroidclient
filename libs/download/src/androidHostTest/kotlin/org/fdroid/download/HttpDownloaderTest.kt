@@ -147,32 +147,31 @@ internal class HttpDownloaderTest {
     val totalSize = firstBytes.size + secondBytes.size
     val buffer = Buffer().also { it.write(firstBytes, startIndex = 0, endIndex = firstBytes.size) }
     val readChannel = TestByteReadChannel(buffer)
-    val mockEngine =
-      MockEngine.config {
-        reuseHandlers = false
-        // first response reads from channel that errors after sending firstBytes
-        addHandler { respond(readChannel, OK, headers = headersOf(ContentLength, "$totalSize")) }
-        // second request tries to resume, but doesn't get PartialContent response
-        addHandler {
-          val from = it.getByteRangeFrom()
-          assertTrue(from > 0)
-          assertTrue(from <= firstBytes.size)
-          respond(
-            content = firstBytes + secondBytes,
-            status = OK,
-            headers = headersOf(ContentLength, "$totalSize"),
-          )
-        }
-        // download is tried again without resuming
-        addHandler {
-          assertTrue(Range !in it.headers)
-          respond(
-            content = firstBytes + secondBytes,
-            status = OK,
-            headers = headersOf(ContentLength, "$totalSize"),
-          )
-        }
+    val mockEngine = MockEngine.config {
+      reuseHandlers = false
+      // first response reads from channel that errors after sending firstBytes
+      addHandler { respond(readChannel, OK, headers = headersOf(ContentLength, "$totalSize")) }
+      // second request tries to resume, but doesn't get PartialContent response
+      addHandler {
+        val from = it.getByteRangeFrom()
+        assertTrue(from > 0)
+        assertTrue(from <= firstBytes.size)
+        respond(
+          content = firstBytes + secondBytes,
+          status = OK,
+          headers = headersOf(ContentLength, "$totalSize"),
+        )
       }
+      // download is tried again without resuming
+      addHandler {
+        assertTrue(Range !in it.headers)
+        respond(
+          content = firstBytes + secondBytes,
+          status = OK,
+          headers = headersOf(ContentLength, "$totalSize"),
+        )
+      }
+    }
     val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
     val httpDownloader = HttpDownloaderV2(httpManager, downloadRequest, file)
     httpDownloader.download()
@@ -196,12 +195,11 @@ internal class HttpDownloaderTest {
     val sha256 = "efabb260da949061c88173c19f369b4aa0eaa82003c7c2dec08b5dfe75525368"
     val downloadRequest = DownloadRequest(getIndexFile("foo/bar", sha256), mirrors)
 
-    val mockEngine =
-      MockEngine.config {
-        reuseHandlers = false
-        addHandler { respond("", OK, headers = headersOf(ContentLength, "$totalSize")) }
-        addHandler { respond(secondBytes, PartialContent) }
-      }
+    val mockEngine = MockEngine.config {
+      reuseHandlers = false
+      addHandler { respond("", OK, headers = headersOf(ContentLength, "$totalSize")) }
+      addHandler { respond(secondBytes, PartialContent) }
+    }
     val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
     val httpDownloader = HttpDownloader(httpManager, downloadRequest, file)
     // this throws if the hash doesn't match while downloading
@@ -247,11 +245,10 @@ internal class HttpDownloaderTest {
     // specifying the sha256 hash forces its validation
     val indexFile = getIndexFile("foo/bar", sha256.replaceFirst('e', 'f'), bytes.size.toLong())
     val downloadRequest = DownloadRequest(indexFile, mirrors)
-    val mockEngine =
-      MockEngine.config {
-        reuseHandlers = false
-        addHandler { respond("", OK) }
-      }
+    val mockEngine = MockEngine.config {
+      reuseHandlers = false
+      addHandler { respond("", OK) }
+    }
     val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
     val httpDownloader = HttpDownloaderV2(httpManager, downloadRequest, file)
     val e = assertFailsWith<IOException> { httpDownloader.download() }

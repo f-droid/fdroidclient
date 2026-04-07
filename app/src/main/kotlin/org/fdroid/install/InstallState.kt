@@ -1,8 +1,8 @@
 package org.fdroid.install
 
 import android.app.PendingIntent
-import org.fdroid.database.AppVersion
 import org.fdroid.database.Repository
+import org.fdroid.index.v2.PackageVersion
 
 sealed class InstallState(val showProgress: Boolean) {
   data object Unknown : InstallState(false)
@@ -30,7 +30,7 @@ sealed class InstallState(val showProgress: Boolean) {
 
   data class PreApprovalConfirmationNeeded(
     private val state: InstallStateWithInfo,
-    val version: AppVersion,
+    val version: PackageVersion,
     val repo: Repository,
     override val sessionId: Int,
     override val creationTimeMillis: Long = System.currentTimeMillis(),

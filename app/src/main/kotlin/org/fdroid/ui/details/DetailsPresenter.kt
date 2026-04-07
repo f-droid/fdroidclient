@@ -113,7 +113,7 @@ fun DetailsPresenter(
       }
     }
   val repo =
-    produceState<Repository?>(null) {
+    produceState<Repository?>(null, app) {
         withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
       }
       .value ?: return null

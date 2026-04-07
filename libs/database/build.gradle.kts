@@ -39,9 +39,7 @@ android {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
-  testOptions {
-    unitTests { isIncludeAndroidResources = true }
-  }
+  testOptions { unitTests { isIncludeAndroidResources = true } }
   androidResources {
     // needed only for instrumentation tests: assets.openFd()
     noCompress += "json"

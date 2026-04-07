@@ -34,7 +34,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppMetadata
-import org.fdroid.database.AppVersion
+import org.fdroid.index.v2.PackageVersion
 import org.fdroid.ui.utils.isAppInForeground
 import org.fdroid.utils.IoDispatcher
 
@@ -93,13 +93,13 @@ constructor(
     app: AppMetadata,
     iconGetter: suspend () -> Bitmap?,
     isUpdate: Boolean,
-    version: AppVersion,
+    version: PackageVersion,
     canRequestUserConfirmationNow: Boolean,
   ): PreApprovalResult {
     return if (!context.isAppInForeground()) {
       log.info { "App not in foreground, pre-approval for ${app.packageName} not supported." }
       PreApprovalResult.NotSupported
-    } else if (isUpdate && canDoAutoUpdate(version)) {
+    } else if (isUpdate && canDoAutoUpdate(app.packageName, version)) {
       // should not be needed, so we say not supported
       log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
       PreApprovalResult.NotSupported
@@ -368,17 +368,17 @@ constructor(
     return params
   }
 
-  private fun canDoAutoUpdate(version: AppVersion): Boolean {
+  private fun canDoAutoUpdate(packageName: String, version: PackageVersion): Boolean {
     if (SDK_INT < 31) return false
-    val targetSdkVersion = version.manifest.targetSdkVersion ?: return false
+    val targetSdkVersion = version.packageManifest.targetSdkVersion ?: return false
     // docs:
     // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
     return if (isAutoUpdateSupported(targetSdkVersion)) {
       val ourPackageName = context.packageName
-      if (ourPackageName == version.packageName) return true
+      if (ourPackageName == packageName) return true
       val sourceInfo =
         try {
-          context.packageManager.getInstallSourceInfo(version.packageName)
+          context.packageManager.getInstallSourceInfo(packageName)
         } catch (e: Exception) {
           log.error(e) { "Could not get package info: " }
           return false

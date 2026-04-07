@@ -624,12 +624,13 @@ internal class AppInstallManagerTest {
     val installJob =
       installScope.async {
         appInstallManager.install(
-          appMetadata = appMetadata,
-          version = version,
-          currentVersionName = installedVersionName,
-          repo = repo,
-          iconModel = null,
-          canAskPreApprovalNow = false,
+            packageName = packageName,
+            appMetadata = appMetadata,
+            version = version,
+            currentVersionName = installedVersionName,
+            repo = repo,
+            iconModel = null,
+            canAskPreApprovalNow = false,
         )
       }
 
@@ -648,12 +649,13 @@ internal class AppInstallManagerTest {
     canAskPreApprovalNow: Boolean = false,
   ): InstallState {
     return appInstallManager.install(
-      appMetadata = appMetadata,
-      version = version,
-      currentVersionName = currentVersionName,
-      repo = repo,
-      iconModel = iconModel,
-      canAskPreApprovalNow = canAskPreApprovalNow,
+        packageName = packageName,
+        appMetadata = appMetadata,
+        version = version,
+        currentVersionName = currentVersionName,
+        repo = repo,
+        iconModel = iconModel,
+        canAskPreApprovalNow = canAskPreApprovalNow,
     )
   }
 }

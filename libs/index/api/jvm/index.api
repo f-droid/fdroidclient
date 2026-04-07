@@ -861,6 +861,7 @@ public final class org/fdroid/index/v2/PackageV2Kt {
 
 public abstract interface class org/fdroid/index/v2/PackageVersion {
 	public abstract fun getAdded ()J
+	public abstract fun getFile ()Lorg/fdroid/index/v2/FileV1;
 	public abstract fun getHasKnownVulnerability ()Z
 	public abstract fun getPackageManifest ()Lorg/fdroid/index/v2/PackageManifest;
 	public abstract fun getReleaseChannels ()Ljava/util/List;
@@ -886,7 +887,7 @@ public final class org/fdroid/index/v2/PackageVersionV2 : org/fdroid/index/v2/Pa
 	public fun equals (Ljava/lang/Object;)Z
 	public fun getAdded ()J
 	public final fun getAntiFeatures ()Ljava/util/Map;
-	public final fun getFile ()Lorg/fdroid/index/v2/FileV1;
+	public fun getFile ()Lorg/fdroid/index/v2/FileV1;
 	public fun getHasKnownVulnerability ()Z
 	public final fun getManifest ()Lorg/fdroid/index/v2/ManifestV2;
 	public fun getPackageManifest ()Lorg/fdroid/index/v2/PackageManifest;

@@ -50,6 +50,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
@@ -62,6 +63,7 @@ import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.TopAppBarButton
+import org.fdroid.ui.utils.appListItems
 import org.fdroid.ui.utils.getAppListInfo
 import org.fdroid.ui.utils.getHintOverlayColor
 
@@ -226,69 +228,71 @@ private fun FilterButton(
 @Preview
 @Composable
 private fun Preview() {
-  FDroidContent {
-    val model =
-      AppListModel(
-        apps =
-          listOf(
-            AppListItem(1, "1", "This is app 1", "It has summary 2", 0, false, true),
-            AppListItem(2, "2", "This is app 2", "It has summary 2", 0, true, true),
-          ),
-        showFilterBadge = true,
-        sortBy = AppListSortOrder.NAME,
-        filterIncompatible = true,
-        categories = null,
-        filteredCategoryIds = emptySet(),
-        antiFeatures = null,
-        filteredAntiFeatureIds = emptySet(),
-        repositories = emptyList(),
-        filteredRepositoryIds = emptySet(),
-      )
-    val info = getAppListInfo(model)
-    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  HintHost {
+    FDroidContent {
+      val model =
+        AppListModel(
+          apps = appListItems,
+          showFilterBadge = true,
+          sortBy = AppListSortOrder.NAME,
+          filterIncompatible = true,
+          categories = null,
+          filteredCategoryIds = emptySet(),
+          antiFeatures = null,
+          filteredAntiFeatureIds = emptySet(),
+          repositories = emptyList(),
+          filteredRepositoryIds = emptySet(),
+        )
+      val info = getAppListInfo(model)
+      AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+    }
   }
 }
 
 @Preview
 @Composable
 private fun PreviewLoading() {
-  FDroidContent {
-    val model =
-      AppListModel(
-        apps = null,
-        showFilterBadge = false,
-        sortBy = AppListSortOrder.NAME,
-        filterIncompatible = false,
-        categories = null,
-        filteredCategoryIds = emptySet(),
-        antiFeatures = null,
-        filteredAntiFeatureIds = emptySet(),
-        repositories = emptyList(),
-        filteredRepositoryIds = emptySet(),
-      )
-    val info = getAppListInfo(model)
-    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  HintHost {
+    FDroidContent {
+      val model =
+        AppListModel(
+          apps = null,
+          showFilterBadge = false,
+          sortBy = AppListSortOrder.NAME,
+          filterIncompatible = false,
+          categories = null,
+          filteredCategoryIds = emptySet(),
+          antiFeatures = null,
+          filteredAntiFeatureIds = emptySet(),
+          repositories = emptyList(),
+          filteredRepositoryIds = emptySet(),
+        )
+      val info = getAppListInfo(model)
+      AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+    }
   }
 }
 
 @Preview
 @Composable
 private fun PreviewEmpty() {
-  FDroidContent {
-    val model =
-      AppListModel(
-        apps = emptyList(),
-        showFilterBadge = false,
-        sortBy = AppListSortOrder.NAME,
-        filterIncompatible = false,
-        categories = null,
-        filteredCategoryIds = emptySet(),
-        antiFeatures = null,
-        filteredAntiFeatureIds = emptySet(),
-        repositories = emptyList(),
-        filteredRepositoryIds = emptySet(),
-      )
-    val info = getAppListInfo(model)
-    AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+  HintHost {
+    FDroidContent {
+      val model =
+        AppListModel(
+          apps = emptyList(),
+          showFilterBadge = false,
+          sortBy = AppListSortOrder.NAME,
+          filterIncompatible = false,
+          categories = null,
+          filteredCategoryIds = emptySet(),
+          antiFeatures = null,
+          filteredAntiFeatureIds = emptySet(),
+          repositories = emptyList(),
+          filteredRepositoryIds = emptySet(),
+        )
+      val info = getAppListInfo(model)
+      AppList(appListInfo = info, currentPackageName = null, onBackClicked = {}, onItemClick = {})
+    }
   }
 }

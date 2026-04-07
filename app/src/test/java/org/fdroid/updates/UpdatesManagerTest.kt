@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.fdroid.NotificationManager
@@ -112,6 +113,7 @@ internal class UpdatesManagerTest {
       val installedApps1 = installedApps("app1")
       installedAppsFlow.value = installedApps1
       advanceUntilIdle()
+      advanceTimeBy( 2000)
       verify(exactly = 1) { dbAppChecker.getApps(installedApps1) }
       assertNotNull(updatesManager.updates.value) // populated after first real emission
 

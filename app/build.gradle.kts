@@ -18,8 +18,8 @@ android {
     applicationId = "org.fdroid"
     minSdk = 24
     targetSdk = 36
-    versionCode = 2000006
-    versionName = "2.0-alpha6"
+    versionCode = 2000007
+    versionName = "2.0-alpha7"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -137,7 +137,15 @@ dependencies {
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
 
+  "fullImplementation"(libs.material)
+  "fullImplementation"(libs.androidx.documentfile)
+  "fullImplementation"(libs.androidx.localbroadcastmanager)
   "fullImplementation"(libs.guardianproject.panic)
+  "fullImplementation"(libs.bcpkix.jdk15to18)
+  "fullImplementation"(libs.jmdns)
+  "fullImplementation"(libs.nanohttpd)
+  "fullImplementation"(libs.commons.io)
+  "fullImplementation"(libs.commons.net)
 
   testImplementation(libs.junit)
   testImplementation(kotlin("test"))
@@ -185,3 +193,14 @@ val gitHash: String
     process.waitFor() // Ensure the command completes
     return process.inputStream.use { it.readBytes().decodeToString().trim() }
   }
+
+// workaround for https://issuetracker.google.com/issues/430260686
+// also https://issuetracker.google.com/issues/469819154
+// and https://issuetracker.google.com/issues/444048026
+tasks.withType<com.android.compose.screenshot.tasks.PreviewScreenshotValidationTask> {
+  maxHeapSize = "4g"
+}
+
+tasks.withType<com.android.compose.screenshot.tasks.PreviewScreenshotUpdateTask> {
+  maxHeapSize = "4g"
+}

@@ -4,6 +4,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import org.fdroid.index.RELEASE_CHANNEL_BETA
+import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.index.v2.SignerV2
@@ -190,6 +191,7 @@ internal class UpdateCheckerTest {
         override val targetSdkVersion: Int? = null
       },
     override val hasKnownVulnerability: Boolean = false,
+    override val file: FileV1 = FileV1("foo/bar", "abcd", 23),
   ) : PackageVersion
 
   private data class AppPreferences(

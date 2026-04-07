@@ -31,13 +31,13 @@ import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.fdroid.UpdateChecker
 import org.fdroid.database.AppMetadata
-import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.download.DownloadRequest
 import org.fdroid.download.NetworkMonitor
 import org.fdroid.getCacheKey
 import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.RepoManager
+import org.fdroid.index.v2.PackageVersion
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallState
 import org.fdroid.repo.RepoPreLoader
@@ -116,14 +116,15 @@ constructor(
   }
 
   @UiThread
-  fun install(appMetadata: AppMetadata, version: AppVersion, iconModel: Any?) {
+  fun install(appMetadata: AppMetadata, version: PackageVersion, iconModel: Any?) {
     scope.launch(Dispatchers.Main) {
       val result =
         appInstallManager.install(
+          packageName = packageName,
           appMetadata = appMetadata,
           version = version,
-          currentVersionName = packageInfoFlow.value?.packageInfo?.versionName,
-          repo = repoManager.getRepository(version.repoId) ?: return@launch, // TODO
+          currentVersionName = packageInfoFlow.value?.packageInfo?.versionName, // TODO
+          repo = repoManager.getRepository(appMetadata.repoId) ?: return@launch,
           iconModel = iconModel,
           canAskPreApprovalNow = true,
         )

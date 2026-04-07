@@ -34,6 +34,7 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.runBlocking
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppVersion
+import org.fdroid.index.v2.PackageVersion
 import org.fdroid.ui.utils.isAppInForeground
 import org.junit.After
 import org.junit.Before
@@ -73,7 +74,7 @@ internal class SessionInstallManagerTest {
       name = mapOf("en-US" to "Example App"),
       isCompatible = true,
     )
-  private val appVersion: AppVersion = mockk(relaxed = true)
+  private val appVersion: PackageVersion = mockk(relaxed = true)
 
   private val installingState =
     InstallState.Installing(
@@ -213,14 +214,13 @@ internal class SessionInstallManagerTest {
       )
     assertIs<PreApprovalResult.NotSupported>(notForegroundResult)
 
-    // in foreground + update that can auto-update -> NotSupported
+    // in foreground + update that can auto-update, we say NotSupported, because not needed
     every { context.isAppInForeground() } returns true
-    every { appVersion.packageName } returns packageName
-    every { appVersion.manifest.targetSdkVersion } returns 34
+    every { appVersion.packageManifest.targetSdkVersion } returns 42
     val sourceInfo: InstallSourceInfo = mockk(relaxed = true)
     every { sourceInfo.installingPackageName } returns context.packageName
     if (SDK_INT >= 34) {
-      every { sourceInfo.updateOwnerPackageName } returns null
+      every { sourceInfo.updateOwnerPackageName } returns context.packageName
     }
     every { packageManager.getInstallSourceInfo(packageName) } returns sourceInfo
 
@@ -237,8 +237,7 @@ internal class SessionInstallManagerTest {
     // isUpdate = true but not our package, and we are not the update owner -> NotSupported,
     // because canDoAutoUpdate() returns false when getInstallSourceInfo() throws
     every { context.isAppInForeground() } returns true
-    every { appVersion.packageName } returns packageName
-    every { appVersion.manifest.targetSdkVersion } returns 34
+    every { appVersion.packageManifest.targetSdkVersion } returns 34
     every { packageManager.getInstallSourceInfo(packageName) } throws SecurityException("nope")
 
     val installSourceError =

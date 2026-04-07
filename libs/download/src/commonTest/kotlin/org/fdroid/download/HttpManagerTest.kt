@@ -150,17 +150,16 @@ internal class HttpManagerTest {
 
     val buffer = Buffer().also { it.write(content, startIndex = 0, endIndex = numFailBytes) }
     val readChannel = TestByteReadChannel(buffer)
-    val mockEngine =
-      MockEngine.config {
-        reuseHandlers = false
-        addHandler { respond(readChannel, OK) }
-        addHandler { request ->
-          val from = request.getByteRangeFrom()
-          assertTrue(from > 0)
-          assertTrue(from <= numFailBytes)
-          respond(content.copyOfRange(from, content.size), PartialContent)
-        }
+    val mockEngine = MockEngine.config {
+      reuseHandlers = false
+      addHandler { respond(readChannel, OK) }
+      addHandler { request ->
+        val from = request.getByteRangeFrom()
+        assertTrue(from > 0)
+        assertTrue(from <= numFailBytes)
+        respond(content.copyOfRange(from, content.size), PartialContent)
       }
+    }
     val httpManager = HttpManager(userAgent, null, httpClientEngineFactory = mockEngine)
 
     val sink = Buffer()
