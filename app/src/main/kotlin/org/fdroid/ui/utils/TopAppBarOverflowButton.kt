@@ -21,7 +21,7 @@ fun TopAppBarOverflowButton(
     var menuExpanded by remember { mutableStateOf(false) }
     TopAppBarButton(
       Icons.Default.MoreVert,
-      contentDescription = stringResource(R.string.more),
+      contentDescription = stringResource(androidx.appcompat.R.string.abc_action_menu_overflow_description),
       onClick = { menuExpanded = !menuExpanded },
     )
     DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
