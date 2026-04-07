@@ -86,6 +86,7 @@
     <string name="app_inst_unknown_source">Εγκαταστημένο (από άγνωστη πηγή)</string>
     <string name="links">Σύνδεσμοι</string>
     <string name="more">Περισσότερα</string>
+    <string name="abc_action_menu_overflow_description">Περισσότερες επιλογές</string>
     <string name="less">Λιγότερα</string>
     <string name="back">Επιστροφή</string>
     <string name="bad_fingerprint">Λανθασμένο δακτυλικό αποτύπωμα</string>

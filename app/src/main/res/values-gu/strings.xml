@@ -57,6 +57,7 @@
     <string name="app_details">અનુપ્રયોગની વિગતો</string>
     <string name="app_list__name__successfully_installed">%1$s સ્થાપિત થઇ ગયેલ છે</string>
     <string name="more">વધુ</string>
+    <string name="abc_action_menu_overflow_description">વધુ વિકલ્પો</string>
     <string name="less">ઓછુ</string>
     <string name="notification_action_install">સ્થાપિત કરો</string>
     <string name="app_list__name__downloading_in_progress">ડાઉનલોડ થાય છે, %1$s</string>

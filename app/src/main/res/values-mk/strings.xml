@@ -173,6 +173,7 @@
     <string name="antitracklist">Оваа апликација ја следи и јавува вашата активност</string>
     <string name="less">Помалку</string>
     <string name="more">Повеќе</string>
+    <string name="abc_action_menu_overflow_description">Повеќе опции</string>
     <string name="repo_add_url">Адреса на складиштето</string>
     <string name="choose_bt_send">Изберете Bluetooth метод за испраќање</string>
     <string name="bluetooth_activity_not_found">Не е пронајден метод за испраќање преке Bluetooth, изберете еден!</string>

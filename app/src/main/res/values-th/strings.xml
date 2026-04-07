@@ -32,6 +32,7 @@
     <string name="repo_add_add">เพิ่ม</string>
     <string name="links">ลิ้งก์</string>
     <string name="more">มากกว่า</string>
+    <string name="abc_action_menu_overflow_description">ตัวเลือกอื่น</string>
     <string name="less">น้อยกว่า</string>
     <string name="back">กลับ</string>
     <string name="cancel">ยกเลิก</string>

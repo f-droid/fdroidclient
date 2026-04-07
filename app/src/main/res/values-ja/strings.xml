@@ -214,6 +214,7 @@
     <string name="menu_flattr">Flattr</string>
     <string name="repo_details">リポジトリ</string>
     <string name="more">詳細を表示</string>
+    <string name="abc_action_menu_overflow_description">その他のオプション</string>
     <string name="less">詳細を隠す</string>
     <string name="status_download_unknown_size">ダウンロード中
 \n%2$s

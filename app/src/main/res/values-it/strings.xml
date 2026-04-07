@@ -127,6 +127,7 @@
     <string name="app_inst_known_source">Installato (da %s)</string>
     <string name="app_inst_unknown_source">Installato (da fonte sconosciuta)</string>
     <string name="more">Altro</string>
+    <string name="abc_action_menu_overflow_description">Altre opzioni</string>
     <string name="back">Indietro</string>
     <string name="less">Riduci</string>
     <string name="bad_fingerprint">Impronta digitale non corrispondente</string>

@@ -19,6 +19,7 @@
     <string name="cache_downloaded">დაქეშილი აპების დატოვება</string>
     <string name="app_list__name__downloading_in_progress">%1$s-ის გადმოწერა</string>
     <string name="more">მეტი</string>
+    <string name="abc_action_menu_overflow_description">სხვა ვარიანტები</string>
     <string name="less">ნაკლები</string>
     <string name="menu_uninstall">წაშლა</string>
     <string name="menu_upgrade">განახლება</string>

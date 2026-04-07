@@ -154,6 +154,7 @@
     <string name="interval_1d">Täglich nach Aktualisierungen suchen</string>
     <string name="interval_1w">Wöchentlich nach Aktualisierungen suchen</string>
     <string name="more">Mehr</string>
+    <string name="abc_action_menu_overflow_description">Weitere Optionen</string>
     <string name="less">Weniger</string>
     <string name="empty_installed_app_list">Keine Apps installiert. \n \nEs sind Apps auf deinem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass du deine Paketquellen aktualisieren musst oder diese tatsächlich keine deiner Apps beinhalten.</string>
     <string name="empty_can_update_app_list">Glückwunsch! \nDeine Apps sind auf dem neuesten Stand.</string>

@@ -197,6 +197,7 @@
     <string name="swap_connection_misc_error">Ocorreu um erro ao estabelecer a ligação e não será possível a troca!</string>
     <string name="install_confirm">precisa de acesso a</string>
     <string name="more">Mais</string>
+    <string name="abc_action_menu_overflow_description">Mais opções</string>
     <string name="less">Menos</string>
     <string name="permissions">Permissões</string>
     <string name="install_confirm_update">Quer instalar uma atualização desta app? Os dados existentes não serão perdidos. A app atualizada terá acesso a:</string>

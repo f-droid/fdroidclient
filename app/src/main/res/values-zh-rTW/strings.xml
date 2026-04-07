@@ -39,6 +39,7 @@
     <string name="repo_add_add">新增</string>
     <string name="links">連結</string>
     <string name="more">展開</string>
+    <string name="abc_action_menu_overflow_description">更多選項</string>
     <string name="less">摺疊</string>
     <string name="back">返回</string>
     <string name="cancel">取消</string>
