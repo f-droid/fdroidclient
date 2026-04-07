@@ -1,5 +1,6 @@
 package org.fdroid.ui.repositories.add
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +22,12 @@ import org.fdroid.ui.FDroidContent
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun AddRepoProgressScreen(text: String, modifier: Modifier = Modifier) {
+fun AddRepoProgressScreen(
+  text: String,
+  modifier: Modifier = Modifier,
+  backAllowed: Boolean = true,
+) {
+  BackHandler(!backAllowed) {}
   Column(
     verticalArrangement = spacedBy(16.dp, CenterVertically),
     horizontalAlignment = CenterHorizontally,

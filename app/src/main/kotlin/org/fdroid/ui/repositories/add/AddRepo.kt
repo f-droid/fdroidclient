@@ -46,8 +46,10 @@ fun AddRepo(
     topBar = {
       TopAppBar(
         navigationIcon = {
-          IconButton(onClick = onBackClicked) {
-            Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+          if (state !is Adding) {
+            IconButton(onClick = onBackClicked) {
+              Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.back))
+            }
           }
         },
         title = {
@@ -93,6 +95,7 @@ fun AddRepo(
       Adding ->
         AddRepoProgressScreen(
           text = stringResource(R.string.repo_state_adding),
+          backAllowed = false,
           modifier = Modifier.padding(paddingValues),
         )
       is Added -> {
