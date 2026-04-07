@@ -40,7 +40,7 @@ fun DiscoverPresenter(
     proxyConfig: ProxyConfig?,
   ): AppDiscoverItem {
     val isInstalled = installedApps.contains(packageName)
-    val imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig) as? DownloadRequest
+    val imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig)
     return AppDiscoverItem(
       packageName = packageName,
       name = getName(localeList) ?: "Unknown App",
@@ -48,7 +48,7 @@ fun DiscoverPresenter(
       isInstalled = isInstalled,
       imageModel =
         if (isInstalled) {
-          PackageName(packageName, imageModel)
+          PackageName(packageName, imageModel as? DownloadRequest)
         } else {
           imageModel
         },
