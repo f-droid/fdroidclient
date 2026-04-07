@@ -636,7 +636,7 @@
     <string name="app_list_author">Apps van %s</string>
     <string name="search_placeholder">Zoeken…</string>
     <string name="first_start_loading">App gegevensbanken binnenhalen…</string>
-    <string name="search_no_results">Geen apps gevonden\n\nProbeer minder zoektermen of voeg meer app-gegevensbanken toe</string>
+    <string name="search_no_results">Geen apps gevonden\n\nProbeer minder zoektermen of voeg meer gegevensbanken toe</string>
     <string name="category_group_productivity">Productiviteit</string>
     <string name="category_group_tools">Hulpmiddelen</string>
     <string name="category_group_wallets">Financiën &amp; Wallets</string>
@@ -651,7 +651,7 @@
     <string name="last_updated">Laatst geüpdatet: %1$s</string>
     <string name="last_updated_with_size">Laatst geüpdatet: %1$s (%2$s)</string>
     <string name="status_install_preparing">Installatie voorbereiden…</string>
-    <string name="whats_new_title">Nieuw</string>
+    <string name="whats_new_title">Wat is er nieuw</string>
     <string name="donate_title">Doneer</string>
     <string name="anti_features_title">Deze app heeft anti-functies</string>
     <string name="my_apps_empty">Alleen apps geïnstalleerd door %1$s worden hier weergegeven</string>
@@ -671,4 +671,27 @@
     <string name="ipfsgw_summary_new">Download apps van IPFS web eindpunten</string>
     <string name="call_to_action_keepandroidopen">F-Droid loopt gevaar. Google verandert de manier waarop je apps op je apparaat installeert. We hebben je hulp nodig.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="first_start_intro">Synchroniseer de app-gegevensbanken om te beginnen</string>
+    <string name="first_start_offline">Je bent off-line. Maak verbinding met internet om te beginnen.</string>
+    <string name="first_start_button">Gegevensbanken ophalen</string>
+    <string name="first_start_metered">Je gebruikt mobiele data en er wordt meer dan 10 MB gedownload. Tik op \'Gegevensbanken ophalen\' om toch te beginnen.</string>
+    <string name="no_repos_enabled">Geen gegevensbanken ingeschakeld. Voeg er een toe om te beginnen</string>
+    <string name="search_filter_no_results">Geen overeenkomende apps\n\nGebruik minder zoektermen of filters</string>
+    <string name="search_my_apps_no_results">Geen overeenkomende apps\n\nGebruik minder zoektermen</string>
+    <string name="sort_title">Sorteren en compatibiliteit</string>
+    <string name="sort_by_name">Op naam sorteren</string>
+    <string name="sort_by_latest">Op recentheid sorteren</string>
+    <string name="filter_only_compatible">Apps voor dit apparaat</string>
+    <string name="filter_button_save">Als standaard opslaan</string>
+    <string name="filter_intro">Apps filteren op</string>
+    <string name="category">Categorie</string>
+    <string name="filter_antifeatures">Anti-functies verbergen</string>
+    <string name="onboarding_app_list_filter_message">Gebruik filters om alleen apps uit bepaalde categorieën of gegevensbanken weer te geven. Je kunt ook de sortering aanpassen.</string>
+    <string name="got_it">Begrepen</string>
+    <string name="pref_dyn_colors_title">Systeemkleuren gebruiken</string>
+    <string name="pref_dyn_colors_summary">Dynamische kleuren van het systeem gebruiken</string>
+    <string name="pref_language_summary">Taalinstellingen systeem openen</string>
+    <string name="pref_auto_updates_only_wifi">Alleen via Wifi</string>
+    <string name="pref_auto_updates_only_always">Altijd (ook mobiele data)</string>
+    <string name="pref_auto_updates_only_never">Nooit</string>
 </resources>

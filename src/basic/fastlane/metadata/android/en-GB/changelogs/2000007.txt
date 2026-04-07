@@ -1,4 +1,4 @@
-* UI rewritten from scratch with Kotlin compose
+* UI rewritten from scratch with Kotlin Compose
 * improved search, also searching in descriptions and translations
 * easier to discover new apps, also highlighting the most downloaded ones
 * installation approval *before* downloading
