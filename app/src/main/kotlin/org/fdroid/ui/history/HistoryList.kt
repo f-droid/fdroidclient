@@ -33,9 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.fdroid.R
 import org.fdroid.history.InstallEvent
-import org.fdroid.ui.apps.VersionLine
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
+import org.fdroid.ui.utils.VersionLine
 import org.fdroid.ui.utils.asRelativeTimeString
 
 @Composable
