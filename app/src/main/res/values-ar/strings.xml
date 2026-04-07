@@ -89,7 +89,7 @@
     <string name="menu_settings">الإعدادات</string>
     <string name="menu_add_repo">مستودع جديد</string>
     <string name="menu_website">الموقع الإلكتروني</string>
-    <string name="menu_issues">العلل</string>
+    <string name="menu_issues">المشاكل</string>
     <string name="menu_changelog">سجل التغييرات</string>
     <string name="menu_upgrade">حدِّث</string>
     <string name="menu_bitcoin">بيتكوين (Bitcoin)</string>
@@ -617,7 +617,7 @@
     <string name="repo_preview_included_apps">التطبيقات المضمّنة:</string>
     <string name="repo_mirror_exists">أُضيفت هذه المرآة بالفعل (%s).</string>
     <string name="repo_and_mirror_add_both_info">عنوان URL الذي تحاول إضافته (%s) هو مرآة لمستودع جديد. سيتم إضافة كل من المستودع الأصلي والمرآة.</string>
-    <string name="warning_no_compat_versions">لا يحتوي المستودع المحدد على إصدارات تطبيقات متوافقة. لتلقي التحديثات، تفضل مستودعًا يحتوي على إصدارات متوافقة.</string>
+    <string name="warning_no_compat_versions">لا يحتوي المستودع المحدد على إصدارات متوافقة من التطبيق. لتلقي التحديثات، يُرجى اختيار مستودع مفضل يحتوي على إصدارات متوافقة.</string>
     <string name="auto_update_time">التحديث التالي الأقدم: %s</string>
     <string name="auto_update_time_past">التحديث القادم عند استيفاء الشروط</string>
     <string name="antitetherednet">خدمات الشبكة المقيدة</string>
@@ -777,7 +777,7 @@
     <string name="added_x_ago">أُضيف %1$s</string>
     <string name="size_colon">الحجم: %1$s</string>
     <string name="version_code_colon">رمز الإصدار: %1$s</string>
-    <string name="sdk_versions_colon">إصدارات SDK: %1$s</string>
+    <string name="sdk_versions_colon">إصدارات SDK: ‏%1$s</string>
     <string name="sdk_min_version">%1$s (الأدنى)</string>
     <string name="sdk_target_version">%1$s (مستهدف)</string>
     <string name="sdk_max_version">%1$s (الأقصى)</string>
@@ -800,4 +800,59 @@
     <string name="crash_report_error">تعذّر إرسال التقرير. لم يُعثر على تطبيق بريد إلكتروني :(</string>
     <string name="crash_report_save">احفظ تقرير الانهيار كملف</string>
     <string name="crash_report_saved">حُفظ التقرير إلى ملف</string>
+    <string name="crash_report_error_saving">خطأ في حفظ تقرير الانهيار في الملف</string>
+    <string name="notification_title">الإشعارات</string>
+    <string name="notification_summary">يفتح إعدادات إشعارات النظام</string>
+    <string name="notification_channel_install_success_title">تطبيقات مثبتة تلقائيًا</string>
+    <string name="notification_channel_install_success_description">يعرض إشعار بعد تثبيت التطبيقات تلقائيًا</string>
+    <string name="notification_channel_updates_available_title">تحديثات التطبيقات المتاحة</string>
+    <string name="notification_channel_updates_available_description">يعرض إشعارًا بعد تحديث المستودعات والعثور على تحديثات للتطبيقات</string>
+    <string name="notification_repo_update_default">يتصل ب%1$s…</string>
+    <string name="notification_repo_update_downloading">نُزَّل %1$s من %2$s</string>
+    <string name="notification_installing_section_installing">يثبِّت:</string>
+    <string name="notification_installing_section_confirmation">يتطلب تأكيد المستخدم:</string>
+    <string name="notification_installing_section_installed">مثبِّت:</string>
+    <string name="notification_installing_confirmation">انقر للتأكيد</string>
+    <string name="permission_camera_denied">امنح إذن الوصول إلى الكاميرا لمسح رمز QR. اضغط لمنح إذن الكاميرا من الإعدادات.</string>
+    <string name="error">خطأ</string>
+    <string name="install_history_empty_state">هذه القائمة لا تزال فارغة\n\nعندما تثبت التطبيقات أو تحديثها أو إلغاء تثبيتها، سيظهر سجل هنا</string>
+    <string name="install_history_disabled_state">سجلّ التثبيت معطّل\n\nلن يتم تسجيل عمليات التثبيت والتحديث وإلغاء التثبيت</string>
+    <string name="install_history_delete_ally">احذف سجلّ التثبيت</string>
+    <string name="install_history_delete_text">حذف سجلّ التثبيت؟</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="zero">حُفظ %1$d تطبيق من %2$s</item>
+        <item quantity="one">حُفظ %1$d تطبيق من %2$s</item>
+        <item quantity="two">حُفظ تطبيقين من %2$s</item>
+        <item quantity="few">حُفظ %1$d تطبيقات من %2$s</item>
+        <item quantity="many">حُفظ %1$d تطبيقًا من %2$s</item>
+        <item quantity="other">حُفظ %1$d تطبيق من %2$s</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="zero">يثبِّت %1$d تطبيق…</item>
+        <item quantity="one">يثبِّت %1$d تطبيق…</item>
+        <item quantity="two">يثبِّت تطبيقين…</item>
+        <item quantity="few">يثبِّت %1$d تطبيقات…</item>
+        <item quantity="many">يثبِّت %1$d تطبيقًا…</item>
+        <item quantity="other">يثبِّت %1$d تطبيق…</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="zero">يحدِّث %1$d تطبيق…</item>
+        <item quantity="one">يحدِّث %1$d تطبيق…</item>
+        <item quantity="two">يحدِّث تطبيقين…</item>
+        <item quantity="few">يحدِّث %1$d تطبيقات…</item>
+        <item quantity="many">يحدِّث %1$d تطبيقًا…</item>
+        <item quantity="other">يحدِّث %1$d تطبيق…</item>
+    </plurals>
+    <plurals name="notification_update_success_title">
+        <item quantity="zero">%1$d تطبيق محدث</item>
+        <item quantity="one">حُدِّث %1$d تطبيق</item>
+        <item quantity="two">حُدِّث %1$d تطبيقين</item>
+        <item quantity="few">حُدِّث %1$d تطبيقات</item>
+        <item quantity="many">حُدِّث %1$d تطبيقًا</item>
+        <item quantity="other">حُدِّث %1$d تطبيق</item>
+    </plurals>
+    <string name="pref_compact_bottom_bar_title">شريط تنقل مضغوط</string>
+    <string name="pref_compact_bottom_bar_summary">يقلل حجم شريط التنقل السفلي ويخفي تسمياته</string>
+    <string name="status_downloading">ينزل ب %1$s</string>
+    <string name="status_downloading_remaining">%1$s متبقي</string>
 </resources>

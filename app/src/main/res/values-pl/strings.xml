@@ -83,7 +83,7 @@
 \n
 \nUwaga: Wszystkie poprzednio zainstalowane aplikacje zostaną na urządzeniu.</string>
     <string name="requires_features">Wymaga: %1$s</string>
-    <string name="category_Development">Programowanie</string>
+    <string name="category_Development">Rozwój oprogramowania</string>
     <string name="category_Games">Gry</string>
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimedia</string>
@@ -826,4 +826,8 @@
     <string name="install_history_disabled_state">Historia instalacji jest wyłączona\n\nInstalacje, aktualizacje i odinstalowania nie będą rejestrowane</string>
     <string name="install_history_delete_ally">Usuń historię instalacji</string>
     <string name="install_history_delete_text">Czy usunąć historię instalacji?</string>
+    <string name="pref_compact_bottom_bar_title">Kompaktowy pasek nawigacyjny</string>
+    <string name="pref_compact_bottom_bar_summary">Zmniejsz rozmiar i ukryj etykiety dolnego paska nawigacyjnego</string>
+    <string name="status_downloading">Pobieranie z prędkością %1$s</string>
+    <string name="status_downloading_remaining">Pozostało %1$s</string>
 </resources>

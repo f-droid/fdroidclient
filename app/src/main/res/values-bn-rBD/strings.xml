@@ -154,9 +154,9 @@
     <string name="category_Navigation">দিক নির্ণয়</string>
     <string name="wifi_ap">হটস্পট</string>
     <string name="wifi">ওয়াই-ফাই</string>
-    <string name="pref_language_default">সিস্টেম ডিফল্ট</string>
+    <string name="pref_language_default">সিস্টেমের সাধারণ</string>
     <string name="requires_features">%1$s: প্রয়োজন</string>
-    <string name="not_on_same_wifi">তুমি যে স্থানীয় ভাণ্ডার যুক্ত করেছো সেটা আর তোমার যন্ত্র একই ওয়াইফাইতে নেই! এই নেটওয়ার্ক যোগ দেবার চেষ্টা করো: %s</string>
+    <string name="not_on_same_wifi">আপনি যে ওয়াইফাই নেটওয়ার্ক এ রয়েছেন, আপনার স্থানীয় রিপোসিটোরি ওই নেটওয়ার্ক এ নেই! এই নেটওয়ার্ক এ যোগ দেবার চেষ্টা করুন: %s</string>
     <string name="share_repository">ভাণ্ডার শেয়ার করো</string>
     <string name="repo_searching_address">%1$s এ
 \nপ্যাকেজের ভাণ্ডার খোঁজা হচ্ছে</string>
@@ -268,7 +268,7 @@
     <string name="menu_ignore_this">এই হালনাগাদ উপেক্ষা</string>
     <string name="menu_ignore_all">সব হালনাগাদ উপেক্ষা</string>
     <string name="menu_select_for_wipe">মুছার জন্য নির্বাচন</string>
-    <string name="menu_add_repo">নতুন রিপোসিটরি</string>
+    <string name="menu_add_repo">নতুন সংগ্রহস্থল</string>
     <string name="repositories_summary">অ্যাপের জন্য আরো উৎস যোগ করো</string>
     <string name="malformed_repo_uri">বিকৃত ভাণ্ডার ইউআরআই উপেক্ষা করা হলো: %s</string>
     <string name="invalid_url">এটা একটি সঠিক সংযোগ নয়।</string>
@@ -288,8 +288,8 @@
     <string name="repo_add_mirror">আয়না(মিরর) যোগ করো</string>
     <string name="updates_disabled_by_settings">তথ্য/ওয়াইফাই পছন্দ দিয়ে হালনাগাদ নিষ্ক্রিয়</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">%1$dটি অ্যাপের জন্য হালনাগাদ নামাও।</item>
-        <item quantity="other">%1$dটি অ্যাপের জন্য হালনাগাদ নামাও।</item>
+        <item quantity="one">%1$dটি অ্যাপের জন্যে আপডেট ডাউনলোড করুন</item>
+        <item quantity="other">%1$dটি অ্যাপের জন্যে আপডেট ডাউনলোড করুন</item>
     </plurals>
     <string name="updates__show_updateable_apps">অ্যাপ দেখাও</string>
     <string name="updates__hide_updateable_apps">অ্যাপ লুকাও</string>
@@ -390,7 +390,7 @@
     <string name="notification_title_single_install_error">ইনস্টল ব্যর্থ</string>
     <string name="notification_title_single_ready_to_install_update">হালনাগাদ ইনস্টল করতে প্রস্তুত</string>
     <string name="notification_title_single_ready_to_install">ইনস্টল করতে প্রস্তুত</string>
-    <string name="notification_title_single_update_available">হালনাগাদ আছে</string>
+    <string name="notification_title_single_update_available">আপডেট রয়েছে</string>
     <plurals name="notification_summary_more">
         <item quantity="one">আরো +%1$dটি…</item>
         <item quantity="other">আরো +%1$dটি…</item>
@@ -512,4 +512,10 @@
     <string name="search_placeholder">অনুসন্ধান করুন</string>
     <string name="category_group_tools">সরঞ্জামসমূহ</string>
     <string name="category_group_interests">পছন্দসমূহ</string>
+    <string name="app_name_basic">F-Droid সাধারণ</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="first_start_loading">অ্যাপ রিপোসিটোরি নিয়ে আসা হচ্ছে</string>
+    <string name="first_start_intro">শুরু করতে, অ্যাপ রিপোসিটোরি সিঙ্ক করুন</string>
+    <string name="first_start_offline">আপনি অফলাইন রয়েছেন, শুরু করতে ইন্টারনেট এ কানেক্ট করুন</string>
 </resources>

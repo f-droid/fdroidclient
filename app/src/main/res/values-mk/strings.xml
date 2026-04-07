@@ -286,7 +286,7 @@
     <string name="my_apps_empty">Тука се прикажани само апликациите инсталирани од %1$s</string>
     <string name="my_apps_header_apps_with_issue">Апликации со проблеми</string>
     <string name="my_apps_ignore_dialog_title">Сокриј проблем</string>
-    <string name="my_apps_ignore_dialog_text">Проблемот со оваа верзија на \"%1$s\" ќе биде игнориран</string>
+    <string name="my_apps_ignore_dialog_text">Проблемот со верзија од \"%1$s\" ќе биде игнориран</string>
     <string name="my_apps_ignore_dialog_button">Сокриј</string>
     <string name="my_apps_export_installed_apps">Експортирај листа на апликации</string>
     <string name="app_list_new">Нови апликации</string>
