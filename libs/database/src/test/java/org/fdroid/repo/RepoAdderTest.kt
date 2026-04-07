@@ -24,7 +24,6 @@ import java.security.DigestInputStream
 import java.security.MessageDigest
 import java.util.concurrent.Callable
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNull
@@ -429,7 +428,9 @@ internal class RepoAdderTest {
 
     expectMinRepoPreview(repoName, url, expectedFetchResult)
 
-    assertFailsWith<IllegalStateException> { repoAdder.addFetchedRepository() }
+    assertNull(repoAdder.addFetchedRepository())
+    assertIs<AddRepoError>(repoAdder.addRepoState.value)
+    assertIs<IllegalStateException>((repoAdder.addRepoState.value as AddRepoError).exception)
   }
 
   @Test
