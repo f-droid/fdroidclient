@@ -1,5 +1,7 @@
 package org.fdroid.ui.screenshots
 
+import android.app.LocaleConfig
+import android.os.Build.VERSION.SDK_INT
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.DeviceConfigurationOverride
@@ -30,7 +32,22 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
   @get:Rule val composeRule = createComposeRule()
 
   companion object {
-    val locales = listOf("en-US", "de-DE", "ar-SA", "he", "zh-CN")
+    val locales: List<String> by lazy {
+      val fallback = listOf("en-US", "de-DE", "ar-SA", "he", "zh-CN")
+      if (SDK_INT >= 33) {
+        val localeConfig = LocaleConfig(InstrumentationRegistry.getInstrumentation().targetContext)
+        mutableListOf<String>().apply {
+          localeConfig.supportedLocales?.let { localeList ->
+            for (i in 0 until localeList.size()) {
+              val locale = localeList.get(i)
+              add(locale.toLanguageTag())
+            }
+          } ?: addAll(fallback)
+        }
+      } else {
+        fallback
+      }
+    }
   }
 
   private val context = InstrumentationRegistry.getInstrumentation().targetContext
