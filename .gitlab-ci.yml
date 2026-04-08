@@ -238,11 +238,21 @@ app screenshots:
         - app/**/*
   script:
     - ./gradlew :app:validateBasicDefaultDebugScreenshotTest
+  after_script:
+    - |
+      if [ "$CI_JOB_STATUS" == "failed" ]; then
+        url="https://${CI_PROJECT_NAMESPACE}.${CI_PAGES_DOMAIN}/-/${CI_PROJECT_NAME}/-/jobs/${CI_JOB_ID}/artifacts/app/build/reports/screenshotTest/preview/debug/basicDefault/index.html"
+        echo "Report at ${url}"
+        echo '[{"location":{"path":".","lines":{"begin":1}},"description":"Screenshot test report needs copy and paste: '"${url}"'","check_name":"screenshot_test_report","fingerprint":"screenshot_test_report","severity":"blocker"}]' > codequality-warnings.json
+      fi
   artifacts:
     name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
     when: always
     paths:
       - app/build/reports/screenshotTest
+      - codequality-warnings.json
+    reports:
+      codequality: codequality-warnings.json
     expire_in: 1 week
 
 app tools scripts:
@@ -342,7 +352,7 @@ libs database schema:
       if [ -z "$RUN_KVM_JOBS" ]; then
         echo "WARNING: RUN_KVM_JOBS environment variable is not set."
         echo "This job requires a special KVM runner. Skipping with warning."
-        echo '[{"location":{"path":".gitlab-ci.yml","lines":{"begin":237}},"description":"KVM job was skipped: RUN_KVM_JOBS env variable is not set. Set it to 1 to enable this job.","check_name":"skipped_kvm_job","fingerprint":"skipped_kvm_job","severity":"minor"}]' > codequality-warnings.json
+        echo '[{"location":{"path":".gitlab-ci.yml","lines":{"begin":237}},"description":"KVM job was skipped: RUN_KVM_JOBS env variable is not set. Set it to 1 to enable this job.","check_name":"skipped_kvm_job","fingerprint":"skipped_kvm_job","severity":"major"}]' > codequality-warnings.json
         exit 42
       fi
     - ./gradlew assembleFullDebug
