@@ -342,19 +342,11 @@ libs database schema:
   image: briar/ci-image-android-emulator:trixie # TODO change to latest once available
   tags:
     - kvm
+  rules:
+    - if: '$RUN_KVM_JOBS == "1"'
   # Cache hits the storage limits in kvm runners quickly
   cache: []
-  artifacts:
-    reports:
-      codequality: codequality-warnings.json
   script:
-    - |
-      if [ -z "$RUN_KVM_JOBS" ]; then
-        echo "WARNING: RUN_KVM_JOBS environment variable is not set."
-        echo "This job requires a special KVM runner. Skipping with warning."
-        echo '[{"location":{"path":".gitlab-ci.yml","lines":{"begin":237}},"description":"KVM job was skipped: RUN_KVM_JOBS env variable is not set. Set it to 1 to enable this job.","check_name":"skipped_kvm_job","fingerprint":"skipped_kvm_job","severity":"major"}]' > codequality-warnings.json
-        exit 42
-      fi
     - ./gradlew assembleFullDebug
     - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
     - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
@@ -374,12 +366,27 @@ libs database schema:
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
     - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedBasicDebugAndroidTest :legacy:connectedFullDebugAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest && break; done || exit 137
   allow_failure:
-    exit_codes:
-      - 42
-      - 137
+    exit_codes: 137
 
 kvm 24 default x86:
   <<: [ *test-template, *kvm-connected-template ]
+
+no kvm warning:
+  image: debian:trixie-slim
+  rules:
+    - if: '$RUN_KVM_JOBS != "1"'
+  cache: []
+  script:
+    - |
+      echo "WARNING: RUN_KVM_JOBS environment variable is not set."
+      echo "This job requires a special KVM runner. Skipping with warning."
+      echo '[{"location":{"path":".gitlab-ci.yml","lines":{"begin":237}},"description":"KVM job was skipped: RUN_KVM_JOBS env variable is not set. Set it to 1 to enable this job.","check_name":"skipped_kvm_job","fingerprint":"skipped_kvm_job","severity":"major"}]' > codequality-warnings.json
+      exit 42
+  artifacts:
+    reports:
+      codequality: codequality-warnings.json
+  allow_failure:
+    exit_codes: 42
 
 pages:
   extends: .base
