@@ -4,10 +4,13 @@ import android.app.LocaleConfig
 import android.os.Build.VERSION.SDK_INT
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.test.DarkMode
 import androidx.compose.ui.test.DeviceConfigurationOverride
 import androidx.compose.ui.test.Locales
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import androidx.compose.ui.test.then
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.core.os.LocaleListCompat
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.test.platform.app.InstrumentationRegistry
@@ -72,21 +75,23 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
     currentNavKey: NavKey = NavigationKey.Discover,
     numUpdates: Int = 3,
     hasAppIssues: Boolean = true,
-    content: @Composable () -> Unit,
+    dark: Boolean = false,
+    content: @Composable (LocaleListCompat) -> Unit,
   ) {
     val localeList = LocaleList(localeName)
     composeRule.setContent {
       DeviceConfigurationOverride(
-        override = DeviceConfigurationOverride.Locales(locales = localeList)
+        override =
+          DeviceConfigurationOverride.Locales(locales = localeList) then
+            DeviceConfigurationOverride.DarkMode(dark)
       ) {
         MainContent(
           model =
-            MainModel(
-              dynamicColors = false,
-              numUpdates = numUpdates,
-              hasAppIssues = hasAppIssues,
+            MainModel(dynamicColors = false, numUpdates = numUpdates, hasAppIssues = hasAppIssues),
+          navEntries =
+            listOf(
+              NavEntry(currentNavKey) { content(LocaleListCompat.forLanguageTags(localeName)) }
             ),
-          navEntries = listOf(NavEntry(currentNavKey) { content() }),
           directive = PaneScaffoldDirective.Default,
           isBigScreen = false,
           showBottomBar = showBottomBar,
@@ -106,6 +111,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
     assertTrue(subDir.isDirectory)
 
     val file = File(subDir, "${screenName}.png")
+    println("Saving screenshot to ${file.absolutePath}")
     uiDevice.takeScreenshot(file)
   }
 }

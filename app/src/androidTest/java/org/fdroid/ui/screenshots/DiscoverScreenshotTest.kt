@@ -1,6 +1,5 @@
 package org.fdroid.ui.screenshots
 
-import androidx.core.os.LocaleListCompat
 import org.fdroid.ui.discover.Discover
 import org.fdroid.ui.discover.LoadedDiscoverModel
 import org.junit.Test
@@ -16,8 +15,7 @@ class DiscoverScreenshotTest(localeName: String) : LocalizedScreenshotTest(local
 
   @Test
   fun appDetails() =
-    screenshotTest("1_Discover") {
-      val localeList = LocaleListCompat.getDefault()
+    screenshotTest("1_Discover") { localeList ->
       val model =
         LoadedDiscoverModel(
           newApps = getNewApps(localeList),
