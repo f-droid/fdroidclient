@@ -28,14 +28,13 @@ import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
 
-private const val ENABLED = false
-
 @OptIn(DelicateCoilApi::class)
 abstract class LocalizedScreenshotTest(val localeName: String) {
   @get:Rule val composeRule = createComposeRule()
 
   companion object {
     val locales: List<String> by lazy {
+      if (!enabled) return@lazy emptyList()
       val fallback = listOf("en-US", "de-DE", "ar-SA", "he", "zh-CN")
       if (SDK_INT >= 33) {
         val localeConfig = LocaleConfig(InstrumentationRegistry.getInstrumentation().targetContext)
@@ -51,6 +50,8 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
         fallback
       }
     }
+    val enabled: Boolean
+      get() = InstrumentationRegistry.getArguments().getString("fdroid_screenshots") == "true"
   }
 
   private val context = InstrumentationRegistry.getInstrumentation().targetContext
@@ -66,7 +67,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
 
   @Before
   fun before() {
-    assumeTrue(ENABLED)
+    assumeTrue(enabled)
   }
 
   protected fun screenshotTest(
@@ -106,7 +107,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
     val dir = context.getExternalFilesDir("screenshots") ?: fail("Could not create screenshots dir")
     assertTrue(dir.isDirectory)
     val subDir =
-      File(dir, "${FLAVOR_variant}/fastlane/metadata/$localeName/images/phoneScreenshots")
+      File(dir, "${FLAVOR_variant}/fastlane/metadata/android/$localeName/images/phoneScreenshots")
     subDir.mkdirs()
     assertTrue(subDir.isDirectory)
 
