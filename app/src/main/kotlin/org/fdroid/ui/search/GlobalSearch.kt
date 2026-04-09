@@ -37,7 +37,9 @@ fun GlobalSearch(
     topBar = {
       TopSearchBar(
         searchFieldState = textFieldState,
-        shouldRequestFocus = false,
+        shouldRequestFocus = // only show keyboard if there are no results to show
+          searchResults == null ||
+            searchResults.apps.isEmpty() && searchResults.categories.isEmpty(),
         onSearch = onSearch,
         onSearchCleared = onSearchCleared,
         onHideSearch = onBack,
