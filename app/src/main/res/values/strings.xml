@@ -568,8 +568,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
       - Percentage complete (int between 0-100)
     -->
     <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
-    <!-- placeholder is for download speed. Example: Downloading at 2.3 MB/s -->
-    <string name="status_downloading">Downloading at %1$s</string>
+    <!-- placeholder is for download speed. Note that %s is the placeholder that needs to stay and /s is part of the speed unit and doesn't need translating in most languages. Example: Downloading at 2.3 MB/s -->
+    <string name="status_downloading">Downloading at %s/s</string>
     <!-- placeholder is for how much is left to download. Example: 23 MB remaining -->
     <string name="status_downloading_remaining">%1$s remaining</string>
 
