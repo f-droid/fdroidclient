@@ -85,11 +85,7 @@ import org.fdroid.utils.getLogName
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun Settings(
-  model: SettingsModel,
-  onSaveLogcat: (Uri?) -> Unit,
-  onBackClicked: () -> Unit,
-) {
+fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: () -> Unit) {
   Scaffold(
     topBar = {
       TopAppBar(
@@ -115,6 +111,7 @@ fun Settings(
             AnnotatedString(
               when (value) {
                 "light" -> res.getString(R.string.theme_light)
+                "night", // night was added because we had a crash with that
                 "dark" -> res.getString(R.string.theme_dark)
                 "followSystem" -> res.getString(R.string.theme_follow_system)
                 else -> error("Unknown value: $value")
