@@ -12,8 +12,7 @@ import org.fdroid.runSuspend
 class HttpManagerIntegrationTest {
 
   private val userAgent = getRandomString()
-  private val mirrors =
-    listOf(Mirror("https://f-droid.org/"), Mirror("https://cloudflare.f-droid.org/"))
+  private val mirrors = listOf(Mirror("https://f-droid.org/"))
   private val downloadRequest = DownloadRequest(".well-known/security.txt", mirrors)
 
   @Test
