@@ -143,7 +143,14 @@ constructor(
             // so fire up intent here and now.
             if (canRequestUserConfirmationNow) {
               log.info { "Sending pre-approval intent for ${app.packageName}: $intent" }
-              pendingIntent.send()
+              try {
+                pendingIntent.send()
+              } catch (e: Exception) {
+                log.error(e) { "Error sending pre-approval intent: " }
+                val s = PreApprovalResult.UserConfirmationRequired(sessionId, pendingIntent)
+                cont.resume(s)
+                context.unregisterReceiver(this)
+              }
             } else {
               log.info { "Can not ask pre-approval for ${app.packageName}: $intent" }
               val s = PreApprovalResult.UserConfirmationRequired(sessionId, pendingIntent)
@@ -340,7 +347,13 @@ constructor(
         }
       registerReceiver(context, receiver, IntentFilter(ACTION_INSTALL), RECEIVER_NOT_EXPORTED)
       cont.invokeOnCancellation { context.unregisterReceiver(receiver) }
-      state.intent.send()
+      try {
+        state.intent.send()
+      } catch (e: Exception) {
+        log.error(e) { "Error sending user confirmation intent: " }
+        context.unregisterReceiver(receiver)
+        cont.resume(InstallState.Error("${e::class.java.simpleName} ${e.message}", state))
+      }
     }
 
   private fun getSessionParams(packageName: String, size: Long? = null): SessionParams {
