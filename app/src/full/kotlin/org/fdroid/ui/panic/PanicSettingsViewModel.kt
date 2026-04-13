@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import info.guardianproject.panic.Panic
 import info.guardianproject.panic.PanicResponder
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -59,7 +60,7 @@ constructor(
         PanicSettingsState(
           panicApps = apps,
           selectedPanicApp =
-            if (selected == null) {
+            if (selected == null || selected == Panic.PACKAGE_NAME_NONE) {
               null
             } else {
               getPanicApp(selected)
@@ -75,18 +76,22 @@ constructor(
   }
 
   fun resetDb() {
-    val job =
-      ioScope.launch {
-        db.getRepositoryDao().clearAll()
-        repoPreLoader.addPreloadedRepositories(db)
-      }
+    val job = ioScope.launch {
+      db.getRepositoryDao().clearAll()
+      repoPreLoader.addPreloadedRepositories(db)
+    }
     // hard wait for data to be cleared
     runBlocking { job.join() }
   }
 
   private fun getPanicApp(packageName: String?): PanicApp? {
     if (packageName == null) return null
-    return pm.getPackageInfo(packageName, 0)?.applicationInfo?.toPanicApp()
+    return try {
+      pm.getPackageInfo(packageName, 0)?.applicationInfo?.toPanicApp()
+    } catch (e: Exception) {
+      log.error(e) { "Failed to get package info for $packageName" }
+      null
+    }
   }
 
   private fun ApplicationInfo.toPanicApp() =
