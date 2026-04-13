@@ -19,8 +19,8 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import coil3.util.Logger
 import dagger.hilt.android.HiltAndroidApp
-import org.acra.ACRA
 import javax.inject.Inject
+import org.acra.ACRA
 import org.acra.ReportField
 import org.acra.config.dialog
 import org.acra.config.mailSender
@@ -71,10 +71,12 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
           ReportField.DISPLAY,
           ReportField.TOTAL_MEM_SIZE,
           ReportField.AVAILABLE_MEM_SIZE,
+          ReportField.LOGCAT,
           ReportField.CUSTOM_DATA,
           ReportField.STACK_TRACE_HASH,
           ReportField.STACK_TRACE,
         )
+      logcatArguments = listOf("-t", "750")
       reportSendFailureToast = getString(R.string.crash_report_error)
       // either sending via email intent works, or it doesn't, but don't keep trying
       retryPolicyClass = NoRetryPolicy::class.java
