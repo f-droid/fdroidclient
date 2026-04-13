@@ -188,7 +188,13 @@ constructor(
       if (addedRepo != null)
         withContext(Dispatchers.Main) {
           // as soon as the list has loaded, it should never be null
-          _repositoriesState.update { it!!.toMutableList().apply { add(addedRepo) } }
+          _repositoriesState.update { repos ->
+            if (repos!!.none { it.repoId == addedRepo.repoId }) {
+              repos.toMutableList().apply { add(addedRepo) }
+            } else {
+              repos
+            }
+          }
         }
     }
   }
