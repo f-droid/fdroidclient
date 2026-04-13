@@ -16,6 +16,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.launch
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.Main
+import org.fdroid.ui.utils.launchSafe
 
 // Using [AppCompatActivity] and not [ComponentActivity] seems to be needed
 // for automatic theme changes when calling AppCompatDelegate.setDefaultNightMode()
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
       SDK_INT >= 33 &&
         ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PERMISSION_GRANTED
     ) {
-      requestPermissionLauncher.launch(POST_NOTIFICATIONS)
+      requestPermissionLauncher.launchSafe(POST_NOTIFICATIONS)
     }
   }
 }

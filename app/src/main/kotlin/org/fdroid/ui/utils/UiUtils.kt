@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -30,6 +31,16 @@ fun Context.startActivitySafe(i: Intent?) {
     startActivity(i)
   } catch (e: Exception) {
     Log.e("Context", "Error opening $i ", e)
+  }
+}
+
+fun <I> ActivityResultLauncher<I>.launchSafe(input: I): Boolean {
+  return try {
+    launch(input)
+    true
+  } catch (e: Exception) {
+    Log.e("ActivityResultLauncher", "Error launching $input ", e)
+    false
   }
 }
 

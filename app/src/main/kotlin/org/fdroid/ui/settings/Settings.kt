@@ -6,6 +6,8 @@ import android.os.Build.VERSION.SDK_INT
 import android.provider.Settings.ACTION_APP_LOCALE_SETTINGS
 import android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS
 import android.provider.Settings.EXTRA_APP_PACKAGE
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.compose.foundation.layout.fillMaxSize
@@ -80,6 +82,7 @@ import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
+import org.fdroid.ui.utils.launchSafe
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
 
@@ -373,7 +376,11 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
           },
           title = { Text(stringResource(R.string.pref_export_log_title)) },
           summary = { Text(stringResource(R.string.pref_export_log_summary)) },
-          onClick = { launcher.launch("${getLogName(context)}.txt") },
+          onClick = {
+            if (!launcher.launchSafe("${getLogName(context)}.txt")) {
+              Toast.makeText(context, R.string.no_handler_app_generic, LENGTH_SHORT).show()
+            }
+          },
         )
       }
     }

@@ -1,6 +1,8 @@
 package org.fdroid.ui.crash
 
 import android.net.Uri
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.compose.foundation.layout.padding
@@ -24,6 +26,7 @@ import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.TopAppBarButton
+import org.fdroid.ui.utils.launchSafe
 import org.fdroid.utils.getLogName
 
 @Composable
@@ -56,7 +59,11 @@ fun Crash(
           TopAppBarButton(
             imageVector = Icons.Default.Save,
             contentDescription = stringResource(R.string.crash_report_save),
-            onClick = { launcher.launch("${getLogName(context)}.json") },
+            onClick = {
+              if (!launcher.launchSafe("${getLogName(context)}.json")) {
+                Toast.makeText(context, R.string.no_handler_app_generic, LENGTH_SHORT).show()
+              }
+            },
           )
         },
       )
