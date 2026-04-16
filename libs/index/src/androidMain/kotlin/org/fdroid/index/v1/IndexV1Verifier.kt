@@ -6,7 +6,7 @@ import org.fdroid.index.JarIndexVerifier
 import org.fdroid.index.SigningException
 
 public const val DATA_FILE_NAME: String = "index-v1.json"
-private const val SUPPORTED_DIGEST = "SHA1-Digest"
+private val SUPPORTED_DIGESTS = listOf("SHA1-Digest", "SHA-256-Digest")
 
 /**
  * Verifies the old Index V1.
@@ -31,7 +31,7 @@ public class IndexV1Verifier(
   @Throws(SigningException::class)
   protected override fun checkAttributes(attributes: Attributes) {
     attributes.keys.forEach { key ->
-      if (key.toString() != SUPPORTED_DIGEST) {
+      if (key.toString() !in SUPPORTED_DIGESTS) {
         throw SigningException("Unsupported digest: $key")
       }
     }
