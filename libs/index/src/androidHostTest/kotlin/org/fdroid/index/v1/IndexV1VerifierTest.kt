@@ -31,6 +31,18 @@ internal class IndexV1VerifierTest {
   }
 
   @Test
+  fun testValidSHA256() {
+    val file = File("$VERIFICATION_DIR/valid-v1-SHA256.jar")
+
+    val verifier = IndexV1Verifier(file, null, null)
+    val (certificate, _) =
+      verifier.getStreamAndVerify { inputStream ->
+        assertEquals("foo\n", inputStream.readBytes().decodeToString())
+      }
+    assertEquals(CERTIFICATE, certificate)
+  }
+
+  @Test
   fun testValidMatchesFingerprint() {
     val file = File("$VERIFICATION_DIR/valid-v1.jar")
 
