@@ -81,6 +81,7 @@ import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
+import org.fdroid.ui.utils.launchSafe
 import org.fdroid.ui.utils.startActivitySafe
 
 @Composable
@@ -145,7 +146,8 @@ fun AddRepoIntroContent(
             if (checkSelfPermission(context, CAMERA) == PERMISSION_GRANTED) {
               startScanning()
             } else {
-              permissionLauncher.launch(CAMERA)
+              permissionLauncher.launchSafe(CAMERA)
+              Unit
             }
           }
           if (networkState.isMetered) showMeteredDialog = scanLambda else scanLambda()

@@ -1,3 +1,4 @@
 *.gpg           binary
 app/src/screenshotTestFullDefaultDebug/reference/** filter=lfs diff=lfs merge=lfs -text
 app/src/screenshotTestBasicDefaultDebug/reference/** filter=lfs diff=lfs merge=lfs -text
+src/basic/fastlane/metadata/android/*/images/** filter=lfs diff=lfs merge=lfs -text

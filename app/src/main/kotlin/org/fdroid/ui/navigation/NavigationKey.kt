@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SwapHorizontalCircle
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -23,12 +24,16 @@ sealed interface NavigationKey : NavKey {
   }
 
   @Serializable
+  data object Search : NavigationKey, MainNavKey {
+    override val label: Int = R.string.menu_search
+    override val icon: ImageVector = Icons.Filled.Search
+  }
+
+  @Serializable
   data object MyApps : NavigationKey, MainNavKey {
     override val label: Int = R.string.menu_apps_my
     override val icon: ImageVector = Icons.Filled.Apps
   }
-
-  @Serializable data object Search : NavigationKey
 
   @Serializable data class AppDetails(val packageName: String) : NavigationKey
 
@@ -56,7 +61,8 @@ sealed interface MainNavKey : NavKey {
   val icon: ImageVector
 }
 
-val topLevelRoutes = listOf<MainNavKey>(NavigationKey.Discover, NavigationKey.MyApps)
+val topLevelRoutes =
+  listOf<MainNavKey>(NavigationKey.Discover, NavigationKey.Search, NavigationKey.MyApps)
 
 sealed class NavDestinations(
   val id: NavigationKey,

@@ -1,7 +1,5 @@
 package org.fdroid.ui.screenshots
 
-import androidx.compose.ui.platform.LocalLocaleList
-import androidx.core.os.LocaleListCompat
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
@@ -23,11 +21,7 @@ class DetailsScreenshotTest(localeName: String) : LocalizedScreenshotTest(locale
 
   @Test
   fun appDetails() =
-    screenshotTest("3_Details", showBottomBar = false) {
-      val localeList =
-        LocaleListCompat.forLanguageTags(
-          LocalLocaleList.current.localeList.map { it.toLanguageTag() }.joinToString(",")
-        )
+    screenshotTest("4_Details", showBottomBar = false, dark = true) { localeList ->
       val item =
         AppDetailsItem(
           app = appMetadata,

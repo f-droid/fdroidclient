@@ -8,10 +8,10 @@ import java.util.Locale
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.search.SearchHelper.fixQuery
+import org.fdroid.search.SearchHelper.normalize
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.repositories.RepositoryItem
-import org.fdroid.ui.search.SearchHelper.fixQuery
-import org.fdroid.ui.search.SearchHelper.normalize
 
 @Composable
 fun AppListPresenter(

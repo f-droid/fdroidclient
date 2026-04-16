@@ -1,19 +1,14 @@
 package org.fdroid.ui.apps
 
-import android.text.format.Formatter
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.text.InlineTextContent
-import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowRightAlt
 import androidx.compose.material.icons.filled.NewReleases
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Card
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
@@ -26,26 +21,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.Placeholder
-import androidx.compose.ui.text.PlaceholderVerticalAlign
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
 import org.fdroid.ui.utils.ExpandIconArrow
+import org.fdroid.ui.utils.VersionLine
 import org.fdroid.ui.utils.getPreviewVersion
 
 @Composable
@@ -101,61 +90,6 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
       }
     }
   }
-}
-
-/**
- * Shows which is the installed version of the app and to which version it will upgrade. Takes into
- * account the layout direction to show the correct order of versions and the arrow.
- */
-@Composable
-fun VersionLine(app: AppUpdateItem) {
-  VersionLineWithSize(app.installedVersionName, app.update.versionName, app.update.size)
-}
-
-@Composable
-fun VersionLineWithSize(fromVersion: String?, toVersion: String, numBytes: Long? = null) {
-  val size = numBytes?.let { Formatter.formatFileSize(LocalContext.current, it) }
-  VersionLine(fromVersion, toVersion, size)
-}
-
-@Composable
-fun VersionLine(fromVersion: String?, toVersion: String, extraText: String? = null) {
-  val test = buildAnnotatedString {
-    if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-      if (fromVersion != null) {
-        append(fromVersion)
-      }
-    } else {
-      append("\u202A${toVersion}\u202C")
-    }
-    if (fromVersion != null) appendInlineContent("arrowId", " → ")
-    if (LocalLayoutDirection.current == LayoutDirection.Ltr) {
-      append("\u202A${toVersion}\u202C")
-    } else if (fromVersion != null) {
-      append("\u202A${fromVersion}\u202C")
-    }
-    if (extraText != null) append(" • $extraText")
-  }
-  val inlineContent =
-    mapOf(
-      Pair(
-        "arrowId",
-        InlineTextContent(
-          Placeholder(
-            width = 24.sp,
-            height = 20.sp,
-            placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter,
-          )
-        ) {
-          Icon(
-            Icons.AutoMirrored.Default.ArrowRightAlt,
-            contentDescription = null,
-            modifier = Modifier.padding(horizontal = 2.dp),
-          )
-        },
-      )
-    )
-  Text(test, inlineContent = if (fromVersion == null) mapOf() else inlineContent)
 }
 
 @Preview

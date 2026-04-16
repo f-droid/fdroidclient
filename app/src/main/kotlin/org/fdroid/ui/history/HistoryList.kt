@@ -33,9 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.fdroid.R
 import org.fdroid.history.InstallEvent
-import org.fdroid.ui.apps.VersionLine
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
+import org.fdroid.ui.utils.VersionLine
 import org.fdroid.ui.utils.asRelativeTimeString
 
 @Composable
@@ -55,7 +55,11 @@ fun HistoryList(
           modifier = Modifier.padding(16.dp).fillMaxWidth().clickable { onEnabled(!enabled) },
         ) {
           Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(16.dp)) {
-            Text(text = "Use install history", fontSize = 19.sp, modifier = Modifier.weight(1f))
+            Text(
+              text = stringResource(R.string.install_history_switch),
+              fontSize = 19.sp,
+              modifier = Modifier.weight(1f),
+            )
             Switch(enabled, onCheckedChange = onEnabled)
           }
         }

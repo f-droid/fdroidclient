@@ -43,7 +43,7 @@ androidxActivityCompose = "1.13.0"
 accompanistDrawablepainter = "0.37.3"
 
 # navigation3
-nav3Core = "1.0.1"
+nav3Core = "1.1.0-rc01"
 lifecycleViewmodelNav3 = "2.10.0"
 material3AdaptiveNav3 = "1.0.0-alpha03"
 

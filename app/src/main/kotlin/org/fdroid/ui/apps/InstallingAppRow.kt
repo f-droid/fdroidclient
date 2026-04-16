@@ -23,6 +23,7 @@ import org.fdroid.R
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.VersionLine
 
 @Composable
 fun InstallingAppRow(app: InstallingAppItem, isSelected: Boolean, modifier: Modifier = Modifier) {

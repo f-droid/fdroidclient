@@ -6,6 +6,8 @@ import android.os.Build.VERSION.SDK_INT
 import android.provider.Settings.ACTION_APP_LOCALE_SETTINGS
 import android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS
 import android.provider.Settings.EXTRA_APP_PACKAGE
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.CreateDocument
 import androidx.compose.foundation.layout.fillMaxSize
@@ -65,7 +67,6 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SMALL_BOTTOM_BAR
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
@@ -73,7 +74,6 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
-import org.fdroid.settings.SettingsConstants.PREF_KEY_SMALL_BOTTOM_BAR
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
@@ -82,17 +82,13 @@ import org.fdroid.settings.toMirrorChooserValue
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
+import org.fdroid.ui.utils.launchSafe
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun Settings(
-  model: SettingsModel,
-  isBigScreen: Boolean,
-  onSaveLogcat: (Uri?) -> Unit,
-  onBackClicked: () -> Unit,
-) {
+fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: () -> Unit) {
   Scaffold(
     topBar = {
       TopAppBar(
@@ -118,6 +114,7 @@ fun Settings(
             AnnotatedString(
               when (value) {
                 "light" -> res.getString(R.string.theme_light)
+                "night", // night was added because we had a crash with that
                 "dark" -> res.getString(R.string.theme_dark)
                 "followSystem" -> res.getString(R.string.theme_follow_system)
                 else -> error("Unknown value: $value")
@@ -192,14 +189,6 @@ fun Settings(
                 }
               context.startActivitySafe(intent)
             },
-          )
-        if (!isBigScreen)
-          switchPreference(
-            key = PREF_KEY_SMALL_BOTTOM_BAR,
-            defaultValue = PREF_DEFAULT_SMALL_BOTTOM_BAR,
-            icon = {},
-            title = { Text(stringResource(R.string.pref_compact_bottom_bar_title)) },
-            summary = { Text(stringResource(R.string.pref_compact_bottom_bar_summary)) },
           )
         preferenceCategory(
           key = "pref_category_updates",
@@ -387,7 +376,11 @@ fun Settings(
           },
           title = { Text(stringResource(R.string.pref_export_log_title)) },
           summary = { Text(stringResource(R.string.pref_export_log_summary)) },
-          onClick = { launcher.launch("${getLogName(context)}.txt") },
+          onClick = {
+            if (!launcher.launchSafe("${getLogName(context)}.txt")) {
+              Toast.makeText(context, R.string.no_handler_app_generic, LENGTH_SHORT).show()
+            }
+          },
         )
       }
     }
@@ -404,6 +397,6 @@ fun SettingsPreview() {
         nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
         nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
       )
-    Settings(model, true, {}, {})
+    Settings(model, {}, {})
   }
 }

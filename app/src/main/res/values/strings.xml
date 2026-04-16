@@ -34,6 +34,7 @@
     <string name="app_list_author">Apps by %s</string>
 
     <string name="search_placeholder">Search…</string>
+    <string name="search_history">Recent searches</string>
     <string name="search_no_results">No apps found\n\nTry using fewer search terms or add more repositories</string>
     <string name="search_filter_no_results">No matching apps\n\nTry using fewer search terms or remove filters</string>
     <string name="search_my_apps_no_results">No matching apps\n\nTry using fewer search terms</string>
@@ -166,8 +167,6 @@
     <string name="pref_dyn_colors_title">Use system colors</string>
     <string name="pref_dyn_colors_summary">Apply dynamic colors from your system settings</string>
     <string name="pref_language_summary">Open system language settings</string>
-    <string name="pref_compact_bottom_bar_title">Compact navigation bar</string>
-    <string name="pref_compact_bottom_bar_summary">Reduces size and hides labels of navigation bottom bar</string>
     <string name="pref_auto_updates_only_wifi">Only on Wi-Fi</string>
     <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
     <string name="pref_auto_updates_only_never">Never</string>
@@ -569,8 +568,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
       - Percentage complete (int between 0-100)
     -->
     <string name="status_download">Downloading\n%2$s / %3$s (%4$d%%) from\n%1$s</string>
-    <!-- placeholder is for download speed. Example: Downloading with 2.3 MB/s -->
-    <string name="status_downloading">Downloading with %1$s</string>
+    <!-- placeholder is for download speed. Note that %s is the placeholder that needs to stay and /s is part of the speed unit and doesn't need translating in most languages. Example: Downloading at 2.3 MB/s -->
+    <string name="status_downloading">Downloading at %s/s</string>
     <!-- placeholder is for how much is left to download. Example: 23 MB remaining -->
     <string name="status_downloading_remaining">%1$s remaining</string>
 
@@ -1009,6 +1008,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="ipfsgw_caption_official_gateways">Official IPFS gateways</string>
     <string name="ipfsgw_caption_custom_gateways">Custom IPFS gateways</string>
 
+    <string name="install_history_switch">Use installation history</string>
     <string name="install_history_empty_state">This list is still empty\n\nWhen you install, update or uninstall apps, a record will appear here</string>
     <string name="install_history_disabled_state">Installation history is disabled\n\nInstallations, updates and uninstalls will not be recorded</string>
     <string name="install_history_delete_ally">Delete installation history</string>

@@ -72,9 +72,12 @@ constructor(
   private fun onRepositoriesChanged(repositories: List<Repository>) {
     log.info("onRepositoriesChanged(${repositories.size})")
     repos.update {
-      repositories.mapNotNull {
-        if (it.isArchiveRepo) null else RepositoryItem(it, localeList, settingsManager.proxyConfig)
-      }
+      repositories
+        .mapNotNull {
+          if (it.isArchiveRepo) null
+          else RepositoryItem(it, localeList, settingsManager.proxyConfig)
+        }
+        .also { repos -> log.info { "Adding repos ${repos.map { it.address }}" } }
     }
     repoSortingMap.update {
       // just add repos to sortingMap, because they are already pre-sorted by weight

@@ -3,9 +3,6 @@ package org.fdroid.ui.navigation
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material3.Badge
@@ -22,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
@@ -37,19 +33,11 @@ import org.fdroid.ui.MainModel
 @Composable
 fun BottomBar(model: MainModel, currentNavKey: NavKey, onNav: (MainNavKey) -> Unit) {
   val res = LocalResources.current
-  val bottom = with(LocalDensity.current) { WindowInsets.navigationBars.getBottom(this).toDp() }
-  NavigationBar(
-    modifier = if (model.smallBottomBar) Modifier.heightIn(max = 56.dp + bottom) else Modifier
-  ) {
+  NavigationBar {
     topLevelRoutes.forEach { dest ->
       NavigationBarItem(
         icon = { NavIcon(dest, model.numUpdates, model.hasAppIssues) },
-        label =
-          if (model.smallBottomBar) {
-            null
-          } else {
-            { Text(stringResource(dest.label)) }
-          },
+        label ={ Text(stringResource(dest.label)) },
         selected = dest == currentNavKey,
         colors =
           NavigationBarItemDefaults.colors(
@@ -148,16 +136,10 @@ private fun Preview() {
         val model =
           MainModel(
             dynamicColors = false,
-            smallBottomBar = false,
             numUpdates = 3,
             hasAppIssues = false,
           )
         BottomBar(model = model, currentNavKey = NavigationKey.Discover, onNav = {})
-        BottomBar(
-          model = model.copy(smallBottomBar = true),
-          currentNavKey = NavigationKey.Discover,
-          onNav = {},
-        )
       }
     }
   }
@@ -178,16 +160,10 @@ private fun PreviewIssues() {
         val model =
           MainModel(
             dynamicColors = true,
-            smallBottomBar = false,
             numUpdates = 0,
             hasAppIssues = true,
           )
         BottomBar(model = model, currentNavKey = NavigationKey.MyApps, onNav = {})
-        BottomBar(
-          model = model.copy(smallBottomBar = true),
-          currentNavKey = NavigationKey.MyApps,
-          onNav = {},
-        )
       }
     }
   }

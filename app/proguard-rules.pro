@@ -13,5 +13,10 @@
 -keep class kotlin.LazyKt
 -keep class kotlin.collections.CollectionsKt
 
+# Used for full's nearby feature
+-keep class kellinwood.security.zipsigner.** {*;}
+-keep class org.bouncycastle.jcajce.provider.** { *; }
+-keep class org.bouncycastle.jce.provider.** { *; }
+
 # for debugging (comment in when needed)
 #-printconfiguration build/outputs/logs/r8-configuration.txt

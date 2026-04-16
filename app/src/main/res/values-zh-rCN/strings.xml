@@ -768,8 +768,6 @@
     <string name="install_history_disabled_state">禁用了安装历史记录\n\n不会记录安装、更新和卸载</string>
     <string name="install_history_delete_ally">删除安装历史记录</string>
     <string name="install_history_delete_text">要删除安装历史记录吗？</string>
-    <string name="pref_compact_bottom_bar_title">紧凑式导航栏</string>
-    <string name="pref_compact_bottom_bar_summary">缩小尺寸并隐藏底部导航栏的标签</string>
     <string name="status_downloading">实时下载速度 %1$s</string>
     <string name="status_downloading_remaining">剩余 %1$s</string>
 </resources>

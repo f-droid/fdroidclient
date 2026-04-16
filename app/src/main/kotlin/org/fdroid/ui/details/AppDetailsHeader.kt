@@ -230,7 +230,7 @@ fun AppDetailsHeader(
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = SpaceBetween) {
           val secondsPassed = ((now - state.startMillis) / 1000f).takeIf { it > 0 } ?: 1f
           val averageSpeed = (state.downloadedBytes / secondsPassed).roundToLong()
-          val speedStr = Formatter.formatFileSize(context, averageSpeed) + "/s"
+          val speedStr = Formatter.formatFileSize(context, averageSpeed)
           val remainingStr =
             Formatter.formatFileSize(context, state.totalBytes - state.downloadedBytes)
           Text(

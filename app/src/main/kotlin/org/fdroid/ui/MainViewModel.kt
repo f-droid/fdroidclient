@@ -37,7 +37,6 @@ constructor(
       moleculeScope.launchMolecule(mode = ContextClock) {
         MainPresenter(
           dynamicColorsFlow = settingsManager.dynamicColorFlow,
-          smallBottomBarFlow = settingsManager.smallBottomBarFlow,
           numUpdatesFlow = updatesManager.numUpdates,
           appsWithIssuesFlow = updatesManager.appsWithIssues,
         )

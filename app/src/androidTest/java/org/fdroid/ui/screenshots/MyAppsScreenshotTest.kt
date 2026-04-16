@@ -4,8 +4,8 @@ import androidx.core.os.LocaleListCompat
 import org.fdroid.download.NetworkState
 import org.fdroid.ui.apps.MyApps
 import org.fdroid.ui.apps.MyAppsModel
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.getMyAppsInfo
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
@@ -19,8 +19,12 @@ class MyAppsScreenshotTest(localeName: String) : LocalizedScreenshotTest(localeN
 
   @Test
   fun myApps() =
-    screenshotTest("2_My_Apps", numUpdates = getUpdates(LocaleListCompat.getDefault()).size) {
-      val localeList = LocaleListCompat.getDefault()
+    screenshotTest(
+      "3_My_Apps",
+      currentNavKey = NavigationKey.MyApps,
+      numUpdates = getUpdates(LocaleListCompat.getDefault()).size,
+      dark = true,
+    ) { localeList ->
       val model =
         MyAppsModel(
           appUpdates = getUpdates(localeList),

@@ -3,14 +3,20 @@ package org.fdroid.ui.search
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +27,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
+import org.fdroid.search.SEARCH_THRESHOLD
+import org.fdroid.search.SavedSearch
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.categories.ChipFlowRow
@@ -33,12 +41,15 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 data class SearchResults(val apps: List<AppListItem>, val categories: List<CategoryItem>)
 
 @Composable
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun SearchResults(
+  paddingValues: PaddingValues,
   searchResults: SearchResults?,
   textFieldState: TextFieldState,
+  savedSearches: List<SavedSearch>?,
+  onClearSavedSearches: () -> Unit,
   onNav: (NavigationKey) -> Unit,
-  paddingValues: PaddingValues,
-  modifier: Modifier,
+  modifier: Modifier = Modifier,
 ) {
   // rememberLazyListState done differently, so it refreshes for different searchResults
   val listState =
@@ -46,9 +57,19 @@ fun SearchResults(
   if (searchResults == null) {
     if (textFieldState.text.length >= SEARCH_THRESHOLD) {
       BigLoadingIndicator(modifier.padding(paddingValues).imePadding())
+    } else {
+      if (!savedSearches.isNullOrEmpty()) {
+        PastSearches(
+          savedSearches = savedSearches,
+          onSearch = { textFieldState.edit { replace(0, length, it) } },
+          onClearSavedSearches = onClearSavedSearches,
+          modifier = modifier,
+          paddingValues = paddingValues,
+        )
+      }
     }
   } else if (searchResults.apps.isEmpty() && textFieldState.text.length >= SEARCH_THRESHOLD) {
-    Column(modifier = modifier.padding(paddingValues).imePadding()) {
+    Column(modifier = modifier.padding(paddingValues)) {
       if (searchResults.categories.isNotEmpty()) {
         CategoriesFlowRow(searchResults.categories, onNav)
       }
@@ -62,7 +83,7 @@ fun SearchResults(
     LazyColumn(
       state = listState,
       contentPadding = paddingValues,
-      modifier = modifier.fillMaxSize().imePadding(),
+      modifier = modifier.fillMaxSize(),
     ) {
       if (searchResults.categories.isNotEmpty()) {
         item(key = "categories", contentType = "category") {
@@ -93,6 +114,8 @@ fun SearchResults(
             },
         )
       }
+      item { Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars)) }
+      item { Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.ime)) }
     }
   }
 }

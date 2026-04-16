@@ -1,6 +1,5 @@
 package org.fdroid.ui.discover
 
-import androidx.compose.foundation.text.input.TextFieldState
 import org.fdroid.download.NetworkState
 import org.fdroid.repo.RepoUpdateState
 import org.fdroid.ui.categories.CategoryGroup
@@ -22,6 +21,5 @@ data class LoadedDiscoverModel(
   val recentlyUpdatedApps: List<AppDiscoverItem>,
   val mostDownloadedApps: List<AppDiscoverItem>?,
   val categories: Map<CategoryGroup, List<CategoryItem>>?,
-  val searchTextFieldState: TextFieldState,
   val hasRepoIssues: Boolean,
 ) : DiscoverModel()

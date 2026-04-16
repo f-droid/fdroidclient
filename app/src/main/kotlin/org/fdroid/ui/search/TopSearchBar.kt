@@ -26,6 +26,7 @@ import org.fdroid.ui.utils.BackButton
 @OptIn(ExperimentalMaterial3Api::class, FlowPreview::class)
 fun TopSearchBar(
   searchFieldState: TextFieldState = rememberTextFieldState(),
+  shouldRequestFocus: Boolean = true,
   actions: @Composable (RowScope.() -> Unit) = {},
   onSearch: suspend (String) -> Unit,
   onSearchCleared: () -> Unit,
@@ -49,8 +50,10 @@ fun TopSearchBar(
     },
     actions = actions,
   )
-  LaunchedEffect(Unit) {
-    focusRequester.requestFocus()
-    keyboardController?.show()
+  LaunchedEffect(shouldRequestFocus) {
+    if (shouldRequestFocus) {
+      focusRequester.requestFocus()
+      keyboardController?.show()
+    }
   }
 }

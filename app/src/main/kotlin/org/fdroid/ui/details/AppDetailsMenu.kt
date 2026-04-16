@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.launchSafe
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
@@ -93,7 +94,7 @@ fun AppDetailsMenu(
       leadingIcon = { Icon(Icons.Default.Delete, null) },
       text = { Text(stringResource(R.string.menu_uninstall)) },
       onClick = {
-        uninstallLauncher.launch(item.actions.uninstallIntent)
+        uninstallLauncher.launchSafe(item.actions.uninstallIntent)
         onDismiss()
       },
     )
