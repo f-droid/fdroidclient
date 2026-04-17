@@ -414,7 +414,7 @@ deploy_nightly:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
   script:
     - test -z "$DEBUG_KEYSTORE" && exit 0
-    - apt-get install -t trixie-backports androguard fdroidserver jq moreutils
+    - apt-get install -t trixie-backports androguard fdroidserver jq moreutils python3-progress
     - sed -i
         's,<string name="app_name_basic">.*</string>,<string name="app_name_basic">F-Nightly Basic</string>,'
         app/src/main/res/values*/strings.xml
