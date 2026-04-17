@@ -1,0 +1,7 @@
+* Knoppen toegevoegd aan "RepoDetails" om enkele of alle mirrors uit te zetten (#1696)
+
+* Keuze voor willekeurige mirror voor elk pakket/APK download.
+
+* Alle APK downloads gecached per repo, niet per mirror
+
+* Omgaan met Apache en NGINX ETags tijdens checks of de index actueel is (#1708)

@@ -1,0 +1,8 @@
+* Bedienoberfläche von Grund auf neu geschrieben mit Kotlin Compose (außer „Umfeld“)
+* Verbesserte Suche, auch in Beschreibungen/Übersetzungen
+* Einfacheres Entdecken neuer Apps, Hervorheben der am häufigsten heruntergeladenen Apps
+* Installationsfreigabe *vor* dem Herunterladen (sofern unterstützt)
+* Mehrere Downloads gleichzeitig
+* Nutzerbenachrichtigung bei Problemen mit Apps (z. B. Änderung des Signierschlüssels)
+* Optionales Material-You-Farbschema
+* Verbesserte Filterung von App-Listen

@@ -1,0 +1,5 @@
+* Nearby/Swap functie vernieuwd door de hotspot AP functie van het apparaat te gebruiken
+
+* Nieuwe paniekreacties toegevoegd: app deïnstalleert en herstelt repos naar originele staat
+
+* Proxy-ondersteuning tijdens eerste gebruik mogelijk gemaakt

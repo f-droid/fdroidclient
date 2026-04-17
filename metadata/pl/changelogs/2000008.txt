@@ -1,0 +1,8 @@
+* UI napisany od podstaw w Kotlin Compose (z wyjątkiem „w pobliżu”)
+* ulepszona wyszukiwarka, przeszukująca również opisy i tłumaczenia
+* łatwiejsze odkrywanie nowych aplikacji, w tym wyróżnianie najczęściej pobieranych
+* zatwierdzanie instalacji *przed* pobraniem (jeśli obsługiwane)
+* wiele aktualizacji/pobierań naraz
+* powiadamianie użytkownika o problemach z aplikacjami (np. zmiana klucza podpisu)
+* opcjonalny motyw kolorystyczny Material You
+* ulepszone filtrowanie list aplikacji

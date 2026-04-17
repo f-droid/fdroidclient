@@ -1,0 +1,19 @@
+* Betrouwbare knop- en status updates
+
+* Revisie van Instellingen met gegevensgebruik controle
+
+* Android 5.0 en hoger: Minder batterijgebruik in achtergrond
+
+* Delen van menu-item voor bron
+
+* Instelling om Crash rapport uit te zetten
+
+* Installeer Geschiedenis viewer tijdens loggen
+
+* Klikbare Anti-Functie lijst, NoSourceSince toegevoegd
+
+* Android 4.0 als oudste ondersteunde versie
+
+* Verbetering voor aangepaste whitelabel F-droid-versies
+
+* Expertinstelling om debug-versie+UUID te downloaden

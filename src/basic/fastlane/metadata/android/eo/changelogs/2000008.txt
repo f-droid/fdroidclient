@@ -2,7 +2,7 @@
 • plibonigita serĉo, ankaŭ priserĉante priskribojn kaj tradukojn
 • plifaciligita esplorado de novaj apoj, emfazante la plej popularajn
 • montri konfirm-peton antaŭ ol instalado
-• pluraj ĝisdatigadojn/elŝutojn samtempe
+• pluraj ĝisdatigadoj/elŝutoj samtempe
 • informi uzanton pri aplikaĵ-rilataj problemoj (ekz. ŝanĝo de subskriba ŝlosilo)
 • (malnepra) kolora haŭto Material You
 • plibonigita filtrado de listoj

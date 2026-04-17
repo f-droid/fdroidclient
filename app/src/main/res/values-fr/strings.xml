@@ -804,4 +804,8 @@
         <item quantity="many">%1$d applications enregistrées sur %2$s</item>
         <item quantity="other">%1$d applications enregistrées sur %2$s</item>
     </plurals>
+    <string name="status_downloading">Téléchargement en cours à %s/s</string>
+    <string name="status_downloading_remaining">%1$s restants</string>
+    <string name="search_history">Recherches récentes</string>
+    <string name="install_history_switch">Utiliser l\'historique d\'installation</string>
 </resources>

@@ -792,4 +792,6 @@
     <string name="install_history_disabled_state">İndirme geçmişi devre dışı \n\nİndirmeler, güncellemeler ve kaldırmalar kaydedilmeyecektir</string>
     <string name="install_history_delete_ally">İndirme geçmişini sil</string>
     <string name="install_history_delete_text">İndirme geçmişi silinsin mi?</string>
+    <string name="status_downloading">%1$s hızla indiriliyor</string>
+    <string name="status_downloading_remaining">%1$s kaldı</string>
 </resources>

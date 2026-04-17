@@ -396,4 +396,36 @@
     <string name="search_placeholder">Nadi…</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="category_group_network">Aẓeṭṭa</string>
+    <plurals name="repo_num_apps_text">
+        <item quantity="one">%d n wesnas</item>
+        <item quantity="other">%d n yesnasen</item>
+    </plurals>
+    <string name="category_group_tools">Ifecka</string>
+    <string name="category_group_device">Ibenk</string>
+    <string name="donate_title">Mudd tawsa</string>
+    <string name="category">Taggayt</string>
+    <string name="pref_category_network">Aẓeṭṭa</string>
+    <string name="pref_mirror_chooser_summary_random">Agaccuran</string>
+    <string name="dialog_metered_button">Sader</string>
+    <string name="repo_basicauth_username">Isem n useqdac</string>
+    <string name="repo_basicauth_password">Awal n uɛeddi</string>
+    <string name="notification_title">Tilɣa</string>
+    <string name="notification_installing_section_installing">Asbeddi:</string>
+    <string name="menu_apps_my">Isnasen-iw</string>
+    <string name="error">Tuccḍa</string>
+    <string name="repo_basic_auth_username">Isem n useqdac : %s</string>
+    <string name="repo_basic_auth_password">Awal n uɛeddi : ***</string>
+    <string name="tts_repo_name">Akufi %1$s</string>
+    <string name="tts_author_name">Ameskar %1$s</string>
+    <string name="app_list_new">Isnasen imaynuten</string>
+    <string name="app_list_all">Akk isnasen</string>
+    <string name="author_by">Sɣur %1$s</string>
+    <string name="status_install_preparing">Aheyyi n usbeddi…</string>
+    <string name="whats_new_title">D acu i yellan d amaynut</string>
+    <string name="copy_link">Nɣel aseɣwen</string>
+    <string name="added_x_ago">%1$s yettwarna</string>
+    <string name="size_colon">Tiddi: %1$s</string>
+    <string name="app_list_author">Isnasen sɣur %s</string>
+    <string name="notification_repo_update_default">Tuqqna ɣer %1$s…</string>
+    <string name="app_details_more_apps_by_author">Ugar n yesnasen sɣur %1$s</string>
 </resources>

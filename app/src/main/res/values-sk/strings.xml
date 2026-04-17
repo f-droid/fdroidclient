@@ -121,7 +121,7 @@
     <string name="category_Navigation">Navigácia</string>
     <string name="category_Phone_SMS">Telefón a SMS</string>
     <string name="category_Reading">Čítanie</string>
-    <string name="category_Science_Education">Veda a výuka</string>
+    <string name="category_Science_Education">Veda a výučba</string>
     <string name="category_Security">Bezpečnosť</string>
     <string name="category_System">Systém</string>
     <string name="swap_join_same_wifi">Pripojte sa na rovnaké Wi-fi ako kamarát</string>
@@ -690,4 +690,7 @@
     <string name="collapse">Zložiť</string>
     <string name="call_to_action_keepandroidopen">F-Droid je ohrozený. Spoločnosť Google mení spôsob inštalácie aplikácií do vášho zariadenia. Potrebujeme vašu pomoc.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="first_start_button">Načítať repozitáre</string>
+    <string name="sort_by_name">Zoradiť podľa mena</string>
+    <string name="sort_by_latest">Zoradiť podľa poslednej aktualizácie</string>
 </resources>

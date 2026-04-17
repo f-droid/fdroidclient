@@ -565,7 +565,7 @@
     <string name="repo_scan_qr_code">Skani QR-kodon</string>
     <string name="repo_preview_included_apps">Entenataj aplikaĵoj:</string>
     <string name="repo_and_mirror_add_both_info">La ligilo (%s), kiun vi provas aldoni estas spegul-servilo de nova deponejo. Ambaŭ la originala deponejo kaj spegul-servilo estos aldonitaj.</string>
-    <string name="warning_no_compat_versions">La elektita deponejo enhavas neniun kongruan version de aplikaĵo. Por ricevi ĝisdatigojn, preferu deponejon kun kongruaj versioj.</string>
+    <string name="warning_no_compat_versions">La elektita deponejo enhavas neniun kongruan version de la aplikaĵo. Por ricevi ĝisdatigojn, elektu preferatan deponejon kun kongruaj versioj.</string>
     <string name="auto_update_time">Plej frua sekva ĝisdatigo: %s</string>
     <string name="antitetherednet">Alligita al retservo</string>
     <string name="antitetherednetlist">Tiu ĉi aplikaĵo tute dependas de difinita ekzemplo de reta servo</string>
@@ -738,4 +738,45 @@
     <string name="crash_report_comment_hint">Priskribu kion okazis tuj antaŭ ol la paneo</string>
     <string name="crash_report_button_send">Sendi raporton</string>
     <string name="crash_report_error">Ne povis sendi raporton. Ne trovis retpoŝtilan aplikaĵon :(</string>
+    <string name="status_downloading">Elŝutado kun rapido %s/s</string>
+    <string name="status_downloading_remaining">%1$s restas</string>
+    <string name="crash_report_save">Konservi pane-raporton kiel dosieron</string>
+    <string name="crash_report_saved">Konservis raporton al la dosiero</string>
+    <string name="crash_report_error_saving">Eraro okazis dum konservi pane-raporton al dosiero</string>
+    <string name="notification_title">Sciigoj</string>
+    <string name="notification_summary">Malfermi agordojn pri sciigoj de la operaciumo</string>
+    <string name="notification_channel_install_success_title">Aŭtomate instalitaj aplikaĵoj</string>
+    <string name="notification_channel_install_success_description">Montras sciigon post aŭtomate instali aplikaĵon</string>
+    <string name="notification_channel_updates_available_title">Disponeblaj ĝisdatigoj de aplikaĵoj</string>
+    <string name="notification_channel_updates_available_description">Montras sciigon post ĝisdatigi deponejojn kaj trovi ĝisdatigojn de aplikaĵoj</string>
+    <string name="notification_repo_update_default">Konektado al %1$s…</string>
+    <string name="notification_repo_update_downloading">Elŝutis %1$s el %2$s</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="one">Konservis %1$d aplikaĵon el %2$s</item>
+        <item quantity="other">Konservis %1$d aplikaĵojn el %2$s</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="one">Instalado de %1$d aplikaĵo…</item>
+        <item quantity="other">Instalado de %1$d aplikaĵoj…</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="one">Ĝisdatigado de %1$d aplikaĵo…</item>
+        <item quantity="other">Ĝisdatigado de %1$d aplikaĵoj…</item>
+    </plurals>
+    <plurals name="notification_update_success_title">
+        <item quantity="one">Ĝisdatigis %1$d aplikaĵon</item>
+        <item quantity="other">Ĝisdatigis %1$d aplikaĵojn</item>
+    </plurals>
+    <string name="notification_installing_section_installing">Instalado:</string>
+    <string name="notification_installing_section_confirmation">Postulas konfirmon de uzanto:</string>
+    <string name="notification_installing_section_installed">Instalitaj:</string>
+    <string name="notification_installing_confirmation">Frapetu por konfirmi</string>
+    <string name="permission_camera_denied">La permeso por aliri fotilon estas necesa por skani QR-kodon. Frapetu tion ĉi por “doni” la permeson en agordoj.</string>
+    <string name="error">Eraro</string>
+    <string name="install_history_empty_state">La listo plue estas malplena\n\nKiam vi instalos, ĝisdatigos aŭ malinstalos aplikaĵon, rilata registraĵo aperos tie ĉi.</string>
+    <string name="install_history_disabled_state">Historio de instaladoj estas malaktiva.\n\nInstaladoj, ĝisdatigadoj kaj malinstaladoj ne estos registritaj.</string>
+    <string name="install_history_delete_ally">Forviŝi historion de instaladoj</string>
+    <string name="install_history_delete_text">Ĉu forviŝi historion de instaladoj?</string>
+    <string name="search_history">Lastaj serĉoj</string>
+    <string name="install_history_switch">Uzi historion de instaloj</string>
 </resources>

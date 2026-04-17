@@ -52,7 +52,7 @@
     <string name="overwrite">Kirjuta üle</string>
     <string name="bluetooth_activity_not_found">Bluetoothiga saatmisviise ei leitud. Valige üks!</string>
     <string name="choose_bt_send">Vali Bluetoothiga saatmise viis</string>
-    <string name="repo_add_url">Hoidla aadress</string>
+    <string name="repo_add_url">Tarkvarahoidla aadress</string>
     <string name="repo_add_fingerprint">Sõrmejälg (valikuline)</string>
     <string name="bad_fingerprint">Halb sõrmejälg</string>
     <string name="invalid_url">See ei ole kehtiv URL.</string>
@@ -60,7 +60,7 @@
     <string name="menu_email">Saada autorile e-kiri</string>
     <string name="malformed_repo_uri">Vahele jäetakse hoidla ebakorrektne URI: %s</string>
     <string name="menu_manage">Hoidlad</string>
-    <string name="menu_add_repo">Uus hoidla</string>
+    <string name="menu_add_repo">Uus tarkvarahoidla</string>
     <string name="antitracklist">See rakendus jälgib ja raporteerib su aktiivsusest</string>
     <string name="local_repo">Kohalik hoidla</string>
     <string name="deleting_repo">Kustutatakse praegust hoidlat…</string>
@@ -70,13 +70,13 @@
     <string name="banner_updating_repositories">Värskendan tarkvarahoidlaid</string>
     <string name="repos_unchanged">Kõik tarkvarahoidlate andmed on uuendatud</string>
     <string name="all_other_repos_fine">Kõik ülejäänud hoidlad vigu ei põhjustanud.</string>
-    <string name="repo_details">Hoidla</string>
+    <string name="repo_details">Tarkvarahoidla</string>
     <string name="repo_confirm_delete_title">Kas kustutame tarkvarahoidla?</string>
     <string name="repo_confirm_delete_body">Hoidla kustutamine tähendab, et selle hoidla pakutavad rakendused ei ole enam saadaval. \n \nMärkus: paigaldatud rakendused jäävad seadmesse alles.</string>
     <string name="repo_disabled_notification">%1$s on keelatud.\n\nSellest hoidlast rakenduste paigaldamiseks pead sa
         hoidla lubama.
     </string>
-    <string name="repo_added">Salvestatu paketi hoidla %1$s.</string>
+    <string name="repo_added">Salvestatud paketi tarkvarahoidla %1$s.</string>
     <string name="repo_searching_address">Otsitakse paketihoidlat aadressil
 \n%1$s</string>
     <string name="not_on_same_wifi">Sinu seade ei asu äsja lisatud kohaliku hoidlaga samas WiFi võrgus! Proovi liituda selle võrguga: %s</string>
@@ -161,7 +161,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Money">Raha</string>
     <string name="category_Multimedia">Multimeedia</string>
-    <string name="category_Navigation">Navigeerimine</string>
+    <string name="category_Navigation">Tee juhatamine</string>
     <string name="category_Phone_SMS">Telefon &amp; SMS</string>
     <string name="category_Reading">Lugemine</string>
     <string name="category_Science_Education">Teadus &amp; haridus</string>
@@ -523,7 +523,7 @@
         <item quantity="other">Laadi rakendusi IPFS võrgu kaudu: %1$d on kasutusel</item>
     </plurals>
     <string name="force_old_installer_summary">Lülita välja sessioonipõhine paigaldaja ja sellega muu hulgas kaob taustal töötava paigaldusteenuse tugi.</string>
-    <string name="repo_enter_url">Sisesta hoidla url käsitsi</string>
+    <string name="repo_enter_url">Sisesta tarkvarahoidla võrguaadress käsitsi</string>
     <string name="swap_banner_message">Rakenduste vahetamiseks lülita sisse oma nutiseadme Wi-Fi ja liitu samasse võrku oma sõbraga.</string>
     <string name="paste">Aseta</string>PluralsCandidate
 
@@ -534,8 +534,8 @@
     <string name="ipfsgw_caption_custom_gateways">Kohandatud IPFSi lüüsid</string>
     <string name="swap_connection_indexv0_error">Sa proovid luua ühendust aegunud F-Droid\'i versiooniga. Jätkamaks peab tolles nutiseadmes uuendama F-Droid\'i rakendust. Selleks saab kasutada võimalust laadida rakendus sinu nutiseadmest.</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid saab otsida tarkvarahoidlaid ja peegelservereid sinu nutiseadme SD-kaardilt, aga vajab selleks sinu luba.</string>
-    <string name="repo_state_fetching">Laadime hoidla andmeid…</string>
-    <string name="repo_state_adding">Lisame hoidla…</string>
+    <string name="repo_state_fetching">Laadime tarkvarahoidla andmeid…</string>
+    <string name="repo_state_adding">Lisame tarkvarahoidlat…</string>
     <string name="repo_exists">See tarkvarahoidla on juba lisatud.</string>
     <string name="repo_invalid">Vigane hoidla.
 \n
@@ -550,7 +550,7 @@
     <string name="ipfsgw_add_title">Lisa IPFSi lüüs</string>
     <string name="ipfsgw_add_add">Lisa</string>
     <string name="ipfsgw_caption_official_gateways">Ametlikud IPFSi lüüsid</string>
-    <string name="repo_add_new_title">Lisa hoidla</string>
+    <string name="repo_add_new_title">Lisa tarkvarahoidla</string>
     <string name="nearby_splace__external_storage_permission_button">Proovi seda</string>
     <string name="repo_num_apps_button">Näita rakendusi</string>
     <string name="useDnsCache">Kasuta nimeserveri puhvrit</string>
@@ -558,7 +558,7 @@
     <string name="repo_share_not_found">Jagatud tekstist ei õnnestunud leida hoidla aadressi.</string>
     <string name="app_details_repositories">Tarkvarahoidlad</string>
     <string name="app_details_repository">Tarkvarahoidla</string>
-    <string name="app_details_repository_preferred">(eeldatud)</string>
+    <string name="app_details_repository_preferred">(eelistatud)</string>
     <string name="app_details_repository_expand">Laienda tarkvarahoidlate loendit</string>
     <string name="app_list_no_suggested_version">Pole soovitatud versiooni, mida allalaadida.</string>
     <string name="repo_list_info_title">Tarkvarahoidlate loend</string>
@@ -573,13 +573,13 @@
     <string name="app_details_repository_button_prefer">Eelista tarkvarahoidlat</string>
     <string name="repo_error_adding_archive">Arhiivi tarkvarahoidlat ei saa otse lisada. Vajuta loendis tarkvarahoidlale ja lülita arhiiv tööle sealt.</string>
     <string name="repo_add_repo_and_mirror">Lisa tarkvarahoidla ja peegelserver</string>
-    <string name="repo_view_repo">Vaata hoidlat</string>
+    <string name="repo_view_repo">Vaata tarkvarahoidlat</string>
     <string name="repo_scan_qr_code">Skanneeri QR-koodi</string>
     <string name="repo_preview_included_apps">Lisatud rakendused:</string>
     <string name="repo_mirror_exists">See peegelserver on juba lisatud (%s).</string>
     <string name="repo_mirror_add_info">Võrguaadress, mida te üritad lisada (%s), on olemasoleva tarkvarahoidla peegelserver.</string>
     <string name="repo_and_mirror_add_both_info">Võrguaadress, mida te üritad lisada (%s), on uue tarkvarahoidla peegelserver. Lisatame nii algse tarkvarahoidla kui ka peegelserveri.</string>
-    <string name="warning_no_compat_versions">Valitud tarkvarahoidlas ei ole sinu nutiseadme jaoks sobivaid rakenduse versioone. Uuenduste laadimiseks palun eelista hoidlat, kus selliseid versioone leidub.</string>
+    <string name="warning_no_compat_versions">Valitud tarkvarahoidlas ei ole sinu nutiseadme jaoks sobivaid rakenduse versioone. Uuenduste laadimiseks palun vali tarkvarahoidla, kus selliseid ühilduvaid versioone leidub.</string>
     <string name="auto_update_time">Varaseim järgmine uuendus: %s</string>
     <string name="auto_update_time_past">Järgmine uuendus tingimuste täitmisel</string>
     <string name="antitetherednet">Seotud võrguteenused</string>
@@ -727,4 +727,70 @@
     <string name="pref_language_summary">Ava süsteemi keeleseadistused</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Eelista muudest riikidest</string>
     <string name="pref_proxy_title">Ühenda SOCKS-proksi kaudu</string>
+    <string name="first_start_metered">Sa kasutad mobiilset andmesidet ja allalaadimisele kuulub enam kui 10 MB. Kui ikkagi tahad jätkata, siis klõpsa valikut „Laadi tarkvarahoidlad“.</string>
+    <string name="pref_repo_updates_summary_only_wifi">Laadi rakenduste uuendused tarkvarahoidlatest regulaarselt alla ainult siis, kui nutiseade on ühendatud WiFi võrguga</string>
+    <string name="pref_repo_updates_summary_always">Laadi rakenduste uuendused tarkvarahoidlatest regulaarselt alla ka siis, kui nutiseade on ühendatud mobiilse internetiga</string>
+    <string name="no_repos_enabled">Tarkvarahoidlaid pole saadaval. Alustamiseks lisa mõni tarkvarahoidla</string>
+    <string name="onboarding_app_list_filter_message">Kasuta filtreid nägemaks rakendusi vaid konkreetsetest kategooriatest või tarkvarahoidlatest. Saad muuta ka järjestust.</string>
+    <string name="pref_dyn_colors_summary">Rakenda süsteemi seadistustel põhinevaid dünaamilisi värve</string>
+    <string name="pref_auto_updates_only_always">Alati (isegi mobiilse andmeside puhul)</string>
+    <string name="pref_auto_updates_summary_only_wifi">Laadi alla ja uuenda rakendusi regulaarselt, kui WiFi võrk on ühendatud ja seade pole kasutusel</string>
+    <string name="pref_auto_updates_summary_always">Laadi alla ja uuenda rakendusi regulaarselt ka siis, kui mobiilne andmeside ühendatud ja seade pole kasutusel</string>
+    <string name="pref_auto_updates_summary_never">Automaatne uuendamine pole kasutusel • Pead rakendusi uuendama käsitsi</string>
+    <string name="pref_repo_updates_summary_never">Ära kontrolli uuendusi • Rakendused hakkavad tasapisi aeguma</string>
+    <string name="pref_proxy_disabled">Loo internetiühendus ilma proksit kasutamata</string>
+    <string name="pref_proxy_enabled">Ühendamiseks on kasutusel %s</string>
+    <string name="pref_proxy_hint">Proksi peaks olema sisestatud vormingus „server:port“</string>
+    <string name="about_license_text">See programm on vaba tarkvara. Sa võid seda levitada ja/või muuta vastavalt Free Software Foundationi avaldatud GNU Üldise avaliku litsentsi tingimustele, kas litsentsi versiooni 3 või mõne hilisema versiooni alusel.</string>
+    <string name="dialog_metered_title">Kas jätkad kasutades mobiilset andmesidet?</string>
+    <string name="dialog_metered_text">%1$s allalaadimisel võivad sõltuvalt sinu võrgulepingust kaasneda kulud</string>
+    <string name="dialog_metered_text_no_size">Allalaadimisel võivad sõltuvalt sinu võrgulepingust kaasneda kulud</string>
+    <string name="screenshots_metered">Klõpsa laadimaks ekraanitõmmiseid mobiilse andmeside abil</string>
+    <string name="app_no_compatible_versions">See rakendus pole sinu nutiseadmega ühilduv</string>
+    <string name="app_no_compatible_signer">Seda rakendust ei saa uuendada, kuna kõik versioonid on allkirjaga, mis ei ole ühilduv\n\nKui sa ei saa uuendusi muul viisil, võib olla vaja rakendus eemaldada ja seejärel uuesti paigaldada. Sel juhul rakenduse andmed kaovad.</string>
+    <string name="app_no_compatible_signer_in_this_repo">Seda rakendust ei saa uuendada, kuna eelistatud tarkvarahoidlas ei leidu ühtegi sobivat versiooni\n\nProovi muuta eelistatud tarkvarahoidlat</string>
+    <string name="about_text">F-Droidi rakendused on tasuta ja avatud lähtekoodiga tarkvara (FOSS), need austavad sinu privaatsust ning igaüks saab nende lähtekoodi vaadata, seda kasutada ja täiustada.\n\nRakenduste levitamine on läbipaistev, privaatsust austav ja vastutustundlik, seades standardi, mis paneb laiema mobiilse ökosüsteemi end parandama.\n\nF-Droidi mõju ei mõõdeta ainult avaldatud rakenduste arvu järgi, vaid ka vabaduse, usalduse ja digitaalsete õiguste kaitsmise kaudu.\n\nAita F-Droidil kaitsta kogukonna poolt loodud innovatsiooni ja jätkata meie missiooni avatuse, privaatsuse ja kasutajate mõjuvõimu suurendamise nimel.</string>
+    <string name="app_no_auto_update">Kuna see rakendus on loodud vanemale Androidi versioonile, mis ei toeta automaatset uuendamist, siis automaatne uuendamine ei ole saadaval</string>
+    <string name="status_downloading_remaining">jäänud on %1$s</string>
+    <string name="app_issue_update_other_repo">Uuendus leidub muus tarkvarahoidlas. Uuendamiseks muuda eelistatud tarkvarahoidlat</string>
+    <string name="app_issue_not_available_text">Rakendus võib olla tarkvarahoidlast eemaldatud või leidus tarkvarahoidlas, mille oled eemaldanud või välja lülitanud</string>
+    <string name="repo_has_update_error_intro">Tarkvarahoidla uuendamisel tekkis viga:</string>
+    <string name="app_issue_not_available_title">Rakendus pole enam saadaval</string>
+    <string name="app_issue_hint">Järgnevad rakendused vajavad sinu tähelepanu. Rakenduse probleeme saad eirata temal pikalt vajutades.</string>
+    <string name="app_details_incompatible_version">Pole ühilduv • Ilmselt paigaldamine ei õnnestu</string>
+    <string name="app_details_incompatible_signer">Allkirjad ei klapi ja paigaldamine pole võimalik</string>
+    <string name="app_details_install_error_text">Vabandust! Selle rakenduse paigaldamisel tekkis ootamatu viga</string>
+    <string name="status_downloading">Allalaadimisel kiirusega %s/sek</string>
+    <string name="install_history_delete_text">Kas kustutad paigaldamise ajaloo?</string>
+    <string name="install_history_empty_state">See loend on jätkuvalt tühi\n\nKui paigaldad, uuendad või eemaldad rakendusi, siis asjakohased kirjed on nähtavad siin</string>
+    <string name="install_history_disabled_state">Paigaldamise ajaloo salvestamine pole kasutusel\n\nPaigaldamised, uuendamised ja eemaldamised jäävad logimata</string>
+    <plurals name="notification_update_success_title">
+        <item quantity="one">%1$d rakendus on uuendatud</item>
+        <item quantity="other">%1$d rakendust on uuendatud</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="one">Uuendamisel on %1$d rakendus…</item>
+        <item quantity="other">Uuendamisel on %1$d rakendust…</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="one">Paigaldamisel on %1$d rakendus…</item>
+        <item quantity="other">Paigaldamisel on %1$d rakendust…</item>
+    </plurals>
+    <string name="notification_repo_update_downloading">%1$s on laaditud alla tarkvarahoidlast „%2$s“</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="one">%1$d rakendus on salvestatud tarkvarahoidlast „%2$s“</item>
+        <item quantity="other">%1$d rakendust on salvestatud tarkvarahoidlast „%2$s“</item>
+    </plurals>
+    <string name="notification_summary">Avab süsteemi teavituste seadistused</string>
+    <string name="notification_channel_install_success_description">Peale automaatset rakenduste paigaldust kuvab vastava teavituse</string>
+    <string name="notification_channel_updates_available_description">Peale tarkvarahoidlate uuendamist ja rakenduste uuenduste tuvastamist kuvab vastava teavituse</string>
+    <string name="crash_report_text">Tekkis ootamatu viga. See ei ole sinu süü. Kas soovid meile saata e-kirja, milles kirjeldad probleemi üksikasju, et saaksime selle lahendada?</string>
+    <string name="crash_report_comment_hint">Kirjelda, mis juhtus enne rakenduse kokkujooksmist</string>
+    <string name="crash_report_error">Aruande saatmine ei õnnestunud. Kohe kuidagi ei leidnud e-posti rakendust :(</string>
+    <string name="crash_report_save">Salvesta kokkujooksmise aruanne failina</string>
+    <string name="crash_report_saved">Aruanne on salvestatud faili</string>
+    <string name="crash_report_error_saving">Aruanne faili salvestamisel tekkis viga</string>
+    <string name="permission_camera_denied">QR-koodi skaneerimiseks luba rakendusel kasutada kaamerat. Klõpsa vastava seadistuste vaate avamiseks.</string>
+    <string name="search_history">Hiljutised otsingud</string>
+    <string name="install_history_switch">Kasuta paigalduse ajalugu</string>
 </resources>

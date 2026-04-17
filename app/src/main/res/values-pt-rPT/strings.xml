@@ -665,4 +665,22 @@
     <string name="ipfsgw_summary_new">Transferir apps através de terminais web IPFS</string>
     <string name="call_to_action_keepandroidopen">F-Droid está sob ameaça. Google está a mudar a maneira que instala apps no seu dispositivo. Precisamos da sua ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="first_start_intro">Para começar, sincronize os repositórios de apps</string>
+    <string name="first_start_offline">Encontra-se offline. Conecte-se à Internet para começar.</string>
+    <string name="first_start_button">Obter repositórios</string>
+    <string name="no_repos_enabled">Nenhum repositório disponível, adicione um repositório para começar</string>
+    <string name="sort_title">Ordenação e compatibilidade</string>
+    <string name="sort_by_name">Ordenar por nome</string>
+    <string name="sort_by_latest">Ordenar por última atualização</string>
+    <string name="filter_only_compatible">Aplicações compatíveis com este dispositivo</string>
+    <string name="filter_button_save">Guardar como predefinição</string>
+    <string name="filter_intro">Filtrar app por</string>
+    <string name="filter_button_clear_all">Limpar todos os filtros</string>
+    <string name="filter">Filtro</string>
+    <string name="filter_selected">selecionado</string>
+    <string name="category">Categoria</string>
+    <string name="filter_antifeatures">Esconder caraterísticas indesejadas</string>
+    <string name="onboarding_app_list_filter_title">Filtrar</string>
+    <string name="got_it">Feito</string>
+    <string name="clear">Limpar</string>
 </resources>

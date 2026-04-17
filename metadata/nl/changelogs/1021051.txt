@@ -1,0 +1,11 @@
+* Repo-updater herschreven om achtergrondupdates betrouwbaarder te maken
+* Naam en functie in applijst gesplitst
+* Waarschuw als apps niet kunnen updaten uit voorkeursrepo
+* Apps voor SDK 24 zijn incompatibel met Android 15
+* Omgaan met mirrors in "Repo toevoegen" voorbeeld (Dank Thore)
+* Sta automatische app updates toe op Xiaomi apparaten die geen MIUI draaien (Dank Irate)
+* Vetrouwen van door de gebruiker toegevoegde root certificaten (Dank B.)
+* Hoofdletterongevoelige zoekfunctie met diakrieten opgelost (Dank Tobias)
+* Update antifunctiebeschrijving (Dank Licaon)
+* "Tethered net" antifunctie toegevoegd (Dank linsui)
+* Negeer whitespaces bij mirror toevoegen (Dank Tobias)

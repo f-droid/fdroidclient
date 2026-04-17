@@ -1,0 +1,13 @@
+* "Recent" tab highlights nu apps met beschrijving, vertaling, screenshot
+
+* Auto-download uit mirrors om downloads te versnellen en f-droid.org te ontzien
+
+* Mirrors uitzetten met nieuwe knop in "RepoDetails" (#1696)
+
+* Efficiënter download cachen (per repo; over verschillende webservers #1708)
+
+* Installatie die Onbekende Bronnen met "Privileged Extension" vereist opgelost (#1702)
+
+* Ontbrekende iconen opgelost voor apps zonder Wi-Fi (#1592)
+
+* "Updates" tab en voorkeuren vertalingen verbeterd

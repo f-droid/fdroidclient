@@ -1,0 +1,3 @@
+* Zoekbalk voorkeur opgelost op recente Adroid versies (dank aan @dkanada)
+* Omgaan met API 29 gesplitste toestemmingen: nauwkeurige locatie staat nu ook impliciet groffe locatie toe
+*Backup regels vastgesteld om te voorkomen dat de Swap bron wordt opgeslagen

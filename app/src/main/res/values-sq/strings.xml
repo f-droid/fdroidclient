@@ -774,4 +774,6 @@
     <string name="install_history_disabled_state">Historiku i instalimeve është i çaktivizuar\n\nS’do të regjistrohen instalime, përditësime dhe çinstalime</string>
     <string name="install_history_delete_ally">Fshi historik instalimesh</string>
     <string name="install_history_delete_text">Të fshihet historiku i instalimeve?</string>
+    <string name="status_downloading">Po shkarkohet me %1$s</string>
+    <string name="status_downloading_remaining">Edhe %1$s</string>
 </resources>

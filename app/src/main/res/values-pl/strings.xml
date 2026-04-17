@@ -729,7 +729,7 @@
     <string name="pref_auto_updates_summary_never">Automatyczne aktualizacje wyłączone • Aplikacje muszą być aktualizowane ręcznie</string>
     <string name="pref_repo_updates_title">Sprawdzaj aktualizacje</string>
     <string name="pref_repo_updates_summary_only_wifi">Pobieraj aktualizacje aplikacji okresowo z repozytoriów tylko przez Wi-Fi</string>
-    <string name="pref_repo_updates_summary_always">Pobieraj aktualizacje aplikacji okresowo z repozytoriów tylko nawet przez dane mobilne</string>
+    <string name="pref_repo_updates_summary_always">Pobieraj aktualizacje aplikacji okresowo z repozytoriów nawet przez dane mobilne</string>
     <string name="pref_repo_updates_summary_never">Nie sprawdzaj aktualizacji • Aplikacje staną się nieaktualne</string>
     <string name="pref_category_network">Sieć</string>
     <string name="pref_mirror_chooser_title">Wybór serwerów lustrzanych do pobierania</string>
@@ -785,7 +785,7 @@
     <string name="crash_report_saved">Zapisano raport do pliku</string>
     <string name="crash_report_error_saving">Błąd zapisywania raportu o awarii do pliku</string>
     <string name="notification_title">Powiadomienia</string>
-    <string name="notification_summary">Otwiera ustawienia powiadomień systemowych</string>
+    <string name="notification_summary">Otwórz ustawienia powiadomień systemowych</string>
     <string name="notification_channel_install_success_title">Automatycznie zainstalowane aplikacje</string>
     <string name="notification_channel_install_success_description">Wyświetla powiadomienie po automatycznej instalacji aplikacji</string>
     <string name="notification_channel_updates_available_title">Dostępne aktualizacje aplikacji</string>
@@ -826,6 +826,8 @@
     <string name="install_history_disabled_state">Historia instalacji jest wyłączona\n\nInstalacje, aktualizacje i odinstalowania nie będą rejestrowane</string>
     <string name="install_history_delete_ally">Usuń historię instalacji</string>
     <string name="install_history_delete_text">Czy usunąć historię instalacji?</string>
-    <string name="status_downloading">Pobieranie z prędkością %1$s</string>
+    <string name="status_downloading">Pobieranie z prędkością %s/s</string>
     <string name="status_downloading_remaining">Pozostało %1$s</string>
+    <string name="search_history">Ostatnie wyszukiwania</string>
+    <string name="install_history_switch">Używaj historii instalacji</string>
 </resources>

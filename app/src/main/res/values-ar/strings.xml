@@ -11,7 +11,7 @@
     <string name="app_not_installed">غير مثبَّت</string>
     <string name="app_inst_known_source">مثبَّت (مِن %s)</string>
     <string name="app_inst_unknown_source">مثبَّت (مِن مصدر غير معروف)</string>
-    <string name="ok">موافق</string>
+    <string name="ok">حسنًا</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="repo_add_add">أضف</string>
@@ -97,7 +97,7 @@
     <string name="menu_flattr">حساب فلاتر (Flattr)</string>
     <string name="details_notinstalled">لم يُثبَّت</string>
     <string name="antiadslist">يحتوي هذا التطبيق على إعلانات</string>
-    <string name="antitracklist">هذا التطبيق يراقب ويوثق نشاطك</string>
+    <string name="antitracklist">هذا التطبيق يراقب و يبلغ نشاطك</string>
     <string name="antinonfreeadlist">يروج هذا التطبيق إلى إضافات غير حرة</string>
     <string name="antinonfreenetlist">يروج هذا التطبيق أو يعتمد كليًّا على خدمة شبكة غير حرة</string>
     <string name="antinonfreedeplist">هذا التطبيق يعتمد على تطبيقات أخرى غير حرة</string>
@@ -375,7 +375,7 @@
     <string name="allow">سماح</string>
     <string name="panic_settings">إعدادات زر الهلع</string>
     <string name="panic_settings_summary">الإجراءات الواجب اتخاذها في حالة الطوارئ</string>
-    <string name="panic_exit_title">اغلاق التطبيق</string>
+    <string name="panic_exit_title">إغلاق التطبيق</string>
     <string name="panic_exit_summary">سيتم إغلاق هذا التطبيق</string>
     <string name="panic_destructive_actions">الإجراءات التدميرية</string>
     <string name="panic_hide_title">أخفِ %s</string>
@@ -851,6 +851,8 @@
         <item quantity="many">حُدِّث %1$d تطبيقًا</item>
         <item quantity="other">حُدِّث %1$d تطبيق</item>
     </plurals>
-W    <string name="status_downloading">ينزل ب %1$s</string>
+W    <string name="status_downloading">ينزل بسرعة %s/ث</string>
     <string name="status_downloading_remaining">%1$s متبقي</string>
+    <string name="search_history">عمليات البحث الأخيرة</string>
+    <string name="install_history_switch">استخدم سجل التثبيت</string>
 </resources>

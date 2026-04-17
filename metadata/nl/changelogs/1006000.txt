@@ -1,0 +1,12 @@
+* Omgaan met impliciete READ_EXTERNAL_STORAGE toestemming, als deze
+  toestemmingsmelding geeft bij installatie met "Privileged Extension" (#1702)
+
+* Indexdata schoongemaakt om severdreiging te verminderen
+
+* "Read Timeout" veroorzaakt gebruik van mirror als leestijd te lang is
+
+* Ontbrekende iconen voor apps die geen Wi-Fi gebruiken opgelost (#1592)
+
+* Gebruik zelfstandige titels voor Updates voorkeuren en Updates tab, voor vertalingen
+
+* UI verbeteringen van @ConnyDuck (#1636, #1618)

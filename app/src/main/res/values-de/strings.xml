@@ -783,4 +783,8 @@
     <string name="install_history_disabled_state">Der Installationsverlauf ist deaktiviert\n\nInstallationen, Aktualisierungen und Deinstallationen werden nicht aufgezeichnet</string>
     <string name="install_history_delete_ally">Installationsverlauf löschen</string>
     <string name="install_history_delete_text">Möchtest du den Installationsverlauf löschen?</string>
+    <string name="status_downloading">Wird heruntergeladen mit %s/s</string>
+    <string name="status_downloading_remaining">noch %1$s</string>
+    <string name="search_history">Zuletzt gesucht</string>
+    <string name="install_history_switch">Installationsverlauf verwenden</string>
 </resources>

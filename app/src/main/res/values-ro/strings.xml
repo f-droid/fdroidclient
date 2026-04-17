@@ -236,7 +236,7 @@
     <string name="repo_disabled_notification">\'%1$s dezactivat.
 \n
 \nVa trebui sa reactivați acest depozit pentru a putea instala aplicații din el.</string>
-    <string name="repo_confirm_delete_body">Ștergerea unui depozit înseamnă ca aplicațiile din el nu vor mai fie disponibile. \n \nNotă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dvs.</string>
+    <string name="repo_confirm_delete_body">Ștergerea unui depozit face ca aplicațiile din acesta să nu mai fie disponibile. \n \nNotă: Toate aplicațiile instalate anterior vor rămâne pe dispozitivul dvs.</string>
     <string name="warning_no_internet">Nu se poate face actualizarea, există conexiune la Internet?</string>
     <string name="versions">Versiuni</string>
     <string name="app_details_donate_prompt">%1$s creat de %2$s. Cumpără-le o cafea!</string>
@@ -801,4 +801,8 @@
     <string name="app_no_compatible_signer">Nu se poate actualiza această aplicație, toate versiunile au o semnătură incompatibilă\n\nDacă nu primiți actualizări prin alte mijloace, este posibil să fie necesar să dezinstalați și apoi să reinstalați această aplicație. Datele aplicației vor fi pierdute.</string>
     <string name="about_license_text">Acest program este un software liber. Îl puteți redistribui și/sau modifica, în condițiile Licenței publice generale GNU, asa cum a fost aceasta publicată de către Free Software Foundation, fie versiunea 3 a acestei Licențe, fie (la alegerea dvs), orice versiune ulterioară.</string>
     <string name="about_text">Aplicațiile de pe F-Droid sunt software liber și cu sursă deschisă (FOSS), vă respectă confidențialitatea și sunt disponibile pentru oricine să le vadă codul sursă, să le construiască și să le îmbunătățească.\n\nDistribuirea aplicațiilor este transparentă, respectă confidențialitatea și este responsabilă, stabilind un standard care să provoace ecosistemul mobil să facă mai bine.\n\nImpactul F-Droid este măsurat nu doar în aplicațiile publicate, ci și în libertatea, încrederea și drepturile digitale pe care le ajută să le protejeze.\n\nAjutați F-Droid să protejeze inovația bazată pe comunitate și pentru a continua misiunea noastră de deschidere, confidențialitate și împuternicire a utilizatorilor.</string>
+    <string name="status_downloading">Descărcare cu %s/s</string>
+    <string name="status_downloading_remaining">%1$s rămas</string>
+    <string name="search_history">Căutări recente</string>
+    <string name="install_history_switch">Utilizează istoricul de instalare</string>
 </resources>

@@ -11,7 +11,7 @@
     <string name="app_list__name__successfully_installed">%1$s waa lagu</string>
     <string name="app_list__name__downloading_in_progress">Dajinaya %1$s</string>
     <string name="about_title_full">Ku saabsan</string>
-    <string name="app_details">Faahfaahinta</string>
+    <string name="app_details">Faahfaahinta app-ka</string>
     <string name="notification_action_install">Ku</string>
     <string name="swap_dont_show_again">Mardambe tan ha itusi</string>
     <string name="swap_welcome">Kusoo dhawoow F-Droid!</string>
@@ -66,4 +66,5 @@
     <string name="no">Maya</string>
     <string name="yes">Haa</string>
     <string name="ok">Hagaag</string>
+    <string name="menu_about">Ku saabsan</string>
 </resources>
