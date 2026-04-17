@@ -665,4 +665,5 @@
     <string name="my_apps_ignore_dialog_text">Nepilnība šajā “%1$s” versijā netiks ņemta vērā</string>
     <string name="category_group_interests">Intereses</string>
     <string name="ipfsgw_summary_new">Lejupielādēt lietotnes no IPFS tīmekļa galamērķiem</string>
+    <string name="first_start_intro">Lai uzsāktu, jāvienādo lietotņu glabātavas</string>
 </resources>

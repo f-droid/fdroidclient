@@ -1,0 +1,15 @@
+* Automatisch cache legen of inkorten als er weinig opslagruimte is
+
+* Verbeterde prestaties op apparaten met weinig geheugen
+
+* Alle downloads respecteren "Alleen op wifi" voorkeur
+
+* Verminderd geheugengebruik als de batterij leeg is
+
+* Voor aangepaste mirrors toe aan repos door op links te klikken, QR-codes te scannen, etc
+
+* Veel Swap/Nearby bugfixes en verbeteringen
+
+* Een oorzaak van terugkerende updatenotificaties opgelost (#1271)
+
+* F-droid herkent F-droid nightly URLs vanuit GitLab

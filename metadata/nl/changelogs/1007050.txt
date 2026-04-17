@@ -1,0 +1,7 @@
+* grote verandering van de Swap UI, voorbereiding op herschrijven
+* toon "ongedaan maken" na items we te vegen van "Updates" tab (dank @Hocuri!)
+* probleem met "Laatste" veld veroorzaakd door tijdzones opgelost #1757
+* negeer alle onbelangrijke crashes in de achtergrond
+* Nearby/Swap functie vernieuwd door de hotspot AP functie te gebruiken
+* Nieuwe paniekreacties: app deïnstalleert en herstelt repos naar originele staat
+* USB OTG flashdrive kan gebruikt worden als Nearby repo en mirror

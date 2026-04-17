@@ -566,7 +566,7 @@
     <string name="app_details_repositories">Repositories</string>
     <string name="useDnsCacheSummary">Use cached results to minimise DNS queries.</string>
     <plurals name="ipfsgw_summary">
-        <item quantity="one">Download app using IPFS web endpoints: %1$d enabled</item>
+        <item quantity="one">Download apps using IPFS web endpoints: %1$d enabled</item>
         <item quantity="other">Download apps using IPFS web endpoints: %1$d enabled</item>
     </plurals>
     <string name="useDnsCache">Use DNS cache</string>
@@ -672,4 +672,25 @@
     <string name="ipfsgw_summary_new">Download apps using IPFS web endpoints</string>
     <string name="call_to_action_keepandroidopen">F-Droid is under threat. Google is changing the way you install apps on your device. We need your help.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+    <string name="pref_auto_updates_only_wifi">Alleen op Wi-Fi</string>
+    <string name="pref_auto_updates_only_always">Altijd (ook op mobiele data)</string>
+    <string name="pref_auto_updates_only_never">Nooit</string>
+    <string name="pref_auto_updates_summary_only_wifi">Download en update apps dagelijks op Wi-Fi en als het apparaat niet gebruikt wordt</string>
+    <string name="pref_auto_updates_summary_always">Download en update apps dagelijks, zelfs op mobiel internet, als het apparaat niet gebruikt wordt</string>
+    <string name="pref_auto_updates_summary_never">Automatische updates uitgezet • Apps moeten handmatig geüpdatet worden</string>
+    <string name="pref_repo_updates_title">Controleer op updates</string>
+    <string name="status_downloading">Aan het downloaden met%1$s</string>
+    <string name="status_downloading_remaining">%1$s te gaan</string>
+    <string name="pref_dyn_colors_title">Gebruik systeemkleuren</string>
+    <string name="pref_dyn_colors_summary">Pas dynamische kleuren toe vanuit jouw systeeminstellingen</string>
+    <string name="pref_language_summary">Open systeemtaalinstellingen</string>
+    <string name="pref_repo_updates_summary_only_wifi">Haal app updates regelmatig op vanuit bronnen, alleen op Wi-Fi</string>
+    <string name="pref_repo_updates_summary_always">Haal app updates regelmatig op vanuit bronnen, zelfs als op mobiel internet</string>
+    <string name="pref_repo_updates_summary_never">Controleer niet op updates • Apps zullen verouderd worden</string>
+    <string name="pref_category_network">Netwerk</string>
+    <string name="first_start_intro">To get started, sync app repositories</string>
+    <string name="first_start_offline">You\'re offline. Connect to the Internet to start.</string>
+    <string name="first_start_metered">You\'re on mobile data and more than 10 MB will be downloaded. Tap Fetch repositories to start anyway.</string>
+    <string name="first_start_button">Fetch repositories</string>
+    <string name="no_repos_enabled">No repositories available, add a repository to get started</string>
 </resources>

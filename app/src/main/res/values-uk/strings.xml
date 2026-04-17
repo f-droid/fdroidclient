@@ -641,18 +641,18 @@
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/uk/</string>
     <string name="menu_about">Про</string>
     <string name="menu_discover">Відкрийте для себе</string>
-    <string name="menu_apps_my">Мої програми</string>
+    <string name="menu_apps_my">Мої застосунки</string>
     <string name="first_start_loading">Завантаження репозиторіїв додатків…</string>
-    <string name="my_apps_empty">Тут відображаються лише програми, встановлені %1$s</string>
-    <string name="my_apps_header_apps_with_issue">Додатки з проблемами</string>
+    <string name="my_apps_empty">Тут відображаються лише застосунки, встановлені %1$s</string>
+    <string name="my_apps_header_apps_with_issue">Застосунки з проблемами</string>
     <string name="my_apps_ignore_dialog_title">Приховати проблему</string>
     <string name="my_apps_ignore_dialog_text">Проблема з цією версією \"%1$s\" буде проігнорована</string>
     <string name="my_apps_ignore_dialog_button">Приховати</string>
-    <string name="my_apps_export_installed_apps">Експорт списку додатків</string>
-    <string name="app_list_new">Новий додаток</string>
+    <string name="my_apps_export_installed_apps">Експорт списку застосунків</string>
+    <string name="app_list_new">Нові застосунки</string>
     <string name="app_list_recently_updated">Нещодавно оновлено</string>
     <string name="app_list_most_downloaded">Найбільш завантажувані</string>
-    <string name="app_list_all">Всі програми</string>
+    <string name="app_list_all">Усі програми</string>
     <string name="app_list_author">Додатки від %s</string>
     <string name="search_placeholder">Пошук…</string>
     <string name="search_no_results">Не знайдено жодних програм\n\nСпробуйте використовувати менше пошукових термінів або додати більше репозиторіїв</string>
@@ -678,4 +678,5 @@
     <string name="package_name">Назва пакета:</string>
     <string name="installed_version">Встановлена версія:</string>
     <string name="ipfsgw_summary_new">Завантажуйте програми за допомогою веб-кінцевих точок IPFS</string>
+    <string name="notification_title">Сповіщення</string>
 </resources>

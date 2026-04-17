@@ -1,0 +1,13 @@
+* Aanpassingen van de versielijst in "App Details" en UI-verbeteringen, dank aan contributeur @wsdfhjxc
+
+* Toetsenbord/D-pad navigatie verbeterd, dank aan contributeur @doeffinger
+
+* Toon "Open" knop als media geïnstalleerd en zichtbaar is
+
+* Knop "Delen" toegevoegd aan "Geïnstalleerde Apps" om CSV-lijst te exporteren
+
+*Klikbare APK-lijst aan de swap HTML indexpagina toegevoegd
+
+* Indexdownloads opnieuw proberen via mirrors
+
+* "Verstuur F-Droid via Bluetooth" op recente Android versies opgelosd

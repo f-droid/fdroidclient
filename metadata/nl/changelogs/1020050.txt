@@ -1,0 +1,13 @@
+* Revisie hoe repo's gepresenteerd worden om te verduidelijken als een download van elders dan f-droid.org komt
+
+* Sta gebruikers toe om repo prioriteit algemeen en per app te veranderen
+
+* Aangepaste antifuncties zijn staandaard ingeschakeld
+
+*Ontvangen van repo's via "Delen" ondersteund
+
+*Alle activiteiten respecteren Dag/Nacht thema
+
+*Update externe opslaggebruik om te werken met targetSdkVersion 29
+
+*F-Droid Basic geüpdated om te werken met targetSdkVersion 34

@@ -814,4 +814,6 @@
     <string name="install_history_disabled_state">El histórico de instalaciones está deshabilitado\n\nLas instalaciones, actualizaciones y desinstalaciones no se registrarán</string>
     <string name="install_history_delete_ally">Borrar histórico de instalación</string>
     <string name="install_history_delete_text">¿Borrar el histórico de instalación?</string>
+    <string name="status_downloading">Descargando a %1$s</string>
+    <string name="status_downloading_remaining">%1$s restantes</string>
 </resources>

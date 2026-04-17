@@ -1,0 +1,4 @@
+* omgaan met Android 10 toestemmingsconfiguratie om Onbekende Bron meldingen te stoppen
+* toetsenbord opent als zoekfunctie wordt gewist
+* vertalingssynchronisatie met Android teksten
+* verplicht gewone repo domeinen om HTTPS te gebruiken (GitLab, GitHub, Amazon)

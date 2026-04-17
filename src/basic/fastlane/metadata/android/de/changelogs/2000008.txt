@@ -3,6 +3,6 @@
 * Einfacheres Entdecken neuer Apps, auch durch Hervorheben der am häufigsten heruntergeladenen Apps
 * Installationsfreigabe *vor* dem Herunterladen
 * Mehrere Aktualisierungen/Downloads gleichzeitig
-* Benachrichtigung des Benutzers über Probleme mit Apps (z. B. Änderung des Signierschlüssel)
+* Nutzerbenachrichtigung über Probleme mit Apps (z. B. Änderung des Signierschlüssels)
 * Optionales Material-You-Farbschema
 * Verbesserte Filterung von Listen

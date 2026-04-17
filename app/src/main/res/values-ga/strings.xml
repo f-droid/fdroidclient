@@ -844,4 +844,6 @@
     <string name="install_history_disabled_state">Tá stair suiteála díchumasaithe\n\nNí dhéanfar suiteálacha, nuashonruithe agus díshuiteálacha a thaifeadadh</string>
     <string name="install_history_delete_ally">Scrios stair suiteála</string>
     <string name="install_history_delete_text">Scrios an stair suiteála?</string>
+    <string name="status_downloading">Ag íoslódáil le %1$s</string>
+    <string name="status_downloading_remaining">%1$s fágtha</string>
 </resources>

@@ -768,6 +768,8 @@
     <string name="install_history_disabled_state">禁用了安装历史记录\n\n不会记录安装、更新和卸载</string>
     <string name="install_history_delete_ally">删除安装历史记录</string>
     <string name="install_history_delete_text">要删除安装历史记录吗？</string>
-    <string name="status_downloading">实时下载速度 %1$s</string>
+    <string name="status_downloading">实时下载速度 %s/秒</string>
     <string name="status_downloading_remaining">剩余 %1$s</string>
+    <string name="search_history">最近搜索</string>
+    <string name="install_history_switch">使用安装历史记录</string>
 </resources>
