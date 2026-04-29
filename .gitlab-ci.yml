@@ -27,13 +27,13 @@ workflow:
     - apt-get -qy install -t trixie-backports --no-install-recommends git git-lfs sdkmanager openjdk-21-jdk-headless
 
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
-
-    - export cmdline_tools_latest="$ANDROID_HOME/cmdline-tools/latest/bin"
-    - test -e $cmdline_tools_latest && export PATH="$cmdline_tools_latest:$PATH"
-
     - export GRADLE_USER_HOME=$PWD/.gradle
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
-    - echo y | sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
+    - sdkmanager --install
+        "build-tools;${ANDROID_COMPILE_SDK}.0.0"
+        "platform-tools"
+        "platforms;android-${ANDROID_COMPILE_SDK}"
+        "platforms;android-37.0"
     # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
     - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2027,'
       /usr/lib/jvm/java-21-openjdk-amd64/conf/security/java.security
@@ -232,9 +232,11 @@ libs database schema:
     - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git git-lfs sdkmanager
     - export ANDROID_HOME=/opt/android-sdk
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
-    - sdkmanager "platforms;android-$ANDROID_COMPILE_SDK" "build-tools;$ANDROID_COMPILE_SDK.0.0"
-    - sdkmanager "build-tools;34.0.0" # something (AGP?) still pulls in old build-tools
-    - sdkmanager "build-tools;35.0.0" # something (AGP?) still pulls in old build-tools
+    - sdkmanager --install
+        "build-tools;${ANDROID_COMPILE_SDK}.0.0"
+        "platform-tools"
+        "platforms;android-${ANDROID_COMPILE_SDK}"
+
     - git lfs install
   script:
     - ./gradlew :libs:database:kspDebugKotlin
@@ -266,7 +268,7 @@ libs database schema:
 
     - $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose delete avd --name "$NAME_AVD"
     - export AVD="$AVD_PACKAGE"
-    - echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "$AVD"
+    - sdkmanager --install "$AVD"
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
     - df -h
     - start-emulator.sh
