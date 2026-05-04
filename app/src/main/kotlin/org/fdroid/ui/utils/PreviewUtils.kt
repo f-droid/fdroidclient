@@ -620,13 +620,14 @@ fun getRepoDetailsInfo(
   }
 
 fun getRepository(
+  repoId: Long = 42L,
   address: String = "https://example.org/repo",
   username: String? = "foo",
   password: String? = "bar",
   lastError: String? = "NotFoundException FooBar technical blabla",
 ) =
   Repository(
-    repoId = 42L,
+    repoId = repoId,
     address = address,
     timestamp = System.currentTimeMillis() - DAYS.toMillis(4),
     formatVersion = IndexFormatVersion.ONE,

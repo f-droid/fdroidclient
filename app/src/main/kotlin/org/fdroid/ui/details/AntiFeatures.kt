@@ -76,7 +76,7 @@ fun AntiFeatures(
     ExpandableSection(
       icon = rememberVectorPainter(Icons.Default.WarningAmber),
       title = stringResource(R.string.anti_features_title),
-      modifier = Modifier.padding(horizontal = 16.dp),
+      modifier = Modifier.padding(start = 16.dp),
     ) {
       Column {
         antiFeatures.forEach { antiFeature ->

@@ -12,7 +12,6 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AppSettingsAlt
-import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.CurrencyBitcoin
@@ -66,7 +65,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.os.LocaleListCompat
+import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
@@ -76,8 +77,6 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.R
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.categories.CategoryChip
-import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.icons.Litecoin
 import org.fdroid.ui.lists.AppListType
@@ -146,9 +145,13 @@ fun AppDetails(
             .onGloballyPositioned { coordinates -> size = coordinates.size }
       ) {
         // Header is taking care of top innerPadding
-        AppDetailsHeader(item, innerPadding)
+        AppDetailsHeader(item, onNav, innerPadding)
         AnimatedVisibility(item.showWarnings) {
           AppDetailsWarnings(item, Modifier.padding(horizontal = 16.dp))
+        }
+        // Screenshots
+        if (item.phoneScreenshots.isNotEmpty()) {
+          Screenshots(item.networkState.showWarningDialog, item.phoneScreenshots)
         }
         // What's New
         if (
@@ -186,6 +189,16 @@ fun AppDetails(
             }
           }
         }
+        // Anti-features
+        if (!item.antiFeatures.isNullOrEmpty()) {
+          AntiFeatures(
+            antiFeatures = item.antiFeatures,
+            hintAnchor = hintAnchor,
+            showOnboarding = item.showAntiFeaturesOnboarding,
+          ) {
+            coroutineScope.launch { hintController.show(hintAnchor) }
+          }
+        }
         // Description
         item.description?.let { description ->
           val maxLines = 3
@@ -210,6 +223,7 @@ fun AppDetails(
             SelectionContainer {
               Text(
                 text = htmlDescription,
+                lineHeight = 22.sp,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
               )
             }
@@ -218,6 +232,7 @@ fun AppDetails(
             AnimatedVisibility(!descriptionExpanded) {
               Text(
                 text = htmlDescription,
+                lineHeight = 22.sp,
                 maxLines = maxLines,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(top = 8.dp),
@@ -238,20 +253,6 @@ fun AppDetails(
               )
             }
           }
-        }
-        // Anti-features
-        if (!item.antiFeatures.isNullOrEmpty()) {
-          AntiFeatures(
-            antiFeatures = item.antiFeatures,
-            hintAnchor = hintAnchor,
-            showOnboarding = item.showAntiFeaturesOnboarding,
-          ) {
-            coroutineScope.launch { hintController.show(hintAnchor) }
-          }
-        }
-        // Screenshots
-        if (item.phoneScreenshots.isNotEmpty()) {
-          Screenshots(item.networkState.showWarningDialog, item.phoneScreenshots)
         }
         // Donate card
         if (item.showDonate)
@@ -391,25 +392,6 @@ fun AppDetails(
               }
             }
           }
-        if (!item.categories.isNullOrEmpty())
-          ExpandableSection(
-            icon = rememberVectorPainter(Icons.Default.Category),
-            title = stringResource(R.string.main_menu__categories),
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            initiallyExpanded = true,
-          ) {
-            ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
-              item.categories.forEach { item ->
-                CategoryChip(
-                  item,
-                  onClick = {
-                    val categoryNav = AppListType.Category(item.name, item.id)
-                    onNav(NavigationKey.AppList(categoryNav))
-                  },
-                )
-              }
-            }
-          }
         ExpandableSection(
           icon = rememberVectorPainter(Icons.Default.AppSettingsAlt),
           title = stringResource(R.string.technical_info),
@@ -469,5 +451,5 @@ fun AppDetailsLoadingPreview() {
 @Preview
 @Composable
 fun AppDetailsPreview() {
-  FDroidContent { AppDetails(testApp, {}, {}) }
+  HintHost { FDroidContent { AppDetails(testApp, {}, {}) } }
 }

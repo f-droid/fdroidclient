@@ -21,8 +21,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
@@ -55,9 +57,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -67,11 +76,16 @@ import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.categories.ChipFlowRow
+import org.fdroid.ui.categories.chipHeight
+import org.fdroid.ui.lists.AppListType
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.InstalledBadge
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
 import org.fdroid.ui.utils.asRelativeTimeString
+import org.fdroid.ui.utils.getRepository
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
@@ -80,6 +94,7 @@ import org.fdroid.ui.utils.testApp
 /** Timestamp [now] gets passed in for screenshot tests to have a stable download speed. */
 fun AppDetailsHeader(
   item: AppDetailsItem,
+  onNav: (NavigationKey) -> Unit,
   innerPadding: PaddingValues,
   now: Long = System.currentTimeMillis(),
 ) {
@@ -136,14 +151,48 @@ fun AppDetailsHeader(
     }
     Column {
       SelectionContainer {
-        Text(item.name, style = MaterialTheme.typography.headlineMediumEmphasized)
+        Text(
+          item.name,
+          style = MaterialTheme.typography.headlineSmallEmphasized,
+          fontWeight = FontWeight.Medium,
+          lineHeight = 26.sp,
+        )
       }
       item.app.authorName?.let { authorName ->
         SelectionContainer {
-          Text(
-            text = stringResource(R.string.author_by, authorName),
-            style = MaterialTheme.typography.bodyMedium,
-          )
+          if (item.authorHasMoreThanOneApp) {
+            val title = stringResource(R.string.app_list_author, authorName)
+            val authorString = stringResource(R.string.by_author_format, authorName)
+            val startIndex = authorString.indexOf(authorName)
+            val annotatedString = buildAnnotatedString {
+              append(authorString)
+              addLink(
+                clickable =
+                  LinkAnnotation.Clickable(
+                    tag = "author",
+                    linkInteractionListener = {
+                      onNav(NavigationKey.AppList(AppListType.Author(title, authorName)))
+                    },
+                    styles =
+                      TextLinkStyles(
+                        style =
+                          SpanStyle(
+                            color = ButtonDefaults.textButtonColors().contentColor,
+                            textDecoration = TextDecoration.None,
+                          )
+                      ),
+                  ),
+                start = startIndex,
+                end = startIndex + authorName.length,
+              )
+            }
+            Text(text = annotatedString, style = MaterialTheme.typography.bodyMedium)
+          } else {
+            Text(
+              text = stringResource(R.string.by_author_format, authorName),
+              style = MaterialTheme.typography.bodyMedium,
+            )
+          }
         }
       }
       val lastUpdated = item.app.lastUpdated.asRelativeTimeString()
@@ -171,6 +220,22 @@ fun AppDetailsHeader(
       )
     }
   }
+  // Category chips
+  if (!item.categories.isNullOrEmpty())
+    ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
+      item.categories.forEach { categoryItem ->
+        AssistChip(
+          label = {
+            Text(text = categoryItem.name, maxLines = 2, overflow = TextOverflow.Ellipsis)
+          },
+          onClick = {
+            val categoryNav = AppListType.Category(categoryItem.name, categoryItem.id)
+            onNav(NavigationKey.AppList(categoryNav))
+          },
+          modifier = Modifier.height(chipHeight),
+        )
+      }
+    }
   // Repo Chooser
   RepoChooser(
     repos = item.repositories,
@@ -340,7 +405,7 @@ fun AppDetailsHeader(
 @Preview
 @Composable
 fun AppDetailsHeaderPreview() {
-  FDroidContent { Column { AppDetailsHeader(testApp, PaddingValues(top = 8.dp)) } }
+  FDroidContent { Column { AppDetailsHeader(testApp, {}, PaddingValues(top = 8.dp)) } }
 }
 
 @Preview
@@ -353,9 +418,12 @@ private fun InstallPreview() {
           installedVersion = null,
           installedVersionCode = null,
           installedVersionName = null,
+          repositories = listOf(getRepository(testApp.app.repoId), getRepository()),
+          preferredRepoId = 42L,
           suggestedVersion = testApp.versions?.first()?.version,
           networkState = NetworkState(true, isMetered = true),
         ),
+        {},
         PaddingValues(top = 8.dp),
       )
     }
@@ -372,6 +440,7 @@ private fun UpdatePreview() {
           suggestedVersion = testApp.versions?.first()?.version,
           networkState = NetworkState(true, isMetered = true),
         ),
+        {},
         PaddingValues(top = 8.dp),
       )
     }
@@ -384,7 +453,7 @@ private fun PreviewLoading() {
   FDroidContent {
     Column {
       val app = testApp.copy(versions = null)
-      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp))
     }
   }
 }
@@ -409,7 +478,7 @@ private fun PreviewDownloading() {
             ),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp))
     }
   }
 }
@@ -434,7 +503,7 @@ private fun PreviewDownloadingNight() {
             ),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp))
     }
   }
 }
@@ -449,7 +518,7 @@ private fun PreviewProgress() {
           installState = InstallState.Starting("", "", "", 23),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 16.dp))
+      AppDetailsHeader(app, {}, PaddingValues(top = 16.dp))
     }
   }
 }

@@ -10,13 +10,15 @@ import com.android.tools.screenshot.PreviewTest
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.utils.getRepository
 import org.fdroid.ui.utils.testApp
 
 @Preview
 @Composable
 @PreviewTest
 fun DetailsHeaderOpenTest() {
-  FDroidContent { Column { AppDetailsHeader(testApp, PaddingValues(top = 8.dp)) } }
+  FDroidContent { Column { AppDetailsHeader(testApp.copy(
+    categories = testApp.categories?.subList(0, 2),), {}, PaddingValues(top = 8.dp)) } }
 }
 
 @Preview
@@ -30,9 +32,13 @@ private fun DetailsHeaderInstallTest() {
           installedVersion = null,
           installedVersionCode = null,
           installedVersionName = null,
+          repositories = listOf(getRepository(testApp.app.repoId), getRepository()),
+          preferredRepoId = 42L,
+          categories = testApp.categories?.subList(0, 2),
           suggestedVersion = testApp.versions?.first()?.version,
           networkState = NetworkState(true, isMetered = true),
         ),
+        {},
         PaddingValues(top = 8.dp),
       )
     }
@@ -47,9 +53,11 @@ private fun DetailsHeaderUpdateTest() {
     Column {
       AppDetailsHeader(
         testApp.copy(
+          categories = testApp.categories?.subList(0, 2),
           suggestedVersion = testApp.versions?.first()?.version,
           networkState = NetworkState(true, isMetered = true),
         ),
+        {},
         PaddingValues(top = 8.dp),
       )
     }
@@ -62,8 +70,8 @@ private fun DetailsHeaderUpdateTest() {
 private fun DetailsHeaderLoadingTest() {
   FDroidContent {
     Column {
-      val app = testApp.copy(versions = null)
-      AppDetailsHeader(app, PaddingValues(top = 8.dp))
+      val app = testApp.copy(categories = testApp.categories?.subList(0, 2), versions = null)
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp))
     }
   }
 }
@@ -88,9 +96,10 @@ private fun DetailsHeaderDownloadingTest() {
               totalBytes = 1024 * 1024 * 8,
               startMillis = now - 2000,
             ),
+          categories = testApp.categories?.subList(0, 2),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 8.dp), now)
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp), now)
     }
   }
 }
@@ -104,6 +113,7 @@ private fun DetailsHeaderDownloadingNightTest() {
       val now = System.currentTimeMillis()
       val app =
         testApp.copy(
+          categories = testApp.categories?.subList(0, 2),
           installState =
             InstallState.Downloading(
               name = "",
@@ -117,7 +127,7 @@ private fun DetailsHeaderDownloadingNightTest() {
             ),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 8.dp), now)
+      AppDetailsHeader(app, {}, PaddingValues(top = 8.dp), now)
     }
   }
 }
@@ -130,10 +140,11 @@ private fun DetailsHeaderStartingTest() {
     Column {
       val app =
         testApp.copy(
+          categories = testApp.categories?.subList(0, 2),
           installState = InstallState.Starting("", "", "", 23),
           networkState = NetworkState(true, isMetered = true),
         )
-      AppDetailsHeader(app, PaddingValues(top = 16.dp))
+      AppDetailsHeader(app, {}, PaddingValues(top = 16.dp))
     }
   }
 }

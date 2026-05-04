@@ -82,8 +82,6 @@
     <string name="category_group_interests">Interests</string>
     <string name="category_group_misc">Miscellaneous</string>
 
-    <!-- Used in app details page to show who is the author of the app -->
-    <string name="author_by">By %1$s</string>
     <string name="last_updated">Last updated: %1$s</string>
     <!-- The placeholder in round brackets will be replaced with the size of the app -->
     <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
@@ -102,6 +100,7 @@
     </string>
     <string name="installIncompatible">App incompatible with your device, install anyway?</string>
     <string name="version">Version</string>
+    <!-- Used in app details page to show who is the author of the app -->
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
     <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>

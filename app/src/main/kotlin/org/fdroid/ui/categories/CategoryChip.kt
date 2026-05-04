@@ -52,7 +52,11 @@ fun CategoryChip(
 }
 
 @Composable
-fun CategoryChip(categoryItem: CategoryItem, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun CategoryChip(
+  categoryItem: CategoryItem,
+  onClick: () -> Unit,
+  modifier: Modifier = Modifier,
+) {
   AssistChip(
     onClick = onClick,
     leadingIcon = {
