@@ -158,7 +158,6 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
       prefs.getString(PREF_KEY_MIRROR_CHOOSER, PREF_DEFAULT_MIRROR_CHOOSER).toMirrorChooserValue()
 
   val proxyConfig: ProxyConfig?
-    @UiThread
     get() {
       val proxyStr = prefs.getString(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
       return if (proxyStr.isNullOrBlank()) null

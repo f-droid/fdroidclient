@@ -28,6 +28,7 @@ android {
     all { buildConfigField("String", "ACRA_REPORT_EMAIL", "\"reports@f-droid.org\"") }
     getByName("release") {
       isMinifyEnabled = true
+      isShrinkResources = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
     getByName("debug") {
@@ -102,6 +103,7 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.compose.material.icons.extended)
   implementation(libs.androidx.lifecycle.viewmodel.compose)
+  implementation(libs.androidx.compose.material3.adaptive.navigation)
   implementation(libs.androidx.compose.material3.adaptive.navigation3)
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.material3)
@@ -132,7 +134,7 @@ dependencies {
   ksp(libs.hilt.android.compiler)
   ksp(libs.androidx.hilt.compiler)
   // https://github.com/google/dagger/issues/5001
-  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0")
+  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.21")
 
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)

@@ -1,13 +1,13 @@
 [versions]
 compileSdk = "36"
-kotlin = "2.3.20"
-androidGradlePlugin = "9.1.1"
-androidKspPlugin = "2.3.6"
+kotlin = "2.3.21"
+androidGradlePlugin = "9.2.1"
+androidKspPlugin = "2.3.7"
 hilt = "2.59.2"
 hiltWork = "1.3.0"
 hiltNavigationCompose = "1.3.0"
 dokka = "2.2.0"
-mavenPublish = "0.35.0"
+mavenPublish = "0.36.0"
 screenshot = "0.0.1-alpha13"
 ktfmt = "0.26.0"
 
@@ -15,14 +15,14 @@ kotlinxSerializationCore = "1.11.0"
 kotlinxSerializationJson = "1.11.0"
 kotlinxCoroutinesTest = "1.10.2"
 
-ktor = "3.4.2"
+ktor = "3.4.3"
 okhttp = "4.12.0"
 room = "2.8.4"
-glide = "5.0.5"
-glideCompose = "1.0.0-beta08"
+glide = "5.0.7"
+glideCompose = "1.0.0-beta09"
 coilCompose = "3.4.0"
 molecule = "2.2.0"
-hints = "2.2.1"
+hints = "3.0.1"
 composePreference = "2.2.0"
 
 androidxCoreKtx = "1.18.0"
@@ -38,23 +38,26 @@ androidxConstraintlayout = "2.2.1"
 androidxSwipeRefreshLayout = "1.2.0"
 androidxVectordrawable = "1.2.0"
 androidxGridlayout = "1.1.0"
-androidxComposeBom = "2026.03.01"
+androidxComposeBom = "2026.04.01"
 androidxActivityCompose = "1.13.0"
 accompanistDrawablepainter = "0.37.3"
 
 # navigation3
-nav3Core = "1.1.0"
+nav3Core = "1.1.1"
 lifecycleViewmodelNav3 = "2.10.0"
 material3AdaptiveNav3 = "1.0.0-alpha03"
 
 material = "1.13.0"
+material3 = "1.5.0-alpha18" # should be possible to remove once 1.5.0 is stable and in bom
+#noinspection GradleDependency 1.3.0-alpha10 depends on SDK 37
+material3AdaptiveNav = "1.3.0-alpha09"
 
 zxingCore = "3.5.4"
 guardianprojectNetcipher = "2.2.0-alpha"
 guardianprojectPanic = "1.0"
 acra = "5.13.1"
 adapterdelegates4 = "4.3.2"
-commonsIo = "2.21.0"
+commonsIo = "2.22.0"
 commonsNet = "3.13.0"
 bouncycastle = "1.84"
 #noinspection NewerVersionAvailable upgrade to 3.6.1 failed BonjourManagerTest
@@ -114,7 +117,7 @@ androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version.ref = "androidxComposeBom" } # TODO remove -alpha
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose" }
@@ -122,7 +125,8 @@ androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecy
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
-androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
+androidx-compose-material3-adaptive-navigation = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation", version.ref = "material3AdaptiveNav" }
 androidx-compose-material3-adaptive-navigation3 = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHiltCompiler" }
