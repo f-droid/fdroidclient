@@ -2,9 +2,11 @@ package org.fdroid.ui.details
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -42,6 +44,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -99,11 +102,21 @@ fun AppDetails(
   var showInstallError by remember { mutableStateOf(false) }
   val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(topAppBarState)
   if (item == null) BigLoadingIndicator()
-  else
+  else {
     Scaffold(
       topBar = { AppDetailsTopAppBar(item, topAppBarState, scrollBehavior, onBackNav) },
       modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { innerPadding ->
+      if (item is NotFoundAppDetailsItem) {
+        Box(
+          contentAlignment = Alignment.Center,
+          modifier = Modifier.fillMaxSize().padding(innerPadding),
+        ) {
+          Text(stringResource(R.string.no_such_app))
+        }
+        return@Scaffold
+      }
+      item as LoadedAppDetailsItem
       // react to install state changes
       LaunchedEffect(item.installState) {
         val state = item.installState
@@ -413,39 +426,46 @@ fun AppDetails(
         }
       }
     }
-  if (showInstallError && item != null && item.installState is InstallState.Error)
-    AlertDialog(
-      onDismissRequest = { showInstallError = false },
-      containerColor = MaterialTheme.colorScheme.errorContainer,
-      title = { Text(stringResource(R.string.install_error_notify_title, item.name)) },
-      text = {
-        if (item.installState.msg == null) {
-          Text(stringResource(R.string.app_details_install_error_text))
-        } else {
-          ExpandableSection(
-            icon = null,
-            title = stringResource(R.string.app_details_install_error_text),
-          ) {
-            SelectionContainer {
-              Text(
-                text = item.installState.msg,
-                fontFamily = FontFamily.Monospace,
-                modifier = Modifier.padding(top = 8.dp),
-              )
+    if (item is LoadedAppDetailsItem && showInstallError && item.installState is InstallState.Error)
+      AlertDialog(
+        onDismissRequest = { showInstallError = false },
+        containerColor = MaterialTheme.colorScheme.errorContainer,
+        title = { Text(stringResource(R.string.install_error_notify_title, item.name)) },
+        text = {
+          if (item.installState.msg == null) {
+            Text(stringResource(R.string.app_details_install_error_text))
+          } else {
+            ExpandableSection(
+              icon = null,
+              title = stringResource(R.string.app_details_install_error_text),
+            ) {
+              SelectionContainer {
+                Text(
+                  text = item.installState.msg,
+                  fontFamily = FontFamily.Monospace,
+                  modifier = Modifier.padding(top = 8.dp),
+                )
+              }
             }
           }
-        }
-      },
-      confirmButton = {
-        TextButton(onClick = { showInstallError = false }) { Text(stringResource(R.string.ok)) }
-      },
-    )
+        },
+        confirmButton = {
+          TextButton(onClick = { showInstallError = false }) { Text(stringResource(R.string.ok)) }
+        },
+      )
+  }
 }
 
 @Preview
 @Composable
 fun AppDetailsLoadingPreview() {
   FDroidContent { AppDetails(null, {}, {}) }
+}
+
+@Preview
+@Composable
+fun AppDetailsNotFoundPreview() {
+  FDroidContent { AppDetails(NotFoundAppDetailsItem, {}, {}) }
 }
 
 @Preview

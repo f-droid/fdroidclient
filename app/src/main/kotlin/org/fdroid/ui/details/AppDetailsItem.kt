@@ -24,7 +24,11 @@ import org.fdroid.install.SessionInstallManager
 import org.fdroid.search.SearchHelper.removeZeroWhiteSpace
 import org.fdroid.ui.categories.CategoryItem
 
-data class AppDetailsItem(
+sealed class AppDetailsItem
+
+data object NotFoundAppDetailsItem : AppDetailsItem()
+
+data class LoadedAppDetailsItem(
   val app: AppMetadata,
   val actions: AppDetailsActions,
   val installState: InstallState,
@@ -66,7 +70,7 @@ data class AppDetailsItem(
   val issue: AppIssue? = null,
   val authorHasMoreThanOneApp: Boolean = false,
   val proxy: ProxyConfig? = null,
-) {
+) : AppDetailsItem() {
   constructor(
     repository: Repository,
     preferredRepoId: Long,

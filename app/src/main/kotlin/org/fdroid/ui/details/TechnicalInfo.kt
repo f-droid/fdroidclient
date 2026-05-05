@@ -17,7 +17,7 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.testApp
 
 @Composable
-fun TechnicalInfo(item: AppDetailsItem) {
+fun TechnicalInfo(item: LoadedAppDetailsItem) {
   val items = mutableMapOf(stringResource(R.string.package_name) to item.app.packageName)
   if (item.installedVersionCode != null) {
     items[stringResource(R.string.installed_version)] =

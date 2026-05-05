@@ -47,7 +47,7 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-fun Versions(item: AppDetailsItem, scrollUp: suspend () -> Unit) {
+fun Versions(item: LoadedAppDetailsItem, scrollUp: suspend () -> Unit) {
   ExpandableSection(
     icon = rememberVectorPainter(Icons.Default.AccessTime),
     title = stringResource(R.string.versions),

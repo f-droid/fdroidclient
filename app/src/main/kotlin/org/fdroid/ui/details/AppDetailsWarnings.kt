@@ -30,7 +30,7 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.testApp
 
 @Composable
-fun AppDetailsWarnings(item: AppDetailsItem, modifier: Modifier = Modifier) {
+fun AppDetailsWarnings(item: LoadedAppDetailsItem, modifier: Modifier = Modifier) {
   val (color, string) =
     when {
       // app issues take priority

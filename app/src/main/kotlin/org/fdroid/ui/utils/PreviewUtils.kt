@@ -34,6 +34,7 @@ import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.details.LoadedAppDetailsItem
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
@@ -144,7 +145,7 @@ val categoryItems =
   )
 
 val testApp =
-  AppDetailsItem(
+  LoadedAppDetailsItem(
     app =
       AppMetadata(
         repoId = 1,

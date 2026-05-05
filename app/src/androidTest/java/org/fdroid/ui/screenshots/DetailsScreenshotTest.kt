@@ -4,7 +4,7 @@ import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.details.AppDetails
-import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.details.LoadedAppDetailsItem
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.utils.getAppDetailsActions
 import org.fdroid.ui.utils.testVersion1
@@ -23,7 +23,7 @@ class DetailsScreenshotTest(localeName: String) : LocalizedScreenshotTest(locale
   fun appDetails() =
     screenshotTest("4_Details", showBottomBar = false, dark = true) { localeList ->
       val item =
-        AppDetailsItem(
+        LoadedAppDetailsItem(
           app = appMetadata,
           actions = getAppDetailsActions(),
           installState = InstallState.Unknown,

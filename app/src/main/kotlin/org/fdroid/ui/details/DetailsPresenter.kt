@@ -68,7 +68,7 @@ fun DetailsPresenter(
           }
         }
       }
-      .value ?: return null
+      .value ?: return NotFoundAppDetailsItem
   val versions =
     produceState<List<AppVersion>?>(null, currentRepoId) {
         withContext(dispatcher) {
@@ -123,7 +123,7 @@ fun DetailsPresenter(
     produceState<Repository?>(null, app) {
         withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
       }
-      .value ?: return null
+      .value ?: return NotFoundAppDetailsItem
   val repositories =
     produceState(emptyList(), packageName) {
         withContext(dispatcher) {
@@ -196,7 +196,7 @@ fun DetailsPresenter(
   Log.d(TAG, "   versions: ${versions?.size}")
   Log.d(TAG, "   appPrefs: $appPrefs")
   Log.d(TAG, "   installState: $installState")
-  return AppDetailsItem(
+  return LoadedAppDetailsItem(
     repository = repo,
     preferredRepoId = preferredRepoId,
     repositories = repositories,

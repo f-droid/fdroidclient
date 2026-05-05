@@ -93,7 +93,7 @@ import org.fdroid.ui.utils.testApp
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 /** Timestamp [now] gets passed in for screenshot tests to have a stable download speed. */
 fun AppDetailsHeader(
-  item: AppDetailsItem,
+  item: LoadedAppDetailsItem,
   onNav: (NavigationKey) -> Unit,
   innerPadding: PaddingValues,
   now: Long = System.currentTimeMillis(),

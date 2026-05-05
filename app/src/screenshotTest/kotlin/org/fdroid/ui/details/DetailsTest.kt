@@ -18,19 +18,26 @@ fun DetailsTest() =
         testApp.copy(
           versions = emptyList(),
           categories = testApp.categories?.subList(0, 2),
-          phoneScreenshots = listOf(
-            "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
-            "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
-            "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
-            "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
-            "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
-          ),
+          phoneScreenshots =
+            listOf(
+              "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
+              "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
+              "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
+              "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
+              "https://f-droid.org/repo/org.fdroid.fdroid.2024-05-31-17-00-00.png",
+            ),
           networkState = NetworkState(isOnline = true, isMetered = false),
         ),
       onNav = {},
       onBackNav = {},
     )
   }
+
+@Preview
+@Composable
+@PreviewTest
+fun AppDetailsNotFoundTest() =
+  ScreenshotTest(showBottomBar = false) { AppDetails(NotFoundAppDetailsItem, {}, {}) }
 
 @Composable
 @PreviewTest
