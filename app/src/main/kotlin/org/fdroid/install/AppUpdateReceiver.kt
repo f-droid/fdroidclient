@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_MY_PACKAGE_REPLACED
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.annotation.RequiresApi
 import mu.KotlinLogging
 
@@ -18,5 +19,16 @@ class AppUpdateReceiver : BroadcastReceiver() {
       return
     }
     log.info { "Intent received, we just updated ourselves!" }
+    val intent =
+      context.packageManager.getLaunchIntentForPackage(context.packageName)?.apply {
+        addFlags(FLAG_ACTIVITY_NEW_TASK)
+      }
+    if (intent != null) {
+      try {
+        context.startActivity(intent)
+      } catch (e: Exception) {
+        log.error(e) { "Failed to start activity after update" }
+      }
+    }
   }
 }
