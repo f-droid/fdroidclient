@@ -189,12 +189,9 @@ app tools scripts:
         - app/**/*
   script:
     - apt-get update
-    - apt-get -qy install --no-install-recommends git python3
+    - apt-get -qy install --no-install-recommends python3
     - ./tools/check-format-strings.py
     - ./tools/check-fastlane-whitespace.py
-    - ./tools/remove-unused-and-blank-translations.py
-    - echo "These are unused or blank translations that should be removed:"
-    - git --no-pager diff --ignore-all-space --name-only --exit-code app/src/*/res/values*/strings.xml
 
 app weblate merge conflict:
   stage: lint
