@@ -955,6 +955,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically</string>
     <string name="notification_channel_updates_available_title">Available app updates</string>
     <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found</string>
+    <string name="notification_channel_self_update_title">Self-update</string>
+    <string name="notification_channel_self_update_description">Notifies when the app updated itself and was closed, so you can launch it again easily</string>
 
     <string name="notification_repo_update_default">Connecting to %1$s…</string>
     <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
@@ -978,6 +980,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_installing_section_confirmation">Needs user confirmation:</string>
     <string name="notification_installing_section_installed">Installed:</string>
     <string name="notification_installing_confirmation">Tap to confirm</string>
+    <!-- The placeholder %s will be replaced with the name of this app -->
+    <string name="notification_self_update_title">%s was updated. Tap to open</string>
 
     <!-- Used by the TTS engine when showing a filter "chip" in the search box -->
     <string name="tts_category_name">Category %1$s</string>
