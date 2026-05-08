@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Draw
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.EnhancedEncryption
+import androidx.compose.material.icons.filled.Fastfood
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.FlashlightOn
 import androidx.compose.material.icons.filled.Games
@@ -54,9 +55,11 @@ import androidx.compose.material.icons.filled.PermPhoneMsg
 import androidx.compose.material.icons.filled.PhotoSizeSelectActual
 import androidx.compose.material.icons.filled.Podcasts
 import androidx.compose.material.icons.filled.Radio
+import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material.icons.filled.RestaurantMenu
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SettingsRemote
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -64,6 +67,7 @@ import androidx.compose.material.icons.filled.SignalCellularAlt
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.filled.TaskAlt
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrackChanges
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.UploadFile
@@ -92,6 +96,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Connectivity" -> Icons.Default.SignalCellularAlt
         "Contact" -> Icons.Default.Contacts
         "Development" -> Icons.Default.DeveloperMode
+        "Diet" -> Icons.Default.Fastfood
         "DNS & Hosts" -> Icons.Default.Dns
         "Draw" -> Icons.Default.Draw
         "Ebook Reader" -> AutoMirrored.Default.MenuBook
@@ -106,6 +111,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Games" -> Icons.Default.Games
         "Graphics" -> Icons.Default.Brush
         "Habit Tracker" -> Icons.Default.TrackChanges
+        "Health Manager" -> Icons.Default.HealthAndSafety
         "Icon Pack" -> Icons.Default.Collections
         "Internet" -> Icons.Default.Language
         "Inventory" -> Icons.Default.AllInbox
@@ -113,6 +119,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Launcher" -> Icons.Default.Home
         "Local Media Player" -> Icons.Default.LocalPlay
         "Location Tracker & Sharer" -> Icons.Default.MyLocation
+        "Meditation" -> Icons.Default.SelfImprovement
         "Messaging" -> AutoMirrored.Default.Message
         "Money" -> Icons.Default.Money
         "Multimedia" -> Icons.Default.MusicVideo
@@ -133,6 +140,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Religion" -> Icons.Default.Church
         "Remote Access" -> Icons.Default.BrowserUpdated
         "Remote Controller" -> Icons.Default.SettingsRemote
+        "Schedule" -> Icons.Default.CalendarMonth
         "Science & Education" -> Icons.Default.Science
         "Security" -> Icons.Default.Security
         "Shopping List" -> Icons.Default.ShoppingCart
@@ -141,8 +149,10 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "System" -> Icons.Default.Settings
         "Task" -> Icons.Default.TaskAlt
         "Text Editor" -> Icons.Default.EditNote
+        "Text to Speech" -> Icons.Default.RecordVoiceOver
         "Theming" -> Icons.Default.Style
         "Time" -> Icons.Default.AccessTime
+        "Time Tracker" -> Icons.Default.Timer
         "Translation & Dictionary" -> Icons.Default.Translate
         "Voice & Video Chat" -> Icons.Default.VideoChat
         "Unit Convertor" -> Icons.Default.CurrencyExchange
@@ -171,6 +181,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Connectivity" -> CategoryGroups.network
         "Contact" -> CategoryGroups.communication
         "Development" -> CategoryGroups.interests
+        "Diet" -> CategoryGroups.interests
         "DNS & Hosts" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests
         "Ebook Reader" -> CategoryGroups.media
@@ -185,6 +196,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Games" -> CategoryGroups.media
         "Graphics" -> CategoryGroups.interests
         "Habit Tracker" -> CategoryGroups.productivity
+        "Health Manager" -> CategoryGroups.productivity
         "Icon Pack" -> CategoryGroups.device
         "Internet" -> CategoryGroups.network
         "Inventory" -> CategoryGroups.tools
@@ -192,6 +204,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Launcher" -> CategoryGroups.device
         "Local Media Player" -> CategoryGroups.media
         "Location Tracker & Sharer" -> CategoryGroups.tools
+        "Meditation" -> CategoryGroups.interests
         "Messaging" -> CategoryGroups.communication
         "Money" -> CategoryGroups.wallets
         "Multimedia" -> CategoryGroups.media
@@ -212,6 +225,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Religion" -> CategoryGroups.interests
         "Remote Access" -> CategoryGroups.network
         "Remote Controller" -> CategoryGroups.tools
+        "Schedule" -> CategoryGroups.productivity
         "Science & Education" -> CategoryGroups.interests
         "Security" -> CategoryGroups.device
         "Shopping List" -> CategoryGroups.tools
@@ -220,8 +234,10 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "System" -> CategoryGroups.device
         "Task" -> CategoryGroups.productivity
         "Text Editor" -> CategoryGroups.productivity
+        "Text to Speech" -> CategoryGroups.device
         "Theming" -> CategoryGroups.device
         "Time" -> CategoryGroups.productivity
+        "Time Tracker" -> CategoryGroups.productivity
         "Translation & Dictionary" -> CategoryGroups.tools
         "Voice & Video Chat" -> CategoryGroups.communication
         "Unit Convertor" -> CategoryGroups.tools
