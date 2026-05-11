@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.UpdateChecker
-import org.fdroid.database.App
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
@@ -29,6 +28,8 @@ import org.fdroid.install.InstallState
 import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppWithIssueItem
+import org.fdroid.utils.Loaded
+import org.fdroid.utils.Loading
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
@@ -57,18 +58,24 @@ fun DetailsPresenter(
   val currentRepoId = currentRepoIdFlow.collectAsState().value
   val appsWithIssues = appsWithIssuesFlow.collectAsState().value
   val appDao = db.getAppDao()
-  val app =
-    produceState<App?>(null, currentRepoId) {
+  val loadableApp =
+    produceState(Loading(), currentRepoId) {
         withContext(dispatcher) {
           if (currentRepoId == null) {
             val flow = appDao.getApp(packageName).asFlow()
-            flow.collect { value = it }
+            flow.collect { value = Loaded(it) }
           } else {
-            value = appDao.getApp(currentRepoId, packageName)
+            value = Loaded(appDao.getApp(currentRepoId, packageName))
           }
         }
       }
-      .value ?: return NotFoundAppDetailsItem
+      .value
+  val app =
+    when (loadableApp) {
+      is Loading -> return null
+      is Loaded if loadableApp.value != null -> loadableApp.value
+      else -> return NotFoundAppDetailsItem
+    }
   val versions =
     produceState<List<AppVersion>?>(null, currentRepoId) {
         withContext(dispatcher) {
@@ -119,11 +126,16 @@ fun DetailsPresenter(
         )
       }
     }
-  val repo =
-    produceState<Repository?>(null, app) {
-        withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
+  val loadableRepo =
+    produceState(Loading(), app) {
+        withContext(dispatcher) { value = Loaded(repoManager.getRepository(app.repoId)) }
       }
-      .value ?: return NotFoundAppDetailsItem
+      .value
+  val repo =
+    when (loadableRepo) {
+      is Loading -> return null
+      is Loaded -> loadableRepo.value ?: return NotFoundAppDetailsItem
+    }
   val repositories =
     produceState(emptyList(), packageName) {
         withContext(dispatcher) {
