@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.InstallSourceInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.Signature
 import android.os.Build
 import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
 import io.mockk.every
@@ -493,7 +494,7 @@ internal class DbAppCheckerTest {
       }
     every { appInfo.loadLabel(packageManager) } returns appName
 
-    val sig = mockk<android.content.pm.Signature>()
+    val sig = mockk<Signature>()
     every { sig.toByteArray() } returns signerBytes
 
     val packageInfo =

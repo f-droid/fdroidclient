@@ -34,8 +34,6 @@ import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
 
-// TODO write tests for this function
-//  see: https://github.com/cashapp/molecule?tab=readme-ov-file#testing
 @Composable
 fun DetailsPresenter(
   db: FDroidDatabase,

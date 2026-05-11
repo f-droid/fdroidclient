@@ -142,6 +142,13 @@ val categoryItems =
     CategoryItem("doesn't exist", "Foo bar"),
   )
 
+private val description =
+  "NewPipe does not use any Google framework libraries, or the YouTube API. " +
+    "It only parses the website in order to gain the information it needs. " +
+    "Therefore this app can be used on devices without Google Services installed. " +
+    "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
+    LoremIpsum(128).values.joinToString(" ")
+
 val testApp =
   LoadedAppDetailsItem(
     app =
@@ -150,6 +157,9 @@ val testApp =
         packageName = "org.schabi.newpipe",
         added = 1441756800000,
         lastUpdated = 1747214796000,
+        name = mapOf("en-US" to "New Pipe"),
+        summary = mapOf("en-US" to "Lightweight YouTube frontend"),
+        description = mapOf("en-US" to description),
         webSite = "https://newpipe.net",
         changelog = "https://github.com/TeamNewPipe/NewPipe/releases",
         license = "GPL-3.0-or-later",
@@ -178,12 +188,7 @@ val testApp =
     appPrefs = AppPrefs("org.schabi.newpipe"),
     name = "New Pipe",
     summary = "Lightweight YouTube frontend",
-    description =
-      "NewPipe does not use any Google framework libraries, or the YouTube API. " +
-        "It only parses the website in order to gain the information it needs. " +
-        "Therefore this app can be used on devices without Google Services installed. " +
-        "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
-        LoremIpsum(128).values.joinToString(" "),
+    description = description,
     categories = categoryItems.subList(0, 5),
     antiFeatures =
       listOf(
