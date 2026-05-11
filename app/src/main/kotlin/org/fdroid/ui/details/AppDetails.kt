@@ -162,10 +162,6 @@ fun AppDetails(
         AnimatedVisibility(item.showWarnings) {
           AppDetailsWarnings(item, Modifier.padding(horizontal = 16.dp))
         }
-        // Screenshots
-        if (item.phoneScreenshots.isNotEmpty()) {
-          Screenshots(item.networkState.showWarningDialog, item.phoneScreenshots)
-        }
         // What's New
         if (
           item.installedVersionCode != null && (item.whatsNew != null || item.app.changelog != null)
@@ -201,6 +197,10 @@ fun AppDetails(
               )
             }
           }
+        }
+        // Screenshots
+        if (item.phoneScreenshots.isNotEmpty()) {
+          Screenshots(item.networkState.showWarningDialog, item.phoneScreenshots)
         }
         // Anti-features
         if (!item.antiFeatures.isNullOrEmpty()) {
