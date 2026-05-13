@@ -25,15 +25,13 @@ workflow:
       || echo "deb http://deb.debian.org/debian trixie-backports main" >> /etc/apt/sources.list
     - apt update
     - apt-get -qy install -t trixie-backports --no-install-recommends git git-lfs sdkmanager openjdk-21-jdk-headless
-
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
     - export GRADLE_USER_HOME=$PWD/.gradle
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
     - sdkmanager --install
         "build-tools;${ANDROID_COMPILE_SDK}.0.0"
         "platform-tools"
-        "platforms;android-${ANDROID_COMPILE_SDK}"
-        "platforms;android-37.0"
+        "platforms;android-${ANDROID_COMPILE_SDK}.0"
     # index-v1.jar tests need SHA1 support still, TODO use apksig to validate JAR sigs
     - sed -i 's,SHA1 denyAfter 20[0-9][0-9],SHA1 denyAfter 2027,'
       /usr/lib/jvm/java-21-openjdk-amd64/conf/security/java.security
@@ -219,29 +217,19 @@ app weblate merge conflict:
     - exit $EXITVALUE
 
 libs database schema:
+  <<: *test-template
   stage: lint
-  image: debian:trixie-backports
   rules:
     - <<: *always-on-these-changes
     - changes:
         - libs/database/**/*
-  variables:
-    JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
-  before_script:
-    - apt-get update
-    - apt-get -qy --no-install-recommends install openjdk-21-jdk-headless git git-lfs sdkmanager
-    - export ANDROID_HOME=/opt/android-sdk
-    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdk = "\([0-9][0-9]*\)".*,\1,p' gradle/libs.versions.toml`
-    - sdkmanager --install
-        "build-tools;${ANDROID_COMPILE_SDK}.0.0"
-        "platform-tools"
-        "platforms;android-${ANDROID_COMPILE_SDK}"
-
-    - git lfs install
   script:
+    - git lfs install # somehow required for git restore below
+    - git restore gradle.properties # gets touched by base and diff check below fail
     - ./gradlew :libs:database:kspDebugKotlin
     - git status
     - git --no-pager diff --exit-code
+  cache: []
 
 # Run the tests in the emulator.  Each step is broken out to run on
 # its own since the CI runner can have limited RAM, and the emulator
