@@ -20,7 +20,6 @@ workflow:
   variables:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
   before_script:
-    - echo "org.gradle.caching=true" >> gradle.properties
     - test -e /etc/apt/sources.list.d/trixie-backports.list
       || echo "deb http://deb.debian.org/debian trixie-backports main" >> /etc/apt/sources.list
     - apt update
@@ -224,8 +223,6 @@ libs database schema:
     - changes:
         - libs/database/**/*
   script:
-    - git lfs install # somehow required for git restore below
-    - git restore gradle.properties # gets touched by base and diff check below fail
     - ./gradlew :libs:database:kspDebugKotlin
     - git status
     - git --no-pager diff --exit-code
@@ -247,7 +244,6 @@ libs database schema:
   # Cache hits the storage limits in kvm runners quickly
   cache: []
   script:
-    - ./gradlew assembleFullDebug
     - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
     - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
     - export AVD_ARCH=`echo $CI_JOB_NAME | awk '{print $4}'`
@@ -256,12 +252,10 @@ libs database schema:
 
     - $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose delete avd --name "$NAME_AVD"
     - export AVD="$AVD_PACKAGE"
-    - sdkmanager --install "$AVD"
+    - $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "$AVD"
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
     - df -h
     - start-emulator.sh
-    - ./gradlew :app:installBasicDefaultDebug :legacy:installFullDebug
-    - adb shell am start -n org.fdroid.fdroid.debug/org.fdroid.fdroid.views.main.MainActivity
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
     - ./gradlew $FLAG :app:connectedAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest
     - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
