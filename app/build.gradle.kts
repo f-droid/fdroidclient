@@ -17,7 +17,7 @@ android {
   defaultConfig {
     applicationId = "org.fdroid"
     minSdk = 24
-    targetSdk = 36
+    targetSdk = 37
     versionCode = 2000009
     versionName = "2.0-alpha9"
 

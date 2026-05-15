@@ -1,5 +1,8 @@
 package org.fdroid.fdroid.nearby;
 
+import static android.Manifest.permission.ACCESS_LOCAL_NETWORK;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.os.Build.VERSION.SDK_INT;
 import static android.view.WindowManager.LayoutParams.FLAG_SECURE;
 import static org.fdroid.fdroid.nearby.SwapService.ACTION_REQUEST_SWAP;
 
@@ -145,6 +148,11 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private final Stack<Integer> backstack = new Stack<>();
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) sendFDroidBluetooth();
+            });
+
+    private final ActivityResultLauncher<String> requestLocalAccessLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) sendFDroidBluetooth();
             });
@@ -1092,18 +1100,25 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
         wifiSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             Context context = getApplicationContext();
-            if (isChecked) {
+            boolean granted = SDK_INT < 37 ||
+                    ContextCompat.checkSelfPermission(context, ACCESS_LOCAL_NETWORK) == PERMISSION_GRANTED;
+            if (isChecked && !granted) {
+                requestLocalAccessLauncher.launch(ACCESS_LOCAL_NETWORK);
+                Toast.makeText(this, R.string.swap_bluetooth_permissions, Toast.LENGTH_LONG).show();
+            }
+            boolean activate = isChecked && granted;
+            if (activate) {
                 if (wifiApControl != null && wifiApControl.isEnabled()) {
                     setupWifiAP();
                 } else {
-                    if (Build.VERSION.SDK_INT <= 28) {
+                    if (SDK_INT <= 28) {
                         wifiManager.setWifiEnabled(true);
                     }
                 }
                 BonjourManager.start(context);
             }
-            BonjourManager.setVisible(context, isChecked);
-            SwapService.putWifiVisibleUserPreference(isChecked);
+            BonjourManager.setVisible(context, activate);
+            SwapService.putWifiVisibleUserPreference(activate);
         });
 
         scanQrButton.setOnClickListener(v -> inflateSwapView(R.layout.swap_wifi_qr));
@@ -1143,7 +1158,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     break;
                 case BonjourManager.STATUS_STARTED:
                     textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    if (SDK_INT < 37 ||
+                            ContextCompat.checkSelfPermission(context, ACCESS_LOCAL_NETWORK) == PERMISSION_GRANTED) {
+                        peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    } else {
+                        peopleNearbyText.setText(R.string.swap_bluetooth_permissions);
+                    }
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
                     break;
@@ -1152,7 +1172,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     break;
                 case BonjourManager.STATUS_NOT_VISIBLE:
                     textWifiVisible.setText(R.string.swap_not_visible_wifi);
-                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    if (SDK_INT < 37 ||
+                            ContextCompat.checkSelfPermission(context, ACCESS_LOCAL_NETWORK) == PERMISSION_GRANTED) {
+                        peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    } else {
+                        peopleNearbyText.setText(R.string.swap_bluetooth_permissions);
+                    }
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
                     break;
@@ -1162,7 +1187,12 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     } else {
                         textWifiVisible.setText(R.string.swap_visible_wifi);
                     }
-                    peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    if (SDK_INT < 37 ||
+                            ContextCompat.checkSelfPermission(context, ACCESS_LOCAL_NETWORK) == PERMISSION_GRANTED) {
+                        peopleNearbyText.setText(R.string.swap_scanning_for_peers);
+                    } else {
+                        peopleNearbyText.setText(R.string.swap_bluetooth_permissions);
+                    }
                     peopleNearbyText.setVisibility(View.VISIBLE);
                     peopleNearbyProgress.setVisibility(View.VISIBLE);
                     break;
