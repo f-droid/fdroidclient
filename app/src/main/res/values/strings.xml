@@ -182,6 +182,7 @@
     <string name="pref_language_summary">Open system language settings</string>
     <string name="pref_auto_updates_only_wifi">Only on Wi-Fi</string>
     <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Only when opening the app</string>
     <string name="pref_auto_updates_only_never">Never</string>
     <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on Wi-Fi and the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used</string>
@@ -189,6 +190,7 @@
     <string name="pref_repo_updates_title">Check for updates</string>
     <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories only when on Wi-Fi</string>
     <string name="pref_repo_updates_summary_always">Periodically fetch app updates from repositories even when on mobile data</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Check for updates only when opened • Apps will become outdated</string>
     <string name="pref_repo_updates_summary_never">Don\'t check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
     <string name="pref_mirror_chooser_title">Download mirror selection</string>

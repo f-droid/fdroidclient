@@ -59,6 +59,7 @@ import org.fdroid.R
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Always
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
@@ -214,7 +215,8 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
               )
           },
           summary = { strValue ->
-            if (strValue != Never.name) {
+            val value = strValue.toAutoUpdateValue()
+            if (value.workerEnabled) {
               val nextUpdate = model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
               val nextUpdateStr =
                 if (nextUpdate == Long.MAX_VALUE) {
@@ -228,17 +230,20 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
                   stringResource(R.string.auto_update_time, nextUpdate.asRelativeTimeString())
                 }
               val s =
-                if (strValue == OnlyWifi.name) {
+                if (value == OnlyWifi) {
                   stringResource(R.string.pref_repo_updates_summary_only_wifi)
-                } else if (strValue == Always.name) {
+                } else if (value == Always) {
                   stringResource(R.string.pref_repo_updates_summary_always)
                 } else error("Unknown value: $strValue")
               Text(s + "\n" + nextUpdateStr)
             } else {
-              Text(
-                text = stringResource(R.string.pref_repo_updates_summary_never),
-                color = MaterialTheme.colorScheme.error,
-              )
+              val s =
+                if (value == OnlyWhenOpenApp) {
+                  stringResource(R.string.pref_repo_updates_summary_only_when_open_app)
+                } else {
+                  stringResource(R.string.pref_repo_updates_summary_never)
+                }
+              Text(text = s, color = MaterialTheme.colorScheme.error)
             }
           },
           values = AutoUpdateValues.entries.map { it.name },
@@ -247,6 +252,7 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
               when (value.toAutoUpdateValue()) {
                 OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
                 Always -> res.getString(R.string.pref_auto_updates_only_always)
+                OnlyWhenOpenApp -> res.getString(R.string.pref_auto_updates_only_only_when_open_app)
                 Never -> res.getString(R.string.pref_auto_updates_only_never)
               }
             )
@@ -295,12 +301,15 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
               }
             Text(s)
           },
-          values = AutoUpdateValues.entries.map { it.name },
+          // Exclude the OnlyWhenOpenApp option here
+          values =
+            AutoUpdateValues.entries.mapNotNull { if (it == OnlyWhenOpenApp) null else it.name },
           valueToText = { value: String ->
             AnnotatedString(
               when (value.toAutoUpdateValue()) {
                 OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
                 Always -> res.getString(R.string.pref_auto_updates_only_always)
+                OnlyWhenOpenApp -> res.getString(R.string.pref_auto_updates_only_only_when_open_app)
                 Never -> res.getString(R.string.pref_auto_updates_only_never)
               }
             )
