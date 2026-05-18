@@ -22,6 +22,7 @@
 
     <!-- The %1$s placeholder will be replaced by the app name, e.g. "F-Droid" -->
     <string name="my_apps_empty">Only apps available in %1$s\'s repositories are shown here</string>
+    <string name="my_apps_header_recently_installed_apps">Recently installed</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>
     <string name="my_apps_ignore_dialog_title">Hide issue</string>
     <string name="my_apps_ignore_dialog_text">The issue with this version of \"%1$s\" will get ignored</string>

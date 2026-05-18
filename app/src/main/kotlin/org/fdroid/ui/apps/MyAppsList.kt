@@ -142,7 +142,12 @@ fun MyAppsList(
       item(key = "B", contentType = "header") {
         Row(verticalAlignment = Alignment.CenterVertically) {
           Text(
-            text = stringResource(R.string.notification_title_summary_installing),
+            text =
+              if (myAppsInfo.model.showClearInstallingAppsButton) {
+                stringResource(R.string.my_apps_header_recently_installed_apps)
+              } else {
+                stringResource(R.string.notification_title_summary_installing)
+              },
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(16.dp).weight(1f),
           )
@@ -168,7 +173,7 @@ fun MyAppsList(
               onClick = { onAppItemClick(app.packageName) },
             )
           }
-        val modifier = Modifier.Companion.animateItem().then(interactionModifier)
+        val modifier = Modifier.animateItem().then(interactionModifier)
         InstallingAppRow(app, isSelected, modifier)
       }
     }
