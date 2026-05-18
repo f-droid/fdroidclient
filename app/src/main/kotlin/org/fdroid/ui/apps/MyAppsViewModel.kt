@@ -3,6 +3,7 @@ package org.fdroid.ui.apps
 import android.app.Application
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import androidx.annotation.UiThread
 import androidx.core.app.ShareCompat
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
@@ -133,6 +134,11 @@ constructor(
         }
       }
     }
+  }
+
+  @UiThread
+  override fun clearInstallingApps() {
+    appInstallManager.clearInstallingApps()
   }
 
   override fun ignoreAppIssue(item: AppWithIssueItem) {

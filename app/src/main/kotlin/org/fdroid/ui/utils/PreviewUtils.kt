@@ -415,6 +415,8 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
 
           override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
 
+          override fun clearInstallingApps() {}
+
           override fun ignoreAppIssue(item: AppWithIssueItem) {}
 
           override fun onUpdatesHintSeen() {}

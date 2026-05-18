@@ -58,6 +58,7 @@
     <string name="onboarding_app_list_filter_message">Use filters to only show apps from specific categories or repositories. You can also change the sort order.</string>
     <string name="got_it">Got it</string>
     <string name="clear">Clear</string>
+    <string name="clear_all">Clear all</string>
     <string name="hide">Hide</string>
 
     <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>

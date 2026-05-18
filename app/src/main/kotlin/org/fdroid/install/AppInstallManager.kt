@@ -489,6 +489,23 @@ constructor(
   }
 
   @UiThread
+  fun clearInstallingApps() {
+    apps.update { oldApps ->
+      oldApps.toMutableMap().apply {
+        val iterator = entries.iterator()
+        while (iterator.hasNext()) {
+          val app = iterator.next()
+          if (!app.value.showProgress) {
+            val packageName = app.key
+            jobs.remove(packageName)?.cancel()
+            iterator.remove()
+          }
+        }
+      }
+    }
+  }
+
+  @UiThread
   fun cleanUp(packageName: String) {
     val state = apps.value[packageName] ?: return
     if (!state.showProgress) {
