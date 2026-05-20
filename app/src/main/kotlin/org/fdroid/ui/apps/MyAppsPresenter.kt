@@ -113,11 +113,22 @@ fun MyAppsPresenter(
 private fun <T : MyAppItem> List<T>.sort(sortOrder: AppListSortOrder): List<T> {
   val collator = Collator.getInstance(Locale.getDefault())
   return when (sortOrder) {
-    AppListSortOrder.NAME ->
+    AppListSortOrder.NAME -> {
       sortedWith { a1, a2 ->
         // storing collator.getCollationKey() and using that could be an optimization
         collator.compare(a1.name, a2.name)
       }
-    AppListSortOrder.LAST_UPDATED -> sortedByDescending { it.lastUpdated }
+    }
+    AppListSortOrder.LAST_UPDATED -> {
+      sortedWith { a1, a2 ->
+        val lastAddedCompare = a1.lastUpdated.compareTo(a2.lastUpdated)
+        if (lastAddedCompare == 0) {
+          // fall-back to name if last updated is the same, to ensure stable sorting
+          collator.compare(a1.name, a2.name)
+        } else {
+          lastAddedCompare
+        }
+      }
+    }
   }
 }
