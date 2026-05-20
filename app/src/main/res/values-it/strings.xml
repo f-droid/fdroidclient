@@ -640,7 +640,7 @@
     <string name="menu_discover">Scopri</string>
     <string name="menu_apps_my">Le mie app</string>
     <string name="first_start_loading">Recuperando i repository delle app…</string>
-    <string name="my_apps_empty">Solo le app installate da %1$s sono mostrate qui</string>
+    <string name="my_apps_empty">Solo le app disponibili nelle repository di %1$s sono mostrate qui</string>
     <string name="my_apps_header_apps_with_issue">App con problemi</string>
     <string name="my_apps_ignore_dialog_title">Nascondi problema</string>
     <string name="my_apps_ignore_dialog_text">Il problema con questa versione di \"%1$s\" sarà ignorato</string>
@@ -828,4 +828,5 @@
     <string name="crash_report_save">Salva segnalazione di errori come file</string>
     <string name="crash_report_saved">Segnalazione salvata come file</string>
     <string name="crash_report_error_saving">Errore nel salvataggio della segnalazione di errori come file</string>
+    <string name="repo_basicauth_password">Password</string>
 </resources>

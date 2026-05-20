@@ -49,7 +49,7 @@
     <string name="about_title_full">Sobre o F-Droid</string>
     <string name="app_list__name__downloading_in_progress">A descarregar %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s foi instalado</string>
-    <string name="updates__tts__download_app">Baixar</string>
+    <string name="updates__tts__download_app">Descarregar</string>
     <string name="more">Mais</string>
     <string name="less">Menos</string>
     <string name="antitracklist">Esta aplicação monitora e reporta a sua atividade</string>
@@ -94,12 +94,12 @@
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
     <string name="over_network_always_summary">Utilizar sempre esta ligação se disponível</string>
-    <string name="over_network_on_demand_summary">Apenas utilizar esta conexão ao fazer o Download</string>
-    <string name="over_network_never_summary">Nunca baixar através desta ligação</string>
+    <string name="over_network_on_demand_summary">Apenas utilizar esta conexão quando clicar para descarregar</string>
+    <string name="over_network_never_summary">Nunca descarregar através desta ligação</string>
     <string name="update_auto_download">Automaticamente descarregar atualizações</string>
     <string name="update_auto_download_summary">As atualizações são automáticas e você será notificado para as instalar</string>
     <string name="update_auto_install">Instalar atualizações automaticamente</string>
-    <string name="update_auto_install_summary">Baixar e instalar atualizações em segundo plano, mostrar apenas a notificação</string>
+    <string name="update_auto_install_summary">Descarregar e instalar atualizações em segundo plano, mostrar apenas a notificação</string>
     <string name="notify">Mostrar atualizações disponíveis</string>
     <string name="notify_on">Mostrar uma notificação se existirem atualizações disponíveis</string>
     <string name="system_installer">Extensão privilegiada</string>
@@ -139,7 +139,7 @@
     <string name="app_version_x_installed">Versão %1$s</string>
     <string name="app_recommended_version_installed">Versão %1$s (Recomendada)</string>
     <string name="added_on">Adicionada em %s</string>
-    <string name="app__tts__cancel_download">Cancelar download</string>
+    <string name="app__tts__cancel_download">Cancelar descarga</string>
     <string name="app__install_downloaded_update">Atualizar</string>
     <string name="app_installed_media">Ficheiro instalado em %s</string>
     <string name="app_permission_storage">F-Droid necessita de acesso ao armazenamento. Por favor conceda essa permissão na próxima tela para continuar com a instalação.</string>
@@ -160,9 +160,9 @@
     <string name="updates__hide_updateable_apps">Ocultar aplicações</string>
     <string name="updates__show_updateable_apps">Mostrar aplicações</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Baixar atualização para %1$d app:</item>
-        <item quantity="many">Baixar atualizações para %1$d apps:</item>
-        <item quantity="other">Baixar atualizações para %1$d apps:</item>
+        <item quantity="one">Descarregar atualização para %1$d app:</item>
+        <item quantity="many">Descarregar atualizações para %1$d apps:</item>
+        <item quantity="other">Descarregar atualizações para %1$d apps:</item>
     </plurals>
     <string name="updates_disabled_by_settings">Todas as atualizações desativadas conforme as definições de Wi-Fi/dados móveis</string>
     <string name="repo_add_add">Adicionar</string>
@@ -240,7 +240,7 @@
     <string name="copying_icons">Copiando ícones para o repositório…</string>
     <string name="icon">Ícone</string>
     <string name="useTor">Utilizar Tor</string>
-    <string name="useTorSummary">Forçar downloads através da rede Tor para mais privacidade. Necessita do Orbot</string>
+    <string name="useTorSummary">Forçar descargas através da rede Tor para mais privacidade. Necessita do Orbot</string>
     <string name="proxy">Proxy</string>
     <string name="enable_proxy_title">Ativar proxy HTTP</string>
     <string name="privacy">Privacidade</string>
@@ -268,8 +268,8 @@
     <string name="hiding_dialog_warning">Aviso: qualquer atalho da aplicação existente na tela será removido e terá que ser adicionado manualmente.</string>
     <string name="hide_on_long_search_press_title">Ocultar com o botão de pesquisa</string>
     <string name="hide_on_long_search_press_summary">Toque longo no botão de pesquisa para ocultar a aplicação</string>
-    <string name="status_download">Baixando\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
-    <string name="status_download_unknown_size">Baixando\n%2$s de\n%1$s</string>
+    <string name="status_download">A descarregar\n%2$s / %3$s (%4$d%%) de\n%1$s</string>
+    <string name="status_download_unknown_size">A descarregar\n%2$s de\n%1$s</string>
     <string name="download_404">O arquivo pedido não foi encontrado.</string>
     <string name="banner_updating_repositories">A atualizar os repositórios</string>
     <string name="status_connecting_to_repo">Conectando a\n%1$s</string>
@@ -615,7 +615,7 @@
     <string name="repo_basic_auth_edit">Editar</string>
     <string name="expand">Expandir</string>
     <string name="collapse">Colapsar</string>
-    <string name="repo_details_info_text">Um repositório é uma fonte de aplicações..\n\nServidores espelhos são usados para distribuir a carga de download de aplicativos entre vários servidores. Espelhos mais próximos de você podem ser mais rápidos.\n\nServidores espelhos oficiais são definidos pelo proprietário do repositório. Eles não podem ser excluídos, apenas desativados. Você pode definir espelhos personalizados adicionais adicionando-os da mesma forma que um repositório normal.</string>
+    <string name="repo_details_info_text">Um repositório é uma fonte de aplicações..\n\nServidores espelhos são usados para distribuir a carga de descargas de aplicações entre vários servidores. Espelhos mais próximos de si podem ser mais rápidos.\n\nServidores espelhos oficiais são definidos pelo proprietário do repositório. Eles não podem ser excluídos, apenas desativados. Você pode definir espelhos personalizados adicionais adicionando-os da mesma forma que um repositório normal.</string>
     <string name="pref_export_log_title">Log de depuração</string>
     <string name="pref_export_log_summary">Cria um arquivo com a saída do logcat útil para depuração. Cuidado, pode conter informações sensíveis!</string>
     <string name="export_log_success">Logcat salvo com sucesso</string>
@@ -638,7 +638,7 @@
     <string name="menu_discover">Descobrir</string>
     <string name="menu_apps_my">As minhas apps</string>
     <string name="first_start_loading">A buscar repositórios de apps…</string>
-    <string name="my_apps_empty">Apenas apps instaladas por %1$s são mostradas aqui</string>
+    <string name="my_apps_empty">Aqui são apresentadas apenas as aplicações disponíveis nos repositórios do %1$s</string>
     <string name="my_apps_header_apps_with_issue">Apps com problemas</string>
     <string name="my_apps_ignore_dialog_title">Esconder problema</string>
     <string name="my_apps_ignore_dialog_text">O problema com esta versão de \"%1$s\" será ignorado</string>
@@ -692,7 +692,7 @@
     <string name="crash_report_button_send">Enviar relatório</string>
     <string name="notification_title">Notificações</string>
     <string name="notification_channel_updates_available_title">Atualizações da app disponíveis</string>
-    <string name="ipfsgw_summary_new">Transferir apps através de terminais web IPFS</string>
+    <string name="ipfsgw_summary_new">Descarregar apps através de terminais web IPFS</string>
     <string name="call_to_action_keepandroidopen">F-Droid está sob ameaça. Google está a mudar a maneira que instala apps no seu dispositivo. Precisamos da sua ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="first_start_intro">Para começar, sincronize os repositórios de apps</string>
@@ -759,7 +759,7 @@
     <string name="app_issue_update_other_repo">Uma atualização está disponível num outro repositório. Altere o repositório preferido para atualizar</string>
     <string name="app_issue_not_available_title">App acabou de estar disponível</string>
     <string name="app_issue_not_available_text">A app pode ter sido removida ou estava num repositório que removeu ou desativou</string>
-    <string name="app_issue_hint">As apps abaixo precisam da sua atenção. Pode ignorar um problema numa app mantendo o dedo pressionado nele.</string>
+    <string name="app_issue_hint">As apps abaixo requerem a sua atenção. Pode ignorar um problema numa app mantendo-a premida.</string>
     <string name="version_code_colon">Código da versão: %1$s</string>
     <string name="sdk_versions_colon">Versões dos SDKs: %1$s</string>
     <string name="sdk_min_version">%1$s (min)</string>

@@ -223,8 +223,8 @@
     <string name="useTor">Utilizar Tor</string>
     <string name="useTorSummary">Forçar descargas através da rede Tor para mais privacidade. Necessita do Orbot</string>
     <string name="swap_stopping_wifi">A parar Wi-Fi…</string>
-    <string name="update_auto_download">Transferir atualizações automaticamente</string>
-    <string name="update_auto_download_summary">As atualizações são automáticas e será notificado para as instalar</string>
+    <string name="update_auto_download">Automaticamente descarregar atualizações</string>
+    <string name="update_auto_download_summary">As atualizações são automáticas e você será notificado para as instalar</string>
     <string name="download_pending">A esperar para descarregar…</string>
     <string name="install_error_notify_title">Erro ao instalar %s</string>
     <string name="uninstall_error_notify_title">Erro ao desinstalar %s</string>
@@ -257,9 +257,9 @@
     <string name="updates__hide_updateable_apps">Ocultar apps</string>
     <string name="updates__show_updateable_apps">Mostrar apps</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Decarregar atualização para %1$d app:</item>
-        <item quantity="many">Decarregar atualizações para %1$d apps:</item>
-        <item quantity="other">Decarregar atualizações para %1$d apps:</item>
+        <item quantity="one">Descarregar atualização para %1$d app:</item>
+        <item quantity="many">Descarregar atualizações para %1$d apps:</item>
+        <item quantity="other">Descarregar atualizações para %1$d apps:</item>
     </plurals>
     <string name="versions">Versões</string>
     <string name="clear_search">Limpar pesquisa</string>
@@ -417,7 +417,7 @@
     <string name="over_wifi">Em Wi-Fi</string>
     <string name="over_data">Em dados móveis</string>
     <string name="over_network_always_summary">Utilizar sempre esta ligação se disponível</string>
-    <string name="over_network_on_demand_summary">Apenas utilizar esta conexão quando clicar na descarga</string>
+    <string name="over_network_on_demand_summary">Apenas utilizar esta conexão quando clicar para descarregar</string>
     <string name="over_network_never_summary">Nunca descarregar através desta ligação</string>
     <string name="share_repository">Partilhar repositório</string>
     <string name="use_bluetooth">Utilizar Bluetooth</string>
@@ -661,7 +661,7 @@
     <string name="technical_info">Informação técnica</string>
     <string name="package_name">Nome do pacote:</string>
     <string name="installed_version">Versão instalada:</string>
-    <string name="ipfsgw_summary_new">Transferir apps através de terminais web IPFS</string>
+    <string name="ipfsgw_summary_new">Descarregar apps através de terminais web IPFS</string>
     <string name="call_to_action_keepandroidopen">F-Droid está sob ameaça. Google está a mudar a maneira que instala apps no seu dispositivo. Precisamos da sua ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="first_start_intro">Para começar, sincronize os repositórios de apps</string>

@@ -615,7 +615,7 @@
     <string name="menu_discover">Esplori</string>
     <string name="menu_apps_my">Miaj apoj</string>
     <string name="first_start_loading">Elŝutado de deponejoj de aplikaĵoj…</string>
-    <string name="my_apps_empty">Nur aplikaĵoj instalitaj per %1$s montriĝas tie ĉi</string>
+    <string name="my_apps_empty">Nur aplikaĵoj disponeblaj en deponejoj de %1$s montriĝos tie ĉi</string>
     <string name="my_apps_header_apps_with_issue">Aplikaĵoj kun problemoj</string>
     <string name="my_apps_ignore_dialog_title">Kaŝi problemon</string>
     <string name="my_apps_ignore_dialog_text">La problemo pri tiu ĉi versio de la aplikaĵo %1$s estos ignorita</string>

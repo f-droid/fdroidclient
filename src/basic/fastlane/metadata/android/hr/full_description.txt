@@ -1,0 +1,15 @@
+NAPOMENA: Osnovna (Basic) verzija F-Droid klijenta ima smanjen skup funkcija (npr. nema dijeljenja u blizini i nema funkciju „Panika”). Namijenjena je Androidu 13 i može aktualizirati bez privilegiranog dodatka ili root pristupa.
+
+F-Droid je katalog instalacijskih aplikacija slobodnog (libre) softvera za Android. F-Droid klijent aplikacija olakšava pregledavanje, instalaciju i praćenje aktualiziranja na tvom uređaju.
+
+Povezuje se s bilo kojim F-Droid kompatibilnim repozitorijima. Zadani repozitorij se pdržava na f-droid.org, koji sadrži isključivo provjereni slobodni softver.
+
+Sam Android je „otvoren” u smislu da možeš instalirati APK-ove odakle god želiš, ali postoji mnogo dobrih razloga za korištenje F-Droida kao upravljača aplikacija slobodnog softvera:
+
+* Primanje obavijesti kad su dostupne nove verzije
+* Automatsko preuzimanje i instaliranje novih verzija
+* Praćenje starijih i beta verzij aplikacija
+* Filtriranje aplikacije koje nisu kompatibilne s uređajem
+* Pretraživanje aplikacija po kategorijama i pretraživim opisima
+* Pristup povezanim URL-ovima za donacije, izvorni kod itd.
+* Sigurnost putem provjere potpisa indeksa repozitorija i hashova APK-a

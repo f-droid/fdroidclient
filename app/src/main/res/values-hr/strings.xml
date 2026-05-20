@@ -67,8 +67,8 @@
     <string name="menu_share">Dijeli</string>
     <string name="menu_install">Instaliraj</string>
     <string name="menu_uninstall">Deinstaliraj</string>
-    <string name="menu_ignore_all">Zanemari sva ažuriranja</string>
-    <string name="menu_ignore_this">Zanemari ovo ažuriranje</string>
+    <string name="menu_ignore_all">Zanemari sva aktualiziranja</string>
+    <string name="menu_ignore_this">Zanemari ovo aktualiziranje</string>
     <string name="menu_website">Web-stranica</string>
     <string name="menu_email">Pošalji e-mail autoru</string>
     <string name="menu_issues">Problemi</string>
@@ -114,13 +114,13 @@
     <string name="proxy_port_summary">Broj kanala tvog posredničkog servera (npr. 8118)</string>
     <string name="status_download">Preuzimam\n%2$s / %3$s (%4$d%%) sa\n%1$s</string>
     <string name="status_download_unknown_size">Preuzimam\n%2$s sa\n%1$s</string>
-    <string name="banner_updating_repositories">Ažuriram repozitorije</string>
+    <string name="banner_updating_repositories">Aktualiziranje repozitorija</string>
     <string name="status_processing_xml_percent">Obrađuje se %2$s / %3$s (%4$d %%) od %1$s</string>
     <string name="status_connecting_to_repo">Spajam se na\n%1$s</string>
     <string name="status_inserting_apps">Spremanje detalja aplikacije</string>
-    <string name="repos_unchanged">Svi repozitoriji su ažurirani</string>
+    <string name="repos_unchanged">Svi repozitoriji su aktualizirani</string>
     <string name="all_other_repos_fine">Ostali repozitoriji nisu stvorili probleme.</string>
-    <string name="global_error_updating_repos">Greška prilikom ažuriranja: %s</string>
+    <string name="global_error_updating_repos">Greška prilikom aktualiziranja: %s</string>
     <string name="no_permissions">Nema dozvola</string>
     <string name="permissions">Dozvole</string>
     <string name="no_handler_app">Nemaš nijednu aplikaciju koja može obraditi %s.</string>
@@ -161,11 +161,11 @@
     <string name="category_Security">Sigurnost</string>
     <string name="category_Sports_Health">Sport i zdravlje</string>
     <string name="category_System">Sustav</string>
-    <string name="category_Theming">Teme</string>
+    <string name="category_Theming">Izgled</string>
     <string name="category_Time">Vrijeme</string>
     <string name="category_Writing">Pisanje</string>
     <string name="empty_search_available_app_list">Nema dostupnih odgovarajućih aplikacija.</string>
-    <string name="empty_installed_app_list">Nema instaliranih aplikacija.\n\nNa tvom uređaju postoje aplikacije, ali one nisu dostupne iz F-Droida. Možda moraš ažurirati svoje repozitorije ili ti repozitoriji stvarno nemaju tvoje aplikacije.</string>
+    <string name="empty_installed_app_list">Nema instaliranih aplikacija.\n\nNa tvom uređaju postoje aplikacije, ali one nisu dostupne iz F-Droida. Možda moraš aktualizirati svoje repozitorije ili ti repozitoriji stvarno nemaju tvoje aplikacije.</string>
     <string name="empty_can_update_app_list">Čestitamo! \nTvoje su aplikacije aktualizirane.</string>
     <string name="install_error_unknown">Neuspjelo instaliranje zbog nepoznate greške</string>
     <string name="uninstall_error_unknown">Neuspjelo deinstaliranje zbog nepoznate greške</string>
@@ -209,10 +209,10 @@
     <string name="loading">Učitavanje…</string>
     <string name="swap_connection_misc_error">Greška prilikom spajanja na uređaj, razmjena nije moguća!</string>
     <string name="install_confirm">treba pristup</string>
-    <string name="install_confirm_update">Želite li instalirati ažuriranje postojeće aplikacije? Vaši postojeći podaci neće biti izgubljeni. Ažurirana aplikacija dobit će pristup sljedećem:</string>
-    <string name="install_confirm_update_system">Želite li instalirati ažuriranje za ovu ugrađenu aplikaciju? Vaši postojeći podaci neće biti izgubljeni. Ažurirana aplikacija dobit će pristup sljedećem:</string>
-    <string name="install_confirm_update_no_perms">Želite li instalirati ažuriranje postojeće aplikacije? Vaši postojeći podaci neće se izgubiti. Nije potreban nikakav poseban pristup.</string>
-    <string name="install_confirm_update_system_no_perms">Želite li instalirati ažuriranje te ugrađene aplikacije? Vaši postojeći podaci neće se izgubiti. Nije potreban nikakav poseban pristup.</string>
+    <string name="install_confirm_update">Želiš li instalirati novu verziju postojeće aplikacije? Tvoji se postojeći podaci neće izgubitii. Aktualizirana aplikacija će dobiti pristup sljedećem:</string>
+    <string name="install_confirm_update_system">Želiš li instalirati novu verziju za ovu ugrađenu aplikaciju? Tvoji se postojeći podaci neće izgubitii. Aktualizirana aplikacija će dobiti pristup sljedećem:</string>
+    <string name="install_confirm_update_no_perms">Želiš li instalirati novu verziju za ovu postojeću aplikaciju? Tvoji se postojeći podaci neće izgubitii. Ne zahtijeva nikakav poseban pristup.</string>
+    <string name="install_confirm_update_system_no_perms">Želiš li instalirati novu verziju za ovu ugrađenu aplikaciju? Tvoji se postojeći podaci neće izgubitii. Ne zahtijeva nikakav poseban pristup.</string>
     <string name="newPerms">Novo</string>
     <string name="allPerms">Sve</string>
     <string name="perm_costs_money">Ovo se može naplaćivati</string>
@@ -227,13 +227,13 @@
     <string name="downloading">Preuzimanje…</string>
     <string name="installing">Instaliranje…</string>
     <string name="uninstalling">Deinstaliranje…</string>
-    <string name="interval_never">Bez automatskih ažuriranja aplikacija</string>
+    <string name="interval_never">Bez automatskih aktualiziranja aplikacija</string>
     <string name="interval_1h">Provjeri ažurnost svakih sat vremena</string>
-    <string name="interval_4h">Provjeri ažuriranja svaka 4 sata</string>
-    <string name="interval_12h">Provjeri ažuriranja svakih 12 sati</string>
-    <string name="interval_1d">Provjeri ažuriranja dnevno</string>
-    <string name="interval_1w">Provjeri ažuriranja tjedno</string>
-    <string name="interval_2w">Provjeri ažuriranja svaka 2 tjedna</string>
+    <string name="interval_4h">Traži nove verzije svaka 4 sata</string>
+    <string name="interval_12h">Traži nove verzije svakih 12 sati</string>
+    <string name="interval_1d">Traži nove verzije dnevno</string>
+    <string name="interval_1w">Traži nove verzije tjedno</string>
+    <string name="interval_2w">Traži nove verzije svaka 2 tjedna</string>
     <string name="keep_hour">1 sat</string>
     <string name="keep_day">1 dan</string>
     <string name="keep_week">1 tjedan</string>
@@ -243,7 +243,7 @@
     <string name="theme_light">Svijetla</string>
     <string name="theme_dark">Tamna</string>
     <string name="crash_dialog_title">F-Droid je prekinuo raditi</string>
-    <string name="crash_dialog_text">Dogodila se neočekivana greška, aplikacija je prisilno zaustavljena. Želite li poslati detalje kvara putem e-pošte da bismo ga popravili\?</string>
+    <string name="crash_dialog_text">Dogodila se neočekivana greška, aplikacija je prisilno zaustavljena. Želiš li poslati detalje kvara putem e-pošte da bismo ga popravili?</string>
     <string name="crash_dialog_comment_prompt">Možete dodati dodatne informacije i komentare ovdje:</string>
     <string name="keep_install_history">Zadrži povijest instalacija</string>
     <string name="update_auto_install">Automatski instaliraj nove verzije</string>
@@ -304,49 +304,49 @@
         <item quantity="other">+ još %1$d …</item>
     </plurals>
     <string name="notification_title_single_ready_to_install">Spremno za instalaciju</string>
-    <string name="notification_title_single_ready_to_install_update">Ažuriranje spremno za instalaciju</string>
+    <string name="notification_title_single_ready_to_install_update">Nova verzija je spremna za instalaciju</string>
     <string name="notification_title_single_install_error">Instalacija nije uspjela</string>
-    <string name="notification_content_single_downloading">Preuzima se \"%1$s\"…</string>
-    <string name="notification_content_single_downloading_update">Preuzima se ažuriranje za \"%1$s\"…</string>
-    <string name="notification_content_single_installing">Instalira se \"%1$s\"…</string>
+    <string name="notification_content_single_downloading">Preuzima se „%1$s” …</string>
+    <string name="notification_content_single_downloading_update">Preuzima se nova verzija za „%1$s” …</string>
+    <string name="notification_content_single_installing">Instalira se „%1$s” …</string>
     <string name="notification_content_single_installed">Uspješno instalirano</string>
     <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d ažuriranje</item>
-        <item quantity="few">%1$d ažuriranja</item>
-        <item quantity="other">%1$d ažuriranja</item>
+        <item quantity="one">%1$d aktualiziranje</item>
+        <item quantity="few">%1$d aktualiziranja</item>
+        <item quantity="other">%1$d aktualiziranja</item>
     </plurals>
     <plurals name="notification_summary_installed">
         <item quantity="one">%1$d aplikacija instalirana</item>
         <item quantity="few">%1$d aplikacije instalirane</item>
         <item quantity="other">%1$d aplikacija instalirano</item>
     </plurals>
-    <string name="notification_title_summary_update_available">Dostupno ažuriranje</string>
+    <string name="notification_title_summary_update_available">Dostupna je nova verzija</string>
     <string name="notification_title_summary_downloading">Preuzimanje…</string>
-    <string name="notification_title_summary_downloading_update">Preuzimanje ažuriranja…</string>
+    <string name="notification_title_summary_downloading_update">Preuzimanje nove verzije …</string>
     <string name="notification_title_summary_ready_to_install">Spremno za instalaciju</string>
     <string name="notification_title_summary_ready_to_install_update">Nova verzija je spremna za instaliranje</string>
     <string name="notification_title_summary_installing">Instaliranje</string>
     <string name="notification_title_summary_installed">Uspješno instalirano</string>
     <string name="details_last_updated_today">Aktualizirano danas</string>
     <plurals name="details_last_update_days">
-        <item quantity="one">Ažurirano prije %1$d dan</item>
-        <item quantity="few">Ažurirano prije %1$d dana</item>
-        <item quantity="other">Ažurirano prije %1$d dana</item>
+        <item quantity="one">Aktualizirano prije %1$d dan</item>
+        <item quantity="few">Aktualizirano prije %1$d dana</item>
+        <item quantity="other">Aktualizirano prije %1$d dana</item>
     </plurals>
     <plurals name="details_last_update_weeks">
-        <item quantity="one">Ažurirano prije %1$d tjedna</item>
-        <item quantity="few">Ažurirano prije %1$d tjedna</item>
-        <item quantity="other">Ažurirano prije %1$d tjedana</item>
+        <item quantity="one">Aktualizirano prije %1$d tjedan</item>
+        <item quantity="few">Aktualizirano prije %1$d tjedna</item>
+        <item quantity="other">Aktualizirano prije %1$d tjedna</item>
     </plurals>
     <plurals name="details_last_update_months">
-        <item quantity="one">Ažurirano prije %1$d mjeseca</item>
-        <item quantity="few">Ažurirano prije %1$d mjeseca</item>
-        <item quantity="other">Ažurirano prije %1$d mjeseci</item>
+        <item quantity="one">Aktualizirano prije %1$d mjesec</item>
+        <item quantity="few">Aktualizirano prije %1$d mjeseca</item>
+        <item quantity="other">Aktualizirano prije %1$d mjeseci</item>
     </plurals>
     <plurals name="details_last_update_years">
-        <item quantity="one">Ažurirano prije %1$d godine</item>
-        <item quantity="few">Ažurirano prije %1$d godine</item>
-        <item quantity="other">Ažurirano prije %1$d godina</item>
+        <item quantity="one">Aktualizirano prije %1$d godine</item>
+        <item quantity="few">Aktualizirano prije %1$d godine</item>
+        <item quantity="other">Aktualizirano prije %1$d godina</item>
     </plurals>
     <string name="install_history_summary">Pregledaj privatne log zapise svih instaliranih i deinstaliranih aplikacija</string>
     <string name="send_version_and_uuid">Pošalji inačicu sustava i UUID uređaja na poslužitelj</string>
@@ -370,7 +370,7 @@
     <string name="try_again">Pokušaj ponovo</string>
     <string name="force_touch_apps_on">Prikaži aplikacije koje zahtijevaju dodirni ekran, bez obzira o hardverskoj podršci</string>
     <string name="force_touch_apps">Uključi aplikacije za dodirni ekran</string>
-    <string name="antinosourcesince">Izvorni kod više nije dostupan, nije moguće ažurirati</string>
+    <string name="antinosourcesince">Izvorni kod više nije dostupan, nije moguće aktualizirati</string>
     <string name="antiknownvulnlist">Ova aplikacija sadrži poznatu sigurnosnu ranjivost</string>
     <string name="antidisabledalgorithmlist">Ova aplikacija ima slab sigurnosni potpis</string>
     <string name="antifeatureswarning">Ova aplikacija ima funkcije koje ti se možda ne sviđaju.</string>
@@ -390,9 +390,9 @@
     <string name="versions">Verzije</string>
     <string name="repo_add_mirror">Dodaj zrcalni server</string>
     <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">Preuzmi ažuriranje za %1$d aplikaciju:</item>
-        <item quantity="few">Preuzmi ažuriranja za %1$d aplikacije:</item>
-        <item quantity="other">Preuzmi ažuriranja za %1$d aplikacija:</item>
+        <item quantity="one">Preuzmi aktualnu verziju za %1$d aplikaciju:</item>
+        <item quantity="few">Preuzmi aktualne verzije za %1$d aplikacije:</item>
+        <item quantity="other">Preuzmi aktualne verzije za %1$d aplikacija:</item>
     </plurals>
     <string name="updates__show_updateable_apps">Prikaži aplikacije</string>
     <string name="updates__hide_updateable_apps">Sakrij aplikacije</string>
@@ -446,16 +446,16 @@
     <string name="panic_will_be_wiped">Deinstalirati će se i svi će se podaci izbrisati</string>
     <string name="panic_app_dialog_message">Jeste li sigurni da želite dopustiti da %1$s pokrene destruktivne akcije tipke za uzbunu\?</string>
     <string name="preventScreenshots_summary">Blokira snimanje zaslona i skriva sadržaj aplikacije sa zaslona nedavnih aplikacija</string>
-    <string name="latest__empty_state__no_enabled_repos">Nakon što aktiviraš i ažuriraš repozitorij, ovdje će se prikazati najnovije aplikacije</string>
-    <string name="latest__empty_state__never_updated">Nakon što se vaš popis aplikacija ažurira, ovdje će biti prikazane najnovije aplikacije</string>
+    <string name="latest__empty_state__no_enabled_repos">Nakon što aktiviraš i aktualiziraš repozitorij, ovdje će se prikazati najnovije aplikacije</string>
+    <string name="latest__empty_state__never_updated">Nakon što se tvoj popis aplikacija aktualizira, ovdje će se prikazati najnovije aplikacije</string>
     <string name="menu_opencollective">OpenCollective</string>
     <string name="menu_select_for_wipe">Označi za brisanje</string>
-    <string name="updates_disabled_by_settings">Sva ažuriranja su onemogućena zbog postavki Mobilnih podataka / Wi-Fi</string>
+    <string name="updates_disabled_by_settings">Sva aktualiziranja su deaktivirana zbog postavki podataka/Wi-Fi mreže</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Pronašli smo sigurnosnu prijetnju u %1$s. Preporučujemo da odmah aktualiziraš ovu aplikaciju na najnoviju verziju.</string>
     <string name="updates__app_with_known_vulnerability__prompt_uninstall">Pronašli smo sigurnosnu prijetnju u %1$s. Dodirni i saznaj više o tome u odjeljku Nepoželjne funkcije.</string>
     <string name="app_permission_storage">F-Droid zahtjeva dopuštenje pristupa pohrani kako bi ovo instalirao u pohranu uređaja. Dopustite pristup pohrani na sljedećem zaslonu kako biste nastavili s instalacijom.</string>
     <string name="app_details__no_versions__explain_incompatible_signers">Instalirana verzija nije kompatibilna s nijednom dostupnom verzijom. Deinstaliranje aplikacije omogućiti će vam pregled i instaliranje kompatibilnih verzija. Ovo se često događa s aplikacijama instaliranim putem Google Play ili drugih izvora, ako su potpisane drugim certifikatom.</string>
-    <string name="app_details__no_versions__show_incompat_versions">Za prikaz nekompatibilnih verzija omogućite postavku \"%1$s\".</string>
+    <string name="app_details__no_versions__show_incompat_versions">Za prikaz nekompatibilnih verzija aktiviraj postavku „%1$s”.</string>
     <string name="scan_removable_storage_summary">Traži repozitorije paketa na prijenosnoj pohrani kao što su SD kartice i USB pohrana</string>
     <string name="theme_follow_system">Slijedi sustav</string>
     <string name="app_list__dismiss_installing_app">Instalacija je prekinuta</string>
@@ -486,9 +486,9 @@
     <string name="swap_toast_could_not_enable_hotspot">Nije moguće uključiti Wi-Fi hotspot!</string>
     <string name="swap_toast_using_path">Koristi se %1$s</string>
     <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">Pogledaj (%d)</item>
-        <item quantity="few">Pogledaj sva (%d)</item>
-        <item quantity="other">Pogledaj svih (%d)</item>
+        <item quantity="one">Prikaži (%d)</item>
+        <item quantity="few">Prikaži sve (%d)</item>
+        <item quantity="other">Prikaži svih (%d)</item>
     </plurals>
     <string name="use_pure_black_dark_theme_summary">Preporučuje se samo za OLED ekrane.</string>
     <string name="use_pure_black_dark_theme">Koristi potpuno crnu pozadinu u tamnoj temi</string>
@@ -519,8 +519,8 @@
     <string name="menu_share_apk">Dijeli APK datoteku</string>
     <string name="latest__empty_state__upgrading">Aktualiziranje baze podataka …</string>
     <string name="repositories_last_update_never">nikada</string>
-    <string name="menu_release_channel_beta">Dozvoli ažuriranja beta verzija</string>
-    <string name="repositories_last_update">Zadnje ažuriranje: %s</string>
+    <string name="menu_release_channel_beta">Dozvoli aktualiziranje beta verzija</string>
+    <string name="repositories_last_update">Zadnje aktualiziranje: %s</string>
     <string name="app_error_open">Nije bio moguće pokrenuti aplikaciju.</string>
     <string name="app_list_results_hidden_antifeature_settings">Neke su aplikacije skrivene na temelju tvojih postavki za nepoželjne funkcije (Anti-Features). Dodirni za mijenjanje.</string>
     <string name="app_list_no_suggested_version">Nijedna verzija se ne preporučuje za instalaciju.</string>
@@ -590,7 +590,7 @@
     <string name="useDnsCacheSummary">Koristi spremljene rezultate za smanjivanje broja DNS upita.</string>
     <string name="preferForeign">Preferiraj strane zrcalne servere</string>
     <string name="preferForeignSummary">Najprije probaj koristiti zrcalne servere koja se nalaze izvan tvoje zemlje, npr. ako su strane zaštite jače.</string>
-    <string name="banner_updating_apps">Ažuriranje aplikacija</string>
+    <string name="banner_updating_apps">Aktualiziranje aplikacija</string>
     <string name="apk_permissions_mismatch">Aplikacija ima neočekivanu dozvolu: %s</string>
     <string name="no_handler_app_generic">Nemaš nijednu aplikaciju koja to može riješiti.</string>
     <string name="repo_list_info_title">Popis repozitorija</string>
@@ -600,8 +600,8 @@
     <string name="repo_archive_toggle_description">Prikaži arhivirane aplikacije i zastarjele verzije aplikacija</string>
     <string name="repo_archive_unknown">Čini se da ovaj repozitorij nema arhivu.</string>
     <string name="repo_archive_check">Pregledaj postoji li arhiva</string>
-    <string name="repo_last_update_index">Zadnje ažuriranje repozitorija: %s</string>
-    <string name="repo_last_update_check">Zadnja provjera ažuriranja repozitorija: %s</string>
+    <string name="repo_last_update_index">Zadnje aktualiziranje repozitorija: %s</string>
+    <string name="repo_last_update_check">Zadnja provjera aktualiziranja repozitorija: %s</string>
     <string name="repo_archive_failed">Arhivski repozitorij trenutačno nije dostupan</string>
     <string name="repo_confirm_delete_mirror_title">Izbrisati zrcalni server?</string>
     <string name="repo_confirm_delete_mirror_body">Možeš nastaviti instalirati aplikacije iz ovog repozitorija pomoću drugih zrcalnih servera.</string>
@@ -613,18 +613,18 @@
     <string name="repo_basic_auth_password">Lozinka: ***</string>
     <string name="repo_basic_auth_edit">Uredi</string>
     <string name="targetsdk_or_later">cilja na %s</string>
-    <string tools:ignore="UnusedResources" name="category_Nightly">noćne</string>
+    <string tools:ignore="UnusedResources" name="category_Nightly">noćne izgradnje</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid može tražiti repozitorije i zrcalne servere na tvojoj SD kartici, ali za to treba tvoju dozvolu.</string>
     <string name="nearby_splace__external_storage_permission_button">Isprobaj</string>
     <string name="swap_banner_message">Za zamjenjivanje aplikacija, pokreni Wi-Fi i poveži se s istom mrežom kao i tvoj prijatelj.</string>
     <string name="swap_bluetooth_permissions">Dodijeli dozvole za Bluetooth ili uređaj u blizini!</string>
-    <string name="swap_connection_indexv0_error">Pokušavaš se povezati s nekim tko ima zastarjelu F-Droid verziju. Da bi se povezala, ta osoba mora nadograditi svoju F-Droid aplikaciju. Može koristiti zamjenjivanje za ažuriranje svoje F-Droid aplikacije od tvoje verzije.</string>
-    <string name="auto_update_time">Najranije sljedeće ažuriranje: %s</string>
-    <string name="auto_update_time_past">Sljedeće ažuriranje kada su uvjeti ispunjeni</string>
-    <string name="notification_title_summary_app_update_available">Dodirni za ažuriranje svih</string>
+    <string name="swap_connection_indexv0_error">Pokušavaš se povezati s nekim tko ima zastarjelu F-Droid verziju. Da bi se povezala, ta osoba mora nadograditi svoju F-Droid aplikaciju. Oni mogu koristiti zamjenjivanje kako bi aktualizirali verzije svojih F-Droid aplikacije s tvojima.</string>
+    <string name="auto_update_time">Najranije sljedeće aktualiziranje: %s</string>
+    <string name="auto_update_time_past">Sljedeće aktualiziranje kada su uvjeti ispunjeni</string>
+    <string name="notification_title_summary_app_update_available">Dodirni za aktualiziranje svih</string>
     <string name="tts_repo_name">Repozitorij %1$s</string>
     <string name="tts_author_name">Autor %1$s</string>
-    <string name="warning_target_sdk">Ova je aplikacija izrađena za stariju Android verziju i ne može se automatski ažurirati.</string>
+    <string name="warning_target_sdk">Ova je aplikacija izrađena za stariju Android verziju i ne može se automatski aktualizirati.</string>
     <string name="warning_no_compat_versions">Odabrani repozitorij nema kompatibilnih verzija aplikacije. Za primanje novih verzija odaberi repozitorij s kompatibilnim verzijama.</string>
     <string name="repo_list_info_text">Repozitorij je izvor aplikacija. Ovaj popis prikazuje sve trenutačno dodane repozitorije. Deaktivirani repozitoriji se ne koriste.\n\nAko se aplikacija nalazi u više repozitorija, automatski se preferira repozitorij koji je viši u popisu. Redoslijed repozitorija se može promijeniti dugim pritiskom i povlačenjem.</string>
     <string name="crash_dialog_title_old">F-Droid je prekinuo raditi</string>
@@ -706,4 +706,18 @@
     <string name="error">Greška</string>
     <string name="install_history_delete_ally">Izbriši povijest instaliranja</string>
     <string name="install_history_delete_text">Izbrisati povijest instaliranja?</string>
+    <string name="repo_has_update_error">Greške prilikom aktualiziranja</string>
+    <string name="repo_has_update_error_intro">Dogodila se greška prilikom aktualiziranja ovog repozitorija:</string>
+    <string name="repo_last_update_upstream">Objavljeno %s</string>
+    <string name="repo_last_downloaded">Preuzeto %s</string>
+    <string name="repo_basicauth_username">Korisničko ime</string>
+    <string name="repo_basicauth_password">Lozinka</string>
+    <string name="repo_basicauth_edit">Spremi promjene</string>
+    <string name="repo_force_update">Traži nove verzije</string>
+    <string name="pref_repo_updates_title">Traži nove verzije</string>
+    <string name="pref_auto_updates_only_never">Nikada</string>
+    <string name="pref_dyn_colors_summary">Primijeni dinamičke boje iz postavki sustava</string>
+    <string name="pref_language_summary">Otvori postavke jezika sustava</string>
+    <string name="pref_auto_updates_only_wifi">Samo na Wi-Fi mreži</string>
+    <string name="pref_auto_updates_only_always">Uvijek (čak i na mobilnim podacima)</string>
 </resources>

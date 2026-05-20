@@ -626,7 +626,7 @@
     <string name="menu_discover">Descobrir</string>
     <string name="menu_apps_my">Les meves aplicacions</string>
     <string name="first_start_loading">S\'estan recuperant els repositoris d\'aplicacions…</string>
-    <string name="my_apps_empty">Aquí només es mostren les aplicacions instal·lades per %1$s</string>
+    <string name="my_apps_empty">Aquí només es mostren les aplicacions disponibles als dipòsits de %1$s</string>
     <string name="my_apps_header_apps_with_issue">Aplicacions amb problemes</string>
     <string name="my_apps_ignore_dialog_title">Oculta el problema</string>
     <string name="my_apps_ignore_dialog_text">S\'ignorarà el problema amb aquesta versió de \"%1$s\"</string>

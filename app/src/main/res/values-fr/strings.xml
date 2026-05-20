@@ -642,7 +642,7 @@
     <string name="menu_discover">Découvrir</string>
     <string name="menu_apps_my">Mes applications</string>
     <string name="first_start_loading">Récupération des dépôts d\'applications…</string>
-    <string name="my_apps_empty">Seules les applications installées par %1$s sont affichées ici</string>
+    <string name="my_apps_empty">Seules les applications disponibles dans les dépôts de %1$s sont affichées ici</string>
     <string name="my_apps_header_apps_with_issue">Applications présentant des problèmes</string>
     <string name="my_apps_ignore_dialog_title">Masquer le problème</string>
     <string name="my_apps_ignore_dialog_text">Le problème lié à cette version de « %1$s » sera ignoré</string>

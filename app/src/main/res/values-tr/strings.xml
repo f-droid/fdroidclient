@@ -639,7 +639,7 @@
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Temel</string>
     <string name="first_start_loading">Uygulama depoları getiriliyor…</string>
-    <string name="my_apps_empty">Bu listede sadece %1$s ile yüklenen uygulamalar görüntülenir</string>
+    <string name="my_apps_empty">Burada yalnızca %1$s depolarında bulunan uygulamalar gösterilir.</string>
     <string name="my_apps_header_apps_with_issue">Sorunlu uygulamalar</string>
     <string name="my_apps_ignore_dialog_title">Sorunu gizle</string>
     <string name="my_apps_ignore_dialog_text">\"%1$s\" uygulamasının bu sürümündeki problem yok sayılacak</string>

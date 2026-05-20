@@ -1,0 +1,6 @@
+* material design 3 (con punta a punta, pero sin colores dinámicos) (¡Gracias proletarius!)
+* rediseñadas las pantallas de detalles de repositorio (¡Gracias Thore!)
+* exportación de archivo logcat añadida en ajustes avanzados
+* actualizar SDK objetivo (Android 15 para basico y Android 11 para comoleto)
+* backlink desde la página de la app añadida en la configuración del sistema (¡Gracias j-m4!)
+* utilizar selector de aplicaciones para compartir apps instaladas y historial de instalación (¡Gracias Thore!)

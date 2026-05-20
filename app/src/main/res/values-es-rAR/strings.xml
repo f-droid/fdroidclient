@@ -119,8 +119,8 @@
     <string name="enable">Habilitar</string>
     <string name="add_key">Añadir llave</string>
     <string name="overwrite">Sobrescribir</string>
-    <string name="clear_search">Limpiar busqueda</string>
-    <string name="sort_search">Ordenar busqueda</string>
+    <string name="clear_search">Limpiar búsqueda</string>
+    <string name="sort_search">Ordenar búsqueda</string>
     <string name="bluetooth_activity_not_found">¡Ningún método de envío por Bluetooth encontrado, elegí uno!</string>
     <string name="choose_bt_send">Elegí metodo de envío por Bluetooth</string>
     <string name="repo_add_url">Dirección del repositorio</string>
@@ -249,7 +249,7 @@
     <string name="proxy_port">Puerto Proxy</string>
     <string name="proxy_port_summary">El número de puerto de tu Proxy (ej. 8118)</string>
     <string name="privacy">Privacidad</string>
-    <string name="preventScreenshots_title">Prevenir capturas de pantalla</string>
+    <string name="preventScreenshots_title">Impedir capturas de pantalla</string>
     <string name="preventScreenshots_summary">Bloquea la toma de capturas de pantallas y esconde el contenido de la aplicación de la pantalla de aplicaciones recientes</string>
     <string name="panic_app_setting_title">Aplicación de Botón de Emergencia</string>
     <string name="panic_app_unknown_app">una aplicación desconocida</string>

@@ -625,7 +625,7 @@
     <string name="menu_discover">Entdecken</string>
     <string name="menu_apps_my">Meine Apps</string>
     <string name="first_start_loading">App-Repositorys werden abgerufen …</string>
-    <string name="my_apps_empty">Nur Apps, die von %1$s installiert wurden, werden hier angezeigt</string>
+    <string name="my_apps_empty">Hier werden nur Apps angezeigt, die in den Repositorys von %1$s verfügbar sind</string>
     <string name="my_apps_header_apps_with_issue">Apps mit Fehlern</string>
     <string name="my_apps_ignore_dialog_title">Fehler ausblenden</string>
     <string name="my_apps_ignore_dialog_text">Der Fehler mit dieser Version von „%1$s“ wird ignoriert</string>

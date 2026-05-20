@@ -36,9 +36,9 @@
     <string name="choose_bt_send">Valitse Bluetooth-lähetystapa</string>
     <string name="repo_add_url">Ohjelmavaraston osoite</string>
     <string name="repo_add_fingerprint">Sormenjälki (valinnainen)</string>
-    <string name="menu_manage">Ohjelmavarastot</string>
+    <string name="menu_manage">Tietovarastot</string>
     <string name="menu_search">Haku</string>
-    <string name="menu_add_repo">Uusi ohjelmavarasto</string>
+    <string name="menu_add_repo">Uusi tietovarasto</string>
     <string name="menu_launch">Avaa</string>
     <string name="menu_share">Jaa</string>
     <string name="menu_install">Asenna</string>
@@ -91,7 +91,7 @@
     <string name="category_Internet">Internet</string>
     <string name="category_Multimedia">Multimedia</string>
     <string name="category_Navigation">Navigointi</string>
-    <string name="category_Phone_SMS">Puhelin &amp; SMS</string>
+    <string name="category_Phone_SMS">Puhelin &amp; Tekstiviestit</string>
     <string name="category_Reading">Lukeminen</string>
     <string name="category_Science_Education">Tiede &amp; koulutus</string>
     <string name="category_Security">Tietoturva</string>
@@ -267,7 +267,7 @@
     <string name="clear_search">Tyhjennä haku</string>
     <string name="repositories_summary">Lisää muita ohjelmavarastoja</string>
     <string name="menu_video">Video</string>
-    <string name="main_menu__latest_apps">Uusimmat</string>
+    <string name="main_menu__latest_apps">Viimeisimmät tiedot</string>
     <string name="main_menu__categories">Luokat</string>
     <string name="latest__empty_state__no_recent_apps">Viimeaikaisia sovelluksia ei löytynyt</string>
     <string name="latest__empty_state__never_updated">Kun sovelluslistasi on päivitetty, uusimpien sovelluksien pitäisi näkyä tässä</string>
@@ -639,7 +639,7 @@
     <string name="call_to_action_keepandroidopen">F-Droid on uhattuna. Google on muuttamassa sovellusten asentamistapaa. Tarvitsemme apuasi.</string>
     <string name="crash_dialog_title_old">F-Droid kaatui</string>
     <string name="first_start_loading">Noudetaan ohjelmavarastoja…</string>
-    <string name="my_apps_empty">Vain henkilön %1$s asentamat sovellukset näytetään täällä</string>
+    <string name="my_apps_empty">Vain ohjelmat ovat saatavilla tässä %1$s tietovarastossa.</string>
     <string name="my_apps_header_apps_with_issue">Sovellukset, joissa on ongelmia</string>
     <string name="my_apps_ignore_dialog_title">Piilota tapaus</string>
     <string name="my_apps_ignore_dialog_text">Ongelma sovelluksen \"%1$s\" versiossa ohitetaan</string>
@@ -732,4 +732,26 @@
     <string name="install_history_switch">Käytä asennushistoriaa</string>
     <string name="install_history_delete_ally">Poista asennushistoria</string>
     <string name="install_history_delete_text">Poistetaanko asennushistoria?</string>
+    <string name="repo_details_info_text">Tietovarasto on sovellusten lähde.\nPeilejä käytetään jakamaan sovellusten lataamisen kuormitus useille palvelimille.\nLähempänä sinua sijaitsevat peilit voivat olla nopeampia. Viralliset peilit määrittelee repositorion omistaja.\nNiitä ei voi poistaa, ainoastaan poistaa käytöstä. Voit määritellä lisää mukautettuja peilejä lisäämällä ne samoin kuin tavalliseen tietovarastoon.</string>
+    <string name="repo_archive_unknown">Tällä tietovarastolla ei näytä olevan arkistoa.</string>
+    <string name="repo_archive_check">Tarkista arkisto</string>
+    <string name="repo_last_update_check">Viimeisin tietovaraston päivitystarkistus: %s</string>
+    <string name="repo_confirm_delete_mirror_body">Voit jatkaa sovellusten asentamista tästä tietovarastosta muiden palvelimien avulla.</string>
+    <string name="repo_basic_auth_title">Perustodentaminen</string>
+    <string name="pref_export_log_title">Virheenkorjausloki</string>
+    <string name="pref_export_log_summary">Luo tiedoston logcat-tulosteesta, josta on hyötyä virheenkorjauksessa. Ole varovainen, se saattaa sisältää arkaluonteisia tietoja!</string>
+    <string name="export_log_success">Logcat tallennettu onnistuneesti</string>
+    <string name="export_log_error">Virhe logcatin tallennuksessa</string>
+    <string name="tts_repo_name">Tietovarasto %1$s</string>
+    <string name="category_group_interests">Kiinnostuksen kohteet</string>
+    <string name="ipfsgw_summary_new">Lataa sovelluksia IPFS-verkkorajapintojen kautta</string>
+    <string name="onboarding_app_list_filter_message">Käytä suodattimia näyttääksesi vain tiettyjen kategorioiden tai tietovarastojen sovelluksia. Voit myös muuttaa lajittelujärjestystä.</string>
+    <string name="clear">Pyyhi</string>
+    <string name="pref_repo_updates_summary_only_wifi">Hae sovelluspäivitykset tietovarastoista säännöllisesti vain Wi-Fi-yhteydellä</string>
+    <string name="pref_repo_updates_summary_always">Hae sovelluspäivitykset tietovarastoista säännöllisesti myös mobiilidatalla</string>
+    <string name="pref_mirror_chooser_title">Latauspalvelimen valinta</string>
+    <string name="search_auto_keyboard">Avaa näppäimistö automaattisesti</string>
+    <string name="hide">Piilota</string>
+    <string name="category_group_summary_productivity">Kalenterit, tehtävät, kellot ja muistiinpanot</string>
+    <string name="category_group_summary_tools">Navigointi, sää, laskimet ja muuntimet</string>
 </resources>

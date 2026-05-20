@@ -641,7 +641,7 @@
     <string name="menu_about">О программе</string>
     <string name="menu_apps_my">Мои приложения</string>
     <string name="first_start_loading">Извлечение репозиториев приложений…</string>
-    <string name="my_apps_empty">Здесь отображаются только приложения, установленные %1$s</string>
+    <string name="my_apps_empty">Здесь отображаются только приложения, доступные в репозиториях %1$s</string>
     <string name="my_apps_header_apps_with_issue">Приложения с проблемами</string>
     <string name="my_apps_ignore_dialog_title">Скрыть проблему</string>
     <string name="my_apps_ignore_dialog_text">Проблема с этой версией \"%1$s\" будет игнорироваться</string>

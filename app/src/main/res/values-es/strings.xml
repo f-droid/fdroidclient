@@ -652,7 +652,7 @@
     <string name="menu_discover">Descubrir</string>
     <string name="menu_apps_my">Mis aplicaciones</string>
     <string name="first_start_loading">Buscando repositorios de aplicaciones…</string>
-    <string name="my_apps_empty">Solo las apps instaladas por %1$s se mostrarán aquí</string>
+    <string name="my_apps_empty">Solo las apps disponibles en el repositorio de %1$s se mostrarán aquí</string>
     <string name="my_apps_header_apps_with_issue">Aplicaciones con problemas</string>
     <string name="my_apps_ignore_dialog_title">Ocultar problema</string>
     <string name="my_apps_ignore_dialog_text">El problema con esta versión de \"%1$s\" será ignorado</string>
@@ -679,7 +679,7 @@
     <string name="last_updated">Últimamente actualizado: %1$s</string>
     <string name="last_updated_with_size">Últimamente actualizado: %1$s (%2$s)</string>
     <string name="status_install_preparing">Preparando instalación…</string>
-    <string name="whats_new_title">Que hay de nuevo</string>
+    <string name="whats_new_title">Qué hay de nuevo</string>
     <string name="donate_title">Donar</string>
     <string name="anti_features_title">Esta app tiene características indeseadas</string>
     <string name="developer_contact">Contacto del desarrollador</string>
@@ -720,7 +720,7 @@
     <string name="pref_auto_updates_summary_never">Actualizaciones automáticas desactivadas • Las aplicaciones deberán actualizarse manualmente</string>
     <string name="pref_repo_updates_title">Comprueba si hay actualizaciones</string>
     <string name="pref_repo_updates_summary_only_wifi">Obtener actualizaciones de aplicaciones periódicamente desde los repositorios solo cuando se esté conectado al Wi-Fi</string>
-    <string name="pref_repo_updates_summary_always">Obtener actualizaciones de aplicaciones periódicamente desde los repositorios solo cuando se esté conectado por datos móviles.</string>
+    <string name="pref_repo_updates_summary_always">Obtener actualizaciones de aplicaciones periódicamente desde los repositorios incluso cuando se esté conectado por datos móviles</string>
     <string name="pref_repo_updates_summary_never">No revisar por actualizaciones • Las aplicaciones se mantendran desactualizadas</string>
     <string name="pref_mirror_chooser_summary_random">Aleatorio</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Preferir de otros paises</string>
@@ -815,7 +815,7 @@
     <string name="install_history_delete_text">¿Borrar el histórico de instalación?</string>
     <string name="status_downloading">Descargando a %s/s</string>
     <string name="status_downloading_remaining">%1$s restantes</string>
-    <string name="search_history">Busquedas recientes</string>
+    <string name="search_history">Búsquedas recientes</string>
     <string name="install_history_switch">Historial de instalaciones</string>
     <string name="search_auto_keyboard">Abrir teclado automáticamente</string>
     <string name="hide">Ocultar</string>

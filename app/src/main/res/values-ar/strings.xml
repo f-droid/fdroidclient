@@ -154,7 +154,7 @@
     <string name="category_Connectivity">الاتصال</string>
     <string name="category_Graphics">الرسومات</string>
     <string name="category_Money">المالية</string>
-    <string name="category_Navigation">التصفح</string>
+    <string name="category_Navigation">التنقل</string>
     <string name="category_Sports_Health">الرياضة و الصحة</string>
     <string name="category_Theming">السمات</string>
     <string name="category_Time">الوقت</string>
@@ -671,7 +671,7 @@
     <string name="menu_discover">استكشف</string>
     <string name="menu_apps_my">تطبيقاتي</string>
     <string name="first_start_loading">يجلب مستودعات التطبيقات…</string>
-    <string name="my_apps_empty">تظهر هنا فقط التطبيقات التي ثُبِّتت بواسطة %1$s</string>
+    <string name="my_apps_empty">تظهر هنا فقط التطبيقات المتوفرة في مستودعات %1$s</string>
     <string name="my_apps_header_apps_with_issue">تطبيقات بها مشكلات</string>
     <string name="my_apps_ignore_dialog_title">أخفِ المشكلة</string>
     <string name="my_apps_ignore_dialog_text">سيتم تجاهل المشكلة المتعلقة بهذا الإصدار من \"%1$s\"</string>
@@ -860,7 +860,7 @@ W    <string name="status_downloading">ينزل بسرعة %s/ث</string>
     <string name="category_group_summary_media">صوتيات والبودكاست والألعاب وأجهزة قراءة الكتب الإلكترونية</string>
     <string name="category_group_summary_communication">البريد الإلكتروني والمراسلة وشبكات التواصل الاجتماعي</string>
     <string name="category_group_summary_device">مُشغل ولوحة المفاتيح والأمان والسمات</string>
-    <string name="category_group_summary_network">المتصفح والشبكات الخاصة الافتراضية (VPNs) والوكلاء (proxies) وجدار الحماية</string>
+    <string name="category_group_summary_network">المتصفح والشبكات الخاصة الافتراضية (VPNs) والوسطاء وجدار الحماية</string>
     <string name="category_group_summary_storage">الملفات المعرض والمزامنة السحابية والتعمية</string>
     <string name="category_group_summary_interests">العلوم والرياضة والرسم والوصفات</string>
     <string name="category_group_summary_misc">غير مصنف</string>

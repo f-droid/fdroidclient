@@ -464,10 +464,10 @@
     <string name="proxy_host_summary">Vaše ime gostitelja Proxy (npr. 127.0.0.1)</string>
     <string name="status_processing_xml_percent">Obdelovanje %2$s / %3$s (%4$d%%) od %1$s</string>
     <plurals name="notification_summary_more">
-        <item quantity="one">+%1$d več…</item>
-        <item quantity="two">+%1$d več…</item>
-        <item quantity="few">+%1$d več…</item>
-        <item quantity="other">+%1$d več…</item>
+        <item quantity="one">+%1$d več …</item>
+        <item quantity="two">+%1$d več …</item>
+        <item quantity="few">+%1$d več …</item>
+        <item quantity="other">+%1$d več …</item>
     </plurals>
     <plurals name="tts_view_all_in_category">
         <item quantity="one">Preglej %1$d aplikacijo v %2$s kategoriji</item>
@@ -539,7 +539,7 @@
     <string name="menu_discover">Odkrijte</string>
     <string name="menu_apps_my">Moje aplikacije</string>
     <string name="first_start_loading">Pridobivanje repozitorijev aplikacij…</string>
-    <string name="my_apps_empty">Tukaj so prikazane samo aplikacije, ki jih je namestil %1$s</string>
+    <string name="my_apps_empty">Tukaj so prikazane samo aplikacije, ki so na voljo v repozitorijih %1$s</string>
     <string name="my_apps_header_apps_with_issue">Aplikacije s težavami</string>
     <string name="my_apps_ignore_dialog_title">Skrij težavo</string>
     <string name="my_apps_ignore_dialog_text">Težava s to različico \"%1$s\" bo prezrta</string>
@@ -779,4 +779,56 @@
     <string name="status_downloading_remaining">Preostane še %1$s MB</string>
     <string name="repo_disable_dialog_title">Onemogoči skladišče</string>
     <string name="repo_disable_dialog_warning">Če ste to skladišče nastavili kot prednostno za katero koli aplikacijo, bo ta nastavitev izgubljena</string>
+    <string name="repo_disable_dialog_text">Vse aplikacije iz tega repozitorija bodo izginile. To ne bo vplivalo na že nameščene aplikacije.</string>
+    <string name="repo_has_update_error">Napake pri posodabljanju</string>
+    <string name="repo_has_update_error_intro">Pri posodabljanju tega repozitorija je prišlo do napake:</string>
+    <string name="repo_last_update_upstream">Objavljeno %s</string>
+    <string name="repo_last_downloaded">Preneseno %s</string>
+    <string name="repo_basicauth_username">Uporabniško ime</string>
+    <string name="repo_basicauth_password">Geslo</string>
+    <string name="repo_basicauth_edit">Shrani spremembe</string>
+    <string name="repo_force_update">Preveri za posodobitve</string>
+    <string name="crash_report_text">Prišlo je do nepričakovane napake. To ni Vaša krivda. Ali nam želite poslati podrobnosti po e-pošti, da Vam pomagamo odpraviti težavo?</string>
+    <string name="crash_report_comment_hint">Povejte nam, kaj se je zgodilo tik pred zrušitvijo</string>
+    <string name="crash_report_button_send">Pošlje poročilo</string>
+    <string name="crash_report_error">Poročila ni bilo mogoče poslati. Ni najdene aplikacije za e-pošto :-(</string>
+    <string name="crash_report_save">Shrani poročilo o zrušitvi kot datoteko</string>
+    <string name="crash_report_saved">Poročilo shranjeno v datoteko</string>
+    <string name="crash_report_error_saving">Napaka pri shranjevanju poročila o zrušitvi v datoteko</string>
+    <string name="notification_title">Obvestila</string>
+    <string name="notification_summary">Odpre nastavitve sistemskih obvestil</string>
+    <string name="notification_channel_install_success_title">Samodejno nameščene aplikacije</string>
+    <string name="notification_channel_install_success_description">Prikaže obvestilo po samodejni namestitvi aplikacij</string>
+    <string name="notification_channel_updates_available_title">Razpoložljive posodobitve aplikacij</string>
+    <string name="notification_channel_updates_available_description">Prikaže obvestilo po posodobitvi repozitorijev in najdenih posodobitvah aplikacij</string>
+    <string name="notification_repo_update_default">Vzpostavljanje povezave z %1$s …</string>
+    <string name="notification_repo_update_downloading">Preneseno %1$s iz %2$s</string>
+    <plurals name="notification_repo_update_saving">
+        <item quantity="one">Shranjena %1$d aplikacija iz %2$s</item>
+        <item quantity="two">Shranjeni %1$d aplikaciji iz %2$s</item>
+        <item quantity="few">Shranjene %1$d aplikacije iz %2$s</item>
+        <item quantity="other">Shranjenih %1$d aplikacij iz %2$s</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="one">Nameščanje %1$d aplikacije …</item>
+        <item quantity="two">Nameščanje %1$d aplikacij …</item>
+        <item quantity="few">Nameščanje %1$d aplikacij …</item>
+        <item quantity="other">Nameščanje %1$d aplikacij …</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="one">Posodablanje %1$d aplikacije …</item>
+        <item quantity="two">Posodablanje %1$d aplikacij …</item>
+        <item quantity="few">Posodablanje %1$d aplikacij …</item>
+        <item quantity="other">Posodablanje %1$d aplikacij …</item>
+    </plurals>
+    <plurals name="notification_update_success_title">
+        <item quantity="one">%1$d aplikacija je bila posodobljena</item>
+        <item quantity="two">%1$d aplikaciji sta bili posodobljeni</item>
+        <item quantity="few">%1$d aplikacije so bile posodobljene</item>
+        <item quantity="other">%1$d aplikacij je bilo posodobljenih</item>
+    </plurals>
+    <string name="notification_installing_section_installing">Nameščanje:</string>
+    <string name="notification_installing_section_confirmation">Potrebuje uporabnikovo potrditev:</string>
+    <string name="notification_installing_section_installed">Nameščeno:</string>
+    <string name="notification_installing_confirmation">Kliknite za potrditev</string>
 </resources>

@@ -1,0 +1,7 @@
+* Vahekaardile „Uuendused“ lisandus viipamise võimalus
+
+* Vahekaardil „Uuendused“ kuvatakse KnownVulns-i puhul hoiatusi koos tegevusjuhistega
+
+* Tõlked on uuendatud
+
+* Tumeda kasutajaliidese veaparandused

@@ -615,7 +615,7 @@
     <string name="menu_discover">Изследване</string>
     <string name="menu_apps_my">Мои приложения</string>
     <string name="first_start_loading">Зареждане на хранилищата с приложения…</string>
-    <string name="my_apps_empty">Това са само инсталираните от %1$s приложения</string>
+    <string name="my_apps_empty">Това са само прилиженията, достъпни от хранилищата на %1$s</string>
     <string name="my_apps_header_apps_with_issue">Приложения с проблеми</string>
     <string name="my_apps_ignore_dialog_title">Скриване на проблема</string>
     <string name="my_apps_ignore_dialog_text">Проблемът с тази версия на „%1$s“ ще бъде пренебрегнат</string>
@@ -691,4 +691,6 @@
     <string name="category_group_summary_misc">Без категория</string>
     <string name="pref_dyn_colors_title">Използване на системните цветове</string>
     <string name="pref_dyn_colors_summary">Прилагане на динамичните цветове от настройките на системата</string>
+    <string name="pref_language_summary">Езикови настройки на систамата</string>
+    <string name="pref_auto_updates_only_wifi">Само през безжична мрежа</string>
 </resources>

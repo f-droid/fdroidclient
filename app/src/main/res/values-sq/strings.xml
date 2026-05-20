@@ -619,7 +619,7 @@
     <string name="menu_discover">Zbuloni</string>
     <string name="menu_apps_my">Aplikacionet e mi</string>
     <string name="first_start_loading">Po sillen depo aplikacionesh…</string>
-    <string name="my_apps_empty">Këtu shfaqen vetëm aplikacione të instaluar nga %1$s</string>
+    <string name="my_apps_empty">Këtu shfaqen vetëm aplikacione që mund të merren nga depo %1$s</string>
     <string name="app_list_new">Aplikacione të reja</string>
     <string name="app_list_recently_updated">Përditësuar së fundi</string>
     <string name="app_list_most_downloaded">Më të shkarkuarat</string>

@@ -629,7 +629,7 @@
     <string name="menu_discover">Objevit</string>
     <string name="menu_apps_my">Moje aplikace</string>
     <string name="first_start_loading">Načítání repozitářů…</string>
-    <string name="my_apps_empty">Zde jsou zobrazeny pouze aplikace nainstalované z obchodu %1$s</string>
+    <string name="my_apps_empty">Zde jsou zobrazeny pouze aplikace dostupné v repozitářích %1$s</string>
     <string name="my_apps_header_apps_with_issue">Aplikace s problémy</string>
     <string name="my_apps_ignore_dialog_title">Skrýt problém</string>
     <string name="my_apps_ignore_dialog_text">Problém s touto verzí aplikace „%1$s“ bude ignorován</string>

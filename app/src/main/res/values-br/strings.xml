@@ -99,4 +99,10 @@
     <string name="swap_dont_show_again">Arabat skrammañ an dra-se din en-dro</string>
     <string name="antitracklist">Heuliet ha treuzkaset e vez hoc\'h obererezh gant an arload-mañ</string>
     <string name="app_name_full">F-Droid</string>
+    <string name="app_name_basic">F-Droid Basic</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Diwar-benn</string>
+    <string name="menu_discover">Dizoloiñ</string>
+    <string name="menu_apps_my">Ma arloadoù</string>
 </resources>

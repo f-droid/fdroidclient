@@ -614,7 +614,7 @@
     <string name="menu_discover">发现</string>
     <string name="menu_apps_my">我的应用</string>
     <string name="first_start_loading">正在获取应用存储库…</string>
-    <string name="my_apps_empty">此处只显示 %1$s 安装的应用</string>
+    <string name="my_apps_empty">此处只显示 %1$s 的存储库中可用的应用</string>
     <string name="my_apps_header_apps_with_issue">有问题的应用</string>
     <string name="my_apps_ignore_dialog_title">隐藏问题</string>
     <string name="my_apps_ignore_dialog_text">将忽略“%1$s” 这个版本的这个问题</string>
