@@ -62,6 +62,7 @@ public object CompatibilityCheckerUtils {
       34 -> 23 // Android 6.0, M
       35 -> 24 // Android 7.0, N
       36 -> 24 // Android 7.0, N (didn't change)
+      37 -> 24 // Android 7.0, N (didn't change in SDK 37 beta 4)
       else -> 1 // Android 1.0, BASE
     }
   }

@@ -70,6 +70,7 @@ constructor(
       // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
       // https://cs.android.com/android/platform/superproject/+/android-16.0.0_r2:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=329;drc=73caa0299d9196ddeefe4f659f557fb880f6536d
       // current code requires targetSdk 34 on SDK 36+
+      // SDK 37 beta 4 also auto updates targetSdk 34 apps
       return SDK_INT >= 36 && targetSdk >= 34
     }
   }
