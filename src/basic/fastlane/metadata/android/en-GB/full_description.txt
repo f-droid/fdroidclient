@@ -1,8 +1,8 @@
-NOTE: The Basic version of F-Droid Client has a reduced feature set (e.g., no Nearby Share or panic feature). It targets Android 13 and can do unattended updates without privileged extension or root.
+NOTE: The Basic version of F-Droid Client has a reduced feature set (e.g. no nearby share and no panic feature). It targets Android 13 and can do unattended updates without privileged extension or root.
 
 F-Droid is an installable catalogue of libre software apps for Android. The F-Droid client app makes it easy to browse, install, and keep track of updates on your device.
 
-It connects to any F-Droid-compatible repository. The default repo is hosted at f-droid.org, which contains only bona fide libre software.
+It connects to any F-Droid compatible repositories. The default repo is hosted at f-droid.org, which contains only bona fide libre software.
 
 Android itself is open in the sense that you are free to install APKs from anywhere you wish, but there are many good reasons for using F-Droid as your libre software app manager:
 

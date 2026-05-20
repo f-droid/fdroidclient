@@ -629,7 +629,7 @@
     <string name="menu_discover">Atklāt</string>
     <string name="menu_apps_my">Manas lietotnes</string>
     <string name="first_start_loading">Iegūst lietotņu glabātavas…</string>
-    <string name="my_apps_empty">Šeit tiek rādītas tika i%1$s uzstādītās lietotnes</string>
+    <string name="my_apps_empty">Šeit tiek rādītas tikai %1$s glabātavās pieejamās lietotnes</string>
     <string name="my_apps_ignore_dialog_button">Paslēpt</string>
     <string name="my_apps_export_installed_apps">Izgūt lietotņu sarakstu</string>
     <string name="app_list_new">Jaunas lietotnes</string>

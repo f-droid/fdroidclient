@@ -620,7 +620,7 @@
     <string name="menu_discover">Temukan</string>
     <string name="menu_apps_my">Aplikasi Saya</string>
     <string name="first_start_loading">Mendapatkan repositori aplikasi…</string>
-    <string name="my_apps_empty">Hanya aplikasi yang diinstal oleh %1$s yang ditampilkan di sini</string>
+    <string name="my_apps_empty">Hanya aplikasi yang tersedia di repositori %1$s yang ditampilkan di sini</string>
     <string name="my_apps_header_apps_with_issue">Aplikasi dengan masalah</string>
     <string name="my_apps_ignore_dialog_title">Sembunyikan masalah</string>
     <string name="my_apps_ignore_dialog_text">Masalah dengan versi ini dari “%1$s” akan diabaikan</string>

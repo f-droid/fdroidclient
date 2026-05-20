@@ -593,4 +593,7 @@
     <string name="menu_apps_my">என்னுடைய செயலிகள்</string>
     <string name="first_start_loading">செயலி கலஞ்சியங்களை இறக்குகிரது…</string>
     <string name="first_start_intro">முன் தொடர, செயலி களஞ்சியத்தை ஒத்திசையவும்</string>
+    <string name="first_start_offline">ஆஃப்லைனில் உள்ளீர்கள். தொடங்குவதற்கு இணையத்துடன் இணைக்கவும்.</string>
+    <string name="first_start_metered">நீங்கள் மொபைல் டேட்டாவில் உள்ளீர்கள், மேலும் 10 எம்பிக்கு மேல் பதிவிறக்கம் செய்யப்படும். எப்படியும் தொடங்க, களஞ்சியங்களைப் பெறு என்பதைத் தட்டவும்.</string>
+    <string name="first_start_button">களஞ்சியங்களைப் பெறு</string>
 </resources>

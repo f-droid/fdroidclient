@@ -652,7 +652,7 @@
     <string name="whats_new_title">Wat is er nieuw</string>
     <string name="donate_title">Doneer</string>
     <string name="anti_features_title">Deze app heeft anti-functies</string>
-    <string name="my_apps_empty">Alleen apps geïnstalleerd door %1$s worden hier weergegeven</string>
+    <string name="my_apps_empty">Alleen apps beschikbaar in %1$s\'s databanken worden hier weergegeven</string>
     <string name="my_apps_header_apps_with_issue">Apps met problemen</string>
     <string name="my_apps_ignore_dialog_title">Verberg probleem</string>
     <string name="my_apps_ignore_dialog_text">Het probleem met deze versie van \"%1$s\" wordt genegeerd</string>

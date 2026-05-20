@@ -1,0 +1,7 @@
+* Takistab HTTP ETagi kasutamist jälgimisküpsisena
+
+* Parandatud ekraanipiltide paigutus
+
+* Ajutiste ja vahemällu salvestatud failide nõuetekohane kustutamine
+
+* Tumeda kujunduse parandused

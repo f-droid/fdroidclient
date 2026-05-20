@@ -53,7 +53,7 @@
     <string name="more">Meir</string>
     <string name="less">Mindre</string>
     <string name="antitracklist">Denne appen sporar og rapporterer aktiviteten din</string>
-    <string name="warning_no_internet">Kan ikkje oppdatera. Er du tilkopla Internett?</string>
+    <string name="warning_no_internet">Kan ikkje oppdatera. Er du tilkopla internett?</string>
     <string name="unsigned">Usignert</string>
     <string name="unverified">Ikkje stadfesta</string>
     <string name="repo_details">Pakkebrønn</string>
@@ -515,4 +515,12 @@
     <string name="antiothers">Annan antifunksjonalitet</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="force_old_installer_title">Tving bruk av gammal installatør</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">Om</string>
+    <string name="menu_discover">Oppdag</string>
+    <string name="menu_apps_my">Mine appar</string>
+    <string name="first_start_loading">Hentar pakkebrønnar…</string>
+    <string name="first_start_intro">Synkroniser pakkebrønnane for å starte</string>
+    <string name="first_start_offline">Du er fråkopla. Kople til internett for å starte.</string>
 </resources>

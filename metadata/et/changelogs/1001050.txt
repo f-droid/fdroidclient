@@ -1,0 +1,7 @@
+* Toetus mis tahes tarkvarahoidla ametlikele peegelserveritele, kusjuures server valitakse automaatselt vastavalt kättesaadavusele
+
+* Mitmed kasutajaliidese täiustused, samuti stabiilsuse parandused ja veaparandused
+
+* Uued privaatsusseadistused: ekraanipiltide tegemise takistamine; rakenduse sulgemine hädaolukorras
+
+* Uued keeled: korea (ko) ja vietnami (vi)

@@ -672,7 +672,7 @@
     <string name="menu_discover">Faigh amach</string>
     <string name="menu_apps_my">Mo aipeanna</string>
     <string name="first_start_loading">Ag fáil stórtha aipeanna…</string>
-    <string name="my_apps_empty">Ní thaispeántar anseo ach aipeanna arna suiteáil ag %1$s</string>
+    <string name="my_apps_empty">Ní thaispeántar anseo ach aipeanna atá ar fáil i stórtha %1$s</string>
     <string name="my_apps_header_apps_with_issue">Aipeanna a bhfuil fadhbanna leo</string>
     <string name="my_apps_ignore_dialog_title">Folaigh an fhadhb</string>
     <string name="my_apps_ignore_dialog_text">Déanfar neamhaird den fhadhb leis an leagan seo de \"%1$s\"</string>

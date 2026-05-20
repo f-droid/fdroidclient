@@ -617,7 +617,7 @@
     <string name="menu_discover">کشف</string>
     <string name="menu_apps_my">کاره‌هایم</string>
     <string name="first_start_loading">واکشیدن مخزن‌های کاره…</string>
-    <string name="my_apps_empty">تنها کاره‌هایی که به دست %1$s نصب شده‌اند این‌جا نشان داده می‌شوند</string>
+    <string name="my_apps_empty">تنها کاره‌های موجود در مخازن %1$s این‌جا نشان داده می‌شوند</string>
     <string name="my_apps_header_apps_with_issue">کاره‌های مشکل‌دار</string>
     <string name="my_apps_ignore_dialog_title">نهفتن اشکال‌ها</string>
     <string name="my_apps_ignore_dialog_text">از اشکال‌های این نگارش %1$s چشم پوشیده خواهد شد</string>
@@ -779,12 +779,12 @@
     <string name="status_downloading_remaining">‫‏%1$s مانده</string>
     <string name="install_history_switch">استفاده از تاریخچهٔ نصب</string>
     <string name="hide">نهفتن</string>
-    <string name="category_group_summary_misc">دسته‌بندی نشده</string>
+    <string name="category_group_summary_misc">دسته‌بندی نشده</string>
     <string name="apps_updates_hint_title">تبریک 🥳</string>
     <string name="repo_disable_dialog_title">از کار انداختن مخزن</string>
     <string name="search_auto_keyboard">گشودن خودکار صفحه‌کلید</string>
     <string name="app_details_anti_features_title">پادویژگی‌ها چیستند؟</string>
-    <string name="search_my_apps_hint">جست‌وجوی کاره‌های نصب شده</string>
+    <string name="search_my_apps_hint">جست‌وجوی کاره‌های نصب شده</string>
     <string name="dialog_metered_dont_show">دیگر نشان داده نشود</string>
     <string name="category_group_summary_productivity">تقویم، وظایف، ساعت و یادداشت</string>
     <string name="category_group_summary_tools">ناوبری، آب‌وهوا، ماشین‌حساب و تبدیلگر</string>

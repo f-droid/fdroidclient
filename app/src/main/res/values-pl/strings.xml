@@ -660,7 +660,7 @@
     <string name="menu_discover">Odkryj</string>
     <string name="menu_apps_my">Moje aplikacje</string>
     <string name="first_start_loading">Pobieranie repozytoriów aplikacji…</string>
-    <string name="my_apps_empty">Tutaj wyświetlane są tylko aplikacje zainstalowane przez %1$s</string>
+    <string name="my_apps_empty">Tutaj wyświetlane są tylko aplikacje dostępne w repozytoriach %1$s</string>
     <string name="my_apps_header_apps_with_issue">Aplikacje z problemami</string>
     <string name="my_apps_ignore_dialog_title">Ukryj problem</string>
     <string name="my_apps_ignore_dialog_text">Problem z tą wersją „%1$s” zostanie zignorowany.</string>
