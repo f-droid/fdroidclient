@@ -62,27 +62,29 @@
     <string name="clear_all">Clear all</string>
     <string name="hide">Hide</string>
 
-    <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>
-    <string name="category_group_summary_tools">Navigation, weather, calculators &amp; converters</string>
-    <string name="category_group_summary_wallets">Finance, money &amp; pass managers</string>
-    <string name="category_group_summary_media">Music, podcasts, games &amp; ebook readers</string>
-    <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
-    <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
-    <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
-    <string name="category_group_summary_storage">Files, gallery, cloud sync &amp; encryption</string>
-    <string name="category_group_summary_interests">Science, sports, drawing &amp; recipes</string>
-    <string name="category_group_summary_misc">Uncategorized</string>
-
     <string name="category_group_productivity">Productivity</string>
     <string name="category_group_tools">Tools</string>
     <string name="category_group_wallets">Finances &amp; Wallets</string>
     <string name="category_group_media">Entertainment &amp; Media</string>
     <string name="category_group_communication">Communication</string>
     <string name="category_group_device">Device</string>
+    <string name="category_group_games">Games</string>
     <string name="category_group_network">Network</string>
     <string name="category_group_storage">Files &amp; Storage</string>
     <string name="category_group_interests">Interests</string>
     <string name="category_group_misc">Miscellaneous</string>
+
+    <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>
+    <string name="category_group_summary_tools">Navigation, weather, calculators &amp; converters</string>
+    <string name="category_group_summary_wallets">Finance, money &amp; pass managers</string>
+    <string name="category_group_summary_media">Music, podcasts, games &amp; ebook readers</string>
+    <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
+    <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
+    <string name="category_group_summary_games">Board, card &amp; party games</string>
+    <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
+    <string name="category_group_summary_storage">Files, gallery, cloud sync &amp; encryption</string>
+    <string name="category_group_summary_interests">Science, sports, drawing &amp; recipes</string>
+    <string name="category_group_summary_misc">Uncategorized</string>
 
     <string name="last_updated">Last updated: %1$s</string>
     <!-- The placeholder in round brackets will be replaced with the size of the app -->
