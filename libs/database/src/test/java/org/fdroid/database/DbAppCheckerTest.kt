@@ -531,8 +531,8 @@ internal class DbAppCheckerTest {
   private fun makeAppOverviewItem(packageName: String = this.packageName): AppOverviewItem =
     mockk<AppOverviewItem>().also {
       every { it.packageName } returns packageName
-      every { it.name } returns appName
-      every { it.summary } returns "summary"
+      every { it.getName(any()) } returns appName
+      every { it.getSummary(any()) } returns "summary"
       every { it.localizedIcon } returns null
     }
 

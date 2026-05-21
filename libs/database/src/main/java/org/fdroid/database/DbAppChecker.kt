@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo.FLAG_SYSTEM
 import android.content.pm.PackageInfo
 import android.os.Build.VERSION.SDK_INT
 import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
+import androidx.core.os.LocaleListCompat
 import java.util.concurrent.TimeUnit
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
@@ -22,6 +23,7 @@ public class DbAppChecker(
   private val appDao = db.getAppDao() as AppDaoInt
   private val versionDao = db.getVersionDao() as VersionDaoInt
   private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
+  private val localeList = LocaleListCompat.getDefault()
 
   /**
    * Gets all apps that somehow have a special status that warrants the user's attention. These can
@@ -282,8 +284,8 @@ public class DbAppChecker(
       update = version.toAppVersion(versionedStrings),
       isFromPreferredRepo = true,
       hasKnownVulnerability = version.hasKnownVulnerability,
-      name = appOverviewItem.name,
-      summary = appOverviewItem.summary,
+      name = appOverviewItem.getName(localeList),
+      summary = appOverviewItem.getSummary(localeList),
       localizedIcon = appOverviewItem.localizedIcon,
     )
   }
