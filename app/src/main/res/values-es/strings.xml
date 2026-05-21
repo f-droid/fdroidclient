@@ -676,7 +676,6 @@
     <string name="category_group_storage">Archivos y Almacenamiento</string>
     <string name="category_group_interests">Intereses</string>
     <string name="category_group_misc">Misceláneo</string>
-    <string name="author_by">Por %1$s</string>
     <string name="last_updated">Últimamente actualizado: %1$s</string>
     <string name="last_updated_with_size">Últimamente actualizado: %1$s (%2$s)</string>
     <string name="status_install_preparing">Preparando instalación…</string>

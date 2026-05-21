@@ -638,7 +638,6 @@
     <string name="category_group_storage">文件和存储</string>
     <string name="category_group_interests">兴趣</string>
     <string name="category_group_misc">杂项</string>
-    <string name="author_by">由 %1$s 开发</string>
     <string name="last_updated">上次更新：%1$s</string>
     <string name="last_updated_with_size">上次更新：%1$s (%2$s)</string>
     <string name="status_install_preparing">正在准备安装…</string>

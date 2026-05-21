@@ -639,7 +639,6 @@
     <string name="category_group_storage">Файлове и хранилища</string>
     <string name="category_group_interests">Интереси</string>
     <string name="category_group_misc">Разни</string>
-    <string name="author_by">От %1$s</string>
     <string name="last_updated">Последно обновяване: %1$s</string>
     <string name="last_updated_with_size">Последно обновяване: %1$s (%2$s)</string>
     <string name="status_install_preparing">Подготовка за инсталиране…</string>

@@ -613,7 +613,6 @@
     <string name="category_group_storage">Tệp &amp; Lưu trữ</string>
     <string name="category_group_interests">Sở thích</string>
     <string name="category_group_misc">Linh tinh</string>
-    <string name="author_by">Bởi %1$s</string>
     <string name="last_updated">Lần cuối cập nhật: %1$s</string>
     <string name="last_updated_with_size">Lần cuối cập nhật: %1$s (%2$s)</string>
     <string name="status_install_preparing">Chuẩn bị cài đặt…</string>

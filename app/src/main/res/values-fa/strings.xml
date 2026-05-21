@@ -640,7 +640,6 @@
     <string name="category_group_network">شبکه</string>
     <string name="category_group_storage">پرونده‌ها و ذخیره‌سازی</string>
     <string name="category_group_misc">متفرّقه</string>
-    <string name="author_by">به دست %1$s</string>
     <string name="last_updated">آخرین به‌روز رسانی: %1$s</string>
     <string name="last_updated_with_size">آخرین به‌روز رسانی: %1$s‏ (%2$s)</string>
     <string name="status_install_preparing">آماده سازی نصب…</string>

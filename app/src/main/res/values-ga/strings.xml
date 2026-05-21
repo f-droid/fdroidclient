@@ -695,7 +695,6 @@
     <string name="category_group_storage">Comhaid &amp; Stóráil</string>
     <string name="category_group_interests">Leasanna</string>
     <string name="category_group_misc">Ilghnéitheach</string>
-    <string name="author_by">Faoi %1$s</string>
     <string name="last_updated">Nuashonraithe go deireanach: %1$s</string>
     <string name="last_updated_with_size">Nuashonraithe go deireanach: %1$s (%2$s)</string>
     <string name="status_install_preparing">Ag ullmhú suiteála…</string>

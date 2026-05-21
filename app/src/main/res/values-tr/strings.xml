@@ -636,7 +636,6 @@
     <string name="category_group_media">Eğlence &amp; Medya</string>
     <string name="category_group_communication">İletişim</string>
     <string name="category_group_interests">İlgi Alanları</string>
-    <string name="author_by">%1$s tarafından</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Temel</string>
     <string name="first_start_loading">Uygulama depoları getiriliyor…</string>

@@ -307,7 +307,6 @@
     <string name="category_group_storage">Датотеки и меморија</string>
     <string name="category_group_interests">Интереси</string>
     <string name="category_group_misc">Останато</string>
-    <string name="author_by">Направено од %1$s</string>
     <string name="last_updated">Последно надоградено: %1$s</string>
     <string name="last_updated_with_size">Последно надоградено: %1$s­%2$s</string>
     <string name="status_install_preparing">Подготовка на инсталација…</string>

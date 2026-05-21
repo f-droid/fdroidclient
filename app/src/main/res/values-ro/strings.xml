@@ -661,7 +661,6 @@
     <string name="category_group_storage">Fișiere și stocare</string>
     <string name="category_group_interests">Pasiuni</string>
     <string name="category_group_misc">Diverse</string>
-    <string name="author_by">De către %1$s</string>
     <string name="last_updated">Ultima actualizare: %1$s</string>
     <string name="last_updated_with_size">Ultima actualizare: %1$s (%2$s)</string>
     <string name="status_install_preparing">Pregătire instalare…</string>

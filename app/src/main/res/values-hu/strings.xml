@@ -641,7 +641,6 @@
     <string name="category_group_storage">Fájlok és tárolók</string>
     <string name="category_group_interests">Érdeklődési kör</string>
     <string name="category_group_misc">Egyéb</string>
-    <string name="author_by">%1$s -től</string>
     <string name="last_updated">Utolsó frissítés: %1$s</string>
     <string name="last_updated_with_size">Utolsó frissítés: %1$s (%2$s)</string>
     <string name="status_install_preparing">Telepítés előkészítése…</string>

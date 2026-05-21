@@ -695,7 +695,6 @@
     <string name="category_group_storage">الملفات والتخزين</string>
     <string name="category_group_interests">اهتمامات</string>
     <string name="category_group_misc">متنوّع</string>
-    <string name="author_by">بواسطة %1$s</string>
     <string name="last_updated">آخر تحديث: %1$s</string>
     <string name="last_updated_with_size">آخر تحديث: %1$s (%2$s)</string>
     <string name="status_install_preparing">يجهز التثبيت…</string>

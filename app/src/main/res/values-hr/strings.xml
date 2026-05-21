@@ -658,7 +658,6 @@
     <string name="category_group_storage">Datoteke i spremišta</string>
     <string name="category_group_interests">Interesi</string>
     <string name="category_group_misc">Razno</string>
-    <string name="author_by">Autor: %1$s</string>
     <string name="last_updated">Zadnje aktualiziranje: %1$s</string>
     <string name="last_updated_with_size">Zadnje aktualiziranje: %1$s (%2$s)</string>
     <string name="status_install_preparing">Pripremanje instalacije …</string>

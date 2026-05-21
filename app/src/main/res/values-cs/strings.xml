@@ -653,7 +653,6 @@
     <string name="category_group_storage">Soubory a úložiště</string>
     <string name="category_group_interests">Zájmy</string>
     <string name="category_group_misc">Různé</string>
-    <string name="author_by">Od %1$s</string>
     <string name="last_updated">Naposledy aktualizováno: %1$s</string>
     <string name="last_updated_with_size">Naposledy aktualizováno: %1$s (%2$s)</string>
     <string name="status_install_preparing">Příprava instalace…</string>

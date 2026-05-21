@@ -644,7 +644,6 @@
     <string name="category_group_storage">Fail &amp; Penyimpanan</string>
     <string name="category_group_interests">Minat</string>
     <string name="category_group_misc">Lain-Lain</string>
-    <string name="author_by">Oleh %1$s</string>
     <string name="last_updated">Terakhir diperbarui: %1$s</string>
     <string name="last_updated_with_size">Terakhir diperbarui: %1$s (%2$s)</string>
     <string name="status_install_preparing">Mempersiapkan instalasi…</string>

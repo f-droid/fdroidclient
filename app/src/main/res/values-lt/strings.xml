@@ -611,7 +611,6 @@
     <string name="category_group_storage">Failai ir saugykla</string>
     <string name="category_group_interests">Pomėgiai</string>
     <string name="category_group_misc">Kiti</string>
-    <string name="author_by">Sukurta %1$s</string>
     <string name="last_updated">Paskutinį kartą atnaujinta: %1$s</string>
     <string name="last_updated_with_size">Paskutinį kartą atnaujinta: %1$s (%2$s)</string>
     <string name="status_install_preparing">Įdiegimas ruošiamas…</string>

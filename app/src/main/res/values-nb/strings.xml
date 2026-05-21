@@ -655,7 +655,6 @@
     <string name="category_group_storage">Filer &amp; Lagring</string>
     <string name="category_group_interests">Interesser</string>
     <string name="category_group_misc">Diverse</string>
-    <string name="author_by">Fra %1$s</string>
     <string name="last_updated">Sist oppdatert: %1$s</string>
     <string name="last_updated_with_size">Sist oppdatert: %1$s (%2$s)</string>
     <string name="status_install_preparing">Forbereder installasjon…</string>

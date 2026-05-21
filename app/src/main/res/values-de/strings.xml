@@ -649,7 +649,6 @@
     <string name="category_group_storage">Dateien und Speicher</string>
     <string name="category_group_interests">Interessen</string>
     <string name="category_group_misc">Verschiedenes</string>
-    <string name="author_by">Von %1$s</string>
     <string name="last_updated">Zuletzt aktualisiert: %1$s</string>
     <string name="last_updated_with_size">Zuletzt aktualisiert: %1$s (%2$s)</string>
     <string name="status_install_preparing">Installation wird vorbereitet …</string>

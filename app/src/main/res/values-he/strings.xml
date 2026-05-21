@@ -684,7 +684,6 @@
     <string name="category_group_storage">קבצים ואחסון</string>
     <string name="category_group_interests">תחומי עניין</string>
     <string name="category_group_misc">שונות</string>
-    <string name="author_by">על ידי %1$s</string>
     <string name="last_updated">עדכון אחרון: %1$s</string>
     <string name="last_updated_with_size">עדכון אחרון: %1$s (%2$s)</string>
     <string name="status_install_preparing">בהכנות להתקנה…</string>

@@ -630,7 +630,6 @@
     <string name="category_group_storage">파일 &amp; 저장소</string>
     <string name="category_group_interests">관심분야</string>
     <string name="category_group_misc">기타</string>
-    <string name="author_by">개발자: %1$s</string>
     <string name="last_updated">마지막 업데이트: %1$s</string>
     <string name="last_updated_with_size">마지막 업데이트: %1$s (%2$s)</string>
     <string name="status_install_preparing">설치 준비중…</string>
