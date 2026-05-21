@@ -121,7 +121,7 @@ private fun <T : MyAppItem> List<T>.sort(sortOrder: AppListSortOrder): List<T> {
     }
     AppListSortOrder.LAST_UPDATED -> {
       sortedWith { a1, a2 ->
-        val lastAddedCompare = a1.lastUpdated.compareTo(a2.lastUpdated)
+        val lastAddedCompare = a2.lastUpdated.compareTo(a1.lastUpdated)
         if (lastAddedCompare == 0) {
           // fall-back to name if last updated is the same, to ensure stable sorting
           collator.compare(a1.name, a2.name)
