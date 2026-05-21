@@ -73,6 +73,9 @@
             https://plug-mirror.rcac.purdue.edu/fdroid/archive
             https://mirror.init7.net/fdroid/archive
             https://mirror.freedif.org/fdroid/archive
+            https://mirrors.hostico.ro/fdroid/archive
+            https://ftp.lug.ro/fdroid/archive
+            https://mirrors.chroot.ro/fdroid/archive
         </item>
         <!-- description -->
         <item>The archive repository of the F-Droid client. This contains older versions of
