@@ -38,6 +38,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.ui.utils.isAppInForeground
 import org.fdroid.utils.IoDispatcher
+import org.fdroid.utils.isChina
 
 @Singleton
 class SessionInstallManager
@@ -104,6 +105,9 @@ constructor(
     } else if (isUpdate && canDoAutoUpdate(app.packageName, version)) {
       // should not be needed, so we say not supported
       log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
+      PreApprovalResult.NotSupported
+    } else if (isChina(context)) {
+      log.info { "Device is in China, pre-approval is broken." }
       PreApprovalResult.NotSupported
     } else if (SDK_INT >= 34) {
       log.info { "Requesting pre-approval for ${app.packageName}..." }
