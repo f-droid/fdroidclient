@@ -17,6 +17,7 @@ import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.icu.util.ULocale
+import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
@@ -106,8 +107,8 @@ constructor(
       // should not be needed, so we say not supported
       log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
       PreApprovalResult.NotSupported
-    } else if (isChina(context)) {
-      log.info { "Device is in China, pre-approval is broken." }
+    } else if (isChina(context) && Build.TYPE != "userdebug") {
+      log.info { "Device is in China and not a userdebug build, so pre-approval is likely broken." }
       PreApprovalResult.NotSupported
     } else if (SDK_INT >= 34) {
       log.info { "Requesting pre-approval for ${app.packageName}..." }
