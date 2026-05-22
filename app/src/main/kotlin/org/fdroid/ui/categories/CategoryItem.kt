@@ -40,6 +40,7 @@ import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Fastfood
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.FlashlightOn
+import androidx.compose.material.icons.filled.Gamepad
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Handyman
 import androidx.compose.material.icons.filled.HealthAndSafety
@@ -108,6 +109,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Calculator" -> Icons.Default.Calculate
         "Calendar & Agenda" -> Icons.Default.CalendarMonth
         "Card Game" -> Icons.Default.Style
+        "Casual Game" -> Icons.Default.Gamepad
         "Clock" -> Icons.Default.AccessTime
         "Cloud Storage & File Sync" -> Icons.Default.Cloud
         "Connectivity" -> Icons.Default.SignalCellularAlt
@@ -153,7 +155,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Pass Wallet" -> Icons.Default.AccountBalanceWallet
         "Password & 2FA" -> Icons.Default.Password
         "Phone & SMS" -> Icons.Default.PermPhoneMsg
-        "Platform Game" -> Icons.Default.CrueltyFree
+        "Platformer Game" -> Icons.Default.CrueltyFree
         "Podcast" -> Icons.Default.Podcasts
         "Public Transport" -> Icons.Default.DirectionsBus
         "Puzzle Game" -> Icons.Default.Extension
@@ -208,6 +210,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Calculator" -> CategoryGroups.tools
         "Calendar & Agenda" -> CategoryGroups.productivity
         "Card Game" -> CategoryGroups.games
+        "Casual Game" -> CategoryGroups.games
         "Clock" -> CategoryGroups.productivity
         "Cloud Storage & File Sync" -> CategoryGroups.storage
         "Connectivity" -> CategoryGroups.network
@@ -253,7 +256,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Pass Wallet" -> CategoryGroups.wallets
         "Password & 2FA" -> CategoryGroups.device
         "Phone & SMS" -> CategoryGroups.communication
-        "Platform Game" -> CategoryGroups.games
+        "Platformer Game" -> CategoryGroups.games
         "Podcast" -> CategoryGroups.media
         "Public Transport" -> CategoryGroups.tools
         "Puzzle Game" -> CategoryGroups.games
