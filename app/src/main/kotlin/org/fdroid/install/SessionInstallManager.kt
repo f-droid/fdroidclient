@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat.registerReceiver
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
+import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -75,6 +76,21 @@ constructor(
       // SDK 37 beta 4 also auto updates targetSdk 34 apps
       return SDK_INT >= 36 && targetSdk >= 34
     }
+
+    /**
+     * Many Chinese ROMs have as of 2026 not properly implemented pre-approval. They either return
+     * `3: INSTALL_FAILED_ABORTED: User rejected permissions` or not return anything at all. Since
+     * it is hard to handle this and Chinese ROMs can't easily be detected, we turn pre-approval off
+     * for all devices that are likely affected by this.
+     *
+     * See: https://gitlab.com/fdroid/fdroidclient/-/work_items/3254
+     */
+    fun isPreApprovalLikelyBroken(context: Context): Boolean {
+      val localeList = LocaleListCompat.getDefault()
+      val country = localeList.get(0)?.country ?: Locale.getDefault().country
+      return (isChina(context) || country.equals("cn", ignoreCase = true)) &&
+        Build.TYPE != "userdebug"
+    }
   }
 
   init {
@@ -107,7 +123,7 @@ constructor(
       // should not be needed, so we say not supported
       log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
       PreApprovalResult.NotSupported
-    } else if (isChina(context) && Build.TYPE != "userdebug") {
+    } else if (isPreApprovalLikelyBroken(context)) {
       log.info { "Device is in China and not a userdebug build, so pre-approval is likely broken." }
       PreApprovalResult.NotSupported
     } else if (SDK_INT >= 34) {
