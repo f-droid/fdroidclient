@@ -608,7 +608,8 @@ internal class DetailsPresenterTest {
   @Test
   fun ignoresAllUpdatesFromAppPrefs() = runTest {
     // When the user ignores all updates, ignoresAllUpdates must be true and there should be
-    // no suggested version, resulting in a NONE button.
+    // no UPDATE button, but still a suggested version.
+    setupInstalledApp(versionCode = versionCode - 1)
     every { appPrefsDao.getAppPrefs(packageName) } returns
       MutableLiveData(AppPrefs(packageName).toggleIgnoreAllUpdates())
 
@@ -616,8 +617,38 @@ internal class DetailsPresenterTest {
       val item = awaitNonNullItem()
       assertIs<LoadedAppDetailsItem>(item)
       assertTrue(item.ignoresAllUpdates)
-      assertNull(item.suggestedVersion)
+      // The repo still has a suggested version, it must be shown as suggested
+      assertNotNull(item.suggestedVersion)
+      assertEquals(version, item.suggestedVersion)
+      // No update button because updates are ignored
       assertEquals(MainButtonState.NONE, item.mainButtonState)
+      // The user must be able to toggle ignoreAllUpdates back off
+      assertNotNull(item.actions.ignoreAllUpdates)
+
+      cancelAndPrintRemainingEvents()
+    }
+  }
+
+  @Test
+  fun ignoringAllUpdatesAfterUninstallingApp() = runTest {
+    // If the user set ignoreAllUpdates while the app was installed, then uninstalled the app,
+    // the AppPrefs entry with ignoreVersionCodeUpdate = Long.MAX_VALUE persists in the DB.
+    every { appPrefsDao.getAppPrefs(packageName) } returns
+      MutableLiveData(AppPrefs(packageName).toggleIgnoreAllUpdates())
+
+    presenterFlow.test {
+      val item = awaitNonNullItem()
+      assertIs<LoadedAppDetailsItem>(item)
+      assertTrue(item.ignoresAllUpdates)
+      assertNull(item.installedVersionCode) // not installed
+      // The repo still has a version, it must be suggested for fresh installation
+      assertNotNull(item.suggestedVersion)
+      assertEquals(version, item.suggestedVersion)
+      // Install button must be shown even though updates were previously ignored
+      assertEquals(MainButtonState.INSTALL, item.mainButtonState)
+      // The user should see ignoreAllUpdates toggle even without the app installed,
+      // so they can undo it
+      assertNotNull(item.actions.ignoreAllUpdates)
 
       cancelAndPrintRemainingEvents()
     }
@@ -632,8 +663,8 @@ internal class DetailsPresenterTest {
     presenterFlow.test {
       val item = awaitNonNullItem()
       assertIs<LoadedAppDetailsItem>(item)
-      // possibleUpdate exists, but ignores, so suggestedVersion is null
-      assertNull(item.suggestedVersion)
+      assertNotNull(item.suggestedVersion)
+      // possibleUpdate exists, but ignored, so no update button
       assertEquals(MainButtonState.NONE, item.mainButtonState)
       assertNotNull(item.actions.ignoreThisUpdate) // there is a version to un-ignore
       assertTrue(item.ignoresCurrentUpdate)

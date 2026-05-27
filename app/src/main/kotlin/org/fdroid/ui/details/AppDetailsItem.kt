@@ -185,7 +185,9 @@ data class LoadedAppDetailsItem(
         if (versions == null) {
           MainButtonState.LOADING
         } else if (
-          suggestedVersion == null || suggestedVersion.versionCode <= installedVersionCode
+          suggestedVersion == null ||
+            suggestedVersion.versionCode <= installedVersionCode ||
+            suggestedVersion.versionCode <= (appPrefs?.ignoreVersionCodeUpdate ?: 0)
         ) {
           MainButtonState.NONE
         } else {

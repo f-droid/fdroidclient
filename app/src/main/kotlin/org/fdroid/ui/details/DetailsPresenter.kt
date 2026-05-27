@@ -115,7 +115,10 @@ fun DetailsPresenter(
           versions = versions,
           preferredSigner = installedSigner ?: app.metadata.preferredSigner,
           releaseChannels = appPrefs.releaseChannels,
-          preferencesGetter = { appPrefs },
+          preferencesGetter = {
+            // the suggested version shouldn't be affected by ignored versions
+            appPrefs.copy(ignoreVersionCodeUpdate = 0)
+          },
         )
       }
     }
@@ -219,7 +222,7 @@ fun DetailsPresenter(
         allowBetaVersions = viewModel::allowBetaUpdates,
         onAntiFeaturesOnboardingSeen = viewModel::onAntiFeaturesOnboardingSeen,
         ignoreAllUpdates =
-          if (installedVersionCode == null) {
+          if (installedVersionCode == null && (appPrefs == null || !appPrefs.ignoreAllUpdates)) {
             null
           } else {
             viewModel::ignoreAllUpdates
