@@ -111,15 +111,10 @@ fun DetailsPresenter(
       if (versions == null || appPrefs == null) {
         null
       } else {
-        // Use getUpdate() instead of getSuggestedVersion() to consider `installedVersionCode`.
-        // Otherwise, we would default to `installedVersionCode = 0` and get a suggested version
-        // that can have a smaller version code than the installed one.
-        updateChecker.getUpdate(
+        updateChecker.getSuggestedVersion(
           versions = versions,
-          installedVersionCode = installedVersionCode ?: 0,
-          allowedSignersGetter =
-            (installedSigner ?: app.metadata.preferredSigner)?.let { { setOf(it) } },
-          allowedReleaseChannels = appPrefs.releaseChannels,
+          preferredSigner = installedSigner ?: app.metadata.preferredSigner,
+          releaseChannels = appPrefs.releaseChannels,
           preferencesGetter = { appPrefs },
         )
       }

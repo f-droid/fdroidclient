@@ -330,6 +330,25 @@ internal class DetailsPresenterTest {
   }
 
   @Test
+  fun suggestedVersionIsStillSetWhenInstalledVersionMatchesSuggestedVersion() = runTest {
+    // Even if the installed version code equals the suggested version's code, the presenter
+    // must still expose a non-null suggestedVersion
+    setupInstalledApp(versionCode = versionCode, isInstalled = true)
+
+    presenterFlow.test {
+      val item = awaitNonNullItem()
+      assertIs<LoadedAppDetailsItem>(item)
+      // The app is up to date, so no update button, but suggestedVersion must still be populated
+      assertEquals(MainButtonState.NONE, item.mainButtonState)
+      assertNotNull(item.suggestedVersion)
+      assertEquals(version, item.suggestedVersion)
+      assertEquals(versionCode, item.installedVersionCode)
+
+      cancelAndPrintRemainingEvents()
+    }
+  }
+
+  @Test
   fun emitsNoneButtonWhenNoCompatibleVersions() = runTest {
     // all versions are not compatible with this device
     every { version.isCompatible } returns false
