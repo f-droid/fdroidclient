@@ -688,7 +688,7 @@
     <string name="screenshots_metered">タップしてモバイルデータを使ってスクリーンショットをロード</string>
     <string name="copy_link">リンクをコピー</string>
     <string name="app_no_compatible_versions">このアプリはデバイスと互換性がありません</string>
-    <string name="about_license_text">このプログラムはフリーソフトウェアです。あなたはこれを、フリーソフトウェア財団によって発行されたGNU 一般公衆利用許諾書(バージョン3か、それ以降のバージョンのうちどれか)が定める条件の下で再頒布または改変することができます。 (八田真行氏によるGPL-3.0非公式日本語訳より引用)</string>
+    <string name="about_license_text">当プログラムは自由ソフトウェアです。これを貴方は自由ソフトウェア財団により発行されたGNU一般公衆利用許諾書(バージョン３、若しくはそれ以降のバージョンの何れか)が定める条件の下で再頒布や改変が可能です。</string>
     <string name="app_no_auto_update">このアプリは自動更新をサポートしない古いAndriod向けに作成されていないため自動アップデートできません</string>
     <string name="app_issue_not_available_text">このアプリはリポジトリから削除されたか、削除/無効化されたリポジトリにあります</string>
     <string name="size_colon">サイズ: %1$s</string>

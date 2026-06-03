@@ -1,0 +1,15 @@
+LƯU Ý: Phiên bản Basic của Ứng dụng F-Droid bị hạn chế tính năng (ví dụ: không có tính năng chia sẻ lân cận và tính năng xử lý sự cố khẩn cấp). Ứng dụng này nhắm đến Android 13 và có thể thực hiện cập nhật tự động mà không cần quyền mở rộng hoặc quyền root.
+
+F-Droid là một danh mục các ứng dụng phần mềm mã nguồn mở có thể cài đặt dành cho Android. Ứng dụng F-Droid giúp bạn dễ dàng duyệt, cài đặt và theo dõi các bản cập nhật trên thiết bị của mình.
+
+Nó kết nối với bất kỳ kho lưu trữ nào tương thích với F-Droid. Kho lưu trữ mặc định được đặt tại f-droid.org, chỉ chứa phần mềm mã nguồn mở chính thống.
+
+Bản thân Android là hệ điều hành mở theo nghĩa là bạn có thể tự do cài đặt các tệp APK từ bất cứ đâu bạn muốn, nhưng có rất nhiều lý do chính đáng để sử dụng F-Droid làm trình quản lý ứng dụng phần mềm tự do của bạn:
+
+* Nhận thông báo khi có bản cập nhật mới
+* Tự động tải xuống và cài đặt các bản cập nhật (tùy chọn)
+* Theo dõi các phiên bản cũ hơn và phiên bản beta
+* Lọc các ứng dụng không tương thích với thiết bị
+* Tìm ứng dụng theo danh mục và mô tả có thể tìm kiếm
+* Truy cập các URL liên quan đến quyên góp, mã nguồn, v.v.
+* Đảm bảo an toàn bằng cách kiểm tra chữ ký chỉ mục kho lưu trữ và mã băm APK

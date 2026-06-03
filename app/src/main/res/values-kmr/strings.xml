@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="ok">Baş e</string>
     <string name="no">Na</string>
     <string name="app_name_full">F-Droid</string>
@@ -64,4 +64,5 @@
     <string name="crash_dialog_text">Çewtiyek ne hêvîkirî derket ku sepanê bi zorê rawestand.  Ma tu dixwazî hûrguliyan bi e-nameyê bişînî da ku tu bibî alîkar bo çareseriyê pirsgirêkê bikî\?</string>
     <string name="about_title_full">Derbarê F-Droid</string>
     <string name="app_list__name__successfully_installed">%1$s hate daxistin</string>
+    <string name="category_Navigation" tools:ignore="UnusedResources">Rêgeh</string>
 </resources>
