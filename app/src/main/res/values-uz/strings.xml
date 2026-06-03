@@ -2,6 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="no">Yoʻq</string>
     <string name="more">Batafsil</string>
+    <string name="abc_action_menu_overflow_description">Yana</string>
     <string name="less">Ozroq</string>
     <string name="menu_launch">Ochish</string>
     <string name="main_menu__swap_nearby">Yaqin atrofda</string>

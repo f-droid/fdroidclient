@@ -34,6 +34,7 @@
     <string name="repo_add_add">Tambahkan</string>
     <string name="links">Tautan</string>
     <string name="more">Lebih banyak</string>
+    <string name="abc_action_menu_overflow_description">Opsi lainnya</string>
     <string name="less">Lebih sedikit</string>
     <string name="back">Kembali</string>
     <string name="cancel">Batalkan</string>

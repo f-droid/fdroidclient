@@ -217,6 +217,7 @@
     <string name="menu_flattr">Flattr</string>
     <string name="download_error">ההורדה נכשלה!</string>
     <string name="more">עוד</string>
+    <string name="abc_action_menu_overflow_description">עוד אפשרויות</string>
     <string name="less">פחות</string>
     <string name="menu_settings">הגדרות</string>
     <string name="status_download_unknown_size">מתבצעת הורדה

@@ -215,6 +215,7 @@
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
+    <string name="abc_action_menu_overflow_description">Autres options</string>
     <string name="less">Moins</string>
     <string name="permissions">Autorisations</string>
     <string name="menu_settings">Paramètres</string>

@@ -138,6 +138,7 @@
     <string name="swap_choose_apps">Valitse sovellukset</string>
     <string name="links">Linkit</string>
     <string name="more">Lisää</string>
+    <string name="abc_action_menu_overflow_description">Lisäasetukset</string>
     <string name="less">Vähemmän</string>
     <string name="update_auto_download">Lataa päivitykset automaattisesti</string>
     <string name="update_auto_download_summary">Päivitykset ladataan automaattisesti ja sinua pyydetään asentamaan ne</string>

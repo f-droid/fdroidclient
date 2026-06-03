@@ -174,6 +174,7 @@
     <string name="SignatureMismatch">新版的應用程式使用了一個不相同的鑰匙簽署。若要安裝新版本，你必須先卸載舊版本。（註：卸載將會刪除應用程式內的資料）</string>
     <string name="download_error">下載失敗！</string>
     <string name="more">顯示更多</string>
+    <string name="abc_action_menu_overflow_description">更多選項</string>
     <string name="less">顯示較少</string>
     <string name="swap_connection_misc_error">與裝置連接時發生了問題，未能進行交換！</string>
     <string name="loading">正在載入…</string>

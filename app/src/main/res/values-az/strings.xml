@@ -69,6 +69,7 @@
     <string name="app_list__name__successfully_installed">%1$s quraşdırıldı</string>
     <string name="updates__tts__download_app">Yüklə</string>
     <string name="more">Daha çox</string>
+    <string name="abc_action_menu_overflow_description">Digər seçimlər</string>
     <string name="less">Daha az</string>
     <string name="antitracklist">Bu tətbiq fəaliyyətinizi izləyir və bu barədə hesabat verir</string>
     <string name="warning_no_internet">Yeniləmə uğursuz oldu. İnternetə qoşulmusunuzmu?</string>

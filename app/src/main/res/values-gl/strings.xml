@@ -67,6 +67,7 @@
     <string name="app_inst_unknown_source">Instalado (dende unha fonte descoñecida)</string>
     <string name="links">Ligazóns</string>
     <string name="more">Máis</string>
+    <string name="abc_action_menu_overflow_description">Máis opcións</string>
     <string name="less">Menos</string>
     <string name="back">Volver</string>
     <string name="enable">Activar</string>

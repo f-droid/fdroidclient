@@ -79,6 +79,7 @@
     <string name="added_on">أُضيفت في %s</string>
     <string name="links">الروابط</string>
     <string name="more">المزيد</string>
+    <string name="abc_action_menu_overflow_description">خيارات أكثر</string>
     <string name="less">تقليل</string>
     <string name="back">ارجع</string>
     <string name="overwrite">استبدال</string>

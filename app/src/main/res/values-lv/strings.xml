@@ -92,6 +92,7 @@
     <string name="app_list__name__successfully_installed">%1$s ir uzstādīta</string>
     <string name="updates__tts__download_app">Lejupielādēt</string>
     <string name="more">Vairāk</string>
+    <string name="abc_action_menu_overflow_description">Citas opcijas</string>
     <string name="less">Mazāk</string>
     <string name="warning_no_internet">Nevar atjaunināt. Vai ierīcei ir savienojums ar internetu?</string>
     <string name="unsigned">Neparakstīts</string>

@@ -46,6 +46,7 @@
     <string name="repo_add_add">Dodaj</string>
     <string name="links">Poveznice</string>
     <string name="more">Više</string>
+    <string name="abc_action_menu_overflow_description">Više opcija</string>
     <string name="less">Manje</string>
     <string name="back">Natrag</string>
     <string name="cancel">Odustani</string>

@@ -329,6 +329,7 @@
     <string name="yes">होय</string>
     <string name="less">कमी</string>
     <string name="more">अधिक</string>
+    <string name="abc_action_menu_overflow_description">आणखी पर्याय</string>
     <string name="menu_search">शोध</string>
     <string name="no">नाही</string>
     <string name="installing">इंस्टॉल करत आहे…</string>
