@@ -659,7 +659,7 @@
     <string name="notification_title_summary_app_update_available">Dotaknite se za posodobitev vseh</string>
     <string name="tts_repo_name">Repozitorij %1$s</string>
     <string name="tts_author_name">Avtor %1$s</string>
-    <string name="warning_no_compat_versions">Izbrani repozitorij nima združljivih različic aplikacij. Če želite prejemati posodobitve, izberite repozitorij z združljivimi različicami.</string>
+    <string name="warning_no_compat_versions">V izbranem repozitoriju ni združljivih različic aplikacije. Če želite prejemati posodobitve, izberite želeni repozitorij z združljivimi različicami.</string>
     <string name="turn_on_wifi">Vklopi Wi-Fi</string>
     <string name="copied_to_clipboard">Kopirano v odložišče</string>
     <string name="copied_url_to_clipboard">URL kopiran v odložišče</string>
@@ -831,4 +831,11 @@
     <string name="notification_installing_section_confirmation">Potrebuje uporabnikovo potrditev:</string>
     <string name="notification_installing_section_installed">Nameščeno:</string>
     <string name="notification_installing_confirmation">Kliknite za potrditev</string>
+    <string name="permission_camera_denied">Dovoli kameri, da prebere QR-kodo. V nastavitvah tapni, da dovoliš dostop do kamere.</string>
+    <string name="error">Napaka</string>
+    <string name="install_history_switch">Uporabi zgodovino namestitev</string>
+    <string name="install_history_empty_state">Ta seznam je še vedno prazen\n\nKo namestite, posodobite ali odstranite aplikacije, se bo tukaj prikazal vnos</string>
+    <string name="install_history_disabled_state">Zgodovina namestitev je onemogočena\n\nNamestitve, posodobitve in odstranitve se ne bodo beležile</string>
+    <string name="install_history_delete_ally">Izbriši zgodovino namestitev</string>
+    <string name="install_history_delete_text">Želite izbrisati zgodovino namestitev?</string>
 </resources>

@@ -503,7 +503,7 @@
     <string name="category_Nightly">每夜版本</string>
     <string name="app_error_open">無法啟動應用程式。</string>
     <string name="copied_to_clipboard">已複製到剪貼簿</string>
-    <string name="turn_on_wifi">開啟 wifi</string>
+    <string name="turn_on_wifi">開啟 Wi-Fi</string>
     <string name="nearby_splace__external_storage_permission_button">試試看</string>
     <string name="force_old_installer_title">強制使用舊安裝器</string>
     <string name="force_old_installer_summary">停用工作階段安裝器，包含自動背景更新支援。</string>
@@ -612,7 +612,7 @@
     <string name="menu_apps_my">我的應用程式</string>
     <string name="menu_about">關於</string>
     <string name="menu_discover">探索</string>
-    <string name="my_apps_empty">僅顯示透過 %1$s 安裝的應用程式</string>
+    <string name="my_apps_empty">此處只顯示%1$s軟體倉庫中的應用程式</string>
     <string name="my_apps_export_installed_apps">匯出應用程式清單</string>
     <string name="app_list_new">最新上架</string>
     <string name="app_list_recently_updated">最近更新</string>
@@ -769,4 +769,25 @@
     <string name="status_downloading">目前下載速率：%s/s</string>
     <string name="status_downloading_remaining">剩餘：%1$s</string>
     <string name="install_history_switch">使用安裝歷史紀錄</string>
+    <string name="search_auto_keyboard">自動開啟鍵盤</string>
+    <string name="hide">隱藏</string>
+    <string name="category_group_summary_productivity">日曆、任務、時鐘和筆記</string>
+    <string name="category_group_summary_tools">導航、天氣、計算器和轉換器</string>
+    <string name="category_group_summary_wallets">財務、資金和密碼管理器</string>
+    <string name="category_group_summary_media">音樂、播客、遊戲和電子書閱讀器</string>
+    <string name="category_group_summary_communication">電子郵件、即時通訊和社交網絡</string>
+    <string name="category_group_summary_device">啟動器、鍵盤、安全和主題</string>
+    <string name="category_group_summary_network">瀏覽器、VPN、代理和防火牆</string>
+    <string name="category_group_summary_storage">文件、圖庫、雲端同步和加密</string>
+    <string name="category_group_summary_interests">科學、體育、繪圖和食譜</string>
+    <string name="category_group_summary_misc">未分類</string>
+    <string name="app_details_anti_features_title">什麼是「負面特徵」？</string>
+    <string name="app_details_anti_features_text">有些應用程式會自備一些你未曾要求，而且可能不想要的功能，例如廣告、追蹤或對專有服務的依賴。我們稱這些為「反功能」。\n\n在F-Droid 中的應用程式如果包含反功能，就會明確標註，以便您做出明智的選擇。</string>
+    <string name="dialog_metered_dont_show">不要再顯示</string>
+    <string name="apps_updates_hint_title">恭喜 🥳</string>
+    <string name="apps_updates_hint_text">你所有應用程式都是最新版</string>
+    <string name="search_my_apps_hint">搜尋安裝的應用程式</string>
+    <string name="repo_disable_dialog_title">停用儲存庫</string>
+    <string name="repo_disable_dialog_warning">如果曾將該儲存庫設為任何應用程式的首選儲存庫，那麼這樣的設定將失效</string>
+    <string name="repo_disable_dialog_text">所有來自該儲存庫的應用程式將消失。已安裝的應用程式不受影響。</string>
 </resources>

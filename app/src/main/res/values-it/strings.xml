@@ -15,9 +15,9 @@
     <string name="notify_on">Mostra una notifica quando sono disponibili aggiornamenti</string>
     <string name="system_installer">Estensione privilegiata</string>
     <string name="system_installer_on">Usa l\'Estensione privilegiata per installare, aggiornare e rimuovere i pacchetti</string>
-    <string name="local_repo_name">Nome della tua repository locale</string>
-    <string name="local_repo_name_summary">Il titolo visualizzato della tua repository: %s</string>
-    <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per le repository locali</string>
+    <string name="local_repo_name">Nome del tuo repository locale</string>
+    <string name="local_repo_name_summary">Il titolo visualizzato del tuo repository: %s</string>
+    <string name="local_repo_https_on">Usa la connessione HTTPS:// criptata per i repository locali</string>
     <string name="app_details">Dettagli applicazione</string>
     <string name="no_such_app">Nessuna app corrispondente trovata.</string>
     <string name="about_title_full">Informazioni su F-Droid</string>
@@ -41,7 +41,7 @@
     <string name="malformed_repo_uri">Ignora URI non validi delle repository: %s</string>
     <string name="menu_manage">Repository</string>
     <string name="menu_search">Cerca</string>
-    <string name="menu_add_repo">Nuova repository</string>
+    <string name="menu_add_repo">Nuovo repository</string>
     <string name="menu_launch">Apri</string>
     <string name="menu_share">Condividi</string>
     <string name="menu_install">Installa</string>
@@ -103,7 +103,7 @@
     <string name="repo_confirm_delete_title">Eliminare la repository?</string>
     <string name="repo_confirm_delete_body">L\'eliminazione di una repository comporta che le app contenute in essa non saranno più disponibili. \n \nNota: Tutte le applicazioni installate in precedenza rimarranno sul tuo dispositivo.</string>
     <string name="repo_disabled_notification">%1$s disattivato. \n \nDovrai riattivare nuovamente questa repository per installare le app contenute.</string>
-    <string name="not_on_same_wifi">Il tuo dispositivo non è sulla stessa rete Wi-Fi della repository locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
+    <string name="not_on_same_wifi">Il tuo dispositivo non è sulla stessa rete Wi-Fi del repository locale che hai aggiunto! Prova a collegarti a questa rete: %s</string>
     <string name="requires_features">Richiede: %1$s</string>
     <string name="category_Development">Sviluppo</string>
     <string name="category_Games">Giochi</string>
@@ -640,7 +640,7 @@
     <string name="menu_discover">Scopri</string>
     <string name="menu_apps_my">Le mie app</string>
     <string name="first_start_loading">Recuperando i repository delle app…</string>
-    <string name="my_apps_empty">Solo le app disponibili nelle repository di %1$s sono mostrate qui</string>
+    <string name="my_apps_empty">Qui vengono mostrare solo le app disponibili nei repository di %1$s</string>
     <string name="my_apps_header_apps_with_issue">App con problemi</string>
     <string name="my_apps_ignore_dialog_title">Nascondi problema</string>
     <string name="my_apps_ignore_dialog_text">Il problema con questa versione di \"%1$s\" sarà ignorato</string>
@@ -678,11 +678,11 @@
     <string name="ipfsgw_summary_new">Scarica le app usando gli endpoint IPFS</string>
     <string name="call_to_action_keepandroidopen">F-Droid sta venendo minacciato. Google sta cambiando il modo nel quale installi applicazioni sul tuo dispositivo. Ci serve il tuo aiuto.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
-    <string name="first_start_intro">Per iniziare, sincronizza le repository dell\'app</string>
+    <string name="first_start_intro">Per iniziare, sincronizza i repository dell\'app</string>
     <string name="first_start_offline">Sei offline. Connettiti a Internet per iniziare.</string>
     <string name="first_start_metered">Sei su rete mobile e verranno scaricati più di 10 MB. Tocca Scarica repository per iniziare comunque.</string>
     <string name="first_start_button">Scarica repository</string>
-    <string name="no_repos_enabled">Nessuna repository disponibile, aggiungi una repository per iniziare</string>
+    <string name="no_repos_enabled">Nessun repository disponibile, aggiungi un repository per iniziare</string>
     <string name="search_filter_no_results">Nessuna app corrispondente\n\nProva a utilizzare meno termini di ricerca o a rimuovere i filtri</string>
     <string name="search_my_apps_no_results">Nessuna app corrispondente\n\nProva a utilizzare meno termini di ricerca o a rimuovere i filtri</string>
     <string name="sort_title">Ordinamento e compatibilità</string>
@@ -710,8 +710,8 @@
     <string name="pref_auto_updates_summary_always">Scarica e aggiorna le app giornalmente con connessione dati mobile quando il dispositivo non viene utilizzato</string>
     <string name="pref_auto_updates_summary_never">Aggiornamenti automatici disabilitati • Le app dovranno essere aggiornate manualmente</string>
     <string name="pref_repo_updates_title">Controlla aggiornamenti</string>
-    <string name="pref_repo_updates_summary_only_wifi">Scarica periodicamente gli aggiornamenti delle app dalle repository solo quando sei connesso al Wi-Fi</string>
-    <string name="pref_repo_updates_summary_always">Scarica periodicamente gli aggiornamenti delle app dalle repository anche con connessione dati mobile.</string>
+    <string name="pref_repo_updates_summary_only_wifi">Scarica periodicamente gli aggiornamenti delle app dai repository solo quando sei connesso al Wi-Fi</string>
+    <string name="pref_repo_updates_summary_always">Scarica periodicamente gli aggiornamenti delle app dai repository anche con connessione dati mobile</string>
     <string name="pref_repo_updates_summary_never">Non cercare aggiornamenti • Le applicazioni diventeranno obsolete</string>
     <string name="pref_category_network">Rete</string>
     <string name="search_history">Ricerche recenti</string>

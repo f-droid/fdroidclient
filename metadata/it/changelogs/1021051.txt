@@ -1,0 +1,5 @@
+- Riscritto l'aggiornatore del repository da capo per rendere più affidabili gli aggiornamenti in background
+- Suddivisi nome e riassunto nelle liste delle app per una lettura più semplice 
+- Adesso possono essere visualizzati degli avvisi quando l'app non può essere aggiornata dalla repo preferita
+- Le app che puntano al ventiquattresimo SDK non funzionano più per Android 15
+- Altro ancora...

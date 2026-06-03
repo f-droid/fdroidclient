@@ -637,7 +637,7 @@
     <string name="menu_discover">Descoperă</string>
     <string name="menu_apps_my">Aplicațiile mele</string>
     <string name="first_start_loading">Se preiau depozitele de aplicații…</string>
-    <string name="my_apps_empty">Doar aplicațiile instalate de %1$s sunt afișate aici</string>
+    <string name="my_apps_empty">Doar aplicațiile disponibile în depozitele %1$s sunt afișate aici</string>
     <string name="my_apps_header_apps_with_issue">Aplicații cu probleme</string>
     <string name="my_apps_ignore_dialog_title">Ascundere problemă</string>
     <string name="my_apps_ignore_dialog_text">Problema cu această versiunea a \"%1$s\" va fi ignorată</string>

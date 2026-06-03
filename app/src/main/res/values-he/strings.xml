@@ -275,7 +275,7 @@
     <string name="repositories_summary">הוספת מקורות נוספים ליישומונים</string>
     <string name="menu_video">וידאו</string>
     <string name="menu_license">רשיון: %s</string>
-    <string name="main_menu__latest_apps">עדכניים</string>
+    <string name="main_menu__latest_apps">חדש</string>
     <string name="main_menu__categories">קטגוריות</string>
     <string name="main_menu__swap_nearby">לידך</string>
     <string name="latest__empty_state__no_recent_apps">לא נמצאו יישומונים אחרונים</string>
@@ -668,7 +668,7 @@
     <string name="my_apps_export_installed_apps">ייצוא רשימת יישומונים</string>
     <string name="app_list_new">יישומונים חדשים</string>
     <string name="app_list_recently_updated">עודכנו לאחרונה</string>
-    <string name="app_list_most_downloaded">הכי מורדים</string>
+    <string name="app_list_most_downloaded">המובילים בהורדות</string>
     <string name="app_list_all">כל היישומונים</string>
     <string name="app_list_author">יישומונים מאת %s</string>
     <string name="search_placeholder">חיפוש…</string>
@@ -703,7 +703,7 @@
     <string name="sort_by_name">מיון לפי שם</string>
     <string name="sort_by_latest">מיון לפי מועד עדכון אחרון</string>
     <string name="filter_intro">סינון יישומונים לפי</string>
-    <string name="filter_button_clear_all">ניקוי כל הסינונים</string>
+    <string name="filter_button_clear_all">איפוס כל הסינונים</string>
     <string name="got_it">הבנתי</string>
     <string name="clear">ניקוי</string>
     <string name="hide">הסתרה</string>
@@ -744,7 +744,7 @@
     <string name="category_group_summary_device">יישומון מסך בית, מקלדת, אבטחה ועיצוב המכשיר</string>
     <string name="category_group_summary_interests">מדע, ספורט, ציור ומתכונים</string>
     <string name="category_group_summary_tools">ניווט, מזג אוויר, מחשבונים והמרת מידות</string>
-    <string name="search_my_apps_no_results">אין יישומים תואמים\n\nכדאי לנסות להשתמש בפחות מונחי חיפוש</string>
+    <string name="search_my_apps_no_results">אין יישומונים תואמים\n\nכדאי לנסות להשתמש בפחות מונחי חיפוש</string>
     <string name="onboarding_app_list_filter_title">סינון</string>
     <string name="pref_auto_updates_summary_only_wifi">הורדה ועדכון של יישומונים בתדירות יומיומית כאשר המכשיר מחובר לרשת אלחוטית ואינו בשימוש</string>
     <string name="pref_auto_updates_summary_always">הורדה ועדכון של יישומונים בתדירות יומיומית אפילו במצב נתונים ניידים כאשר המכשיר אינו בשימוש</string>

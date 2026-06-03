@@ -509,7 +509,7 @@
     <string name="warning_target_sdk">呢個 app 係為較舊版本嘅 Android 而建，冇得自動更新。</string>
     <string name="about_title_basic">關於 F-Droid 新基本</string>
     <string name="app_error_open">開唔到個 app。</string>
-    <string name="turn_on_wifi">開啟 wifi</string>
+    <string name="turn_on_wifi">開啟 Wi-Fi</string>
     <string name="repo_state_adding">加入緊存庫…</string>
     <string name="repo_invalid">存庫無效。
 \n
@@ -574,4 +574,55 @@
     <string name="repo_mirror_add_info">您話要加入嘅 URL (%s) 係現有存庫嘅鏡像。</string>
     <string name="antitetherednet">獨家網絡服務</string>
     <string name="antitetherednetlist">呢個 app 完全依賴單一網絡服務</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Basic</string>
+    <string name="menu_about">關於</string>
+    <string name="first_start_offline">冇網路。唔該連接網路後先開始。</string>
+    <string name="first_start_metered">你而家用緊行動數據，將會下載多過 10MB 嘅資料。如果仲想開始，撳取得存庫繼續。</string>
+    <string name="first_start_button">取得存庫</string>
+    <string name="no_repos_enabled">冇可以用嘅存庫，想開始嘅話，唔該先加一個存庫</string>
+    <string name="my_apps_empty">呢度淨係會顯示%1$s存庫入面嘅應用程式</string>
+    <string name="my_apps_header_apps_with_issue">有問題嘅應用程式</string>
+    <string name="my_apps_ignore_dialog_title">隱藏問題</string>
+    <string name="my_apps_ignore_dialog_button">隱藏</string>
+    <string name="app_list_author">%s 嘅應用程式</string>
+    <string name="search_no_results">搵唔到應用程式\n\n試下減少搜尋關鍵字或新增存庫</string>
+    <string name="search_filter_no_results">冇啱嘅應用\n\n試下減少搜尋關鍵字或刪除篩選器</string>
+    <string name="search_my_apps_no_results">冇啱嘅應用\n\n試下減少關鍵字</string>
+    <string name="search_auto_keyboard">自動開啟鍵盤</string>
+    <string name="got_it">知道</string>
+    <string name="clear">清除</string>
+    <string name="category_group_summary_productivity">日曆、任務、時鐘同筆記</string>
+    <string name="category_group_summary_network">瀏覽器、VPN、代理同防火牆</string>
+    <string name="category_group_summary_misc">未分類</string>
+    <string name="category_group_tools">架生</string>
+    <string name="category_group_wallets">財經同銀包</string>
+    <string name="category_group_media">娛樂同媒體</string>
+    <string name="my_apps_ignore_dialog_text">將忽略呢個版本入面「%1$s」相關嘅問題</string>
+    <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org/zh-TW</string>
+    <string name="call_to_action_keepandroidopen">F-Droid 有事：Google 正顛覆您喺您嘅裝置上面安裝應用程式既方式，亟需眾人合力平反。請出手襄助</string>
+    <string name="collapse">收埋</string>
+    <string name="expand">展開</string>
+    <string name="install_history_delete_text">想剷除安裝歷史記錄？</string>
+    <string name="install_history_delete_ally">剷除安裝歷史記錄</string>
+    <string name="install_history_disabled_state">停用咗安裝歷史記錄\n\n唔會記錄安裝、更新同埋解除安裝</string>
+    <string name="install_history_empty_state">呢個列表仲係空白。\n\n安裝、更新或解除安裝應用程式嘅時候，呢度會出現記錄</string>
+    <string name="install_history_switch">使用安裝歷史紀錄</string>
+    <string name="warning_no_compat_versions">所揀嘅存庫冇相容的應用程式版本。要接收更新嘅話，唔該揀有相容版本的存庫。</string>
+    <string name="tts_author_name">作者 %1$s</string>
+    <string name="tts_repo_name">存庫 %1$s</string>
+    <string name="notification_installing_section_installed">已安裝：</string>
+    <string name="notification_installing_section_installing">安裝緊：</string>
+    <plurals name="notification_update_success_title">
+        <item quantity="other">更新咗 %1$d 個應用</item>
+    </plurals>
+    <plurals name="notification_updating_title">
+        <item quantity="other">更新緊 %1$d 個應用程式…</item>
+    </plurals>
+    <plurals name="notification_installing_title">
+        <item quantity="other">安裝緊 %1$d 個應用程式…</item>
+    </plurals>
+    <string name="notification_repo_update_default">而家連線到 %1$s…</string>
+    <string name="notification_channel_updates_available_description">喺存庫更新同發現應用程式更新嘅時候顯示一則通知</string>
+    <string name="notification_channel_updates_available_title">可用嘅應用程式更新</string>
 </resources>

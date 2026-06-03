@@ -1,0 +1,8 @@
+* Korisničko sučelje u potpunosti iznova napisano pomoću Kotlin Composea
+* Poboljšana pretraga, koja uključuje pretraživanje u opisima i prijevodima
+* Lakše otkrivanje novih aplikacija, uz isticanje onih s najviše preuzimanja
+* Odobrenje instalacije *prije* preuzimanja
+* Višestruka ažuriranja/preuzimanja u isto vrijeme
+* Obavještavanje korisnika o problemima s aplikacijama (npr. promijenjen ključ za potpisivanje)
+* Opcijska Material You tema boja
+* Poboljšano filtriranje popisa

@@ -270,7 +270,7 @@
     <string name="installed_app__updates_ignored">Actualizacións ignoradas</string>
     <string name="installed_app__updates_ignored_for_suggested_version">Actualizacións ignoradas para a versión %1$s</string>
     <string name="update_all">Actualizar todo</string>
-    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Recomendámosche desinstalar esta aplicación de xeito inmediato.</string>
+    <string name="updates__app_with_known_vulnerability__prompt_uninstall">Atopamos unha vulnerabilidade en %1$s. Preme para ler máis na sección Funcións Indesexables.</string>
     <string name="updates__app_with_known_vulnerability__prompt_upgrade">Atopamos unha vulnerabilidade en %1$s. Recomendámosche actualizar á nova versión de xeito inmediato.</string>
     <string name="updates__app_with_known_vulnerability__ignore">Ignorar</string>
     <string name="updates__hide_updateable_apps">Agochar aplicacións</string>
@@ -290,7 +290,7 @@
     <string name="preference_category__my_apps">As miñas aplicacións</string>
     <string name="details_new_in_version">Novidades da versión %s</string>
     <string name="antifeatureswarning">Esta aplicación ten funcións que poderían non gostarche.</string>
-    <string name="antifeatures">Funcións indesexadas</string>
+    <string name="antifeatures">Funcións indesexables</string>
     <string name="antinonfreeassetslist">Esta aplicación contén elemento non libres</string>
     <string name="useTor">Empregar o Tor</string>
     <string name="useTorSummary">Forzar a baixada a través do Tor para maior intimidade. Require o Orbot</string>
@@ -411,8 +411,8 @@
     <string name="over_network_never_summary">Non baixar ren empregando esta conexión</string>
     <string name="antidisabledalgorithmlist">Esta aplicación ten unha sinatura de seguranza feble</string>
     <string name="antiknownvulnlist">Esta aplicación contén unha vulnerabilidade de seguranza coñecida</string>
-    <string name="show_anti_feature_apps">Incluír aplicacións con funcións indesexadas</string>
-    <string name="show_anti_feature_apps_on">Amosar aplicacións que requiren de funcións indesexadas</string>
+    <string name="show_anti_feature_apps">Incluír aplicacións con funcións indesexables</string>
+    <string name="show_anti_feature_apps_on">Amosar aplicacións que requiren de funcións indesexables</string>
     <string name="force_touch_apps">Incluír aplicacións que requiren de pantalla táctil</string>
     <string name="force_touch_apps_on">Amosar aplicacións que requiren de pantalla táctil mesmo se non hai suporte físico</string>
     <string name="repo_official_mirrors">Réplicas oficiais</string>
@@ -504,13 +504,13 @@
     <string name="antinsfw">Contido explícito \"non seguro para o traballo\" (NSFW)</string>
     <string name="theme_follow_system">Usar a do sistema</string>
     <string name="toast_metrics_in_install_history">O reporte de métricas %s pode ser visto no visor do historial de instalación</string>
-    <string name="antiothers">Outras funcións indesexadas</string>
+    <string name="antiothers">Outras funcións indesexables</string>
     <string name="swap_wifi_vpn_conflict">Conflitos coa VPN activa!</string>
     <string name="antinonfreenet">Servizos de rede non libres</string>
     <string name="antinonfreeassets">Activos non libres</string>
     <string name="antinonfreedep">Dependencias non libres</string>
     <string name="share_apk_error">Non se puido compartilo ficheiro da aplicación</string>
-    <string name="app_list_results_hidden_antifeature_settings">Algunhas apps foron ocultadas seguindo a súa configuración de funcións indesexadas. Prema para mudar.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Algunhas apps están ocultas seguindo a configuración de funcións indesexadas. Prema para mudar.</string>
     <string name="menu_release_channel_beta">Permitir Actualizacións Beta</string>
     <string name="latest__empty_state__upgrading">Actualizando base de datos…</string>
     <string name="app_name_basic">F-Droid básico</string>
@@ -594,4 +594,8 @@
     <string name="category_group_productivity">Produtividade</string>
     <string name="category_group_tools">Ferramentas</string>
     <string name="category_group_wallets">Finanzas e carteiras</string>
+    <string name="filter_antifeatures">Ocultar funcións indesexables</string>
+    <string name="anti_features_title">Esta app ten funcións indesexables</string>
+    <string name="app_details_anti_features_title">Que son as Funcións Indesexables?</string>
+    <string name="app_details_anti_features_text">Algunhas aplicacións veñen con funcións que non pediches — e pode que non queiras. Cousas como publicidade, seguimento ou dependencia de servizos propietarios. A isto chamámoslle funcións indesexables.\n\nAs apps en F-Droid están etiquetadas de xeito claro cando conteñen funcións indesexables, para que poidas tomar unha decisión informada.</string>
 </resources>

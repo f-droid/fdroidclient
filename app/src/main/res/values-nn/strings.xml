@@ -523,4 +523,25 @@
     <string name="first_start_loading">Hentar pakkebrønnar…</string>
     <string name="first_start_intro">Synkroniser pakkebrønnane for å starte</string>
     <string name="first_start_offline">Du er fråkopla. Kople til internett for å starte.</string>
+    <string name="first_start_metered">Du er på mobildata og meir enn 10 MB vil bli lasta ned. Trykk på Hent pakkebrønnar for å starte likevel.</string>
+    <string name="first_start_button">Hent pakkebrønnar</string>
+    <string name="no_repos_enabled">Ingen tilgjengelege pakkebrønnar, legg til ein pakkebrønn for å starte</string>
+    <string name="my_apps_empty">Kun appar tilgjengeleg i %1$s sine pakkebrønnar er vist her</string>
+    <string name="my_apps_header_apps_with_issue">Appar med problem</string>
+    <string name="my_apps_ignore_dialog_title">Skjul problem</string>
+    <string name="my_apps_ignore_dialog_text">Problemet med denne versjonen av \"%1$s\" vil verte ignorert</string>
+    <string name="my_apps_ignore_dialog_button">Skjul</string>
+    <string name="my_apps_export_installed_apps">Eksporter appliste</string>
+    <string name="app_list_new">Nye appar</string>
+    <string name="app_list_recently_updated">Nyleg oppdatert</string>
+    <string name="app_list_most_downloaded">Mest nedlasta</string>
+    <string name="app_list_all">Alle appar</string>
+    <string name="app_list_author">Appar frå %s</string>
+    <string name="search_placeholder">Søk…</string>
+    <string name="search_history">Nylege søk</string>
+    <string name="search_no_results">Ingen appar funne\n\nPrøv å bruke færre søkeord eller legg til fleire pakkebrønnar</string>
+    <string name="onboarding_app_list_filter_title">Filter</string>
+    <string name="got_it">Forstått</string>
+    <string name="clear">Tøm</string>
+    <string name="hide">Skjul</string>
 </resources>

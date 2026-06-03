@@ -627,7 +627,7 @@
     <string name="menu_discover">Descobrir</string>
     <string name="menu_apps_my">As minhas apps</string>
     <string name="first_start_loading">A buscar repositórios de apps</string>
-    <string name="my_apps_empty">Apenas apps instaladas por %1$s são mostradas aqui</string>
+    <string name="my_apps_empty">Apenas apps disponíveis nos respositórios de %1$s são mostradas aqui</string>
     <string name="my_apps_header_apps_with_issue">Apps com problemas</string>
     <string name="my_apps_ignore_dialog_title">Esconder problema</string>
     <string name="my_apps_ignore_dialog_text">O problema com esta versão de \"%1$s\" será ignorado</string>
@@ -717,4 +717,11 @@
     <string name="category_group_summary_communication">E-mail, mensagens e redes sociais</string>
     <string name="category_group_summary_device">Lançadores, teclado, segurança &amp; temas</string>
     <string name="pref_repo_updates_title">Verificar se há atualizações</string>
+    <string name="pref_proxy_disabled">Ligar à Internet sem proxy</string>
+    <string name="app_issue_not_available_button">Mostrar informação da app</string>
+    <string name="added_x_ago">Adicionado %1$s</string>
+    <string name="size_colon">Tamanho: %1$s</string>
+    <string name="version_code_colon">Código de versão: %1$s</string>
+    <string name="sdk_min_version">%1$s (mín)</string>
+    <string name="sdk_max_version">%1$s (máx)</string>
 </resources>
