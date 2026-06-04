@@ -10,6 +10,8 @@ plugins {
   alias(libs.plugins.ktfmt)
 }
 
+val nightlyVersionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
+
 android {
   namespace = "org.fdroid"
   compileSdk = libs.versions.compileSdk.get().toInt()
@@ -17,9 +19,9 @@ android {
   defaultConfig {
     applicationId = "org.fdroid"
     minSdk = 24
-    targetSdk = 36
-    versionCode = 2000009
-    versionName = "2.0-alpha9"
+    targetSdk = 37
+    versionCode = 2000010
+    versionName = "2.0-alpha10"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -28,6 +30,7 @@ android {
     all { buildConfigField("String", "ACRA_REPORT_EMAIL", "\"reports@f-droid.org\"") }
     getByName("release") {
       isMinifyEnabled = true
+      isShrinkResources = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
     getByName("debug") {
@@ -49,7 +52,7 @@ android {
     create("default") { dimension = "release" }
     create("nightly") {
       dimension = "release"
-      versionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
+      versionCode = nightlyVersionCode
       versionNameSuffix = "-$gitHash"
       applicationIdSuffix = ".nightly"
     }
@@ -84,6 +87,10 @@ androidComponents {
       variantBuilder.enable = false
     }
   }
+  // only needed while basic flavor has its own version code
+  onVariants(selector().withFlavor("release" to "nightly")) { variant ->
+    variant.outputs.forEach { output -> output.versionCode.set(nightlyVersionCode) }
+  }
 }
 
 dependencies {
@@ -102,6 +109,7 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.compose.material.icons.extended)
   implementation(libs.androidx.lifecycle.viewmodel.compose)
+  implementation(libs.androidx.compose.material3.adaptive.navigation)
   implementation(libs.androidx.compose.material3.adaptive.navigation3)
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.material3)
@@ -132,7 +140,7 @@ dependencies {
   ksp(libs.hilt.android.compiler)
   ksp(libs.androidx.hilt.compiler)
   // https://github.com/google/dagger/issues/5001
-  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0")
+  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.21")
 
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)

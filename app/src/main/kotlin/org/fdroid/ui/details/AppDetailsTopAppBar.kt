@@ -32,28 +32,30 @@ fun AppDetailsTopAppBar(
   TopAppBar(
     colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
     title = {
-      if (topAppBarState.overlappedFraction == 1f) {
+      if (item is LoadedAppDetailsItem && topAppBarState.overlappedFraction == 1f) {
         Text(item.name, maxLines = 1, overflow = TextOverflow.Ellipsis)
       }
     },
     navigationIcon = { if (onBackNav != null) BackButton(onClick = onBackNav) },
     actions = {
-      val context = LocalContext.current
-      item.actions.shareIntent?.let { shareIntent ->
-        TopAppBarButton(
-          imageVector = Icons.Filled.Share,
-          contentDescription = stringResource(R.string.menu_share),
-          onClick = { context.startActivitySafe(shareIntent) },
-        )
-      }
-      // the launcher needs to be at least here,
-      // because if the menu is dismissed we don't get the result
-      val uninstallLauncher =
-        rememberLauncherForActivityResult(StartActivityForResult()) {
-          item.actions.onUninstallResult(it)
+      if (item is LoadedAppDetailsItem) {
+        val context = LocalContext.current
+        item.actions.shareIntent?.let { shareIntent ->
+          TopAppBarButton(
+            imageVector = Icons.Filled.Share,
+            contentDescription = stringResource(R.string.menu_share),
+            onClick = { context.startActivitySafe(shareIntent) },
+          )
         }
-      TopAppBarOverflowButton { onDismissRequest ->
-        AppDetailsMenu(item, uninstallLauncher, onDismissRequest)
+        // the launcher needs to be at least here,
+        // because if the menu is dismissed we don't get the result
+        val uninstallLauncher =
+          rememberLauncherForActivityResult(StartActivityForResult()) {
+            item.actions.onUninstallResult(it)
+          }
+        TopAppBarOverflowButton { onDismissRequest ->
+          AppDetailsMenu(item, uninstallLauncher, onDismissRequest)
+        }
       }
     },
     scrollBehavior = scrollBehavior,

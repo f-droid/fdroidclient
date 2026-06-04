@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
   val requestPermissionLauncher = registerForActivityResult(RequestPermission()) {}
 
   @Inject lateinit var settingsManager: SettingsManager
+  @Inject lateinit var notificationManager: NotificationManager
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -77,5 +78,10 @@ class MainActivity : AppCompatActivity() {
 
     // calling super seems to be needed, so the IntentListener gets informed
     super.onNewIntent(intent, caller)
+  }
+
+  override fun onResume() {
+    super.onResume()
+    notificationManager.cancelSelfUpdateNotification()
   }
 }

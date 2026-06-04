@@ -652,7 +652,6 @@
     <string name="category_group_storage">Failid ja andmeruum</string>
     <string name="category_group_interests">Huvid ja hobid</string>
     <string name="category_group_misc">Varia</string>
-    <string name="author_by">Arendajalt %1$s</string>
     <string name="last_updated">Viimati uuendatud: %1$s</string>
     <string name="last_updated_with_size">Viimati uuendatud: %1$s (%2$s)</string>
     <string name="status_install_preparing">Valmistun paigaldama…</string>

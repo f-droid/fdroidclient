@@ -200,6 +200,10 @@ internal class RepoAdder(
         log.error(e) { "Error fetching repo." }
         onError(AddRepoError(INVALID_INDEX, e))
         return
+      } catch (e: Exception) { // all other exceptions also need to get caught
+        log.error(e) { "Error fetching repo." }
+        onError(AddRepoError(IO_ERROR, e))
+        return
       }
     // set final result
     val finalRepo = receivedRepo

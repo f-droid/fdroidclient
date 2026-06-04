@@ -637,7 +637,6 @@
     <string name="category_group_storage">Kartela &amp; Depozitim</string>
     <string name="category_group_interests">Interesa</string>
     <string name="category_group_misc">Të ndryshme</string>
-    <string name="author_by">Nga %1$s</string>
     <string name="last_updated">Përditësuar së fundi më: %1$s</string>
     <string name="anti_features_title">Ky aplikacion përmban anti-veçori</string>
     <string name="developer_contact">Kontakt zhvilluesi</string>

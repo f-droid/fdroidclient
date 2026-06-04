@@ -636,7 +636,6 @@
     <string name="last_updated_with_size">最後更新: %1$s (%2$s)</string>
     <string name="status_install_preparing">正在準備安裝…</string>
     <string name="whats_new_title">有什麼新事物</string>
-    <string name="author_by">由 %1$s 提供</string>
     <string name="donate_title">課金</string>
     <string name="anti_features_title">此應用程式包含負面功能</string>
     <string name="developer_contact">聯絡開發者</string>

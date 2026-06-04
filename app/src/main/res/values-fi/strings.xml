@@ -625,7 +625,6 @@
     <string name="category_group_network">Verkko</string>
     <string name="category_group_storage">Tiedostot ja tallennus</string>
     <string name="category_group_misc">Sekalaiset</string>
-    <string name="author_by">Tekijältä %1$s</string>
     <string name="last_updated">Viimeksi päivitetty: %1$s</string>
     <string name="last_updated_with_size">Viimeksi päivitetty: %1$s (%2$s)</string>
     <string name="status_install_preparing">Valmistellaan asennusta…</string>

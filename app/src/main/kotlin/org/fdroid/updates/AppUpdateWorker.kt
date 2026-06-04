@@ -49,7 +49,7 @@ constructor(
     @JvmStatic
     fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
       val workManager = WorkManager.getInstance(context)
-      if (autoUpdate != AutoUpdateValues.Never) {
+      if (autoUpdate.workerEnabled) {
         Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
         val networkType =
           if (autoUpdate == AutoUpdateValues.Always) {

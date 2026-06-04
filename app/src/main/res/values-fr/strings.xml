@@ -666,7 +666,6 @@
     <string name="category_group_storage">Fichiers &amp; Stockage</string>
     <string name="category_group_interests">Intérêts</string>
     <string name="category_group_misc">Divers</string>
-    <string name="author_by">De %1$s</string>
     <string name="last_updated">Dernière mise à jour : %1$s</string>
     <string name="last_updated_with_size">Dernière mise à jour : %1$s (%2$s)</string>
     <string name="status_install_preparing">Préparation de l\'installation…</string>

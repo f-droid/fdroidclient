@@ -684,7 +684,6 @@
     <string name="category_group_storage">Pliki i pamięć</string>
     <string name="category_group_interests">Zainteresowania</string>
     <string name="category_group_misc">Różne</string>
-    <string name="author_by">Przez %1$s</string>
     <string name="last_updated">Ostatnia aktualizacja: %1$s</string>
     <string name="last_updated_with_size">Ostatnia aktualizacja: %1$s (%2$s)</string>
     <string name="status_install_preparing">Przygotowywanie instalacji…</string>

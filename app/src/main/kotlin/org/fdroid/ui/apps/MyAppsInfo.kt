@@ -21,7 +21,9 @@ data class MyAppsModel(
   val networkState: NetworkState,
   val isSearching: Boolean = false,
   val appUpdatesBytes: Long? = null,
-)
+) {
+  val showClearInstallingAppsButton: Boolean = installingApps.all { !it.installState.showProgress }
+}
 
 interface MyAppsActions {
   fun updateAll()
@@ -31,6 +33,8 @@ interface MyAppsActions {
   fun search(query: String)
 
   fun confirmAppInstall(packageName: String, state: InstallConfirmationState)
+
+  fun clearInstallingApps()
 
   fun ignoreAppIssue(item: AppWithIssueItem)
 

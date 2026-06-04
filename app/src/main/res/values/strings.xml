@@ -22,6 +22,7 @@
 
     <!-- The %1$s placeholder will be replaced by the app name, e.g. "F-Droid" -->
     <string name="my_apps_empty">Only apps available in %1$s\'s repositories are shown here</string>
+    <string name="my_apps_header_recently_installed_apps">Recently installed</string>
     <string name="my_apps_header_apps_with_issue">Apps with issues</string>
     <string name="my_apps_ignore_dialog_title">Hide issue</string>
     <string name="my_apps_ignore_dialog_text">The issue with this version of \"%1$s\" will get ignored</string>
@@ -58,18 +59,8 @@
     <string name="onboarding_app_list_filter_message">Use filters to only show apps from specific categories or repositories. You can also change the sort order.</string>
     <string name="got_it">Got it</string>
     <string name="clear">Clear</string>
+    <string name="clear_all">Clear all</string>
     <string name="hide">Hide</string>
-
-    <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>
-    <string name="category_group_summary_tools">Navigation, weather, calculators &amp; converters</string>
-    <string name="category_group_summary_wallets">Finance, money &amp; pass managers</string>
-    <string name="category_group_summary_media">Music, podcasts, games &amp; ebook readers</string>
-    <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
-    <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
-    <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
-    <string name="category_group_summary_storage">Files, gallery, cloud sync &amp; encryption</string>
-    <string name="category_group_summary_interests">Science, sports, drawing &amp; recipes</string>
-    <string name="category_group_summary_misc">Uncategorized</string>
 
     <string name="category_group_productivity">Productivity</string>
     <string name="category_group_tools">Tools</string>
@@ -77,13 +68,24 @@
     <string name="category_group_media">Entertainment &amp; Media</string>
     <string name="category_group_communication">Communication</string>
     <string name="category_group_device">Device</string>
+    <string name="category_group_games">Games</string>
     <string name="category_group_network">Network</string>
     <string name="category_group_storage">Files &amp; Storage</string>
     <string name="category_group_interests">Interests</string>
     <string name="category_group_misc">Miscellaneous</string>
 
-    <!-- Used in app details page to show who is the author of the app -->
-    <string name="author_by">By %1$s</string>
+    <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>
+    <string name="category_group_summary_tools">Navigation, weather, calculators &amp; converters</string>
+    <string name="category_group_summary_wallets">Finance, money &amp; pass managers</string>
+    <string name="category_group_summary_media">Music, podcasts &amp; ebook readers</string>
+    <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
+    <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
+    <string name="category_group_summary_games">Board, card &amp; party games</string>
+    <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
+    <string name="category_group_summary_storage">Files, gallery, cloud sync &amp; encryption</string>
+    <string name="category_group_summary_interests">Science, sports, drawing &amp; recipes</string>
+    <string name="category_group_summary_misc">Uncategorized</string>
+
     <string name="last_updated">Last updated: %1$s</string>
     <!-- The placeholder in round brackets will be replaced with the size of the app -->
     <string name="last_updated_with_size">Last updated: %1$s (%2$s)</string>
@@ -102,6 +104,7 @@
     </string>
     <string name="installIncompatible">App incompatible with your device, install anyway?</string>
     <string name="version">Version</string>
+    <!-- Used in app details page to show who is the author of the app -->
     <string name="by_author_format">by %s</string>
     <string name="delete">Delete</string>
     <string name="prompt_to_send_crash_reports">Prompt to send crash reports</string>
@@ -183,6 +186,7 @@
     <string name="pref_language_summary">Open system language settings</string>
     <string name="pref_auto_updates_only_wifi">Only on Wi-Fi</string>
     <string name="pref_auto_updates_only_always">Always (even on mobile data)</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Only when opening the app</string>
     <string name="pref_auto_updates_only_never">Never</string>
     <string name="pref_auto_updates_summary_only_wifi">Download and update apps daily when on Wi-Fi and the device isn\'t being used</string>
     <string name="pref_auto_updates_summary_always">Download and update apps daily even on mobile data when the device isn\'t being used</string>
@@ -190,6 +194,7 @@
     <string name="pref_repo_updates_title">Check for updates</string>
     <string name="pref_repo_updates_summary_only_wifi">Periodically fetch app updates from repositories only when on Wi-Fi</string>
     <string name="pref_repo_updates_summary_always">Periodically fetch app updates from repositories even when on mobile data</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Check for updates only when opened • Apps will become outdated</string>
     <string name="pref_repo_updates_summary_never">Don\'t check for updates • Apps will become outdated</string>
     <string name="pref_category_network">Network</string>
     <string name="pref_mirror_chooser_title">Download mirror selection</string>
@@ -956,6 +961,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_channel_install_success_description">Displays a notification after apps were installed automatically</string>
     <string name="notification_channel_updates_available_title">Available app updates</string>
     <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found</string>
+    <string name="notification_channel_self_update_title">Self-update</string>
+    <string name="notification_channel_self_update_description">Notifies when the app updated itself and was closed, so you can launch it again easily</string>
 
     <string name="notification_repo_update_default">Connecting to %1$s…</string>
     <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
@@ -979,6 +986,8 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="notification_installing_section_confirmation">Needs user confirmation:</string>
     <string name="notification_installing_section_installed">Installed:</string>
     <string name="notification_installing_confirmation">Tap to confirm</string>
+    <!-- The placeholder %s will be replaced with the name of this app -->
+    <string name="notification_self_update_title">%s was updated. Tap to open</string>
 
     <!-- Used by the TTS engine when showing a filter "chip" in the search box -->
     <string name="tts_category_name">Category %1$s</string>

@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.database.NotAvailable
+import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
@@ -139,11 +140,26 @@ fun MyAppsList(
     // Apps currently installing header
     if (installingApps.isNotEmpty()) {
       item(key = "B", contentType = "header") {
-        Text(
-          text = stringResource(R.string.notification_title_summary_installing),
-          style = MaterialTheme.typography.titleMedium,
-          modifier = Modifier.padding(16.dp),
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+          Text(
+            text =
+              if (myAppsInfo.model.showClearInstallingAppsButton) {
+                stringResource(R.string.my_apps_header_recently_installed_apps)
+              } else {
+                stringResource(R.string.notification_title_summary_installing)
+              },
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(16.dp).weight(1f),
+          )
+          if (myAppsInfo.model.showClearInstallingAppsButton) {
+            TextButton(
+              onClick = myAppsInfo.actions::clearInstallingApps,
+              modifier = Modifier.padding(end = 16.dp),
+            ) {
+              Text(stringResource(R.string.clear_all))
+            }
+          }
+        }
       }
       // List of currently installing apps
       items(items = installingApps, key = { it.packageName }, contentType = { "B" }) { app ->
@@ -157,7 +173,7 @@ fun MyAppsList(
               onClick = { onAppItemClick(app.packageName) },
             )
           }
-        val modifier = Modifier.Companion.animateItem().then(interactionModifier)
+        val modifier = Modifier.animateItem().then(interactionModifier)
         InstallingAppRow(app, isSelected, modifier)
       }
     }
@@ -288,7 +304,12 @@ private fun Preview() {
         getMyAppsInfo(
           myAppsModel.copy(
             appUpdates = emptyList(),
-            installingApps = emptyList(),
+            installingApps =
+              listOf(
+                myAppsModel.installingApps[0].copy(
+                  installState = InstallState.Installed("Installed App", "0.5.2", null, 1337L, null)
+                )
+              ),
             appsWithIssue = emptyList(),
           )
         ),

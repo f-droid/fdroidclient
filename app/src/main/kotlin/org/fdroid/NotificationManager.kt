@@ -12,11 +12,14 @@ import androidx.annotation.StringRes
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.BigTextStyle
+import androidx.core.app.NotificationCompat.CATEGORY_REMINDER
 import androidx.core.app.NotificationCompat.CATEGORY_SERVICE
 import androidx.core.app.NotificationCompat.PRIORITY_HIGH
+import androidx.core.app.NotificationCompat.PRIORITY_MAX
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT
 import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
+import androidx.core.app.NotificationManagerCompat.IMPORTANCE_MAX
 import androidx.core.content.ContextCompat.checkSelfPermission
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -40,10 +43,12 @@ constructor(@param:ApplicationContext private val context: Context) {
     const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
     const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 2
     const val NOTIFICATION_ID_APP_UPDATES_AVAILABLE: Int = 3
+    const val NOTIFICATION_ID_SELF_UPDATE: Int = 4
     private const val CHANNEL_UPDATES = "update-channel"
     private const val CHANNEL_INSTALLS = "install-channel"
     private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
     private const val CHANNEL_UPDATES_AVAILABLE = "updates-available-channel"
+    private const val CHANNEL_SELF_UPDATE = "self-update-channel"
   }
 
   init {
@@ -68,6 +73,10 @@ constructor(@param:ApplicationContext private val context: Context) {
         NotificationChannelCompat.Builder(CHANNEL_UPDATES_AVAILABLE, IMPORTANCE_DEFAULT)
           .setName(s(R.string.notification_channel_updates_available_title))
           .setDescription(s(R.string.notification_channel_updates_available_description))
+          .build(),
+        NotificationChannelCompat.Builder(CHANNEL_SELF_UPDATE, IMPORTANCE_MAX)
+          .setName(s(R.string.notification_channel_self_update_title))
+          .setDescription(s(R.string.notification_channel_self_update_description))
           .build(),
       )
     nm.createNotificationChannelsCompat(channels)
@@ -179,6 +188,28 @@ constructor(@param:ApplicationContext private val context: Context) {
         .setContentIntent(pi)
         .setAutoCancel(true)
     return builder
+  }
+
+  fun showSelfUpdateNotification() {
+    val pi = getMyAppsPendingIntent(context)
+    val app = context.getString(R.string.app_name)
+    val title = context.getString(R.string.notification_self_update_title, app)
+    val builder =
+      NotificationCompat.Builder(context, CHANNEL_SELF_UPDATE)
+        .setSmallIcon(R.drawable.ic_notification)
+        .setCategory(CATEGORY_REMINDER)
+        .setContentTitle(title)
+        .setPriority(PRIORITY_MAX)
+        .setContentIntent(pi)
+        .setAutoCancel(true)
+    val n = builder.build()
+    if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+      nm.notify(NOTIFICATION_ID_SELF_UPDATE, n)
+    }
+  }
+
+  fun cancelSelfUpdateNotification() {
+    nm.cancel(NOTIFICATION_ID_SELF_UPDATE)
   }
 
   private fun getMainActivityPendingIntent(context: Context): PendingIntent {

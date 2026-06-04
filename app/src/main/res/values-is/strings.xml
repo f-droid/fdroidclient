@@ -640,7 +640,6 @@
     <string name="category_group_storage">Skrár og geymslurými</string>
     <string name="category_group_interests">Áhugamál</string>
     <string name="category_group_misc">Ýmislegt</string>
-    <string name="author_by">Frá %1$s</string>
     <string name="last_updated">Síðast uppfært: %1$s</string>
     <string name="last_updated_with_size">Síðast uppfært: %1$s (%2$s)</string>
     <string name="status_install_preparing">Undirbý uppsetningu…</string>

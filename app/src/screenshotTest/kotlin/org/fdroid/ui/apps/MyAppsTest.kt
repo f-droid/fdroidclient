@@ -10,6 +10,7 @@ import org.fdroid.install.InstallState
 import org.fdroid.ui.ScreenshotTest
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.getPreviewVersion
+import org.fdroid.ui.utils.myAppsModel
 
 @Composable
 @PreviewTest
@@ -69,7 +70,12 @@ fun MyAppsInstalledAndIssues() {
     val model =
       MyAppsModel(
         appUpdates = emptyList(),
-        installingApps = emptyList(),
+        installingApps =
+          listOf(
+            myAppsModel.installingApps[0].copy(
+              installState = InstallState.Installed("Installed App", "0.5.2", null, 1337L, null)
+            )
+          ),
         appsWithIssue = getAppIssues(),
         installedApps = getInstalledApps(),
         showUpdatesHint = false,

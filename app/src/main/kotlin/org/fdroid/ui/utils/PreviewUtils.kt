@@ -5,7 +5,6 @@ import androidx.annotation.RestrictTo
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import java.util.concurrent.TimeUnit.DAYS
 import java.util.concurrent.TimeUnit.HOURS
-import java.util.concurrent.TimeUnit.MINUTES
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
@@ -33,7 +32,7 @@ import org.fdroid.ui.apps.MyAppsModel
 import org.fdroid.ui.categories.CategoryItem
 import org.fdroid.ui.details.AntiFeature
 import org.fdroid.ui.details.AppDetailsActions
-import org.fdroid.ui.details.AppDetailsItem
+import org.fdroid.ui.details.LoadedAppDetailsItem
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
@@ -143,14 +142,24 @@ val categoryItems =
     CategoryItem("doesn't exist", "Foo bar"),
   )
 
+private val description =
+  "NewPipe does not use any Google framework libraries, or the YouTube API. " +
+    "It only parses the website in order to gain the information it needs. " +
+    "Therefore this app can be used on devices without Google Services installed. " +
+    "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
+    LoremIpsum(128).values.joinToString(" ")
+
 val testApp =
-  AppDetailsItem(
+  LoadedAppDetailsItem(
     app =
       AppMetadata(
         repoId = 1,
         packageName = "org.schabi.newpipe",
         added = 1441756800000,
         lastUpdated = 1747214796000,
+        name = mapOf("en-US" to "New Pipe"),
+        summary = mapOf("en-US" to "Lightweight YouTube frontend"),
+        description = mapOf("en-US" to description),
         webSite = "https://newpipe.net",
         changelog = "https://github.com/TeamNewPipe/NewPipe/releases",
         license = "GPL-3.0-or-later",
@@ -179,12 +188,7 @@ val testApp =
     appPrefs = AppPrefs("org.schabi.newpipe"),
     name = "New Pipe",
     summary = "Lightweight YouTube frontend",
-    description =
-      "NewPipe does not use any Google framework libraries, or the YouTube API. " +
-        "It only parses the website in order to gain the information it needs. " +
-        "Therefore this app can be used on devices without Google Services installed. " +
-        "Also, you don't need a YouTube account to use NewPipe, and it's FLOSS.\n\n" +
-        LoremIpsum(128).values.joinToString(" "),
+    description = description,
     categories = categoryItems.subList(0, 5),
     antiFeatures =
       listOf(
@@ -411,6 +415,8 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
 
           override fun confirmAppInstall(packageName: String, state: InstallConfirmationState) {}
 
+          override fun clearInstallingApps() {}
+
           override fun ignoreAppIssue(item: AppWithIssueItem) {}
 
           override fun onUpdatesHintSeen() {}
@@ -519,7 +525,7 @@ val repoItems =
       address = "http://example.org",
       name = "F-Droid",
       icon = null,
-      timestamp = System.currentTimeMillis() - MINUTES.toMillis(18),
+      timestamp = System.currentTimeMillis() - HOURS.toMillis(18),
       lastUpdated = System.currentTimeMillis() - 9_999_999,
       weight = 1,
       enabled = true,
@@ -541,7 +547,7 @@ val repoItems =
       address = "http://example.net",
       name = "My first Repo",
       icon = null,
-      timestamp = System.currentTimeMillis() - MINUTES.toMillis(14),
+      timestamp = System.currentTimeMillis() - DAYS.toMillis(4),
       lastUpdated = System.currentTimeMillis(),
       weight = 3,
       enabled = true,
@@ -620,13 +626,14 @@ fun getRepoDetailsInfo(
   }
 
 fun getRepository(
+  repoId: Long = 42L,
   address: String = "https://example.org/repo",
   username: String? = "foo",
   password: String? = "bar",
   lastError: String? = "NotFoundException FooBar technical blabla",
 ) =
   Repository(
-    repoId = 42L,
+    repoId = repoId,
     address = address,
     timestamp = System.currentTimeMillis() - DAYS.toMillis(4),
     formatVersion = IndexFormatVersion.ONE,

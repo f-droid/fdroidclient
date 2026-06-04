@@ -1,15 +1,13 @@
 package org.fdroid.download
 
 import android.content.Context
-import android.telephony.TelephonyManager
-import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import org.fdroid.settings.SettingsConstants
 import org.fdroid.settings.SettingsManager
+import org.fdroid.utils.getCurrentLocation
 
 @OptIn(ExperimentalAtomicApi::class)
 @Singleton
@@ -24,7 +22,7 @@ constructor(
   override fun cacheMirrorIpAddresses(
     mirrorUrl: String,
     ipv4Addresses: List<String>,
-    ipv6Addresses: List<String>
+    ipv6Addresses: List<String>,
   ) {
     dnsWithCache.populateCacheWithStrings(mirrorUrl, ipv4Addresses, ipv6Addresses)
   }
@@ -42,13 +40,5 @@ constructor(
     return settingsManager.mirrorChooser == SettingsConstants.MirrorChooserValues.PreferForeign
   }
 
-  override fun getCurrentLocation(): String {
-    val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-    return tm.simCountryIso
-      ?: tm.networkCountryIso
-      ?: run {
-        val localeList = LocaleListCompat.getDefault()
-        localeList.get(0)?.country ?: Locale.getDefault().country
-      }
-  }
+  override fun getCurrentLocation(): String = getCurrentLocation(context)
 }

@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.UpdateChecker
-import org.fdroid.database.App
 import org.fdroid.database.AppPrefs
 import org.fdroid.database.AppVersion
 import org.fdroid.database.FDroidDatabase
@@ -29,12 +28,12 @@ import org.fdroid.install.InstallState
 import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppWithIssueItem
+import org.fdroid.utils.Loaded
+import org.fdroid.utils.Loading
 import org.fdroid.utils.sha256
 
 private const val TAG = "DetailsPresenter"
 
-// TODO write tests for this function
-//  see: https://github.com/cashapp/molecule?tab=readme-ov-file#testing
 @Composable
 fun DetailsPresenter(
   db: FDroidDatabase,
@@ -57,18 +56,24 @@ fun DetailsPresenter(
   val currentRepoId = currentRepoIdFlow.collectAsState().value
   val appsWithIssues = appsWithIssuesFlow.collectAsState().value
   val appDao = db.getAppDao()
-  val app =
-    produceState<App?>(null, currentRepoId) {
+  val loadableApp =
+    produceState(Loading(), currentRepoId) {
         withContext(dispatcher) {
           if (currentRepoId == null) {
             val flow = appDao.getApp(packageName).asFlow()
-            flow.collect { value = it }
+            flow.collect { value = Loaded(it) }
           } else {
-            value = appDao.getApp(currentRepoId, packageName)
+            value = Loaded(appDao.getApp(currentRepoId, packageName))
           }
         }
       }
-      .value ?: return null
+      .value
+  val app =
+    when (loadableApp) {
+      is Loading -> return null
+      is Loaded if loadableApp.value != null -> loadableApp.value
+      else -> return NotFoundAppDetailsItem
+    }
   val versions =
     produceState<List<AppVersion>?>(null, currentRepoId) {
         withContext(dispatcher) {
@@ -100,6 +105,7 @@ fun DetailsPresenter(
       @Suppress("DEPRECATION") // so far we had issues with the new way of getting sigs
       packageInfo?.signatures?.get(0)?.let { sha256(it.toByteArray()) }
     }
+  val installedVersionCode = packageInfo?.let { getLongVersionCode(packageInfo) }
   val suggestedVersion =
     remember(versions, appPrefs, installedSigner) {
       if (versions == null || appPrefs == null) {
@@ -109,15 +115,23 @@ fun DetailsPresenter(
           versions = versions,
           preferredSigner = installedSigner ?: app.metadata.preferredSigner,
           releaseChannels = appPrefs.releaseChannels,
-          preferencesGetter = { appPrefs },
+          preferencesGetter = {
+            // the suggested version shouldn't be affected by ignored versions
+            appPrefs.copy(ignoreVersionCodeUpdate = 0)
+          },
         )
       }
     }
-  val repo =
-    produceState<Repository?>(null, app) {
-        withContext(dispatcher) { value = repoManager.getRepository(app.repoId) }
+  val loadableRepo =
+    produceState(Loading(), app) {
+        withContext(dispatcher) { value = Loaded(repoManager.getRepository(app.repoId)) }
       }
-      .value ?: return null
+      .value
+  val repo =
+    when (loadableRepo) {
+      is Loading -> return null
+      is Loaded -> loadableRepo.value ?: return NotFoundAppDetailsItem
+    }
   val repositories =
     produceState(emptyList(), packageName) {
         withContext(dispatcher) {
@@ -151,27 +165,25 @@ fun DetailsPresenter(
         )
       }
     }
-  val installedVersionCode = packageInfo?.let { getLongVersionCode(packageInfo) }
-  val installedVersion =
-    packageInfo?.let {
-      val installedVersions = versions?.filter { it.versionCode == installedVersionCode }
-      when (installedVersions?.size) {
-        null -> null
-        0 -> null
-        1 -> installedVersions.first()
-        // more than version with the same version code, find a matching signer
-        else ->
-          installedVersions.find {
-            val versionSigners = it.signer?.sha256?.toSet()
-            // F-Droid allows versions without a signer entry, allow those
-            if (versionSigners != null && installedSigner != null) {
-              versionSigners.intersect(setOf(installedSigner)).isNotEmpty()
-            } else {
-              true
-            }
+  val installedVersion = packageInfo?.let {
+    val installedVersions = versions?.filter { it.versionCode == installedVersionCode }
+    when (installedVersions?.size) {
+      null -> null
+      0 -> null
+      1 -> installedVersions.first()
+      // more than version with the same version code, find a matching signer
+      else ->
+        installedVersions.find {
+          val versionSigners = it.signer?.sha256?.toSet()
+          // F-Droid allows versions without a signer entry, allow those
+          if (versionSigners != null && installedSigner != null) {
+            versionSigners.intersect(setOf(installedSigner)).isNotEmpty()
+          } else {
+            true
           }
-      }
+        }
     }
+  }
   val authorName = app.authorName
   val authorHasMoreThanOneApp =
     if (authorName == null) false
@@ -192,7 +204,7 @@ fun DetailsPresenter(
   Log.d(TAG, "   versions: ${versions?.size}")
   Log.d(TAG, "   appPrefs: $appPrefs")
   Log.d(TAG, "   installState: $installState")
-  return AppDetailsItem(
+  return LoadedAppDetailsItem(
     repository = repo,
     preferredRepoId = preferredRepoId,
     repositories = repositories,
@@ -210,7 +222,7 @@ fun DetailsPresenter(
         allowBetaVersions = viewModel::allowBetaUpdates,
         onAntiFeaturesOnboardingSeen = viewModel::onAntiFeaturesOnboardingSeen,
         ignoreAllUpdates =
-          if (installedVersionCode == null) {
+          if (installedVersionCode == null && (appPrefs == null || !appPrefs.ignoreAllUpdates)) {
             null
           } else {
             viewModel::ignoreAllUpdates
@@ -257,7 +269,7 @@ fun DetailsPresenter(
             if (!signerCompatible || installState.showProgress) {
               false
             } else {
-              (installedVersion?.versionCode ?: 0) < version.versionCode
+              (installedVersionCode ?: 0) < version.versionCode
             },
         )
       },

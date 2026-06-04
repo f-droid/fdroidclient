@@ -1,8 +1,0 @@
-* Uporabniški vmesnik, popolnoma prepisan s Kotlin compose
-* izboljšano iskanje, tudi iskanje po opisih in prevodih
-* lažje odkrivanje novih aplikacij, tudi označevanje najpogosteje prenesenih
-* odobritev namestitve *pred* prenosom
-* več posodobitev/prenosov hkrati
-* obveščanje uporabnika o težavah z aplikacijami (npr. sprememba ključa za podpisovanje)
-* izbirna barvna tema Material You
-* izboljšano filtriranje seznamov

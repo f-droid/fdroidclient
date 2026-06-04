@@ -17,6 +17,7 @@ import android.content.pm.PackageInstaller.SessionParams
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.icu.util.ULocale
+import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
@@ -25,6 +26,7 @@ import androidx.core.content.ContextCompat.registerReceiver
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
+import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -38,6 +40,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.ui.utils.isAppInForeground
 import org.fdroid.utils.IoDispatcher
+import org.fdroid.utils.isChina
 
 @Singleton
 class SessionInstallManager
@@ -70,7 +73,23 @@ constructor(
       // https://developer.android.com/reference/android/content/pm/PackageInstaller.SessionParams#setRequireUserAction(int)
       // https://cs.android.com/android/platform/superproject/+/android-16.0.0_r2:frameworks/base/services/core/java/com/android/server/pm/PackageInstallerSession.java;l=329;drc=73caa0299d9196ddeefe4f659f557fb880f6536d
       // current code requires targetSdk 34 on SDK 36+
+      // SDK 37 beta 4 also auto updates targetSdk 34 apps
       return SDK_INT >= 36 && targetSdk >= 34
+    }
+
+    /**
+     * Many Chinese ROMs have as of 2026 not properly implemented pre-approval. They either return
+     * `3: INSTALL_FAILED_ABORTED: User rejected permissions` or not return anything at all. Since
+     * it is hard to handle this and Chinese ROMs can't easily be detected, we turn pre-approval off
+     * for all devices that are likely affected by this.
+     *
+     * See: https://gitlab.com/fdroid/fdroidclient/-/work_items/3254
+     */
+    fun isPreApprovalLikelyBroken(context: Context): Boolean {
+      val localeList = LocaleListCompat.getDefault()
+      val country = localeList.get(0)?.country ?: Locale.getDefault().country
+      return (isChina(context) || country.equals("cn", ignoreCase = true)) &&
+        Build.TYPE != "userdebug"
     }
   }
 
@@ -103,6 +122,9 @@ constructor(
     } else if (isUpdate && canDoAutoUpdate(app.packageName, version)) {
       // should not be needed, so we say not supported
       log.info { "Can do auto-update pre-approval for ${app.packageName} not needed." }
+      PreApprovalResult.NotSupported
+    } else if (isPreApprovalLikelyBroken(context)) {
+      log.info { "Device is in China and not a userdebug build, so pre-approval is likely broken." }
       PreApprovalResult.NotSupported
     } else if (SDK_INT >= 34) {
       log.info { "Requesting pre-approval for ${app.packageName}..." }

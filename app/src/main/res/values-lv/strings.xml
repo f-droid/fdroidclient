@@ -649,7 +649,6 @@
     <string name="category_group_network">Tīkls</string>
     <string name="category_group_storage">Datnes un krātuve</string>
     <string name="category_group_misc">Dažādi</string>
-    <string name="author_by">No %1$s</string>
     <string name="last_updated">Pēdējoreiz atjaunināta: %1$s</string>
     <string name="last_updated_with_size">Pēdējoreiz atjaunināta: %1$s (%2$s)</string>
     <string name="status_install_preparing">Sagatavo uzstādīšanu…</string>

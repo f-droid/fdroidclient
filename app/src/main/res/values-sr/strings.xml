@@ -637,7 +637,6 @@
     <string name="category_group_storage">Датотеке и складиште</string>
     <string name="category_group_interests">Интересовања</string>
     <string name="category_group_misc">Разно</string>
-    <string name="author_by">Од %1$s</string>
     <string name="last_updated">Последње ажурирање: %1$s</string>
     <string name="last_updated_with_size">Последње ажурирано: %1$s (%2$s)</string>
     <string name="status_install_preparing">Припрема се инсталација…</string>

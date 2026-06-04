@@ -165,7 +165,7 @@ constructor(
 
   @UiThread
   fun onUninstallResult(activityResult: ActivityResult) {
-    val name = appDetails.value?.name
+    val name = (appDetails.value as? LoadedAppDetailsItem)?.name
     val result = appInstallManager.onUninstallResult(packageName, name, activityResult)
     log.info { "Uninstall result was: $result" }
   }
@@ -195,7 +195,7 @@ constructor(
     val diskCache = SingletonImageLoader.get(application).diskCache
     if (diskCache != null)
       scope.launch {
-        appDetails.value?.phoneScreenshots?.forEach { screenshot ->
+        (appDetails.value as? LoadedAppDetailsItem)?.phoneScreenshots?.forEach { screenshot ->
           if (screenshot is DownloadRequest) {
             try {
               diskCache.remove(screenshot.getCacheKey())
@@ -209,7 +209,7 @@ constructor(
 
   @UiThread
   fun allowBetaUpdates() {
-    val appPrefs = appDetails.value?.appPrefs ?: return
+    val appPrefs = (appDetails.value as? LoadedAppDetailsItem)?.appPrefs ?: return
     scope.launch {
       db.getAppPrefsDao().update(appPrefs.toggleReleaseChannel(RELEASE_CHANNEL_BETA))
       updatesManager.loadUpdates()
@@ -218,7 +218,7 @@ constructor(
 
   @UiThread
   fun ignoreAllUpdates() {
-    val appPrefs = appDetails.value?.appPrefs ?: return
+    val appPrefs = (appDetails.value as? LoadedAppDetailsItem)?.appPrefs ?: return
     scope.launch {
       db.getAppPrefsDao().update(appPrefs.toggleIgnoreAllUpdates())
       updatesManager.loadUpdates()
@@ -227,8 +227,9 @@ constructor(
 
   @UiThread
   fun ignoreThisUpdate() {
-    val appPrefs = appDetails.value?.appPrefs ?: return
-    val versionCode = appDetails.value?.possibleUpdate?.versionCode ?: return
+    val appPrefs = (appDetails.value as? LoadedAppDetailsItem)?.appPrefs ?: return
+    val versionCode =
+      (appDetails.value as? LoadedAppDetailsItem)?.possibleUpdate?.versionCode ?: return
     scope.launch {
       db.getAppPrefsDao().update(appPrefs.toggleIgnoreVersionCodeUpdate(versionCode))
       updatesManager.loadUpdates()

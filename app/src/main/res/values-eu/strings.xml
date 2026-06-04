@@ -664,7 +664,6 @@
     <string name="category_group_storage">Fitxategiak eta biltegiratzea</string>
     <string name="category_group_interests">Interesak</string>
     <string name="category_group_misc">Denetarik</string>
-    <string name="author_by">%1$s-ek egina</string>
     <string name="last_updated">Azken eguneraketa: %1$s</string>
     <string name="last_updated_with_size">Azken eguneraketa: %1$s (%2$s)</string>
     <string name="status_install_preparing">Instalazioa prestatzen…</string>

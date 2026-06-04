@@ -10,6 +10,7 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.Session
 import android.content.pm.PackageManager
 import android.os.Build.VERSION.SDK_INT
+import android.telephony.TelephonyManager
 import androidx.core.content.ContextCompat.registerReceiver
 import io.mockk.Runs
 import io.mockk.every
@@ -62,6 +63,7 @@ internal class SessionInstallManagerTest {
   private val receiver: InstallBroadcastReceiver = mockk()
   private val pendingIntent: PendingIntent = mockk()
   private val session: Session = mockk()
+  private val telephonyManager: TelephonyManager = mockk(relaxed = true)
 
   private val sessionId = 123
   private val packageName = "com.example.app"
@@ -110,6 +112,7 @@ internal class SessionInstallManagerTest {
     every { anyConstructed<Intent>().addFlags(any()) } returns mockk()
 
     every { context.packageManager } returns packageManager
+    every { context.getSystemService(any()) } returns telephonyManager
     every { packageManager.packageInstaller } returns packageInstaller
     every { packageInstaller.mySessions } returns emptyList()
     every { context.unregisterReceiver(any()) } just runs
@@ -603,5 +606,22 @@ internal class SessionInstallManagerTest {
       {
         listenerSlot.captured.invoke(receiver, packageInstallerResult, Intent("confirm"), msg)
       }
+  }
+
+  @Test
+  fun `requestPreapproval not supported in China`(): Unit = runBlocking {
+    every { telephonyManager.simCountryIso } returns "CN"
+    every { telephonyManager.networkCountryIso } returns null
+    every { context.isAppInForeground() } returns true
+
+    val notSupportedResult =
+      sessionInstallManager.requestPreapproval(
+        app = appMetadata,
+        iconGetter = { null },
+        isUpdate = false,
+        version = appVersion,
+        canRequestUserConfirmationNow = true,
+      )
+    assertIs<PreApprovalResult.NotSupported>(notSupportedResult)
   }
 }

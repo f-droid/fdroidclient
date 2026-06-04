@@ -1,6 +1,8 @@
 package org.fdroid.utils
 
 import android.content.Context
+import android.telephony.TelephonyManager
+import androidx.core.os.LocaleListCompat
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.text.SimpleDateFormat
@@ -28,6 +30,21 @@ fun getLogName(context: Context): String {
     }
   val time = sdf.format(Date())
   return "${context.packageName}-$time"
+}
+
+fun getCurrentLocation(context: Context): String {
+  val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+  return tm.simCountryIso
+    ?: tm.networkCountryIso
+    ?: run {
+      val localeList = LocaleListCompat.getDefault()
+      localeList.get(0)?.country ?: Locale.getDefault().country
+    }
+}
+
+fun isChina(context: Context): Boolean {
+  val country = getCurrentLocation(context)
+  return country.equals("cn", ignoreCase = true)
 }
 
 val isFull: Boolean

@@ -666,7 +666,6 @@
     <string name="category_group_storage">Файли та зберігання</string>
     <string name="category_group_interests">Інтереси</string>
     <string name="category_group_misc">Різне</string>
-    <string name="author_by">Від %1$s</string>
     <string name="last_updated">Останні оновлено: %1$s</string>
     <string name="last_updated_with_size">Останні оновлено: %1$s (%2$s)</string>
     <string name="status_install_preparing">Підготовка до встановлення…</string>

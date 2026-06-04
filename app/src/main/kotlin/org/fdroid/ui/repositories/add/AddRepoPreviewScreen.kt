@@ -105,7 +105,7 @@ fun AddRepoPreviewScreen(
 @Composable
 private fun Preview() {
   val address = "https://example.org"
-  val repo = getRepository(address)
+  val repo = getRepository(address = address)
   val app1 =
     object : MinimalApp {
       override val repoId = 0L

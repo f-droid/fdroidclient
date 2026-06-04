@@ -9,7 +9,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlinx.io.IOException
-import org.fdroid.getIndexFile
 import org.fdroid.runSuspend
 
 class MirrorChooserTest {
@@ -29,14 +28,12 @@ class MirrorChooserTest {
     )
   private val downloadRequest = DownloadRequest("foo", mirrors)
   private val downloadRequestLocation = DownloadRequest("location", mirrorsLocation)
-  private val downloadRequestTryFIrst =
+  private val downloadRequestTryFirst =
     DownloadRequest(
       path = "location",
       mirrors = mirrorsLocation,
       tryFirstMirror = Mirror(baseUrl = "remote_1", countryCode = "THERE"),
     )
-
-  private val ipfsIndexFile = getIndexFile(name = "foo", ipfsCidV1 = "CIDv1")
 
   @Test
   fun testMirrorChooserDefaultImpl() = runSuspend {
@@ -177,7 +174,9 @@ class MirrorChooserTest {
     assertEquals("HERE", domesticList[0].countryCode)
     assertEquals("HERE", domesticList[1].countryCode)
     assertEquals("HERE", domesticList[2].countryCode)
-    assertEquals(null, domesticList[3].countryCode)
+    // unknown mirrors should be last,
+    // because otherwise they will always be at the front if there are no domestic mirrors
+    assertEquals(null, domesticList.last().countryCode)
   }
 
   @Test
@@ -229,7 +228,7 @@ class MirrorChooserTest {
     val mirrorChooser = MirrorChooserWithParameters(mockManager)
 
     // test tryfirst mirror parameter
-    val tryFirstList = mirrorChooser.orderMirrors(downloadRequestTryFIrst)
+    val tryFirstList = mirrorChooser.orderMirrors(downloadRequestTryFirst)
     // confirm the list contains all mirrors
     assertEquals(9, tryFirstList.size)
     // tryfirst mirror should be included before local mirrors

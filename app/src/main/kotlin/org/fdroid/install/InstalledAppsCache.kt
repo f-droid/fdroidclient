@@ -3,11 +3,13 @@ package org.fdroid.install
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.EXTRA_ARCHIVAL
 import android.content.Intent.EXTRA_REPLACING
 import android.content.IntentFilter
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
+import android.os.Build.VERSION.SDK_INT
 import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
 import androidx.core.content.ContextCompat.registerReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -88,10 +90,14 @@ constructor(
 
   private fun onPackageRemoved(intent: Intent) {
     val replacing = intent.getBooleanExtra(EXTRA_REPLACING, false)
-    log.info { "onPackageRemoved($intent) ${intent.data} replacing: $replacing" }
+    val archival = if (SDK_INT >= 35) intent.getBooleanExtra(EXTRA_ARCHIVAL, false) else false
+    log.info {
+      "onPackageRemoved($intent) ${intent.data} replacing: $replacing ${intent.extras?.keySet()?.toList()}"
+    }
     val packageName =
       intent.data?.schemeSpecificPart ?: error("No package name in ACTION_PACKAGE_REMOVED")
-    if (!replacing)
+    if (!replacing || archival) {
       _installedApps.update { apps -> apps.toMutableMap().apply { remove(packageName) } }
+    }
   }
 }

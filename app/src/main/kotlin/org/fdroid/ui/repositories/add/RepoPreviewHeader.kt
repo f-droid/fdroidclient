@@ -140,7 +140,7 @@ fun RepoPreviewHeader(
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, widthDp = 720, heightDp = 360)
 fun RepoPreviewScreenNewMirrorPreview() {
-  val repo = getRepository("https://example.org")
+  val repo = getRepository(address = "https://example.org")
   FDroidContent {
     RepoPreviewHeader(
       Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L)),
@@ -155,7 +155,7 @@ fun RepoPreviewScreenNewMirrorPreview() {
 @Composable
 @Preview
 fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
-  val repo = getRepository("https://example.org")
+  val repo = getRepository(address = "https://example.org")
   FDroidContent {
     RepoPreviewHeader(
       state =
@@ -177,7 +177,7 @@ fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
 @Composable
 fun RepoPreviewScreenExistingRepoPreview() {
   val address = "https://example.org"
-  val repo = getRepository(address)
+  val repo = getRepository(address = address)
   FDroidContent {
     RepoPreviewHeader(
       Fetching(address, repo, emptyList(), IsExistingRepository(0L)),
@@ -192,7 +192,7 @@ fun RepoPreviewScreenExistingRepoPreview() {
 @Preview
 @Composable
 fun RepoPreviewScreenExistingMirrorPreview() {
-  val repo = getRepository("https://example.org")
+  val repo = getRepository(address = "https://example.org")
   FDroidContent {
     RepoPreviewHeader(
       Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L)),

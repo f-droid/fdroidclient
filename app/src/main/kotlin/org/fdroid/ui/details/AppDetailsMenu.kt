@@ -28,7 +28,7 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 fun AppDetailsMenu(
-  item: AppDetailsItem,
+  item: LoadedAppDetailsItem,
   uninstallLauncher: ActivityResultLauncher<Intent>,
   onDismiss: () -> Unit,
 ) {

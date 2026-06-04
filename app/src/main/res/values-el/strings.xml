@@ -638,7 +638,6 @@
     <string name="category_group_storage">Αρχεία &amp; Αποθηκευτικός Χώρος</string>
     <string name="category_group_interests">Ενδιαφέροντα</string>
     <string name="category_group_misc">Διάφορα</string>
-    <string name="author_by">Από %1$s</string>
     <string name="last_updated">Τελευταία ενημέρωση: %1$s</string>
     <string name="last_updated_with_size">Τελευταία ενημέρωση: %1$s (%2$s)</string>
     <string name="status_install_preparing">Προετοιμασία εγκατάστασης…</string>

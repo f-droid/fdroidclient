@@ -16,6 +16,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
@@ -49,12 +50,18 @@ fun AppSearchInputField(
         }
       }
   }
+  val keyboardController = LocalSoftwareKeyboardController.current
   SearchBarDefaults.InputField(
     modifier = modifier,
     searchBarState = searchBarState,
     textFieldState = textFieldState,
     textStyle = MaterialTheme.typography.bodyLarge,
-    onSearch = { if (it.isSearchable()) scope.launch { onSearch(it) } },
+    onSearch = {
+      if (it.isSearchable()) {
+        keyboardController?.hide()
+        scope.launch { onSearch(it) }
+      }
+    },
     placeholder = { Text(stringResource(R.string.search_placeholder)) },
     trailingIcon = {
       if (textFieldState.text.isNotEmpty()) {

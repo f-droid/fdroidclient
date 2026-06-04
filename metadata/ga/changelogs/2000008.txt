@@ -1,8 +1,0 @@
-* Athscríobh an comhéadan úsáideora ón tús le Kotlin compose
-* feabhas ar an gcuardach, ag cuardach i dtuairiscí agus in aistriúcháin freisin
-* níos éasca aipeanna nua a aimsiú, ag aird a tharraingt ar na cinn is mó a íoslódáladh freisin
-* ceadú suiteála *roimh* íoslódáil (más tacaítear leis)
-* ilnuashonruithe/íoslódálacha ag an am céanna
-* fógra a thabhairt don úsáideoir faoi fhadhbanna le haipeanna 
-* téama roghnach Material You
-* scagadh feabhsaithe ar liostaí aipeanna

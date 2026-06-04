@@ -17,10 +17,11 @@ object SettingsConstants {
   const val PREF_KEY_DYNAMIC_COLORS = "dynamicColors"
   const val PREF_DEFAULT_DYNAMIC_COLORS = false
 
-  enum class AutoUpdateValues {
-    OnlyWifi,
-    Always,
-    Never,
+  enum class AutoUpdateValues(val workerEnabled: Boolean) {
+    OnlyWifi(true),
+    Always(true),
+    OnlyWhenOpenApp(false),
+    Never(false),
   }
 
   const val PREF_KEY_REPO_UPDATES = "repoAutoUpdates"

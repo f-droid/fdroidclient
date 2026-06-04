@@ -664,7 +664,6 @@
     <string name="category_group_storage">Archiviazione</string>
     <string name="category_group_interests">Interessi</string>
     <string name="category_group_misc">Miscellanea</string>
-    <string name="author_by">Da %1$s</string>
     <string name="last_updated">Ultimo aggiornamento: %1$s</string>
     <string name="last_updated_with_size">Ultimo aggiornamento: %1$s (%2$s)</string>
     <string name="status_install_preparing">Preparando l\'installazione…</string>

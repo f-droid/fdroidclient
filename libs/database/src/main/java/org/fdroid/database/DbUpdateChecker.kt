@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import androidx.core.content.pm.PackageInfoCompat.getLongVersionCode
+import androidx.core.os.LocaleListCompat
 import org.fdroid.CompatibilityChecker
 import org.fdroid.CompatibilityCheckerImpl
 import org.fdroid.PackagePreference
@@ -23,6 +24,7 @@ constructor(
   private val appDao = db.getAppDao() as AppDaoInt
   private val versionDao = db.getVersionDao() as VersionDaoInt
   private val appPrefsDao = db.getAppPrefsDao() as AppPrefsDaoInt
+  private val localeList = LocaleListCompat.getDefault()
 
   /**
    * Returns a list of apps that can be updated.
@@ -190,8 +192,8 @@ constructor(
       update = version.toAppVersion(versionedStrings),
       isFromPreferredRepo = isFromPreferredRepo,
       hasKnownVulnerability = version.hasKnownVulnerability,
-      name = appOverviewItem.name,
-      summary = appOverviewItem.summary,
+      name = appOverviewItem.getName(localeList),
+      summary = appOverviewItem.getSummary(localeList),
       localizedIcon = appOverviewItem.localizedIcon,
     )
   }

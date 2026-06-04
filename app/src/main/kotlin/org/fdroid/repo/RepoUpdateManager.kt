@@ -23,10 +23,12 @@ import org.fdroid.download.DownloaderFactory
 import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
+import org.fdroid.settings.SettingsConstants
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 
 private const val MIN_UPDATE_INTERVAL_MILLIS = 15_000
+private const val MAX_UPDATE_INTERVAL_MILLIS = 12 * 60 * 60 * 1000L // 12 hours
 
 @Singleton
 class RepoUpdateManager
@@ -86,6 +88,17 @@ internal constructor(
     RepoUpdateWorker.getAutoUpdateWorkInfo(context).map { workInfo ->
       workInfo?.nextScheduleTimeMillis ?: Long.MAX_VALUE
     }
+
+  init {
+    log.info { "RepoUpdateManager initialized" }
+    if (settingsManager.repoUpdates == SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp) {
+      val now = System.currentTimeMillis()
+      if (now - settingsManager.lastRepoUpdate > MAX_UPDATE_INTERVAL_MILLIS) {
+        log.info { "Last repo update was more than 12h ago, triggering update..." }
+        RepoUpdateWorker.updateNow(context)
+      }
+    }
+  }
 
   /**
    * Updates all enabled repositories.

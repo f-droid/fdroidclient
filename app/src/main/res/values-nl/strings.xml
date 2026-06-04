@@ -646,7 +646,6 @@
     <string name="category_group_storage">Bestanden &amp; Opslag</string>
     <string name="category_group_interests">Interesses</string>
     <string name="category_group_misc">Diversen</string>
-    <string name="author_by">Door %1$s</string>
     <string name="last_updated">Laatst geüpdatet: %1$s</string>
     <string name="last_updated_with_size">Laatst geüpdatet: %1$s (%2$s)</string>
     <string name="status_install_preparing">Installatie voorbereiden…</string>

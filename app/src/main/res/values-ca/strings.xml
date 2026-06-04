@@ -650,7 +650,6 @@
     <string name="category_group_storage">Arxius i emmagatzematge</string>
     <string name="category_group_interests">Interessos</string>
     <string name="category_group_misc">Miscel·lània</string>
-    <string name="author_by">Per %1$s</string>
     <string name="last_updated">Últimes actualitzacions: %1$s</string>
     <string name="last_updated_with_size">Últimes actualitzacions: %1$s (%2$s)</string>
     <string name="status_install_preparing">Preparant la instal·lació…</string>

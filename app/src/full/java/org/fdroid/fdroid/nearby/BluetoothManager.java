@@ -78,7 +78,7 @@ public class BluetoothManager {
      * so make sure {@link BroadcastReceiver}s handle duplicates.
      */
     public static void start(final Context context) {
-        if (checkSelfPermission(context, BLUETOOTH_CONNECT) != PERMISSION_GRANTED &&
+        if (checkSelfPermission(context, BLUETOOTH_CONNECT) != PERMISSION_GRANTED ||
                 checkSelfPermission(context, BLUETOOTH_SCAN) != PERMISSION_GRANTED) {
             // TODO we either throw away that Bluetooth code or properly request permissions
             return;

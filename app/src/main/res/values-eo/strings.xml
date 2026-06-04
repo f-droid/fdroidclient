@@ -638,7 +638,6 @@
     <string name="category_group_storage">Dosieroj kaj konservado</string>
     <string name="category_group_interests">Interesiĝoj</string>
     <string name="category_group_misc">Diversaĵoj</string>
-    <string name="author_by">Fare de %1$s</string>
     <string name="last_updated">Lasta ĝisdatigo: %1$s</string>
     <string name="last_updated_with_size">Lasta ĝisdatigo: %1$s (%2$s)</string>
     <string name="status_install_preparing">Preparado de instalado…</string>

@@ -645,7 +645,6 @@
     <string name="category_group_storage">ファイル＆ストレージ</string>
     <string name="category_group_interests">趣味</string>
     <string name="category_group_misc">その他</string>
-    <string name="author_by">%1$s による</string>
     <string name="last_updated">最終更新: %1$s</string>
     <string name="last_updated_with_size">最終更新: %1$s (%2$s)</string>
     <string name="status_install_preparing">インストールの準備中…</string>
