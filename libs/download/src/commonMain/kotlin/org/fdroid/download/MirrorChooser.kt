@@ -127,7 +127,7 @@ internal class MirrorChooserWithParameters(
       error1.compareTo(error2)
     }
 
-    val mirrorList: MutableList<Mirror> = mutableListOf<Mirror>()
+    val mirrorList: MutableList<Mirror> = mutableListOf()
 
     if (
       mirrorParameterManager != null && mirrorParameterManager.getCurrentLocation().isNotEmpty()
@@ -186,8 +186,8 @@ internal class MirrorChooserWithParameters(
       mirrorList.addAll(domesticList)
     } else {
       mirrorList.addAll(domesticList)
-      mirrorList.addAll(unknownList)
       mirrorList.addAll(foreignList)
+      mirrorList.addAll(unknownList)
     }
     return mirrorList
   }
