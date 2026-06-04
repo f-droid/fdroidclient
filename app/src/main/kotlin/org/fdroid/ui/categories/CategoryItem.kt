@@ -33,11 +33,13 @@ import androidx.compose.material.icons.filled.DeveloperMode
 import androidx.compose.material.icons.filled.DirectionsBus
 import androidx.compose.material.icons.filled.Diversity3
 import androidx.compose.material.icons.filled.Dns
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Draw
 import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.EnhancedEncryption
 import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Fastfood
+import androidx.compose.material.icons.filled.FileCopy
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.FlashlightOn
 import androidx.compose.material.icons.filled.Gamepad
@@ -81,6 +83,7 @@ import androidx.compose.material.icons.filled.SportsSoccer
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.filled.TaskAlt
+import androidx.compose.material.icons.filled.Timelapse
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.TrackChanges
 import androidx.compose.material.icons.filled.Translate
@@ -118,12 +121,14 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Dice" -> Icons.Default.Casino
         "Diet" -> Icons.Default.Fastfood
         "DNS & Hosts" -> Icons.Default.Dns
+        "Download" -> Icons.Default.Download
         "Draw" -> Icons.Default.Draw
         "Ebook Reader" -> AutoMirrored.Default.MenuBook
         "Educational Game" -> Icons.Default.School
         "Email" -> Icons.Default.AlternateEmail
         "Emulator" -> Icons.Default.VideogameAsset
         "File Encryption & Vault" -> Icons.Default.EnhancedEncryption
+        "File Manager" -> Icons.Default.FileCopy
         "File Transfer" -> Icons.Default.UploadFile
         "Finance Manager" -> Icons.Default.MonetizationOn
         "Firewall" -> Icons.Default.AppBlocking
@@ -181,7 +186,8 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Text to Speech" -> Icons.Default.RecordVoiceOver
         "Theming" -> Icons.Default.Style
         "Time" -> Icons.Default.AccessTime
-        "Time Tracker" -> Icons.Default.Timer
+        "Time Tracker" -> Icons.Default.Timelapse
+        "Timer" -> Icons.Default.Timer
         "Translation & Dictionary" -> Icons.Default.Translate
         "Visual Novel" -> Icons.Default.ModeComment
         "Voice & Video Chat" -> Icons.Default.VideoChat
@@ -219,12 +225,14 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Dice" -> CategoryGroups.games
         "Diet" -> CategoryGroups.interests
         "DNS & Hosts" -> CategoryGroups.network
+        "Download" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests
         "Ebook Reader" -> CategoryGroups.media
         "Educational Game" -> CategoryGroups.games
         "Email" -> CategoryGroups.communication
         "Emulator" -> CategoryGroups.games
         "File Encryption & Vault" -> CategoryGroups.storage
+        "File Manager" -> CategoryGroups.storage
         "File Transfer" -> CategoryGroups.storage
         "Finance Manager" -> CategoryGroups.wallets
         "Firewall" -> CategoryGroups.network
@@ -283,6 +291,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Theming" -> CategoryGroups.device
         "Time" -> CategoryGroups.productivity
         "Time Tracker" -> CategoryGroups.productivity
+        "Timer" -> CategoryGroups.productivity
         "Translation & Dictionary" -> CategoryGroups.tools
         "Visual Novel" -> CategoryGroups.games
         "Voice & Video Chat" -> CategoryGroups.communication
