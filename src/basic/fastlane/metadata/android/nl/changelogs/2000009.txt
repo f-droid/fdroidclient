@@ -1,8 +1,0 @@
-* UI vanuit niets herschreven met Kotlin compose
-* verbeterde zoekfunctie, die ook zoekt in beschrijvingen en vertalingen
-* Eenvoudiger om nieuwe apps te ontdekken, daarnaast worden de meest gedownloadde uitgelicht
-* toestemming voor installatie *voor* downloaden
-* meerdere updates/downloads tegelijkertijd
-* melding aan gebruikers als er problemen met apps zijn (bvb tekensleutel veranderd)
-* optioneel "Material You" kleurthema
-* verbeterde applijst filtering

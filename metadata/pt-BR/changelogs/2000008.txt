@@ -1,8 +1,0 @@
-* Interface reescrita por completo com Kotlin compose (exceto "nas proximidades")
-* Pesquisa melhorada, também buscando em descrições e traduções
-* Mais fácil descobrir novos aplicativos, destacando também os mais baixados
-* Aprovação da instalação *antes* de baixar (se suportado)
-* Várias atualizações/downloads ao mesmo tempo
-* Notificação do usuário de problemas com os aplicativos (por exemplo, chave de assinatura alterada)
-* Tema de cor opcional Material You
-* Filtragem melhorada das listas de aplicativos

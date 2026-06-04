@@ -1,8 +1,0 @@
-* interfície d'usuari completament reescrita amb Kotlin Compose (excepte el «nearby»)
-* cerca millorada, també cerca a les descripcions i traduccions
-* més facilitat per a descobrir aplicacions, també destaca les més baixades
-* aprovació de la instal·lació *abans* de fer la baixada
-* actualitzacions/baixades múltiples a la vegada
-* notificació a usuaris de problemes en les aplicacions (p. ex. canvis en la clau de signatura)
-* tema de color Material You opcional
-* filtratge de llistes millorat

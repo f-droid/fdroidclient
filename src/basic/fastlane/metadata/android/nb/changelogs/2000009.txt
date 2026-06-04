@@ -1,8 +1,0 @@
-* Omskrevet brukergrensesnittet med Kotlin compose (unntatt «I nærheten»)
-* Forbedret søkefunksjon, nå søkes det også i beskrivelser og oversettelser
-* Lettere å oppdage nye apper, nå fremheves de som har blitt lastet ned mest
-* Godkjenning av installasjon skjer nå *før* nedlasting (hvis det støttes)
-* Flere oppdateringer/nedlastinger kan nå utføres samtidig
-* Brukeren varsles ved problemer med apper (f.eks. at signeringsnøkkelen har endret seg)
-* Valgfritt Material You-drakt
-* Forbedret appliste-filtrering
