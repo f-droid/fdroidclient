@@ -133,8 +133,6 @@ dependencies {
   implementation(libs.androidx.hilt.navigation.compose)
   ksp(libs.hilt.android.compiler)
   ksp(libs.androidx.hilt.compiler)
-  // https://github.com/google/dagger/issues/5001
-  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.21")
 
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
@@ -172,7 +170,6 @@ dependencies {
   androidTestImplementation(libs.coil.network.okhttp)
 
   screenshotTestImplementation(libs.screenshot.validation.api)
-  screenshotTestImplementation(libs.androidx.ui.tooling)
 }
 
 kotlin { compilerOptions { jvmTarget = JvmTarget.JVM_17 } }
