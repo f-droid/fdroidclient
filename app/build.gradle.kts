@@ -10,8 +10,6 @@ plugins {
   alias(libs.plugins.ktfmt)
 }
 
-val nightlyVersionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
-
 android {
   namespace = "org.fdroid"
   compileSdk = libs.versions.compileSdk.get().toInt()
@@ -52,7 +50,7 @@ android {
     create("default") { dimension = "release" }
     create("nightly") {
       dimension = "release"
-      versionCode = nightlyVersionCode
+      versionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
       versionNameSuffix = "-$gitHash"
       applicationIdSuffix = ".nightly"
     }
@@ -86,10 +84,6 @@ androidComponents {
       // so we can test proguard minification in production
       variantBuilder.enable = false
     }
-  }
-  // only needed while basic flavor has its own version code
-  onVariants(selector().withFlavor("release" to "nightly")) { variant ->
-    variant.outputs.forEach { output -> output.versionCode.set(nightlyVersionCode) }
   }
 }
 
