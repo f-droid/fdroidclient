@@ -31,6 +31,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.coroutines.resume
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.TimeSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -150,6 +152,8 @@ constructor(
     val sessionId = installer.createSession(params)
     log.info { "Opened session $sessionId for ${app.packageName}" }
     val name = app.name.getBestLocale(LocaleListCompat.getDefault()) ?: ""
+    val timeSource = TimeSource.Monotonic
+    var preapprovalMark: TimeSource.Monotonic.ValueTimeMark? = null
 
     val receiver =
       receiverFactory.create(sessionId) { status, intent, msg ->
@@ -166,6 +170,7 @@ constructor(
             // so fire up intent here and now.
             if (canRequestUserConfirmationNow) {
               log.info { "Sending pre-approval intent for ${app.packageName}: $intent" }
+              preapprovalMark = timeSource.markNow()
               try {
                 pendingIntent.send()
               } catch (e: Exception) {
@@ -184,7 +189,18 @@ constructor(
           else -> {
             val result =
               when (status) {
-                PackageInstaller.STATUS_FAILURE_ABORTED -> PreApprovalResult.UserAborted
+                PackageInstaller.STATUS_FAILURE_ABORTED -> {
+                  if (preapprovalMark != null && preapprovalMark.elapsedNow() < 250.milliseconds) {
+                    // As of 2026 some Chinese ROMs currently have not implemented pre-approval
+                    // and just return this error as if it was the user who aborted. See #3254
+                    // So we count fast aborts as not supported, so normal installation can proceed.
+                    log.warn { "Fast pre-approval abort for ${app.packageName}, trying without..." }
+                    PreApprovalResult.NotSupported
+                  } else {
+                    log.info { "User aborted pre-approval for ${app.packageName}" }
+                    PreApprovalResult.UserAborted
+                  }
+                }
                 PackageInstaller.STATUS_FAILURE_BLOCKED -> PreApprovalResult.NotSupported
                 else -> PreApprovalResult.Error(msg)
               }
