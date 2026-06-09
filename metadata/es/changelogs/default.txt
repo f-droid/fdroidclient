@@ -1,6 +1,8 @@
-* diseño 3 de material (con borde a borde, pero sin colores dinámicos (Gracias proletarius!)
-* rediseñado las pantallas de detalles del repositorio (Gracias Thore!)
-* añadida la exportación a archivo logcat en ajustes de expertos
-* actualizado el SDK objetivo (Android 15 para lo básico y Android 11 para lo completo)
-* agregado un backlink desde la página de la app en ajustes del sistema (Gracias j-m4!)
-* utiliza el selector de apps para compartir apps instaladas e historia de instalación (Gracias Thore!)
+* UI reescrita desde cero con Kotlin Compose
+* búsqueda mejorada, tambien buscando descripciones y traducciones
+* mayor facilidad para descubrir nuevas apps, tambien destacando las más descargadas
+* autorización de instalación *antes* de la descarga
+* realizar varias actualizaciones o descargas a la vez
+* notificación al usuario de problemas con las aplicaciones (por ejemplo, cambio de la clave de firma)
+* tema de color Material You opcional
+* filtrado de las listas mejorado

@@ -1,8 +1,0 @@
-* UI reescrita desde cero con Kotlin Compose
-* búsqueda mejorada, tambien buscando descripciones y traducciones
-* mayor facilidad para descubrir nuevas apps, tambien destacando las más descargadas
-* autorización de instalación *antes* de la descarga
-* realizar varias actualizaciones o descargas a la vez
-* notificación al usuario de problemas con las aplicaciones (por ejemplo, cambio de la clave de firma)
-* tema de color Material You opcional
-* filtrado de las listas mejorado

@@ -1,6 +1,8 @@
-* Material Design 3 (med kant-till-kant-effekt, men utan dynamiska färger) (Tack proletarius!)
-* Omdesign av skärmarna för arkivets detaljer (Tack Thore!)
-* Lade till export av logcat-filer i expertinställningar
-* Uppdatera mål-SDK (Android 15 för basic och Android 11 för fullversionen)
-* Lägg till bakåtlänk från appens sida i systeminställningarna (Tack j-m4!)
-* Använd appväljaren för att dela installerade appar och installationshistorik (Tack Thore!)
+* Användargränssnittet är omskrivet från grunden med Kotlin Compose
+* Förbättrad sökning, även sökning i beskrivningar och översättningar
+* Enklare att upptäcka nya appar, även markering av de mest nedladdade
+* Godkännande av installation *före* nedladdning
+* Flera uppdateringar/nedladdningar samtidigt
+* Meddelande till användaren om problem med appar (t.ex. ändrad signeringsnyckel)
+* Valfritt Material You-färgtema
+* Förbättrad filtrering av listor

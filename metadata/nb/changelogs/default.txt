@@ -1,6 +1,8 @@
-* material design 3 (med kant-til-kant, men uten dynamiske farger) (takk til proletarius!)
-* omdesignet detaljsiden til pakkebrønner (takk til Thore!)
-* la til logcat-fileksportering under avanserte innstillinger
-* oppdaterte mål-SDK (Android 15 for basic og Android 11 for full)
-* la til tilbakelenke fra appens side i systeminnstillinger (takk til j-m4!)
-* bruk appvelgeren for å dele installerte apper og installasjonhistorikk (takk til Thore!)
+* Omskrevet brukergrensesnittet med Kotlin compose (unntatt «I nærheten»)
+* Forbedret søkefunksjon, nå søkes det også i beskrivelser og oversettelser
+* Lettere å oppdage nye apper, nå fremheves de som har blitt lastet ned mest
+* Godkjenning av installasjon skjer nå *før* nedlasting (hvis det støttes)
+* Flere oppdateringer/nedlastinger kan nå utføres samtidig
+* Brukeren varsles ved problemer med apper (f.eks. at signeringsnøkkelen har endret seg)
+* Valgfritt Material You-drakt
+* Forbedret appliste-filtrering
