@@ -21,7 +21,6 @@ try:
                    cwd=script_dir.parent, check=True)
 
     print("Downloading screenshots...")
-    screenshots_dir = script_dir.parent / 'screenshots'
     subprocess.run(
         ["adb", "pull", "/sdcard/Android/data/org.fdroid.basic.debug/files/screenshots", script_dir.parent],
         cwd=script_dir.parent, check=True)
@@ -31,14 +30,16 @@ try:
     for screenshot in screenshots:
         subprocess.run(["pngquant", "--force", "--ext", ".png", "--skip-if-larger", "--speed", "1", screenshot])
 
-    target_dir = script_dir.parent / 'src'
-    old_screenshots = [str(f) for f in target_dir.glob('basic/fastlane/metadata/android/*/images/phoneScreenshots/*')]
+    target_dir = script_dir.parent
+    old_screenshots = [str(f) for f in target_dir.glob('fastlane/metadata/android/*/images/phoneScreenshots/*')]
     for s in old_screenshots:
         print(f"Removing old screenshot {s}")
         Path(s).unlink()
 
     print("Copying new screenshots to target directory...")
-    shutil.copytree(screenshots_dir, target_dir, dirs_exist_ok=True)
+    source_dir = screenshots_dir / 'basic'
+    shutil.copytree(source_dir, target_dir, dirs_exist_ok=True)
+    shutil.rmtree(screenshots_dir, ignore_errors=True)
 
     subprocess.run(["git", "add", target_dir], cwd=script_dir.parent)
     subprocess.run(["git", "status"], cwd=script_dir.parent)
