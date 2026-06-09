@@ -42,7 +42,7 @@ fun History(
     topBar = {
       TopAppBar(
         navigationIcon = { if (onBackClicked != null) BackButton(onClick = onBackClicked) },
-        title = { Text(stringResource(R.string.install_history)) },
+        title = { Text(stringResource(R.string.install_history), maxLines = 1) },
         actions = {
           if (!items.isNullOrEmpty())
             TopAppBarButton(

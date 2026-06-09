@@ -48,7 +48,7 @@ fun Discover(
   Scaffold(
     topBar = {
       TopAppBar(
-        title = { Text(stringResource(R.string.app_name)) },
+        title = { Text(stringResource(R.string.app_name), maxLines = 1) },
         actions = {
           topBarMenuItems.forEach { dest ->
             BadgedBox(

@@ -94,7 +94,7 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
     topBar = {
       TopAppBar(
         navigationIcon = { BackButton(onClick = onBackClicked) },
-        title = { Text(stringResource(R.string.menu_settings)) },
+        title = { Text(stringResource(R.string.menu_settings), maxLines = 1) },
       )
     }
   ) { paddingValues ->

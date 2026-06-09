@@ -93,7 +93,7 @@ fun MyApps(
         }
       } else
         TopAppBar(
-          title = { Text(stringResource(R.string.menu_apps_my)) },
+          title = { Text(stringResource(R.string.menu_apps_my), maxLines = 1) },
           actions = {
             TopAppBarButton(
               imageVector = Icons.AutoMirrored.Default.ManageSearch,
