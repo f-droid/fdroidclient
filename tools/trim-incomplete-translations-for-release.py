@@ -12,13 +12,6 @@ import requests
 import sys
 
 
-projectbasedir = os.path.dirname(os.path.dirname(__file__))
-print(projectbasedir)
-
-repo = git.Repo(projectbasedir)
-
-msg = 'removing all translations less than 70% complete\n\n'
-
 url = 'https://hosted.weblate.org/api/components/f-droid/f-droid/statistics/'
 r = requests.get(url)
 stats = r.json()["results"]
@@ -26,6 +19,7 @@ locales_config = set()
 for row in stats:
     locale = row["code"]
     translated_percent = float(row["translated_percent"])
+    percent = str(int(translated_percent)) + '%'
     if translated_percent > 70.0:
         if locale == 'nb_NO':
             locale = 'nb'
@@ -38,6 +32,7 @@ for row in stats:
         elif locale == 'zh_Hant_HK':
             locale = 'zh-HK'
         locales_config.add(locale.replace('_', '-'))
+        print('[+] Adding locale: ' + locale + ' (' + percent + ')')
         continue
     if '_' in locale:
         codes = locale.split('_')
@@ -47,19 +42,11 @@ for row in stats:
             codes[1] = 'TW'
         locale = codes[0] + '-r' + codes[1]
     translation_file = 'app/src/main/res/values-' + locale + '/strings.xml'
-    percent = str(int(translated_percent)) + '%'
-    print('Removing incomplete file: (' + percent + ')\t',
-          translation_file)
-    delfile = os.path.join(projectbasedir, translation_file)
-    if os.path.exists(delfile):
-        os.remove(delfile)
-        repo.index.remove([translation_file, ])
-    if len(percent) == 2:
-        msg += ' '
-    msg += percent + '  ' + locale + ' ' + row['name'] + '\n'
+    print('[-] Ignoring incomplete locale: ' + locale + ' (' + percent + ')')
 
 if len(locales_config) == 0:
     print("ERROR: Did not get any locales")
+    sys.exit(1)
 
 with open('app/src/main/res/xml/locales_config.xml', 'w') as fp:
     fp.write("""<?xml version="1.0" encoding="utf-8"?>
@@ -70,16 +57,3 @@ with open('app/src/main/res/xml/locales_config.xml', 'w') as fp:
     for locale in sorted(locales_config):
         fp.write(f'    <locale android:name="{locale}" />\n')
     fp.write('</locale-config>\n')
-
-found = False
-for remote in repo.remotes:
-    if remote.name == 'weblate':
-        remote.fetch()
-        found = True
-
-if not found:
-    print('ERROR: there must be a weblate remote to preserve incomplete translations!')
-    sys.exit(1)
-
-commit = repo.index.commit(msg)
-print('Commited: ' + commit.summary + ' ' + str(commit))

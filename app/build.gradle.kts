@@ -1,3 +1,4 @@
+import javax.xml.parsers.DocumentBuilderFactory
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -22,6 +23,14 @@ android {
     versionName = "2.0-alpha10"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  // filter out incomplete translations from stable releases (which end in 50+)
+  val isStableRelease = (defaultConfig.versionCode ?: 0) % 100 >= 50
+  if (isStableRelease) {
+    androidResources {
+      localeFilters.addAll(getLocalesConfig(file("src/main/res/xml/locales_config.xml")))
+    }
   }
 
   buildTypes {
@@ -192,6 +201,14 @@ val gitHash: String
     process.waitFor() // Ensure the command completes
     return process.inputStream.use { it.readBytes().decodeToString().trim() }
   }
+
+fun getLocalesConfig(file: File): List<String> {
+  val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file)
+  val nodes = doc.getElementsByTagName("locale")
+  return (0 until nodes.length).map {
+    nodes.item(it).attributes.getNamedItem("android:name").nodeValue.replace("-", "-r")
+  }
+}
 
 // workaround for https://issuetracker.google.com/issues/430260686
 // also https://issuetracker.google.com/issues/469819154
