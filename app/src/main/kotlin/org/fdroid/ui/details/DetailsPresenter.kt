@@ -1,6 +1,9 @@
 package org.fdroid.ui.details
 
 import android.content.Intent
+import android.content.Intent.ACTION_DELETE
+import android.content.Intent.EXTRA_RETURN_RESULT
+import android.content.pm.ApplicationInfo.FLAG_SYSTEM
 import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -243,12 +246,16 @@ fun DetailsPresenter(
           } else {
             ApkFileProvider.getIntent(packageName)
           },
-        uninstallIntent =
-          packageInfo?.let {
-            Intent(Intent.ACTION_DELETE).apply {
-              setData(Uri.fromParts("package", it.packageName, null))
-              putExtra(Intent.EXTRA_RETURN_RESULT, true)
+        uninstallIntent = // don't offer to uninstall system apps
+        if (
+            packageInfo != null && ((packageInfo.applicationInfo?.flags ?: 0) and FLAG_SYSTEM) == 0
+          ) {
+            Intent(ACTION_DELETE).apply {
+              setData(Uri.fromParts("package", packageInfo.packageName, null))
+              putExtra(EXTRA_RETURN_RESULT, true)
             }
+          } else {
+            null
           },
         launchIntent = packagePair.launchIntent,
         shareIntent = getShareIntent(repo, packageName, name ?: ""),

@@ -1,3 +1,4 @@
+import javax.xml.parsers.DocumentBuilderFactory
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -9,8 +10,6 @@ plugins {
   alias(libs.plugins.screenshot)
   alias(libs.plugins.ktfmt)
 }
-
-val nightlyVersionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
 
 android {
   namespace = "org.fdroid"
@@ -24,6 +23,14 @@ android {
     versionName = "2.0-alpha10"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  // filter out incomplete translations from stable releases (which end in 50+)
+  val isStableRelease = (defaultConfig.versionCode ?: 0) % 100 >= 50
+  if (isStableRelease) {
+    androidResources {
+      localeFilters.addAll(getLocalesConfig(file("src/main/res/xml/locales_config.xml")))
+    }
   }
 
   buildTypes {
@@ -52,7 +59,7 @@ android {
     create("default") { dimension = "release" }
     create("nightly") {
       dimension = "release"
-      versionCode = nightlyVersionCode
+      versionCode = (System.currentTimeMillis() / 1000 / 60).toInt()
       versionNameSuffix = "-$gitHash"
       applicationIdSuffix = ".nightly"
     }
@@ -86,10 +93,6 @@ androidComponents {
       // so we can test proguard minification in production
       variantBuilder.enable = false
     }
-  }
-  // only needed while basic flavor has its own version code
-  onVariants(selector().withFlavor("release" to "nightly")) { variant ->
-    variant.outputs.forEach { output -> output.versionCode.set(nightlyVersionCode) }
   }
 }
 
@@ -139,8 +142,6 @@ dependencies {
   implementation(libs.androidx.hilt.navigation.compose)
   ksp(libs.hilt.android.compiler)
   ksp(libs.androidx.hilt.compiler)
-  // https://github.com/google/dagger/issues/5001
-  ksp("org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.21")
 
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)
@@ -178,7 +179,6 @@ dependencies {
   androidTestImplementation(libs.coil.network.okhttp)
 
   screenshotTestImplementation(libs.screenshot.validation.api)
-  screenshotTestImplementation(libs.androidx.ui.tooling)
 }
 
 kotlin { compilerOptions { jvmTarget = JvmTarget.JVM_17 } }
@@ -201,6 +201,14 @@ val gitHash: String
     process.waitFor() // Ensure the command completes
     return process.inputStream.use { it.readBytes().decodeToString().trim() }
   }
+
+fun getLocalesConfig(file: File): List<String> {
+  val doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file)
+  val nodes = doc.getElementsByTagName("locale")
+  return (0 until nodes.length).map {
+    nodes.item(it).attributes.getNamedItem("android:name").nodeValue.replace("-", "-r")
+  }
+}
 
 // workaround for https://issuetracker.google.com/issues/430260686
 // also https://issuetracker.google.com/issues/469819154

@@ -1,6 +1,8 @@
-* materiał design 3 (z krawędziami od krawędzi, ale bez dynamicznych kolorów) (Dzięki, proletarius!)
-* przeprojektowanie ekranów szczegółów repozytorium (Dzięki, Thore!)
-* dodano eksport plików logcat w ustawieniach eksperckich
-* aktualizacja docelowego SDK (Android 15 dla wersji podstawowej i Android 11 dla wersji pełnej)
-* dodano link zwrotny ze strony aplikacji w ustawieniach systemowych (Dzięki, j-m4!)
-* użycie selektora aplikacji do udostępniania zainstalowanych aplikacji i historii instalacji (dzięki, Thore!)
+* Interfejs użytkownika napisany od nowa w Kotlin Compose.
+* Ulepszona wyszukiwarka umożliwiająca przeszukiwanie opisów i tłumaczeń.
+* Łatwiejsze odkrywanie nowych aplikacji z wyróżnieniem najczęściej pobieranych.
+* Zatwierdzanie instalacji *przed* pobraniem.
+* Wiele aktualizacji/pobierań w tym samym czasie.
+* Powiadamianie użytkownika o problemach z aplikacjami (np. zmiana klucza podpisu).
+* Opcjonalny motyw kolorystyczny Material You.
+* Ulepszone filtrowanie list.
