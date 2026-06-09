@@ -75,7 +75,7 @@
     <string name="app_inst_unknown_source">نصب شده (از منبع ناشناس)</string>
     <string name="links">پیوندها</string>
     <string name="more">بیش‌تر</string>
-    <string name="abc_action_menu_overflow_description">گزینه‌های بیشتر</string>
+    <string name="abc_action_menu_overflow_description">گزینه‌های بیش‌تر</string>
     <string name="less">کم‌تر</string>
     <string name="back">بازگشت</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>
@@ -793,10 +793,19 @@
     <string name="category_group_summary_device">اجراگر، صفحه‌کلید، امنیت و زمینش</string>
     <string name="category_group_summary_network">مرورگر، وی‌پی‌ان، پیشکار و دیوار آتش</string>
     <string name="category_group_summary_interests">علمی، ورزشی، نقاشی و دستور پخت</string>
-    <string name="category_group_summary_media">آهنگ، پادپخش، بازی و کتاب‌خوان</string>
+    <string name="category_group_summary_media">آهنگ، پادپخش و کتاب‌خوان</string>
     <string name="category_group_summary_storage">پرونده‌ها، نگارخانه، ابری و رمزنگاری</string>
     <string name="apps_updates_hint_text">همهٔ کاره‌هایتان به‌روزند</string>
     <string name="repo_disable_dialog_text">کاره‌های این مخزن دیگر ظاهر نخواهند شد. کاره‌هایی که نصب شده‌اند تأثیر نخواهند پذیرفت.</string>
     <string name="repo_disable_dialog_warning">اگر این مخزن را برای هر کاره‌ای به عنوان ترجیحی تنظیم کرده باشید آن ترجیح از دست خواهد رفت</string>
     <string name="app_details_anti_features_text">برخی کاره‌ها رفتارهایی دارند که شما نخواسته و شاید نپسندید. چیزهایی چون تبلیغات، ردیابی یا وابستگی به خدمت‌های انحصاری. به این‌ها پادویژگی می‌گوییم.\n\nکاره‌های اف‌دروید در صورت داشتن پادویژگی به وضوح برچسب خورده‌اند تا بتوانید انتخابی آگاهانه داشته باشید.</string>
+    <string name="my_apps_header_recently_installed_apps">به تازگی نصب شده</string>
+    <string name="clear_all">پاک سازی همه</string>
+    <string name="category_group_games">بازی‌ها</string>
+    <string name="category_group_summary_games">بازی‌های مهمانی، کارتی و صفحه‌ای</string>
+    <string name="pref_auto_updates_only_only_when_open_app">تنها هنگام گشودن کاره</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">بررسی برای به‌روز رسانی‌ها تنها هنگام گشودن • کاره‌ها قدیمی خواهند شد</string>
+    <string name="notification_channel_self_update_title">خود به‌روز رسانی</string>
+    <string name="notification_channel_self_update_description">آگاه کردن هنگامی که کاره خودش را به‌روز کرده و بسته شده به منظور آسانی اجرای دوباره‌اش</string>
+    <string name="notification_self_update_title">‫%s به‌روز شد. زدن برای گشودن</string>
 </resources>

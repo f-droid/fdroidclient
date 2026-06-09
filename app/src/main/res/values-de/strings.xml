@@ -154,7 +154,7 @@
     <string name="interval_1d">Täglich nach Aktualisierungen suchen</string>
     <string name="interval_1w">Wöchentlich nach Aktualisierungen suchen</string>
     <string name="more">Mehr</string>
-    <string name="abc_action_menu_overflow_description">Weitere Optionen</string>
+    <string name="abc_action_menu_overflow_description">Mehr Optionen</string>
     <string name="less">Weniger</string>
     <string name="empty_installed_app_list">Keine Apps installiert. \n \nEs sind Apps auf deinem Gerät installiert, aber keine davon ist von F-Droid abrufbar. Das könnte daran liegen, dass du deine Paketquellen aktualisieren musst oder diese tatsächlich keine deiner Apps beinhalten.</string>
     <string name="empty_can_update_app_list">Glückwunsch! \nDeine Apps sind auf dem neuesten Stand.</string>
@@ -792,7 +792,7 @@
     <string name="category_group_summary_productivity">Kalender, Aufgaben, Uhren und Notizen</string>
     <string name="category_group_summary_tools">Navigation, Wetter, Rechner und Umrechner</string>
     <string name="category_group_summary_wallets">Finanzen, Geld- und Passverwaltung</string>
-    <string name="category_group_summary_media">Musik, Podcasts, Spiele und E-Book-Reader</string>
+    <string name="category_group_summary_media">Musik, Podcasts und E-Book-Reader</string>
     <string name="category_group_summary_communication">E-Mail, Messaging und soziale Netzwerke</string>
     <string name="category_group_summary_device">Launcher, Tastatur, Sicherheit und Design</string>
     <string name="category_group_summary_network">Browser, VPNs, Proxys und Firewalls</string>
@@ -807,4 +807,13 @@
     <string name="repo_disable_dialog_title">Paketquelle deaktivieren</string>
     <string name="repo_disable_dialog_warning">Wenn du diese Paketquelle für eine App als bevorzugt festgelegt hast, geht diese Einstellung verloren</string>
     <string name="repo_disable_dialog_text">Alle Apps aus dieser Paketquelle werden gelöscht. Bereits installierte Apps sind davon nicht betroffen.</string>
+    <string name="my_apps_header_recently_installed_apps">Kürzlich installiert</string>
+    <string name="clear_all">Alle löschen</string>
+    <string name="category_group_games">Spiele</string>
+    <string name="category_group_summary_games">Brettspiele, Kartenspiele und Partyspiele</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Nur beim Öffnen der App</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Nur beim Öffnen nach Updates suchen • Apps werden veralten</string>
+    <string name="notification_channel_self_update_title">Auto-Update</string>
+    <string name="notification_channel_self_update_description">Benachrichtigt dich, wenn die App aktualisiert und geschlossen wurde, sodass du sie ganz einfach erneut starten kannst</string>
+    <string name="notification_self_update_title">%s wurde aktualisiert. Zum Öffnen antippen</string>
 </resources>

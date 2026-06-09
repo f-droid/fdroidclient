@@ -205,7 +205,7 @@
     <string name="all_other_repos_fine">Tất cả kho khác không có lỗi.</string>
     <string name="swap_join_this_hotspot">Giúp bạn của bạn vào điểm truy cập</string>
     <string name="more">Mở rộng</string>
-    <string name="abc_action_menu_overflow_description">Tùy chọn khác</string>
+    <string name="abc_action_menu_overflow_description">Lựa chọn khác</string>
     <string name="less">Thu gọn</string>
     <string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
     <string name="permissions">Quyền</string>
@@ -771,7 +771,7 @@
     <string name="category_group_summary_productivity">Lịch, tác vụ, đồng hồ &amp; ghi chú</string>
     <string name="category_group_summary_tools">Điều hướng, thời tiết, máy tính và công cụ chuyển đổi</string>
     <string name="category_group_summary_wallets">Tài chính, tiền và vé</string>
-    <string name="category_group_summary_media">Âm nhạc, podcast, trò chơi và trình đọc sách điện tử</string>
+    <string name="category_group_summary_media">Âm nhạc, podcast &amp; trình đọc sách điện tử</string>
     <string name="category_group_summary_communication">Email, tin nhắn và mạng xã hội</string>
     <string name="category_group_summary_device">Trình launcher, bàn phím, bảo mật &amp; giao diện</string>
     <string name="category_group_summary_network">Trình duyệt, VPN, proxy và tường lửa</string>
@@ -787,4 +787,13 @@
     <string name="repo_disable_dialog_title">Tắt kho ứng dụng</string>
     <string name="repo_disable_dialog_warning">Nếu bạn đã thiết lập kho ứng dụng này làm kho ưu tiên cho bất kỳ ứng dụng nào, thiết lập đó sẽ bị mất</string>
     <string name="repo_disable_dialog_text">Tất cả ứng dụng từ kho ứng dụng này sẽ biến mất. Các ứng dụng đã cài đặt trước đó sẽ không bị ảnh hưởng.</string>
+    <string name="my_apps_header_recently_installed_apps">Cài đặt gần đây</string>
+    <string name="clear_all">Xóa tất cả</string>
+    <string name="category_group_games">Trò chơi</string>
+    <string name="category_group_summary_games">Trò chơi bài, thẻ và tiệc tùng</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Chỉ khi mở ứng dụng</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Kiểm tra bản cập nhật khi mở • Ứng dụng có thể lỗi thời</string>
+    <string name="notification_channel_self_update_title">Tự cập nhật</string>
+    <string name="notification_channel_self_update_description">Báo khi ứng dụng tự cập nhật xong và đóng, để bạn có thể dễ dàng khởi động lại</string>
+    <string name="notification_self_update_title">%s đã được cập nhật. Nhấn để mở</string>
 </resources>

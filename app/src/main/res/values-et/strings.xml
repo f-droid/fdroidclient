@@ -44,7 +44,7 @@
     <string name="repo_add_add">Lisa</string>
     <string name="links">Lingid</string>
     <string name="more">Rohkem</string>
-    <string name="abc_action_menu_overflow_description">Rohkem valikuid</string>
+    <string name="abc_action_menu_overflow_description">Lisavalikud</string>
     <string name="less">Vähem</string>
     <string name="back">Tagasi</string>
     <string name="cancel">Tühista</string>
@@ -794,7 +794,7 @@
     <string name="category_group_summary_productivity">Kalendrid, ülesanded, kellad ja märkmed</string>
     <string name="category_group_summary_tools">Tee juhatamine, ilmaennustus, kalkulaatorid ja teisendajad</string>
     <string name="category_group_summary_wallets">Rahandus, raha ja dokumenditaskud</string>
-    <string name="category_group_summary_media">Muusika, taskuhäälingud. mängud ja e-raamatute kuvajad</string>
+    <string name="category_group_summary_media">Muusika, taskuhäälingud ja e-raamatute kuvajad</string>
     <string name="category_group_summary_communication">E-post, sõnumivahetus ja sotsiaalvõrgud</string>
     <string name="category_group_summary_device">Käivitajad, klahvistikud, turvalisus ja kujundused</string>
     <string name="category_group_summary_network">Veebibrauserid, VPN-id, proksid ja tulemüürid</string>
@@ -810,4 +810,13 @@
     <string name="repo_disable_dialog_title">Eemalda tarkvarahoidla kasutuselt</string>
     <string name="repo_disable_dialog_warning">Kui oled selle tarkvarahoidla märkinud kõikide rakenduste jaoks eelistatuks, siis selline märge läheb ka kaotsi</string>
     <string name="repo_disable_dialog_text">Kõik selle tarkvarahoidla rakendused kaovad üldvaatest. Juba paigaldatud rakendused jäävad nutiseadmesse alles, kuid ilmselt neile enam ei lisandu uuendusi.</string>
+    <string name="my_apps_header_recently_installed_apps">Hiljuti paigaldatud</string>
+    <string name="clear_all">Eemalda kõik</string>
+    <string name="category_group_games">Mängud</string>
+    <string name="category_group_summary_games">Laua- kaardi- ja peomängud</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Vaid rakenduse avamisel</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Kontrolli uuendusi vaid rakenduse avamisel • Paigaldatud rakendused võivad aeguda</string>
+    <string name="notification_channel_self_update_title">Eneseuuendused</string>
+    <string name="notification_channel_self_update_description">Saad teavituse, kui rakendus uuendas end ja seejärel suleti. Saad rakenduse mugavalt uuesti avada</string>
+    <string name="notification_self_update_title">%s rakendus on uuendatud. Avamiseks klõpsa</string>
 </resources>

@@ -321,4 +321,5 @@
     <string name="force_old_installer_summary">Desactivar el instalador de sesión beta, incluyendo el soporte para actualizaciones automáticas en segundo plano.</string>
     <string name="repo_share_not_found">No se pudo encontrar la dirección del repositorio en el texto compartido.</string>
     <string name="has_disallow_install_unknown_sources">Este usuario no puede añadir fuentes desconocidas, incluyendo repositorios nuevos</string>
+    <string name="app_name_basic">F-droid basico</string>
 </resources>

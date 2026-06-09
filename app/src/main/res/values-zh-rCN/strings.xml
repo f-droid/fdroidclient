@@ -776,7 +776,7 @@
     <string name="category_group_summary_productivity">日历、任务、时钟和笔记</string>
     <string name="category_group_summary_tools">导航、天气、计算器和转换器</string>
     <string name="category_group_summary_wallets">财务、金钱和密码管理器</string>
-    <string name="category_group_summary_media">音乐、播客、游戏和电子书阅读器</string>
+    <string name="category_group_summary_media">音乐、播客和电子书阅读器</string>
     <string name="category_group_summary_communication">电子邮件、消息收发和社交网络</string>
     <string name="category_group_summary_device">启动器、键盘、安全和主题</string>
     <string name="category_group_summary_network">浏览器、VPN、代理和防火墙</string>
@@ -792,4 +792,13 @@
     <string name="repo_disable_dialog_title">禁用存储库</string>
     <string name="repo_disable_dialog_warning">如果曾将该存储库设为任何应用的首选存储库，那么这样的设置将失效</string>
     <string name="repo_disable_dialog_text">所有来自该存储库的应用将消失。已安装的应用不受影响。</string>
+    <string name="my_apps_header_recently_installed_apps">最近安装</string>
+    <string name="clear_all">全部清除</string>
+    <string name="category_group_games">游戏</string>
+    <string name="category_group_summary_games">棋盘、卡牌和派对游戏</string>
+    <string name="pref_auto_updates_only_only_when_open_app">仅在打开应用时</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">只在打开时检查更新 • 应用会过时</string>
+    <string name="notification_channel_self_update_title">自更新</string>
+    <string name="notification_channel_self_update_description">当应用更新自己并被关闭时通知以便能轻松地再次启动它</string>
+    <string name="notification_self_update_title">已更新 %s。轻触打开</string>
 </resources>

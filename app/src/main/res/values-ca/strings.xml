@@ -799,7 +799,7 @@
     <string name="category_group_summary_productivity">Calendaris, tasques, rellotges i notes</string>
     <string name="category_group_summary_tools">Navegació, oratge, calculadores i conversors</string>
     <string name="category_group_summary_wallets">Finances, diners i gestors de contrasenyes</string>
-    <string name="category_group_summary_media">Música, podcasts, jocs i lectors de llibres electrònics</string>
+    <string name="category_group_summary_media">Música, podcasts i lectors de llibres electrònics</string>
     <string name="category_group_summary_communication">Correu electrònic, missatgeria i xarxes socials</string>
     <string name="category_group_summary_device">Llançadores, teclats, seguretat i temes</string>
     <string name="category_group_summary_network">Navegadors, VPN, intermediaris i tallafocs</string>
@@ -815,4 +815,13 @@
     <string name="repo_disable_dialog_title">Desactiva el dipòsit</string>
     <string name="repo_disable_dialog_warning">Si no heu configurat aquest dipòsit com el preferit per a cap aplicació, aquesta preferència es perdrà</string>
     <string name="repo_disable_dialog_text">Totes les aplicacions d\'aquest dipòsit desapareixeran. Les aplicacions ja instal·lades no es veuran afectades.</string>
+    <string name="my_apps_header_recently_installed_apps">Recentment instal·lat</string>
+    <string name="clear_all">Esborra-ho tot</string>
+    <string name="category_group_games">Jocs</string>
+    <string name="category_group_summary_games">Jocs de taula, cartes i de festa</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Només en obrir l\'aplicació</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Comprova si hi ha actualitzacions només quan estiguis obert • Les aplicacions quedaran obsoletes</string>
+    <string name="notification_channel_self_update_title">Autoactualització</string>
+    <string name="notification_channel_self_update_description">Notifica quan l\'aplicació s\'ha actualitzat i s\'ha tancat, de manera que la puguis tornar a iniciar fàcilment</string>
+    <string name="notification_self_update_title">El marcador de posició %s serà substituït pel nom d\'aquesta aplicació</string>
 </resources>

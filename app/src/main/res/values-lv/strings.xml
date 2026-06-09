@@ -402,7 +402,7 @@
     <string name="send_installed_apps_csv">F-Droid uzstādīto lietotņu saraksts CSV datnē</string>
     <string name="menu_release_channel_beta">Atļaut beta atjauninājumus</string>
     <string name="menu_show_fdroid_metrics_report">Rādīt rādītāju pārskatu</string>
-    <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes tika paslēptas, pamatojoties uz nevēlamo iespēju iestatījumiem. Pieskarties, lai mainītu.</string>
+    <string name="app_list_results_hidden_antifeature_settings">Dažas lietotnes ir paslēptas atbilstoši nevēlamo iespēju iestatījumiem. Pieskarties, lai mainītu.</string>
     <string name="has_disallow_install_unknown_sources">Šis lietotājs nevar pievienot nezināmus avotus, un tas attiecas arī uz jaunām glabātavām</string>
     <string name="menu_select_for_wipe">Atlasīt notīrīšanai</string>
     <string name="repo_searching_address">Meklē pakotņu glabātavu \n%1$s</string>
@@ -639,7 +639,7 @@
     <string name="app_list_all">Visas lietotnes</string>
     <string name="app_list_author">Lietotnes no %s</string>
     <string name="search_placeholder">Meklēt…</string>
-    <string name="search_no_results">Neviena lietotne netika atrasta\n\nJāmēģina izmantot vienkāršāks meklēšanas vaicājums vai jāpievieno vairāk glabātavu</string>
+    <string name="search_no_results">Netika atrasta neviena lietotne\n\nJāmēģina izmantot vienkāršāks meklēšanas vaicājums vai jāpievieno vairāk glabātavu</string>
     <string name="category_group_productivity">Ražīgums</string>
     <string name="category_group_tools">Rīki</string>
     <string name="category_group_wallets">Nauda un maki</string>
@@ -665,4 +665,20 @@
     <string name="category_group_interests">Intereses</string>
     <string name="ipfsgw_summary_new">Lejupielādēt lietotnes no IPFS tīmekļa galamērķiem</string>
     <string name="first_start_intro">Lai uzsāktu, jāvienādo lietotņu glabātavas</string>
+    <string name="first_start_offline">Tu esi bezsaistē. Jāsavienojas ar internetu, lai uzsāktu.</string>
+    <string name="first_start_button">Iegūt glabātavas</string>
+    <string name="no_repos_enabled">Nav pieejama neviena glabātava. Jāpievieno kāda, lai uzsāktu</string>
+    <string name="my_apps_header_recently_installed_apps">Nesen uzstādītas</string>
+    <string name="search_history">Nesenie meklējumi</string>
+    <string name="search_filter_no_results">Nav atbilstošu lietotņu\n\nJāmēģina vienkāršāks meklēšanas vaicājums vai jānoņem atsijātāji</string>
+    <string name="search_my_apps_no_results">Nav atbilstošu lietotņu\n\nJāmēģina vienkāršāks meklēšanas vaicājums</string>
+    <string name="search_auto_keyboard">Automātiski atvērt tastatūru</string>
+    <string name="sort_title">Kārtošana un saderība</string>
+    <string name="sort_by_name">Kārtot pēc nosaukuma</string>
+    <string name="sort_by_latest">Kārtot pēc pēdējā atjauninājuma</string>
+    <string name="filter_only_compatible">Ar šo ierīci saderīgas lietotnes</string>
+    <string name="filter_button_save">Saglabāt kā noklusējumu</string>
+    <string name="filter_intro">Atsijāt lietotnes pēc</string>
+    <string name="filter_button_clear_all">Notīrīt visus atsijātājus</string>
+    <string name="filter">Atsijātājs</string>
 </resources>

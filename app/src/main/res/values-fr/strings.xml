@@ -215,7 +215,7 @@
     <string name="swap_connection_misc_error">Une erreur a eu lieu lors de la connexion à l\'appareil, impossible de faire l\'échange !</string>
     <string name="category_Time">Temps</string>
     <string name="more">Plus</string>
-    <string name="abc_action_menu_overflow_description">Autres options</string>
+    <string name="abc_action_menu_overflow_description">Plus d\'options</string>
     <string name="less">Moins</string>
     <string name="permissions">Autorisations</string>
     <string name="menu_settings">Paramètres</string>
@@ -812,7 +812,7 @@
     <string name="category_group_summary_productivity">Agendas, tâches, horloges &amp; notes</string>
     <string name="category_group_summary_tools">Navigation, météo, calculatrices &amp; convertisseurs</string>
     <string name="category_group_summary_wallets">Gestionnaires de finances, d\'argent &amp; de cartes</string>
-    <string name="category_group_summary_media">Musique, podcasts, jeux &amp; liseuses</string>
+    <string name="category_group_summary_media">Musique, podcasts &amp; liseuses</string>
     <string name="category_group_summary_communication">Courriel, messagerie &amp; réseaux sociaux</string>
     <string name="category_group_summary_device">Lanceur, clavier, sécurité &amp; personnalisation</string>
     <string name="category_group_summary_network">Navigateurs, VPN, proxys &amp; pare-feu</string>
@@ -828,4 +828,13 @@
     <string name="repo_disable_dialog_title">Désactiver le référentiel</string>
     <string name="repo_disable_dialog_warning">Si vous avez défini ce référentiel comme référentiel par défaut pour une application, ce paramètre sera perdu</string>
     <string name="repo_disable_dialog_text">Toutes les applications de ce référentiel vont disparaître. Les applications déjà installées ne seront pas concernées.</string>
+    <string name="my_apps_header_recently_installed_apps">Installé récemment</string>
+    <string name="clear_all">Tout effacer</string>
+    <string name="category_group_games">Jeux</string>
+    <string name="category_group_summary_games">Jeux de société, jeux de cartes &amp; jeux festifs</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Uniquement lors du lancement de l\'application</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Rechercher les mises à jour uniquement lorsque l\'application est ouverte • Les applications risquent de devenir obsolètes</string>
+    <string name="notification_channel_self_update_title">Mise à jour automatique</string>
+    <string name="notification_channel_self_update_description">Vous avertit lorsque l\'application s\'est mise à jour et s\'est fermée, afin que vous puissiez la relancer facilement</string>
+    <string name="notification_self_update_title">%s a été mis à jour. Appuyez pour ouvrir</string>
 </resources>

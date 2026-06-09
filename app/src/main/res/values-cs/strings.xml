@@ -805,7 +805,7 @@
     <string name="category_group_summary_productivity">Kalendáře, úkoly, hodiny a poznámky</string>
     <string name="category_group_summary_tools">Navigace, počasí, kalkulačky a převodníky</string>
     <string name="category_group_summary_wallets">Finance, peníze a správce lístků</string>
-    <string name="category_group_summary_media">Hudba, podcasty, hry a čtečky e-knih</string>
+    <string name="category_group_summary_media">Hudba, podcasty a čtečky e-knih</string>
     <string name="category_group_summary_communication">E-mail, zprávy a sociální sítě</string>
     <string name="category_group_summary_device">Launcher, klávesnice, zabezpečení a motivy</string>
     <string name="category_group_summary_network">Prohlížeč, VPN, proxy a firewall</string>
@@ -821,4 +821,13 @@
     <string name="repo_disable_dialog_title">Zakázat repozitář</string>
     <string name="repo_disable_dialog_warning">Pokud jste tento repozitář nastavili jako preferovaný u nějakých aplikací, bude tato preference ztracena</string>
     <string name="repo_disable_dialog_text">Všechny aplikace z tohoto repozitáře zmizí. Na již nainstalované aplikace to nebude mít vliv.</string>
+    <string name="my_apps_header_recently_installed_apps">Nedávno nainstalováno</string>
+    <string name="clear_all">Vymazat vše</string>
+    <string name="category_group_games">Hry</string>
+    <string name="category_group_summary_games">Deskové, karetní a párty hry</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Pouze při otevření aplikace</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Kontrolovat aktualizace pouze po otevření • Aplikace přestanou být aktuální</string>
+    <string name="notification_channel_self_update_title">Vlastní aktualizace</string>
+    <string name="notification_channel_self_update_description">Oznámí, když aplikace aktualizovala sama sebe a byla zavřena, abyste ji mohli znovu jednoduše otevřít</string>
+    <string name="notification_self_update_title">%s byl aktualizován. Klepněte pro otevření</string>
 </resources>
