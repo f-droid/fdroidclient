@@ -809,7 +809,7 @@
     <string name="category_group_summary_productivity">Calendare, activități, ceasuri și note</string>
     <string name="category_group_summary_tools">Navigaţie, vreme, calculatoare şi convertoare</string>
     <string name="category_group_summary_wallets">Finanţe, bani şi gestionare parole</string>
-    <string name="category_group_summary_media">Muzică, podcasturi, jocuri și cărți electronice</string>
+    <string name="category_group_summary_media">Muzică, podcasturi și cărți electronice</string>
     <string name="category_group_summary_communication">E-mail, mesaje și rețele sociale</string>
     <string name="category_group_summary_device">Lansator, tastatură, securitate și tematică</string>
     <string name="category_group_summary_network">Browser, VPN-uri, proxy-uri și firewall</string>
@@ -825,4 +825,13 @@
     <string name="repo_disable_dialog_text">Toate aplicațiile din acest depozit vor dispărea. Aplicațiile deja instalate nu vor fi afectate.</string>
     <string name="repo_disable_dialog_warning">Dacă ați setat acest depozit ca preferat pentru orice aplicație, această preferință va fi pierdută</string>
     <string name="app_details_anti_features_text">Unele aplicații au comportamente pe care nu le-ați cerut și s-ar putea să nu le doriți. Lucruri cum ar fi reclame, supraveghere sau dependența de servicii proprietare. Noi le numim: caracteristici periculoase. \n\nAplicațiile din F-Droid sunt clar etichetate atunci când conțin caracteristici periculoase, astfel încât să puteți face o alegere în cunoștință de cauză.</string>
+    <string name="my_apps_header_recently_installed_apps">Recent instalat</string>
+    <string name="clear_all">Șterge tot</string>
+    <string name="category_group_games">Jocuri</string>
+    <string name="category_group_summary_games">Jocuri de societate, de cărți și de petrecere</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Doar cănd se deschide aplicația</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Se preiau actualizările numai atunci când se deschide aplicația • Aplicațiile vor deveni învechite</string>
+    <string name="notification_channel_self_update_title">Auto-actualizare</string>
+    <string name="notification_channel_self_update_description">Se notifică atunci când aplicația s-a actualizat și a fost închisă, astfel încât să o puteți lansa din nou cu ușurință</string>
+    <string name="notification_self_update_title">%s a fost actualizată. Atingeți pentru a o deschide</string>
 </resources>

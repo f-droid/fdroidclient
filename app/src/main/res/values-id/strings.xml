@@ -34,7 +34,7 @@
     <string name="repo_add_add">Tambahkan</string>
     <string name="links">Tautan</string>
     <string name="more">Lebih banyak</string>
-    <string name="abc_action_menu_overflow_description">Opsi lainnya</string>
+    <string name="abc_action_menu_overflow_description">Pilihan lainnya</string>
     <string name="less">Lebih sedikit</string>
     <string name="back">Kembali</string>
     <string name="cancel">Batalkan</string>
@@ -783,7 +783,7 @@
     <string name="category_group_summary_productivity">Kalender, tugas, jam &amp; catatan</string>
     <string name="category_group_summary_tools">Navigasi, cuaca, kalkulator &amp; konverter</string>
     <string name="category_group_summary_wallets">Keuangan, uang &amp; pengelola kata sandi</string>
-    <string name="category_group_summary_media">Musik, podcast, game &amp; pembaca ebook</string>
+    <string name="category_group_summary_media">Musik, podcast &amp; pembaca ebook</string>
     <string name="category_group_summary_communication">Email, pesan &amp; jejaring sosial</string>
     <string name="category_group_summary_device">Peluncur, keyboard, keamanan &amp; tema</string>
     <string name="category_group_summary_network">Browser, VPN, proksi &amp; firewall</string>
@@ -800,4 +800,13 @@
     <string name="repo_disable_dialog_warning">Jika Anda telah menetapkan repositori ini sebagai pilihan utama untuk aplikasi tertentu, preferensi tersebut akan hilang</string>
     <string name="repo_disable_dialog_text">Semua aplikasi dari repositori ini akan menghilang. Aplikasi yang sudah terinstal tidak akan terpengaruh.</string>
     <string name="install_history_switch">Gunakan riwayat instalasi</string>
+    <string name="my_apps_header_recently_installed_apps">Baru saja dipasang</string>
+    <string name="clear_all">Bersihkan semua</string>
+    <string name="category_group_games">Permainan</string>
+    <string name="category_group_summary_games">Permainan papan, kartu dan pesta</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Hanya saat membuka aplikasi</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Periksa pembaruan hanya saat aplikasi dibuka • Aplikasi akan menjadi usang</string>
+    <string name="notification_channel_self_update_title">Pembaruan mandiri</string>
+    <string name="notification_channel_self_update_description">Memberi tahu saat aplikasi telah diperbarui dan ditutup, sehingga Anda dapat membukanya kembali dengan mudah</string>
+    <string name="notification_self_update_title">%s telah diperbarui. Ketuk untuk membuka</string>
 </resources>

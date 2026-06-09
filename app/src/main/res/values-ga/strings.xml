@@ -851,7 +851,7 @@
     <string name="category_group_summary_productivity">Féilirí, tascanna, cloig &amp; nótaí</string>
     <string name="category_group_summary_tools">Loingseoireacht, aimsir, áireamháin &amp; tiontairí</string>
     <string name="category_group_summary_wallets">Airgeadas, airgead agus bainisteoirí roimhe seo</string>
-    <string name="category_group_summary_media">Ceol, podchraoltaí, cluichí &amp; léitheoirí ríomhleabhar</string>
+    <string name="category_group_summary_media">Ceol, podchraoltaí &amp; léitheoirí ríomhleabhar</string>
     <string name="category_group_summary_communication">Ríomhphost, teachtaireachtaí agus líonraí sóisialta</string>
     <string name="category_group_summary_device">Lainseálaí, méarchlár, slándáil &amp; téamaíocht</string>
     <string name="category_group_summary_network">Brabhsálaí, VPNanna, seachfhreastalaithe &amp; balla dóiteáin</string>
@@ -867,4 +867,14 @@
     <string name="repo_disable_dialog_title">Díchumasaigh an stórlann</string>
     <string name="repo_disable_dialog_warning">Má shocraigh tú an stórlann seo mar rogha d\'aon aip, caillfear an rogha sin</string>
     <string name="repo_disable_dialog_text">Imeoidh gach aip ón stór seo as radharc. Ní bheidh tionchar ar aipeanna atá suiteáilte cheana féin.</string>
+    <string name="my_apps_header_recently_installed_apps">Suiteáilte le déanaí</string>
+    <string name="clear_all">Glan gach rud</string>
+    <string name="category_group_games">Cluichí</string>
+    <string name="category_group_summary_games">Cluichí boird, cártaí agus cóisire</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Nuair a osclaítear an aip amháin</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Seiceáil le haghaidh nuashonruithe ach amháin nuair a osclaítear iad • Beidh aipeanna as dáta</string>
+    <string name="abc_action_menu_overflow_description">Tuilleadh roghanna</string>
+    <string name="notification_channel_self_update_title">Féinnuashonrú</string>
+    <string name="notification_channel_self_update_description">Tugann sé fógra nuair a rinneadh an aip a nuashonrú agus a dhúnadh í, ionas gur féidir leat í a sheoladh arís go héasca</string>
+    <string name="notification_self_update_title">Nuashonraíodh %s. Tapáil le hoscailt</string>
 </resources>

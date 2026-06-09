@@ -761,4 +761,13 @@
     <string name="category_group_summary_wallets">Finans, penger &amp; passord banker</string>
     <string name="category_group_summary_media">Musikk, podcaster, spill &amp; ebok lesere</string>
     <string name="category_group_summary_communication">E-post, meldinger &amp; sosiale nettverk</string>
+    <string name="my_apps_header_recently_installed_apps">Nylig installert</string>
+    <string name="clear_all">Tøm alt</string>
+    <string name="category_group_games">Spill</string>
+    <string name="category_group_summary_games">Brett-, kort- og partyspill</string>
+    <string name="category_group_summary_storage">Filer, bilder, sky-synkronisering og kryptering</string>
+    <string name="category_group_summary_interests">Vitenskap, sport, tegning og oppskrifter</string>
+    <string name="category_group_summary_misc">Ukategorisert</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Bare når appen åpnes</string>
+    <string name="app_details_anti_features_title">Hva er anti-funksjoner?</string>
 </resources>

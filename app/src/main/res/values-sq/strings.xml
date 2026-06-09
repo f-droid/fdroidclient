@@ -19,7 +19,7 @@
     <string name="no">Jo</string>
     <string name="repo_add_add">Shtoje</string>
     <string name="more">Më tepër</string>
-    <string name="abc_action_menu_overflow_description">Opsione të tjera</string>
+    <string name="abc_action_menu_overflow_description">Mundësi të tjera</string>
     <string name="less">Më pak</string>
     <string name="back">Mbrapsht</string>
     <string name="cancel">Anuloje</string>
@@ -782,7 +782,7 @@
     <string name="category_group_summary_productivity">Kalendarë, punë, sahate &amp; shënime</string>
     <string name="category_group_summary_tools">Lëvizje, mot, makina llogaritëse &amp; shndërrues</string>
     <string name="category_group_summary_wallets">Financë, para &amp; përgjegjës fjalëkalimesh</string>
-    <string name="category_group_summary_media">Muzikë, podcast-e, lojëra &amp; lexues elibrash</string>
+    <string name="category_group_summary_media">Muzikë, podcast-e &amp; lexues elibrash</string>
     <string name="category_group_summary_communication">Email, shkëmbim mesazhesh &amp; rrjete shoqërorë</string>
     <string name="category_group_summary_device">Nisës, tastierë, siguri &amp; tema grafike</string>
     <string name="category_group_summary_network">Shfletues, VPN, ndërmjetës &amp; firewall</string>
@@ -798,4 +798,12 @@
     <string name="repo_disable_dialog_title">Çaktivizoje depon</string>
     <string name="repo_disable_dialog_warning">Nëse e keni vënë këtë depo si të parapëlqyer për çfarëdo aplikacioni, ai parapëlqim do të humbë</string>
     <string name="repo_disable_dialog_text">Krejt aplikacionet nga kjo depo do të zhduken. Prej kësaj s’do të preken aplikacione të instaluar tashmë.</string>
+    <string name="my_apps_header_recently_installed_apps">Instaluar së fundi</string>
+    <string name="clear_all">Spatroji krejt</string>
+    <string name="category_group_games">Lojëra</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Vetëm kur hapet aplikacioni</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Kontrollo për përditësime vetëm kur hapet • Aplikacionet do të bëhen të papërditësuar</string>
+    <string name="notification_channel_self_update_title">Vetëpërditësim</string>
+    <string name="notification_channel_self_update_description">Njofton kur aplikacioni përditësoi veten dhe qe mbyllur, që të mund ta nisni sërish kollaj</string>
+    <string name="notification_self_update_title">%s u përditësua. Prekeni që të hapet</string>
 </resources>

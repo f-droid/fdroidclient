@@ -755,7 +755,7 @@
     <string name="category_group_summary_productivity">Kalenterit, tehtävät, kellot ja muistiinpanot</string>
     <string name="category_group_summary_tools">Navigointi, sää, laskimet ja muuntimet</string>
     <string name="category_group_summary_wallets">Talous- ja rahanhallinta</string>
-    <string name="category_group_summary_media">Musiikki, podcastit, pelit ja e-kirjan lukijat</string>
+    <string name="category_group_summary_media">Musiikki, podcastit ja e-kirjan lukijat</string>
     <string name="category_group_summary_communication">E-posti, viestit ja sosiaaliset verkostot</string>
     <string name="category_group_summary_device">Launcherit, näppäimistöt, turvallisuus ja teemat</string>
     <string name="category_group_summary_network">Selaimet, VPN:ät, proxyt ja palomuurit</string>
@@ -809,4 +809,10 @@
     <string name="permission_camera_denied">Salli kameran käyttö skannataksesi QR koodi. Paina salliaksesi kameran käyttö asetuksissa.</string>
     <string name="install_history_empty_state">Tämä lista on tyhjä\n\nKun asennat, päivität tai poistat sovelluksia, tieto tallennetaan tänne</string>
     <string name="install_history_disabled_state">Asennushistoria on poistettu käytöstä\n\nAsennuksia, päivityksiä ja poistoja ei tallenneta</string>
+    <string name="my_apps_header_recently_installed_apps">Äskettäin asennettu</string>
+    <string name="clear_all">Tyhjennä kaikki</string>
+    <string name="category_group_games">Pelit</string>
+    <string name="category_group_summary_games">Lauta-, kortti- ja bilepelit</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Vain sovellusta avatessa</string>
+    <string name="notification_self_update_title">%s päivitettiin. Napauta avataksesi</string>
 </resources>

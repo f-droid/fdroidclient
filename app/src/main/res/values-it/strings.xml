@@ -774,7 +774,7 @@
     <string name="category_group_summary_productivity">Calendari, attività, orologi &amp; note</string>
     <string name="category_group_summary_tools">Navigazione, meteo, calcolatrici &amp; convertitori</string>
     <string name="category_group_summary_wallets">Finanza, gestori di soldi &amp; carte</string>
-    <string name="category_group_summary_media">Musica, podcast, giochi &amp; lettori ebook</string>
+    <string name="category_group_summary_media">Musica, podcast &amp; lettori ebook</string>
     <string name="category_group_summary_communication">Mail, messaggi &amp; social network</string>
     <string name="category_group_summary_device">Launcher, tastiera, sicurezza &amp; temi</string>
     <string name="category_group_summary_network">Browser, VPN, proxy &amp; firewall</string>
@@ -829,4 +829,12 @@
     <string name="crash_report_saved">Segnalazione salvata come file</string>
     <string name="crash_report_error_saving">Errore nel salvataggio della segnalazione di errori come file</string>
     <string name="repo_basicauth_password">Password</string>
+    <string name="category_group_games">Giochi</string>
+    <string name="category_group_summary_games">Giochi da tavolo, di carte e da festa</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Solo quando si apre l\'app</string>
+    <string name="notification_channel_self_update_title">Autoaggiornamento</string>
+    <string name="notification_channel_self_update_description">Informa quando l\'applicazione si è aggiornata ed è stata chiusa, in modo da poterla lanciare di nuovo facilmente</string>
+    <string name="notification_self_update_title">%s è stata aggiornata. Tocca per aprirla</string>
+    <string name="my_apps_header_recently_installed_apps">Recentemente installate</string>
+    <string name="clear_all">Rimuovi tutto</string>
 </resources>

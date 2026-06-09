@@ -148,7 +148,7 @@
     <string name="menu_settings">Настройки</string>
     <string name="app_incompatible">Несовместима</string>
     <string name="more">Подробнее</string>
-    <string name="abc_action_menu_overflow_description">Ещё</string>
+    <string name="abc_action_menu_overflow_description">Дополнительные параметры</string>
     <string name="less">Свернуть</string>
     <string name="back">Назад</string>
     <string name="bad_fingerprint">Неверный отпечаток</string>
@@ -832,4 +832,13 @@
     <string name="repo_disable_dialog_title">Отключить репозиторий</string>
     <string name="repo_disable_dialog_warning">Если вы указали этот репозиторий в качестве предпочтительного для каких-либо приложений, эта настройка будет сброшена</string>
     <string name="repo_disable_dialog_text">Все приложения из этого репозитория исчезнут. Уже установленные приложения останутся нетронутыми.</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Только при открытии приложения</string>
+    <string name="my_apps_header_recently_installed_apps">Недавно установлено</string>
+    <string name="clear_all">Очистить все</string>
+    <string name="category_group_games">Игры</string>
+    <string name="category_group_summary_games">Настольные, карточные и развлекательные игры</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Проверять наличие обновлений только при запуске • Приложения могут устаревать</string>
+    <string name="notification_channel_self_update_title">Автоматическое обновление</string>
+    <string name="notification_channel_self_update_description">Уведомляет о том, что приложение обновилось и было закрыто, чтобы вы могли легко запустить его снова</string>
+    <string name="notification_self_update_title">%s обновлено. Нажмите, чтобы открыть</string>
 </resources>

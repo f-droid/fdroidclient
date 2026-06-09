@@ -834,7 +834,7 @@
     <string name="category_group_summary_productivity">Kalendarze, zadania, zegary i notatki</string>
     <string name="category_group_summary_tools">Nawigacja, pogoda, kalkulatory i przeliczniki</string>
     <string name="category_group_summary_wallets">Finanse, menedżery pieniędzy i kart</string>
-    <string name="category_group_summary_media">Muzyka, podcasty, gry i czytniki e-booków</string>
+    <string name="category_group_summary_media">Muzyka, podcasty i czytniki e-booków</string>
     <string name="category_group_summary_communication">E-mail, komunikatory i sieci społecznościowe</string>
     <string name="category_group_summary_device">Launchery, klawiatury, bezpieczeństwo i motywy</string>
     <string name="category_group_summary_network">Przeglądarki, VPN-y, proxy i zapory</string>
@@ -850,4 +850,13 @@
     <string name="repo_disable_dialog_title">Wyłącz repozytorium</string>
     <string name="repo_disable_dialog_warning">Jeśli ustawiłeś(-aś) to repozytorium jako preferowane dla jakiejkolwiek aplikacji, wtedy to ustawienie zostanie utracone.</string>
     <string name="repo_disable_dialog_text">Wszystkie aplikacje z tego repozytorium znikną. Nie wpłynie to na już zainstalowane aplikacje.</string>
+    <string name="my_apps_header_recently_installed_apps">Ostatnio zainstalowane</string>
+    <string name="clear_all">Wyczyść wszystko</string>
+    <string name="category_group_games">Gry</string>
+    <string name="category_group_summary_games">Gry planszowe, karciane i towarzyskie</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Tylko przy uruchomieniu aplikacji</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Sprawdzaj aktualizacje tylko przy uruchomieniu • Aplikacje staną się nieaktualne</string>
+    <string name="notification_channel_self_update_title">Samoaktualizacja</string>
+    <string name="notification_channel_self_update_description">Powiadamia, gdy aplikacja sama się zaktualizowała i zamknęła, więc możesz ją łatwo uruchomić ponownie</string>
+    <string name="notification_self_update_title">%s został zaktualizowany. Naciśnij, aby otworzyć</string>
 </resources>

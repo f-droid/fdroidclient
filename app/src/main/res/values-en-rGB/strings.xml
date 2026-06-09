@@ -715,7 +715,7 @@
     <string name="category_group_summary_productivity">Calendars, tasks, clocks &amp; notes</string>
     <string name="category_group_summary_tools">Navigation, weather, calculators &amp; converters</string>
     <string name="category_group_summary_wallets">Finance, money &amp; pass managers</string>
-    <string name="category_group_summary_media">Music, podcasts, games &amp; ebook readers</string>
+    <string name="category_group_summary_media">Music, podcasts &amp; ebook readers</string>
     <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
     <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
     <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
@@ -818,4 +818,13 @@
     <string name="install_history_delete_ally">Delete installation history</string>
     <string name="install_history_delete_text">Delete the installation history?</string>
     <string name="about_license_text">This program is Free Software. You can redistribute it and/or modify it under the terms of the GNU General Public Licence as published by the Free Software Foundation, either version 3 of the Licence, or any later version.</string>
+    <string name="my_apps_header_recently_installed_apps">Recently installed</string>
+    <string name="clear_all">Clear all</string>
+    <string name="category_group_games">Games</string>
+    <string name="category_group_summary_games">Board, card &amp; party games</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Only when opening the app</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Check for updates only when opened • Apps will become outdated</string>
+    <string name="notification_channel_self_update_title">Self-update</string>
+    <string name="notification_channel_self_update_description">Notifies when the app updated itself and was closed, so you can launch it again easily</string>
+    <string name="notification_self_update_title">%s was updated. Tap to open</string>
 </resources>

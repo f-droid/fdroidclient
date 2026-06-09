@@ -417,7 +417,7 @@
     <string name="hide_on_long_search_press_summary">Manteniendo pulsado el botón de búsqueda se ocultará la aplicación</string>
     <string name="warning_scaning_qr_code">Parece que su cámara no tiene autoenfoque. Puede resultar difícil escanear el código.</string>
     <string name="repo_add_mirror">Agregar réplica</string>
-    <string name="repo_exists_add_fingerprint">%1$s ya está configurado, esto agregará información nueva sobre la clave.</string>
+    <string name="repo_exists_add_fingerprint">%1$s ya está configurado. Esto agregará información nueva sobre la clave.</string>
     <string name="repo_exists_enable">%1$s ya está configurado, confirma que quieres volver a habilitarlo.</string>
     <string name="repo_exists_and_enabled">%1$s ya está configurado y habilitado.</string>
     <string name="repo_delete_to_overwrite">Primero borra %1$s para agregar este ya que hay un conflicto de claves.</string>
@@ -536,9 +536,7 @@
     <string name="category_Nightly">versión diaria</string>
     <string name="app_error_open">No se ha podido abrir la aplicación.</string>
     <string name="turn_on_wifi">Activa el wifi</string>
-    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que agregues aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid.
-\n
-\nPor favor asegúrate de que el repositorio que vas a agregar es confiable.</string>
+    <string name="repo_intro">Un repositorio es una fuente adicional de aplicaciones. Los repositorios de terceros que agregues aquí tienen estándares diferentes a los de las aplicaciones compiladas por F-Droid. \n \nPor favor, asegúrate de que el repositorio que vas a agregar es confiable.</string>
     <string name="repo_enter_url">Escribe la URL del repositorio manualmente</string>
     <string name="repo_exists">Este repositorio ya estaba añadido.</string>
     <string name="repo_invalid">Repositorio inválido.
@@ -593,7 +591,7 @@
     <string name="repo_list_info_text">Un repositorio es una fuente de aplicaciones. Esta lista muestra todos los repositorios que has añadido. Los repositorios desactivados no se utilizan.\n\nSi una aplicación está en más de un repositorio se utilizará la versión del repositorio que esté más alto en la lista. Puedes reordenar el listado manteniendo pulsado y arrastrando cada entrada.</string>
     <string name="repo_mirror_add_info">La URL que está intentando añadir (%s) es una réplica de un repositorio existente.</string>
     <string name="repo_and_mirror_add_both_info">La URL que está intentando añadir (%s) es una réplica de un nuevo repositorio. Se añadirán tanto el repositorio original como un espejo.</string>
-    <string name="repo_scan_qr_code">Escanear el código QR</string>
+    <string name="repo_scan_qr_code">Escanear código QR</string>
     <string name="repo_preview_included_apps">Aplicaciones incluidas:</string>
     <string name="repo_mirror_exists">Esta espejo ya se había añadido (%s).</string>
     <string name="repo_add_repo_and_mirror">Añadir repositorio y espejo</string>
@@ -822,7 +820,7 @@
     <string name="category_group_summary_productivity">Calendarios, tareas, relojes y notas</string>
     <string name="category_group_summary_tools">Navegación, tiempo, calculadoras y conversores</string>
     <string name="category_group_summary_wallets">Finanzas, dinero y gestores de pases</string>
-    <string name="category_group_summary_media">Música, pódcast, juegos y lectores de libros electrónicos</string>
+    <string name="category_group_summary_media">Música, podcasts y lectores de libros electrónicos</string>
     <string name="category_group_summary_communication">Correo electrónico, mensajería y redes sociales</string>
     <string name="category_group_summary_device">Lanzadores, teclados, seguridad y temas</string>
     <string name="category_group_summary_network">Navegadores, VPNs, proxies y cortafuegos</string>
@@ -838,4 +836,13 @@
     <string name="repo_disable_dialog_title">Desactivar repositorio</string>
     <string name="repo_disable_dialog_warning">Si has configurado este repositorio como el preferido para alguna aplicación, dicha configuración se perderá</string>
     <string name="repo_disable_dialog_text">Todas las aplicaciones de este repositorio desaparecerán. Las que ya tengas instaladas no se verán afectadas.</string>
+    <string name="my_apps_header_recently_installed_apps">Instalados recientemente</string>
+    <string name="clear_all">Limpiar todo</string>
+    <string name="category_group_games">Juegos</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Solo al abrir la app</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Buscar actualizaciones solo al abrir • Las aplicaciones quedarán desactualizadas</string>
+    <string name="notification_channel_self_update_title">Actualización automática</string>
+    <string name="notification_channel_self_update_description">Notifica cuando la aplicación se actualiza automáticamente y se cierra, para que puedas volver a abrirla fácilmente</string>
+    <string name="notification_self_update_title">%s se actualizó. Toca para abrirlo</string>
+    <string name="category_group_summary_games">Juegos de mesa, cartas y fiesta</string>
 </resources>

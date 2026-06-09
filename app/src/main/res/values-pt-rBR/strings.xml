@@ -802,7 +802,7 @@
     <string name="category_group_summary_productivity">Calendários, tarefas, relógios &amp; anotações</string>
     <string name="category_group_summary_tools">Navegação, clima, calculadoras &amp; conversores</string>
     <string name="category_group_summary_wallets">Finanças, dinheiro &amp; carteiras</string>
-    <string name="category_group_summary_media">Música, podcasts, jogos &amp; leitores de e-book</string>
+    <string name="category_group_summary_media">Música, podcasts &amp; leitores de e-book</string>
     <string name="category_group_summary_communication">E-mail, mensagens &amp; redes sociais</string>
     <string name="category_group_summary_device">Launchers, teclados, segurança &amp; temas</string>
     <string name="category_group_summary_network">Navegadores, VPNs, proxies &amp; firewall</string>
@@ -818,4 +818,13 @@
     <string name="repo_disable_dialog_title">Desativar repositório</string>
     <string name="repo_disable_dialog_warning">Se você configurou esse repositório como preferido para algum app, essa preferência vai ser perdida</string>
     <string name="repo_disable_dialog_text">Todos os apps deste repositório desaparecerão. Os apps que já estão instalados não serão desinstalados.</string>
+    <string name="my_apps_header_recently_installed_apps">Instalados recentemente</string>
+    <string name="clear_all">Limpar tudo</string>
+    <string name="category_group_games">Jogos</string>
+    <string name="category_group_summary_games">Jogos de tabuleiro, cartas e festa</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Apenas ao abrir o aplicativo</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Conferir se há atualizações apenas ao abrir • Os apps ficarão desatualizados</string>
+    <string name="notification_channel_self_update_title">Autoatualização</string>
+    <string name="notification_channel_self_update_description">Notifica quando o app for atualizado e fechado, para que você possa abri-lo novamente com facilidade</string>
+    <string name="notification_self_update_title">%s foi atualizado. Toque para abrir</string>
 </resources>
