@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.AutoMirrored
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.Airplay
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.filled.BrowserUpdated
 import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Casino
 import androidx.compose.material.icons.filled.Castle
 import androidx.compose.material.icons.filled.Category
@@ -39,6 +41,7 @@ import androidx.compose.material.icons.filled.EditNote
 import androidx.compose.material.icons.filled.EnhancedEncryption
 import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Fastfood
+import androidx.compose.material.icons.filled.FiberSmartRecord
 import androidx.compose.material.icons.filled.FileCopy
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.FlashlightOn
@@ -80,6 +83,7 @@ import androidx.compose.material.icons.filled.SignalCellularAlt
 import androidx.compose.material.icons.filled.Sos
 import androidx.compose.material.icons.filled.SportsMartialArts
 import androidx.compose.material.icons.filled.SportsSoccer
+import androidx.compose.material.icons.filled.StackedLineChart
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Style
 import androidx.compose.material.icons.filled.TaskAlt
@@ -111,6 +115,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Browser" -> Icons.Default.OpenInBrowser
         "Calculator" -> Icons.Default.Calculate
         "Calendar & Agenda" -> Icons.Default.CalendarMonth
+        "Camera" -> Icons.Default.CameraAlt
         "Card Game" -> Icons.Default.Style
         "Casual Game" -> Icons.Default.Gamepad
         "Clock" -> Icons.Default.AccessTime
@@ -146,6 +151,8 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Launcher" -> Icons.Default.Home
         "Local Media Player" -> Icons.Default.LocalPlay
         "Location Tracker & Sharer" -> Icons.Default.MyLocation
+        "Lyrics" -> AutoMirrored.Default.QueueMusic
+        "Market & Price" -> Icons.Default.StackedLineChart
         "Meditation" -> Icons.Default.SelfImprovement
         "Messaging" -> AutoMirrored.Default.Message
         "Money" -> Icons.Default.Money
@@ -167,6 +174,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Radio" -> Icons.Default.Radio
         "Reading" -> AutoMirrored.Default.MenuBook
         "Recipe Manager" -> Icons.Default.RestaurantMenu
+        "Recorder" -> Icons.Default.FiberSmartRecord
         "Religion" -> Icons.Default.Church
         "Role-Playing Game" -> Icons.Default.Diversity3
         "Remote Access" -> Icons.Default.BrowserUpdated
@@ -215,6 +223,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Browser" -> CategoryGroups.network
         "Calculator" -> CategoryGroups.tools
         "Calendar & Agenda" -> CategoryGroups.productivity
+        "Camera" -> CategoryGroups.device
         "Card Game" -> CategoryGroups.games
         "Casual Game" -> CategoryGroups.games
         "Clock" -> CategoryGroups.productivity
@@ -250,6 +259,8 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Launcher" -> CategoryGroups.device
         "Local Media Player" -> CategoryGroups.media
         "Location Tracker & Sharer" -> CategoryGroups.tools
+        "Lyrics" -> CategoryGroups.interests
+        "Market & Price" -> CategoryGroups.interests
         "Meditation" -> CategoryGroups.interests
         "Messaging" -> CategoryGroups.communication
         "Money" -> CategoryGroups.wallets
@@ -271,6 +282,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Radio" -> CategoryGroups.media
         "Reading" -> CategoryGroups.media
         "Recipe Manager" -> CategoryGroups.interests
+        "Recorder" -> CategoryGroups.tools
         "Religion" -> CategoryGroups.interests
         "Role-Playing Game" -> CategoryGroups.games
         "Remote Access" -> CategoryGroups.network
