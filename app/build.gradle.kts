@@ -22,7 +22,7 @@ android {
     versionCode = 2000010
     versionName = "2.0-alpha10"
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "org.fdroid.HiltTestRunner"
   }
 
   // filter out incomplete translations from stable releases (which end in 50+)
@@ -177,6 +177,9 @@ dependencies {
   androidTestImplementation(libs.androidx.test.uiautomator)
   androidTestImplementation(libs.coil.test)
   androidTestImplementation(libs.coil.network.okhttp)
+  androidTestImplementation(libs.turbine)
+  androidTestImplementation(libs.hilt.android.testing)
+  kspAndroidTest(libs.hilt.android.compiler)
 
   screenshotTestImplementation(libs.screenshot.validation.api)
 }

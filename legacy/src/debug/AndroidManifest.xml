@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!-- This file should be outside of release manifest (in this case app/src/mock/Manifest.xml -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--required to enable/disable system animations from the app itself during Espresso test runs-->
-    <uses-permission android:name="android.permission.SET_ANIMATION_SCALE" />
-</manifest>
