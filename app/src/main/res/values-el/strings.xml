@@ -511,7 +511,7 @@
     <string name="antinsfw">Δεν είναι ασφαλές για τη δουλειά</string>
     <string name="menu_release_channel_beta">Να επιτρέπονται οι ενημερώσεις Beta</string>
     <string name="latest__empty_state__upgrading">Αναβάθμιση βάσης δεδομένων…</string>
-    <string name="app_name_basic">F-Drοid Basic</string>
+    <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Σχετικά με το F-Droid Basic</string>
     <string name="category_Nightly">νυχτερινές</string>
     <string name="app_error_open">Δεν ήταν δυνατή η εκκίνηση της εφαρμογής.</string>
