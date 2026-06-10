@@ -38,6 +38,7 @@ import org.fdroid.ui.crash.CrashActivity
 import org.fdroid.ui.crash.NoRetryPolicy
 import org.fdroid.ui.utils.applyNewTheme
 import org.fdroid.updates.AppUpdateWorker
+import org.fdroid.updates.SelfUpdateReceiver
 
 @HiltAndroidApp
 class App : Application(), Configuration.Provider, SingletonImageLoader.Factory {
@@ -99,6 +100,9 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
     applyNewTheme(settingsManager.theme)
     // bail out here if we are the ACRA process to not initialize anything in crash process
     if (isAcraProces()) return
+
+    // don't show self-update notification unless we enable it first
+    SelfUpdateReceiver.disable(this)
 
     RepoUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.repoUpdates)
     AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)

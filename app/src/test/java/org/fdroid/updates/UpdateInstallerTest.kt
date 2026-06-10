@@ -1,12 +1,14 @@
 package org.fdroid.updates
 
 import android.content.Context
+import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.coVerifyOrder
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import io.mockk.mockkStatic
 import io.mockk.runs
 import io.mockk.verify
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +27,7 @@ import org.fdroid.download.PackageName
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.ui.apps.AppUpdateItem
+import org.fdroid.ui.utils.isAppInForeground
 import org.junit.Before
 import org.junit.Test
 
@@ -47,6 +50,7 @@ internal class UpdateInstallerTest {
 
   @Before
   fun setUp() {
+    mockkStatic("org.fdroid.ui.utils.UiUtilsKt")
     every { context.packageName } returns OWN_PACKAGE_NAME
     every { db.getAppDao() } returns appDao
   }
@@ -166,6 +170,7 @@ internal class UpdateInstallerTest {
         ),
         makeAppUpdateItem(packageName = otherPkg),
       )
+    every { context.isAppInForeground() } returns true
 
     createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
     advanceUntilIdle()
@@ -177,6 +182,11 @@ internal class UpdateInstallerTest {
         versionName = "3.0",
         currentVersionName = "2.0",
         lastUpdated = 9999L,
+      )
+      context.packageManager.setComponentEnabledSetting(
+        any(),
+        COMPONENT_ENABLED_STATE_ENABLED,
+        any(),
       )
     }
 

@@ -7,6 +7,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import io.ktor.client.engine.ProxyConfig
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.measureTimedValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -76,7 +77,7 @@ constructor(
   init {
     coroutineScope.launch {
       // delay initial check for updates a bit, so we don't hammer the DB during start-up
-      delay(1500)
+      delay(1500.milliseconds)
       // Auto-refresh updates when installed apps change.
       installedAppsCache.installedApps.collect { loadUpdates(it) }
     }
