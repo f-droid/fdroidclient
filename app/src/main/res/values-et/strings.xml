@@ -343,7 +343,7 @@
     <string name="notification_title_summary_downloading_update">Uuendus on allalaadimisel…</string>
     <string name="notification_title_summary_ready_to_install">Paigaldamiseks valmis</string>
     <string name="notification_title_summary_ready_to_install_update">Uuendused on valmis paigalduseks</string>
-    <string name="notification_title_summary_installing">Paigaldamine</string>
+    <string name="notification_title_summary_installing">Paigaldamisel rakendused</string>
     <string name="notification_title_summary_installed">Paigaldamine õnnestus</string>
     <string name="tts_category_name">Kategooria %1$s</string>
     <plurals name="tts_view_all_in_category">
