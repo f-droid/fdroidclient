@@ -2,10 +2,8 @@
 <resources>
     <string name="no">არა</string>
     <string name="ok">დიახ</string>
-    <string name="menu_launch">გახსნა</string>
     <string name="menu_share">გაზიარება</string>
     <string name="updates">განახლებები</string>
-    <string name="menu_manage">რეპოზიტორიები</string>
     <string name="menu_add_repo">ახალი რეპოზიტორია</string>
     <string name="back">უკან</string>
     <string name="menu_search">ძებნა</string>
@@ -16,8 +14,6 @@
     <string name="version">ვერსია</string>
     <string name="by_author_format">%s-სგან</string>
     <string name="delete">წაშლა</string>
-    <string name="cache_downloaded">დაქეშილი აპების დატოვება</string>
-    <string name="app_list__name__downloading_in_progress">%1$s-ის გადმოწერა</string>
     <string name="more">მეტი</string>
     <string name="menu_overflow_description">სხვა ვარიანტები</string>
     <string name="less">ნაკლები</string>
@@ -25,142 +21,45 @@
     <string name="menu_upgrade">განახლება</string>
     <string name="main_menu__swap_nearby">ახლო</string>
     <string name="next">შემდეგი</string>
-    <string name="skip">გამოტოვება</string>
-    <string name="unverified">შეუმოწმებელი</string>
-    <string name="category_Connectivity">შეერთება</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="category_Navigation">ნავიგაცია</string>
-    <string name="category_Phone_SMS">ტელეფონი &amp; SMS</string>
-    <string name="category_Reading">კითხვა</string>
-    <string name="category_Sports_Health">სპორტი</string>
-    <string name="category_System">სისტემა</string>
-    <string name="category_Time">დრო</string>
-    <string name="newPerms">ახალი</string>
     <string name="crash_dialog_title">F-Droid-ის შეცდომა</string>
-    <string name="notification_action_update">განახლება</string>
-    <string name="notification_action_cancel">გაუქმება</string>
     <string name="notification_title_summary_install_error">დაყენების შეცდომა</string>
-    <string name="main_menu__latest_apps">უახლესი</string>
     <string name="main_menu__categories">კატეგორიები</string>
-    <string name="preference_manage_installed_apps">დაყენებული აპების მართვა</string>
     <string name="pref_language">ენა</string>
-    <string name="category_Security">უსაფრთხოება</string>
-    <string name="category_Writing">ჩაწერა</string>
-    <string name="swap_dont_show_again">აღარ მაჩვენო</string>
-    <string name="details_notinstalled">დაყენებული არაა</string>
-    <string name="pref_language_default">სისტემის ნაგულისხმევი</string>
-    <string name="category_Development">პროგრამირება</string>
-    <string name="category_Graphics">გრაფიკა</string>
-    <string name="category_Money">ფული</string>
-    <string name="category_Internet">ინერნეტი</string>
-    <string name="category_Games">თამაშები</string>
-    <string name="category_Multimedia">მულტიმედია</string>
     <string name="swap_welcome">მოგესალმებით F-Droid-ში!</string>
-    <string name="notification_action_install">დაყენება</string>
-    <string name="category_Science_Education">მეცნიერება &amp; განათლება</string>
-    <string name="app_details">აპის დეტალები</string>
-    <string name="app_list__name__successfully_installed">%1$s დაყენებულია</string>
-    <string name="unsigned">ხელმოწერის გარეშე</string>
-    <string name="updates__tts__download_app">გადმოწერა</string>
     <string name="repo_details">რეპოზიტორია</string>
-    <string name="antitracklist">აპი თვალყურს ადევნებს თქვანს აქტივობას და ანგარიშებს აგზავნის</string>
-    <string name="warning_no_internet">განახლება შეუძლებელია. ინტერნეტთან მიერთებული ბრძანდებით?</string>
     <string name="swap_send_fdroid">F-Droid გაგზავნა</string>
     <string name="notification_title_single_update_available">ხელმისაწვდომია განახლება</string>
     <string name="installIncompatible">აპი შეუთავსებელია თქვენს მოწყობილობასთან. მაინც დავაყენო\?</string>
-    <string name="unstable_updates">არასტაბილური განახლებები</string>
-    <string name="other">სხვა</string>
-    <string name="login_name">მომხმარებლის სახელი</string>
-    <string name="login_password">პაროლი</string>
     <string name="about_version">ვერსია</string>
-    <string name="about_site">ვებგვერდი</string>
     <string name="about_license">ლიცენზია</string>
     <string name="app_suggested">შეთავაზებულია</string>
     <string name="app_incompatible">შეუთავსებელი</string>
     <string name="app_installed">დაყენებულია</string>
-    <string name="app_new">ახალი</string>
     <string name="app__install_downloaded_update">განახლება</string>
-    <string name="updates__app_with_known_vulnerability__ignore">გამოტოვება</string>
     <string name="repo_add_add">დამატება</string>
     <string name="links">ბმულები</string>
     <string name="versions">ვერსიები</string>
-    <string name="enable">ჩართვა</string>
-    <string name="overwrite">გადაწერა</string>
     <string name="menu_open">გახსნა</string>
     <string name="menu_website">ვებგვერდი</string>
-    <string name="antiads">რეკლამა</string>
     <string name="allow">დაშვება</string>
-    <string name="hiding_calculator">კალკულატორი</string>
-    <string name="permissions">წვდომები</string>
     <string name="theme">თემა</string>
-    <string name="repo_description">აღწერა</string>
-    <string name="unknown">უცნობი</string>
-    <string name="antitrack">ტრეკინგი</string>
     <string name="menu_issues">პრობლემები</string>
     <string name="menu_changelog">ცვლილებების ჟურნალი</string>
     <string name="menu_video">ვიდეო</string>
     <string name="menu_translation">თარგმანი</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>
-    <string name="menu_flattr">Flattr</string>
-    <string name="menu_liberapay">Liberapay</string>
-    <string name="menu_opencollective">OpenCollective</string>
     <string name="display">ჩვენება</string>
-    <string name="proxy">პროქსი</string>
     <string name="privacy">კონფიდენციალობა</string>
-    <string name="main_menu__updates">განახლებები</string>
     <string name="icon">ხატულა</string>
     <string name="panic_app_setting_none">არაფერი</string>
-    <plurals name="updates__download_updates_for_apps">
-        <item quantity="one">განახლების გადმოწერა %1$d აპისთვის:</item>
-        <item quantity="other">განახლების გადმოწერა %1$d აპისთვის:</item>
-    </plurals>
     <plurals name="repo_num_apps_text">
         <item quantity="one">1 აპი</item>
         <item quantity="other">%d აპი</item>
     </plurals>
-    <plurals name="button_view_all_apps_in_category">
-        <item quantity="one">%d-ის ნახვა</item>
-        <item quantity="other">ყველა %d-ის ნახვა</item>
-    </plurals>
-    <plurals name="notification_summary_more">
-        <item quantity="one">+ კიდევ %1$d …</item>
-        <item quantity="other">+ კიდევ %1$d …</item>
-    </plurals>
-    <plurals name="notification_summary_updates">
-        <item quantity="one">%1$d განახლება</item>
-        <item quantity="other">%1$d განახლება</item>
-    </plurals>
     <plurals name="notification_summary_app_updates">
         <item quantity="one">ხელმისაწვდომია %1$d განახლება</item>
         <item quantity="other">ხელმისაწვდომია %1$d განახლება</item>
-    </plurals>
-    <plurals name="notification_summary_installed">
-        <item quantity="one">დაყენებულია %1$d აპი</item>
-        <item quantity="other">დაყენებულია %1$d აპი</item>
-    </plurals>
-    <plurals name="tts_view_all_in_category">
-        <item quantity="one">%1$d აპის ნახვა %2$s კატეგორიიდან</item>
-        <item quantity="other">%1$d აპის ნახვა %2$s კატეგორიაში</item>
-    </plurals>
-    <plurals name="details_last_update_days">
-        <item quantity="one">განახლდა %1$d დღის წინ</item>
-        <item quantity="other">განახლდა %1$d დღის წინ</item>
-    </plurals>
-    <plurals name="details_last_update_weeks">
-        <item quantity="one">განახლდა %1$d კვირის წინ</item>
-        <item quantity="other">განახლდა %1$d კვირის წინ</item>
-    </plurals>
-    <plurals name="details_last_update_months">
-        <item quantity="one">განახლდა %1$d თვის წინ</item>
-        <item quantity="other">განახლდა %1$d თვის წინ</item>
-    </plurals>
-    <plurals name="details_last_update_years">
-        <item quantity="one">განახლდა %1$d წლის წინ</item>
-        <item quantity="other">განახლდა %1$d წლის წინ</item>
-    </plurals>
-    <plurals name="ipfsgw_summary">
-        <item quantity="one">აპების გადმოწერა IPFS ვების ბოლოწერტილების გამოყენებით: %1$d ჩართულია</item>
-        <item quantity="other">აპების გადმოწერა IPFS ვების ბოლოწერტილების გამოყენებით: %1$d ჩართულია</item>
     </plurals>
 </resources>
