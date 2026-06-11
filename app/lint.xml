@@ -19,4 +19,7 @@
     <issue id="UnusedResources" severity="informational">
         <ignore path="src/main/res/values/strings.xml" />
     </issue>
+    <issue id="MissingDefaultResource" severity="informational">
+        <ignore path="src/main/res/**/strings.xml" />
+    </issue>
 </lint>
