@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
-import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.ui.navigation.BottomBar
 import org.fdroid.ui.navigation.MainNavKey
 import org.fdroid.ui.navigation.NavigationRail
 import org.fdroid.ui.navigation.rememberResponsiveNavigationSceneDecoratorStrategy
+import org.fdroid.ui.utils.HintOverlayContainer
 
 @Composable
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
@@ -30,7 +30,7 @@ fun MainContent(
   FDroidContent(dynamicColors = model.dynamicColors) {
     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
     SharedTransitionLayout {
-      HintHost {
+      HintOverlayContainer {
         val responsiveNavigationSceneDecoratorStrategy =
           rememberResponsiveNavigationSceneDecoratorStrategy<NavKey>(
             isBigScreen = isBigScreen,

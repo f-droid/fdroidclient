@@ -23,12 +23,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.viktormykhailiv.compose.hints.HintHost
 import org.fdroid.R
 import org.fdroid.database.Repository
 import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.ExpandableSection
+import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.getRepoDetailsInfo
 
 @Composable
@@ -105,5 +105,5 @@ private fun FingerprintExpandable(fingerprint: String) {
 @Composable
 @Preview
 private fun Preview() {
-  HintHost { FDroidContent { RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {}) } }
+  HintOverlayContainer { FDroidContent { RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {}) } }
 }

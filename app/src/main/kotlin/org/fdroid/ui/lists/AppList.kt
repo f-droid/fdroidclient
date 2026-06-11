@@ -50,7 +50,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
 import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
@@ -62,11 +61,11 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.appListItems
 import org.fdroid.ui.utils.getAppListInfo
-import org.fdroid.ui.utils.getHintOverlayColor
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,7 +79,7 @@ fun AppList(
   var searchActive by rememberSaveable { mutableStateOf(false) }
   val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
 
-  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hintController = rememberHintController()
   val hint =
     rememberHint(HintProperties(dismissOnClickOutside = false)) {
       OnboardingPopupCard(
@@ -229,7 +228,7 @@ private fun FilterButton(
 @Preview
 @Composable
 private fun Preview() {
-  HintHost {
+  HintOverlayContainer {
     FDroidContent {
       val model =
         AppListModel(
@@ -253,7 +252,7 @@ private fun Preview() {
 @Preview
 @Composable
 private fun PreviewLoading() {
-  HintHost {
+  HintOverlayContainer {
     FDroidContent {
       val model =
         AppListModel(
@@ -277,7 +276,7 @@ private fun PreviewLoading() {
 @Preview
 @Composable
 private fun PreviewEmpty() {
-  HintHost {
+  HintOverlayContainer {
     FDroidContent {
       val model =
         AppListModel(
