@@ -7,69 +7,25 @@
     <string name="ok">Validar</string>
     <string name="updates">Actualizacions</string>
     <string name="app_name_full">F-Droid</string>
-    <string tools:ignore="UnusedResources" name="category_Phone_SMS">Ordifone &amp; SMS</string>
-    <string tools:ignore="UnusedResources" name="category_Security">Securitat</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_search">Cercar</string>
-    <string name="main_menu__latest_apps">Darrièr</string>
-    <string name="preference_manage_installed_apps">Gerir las applicacions instaladas</string>
-    <string tools:ignore="UnusedResources" name="category_Multimedia">Multimedia</string>
     <string name="pref_language">Lenguatge</string>
-    <string tools:ignore="UnusedResources" name="category_Development">Desvelopament</string>
-    <string tools:ignore="UnusedResources" name="category_Games">Jògs</string>
-    <string tools:ignore="UnusedResources" name="category_Science_Education">Sciença &amp; Educacion</string>
-    <string tools:ignore="UnusedResources" name="category_Time">Temps</string>
-    <string tools:ignore="UnusedResources" name="category_Writing">Escrivent</string>
     <string name="menu_upgrade">Actualizar</string>
     <string name="menu_uninstall">Desinstalar</string>
     <string name="menu_install">Instalar</string>
-    <string tools:ignore="UnusedResources" name="category_Connectivity">Connectivitat</string>
-    <string tools:ignore="UnusedResources" name="category_Internet">Internet</string>
-    <string tools:ignore="UnusedResources" name="category_Money">Moneda</string>
     <string name="menu_add_repo">Depaus nau</string>
-    <string name="menu_launch">Dobrir</string>
     <string name="menu_share">Partatjar</string>
     <string name="main_menu__categories">Categorias</string>
     <string name="next">Seguind</string>
-    <string name="pref_language_default">Sistèma per defaut</string>
-    <string name="details_notinstalled">Non instalat</string>
     <string name="main_menu__swap_nearby">Pròche</string>
-    <string tools:ignore="UnusedResources" name="category_Graphics">Graficas</string>
-    <string tools:ignore="UnusedResources" name="category_Navigation">Navigacion</string>
-    <string tools:ignore="UnusedResources" name="category_Reading">Legent</string>
-    <string name="menu_manage">Depaus</string>
-    <string name="skip">Sautar</string>
     <string name="swap_welcome">Benvenguda entà F-Droid !</string>
-    <string name="notification_action_update">Actualizar</string>
-    <string name="swap_dont_show_again">Non pas mei afichar aqueth messatge</string>
-    <string name="app_details">Detalhs de l\'App</string>
-    <string name="apk_permissions_mismatch">L\'aplicacion dispausa d\'ua autorizacion inesperada : %s</string>
-    <string name="notification_action_cancel">Anular</string>
-    <string name="antitracklist">Aquela aplicacion seguís e senhala vòstra activitat</string>
-    <string name="antinonfreeassetslist">Aquela aplicacion conten de ressorsas non liuras</string>
-    <string name="app_list__name__successfully_installed">%1$s instalat/da</string>
     <string name="more">Mai</string>
-    <string name="warning_no_internet">Impossible d\'actualizar, çò sètz connectat a Internet ?</string>
-    <string name="no_permissions">Cap de permission</string>
-    <string name="notification_action_install">Installar</string>
     <string name="less">Mens</string>
-    <string name="global_error_updating_repos">Error mentre l\'actualizacion : %s</string>
-    <string name="all_other_repos_fine">Totes los autres depausses an pas creat d\'errors.</string>
-    <string name="repos_unchanged">Tots los depausses sen actualizats</string>
-    <string name="unsigned">Non signat</string>
-    <string name="unverified">Non verificat</string>
     <string name="repo_details">Depaus</string>
-    <string name="app_list__name__downloading_in_progress">Telecargant %1$s</string>
-    <string name="updates__tts__download_app">Telecargar</string>
-    <string name="permissions">Permissions</string>
-    <string name="newPerms">Nau</string>
     <string name="not_on_same_wifi">Ton periferic es pas sul meteis Wi Fi que lo depaus local que venes d\'ajustar ! Ensajas de jónher aquela ret : %s</string>
     <string name="wifi">Wi-Fi</string>
-    <string name="category_Sports_Health" tools:ignore="UnusedResources">Espòrts &amp; santat</string>
-    <string name="category_System" tools:ignore="UnusedResources">Sistema</string>
     <string name="swap_send_fdroid">Enviar F-Droid</string>
     <string name="crash_dialog_title">F-Droid s\'es plantat</string>
-    <string name="crash_dialog_text">Una error imprevista s\'es producha obligant l\'arrèst de l\'aplicacion. Vos volètz enviar los detalhs per corric per ajudar a reparar aquel problèma ?</string>
     <string name="notification_title_single_update_available">Actualizada disponibla</string>
     <string name="notification_title_summary_install_error">L\'installacion a mal escasut</string>
     <string name="app_name_basic">Aqueste es lo nom de l\'aplicacion de la version de basa del client F-Droid.</string>
