@@ -674,7 +674,7 @@
     <string name="first_start_intro">Để bắt đầu, đồng bộ kho ứng dụng</string>
     <string name="first_start_button">Nạp kho ứng dụng</string>
     <string name="no_repos_enabled">Chưa có kho ứng dụng, thêm để bắt đầu</string>
-    <string name="search_filter_no_results">Không tìm thấy ứng dụng\n\nHãy thử giảm bớt từ khóa tìm kiếm hơn hoặc xóa bộ lọc</string>
+    <string name="search_filter_no_results">Không tìm thấy ứng dụng\n\nHãy thử giảm bớt từ khóa tìm kiếm hoặc xóa bộ lọc</string>
     <string name="search_my_apps_no_results">Không tìm thấy ứng dụng\n\nHãy thử giảm bớt từ khóa tìm kiếm</string>
     <string name="filter_button_save">Lưu mặc định</string>
     <string name="filter_intro">Lọc ứng dụng theo</string>
