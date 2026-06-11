@@ -19,7 +19,7 @@
     <string name="no">Jo</string>
     <string name="repo_add_add">Shtoje</string>
     <string name="more">Më tepër</string>
-    <string name="menu_overflow_description">Mundësi të tjera</string>
+    <string name="menu_overflow_description">Më tepër mundësi</string>
     <string name="less">Më pak</string>
     <string name="back">Mbrapsht</string>
     <string name="cancel">Anuloje</string>
@@ -806,5 +806,5 @@
     <string name="notification_channel_self_update_title">Vetëpërditësim</string>
     <string name="notification_channel_self_update_description">Njofton kur aplikacioni përditësoi veten dhe qe mbyllur, që të mund ta nisni sërish kollaj</string>
     <string name="notification_self_update_title">%s u përditësua. Prekeni që të hapet</string>
-    <string name="category_group_summary_games">Lojëra tavoline, me letra dhe festash</string>
+    <string name="category_group_summary_games">Lojëra tryeze, me letra dhe festash</string>
 </resources>
