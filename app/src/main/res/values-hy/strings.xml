@@ -31,7 +31,7 @@
     <string name="links">Հղումներ</string>
     <string name="versions">Տարբերակներ</string>
     <string name="more">Ավել</string>
-    <string name="abc_action_menu_overflow_description">Այլ ընտրանքներ</string>
+    <string name="menu_overflow_description">Այլ ընտրանքներ</string>
     <string name="less">Պակաս</string>
     <string name="back">Ետ</string>
     <string name="cancel">Չեղարկել</string>

@@ -205,7 +205,7 @@
     <string name="all_other_repos_fine">Tất cả kho khác không có lỗi.</string>
     <string name="swap_join_this_hotspot">Giúp bạn của bạn vào điểm truy cập</string>
     <string name="more">Mở rộng</string>
-    <string name="abc_action_menu_overflow_description">Lựa chọn khác</string>
+    <string name="menu_overflow_description">Lựa chọn khác</string>
     <string name="less">Thu gọn</string>
     <string name="status_download_unknown_size">Đang tải\n%2$s từ\n%1$s</string>
     <string name="permissions">Quyền</string>

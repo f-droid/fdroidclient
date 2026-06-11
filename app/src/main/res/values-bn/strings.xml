@@ -14,7 +14,7 @@
     <string name="enable">সক্ষম করো</string>
     <string name="less">কম</string>
     <string name="more">আরো</string>
-    <string name="abc_action_menu_overflow_description">আরও বিকল্প</string>
+    <string name="menu_overflow_description">আরও বিকল্প</string>
     <string name="versions">সংস্করণ</string>
     <string name="links">লিঙ্ক</string>
     <string name="repo_add_add">যোগ করো</string>

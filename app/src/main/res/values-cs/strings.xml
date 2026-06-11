@@ -123,7 +123,7 @@
     <string name="unstable_updates">Nestabilní aktualizace</string>
     <string name="unstable_updates_summary">Doporučovat aktualizace na nestabilní verze</string>
     <string name="more">Více</string>
-    <string name="abc_action_menu_overflow_description">Další možnosti</string>
+    <string name="menu_overflow_description">Další možnosti</string>
     <string name="less">Méně</string>
     <string name="bad_fingerprint">Špatný otisk</string>
     <string name="menu_settings">Nastavení</string>

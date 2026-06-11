@@ -191,7 +191,7 @@
     <string name="interval_2w">Sjekk etter oppdateringer annenhver uke</string>
     <string name="theme_light">Lyst</string>
     <string name="more">Mer</string>
-    <string name="abc_action_menu_overflow_description">Flere alternativer</string>
+    <string name="menu_overflow_description">Flere alternativer</string>
     <string name="less">Mindre</string>
     <string name="menu_settings">Innstillinger</string>
     <string name="status_download_unknown_size">Laster ned\n%2$s fra\n%1$s</string>

@@ -34,7 +34,7 @@
     <string name="repo_add_add">சேர்</string>
     <string name="links">இணைப்புகள்</string>
     <string name="more">மேலும்</string>
-    <string name="abc_action_menu_overflow_description">மேலும் விருப்பங்கள்</string>
+    <string name="menu_overflow_description">மேலும் விருப்பங்கள்</string>
     <string name="less">குறைவான</string>
     <string name="back">பின்செல்க</string>
     <string name="cancel">ரத்துசெய்</string>

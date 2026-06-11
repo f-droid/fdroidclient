@@ -201,7 +201,7 @@
     <string name="status_download_unknown_size">Завантаження \n%2$s з \n%1$s</string>
     <string name="repo_searching_address">Пошук пакунків репозиторію в \n%1$s</string>
     <string name="more">Докладніше</string>
-    <string name="abc_action_menu_overflow_description">Більше опцій</string>
+    <string name="menu_overflow_description">Більше опцій</string>
     <string name="less">Згорнути</string>
     <string name="menu_settings">Налаштування</string>
     <string name="permissions">Дозволи</string>

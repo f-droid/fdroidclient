@@ -22,7 +22,7 @@
     <string name="app_details">యాప్ వివరాలు</string>
     <string name="about_title_full">F-డ్రాయిడ్ గురించి</string>
     <string name="more">మరింత</string>
-    <string name="abc_action_menu_overflow_description">మరిన్ని ఆప్షన్‌లు</string>
+    <string name="menu_overflow_description">మరిన్ని ఆప్షన్‌లు</string>
     <string name="wifi">Wi-Fi</string>
     <string name="category_Sports_Health">క్రీడలు &amp; ఆరోగ్యం</string>
     <string name="delete">తొలగించు</string>

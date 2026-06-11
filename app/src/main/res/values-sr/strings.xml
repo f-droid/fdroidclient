@@ -191,7 +191,7 @@
     <string name="download_error">Преузимање није успело</string>
     <string name="perms_description_app">Омогућује %1$s.</string>
     <string name="more">Више</string>
-    <string name="abc_action_menu_overflow_description">Још опција</string>
+    <string name="menu_overflow_description">Још опција</string>
     <string name="less">Мање</string>
     <string name="status_download_unknown_size">Преузимање\n%2$s од\n%1$s</string>
     <string name="permissions">Дозволе</string>

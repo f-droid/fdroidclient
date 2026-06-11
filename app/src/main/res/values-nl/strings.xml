@@ -207,7 +207,7 @@
     <string name="unstable_updates">Instabiele updates</string>
     <string name="unstable_updates_summary">Stel updates voor instabiele versies voor</string>
     <string name="more">Meer</string>
-    <string name="abc_action_menu_overflow_description">Meer opties</string>
+    <string name="menu_overflow_description">Meer opties</string>
     <string name="less">Minder</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>

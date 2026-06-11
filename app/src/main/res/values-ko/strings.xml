@@ -140,7 +140,7 @@
     <string name="app_incompatible">호환되지 않음</string>
     <string name="links">링크</string>
     <string name="more">더 보기</string>
-    <string name="abc_action_menu_overflow_description">추가 옵션</string>
+    <string name="menu_overflow_description">추가 옵션</string>
     <string name="less">덜 보기</string>
     <string name="back">뒤로</string>
     <string name="bad_fingerprint">잘못된 지문</string>

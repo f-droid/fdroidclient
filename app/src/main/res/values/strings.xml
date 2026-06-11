@@ -240,7 +240,7 @@
     <string name="links">Links</string>
     <string name="versions">Versions</string>
     <string name="more">More</string>
-    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="menu_overflow_description">More options</string>
     <string name="less">Less</string>
 
     <string name="back">Back</string>

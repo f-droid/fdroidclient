@@ -440,7 +440,7 @@
     <string name="antitracklist">Энэ апп нь таны үйл ажиллагааг хянах, мэдээлэх</string>
     <string name="less">Бага</string>
     <string name="more">Дэлгэрэнгүй</string>
-    <string name="abc_action_menu_overflow_description">Бусад сонголт</string>
+    <string name="menu_overflow_description">Бусад сонголт</string>
     <string name="updates__tts__download_app">Татаж авах</string>
     <string name="app_list__name__successfully_installed">%1$s суулгасан</string>
     <string name="app_list__name__downloading_in_progress">Татаж байна %1$s</string>

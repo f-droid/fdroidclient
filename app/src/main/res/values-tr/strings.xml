@@ -140,7 +140,7 @@
     <string name="app_incompatible">Uyumsuz</string>
     <string name="links">Bağlantılar</string>
     <string name="more">Daha fazla</string>
-    <string name="abc_action_menu_overflow_description">Diğer seçenekler</string>
+    <string name="menu_overflow_description">Diğer seçenekler</string>
     <string name="less">Daha az</string>
     <string name="back">Geri</string>
     <string name="bad_fingerprint">Yanlış parmak izi</string>
