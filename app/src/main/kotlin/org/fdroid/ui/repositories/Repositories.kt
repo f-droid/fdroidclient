@@ -38,6 +38,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
+import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -118,7 +119,9 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
         }
       }
     },
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = Modifier
+      .hintAnchor(hintAnchor, fullScreen = true)
+      .nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     if (info.model.repositories == null) BigLoadingIndicator()
     else

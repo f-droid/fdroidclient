@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
+import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -147,7 +148,8 @@ fun RepoDetails(
           }
         },
       )
-    }
+    },
+    modifier = Modifier.hintAnchor(hintAnchor, fullScreen = true),
   ) { paddingValues ->
     if (repo == null) BigLoadingIndicator()
     else
