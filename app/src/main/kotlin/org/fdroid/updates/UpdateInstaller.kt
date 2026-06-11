@@ -20,6 +20,7 @@ import org.fdroid.database.FDroidDatabase
 import org.fdroid.index.RepoManager
 import org.fdroid.install.AppInstallManager
 import org.fdroid.ui.apps.AppUpdateItem
+import org.fdroid.ui.utils.isAppInForeground
 import org.fdroid.utils.IoDispatcher
 
 /**
@@ -67,7 +68,15 @@ constructor(
     // Update all non-self apps first, then our own package at the end.
     updateAppsInParallel(otherApps, canRequestPreApproval)
 
-    ownApp?.let { update -> updateApp(update, canRequestPreApproval) }
+    // If available, we update ourselves last
+    ownApp?.let { update ->
+      if (context.isAppInForeground()) {
+        // enable the receiver only if the app is currently in the foreground,
+        // so the user can easily re-launch it. It will get disabled again in the app's onCreate
+        SelfUpdateReceiver.enable(context)
+      }
+      updateApp(update, canRequestPreApproval)
+    }
   }
 
   private suspend fun updateAppsInParallel(
@@ -114,13 +123,13 @@ constructor(
   private suspend fun updateApp(update: AppUpdateItem, canAskPreApprovalNow: Boolean) {
     val app = db.getAppDao().getApp(update.repoId, update.packageName)
     appInstallManager.install(
-        packageName = update.packageName,
-        appMetadata = app?.metadata,
-        version = update.update as AppVersion,
-        currentVersionName = update.installedVersionName,
-        repo = repoManager.getRepository(update.repoId),
-        iconModel = update.iconModel,
-        canAskPreApprovalNow = canAskPreApprovalNow,
+      packageName = update.packageName,
+      appMetadata = app?.metadata,
+      version = update.update as AppVersion,
+      currentVersionName = update.installedVersionName,
+      repo = repoManager.getRepository(update.repoId),
+      iconModel = update.iconModel,
+      canAskPreApprovalNow = canAskPreApprovalNow,
     )
   }
 }

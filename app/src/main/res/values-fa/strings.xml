@@ -75,7 +75,7 @@
     <string name="app_inst_unknown_source">نصب شده (از منبع ناشناس)</string>
     <string name="links">پیوندها</string>
     <string name="more">بیش‌تر</string>
-    <string name="abc_action_menu_overflow_description">گزینه‌های بیش‌تر</string>
+    <string name="menu_overflow_description">گزینه‌های بیش‌تر</string>
     <string name="less">کم‌تر</string>
     <string name="back">بازگشت</string>
     <string name="bad_fingerprint">اثر انگشت بد</string>

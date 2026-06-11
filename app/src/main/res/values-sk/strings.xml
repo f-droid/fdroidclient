@@ -207,7 +207,7 @@
     <string name="repo_error_empty_username">Prihlasovacie meno neuvedené, prihlasovacie údaje sa nezmenili</string>
     <string name="about_license">Licencia</string>
     <string name="more">Viac</string>
-    <string name="abc_action_menu_overflow_description">Ďalšie možnosti</string>
+    <string name="menu_overflow_description">Ďalšie možnosti</string>
     <string name="less">Menej</string>
     <string name="menu_settings">Nastavenia</string>
     <string name="menu_email">Poslať e-mail autorovi</string>

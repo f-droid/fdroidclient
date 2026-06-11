@@ -211,7 +211,7 @@
     <string name="download_error">Pobieranie nie powiodło się!</string>
     <string name="repo_details">Repozytorium</string>
     <string name="more">Więcej</string>
-    <string name="abc_action_menu_overflow_description">Więcej opcji</string>
+    <string name="menu_overflow_description">Więcej opcji</string>
     <string name="less">Mniej</string>
     <string name="status_download_unknown_size">Pobieranie\n%2$s z\n%1$s</string>
     <string name="permissions">Uprawnienia</string>

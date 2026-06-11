@@ -51,7 +51,7 @@
     <string name="app_list__name__successfully_installed">%1$s നെ സ്ഥാപിച്ചു</string>
     <string name="updates__tts__download_app">ഡൗൺലോഡ് ചെയ്യുക</string>
     <string name="more">കൂടുതല്‍</string>
-    <string name="abc_action_menu_overflow_description">കൂടുതൽ ഓപ്ഷനുകൾ</string>
+    <string name="menu_overflow_description">കൂടുതൽ ഓപ്ഷനുകൾ</string>
     <string name="less">കുറവ്</string>
     <string name="antitracklist">ഈ പ്രയോഗം നിങ്ങളുടെ പ്രവര്‍ത്തനങ്ങള്‍ നിരീക്ഷിക്കുകയും പ്രസിദ്ധപ്പെടുത്തുകയും ചെയ്യുന്നു</string>
     <string name="warning_no_internet">പുതുക്കാന്‍ കഴിയുന്നില്ലേ, നിങ്ങൾ ഇന്റർനെറ്റിലേക്ക് കണക്റ്റുചെയ്തിട്ടുണ്ടോ?</string>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/app_version_item_status_new"
-    android:text="@string/app_new"
-    android:textColor="?attr/colorPrimaryContainer"
-    style="@style/AppVersionStatus" />

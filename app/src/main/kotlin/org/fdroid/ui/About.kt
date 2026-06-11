@@ -67,7 +67,7 @@ fun About(version: String = VERSION_NAME, onBackClicked: (() -> Unit)?) {
               )
             }
         },
-        title = { Text(stringResource(R.string.about_title_full)) },
+        title = { Text(stringResource(R.string.about_title_full), maxLines = 1) },
         scrollBehavior = scrollBehavior,
       )
     },

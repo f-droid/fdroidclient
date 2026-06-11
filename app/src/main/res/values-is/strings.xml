@@ -39,7 +39,7 @@
     <string name="repo_add_add">Bæta við</string>
     <string name="links">Tenglar</string>
     <string name="more">Meira</string>
-    <string name="abc_action_menu_overflow_description">Fleiri valkostir</string>
+    <string name="menu_overflow_description">Fleiri valkostir</string>
     <string name="less">Minna</string>
     <string name="back">Til baka</string>
     <string name="cancel">Hætta við</string>

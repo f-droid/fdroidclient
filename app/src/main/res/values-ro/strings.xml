@@ -54,7 +54,7 @@
     <string name="app_inst_unknown_source">Instalat (din sursă necunoscută)</string>
     <string name="added_on">Adăugat pe %s</string>
     <string name="more">Mai mult</string>
-    <string name="abc_action_menu_overflow_description">Mai multe opțiuni</string>
+    <string name="menu_overflow_description">Mai multe opțiuni</string>
     <string name="less">Mai puțin</string>
     <string name="back">Înapoi</string>
     <string name="links">Legături</string>

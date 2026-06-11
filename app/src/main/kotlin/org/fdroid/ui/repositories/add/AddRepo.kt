@@ -66,7 +66,8 @@ fun AddRepo(
                 }
               } else {
                 stringResource(R.string.repo_add_new_title)
-              }
+              },
+            maxLines = 1,
           )
         },
       )

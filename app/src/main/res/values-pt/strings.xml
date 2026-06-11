@@ -51,7 +51,7 @@
     <string name="app_list__name__successfully_installed">%1$s foi instalado</string>
     <string name="updates__tts__download_app">Descarregar</string>
     <string name="more">Mais</string>
-    <string name="abc_action_menu_overflow_description">Mais opções</string>
+    <string name="menu_overflow_description">Mais opções</string>
     <string name="less">Menos</string>
     <string name="antitracklist">Esta aplicação monitora e reporta a sua atividade</string>
     <string name="warning_no_internet">Não é possível atualizar. Você está conectado à Internet?</string>

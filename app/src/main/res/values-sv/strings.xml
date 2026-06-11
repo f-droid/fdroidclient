@@ -130,7 +130,7 @@
     <string name="links">Länkar</string>
     <string name="about_source">Källkod</string>
     <string name="more">Mer</string>
-    <string name="abc_action_menu_overflow_description">Fler alternativ</string>
+    <string name="menu_overflow_description">Fler alternativ</string>
     <string name="less">Mindre</string>
     <string name="back">Bakåt</string>
     <string name="bad_fingerprint">Felaktigt fingeravtryck</string>

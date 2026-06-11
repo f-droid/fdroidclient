@@ -212,7 +212,7 @@
     <string name="install_confirm_update_system">¿Quieres instalar una actualización de esta aplicación integrada? Tus datos no se perderán. La aplicación actualizada podrá acceder a:</string>
     <string name="install_confirm_update_system_no_perms">¿Quieres instalar una actualización de esta aplicación integrada? Tus datos no se perderán. No requiere ningún acceso especial.</string>
     <string name="more">Más</string>
-    <string name="abc_action_menu_overflow_description">Más opciones</string>
+    <string name="menu_overflow_description">Más opciones</string>
     <string name="less">Menos</string>
     <string name="menu_bitcoin">Bitcoin</string>
     <string name="menu_litecoin">Litecoin</string>

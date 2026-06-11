@@ -68,8 +68,4 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-    <style name="Theme.App.Black" parent="Theme.App">
-        <item name="backgroundColor">@android:color/black</item>
-        <item name="android:colorBackground">@android:color/black</item>
-    </style>
 </resources>

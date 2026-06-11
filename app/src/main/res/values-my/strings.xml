@@ -41,7 +41,7 @@
     <string name="repo_add_add">ေပါင္းထည့္မည္</string>
     <string name="links">လင့္ခ္</string>
     <string name="more">ေနာက္ထပ္</string>
-    <string name="abc_action_menu_overflow_description">နောက်ထပ် ရွေးစရာများ</string>
+    <string name="menu_overflow_description">နောက်ထပ် ရွေးစရာများ</string>
     <string name="less">ခ်ံဳမည္</string>
     <string name="back">ေနာက္သို႔</string>
     <string name="cancel">မလုပ်တော့</string>

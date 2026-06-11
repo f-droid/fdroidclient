@@ -1,0 +1,3 @@
+[submodule "fastlane"]
+	path = fastlane
+	url = https://gitlab.com/fdroid/fdroidclient-fastlane.git

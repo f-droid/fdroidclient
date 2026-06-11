@@ -218,7 +218,7 @@
     <string name="download_error">Deskargak huts egin du!</string>
     <string name="perms_description_app">%1$sk hornitua.</string>
     <string name="more">Gehiago</string>
-    <string name="abc_action_menu_overflow_description">Aukera gehiago</string>
+    <string name="menu_overflow_description">Aukera gehiago</string>
     <string name="less">Gutxiago</string>
     <string name="status_download_unknown_size">%2$s
         \ndeskargatzen\n%1$s(e)tik

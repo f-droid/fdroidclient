@@ -115,7 +115,7 @@
     <string name="app_inst_unknown_source">已安装（来自未知来源）</string>
     <string name="links">链接</string>
     <string name="more">展开</string>
-    <string name="abc_action_menu_overflow_description">更多选项</string>
+    <string name="menu_overflow_description">更多选项</string>
     <string name="less">收起</string>
     <string name="back">返回</string>
     <string name="bad_fingerprint">指纹无效</string>

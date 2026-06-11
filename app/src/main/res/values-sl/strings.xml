@@ -75,7 +75,7 @@
     <string name="app_list__name__downloading_in_progress">Prenašanje %1$s</string>
     <string name="app_list__name__successfully_installed">%1$s nameščen</string>
     <string name="more">Več</string>
-    <string name="abc_action_menu_overflow_description">Več možnosti</string>
+    <string name="menu_overflow_description">Več možnosti</string>
     <string name="less">Manj</string>
     <string name="antitracklist">Ta aplikacija vam sledi in poroča o vaši aktivnosti</string>
     <string name="warning_no_internet">Ni možno posodobiti, ste povezani na internet?</string>

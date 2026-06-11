@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- The material design specs indicate a 24dp margin on tablets should be used (hence this
-         file differing from values-v21/dimens.xml):
-         https://material.google.com/components/buttons-floating-action-button.html -->
-    <dimen name="fab_margin">24dp</dimen>
-</resources>

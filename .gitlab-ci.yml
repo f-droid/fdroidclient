@@ -19,6 +19,7 @@ workflow:
     - saas-linux-medium-amd64
   variables:
     JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
+    GIT_SUBMODULE_STRATEGY: none
   before_script:
     - test -e /etc/apt/sources.list.d/trixie-backports.list
       || echo "deb http://deb.debian.org/debian trixie-backports main" >> /etc/apt/sources.list

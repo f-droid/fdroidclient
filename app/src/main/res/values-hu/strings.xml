@@ -81,7 +81,7 @@
     <string name="app_inst_unknown_source">Telepítve (ismeretlen forrásból)</string>
     <string name="links">Hivatkozások</string>
     <string name="more">Több</string>
-    <string name="abc_action_menu_overflow_description">További lehetőségek</string>
+    <string name="menu_overflow_description">További lehetőségek</string>
     <string name="less">Kevesebb</string>
     <string name="back">Vissza</string>
     <string name="bad_fingerprint">Rossz ujjlenyomat</string>

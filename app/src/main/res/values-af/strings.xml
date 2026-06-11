@@ -50,7 +50,7 @@
     <string name="links">Skakels</string>
     <string name="versions">Weergawes</string>
     <string name="more">Meer</string>
-    <string name="abc_action_menu_overflow_description">Nog opsies</string>
+    <string name="menu_overflow_description">Nog opsies</string>
     <string name="less">Minder</string>
     <string name="back">Terug</string>
     <string name="cancel">Kanselleer</string>

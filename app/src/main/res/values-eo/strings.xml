@@ -804,7 +804,7 @@
     <string name="category_group_summary_games">Tabulaj, kartaj kaj plurpersonaj ludoj</string>
     <string name="pref_auto_updates_only_only_when_open_app">Nur kiam malfermi la aplikaĵon</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Kontrolas pri ĝisdatigoj nur je starto • Aplikaĵoj povas iĝi neaktualaj</string>
-    <string name="abc_action_menu_overflow_description">Pliaj ebloj</string>
+    <string name="menu_overflow_description">Pliaj ebloj</string>
     <string name="notification_channel_self_update_title">Mem-ĝisdatigo</string>
     <string name="notification_channel_self_update_description">Montras sciigon post kiam la aplikaĵo estas ĝisdatiginta sin mem por ke vi povu facile restarti ĝin.</string>
     <string name="notification_self_update_title">%s estas ĝisdatigita. Frapetu por ekigi ĝin</string>

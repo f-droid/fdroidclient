@@ -44,7 +44,7 @@
     <string name="repo_add_add">Lisa</string>
     <string name="links">Lingid</string>
     <string name="more">Rohkem</string>
-    <string name="abc_action_menu_overflow_description">Lisavalikud</string>
+    <string name="menu_overflow_description">Lisavalikud</string>
     <string name="less">Vähem</string>
     <string name="back">Tagasi</string>
     <string name="cancel">Tühista</string>

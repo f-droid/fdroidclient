@@ -51,7 +51,7 @@
     <string name="links">Спасылкі</string>
     <string name="versions">Версіі</string>
     <string name="more">Падрабязней</string>
-    <string name="abc_action_menu_overflow_description">Дадатковыя параметры</string>
+    <string name="menu_overflow_description">Дадатковыя параметры</string>
     <string name="less">Схаваць</string>
     <string name="back">Назад</string>
     <string name="cancel">Скасаваць</string>
