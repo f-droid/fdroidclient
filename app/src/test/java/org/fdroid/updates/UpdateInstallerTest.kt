@@ -90,6 +90,7 @@ internal class UpdateInstallerTest {
       val ver = makeAppVersion(versionName = "5.0", versionCode = 50)
       val app = makeApp()
       every { appDao.getApp(1L, "com.example.app") } returns app
+      every { context.isAppInForeground() } returns false
       val oneUpdate =
         listOf(
           makeAppUpdateItem(
@@ -231,6 +232,7 @@ internal class UpdateInstallerTest {
       // repo is null
       every { repoManager.getRepository(1L) } returns null
       every { appDao.getApp(1L, "com.example.app") } returns makeApp()
+      every { context.isAppInForeground() } returns false
       createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
       advanceUntilIdle()
       coVerify(exactly = 1) {
