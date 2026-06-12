@@ -347,13 +347,15 @@ constructor(
   suspend fun requestUserConfirmation(state: InstallConfirmationState): InstallState =
     safeSuspendCoroutine { cont ->
       val isPreApproval = state is InstallState.PreApprovalConfirmationNeeded
+      val timeSource = TimeSource.Monotonic
+      var preapprovalMark: TimeSource.Monotonic.ValueTimeMark? = null
       val receiver =
         receiverFactory.create(state.sessionId) { status, _, msg ->
           unregisterReceiver(this)
           when (status) {
             PackageInstaller.STATUS_SUCCESS -> {
               val newState =
-                if (isPreApproval)
+                if (isPreApproval) {
                   InstallState.PreApproved(
                     name = state.name,
                     versionName = state.versionName,
@@ -362,7 +364,7 @@ constructor(
                     iconModel = state.iconModel,
                     result = PreApprovalResult.Success(state.sessionId),
                   )
-                else
+                } else {
                   InstallState.Installed(
                     name = state.name,
                     versionName = state.versionName,
@@ -370,22 +372,39 @@ constructor(
                     lastUpdated = state.lastUpdated,
                     iconModel = state.iconModel,
                   )
+                }
               cont.resume(newState)
             }
             PackageInstaller.STATUS_PENDING_USER_ACTION -> {
               error("Got STATUS_PENDING_USER_ACTION again")
             }
-            else -> {
-              if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
-                cont.resume(InstallState.UserAborted)
+            PackageInstaller.STATUS_FAILURE_ABORTED -> {
+              val mark = preapprovalMark
+              if (isPreApproval && mark != null && mark.elapsedNow() < 250.milliseconds) {
+                // As of 2026 some Chinese ROMs currently have not implemented pre-approval
+                // and just return this error as if it was the user who aborted. See #3254
+                // So we count fast aborts as not supported, so normal installation can proceed.
+                log.warn { "Fast pre-approval abort for ${state.name}, trying without..." }
+                val state = InstallState.PreApproved(
+                  name = state.name,
+                  versionName = state.versionName,
+                  currentVersionName = state.currentVersionName,
+                  lastUpdated = state.lastUpdated,
+                  iconModel = state.iconModel,
+                  result = PreApprovalResult.NotSupported,
+                )
+                cont.resume(state)
               } else {
-                cont.resume(InstallState.Error(msg, state))
+                log.info { "User aborted confirmation for ${state.name}" }
+                cont.resume(InstallState.UserAborted)
               }
             }
+            else -> cont.resume(InstallState.Error(msg, state))
           }
         }
       registerReceiver(context, receiver, IntentFilter(ACTION_INSTALL), RECEIVER_NOT_EXPORTED)
       cont.invokeOnCancellation { unregisterReceiver(receiver) }
+      if (isPreApproval) preapprovalMark = timeSource.markNow()
       try {
         state.intent.send()
       } catch (e: Exception) {

@@ -609,6 +609,38 @@ internal class SessionInstallManagerTest {
   }
 
   @Test
+  fun `requestUserConfirmation fast pre-approval abort returns PreApproved with NotSupported`() {
+    runBlocking {
+      val appVersion: AppVersion = mockk(relaxed = true)
+      val preApprovalState =
+        InstallState.PreApprovalConfirmationNeeded(
+          state =
+            InstallState.Starting(
+              name = "Example App",
+              versionName = "1.0",
+              currentVersionName = "0.9",
+              lastUpdated = 42,
+              iconModel = null,
+            ),
+          version = appVersion,
+          repo = mockk(relaxed = true),
+          sessionId = sessionId,
+          intent = pendingIntent,
+        )
+      // The callback fires synchronously inside intent.send(), so elapsedNow() < 250ms,
+      // which triggers the fast-abort path that returns PreApproved(NotSupported).
+      val result =
+        requestUserConfirmationForStatus(
+          preApprovalState,
+          PackageInstaller.STATUS_FAILURE_ABORTED,
+          null,
+        )
+      assertIs<InstallState.PreApproved>(result)
+      assertIs<PreApprovalResult.NotSupported>(result.result)
+    }
+  }
+
+  @Test
   fun `requestPreapproval not supported in China`(): Unit = runBlocking {
     every { telephonyManager.simCountryIso } returns "CN"
     every { telephonyManager.networkCountryIso } returns null
