@@ -463,8 +463,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return;
         }
-        confirmSwapConfig = new NewRepoConfig(this, intent);
-        checkIfNewRepoOnSameWifi(confirmSwapConfig);
+
+        // don't save the repo config unless it's on the same network as the device
+        // if no config is saved, the confirmation dialog should not be displayed
+        NewRepoConfig repoConfig = new NewRepoConfig(this, intent);
+        if (!checkIfNewRepoOnSameWifi(repoConfig)) {
+            // show a toast here so the user is aware of the issue
+            String msg = getString(R.string.not_on_same_wifi, repoConfig.getSsid());
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        confirmSwapConfig = repoConfig;
     }
 
     private static boolean isSwapUrl(Uri uri) {
@@ -789,8 +799,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         if (scanResult != null) {
             if (scanResult.getContents() != null) {
                 NewRepoConfig repoConfig = new NewRepoConfig(this, scanResult.getContents());
-                if (repoConfig.isValidRepo()) {
-                    checkIfNewRepoOnSameWifi(repoConfig);
+                if (repoConfig.isValidRepo() && checkIfNewRepoOnSameWifi(repoConfig)) {
                     confirmSwapConfig = repoConfig;
                     showRelevantView();
                 } else {
@@ -824,24 +833,28 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         }
     }
 
-    private void checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
+    private boolean checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
         // if this is a local repo, check we're on the same wifi
         if (!TextUtils.isEmpty(newRepo.getBssid())) {
             WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
                     WifiManager.class);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String bssid = wifiInfo.getBSSID();
-            if (TextUtils.isEmpty(bssid)) { /* not all devices have wifi */
-                return;
+            if (TextUtils.isEmpty(bssid)) {
+                // device may not have wifi
+                return false;
             }
             bssid = bssid.toLowerCase(Locale.ENGLISH);
             String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
             if (!bssid.equals(newRepoBssid)) {
-                String msg = getString(R.string.not_on_same_wifi, newRepo.getSsid());
-                Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+                // repo config bssid doesn't match device bssid
+                return false;
             }
-            // TODO we should help the user to the right thing here,
-            // instead of just showing a message!
+            // repo config appears to be on same wifi as device
+            return true;
+        } else {
+            // repo config has empty bssid
+            return false;
         }
     }
 
