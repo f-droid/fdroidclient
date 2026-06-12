@@ -7,6 +7,11 @@ import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_INSTALL_PACKAGE
+import android.content.Intent.EXTRA_NOT_UNKNOWN_SOURCE
+import android.content.Intent.EXTRA_RETURN_RESULT
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.IntentFilter
 import android.content.IntentSender
 import android.content.pm.PackageInfo
@@ -23,6 +28,7 @@ import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
 import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
 import androidx.core.content.ContextCompat.registerReceiver
+import androidx.core.content.FileProvider
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
@@ -290,14 +296,16 @@ constructor(
               )
             )
           }
-          else -> {
-            if (status == PackageInstaller.STATUS_FAILURE_ABORTED) {
-              cont.resume(InstallState.UserAborted)
-            } else if (
-              status == PackageInstaller.STATUS_FAILURE &&
-                msg != null &&
-                msg.contains("PreapprovalDetails")
-            ) {
+          PackageInstaller.STATUS_FAILURE_ABORTED -> {
+            if (msg != null && msg.contains("INSTALL_FAILED_VERIFICATION_FAILURE")) {
+              // This is useful for users with Google Advanced Protection
+              // who can use this to circumvent install restrictions (see #3201)
+              installLegacy(apkFile)
+            }
+            cont.resume(InstallState.UserAborted)
+          }
+          PackageInstaller.STATUS_FAILURE -> {
+            if (msg != null && msg.contains("PreapprovalDetails")) {
               val newState =
                 InstallState.PreApproved(
                   name = state.name,
@@ -312,6 +320,7 @@ constructor(
               cont.resume(InstallState.Error(msg, state))
             }
           }
+          else -> cont.resume(InstallState.Error(msg, state))
         }
       }
     registerReceiver(context, receiver, IntentFilter(ACTION_INSTALL), RECEIVER_NOT_EXPORTED)
@@ -385,14 +394,15 @@ constructor(
                 // and just return this error as if it was the user who aborted. See #3254
                 // So we count fast aborts as not supported, so normal installation can proceed.
                 log.warn { "Fast pre-approval abort for ${state.name}, trying without..." }
-                val state = InstallState.PreApproved(
-                  name = state.name,
-                  versionName = state.versionName,
-                  currentVersionName = state.currentVersionName,
-                  lastUpdated = state.lastUpdated,
-                  iconModel = state.iconModel,
-                  result = PreApprovalResult.NotSupported,
-                )
+                val state =
+                  InstallState.PreApproved(
+                    name = state.name,
+                    versionName = state.versionName,
+                    currentVersionName = state.currentVersionName,
+                    lastUpdated = state.lastUpdated,
+                    iconModel = state.iconModel,
+                    result = PreApprovalResult.NotSupported,
+                  )
                 cont.resume(state)
               } else {
                 log.info { "User aborted confirmation for ${state.name}" }
@@ -518,6 +528,28 @@ constructor(
         }
       block(safeCont)
     }
+
+  private fun installLegacy(apkFile: File) {
+    val uri =
+      FileProvider.getUriForFile(
+        context,
+        "${context.packageName}.fileprovider",
+        apkFile,
+      )
+    @Suppress("DEPRECATION", "RequestInstallPackagesPolicy")
+    val intent =
+      Intent(ACTION_INSTALL_PACKAGE).apply {
+        setAction(ACTION_INSTALL_PACKAGE)
+        setDataAndType(uri, "application/vnd.android.package-archive")
+        addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_GRANT_READ_URI_PERMISSION)
+        putExtra(EXTRA_RETURN_RESULT, true)
+        putExtra(EXTRA_NOT_UNKNOWN_SOURCE, true)
+      }
+    log.warn { "Trying legacy install for ${apkFile.name} with $intent..." }
+    // doesn't need to use startActivitySafe(intent) because exceptions get caught
+    // and shown to the user which is better than hiding it
+    context.startActivity(intent)
+  }
 
   private interface SafeContinuation<T> {
     fun resume(value: T)
