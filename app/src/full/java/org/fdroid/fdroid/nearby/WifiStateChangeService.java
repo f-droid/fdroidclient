@@ -169,7 +169,6 @@ public class WifiStateChangeService extends Worker {
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         Utils.debugLog(TAG, "wifi enabled, get network info");
                         wifiInfo = wifiManager.getConnectionInfo();
-                        FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
                         setSsid(wifiInfo);
                         DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
                         if (dhcpInfo != null) {
