@@ -71,6 +71,10 @@ import org.fdroid.fdroid.qr.CameraCharacteristicsChecker;
 import org.fdroid.settings.SettingsManager;
 import org.fdroid.ui.nearby.SwapSuccessViewModel;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -478,13 +482,27 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private static boolean isSwapUrl(Uri uri) {
-        return isSwapUrl(uri.getHost(), uri.getPort());
+        return isSwapUrl(uri.getHost());
     }
 
-    private static boolean isSwapUrl(String host, int port) {
-        return port > 1023 // only root can use <= 1023, so never a swap repo
-                && host.matches("[0-9.]+") // host must be an IP address
-                && FDroidApp.subnetInfo.isInRange(host); // on the same subnet as we are
+    private static boolean isSwapUrl(String host) {
+        try {
+            InetAddress hostIp = InetAddress.getByName(host);
+            if (hostIp instanceof Inet4Address && FDroidApp.subnetInfo != null) {
+                return FDroidApp.subnetInfo.isInRange(host);
+            } else if (hostIp instanceof Inet6Address && FDroidApp.subnet6Info != null) {
+                return FDroidApp.subnet6Info.isInRange(host);
+            } else {
+                // unable to verify subnet range
+                return false;
+            }
+        } catch (UnknownHostException e) {
+            // if the host can't be parsed, it isn't a valid ip address
+            return false;
+        } catch (NullPointerException e) {
+            // FDroidApp.subnetInfo/subnet6Info may not have been setup
+            return false;
+        }
     }
 
     private void promptToSelectWifiNetwork() {
@@ -835,27 +853,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private boolean checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
         // if this is a local repo, check we're on the same wifi
-        if (!TextUtils.isEmpty(newRepo.getBssid())) {
-            WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
-                    WifiManager.class);
-            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-            String bssid = wifiInfo.getBSSID();
-            if (TextUtils.isEmpty(bssid)) {
-                // device may not have wifi
-                return false;
-            }
-            bssid = bssid.toLowerCase(Locale.ENGLISH);
-            String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
-            if (!bssid.equals(newRepoBssid)) {
-                // repo config bssid doesn't match device bssid
-                return false;
-            }
-            // repo config appears to be on same wifi as device
-            return true;
-        } else {
-            // repo config has empty bssid
+        if (TextUtils.isEmpty(newRepo.getBssid())) {
+            // repo may not be connected to an access point
             return false;
         }
+        WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
+                WifiManager.class);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String bssid = wifiInfo.getBSSID();
+        if (TextUtils.isEmpty(bssid)) {
+            // device may not be connected to an access point
+            return false;
+        }
+        bssid = bssid.toLowerCase(Locale.ENGLISH);
+        String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
+        if (!bssid.equals(newRepoBssid)) {
+            // repo config bssid doesn't match device bssid, check subnet
+            return isSwapUrl(newRepo.getRepoUri());
+        }
+        // repo config appears to be on same wifi as device
+        return true;
     }
 
     /**

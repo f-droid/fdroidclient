@@ -25,6 +25,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import org.apache.commons.net.util.SubnetUtils;
+import org.apache.commons.net.util.SubnetUtils6;
 import org.fdroid.database.Repository;
 import org.fdroid.BuildConfig;
 import org.fdroid.fdroid.FDroidApp;
@@ -33,6 +34,7 @@ import org.fdroid.fdroid.Preferences;
 import org.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
+import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
@@ -166,24 +168,9 @@ public class WifiStateChangeService extends Worker {
                     }
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
                         wifiInfo = wifiManager.getConnectionInfo();
-                        FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
                         setSsid(wifiInfo);
-                        DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
-                        if (dhcpInfo != null) {
-                            String netmask = formatIpAddress(dhcpInfo.netmask);
-                            if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null) {
-                                try {
-                                    FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
-                                } catch (IllegalArgumentException e) {
-                                    // catch mystery: "java.lang.IllegalArgumentException: Could not parse [null/24]"
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                        if (FDroidApp.ipAddressString == null
-                                || FDroidApp.subnetInfo == FDroidApp.UNSET_SUBNET_INFO) {
-                            setIpInfoFromNetworkInterface();
-                        }
+                        // WifiInfo only supports ipv4 so use network interface instead
+                        setIpInfoFromNetworkInterface();
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING
                             || wifiState == WifiManager.WIFI_STATE_UNKNOWN) {
@@ -323,7 +310,7 @@ public class WifiStateChangeService extends Worker {
 
                 for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements(); ) {
                     InetAddress inetAddress = inetAddresses.nextElement();
-                    if (inetAddress.isLoopbackAddress() || inetAddress instanceof Inet6Address) {
+                    if (inetAddress.isLoopbackAddress()) {
                         continue;
                     }
                     if (netIf.getDisplayName().contains("wlan0")
@@ -332,16 +319,26 @@ public class WifiStateChangeService extends Worker {
                         FDroidApp.ipAddressString = inetAddress.getHostAddress();
                         for (InterfaceAddress address : netIf.getInterfaceAddresses()) {
                             short networkPrefixLength = address.getNetworkPrefixLength();
-                            if (networkPrefixLength > 32) {
-                                // something is giving a "/64" netmask, IPv6?
-                                // java.lang.IllegalArgumentException: Value [64] not in range [0,32]
+                            // assume that ipv6 prefix length > 32
+                            if ((inetAddress instanceof Inet4Address && networkPrefixLength > 32)
+                                    || (inetAddress instanceof Inet6Address && networkPrefixLength <= 32)) {
                                 continue;
                             }
+                            // include support for both ipv4 and ipv6
                             try {
-                                String cidr = String.format(Locale.ENGLISH, "%s/%d",
-                                        FDroidApp.ipAddressString, networkPrefixLength);
-                                FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
-                                break;
+                                if (inetAddress instanceof Inet4Address) {
+                                    String cidr = String.format(Locale.ENGLISH, "%s/%d",
+                                            FDroidApp.ipAddressString, networkPrefixLength);
+                                    FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
+                                    break;
+                                } else if (inetAddress instanceof Inet6Address) {
+                                    String cidr = String.format(Locale.ENGLISH, "%s/%d",
+                                            FDroidApp.ipAddressString, networkPrefixLength);
+                                    FDroidApp.subnet6Info = new SubnetUtils6(cidr).getInfo();
+                                    break;
+                                } else {
+                                    Log.i(TAG, "Unexpected address type: " + inetAddress.getHostAddress());
+                                }
                             } catch (IllegalArgumentException e) {
                                 if (BuildConfig.DEBUG) {
                                     e.printStackTrace();

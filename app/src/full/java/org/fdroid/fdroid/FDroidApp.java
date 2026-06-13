@@ -3,6 +3,7 @@ package org.fdroid.fdroid;
 import android.content.Context;
 
 import org.apache.commons.net.util.SubnetUtils;
+import org.apache.commons.net.util.SubnetUtils6;
 import org.fdroid.database.Repository;
 import org.fdroid.index.IndexFormatVersion;
 
@@ -23,6 +24,8 @@ public class FDroidApp {
     @Nullable
     public static volatile SubnetUtils.SubnetInfo subnetInfo;
     @Nullable
+    public static volatile SubnetUtils6.SubnetInfo subnet6Info;
+    @Nullable
     public static volatile String ssid;
     @Nullable
     public static volatile String bssid;
@@ -32,14 +35,12 @@ public class FDroidApp {
     @SuppressWarnings("unused")
     public static volatile String queryString;
 
-    public static final SubnetUtils.SubnetInfo UNSET_SUBNET_INFO =
-            new SubnetUtils("0.0.0.0/32").getInfo();
-
     public static void initWifiSettings() {
         port = generateNewPort ? (int) (Math.random() * 10000 + 8080) : port == 0 ? 8888 : port;
         generateNewPort = false;
         ipAddressString = null;
-        subnetInfo = UNSET_SUBNET_INFO;
+        subnetInfo = null;
+        subnet6Info = null;
         ssid = null;
         bssid = null;
     }
