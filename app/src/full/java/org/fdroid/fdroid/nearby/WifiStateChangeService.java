@@ -174,6 +174,10 @@ public class WifiStateChangeService extends Worker {
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING
                             || wifiState == WifiManager.WIFI_STATE_UNKNOWN) {
+                        // subnet info is only used for the swap feature on wifi
+                        // if wifi is disabled, subnet info should be cleared
+                        FDroidApp.subnetInfo = null;
+                        FDroidApp.subnet6Info = null;
                         // try once to see if its a hotspot
                         setIpInfoFromNetworkInterface();
                         if (FDroidApp.ipAddressString == null) {
