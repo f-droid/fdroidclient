@@ -482,25 +482,44 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private static boolean isSwapUrl(Uri uri) {
-        return isSwapUrl(uri.getHost());
+        return isSwapUrl(uri.getHost(), uri.getPort());
     }
 
-    private static boolean isSwapUrl(String host) {
+    private static boolean isSwapUrl(String host, int port) {
+        Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Checking swap URL %s:%d", host, port));
+        if (port < 1024) {
+            // only root can use < 1024, so this can't be a swap repo
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because the port is out of range ( < 1024)", host, port));
+            return false;
+        }
         try {
             InetAddress hostIp = InetAddress.getByName(host);
             if (hostIp instanceof Inet4Address && FDroidApp.subnetInfo != null) {
-                return FDroidApp.subnetInfo.isInRange(host);
+                if (FDroidApp.subnetInfo.isInRange(host)) {
+                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it is not on the subnet (ipv4)", host, port));
+                    return false;
+                } else {
+                    return true;
+                }
             } else if (hostIp instanceof Inet6Address && FDroidApp.subnet6Info != null) {
-                return FDroidApp.subnet6Info.isInRange(host);
+                if (FDroidApp.subnet6Info.isInRange(host)) {
+                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it is not on the subnet (ipv6)", host, port));
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
                 // unable to verify subnet range
+                Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it was in an unexpected format", host, port));
                 return false;
             }
         } catch (UnknownHostException e) {
             // if the host can't be parsed, it isn't a valid ip address
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it could not be parsed", host, port));
             return false;
         } catch (NullPointerException e) {
             // FDroidApp.subnetInfo/subnet6Info may not have been setup
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d could not be validated because the subnet info was null", host, port));
             return false;
         }
     }

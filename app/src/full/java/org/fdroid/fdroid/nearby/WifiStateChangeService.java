@@ -167,13 +167,31 @@ public class WifiStateChangeService extends Worker {
                         return;
                     }
                     if (wifiState == WifiManager.WIFI_STATE_ENABLED) {
+                        Utils.debugLog(TAG, "wifi enabled, get network info");
                         wifiInfo = wifiManager.getConnectionInfo();
+                        FDroidApp.ipAddressString = formatIpAddress(wifiInfo.getIpAddress());
                         setSsid(wifiInfo);
-                        // WifiInfo only supports ipv4 so use network interface instead
-                        setIpInfoFromNetworkInterface();
+                        DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
+                        if (dhcpInfo != null) {
+                            Utils.debugLog(TAG, "get address/subnet info from dhcp");
+                            String netmask = formatIpAddress(dhcpInfo.netmask);
+                            if (!TextUtils.isEmpty(FDroidApp.ipAddressString) && netmask != null) {
+                                try {
+                                    FDroidApp.subnetInfo = new SubnetUtils(FDroidApp.ipAddressString, netmask).getInfo();
+                                } catch (IllegalArgumentException e) {
+                                    // catch mystery: "java.lang.IllegalArgumentException: Could not parse [null/24]"
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        if (FDroidApp.ipAddressString == null || FDroidApp.subnetInfo == null) {
+                            Utils.debugLog(TAG, "could not get address/subnet info from dhcp, try network interface");
+                            setIpInfoFromNetworkInterface();
+                        }
                     } else if (wifiState == WifiManager.WIFI_STATE_DISABLED
                             || wifiState == WifiManager.WIFI_STATE_DISABLING
                             || wifiState == WifiManager.WIFI_STATE_UNKNOWN) {
+                        Utils.debugLog(TAG, "wifi disabled/unknown, clear network info");
                         // subnet info is only used for the swap feature on wifi
                         // if wifi is disabled, subnet info should be cleared
                         FDroidApp.subnetInfo = null;
@@ -304,9 +322,11 @@ public class WifiStateChangeService extends Worker {
      * @see <a href="https://issuetracker.google.com/issues/37015180">netmask of WifiManager.getDhcpInfo() is always zero on Android 5.0</a>
      */
     private void setIpInfoFromNetworkInterface() {
+        Utils.debugLog(TAG, "get address/subnet info from network interface");
         try {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
             if (networkInterfaces == null) {
+                Utils.debugLog(TAG, "could not get address/subnet info, network interface was null");
                 return;
             }
             while (networkInterfaces.hasMoreElements()) {
@@ -314,7 +334,9 @@ public class WifiStateChangeService extends Worker {
 
                 for (Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses(); inetAddresses.hasMoreElements(); ) {
                     InetAddress inetAddress = inetAddresses.nextElement();
+                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "checking address %s", inetAddress.getHostAddress()));
                     if (inetAddress.isLoopbackAddress()) {
+                        Utils.debugLog(TAG, "the address was the loopback address");
                         continue;
                     }
                     if (netIf.getDisplayName().contains("wlan0")
@@ -326,6 +348,7 @@ public class WifiStateChangeService extends Worker {
                             // assume that ipv6 prefix length > 32
                             if ((inetAddress instanceof Inet4Address && networkPrefixLength > 32)
                                     || (inetAddress instanceof Inet6Address && networkPrefixLength <= 32)) {
+                                Utils.debugLog(TAG, String.format(Locale.ENGLISH, "invalid prefix length: %d", networkPrefixLength));
                                 continue;
                             }
                             // include support for both ipv4 and ipv6
@@ -334,20 +357,20 @@ public class WifiStateChangeService extends Worker {
                                     String cidr = String.format(Locale.ENGLISH, "%s/%d",
                                             FDroidApp.ipAddressString, networkPrefixLength);
                                     FDroidApp.subnetInfo = new SubnetUtils(cidr).getInfo();
+                                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "set ipv4 subnet info: %s", cidr));
                                     break;
                                 } else if (inetAddress instanceof Inet6Address) {
                                     String cidr = String.format(Locale.ENGLISH, "%s/%d",
                                             FDroidApp.ipAddressString, networkPrefixLength);
                                     FDroidApp.subnet6Info = new SubnetUtils6(cidr).getInfo();
+                                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "set ipv6 subnet info: %s", cidr));
                                     break;
-                                } else {
-                                    Log.i(TAG, "Unexpected address type: " + inetAddress.getHostAddress());
                                 }
                             } catch (IllegalArgumentException e) {
                                 if (BuildConfig.DEBUG) {
                                     e.printStackTrace();
                                 } else {
-                                    Log.i(TAG, "Getting subnet failed: " + e.getLocalizedMessage());
+                                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "exception thrown while getting subnet info: %s", e.getLocalizedMessage()));
                                 }
                             }
                         }
@@ -356,7 +379,7 @@ public class WifiStateChangeService extends Worker {
             }
         } catch (NullPointerException | SocketException e) {
             // NetworkInterface.getNetworkInterfaces() can throw a NullPointerException internally
-            Log.e(TAG, "Could not get ip address", e);
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "exception thrown while getting network interface: %s", e.getLocalizedMessage()));
         }
     }
 
