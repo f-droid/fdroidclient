@@ -2,6 +2,7 @@ package org.fdroid.ui.details
 
 import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -228,41 +229,36 @@ fun AppDetails(
               mutableStateOf(!allowExpand)
             }
           val htmlDescription = AnnotatedString.fromHtml(description)
-          AnimatedVisibility(
-            visible = descriptionExpanded,
-            modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+          Column(
+            modifier =
+              Modifier.fillMaxWidth()
+                .animateContentSize()
+                .padding(horizontal = 16.dp)
+                .padding(top = 8.dp)
           ) {
             SelectionContainer {
               Text(
                 text = htmlDescription,
                 lineHeight = 22.sp,
-                modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
-              )
-            }
-          }
-          if (allowExpand) {
-            AnimatedVisibility(!descriptionExpanded) {
-              Text(
-                text = htmlDescription,
-                lineHeight = 22.sp,
-                maxLines = maxLines,
+                maxLines = if (descriptionExpanded) Int.MAX_VALUE else maxLines,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(top = 8.dp),
+                modifier = Modifier.fillMaxWidth().semantics { liveRegion = LiveRegionMode.Polite },
               )
             }
-            TextButton(onClick = { descriptionExpanded = !descriptionExpanded }) {
-              Text(
-                text =
-                  if (descriptionExpanded) {
-                    stringResource(R.string.less)
-                  } else {
-                    stringResource(R.string.more)
-                  },
-                textAlign = Center,
-                maxLines = if (descriptionExpanded) Int.MAX_VALUE else 3,
-                modifier =
-                  Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp),
-              )
+            if (allowExpand) {
+              TextButton(onClick = { descriptionExpanded = !descriptionExpanded }) {
+                Text(
+                  text =
+                    if (descriptionExpanded) {
+                      stringResource(R.string.less)
+                    } else {
+                      stringResource(R.string.more)
+                    },
+                  textAlign = Center,
+                  maxLines = if (descriptionExpanded) Int.MAX_VALUE else 3,
+                  modifier = Modifier.fillMaxWidth(),
+                )
+              }
             }
           }
         }
