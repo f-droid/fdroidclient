@@ -36,8 +36,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
+import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -45,15 +45,15 @@ import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.OnboardingPopupCard
-import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepositoriesInfo
 import org.fdroid.ui.utils.repoItems
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -> Unit) {
-  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hintController = rememberHintController()
   val hint =
     rememberHint(HintProperties(dismissOnClickOutside = false)) {
       Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -118,7 +118,9 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
         }
       }
     },
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = Modifier
+      .hintAnchor(hintAnchor, fullScreen = true)
+      .nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     if (info.model.repositories == null) BigLoadingIndicator()
     else
@@ -139,8 +141,8 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
 @Composable
-fun RepositoriesScaffoldLoadingPreview() {
-  HintHost {
+private fun RepositoriesScaffoldLoadingPreview() {
+  HintOverlayContainer {
     FDroidContent {
       val model =
         RepositoryModel(
@@ -158,7 +160,7 @@ fun RepositoriesScaffoldLoadingPreview() {
 @Composable
 @PreviewLightDark
 private fun RepositoriesScaffoldPreview() {
-  HintHost {
+  HintOverlayContainer {
     FDroidContent {
       val model =
         RepositoryModel(

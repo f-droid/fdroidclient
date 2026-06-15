@@ -29,8 +29,8 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
+import com.viktormykhailiv.compose.hints.hintAnchor
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
@@ -39,11 +39,11 @@ import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
+import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.TopAppBarOverflowButton
-import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.getRepoDetailsInfo
 
 @Composable
@@ -56,7 +56,7 @@ fun RepoDetails(
   val context = LocalContext.current
   val repo = info.model.repo
 
-  val hintController = rememberHintController(overlay = getHintOverlayColor())
+  val hintController = rememberHintController()
   val hint =
     rememberHint(HintProperties(dismissOnClickOutside = false)) {
       Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -147,7 +147,8 @@ fun RepoDetails(
           }
         },
       )
-    }
+    },
+    modifier = Modifier.hintAnchor(hintAnchor, fullScreen = true),
   ) { paddingValues ->
     if (repo == null) BigLoadingIndicator()
     else
@@ -161,6 +162,6 @@ fun RepoDetails(
 
 @Preview
 @Composable
-fun RepoDetailsScreenPreview() {
-  HintHost { FDroidContent { RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {}) } }
+private fun RepoDetailsScreenPreview() {
+  HintOverlayContainer { FDroidContent { RepoDetails(getRepoDetailsInfo(), { _, _ -> }, {}) } }
 }

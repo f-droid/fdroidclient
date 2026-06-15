@@ -70,7 +70,6 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.os.LocaleListCompat
-import com.viktormykhailiv.compose.hints.HintHost
 import com.viktormykhailiv.compose.hints.HintProperties
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
@@ -86,8 +85,8 @@ import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.ExpandableSection
+import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.OnboardingPopupCard
-import org.fdroid.ui.utils.getHintOverlayColor
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -128,7 +127,7 @@ fun AppDetails(
         }
       }
       // onboarding hint plumbing
-      val hintController = rememberHintController(overlay = getHintOverlayColor())
+      val hintController = rememberHintController()
       val hint =
         rememberHint(HintProperties(dismissOnClickOutside = false)) {
           OnboardingPopupCard(
@@ -471,5 +470,5 @@ fun AppDetailsNotFoundPreview() {
 @Preview
 @Composable
 fun AppDetailsPreview() {
-  HintHost { FDroidContent { AppDetails(testApp, {}, {}) } }
+  HintOverlayContainer { FDroidContent { AppDetails(testApp, {}, {}) } }
 }

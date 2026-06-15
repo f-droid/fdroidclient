@@ -18,12 +18,20 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import com.viktormykhailiv.compose.hints.HintHost
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
 
 @Composable
-fun getHintOverlayColor() = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+fun HintOverlayContainer(
+  content: @Composable () -> Unit,
+) {
+  HintHost(
+    overlay = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
+    content = content,
+  )
+}
 
 fun Context.startActivitySafe(i: Intent?) {
   if (i == null) return
