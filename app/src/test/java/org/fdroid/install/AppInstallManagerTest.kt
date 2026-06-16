@@ -21,11 +21,11 @@ import io.mockk.unmockkObject
 import io.mockk.unmockkStatic
 import io.mockk.verify
 import io.mockk.verifyOrder
-import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -615,24 +615,23 @@ internal class AppInstallManagerTest {
     } coAnswers
       {
         // simulate long-running preapproval that gets canceled
-        delay(TimeUnit.SECONDS.toMillis(30))
+        delay(30.seconds)
         PreApprovalResult.NotSupported
       }
 
     // start the installation in the background so we can cancel() it
     val installScope = CoroutineScope(Dispatchers.Unconfined)
-    val installJob =
-      installScope.async {
-        appInstallManager.install(
-            packageName = packageName,
-            appMetadata = appMetadata,
-            version = version,
-            currentVersionName = installedVersionName,
-            repo = repo,
-            iconModel = null,
-            canAskPreApprovalNow = false,
-        )
-      }
+    val installJob = installScope.async {
+      appInstallManager.install(
+        packageName = packageName,
+        appMetadata = appMetadata,
+        version = version,
+        currentVersionName = installedVersionName,
+        repo = repo,
+        iconModel = null,
+        canAskPreApprovalNow = false,
+      )
+    }
 
     // cancel the job and ensure result is UserAborted
     appInstallManager.cancel(packageName)
@@ -649,13 +648,82 @@ internal class AppInstallManagerTest {
     canAskPreApprovalNow: Boolean = false,
   ): InstallState {
     return appInstallManager.install(
-        packageName = packageName,
-        appMetadata = appMetadata,
-        version = version,
-        currentVersionName = currentVersionName,
-        repo = repo,
-        iconModel = iconModel,
-        canAskPreApprovalNow = canAskPreApprovalNow,
+      packageName = packageName,
+      appMetadata = appMetadata,
+      version = version,
+      currentVersionName = currentVersionName,
+      repo = repo,
+      iconModel = iconModel,
+      canAskPreApprovalNow = canAskPreApprovalNow,
     )
   }
+
+  @Test
+  fun `cancel transitions Waiting state to UserAborted when no active job exists`() = runBlocking {
+    // setWaitingState creates no job (it's a deferred install placeholder)
+    appInstallManager.setWaitingState(
+      packageName = packageName,
+      name = "Example App",
+      versionName = "1.0",
+      currentVersionName = "0.9",
+      lastUpdated = 1234L,
+    )
+    assertIs<InstallState.Waiting>(appInstallManager.getAppFlow(packageName).first())
+
+    // Cancelling a Waiting app should clear it even if there is no active job
+    appInstallManager.cancel(packageName)
+
+    assertIs<InstallState.UserAborted>(appInstallManager.getAppFlow(packageName).first())
+    // service should stop because no app is installing anymore
+    verify(atLeast = 1) { context.stopService(any<Intent>()) }
+  }
+
+  @Test
+  fun `cancel clears Waiting state without affecting a concurrently installing app`() =
+    runBlocking {
+      coEvery {
+        sessionInstallManager.requestPreapproval(any(), any(), any(), any(), any())
+      } coAnswers
+        {
+          delay(30.seconds)
+          PreApprovalResult.NotSupported
+        }
+
+      // Start install for another app (this creates a real job in the jobs map)
+      val installScope = CoroutineScope(Dispatchers.Unconfined)
+      val otherPackageName = "com.example.other"
+      installScope.async {
+        appInstallManager.install(
+          packageName = otherPackageName,
+          appMetadata = appMetadata.copy(packageName = otherPackageName),
+          version = version,
+          currentVersionName = "0.8",
+          repo = repo,
+          iconModel = null,
+          canAskPreApprovalNow = false,
+        )
+      }
+
+      // Put our own app into Waiting state (simulating UpdateInstaller deferring it)
+      appInstallManager.setWaitingState(
+        packageName = packageName,
+        name = "Example App",
+        versionName = "1.0",
+        currentVersionName = "0.9",
+        lastUpdated = 1234L,
+      )
+
+      // Cancel own app, transitions it from Waiting to UserAborted
+      appInstallManager.cancel(packageName)
+      assertIs<InstallState.UserAborted>(appInstallManager.getAppFlow(packageName).first())
+
+      // assert that the other app's installation job is still be running
+      val notificationState = appInstallManager.installNotificationState
+      assertTrue(notificationState.isInProgress)
+      assertEquals(1, notificationState.apps.size)
+      assertEquals(otherPackageName, notificationState.apps[0].packageName)
+
+      // Clean up
+      appInstallManager.cancel(otherPackageName)
+    }
 }

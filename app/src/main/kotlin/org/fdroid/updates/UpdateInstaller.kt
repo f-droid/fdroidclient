@@ -66,17 +66,24 @@ constructor(
     val ownApp = ownAppList.firstOrNull()
     if (ownApp != null) setOwnAppWaitingState(ownApp)
 
-    // Update all non-self apps first, then our own package at the end.
-    updateAppsInParallel(otherApps, canRequestPreApproval)
+    try {
+      // Update all non-self apps first, then our own package at the end.
+      updateAppsInParallel(otherApps, canRequestPreApproval)
 
-    // If available, we update ourselves last
-    ownApp?.let { update ->
-      if (isForeground) {
-        // enable the receiver only if the app was in the foreground when updates were started,
-        // so the user can easily re-launch it. It will get disabled again in the app's onCreate
-        SelfUpdateReceiver.enable(context)
+      // If available, we update ourselves last
+      ownApp?.let { update ->
+        if (isForeground) {
+          // enable the receiver only if the app was in the foreground when updates were started,
+          // so the user can easily re-launch it. It will get disabled again in the app's onCreate
+          SelfUpdateReceiver.enable(context)
+        }
+        updateApp(update, canRequestPreApproval)
       }
-      updateApp(update, canRequestPreApproval)
+    } finally {
+      // If the coroutine was canceled or an exception occurred before install() was called for
+      // our own app, ensure the Waiting state is cleared so the app doesn't get stuck.
+      // cancel() is a no-op if own app completed installed and is no longer in Waiting.
+      if (ownApp != null) appInstallManager.cancel(ownApp.packageName)
     }
   }
 

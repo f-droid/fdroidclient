@@ -13,9 +13,12 @@ import io.mockk.runs
 import io.mockk.verify
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.fdroid.database.App
 import org.fdroid.database.AppDao
@@ -161,6 +164,7 @@ internal class UpdateInstallerTest {
         lastUpdated = any(),
       )
     } just runs
+    every { appInstallManager.cancel(OWN_PACKAGE_NAME) } just runs
 
     val updates =
       listOf(
@@ -247,6 +251,73 @@ internal class UpdateInstallerTest {
       coVerify(exactly = 1) {
         appInstallManager.install(any(), null, any(), any(), any(), any(), any())
       }
+    }
+
+  @Test
+  fun `updateAll cancels own app Waiting state if coroutine is cancelled before own app install`() =
+    testScope.runTest {
+      val otherPkg = "com.example.other"
+      every { repoManager.getRepository(1L) } returns makeRepository()
+      every { appDao.getApp(1L, OWN_PACKAGE_NAME) } returns makeApp(packageName = OWN_PACKAGE_NAME)
+      every { appDao.getApp(1L, otherPkg) } returns makeApp(packageName = otherPkg)
+      every { context.isAppInForeground() } returns false
+      every {
+        appInstallManager.setWaitingState(any(), any(), any(), any(), any())
+      } just runs
+
+      val ownVersion =
+        makeAppVersion(packageName = OWN_PACKAGE_NAME, versionName = "3.0", added = 9999L)
+
+      // Make the other-app install block forever so that we never get to install our own app
+      coEvery {
+        appInstallManager.install(
+          packageName = otherPkg,
+          appMetadata = any(),
+          version = any(),
+          currentVersionName = any(),
+          repo = any(),
+          iconModel = any(),
+          canAskPreApprovalNow = any(),
+        )
+      } coAnswers
+        {
+          awaitCancellation()
+        }
+      every { appInstallManager.cancel(OWN_PACKAGE_NAME) } just runs
+
+      val updates =
+        listOf(
+          makeAppUpdateItem(
+            packageName = OWN_PACKAGE_NAME,
+            installedVersionName = "2.0",
+            update = ownVersion,
+          ),
+          makeAppUpdateItem(packageName = otherPkg),
+        )
+
+      // Start updateAll and cancel it while it's waiting for the other app
+      val updateJob = backgroundScope.launch {
+        createUpdateInstaller().updateAll(updates, canAskPreApprovalNow = false)
+      }
+      runCurrent() // advance the scheduler so updateAll starts and reaches joinAll()
+      updateJob.cancel()
+      updateJob.join()
+
+      // install() for own app was never called (parallel updates hadn't finished yet)
+      coVerify(exactly = 0) {
+        appInstallManager.install(
+          packageName = OWN_PACKAGE_NAME,
+          appMetadata = any(),
+          version = any(),
+          currentVersionName = any(),
+          repo = any(),
+          iconModel = any(),
+          canAskPreApprovalNow = any(),
+        )
+      }
+
+      // The finally block must have called cancel() to clear the stuck Waiting state
+      verify { appInstallManager.cancel(OWN_PACKAGE_NAME) }
     }
 
   private fun makeAppUpdateItem(
