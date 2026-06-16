@@ -325,3 +325,4 @@ deploy_nightly:
     - mv app/build/outputs/apk/basicNightly/release/app-basic-nightly-release-unsigned.apk app/build/outputs/apk/basicNightly/release/app-basic-debug.apk
     - mv app/build/outputs/apk/fullNightly/release/app-full-nightly-release-unsigned.apk app/build/outputs/apk/fullNightly/release/app-full-debug.apk
     - fdroid nightly -v
+  cache: []

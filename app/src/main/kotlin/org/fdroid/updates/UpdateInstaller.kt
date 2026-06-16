@@ -57,6 +57,7 @@ constructor(
   suspend fun updateAll(appsToUpdate: List<AppUpdateItem>, canAskPreApprovalNow: Boolean) {
     if (appsToUpdate.isEmpty()) return
     val canRequestPreApproval = canAskPreApprovalNow && appsToUpdate.size == 1
+    val isForeground = context.isAppInForeground()
 
     // separate the update for our own app (if present) from the rest,
     // so we can defer it until the end and do all other updates in parallel first
@@ -70,8 +71,8 @@ constructor(
 
     // If available, we update ourselves last
     ownApp?.let { update ->
-      if (context.isAppInForeground()) {
-        // enable the receiver only if the app is currently in the foreground,
+      if (isForeground) {
+        // enable the receiver only if the app was in the foreground when updates were started,
         // so the user can easily re-launch it. It will get disabled again in the app's onCreate
         SelfUpdateReceiver.enable(context)
       }

@@ -145,11 +145,21 @@
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
+
         <provider
             android:name="org.fdroid.install.ApkFileProvider"
             android:authorities="${applicationId}.install.ApkFileProvider"
             android:exported="false"
             android:grantUriPermissions="true" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <!-- disable WorkManager initialization, needed for Hilt -->
         <provider
             android:name="androidx.startup.InitializationProvider"

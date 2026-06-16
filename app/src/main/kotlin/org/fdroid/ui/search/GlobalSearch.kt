@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
@@ -45,6 +46,7 @@ fun GlobalSearch(
     if (info.showKeyboard) info.onKeyboardShown()
   }
   val searchResults = info.searchResults
+  val keyboardController = LocalSoftwareKeyboardController.current
   val showKeyboard =
     info.showKeyboard || // either show keyboard because user double tapped the search icon
       (info.autoShowKeyboard && // or auto-show is activated
@@ -94,7 +96,11 @@ fun GlobalSearch(
       savedSearches = info.savedSearches,
       categories = info.categories,
       onClearSavedSearches = info.actions::onClearSearchHistory,
-      onNav = onNav,
+      onNav = { navKey ->
+        // manually hide keyboard before nav, otherwise the auto-hide comes late and looks sluggish
+        keyboardController?.hide()
+        onNav(navKey)
+      },
     )
   }
 }

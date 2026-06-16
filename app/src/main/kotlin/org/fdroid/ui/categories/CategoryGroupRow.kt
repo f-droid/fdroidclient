@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
@@ -59,7 +60,7 @@ fun CategoryGroupRow(
         Icon(
           imageVector = group.imageVector,
           contentDescription = null,
-          tint = MaterialTheme.colorScheme.primary,
+          tint = MaterialTheme.colorScheme.onPrimaryContainer,
           modifier = Modifier.semantics { hideFromAccessibility() },
         )
       }
@@ -96,6 +97,20 @@ fun CategoryGroupRow(
 @PreviewLightDark
 private fun Preview() {
   FDroidContent {
+    val categories =
+      listOf(
+        CategoryItem("App Store & Updater", "App Store & Updater"),
+        CategoryItem("Browser", "Browser"),
+        CategoryItem("Calendar & Agenda", "Calendar & Agenda"),
+      )
+    Column { CategoryGroupRow(CategoryGroups.productivity, categories) {} }
+  }
+}
+
+@Composable
+@PreviewDynamicColors
+private fun PreviewDynamicColors() {
+  FDroidContent(dynamicColors = true) {
     val categories =
       listOf(
         CategoryItem("App Store & Updater", "App Store & Updater"),

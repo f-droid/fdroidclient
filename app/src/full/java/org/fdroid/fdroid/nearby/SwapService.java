@@ -375,6 +375,7 @@ public class SwapService extends Service {
     public void onCreate() {
         super.onCreate();
         startForeground(NOTIFICATION, createNotification());
+        WifiStateChangeService.start(this, null);
         WifiStateChangeService.registerReceiver(this, wifiStateChangeReceiver);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);

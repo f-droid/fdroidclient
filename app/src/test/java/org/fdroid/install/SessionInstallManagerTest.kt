@@ -1,6 +1,7 @@
 package org.fdroid.install
 
 import android.app.PendingIntent
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -9,9 +10,11 @@ import android.content.pm.InstallSourceInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageInstaller.Session
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build.VERSION.SDK_INT
 import android.telephony.TelephonyManager
 import androidx.core.content.ContextCompat.registerReceiver
+import androidx.core.content.FileProvider
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -24,6 +27,7 @@ import io.mockk.unmockkAll
 import io.mockk.verify
 import java.io.ByteArrayOutputStream
 import java.io.File
+import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
@@ -438,6 +442,46 @@ internal class SessionInstallManagerTest {
   }
 
   @Test
+  fun `install calls installLegacy when STATUS_FAILURE_ABORTED with INSTALL_FAILED_VERIFICATION_FAILURE`() =
+    runBlocking {
+      mockkStatic(FileProvider::class)
+      val uri: Uri = mockk()
+      every { FileProvider.getUriForFile(any(), any(), any()) } returns uri
+      every { context.startActivity(any()) } just runs
+
+      val result =
+        installForStatus(
+          status = PackageInstaller.STATUS_FAILURE_ABORTED,
+          msg =
+            "INSTALL_FAILED_VERIFICATION_FAILURE: " +
+              "Install not allowed for file:///data/app/vmdl403786248.tmp",
+        )
+
+      assertIs<InstallState.UserAborted>(result)
+      // ensure that the legacy installer gets invoked
+      verify(exactly = 1) { context.startActivity(any()) }
+    }
+
+  @Test
+  fun `install returns Error when installLegacy throws ActivityNotFoundException`() = runBlocking {
+    mockkStatic(FileProvider::class)
+    val uri: Uri = mockk()
+    every { FileProvider.getUriForFile(any(), any(), any()) } returns uri
+    every { context.startActivity(any()) } throws ActivityNotFoundException("no handler")
+
+    val result =
+      installForStatus(
+        status = PackageInstaller.STATUS_FAILURE_ABORTED,
+        msg =
+          "INSTALL_FAILED_VERIFICATION_FAILURE: " +
+            "Install not allowed for file:///data/app/vmdl403786248.tmp",
+      )
+
+    assertIs<InstallState.Error>(result)
+    assertContains(result.msg ?: "", "ActivityNotFoundException")
+  }
+
+  @Test
   fun `install cancellation abandons session`() = runBlocking {
     val apkFile: File =
       tmpFolder.newFile("app-cancel.apk").apply { writeBytes(byteArrayOf(1, 2, 3)) }
@@ -606,6 +650,38 @@ internal class SessionInstallManagerTest {
       {
         listenerSlot.captured.invoke(receiver, packageInstallerResult, Intent("confirm"), msg)
       }
+  }
+
+  @Test
+  fun `requestUserConfirmation fast pre-approval abort returns PreApproved with NotSupported`() {
+    runBlocking {
+      val appVersion: AppVersion = mockk(relaxed = true)
+      val preApprovalState =
+        InstallState.PreApprovalConfirmationNeeded(
+          state =
+            InstallState.Starting(
+              name = "Example App",
+              versionName = "1.0",
+              currentVersionName = "0.9",
+              lastUpdated = 42,
+              iconModel = null,
+            ),
+          version = appVersion,
+          repo = mockk(relaxed = true),
+          sessionId = sessionId,
+          intent = pendingIntent,
+        )
+      // The callback fires synchronously inside intent.send(), so elapsedNow() < 250ms,
+      // which triggers the fast-abort path that returns PreApproved(NotSupported).
+      val result =
+        requestUserConfirmationForStatus(
+          preApprovalState,
+          PackageInstaller.STATUS_FAILURE_ABORTED,
+          null,
+        )
+      assertIs<InstallState.PreApproved>(result)
+      assertIs<PreApprovalResult.NotSupported>(result.result)
+    }
   }
 
   @Test
