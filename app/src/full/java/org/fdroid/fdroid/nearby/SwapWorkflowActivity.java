@@ -151,6 +151,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private int currentSwapViewLayoutRes = R.layout.swap_start_swap;
     private final Stack<Integer> backstack = new Stack<>();
 
+    private boolean waitingForSwap = false;
+
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) sendFDroidBluetooth();
@@ -496,17 +498,19 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             InetAddress hostIp = InetAddress.getByName(host);
             if (hostIp instanceof Inet4Address && FDroidApp.subnetInfo != null) {
                 if (FDroidApp.subnetInfo.isInRange(host)) {
+                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is on the subnet (ipv4)", host, port));
+                    return true;
+                } else {
                     Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it is not on the subnet (ipv4)", host, port));
                     return false;
-                } else {
-                    return true;
                 }
             } else if (hostIp instanceof Inet6Address && FDroidApp.subnet6Info != null) {
                 if (FDroidApp.subnet6Info.isInRange(host)) {
+                    Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is on the subnet (ipv6)", host, port));
+                    return true;
+                } else {
                     Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it is not on the subnet (ipv6)", host, port));
                     return false;
-                } else {
-                    return true;
                 }
             } else {
                 // unable to verify subnet range
@@ -789,6 +793,8 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     private void startSwappingWithPeer() {
         getSwapService().connectToPeer();
         inflateSwapView(R.layout.swap_connecting);
+        // initiate swap, set flag
+        waitingForSwap = true;
     }
 
     public void swapWith(Peer peer) {
@@ -871,9 +877,14 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     }
 
     private boolean checkIfNewRepoOnSameWifi(NewRepoConfig newRepo) {
-        // if this is a local repo, check we're on the same wifi
+        // check subnet range first. sometimes returns true when bssid is empty
+        if (isSwapUrl(newRepo.getRepoUri())) {
+            return true;
+        }
+        // if this is a local repo, check whether we're on the same wifi
         if (TextUtils.isEmpty(newRepo.getBssid())) {
             // repo may not be connected to an access point
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap repo may not be connected to wifi"));
             return false;
         }
         WifiManager wifiManager = ContextCompat.getSystemService(getApplicationContext(),
@@ -882,15 +893,18 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         String bssid = wifiInfo.getBSSID();
         if (TextUtils.isEmpty(bssid)) {
             // device may not be connected to an access point
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Device may not be connected to wifi"));
             return false;
         }
         bssid = bssid.toLowerCase(Locale.ENGLISH);
         String newRepoBssid = Uri.decode(newRepo.getBssid()).toLowerCase(Locale.ENGLISH);
         if (!bssid.equals(newRepoBssid)) {
             // repo config bssid doesn't match device bssid, check subnet
-            return isSwapUrl(newRepo.getRepoUri());
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap repo and device are not connected to the same wifi"));
+            return false;
         }
         // repo config appears to be on same wifi as device
+        Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap repo and device are connected to the same wifi"));
         return true;
     }
 
@@ -1503,14 +1517,21 @@ public class SwapWorkflowActivity extends AppCompatActivity {
     };
 
     private void onRepoUpdateSuccess() {
-        CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
-        Button tryAgainButton = container.findViewById(R.id.try_again);
-        if (progressBar != null && tryAgainButton != null) {
-            progressBar.show();
-            tryAgainButton.setVisibility(View.GONE);
+        // there is a 5 second loop in the SwapService that updates the index,
+        // and a local observer watching that index that calls this method.
+        // if the flag is not cleared, the success screen continually pops up,
+        // even if the user hits the back button to exit.
+        if (waitingForSwap) {
+            waitingForSwap = false;
+            CircularProgressIndicator progressBar = container.findViewById(R.id.progress_bar);
+            Button tryAgainButton = container.findViewById(R.id.try_again);
+            if (progressBar != null && tryAgainButton != null) {
+                progressBar.show();
+                tryAgainButton.setVisibility(View.GONE);
+            }
+            getSwapService().addCurrentPeerToActive();
+            inflateSwapView(R.layout.swap_success);
         }
-        getSwapService().addCurrentPeerToActive();
-        inflateSwapView(R.layout.swap_success);
     }
 
     private void onRepoUpdateError(Exception e) {
