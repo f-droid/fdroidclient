@@ -42,6 +42,11 @@ class RepoPreLoader(
         val romRepos = tryLoadRepositoriesFromFile("$root/etc/$subdir/additional_repos.json")
         if (romRepos.isNotEmpty()) {
           addRepositories(db.getRepositoryDao(), romRepos)
+        } else {
+            val xmlFile = "$root/etc/$subdir/additional_repos.xml"
+            if (fileFactory(xmlFile).isFile) {
+                log.error { "Old format not ported to JSON ($xmlFile)! See https://f-droid.org/2026/03/28/how-to-include-repos-in-rom.html" }
+            }
         }
       }
     }
