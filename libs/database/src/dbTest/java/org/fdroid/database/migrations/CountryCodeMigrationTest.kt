@@ -8,6 +8,16 @@ import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import org.fdroid.database.Converters
+import org.fdroid.database.CoreRepository
+import org.fdroid.database.CountryCodeMigration
+import org.fdroid.database.FDroidDatabaseInt
+import org.fdroid.database.InitialRepository
+import org.fdroid.database.MIGRATION_2_3
+import org.fdroid.database.MIGRATION_5_6
+import org.fdroid.database.MIGRATION_8_9
+import org.fdroid.database.Mirror
+import org.fdroid.database.RepositoryPreferences
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -22,13 +32,13 @@ internal class CountryCodeMigrationTest {
   val helper: MigrationTestHelper =
     MigrationTestHelper(
       InstrumentationRegistry.getInstrumentation(),
-      _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
-      listOf(_root_ide_package_.org.fdroid.database.CountryCodeMigration()),
+      FDroidDatabaseInt::class.java,
+      listOf(CountryCodeMigration()),
       FrameworkSQLiteOpenHelperFactory(),
     )
 
   private val repo =
-    _root_ide_package_.org.fdroid.database.InitialRepository(
+    InitialRepository(
       name = "F-Droid",
       address = "https://f-droid.org/repo",
       description =
@@ -42,18 +52,18 @@ internal class CountryCodeMigrationTest {
 
   @Test
   fun migrateCountryCode() {
-    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 7).use { db ->
+    helper.createDatabase(TEST_DB, 7).use { db ->
       // Database has schema version 7. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       val repoId =
         db.insert(
-          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+          CoreRepository.TABLE,
           SQLiteDatabase.CONFLICT_FAIL,
           ContentValues().apply {
-            put("name", _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("en-US" to repo.name)))
+            put("name", Converters.localizedTextV2toString(mapOf("en-US" to repo.name)))
             put(
               "description",
-              _root_ide_package_.org.fdroid.database.Converters.localizedTextV2toString(mapOf("en-US" to repo.description)),
+              Converters.localizedTextV2toString(mapOf("en-US" to repo.description)),
             )
             put("address", repo.address)
             put("timestamp", 42)
@@ -61,7 +71,7 @@ internal class CountryCodeMigrationTest {
           },
         )
       db.insert(
-        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+        RepositoryPreferences.TABLE,
         SQLiteDatabase.CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -71,7 +81,7 @@ internal class CountryCodeMigrationTest {
         },
       )
       db.insert(
-        _root_ide_package_.org.fdroid.database.Mirror.Companion.TABLE,
+        Mirror.TABLE,
         SQLiteDatabase.CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -82,15 +92,15 @@ internal class CountryCodeMigrationTest {
     }
 
     // Re-open the database with version 8, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 8, true).close()
+    helper.runMigrationsAndValidate(TEST_DB, 8, true).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
     Room.databaseBuilder(
         ApplicationProvider.getApplicationContext(),
-        _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
-        _root_ide_package_.org.fdroid.database.migrations.TEST_DB,
+        FDroidDatabaseInt::class.java,
+        TEST_DB,
       )
-      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db ->

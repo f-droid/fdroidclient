@@ -10,6 +10,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import kotlin.test.assertEquals
 import org.fdroid.database.Converters.localizedTextV2toString
+import org.fdroid.database.CoreRepository
+import org.fdroid.database.FDroidDatabaseInt
+import org.fdroid.database.MIGRATION_2_3
+import org.fdroid.database.MIGRATION_5_6
+import org.fdroid.database.MIGRATION_8_9
+import org.fdroid.database.RepositoryPreferences
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,19 +29,19 @@ internal class RepoCertNonNullMigrationTest {
   val helper: MigrationTestHelper =
     MigrationTestHelper(
       instrumentation = getInstrumentation(),
-      databaseClass = _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
+      databaseClass = FDroidDatabaseInt::class.java,
       specs = emptyList(),
       openFactory = FrameworkSQLiteOpenHelperFactory(),
     )
 
   @Test
   fun migrateRepos() {
-    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 2).use { db ->
+    helper.createDatabase(TEST_DB, 2).use { db ->
       // Database has schema version 2. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       val repoId1 =
         db.insert(
-          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+          CoreRepository.Companion.TABLE,
           SQLiteDatabase.CONFLICT_FAIL,
           ContentValues().apply {
             put("name", localizedTextV2toString(mapOf("en-US" to "foo")))
@@ -46,7 +52,7 @@ internal class RepoCertNonNullMigrationTest {
           },
         )
       db.insert(
-        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+        RepositoryPreferences.Companion.TABLE,
         SQLiteDatabase.CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId1)
@@ -56,7 +62,7 @@ internal class RepoCertNonNullMigrationTest {
       )
       val repoId2 =
         db.insert(
-          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+          CoreRepository.Companion.TABLE,
           SQLiteDatabase.CONFLICT_FAIL,
           ContentValues().apply {
             put("name", localizedTextV2toString(mapOf("en-US" to "no cert")))
@@ -66,7 +72,7 @@ internal class RepoCertNonNullMigrationTest {
           },
         )
       db.insert(
-        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+        RepositoryPreferences.Companion.TABLE,
         SQLiteDatabase.CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId2)
@@ -77,11 +83,11 @@ internal class RepoCertNonNullMigrationTest {
     }
 
     // Re-open the database with version 2, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 4, true, _root_ide_package_.org.fdroid.database.MIGRATION_2_3).close()
+    helper.runMigrationsAndValidate(TEST_DB, 4, true, MIGRATION_2_3).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
-    Room.databaseBuilder(getApplicationContext(), _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java, _root_ide_package_.org.fdroid.database.migrations.TEST_DB)
-      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
+    Room.databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db ->
