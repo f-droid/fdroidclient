@@ -2,7 +2,7 @@
 
 ## Reporting issues
 
-If you find an issue in the client, you can use our [Issue
+If you find an issue in the app, you can use our [Issue
 Tracker](https://gitlab.com/fdroid/fdroidclient/issues). Make sure that it
 hasn't yet been reported by searching first.
 
@@ -23,7 +23,7 @@ like to contribute.
 Please *do not* send merge requests or patches modifying the translations. Use
 Weblate instead - it applies a series of fixes and suggestions, plus it keeps
 track of modifications and fuzzy translations. Applying translations manually
-skips all of the fixes and checks, and overrides the fuzzy state of strings.
+skips all the fixes and checks, and overrides the fuzzy state of strings.
 
 Note that you cannot change the English strings on Weblate. If you have any
 suggestions on how to improve them, open an issue or merge request like you
@@ -33,38 +33,22 @@ before the source strings on Weblate are changed.
 
 ## Code Style
 
-We follow the default Android Studio code formatter (e.g. `Ctrl-Alt-L`).  This
-should be more or less the same as [Android Java
-style](https://source.android.com/source/code-style.html).  Some key points:
+We follow [ktfmt](https://facebook.github.io/ktfmt/) style with Google flavor.
 
-* Four space indentation
-* UTF-8 source files
-* Exactly one top-level class per file
-* No wildcard imports
-* One statement per line
-* K&R spacings with braces and parenthesis
-* Commented fallthroughs
-* Braces are always used after if, for and while
-
-The current code base doesn't follow it entirely, but new code should follow
-it. We enforce some of these, but not all, via `./gradlew checkstyle`.
+Run `./gradlew ktfmtFormat` to auto-format your changes before committing them.
 
 
 ## Running the test suite
 
 Before pushing commits to a merge request, make sure this passes:
 
-    ./gradlew checkstyle pmd lint
+    ./gradlew check
 
 In order to run the F-Droid test suite, you will need to have either a real device
 connected via `adb`, or an emulator running. Then, execute the following from the
 command line:
 
-    ./gradlew check
-
-Many important tests require a device or emulator, but do not work in GitLab CI.
-That mean they need to be run locally, and that is usually easiest in Android
-Studio rather than the command line.
+    ./gradlew connectedAndroidTest
 
 For a quick way to run a specific JUnit/Robolectric test:
 
