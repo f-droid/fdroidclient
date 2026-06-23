@@ -8,8 +8,7 @@ plugins {
 
 kotlin {
   explicitApi()
-  @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-  abiValidation { enabled = true }
+  @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class) abiValidation()
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
 
   jvm()
@@ -36,7 +35,7 @@ mavenPublishing {
   configure(
     com.vanniktech.maven.publish.KotlinMultiplatform(
       javadocJar = com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaHtml"),
-      sourcesJar = true,
+      sourcesJar = com.vanniktech.maven.publish.SourcesJar.Sources(),
       androidVariantsToPublish = listOf("release"),
     )
   )

@@ -9,8 +9,7 @@ plugins {
 kotlin {
   compilerOptions { optIn.add("kotlin.RequiresOptIn") }
   explicitApi()
-  @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-  abiValidation { enabled = true }
+  @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class) abiValidation()
 
   jvm()
   android {
