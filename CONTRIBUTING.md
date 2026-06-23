@@ -14,6 +14,13 @@ Remember to include the following information:
 * Steps to reproduce the issue
 * Logcat - see [instructions](https://f-droid.org/wiki/page/Getting_logcat_messages_after_crash)
 
+## Contributing code
+
+Before starting to work on non-trivial code changes,
+please post in the related ticket first stating your intention to work on it.
+This avoids duplicate work and allows for discussion of the best approach to take.
+If no ticket exists, create one first.
+
 ## Translating
 
 The strings are translated using [Weblate](https://weblate.org/en/). Follow
