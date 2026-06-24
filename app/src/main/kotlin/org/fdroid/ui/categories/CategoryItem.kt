@@ -274,7 +274,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Local Media Player" -> CategoryGroups.media
         "Location Tracker & Sharer" -> CategoryGroups.tools
         "Lyrics" -> CategoryGroups.interests
-        "Market & Price" -> CategoryGroups.interests
+        "Market & Price" -> CategoryGroups.wallets
         "Meditation" -> CategoryGroups.interests
         "Messaging" -> CategoryGroups.communication
         "Multimedia" -> CategoryGroups.media
