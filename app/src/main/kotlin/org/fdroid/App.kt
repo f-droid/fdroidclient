@@ -26,6 +26,7 @@ import org.acra.config.dialog
 import org.acra.config.mailSender
 import org.acra.data.StringFormat.JSON
 import org.acra.ktx.initAcra
+import org.fdroid.AppFull
 import org.fdroid.BuildConfig.APPLICATION_ID
 import org.fdroid.BuildConfig.VERSION_NAME
 import org.fdroid.download.DownloadRequest
@@ -106,6 +107,8 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
 
     RepoUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.repoUpdates)
     AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
+
+    AppFull.onCreate(applicationContext)
   }
 
   private fun isAcraProces(): Boolean {

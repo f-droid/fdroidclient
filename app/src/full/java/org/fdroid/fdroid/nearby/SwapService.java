@@ -363,8 +363,6 @@ public class SwapService extends Service {
     @Nullable
     private Timer timer;
 
-    private final WifiStateChangeReceiver wifiStateChangeReceiver = new WifiStateChangeReceiver();
-
     public class Binder extends android.os.Binder {
         public SwapService getService() {
             return SwapService.this;
@@ -375,8 +373,6 @@ public class SwapService extends Service {
     public void onCreate() {
         super.onCreate();
         startForeground(NOTIFICATION, createNotification());
-        WifiStateChangeService.start(this, null);
-        WifiStateChangeService.registerReceiver(this, wifiStateChangeReceiver);
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         swapPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -486,7 +482,6 @@ public class SwapService extends Service {
     @Override
     public void onDestroy() {
         Utils.debugLog(TAG, "Destroying service, will disable swapping if required, and unregister listeners.");
-        WifiStateChangeService.unregisterReceiver(this, wifiStateChangeReceiver);
         Preferences.get().unregisterLocalRepoHttpsListeners(httpsEnabledListener);
         localBroadcastManager.unregisterReceiver(onWifiChange);
         localBroadcastManager.unregisterReceiver(bluetoothPeerFound);
