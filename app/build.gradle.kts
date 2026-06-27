@@ -142,6 +142,7 @@ dependencies {
   implementation(libs.androidx.hilt.navigation.compose)
   ksp(libs.hilt.android.compiler)
   ksp(libs.androidx.hilt.compiler)
+  ksp(libs.kotlin.metadata.jvm) // needed if Hilt doesn't support latest Kotlin version
 
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.ui.test.manifest)

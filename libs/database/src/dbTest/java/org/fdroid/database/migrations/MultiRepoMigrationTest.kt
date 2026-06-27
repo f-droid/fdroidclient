@@ -12,7 +12,17 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.fail
+import org.fdroid.database.AppMetadata
+import org.fdroid.database.AppPrefs
 import org.fdroid.database.Converters.localizedTextV2toString
+import org.fdroid.database.CoreRepository
+import org.fdroid.database.FDroidDatabaseInt
+import org.fdroid.database.InitialRepository
+import org.fdroid.database.MIGRATION_2_3
+import org.fdroid.database.MIGRATION_5_6
+import org.fdroid.database.MIGRATION_8_9
+import org.fdroid.database.MultiRepoMigration
+import org.fdroid.database.RepositoryPreferences
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,13 +36,13 @@ internal class MultiRepoMigrationTest {
   val helper: MigrationTestHelper =
     MigrationTestHelper(
       InstrumentationRegistry.getInstrumentation(),
-      _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java,
-      listOf(_root_ide_package_.org.fdroid.database.MultiRepoMigration()),
+      FDroidDatabaseInt::class.java,
+      listOf(MultiRepoMigration()),
       FrameworkSQLiteOpenHelperFactory(),
     )
 
   private val fdroidArchiveRepo =
-    _root_ide_package_.org.fdroid.database.InitialRepository(
+    InitialRepository(
       name = "F-Droid Archive",
       address = "https://f-droid.org/archive",
       description =
@@ -45,7 +55,7 @@ internal class MultiRepoMigrationTest {
       weight = 0, // gets set later
     )
   private val fdroidRepo =
-    _root_ide_package_.org.fdroid.database.InitialRepository(
+    InitialRepository(
       name = "F-Droid",
       address = "https://f-droid.org/repo",
       description =
@@ -57,7 +67,7 @@ internal class MultiRepoMigrationTest {
       weight = 0, // gets set later
     )
   private val guardianArchiveRepo =
-    _root_ide_package_.org.fdroid.database.InitialRepository(
+    InitialRepository(
       name = "Guardian Project Archive",
       address = "https://guardianproject.info/fdroid/archive",
       description =
@@ -70,7 +80,7 @@ internal class MultiRepoMigrationTest {
       weight = 0, // gets set later
     )
   private val guardianRepo =
-    _root_ide_package_.org.fdroid.database.InitialRepository(
+    InitialRepository(
       name = "Guardian Project",
       address = "https://guardianproject.info/fdroid/repo",
       description =
@@ -141,7 +151,7 @@ internal class MultiRepoMigrationTest {
         fdroidRepo.copy(weight = 2),
         guardianArchiveRepo.copy(weight = 3),
         guardianRepo.copy(weight = 4),
-        _root_ide_package_.org.fdroid.database.InitialRepository(
+        InitialRepository(
           name = "Foo bar",
           address = "https://example.org/fdroid/repo",
           description = "foo bar repo",
@@ -150,7 +160,7 @@ internal class MultiRepoMigrationTest {
           enabled = true,
           weight = 5,
         ),
-        _root_ide_package_.org.fdroid.database.InitialRepository(
+        InitialRepository(
           name = "Bla Blub",
           address = "https://example.com/fdroid/repo",
           description = "bla blub repo",
@@ -188,7 +198,7 @@ internal class MultiRepoMigrationTest {
   fun migrateArchiveWithoutMainRepo() {
     val reposToMigrate =
       listOf(
-        _root_ide_package_.org.fdroid.database.InitialRepository(
+        InitialRepository(
           name = "Foo bar",
           address = "https://example.org/fdroid/repo",
           description = "foo bar repo",
@@ -222,13 +232,13 @@ internal class MultiRepoMigrationTest {
   fun testPreferredRepoChanges() {
     var repoId: Long
     val packageName = "org.example"
-    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 1).use { db ->
+    helper.createDatabase(TEST_DB, 1).use { db ->
       // Database has schema version 1. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       val repo = fdroidRepo
       repoId =
         db.insert(
-          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+          CoreRepository.TABLE,
           CONFLICT_FAIL,
           ContentValues().apply {
             put("name", localizedTextV2toString(mapOf("en-US" to repo.name)))
@@ -239,7 +249,7 @@ internal class MultiRepoMigrationTest {
           },
         )
       db.insert(
-        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+        RepositoryPreferences.TABLE,
         CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -249,7 +259,7 @@ internal class MultiRepoMigrationTest {
       )
       // insert an app with empty app prefs
       db.insert(
-        _root_ide_package_.org.fdroid.database.AppMetadata.Companion.TABLE,
+        AppMetadata.TABLE,
         CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -260,7 +270,7 @@ internal class MultiRepoMigrationTest {
         },
       )
       db.insert(
-        _root_ide_package_.org.fdroid.database.AppPrefs.Companion.TABLE,
+        AppPrefs.TABLE,
         CONFLICT_FAIL,
         ContentValues().apply {
           put("packageName", packageName)
@@ -270,11 +280,11 @@ internal class MultiRepoMigrationTest {
     }
 
     // Re-open the database with version 2, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 2, true).close()
+    helper.runMigrationsAndValidate(TEST_DB, 2, true).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
-    databaseBuilder(getApplicationContext(), _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java, _root_ide_package_.org.fdroid.database.migrations.TEST_DB)
-      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
+    databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db ->
@@ -293,12 +303,12 @@ internal class MultiRepoMigrationTest {
 
   @Test
   fun repoWithoutCertificate() {
-    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 1).use { db ->
+    helper.createDatabase(TEST_DB, 1).use { db ->
       // Database has schema version 1. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       val repoId =
         db.insert(
-          _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+          CoreRepository.TABLE,
           CONFLICT_FAIL,
           ContentValues().apply {
             put("name", localizedTextV2toString(mapOf("en-US" to fdroidRepo.name)))
@@ -308,7 +318,7 @@ internal class MultiRepoMigrationTest {
           },
         )
       db.insert(
-        _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+        RepositoryPreferences.TABLE,
         CONFLICT_FAIL,
         ContentValues().apply {
           put("repoId", repoId)
@@ -319,11 +329,11 @@ internal class MultiRepoMigrationTest {
     }
 
     // Re-open the database with version 2, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 2, true).close()
+    helper.runMigrationsAndValidate(TEST_DB, 2, true).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
-    databaseBuilder(getApplicationContext(), _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java, _root_ide_package_.org.fdroid.database.migrations.TEST_DB)
-      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
+    databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db ->
@@ -332,14 +342,17 @@ internal class MultiRepoMigrationTest {
       }
   }
 
-  private fun runRepoMigration(repos: List<org.fdroid.database.InitialRepository>, check: (org.fdroid.database.FDroidDatabaseInt) -> Unit) {
-    helper.createDatabase(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 1).use { db ->
+  private fun runRepoMigration(
+    repos: List<org.fdroid.database.InitialRepository>,
+    check: (org.fdroid.database.FDroidDatabaseInt) -> Unit,
+  ) {
+    helper.createDatabase(TEST_DB, 1).use { db ->
       // Database has schema version 1. Insert some data using SQL queries.
       // We can't use DAO classes because they expect the latest schema.
       repos.forEach { repo ->
         val repoId =
           db.insert(
-            _root_ide_package_.org.fdroid.database.CoreRepository.Companion.TABLE,
+            CoreRepository.TABLE,
             CONFLICT_FAIL,
             ContentValues().apply {
               put("name", localizedTextV2toString(mapOf("en-US" to repo.name)))
@@ -350,7 +363,7 @@ internal class MultiRepoMigrationTest {
             },
           )
         db.insert(
-          _root_ide_package_.org.fdroid.database.RepositoryPreferences.Companion.TABLE,
+          RepositoryPreferences.TABLE,
           CONFLICT_FAIL,
           ContentValues().apply {
             put("repoId", repoId)
@@ -362,11 +375,11 @@ internal class MultiRepoMigrationTest {
     }
 
     // Re-open the database with version 2, auto-migrations are applied automatically
-    helper.runMigrationsAndValidate(_root_ide_package_.org.fdroid.database.migrations.TEST_DB, 2, true).close()
+    helper.runMigrationsAndValidate(TEST_DB, 2, true).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
-    databaseBuilder(getApplicationContext(), _root_ide_package_.org.fdroid.database.FDroidDatabaseInt::class.java, _root_ide_package_.org.fdroid.database.migrations.TEST_DB)
-      .addMigrations(_root_ide_package_.org.fdroid.database.MIGRATION_2_3, _root_ide_package_.org.fdroid.database.MIGRATION_5_6, _root_ide_package_.org.fdroid.database.MIGRATION_8_9)
+    databaseBuilder(getApplicationContext(), FDroidDatabaseInt::class.java, TEST_DB)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
       .allowMainThreadQueries()
       .build()
       .use { db -> check(db) }

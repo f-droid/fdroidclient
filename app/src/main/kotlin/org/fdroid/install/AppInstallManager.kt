@@ -454,7 +454,14 @@ constructor(
   fun cancel(packageName: String) {
     val job = jobs[packageName]
     log.debug { "Canceling job for $packageName $job" }
-    job?.cancel()
+    if (job != null) {
+      job.cancel()
+    } else if (apps.value[packageName] is InstallState.Waiting) {
+      // No job was created for Waiting state (it's a deferred install placeholder).
+      // Clear it directly so the app doesn't get stuck and AppInstallService can stop.
+      log.info { "Clearing Waiting state for $packageName" }
+      updateAppState(packageName, InstallState.UserAborted)
+    }
   }
 
   /**
