@@ -1,3 +1,126 @@
+### 2.0-alpha10 (2026-06-04)
+
+* show notification when the app updated itself
+* visual changes to app details
+* handle apps not found in app details
+* fix mirrors not being used when there was no mirror in your country
+* add a button to clear all installing apps, if they are not progressing anymore
+* rename "Installing" apps in "Recently installed"
+* close keyboard on global search action
+* don't crash when server returns error codes when adding repo
+* detect when apps get archived, so they can be listed as uninstalled
+* use separate TV banners for full and basic
+* target SDK 37
+* stabilize apps sort order in MyApps
+* fix edge case with suggested and installable versions in app details
+
+### 2.0-alpha9 (2026-04-30)
+
+* show a card when there are no updates (can be hidden)
+* also search in category descriptions
+* show onboarding for anti-features in app details
+* prevent accidental onboarding dismissal
+* enable auto-compression for downloads
+* allow user to never show metered network warning dialog
+* improve discover screen and use new category presentation
+* improve version display in app details
+* use a different text color for app details progress text
+* improve repo disable warning dialog
+* show all categories in empty state of search screen
+* show keyboard when tapping search in bottom nav a second time
+* add setting to auto-show search keyboard
+* use different search icon for list word filter in app lists
+* update categories in discover screen when locales change
+* add Remote Access category
+* fix reacting to intents after app got killed (e.g. open an app page directly)
+* fix issues related to blank searches
+* don't show no-updates card when filtering my apps
+* don't crash when system sends us duplicate installation broadcasts
+* use UID for logcat if available to get logs from previous processes
+* allow a privileged system app (e.g. SetupWizard) to tell us to update all repos
+* disable proguard optimization (slightly bigger app, but readable stack traces)
+* fix button display in app info after updating all apps
+
+### 2.0-alpha8 (2026-04-16)
+
+* move search into bottom navigation bar
+* remember recent searches
+* add localized screenshots for Basic 2.0
+* make adding a repo more robust
+* add more info to crash reports
+* fix nearby swap error (full only)
+* fix discover icon loading for non-HTTP repos
+* fix crash in panic settings (full only)
+* fix crash when user disabled important system apps
+* CI improvements for screenshot report and KVM jobs
+
+### 2.0-alpha7 (2026-04-07)
+
+* port old nearby feature to new codebase
+* speed up initial load of discover screen
+* show download speed in app details
+* allow text selection of mirrors
+* export debug log now looks like a preference
+* support for app archiving
+* support single OS location for pre-loaded repos
+* support for IP addresses in index (Thanks Matthew!)
+* added new mirrors
+* more translations
+* fix minor bug with image loading in app details
+* screenshot tests for most the UI states
+
+### 2.0-alpha6 (2026-03-30)
+
+* faster DB queries (thanks Peter!)
+* support for new categories
+* auto repair corrupted search index
+* make app installs more robust
+* improve Chinese search queries
+* Fix name and summary localization in app details
+* Fix CJK language search in app lists and my apps
+* Fix RTL presentation of updates
+* Fix crash when removing screenshots from disk cache
+* Fix crash when deleting repos
+* Fix overlay issues in landscape mode on small screens
+* Fix themed app icon
+* Don't scroll to top when rotating screen in my apps (with updates)
+* many unit tests
+
+### 2.0-alpha5 (2026-03-12)
+
+* Fix app details updating after uninstalling app
+* Reload app list when installed apps change
+* Reload discover screen when installed apps change
+* Fix detection of new apps (TorVPN wasn't detected)
+* Improve loading of app details
+* Don't jump app details when feature graphic has loaded
+* Don't close screenshot when rotating phone
+* Fix long tap description of update repo button
+* Make repo fingerprint selectable
+* Fix RTL language presentation of updates
+
+### 2.0-alpha4 (2026-02-26)
+
+* allow filtering by anti-features
+* port DNS cache feature (Thanks Matthew!)
+* show app in TV launchers
+* show initial screen faster
+* re-load updates after adding a repository
+* tweak design of category chips (Thanks Peter!)
+* update default material colors (Thanks proletarius!)
+* update most downloaded apps list
+* ensure taps on notifications bring you to right place
+* trim 'whats new' before displaying it
+* ensure overflow menus are properly anchored
+* show 'whats new' even if install version is no longer in repo
+* keep filter icon visible when searching in app lists
+* fix bugs in keyboard navigation
+* fix rare crash when leaving app details
+
+### 1.23.2 (2026-02-18)
+
+* Show banner for https://keepandroidopen.org
+
 ### 1.23.1 (2025-07-11)
 
 * Disable edge-to-edge for Android 10 and below since it caused issues there
