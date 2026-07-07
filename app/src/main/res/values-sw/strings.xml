@@ -284,4 +284,5 @@
     <string name="show_repository_qr">Onyesha msimbo wa QR wa repository</string>
     <string name="repo_basic_auth_title">Uthibitishaji wa msingi</string>
     <string name="expand">Panua</string>
+    <string name="first_start_intro">Kuanza, sasisha maghala ya api</string>
 </resources>

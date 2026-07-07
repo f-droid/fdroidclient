@@ -1,10 +1,19 @@
 * Boutons et mises à jour d'état plus fiables
-* Révision des paramètres/nouveaux contrôles d'utilisation des données
-* Arrière-plan conscient de la batterie sur Android 5.0+
-* Partager l'élément de menu pour les dépôts
-* Désactiver les rapports d'erreur dans les paramètres
-* Installer la visionneuse historique quand journalisation est activée
-* Anti-fonctionnalités cliquable
-* Android 4.0 minimum
-* Améliorations pour les versions perso de F-Droid
-* Envoie de version de débogage + UUID en expert
+
+* Refonte des paramètres, avec notamment de nouveaux contrôles de consommation de données
+
+* Fonctionnement en arrière-plan optimisé pour économiser la batterie sous Android 5.0 et versions ultérieures
+
+* Élément de menu « Partager » pour les dépôts
+
+* Désactivation des rapports de plantage dans les paramètres
+
+* Affichage de l'historique des installations lorsque la journalisation est activée
+
+* Liste des « anti-fonctionnalités » cliquable, ajout de « NoSourceSince »
+
+* Android 4.0 est désormais la version minimale prise en charge 
+
+* Améliorations considérables pour les versions F-Droid personnalisées en marque blanche
+
+* Paramètre avancé permettant d'envoyer la version de débogage + l'UUID lors du téléchargement

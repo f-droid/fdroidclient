@@ -454,9 +454,10 @@
     <string name="category_group_games">Giochi</string>
     <string name="category_group_summary_games">Giochi da tavolo, di carte e da festa</string>
     <string name="pref_auto_updates_only_only_when_open_app">Solo quando si apre l\'app</string>
-    <string name="notification_channel_self_update_title">Autoaggiornamento</string>
+    <string name="notification_channel_self_update_title">Aggiornamento automatico</string>
     <string name="notification_channel_self_update_description">Informa quando l\'applicazione si è aggiornata ed è stata chiusa, in modo da poterla lanciare di nuovo facilmente</string>
     <string name="notification_self_update_title">%s è stata aggiornata. Tocca per aprirla</string>
     <string name="my_apps_header_recently_installed_apps">Recentemente installate</string>
     <string name="clear_all">Rimuovi tutto</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Controlla gli aggiornamento solo quando l\'app è aperta • Le app diventeranno obsolete</string>
 </resources>

@@ -367,12 +367,12 @@
     <string name="onboarding_app_list_filter_title">Filtar</string>
     <string name="onboarding_app_list_filter_message">Koristite filtre kako biste prikazali samo aplikacije iz određenih kategorija ili repozitorija. Možete također promijeniti redoslijed sortiranja.</string>
     <string name="got_it">Razumijem</string>
-    <string name="clear">Očisti</string>
+    <string name="clear">Izbriši</string>
     <string name="hide">Sakrij</string>
     <string name="category_group_summary_productivity">Kalendari, zadaci, satovi i bilješke</string>
     <string name="category_group_summary_tools">Navigacija, vrijeme, kalkulatori i konvertori</string>
     <string name="category_group_summary_wallets">Financije, novac i upravitelji lozinki</string>
-    <string name="category_group_summary_media">Glazba, podcasti, igre i čitači e-knjiga</string>
+    <string name="category_group_summary_media">Glazba, podcasti i čitači e-knjiga</string>
     <string name="category_group_summary_communication">E-pošta, poruke i društvene mreže</string>
     <string name="category_group_summary_device">Početni ekran, tipkovnice, sigurnost i teme</string>
     <string name="category_group_summary_network">Preglednici, VPN-ovi, proksiji i vatrozid</string>
@@ -446,4 +446,13 @@
     <string name="install_history_switch">Koristi povijest instalacija</string>
     <string name="install_history_empty_state">Ovaj popis je još uvijek prazan\n\nKada instalirate, aktualizirate ili deinstalirate aplikacije, ovdje će se pojaviti zapis</string>
     <string name="install_history_disabled_state">Povijest instalacija je onemogućena\n\nInstalacije, aktualiziranja i deinstalacije neće biti zabilježene</string>
+    <string name="my_apps_header_recently_installed_apps">Nedavno instalirane</string>
+    <string name="clear_all">Izbriši sve</string>
+    <string name="category_group_games">Igre</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Samo prilikom otvaranja aplikacije</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Traži nove verzije samo prilikom otvaranja • Aplikacije će zastarjeti</string>
+    <string name="notification_channel_self_update_description">Obavještava kad se aplikacija aktualizirala i zatvorila, tako da se može lako ponovo pokrenuti</string>
+    <string name="notification_self_update_title">Aplikacija „%s” je aktualizirana. Dodirni za otvaranje</string>
+    <string name="category_group_summary_games">Društvene i kartaške igre</string>
+    <string name="notification_channel_self_update_title">Samostalno aktualiziranje</string>
 </resources>

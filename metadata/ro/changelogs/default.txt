@@ -1,0 +1,8 @@
+* interfață rescrisă de la zero în Kotlin Compose
+* căutare îmbunătățită, de asemenea în descrieri și traduceri
+* mai ușor de descoperit noi aplicații, listare cele mai descărcate
+* aprobare de instalare înainte de descărcare
+* mai multe actualizări / descărcări în același timp
+* notificarea problemelor cu aplicațiile (de exemplu, cheia de semnare a semnării s-a schimbat)
+* temă de culoare Material You opțională
+* filtrarea îmbunătățită a listelor

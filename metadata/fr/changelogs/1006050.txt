@@ -1,7 +1,13 @@
-* Le dernier onglet met désormais en évidence les traduction/description/capture d'écran
-* Téléchargement automatique depuis les miroirs, pour accélérer les téléchargements/charge de f-droid.org
-* Désactiver les miroirs à l'aide de nouveaux commutateurs dans RepoDetails #1696
-* Mise en cache des téléchargements plus efficace #1708
-* Correction des installations inconnues #1702
-* Correction des icônes manquantes
-* Amélioration des traductions de l'onglet Mises à jour par rapport aux préférences
+* L'onglet « Dernières mises à jour » met désormais en avant les applications proposant des descriptions, des traductions et des captures d'écran
+
+* Téléchargement automatique depuis des miroirs, afin d'accélérer les téléchargements et de réduire la charge sur f-droid.org
+
+* Désactivation des miroirs à l'aide de nouveaux commutateurs dans RepoDetails (#1696)
+
+* Mise en cache des téléchargements plus efficace (par dépôt ; sur différents serveurs web #1708)
+
+* Correction des installations nécessitant l’activation des « Sources inconnues » avec l’extension privilégiée (#1702)
+
+* Correction de l’absence d’icônes pour les utilisateurs ne disposant pas de Wi-Fi (#1592)
+
+* Amélioration des traductions dans l’onglet « Mises à jour » par rapport aux préférences

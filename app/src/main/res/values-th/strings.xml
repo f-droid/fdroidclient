@@ -234,4 +234,27 @@
     <string name="app_list_author">แอพพลิเคชั่นโดย %s</string>
     <string name="app_list_new">แอพพลิเคชั่นใหม่</string>
     <string name="crash_dialog_title_old">F-Droid เกิดข้อผิดพลาด</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly พื้นฐาน</string>
+    <string name="menu_discover">สำรวจ</string>
+    <string name="first_start_offline">คุณออฟไลน์อยู่ เชื่อมต่อกับอินเทอร์เน็ตเพื่อเริ่มต้น</string>
+    <string name="my_apps_header_recently_installed_apps">ติดตั้งล่าสุด</string>
+    <string name="my_apps_header_apps_with_issue">แอปพลิเคชันที่มีปัญหา</string>
+    <string name="my_apps_ignore_dialog_title">ซ่อนปัญหา</string>
+    <string name="my_apps_ignore_dialog_button">ซ่อน</string>
+    <string name="search_history">การค้นหาล่าสุด</string>
+    <string name="sort_by_name">เรียงตามชื่อ</string>
+    <string name="clear">ล้าง</string>
+    <string name="clear_all">ล้างทั้งหมด</string>
+    <string name="hide">ซ่อน</string>
+    <string name="category_group_tools">เครื่องมือ</string>
+    <string name="category_group_media">ความบันเทิง &amp; สื่อ</string>
+    <string name="category_group_communication">การสื่อสาร</string>
+    <string name="category_group_device">อุปกรณ์</string>
+    <string name="category_group_games">เกม</string>
+    <string name="category_group_network">เครือข่าย</string>
+    <string name="category_group_storage">ไฟล์ &amp; ที่จัดเก็บ</string>
+    <string name="category_group_interests">ความสนใจ</string>
+    <string name="category_group_misc">อื่น ๆ</string>
+    <string name="donate_title">บริจาค</string>
 </resources>

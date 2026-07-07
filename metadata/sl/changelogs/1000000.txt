@@ -1,0 +1,7 @@
+* Podpora za namestitev datotek medijev, OTA, ZIP itd.
+
+* Popolna podpora za APK-datoteke, podpisane z več podpisnimi ključi
+
+* Nov prevod v tibetanski jezik
+
+* Odstranitev povezanih aplikacij in kategorij po izklopu repozitorija

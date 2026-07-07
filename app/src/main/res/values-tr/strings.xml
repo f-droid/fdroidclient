@@ -41,7 +41,7 @@
     <string name="repo_confirm_delete_body">Bir depoyu silmek, oradaki uygulamaların artık kullanılamayacağı anlamına gelir.
 \n
 \nNot: Önceden yüklenen tüm uygulamalar aygıtınızda kalacaktır.</string>
-    <string name="not_on_same_wifi">Cihazınız, az önce eklediğiniz Yerel Depo ile aynı Wi-Fi ağına bağlı değil! Bu ağa bağlanmayı deneyin: %s</string>
+    <string name="not_on_same_wifi">Cihazın, az önce eklediğin Yerel Depo (Local Repo) ile aynı Wi-Fi ağında değil! Şu ağa katılmayı dene: %s</string>
     <string name="swap_join_same_wifi">Arkadaşınızla aynı kablosuz ağa katılın</string>
     <string name="swap">Uygulama takası</string>
     <string name="swap_no_wifi_network">Henüz ağ yok</string>
@@ -268,7 +268,7 @@
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Temel</string>
     <string name="first_start_loading">Uygulama depoları getiriliyor…</string>
-    <string name="my_apps_empty">Burada yalnızca %1$s depolarında bulunan uygulamalar gösterilir.</string>
+    <string name="my_apps_empty">Burada yalnızca %1$s\'nin depolarında bulunan uygulamalar gösterilmektedir</string>
     <string name="my_apps_header_apps_with_issue">Sorunlu uygulamalar</string>
     <string name="my_apps_ignore_dialog_title">Sorunu gizle</string>
     <string name="my_apps_ignore_dialog_text">\"%1$s\" uygulamasının bu sürümündeki problem yok sayılacak</string>
@@ -394,19 +394,19 @@
     <string name="notification_repo_update_default">%1$s bağlanılıyor…</string>
     <string name="notification_repo_update_downloading">%2$s dan %1$s indirildi</string>
     <plurals name="notification_repo_update_saving">
-        <item quantity="one">%2$s dan %1$d uygulama kaydedildi</item>
-        <item quantity="other">%2$s dan %1$d uygulama kaydedildi</item>
+        <item quantity="one">%1$d uygulaması %2$s\'den kaydedildi</item>
+        <item quantity="other">%1$d uygulamayı %2$s\'den kaydettim</item>
     </plurals>
     <plurals name="notification_installing_title">
-        <item quantity="one">%1$d uygulama indiriliyor…</item>
-        <item quantity="other">%1$d uygulama indiriliyor…</item>
+        <item quantity="one">%1$d uygulamasını yüklüyor…</item>
+        <item quantity="other">%1$d uygulamaları yükleniyor…</item>
     </plurals>
     <plurals name="notification_updating_title">
-        <item quantity="one">%1$d uygulama güncelleniyor…</item>
-        <item quantity="other">%1$d uygulama güncelleniyor…</item>
+        <item quantity="one">%1$d uygulamasını güncelliyor…</item>
+        <item quantity="other">%1$d uygulamaları güncelleniyor…</item>
     </plurals>
     <plurals name="notification_update_success_title">
-        <item quantity="one">%1$d uygulama güncellendi</item>
+        <item quantity="one">%1$d uygulaması güncellendi</item>
         <item quantity="other">%1$d uygulama güncellendi</item>
     </plurals>
     <string name="notification_installing_section_installing">İndiriliyor:</string>
@@ -428,7 +428,7 @@
     <string name="category_group_summary_productivity">Takvimler, görevler, saatler ve notlar</string>
     <string name="category_group_summary_tools">Navigasyon, hava durumu, hesap makineleri ve dönüştürücüler</string>
     <string name="category_group_summary_wallets">Finans, para ve geçiş yöneticileri</string>
-    <string name="category_group_summary_media">Müzik, podcast\'ler, oyunlar ve e-kitap okuyucular</string>
+    <string name="category_group_summary_media">Müzik, podcast\'ler &amp; e-kitap okuyucular</string>
     <string name="category_group_summary_communication">E-posta, mesajlaşma ve sosyal ağlar</string>
     <string name="category_group_summary_device">Başlatıcı, klavye, güvenlik ve tema</string>
     <string name="category_group_summary_network">Tarayıcı, VPN\'ler, proxy\'ler ve güvenlik duvarı</string>
@@ -444,4 +444,13 @@
     <string name="apps_updates_hint_title">Tebrikler 🥳</string>
     <string name="search_my_apps_hint">Yüklü uygulamaları arayın</string>
     <string name="apps_updates_hint_text">Tüm uygulamalarınız güncel</string>
+    <string name="clear_all">Hepsini sil</string>
+    <string name="my_apps_header_recently_installed_apps">Son zamanlarda yüklenenler</string>
+    <string name="category_group_games">Oyunlar</string>
+    <string name="category_group_summary_games">Kutu, kart &amp; parti oyunları</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Sadece uygulamayı açtığında</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Yalnızca açıldığında güncelleştirmeleri denetle • Uygulamalar güncelliğini yitirecektir</string>
+    <string name="notification_channel_self_update_title">Kendi kendine güncelleme</string>
+    <string name="notification_channel_self_update_description">Uygulama kendini güncelleyip kapandığında bildirir, böylece kolayca tekrardan açabilirsin</string>
+    <string name="notification_self_update_title">%s güncellendi. Açmak için dokunun</string>
 </resources>

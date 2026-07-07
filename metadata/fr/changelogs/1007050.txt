@@ -1,7 +1,7 @@
-* Refonte majeure de l'interface, pour préparer la réécriture des tripes
-* Afficher "annuler" après le retrait d'éléments de l'onglet Mises à jour (merci @Hocuri!)
-* Correction des problèmes d'affichage du "Dernier" dû à une mauvaise gestion des fuseaux horaires #1757
-* Ignorer les plantages sans importance dans les services d'arrière-plan
-* Réviser l'échange à proximité à l'aide de l'AP de l'appareil
-* Ajouter de nouvelles réponses de panique
-* Les lecteurs USB OTG peut être utilisé en dépôts
+* refonte majeure de l'interface utilisateur de Swap, en vue de la réécriture du cœur du système
+* affichage de l'option « Annuler » après avoir balayé des éléments de l'onglet « Mises à jour » (merci @Hocuri !)
+* Correction des problèmes d'affichage de la section « Dernières mises à jour » causés par une mauvaise gestion des fuseaux horaires #1757
+* Ignorer tous les plantages sans importance dans les services d'arrière-plan
+* Refonte de la fonctionnalité « Échange à proximité » utilisant le point d'accès (hotspot) de l'appareil
+* Ajout de nouvelles réponses en cas de panique : désinstallation de l'application et réinitialisation des dépôts aux valeurs par défaut
+* Les clés USB OTG peuvent désormais être utilisées comme dépôts et miroirs à proximité

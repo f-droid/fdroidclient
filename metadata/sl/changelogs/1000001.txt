@@ -1,0 +1,3 @@
+* Popravljena napaka pri odstranjevanju aplikacij iz repozitorijev (#568)
+
+* Precej hitrejše posodabljanje indeksov

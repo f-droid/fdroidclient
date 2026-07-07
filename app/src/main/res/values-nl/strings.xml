@@ -379,7 +379,7 @@
     <string name="category_group_summary_productivity">Kalenders, taken, klokken &amp; notities</string>
     <string name="category_group_summary_tools">Navigatie, weer, rekenmachines &amp; omrekenaars</string>
     <string name="category_group_summary_wallets">Financiën, geld &amp; pasbeheer</string>
-    <string name="category_group_summary_media">Muziek, podcasts, spellen &amp; e-book lezers</string>
+    <string name="category_group_summary_media">Muziek, podcasts, spellen &amp; e-readers</string>
     <string name="category_group_summary_communication">E-mail, berichten &amp; sociale netwerken</string>
     <string name="category_group_summary_device">Launchers, toetsenborden, beveiliging &amp; thema\'s</string>
     <string name="category_group_summary_network">Browsers, VPNs, proxies &amp; firewalls</string>
@@ -445,4 +445,13 @@
     <string name="install_history_disabled_state">Installatiegeschiedenis is uitgeschakeld\n\nInstallaties, updates en deïnstallaties zullen niet worden geregistreerd</string>
     <string name="install_history_delete_ally">Verwijder installatiegeschiedenis</string>
     <string name="install_history_delete_text">Verwijder de installatiegeschiedenis?</string>
+    <string name="my_apps_header_recently_installed_apps">Recent geïnstalleerd</string>
+    <string name="clear_all">Wis alle</string>
+    <string name="category_group_games">Spellen</string>
+    <string name="category_group_summary_games">Bord, kaart- &amp; feestspellen</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Alleen als de app wordt geopend</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Controleer alleen op updates als de app is geopend • Apps zullen verouderd raken</string>
+    <string name="notification_channel_self_update_title">Zelf-update</string>
+    <string name="notification_channel_self_update_description">Meldt als de app zichzelf heeft geüpdated en is afgesloten zodat u het eenvoudig opnieuw kan opstarten</string>
+    <string name="notification_self_update_title">%s is geüpdated. Tik om te openen</string>
 </resources>

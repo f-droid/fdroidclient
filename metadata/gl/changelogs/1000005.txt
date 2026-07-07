@@ -1,0 +1,3 @@
+* Arranxado un erro que evitaba que se visen as traducións no Android >= 7.0
+
+* Arranxado un erro na actualizacións da base de datos de 1.0-alpha3 → 1.0-alpha4 #1181

@@ -33,4 +33,7 @@
     <string name="crash_dialog_title">F-Droid çökdü</string>
     <string name="notification_title_single_update_available">Yeniləmə mövcuddur</string>
     <string name="notification_title_summary_install_error">Quraşdırılmadı</string>
+    <string name="app_name_basic">F-Droid Əsas</string>
+    <string name="app_name_full_nightly">Tətbiq adları üçün azaldılmış yerə uyğunlaşmaq üçün qısaldılmış nightly versiyalarının tətbiq adı</string>
+    <string name="app_name_basic_nightly">Tətbiq adları üçün azaldılmış yerə uyğunlaşmaq üçün qısaldılmış nightly versiyalarının tətbiq adı</string>
 </resources>

@@ -1,0 +1,3 @@
+* Gran mellora no desempeño da interface, especialmente co arquivo activado
+
+* Corrixido erros que trababan a app

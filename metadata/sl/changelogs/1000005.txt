@@ -1,0 +1,3 @@
+* Odpravljena je napaka, zaradi katere se prevodi niso prikazovali v sistemu Android 7.0 ali novejšem
+
+* Odpravljen je sesutje sistema ob nadgradnji baze podatkov iz različice 1.0-alpha3 na 1.0-alpha4 #1181

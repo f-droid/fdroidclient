@@ -1,0 +1,3 @@
+* Traducións actualizadas
+* Arranxados problemas #1678 no tamaño do botón
+* Fallas aleatorias de fondo interrompidas

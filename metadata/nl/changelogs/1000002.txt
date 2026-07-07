@@ -4,4 +4,4 @@
 
 * Ruim tijdelijke en in de cache opgeslagen bestanden goed op
 
-* Correcties in Donkeren modus
+* Correcties in Donkere modus

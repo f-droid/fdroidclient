@@ -1,11 +1,11 @@
-* Refonte majeur de l'interface d'échange, en préparation de la réécriture
+* Refonte majeure de l'interface utilisateur de swap, en vue d'une réécriture
 
-* Possibilité d'annuler la suppression par glissé d'items de l'onglet "Mises à jour" (merci @Hocuri!)
+* Affichage de « Annuler » après avoir balayé des éléments de l'onglet « Mises à jour » (merci @Hocuri !)
 
-* Correction de la gestion d'ETag lors de la connexion à des miroirs NGINX #1737
+* Correction de la gestion des ETag lors de la connexion aux miroirs NGINX #1737
 
-* Correction de problèmes d'affichages dans l'onglet "Nouveautés" à cause des fuseaux horaires #1757
+* Correction des problèmes d'affichage de la section « Dernières mises à jour » causés par une mauvaise gestion des fuseaux horaires #1757
 
-* Ignorer les crashs mineurs des services d'arrière plan
+* Ignorer tous les plantages sans importance dans les services d'arrière-plan
 
-* Ne pas utiliser l'Extension Privilégiée si désactivée dans les paramètres
+* Ne pas utiliser l'extension privilégiée si elle est désactivée dans les « Paramètres »

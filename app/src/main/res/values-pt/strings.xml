@@ -337,7 +337,7 @@
     <string name="category_group_summary_productivity">Calendários, tarefas, relógios &amp; anotações</string>
     <string name="category_group_summary_tools">Navegação, clima, calculadoras &amp; conversores</string>
     <string name="category_group_summary_wallets">Finanças, dinheiro e gestores de passes</string>
-    <string name="category_group_summary_media">Música, podcasts, jogos &amp; leitores de e-books</string>
+    <string name="category_group_summary_media">Música, podcasts &amp; leitores de e-books</string>
     <string name="category_group_summary_network">Navegadores, VPNs, proxies &amp; firewall</string>
     <string name="category_group_summary_storage">Ficheiros, galeria, sincronização com nuvem &amp; criptografia</string>
     <string name="category_group_summary_interests">Ciência, desporto, desenho &amp; receitas</string>
@@ -447,4 +447,13 @@
     <string name="pref_repo_updates_summary_only_wifi">Verificar se há atualizações de apps dos repositórios periodicamente apenas no Wi-Fi</string>
     <string name="signer_colon">Signatário: %1$s</string>
     <string name="app_details_anti_features_text">Algumas apps vêm com comportamentos que você não pediu — e talvez não quer. Coisas como anúncios, rastejamento ou dependência de serviços proprietários. Chamamo-las características indesejadas.\n\nApps em F-Droid são claramente rotulados quando contêm características indesejadas, para poder fazer uma escolha informada.</string>
+    <string name="my_apps_header_recently_installed_apps">Recentemente instalado</string>
+    <string name="clear_all">Limpar tudo</string>
+    <string name="category_group_games">Jogos</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Apenas ao abrir a app</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Verificar se há atualizações apenas ao abrir • As apps ficarão desatualizadas</string>
+    <string name="notification_channel_self_update_title">Autoatualização</string>
+    <string name="notification_channel_self_update_description">Notifica quando a app for atualizada e fechada, para que você possa abri-lo novamente com facilidade</string>
+    <string name="notification_self_update_title">%s foi atualizado. Toque para abrir</string>
+    <string name="category_group_summary_games">Jogos de tabuleiro, cartas e festas</string>
 </resources>

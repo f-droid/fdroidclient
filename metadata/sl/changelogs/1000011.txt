@@ -1,0 +1,21 @@
+F-Droid je dosegel različico 1.0!
+
+Številne pomembne soremembe:
+
+* Popolnoma prenovljen potek posodabljanja aplikacij
+
+* Popolnoma prevajljivi povzetki in opisi aplikacij
+
+* Rubrika »Novosti«, ki prikazuje spremembe v trenutni izdaji
+
+* Posnetki zaslona in grafični prikazi funkcij
+
+* Podpora za namestitev datotek medijev, OTA, ZIP itd.
+
+* Izboljšana zaščita pred sledenjem (HTTP ETag, TLS itd.)
+
+* Posodobitve v ozadju s Privileged Extension
+
+*Izpostavljene donacije
+
+*Hitrejše posodobitve indeksa

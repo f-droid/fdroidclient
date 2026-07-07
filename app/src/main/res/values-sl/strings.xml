@@ -321,7 +321,7 @@
     <string name="category_group_summary_productivity">Koledarji, opravila, ure in zapiski</string>
     <string name="category_group_summary_tools">Navigacija, vreme, kalkulatorji in pretvorniki</string>
     <string name="category_group_summary_wallets">Finance, denar in podajalci prijav</string>
-    <string name="category_group_summary_media">Glasba, podcasti, igre in bralniki e-knjig</string>
+    <string name="category_group_summary_media">Glasba, podkasti in bralniki e-knjig</string>
     <string name="category_group_summary_communication">E-pošta, sporočila in družbena omrežja</string>
     <string name="category_group_summary_device">Zaganjalnik, tipkovnica, varnost in teme</string>
     <string name="category_group_summary_network">Brskalnik, VPN-ji, posredniški strežniki in požarni zid</string>
@@ -448,4 +448,13 @@
     <string name="install_history_disabled_state">Zgodovina namestitev je onemogočena\n\nNamestitve, posodobitve in odstranitve se ne bodo beležile</string>
     <string name="install_history_delete_ally">Izbriši zgodovino namestitev</string>
     <string name="install_history_delete_text">Želite izbrisati zgodovino namestitev?</string>
+    <string name="my_apps_header_recently_installed_apps">Nedavno nameščeno</string>
+    <string name="clear_all">Počisti vse</string>
+    <string name="category_group_games">Igre</string>
+    <string name="category_group_summary_games">Namizne igre, igre s kartami in družabne igre</string>
+    <string name="pref_auto_updates_only_only_when_open_app">Samo ob zagonu aplikacije</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Preverjanje posodobitev samo, ko je aplikacija odprta • Aplikacije bodo postale zastarele</string>
+    <string name="notification_channel_self_update_title">Samodejna posodobitev</string>
+    <string name="notification_channel_self_update_description">Obvesti vas, ko se je aplikacija posodobila in se je zaprla, tako da jo lahko enostavno ponovno zaženete</string>
+    <string name="notification_self_update_title">Aplikacija %s je bila posodobljena. Tapnite, da odprete</string>
 </resources>

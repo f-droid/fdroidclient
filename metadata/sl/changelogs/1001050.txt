@@ -1,0 +1,7 @@
+* Podpora uradnih ogledal za kateri koli repozitorij, z avtomatskim izborom glede na razpoložljivost
+
+* Številne izboljšave uporabniškega vmesnika ter izboljšave stabilnosti in popravki napak
+
+* Nove nastavitve zasebnosti: preprečevanje posnetkov zaslona; zaprtje programa v primeru napake
+
+* Novi jeziki: korejščina (ko) in vietnamščina (vi)

@@ -1,13 +1,21 @@
 v1.3.1
-* Révision de proximité/Swap
-* Prise en charge de TLSv1.3, lorsque pris en charge
+* Refonte majeure de l'infrastructure centrale des fonctionnalités « À proximité » et « Échange »
+
+* Prise en charge de TLSv1.3, lorsque l'appareil le permet
 
 v1.3
 * Boutons et mises à jour d'état plus fiables
-* Révision des paramètres/nouveaux contrôles d'utilisation des données
-* Arrière-plan conscient de la batterie sur Android 5.0+
-* Partager l'élément de menu pour les dépôts
-* Désactiver les rapports d'erreur dans les paramètres
-* Installer la visionneuse d'historique quand la journalisation est activée
-* Anti-fonctionnalités cliquable
-* Android 4.0 minimum
+
+* Refonte des paramètres, avec notamment de nouveaux contrôles de consommation de données
+
+* Fonctionnement en arrière-plan optimisé pour économiser la batterie sous Android 5.0 et versions ultérieures
+
+* Élément de menu « Partager » pour les dépôts
+
+* Possibilité de désactiver les rapports de plantage dans les paramètres
+
+* Affichage de l'historique des installations lorsque la journalisation est activée
+
+* Liste des « anti-fonctionnalités » cliquable, ajout de « NoSourceSince »
+
+* Android 4.0 est désormais la version minimale prise en charge
