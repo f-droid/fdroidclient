@@ -17,6 +17,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.LightingColorFilter;
+import android.net.InetAddresses;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -45,6 +46,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
@@ -83,6 +85,7 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -483,20 +486,26 @@ public class SwapWorkflowActivity extends AppCompatActivity {
         confirmSwapConfig = repoConfig;
     }
 
-    private static boolean isSwapUrl(Uri uri) {
-        return isSwapUrl(uri.getHost(), uri.getPort());
+    static boolean isSwapUrl(Uri uri) {
+        // check for null argument to prevent unexpected null pointer exceptions
+        return uri != null && isSwapUrl(uri.getHost(), uri.getPort());
     }
 
-    private static boolean isSwapUrl(String host, int port) {
+    @VisibleForTesting
+    static boolean isSwapUrl(String host, int port) {
         Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Checking swap URL %s:%d", host, port));
         if (port < 1024) {
             // only root can use < 1024, so this can't be a swap repo
             Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because the port is out of range ( < 1024)", host, port));
             return false;
         }
+        // verify that host is a numeric ip address to prevent a possible dns loookup
+        if (!isNumericAddress(host)) {
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it does not use a numeric ip address", host, port));
+            return false;
+        }
         try {
-            InetAddress hostIp = InetAddress.getByName(host);
-            if (hostIp instanceof Inet4Address && FDroidApp.subnetInfo != null) {
+            if (isIpv4(host) && FDroidApp.subnetInfo != null) {
                 if (FDroidApp.subnetInfo.isInRange(host)) {
                     Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is on the subnet (ipv4)", host, port));
                     return true;
@@ -504,7 +513,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                     Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it is not on the subnet (ipv4)", host, port));
                     return false;
                 }
-            } else if (hostIp instanceof Inet6Address && FDroidApp.subnet6Info != null) {
+            } else if (isIpv6(host) && FDroidApp.subnet6Info != null) {
                 if (FDroidApp.subnet6Info.isInRange(host)) {
                     Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is on the subnet (ipv6)", host, port));
                     return true;
@@ -517,14 +526,73 @@ public class SwapWorkflowActivity extends AppCompatActivity {
                 Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it was in an unexpected format", host, port));
                 return false;
             }
-        } catch (UnknownHostException e) {
-            // if the host can't be parsed, it isn't a valid ip address
-            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d is invalid because it could not be parsed", host, port));
-            return false;
         } catch (NullPointerException e) {
             // FDroidApp.subnetInfo/subnet6Info may not have been setup
             Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d could not be validated because the subnet info was null", host, port));
             return false;
+        } catch (IllegalArgumentException e) {
+            // in testing, isNumericAddress may return true for non-numeric adresses and
+            // subnetInfo/subnet6Info.isInRange fails to parse it and throws an exception
+            Utils.debugLog(TAG, String.format(Locale.ENGLISH, "Swap URL %s:%d could not be validated because it could not be parsed", host, port));
+            return false;
+        }
+    }
+
+    @VisibleForTesting
+    private static boolean isNumericAddress(String host) {
+        if (host == null) {
+            return false;
+        }
+        // use new isNumericAddress method if possible, otherwise attempt to use regex
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return InetAddresses.isNumericAddress(host);
+        } else {
+            // regex found online, verified with unit testing
+            String ipv4String = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+            String ipv6String = "^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,7}:$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}$|" +
+                    "^[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}$|" +
+                    "^:(?::[0-9a-fA-F]{1,4}){1,7}$|" +
+                    "^::$|" +
+                    "^(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])\\.){3}(?:25[0-5]|(?:2[0-4]|1?[0-9])?[0-9])$";
+            Pattern ipv4Pattern = Pattern.compile(ipv4String);
+            Pattern ipv6Pattern = Pattern.compile(ipv6String);
+            return ipv4Pattern.matcher(host).matches() || ipv6Pattern.matcher(host).matches();
+        }
+    }
+
+    private static boolean isIpv4(String host) {
+        // use new parseNumericAddress method if possible, otherwise attempt to check for format
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            try {
+                InetAddress i = InetAddresses.parseNumericAddress(host);
+                return (i instanceof Inet4Address);
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+        } else {
+            // no IPv4 literal should contain ":"
+            return !host.contains(":");
+        }
+    }
+
+    private static boolean isIpv6(String host) {
+        // use new parseNumericAddress method if possible, otherwise attempt to check for format
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            try {
+                InetAddress i = InetAddresses.parseNumericAddress(host);
+                return (i instanceof Inet6Address);
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+        } else {
+            // every IPv6 literal should contain ":"
+            return host.contains(":");
         }
     }
 
