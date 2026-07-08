@@ -544,7 +544,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
             return false;
         }
         // use new isNumericAddress method if possible, otherwise attempt to use regex
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= 29) {
             return InetAddresses.isNumericAddress(host);
         } else {
             // regex found online, verified with unit testing
@@ -568,7 +568,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private static boolean isIpv4(String host) {
         // use new parseNumericAddress method if possible, otherwise attempt to check for format
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= 29) {
             try {
                 InetAddress i = InetAddresses.parseNumericAddress(host);
                 return (i instanceof Inet4Address);
@@ -583,7 +583,7 @@ public class SwapWorkflowActivity extends AppCompatActivity {
 
     private static boolean isIpv6(String host) {
         // use new parseNumericAddress method if possible, otherwise attempt to check for format
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= 29) {
             try {
                 InetAddress i = InetAddresses.parseNumericAddress(host);
                 return (i instanceof Inet6Address);

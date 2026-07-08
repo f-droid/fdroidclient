@@ -73,21 +73,21 @@ public class SwapWorkflowActivityTest {
     // ------------------------------------------------------------------
 
     @Test
-    @Config(sdk = Build.VERSION_CODES.R)
+    @Config(sdk = 30)
     public void testValidSwapUrlModern() {
         assertTrue(SwapWorkflowActivity.isSwapUrl("192.168.0.50", 8888));
         assertTrue(SwapWorkflowActivity.isSwapUrl("2001:db8:abcd::1234", 8888));
     }
 
     @Test
-    @Config(sdk = Build.VERSION_CODES.R)
+    @Config(sdk = 30)
     public void testOutOfSubnetModern() {
         assertFalse(SwapWorkflowActivity.isSwapUrl("10.0.0.50", 8888));
         assertFalse(SwapWorkflowActivity.isSwapUrl("2010:db8:abcd::1234", 8888));
     }
 
     @Test
-    @Config(sdk = Build.VERSION_CODES.R)
+    @Config(sdk = 30)
     public void testHostnameIsNeverResolvedModern() {
         // a hostname must be rejected outright, never resolved via DNS
         // several of these are considered numeric due to a Robolectric issue, but fail
