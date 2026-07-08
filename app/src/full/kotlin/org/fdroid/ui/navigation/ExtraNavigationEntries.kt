@@ -1,15 +1,17 @@
 package org.fdroid.ui.navigation
 
 import android.content.Context
+import android.os.Build.VERSION.SDK_INT
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
 import org.fdroid.ui.nearby.NearbyStart
 
 fun getMoreMenuItems(context: Context): List<NavDestinations> =
-  listOf(
+  // enabling Nearby would require fixing org.apache.commons.io.FileUtils.copyFile
+  listOfNotNull(
     NavDestinations.AllApps(context.getString(R.string.app_list_all)),
-    NavDestinations.Nearby,
+    if (SDK_INT >= 26) NavDestinations.Nearby else null,
     NavDestinations.About,
   )
 
