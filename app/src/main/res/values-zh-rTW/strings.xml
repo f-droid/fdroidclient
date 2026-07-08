@@ -417,7 +417,7 @@
     <string name="category_group_summary_productivity">日曆、任務、時鐘和筆記</string>
     <string name="category_group_summary_tools">導航、天氣、計算器和轉換器</string>
     <string name="category_group_summary_wallets">財務、資金和密碼管理器</string>
-    <string name="category_group_summary_media">音樂、播客、遊戲和電子書閱讀器</string>
+    <string name="category_group_summary_media">音樂、podcast 與電子書閱讀器</string>
     <string name="category_group_summary_communication">電子郵件、即時通訊和社交網絡</string>
     <string name="category_group_summary_device">啟動器、鍵盤、安全和主題</string>
     <string name="category_group_summary_network">瀏覽器、VPN、代理和防火牆</string>
@@ -433,4 +433,13 @@
     <string name="repo_disable_dialog_title">停用儲存庫</string>
     <string name="repo_disable_dialog_warning">如果曾將該儲存庫設為任何應用程式的首選儲存庫，那麼這樣的設定將失效</string>
     <string name="repo_disable_dialog_text">所有來自該儲存庫的應用程式將消失。已安裝的應用程式不受影響。</string>
+    <string name="my_apps_header_recently_installed_apps">近期安裝</string>
+    <string name="clear_all">清除全部</string>
+    <string name="category_group_games">遊戲</string>
+    <string name="category_group_summary_games">棋盤遊戲、卡牌遊戲與派對遊戲</string>
+    <string name="pref_auto_updates_only_only_when_open_app">僅在開啟應用程式時</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">僅在開啟時檢查更新 • 應用程式將會過時</string>
+    <string name="notification_channel_self_update_title">自動更新</string>
+    <string name="notification_channel_self_update_description">當應用程式自動更新並關閉時會發出通知，讓您能輕鬆重新啟動它</string>
+    <string name="notification_self_update_title">%s 已更新。點擊以開啟</string>
 </resources>

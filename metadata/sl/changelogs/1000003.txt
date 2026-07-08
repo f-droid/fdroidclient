@@ -1,0 +1,3 @@
+* Znatno izboljšana zmogljivost uporabniškega vmesnika, zlasti ob vklopljeni arhivaciji
+
+* Odpravljene napake, ki so povzročale sesutje programa

@@ -1,8 +1,8 @@
-support expérimental pour le désarchivage des applications sur Android 15
-ajout automatique des applications nouvellement installées à l'écran d'accueil pour la plupart des lanceurs (Merci Dhina !)
-actions séparées pour le partage de lien et le partage de fichier dans les détails de l'application
-affichage d'un toast lorsque l'APK a plus de permissions que prévu
-nettoyage plus fréquent des caches internes pour libérer de l'espace (Merci DerGenaue !)
-réorganisation des badges de donation pour correspondre au site web (Merci Leo !)
-ajout d'un bouton dans les paramètres pour préférer les miroirs étrangers
-nombreuses petites corrections de bugs
+* prise en charge expérimentale de la désarchivage des applications sous Android 15
+* ajout automatique des applications nouvellement installées à l'écran d'accueil pour la plupart des lanceurs (Merci Dhina !)
+* séparation des actions « Partager le lien » et « Partager le fichier » dans les détails de l'application
+* affichage d'une notification lorsque l'APK dispose de plus d'autorisations que prévu
+* nettoyage plus fréquent des caches internes pour libérer de l'espace (Merci DerGenaue !)
+* Réorganisation des badges de dons pour qu'ils correspondent à ceux du site web (Merci Leo !)
+* Ajout d'un bouton dans les paramètres permettant de privilégier les miroirs étrangers
+* Nombreuses corrections de petits bugs

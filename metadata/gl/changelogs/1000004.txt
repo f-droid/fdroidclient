@@ -1,0 +1,7 @@
+* Xestos de deslizar engadidos ao apartado de Actualizacións
+
+* Mostrar avisos con accións no apartado de Actualizacións para vulnerabilidades coñecidas
+
+* Traducións actualizadas
+
+* Arranxos na interface co tema escuro

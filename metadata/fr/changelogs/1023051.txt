@@ -1,11 +1,6 @@
-* Material Design 3 (avec affichage bord à bord, mais sans couleurs dynamiques) (Merci Proletarius !)
-
+* Material Design 3 (avec affichage bord à bord, mais sans couleurs dynamiques) (Merci proletarius !)
 * Refonte des écrans de détails du dépôt (Merci Thore !)
-
-* Ajout de l'exportation du fichier logcat dans les paramètres experts
-
-* Mise à jour du SDK cible (Android 15 pour la version basique et Android 11 pour la version complète)
-
-* Ajout d'un lien retour depuis la page de l'application dans les paramètres système (Merci j-m4 !)
-
-* Utilisation du sélecteur d'applications pour partager les applications installées et l'historique des installations (Merci Thore !)
+* Ajout de l'exportation des fichiers Logcat dans les paramètres avancés
+* Mise à jour du SDK cible (Android 15 pour la version de base et Android 11 pour la version complète)
+* Ajout d'un lien de retour depuis la page de l'application dans les paramètres système (Merci j-m4 !)
+* Utilisation du sélecteur d'applications pour le partage des applications installées et de l'historique des installations (Merci à Thore !)

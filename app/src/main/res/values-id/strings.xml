@@ -441,7 +441,7 @@
     <string name="my_apps_header_recently_installed_apps">Baru saja dipasang</string>
     <string name="clear_all">Bersihkan semua</string>
     <string name="category_group_games">Permainan</string>
-    <string name="category_group_summary_games">Permainan papan, kartu dan pesta</string>
+    <string name="category_group_summary_games">Permainan papan, kartu &amp; pesta</string>
     <string name="pref_auto_updates_only_only_when_open_app">Hanya saat membuka aplikasi</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Periksa pembaruan hanya saat aplikasi dibuka • Aplikasi akan menjadi usang</string>
     <string name="notification_channel_self_update_title">Pembaruan mandiri</string>

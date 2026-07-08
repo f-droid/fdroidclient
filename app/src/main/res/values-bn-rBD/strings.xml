@@ -113,7 +113,7 @@
     <string name="notification_channel_swaps_title">টানা</string>
     <string name="notification_channel_installs_description">অ্যাপ ইন্সটলের বিজ্ঞপ্তি দেখাও।</string>
     <string name="notification_channel_installs_title">ইনস্টলকৃত</string>
-    <string name="notification_title_summary_install_error">ইন্সটল ব্যর্থ</string>
+    <string name="notification_title_summary_install_error">ইন্সটল ব্যর্থ হয়েছে</string>
     <string name="notification_title_summary_installing">ইনস্টলরত</string>
     <string name="notification_title_single_update_available">আপডেট রয়েছে</string>
     <string name="crash_dialog_title">এফ-ড্রয়েড থেমে‌ গেছে</string>
@@ -190,4 +190,6 @@
     <string name="first_start_loading">অ্যাপ রিপোসিটোরি নিয়ে আসা হচ্ছে</string>
     <string name="first_start_intro">শুরু করতে, অ্যাপ রিপোসিটোরি সিঙ্ক করুন</string>
     <string name="first_start_offline">আপনি অফলাইন রয়েছেন, শুরু করতে ইন্টারনেট এ কানেক্ট করুন</string>
+    <string name="first_start_metered">আপনি মোবাইল ডাটা ব্যবহার করছেন এবং ১০ মেগাবাইটের বেশি ডাউনলোড হবে। তবুও ডাউনলোড শুরু করতে Fetch Repository ট্যাপ করুন।</string>
+    <string name="no_repos_enabled">কোনো রিপোসিটরি উপলব্ধ নয়। শুরু করার জন্য রিপোসিটোরি যোগ করুন।</string>
 </resources>

@@ -258,7 +258,7 @@
     <string name="call_to_action_keepandroidopen">O F-Droid está sob ameaça. O Google está mudando a forma como você instala aplicativos no seu dispositivo. Precisamos da sua ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="menu_about">Sobre</string>
-    <string name="menu_discover">Explorar</string>
+    <string name="menu_discover">Descobrir</string>
     <string name="menu_apps_my">Meus apps</string>
     <string name="first_start_loading">Buscando repositórios de apps…</string>
     <string name="my_apps_empty">Apenas apps disponíveis nos repositórios do %1$s aparecerão aqui</string>

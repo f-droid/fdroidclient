@@ -55,7 +55,7 @@
     <string name="app_incompatible">호환되지 않음</string>
     <string name="links">링크</string>
     <string name="more">더 보기</string>
-    <string name="menu_overflow_description">추가 옵션</string>
+    <string name="menu_overflow_description">옵션 더 보기</string>
     <string name="less">덜 보기</string>
     <string name="back">뒤로</string>
     <string name="bad_fingerprint">잘못된 지문</string>
@@ -320,7 +320,7 @@
     <string name="category_group_summary_productivity">캘린더, 작업, 시계, 노트</string>
     <string name="category_group_summary_tools">내비게이션, 날씨, 계산기, 단위변환기</string>
     <string name="category_group_summary_wallets">금융, 자산, 패스 관리자</string>
-    <string name="category_group_summary_media">음악, 팟캐스트, 게임, 전자책 뷰어</string>
+    <string name="category_group_summary_media">음악, 팟캐스트, 전자책 뷰어</string>
     <string name="category_group_summary_communication">이메일, 메시지, 소셜 네트워크</string>
     <string name="category_group_summary_device">런처, 키보드, 보안, 테마</string>
     <string name="category_group_summary_network">브라우저, VPN, 프록시, 방화벽</string>
@@ -432,4 +432,13 @@
     <string name="app_no_compatible_signer">모든 버전의 서명이 호환되지 않아 이 앱을 업데이트할 수 없습니다\n\n다른 방법으로 업데이트를 받을 수 없다면, 앱을 삭제한 뒤 재설치해야 할 수 있습니다. 이때 앱 데이터는 사라집니다.</string>
     <string name="about_license_text">본 프로그램은 자유 소프트웨어입니다. 자유 소프트웨어 재단에서 발행한 GNU 일반 공중 라이선스의 버전 3, 또는 그 이후 버전의 조건에 따라 재배포 및/혹은 수정할 수 있습니다.</string>
     <string name="about_text">F-Droid의 앱은 자유 및 오픈 소스 소프트웨어(FOSS)입니다. 개인정보를 중시하고, 누구나 소스 코드를 열람할 수 있으며, 이를 기반으로 개발하거나 개선할 수 있습니다.\n\n앱 배포는 투명하고, 개인정보를 중시하며, 책임감 있게 이루어집니다. 이를 통해 모바일 생태계가 더 나은 방향으로 나아가도록 독려하는 기준을 제시합니다.\n\nF-Droid의 영향은 단순히 출시된 앱만으로는 가늠할 수 없으며, F-Droid가 수호하는 자유, 신뢰, 디지털 권리의 측면을 함께 보아야 합니다.\n\nF-Droid가 커뮤니티에서 주도하는 혁신을 지키고 개방성, 개인 정보 보호 및 사용자 권한 강화라는 사명을 이어나갈 수 있도록 도와주세요.</string>
+    <string name="my_apps_header_recently_installed_apps">최근 설치</string>
+    <string name="clear_all">모두 지우기</string>
+    <string name="category_group_games">게임</string>
+    <string name="category_group_summary_games">보드게임, 카드 게임, 파티 게임</string>
+    <string name="notification_channel_self_update_title">자체 업데이트</string>
+    <string name="notification_channel_self_update_description">앱이 스스로 업데이트한 뒤 닫힌 경우 알림을 보내, 쉽게 다시 실행할 수 있도록 합니다</string>
+    <string name="notification_self_update_title">%s 업데이트 완료. 눌러서 실행하세요</string>
+    <string name="pref_auto_updates_only_only_when_open_app">앱을 실행할 때에만</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">앱을 실행했을 때만 업데이트 확인 • 앱이 구 버전에 머묾</string>
 </resources>

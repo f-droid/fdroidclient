@@ -1,19 +1,21 @@
-F-Droid est 1.0 !
+F-Droid est passé à la version 1.0 !
 
-Cette version à les changements suivants :
+Cette version comprend de nombreux changements majeurs :
 
-* Révision complète des mise à jours
+* Refonte complète du processus de mise à jour des applications
 
-* Résumé/descriptions d'application traduisibles
+* Résumés et descriptions des applications entièrement traduisibles
 
-* Section « Quoi de neuf » pour les nouveautés
+* Rubrique « Nouveautés » présentant les changements apportés à la version actuelle
 
-* Captures d'écran et fonctionnalités graphiques
+* Captures d’écran et illustrations des fonctionnalités
 
-* Prise en charge de l'installation de fichiers, OTA, ZIP, etc.
+* Prise en charge de l’installation de fichiers multimédias, OTA, ZIP, etc.
 
 * Protection améliorée contre le suivi (HTTP ETag, TLS, etc.)
 
-* Mises à jour en arrière-plan avec l'extension Privileged
+* Mises à jour entièrement en arrière-plan grâce à l’extension Privileged
 
-* Dons aux développeurs d'applications
+* Mise en avant des dons aux développeurs d’applications
+
+* Mises à jour de l’index nettement plus rapides

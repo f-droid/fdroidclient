@@ -1,11 +1,11 @@
-* Réécriture de la mise à jour des dépôts pour rendre plus fiable la mise à jour en arrière-plan
- * Découpage du nom et du résumé dans la liste des applications pour une meilleure lisibilité
- * Affichage d'un avertissement quand une application ne peut pas être mise à jour depuis son dépôt préféré
- * Les applications visant le SDK 24 sont incompatibles avec les appareils sous Android 15
- * Meilleure gestion des miroirs dans la prévisualisation de l'ajout d'un dépôt (merci Thore !)
- * Active les mises à jour non surveillées pour les appareils Xiaomi ne tournant pas sous MIUI (merci Irate !)
- * Faire confiance aux certificats racines ajoutés par l'utilisateur (merci B. !)
- * Corrige la recherche non sensible à la casse quand elle contient des caractères diacritiques (merci Tobias !)
- * Mise à jour de la description des anti-fonctions (merci Licaon !)
- * Ajout de l'anti-fonction de partage de connexion (merci linsui !)
- * Ignore les espaces lors de l'ajout des dépôts miroirs (merci Tobias !)
+* Réécriture du programme de mise à jour des dépôts pour rendre les mises à jour en arrière-plan plus fiables
+* Séparation du nom et du résumé dans les listes d'applications pour une meilleure lisibilité
+* Affichage d'un avertissement lorsque les applications ne peuvent pas être mises à jour à partir du dépôt préféré
+* Les applications ciblant le SDK 24 sont incompatibles avec les appareils Android 15
+* Meilleure gestion des miroirs dans l'aperçu de « Ajouter un dépôt » (Merci Thore !)
+* Activation des mises à jour automatiques des applications sur les appareils Xiaomi ne fonctionnant pas sous MIUI (Merci Irate !)
+* Prise en charge des certificats racine ajoutés par l'utilisateur (Merci B. !)
+* Correction de la recherche insensible à la casse contenant des signes diacritiques (Merci Tobias !)
+* Mise à jour des descriptions des « anti-fonctionnalités » (Merci Licaon !)
+* Ajout de l'« anti-fonctionnalité » de connexion Internet partagée (Merci linsui !)
+* Ignorer les espaces lors de l'ajout de dépôts miroirs (Merci Tobias !)

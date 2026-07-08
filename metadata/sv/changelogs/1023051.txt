@@ -1,0 +1,6 @@
+* Material Design 3 (med kant-till-kant, men utan dynamiska färger) (Tack proletarius!)
+* omdesign av skärmarna med förrådsdetaljer (Tack Thore!)
+* lagt till export av logcat-filer i expertinställningarna
+* uppdaterat mål-SDK:n (Android 15 för grund- och Android 11 för fullversionen)
+* lagt till bakåtlänk från appens sida i systeminställningarna (Tack j-m4!)
+* använder appväljare för att dela installerade appar och installationshistorik (Tack Thore!)

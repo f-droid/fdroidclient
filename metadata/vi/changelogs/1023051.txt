@@ -1,0 +1,6 @@
+* Material Design 3 (có thiết kế tràn viền, nhưng không có màu sắc động) (Cảm ơn proletarius!)
+* Thiết kế lại các màn hình chi tiết kho lưu trữ (Cảm ơn Thore!)
+* Thêm tính năng xuất tệp logcat trong phần cài đặt nâng cao
+* Cập nhật SDK (Android 15 cho bản Basic và Android 11 cho bản Full)
+* Thêm backlink từ trang ứng dụng trong phần cài đặt hệ thống (Cảm ơn j-m4!)
+* Sử dụng trình chọn ứng dụng để chia sẻ các ứng dụng đã cài đặt và lịch sử cài đặt (Cảm ơn Thore!)

@@ -1,0 +1,7 @@
+* Preprečitev uporabe HTTP ETag kot piškotka za sledenje
+
+* Izboljšana razporeditev posnetkov zaslona
+
+* Ustrezno čiščenje začasnih in shranjenih datotek
+
+* Popravki temnega načina

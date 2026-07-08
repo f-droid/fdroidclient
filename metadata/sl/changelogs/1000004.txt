@@ -1,0 +1,7 @@
+* V zavihku »Posodobitve« so bili dodani drsni gibi
+
+* V zavihku »Posodobitve« se za »KnownVulns« prikazujejo opozorila z možnimi ukrepi
+
+* Posodobljeni prevodi
+
+* Popravki temnega uporabniškega vmesnika

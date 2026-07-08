@@ -1,0 +1,8 @@
+* rakenduste arhiivist taastamise tugi (Android 15)
+* enamustes käivitajates lisatakse hiljuti paigaldatu avalehele (tänud Dhina!)
+* rakenduse teabe vaates on nüüd eraldi lingiga jagamine ja failina jagamine
+* teavitus, kui APK-failil on eeldatavast enam õigusi
+* ruumi vabastamiseks kustutatakse sisemisi puhvreid sagedamini (tänud DerGenaue!)
+* annetuste siltide järjestus sama, kui meie saidis (tänud Leo!)
+* seadistuste nupp eelistamaks välismaiseid peegelservereid
+* palju pisiparandusi

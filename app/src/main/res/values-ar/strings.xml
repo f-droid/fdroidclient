@@ -43,7 +43,7 @@
     <string name="menu_add_repo">مستودع جديد</string>
     <string name="menu_website">الموقع الإلكتروني</string>
     <string name="menu_issues">المشاكل</string>
-    <string name="menu_changelog">سجل التغييرات</string>
+    <string name="menu_changelog">سجلّ التغييرات</string>
     <string name="menu_upgrade">حدِّث</string>
     <string name="menu_bitcoin">بيتكوين (Bitcoin)</string>
     <string name="menu_litecoin">لايت كوين (Litecoin)</string>
@@ -247,7 +247,7 @@
         <item quantity="other">%d تطبيق</item>
     </plurals>
     <string name="repo_basic_auth_title">استيثاق أساسي</string>
-    <string name="pref_export_log_title">سجل التصحيح</string>
+    <string name="pref_export_log_title">سجلّ التصحيح</string>
     <string name="pref_export_log_summary">يُنشئ ملفًا مع إخراج logcat مفيد لتصحيح الأخطاء. حذارِ، قد يحتوي على معلومات حساسة!</string>
     <string name="export_log_success">حُفظ Logcat بنجاح</string>
     <string name="export_log_error">خطأ في حفظ logcat</string>
@@ -404,7 +404,7 @@
     <string name="notification_installing_confirmation">انقر للتأكيد</string>
     <string name="permission_camera_denied">امنح إذن الوصول إلى الكاميرا لمسح رمز QR. اضغط لمنح إذن الكاميرا من الإعدادات.</string>
     <string name="error">خطأ</string>
-    <string name="install_history_empty_state">هذه القائمة لا تزال فارغة\n\nعندما تثبت التطبيقات أو تحديثها أو إلغاء تثبيتها، سيظهر سجل هنا</string>
+    <string name="install_history_empty_state">هذه القائمة لا تزال فارغة\n\nعندما تثبت التطبيقات أو تحديثها أو إلغاء تثبيتها، سيظهر سجلّ هنا</string>
     <string name="install_history_disabled_state">سجلّ التثبيت معطّل\n\nلن يتم تسجيل عمليات التثبيت والتحديث وإلغاء التثبيت</string>
     <string name="install_history_delete_ally">احذف سجلّ التثبيت</string>
     <string name="install_history_delete_text">حذف سجلّ التثبيت؟</string>
@@ -443,7 +443,7 @@
 W    <string name="status_downloading">ينزل بسرعة %s/ث</string>
     <string name="status_downloading_remaining">%1$s متبقي</string>
     <string name="search_history">عمليات البحث الأخيرة</string>
-    <string name="install_history_switch">استخدم سجل التثبيت</string>
+    <string name="install_history_switch">استخدم سجلّ التثبيت</string>
     <string name="search_auto_keyboard">افتح لوحة المفاتيح تلقائيًا</string>
     <string name="hide">أخفِ</string>
     <string name="category_group_summary_productivity">التقويمات والمهام والساعات والملاحظات</string>
