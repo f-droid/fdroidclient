@@ -44,5 +44,7 @@ interface MyAppsActions {
 
   fun onNotWarnWhenMetered()
 
+  fun checkForUpdates()
+
   fun exportInstalledApps()
 }

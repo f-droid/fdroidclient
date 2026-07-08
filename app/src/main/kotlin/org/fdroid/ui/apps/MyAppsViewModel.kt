@@ -38,6 +38,7 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstalledAppsCache
+import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.utils.startActivitySafe
@@ -152,6 +153,10 @@ constructor(
 
   override fun onNotWarnWhenMetered() {
     settingsManager.onDontWarnOnMeteredNetwork()
+  }
+
+  override fun checkForUpdates() {
+    RepoUpdateWorker.updateNow(application)
   }
 
   override fun exportInstalledApps() {

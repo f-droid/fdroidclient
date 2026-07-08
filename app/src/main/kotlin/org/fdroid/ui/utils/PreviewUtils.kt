@@ -425,6 +425,8 @@ fun getMyAppsInfo(model: MyAppsModel): MyAppsInfo =
 
           override fun onNotWarnWhenMetered() {}
 
+          override fun checkForUpdates() {}
+
           override fun exportInstalledApps() {}
         }
   }

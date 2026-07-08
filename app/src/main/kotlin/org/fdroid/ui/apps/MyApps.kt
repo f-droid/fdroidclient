@@ -138,6 +138,7 @@ fun MyApps(
             }
             TopAppBarOverflowButton { onDismissRequest ->
               MyAppsOverFlowMenu(
+                onCheckForUpdates = myAppsInfo.actions::checkForUpdates,
                 onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
                 onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
                 onDismissRequest = onDismissRequest,
