@@ -2,6 +2,7 @@ package org.fdroid.ui.apps
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.UploadFile
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -17,10 +18,25 @@ import org.fdroid.R
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MyAppsOverFlowMenu(
+  onCheckForUpdates: () -> Unit,
   onInstallHistory: () -> Unit,
   onExportInstalledApps: () -> Unit,
   onDismissRequest: () -> Unit,
 ) {
+  DropdownMenuItem(
+    text = { Text(stringResource(R.string.pref_repo_updates_title)) },
+    onClick = {
+      onCheckForUpdates()
+      onDismissRequest()
+    },
+    leadingIcon = {
+      Icon(
+        imageVector = Icons.Default.Refresh,
+        contentDescription = null,
+        modifier = Modifier.semantics { hideFromAccessibility() },
+      )
+    },
+  )
   DropdownMenuItem(
     text = { Text(stringResource(R.string.install_history)) },
     onClick = {
