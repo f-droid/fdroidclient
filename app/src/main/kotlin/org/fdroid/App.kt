@@ -99,7 +99,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
     }
     applyNewTheme(settingsManager.theme)
     // bail out here if we are the ACRA process to not initialize anything in crash process
-    if (isAcraProces()) return
+    if (isAcraProcess()) return
 
     // don't show self-update notification unless we enable it first
     SelfUpdateReceiver.disable(this)
@@ -108,7 +108,7 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
     AppUpdateWorker.scheduleOrCancel(applicationContext, settingsManager.autoUpdateApps)
   }
 
-  private fun isAcraProces(): Boolean {
+  private fun isAcraProcess(): Boolean {
     return if (SDK_INT >= 28) {
       val processName = getProcessName().split(':')
       processName.size > 1 && processName[1] == "acra"
