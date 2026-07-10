@@ -13,15 +13,15 @@
     <string name="pref_language">སྐད་ཡིག།</string>
     <string name="swap_welcome">ཨེཕ་རོཌ་ཕེབས་པར་དགའ་བསུ་ཞུ།!</string>
     <string name="about_title_full">ཨེཕ་རོཌ་སྐོར།</string>
-    <string name="more">མང་པོ།</string>
+    <string name="more">མང་བ།</string>
     <string name="less">ཉུང་བ།</string>
-    <string name="repo_details">མཛོད་ཁང་།</string>
+    <string name="repo_details">མཉེན་མཛོད།</string>
     <string name="not_on_same_wifi">ཁྱེད་རང་གིས་ད་ལྟ་ཁ་སྣོན་བྱས་པའི་མཉེན་མཛོད་དང་ཡོ་བྱད་གཉིས་ཝཡེ་ཕཡེ་གཅིག་པའི་སྒང་ལ་མི་འདུག །དྲྭ་རྒྱ་འདིར་མཐུད་ཐབས་བྱེད་ཀྱིན་ཡོད།:%s</string>
-    <string name="wifi">ཝཡེ་ཕྷཡེ།</string>
-    <string name="swap_send_fdroid">ཨེཕ་རོཌ་གཏོང་།</string>
+    <string name="wifi">ཝའི་ཕའི།</string>
+    <string name="swap_send_fdroid">F-Droid གཏོང་རོགས།</string>
     <string name="apps">ལྟ་བ།</string>
-    <string name="crash_dialog_title">ཨེཕ་རོཌ་ལ་གཏོར་སྐྱོན་ཤོར་འདུག</string>
-    <string name="notification_title_single_update_available">གསར་བཅོས་བྱེད་ཐུབ།</string>
+    <string name="crash_dialog_title">F-Droid ལ་སྐྱོན་བྱུང་འདུག།</string>
+    <string name="notification_title_single_update_available">མཉེན་ཆས་གསར་བསྒྱུར་འདུག།</string>
     <string name="notification_title_summary_install_error">སྒྲིག་འཇུག་བྱེད་ཐུབ་མ་སོང་།</string>
     <string name="SignatureMismatch">ཐོན་རིམ་རྙིང་པ་དེའི་སྒང་ལ་ལྡེ་མིག་གཞན་ཞིག་རྒྱུད་ཐོན་གསར་པའི་མིང་རྟགས་བཀོད་འདུག ཐོན་རིམ་གསར་པ་འདི་འགྲིག་བཅུག་བྱེད་འདོད་ན། དང་པོ་ཐོན་རྙིང་པ་དེ་ངེས་པར་འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱེད་དགོས། འདི་འདྲ་བྱས་ནས་ཡང་སྐྱར་ཐབས་ཤེས་གནང་རོགས། (མཁྱེན་རྟོགས་ཀྱི་སླད་དུ་ཞུ་རྒྱུར། འགྲིག་བཅུག་ཕྱིར་འཐེན་བྱས་པ་འདིས་མཉེན་ཆས་ནང་གསོག་ཉར་བྱས་པའི་ཡིག་ཚགས་སུབ་ཀྱི་རེད།)</string>
     <string name="installIncompatible">ཁྱེད་རང་གི་ཡོ་བྱད་དང་མཉེན་ཆས་གཉིས་མཐུན་གྱི་མིན་འདུག གང་ལྟར་འགྲིག་བཅུག་བྱེད་དམ།?</string>
@@ -106,7 +106,7 @@
     <string name="menu_litecoin">དྲྭ་རྒྱ་གསང་དངུལ།</string>
     <string name="app_name_full">ཨེཕ྄་ཌོ་རོ་ཡིཌ།</string>
     <string name="updates">གསར་བརྗེ་ཁག།</string>
-    <string name="ok">འགྲིག</string>
+    <string name="ok">འགྲིག།</string>
     <string name="yes">རེད།</string>
     <string name="no">མ་རེད།</string>
     <string name="back">རྒྱབ།</string>
@@ -126,4 +126,10 @@
     <string name="app_name_full_nightly">མཚན་བཟོ་མཉེན་ཆས།</string>
     <string name="app_name_basic_nightly">མཚན་བཟོ་གཞི་མཉེན།</string>
     <string name="menu_translation">སྐད་སྒྱུར།</string>
+    <string name="menu_discover">གསར་རྙེད།</string>
+    <string name="first_start_loading">མཉེན་མཛོད་ལེན་བཞིན་ཡོད་…</string>
+    <string name="first_start_intro">འགོ་འཛུགས་ཆེད་མཉེན་མཛོད་མཉམ་སྒྲིག་བྱོས།</string>
+    <string name="first_start_offline">ཁྱེད་རང་ལ་དྲྭ་ལམ་མེད་པར་གྱུར་འདུག། དྲྭ་ལམ་མཐུད་ནས་འགོ་འཛུགས་རོགས།</string>
+    <string name="first_start_metered">ཁྱེད་ཀྱིས་ཁ་པར་ཐོག་གི་གཞི་གྲངས་བེད་སྤྱོད་གཏོང་བཞིན་འདུག། འདིར་ཨེམ་བི་ ༡༠ ལས་མང་བ་ཕབ་ལེན་གནང་དགོས་ཡོད། གང་ལྟར་མུ་མཐུད་ནས་འགོ་འཛུགས་གནང་ཡ་ཡིན་ན་\"མཉེན་མཛོད་འཚོལ་ལེན་\"ལ་གནོན་རོགས།</string>
+    <string name="first_start_button">མཉེན་མཛོད་འཚོལ་ལེན་</string>
 </resources>
