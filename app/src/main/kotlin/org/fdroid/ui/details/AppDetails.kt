@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
@@ -19,7 +20,6 @@ import androidx.compose.material.icons.filled.ChangeHistory
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.CurrencyBitcoin
 import androidx.compose.material.icons.filled.EditNote
-import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.Mail
@@ -52,6 +52,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -81,7 +82,6 @@ import org.fdroid.R
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.icons.License
-import org.fdroid.ui.icons.Litecoin
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BigLoadingIndicator
@@ -275,7 +275,7 @@ fun AppDetails(
             )
             item.app.donate?.forEach { donation ->
               AppDetailsLink(
-                icon = Icons.Default.Link,
+                icon = rememberVectorPainter(Icons.Default.Link),
                 title = donation,
                 url = donation,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
@@ -283,7 +283,8 @@ fun AppDetails(
             }
             item.liberapayUri?.let { liberapayUri ->
               AppDetailsLink(
-                icon = Icons.Default.ChangeHistory,
+                icon = painterResource(id = R.drawable.ic_donation_liberapay),
+                disableTinting = true,
                 title = "Liberapay",
                 url = liberapayUri,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
@@ -291,7 +292,8 @@ fun AppDetails(
             }
             item.openCollectiveUri?.let { openCollectiveUri ->
               AppDetailsLink(
-                icon = Icons.Default.Groups,
+                icon = painterResource(id = R.drawable.ic_donation_opencollective),
+                disableTinting = true,
                 title = "Open Collective",
                 url = openCollectiveUri,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
@@ -299,7 +301,8 @@ fun AppDetails(
             }
             item.bitcoinUri?.let { bitcoinUri ->
               AppDetailsLink(
-                icon = Icons.Default.CurrencyBitcoin,
+                icon = painterResource(id = R.drawable.ic_donation_bitcoin),
+                disableTinting = true,
                 title = stringResource(R.string.menu_bitcoin),
                 url = bitcoinUri,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
@@ -307,7 +310,8 @@ fun AppDetails(
             }
             item.litecoinUri?.let { litecoinUri ->
               AppDetailsLink(
-                icon = Litecoin,
+                icon = painterResource(id = R.drawable.ic_donation_litecoin),
+                disableTinting = true,
                 title = stringResource(R.string.menu_litecoin),
                 url = litecoinUri,
                 modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
@@ -323,49 +327,49 @@ fun AppDetails(
           Column(modifier = Modifier.padding(start = 16.dp)) {
             item.app.webSite?.let { webSite ->
               AppDetailsLink(
-                icon = Icons.Default.Home,
+                icon = rememberVectorPainter(Icons.Default.Home),
                 title = stringResource(R.string.menu_website),
                 url = webSite,
               )
             }
             item.app.issueTracker?.let { issueTracker ->
               AppDetailsLink(
-                icon = Icons.Default.EditNote,
+                icon = rememberVectorPainter(Icons.Default.EditNote),
                 title = stringResource(R.string.menu_issues),
                 url = issueTracker,
               )
             }
             item.app.changelog?.let { changelog ->
               AppDetailsLink(
-                icon = Icons.Default.ChangeHistory,
+                icon = rememberVectorPainter(Icons.Default.ChangeHistory),
                 title = stringResource(R.string.menu_changelog),
                 url = changelog,
               )
             }
             item.app.license?.let { license ->
               AppDetailsLink(
-                icon = License,
+                icon = rememberVectorPainter(License),
                 title = stringResource(R.string.menu_license, license),
                 url = "https://spdx.org/licenses/$license",
               )
             }
             item.app.translation?.let { translation ->
               AppDetailsLink(
-                icon = Icons.Default.Translate,
+                icon = rememberVectorPainter(Icons.Default.Translate),
                 title = stringResource(R.string.menu_translation),
                 url = translation,
               )
             }
             item.app.sourceCode?.let { sourceCode ->
               AppDetailsLink(
-                icon = Icons.Default.Code,
+                icon = rememberVectorPainter(Icons.Default.Code),
                 title = stringResource(R.string.menu_source),
                 url = sourceCode,
               )
             }
             item.app.video?.getBestLocale(LocaleListCompat.getDefault())?.let { video ->
               AppDetailsLink(
-                icon = Icons.Default.OndemandVideo,
+                icon = rememberVectorPainter(Icons.Default.OndemandVideo),
                 title = stringResource(R.string.menu_video),
                 url = video,
               )
@@ -386,14 +390,14 @@ fun AppDetails(
             Column(modifier = Modifier.padding(start = 16.dp)) {
               item.app.authorWebSite?.let { authorWebSite ->
                 AppDetailsLink(
-                  icon = Icons.Default.Home,
+                  icon = rememberVectorPainter(Icons.Default.Home),
                   title = stringResource(R.string.menu_website),
                   url = authorWebSite,
                 )
               }
               item.app.authorEmail?.let { authorEmail ->
                 AppDetailsLink(
-                  icon = Icons.Default.Mail,
+                  icon = rememberVectorPainter(Icons.Default.Mail),
                   title = stringResource(R.string.menu_email),
                   url = authorEmail,
                 )
