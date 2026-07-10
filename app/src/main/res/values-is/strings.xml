@@ -256,7 +256,7 @@
     <string name="menu_discover">Kynntu þér</string>
     <string name="menu_apps_my">Forritin mín</string>
     <string name="first_start_loading">Næ í hugbúnaðarsöfn…</string>
-    <string name="my_apps_empty">Einungis forrit uppsett með %1$s birtast hér</string>
+    <string name="my_apps_empty">Einungis forrit sem tiltæk eru í hugbúnaðarsöfnunum %1$s birtast hér</string>
     <string name="my_apps_header_apps_with_issue">Forrit með vandamálum</string>
     <string name="my_apps_ignore_dialog_title">Fela vandamál</string>
     <string name="my_apps_ignore_dialog_text">Vandamálið með þessa útgáfu af \"%1$s\" verður hunsað</string>
@@ -290,4 +290,8 @@
     <string name="package_name">Heiti pakka:</string>
     <string name="installed_version">Uppsett útgáfa:</string>
     <string name="ipfsgw_summary_new">Sækja forrit með IPFS-endapunktum á vef</string>
+    <string name="first_start_offline">Þú ert án nettengingar. Tengstu við internetið til að hefjast handa.</string>
+    <string name="first_start_button">Sækja gagnasöfn</string>
+    <string name="my_apps_header_recently_installed_apps">Nýlega uppsett</string>
+    <string name="search_history">Nýlegar leitir</string>
 </resources>
