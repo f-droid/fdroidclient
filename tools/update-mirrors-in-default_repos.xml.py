@@ -32,18 +32,3 @@ for repo in data:
         repo["mirrors"] = archive_mirrors
 with open(default_repos, 'w') as json_file:
     json.dump(data, json_file, indent=2)
-
-# legacy XML default repos
-default_repos_legacy = 'legacy/src/main/res/values/default_repos.xml'
-tree = ET.parse(default_repos_legacy)
-root = tree.getroot()
-i = 0
-indent = '\n            '
-for item in root.iter('item'):
-    if i == 1:
-        item.text = indent + (indent.join([REPO_URL] + mirrors)) + '\n        '
-    elif i == 8:
-        item.text = indent + (indent.join([ARCHIVE_URL] + mirrors).replace('/repo', '/archive')) + '\n        '
-    i += 1
-
-tree.write(default_repos_legacy)
