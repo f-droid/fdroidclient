@@ -84,16 +84,12 @@ public class WifiStateChangeService extends Worker {
         super(context, workerParams);
     }
 
-    public static void registerReceiver(Context context, WifiStateChangeReceiver wifiStateChangeReceiver) {
+    public static void registerReceiver(Context context) {
         ContextCompat.registerReceiver(
                 context,
-                wifiStateChangeReceiver,
+                new WifiStateChangeReceiver(),
                 new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION),
                 ContextCompat.RECEIVER_NOT_EXPORTED);
-    }
-
-    public static void unregisterReceiver(Context context, WifiStateChangeReceiver wifiStateChangeReceiver) {
-        context.unregisterReceiver(wifiStateChangeReceiver);
     }
 
     public static void start(Context context, @Nullable Intent intent) {
