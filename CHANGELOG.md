@@ -1,3 +1,17 @@
+### 2.0-alpha11 (2026-07-10)
+
+* Prevent self-updates from getting stuck, allow updates to be canceled when waiting
+* Add "Check for updates" menu item to MyApps for full manual use cases
+* Complete Nearby implementation in 2.0 based on the stable implementation
+* In 2.0, Nearby does not work on Android 7.x so remove menu item there
+* Only show self-update notification when the app was in foreground before update
+* Fix pre-approval for Chinese ROMs that just send USER ABORT #3254
+* Do not show uninstall button for system apps
+* Strictly enforce Nearby connections only happen on the same network subnet
+* Log error if ROM hasn't ported additional_repos.xml to JSON
+* Fixes to the categories
+* Various UI fixes
+
 ### 2.0-alpha10 (2026-06-04)
 
 * show notification when the app updated itself
@@ -116,6 +130,13 @@
 * keep filter icon visible when searching in app lists
 * fix bugs in keyboard navigation
 * fix rare crash when leaving app details
+
+### 2.0-alpha0 (2026-01-23)
+
+* Removed support for "default_repos.xml" and "additional_repos.xml",
+  whitelabelers take note.  They have been replaced by JSON versions with the
+  same name: "default_repos.json" and "additional_repos.json".
+* Removed support for installing using F-Droid Privileged Extension.
 
 ### 1.23.2 (2026-02-18)
 
