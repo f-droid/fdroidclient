@@ -131,8 +131,49 @@
 * fix bugs in keyboard navigation
 * fix rare crash when leaving app details
 
+### 2.0-alpha3 (2026-02-17)
+
+* install history feature
+* export apps as CSV (Thanks Terrance!)
+* add setting for mirror chooser
+* add setting to prevent screenshots
+* show tooltips for all top app bar buttons
+* persist sort order of My Apps list
+* fix missing icon in confirmation dialogs
+
+### 2.0-alpha2 (2026-02-10)
+
+* crash: don't resolve hostname for ProxyConfig
+* don't assume metered network if user auto-updates apps when metered
+* scroll MyApps list to top if new updates were added
+* only flag compatible updates in other repos if older than a week
+* don't use error color for apps that have a compatible update in another repo
+* show a small onboarding hint for app issues
+* fix update direction in MyApps for RTL languages
+* don't bounce full screen screenshots
+* don't show category chip for the category of current list
+* ensure that issue badge for repos is always round
+* fix translucent notification icon on some devices
+
+### 2.0-alpha1 (2026-01-27)
+
+* fix firstStart behavior for people upgrading
+* show signer of installed version in app details
+* fix full version name
+* add version codes to app details
+* don't show app issue for incompatible signer installed by other stores
+* improve manual repo update icon
+
 ### 2.0-alpha0 (2026-01-23)
 
+* UI rewritten from scratch with Kotlin compose
+* improved search, also searching in descriptions and translations
+* easier to discover new apps, also highlighting the most downloaded ones
+* installation approval *before* downloading
+* multiple updates/downloads at the same time
+* notifying user of issues with apps (e.g. signing key changed)
+* optional Material You color theme
+* improved filtering of lists
 * Removed support for "default_repos.xml" and "additional_repos.xml",
   whitelabelers take note.  They have been replaced by JSON versions with the
   same name: "default_repos.json" and "additional_repos.json".
