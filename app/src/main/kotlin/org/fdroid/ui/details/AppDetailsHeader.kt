@@ -112,7 +112,7 @@ fun AppDetailsHeader(
           Modifier.fillMaxWidth()
             .animateContentSize()
             .height(if (showFeatureGraphic) 196.dp else 0.dp)
-            .graphicsLayer { alpha = 0.5f }
+            .graphicsLayer { alpha = 0.9f }
             .drawWithContent {
               val colors = listOf(Color.Black, Color.Transparent)
               drawContent()
