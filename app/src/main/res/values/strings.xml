@@ -592,4 +592,10 @@
     <string name="collapse">Collapse</string>
     <string name="call_to_action_keepandroidopen">F-Droid is under threat. Google is changing the way you install apps on your device. We need your help.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
+
+    <string name="icon_title">App icon</string>
+    <string name="icon_summary">Select the icon used for this app on home screen and app drawer</string>
+    <string name="icon_intro">Select an icon and name for this app. This is shown on the home screen and app drawer.\n\nNote: Notifications will always use the default icon and name.</string>
+    <string name="icon_calculator">Calculator</string>
+
 </resources>

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Android
 import androidx.compose.material.icons.filled.BrightnessMedium
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.ColorLens
@@ -35,8 +36,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -45,6 +49,7 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import java.lang.System.currentTimeMillis
 import java.util.concurrent.TimeUnit.HOURS
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -89,7 +94,12 @@ import org.fdroid.utils.getLogName
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: () -> Unit) {
+fun Settings(
+  model: SettingsModel,
+  onChangeAppIcon: (AppIcon) -> Unit,
+  onSaveLogcat: (Uri?) -> Unit,
+  onBackClicked: () -> Unit,
+) {
   Scaffold(
     topBar = {
       TopAppBar(
@@ -102,6 +112,7 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
       rememberLauncherForActivityResult(CreateDocument("text/plain")) { onSaveLogcat(it) }
     val context = LocalContext.current
     val res = LocalResources.current
+    var showAppIconDialog by rememberSaveable { mutableStateOf(false) }
     ProvidePreferenceLocals(model.prefsFlow) {
       val showProxyError = remember { mutableStateOf(false) }
       val proxyState = rememberPreferenceState(PREF_KEY_PROXY, PREF_DEFAULT_PROXY)
@@ -191,6 +202,19 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
               context.startActivitySafe(intent)
             },
           )
+        preference(
+          key = "appIcon",
+          icon = {
+            Icon(
+              imageVector = Icons.Default.Android,
+              contentDescription = null,
+              modifier = Modifier.semantics { hideFromAccessibility() },
+            )
+          },
+          title = { Text(stringResource(R.string.icon_title)) },
+          summary = { Text(stringResource(R.string.icon_summary)) },
+          onClick = { showAppIconDialog = true },
+        )
         preferenceCategory(
           key = "pref_category_updates",
           title = { Text(stringResource(R.string.updates)) },
@@ -393,6 +417,15 @@ fun Settings(model: SettingsModel, onSaveLogcat: (Uri?) -> Unit, onBackClicked: 
         )
       }
     }
+    if (showAppIconDialog)
+      AppIconDialog(
+        currentAppIcon = model.currentAppIconFlow.collectAsStateWithLifecycle().value,
+        onChangeIcon = { appIcon ->
+          onChangeAppIcon(appIcon)
+          showAppIconDialog = false
+        },
+        onDismissRequest = { showAppIconDialog = false },
+      )
   }
 }
 
@@ -405,7 +438,8 @@ fun SettingsPreview() {
         prefsFlow = MutableStateFlow(MapPreferences()),
         nextRepoUpdateFlow = MutableStateFlow(Long.MAX_VALUE),
         nextAppUpdateFlow = MutableStateFlow(currentTimeMillis() - HOURS.toMillis(12)),
+        currentAppIconFlow = MutableStateFlow(AppIcon.Default),
       )
-    Settings(model, {}, {})
+    Settings(model, {}, {}) {}
   }
 }

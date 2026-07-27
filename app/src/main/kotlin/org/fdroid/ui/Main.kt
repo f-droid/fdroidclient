@@ -103,6 +103,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       val viewModel = hiltViewModel<SettingsViewModel>()
       Settings(
         model = viewModel.model,
+        onChangeAppIcon = viewModel::onChangeAppIcon,
         onSaveLogcat = {
           viewModel.onSaveLogcat(it)
           navigator.goBack()
