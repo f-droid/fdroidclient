@@ -119,6 +119,9 @@
     <string name="repo_user_mirrors">Lietotāja spoguļglabātavas</string>
     <string name="theme">Izskats</string>
     <string name="banner_updating_repositories">Atjaunina glabātavas</string>
+    <string name="icon_calculator">Kalkulators</string>
+    <string name="panic_hide_summary">Lietotne paslēps sevi</string>
+    <string name="panic_hide_title">Paslēpt %s</string>
     <string name="panic_destructive_actions">Postošas darbības</string>
     <string name="panic_exit_summary">Šī lietotne tiks aizvērta</string>
     <string name="panic_exit_title">Iziet no lietotnes</string>

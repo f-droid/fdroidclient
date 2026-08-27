@@ -74,6 +74,8 @@
     <string name="banner_updating_repositories">Updating repositories</string>
     <string name="panic_reset_repos_summary">Force the repo setup back to defaults</string>
     <string name="panic_reset_repos_title">Reset repos</string>
+    <string name="panic_hide_summary">App will hide itself</string>
+    <string name="panic_hide_title">Hide %s</string>
     <string name="panic_destructive_actions">Destructive actions</string>
     <string name="panic_exit_summary">This app will be closed</string>
     <string name="panic_exit_title">Exit app</string>

@@ -129,6 +129,9 @@
     <string name="panic_exit_title">Saír da aplicación</string>
     <string name="panic_exit_summary">Pecharase a aplicación</string>
     <string name="panic_destructive_actions">Accións destrutivas</string>
+    <string name="panic_hide_title">Agochar %s</string>
+    <string name="panic_hide_summary">A aplicación agocharase</string>
+    <string name="icon_calculator">Calculadora</string>
     <string name="repo_add_mirror">Engadir réplica</string>
     <string name="antiknownvulnlist">Esta aplicación contén unha vulnerabilidade de seguranza coñecida</string>
     <string name="repo_official_mirrors">Réplicas oficiais</string>

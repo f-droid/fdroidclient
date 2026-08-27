@@ -138,6 +138,8 @@
     <string name="panic_app_setting_summary">未有設定 app</string>
     <string name="panic_exit_title">閂埋個 app</string>
     <string name="panic_exit_summary">到時就會閂埋呢個 app</string>
+    <string name="panic_hide_title">隱藏 %s</string>
+    <string name="panic_hide_summary">到時個 App 就會隱藏收埋自己</string>
     <string name="panic_reset_repos_title">重設晒所有存庫</string>
     <string name="repo_details">存庫</string>
     <string name="not_on_same_wifi">您部機同您啱啱新加嘅本機存庫未連接同一個 Wi-Fi！試下連去呢個網絡吖：%s</string>
@@ -160,6 +162,7 @@
     <string name="panic_reset_repos_summary">強制將存庫設定還原返預設噉樣</string>
     <string name="panic_settings">緊急掣設定</string>
     <string name="panic_settings_summary">緊急狀態下要採取啲咩動作</string>
+    <string name="icon_calculator">計數機</string>
     <string name="repo_add_mirror">加入鏡像</string>
     <string name="clear_search">搵過第瓣</string>
     <string name="sort_search">搵嘢排序</string>

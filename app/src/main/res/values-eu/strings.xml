@@ -135,6 +135,9 @@
     <string name="panic_exit_title">Irten aplikaziotik</string>
     <string name="panic_exit_summary">Aplikazioa itxiko da</string>
     <string name="panic_destructive_actions">Eragiketa suntsikorrak</string>
+    <string name="panic_hide_title">Ezkutatu %s</string>
+    <string name="panic_hide_summary">Aplikazioak bere burua ezkutatuko du</string>
+    <string name="icon_calculator">Kalkulagailua</string>
     <string name="sort_search">Ordenatu bilaketa</string>
     <string name="warning_scaning_qr_code">Zure kamerak ez du fokatze automatikorako gaitasunik. Kodea eskaneatzea zaila izan daiteke.</string>
     <string name="repo_add_mirror">Gehitu ispilua</string>

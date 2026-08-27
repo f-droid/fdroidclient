@@ -129,6 +129,9 @@
     <string name="panic_exit_title">ആപ്പിൽ നിന്നും പുറത്തുപോകുക</string>
     <string name="panic_exit_summary">ഈ ആപ്പ് അടച്ചു മാറ്റും</string>
     <string name="panic_destructive_actions">വിനാശപ്രവർത്തികൾ</string>
+    <string name="panic_hide_title">%s മറച്ചുവയ്ക്കുക</string>
+    <string name="panic_hide_summary">ആപ്പ് സ്വമേധയാ മറച്ചു വയ്ക്കും</string>
+    <string name="icon_calculator">ക്യാൽകുലേറ്റർ</string>
     <string name="sort_search">അന്വേഷണഫലം ക്രമപ്പെടുത്തുക</string>
     <string name="warning_scaning_qr_code">നിങ്ങളുടെ ക്യാമറയ്ക്ക് സ്വയ-കേന്ദ്രീകരണ ശേഷിയില്ല അതിനാൽ കോഡ് തിരിച്ചറിയാൻ ബുദ്ധിമുട്ടുണ്ടാകാം.</string>
     <string name="repo_add_mirror">പകരത്തിനു സർവർ ചേർക്കുക</string>

@@ -124,6 +124,8 @@
     <string name="panic_settings_summary">Действия, които се предприемат в спешен случай</string>
     <string name="panic_exit_summary">Приложението ще бъде затворено</string>
     <string name="panic_destructive_actions">Унищожителни действия</string>
+    <string name="panic_hide_title">Скриване на %s</string>
+    <string name="panic_hide_summary">Приложението ще скрие само себе си</string>
     <string name="install_history">Дневник на инсталирания</string>
     <string name="app_suggested">Препоръчително</string>
     <string name="send_installed_apps">Сподели инсталираните приложения</string>

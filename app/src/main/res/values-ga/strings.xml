@@ -124,8 +124,11 @@
     <string name="panic_exit_title">Scoir den aip</string>
     <string name="panic_exit_summary">Dúnfar an aip seo</string>
     <string name="panic_destructive_actions">Gníomhartha millteach</string>
+    <string name="panic_hide_title">Folaigh %s</string>
+    <string name="panic_hide_summary">Cuirfidh an feidhmchlár é féin i bhfolach</string>
     <string name="panic_reset_repos_title">Athshocraigh an chuid eile</string>
     <string name="panic_reset_repos_summary">Fórsáil an socrú repo ar ais go dtí réamhshocruithe</string>
+    <string name="icon_calculator">Áireamhán</string>
     <string name="preventScreenshots_title">Cosc ar screenshots</string>
     <string name="banner_updating_repositories">Stórtha á nuashonrú</string>
     <string name="banner_no_internet">Gan idirlíon</string>

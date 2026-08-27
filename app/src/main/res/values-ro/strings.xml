@@ -124,6 +124,9 @@
     <string name="panic_exit_title">Ieșire aplicație</string>
     <string name="panic_exit_summary">Aplicația se va închide</string>
     <string name="panic_destructive_actions">Acțiuni distructive</string>
+    <string name="panic_hide_title">Ascunde %s</string>
+    <string name="panic_hide_summary">Aplicația se va ascunde</string>
+    <string name="icon_calculator">Calculator</string>
     <string name="sort_search">Sortează căutarea</string>
     <string name="warning_scaning_qr_code">Camera foto a dispozitivului nu pare să suporte focalizare automată. Ar putea fi dificil să se scaneze codul.</string>
     <string name="repo_add_mirror">Adaugă oglindă</string>

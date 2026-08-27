@@ -93,6 +93,9 @@
     <string name="panic_exit_title">Sair da aplicação</string>
     <string name="panic_exit_summary">Esta aplicação será fechada</string>
     <string name="panic_destructive_actions">Ações destrutivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_summary">A aplicação ficará oculta</string>
+    <string name="icon_calculator">Calculadora</string>
     <string name="banner_updating_repositories">A atualizar os repositórios</string>
     <string name="theme">Tema</string>
     <string name="repo_fingerprint">Impressão digital da chave de assinatura (SHA-256)</string>

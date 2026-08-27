@@ -62,6 +62,7 @@
     <string name="send_installed_apps">நிறுவப்பட்ட செயலிகளைப் பகிர்</string>
     <string name="installed_apps__activity_title">நிறுவப்பட்ட செயலிகள்</string>
     <string name="update_auto_install">புதுப்பிப்புகளைத் தானாக நிறுவு</string>
+    <string name="panic_hide_summary">செயலி தன்னை மறைக்கும்</string>
     <string name="nearby_splash__find_people_button">அருகிலுள்ளவர்களைக் கண்டறி</string>
     <string name="nearby_splash__download_apps_from_people_nearby">இணையம் இல்லையா? உமக்கருகிலுள்ளவர்களிடமிருந்து செயலிகளைப் பெறுங்கள்!</string>
     <string name="wifi_ap">பகிரலை</string>
@@ -78,6 +79,7 @@
     <string name="deleting_repo">தற்போதைய களஞ்சியத்தை அழிக்கிறது…</string>
     <string name="panic_reset_repos_summary">களஞ்சியவமைப்பை இயல்புநிலைக்குத் திரும்ப கட்டாயப்படுத்து</string>
     <string name="panic_reset_repos_title">களஞ்சியங்களை அகரமாக்கு</string>
+    <string name="panic_hide_title">மறை %s</string>
     <string name="panic_destructive_actions">அழிவுகரமான செயல்கள்</string>
     <string name="panic_exit_summary">இச்செயலி மூடப்படும்</string>
     <string name="panic_settings_summary">அவசரகாலத்தில் எடுக்கப்படவேண்டிய நடவடிக்கைகள்</string>

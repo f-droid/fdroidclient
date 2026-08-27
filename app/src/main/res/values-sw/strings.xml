@@ -96,6 +96,7 @@
     <string name="panic_app_setting_none">Hakuna</string>
     <string name="panic_app_dialog_title">Thibitisha apu ya hofu</string>
     <string name="allow">Kubalia</string>
+    <string name="panic_hide_title">Ficha %s</string>
     <string name="banner_updating_repositories">Inasasisha maghala</string>
     <string name="banner_no_internet">Hakuna mtandao</string>
     <string name="repo_confirm_delete_title">Futa Ghala?</string>
@@ -114,8 +115,10 @@
     <string name="swap_not_visible_wifi">Haionekani kupitia Wi-Fi</string>
     <string name="swap_wifi_device_name">Jina la Kifaa</string>
     <string name="theme">Mandhari</string>
+    <string name="panic_hide_summary">Apu itajificha</string>
     <string name="panic_reset_repos_title">Weka upya maghala</string>
     <string name="panic_reset_repos_summary">Lazimisha usanidi wa ghala kurudi kwenye chaguomisingi</string>
+    <string name="icon_calculator">Kikokotoo</string>
     <string name="repo_official_mirrors">Vioo rasmi</string>
     <string name="repo_user_mirrors">Vioo vya watumiaji</string>
     <string name="share_repository">Shiriki Ghala</string>

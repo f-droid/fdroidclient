@@ -124,6 +124,9 @@
     <string name="panic_exit_title">Fermi aplikaĵon</string>
     <string name="panic_exit_summary">Fermi tiun ĉi aplikaĵon</string>
     <string name="panic_destructive_actions">Detruaj agoj</string>
+    <string name="panic_hide_title">Kaŝi %s</string>
+    <string name="panic_hide_summary">Malaperigi F-Droid de la aplikaĵlanĉilo</string>
+    <string name="icon_calculator">Kalkulilo</string>
     <string name="sort_search">Ordigi serĉon</string>
     <string name="warning_scaning_qr_code">Via fotilo ne havas memfokuson. Povas esti malfacile skani la kodon.</string>
     <string name="repo_add_mirror">Aldoni spegul-servilon</string>
