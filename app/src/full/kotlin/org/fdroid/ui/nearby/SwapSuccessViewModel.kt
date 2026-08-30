@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.LocaleChooser.getBestLocale
+import org.fdroid.CompatibilityChecker
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
@@ -43,6 +44,7 @@ constructor(
   private val appInstallManager: AppInstallManager,
   private val installedAppsCache: InstalledAppsCache,
   private val settingsManager: SettingsManager,
+  private val compatibilityChecker: CompatibilityChecker,
 ) : AndroidViewModel(app) {
 
   private val log = KotlinLogging.logger {}
@@ -74,6 +76,7 @@ constructor(
             versionCode = repoApp.versionCode,
             installedVersionName = installedPackage?.versionName,
             installedVersionCode = installedPackage?.let(PackageInfoCompat::getLongVersionCode),
+            isCompatible = repoApp.isCompatible,
             iconModel = iconModel,
             installState = installStates[repoApp.packageName] ?: InstallState.Unknown,
           )
@@ -171,6 +174,7 @@ constructor(
     val iconRequest: DownloadRequest?,
     val appMetadata: AppMetadata,
     val packageVersion: PackageVersionV2,
+    val isCompatible: Boolean,
   )
 
   private fun AppV1.toSwapRepoApp(
@@ -185,7 +189,8 @@ constructor(
         whatsNew = emptyMap(),
       )
     val metadataV2 = toMetadataV2(packageVersion.signer?.sha256?.firstOrNull())
-    val metadata = metadataV2.toAppMetadata(repository.repoId, packageName, localeList)
+    val isCompatible = compatibilityChecker.isCompatible(packageVersion.packageManifest)
+    val metadata = metadataV2.toAppMetadata(repository.repoId, packageName, localeList, isCompatible)
     val iconRequest =
       metadataV2.icon
         ?.getBestLocale(localeList)
@@ -198,6 +203,7 @@ constructor(
       iconRequest = iconRequest,
       appMetadata = metadata,
       packageVersion = packageVersion,
+      isCompatible = isCompatible,
     )
   }
 }
@@ -206,6 +212,7 @@ private fun MetadataV2.toAppMetadata(
   repoId: Long,
   packageName: String,
   localeList: LocaleListCompat,
+  isCompatible: Boolean,
 ): AppMetadata =
   AppMetadata(
     repoId = repoId,
@@ -237,5 +244,5 @@ private fun MetadataV2.toAppMetadata(
     litecoin = litecoin,
     flattrID = flattrID,
     categories = categories,
-    isCompatible = true,
+    isCompatible = isCompatible,
   )

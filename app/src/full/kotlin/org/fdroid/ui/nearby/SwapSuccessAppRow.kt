@@ -61,7 +61,9 @@ fun SwapSuccessAppRow(
         horizontalAlignment = Alignment.End,
         verticalArrangement = Arrangement.spacedBy(8.dp),
       ) {
-        when (val state = app.installState) {
+        if (!app.isCompatible) {
+          Text(stringResource(R.string.app_incompatible), color = MaterialTheme.colorScheme.error)
+        } else when (val state = app.installState) {
           is InstallState.Installed -> {
             Text(stringResource(R.string.app_installed))
           }
