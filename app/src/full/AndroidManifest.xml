@@ -94,6 +94,22 @@
             android:label="@string/ipfsgw_title"
             android:launchMode="singleTask" />
 
+        <!-- Legacy activity alias to support migrating from old app hiding feature, can be deleted after sufficient time has passed. -->
+        <activity-alias
+            android:name=".fdroid.panic.CalculatorActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_calculator"
+            android:label="@string/icon_calculator"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_MARKET" />
+            </intent-filter>
+        </activity-alias>
+
         <!--https://developer.android.com/guide/components/broadcast-exceptions -->
         <receiver
             android:name=".fdroid.nearby.UsbDeviceAttachedReceiver"

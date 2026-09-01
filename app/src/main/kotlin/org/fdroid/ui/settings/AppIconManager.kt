@@ -1,5 +1,6 @@
 package org.fdroid.ui.settings
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
 import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED
@@ -18,6 +19,12 @@ class AppIconManager @Inject constructor(@ApplicationContext private val context
 
   private val _currentAppIcon = MutableStateFlow(getAppIconFromPackageManager())
   val currentAppIcon = _currentAppIcon.asStateFlow()
+
+  fun isHiddenLegacy(): Boolean {
+    val component = ComponentName(context, "org.fdroid.fdroid.panic.CalculatorActivity")
+    val componentEnabled = pm.getComponentEnabledSetting(component)
+    return componentEnabled == COMPONENT_ENABLED_STATE_ENABLED
+  }
 
   fun setAppIcon(appIcon: AppIcon) {
     log.debug { "setAppIcon(${appIcon::class.simpleName})" }

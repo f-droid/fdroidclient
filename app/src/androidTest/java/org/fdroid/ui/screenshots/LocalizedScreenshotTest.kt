@@ -88,7 +88,12 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
       ) {
         MainContent(
           model =
-            MainModel(dynamicColors = false, numUpdates = numUpdates, hasAppIssues = hasAppIssues),
+            MainModel(
+              dynamicColors = false,
+              numUpdates = numUpdates,
+              hasAppIssues = hasAppIssues,
+              showOnboarding = false,
+            ),
           navEntries =
             listOf(
               NavEntry(currentNavKey) { content(LocaleListCompat.forLanguageTags(localeName)) }
@@ -97,6 +102,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
           isBigScreen = false,
           showBottomBar = showBottomBar,
           currentNavKey = currentNavKey,
+          onOnboardingSeen = {},
           onNav = {},
           onBack = {},
         )

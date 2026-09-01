@@ -5,12 +5,15 @@ import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
+import com.viktormykhailiv.compose.hints.hintAnchor
+import com.viktormykhailiv.compose.hints.rememberHintAnchorState
+import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.ui.navigation.BottomBar
-import org.fdroid.ui.navigation.MainNavKey
 import org.fdroid.ui.navigation.NavigationRail
 import org.fdroid.ui.navigation.rememberResponsiveNavigationSceneDecoratorStrategy
 import org.fdroid.ui.utils.HintOverlayContainer
@@ -24,13 +27,25 @@ fun MainContent(
   isBigScreen: Boolean,
   showBottomBar: Boolean,
   currentNavKey: NavKey,
-  onNav: (MainNavKey) -> Unit,
+  onOnboardingSeen: () -> Unit,
+  onNav: (NavKey) -> Unit,
   onBack: () -> Unit,
 ) =
   FDroidContent(dynamicColors = model.dynamicColors) {
     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
     SharedTransitionLayout {
       HintOverlayContainer {
+        val hintController = rememberHintController()
+        val onOnboardingSeen = {
+          hintController.dismiss()
+          onOnboardingSeen()
+        }
+        val hintAnchor = rememberHintAnchorState(getMainOnboardingHint(onOnboardingSeen, onNav))
+        LaunchedEffect(model.showOnboarding) {
+          if (model.showOnboarding) {
+            hintController.show(hintAnchor)
+          }
+        }
         val responsiveNavigationSceneDecoratorStrategy =
           rememberResponsiveNavigationSceneDecoratorStrategy<NavKey>(
             isBigScreen = isBigScreen,
@@ -54,7 +69,8 @@ fun MainContent(
           sceneDecoratorStrategies = listOf(responsiveNavigationSceneDecoratorStrategy),
           sceneStrategies = listOf(listDetailStrategy),
           onBack = onBack,
-          modifier = Modifier,
+          modifier = Modifier
+            .hintAnchor(hintAnchor, fullScreen = true),
         )
       }
     }

@@ -138,6 +138,7 @@ private fun Preview() {
             dynamicColors = false,
             numUpdates = 3,
             hasAppIssues = false,
+            showOnboarding = false,
           )
         BottomBar(model = model, currentNavKey = NavigationKey.Discover, onNav = {})
       }
@@ -162,6 +163,7 @@ private fun PreviewIssues() {
             dynamicColors = true,
             numUpdates = 0,
             hasAppIssues = true,
+            showOnboarding = false,
           )
         BottomBar(model = model, currentNavKey = NavigationKey.MyApps, onNav = {})
       }

@@ -8,12 +8,14 @@ import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.concurrent.TimeUnit.DAYS
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
@@ -25,6 +27,7 @@ constructor(
   private val db: FDroidDatabase,
   settingsManager: SettingsManager,
   updatesManager: UpdatesManager,
+  private val onboardingManager: OnboardingManager,
   @param:IoDispatcher val coroutineScope: CoroutineScope,
 ) : ViewModel() {
 
@@ -39,6 +42,7 @@ constructor(
           dynamicColorsFlow = settingsManager.dynamicColorFlow,
           numUpdatesFlow = updatesManager.numUpdates,
           appsWithIssuesFlow = updatesManager.appsWithIssues,
+          showOnboardingFlow = onboardingManager.showMainOnboarding,
         )
       }
     }
@@ -48,7 +52,7 @@ constructor(
     if (System.currentTimeMillis() - settingsManager.lastDbRepairCheck > DAYS.toMillis(1)) {
       // check Fts integrity on worker thread after startup to avoid blocking all DB access
       coroutineScope.launch {
-        delay(5000) // give the app some time to start up before doing this
+        delay(10.seconds) // give the app some time to start up before doing this
         try {
           db.repairFtsIfNeeded()
           settingsManager.lastDbRepairCheck = System.currentTimeMillis()
@@ -58,4 +62,6 @@ constructor(
       }
     }
   }
+
+  fun onOnboardingSeen() = onboardingManager.onMainOnboardingSeen()
 }
