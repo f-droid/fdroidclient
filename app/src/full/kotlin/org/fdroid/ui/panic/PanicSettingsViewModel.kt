@@ -110,4 +110,15 @@ constructor(
 
   private fun ActivityInfo.toPanicApp() =
     PanicApp(packageName = packageName, name = loadLabel(pm).toString())
+
+  // provide a way to set this preference directly when receiving intent from panic app
+  fun setTriggerPackageName(triggerPackageName: String) {
+    // update the flow so the drop-down shows the correct value selected
+    prefsFlow.update {
+      it.toMutablePreferences().apply { this[PREF_TRIGGER_PACKAGE_NAME] = triggerPackageName }
+    }
+
+    // additionally update the state so that the drop-down preview shows the correct value
+    _state.update { it.copy(selectedPanicApp = getPanicApp(triggerPackageName)) }
+  }
 }
