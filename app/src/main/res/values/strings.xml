@@ -353,6 +353,8 @@
     <string name="panic_destructive_actions">Destructive actions</string>
     <string name="panic_reset_repos_title">Reset repos</string>
     <string name="panic_reset_repos_summary">Force the repo setup back to defaults</string>
+    <string name="panic_hide_title">Hide %s</string>
+    <string name="panic_hide_summary">App will hide itself</string>
 
     <!-- placeholder is for download speed. Note that %s is the placeholder that needs to stay and /s is part of the speed unit and doesn't need translating in most languages. Example: Downloading at 2.3 MB/s -->
     <string name="status_downloading">Downloading at %s/s</string>

@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import info.guardianproject.panic.Panic
 import info.guardianproject.panic.PanicResponder
 import mu.KotlinLogging
+import org.fdroid.ui.settings.AppIcon
 
 /**
  * This [AppCompatActivity] is purely to run events in response to a panic trigger. It needs to be
@@ -41,6 +42,9 @@ class PanicResponderActivity : AppCompatActivity() {
     val receivedTriggerFromConnectedApp = PanicResponder.receivedTriggerFromConnectedApp(this)
 
     if (receivedTriggerFromConnectedApp) {
+      if (viewModel.hideApp) {
+        viewModel.changeAppIcon(AppIcon.Calculator)
+      }
       if (viewModel.resetRepos) {
         viewModel.resetDb()
       }

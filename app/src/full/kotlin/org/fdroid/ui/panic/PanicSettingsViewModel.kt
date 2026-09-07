@@ -24,6 +24,8 @@ import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.repo.RepoPreLoader
 import org.fdroid.settings.SettingsManager
+import org.fdroid.ui.settings.AppIcon
+import org.fdroid.ui.settings.AppIconManager
 import org.fdroid.utils.IoDispatcher
 
 @HiltViewModel
@@ -34,6 +36,7 @@ constructor(
   private val db: FDroidDatabase,
   private val repoPreLoader: RepoPreLoader,
   private val settingsManager: SettingsManager,
+  private val appIconManager: AppIconManager,
   @param:IoDispatcher private val ioScope: CoroutineScope,
 ) : AndroidViewModel(app) {
 
@@ -41,6 +44,8 @@ constructor(
 
   val prefsFlow = settingsManager.prefsFlow
   val appFlow = prefsFlow.map { it.get<String>(PREF_TRIGGER_PACKAGE_NAME) }.distinctUntilChanged()
+  val hideApp
+    get() = settingsManager.prefs.getBoolean("pref_panic_hide", false)
   val resetRepos
     get() = settingsManager.prefs.getBoolean("pref_panic_reset_repos", false)
 
@@ -74,6 +79,10 @@ constructor(
         _state.update { it.copy(selectedPanicApp = getPanicApp(packageName)) }
       }
     }
+  }
+
+  fun changeAppIcon(appIcon: AppIcon) {
+    appIconManager.setAppIcon(appIcon)
   }
 
   fun resetDb() {
