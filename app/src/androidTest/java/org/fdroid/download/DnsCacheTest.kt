@@ -22,7 +22,6 @@ class DnsCacheTest {
   private val url2 = "fdroid.org"
   private val url3 = "fdroid.net"
 
-
   private val ip1String = "127.0.0.1"
   private val ip2String = "127.0.0.2"
   private val ip3String = "1a00:2b00:0:0:0::1"
@@ -90,14 +89,14 @@ class DnsCacheTest {
     val ipv4Strings = listOf(ip1String, ip2String)
     val ipv6Strings = listOf(ip3String, ip4String)
 
-    testObject.populateCacheWithStrings(url1,ipv4Strings, ipv6Strings)
+    testObject.populateCacheWithStrings(url1, ipv4Strings, ipv6Strings)
     val resultList1 = testObject.lookup(url1)
     assertEquals(4, resultList1.size)
 
     val ipv4 = listOf(ip1, ip2)
     val ipv6 = listOf(ip3, ip4)
 
-    testObject.populateCacheWithIps(url2, ipv4,ipv6)
+    testObject.populateCacheWithIps(url2, ipv4, ipv6)
     val resultList2 = testObject.lookup(url2)
     assertEquals(4, resultList2.size)
   }

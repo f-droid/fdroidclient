@@ -61,21 +61,20 @@ constructor(
   private val localeListFlow = MutableStateFlow(LocaleListCompat.getDefault())
   private val newAppsFlow = db.getAppDao().getNewAppsFlow()
   private val recentlyUpdatedAppsFlow = db.getAppDao().getRecentlyUpdatedAppsFlow()
-  private val mostDownloadedApps =
-    flow {
-        val packageNames =
-          try {
-            app.assets.open("most_downloaded_apps.json").use { inputStream ->
-              @OptIn(ExperimentalSerializationApi::class)
-              Json.decodeFromStream<List<String>>(inputStream)
-            }
-          } catch (e: Exception) {
-            log.error(e) { "Error loading most downloaded apps: " }
-            return@flow
-          }
-        db.getAppDao().getAppsFlow(packageNames).collect { apps -> emit(apps) }
+  private val mostDownloadedApps = flow {
+    val packageNames =
+      try {
+        app.assets.open("most_downloaded_apps.json").use { inputStream ->
+          @OptIn(ExperimentalSerializationApi::class)
+          Json.decodeFromStream<List<String>>(inputStream)
+        }
+      } catch (e: Exception) {
+        log.error(e) { "Error loading most downloaded apps: " }
+        return@flow
       }
-      .flowOn(Dispatchers.IO)
+    db.getAppDao().getAppsFlow(packageNames).collect { apps -> emit(apps) }
+  }
+    .flowOn(Dispatchers.IO)
   private val dbCategories = db.getRepositoryDao().getLiveCategories().asFlow()
   private val categories =
     combine(localeListFlow, dbCategories) { localeList, categories ->

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build.VERSION.SDK_INT
 import androidx.activity.result.ActivityResult
 import androidx.annotation.VisibleForTesting
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import io.ktor.client.engine.ProxyConfig
 import org.fdroid.LocaleChooser.getBestLocale
@@ -23,7 +24,6 @@ import org.fdroid.install.InstallState
 import org.fdroid.install.SessionInstallManager
 import org.fdroid.search.SearchHelper.removeZeroWhiteSpace
 import org.fdroid.ui.categories.CategoryItem
-import androidx.core.net.toUri
 
 sealed class AppDetailsItem
 
@@ -143,14 +143,16 @@ data class LoadedAppDetailsItem(
     issue = issue,
     authorHasMoreThanOneApp = authorHasMoreThanOneApp,
     proxy = proxy,
-    donateLinks = mapDonateLinks(
-      (dbApp.metadata.donate ?: emptyList()) + listOfNotNull(
-        dbApp.metadata.liberapay?.let { it -> "https://liberapay.com/$it/donate" },
-        dbApp.metadata.openCollective?.let { it -> "https://opencollective.com/$it/donate" },
-        dbApp.metadata.bitcoin?.let { it -> "bitcoin:$it" },
-        dbApp.metadata.litecoin?.let { it -> "litecoin:$it" },
+    donateLinks =
+      mapDonateLinks(
+        (dbApp.metadata.donate ?: emptyList()) +
+          listOfNotNull(
+            dbApp.metadata.liberapay?.let { it -> "https://liberapay.com/$it/donate" },
+            dbApp.metadata.openCollective?.let { it -> "https://opencollective.com/$it/donate" },
+            dbApp.metadata.bitcoin?.let { it -> "bitcoin:$it" },
+            dbApp.metadata.litecoin?.let { it -> "litecoin:$it" },
+          )
       ),
-    ),
   )
 
   /**
@@ -332,45 +334,52 @@ enum class DonateType {
 }
 
 fun mapDonateLinks(links: List<String>): List<DonateLink> {
-  val typeMapping = links.associateWith<String, DonateType> { link ->
-    when {
-      link.startsWith("https://opencollective.com") -> DonateType.OPEN_COLLECTIVE
-      link.startsWith("https://liberapay.com") -> DonateType.LIBERAPAY
-      link.startsWith("bitcoin:") -> DonateType.BITCOIN
-      link.startsWith("litecoin:") -> DonateType.LITECOIN
-      link.startsWith("taler:") -> DonateType.TALER
-      else -> DonateType.GENERIC
+  val typeMapping =
+    links.associateWith { link ->
+      when {
+        link.startsWith("https://opencollective.com") -> DonateType.OPEN_COLLECTIVE
+        link.startsWith("https://liberapay.com") -> DonateType.LIBERAPAY
+        link.startsWith("bitcoin:") -> DonateType.BITCOIN
+        link.startsWith("litecoin:") -> DonateType.LITECOIN
+        link.startsWith("taler:") -> DonateType.TALER
+        else -> DonateType.GENERIC
+      }
     }
-  }
   val typeCounts = typeMapping.values.groupingBy { it }.eachCount()
   return links.map { link ->
-    val type = typeMapping[link]!!  // typeMapping has all items of links as keys (see above)
-    val count = typeCounts[type]!!  // typeCount has all possible enum values as keys (see above)
+    val type = typeMapping[link]!! // typeMapping has all items of links as keys (see above)
+    val count = typeCounts[type]!! // typeCount has all possible enum values as keys (see above)
     DonateLink(
       url = link,
       type = type,
-      subtitle = if (count > 1) {  // only display donation/payment account when multiple links of the same type are present
-        when (type) {
-          DonateType.OPEN_COLLECTIVE, DonateType.LIBERAPAY -> {
-            try {
-              link.toUri().path?.split("/")[1]
-            } catch (e: Exception) {
-              null
+      subtitle =
+        if (
+          count > 1
+        ) { // only display donation/payment account when multiple links of the same type are
+            // present
+          when (type) {
+            DonateType.OPEN_COLLECTIVE,
+            DonateType.LIBERAPAY -> {
+              try {
+                link.toUri().path?.split("/")[1]
+              } catch (e: Exception) {
+                null
+              }
             }
-          }
-          DonateType.BITCOIN -> link.removePrefix("bitcoin:")
-          DonateType.LITECOIN -> link.removePrefix("litecoin:")
-          DonateType.TALER -> {
-            try {
-              // parse taler template-id from url string
-              link.toUri().path?.split("/")?.last()
-            } catch (e: Exception) {
-              null
+            DonateType.BITCOIN -> link.removePrefix("bitcoin:")
+            DonateType.LITECOIN -> link.removePrefix("litecoin:")
+            DonateType.TALER -> {
+              try {
+                // parse taler template-id from url string
+                link.toUri().path?.split("/")?.last()
+              } catch (e: Exception) {
+                null
+              }
             }
+            DonateType.GENERIC ->
+              null // generic web links are always displayed in full and don't need a subtitle
           }
-          DonateType.GENERIC -> null  // generic web links are always displayed in full and don't need a subtitle
-        }
-      } else null,
+        } else null,
     )
   }
 }

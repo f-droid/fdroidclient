@@ -18,7 +18,7 @@ import org.fdroid.ui.icons.TalerNight
 @Composable
 fun AppDonationLink(
   link: DonateLink,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
 ) {
   AppDetailsLink(
     when (link.type) {
@@ -52,7 +52,7 @@ fun GenericAppDonationLinkPreview() {
       "https://f-droid.org/donate",
       DonateType.GENERIC,
       null,
-    ),
+    )
   )
 }
 
@@ -64,7 +64,7 @@ fun LiberapayAppDonationLinkPreview() {
       "https://liberapay.com/F-Droid-Data/donate",
       DonateType.LIBERAPAY,
       "F-Droid-Data",
-    ),
+    )
   )
 }
 
@@ -76,7 +76,7 @@ fun OpencollectiveAppDonationLinkPreview() {
       "https://opencollective.com/f-droid/donate",
       DonateType.OPEN_COLLECTIVE,
       "f-droid",
-    ),
+    )
   )
 }
 
@@ -88,7 +88,7 @@ fun BitcoinAppDonationLinkPreview() {
       "bitcoin:bc1qd8few44yaxc3wv5ceeedhdszl238qkvu50rj4v",
       DonateType.BITCOIN,
       "bc1qd8few44yaxc3wv5ceeedhdszl238qkvu50rj4v",
-    ),
+    )
   )
 }
 
@@ -100,7 +100,7 @@ fun LitecoinAppDonationLinkPreview() {
       "litecoin:lc1asdfew44asdf3wv5asdfdhdsasdf8qkvasdffff",
       DonateType.LITECOIN,
       "lc1asdfew44asdf3wv5asdfdhdsasdf8qkvasdffff",
-    ),
+    )
   )
 }
 
@@ -112,6 +112,6 @@ fun TalerAppDonationLinkPreview() {
       "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
       DonateType.TALER,
       "demo-donation",
-    ),
+    )
   )
 }

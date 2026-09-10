@@ -215,10 +215,9 @@ public class DbAppChecker(
     return if (repoIdWithCompatibleSigner == null) {
       // all updates are not compatible, we only warn about this,
       // if all versions in the preferred repo aren't compatible
-      val allIncompatible =
-        versions.all { version ->
-          version.repoId != preferredRepoId || !version.isOk(preferredRepoId, allowedSigners)
-        }
+      val allIncompatible = versions.all { version ->
+        version.repoId != preferredRepoId || !version.isOk(preferredRepoId, allowedSigners)
+      }
       if (allIncompatible) {
         // possibly the wrong repo was preferred, try to find the right one
         val repoId =

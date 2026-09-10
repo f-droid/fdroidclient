@@ -38,12 +38,13 @@ object CategoryGroups {
       summary = R.string.category_group_summary_device,
       imageVector = Icons.Default.PhoneAndroid,
     )
-  val games = CategoryGroup(
-    id = "games",
-    name = R.string.category_group_games,
-    summary = R.string.category_group_summary_games,
-    imageVector = Icons.Default.SportsEsports,
-  )
+  val games =
+    CategoryGroup(
+      id = "games",
+      name = R.string.category_group_games,
+      summary = R.string.category_group_summary_games,
+      imageVector = Icons.Default.SportsEsports,
+    )
   val interests =
     CategoryGroup(
       id = "interests",

@@ -229,9 +229,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
         }
         // update flow, so UI also updates
         prefsFlow.update {
-          it.toMutablePreferences().apply {
-            this[PREF_KEY_PROXY] = "127.0.0.1:9050"
-          }
+          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "127.0.0.1:9050" }
         }
       }
       val proxyHost = prefs.getString("proxyHost", null)
@@ -245,9 +243,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
         }
         // update flow, so UI also updates
         prefsFlow.update {
-          it.toMutablePreferences().apply {
-            this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort"
-          }
+          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort" }
         }
       }
     } catch (e: Exception) {

@@ -95,13 +95,12 @@ class IpfsManager @Inject constructor(settingsManager: SettingsManager) : IpfsAc
       }
   }
 
-  override fun removeUserGateway(url: String) =
-    _preferences.update {
-      val newGateways = it.userGateways.toMutableList()
-      newGateways.remove(url)
-      userGateways = newGateways
-      it.copy(userGateways = newGateways)
-    }
+  override fun removeUserGateway(url: String) = _preferences.update {
+    val newGateways = it.userGateways.toMutableList()
+    newGateways.remove(url)
+    userGateways = newGateways
+    it.copy(userGateways = newGateways)
+  }
 
   private fun parseJsonStringArray(json: String): List<String> {
     try {

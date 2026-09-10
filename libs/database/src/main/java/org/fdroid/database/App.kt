@@ -483,12 +483,11 @@ internal fun LocalizedFileV2.toLocalizedFile(
   )
 }
 
-internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? =
-  associate { file ->
-      file.locale to
-        FileV2(name = file.name, sha256 = file.sha256, size = file.size, ipfsCidV1 = file.ipfsCidV1)
-    }
-    .ifEmpty { null }
+internal fun List<IFile>.toLocalizedFileV2(): LocalizedFileV2? = associate { file ->
+  file.locale to
+    FileV2(name = file.name, sha256 = file.sha256, size = file.size, ipfsCidV1 = file.ipfsCidV1)
+}
+  .ifEmpty { null }
 
 // We can't restrict this query further (e.g. only from enabled repos or max weight),
 // because we are using this via @Relation on packageName for specific repos.

@@ -287,4 +287,3 @@ private fun previewSwapSuccessUiItem(
     iconModel = null,
     installState = installState,
   )
-

@@ -10,6 +10,7 @@ interface SearchInfo {
   val autoShowKeyboard: Boolean
   val showKeyboard: Boolean
   val actions: SearchActions
+
   fun onKeyboardShown()
 }
 

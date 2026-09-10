@@ -5,6 +5,7 @@ insert_final_newline = true
 
 [*.{kt,kts}]
 indent_style = space
+insert_final_newline = true
 max_line_length = 100
 indent_size = 2
 ij_continuation_indent_size = 2
@@ -35,6 +36,7 @@ ij_kotlin_continuation_indent_in_elvis = false
 ij_kotlin_continuation_indent_in_if_conditions = false
 ij_kotlin_continuation_indent_in_parameter_lists = false
 ij_kotlin_continuation_indent_in_supertype_lists = false
+ij_kotlin_continuation_indent_size = 2
 ij_kotlin_else_on_new_line = false
 ij_kotlin_enum_constants_wrap = off
 ij_kotlin_extends_list_wrap = normal
@@ -43,6 +45,7 @@ ij_kotlin_finally_on_new_line = false
 ij_kotlin_if_rparen_on_new_line = false
 ij_kotlin_import_nested_classes = false
 ij_kotlin_imports_layout = *
+ij_kotlin_indent_size = 2
 ij_kotlin_insert_whitespaces_in_simple_one_line_method = true
 ij_kotlin_keep_blank_lines_before_right_brace = 2
 ij_kotlin_keep_blank_lines_in_code = 2

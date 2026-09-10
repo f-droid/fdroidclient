@@ -85,9 +85,8 @@ internal class UpdateInstallerTest {
   fun `updateAll preApproval is true for single app and forced false for multiple`() =
     testScope.runTest {
       every { repoManager.getRepository(1L) } returns makeRepository()
-      coEvery {
-        appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
-      } returns mockk()
+      coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any(), any()) } returns
+        mockk()
 
       // single app + canAsk=true -> canAskPreApprovalNow=true
       val ver = makeAppVersion(versionName = "5.0", versionCode = 50)
@@ -147,9 +146,8 @@ internal class UpdateInstallerTest {
   fun `updateAll updates own app last and sets waiting state`() = testScope.runTest {
     val otherPkg = "com.example.other"
     every { repoManager.getRepository(1L) } returns makeRepository()
-    coEvery {
-      appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
-    } returns mockk()
+    coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any(), any()) } returns
+      mockk()
 
     val ownVersion =
       makeAppVersion(packageName = OWN_PACKAGE_NAME, versionName = "3.0", added = 9999L)
@@ -229,9 +227,8 @@ internal class UpdateInstallerTest {
             update = ver,
           )
         )
-      coEvery {
-        appInstallManager.install(any(), any(), any(), any(), any(), any(), any())
-      } returns mockk()
+      coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any(), any()) } returns
+        mockk()
 
       // repo is null
       every { repoManager.getRepository(1L) } returns null
@@ -261,9 +258,7 @@ internal class UpdateInstallerTest {
       every { appDao.getApp(1L, OWN_PACKAGE_NAME) } returns makeApp(packageName = OWN_PACKAGE_NAME)
       every { appDao.getApp(1L, otherPkg) } returns makeApp(packageName = otherPkg)
       every { context.isAppInForeground() } returns false
-      every {
-        appInstallManager.setWaitingState(any(), any(), any(), any(), any())
-      } just runs
+      every { appInstallManager.setWaitingState(any(), any(), any(), any(), any()) } just runs
 
       val ownVersion =
         makeAppVersion(packageName = OWN_PACKAGE_NAME, versionName = "3.0", added = 9999L)
@@ -279,10 +274,7 @@ internal class UpdateInstallerTest {
           iconModel = any(),
           canAskPreApprovalNow = any(),
         )
-      } coAnswers
-        {
-          awaitCancellation()
-        }
+      } coAnswers { awaitCancellation() }
       every { appInstallManager.cancel(OWN_PACKAGE_NAME) } just runs
 
       val updates =

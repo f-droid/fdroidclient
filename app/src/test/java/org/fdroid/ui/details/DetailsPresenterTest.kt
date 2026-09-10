@@ -216,12 +216,18 @@ internal class DetailsPresenterTest {
       assertNull(item.installedVersion)
       assertNull(item.installedSigner)
       assertEquals("Bug fixes", item.whatsNew)
-      assertEquals(mapDonateLinks(item.app.donate!! + listOf(
-        "https://liberapay.com/${app.metadata.liberapay}/donate",
-        "https://opencollective.com/${app.metadata.openCollective}/donate",
-        "bitcoin:${app.metadata.bitcoin}",
-        "litecoin:${app.metadata.litecoin}",
-      )), item.donateLinks)
+      assertEquals(
+        mapDonateLinks(
+          item.app.donate!! +
+            listOf(
+              "https://liberapay.com/${app.metadata.liberapay}/donate",
+              "https://opencollective.com/${app.metadata.openCollective}/donate",
+              "bitcoin:${app.metadata.bitcoin}",
+              "litecoin:${app.metadata.litecoin}",
+            )
+        ),
+        item.donateLinks,
+      )
       assertTrue(item.showDonate)
       assertTrue(item.showAuthorContact)
       assertFalse(item.showWarnings)
@@ -521,14 +527,15 @@ internal class DetailsPresenterTest {
 
   @Test
   fun `run mapDonateLinks() on all supported types of links`() = runTest {
-    val links = listOf(
-      "https://example.com/donate",
-      "https://opencollective.com/florpus/donate",
-      "https://liberapay.com/florpus/donate",
-      "bitcoin:bc11234",
-      "litecoin:lc11234",
-      "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
-    )
+    val links =
+      listOf(
+        "https://example.com/donate",
+        "https://opencollective.com/florpus/donate",
+        "https://liberapay.com/florpus/donate",
+        "bitcoin:bc11234",
+        "litecoin:lc11234",
+        "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
+      )
 
     assertEquals(
       listOf(
@@ -537,106 +544,131 @@ internal class DetailsPresenterTest {
         DonateLink("https://liberapay.com/florpus/donate", DonateType.LIBERAPAY, null),
         DonateLink("bitcoin:bc11234", DonateType.BITCOIN, null),
         DonateLink("litecoin:lc11234", DonateType.LITECOIN, null),
-        DonateLink("taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation", DonateType.TALER, null),
-      ), mapDonateLinks(links)
+        DonateLink(
+          "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
+          DonateType.TALER,
+          null,
+        ),
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `mapDonateLinks() must omit account name parsing for generic web links`() = runTest {
-    val links = listOf(
-      "https://example.com/donate/florpus",
-      "https://example.com/donate/shanks",
-    )
+    val links =
+      listOf(
+        "https://example.com/donate/florpus",
+        "https://example.com/donate/shanks",
+      )
 
     assertEquals(
       listOf(
         DonateLink("https://example.com/donate/florpus", DonateType.GENERIC, null),
         DonateLink("https://example.com/donate/shanks", DonateType.GENERIC, null),
-      ), mapDonateLinks(links)
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `check mapDonateLinks() account name parsing for open collective`() = runTest {
-    val links = listOf(
-      "https://opencollective.com/florpus/donate",
-      "https://opencollective.com/shanks/donate",
-    )
+    val links =
+      listOf(
+        "https://opencollective.com/florpus/donate",
+        "https://opencollective.com/shanks/donate",
+      )
 
     assertEquals(
       listOf(
-        DonateLink("https://opencollective.com/florpus/donate", DonateType.OPEN_COLLECTIVE, "florpus"),
-        DonateLink("https://opencollective.com/shanks/donate", DonateType.OPEN_COLLECTIVE, "shanks"),
-      ), mapDonateLinks(links)
+        DonateLink(
+          "https://opencollective.com/florpus/donate",
+          DonateType.OPEN_COLLECTIVE,
+          "florpus",
+        ),
+        DonateLink(
+          "https://opencollective.com/shanks/donate",
+          DonateType.OPEN_COLLECTIVE,
+          "shanks",
+        ),
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `check mapDonateLinks() account name parsing for liberapay`() = runTest {
-    val links = listOf(
-      "https://liberapay.com/florpus/donate",
-      "https://liberapay.com/shanks/donate",
-    )
+    val links =
+      listOf(
+        "https://liberapay.com/florpus/donate",
+        "https://liberapay.com/shanks/donate",
+      )
 
     assertEquals(
       listOf(
         DonateLink("https://liberapay.com/florpus/donate", DonateType.LIBERAPAY, "florpus"),
         DonateLink("https://liberapay.com/shanks/donate", DonateType.LIBERAPAY, "shanks"),
-      ), mapDonateLinks(links)
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `check mapDonateLinks() account name parsing for bitcoin`() = runTest {
-    val links = listOf(
-      "bitcoin:bc11234",
-      "bitcoin:bc15678",
-    )
+    val links =
+      listOf(
+        "bitcoin:bc11234",
+        "bitcoin:bc15678",
+      )
 
     assertEquals(
       listOf(
         DonateLink("bitcoin:bc11234", DonateType.BITCOIN, "bc11234"),
         DonateLink("bitcoin:bc15678", DonateType.BITCOIN, "bc15678"),
-      ), mapDonateLinks(links)
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `check mapDonateLinks() account name parsing for litecoin`() = runTest {
-    val links = listOf(
-      "litecoin:lc11234",
-      "litecoin:lc15678",
-    )
+    val links =
+      listOf(
+        "litecoin:lc11234",
+        "litecoin:lc15678",
+      )
 
     assertEquals(
       listOf(
         DonateLink("litecoin:lc11234", DonateType.LITECOIN, "lc11234"),
         DonateLink("litecoin:lc15678", DonateType.LITECOIN, "lc15678"),
-      ), mapDonateLinks(links)
+      ),
+      mapDonateLinks(links),
     )
   }
 
   @Test
   fun `check mapDonateLinks() account name parsing for taler`() = runTest {
-    val links = listOf(
-      "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
-      "taler://pay-template/taler.example.com/something/entirely/different/receiver/magic-money",
-    )
+    val links =
+      listOf(
+        "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
+        "taler://pay-template/taler.example.com/something/entirely/different/receiver/magic-money",
+      )
 
     assertEquals(
       listOf(
         DonateLink(
           "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
           DonateType.TALER,
-          "demo-donation"
+          "demo-donation",
         ),
         DonateLink(
           "taler://pay-template/taler.example.com/something/entirely/different/receiver/magic-money",
           DonateType.TALER,
-          "magic-money"
+          "magic-money",
         ),
-      ), mapDonateLinks(links)
+      ),
+      mapDonateLinks(links),
     )
   }
 

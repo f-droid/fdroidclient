@@ -24,9 +24,7 @@ import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
 
 @Composable
-fun HintOverlayContainer(
-  content: @Composable () -> Unit,
-) {
+fun HintOverlayContainer(content: @Composable () -> Unit) {
   HintHost(
     overlay = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
     content = content,

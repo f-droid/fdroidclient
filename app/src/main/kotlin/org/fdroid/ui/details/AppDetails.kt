@@ -74,7 +74,6 @@ import com.viktormykhailiv.compose.hints.HintProperties
 import com.viktormykhailiv.compose.hints.rememberHint
 import com.viktormykhailiv.compose.hints.rememberHintAnchorState
 import com.viktormykhailiv.compose.hints.rememberHintController
-import java.net.URI
 import kotlinx.coroutines.launch
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.R
@@ -273,7 +272,10 @@ fun AppDetails(
               modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             )
             item.donateLinks.forEach { donate ->
-              AppDonationLink(donate, modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp))
+              AppDonationLink(
+                link = donate,
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+              )
             }
           }
         }

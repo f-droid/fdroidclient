@@ -912,14 +912,13 @@ internal interface AppDaoInt : AppDao {
       list.add(liveData)
       addSource(liveData) {
         var shouldUpdate = true
-        val result =
-          list.flatMap {
-            it.value
-              ?: run {
-                shouldUpdate = false
-                emptyList()
-              }
-          }
+        val result = list.flatMap {
+          it.value
+            ?: run {
+              shouldUpdate = false
+              emptyList()
+            }
+        }
         if (shouldUpdate)
           value =
             result

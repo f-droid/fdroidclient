@@ -37,7 +37,7 @@ fun BottomBar(model: MainModel, currentNavKey: NavKey, onNav: (MainNavKey) -> Un
     topLevelRoutes.forEach { dest ->
       NavigationBarItem(
         icon = { NavIcon(dest, model.numUpdates, model.hasAppIssues) },
-        label ={ Text(stringResource(dest.label)) },
+        label = { Text(stringResource(dest.label)) },
         selected = dest == currentNavKey,
         colors =
           NavigationBarItemDefaults.colors(

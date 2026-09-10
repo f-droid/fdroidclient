@@ -12,13 +12,8 @@ object LegacyUtils {
   fun <T> collectInJava(
     scope: CoroutineScope = CoroutineScope(context = kotlinx.coroutines.Dispatchers.Main),
     flow: Flow<T>,
-    action: (T) -> Any
+    action: (T) -> Any,
   ): Job {
-    return scope.launch {
-      flow.collect { value ->
-        action(value)
-      }
-    }
+    return scope.launch { flow.collect { value -> action(value) } }
   }
-
 }

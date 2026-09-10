@@ -113,7 +113,7 @@ internal class UpdatesManagerTest {
       val installedApps1 = installedApps("app1")
       installedAppsFlow.value = installedApps1
       advanceUntilIdle()
-      advanceTimeBy( 2000)
+      advanceTimeBy(2000)
       verify(exactly = 1) { dbAppChecker.getApps(installedApps1) }
       assertNotNull(updatesManager.updates.value) // populated after first real emission
 
@@ -161,54 +161,53 @@ internal class UpdatesManagerTest {
     }
 
   @Test
-  fun `loadUpdates with null name, repo and trimmed whatsNew`() =
-    testScope.runTest {
-      every { repoManager.getRepository(1L) } returns makeRepository()
+  fun `loadUpdates with null name, repo and trimmed whatsNew`() = testScope.runTest {
+    every { repoManager.getRepository(1L) } returns makeRepository()
 
-      // null name used "Unknown app"
-      mockLoadUpdates(AppCheckResult(listOf(makeUpdatableApp(name = null)), emptyList()))
-      createUpdatesManager().also { updatesManager ->
-        updatesManager.loadUpdates(installedApps("com.example.app"))
-        advanceUntilIdle()
-        updatesManager.updates.test { assertEquals("Unknown app", awaitNonNull()[0].name) }
-      }
+    // null name used "Unknown app"
+    mockLoadUpdates(AppCheckResult(listOf(makeUpdatableApp(name = null)), emptyList()))
+    createUpdatesManager().also { updatesManager ->
+      updatesManager.loadUpdates(installedApps("com.example.app"))
+      advanceUntilIdle()
+      updatesManager.updates.test { assertEquals("Unknown app", awaitNonNull()[0].name) }
+    }
 
-      // whatsNew gets trimmed and null whatsNew stays null
-      val trimmedVer = makeAppVersion().also { every { it.getWhatsNew(any()) } returns "  foo  " }
-      val nullVer = makeAppVersion().also { every { it.getWhatsNew(any()) } returns null }
-      mockLoadUpdates(
-        AppCheckResult(
-          listOf(
-            makeUpdatableApp(packageName = "pkg.a", update = trimmedVer),
-            makeUpdatableApp(packageName = "pkg.b", update = nullVer),
-          ),
-          emptyList(),
-        )
+    // whatsNew gets trimmed and null whatsNew stays null
+    val trimmedVer = makeAppVersion().also { every { it.getWhatsNew(any()) } returns "  foo  " }
+    val nullVer = makeAppVersion().also { every { it.getWhatsNew(any()) } returns null }
+    mockLoadUpdates(
+      AppCheckResult(
+        listOf(
+          makeUpdatableApp(packageName = "pkg.a", update = trimmedVer),
+          makeUpdatableApp(packageName = "pkg.b", update = nullVer),
+        ),
+        emptyList(),
       )
-      createUpdatesManager().also { updatesManager ->
-        updatesManager.loadUpdates(
-          mapOf("pkg.a" to makePackageInfo("pkg.a"), "pkg.b" to makePackageInfo("pkg.b"))
-        )
-        advanceUntilIdle()
-        updatesManager.updates.test {
-          val items = awaitNonNull()
-          assertEquals("foo", items.first { it.packageName == "pkg.a" }.whatsNew)
-          assertNull(items.first { it.packageName == "pkg.b" }.whatsNew)
-        }
-      }
-
-      // null repo gets handled
-      mockLoadUpdates(AppCheckResult(listOf(makeUpdatableApp()), emptyList()))
-      every { repoManager.getRepository(1L) } returns null
-      createUpdatesManager().also { updatesManager ->
-        updatesManager.loadUpdates(installedApps("com.example.app"))
-        advanceUntilIdle()
-        updatesManager.updates.test {
-          // no DownloadRequest as fallback, since repo is null
-          assertNull((awaitNonNull()[0].iconModel as PackageName).iconDownloadRequest)
-        }
+    )
+    createUpdatesManager().also { updatesManager ->
+      updatesManager.loadUpdates(
+        mapOf("pkg.a" to makePackageInfo("pkg.a"), "pkg.b" to makePackageInfo("pkg.b"))
+      )
+      advanceUntilIdle()
+      updatesManager.updates.test {
+        val items = awaitNonNull()
+        assertEquals("foo", items.first { it.packageName == "pkg.a" }.whatsNew)
+        assertNull(items.first { it.packageName == "pkg.b" }.whatsNew)
       }
     }
+
+    // null repo gets handled
+    mockLoadUpdates(AppCheckResult(listOf(makeUpdatableApp()), emptyList()))
+    every { repoManager.getRepository(1L) } returns null
+    createUpdatesManager().also { updatesManager ->
+      updatesManager.loadUpdates(installedApps("com.example.app"))
+      advanceUntilIdle()
+      updatesManager.updates.test {
+        // no DownloadRequest as fallback, since repo is null
+        assertNull((awaitNonNull()[0].iconModel as PackageName).iconDownloadRequest)
+      }
+    }
+  }
 
   @Test
   fun `loadUpdates uses installedAppsCache by default and updates state on later calls`() =
@@ -242,130 +241,126 @@ internal class UpdatesManagerTest {
     }
 
   @Test
-  fun `loadUpdates updates notification or cancels when empty`() =
-    testScope.runTest {
-      every { repoManager.getRepository(1L) } returns makeRepository()
+  fun `loadUpdates updates notification or cancels when empty`() = testScope.runTest {
+    every { repoManager.getRepository(1L) } returns makeRepository()
 
-      // notification is showing, but we have no (more) updates, so cancel notification
-      mockLoadUpdates(isNotificationShowing = true)
-      every { notificationManager.cancelAppUpdatesAvailableNotification() } just runs
-      val updatesManager = createUpdatesManager()
-      updatesManager.loadUpdates(installedApps("app"))
-      advanceUntilIdle()
-      verify(exactly = 1) { notificationManager.cancelAppUpdatesAvailableNotification() }
-      verify(exactly = 0) { notificationManager.showAppUpdatesAvailableNotification(any()) }
+    // notification is showing, but we have no (more) updates, so cancel notification
+    mockLoadUpdates(isNotificationShowing = true)
+    every { notificationManager.cancelAppUpdatesAvailableNotification() } just runs
+    val updatesManager = createUpdatesManager()
+    updatesManager.loadUpdates(installedApps("app"))
+    advanceUntilIdle()
+    verify(exactly = 1) { notificationManager.cancelAppUpdatesAvailableNotification() }
+    verify(exactly = 0) { notificationManager.showAppUpdatesAvailableNotification(any()) }
 
-      // notification is showing, and we have updates, so update notification
-      val ver = makeAppVersion(versionName = "2.5")
-      val u = makeUpdatableApp(name = "My App", installedVersionName = "1.0", update = ver)
-      mockLoadUpdates(AppCheckResult(listOf(u), emptyList()), isNotificationShowing = true)
-      every { notificationManager.showAppUpdatesAvailableNotification(any()) } just runs
+    // notification is showing, and we have updates, so update notification
+    val ver = makeAppVersion(versionName = "2.5")
+    val u = makeUpdatableApp(name = "My App", installedVersionName = "1.0", update = ver)
+    mockLoadUpdates(AppCheckResult(listOf(u), emptyList()), isNotificationShowing = true)
+    every { notificationManager.showAppUpdatesAvailableNotification(any()) } just runs
+    updatesManager.loadUpdates(installedApps("com.example.app"))
+    advanceUntilIdle()
+    verify(exactly = 1) { notificationManager.showAppUpdatesAvailableNotification(any()) }
+    updatesManager.notificationStates.getBigText().let { bigText ->
+      assertTrue(bigText.contains("My App"))
+      assertTrue(bigText.contains("1.0"))
+      assertTrue(bigText.contains("2.5"))
+    }
+
+    // notification is not showing, so we don't call into NotificationManager
+    mockLoadUpdates(
+      AppCheckResult(listOf(makeUpdatableApp()), emptyList()),
+      isNotificationShowing = false,
+    )
+    updatesManager.loadUpdates(installedApps("com.example.app"))
+    advanceUntilIdle()
+    verify(exactly = 1) { // still 1 from above
+      notificationManager.showAppUpdatesAvailableNotification(any())
+    }
+    verify(exactly = 1) { // still 1 from above
+      notificationManager.cancelAppUpdatesAvailableNotification()
+    }
+  }
+
+  @Test
+  fun `loadUpdates finds app issue`() = testScope.runTest {
+    // full field mapping
+    val issue = KnownVulnerability(fromPreferredRepo = true)
+    val overview = makeAppOverviewItem(lastUpdated = 42L, name = "Vulnerable App")
+    mockLoadUpdates(
+      AppCheckResult(emptyList(), listOf(AvailableAppWithIssue(overview, "1.0", 10, issue)))
+    )
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    createUpdatesManager().also { updatesManager ->
       updatesManager.loadUpdates(installedApps("com.example.app"))
       advanceUntilIdle()
-      verify(exactly = 1) { notificationManager.showAppUpdatesAvailableNotification(any()) }
-      updatesManager.notificationStates.getBigText().let { bigText ->
-        assertTrue(bigText.contains("My App"))
-        assertTrue(bigText.contains("1.0"))
-        assertTrue(bigText.contains("2.5"))
+      updatesManager.appsWithIssues.test {
+        val item = awaitNonNull()[0]
+        assertEquals("com.example.app", item.packageName)
+        assertEquals("Vulnerable App", item.name)
+        assertEquals("1.0", item.installedVersionName)
+        assertEquals(10L, item.installedVersionCode)
+        assertEquals(issue, item.issue)
+        assertEquals(42L, item.lastUpdated)
+        assertNull((item.iconModel as PackageName).iconDownloadRequest)
       }
+    }
+  }
 
-      // notification is not showing, so we don't call into NotificationManager
-      mockLoadUpdates(
-        AppCheckResult(listOf(makeUpdatableApp()), emptyList()),
-        isNotificationShowing = false,
+  @Test
+  fun `loadUpdates finds UnavailableAppWithIssue`() = testScope.runTest {
+    mockLoadUpdates(
+      AppCheckResult(
+        emptyList(),
+        listOf(UnavailableAppWithIssue("com.removed", "Removed App", "3.0", 30)),
       )
-      updatesManager.loadUpdates(installedApps("com.example.app"))
+    )
+    createUpdatesManager().also { updatesManager ->
+      updatesManager.loadUpdates(installedApps("com.removed"))
       advanceUntilIdle()
-      verify(exactly = 1) { // still 1 from above
-        notificationManager.showAppUpdatesAvailableNotification(any())
-      }
-      verify(exactly = 1) { // still 1 from above
-        notificationManager.cancelAppUpdatesAvailableNotification()
+      updatesManager.appsWithIssues.test {
+        val item = awaitNonNull()[0]
+        assertEquals("com.removed", item.packageName)
+        assertEquals("Removed App", item.name)
+        assertEquals("3.0", item.installedVersionName)
+        assertEquals(30L, item.installedVersionCode)
+        assertEquals(NotAvailable, item.issue)
+        assertEquals(-1L, item.lastUpdated)
+        assertNull((item.iconModel as PackageName).iconDownloadRequest)
       }
     }
+  }
 
   @Test
-  fun `loadUpdates finds app issue`() =
-    testScope.runTest {
-      // full field mapping
-      val issue = KnownVulnerability(fromPreferredRepo = true)
-      val overview = makeAppOverviewItem(lastUpdated = 42L, name = "Vulnerable App")
-      mockLoadUpdates(
-        AppCheckResult(emptyList(), listOf(AvailableAppWithIssue(overview, "1.0", 10, issue)))
+  fun `loadUpdates maps all AppIssue subtypes correctly`() = testScope.runTest {
+    every { repoManager.getRepository(1L) } returns null
+    data class Case(val issue: AppIssue, val pkg: String)
+    listOf(
+        Case(KnownVulnerability(fromPreferredRepo = false), "pkg.vuln"),
+        Case(NoCompatibleSigner(repoIdWithCompatibleSigner = 2L), "pkg.signer"),
+        Case(UpdateInOtherRepo(repoIdWithUpdate = 5L), "pkg.other"),
       )
-      every { repoManager.getRepository(1L) } returns makeRepository()
-      createUpdatesManager().also { updatesManager ->
-        updatesManager.loadUpdates(installedApps("com.example.app"))
-        advanceUntilIdle()
-        updatesManager.appsWithIssues.test {
-          val item = awaitNonNull()[0]
-          assertEquals("com.example.app", item.packageName)
-          assertEquals("Vulnerable App", item.name)
-          assertEquals("1.0", item.installedVersionName)
-          assertEquals(10L, item.installedVersionCode)
-          assertEquals(issue, item.issue)
-          assertEquals(42L, item.lastUpdated)
-          assertNull((item.iconModel as PackageName).iconDownloadRequest)
-        }
-      }
-    }
-
-  @Test
-  fun `loadUpdates finds UnavailableAppWithIssue`() =
-    testScope.runTest {
-      mockLoadUpdates(
-        AppCheckResult(
-          emptyList(),
-          listOf(UnavailableAppWithIssue("com.removed", "Removed App", "3.0", 30)),
-        )
-      )
-      createUpdatesManager().also { updatesManager ->
-        updatesManager.loadUpdates(installedApps("com.removed"))
-        advanceUntilIdle()
-        updatesManager.appsWithIssues.test {
-          val item = awaitNonNull()[0]
-          assertEquals("com.removed", item.packageName)
-          assertEquals("Removed App", item.name)
-          assertEquals("3.0", item.installedVersionName)
-          assertEquals(30L, item.installedVersionCode)
-          assertEquals(NotAvailable, item.issue)
-          assertEquals(-1L, item.lastUpdated)
-          assertNull((item.iconModel as PackageName).iconDownloadRequest)
-        }
-      }
-    }
-
-  @Test
-  fun `loadUpdates maps all AppIssue subtypes correctly`() =
-    testScope.runTest {
-      every { repoManager.getRepository(1L) } returns null
-      data class Case(val issue: AppIssue, val pkg: String)
-      listOf(
-          Case(KnownVulnerability(fromPreferredRepo = false), "pkg.vuln"),
-          Case(NoCompatibleSigner(repoIdWithCompatibleSigner = 2L), "pkg.signer"),
-          Case(UpdateInOtherRepo(repoIdWithUpdate = 5L), "pkg.other"),
-        )
-        .forEach { (issue, packageName) ->
-          mockLoadUpdates(
-            AppCheckResult(
-              emptyList(),
-              listOf(
-                AvailableAppWithIssue(
-                  makeAppOverviewItem(packageName = packageName),
-                  "1.0",
-                  10,
-                  issue,
-                )
-              ),
-            )
+      .forEach { (issue, packageName) ->
+        mockLoadUpdates(
+          AppCheckResult(
+            emptyList(),
+            listOf(
+              AvailableAppWithIssue(
+                makeAppOverviewItem(packageName = packageName),
+                "1.0",
+                10,
+                issue,
+              )
+            ),
           )
-          createUpdatesManager().also { updatesManager ->
-            updatesManager.loadUpdates(installedApps(packageName))
-            advanceUntilIdle()
-            updatesManager.appsWithIssues.test { assertEquals(issue, awaitNonNull()[0].issue) }
-          }
+        )
+        createUpdatesManager().also { updatesManager ->
+          updatesManager.loadUpdates(installedApps(packageName))
+          advanceUntilIdle()
+          updatesManager.appsWithIssues.test { assertEquals(issue, awaitNonNull()[0].issue) }
         }
-    }
+      }
+  }
 
   @Test
   fun `loadUpdates doesn't return ignored issues and no issues when still firstStart`() =
@@ -440,118 +435,115 @@ internal class UpdatesManagerTest {
     }
 
   @Test
-  fun `loadUpdates with both updates and issues also updates both flows`() =
-    testScope.runTest {
-      mockLoadUpdates(
-        AppCheckResult(
-          listOf(makeUpdatableApp()),
-          listOf(
-            AvailableAppWithIssue(
-              makeAppOverviewItem(packageName = "com.issue"),
-              "2.0",
-              20,
-              KnownVulnerability(false),
-            )
-          ),
-        )
+  fun `loadUpdates with both updates and issues also updates both flows`() = testScope.runTest {
+    mockLoadUpdates(
+      AppCheckResult(
+        listOf(makeUpdatableApp()),
+        listOf(
+          AvailableAppWithIssue(
+            makeAppOverviewItem(packageName = "com.issue"),
+            "2.0",
+            20,
+            KnownVulnerability(false),
+          )
+        ),
       )
-      every { repoManager.getRepository(1L) } returns makeRepository()
-      val updatesManager = createUpdatesManager()
-      updatesManager.loadUpdates(
-        mapOf(
-          "com.example.app" to makePackageInfo("com.example.app"),
-          "com.issue" to makePackageInfo("com.issue"),
-        )
+    )
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    val updatesManager = createUpdatesManager()
+    updatesManager.loadUpdates(
+      mapOf(
+        "com.example.app" to makePackageInfo("com.example.app"),
+        "com.issue" to makePackageInfo("com.issue"),
       )
-      advanceUntilIdle()
+    )
+    advanceUntilIdle()
 
-      updatesManager.updates.test { assertEquals(1, awaitNonNull().size) }
-      updatesManager.appsWithIssues.test { assertEquals(1, awaitNonNull().size) }
-    }
+    updatesManager.updates.test { assertEquals(1, awaitNonNull().size) }
+    updatesManager.appsWithIssues.test { assertEquals(1, awaitNonNull().size) }
+  }
 
   @Test
-  fun `notificationStates and numUpdates update when app updates change`() =
-    testScope.runTest {
-      every { repoManager.getRepository(1L) } returns makeRepository()
-      val updatesManager = createUpdatesManager()
+  fun `notificationStates and numUpdates update when app updates change`() = testScope.runTest {
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    val updatesManager = createUpdatesManager()
 
-      // null or empty updates just have empty text
-      assertEquals("", updatesManager.notificationStates.getBigText())
+    // null or empty updates just have empty text
+    assertEquals("", updatesManager.notificationStates.getBigText())
+    mockLoadUpdates()
+    updatesManager.loadUpdates(installedApps("app"))
+    advanceUntilIdle()
+    assertEquals("", updatesManager.notificationStates.getBigText())
+
+    // now collect changes from 0 to 2 and back to 0 updates
+    updatesManager.numUpdates.test {
+      assertEquals(0, awaitItem())
+
+      val v1 = makeAppVersion(packageName = "a1", versionName = "2.0")
+      val v2 = makeAppVersion(packageName = "a2", versionName = "4.0")
+      val u1 =
+        makeUpdatableApp(
+          packageName = "a1",
+          name = "One",
+          installedVersionName = "1.0",
+          update = v1,
+        )
+      val u2 =
+        makeUpdatableApp(
+          packageName = "a2",
+          name = "Two",
+          installedVersionName = "3.0",
+          update = v2,
+        )
+      mockLoadUpdates(AppCheckResult(listOf(u1, u2), emptyList()))
+      updatesManager.loadUpdates(
+        mapOf("a1" to makePackageInfo("a1"), "a2" to makePackageInfo("a2"))
+      )
+      advanceUntilIdle()
+      // now we got two updates and notification text was updated
+      assertEquals(2, awaitItem())
+      updatesManager.notificationStates.getBigText().also { bigText ->
+        assertTrue(bigText.contains("One"))
+        assertTrue(bigText.contains("Two"))
+        assertTrue(bigText.contains("1.0 → 2.0"))
+        assertTrue(bigText.contains("3.0 → 4.0"))
+      }
+
+      // back to 0 updates
       mockLoadUpdates()
       updatesManager.loadUpdates(installedApps("app"))
       advanceUntilIdle()
-      assertEquals("", updatesManager.notificationStates.getBigText())
-
-      // now collect changes from 0 to 2 and back to 0 updates
-      updatesManager.numUpdates.test {
-        assertEquals(0, awaitItem())
-
-        val v1 = makeAppVersion(packageName = "a1", versionName = "2.0")
-        val v2 = makeAppVersion(packageName = "a2", versionName = "4.0")
-        val u1 =
-          makeUpdatableApp(
-            packageName = "a1",
-            name = "One",
-            installedVersionName = "1.0",
-            update = v1,
-          )
-        val u2 =
-          makeUpdatableApp(
-            packageName = "a2",
-            name = "Two",
-            installedVersionName = "3.0",
-            update = v2,
-          )
-        mockLoadUpdates(AppCheckResult(listOf(u1, u2), emptyList()))
-        updatesManager.loadUpdates(
-          mapOf("a1" to makePackageInfo("a1"), "a2" to makePackageInfo("a2"))
-        )
-        advanceUntilIdle()
-        // now we got two updates and notification text was updated
-        assertEquals(2, awaitItem())
-        updatesManager.notificationStates.getBigText().also { bigText ->
-          assertTrue(bigText.contains("One"))
-          assertTrue(bigText.contains("Two"))
-          assertTrue(bigText.contains("1.0 → 2.0"))
-          assertTrue(bigText.contains("3.0 → 4.0"))
-        }
-
-        // back to 0 updates
-        mockLoadUpdates()
-        updatesManager.loadUpdates(installedApps("app"))
-        advanceUntilIdle()
-        assertEquals(0, awaitItem())
-      }
+      assertEquals(0, awaitItem())
     }
+  }
 
   @Test
-  fun `updateAll delegates to UpdateInstaller when updates are loaded`() =
-    testScope.runTest {
-      val updatesManager = createUpdatesManager()
+  fun `updateAll delegates to UpdateInstaller when updates are loaded`() = testScope.runTest {
+    val updatesManager = createUpdatesManager()
 
-      // No updates yet -> no delegation
-      updatesManager.updateAll(canAskPreApprovalNow = true)
-      advanceUntilIdle()
-      coVerify(exactly = 0) { updateInstaller.updateAll(any(), any()) }
+    // No updates yet -> no delegation
+    updatesManager.updateAll(canAskPreApprovalNow = true)
+    advanceUntilIdle()
+    coVerify(exactly = 0) { updateInstaller.updateAll(any(), any()) }
 
-      val ver = makeAppVersion(versionName = "2.0", versionCode = 20)
-      val update = makeUpdatableApp(update = ver)
-      mockLoadUpdates(AppCheckResult(listOf(update), emptyList()))
-      every { repoManager.getRepository(1L) } returns makeRepository()
+    val ver = makeAppVersion(versionName = "2.0", versionCode = 20)
+    val update = makeUpdatableApp(update = ver)
+    mockLoadUpdates(AppCheckResult(listOf(update), emptyList()))
+    every { repoManager.getRepository(1L) } returns makeRepository()
 
-      updatesManager.loadUpdates(installedApps("com.example.app"))
-      advanceUntilIdle()
+    updatesManager.loadUpdates(installedApps("com.example.app"))
+    advanceUntilIdle()
 
-      updatesManager.updateAll(canAskPreApprovalNow = true)
-      advanceUntilIdle()
+    updatesManager.updateAll(canAskPreApprovalNow = true)
+    advanceUntilIdle()
 
-      coVerify(exactly = 1) {
-        updateInstaller.updateAll(
-          match { it.size == 1 && it[0].packageName == "com.example.app" },
-          true,
-        )
-      }
+    coVerify(exactly = 1) {
+      updateInstaller.updateAll(
+        match { it.size == 1 && it[0].packageName == "com.example.app" },
+        true,
+      )
     }
+  }
 
   // Helpers
 

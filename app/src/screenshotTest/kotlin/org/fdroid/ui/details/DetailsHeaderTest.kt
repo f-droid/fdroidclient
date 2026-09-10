@@ -17,8 +17,15 @@ import org.fdroid.ui.utils.testApp
 @Composable
 @PreviewTest
 fun DetailsHeaderOpenTest() {
-  FDroidContent { Column { AppDetailsHeader(testApp.copy(
-    categories = testApp.categories?.subList(0, 2),), {}, PaddingValues(top = 8.dp)) } }
+  FDroidContent {
+    Column {
+      AppDetailsHeader(
+        testApp.copy(categories = testApp.categories?.subList(0, 2)),
+        {},
+        PaddingValues(top = 8.dp),
+      )
+    }
+  }
 }
 
 @Preview
