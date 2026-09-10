@@ -386,7 +386,7 @@
     <string name="pref_auto_updates_only_wifi">Wi-Fiのみ</string>
     <string name="pref_auto_updates_only_always">常時（モバイルデータを含む）</string>
     <string name="pref_auto_updates_only_never">行わない</string>
-    <string name="pref_auto_updates_summary_always">デバイスを使用していない時でも、モバイルデータ通信を使ってアプリをダウンロードして更新する</string>
+    <string name="pref_auto_updates_summary_always">モバイルデータでデバイスが使用されていないときにアプリを毎日ダウンロードして更新する</string>
     <string name="pref_repo_updates_summary_never">アップデートを確認しない （アプリは古くなります）</string>
     <string name="pref_mirror_chooser_title">ダウンロードミラーを選択</string>
     <string name="pref_proxy_title">SOCKSプロキシ経由で接続</string>
@@ -429,7 +429,7 @@
     <string name="repo_last_downloaded">ダウンロード: %s</string>
     <string name="crash_report_text">予期しないエラーが発生しました。あなたの所為ではありません。この問題を修正するためにメールで詳細を教えてくれませんか?</string>
     <string name="notification_channel_install_success_title">自動インストール済みアプリ</string>
-    <string name="notification_channel_install_success_description">アプリが自動的にインストールされた後に通知を表示します</string>
+    <string name="notification_channel_install_success_description">アプリが自動でインストールされたら通知を送る</string>
     <string name="notification_channel_self_update_title">自己更新</string>
     <string name="notification_channel_self_update_description">アプリが自己更新後に閉じたとき、再度簡単に起動できるよう通知します</string>
     <plurals name="notification_repo_update_saving">

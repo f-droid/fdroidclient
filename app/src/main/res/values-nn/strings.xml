@@ -390,7 +390,7 @@
     <string name="pref_mirror_chooser_title">Val av nedlastings­speglar</string>
     <string name="pref_proxy_hint">Mellomtenaren skal oppgjevast på formatet «vert:port»</string>
     <string name="app_details_anti_features_text">Nokre appar har funksjonalitet du ikkje har bedt om – og kanskje ikkje ønskjer. Det kan vera reklame, brukar­sporing eller avhengnadar til proprietære tenester. Me kallar dette anti­funksjonalitet. \n\nAlle appane i F-Droid som inneheld anti­funksjonalitet, er tydeleg merkte, slik at du kan ta eit velgrunna val på om du vil installera dei.</string>
-    <string name="about_license_text">Denne appen er er fri programvare. Du kan distribuera han vidare og/eller endra han ut frå vilkåra i GNU General Public License som er utgjeven av Free Software Foundation, anten versjon 3 av lisensen eller seinare versjon.</string>
+    <string name="about_license_text">Denne appen er fri programvare. Du kan distribuera han vidare og/eller endra han ut frå vilkåra i GNU General Public License som er utgjeven av Free Software Foundation, anten versjon 3 av lisensen eller seinare versjon.</string>
     <string name="dialog_metered_title">Vil du halda fram med mobildata?</string>
     <string name="dialog_metered_text">Å lasta ned %1$s kan medføra kostnadar, avhengig av kva datakvote du har</string>
     <string name="dialog_metered_text_no_size">Å lasta ned data kan medføra kostnadar, avhengig av kva datakvote du har</string>
@@ -440,10 +440,12 @@
     <string name="repo_intro">Ein pakkebrønn er ei kjelde til appar. Tredjeparts­pakke­brønnar du legg til her, har andre standardar enn dei offisielle F-Droid-pakke­brønnane.\n\nDu bør sikra deg at pakkebrønnane du legg til, er til å stola på.</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
-    <string name="ipfsgw_explainer">Last ned ned appar frå IPFS-vev­endepunkt. (Verkar berre for F-Droid-pakkebrønnar med IPFS-støtte.)</string>
-    <string name="ipfsgw_summary_new">Last ned ned appar via IPFS-vev­endepunkt</string>
+    <string name="ipfsgw_explainer">Last ned appar frå IPFS-vev­endepunkt. (Verkar berre for F-Droid-pakkebrønnar med IPFS-støtte.)</string>
+    <string name="ipfsgw_summary_new">Last ned appar via IPFS-vev­endepunkt</string>
     <string name="ipfsgw_caption_custom_gateways">Brukardefinerte IPFS-portnarar</string>
     <string name="install_history_empty_state">Denne lista er framleis tom\n\nNår du installerer, oppdaterer eller avinstallerer ein app, vert det lagt til ei oppføring her.</string>
     <string name="install_history_disabled_state">Installeringslogg er slått av\n\nInstallerering, oppdatering og avinstallering vert ikkje loggførte.</string>
     <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="taler">Taler</string>
 </resources>

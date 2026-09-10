@@ -1,8 +1,8 @@
-NOTITIE: De basisversie van de F-Droid-client heeft een gereduceerd aantal functies (bvb geen dichtbij delen en geen paniekfunctie). Het is gericht op Android 13 en kan zelfstandig updates uitvoeren zonder bevoorrechtte extensie of root.
+NOTITIE: De basisversie van de F-Droid-client heeft een gereduceerd aantal functies (b.v.b. geen dichtbij delen en geen paniekfunctie). Het is gericht op Android 13 en kan zelfstandig updates uitvoeren zonder bevoorrechte extensie of root.
 
-F-Droid is een installeerbare catalogus van libre software apps voor Android. De F-Droid clientapp maakt het eenvoudig om in de catalogus te bladeren, apps te installeren, en updates op uw apparaat bij te houden.
+F-Droid is een installeerbare catalogus van libre software-apps voor Android. De F-Droid clientapp maakt het eenvoudig om in de catalogus te bladeren, apps te installeren, en updates op uw apparaat bij te houden.
 
-Het verbindt met alle F-Droid compatibele databanken. De standaard repo wordt op f-droid.org gehost, waarop contains alleen bona fide libre software opgeslagen staat.
+Het verbindt met alle F-Droid-compatibele databanken. De standaard repo wordt op f-droid.org gehost, waar alleen bona fide libre software opgeslagen staat.
 
 Android zelf is open in de zin dat het u vrij staat APKs te installeren vanuit elke gewenste plek, maar er zijn veel goede redenen om F-Droid als uw libre software appmanager te gebruiken:
 
@@ -11,5 +11,5 @@ Android zelf is open in de zin dat het u vrij staat APKs te installeren vanuit e
 * Houd oudere en beta versies bij
 * Filter apps weg die incompatibel zijn met uw apparaat
 * Vind apps via categorieën en doorzoekbare beschrijvingen
-* Krijg togang tot gerelateerde URLs voor donations, broncode etc.
+* Krijg toegang tot gerelateerde URL's voor donations, broncode etc.
 * Blijf veilig door repo index-handtekening en APK-hashes te controleren

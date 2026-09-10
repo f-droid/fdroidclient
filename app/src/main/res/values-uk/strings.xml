@@ -404,15 +404,15 @@
     <string name="repo_basicauth_edit">Зберегти зміни</string>
     <string name="repo_force_update">Перевірка оновлень</string>
     <string name="crash_report_text">Сталася неочікувана помилка. Це не твоя вина. Хочете надіслати нам на e-mail деталі, щоб допомогти вирішити проблему?</string>
-    <string name="crash_report_comment_hint">Розкажіть нам, що сталося безпосередньо перед аварією</string>
+    <string name="crash_report_comment_hint">Розкажіть нам, що сталося безпосередньо перед збоєм</string>
     <string name="crash_report_button_send">Відправити звіт</string>
-    <string name="crash_report_error">Не вдалося надіслати звіт. Не знайдено застосунка e-mail :(</string>
+    <string name="crash_report_error">Не вдалося надіслати звіт. Не знайдено застосунку електронної поштиl :(</string>
     <string name="crash_report_save">Зберегти звіт про збій як файл</string>
     <string name="crash_report_saved">Звіт збережено у файл</string>
     <string name="crash_report_error_saving">Помилка збереження звіту про збій у файлі</string>
     <string name="notification_summary">Відкриває налаштування системних сповіщень</string>
     <string name="notification_channel_install_success_title">Автоматично встановлені застосунки</string>
-    <string name="notification_channel_install_success_description">Відображає сповіщення після автовстановлення застосунків</string>
+    <string name="notification_channel_install_success_description">Показує сповіщення після автовстановлення застосунків</string>
     <string name="notification_channel_updates_available_title">Доступні оновлення застосунків</string>
     <string name="notification_channel_updates_available_description">Відображає сповіщення після оновлення репозиторіїв та пошуку оновлень застосунків</string>
     <string name="notification_channel_self_update_title">Самостійне оновлення</string>
@@ -459,5 +459,5 @@
     <string name="open_collective">Open Collective</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
-    <string name="taler">Taler</string>
+    <string name="taler">Талер</string>
 </resources>
