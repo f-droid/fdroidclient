@@ -99,7 +99,7 @@
     <string name="swap_send_fdroid">Invia F-Droid</string>
     <string name="apps">Applicazioni</string>
     <string name="swap_nearby">Scambio nelle vicinanze</string>
-    <string name="menu_email">Invia un\'e-mail all\'autore</string>
+    <string name="menu_email">Invia una mail all\'autore</string>
     <string name="crash_dialog_title">Arresto anomalo di F-Droid</string>
     <string name="swap_stopping_wifi">Spegnimento del Wi-Fi…</string>
     <string name="install_error_notify_title">Errore durante l\'installazione di %s</string>
@@ -132,7 +132,7 @@
     <string name="panic_destructive_actions">Azioni irreversibili</string>
     <string name="panic_exit_title">Esci dall\'app</string>
     <string name="panic_app_setting_title">App per il pulsante antipanico</string>
-    <string name="panic_app_dialog_title">Conferma app per il pulsante antipanico</string>
+    <string name="panic_app_dialog_title">Conferma app da cui ricevere il segnale di panico</string>
     <string name="panic_app_dialog_message">Sei sicuro di voler consentire a %1$s di eseguire le azioni distruttive del pulsante antipanico\?</string>
     <string name="panic_settings">Impostazioni del pulsante antipanico</string>
     <string name="repo_add_mirror">Aggiungi mirror</string>
@@ -246,7 +246,7 @@
     <string name="repo_details_info_text">Un repository è una fonte di app.\n\nI mirror vengono usati per distribuire il carico di scaricamento delle app tra più server. I mirror più vicini a te potrebbero essere più veloci.\n\nI mirror ufficiali sono definiti dal proprietario del repository. Non possono essere eliminati, solo disattivati. Puoi definire mirror personalizzati aggiungendoli proprio come un repository normale.</string>
     <string name="repo_confirm_delete_mirror_body">Puoi continuare a installare app da questo repository usando gli altri mirror.</string>
     <string name="collapse">Riduci</string>
-    <string name="pref_export_log_summary">Crea un file con l\'output di logcat per il debug. Attenzione, potrebbe contenere informazioni sensibili!</string>
+    <string name="pref_export_log_summary">Crea un file con l\'output di logcat utile per il debug. Attenzione, potrebbe contenere informazioni sensibili!</string>
     <string name="export_log_success">Logcat salvato con successo</string>
     <string name="export_log_error">Errore nel salvataggio del logcat</string>
     <string name="app_details_more_apps_by_author">Altre app di %1$s</string>
@@ -458,4 +458,9 @@
     <string name="my_apps_header_recently_installed_apps">Recentemente installate</string>
     <string name="clear_all">Rimuovi tutto</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Verifica la presenza di aggiornamenti solo all\'apertura • Le app diventeranno obsolete</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
 </resources>

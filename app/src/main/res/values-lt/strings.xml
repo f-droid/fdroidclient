@@ -426,4 +426,14 @@
     <string name="pref_repo_updates_summary_never">Netikrinti, ar yra atnaujinimų • Programėlės pasens</string>
     <string name="pref_mirror_chooser_summary_random">Atsitiktinis</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Teikti pirmenybę iš kitų šalių</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="pref_mirror_chooser_title">Atsisiųsti pasirinktą repliką</string>
+    <string name="pref_proxy_hint">Įgaliotasis serveris turėtų būti host:port formate</string>
+    <string name="pref_proxy_error">Netinkamas įgaliotojo serverio formatas</string>
+    <string name="app_details_anti_features_title">Kas yra nepageidaujamos funkcijos?</string>
+    <string name="app_details_anti_features_text">Kai kuriose programose yra funkcijų, kurių neprašėte – ir galbūt nenorite. Tai gali būti reklamos, sekimas ar priklausomybė nuo nuosavybinių paslaugų. Mes tai vadiname nepageidaujamomis funkcijomis. \n\nF-Droid programoje galite aiškiai matyti, kurios programos turi tokių funkcijų, kad galėtumėte priimti informuotus sprendimus.</string>
 </resources>

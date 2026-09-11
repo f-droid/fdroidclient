@@ -443,4 +443,9 @@
     <string name="notification_channel_self_update_description">Njofton kur aplikacioni përditësoi veten dhe qe mbyllur, që të mund ta nisni sërish kollaj</string>
     <string name="notification_self_update_title">%s u përditësua. Prekeni që të hapet</string>
     <string name="category_group_summary_games">Lojëra tryeze, me letra dhe festash</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
 </resources>

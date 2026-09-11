@@ -358,4 +358,26 @@
     <string name="search_auto_keyboard">Automaticky otvoriť klávesnicu</string>
     <string name="sort_title">Zoradenie a kompatibilita</string>
     <string name="pref_mirror_chooser_title">Výber zrkadla pre sťahovanie</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Kontrolovať aktualizácie len pri otvorení • Aplikácie budú zastarané</string>
+    <string name="pref_repo_updates_summary_never">Nekontrolovať aktualizácie • Aplikácie budú zastarané</string>
+    <string name="pref_mirror_chooser_summary_random">Náhodne</string>
+    <string name="pref_mirror_chooser_summary_prefer_foreign">Preferuj iné krajiny</string>
+    <string name="pref_proxy_title">Pripojiť cez SOCKS proxy</string>
+    <string name="pref_proxy_disabled">Pripojiť na internet bez servera proxy</string>
+    <string name="pref_proxy_enabled">Používa %s na pripojenie</string>
+    <string name="pref_proxy_hint">Proxy je očakávaná vo formáte host:port</string>
+    <string name="pref_proxy_error">Neplatný formát proxy</string>
+    <string name="app_details_anti_features_title">Čo sú anti-funkcie?</string>
+    <string name="app_details_anti_features_text">Niektoré aplikácie sa správajú spôsobom, o ktorý ste nežiadali - a ktorý možno ani nechcete. Ide napríklad o reklamy, sledovanie alebo závislosti na proprietárnych službách. Spolu ich voláme anti-funkcie.\n\nAplikácie na F-Droide sú jasne označené v prípade že obsahujú anti-funkcie, aby ste mohli urobiť informovanú voľbu.</string>
+    <string name="dialog_metered_title">Pokračovať na mobilných dátach?</string>
+    <string name="about_license_text">Tento program je slobodný softvér: môžete ho šíriť a upravovať podľa ustanovení licencie GNU General Public License, vydávanej nadáciou Free Software Foundation, vo verzii 3 alebo ktorejkoľvek neskoršej verzii.</string>
+    <string name="dialog_metered_text">Stiahnutie %1$s dát môže byť spoplatnené v závislosti od vašej dátovej tarify</string>
+    <string name="dialog_metered_text_no_size">Stiahnutie môže byť spoplatnené v závislosti od vašej dátovej tarify</string>
+    <string name="dialog_metered_dont_show">Znova neukazovať</string>
+    <string name="dialog_metered_button">Stiahnuť</string>
+    <string name="copy_link">Kopírovať odkaz</string>
+    <string name="app_no_compatible_versions">Táto aplikácia nie je kompatibilná s vašim zariadením</string>
+    <string name="pref_category_network">Sieť</string>
 </resources>

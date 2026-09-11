@@ -437,4 +437,9 @@
     <string name="notification_channel_self_update_title">Tự cập nhật</string>
     <string name="notification_channel_self_update_description">Báo khi ứng dụng tự cập nhật xong và đóng, để bạn có thể dễ dàng khởi động lại</string>
     <string name="notification_self_update_title">%s đã được cập nhật. Nhấn để mở</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
 </resources>

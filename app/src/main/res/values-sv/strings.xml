@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla först avinstalleras. Gör det och försök sedan igen. Observera att alla data som appen lagrar internt raderas när den avinstalleras.</string>
+    <string name="SignatureMismatch">Den nya versionen är signerad med en annan nyckel än den gamla. För att installera den nya versionen måste den gamla först avinstalleras. Gör det och försök sedan igen. (Observera att alla data som appen lagrar internt raderas när den avinstalleras)</string>
     <string name="installIncompatible">Appen är inte kompatibel med din enhet. Installera ändå?</string>
     <string name="version">Version</string>
     <string name="delete">Radera</string>
@@ -87,7 +87,7 @@
     <string name="swap_cant_find_peers">Hittar du inte personen du söker?</string>
     <string name="swap_send_fdroid">Skicka F-Droid</string>
     <string name="apps">Appar</string>
-    <string name="swap_connecting">Ansluter…</string>
+    <string name="swap_connecting">Ansluter</string>
     <string name="swap_confirm">Bekräfta apputbyte</string>
     <string name="swap_qr_isnt_for_swap">QR-koden du skannade verkar inte vara avsedd för apputbyte.</string>
     <string name="theme_light">Ljust</string>
@@ -135,7 +135,7 @@
     <string name="use_bluetooth">Använd Bluetooth</string>
     <string name="swap_toast_invalid_url">Ogiltig URL för apputbyte: %1$s</string>
     <string name="swap_toast_hotspot_enabled">Wi-Fi-hotspoten har aktiverats</string>
-    <string name="swap_toast_could_not_enable_hotspot">Det gick inte att aktivera Wi-Fi-hotspot.</string>
+    <string name="swap_toast_could_not_enable_hotspot">Det gick inte att aktivera Wi-Fi-hotspot!</string>
     <string name="warning_scaning_qr_code">Kameran verkar sakna autofokus. Det kan därför vara svårt att skanna koden.</string>
     <string name="install_history">Installationshistorik</string>
     <string name="share_repository">Dela förrådet</string>
@@ -157,7 +157,7 @@
     <string name="swap_starting">Startar…</string>
     <string name="swap_stopping">Stoppar…</string>
     <string name="disabled">Inaktiverad</string>
-    <string name="swap_error_cannot_start_bluetooth">Det gick inte att starta Bluetooth.</string>
+    <string name="swap_error_cannot_start_bluetooth">Det gick inte att starta Bluetooth!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Apputbyte i närheten stängdes på grund av inaktivitet.</string>
     <string name="nearby_splash__document_tree">Sök efter förråd och speglar på USB OTG-enheter.</string>
     <string name="notification_channel_installs_title">Installationer</string>
@@ -168,9 +168,9 @@
     <string name="notification_channel_swaps_title">Apputbyten</string>
     <string name="theme_follow_system">Följ systemet</string>
     <string name="banner_no_internet">Ingen internetanslutning</string>
-    <string name="swap_wifi_vpn_conflict">En aktiv VPN-anslutning orsakar en konflikt.</string>
-    <string name="has_disallow_install_unknown_sources">Den här användaren får inte installera från okända källor. Det gäller även nya förråd.</string>
-    <string name="has_disallow_install_unknown_sources_globally">Enhetsadministratören tillåter inte installation av appar från okända källor. Det gäller även nya förråd.</string>
+    <string name="swap_wifi_vpn_conflict">En aktiv VPN-anslutning orsakar en konflikt!</string>
+    <string name="has_disallow_install_unknown_sources">Den här användaren får inte installera från okända källor. Det gäller även nya förråd</string>
+    <string name="has_disallow_install_unknown_sources_globally">Enhetsadministratören tillåter inte installation av appar från okända källor. Det gäller även nya förråd</string>
     <string name="menu_release_channel_beta">Tillåt betauppdateringar</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Om F-Droid Basic</string>
@@ -220,7 +220,7 @@
     <string name="repo_error_adding_archive">Arkivförråd kan inte läggas till direkt. Öppna förrådslistan och aktivera arkivet där.</string>
     <string name="repo_and_mirror_add_both_info">URL:en du försöker lägga till (%s) är en spegel av ett nytt förråd. Både originalförrådet och spegeln kommer att läggas till.</string>
     <string name="ipfsgw_explainer">Hämta appar via IPFS-gateways. (Fungerar endast med F-Droid-förråd som stöder IPFS.)</string>
-    <string name="swap_bluetooth_permissions">Ge behörighet till Bluetooth eller enheter i närheten.</string>
+    <string name="swap_bluetooth_permissions">Ge behörighet till Bluetooth eller enheter i närheten!</string>
     <string name="export_log_success">Logcat-loggen har sparats</string>
     <string name="repo_archive_unknown">Det här förrådet verkar inte ha något arkiv.</string>
     <string name="repo_archive_check">Sök efter ett arkiv</string>
@@ -233,7 +233,7 @@
     <string name="no_handler_app_generic">Det finns ingen app som kan hantera detta.</string>
     <string name="pref_export_log_title">Felsökningslogg</string>
     <string name="repo_basic_auth_title">Grundläggande HTTP-autentisering</string>
-    <string name="pref_export_log_summary">Skapar en fil med logcat-utdata som kan användas vid felsökning. Var försiktig: filen kan innehålla känslig information.</string>
+    <string name="pref_export_log_summary">Skapar en fil med logcat-utdata som kan användas vid felsökning. Var försiktig: filen kan innehålla känslig information!</string>
     <string name="export_log_error">Det gick inte att spara logcat-loggen</string>
     <string name="repo_details_info_text">Ett förråd är en källa till appar.\n\nSpeglar fördelar nedladdningstrafiken mellan flera servrar. En spegel som finns närmare dig kan vara snabbare.\n\nOfficiella speglar anges av förrådets ägare. De kan inte tas bort, utan endast inaktiveras. Du kan lägga till egna speglar på samma sätt som vanliga förråd.</string>
     <string name="show_repository_qr">Visa förrådets QR-kod</string>
@@ -258,7 +258,7 @@
     <string name="my_apps_empty">Endast appar som finns i förrådet för %1$s visas här</string>
     <string name="my_apps_header_apps_with_issue">Appar med problem</string>
     <string name="my_apps_ignore_dialog_title">Ignorera problemet</string>
-    <string name="my_apps_ignore_dialog_text">Problemet med den här versionen av ”%1$s” ignoreras.</string>
+    <string name="my_apps_ignore_dialog_text">Problemet med den här versionen av ”%1$s” ignoreras</string>
     <string name="my_apps_ignore_dialog_button">Ignorera</string>
     <string name="my_apps_export_installed_apps">Exportera applista</string>
     <string name="app_list_new">Nya appar</string>
@@ -267,7 +267,7 @@
     <string name="app_list_all">Alla appar</string>
     <string name="app_list_author">Appar från %s</string>
     <string name="search_placeholder">Sök…</string>
-    <string name="search_no_results">Inga appar hittades\n\nFörsök med färre söktermer eller lägg till fler förråd.</string>
+    <string name="search_no_results">Inga appar hittades\n\nFörsök med färre söktermer eller lägg till fler förråd</string>
     <string name="category_group_productivity">Produktivitet</string>
     <string name="category_group_tools">Verktyg</string>
     <string name="category_group_wallets">Ekonomi &amp; plånböcker</string>
@@ -281,7 +281,7 @@
     <string name="last_updated">Senast uppdaterad: %1$s</string>
     <string name="last_updated_with_size">Senast uppdaterad: %1$s (%2$s)</string>
     <string name="status_install_preparing">Förbereder installation…</string>
-    <string name="whats_new_title">Vad är nytt?</string>
+    <string name="whats_new_title">Vad som är nytt</string>
     <string name="donate_title">Donera</string>
     <string name="anti_features_title">Den här appen har antifunktioner</string>
     <string name="technical_info">Teknisk information</string>
@@ -293,7 +293,7 @@
     <string name="first_start_offline">Du är offline. Anslut till internet för att börja.</string>
     <string name="first_start_metered">Du använder mobildata och mer än 10 MB kommer att laddas ned. Tryck på Hämta förråd för att starta ändå.</string>
     <string name="first_start_button">Hämta förråd</string>
-    <string name="no_repos_enabled">Inga förråd är tillgängliga. Lägg till ett förråd för att komma igång.</string>
+    <string name="no_repos_enabled">Inga förråd är tillgängliga. Lägg till ett förråd för att komma igång</string>
     <string name="my_apps_header_recently_installed_apps">Nyligen installerade</string>
     <string name="search_history">Senaste sökningar</string>
     <string name="search_filter_no_results">Inga appar hittades\n\nFörsök med färre söktermer eller ta bort filter</string>
@@ -344,16 +344,16 @@
     <string name="pref_repo_updates_summary_never">Sök inte efter uppdateringar • Appinformationen kan bli inaktuell</string>
     <string name="pref_category_network">Nätverk</string>
     <string name="dialog_metered_title">Fortsätt med mobildata?</string>
-    <string name="dialog_metered_text">Hämtningen av %1$s kan medföra kostnader beroende på ditt mobilabonnemang.</string>
-    <string name="dialog_metered_text_no_size">Hämtningen kan medföra kostnader beroende på ditt mobilabonnemang.</string>
+    <string name="dialog_metered_text">Hämtningen av %1$s kan medföra kostnader beroende på ditt mobilabonnemang</string>
+    <string name="dialog_metered_text_no_size">Hämtningen kan medföra kostnader beroende på ditt mobilabonnemang</string>
     <string name="dialog_metered_dont_show">Visa inte igen</string>
     <string name="dialog_metered_button">Ladda ned</string>
     <string name="pref_mirror_chooser_summary_random">Slumpmässigt</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Föredra utländska speglar</string>
     <string name="pref_proxy_error">Ogiltigt proxyformat</string>
     <string name="copy_link">Kopiera länk</string>
-    <string name="app_no_compatible_versions">Den här appen är inte kompatibel med enheten.</string>
-    <string name="app_issue_update_other_repo">En uppdatering finns i ett annat förråd. Välj ett annat föredraget förråd för att uppdatera appen.</string>
+    <string name="app_no_compatible_versions">Den här appen är inte kompatibel med enheten</string>
+    <string name="app_issue_update_other_repo">En uppdatering finns i ett annat förråd. Välj ett annat föredraget förråd för att uppdatera appen</string>
     <string name="app_issue_not_available_title">Appen är inte längre tillgänglig</string>
     <string name="pref_proxy_disabled">Anslut till internet utan proxy</string>
     <string name="pref_proxy_enabled">Ansluter via %s</string>
@@ -405,12 +405,12 @@
     <string name="notification_channel_self_update_title">Självuppdatering</string>
     <string name="notification_channel_self_update_description">Aviserar när appen har uppdaterat sig själv och stängts, så att du enkelt kan öppna den igen</string>
     <string name="about_license_text">Det här programmet är fri programvara. Du får distribuera det vidare och/eller ändra det enligt villkoren i GNU General Public License, såsom den har publicerats av Free Software Foundation, antingen version 3 av licensen eller, enligt ditt val, en senare version.</string>
-    <string name="app_issue_not_available_text">Appen kan ha tagits bort eller ha funnits i ett förråd som du har tagit bort eller inaktiverat.</string>
+    <string name="app_issue_not_available_text">Appen kan ha tagits bort eller ha funnits i ett förråd som du har tagit bort eller inaktiverat</string>
     <string name="search_my_apps_hint">Sök bland installerade appar</string>
     <string name="status_downloading">Laddar ned %s/s</string>
     <string name="status_downloading_remaining">%1$s återstår</string>
     <string name="repo_disable_dialog_title">Inaktivera förrådet</string>
-    <string name="repo_disable_dialog_warning">Om du har angett att någon app ska föredra det här förrådet går det valet förlorat.</string>
+    <string name="repo_disable_dialog_warning">Om du har angett att någon app ska föredra det här förrådet går det valet förlorat</string>
     <string name="repo_has_update_error">Fel vid uppdatering</string>
     <string name="repo_has_update_error_intro">Ett fel uppstod när förrådet uppdaterades:</string>
     <string name="repo_last_update_upstream">Publicerades %s</string>
@@ -424,7 +424,7 @@
     <string name="install_history_switch">Spara installationshistorik</string>
     <string name="install_history_delete_text">Ta bort installationshistoriken?</string>
     <string name="app_no_compatible_signer">Det går inte att uppdatera den här appen eftersom alla versioner har en inkompatibel signatur.\n\nOm du inte får uppdateringar på något annat sätt kan du behöva avinstallera appen och sedan installera den igen. Appens data går då förlorade.</string>
-    <string name="app_details_install_error_text">Ett oväntat fel uppstod när appen installerades.</string>
+    <string name="app_details_install_error_text">Ett oväntat fel uppstod när appen installerades</string>
     <string name="install_history_delete_ally">Ta bort hela installationshistoriken</string>
     <string name="pref_mirror_chooser_title">Välj nedladdningsspegel</string>
     <string name="pref_proxy_hint">Ange proxyadressen i formatet värd:port</string>
@@ -432,16 +432,21 @@
     <string name="app_details_anti_features_text">Vissa appar har beteenden som du inte har bett om och kanske inte vill ha, till exempel annonser, spårning eller beroenden av ofria tjänster. Vi kallar dessa ”antifunktioner”.\n\nAppar i F-Droid märks tydligt när de har antifunktioner, så att du kan göra ett välgrundat val.</string>
     <string name="about_text">Apparna i F-Droid är fri programvara med öppen källkod (FOSS). De respekterar din integritet, och vem som helst kan granska källkoden, bygga vidare på den och förbättra den.\n\nAppdistributionen är transparent, integritetsvänlig och ansvarsfull. Därmed sätter F-Droid en standard som utmanar ekosystemet för mobilappar att bli bättre.\n\nF-Droids genomslag mäts inte bara i de appar som publiceras, utan också i den frihet, det förtroende och de digitala rättigheter som projektet bidrar till att skydda.\n\nHjälp F-Droid att skydda gemenskapsdriven innovation och fortsätta arbetet för öppenhet, integritet och användarinflytande.</string>
     <string name="screenshots_metered">Tryck för att hämta skärmbilder via mobildata</string>
-    <string name="app_no_compatible_signer_in_this_repo">Det går inte att uppdatera den här appen eftersom det inte finns någon kompatibel version i det föredragna förrådet.\n\nFörsök välja ett annat föredraget förråd.</string>
+    <string name="app_no_compatible_signer_in_this_repo">Det går inte att uppdatera den här appen eftersom det inte finns någon kompatibel version i det föredragna förrådet\n\nFörsök välja ett annat föredraget förråd</string>
     <string name="permission_camera_denied">Ge appen kamerabehörighet för att kunna skanna QR-koden. Tryck för att öppna behörighetsinställningarna.</string>
-    <string name="install_history_empty_state">Listan är fortfarande tom.\n\nNär du installerar, uppdaterar eller avinstallerar appar visas historikposter här.</string>
-    <string name="install_history_disabled_state">Installationshistoriken är inaktiverad.\n\nInstallationer, uppdateringar och avinstallationer registreras inte.</string>
+    <string name="install_history_empty_state">Listan är fortfarande tom\n\nNär du installerar, uppdaterar eller avinstallerar appar visas historikposter här</string>
+    <string name="install_history_disabled_state">Installationshistoriken är inaktiverad\n\nInstallationer, uppdateringar och avinstallationer registreras inte</string>
     <string name="app_issue_hint">Apparna nedan behöver ses över. Du kan ignorera ett problem genom att trycka länge på appen.</string>
     <string name="sdk_target_version">%1$s (mål)</string>
     <string name="sdk_max_version">%1$s (högst)</string>
     <string name="signer_colon">Signerare: %1$s</string>
     <string name="notification_installing_confirmation">Tryck för att bekräfta</string>
     <string name="notification_self_update_title">%s har uppdaterats. Tryck för att öppna appen</string>
-    <string name="app_details_incompatible_signer">Signaturerna matchar inte. Appen kan inte installeras.</string>
-    <string name="app_no_auto_update">Automatisk uppdatering är inte tillgänglig eftersom appen är utvecklad för en äldre Android-version som saknar stöd för automatiska uppdateringar.</string>
+    <string name="app_details_incompatible_signer">Signaturerna matchar inte. Appen kan inte installeras</string>
+    <string name="app_no_auto_update">Automatisk uppdatering är inte tillgänglig eftersom appen är utvecklad för en äldre Android-version som saknar stöd för automatiska uppdateringar</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="open_collective">Open Collective</string>
 </resources>

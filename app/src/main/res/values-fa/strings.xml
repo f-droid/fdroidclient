@@ -404,7 +404,7 @@
     <string name="install_history_empty_state">این سیاهه هنوز خالی است\n\nهنگامی که کاره‌ای را نصب، به‌روز یا حذف کنید این‌جا ظاهر خواهد شد</string>
     <string name="first_start_metered">روی دادهٔ همراهید و بیش از ۱۰ م‌ب بار گرفته خواهد شد. زدن روی واکشی مخزن‌ها برای آغاز به هر روی.</string>
     <string name="onboarding_app_list_filter_message">استفاده از پالایه‌ها برای نمایش کاره‌هایی فقط از دسته یا مخزن‌هایی خاص. همچنین می‌توان ترتیب چینش را تغییر داد.</string>
-    <string name="app_no_auto_update">به‌روز رسانی خودکار موجود نیست چرا که این کاره برای نگارشی قدیمی از اندروید ساخته شده که از به‌روز رسانی خودکار پشتیبانی نمی‌کند</string>
+    <string name="app_no_auto_update">به‌روز رسانی خودکار موجود نیست چرا که این کاره برای نگارشی قدیمی از اندروید ساخته شده</string>
     <string name="app_no_compatible_signer_in_this_repo">نمی‌توان این کاره را به‌روز کرد؛ چرا که هیچ نگارش سازگاری در مخزن ترجیحی وجود ندارد\n\nتلاش برای تغییر مخزن ترجیحی</string>
     <string name="crash_report_text">خطایی غیرمنتظره رخ داد. تقصیر شما نیست. می‌خواهید حزییات را برای کمک به رفع مشکل رایانامه کنید؟</string>
     <string name="app_no_compatible_signer">نمی‌توان این کاره را به‌روز کرد؛ چرا که همهٔ نگارش‌ها امضایی ناسازگار دارند\n\nاگر از روش‌های دیگر به‌روز رسانی دریافت نمی‌کنید شاید لازم باشد این کاره را حذف و دوباره نصب کنید. داده‌های کاره از دست خواهد رفت.</string>
@@ -444,4 +444,9 @@
     <string name="notification_channel_self_update_title">خود به‌روز رسانی</string>
     <string name="notification_channel_self_update_description">آگاه کردن هنگامی که کاره خودش را به‌روز کرده و بسته شده به منظور آسانی اجرای دوباره‌اش</string>
     <string name="notification_self_update_title">‫%s به‌روز شد. زدن برای گشودن</string>
+    <string name="liberapay">لیبراپی</string>
+    <string name="open_collective">اوپن کالکتیو</string>
+    <string name="bitcoin">بیت‌کوین</string>
+    <string name="litecoin">لایت‌کوین</string>
+    <string name="taler">تیلر</string>
 </resources>
