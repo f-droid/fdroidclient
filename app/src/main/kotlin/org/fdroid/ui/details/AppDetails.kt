@@ -360,7 +360,7 @@ fun AppDetails(
                 AppDetailsLink(
                   icon = Icons.Default.Mail,
                   title = stringResource(R.string.menu_email),
-                  url = authorEmail,
+                  url = "mailto:$authorEmail",
                 )
               }
             }
