@@ -17,8 +17,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
-import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.CompatibilityChecker
+import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.Repository
 import org.fdroid.download.DownloadRequest
@@ -190,7 +190,8 @@ constructor(
       )
     val metadataV2 = toMetadataV2(packageVersion.signer?.sha256?.firstOrNull())
     val isCompatible = compatibilityChecker.isCompatible(packageVersion.packageManifest)
-    val metadata = metadataV2.toAppMetadata(repository.repoId, packageName, localeList, isCompatible)
+    val metadata =
+      metadataV2.toAppMetadata(repository.repoId, packageName, localeList, isCompatible)
     val iconRequest =
       metadataV2.icon
         ?.getBestLocale(localeList)
