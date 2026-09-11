@@ -36,15 +36,14 @@ public object SearchQueryRewriter {
             "OR ${splits.joinToString("")}* " + // camel case prefix
             "OR \"${splits.joinToString("* ")}*\"" // phrase query
         } else if (hasAnyCjk) {
-          val zeroSplits =
-            splits.map { word ->
-              if (word.any { Character.isIdeographic(it.code) }) {
-                // separate CJK chars with zero-width
-                word.toList().joinToString("\u200B")
-              } else {
-                word
-              }
+          val zeroSplits = splits.map { word ->
+            if (word.any { Character.isIdeographic(it.code) }) {
+              // separate CJK chars with zero-width
+              word.toList().joinToString("\u200B")
+            } else {
+              word
             }
+          }
           // query using zero-width concatenation needs to be quoted as a phrase query
           val zeroQuery = zeroSplits.joinToString(" ") { "\"$it*\"" }
           "$firstPassQuery " + // search* term* (implicit AND and prefix search)

@@ -74,7 +74,11 @@ private fun getLoadedModel(): LoadedDiscoverModel {
         name = "Xtra",
         isInstalled = false,
       ),
-      AppDiscoverItem(packageName = "com.github.libretube", name = "LibreTube", isInstalled = false),
+      AppDiscoverItem(
+        packageName = "com.github.libretube",
+        name = "LibreTube",
+        isInstalled = false,
+      ),
     )
   val mostDownloadedApps =
     listOf(

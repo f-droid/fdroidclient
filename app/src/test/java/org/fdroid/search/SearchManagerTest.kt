@@ -39,8 +39,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class SearchManagerTest {
 
-  @get:Rule
-  val instantTaskExecutorRule = InstantTaskExecutorRule()
+  @get:Rule val instantTaskExecutorRule = InstantTaskExecutorRule()
 
   private val db: FDroidDatabase = mockk()
   private val appDao: AppDao = mockk()
@@ -82,184 +81,186 @@ internal class SearchManagerTest {
 
   @Test
   fun searchCrashMeThrows() = runTest {
-      assertFailsWith<IllegalStateException> { searchManager.search("CrashMe") }
+    assertFailsWith<IllegalStateException> { searchManager.search("CrashMe") }
   }
 
   @Test
   fun searchBuildsPrefixQueryForSingleWord() = runTest {
-      val querySlot = slot<String>()
-      coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
+    val querySlot = slot<String>()
+    coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
 
-      searchManager.search("foo")
+    searchManager.search("foo")
 
-      assertEquals("foo*", querySlot.captured)
+    assertEquals("foo*", querySlot.captured)
   }
 
   @Test
   fun searchBuildsComplexQueryForMultipleWordsAndSanitizesQuotes() = runTest {
-      val querySlot = slot<String>()
-      coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
+    val querySlot = slot<String>()
+    coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
 
-      searchManager.search("foo \"bar\"")
+    searchManager.search("foo \"bar\"")
 
-      assertEquals("foo* bar* OR foobar* OR \"foo* bar*\"", querySlot.captured)
+    assertEquals("foo* bar* OR foobar* OR \"foo* bar*\"", querySlot.captured)
   }
 
   @Test
   fun searchBuildsCjkQueryBySplittingIdeographicCharacters() = runTest {
-      val querySlot = slot<String>()
-      coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
+    val querySlot = slot<String>()
+    coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
 
-      searchManager.search("測試")
+    searchManager.search("測試")
 
-      assertEquals("測* 試* OR \"測\u200B試*\" OR 測試*", querySlot.captured)
+    assertEquals("測* 試* OR \"測\u200B試*\" OR 測試*", querySlot.captured)
   }
 
   @Test
   fun searchBuildsMultiWordCjkQuery() = runTest {
-      val querySlot = slot<String>()
-      coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
+    val querySlot = slot<String>()
+    coEvery { appDao.getAppSearchItems(capture(querySlot)) } returns emptyList()
 
-      searchManager.search("測試 艾星")
+    searchManager.search("測試 艾星")
 
-      assertEquals(
-          "測* 試* 艾* 星* OR \"測\u200B試*\" \"艾\u200B星*\" OR 測試* 艾星*",
-          querySlot.captured
-      )
+    assertEquals(
+      "測* 試* 艾* 星* OR \"測\u200B試*\" \"艾\u200B星*\" OR 測試* 艾星*",
+      querySlot.captured,
+    )
   }
 
   @Test
   fun searchUsesLocalIconForInstalledApps() = runTest {
-      val item = buildSearchItem(packageName = "com.example.installed", repoId = 1L)
-      coEvery { appDao.getAppSearchItems(any()) } returns listOf(item)
-      every { installedAppsCache.isInstalled("com.example.installed") } returns true
+    val item = buildSearchItem(packageName = "com.example.installed", repoId = 1L)
+    coEvery { appDao.getAppSearchItems(any()) } returns listOf(item)
+    every { installedAppsCache.isInstalled("com.example.installed") } returns true
 
-      searchManager.search("installed")
+    searchManager.search("installed")
 
-      val results = searchManager.searchResults.value
-      assertNotNull(results)
-      assertEquals(1, results.apps.size)
-      val listItem = results.apps.first()
-      assertTrue(listItem.isInstalled)
-      assertIs<PackageName>(listItem.iconModel)
-      assertEquals("com.example.installed", listItem.iconModel.packageName)
+    val results = searchManager.searchResults.value
+    assertNotNull(results)
+    assertEquals(1, results.apps.size)
+    val listItem = results.apps.first()
+    assertTrue(listItem.isInstalled)
+    assertIs<PackageName>(listItem.iconModel)
+    assertEquals("com.example.installed", listItem.iconModel.packageName)
   }
 
   @Test
   fun searchIsEmptyWhenThrowsSQLiteException() = runTest {
-      coEvery { appDao.getAppSearchItems(any()) } throws SQLiteException("boom")
+    coEvery { appDao.getAppSearchItems(any()) } throws SQLiteException("boom")
 
-      searchManager.search("boom")
+    searchManager.search("boom")
 
-      val results = searchManager.searchResults.value
-      assertNotNull(results)
-      assertTrue(results.apps.isEmpty())
+    val results = searchManager.searchResults.value
+    assertNotNull(results)
+    assertTrue(results.apps.isEmpty())
   }
 
   @Test
   fun searchFiltersCategoriesUsingNormalizedMatching() = runTest {
-      val category = Category(repoId = 1L, id = "coffee", name = mapOf("en-US" to "Café"))
-      categoriesLiveData.value = listOf(category)
-      coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
+    val category = Category(repoId = 1L, id = "coffee", name = mapOf("en-US" to "Café"))
+    categoriesLiveData.value = listOf(category)
+    coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
 
-      searchManager.search("cafe")
+    searchManager.search("cafe")
 
-      val results = searchManager.searchResults.value
-      assertNotNull(results)
-      assertEquals(1, results.categories.size)
-      assertEquals("Café", results.categories.first().name)
+    val results = searchManager.searchResults.value
+    assertNotNull(results)
+    assertEquals(1, results.categories.size)
+    assertEquals("Café", results.categories.first().name)
   }
 
   @Test
   fun onSearchClearedResetsResultsToNull() = runTest {
-      coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
+    coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
 
-      searchManager.search("foo")
-      assertNotNull(searchManager.searchResults.value)
+    searchManager.search("foo")
+    assertNotNull(searchManager.searchResults.value)
 
-      searchManager.onSearchCleared()
+    searchManager.onSearchCleared()
 
-      assertNull(searchManager.searchResults.value)
+    assertNull(searchManager.searchResults.value)
   }
 
   @Test
   fun searchSavesQueryInHistory() = runTest {
-      val expected = listOf(SavedSearch(time = 999L, query = "foo"))
-      every { searchHistoryManager.saveSearchQuery("foo") } returns expected
-      coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
+    val expected = listOf(SavedSearch(time = 999L, query = "foo"))
+    every { searchHistoryManager.saveSearchQuery("foo") } returns expected
+    coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
 
-      advanceUntilIdle()
-      searchManager.search("foo")
+    advanceUntilIdle()
+    searchManager.search("foo")
 
-      verify(exactly = 1) { searchHistoryManager.saveSearchQuery("foo") }
-      assertEquals(expected, searchManager.savedSearches.value)
+    verify(exactly = 1) { searchHistoryManager.saveSearchQuery("foo") }
+    assertEquals(expected, searchManager.savedSearches.value)
   }
 
   @Test
   fun searchDebouncesAndSavesOnlyAfterDelay() = runTest {
-      val searchManager = SearchManager(
-          db = db,
-          repoManager = repoManager,
-          settingsManager = settingsManager,
-          installedAppsCache = installedAppsCache,
-          searchHistoryManager = searchHistoryManager,
-          ioDispatcher = StandardTestDispatcher(testScheduler),
+    val searchManager =
+      SearchManager(
+        db = db,
+        repoManager = repoManager,
+        settingsManager = settingsManager,
+        installedAppsCache = installedAppsCache,
+        searchHistoryManager = searchHistoryManager,
+        ioDispatcher = StandardTestDispatcher(testScheduler),
       )
 
-      val expected = listOf(SavedSearch(time = 999L, query = "foo"))
-      every { searchHistoryManager.saveSearchQuery("foo") } returns expected
-      coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
+    val expected = listOf(SavedSearch(time = 999L, query = "foo"))
+    every { searchHistoryManager.saveSearchQuery("foo") } returns expected
+    coEvery { appDao.getAppSearchItems(any()) } returns emptyList()
 
-      advanceUntilIdle()
+    advanceUntilIdle()
 
-      val searchJob = launch { searchManager.search("foo") }
-      runCurrent()
-      verify(exactly = 0) { searchHistoryManager.saveSearchQuery(any()) }
+    val searchJob = launch { searchManager.search("foo") }
+    runCurrent()
+    verify(exactly = 0) { searchHistoryManager.saveSearchQuery(any()) }
 
-      advanceTimeBy(1499)
-      runCurrent()
-      verify(exactly = 0) { searchHistoryManager.saveSearchQuery(any()) }
+    advanceTimeBy(1499)
+    runCurrent()
+    verify(exactly = 0) { searchHistoryManager.saveSearchQuery(any()) }
 
-      advanceTimeBy(1)
-      runCurrent()
-      verify(exactly = 1) { searchHistoryManager.saveSearchQuery("foo") }
-      assertEquals(expected, searchManager.savedSearches.value)
+    advanceTimeBy(1)
+    runCurrent()
+    verify(exactly = 1) { searchHistoryManager.saveSearchQuery("foo") }
+    assertEquals(expected, searchManager.savedSearches.value)
 
-      searchJob.join()
+    searchJob.join()
   }
 
   @Test
   fun onClearSearchHistoryClearsAfterDelete() = runTest {
-      val initial = listOf(SavedSearch(time = 123L, query = "first"))
-      every { searchHistoryManager.getSavedSearches() } returns initial
-      every { searchHistoryManager.clearAll() } returns true
+    val initial = listOf(SavedSearch(time = 123L, query = "first"))
+    every { searchHistoryManager.getSavedSearches() } returns initial
+    every { searchHistoryManager.clearAll() } returns true
 
-      searchManager.onClearSearchHistory()
+    searchManager.onClearSearchHistory()
 
-      verify(exactly = 1) { searchHistoryManager.clearAll() }
-      assertEquals(emptyList(), searchManager.savedSearches.value)
+    verify(exactly = 1) { searchHistoryManager.clearAll() }
+    assertEquals(emptyList(), searchManager.savedSearches.value)
   }
 
   @Test
   fun onClearSearchHistoryKeepsSavedSearchesWhenDeleteFails() = runTest {
-      val searchManager = SearchManager(
-          db = db,
-          repoManager = repoManager,
-          settingsManager = settingsManager,
-          installedAppsCache = installedAppsCache,
-          searchHistoryManager = searchHistoryManager,
-          ioDispatcher = StandardTestDispatcher(testScheduler),
+    val searchManager =
+      SearchManager(
+        db = db,
+        repoManager = repoManager,
+        settingsManager = settingsManager,
+        installedAppsCache = installedAppsCache,
+        searchHistoryManager = searchHistoryManager,
+        ioDispatcher = StandardTestDispatcher(testScheduler),
       )
 
-      val initial = listOf(SavedSearch(time = 123L, query = "first"))
-      every { searchHistoryManager.getSavedSearches() } returns initial
-      every { searchHistoryManager.clearAll() } returns false
+    val initial = listOf(SavedSearch(time = 123L, query = "first"))
+    every { searchHistoryManager.getSavedSearches() } returns initial
+    every { searchHistoryManager.clearAll() } returns false
 
-      advanceUntilIdle()
-      searchManager.onClearSearchHistory()
+    advanceUntilIdle()
+    searchManager.onClearSearchHistory()
 
-      verify(exactly = 1) { searchHistoryManager.clearAll() }
-      assertEquals(initial, searchManager.savedSearches.value)
+    verify(exactly = 1) { searchHistoryManager.clearAll() }
+    assertEquals(initial, searchManager.savedSearches.value)
   }
 
   private fun buildSearchItem(

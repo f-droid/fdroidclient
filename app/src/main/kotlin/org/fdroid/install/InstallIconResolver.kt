@@ -42,4 +42,3 @@ constructor(@param:ApplicationContext private val context: Context) {
     }
   }
 }
-

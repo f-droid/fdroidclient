@@ -174,10 +174,11 @@ val testApp =
         authorEmail = "team@newpipe.net",
         authorWebSite = "https://newpipe.net",
         authorPhone = "123456",
-        donate = listOf(
-          "https://newpipe.net/donate",
-          "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation"
-        ),
+        donate =
+          listOf(
+            "https://newpipe.net/donate",
+            "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
+          ),
         liberapayID = null,
         liberapay = "TeamNewPipe",
         openCollective = "TeamNewPipe",
@@ -195,14 +196,23 @@ val testApp =
     summary = "Lightweight YouTube frontend",
     description = description,
     categories = categoryItems.subList(0, 5),
-    donateLinks = listOf(
-      DonateLink("https://newpipe.net/donate", DonateType.GENERIC, null),
-      DonateLink("taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation", DonateType.TALER, null),
-      DonateLink("https://liberapay.com/TeamNewPipe/donate", DonateType.LIBERAPAY, null),
-      DonateLink("https://opencollective.com/TeamNewPipe/donate", DonateType.OPEN_COLLECTIVE, null),
-      DonateLink("bitcoin:TeamNewPipe", DonateType.BITCOIN, null),
-      DonateLink("litecoin:TeamNewPipe", DonateType.LITECOIN, null),
-    ),
+    donateLinks =
+      listOf(
+        DonateLink("https://newpipe.net/donate", DonateType.GENERIC, null),
+        DonateLink(
+          "taler://pay-template/backend.demo.taler.net/instances/fdroid-taler-test/demo-donation",
+          DonateType.TALER,
+          null,
+        ),
+        DonateLink("https://liberapay.com/TeamNewPipe/donate", DonateType.LIBERAPAY, null),
+        DonateLink(
+          "https://opencollective.com/TeamNewPipe/donate",
+          DonateType.OPEN_COLLECTIVE,
+          null,
+        ),
+        DonateLink("bitcoin:TeamNewPipe", DonateType.BITCOIN, null),
+        DonateLink("litecoin:TeamNewPipe", DonateType.LITECOIN, null),
+      ),
     antiFeatures =
       listOf(
         AntiFeature(

@@ -16,11 +16,14 @@ plugins {
     alias libs.plugins.jetbrains.dokka apply false
     alias libs.plugins.vanniktech.maven.publish apply false
     alias libs.plugins.screenshot apply false
-    alias libs.plugins.ktfmt apply false
+    alias libs.plugins.ktfmt apply true
 }
 allprojects {
     repositories {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
+    }
+    ktfmt {
+        googleStyle()
     }
 }

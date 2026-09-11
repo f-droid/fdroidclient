@@ -68,27 +68,22 @@ fun AppListPresenter(
       // if there's only one repository, we'll not show the filters for it
       if (repos.size > 1) repos else emptyList()
     }
-  val filteredApps =
-    apps?.filter {
-      val matchesCategories =
-        filteredCategoryIds.isEmpty() ||
-          (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
-      val matchesAntiFeatures =
-        filteredAntiFeatureIds.isEmpty() ||
-          it.antiFeatureIds.intersect(filteredAntiFeatureIds).isEmpty()
-      val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
-      val matchesQuery =
-        searchQuery.isEmpty() ||
-          it.name.normalize().contains(searchQuery, ignoreCase = true) ||
-          it.summary.normalize().contains(searchQuery, ignoreCase = true) ||
-          it.packageName.contains(searchQuery, ignoreCase = true)
-      val matchesCompatibility = !filterIncompatible || it.isCompatible
-      matchesCategories &&
-        matchesAntiFeatures &&
-        matchesRepos &&
-        matchesQuery &&
-        matchesCompatibility
-    }
+  val filteredApps = apps?.filter {
+    val matchesCategories =
+      filteredCategoryIds.isEmpty() ||
+        (it.categoryIds ?: emptySet()).intersect(filteredCategoryIds).isNotEmpty()
+    val matchesAntiFeatures =
+      filteredAntiFeatureIds.isEmpty() ||
+        it.antiFeatureIds.intersect(filteredAntiFeatureIds).isEmpty()
+    val matchesRepos = filteredRepositoryIds.isEmpty() || it.repoId in filteredRepositoryIds
+    val matchesQuery =
+      searchQuery.isEmpty() ||
+        it.name.normalize().contains(searchQuery, ignoreCase = true) ||
+        it.summary.normalize().contains(searchQuery, ignoreCase = true) ||
+        it.packageName.contains(searchQuery, ignoreCase = true)
+    val matchesCompatibility = !filterIncompatible || it.isCompatible
+    matchesCategories && matchesAntiFeatures && matchesRepos && matchesQuery && matchesCompatibility
+  }
 
   @SuppressLint("NonObservableLocale") // the alternative isn't available here
   val locale = Locale.getDefault()

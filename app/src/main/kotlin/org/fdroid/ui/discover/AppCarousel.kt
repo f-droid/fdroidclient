@@ -50,7 +50,8 @@ fun AppCarousel(
     Row(
       verticalAlignment = CenterVertically,
       horizontalArrangement = Arrangement.SpaceBetween,
-      modifier = Modifier.fillMaxWidth().clickable(onClick = onTitleTap).padding(horizontal = 16.dp),
+      modifier =
+        Modifier.fillMaxWidth().clickable(onClick = onTitleTap).padding(horizontal = 16.dp),
     ) {
       Text(text = title, style = MaterialTheme.typography.titleMediumEmphasized, fontSize = 20.sp)
       IconButton(

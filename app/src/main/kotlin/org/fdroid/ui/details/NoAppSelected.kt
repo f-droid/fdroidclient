@@ -24,7 +24,7 @@ fun NoAppSelected() {
   ) {
     AboutContent(
       version = VERSION_NAME,
-      modifier = Modifier.fillMaxHeight().fillMaxWidth(fraction = 0.7f).padding(top = 32.dp)
+      modifier = Modifier.fillMaxHeight().fillMaxWidth(fraction = 0.7f).padding(top = 32.dp),
     )
   }
 }

@@ -36,14 +36,15 @@ object SwapSuccessBinder {
   @JvmStatic
   fun bind(composeView: ComposeView, viewModel: SwapSuccessViewModel) {
     composeView.setViewCompositionStrategy(
-      ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed,
+      ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
     )
     composeView.setContent {
       FDroidContent {
         val model by viewModel.model.collectAsStateWithLifecycle()
         val appToConfirm = model.appToConfirm
         LaunchedEffect(appToConfirm?.packageName, appToConfirm?.installState) {
-          val state = appToConfirm?.installState as? InstallConfirmationState ?: return@LaunchedEffect
+          val state =
+            appToConfirm?.installState as? InstallConfirmationState ?: return@LaunchedEffect
           viewModel.confirmAppInstall(appToConfirm.packageName, state)
         }
         SwapSuccess(
@@ -71,16 +72,16 @@ private fun SwapSuccess(
   DisposableEffect(
     lifecycleOwner,
     currentAppToConfirm?.packageName,
-    currentAppToConfirm?.installState
+    currentAppToConfirm?.installState,
   ) {
     val observer = LifecycleEventObserver { _, event ->
       if (event == Lifecycle.Event.ON_RESUME) {
         when (val state = currentAppToConfirm?.installState) {
-            is InstallState.UserConfirmationNeeded if numChecks < 3 -> {
-              Log.i("SwapSuccessScreen", "Resumed ($numChecks). Checking user confirmation... $state")
-              numChecks += 1
-              onCheckUserConfirmation(currentAppToConfirm.packageName, state)
-            }
+          is InstallState.UserConfirmationNeeded if numChecks < 3 -> {
+            Log.i("SwapSuccessScreen", "Resumed ($numChecks). Checking user confirmation... $state")
+            numChecks += 1
+            onCheckUserConfirmation(currentAppToConfirm.packageName, state)
+          }
           is InstallState.UserConfirmationNeeded -> {
             Log.i("SwapSuccessScreen", "Cancel installation after repeated confirmation checks")
             onCancel(currentAppToConfirm.packageName)

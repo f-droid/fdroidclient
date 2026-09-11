@@ -118,9 +118,9 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
         }
       }
     },
-    modifier = Modifier
-      .hintAnchor(hintAnchor, fullScreen = true)
-      .nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier =
+      Modifier.hintAnchor(hintAnchor, fullScreen = true)
+        .nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     if (info.model.repositories == null) BigLoadingIndicator()
     else

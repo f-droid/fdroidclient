@@ -30,10 +30,7 @@ class LocalizationTest {
 
   private val context = InstrumentationRegistry.getInstrumentation().targetContext
   private var assets = context.assets
-  private var config =
-    context.resources.configuration.apply {
-      locale = Locale.ENGLISH
-    }
+  private var config = context.resources.configuration.apply { locale = Locale.ENGLISH }
   private var resources = Resources(assets, DisplayMetrics(), config)
 
   @Before

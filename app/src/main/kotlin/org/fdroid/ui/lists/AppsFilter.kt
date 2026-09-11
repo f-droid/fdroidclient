@@ -126,7 +126,9 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         icon = Icons.Default.Category,
         title = stringResource(R.string.main_menu__categories),
         initiallyExpanded = info.model.filteredCategoryIds.isNotEmpty(),
-        onCollapsed = { info.model.filteredCategoryIds.forEach { info.actions.removeCategory(it) } },
+        onCollapsed = {
+          info.model.filteredCategoryIds.forEach { info.actions.removeCategory(it) }
+        },
       ) {
         categories.forEach { item ->
           val isSelected = item.id in info.model.filteredCategoryIds

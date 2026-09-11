@@ -126,10 +126,7 @@ internal class RepoManagerAddAllIntegrationTest {
     hiltRule.inject()
   }
 
-  @Test
-  fun addAllTheThings() = runBlocking {
-    repos.forEach { addRepo(it) }
-  }
+  @Test fun addAllTheThings() = runBlocking { repos.forEach { addRepo(it) } }
 
   private suspend fun addRepo(url: String) {
     log.info("Fetching $url")

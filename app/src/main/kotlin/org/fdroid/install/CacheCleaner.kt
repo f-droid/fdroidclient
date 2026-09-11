@@ -9,8 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import mu.KotlinLogging
 
-@VisibleForTesting
-internal const val DELETE_OLDER_THAN_MILLIS = 8_640_000 // 24h
+@VisibleForTesting internal const val DELETE_OLDER_THAN_MILLIS = 8_640_000 // 24h
 
 @Singleton
 class CacheCleaner @Inject constructor(@param:ApplicationContext private val context: Context) {

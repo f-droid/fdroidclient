@@ -353,7 +353,11 @@ internal class RepoAdderTest {
         categories = emptyList(),
         releaseChannels = emptyList(),
         preferences =
-          RepositoryPreferences(repoId = REPO_ID, weight = 23, userMirrors = listOf(url, mirrorUrl)),
+          RepositoryPreferences(
+            repoId = REPO_ID,
+            weight = 23,
+            userMirrors = listOf(url, mirrorUrl),
+          ),
       )
     testRepoAlreadyExists(mirrorUrl, existingRepo)
   }
