@@ -447,4 +447,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_hide_migration_title">新版 F-Droid 更改了应用隐藏</string>
+    <string name="panic_hide_migration_message">计算器没了，但你仍可以在设置中永久性更改应用图标。滚动找到“应用图标”。</string>
+    <string name="panic_hide_migration_button">查看设置</string>
+    <string name="panic_hide_title">隐藏 %s</string>
+    <string name="panic_hide_summary">应用将隐藏自身</string>
+    <string name="icon_title">应用图标</string>
+    <string name="icon_summary">选择此应用在主屏幕和应用抽屉中所用的图标</string>
+    <string name="icon_intro">选择此应用的图标和名称，会显示在主屏幕和应用抽屉上。\n\n注意：通知始终使用默认图标和名称。</string>
+    <string name="icon_calculator">计算器</string>
 </resources>

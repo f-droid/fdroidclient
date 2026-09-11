@@ -451,4 +451,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_hide_migration_message">Der Rechner ist zwar nicht mehr da, aber du kannst das App-Symbol in den Einstellungen weiterhin dauerhaft ändern. Scrolle nach unten, bis du „App-Symbol“ findest.</string>
+    <string name="panic_hide_migration_button">Einstellungen überprüfen</string>
+    <string name="panic_hide_title">%s ausblenden</string>
+    <string name="panic_hide_summary">App blendet sich selbst aus</string>
+    <string name="panic_hide_migration_title">Neues Ausblenden von Apps in F-Droid</string>
+    <string name="icon_title">App-Symbol</string>
+    <string name="icon_summary">Wähle das für diese App auf dem Startbildschirm und in der App-Übersicht verwendete Symbol aus</string>
+    <string name="icon_intro">Wähle ein Symbol und einen Namen für diese App aus. Diese werden auf dem Startbildschirm und in der App-Übersicht angezeigt.\n\nHinweis: In Benachrichtigungen werden immer das Standardsymbol und der Standardname verwendet.</string>
+    <string name="icon_calculator">Rechner</string>
 </resources>

@@ -117,6 +117,9 @@
     <string name="panic_exit_title">Izlaz iz aplikacije</string>
     <string name="panic_exit_summary">Aplikacija će biti zatvorena</string>
     <string name="panic_destructive_actions">Destruktivne radnje</string>
+    <string name="panic_hide_title">Sakrij %s</string>
+    <string name="panic_hide_summary">Aplikacija će se sakriti</string>
+    <string name="icon_calculator">Kalkulator</string>
     <string name="notification_title_summary_installing">Instaliranje</string>
     <string name="disabled">Onemogućeno</string>
     <string name="allow">Dopusti</string>

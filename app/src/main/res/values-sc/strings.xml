@@ -125,6 +125,9 @@
     <string name="panic_exit_title">Essi dae s\'aplicatzione</string>
     <string name="panic_exit_summary">Custa aplicatzione s\'at a serrare</string>
     <string name="panic_destructive_actions">Atziones distrutoras</string>
+    <string name="panic_hide_title">Cua %s</string>
+    <string name="panic_hide_summary">S\'aplicatzione s\'at a cuare</string>
+    <string name="icon_calculator">Carculadora</string>
     <string name="sort_search">Òrdina sa chirca</string>
     <string name="warning_scaning_qr_code">Paret chi sa fotocàmera tua non tèngiat su focus automàticu. Diat pòdere èssere difìtzile a iscansire su còdighe.</string>
     <string name="repo_add_mirror">Annanghe un\'ispigru</string>

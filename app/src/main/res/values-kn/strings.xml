@@ -97,6 +97,7 @@
     <string name="install_error_notify_title">%s ಸ್ಥಾಪಿಸುವಲ್ಲಿ ದೋಷ</string>
     <string name="notification_title_single_update_available">ನವೀಕರಣ ಲಭ್ಯವಿದೆ</string>
     <string name="panic_app_setting_none">ಯಾವುದೂ ಅಲ್ಲ</string>
+    <string name="panic_hide_title">ಮರೆಮಾಡಿ %s</string>
     <string name="warning_scaning_qr_code">ನಿಮ್ಮ ಕ್ಯಾಮೆರಾದಲ್ಲಿ ಆಟೋಫೋಕಸ್ ಇರುವಂತೆ ತೋರುತ್ತಿಲ್ಲ. ಕೋಡ್ ಅನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡುವುದು ಕಷ್ಟವಾಗಬಹುದು.</string>
     <string name="swap_toast_could_not_enable_hotspot">ವೈ-ಫೈ ಹಾಟ್‌ಸ್ಪಾಟ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ!</string>
     <string name="swap_visible_hotspot">ಹಾಟ್ಸ್ಪಾಟ್ ಮೂಲಕ ಗೋಚರಿಸುತ್ತದೆ</string>
@@ -152,8 +153,10 @@
     <string name="repo_official_mirrors">ಅಧಿಕೃತ ಕನ್ನಡಿಗಳು</string>
     <string name="repo_fingerprint">ಸಹಿ ಮಾಡುವ ಕೀಲಿಯ ಫಿಂಗರ್‌ಪ್ರಿಂಟ್ (SHA-256)</string>
     <string name="banner_updating_repositories">ರೆಪೊಸಿಟರಿಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="icon_calculator">ಕ್ಯಾಲ್ಕುಲೇಟರ್</string>
     <string name="panic_reset_repos_summary">ರೆಪೊಸಿಟರಿ ಸೆಟಪ್ ಅನ್ನು ಡೀಫಾಲ್ಟ್ಗಳಿಗೆ ಹಿಂತಿರುಗಿಸಿ</string>
     <string name="panic_reset_repos_title">ಭಂಡಾರವನ್ನು ಮರುಹೊಂದಿಸಿ</string>
+    <string name="panic_hide_summary">ಅಪ್ಲಿಕೇಶನ್ ಸ್ವತಃ ಮರೆಮಾಡುತ್ತದೆ</string>
     <string name="panic_destructive_actions">ವಿನಾಶಕಾರಿ ಕ್ರಿಯೆಗಳು</string>
     <string name="panic_exit_summary">ಈ ಅಪ್ಲಿಕೇಶನ್ ಮುಚ್ಚಲ್ಪಡುತ್ತದೆ</string>
     <string name="panic_exit_title">ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ನಿರ್ಗಮಿಸಿ</string>

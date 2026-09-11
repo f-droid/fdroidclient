@@ -54,6 +54,9 @@
     <string name="panic_exit_title">Išeiti iš programėlės</string>
     <string name="panic_exit_summary">Programėlė bus užverta</string>
     <string name="panic_destructive_actions">Destruktyvūs veiksmai</string>
+    <string name="panic_hide_title">Paslėpti %s</string>
+    <string name="panic_hide_summary">Programėlė pasislėps</string>
+    <string name="icon_calculator">Skaičiuotuvas</string>
     <string name="banner_updating_repositories">Atnaujinamos saugyklos</string>
     <string name="not_on_same_wifi">Jūsų įrenginys prijungtas prie kito belaidžio tinklo (Wi-Fi), nei tik ką pridėta vietinė saugykla! Pabandykite prisijungti prie šio tinklo: %s</string>
     <string name="by_author_format">sukūrė %s</string>

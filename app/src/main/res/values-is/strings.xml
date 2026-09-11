@@ -127,6 +127,9 @@
     <string name="panic_exit_title">Hætta í forriti</string>
     <string name="panic_exit_summary">Þessu forriti verður lokað</string>
     <string name="panic_destructive_actions">Óafturkræfar aðgerðir</string>
+    <string name="panic_hide_title">Fela %s</string>
+    <string name="panic_hide_summary">Forrit mun fela sig</string>
+    <string name="icon_calculator">Reiknivél</string>
     <string name="sort_search">Raða leit</string>
     <string name="warning_scaning_qr_code">Það lítur út eins og myndavélin þín sé ekki með sjálfvirkan fókus. Það gæti orðið vandkvæðum bundið að skanna kóðann.</string>
     <string name="repo_add_mirror">Bæta við spegli</string>

@@ -130,6 +130,7 @@
     <string name="swap_hidden_wifi_ssid">（隱藏）</string>
     <string name="has_disallow_install_unknown_sources_globally">你的裝置管理員不允許安裝來自未知來源的應用程式，其中包括新的軟件庫</string>
     <string name="repo_official_mirrors">官方鏡像</string>
+    <string name="icon_calculator">計算機</string>
     <string name="swap_blank_wifi_ssid">（空白）</string>
     <string name="send_installed_apps">分享已安裝的應用程式</string>
     <string name="sort_search">搜尋排序</string>
@@ -148,6 +149,8 @@
     <string name="panic_settings">緊急按鈕設定</string>
     <string name="panic_settings_summary">緊急狀況下要採取的行動</string>
     <string name="panic_app_dialog_message">你同意讓 %1$s 觸發毀滅性的緊急按鈕行爲嗎？</string>
+    <string name="panic_hide_title">隱藏 %s</string>
+    <string name="panic_hide_summary">應用程式將隱藏自己</string>
     <string name="panic_reset_repos_title">重設軟件庫</string>
     <string name="panic_reset_repos_summary">強制將軟件庫重設回預設值</string>
     <string name="swap_visible_hotspot">透過熱點可見</string>

@@ -129,6 +129,9 @@
     <string name="panic_exit_title">Uygulamadan çık</string>
     <string name="panic_exit_summary">Bu uygulama kapatılacak</string>
     <string name="panic_destructive_actions">Yıkıcı eylemler</string>
+    <string name="panic_hide_title">%s uygulamasını gizle</string>
+    <string name="panic_hide_summary">Uygulama kendisini gizleyecek</string>
+    <string name="icon_calculator">Hesap Makinesi</string>
     <string name="sort_search">Aramayı sırala</string>
     <string name="warning_scaning_qr_code">Kameranızın kendiliğinden odaklanması yok gibi görünüyor. Kodu taramak zor olabilir.</string>
     <string name="repo_add_mirror">Yansıma ekle</string>

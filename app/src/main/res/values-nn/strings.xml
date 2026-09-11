@@ -92,6 +92,9 @@
     <string name="panic_exit_title">Avslutt appen</string>
     <string name="panic_exit_summary">Appen vert lukka</string>
     <string name="panic_destructive_actions">Destruktive handlingar</string>
+    <string name="panic_hide_title">Gøym %s</string>
+    <string name="panic_hide_summary">Appen vil gøyma seg</string>
+    <string name="icon_calculator">Kalkulator</string>
     <string name="banner_updating_repositories">Oppdaterer pakkebrønnar</string>
     <string name="theme">Tema</string>
     <string name="repo_fingerprint">Fingeravtrykk til signeringsnøkkel (SHA-256)</string>

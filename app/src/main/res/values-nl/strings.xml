@@ -214,9 +214,7 @@
     <string name="ipfsgw_caption_custom_gateways">Aangepaste IPFS gateways</string>
     <string name="app_details_repository_preferred">(voorkeur)</string>
     <string name="app_details_repository_button_prefer">Prefereer gegevensbank</string>
-    <string name="repo_list_info_text">Een gegevensbank is een bron van apps. Deze lijst toont alle toegevoegde gegevensbanken. Inactieve gegevensbanken worden niet gebruikt.
-\n
-\nAls een app in meerdere gegevensbanken voorkomt dan wordt de eerste gegevensbank in de lijst gebruikt. U kunt de volgorde veranderen door een gegevensbank ingedrukt te houden en te verplaatsen.</string>
+    <string name="repo_list_info_text">Een gegevensbank is een bron van apps. Deze lijst toont alle toegevoegde gegevensbanken. Inactieve gegevensbanken worden niet gebruikt. \n \nAls een app in meerdere gegevensbanken voorkomt, dan wordt de eerste gegevensbank in de lijst gebruikt. U kunt de volgorde veranderen door een gegevensbank ingedrukt te houden en te verplaatsen.</string>
     <string name="repo_archive_toggle_description">Toon gearchiveerde apps en verouderde versies van apps</string>
     <string name="menu_share_apk">Deel APK bestand</string>
     <string name="auto_update_time_past">Bijwerken wanneer condities zijn toegepast</string>
@@ -341,7 +339,7 @@
     <string name="pref_proxy_enabled">Gebruikt %s om te verbinden</string>
     <string name="pref_proxy_hint">Proxy word verwacht in host:port formaat</string>
     <string name="pref_proxy_error">Ongeldige proxy-formaat</string>
-    <string name="about_text">Apps op F-Droid zijn gratis en open source software (FOSS), ze respecteren uw privacy, en de broncode is voor iedereen te bekijken, verder te bouwen en verbeteren.\n\nApp distributie is transparant, privacy-respecterend, en verantwoord, wat een standaard instelt die het mobiele ecosysteem uitdaagt om beter te worden.\n\nF-Droid\'s impact wordt niet alleen gemeten in aantallen gepubliceerde apps maar in het vertrouwen, de vrijheid en digitale rechten die het helpt beschermen.\n\nHelp F-Droid om gemeenschppelijke innovatie te beschermen en door te gaan met onze missie van openheid, privacy, en gebruikersemancipatie.</string>
+    <string name="about_text">Apps op F-Droid zijn gratis en open source software (FOSS); ze respecteren uw privacy en de broncode is voor iedereen te bekijken, verder te bouwen en te verbeteren.\n\nAppdistributie is transparant, privacy-respecterend en verantwoord, wat een standaard instelt die het mobiele ecosysteem uitdaagt om beter te worden.\n\nF-Droid\'s impact wordt niet alleen gemeten in aantallen gepubliceerde apps, maar in het vertrouwen, de vrijheid en de digitale rechten die het helpt beschermen.\n\nHelp F-Droid om gemeenschppelijke innovatie te beschermen en door te gaan met onze missie van openheid, privacy, en gebruikersemancipatie.</string>
     <string name="about_license_text">Dit programma is Gratis Software. U mag dit verder verspreiden en/of aanpassen onder de voorwaarden van de GNU General Public License zoals gepubliceerd door de Free Software Foundation, versie 3 van de License of een andere latere versie.</string>
     <string name="dialog_metered_title">Doorgaan op mobiel netwerk?</string>
     <string name="dialog_metered_text">Downloaden van %1$s kan mogelijk kosten genereren op basis van uw mobiele netwerkabonnement</string>
@@ -385,7 +383,7 @@
     <string name="category_group_summary_interests">Wetenschap, sport, tekenen &amp; recepten</string>
     <string name="category_group_summary_misc">Ungecategorizeerd</string>
     <string name="app_details_anti_features_title">Wat zijn Anti-Functies?</string>
-    <string name="app_details_anti_features_text">Sommige apps hebben gedrag waar u niet om gevraagd hebt — en wat u misschien niet wilt. Dingen zoals advertenties, tracking, of afhankelijkheid van betaalde diensten. We noemen dat Anti-Functies. \n\nApps in F-Droid zijn duidelijk gelabeled als ze Anti-Functies bevatten, keuze kan maken.</string>
+    <string name="app_details_anti_features_text">Sommige apps hebben gedrag waar u niet om gevraagd hebt — en wat u misschien niet wilt. Dingen zoals advertenties, tracking, of afhankelijkheid van betaalde diensten. We noemen dat Anti-Functies. \n\nApps in F-Droid zijn duidelijk gelabeld als ze Anti-Functies bevatten; de keuze kan je dan zelf maken.</string>
     <string name="dialog_metered_dont_show">Toon dit niet vaker</string>
     <string name="apps_updates_hint_title">Gefeliciteerd 🥳</string>
     <string name="apps_updates_hint_text">Al uw apps zijn bijgewerkt</string>
@@ -457,4 +455,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_hide_migration_title">Nieuwe F-Droid heeft app verbergen veranderd</string>
+    <string name="panic_hide_migration_message">De rekenmachine is verdwenen maar u kunt het app-pictogram nog steeds permanent wijzigen in instellingen. Scroll om \"App Pictogram\" te vinden.</string>
+    <string name="panic_hide_migration_button">Instellingen beoordelen</string>
+    <string name="panic_hide_title">Verberg %s</string>
+    <string name="panic_hide_summary">App zal zichzelf verbergen</string>
+    <string name="icon_title">App-pictogram</string>
+    <string name="icon_summary">Selecteer het pictogram gebruikt door deze app op het thuisscherm en in de applade</string>
+    <string name="icon_intro">Selecteer een pictogram en naam voor deze app. Dit is getoond op het hoofdscherm en in de applade.\n\nNotitie: Meldingen gebruiken altijd de standaard apnaam en het standaard app-pictogram.</string>
+    <string name="icon_calculator">Rekenmachine</string>
 </resources>

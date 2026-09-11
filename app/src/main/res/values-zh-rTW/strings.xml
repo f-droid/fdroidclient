@@ -124,9 +124,12 @@
     <string name="panic_settings">應急按鈕設定</string>
     <string name="panic_exit_title">離開應用程式</string>
     <string name="panic_exit_summary">應用程式將被關閉</string>
+    <string name="panic_hide_title">隱藏 %s</string>
+    <string name="panic_hide_summary">應用程式將隱藏自己</string>
     <string name="panic_app_dialog_message">確認同意讓 %1$s 啟動破壞式的緊急按鈕動作？</string>
     <string name="panic_settings_summary">危急狀況下要採取的行動</string>
     <string name="panic_destructive_actions">破壞式行動</string>
+    <string name="icon_calculator">計算機</string>
     <string name="sort_search">搜尋排序</string>
     <string name="warning_scaning_qr_code">您的相機似乎沒有自動對焦。掃描代碼可能會很困難。</string>
     <string name="repo_add_mirror">新增鏡像</string>

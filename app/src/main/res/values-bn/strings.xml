@@ -57,6 +57,7 @@
     <string name="wifi">ওয়াই-ফাই</string>
     <string name="repo_details">ভাণ্ডার</string>
     <string name="theme">থিম</string>
+    <string name="icon_calculator">ক্যালকুলেটর</string>
     <string name="allow">অনুমতি দিন</string>
     <string name="panic_app_setting_none">কোনটি না</string>
     <string name="privacy">গোপনীয়তা</string>
@@ -90,6 +91,7 @@
     <string name="repo_user_mirrors">ব্যবহারকারী আয়না</string>
     <string name="repo_official_mirrors">প্রাতিষ্ঠানিক আয়না(মিরর)</string>
     <string name="panic_reset_repos_title">ভাণ্ডার আগের অবস্থায় নাও</string>
+    <string name="panic_hide_title">%s লুকাও</string>
     <string name="panic_destructive_actions">ধ্বংসাত্মক ক্রিয়া</string>
     <string name="panic_exit_title">অ্যাপ থেকে প্রস্থান</string>
     <string name="preventScreenshots_title">স্ক্রিনশট প্রতিরোধ করো</string>
@@ -134,6 +136,7 @@
     <string name="notification_channel_installs_description">অ্যাপ ইন্সটলের বিজ্ঞপ্তি দেখাও।</string>
     <string name="swap_not_visible_wifi">ওয়াইফাই দিয়ে দৃশ্যমান না</string>
     <string name="swap_not_visible_bluetooth">ব্লুটুথ দিয়ে দৃশ্যমান না</string>
+    <string name="panic_hide_summary">অ্যাপ নিজেকে লুকাবে</string>
     <string name="app_inst_unknown_source">ইন্সটলকৃত (অজানা উৎস থেকে)</string>
     <string name="no_such_app">এইরকম কোনো অ্যাপ পাওয়া যায়নি।</string>
     <string name="crash_dialog_title">এফ-ড্রয়েড থেমে‌ গেছে</string>

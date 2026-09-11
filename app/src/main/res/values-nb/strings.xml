@@ -131,6 +131,9 @@
     <string name="panic_exit_title">Avslutt program</string>
     <string name="panic_exit_summary">Dette programmet vil bli lukket</string>
     <string name="panic_destructive_actions">Ødeleggende handlinger</string>
+    <string name="panic_hide_title">Skjul %s</string>
+    <string name="panic_hide_summary">Programmet vil skjule seg selv</string>
+    <string name="icon_calculator">Kalkulator</string>
     <string name="sort_search">Sorter søk</string>
     <string name="warning_scaning_qr_code">Kameraet ditt mangler autofokus. Det kan vise seg vanskelig å skanne koden.</string>
     <string name="repo_add_mirror">Legg til speil</string>

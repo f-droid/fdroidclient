@@ -127,6 +127,9 @@
     <string name="panic_exit_title">Välju rakendusest</string>
     <string name="panic_exit_summary">See rakendus suletakse</string>
     <string name="panic_destructive_actions">Hävitavad tegevused</string>
+    <string name="panic_hide_title">Peida %s</string>
+    <string name="panic_hide_summary">Rakendus peidab end ise</string>
+    <string name="icon_calculator">Kalkulaator</string>
     <string name="sort_search">Otsingu sortimine</string>
     <string name="warning_scaning_qr_code">Su kaameral ei paista olevat automaatfokusseerimist. Koodi skannimine võib olla keeruline.</string>
     <string name="install_history">Paigalduste ajalugu</string>

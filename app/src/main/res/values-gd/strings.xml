@@ -149,6 +149,8 @@
     <string name="banner_updating_repositories">Ag ùrachadh nan ionadan-tasgaidh</string>
     <string name="panic_reset_repos_summary">Spàrr air suidheachadh an ionaid-thasgaidh gun till e dha na bun-roghainnean</string>
     <string name="panic_reset_repos_title">Ath-shuidhich na h-ionadan-tasgaidh</string>
+    <string name="panic_hide_summary">Cuiridh an aplacaid i fhèin am falach</string>
+    <string name="panic_hide_title">Falaich %s</string>
     <string name="panic_destructive_actions">Gnìomhan millteach</string>
     <string name="panic_exit_summary">Thèid an aplacaid seo a dhùnadh</string>
     <string name="warning_scaning_qr_code">Tha coltas nach eil fòcas fèin-obrachail aig a’ chamara agad. Dh’fhaoidte gum bi e doirbh an còd a sganadh.</string>

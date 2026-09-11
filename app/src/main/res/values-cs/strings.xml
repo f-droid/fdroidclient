@@ -126,7 +126,10 @@
     <string name="panic_exit_title">Ukončit aplikaci</string>
     <string name="panic_exit_summary">Tato aplikace bude ukončena</string>
     <string name="panic_destructive_actions">Destruktivní akce</string>
+    <string name="panic_hide_title">Skrýt %s</string>
+    <string name="panic_hide_summary">Aplikace se skryje</string>
     <string name="panic_app_dialog_message">Opravdu chcete umožnit aplikaci %1$s spouštět destruktivní akce panického tlačítka\?</string>
+    <string name="icon_calculator">Kalkulačka</string>
     <string name="sort_search">Setřídit hledání</string>
     <string name="warning_scaning_qr_code">Vypadá to, že váš fotoaparát nemá automatické zaostřování. Skenování kódu může být obtížné.</string>
     <string name="repo_add_mirror">Přidat zrcadlo</string>

@@ -121,12 +121,15 @@
     <string name="allow">Autoriser</string>
     <string name="panic_exit_title">Quitter l\'application</string>
     <string name="panic_exit_summary">Cette application sera fermée</string>
+    <string name="panic_hide_title">Masquer %s</string>
+    <string name="panic_hide_summary">L\'application sera masquée</string>
     <string name="panic_settings">Paramètres du bouton d\'urgence</string>
     <string name="panic_settings_summary">Actions à exécuter en cas d\'urgence</string>
     <string name="panic_app_setting_title">Appli bouton d’urgence</string>
     <string name="panic_app_dialog_title">Confirmer l\'application pour le mode panique</string>
     <string name="panic_app_dialog_message">Souhaitez-vous vraiment autoriser %1$s à déclencher les actions irréversibles du bouton d\'urgence ?</string>
     <string name="panic_destructive_actions">Actions irréversibles</string>
+    <string name="icon_calculator">Calculatrice</string>
     <string name="sort_search">Trier la recherche</string>
     <string name="warning_scaning_qr_code">Votre appareil photo ne semble pas avoir de mise au point automatique. Il sera peut-être difficile de balayer le code.</string>
     <string name="repo_add_mirror">Ajouter un miroir</string>

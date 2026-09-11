@@ -119,6 +119,7 @@
     <string name="panic_exit_title">خروج از کاره</string>
     <string name="panic_exit_summary">این کاره بسته خواهد شد</string>
     <string name="panic_destructive_actions">کنش‌های مخرّب</string>
+    <string name="panic_hide_title">نهفتن %s</string>
     <string name="preventScreenshots_title">جلوگیری از نماگرفت‌ها</string>
     <string name="preventScreenshots_summary">نماگرفت‌ها را مسدود و محتوای کاره را از صفحهٔ کاره‌های اخیر پنهان می‌کند</string>
     <string name="panic_app_setting_title">کارهٔ دکمهٔ هراس</string>
@@ -126,6 +127,8 @@
     <string name="panic_app_dialog_message">مطمئنید که می‌خواهید اجازهٔ راه‌اندازی کنش‌های مخرّب دکمهٔ هراس را به %1$s بدهید؟</string>
     <string name="panic_settings">تنظیمات دکمهٔ هراس</string>
     <string name="panic_settings_summary">کنش‌هایی که باید در صورت اضطرار انجام شوند</string>
+    <string name="panic_hide_summary">کاره خودش را پنهان خواهد کرد</string>
+    <string name="icon_calculator">ماشین‌حساب</string>
     <string name="sort_search">چینش جست‌وجو</string>
     <string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
     <string name="repo_add_mirror">افزودن آینه</string>

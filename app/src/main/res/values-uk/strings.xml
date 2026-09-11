@@ -119,6 +119,7 @@
     <string name="panic_app_setting_none">Жоден</string>
     <string name="allow">Дозволити</string>
     <string name="panic_exit_title">Вийти з застосунку</string>
+    <string name="panic_hide_title">Сховати %s</string>
     <string name="sort_search">Впорядкувати пошук</string>
     <string name="preventScreenshots_summary">Блокує знімки екрана та приховує вміст з останніх застосунків</string>
     <string name="panic_app_setting_title">Застосунок тривожної кнопки</string>
@@ -128,6 +129,8 @@
     <string name="panic_settings_summary">Заходи, які необхідно вжити в екстрених випадках</string>
     <string name="panic_exit_summary">Застосунки буде закрито</string>
     <string name="panic_destructive_actions">Деструктивні дії</string>
+    <string name="panic_hide_summary">Застосунок сховає сам себе</string>
+    <string name="icon_calculator">Калькулятор</string>
     <string name="repo_add_mirror">Додати дзеркало</string>
     <string name="repo_official_mirrors">Офіційні дзеркала</string>
     <string name="repo_user_mirrors">Користувацькі дзеркала</string>

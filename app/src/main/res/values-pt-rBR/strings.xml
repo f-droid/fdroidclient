@@ -125,8 +125,11 @@
     <string name="panic_exit_title">Sair do app</string>
     <string name="panic_exit_summary">Este app será fechado</string>
     <string name="panic_destructive_actions">Ações destrutivas</string>
+    <string name="panic_hide_title">Ocultar %s</string>
+    <string name="panic_hide_summary">O app se ocultará</string>
     <string name="panic_app_setting_title">App de botão de pânico</string>
     <string name="panic_app_dialog_title">Confirmar app de botão de pânico</string>
+    <string name="icon_calculator">Calculadora</string>
     <string name="sort_search">Ordenar busca</string>
     <string name="warning_scaning_qr_code">Sua câmera não parece ter foco automático. Pode ser difícil ler o código.</string>
     <string name="repo_add_mirror">Adicionar espelho</string>
