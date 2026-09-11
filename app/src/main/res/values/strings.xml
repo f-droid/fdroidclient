@@ -340,6 +340,7 @@
     <string name="panic_app_setting_none">None</string>
     <string name="panic_app_dialog_title">Confirm panic app</string>
     <string name="panic_app_dialog_message">Are you sure that you want to allow %1$s to trigger destructive panic button actions?</string>
+    <string name="panic_app_unknown_app">an unknown app</string>
     <string name="allow">Allow</string>
     <string name="panic_hide_migration_title">New F-Droid changed app hiding</string>
     <string name="panic_hide_migration_message">The calculator is gone, but you can still change the app icon permanently in settings. Scroll to find \"App Icon\".</string>
