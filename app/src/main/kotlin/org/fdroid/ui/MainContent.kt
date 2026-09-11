@@ -69,8 +69,7 @@ fun MainContent(
           sceneDecoratorStrategies = listOf(responsiveNavigationSceneDecoratorStrategy),
           sceneStrategies = listOf(listDetailStrategy),
           onBack = onBack,
-          modifier = Modifier
-            .hintAnchor(hintAnchor, fullScreen = true),
+          modifier = Modifier.hintAnchor(hintAnchor, fullScreen = true),
         )
       }
     }

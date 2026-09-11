@@ -56,7 +56,8 @@ object TestUtils {
                   manifest =
                     pv.manifest.copy(
                       usesPermission = pv.manifest.usesPermission.sortedBy { p -> p.name },
-                      usesPermissionSdk23 = pv.manifest.usesPermissionSdk23.sortedBy { p -> p.name },
+                      usesPermissionSdk23 =
+                        pv.manifest.usesPermissionSdk23.sortedBy { p -> p.name },
                     )
                 )
               },

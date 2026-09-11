@@ -118,6 +118,7 @@ fun AppDetailsLinkWithVeryLongSubtitlePreview() {
     icon = Icons.Default.Checklist,
     title = "SHA-512",
     url = "",
-    subTitle = "a69a964b3d34c3cd792b2c68c4730e0c4a7e54bbf90276052913971f00df6b997f2c7ffa6aea208a6bd86a4f171d06b0531585036e2bfe87dd11702abf87acab",
+    subTitle =
+      "a69a964b3d34c3cd792b2c68c4730e0c4a7e54bbf90276052913971f00df6b997f2c7ffa6aea208a6bd86a4f171d06b0531585036e2bfe87dd11702abf87acab",
   )
 }
