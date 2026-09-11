@@ -11,13 +11,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import org.fdroid.ui.settings.LegacyOnboardingManager
 
 @Singleton
 class OnboardingManager
 @Inject
-constructor(@param:ApplicationContext private val context: Context) {
+constructor(
+  @param:ApplicationContext private val context: Context,
+  legacyOnboardingManager: LegacyOnboardingManager,
+) {
 
   private companion object {
+    const val KEY_MAIN = "legacyMain"
     const val KEY_MY_APPS_UPDATES = "myAppsUpdates"
     const val KEY_FILTER = "appFilter"
     const val KEY_REPO_LIST = "repoList"
@@ -27,6 +32,10 @@ constructor(@param:ApplicationContext private val context: Context) {
   }
 
   private val prefs = context.getSharedPreferences("onboarding", MODE_PRIVATE)
+
+  private val _showMainOnboarding =
+    Onboarding(KEY_MAIN, prefs, legacyOnboardingManager.showAppHidingOnboarding)
+  val showMainOnboarding = _showMainOnboarding.flow
 
   private val _showMyAppsUpdatesHint = Onboarding(KEY_MY_APPS_UPDATES, prefs)
   val showMyAppsUpdatesHint = _showMyAppsUpdatesHint.flow
@@ -45,6 +54,10 @@ constructor(@param:ApplicationContext private val context: Context) {
 
   private val _showAntiFeaturesOnboarding = Onboarding(KEY_ANTI_FEATURES, prefs)
   val showAntiFeaturesOnboarding = _showAntiFeaturesOnboarding.flow
+
+  fun onMainOnboardingSeen() {
+    _showMainOnboarding.onSeen(prefs)
+  }
 
   fun onMyAppsUpdateHintSeen() {
     _showMyAppsUpdatesHint.onSeen(prefs)
@@ -75,7 +88,8 @@ private data class Onboarding(val key: String, private val _flow: MutableStateFl
   constructor(
     key: String,
     prefs: SharedPreferences,
-  ) : this(key = key, _flow = MutableStateFlow(prefs.getBoolean(key, true)))
+    default: Boolean = true,
+  ) : this(key = key, _flow = MutableStateFlow(prefs.getBoolean(key, default)))
 
   val flow: StateFlow<Boolean> = _flow.asStateFlow()
 

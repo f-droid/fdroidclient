@@ -47,17 +47,14 @@
         android:theme="@style/Theme.FDroid"
         tools:targetApi="33">
         <activity
-            android:name="org.fdroid.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/Theme.FDroid"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-                <category android:name="android.intent.category.APP_MARKET" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SHOW_APP_INFO" />
@@ -110,6 +107,36 @@
                     tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
+
+        <!-- The main alias providing the normal launcher icon and label -->
+        <activity-alias
+            android:name=".IconActivity"
+            android:exported="true"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_MARKET" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- The calculator alias providing the calculator icon and label, initially disabled -->
+        <activity-alias
+            android:name=".IconCalculatorActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_calculator"
+            android:label="@string/icon_calculator"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.APP_MARKET" />
+            </intent-filter>
+        </activity-alias>
+
         <activity
             android:name="org.fdroid.ui.crash.CrashActivity"
             android:excludeFromRecents="true"

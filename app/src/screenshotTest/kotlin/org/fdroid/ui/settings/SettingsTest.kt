@@ -15,7 +15,7 @@ import org.fdroid.ui.ScreenshotTest
 @Preview(showBackground = true, showSystemUi = true, heightDp = 1400)
 fun SettingsTest() =
   ScreenshotTest(showBottomBar = false) {
-    Settings(model = getSettingsModel(), onSaveLogcat = {}, onBackClicked = {})
+    Settings(model = getSettingsModel(), onChangeAppIcon = {}, onSaveLogcat = {}) {}
   }
 
 @Composable
@@ -28,7 +28,7 @@ fun SettingsTest() =
 )
 fun SettingsNightTest() =
   ScreenshotTest(showBottomBar = false) {
-    Settings(model = getSettingsModel(), onSaveLogcat = {}, onBackClicked = {})
+    Settings(model = getSettingsModel(), onChangeAppIcon = {}, onSaveLogcat = {}) {}
   }
 
 private fun getSettingsModel(
@@ -39,4 +39,5 @@ private fun getSettingsModel(
     prefsFlow = MutableStateFlow(MapPreferences(emptyMap())),
     nextRepoUpdateFlow = MutableStateFlow(nextRepoUpdate),
     nextAppUpdateFlow = MutableStateFlow(nextAppUpdate),
+    currentAppIconFlow = MutableStateFlow(AppIcon.Default),
   )

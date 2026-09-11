@@ -103,6 +103,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
       val viewModel = hiltViewModel<SettingsViewModel>()
       Settings(
         model = viewModel.model,
+        onChangeAppIcon = viewModel::onChangeAppIcon,
         onSaveLogcat = {
           viewModel.onSaveLogcat(it)
           navigator.goBack()
@@ -140,6 +141,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     isBigScreen = isBigScreen,
     showBottomBar = !isBigScreen && navigator.last is MainNavKey,
     currentNavKey = navigationState.topLevelRoute,
+    onOnboardingSeen = viewModel::onOnboardingSeen,
     onNav = {
       // don't navigate, if we are already on the selected top level route
       if (navigationState.topLevelRoute == it) {

@@ -34,6 +34,7 @@ constructor(
   app: Application,
   updatesManager: UpdatesManager,
   private val settingsManager: SettingsManager,
+  private val appIconManager: AppIconManager,
 ) : AndroidViewModel(app) {
 
   private val log = KotlinLogging.logger {}
@@ -43,6 +44,7 @@ constructor(
       prefsFlow = settingsManager.prefsFlow,
       nextRepoUpdateFlow = updatesManager.nextRepoUpdateFlow,
       nextAppUpdateFlow = updatesManager.nextAppUpdateFlow,
+      currentAppIconFlow = appIconManager.currentAppIcon,
     )
 
   init {
@@ -62,6 +64,10 @@ constructor(
         AppUpdateWorker.scheduleOrCancel(application, value)
       }
     }
+  }
+
+  fun onChangeAppIcon(appIcon: AppIcon) {
+    appIconManager.setAppIcon(appIcon)
   }
 
   fun onSaveLogcat(uri: Uri?) =

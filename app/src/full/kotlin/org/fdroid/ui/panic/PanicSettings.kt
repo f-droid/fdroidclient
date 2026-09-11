@@ -97,6 +97,13 @@ fun PanicSettings(
           },
         )
         switchPreference(
+          key = "pref_panic_hide",
+          defaultValue = false,
+          enabled = { state.actionsEnabled },
+          title = { Text(stringResource(R.string.panic_hide_title, stringResource(R.string.app_name))) },
+          summary = { Text(stringResource(R.string.panic_hide_summary)) },
+        )
+        switchPreference(
           key = "pref_panic_reset_repos",
           defaultValue = false,
           enabled = { state.actionsEnabled },
