@@ -334,17 +334,16 @@ enum class DonateType {
 }
 
 fun mapDonateLinks(links: List<String>): List<DonateLink> {
-  val typeMapping =
-    links.associateWith { link ->
-      when {
-        link.startsWith("https://opencollective.com") -> DonateType.OPEN_COLLECTIVE
-        link.startsWith("https://liberapay.com") -> DonateType.LIBERAPAY
-        link.startsWith("bitcoin:") -> DonateType.BITCOIN
-        link.startsWith("litecoin:") -> DonateType.LITECOIN
-        link.startsWith("taler:") -> DonateType.TALER
-        else -> DonateType.GENERIC
-      }
+  val typeMapping = links.associateWith { link ->
+    when {
+      link.startsWith("https://opencollective.com") -> DonateType.OPEN_COLLECTIVE
+      link.startsWith("https://liberapay.com") -> DonateType.LIBERAPAY
+      link.startsWith("bitcoin:") -> DonateType.BITCOIN
+      link.startsWith("litecoin:") -> DonateType.LITECOIN
+      link.startsWith("taler:") -> DonateType.TALER
+      else -> DonateType.GENERIC
     }
+  }
   val typeCounts = typeMapping.values.groupingBy { it }.eachCount()
   return links.map { link ->
     val type = typeMapping[link]!! // typeMapping has all items of links as keys (see above)
@@ -353,10 +352,8 @@ fun mapDonateLinks(links: List<String>): List<DonateLink> {
       url = link,
       type = type,
       subtitle =
-        if (
-          count > 1
-        ) { // only display donation/payment account when multiple links of the same type are
-            // present
+        if (count > 1) {
+          // only display donation/payment account when multiple links of the same type are present
           when (type) {
             DonateType.OPEN_COLLECTIVE,
             DonateType.LIBERAPAY -> {

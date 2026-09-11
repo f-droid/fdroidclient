@@ -46,6 +46,7 @@ constructor(
   val appFlow = prefsFlow.map { it.get<String>(PREF_TRIGGER_PACKAGE_NAME) }.distinctUntilChanged()
   val hideApp
     get() = settingsManager.prefs.getBoolean("pref_panic_hide", false)
+
   val resetRepos
     get() = settingsManager.prefs.getBoolean("pref_panic_reset_repos", false)
 
