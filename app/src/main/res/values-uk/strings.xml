@@ -463,4 +463,11 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Талер</string>
+    <string name="panic_app_unknown_app">невідомий додаток</string>
+    <string name="panic_hide_migration_title">У новій версії F-Droid змінено спосіб приховування додатків</string>
+    <string name="panic_hide_migration_message">Калькулятор зник, але ви все ще можете назавжди змінити іконку програми в налаштуваннях. Прокрутіть, щоб знайти пункт \"Значок додатка\".</string>
+    <string name="panic_hide_migration_button">Переглянути налаштування</string>
+    <string name="icon_title">Іконка додатка</string>
+    <string name="icon_summary">Виберіть іконку цього додатка на головному екрані та у списку додатків</string>
+    <string name="icon_intro">Виберіть іконку та назву для цього додатка. Це відображається на головному екрані та у списку додатків.\n\nПримітка: У сповіщеннях завжди використовуватимуться стандартна іконка та назва.</string>
 </resources>

@@ -448,4 +448,16 @@
     <string name="notification_channel_self_update_title">Pembaruan mandiri</string>
     <string name="notification_channel_self_update_description">Memberi tahu saat aplikasi telah diperbarui dan ditutup, sehingga Anda dapat membukanya kembali dengan mudah</string>
     <string name="notification_self_update_title">%s telah diperbarui. Ketuk untuk membuka</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">aplikasi tidak dikenal</string>
+    <string name="panic_hide_migration_title">F-Droid baru mengubah penyembunyian aplikasi</string>
+    <string name="panic_hide_migration_message">Kalkulator telah hilang, tetapi Anda masih dapat mengubah ikon aplikasi secara permanen di pengaturan. Gulir untuk menemukan \"Ikon Aplikasi\".</string>
+    <string name="panic_hide_migration_button">Tinjau pengaturan</string>
+    <string name="icon_title">Ikon aplikasi</string>
+    <string name="icon_summary">Pilih ikon yang digunakan aplikasi ini pada layar utama dan laci aplikasi</string>
+    <string name="icon_intro">Pilih ikon dan nama untuk aplikasi ini. Ikon dan nama tersebut akan ditampilkan pada layar utama dan laci aplikasi.\n\nCatatan: Notifikasi akan selalu menggunakan ikon dan nama bawaan.</string>
 </resources>

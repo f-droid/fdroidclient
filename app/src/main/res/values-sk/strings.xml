@@ -383,4 +383,6 @@
     <string name="copy_link">Kopírovať odkaz</string>
     <string name="app_no_compatible_versions">Táto aplikácia nie je kompatibilná s vašim zariadením</string>
     <string name="pref_category_network">Sieť</string>
+    <string name="panic_app_unknown_app">neznáma aplikácia</string>
+    <string name="panic_hide_migration_title">V novom F-Droide sa zmenilo skrývanie aplikácií</string>
 </resources>

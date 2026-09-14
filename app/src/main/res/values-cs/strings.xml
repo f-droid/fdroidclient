@@ -463,4 +463,11 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">neznámá aplikace</string>
+    <string name="panic_hide_migration_title">Nový F-Droid změnil skrývání aplikací</string>
+    <string name="panic_hide_migration_message">Kalkulačka je pryč, stále ale můžete trvale změnit ikonu aplikace v nastavení. Posuňte a najděte „Ikona aplikace“.</string>
+    <string name="panic_hide_migration_button">Zkontrolovat nastavení</string>
+    <string name="icon_title">Ikona aplikace</string>
+    <string name="icon_summary">Vyberte ikonu použitou pro tuto aplikaci na domovské stránce a v seznamu aplikací</string>
+    <string name="icon_intro">Vyberte ikonu a název této aplikace. Toto je zobrazeno na domovské stránce a v seznamu aplikací.\n\nUpozornění: oznámení budou vždy používat výchozí ikonu a název.</string>
 </resources>

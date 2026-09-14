@@ -439,4 +439,5 @@
     <string name="pref_proxy_error">Netinkamas įgaliotojo serverio formatas</string>
     <string name="app_details_anti_features_title">Kas yra nepageidaujamos funkcijos?</string>
     <string name="app_details_anti_features_text">Kai kuriose programose yra funkcijų, kurių neprašėte – ir galbūt nenorite. Tai gali būti reklamos, sekimas ar priklausomybė nuo nuosavybinių paslaugų. Mes tai vadiname nepageidaujamomis funkcijomis. \n\nF-Droid programoje galite aiškiai matyti, kurios programos turi tokių funkcijų, kad galėtumėte priimti informuotus sprendimus.</string>
+    <string name="panic_app_unknown_app">nežinoma programėlė</string>
 </resources>

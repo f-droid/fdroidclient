@@ -460,4 +460,16 @@
     <string name="install_history_disabled_state">Instalazio-historia desgaituta dago\n\nInstalazioak, eguneratzeak eta desinstalazioak ez dira erregistratuko</string>
     <string name="install_history_delete_ally">Ezabatu instalazio-historia</string>
     <string name="install_history_delete_text">Instalazio-historia ezabatu nahi duzu?</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">aplikazio ezezagun bat</string>
+    <string name="panic_hide_migration_title">F-Droid berriak aplikazioak ezkutatzea aldatu du</string>
+    <string name="panic_hide_migration_message">Kalkulagailua ez dago jada, baina hala ere aplikazioaren ikonoa aldatu dezakezu behin betiko ezarpenetan. Korritu \"Aplikazioaren ikonoa\" aurkitzeko.</string>
+    <string name="panic_hide_migration_button">Berrikusi ezarpenak</string>
+    <string name="icon_title">Aplikazioaren ikonoa</string>
+    <string name="icon_summary">Hautatu aplikazio honek ze ikono erabiliko duen hasierako pantailan eta aplikazioen tiraderan</string>
+    <string name="icon_intro">Hautatu ikono eta izen bat aplikazio honentzat. Hasierako pantailan eta aplikazioen tiraderan erakusten dira.\n\nOharra: Jakinarazpenek ikono eta izen lehenetsiak erabiliko dituzte beti.</string>
 </resources>

@@ -477,4 +477,11 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">aip anaithnid</string>
+    <string name="panic_hide_migration_title">Athraíodh an F-Droid nua i bhfolach aipeanna</string>
+    <string name="panic_hide_migration_message">Tá an t-áireamhán imithe, ach is féidir leat deilbhín an aip a athrú go buan sna socruithe fós. Scrollaigh chun \"Deilbhín an Aip\" a aimsiú.</string>
+    <string name="panic_hide_migration_button">Athbhreithnigh na socruithe</string>
+    <string name="icon_title">Deilbhín aipe</string>
+    <string name="icon_summary">Roghnaigh an deilbhín a úsáidtear don aip seo ar an scáileán baile agus sa tarraiceán aipeanna</string>
+    <string name="icon_intro">Roghnaigh deilbhín agus ainm don aip seo. Taispeántar iad seo ar an scáileán baile agus i dtarraiceán na n-aipeanna.\n\nTabhair faoi deara: Úsáidfidh fógraí an deilbhín agus an t-ainm réamhshocraithe i gcónaí.</string>
 </resources>
