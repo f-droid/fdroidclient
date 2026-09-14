@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.UpdateDisabled
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
@@ -295,6 +297,12 @@ fun Settings(
                   Icons.Default.UpdateDisabled
                 },
               contentDescription = null,
+              tint =
+                if (strValue != Never.name) {
+                  LocalContentColor.current
+                } else {
+                  MaterialTheme.colorScheme.error
+                },
               modifier = Modifier.semantics { hideFromAccessibility() },
             )
           },
@@ -323,7 +331,13 @@ fun Settings(
               } else {
                 stringResource(R.string.pref_auto_updates_summary_never)
               }
-            Text(s)
+            val textColor =
+              if (strValue != Never.name) {
+                Color.Unspecified
+              } else {
+                MaterialTheme.colorScheme.error
+              }
+            Text(s, color = textColor)
           },
           // Exclude the OnlyWhenOpenApp option here
           values =
