@@ -20,6 +20,7 @@ import me.zhanghai.compose.preference.createPreferenceFlow
 import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
@@ -219,6 +220,32 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     }
 
   init {
+    // update settings migration from 1.x can be removed after sufficient time has passed
+    try {
+      val updateAutoDownload = prefs.getBoolean("updateAutoDownload", true)
+      val overWifi = prefs.getInt("overWifi", 42)
+      val overData = prefs.getInt("overData", 42)
+      if (!updateAutoDownload || overWifi < 2 || overData < 1) {
+        log.info { "Migrating updateAutoDownload ($updateAutoDownload) to autoUpdates setting" }
+        log.info { "  overWifi: $overWifi" }
+        log.info { "  overData: $overData" }
+        // update flow, so UI also updates
+        prefsFlow.update {
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_AUTO_UPDATES] = AutoUpdateValues.Never.name
+          }
+        }
+        // persist prefs on disk afterward
+        prefs.edit {
+          putString(PREF_KEY_AUTO_UPDATES, AutoUpdateValues.Never.name)
+          remove("updateAutoDownload")
+          remove("overWifi")
+          remove("overData")
+        }
+      }
+    } catch (e: Exception) {
+      log.error(e) { "Error migrating update settings" }
+    }
     // proxy migration from 1.x can be removed after sufficient time has passed
     try {
       if (prefs.getBoolean("useTor", false)) {
