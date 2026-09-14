@@ -94,6 +94,7 @@ import androidx.compose.material.icons.filled.SignalCellularAlt
 import androidx.compose.material.icons.filled.Sos
 import androidx.compose.material.icons.filled.SportsMartialArts
 import androidx.compose.material.icons.filled.SportsSoccer
+import androidx.compose.material.icons.filled.SportsTennis
 import androidx.compose.material.icons.filled.StackedLineChart
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Style
@@ -209,7 +210,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Shopping List" -> Icons.Default.ShoppingCart
         "Social Network" -> Icons.Default.Groups
         "Sport Game" -> Icons.Default.SportsSoccer
-        "Sports & Health" -> Icons.Default.HealthAndSafety
+        "Sports & Health" -> Icons.Default.SportsTennis
         "Stopwatch" -> Icons.Default.Timer
         "System" -> Icons.Default.Settings
         "Task" -> Icons.Default.TaskAlt
@@ -260,7 +261,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Contact" -> CategoryGroups.communication
         "Development" -> CategoryGroups.interests
         "Dice" -> CategoryGroups.games
-        "Diet" -> CategoryGroups.interests
+        "Diet" -> CategoryGroups.health
         "DNS & Hosts" -> CategoryGroups.network
         "Download" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests
@@ -279,8 +280,8 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Gallery" -> CategoryGroups.storage
         "Game Helper" -> CategoryGroups.games
         "Graphics" -> CategoryGroups.interests
-        "Habit Tracker" -> CategoryGroups.productivity
-        "Health Manager" -> CategoryGroups.productivity
+        "Habit Tracker" -> CategoryGroups.health
+        "Health Manager" -> CategoryGroups.health
         "Icon Pack" -> CategoryGroups.device
         "Internet" -> CategoryGroups.network
         "Inventory" -> CategoryGroups.tools
@@ -290,9 +291,9 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Location Tracker & Sharer" -> CategoryGroups.tools
         "Lyrics" -> CategoryGroups.interests
         "Market & Price" -> CategoryGroups.wallets
-        "Medication" -> CategoryGroups.productivity
-        "Meditation" -> CategoryGroups.interests
-        "Mental Health" -> CategoryGroups.productivity
+        "Medication" -> CategoryGroups.health
+        "Meditation" -> CategoryGroups.health
+        "Mental Health" -> CategoryGroups.health
         "Messaging" -> CategoryGroups.communication
         "Multimedia" -> CategoryGroups.media
         "Music Practice Tool" -> CategoryGroups.interests
@@ -329,7 +330,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Shopping List" -> CategoryGroups.tools
         "Social Network" -> CategoryGroups.communication
         "Sport Game" -> CategoryGroups.games
-        "Sports & Health" -> CategoryGroups.interests
+        "Sports & Health" -> CategoryGroups.health
         "Stopwatch" -> CategoryGroups.tools
         "System" -> CategoryGroups.device
         "Task" -> CategoryGroups.productivity
@@ -349,7 +350,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Wallpaper" -> CategoryGroups.device
         "Weather" -> CategoryGroups.tools
         "Word Game" -> CategoryGroups.games
-        "Workout" -> CategoryGroups.interests
+        "Workout" -> CategoryGroups.health
         "Writing" -> CategoryGroups.productivity
         else -> CategoryGroups.misc
       }
