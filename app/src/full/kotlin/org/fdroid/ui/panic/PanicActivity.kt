@@ -84,27 +84,29 @@ class PanicActivity : AppCompatActivity() {
         )
       }
       if (showPanicDialog) {
-        PanicConfirmationDialog(
-          panicAppName = panicAppName,
-          onConfirm = {
-            val pkg = getCallerPackageName()
-            if (pkg != null) {
-              PanicResponder.setTriggerPackageName(this@PanicActivity, pkg)
-              val prefs = getSharedPreferences("${packageName}_preferences", MODE_PRIVATE)
-              prefs.edit { putString(PREF_TRIGGER_PACKAGE_NAME, pkg) }
-              viewModel.setTriggerPackageName(pkg)
-            } else {
-              // it's not clear what can be done in this state, so currently it's a no-op
-            }
-            setResult(RESULT_OK)
-            showPanicDialog = false
-          },
-          onDismiss = {
-            setResult(RESULT_CANCELED)
-            showPanicDialog = false
-            finish()
-          },
-        )
+        FDroidContent(dynamicColors = dynamicColors) {
+          PanicConfirmationDialog(
+            panicAppName = panicAppName,
+            onConfirm = {
+              val pkg = getCallerPackageName()
+              if (pkg != null) {
+                PanicResponder.setTriggerPackageName(this@PanicActivity, pkg)
+                val prefs = getSharedPreferences("${packageName}_preferences", MODE_PRIVATE)
+                prefs.edit { putString(PREF_TRIGGER_PACKAGE_NAME, pkg) }
+                viewModel.setTriggerPackageName(pkg)
+              } else {
+                // it's not clear what can be done in this state, so currently it's a no-op
+              }
+              setResult(RESULT_OK)
+              showPanicDialog = false
+            },
+            onDismiss = {
+              setResult(RESULT_CANCELED)
+              showPanicDialog = false
+              finish()
+            },
+          )
+        }
       }
     }
   }
