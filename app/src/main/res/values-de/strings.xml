@@ -460,4 +460,5 @@
     <string name="icon_summary">Wähle das für diese App auf dem Startbildschirm und in der App-Übersicht verwendete Symbol aus</string>
     <string name="icon_intro">Wähle ein Symbol und einen Namen für diese App aus. Diese werden auf dem Startbildschirm und in der App-Übersicht angezeigt.\n\nHinweis: In Benachrichtigungen werden immer das Standardsymbol und der Standardname verwendet.</string>
     <string name="icon_calculator">Rechner</string>
+    <string name="panic_app_unknown_app">eine unbekannte App</string>
 </resources>

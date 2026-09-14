@@ -456,4 +456,5 @@
     <string name="icon_summary">选择此应用在主屏幕和应用抽屉中所用的图标</string>
     <string name="icon_intro">选择此应用的图标和名称，会显示在主屏幕和应用抽屉上。\n\n注意：通知始终使用默认图标和名称。</string>
     <string name="icon_calculator">计算器</string>
+    <string name="panic_app_unknown_app">未知应用</string>
 </resources>

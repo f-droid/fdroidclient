@@ -452,4 +452,11 @@
     <string name="bitcoin">بیت‌کوین</string>
     <string name="litecoin">لایت‌کوین</string>
     <string name="taler">تیلر</string>
+    <string name="panic_app_unknown_app">کاره‌ای ناشناخته</string>
+    <string name="panic_hide_migration_title">اف‌دروید جدید نهفتن کاره را تغییر داد</string>
+    <string name="panic_hide_migration_message">ماشین حساب رفته است؛ ولی همچنان می‌توانید نقشک کاره را برای همیشه در تنظیمات عوض کنید. لغزش برای یافتن «نقشک کاره».</string>
+    <string name="panic_hide_migration_button">بازبینی تنظیمات</string>
+    <string name="icon_title">نقشک کاره</string>
+    <string name="icon_summary">گزینش نقشک استفاده شده برای این کاره روی صفحهٔ خانه و کشوی کاره</string>
+    <string name="icon_intro">گزینش نام و نقشکی برای این کاره که روی صفحهٔ خانه و کشوی کاره نشان داده شود.\n\nتوجّه: آگاهی‌ها همواره از نام و نقشک پیش‌گزیده استفاده خواهند کرد.</string>
 </resources>

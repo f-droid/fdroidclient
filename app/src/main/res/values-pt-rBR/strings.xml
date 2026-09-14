@@ -460,4 +460,11 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">um aplicativo desconhecido</string>
+    <string name="panic_hide_migration_title">Novo F-Droid mudou a ocultação de aplicativos</string>
+    <string name="panic_hide_migration_message">A calculadora desapareceu, mas você ainda pode alterar o ícone do aplicativo permanentemente nas configurações. Role para encontrar o \"Ícone do aplicativo\".</string>
+    <string name="panic_hide_migration_button">Revisar configurações</string>
+    <string name="icon_title">Ícone do aplicativo</string>
+    <string name="icon_summary">Selecione o ícone usado para este aplicativo na tela inicial e na gaveta de aplicativos</string>
+    <string name="icon_intro">Selecione um ícone e um nome para este aplicativo. Isso é mostrado na tela inicial e na gaveta de aplicativos.\n\nObservação: as notificações sempre usarão o ícone e o nome padrão.</string>
 </resources>
