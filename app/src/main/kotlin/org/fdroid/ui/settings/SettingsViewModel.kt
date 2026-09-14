@@ -1,6 +1,7 @@
 package org.fdroid.ui.settings
 
 import android.app.Application
+import android.content.Intent
 import android.net.Uri
 import android.os.Build.VERSION.SDK_INT
 import android.os.Process
@@ -68,6 +69,16 @@ constructor(
 
   fun onChangeAppIcon(appIcon: AppIcon) {
     appIconManager.setAppIcon(appIcon)
+
+    // On Android SDK versions below 26, changing the app icon may require a restart to take effect
+    if (SDK_INT < 26) {
+      val packageManager = application.packageManager
+      val intent = packageManager.getLaunchIntentForPackage(application.packageName)
+      val componentName = intent?.component
+      val mainIntent = Intent.makeRestartActivityTask(componentName)
+      application.startActivity(mainIntent)
+      getRuntime().exit(0)
+    }
   }
 
   fun onSaveLogcat(uri: Uri?) =
