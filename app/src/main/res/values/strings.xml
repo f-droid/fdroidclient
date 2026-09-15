@@ -68,6 +68,7 @@
     <string name="category_group_communication">Communication</string>
     <string name="category_group_device">Device</string>
     <string name="category_group_games">Games</string>
+    <string name="category_group_health">Health</string>
     <string name="category_group_network">Network</string>
     <string name="category_group_storage">Files &amp; Storage</string>
     <string name="category_group_interests">Interests</string>
@@ -80,6 +81,7 @@
     <string name="category_group_summary_communication">Email, messaging &amp; social networks</string>
     <string name="category_group_summary_device">Launcher, keyboard, security &amp; theming</string>
     <string name="category_group_summary_games">Board, card &amp; party games</string>
+    <string name="category_group_summary_health">Fitness, nutrition &amp; medical apps</string>
     <string name="category_group_summary_network">Browser, VPNs, proxies &amp; firewall</string>
     <string name="category_group_summary_storage">Files, gallery, cloud sync &amp; encryption</string>
     <string name="category_group_summary_interests">Science, sports, drawing &amp; recipes</string>

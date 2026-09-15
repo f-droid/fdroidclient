@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons.AutoMirrored
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.automirrored.filled.QueueMusic
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.Airplay
@@ -42,6 +43,7 @@ import androidx.compose.material.icons.filled.Dns
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Draw
 import androidx.compose.material.icons.filled.EditNote
+import androidx.compose.material.icons.filled.Emergency
 import androidx.compose.material.icons.filled.EnhancedEncryption
 import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.Fastfood
@@ -58,6 +60,8 @@ import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Keyboard
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.LocalPlay
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Medication
 import androidx.compose.material.icons.filled.ModeComment
 import androidx.compose.material.icons.filled.MonetizationOn
 import androidx.compose.material.icons.filled.MusicNote
@@ -74,6 +78,7 @@ import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.PermPhoneMsg
 import androidx.compose.material.icons.filled.PhotoSizeSelectActual
 import androidx.compose.material.icons.filled.Podcasts
+import androidx.compose.material.icons.filled.Psychology
 import androidx.compose.material.icons.filled.Radio
 import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material.icons.filled.RestaurantMenu
@@ -89,9 +94,11 @@ import androidx.compose.material.icons.filled.SignalCellularAlt
 import androidx.compose.material.icons.filled.Sos
 import androidx.compose.material.icons.filled.SportsMartialArts
 import androidx.compose.material.icons.filled.SportsSoccer
+import androidx.compose.material.icons.filled.SportsTennis
 import androidx.compose.material.icons.filled.StackedLineChart
 import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Style
+import androidx.compose.material.icons.filled.SurroundSound
 import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material.icons.filled.Timelapse
 import androidx.compose.material.icons.filled.Timer
@@ -117,6 +124,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Action Game" -> Icons.Default.SportsMartialArts
         "Alarm Clock" -> Icons.Default.Alarm
         "Battery" -> Icons.Default.BatteryChargingFull
+        "Ambient Sound" -> Icons.Default.SurroundSound
         "Board Game" -> Icons.Default.DeveloperBoard
         "Bookmark" -> Icons.Default.Bookmarks
         "Browser" -> Icons.Default.OpenInBrowser
@@ -140,6 +148,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Ebook Reader" -> AutoMirrored.Default.MenuBook
         "Educational Game" -> Icons.Default.School
         "Email" -> Icons.Default.AlternateEmail
+        "Emergency Action" -> Icons.Default.Emergency
         "Emulator" -> Icons.Default.VideogameAsset
         "File Encryption & Vault" -> Icons.Default.EnhancedEncryption
         "File Manager" -> Icons.Default.FileCopy
@@ -162,7 +171,9 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Location Tracker & Sharer" -> Icons.Default.MyLocation
         "Lyrics" -> AutoMirrored.Default.QueueMusic
         "Market & Price" -> Icons.Default.StackedLineChart
+        "Medication" -> Icons.Default.Medication
         "Meditation" -> Icons.Default.SelfImprovement
+        "Mental Health" -> Icons.Default.Psychology
         "Messaging" -> AutoMirrored.Default.Message
         "Multimedia" -> Icons.Default.MusicVideo
         "Music Practice Tool" -> Icons.Default.MusicNote
@@ -194,23 +205,26 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Science & Education" -> Icons.Default.Science
         "Security" -> Icons.Default.Security
         "Shooter Game" -> Icons.Default.CenterFocusWeak
+        "Speech Recognizer" -> Icons.Default.VoiceChat
         "Strategy Game" -> Icons.Default.Castle
         "Shopping List" -> Icons.Default.ShoppingCart
         "Social Network" -> Icons.Default.Groups
         "Sport Game" -> Icons.Default.SportsSoccer
-        "Sports & Health" -> Icons.Default.HealthAndSafety
+        "Sports & Health" -> Icons.Default.SportsTennis
         "Stopwatch" -> Icons.Default.Timer
         "System" -> Icons.Default.Settings
         "Task" -> Icons.Default.TaskAlt
         "Text Editor" -> Icons.Default.EditNote
+        "Text Encryption" -> Icons.Default.Lock
         "Text to Speech" -> Icons.Default.RecordVoiceOver
         "Theming" -> Icons.Default.Style
         "Time Tracker" -> Icons.Default.Timelapse
         "Timer" -> Icons.Default.AvTimer
         "Translation & Dictionary" -> Icons.Default.Translate
+        "Unit Convertor" -> Icons.Default.CurrencyExchange
         "Visual Novel" -> Icons.Default.ModeComment
         "Voice & Video Chat" -> Icons.Default.VideoChat
-        "Unit Convertor" -> Icons.Default.CurrencyExchange
+        "Volume" -> AutoMirrored.Default.VolumeUp
         "VPN & Proxy" -> Icons.Default.VpnLock
         "Wallet" -> Icons.Default.Wallet
         "Wallpaper" -> Icons.Default.Wallpaper
@@ -229,6 +243,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "App Store & Updater" -> CategoryGroups.device
         "Action Game" -> CategoryGroups.games
         "Alarm Clock" -> CategoryGroups.tools
+        "Ambient Sound" -> CategoryGroups.media
         "Battery" -> CategoryGroups.device
         "Board Game" -> CategoryGroups.games
         "Bookmark" -> CategoryGroups.storage
@@ -246,13 +261,14 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Contact" -> CategoryGroups.communication
         "Development" -> CategoryGroups.interests
         "Dice" -> CategoryGroups.games
-        "Diet" -> CategoryGroups.interests
+        "Diet" -> CategoryGroups.health
         "DNS & Hosts" -> CategoryGroups.network
         "Download" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests
         "Ebook Reader" -> CategoryGroups.media
         "Educational Game" -> CategoryGroups.games
         "Email" -> CategoryGroups.communication
+        "Emergency Action" -> CategoryGroups.device
         "Emulator" -> CategoryGroups.games
         "File Encryption & Vault" -> CategoryGroups.storage
         "File Manager" -> CategoryGroups.storage
@@ -264,8 +280,8 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Gallery" -> CategoryGroups.storage
         "Game Helper" -> CategoryGroups.games
         "Graphics" -> CategoryGroups.interests
-        "Habit Tracker" -> CategoryGroups.productivity
-        "Health Manager" -> CategoryGroups.productivity
+        "Habit Tracker" -> CategoryGroups.health
+        "Health Manager" -> CategoryGroups.health
         "Icon Pack" -> CategoryGroups.device
         "Internet" -> CategoryGroups.network
         "Inventory" -> CategoryGroups.tools
@@ -275,7 +291,9 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Location Tracker & Sharer" -> CategoryGroups.tools
         "Lyrics" -> CategoryGroups.interests
         "Market & Price" -> CategoryGroups.wallets
-        "Meditation" -> CategoryGroups.interests
+        "Medication" -> CategoryGroups.health
+        "Meditation" -> CategoryGroups.health
+        "Mental Health" -> CategoryGroups.health
         "Messaging" -> CategoryGroups.communication
         "Multimedia" -> CategoryGroups.media
         "Music Practice Tool" -> CategoryGroups.interests
@@ -307,29 +325,32 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Science & Education" -> CategoryGroups.interests
         "Security" -> CategoryGroups.device
         "Shooter Game" -> CategoryGroups.games
+        "Speech Recognizer" -> CategoryGroups.tools
         "Strategy Game" -> CategoryGroups.games
         "Shopping List" -> CategoryGroups.tools
         "Social Network" -> CategoryGroups.communication
         "Sport Game" -> CategoryGroups.games
-        "Sports & Health" -> CategoryGroups.interests
+        "Sports & Health" -> CategoryGroups.health
         "Stopwatch" -> CategoryGroups.tools
         "System" -> CategoryGroups.device
         "Task" -> CategoryGroups.productivity
         "Text Editor" -> CategoryGroups.productivity
+        "Text Encryption" -> CategoryGroups.tools
         "Text to Speech" -> CategoryGroups.device
         "Theming" -> CategoryGroups.device
         "Time Tracker" -> CategoryGroups.productivity
         "Timer" -> CategoryGroups.productivity
         "Translation & Dictionary" -> CategoryGroups.tools
+        "Unit Convertor" -> CategoryGroups.tools
         "Visual Novel" -> CategoryGroups.games
         "Voice & Video Chat" -> CategoryGroups.communication
-        "Unit Convertor" -> CategoryGroups.tools
+        "Volume" -> CategoryGroups.media
         "VPN & Proxy" -> CategoryGroups.network
         "Wallet" -> CategoryGroups.wallets
         "Wallpaper" -> CategoryGroups.device
         "Weather" -> CategoryGroups.tools
         "Word Game" -> CategoryGroups.games
-        "Workout" -> CategoryGroups.interests
+        "Workout" -> CategoryGroups.health
         "Writing" -> CategoryGroups.productivity
         else -> CategoryGroups.misc
       }

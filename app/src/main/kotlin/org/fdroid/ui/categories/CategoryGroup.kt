@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Construction
 import androidx.compose.material.icons.filled.Factory
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Forum
+import androidx.compose.material.icons.filled.MonitorHeart
 import androidx.compose.material.icons.filled.NetworkCheck
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.SdStorage
@@ -44,6 +45,13 @@ object CategoryGroups {
       name = R.string.category_group_games,
       summary = R.string.category_group_summary_games,
       imageVector = Icons.Default.SportsEsports,
+    )
+  val health =
+    CategoryGroup(
+      id = "health",
+      name = R.string.category_group_health,
+      summary = R.string.category_group_summary_health,
+      imageVector = Icons.Default.MonitorHeart,
     )
   val interests =
     CategoryGroup(
