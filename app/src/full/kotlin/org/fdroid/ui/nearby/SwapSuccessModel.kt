@@ -15,6 +15,7 @@ data class SwapSuccessItem(
   val versionCode: Long,
   val installedVersionName: String?,
   val installedVersionCode: Long?,
+  val isCompatible: Boolean = true,
   val iconModel: Any?,
   val installState: InstallState = InstallState.Unknown,
 ) {

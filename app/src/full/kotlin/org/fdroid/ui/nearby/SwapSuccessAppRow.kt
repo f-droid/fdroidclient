@@ -61,47 +61,50 @@ fun SwapSuccessAppRow(
         horizontalAlignment = Alignment.End,
         verticalArrangement = Arrangement.spacedBy(8.dp),
       ) {
-        when (val state = app.installState) {
-          is InstallState.Installed -> {
-            Text(stringResource(R.string.app_installed))
-          }
-          is InstallState.Error -> {}
-          is InstallState.Downloading -> {
-            Box(contentAlignment = Alignment.Center) {
-              IconButton(onClick = { onCancel(app.packageName) }) {
-                Icon(
-                  imageVector = Icons.Default.Close,
-                  contentDescription = stringResource(R.string.cancel),
-                )
-              }
-              CircularProgressIndicator(progress = { state.progress })
-            }
-          }
-          is InstallStateWithInfo -> {
-            Box(contentAlignment = Alignment.Center) {
-              IconButton(onClick = { onCancel(app.packageName) }) {
-                Icon(
-                  imageVector = Icons.Default.Close,
-                  contentDescription = stringResource(R.string.cancel),
-                )
-              }
-              CircularProgressIndicator()
-            }
-          }
-          else -> {
-            if (app.isInstalled && !app.hasUpdate) {
+        if (!app.isCompatible) {
+          Text(stringResource(R.string.app_incompatible), color = MaterialTheme.colorScheme.error)
+        } else
+          when (val state = app.installState) {
+            is InstallState.Installed -> {
               Text(stringResource(R.string.app_installed))
-            } else {
-              Button(onClick = { onInstall(app.packageName) }) {
-                Text(
-                  stringResource(
-                    if (app.hasUpdate) R.string.menu_upgrade else R.string.menu_install
+            }
+            is InstallState.Error -> {}
+            is InstallState.Downloading -> {
+              Box(contentAlignment = Alignment.Center) {
+                IconButton(onClick = { onCancel(app.packageName) }) {
+                  Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.cancel),
                   )
-                )
+                }
+                CircularProgressIndicator(progress = { state.progress })
+              }
+            }
+            is InstallStateWithInfo -> {
+              Box(contentAlignment = Alignment.Center) {
+                IconButton(onClick = { onCancel(app.packageName) }) {
+                  Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = stringResource(R.string.cancel),
+                  )
+                }
+                CircularProgressIndicator()
+              }
+            }
+            else -> {
+              if (app.isInstalled && !app.hasUpdate) {
+                Text(stringResource(R.string.app_installed))
+              } else {
+                Button(onClick = { onInstall(app.packageName) }) {
+                  Text(
+                    stringResource(
+                      if (app.hasUpdate) R.string.menu_upgrade else R.string.menu_install
+                    )
+                  )
+                }
               }
             }
           }
-        }
       }
     },
   )
