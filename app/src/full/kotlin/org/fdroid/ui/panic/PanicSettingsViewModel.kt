@@ -1,6 +1,7 @@
 package org.fdroid.ui.panic
 
 import android.app.Application
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
 import androidx.lifecycle.AndroidViewModel
@@ -57,7 +58,38 @@ constructor(
   private val _state = MutableStateFlow(PanicSettingsState())
   val state = _state.asStateFlow()
 
+  var wasExitSet = exitApp
+
+  var wasHideSet = hideApp
+
+  private val syncExitHidePrefs = SharedPreferences.OnSharedPreferenceChangeListener { prefs, key ->
+    if (key == "pref_panic_exit") {
+      val isExitSet = prefs.getBoolean("pref_panic_exit", true)
+      // check whether exit preference was changed before attempting to sync
+      if (isExitSet != wasExitSet) {
+        wasExitSet = isExitSet
+        val isHideSet = prefs.getBoolean("pref_panic_hide", false)
+        // if exit is off, also set hide off
+        if (!isExitSet && isHideSet) {
+          prefsFlow.update { it.toMutablePreferences().apply { this["pref_panic_hide"] = false } }
+        }
+      }
+    } else if (key == "pref_panic_hide") {
+      val isHideSet = prefs.getBoolean("pref_panic_hide", false)
+      // check whether hide preference was changed before attempting to sync
+      if (isHideSet != wasHideSet) {
+        wasHideSet = isHideSet
+        val isExitSet = prefs.getBoolean("pref_panic_exit", true)
+        // if hide is on, also set exit on
+        if (isHideSet && !isExitSet) {
+          prefsFlow.update { it.toMutablePreferences().apply { this["pref_panic_exit"] = true } }
+        }
+      }
+    }
+  }
+
   init {
+    settingsManager.prefs.registerOnSharedPreferenceChangeListener(syncExitHidePrefs)
     ioScope.launch {
       val apps =
         listOf(null) +
@@ -80,6 +112,12 @@ constructor(
         _state.update { it.copy(selectedPanicApp = getPanicApp(packageName)) }
       }
     }
+  }
+
+  override fun onCleared() {
+    super.onCleared()
+    // remove listener to avoid leaks
+    settingsManager.prefs.unregisterOnSharedPreferenceChangeListener(syncExitHidePrefs)
   }
 
   fun changeAppIcon(appIcon: AppIcon) {
