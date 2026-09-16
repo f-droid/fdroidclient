@@ -21,6 +21,7 @@ import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportE
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
@@ -245,6 +246,24 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
       }
     } catch (e: Exception) {
       log.error(e) { "Error migrating update settings" }
+    }
+    try {
+      if (prefs.getBoolean("preferForeign", false)) {
+        log.info { "Migrating preferForeign to mirror chooser prefer foreign" }
+        // update flow, so UI also updates
+        prefsFlow.update {
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_MIRROR_CHOOSER] = MirrorChooserValues.PreferForeign.name
+          }
+        }
+        // persist prefs on disk afterward
+        prefs.edit {
+          putString(PREF_KEY_MIRROR_CHOOSER, MirrorChooserValues.PreferForeign.name)
+          remove("preferForeign")
+        }
+      }
+    } catch (e: Exception) {
+      log.error(e) { "Error migrating preferForeign settings" }
     }
     // proxy migration from 1.x can be removed after sufficient time has passed
     try {
