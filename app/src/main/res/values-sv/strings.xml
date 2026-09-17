@@ -452,4 +452,13 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="open_collective">Open Collective</string>
+    <string name="panic_hide_migration_title">Nya F-Droid har ändrat hur appar döljs</string>
+    <string name="panic_hide_migration_message">Kalkylatorn är borta, men du kan fortfarande ändra appikonen permanent i inställningarna. Rulla för att hitta ”Appikon”.</string>
+    <string name="panic_hide_migration_button">Granska inställningar</string>
+    <string name="icon_title">Appikon</string>
+    <string name="icon_summary">Välj den ikon som används för appen på hemskärmen och i applådan</string>
+    <string name="icon_intro">Välj ikon och namn för appen. De visas på hemskärmen och i applådan.\n\nObs! Aviseringar använder alltid standardikonen och standardnamnet.</string>
+    <string name="panic_app_unknown_app">en okänd app</string>
+    <string name="category_group_health">Hälsa</string>
+    <string name="category_group_summary_health">Träning, kost och medicinska appar</string>
 </resources>

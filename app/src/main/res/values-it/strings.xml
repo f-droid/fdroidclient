@@ -111,7 +111,7 @@
     <string name="notification_title_single_update_available">Aggiornamento disponibile</string>
     <string name="notification_title_summary_installing">Installazione</string>
     <string name="notification_title_summary_install_error">Installazione fallita</string>
-    <string name="main_menu__swap_nearby">Qui vicino</string>
+    <string name="main_menu__swap_nearby">Nelle vicinanze</string>
     <string name="by_author_format">da %s</string>
     <string name="app__install_downloaded_update">Aggiorna</string>
     <string name="installed_apps__activity_title">App installate</string>
@@ -280,8 +280,8 @@
     <string name="search_no_results">Nessuna app trovata\n\nProva a usare meno termini di ricerca o aggiungere più repository</string>
     <string name="category_group_productivity">Produttività</string>
     <string name="category_group_tools">Strumenti</string>
-    <string name="category_group_wallets">Finanze e portafogli</string>
-    <string name="category_group_media">Intrattenimento e multimedia</string>
+    <string name="category_group_wallets">Finanze e Portafogli</string>
+    <string name="category_group_media">Intrattenimento e Multimedia</string>
     <string name="category_group_communication">Comunicazione</string>
     <string name="category_group_device">Dispositivo</string>
     <string name="category_group_network">Rete</string>
@@ -308,7 +308,7 @@
     <string name="first_start_button">Scarica repository</string>
     <string name="no_repos_enabled">Nessun repository disponibile, aggiungi un repository per iniziare</string>
     <string name="search_filter_no_results">Nessuna app corrispondente\n\nProva a utilizzare meno termini di ricerca o a rimuovere i filtri</string>
-    <string name="search_my_apps_no_results">Nessuna app corrispondente\n\nProva a utilizzare meno termini di ricerca o a rimuovere i filtri</string>
+    <string name="search_my_apps_no_results">Nessuna app corrispondente\n\nProva a utilizzare meno termini di ricerca</string>
     <string name="sort_title">Ordinamento e compatibilità</string>
     <string name="sort_by_name">Ordina per nome</string>
     <string name="sort_by_latest">Ordina per ultimo aggiornamento</string>
@@ -458,7 +458,7 @@
     <string name="notification_channel_self_update_title">Aggiornamento automatico</string>
     <string name="notification_channel_self_update_description">Informa quando l\'applicazione si è aggiornata ed è stata chiusa, in modo da poterla lanciare di nuovo facilmente</string>
     <string name="notification_self_update_title">%s è stata aggiornata. Tocca per aprirla</string>
-    <string name="my_apps_header_recently_installed_apps">Recentemente installate</string>
+    <string name="my_apps_header_recently_installed_apps">Installate di recente</string>
     <string name="clear_all">Rimuovi tutto</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Verifica la presenza di aggiornamenti solo all\'apertura • Le app diventeranno obsolete</string>
     <string name="liberapay">Liberapay</string>
@@ -466,4 +466,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">un\'app sconosciuta</string>
+    <string name="category_group_health">Salute</string>
+    <string name="category_group_summary_health">App per il fitness, l\'alimentazione e la salute</string>
+    <string name="panic_hide_migration_title">La nuova versione di F-Droid ha modificato la funzione di occultamento delle app</string>
+    <string name="panic_hide_migration_message">La calcolatrice non c\'è più, ma puoi comunque modificare in modo permanente l\'icona dell\'app nelle impostazioni. Scorri fino a trovare “Icona app”.</string>
+    <string name="panic_hide_migration_button">Verifica le impostazioni</string>
+    <string name="icon_title">Icona dell\'app</string>
+    <string name="icon_summary">Seleziona l\'icona di questa app sulla schermata iniziale e nel cassetto delle app</string>
+    <string name="icon_intro">Seleziona un\'icona e un nome per questa app. Questi elementi verranno visualizzati nella schermata iniziale e nel menu delle app.\n\nNota: le notifiche utilizzeranno sempre l\'icona e il nome predefiniti.</string>
 </resources>

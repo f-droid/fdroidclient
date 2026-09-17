@@ -467,4 +467,6 @@
     <string name="icon_title">Ícone do aplicativo</string>
     <string name="icon_summary">Selecione o ícone usado para este aplicativo na tela inicial e na gaveta de aplicativos</string>
     <string name="icon_intro">Selecione um ícone e um nome para este aplicativo. Isso é mostrado na tela inicial e na gaveta de aplicativos.\n\nObservação: as notificações sempre usarão o ícone e o nome padrão.</string>
+    <string name="category_group_health">Saúde</string>
+    <string name="category_group_summary_health">Aplicativos de fitness, nutrição e medicina</string>
 </resources>

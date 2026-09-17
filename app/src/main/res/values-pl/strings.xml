@@ -481,4 +481,6 @@
     <string name="icon_intro">Wybierz ikonę i nazwę dla tej aplikacji. Jest to wyświetlane na ekranie głównym i w szufladzie aplikacji.\n\nUwaga: Powiadomienia zawsze będą używać domyślnej ikony i nazwy.</string>
     <string name="icon_calculator">Kalkulator</string>
     <string name="panic_app_unknown_app">nieznana aplikacja</string>
+    <string name="category_group_health">Zdrowie</string>
+    <string name="category_group_summary_health">Aplikacje do fitnessu, odżywiania i zdrowia</string>
 </resources>

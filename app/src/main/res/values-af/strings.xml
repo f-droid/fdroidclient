@@ -104,7 +104,7 @@
     <string name="theme_light">Lig</string>
     <string name="theme_dark">Donker</string>
     <string name="crash_dialog_title">F-Droid het ineengestort</string>
-    <string name="notification_title_single_update_available">Update available</string>
+    <string name="notification_title_single_update_available">Opdatering beskikbaar</string>
     <string name="notification_title_summary_installing">Installering van</string>
     <string name="notification_title_summary_install_error">Installering het misluk</string>
     <string name="app__install_downloaded_update">Opdateer</string>
@@ -171,5 +171,16 @@
     <string name="about_forum">Ondersteuningsforum</string>
     <string name="apps">Apps</string>
     <string name="app_name_basic">F-Droid Basies</string>
-    <string name="menu_about">about</string>
+    <string name="menu_about">Oor</string>
+    <string name="menu_discover">Ontdek</string>
+    <string name="menu_apps_my">Myn toeps</string>
+    <string name="my_apps_ignore_dialog_button">Verberg</string>
+    <string name="app_list_all">Alle toeps</string>
+    <string name="app_list_author">Toeps van %s</string>
+    <string name="search_placeholder">Soek…</string>
+    <string name="filter_selected">geselekteer</string>
+    <string name="hide">Verberg</string>
+    <string name="category_group_device">Toestel</string>
+    <string name="category_group_games">Spelletjies</string>
+    <string name="category_group_network">Netwerk</string>
 </resources>

@@ -430,7 +430,7 @@
     <string name="category_group_summary_productivity">Agendas, tâches, horloges &amp; notes</string>
     <string name="category_group_summary_tools">Navigation, météo, calculatrices &amp; convertisseurs</string>
     <string name="category_group_summary_wallets">Gestionnaires de finances, d\'argent &amp; de cartes</string>
-    <string name="category_group_summary_media">Musique, podcasts &amp; liseuses</string>
+    <string name="category_group_summary_media">Musique, podcasts &amp; liseuses d\'ebook</string>
     <string name="category_group_summary_communication">Courriel, messagerie &amp; réseaux sociaux</string>
     <string name="category_group_summary_device">Lanceur, clavier, sécurité &amp; personnalisation</string>
     <string name="category_group_summary_network">Navigateurs, VPN, proxys &amp; pare-feu</string>
@@ -461,4 +461,12 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">une appli inconnue</string>
+    <string name="panic_hide_migration_title">Nouvelle fonctionnalité de F-Droid : masquage des applications modifiées</string>
+    <string name="panic_hide_migration_message">La calculatrice a disparu, mais vous pouvez toujours modifier définitivement l\'icône de l\'application dans les paramètres. Faites défiler la liste jusqu\'à « Icône de l\'application ».</string>
+    <string name="panic_hide_migration_button">Vérifier les paramètres</string>
+    <string name="icon_title">Icône de l\'application</string>
+    <string name="icon_summary">Sélectionnez l\'icône correspondant à cette application sur l\'écran d\'accueil et dans le tiroir d\'applications</string>
+    <string name="icon_intro">Choisissez une icône et un nom pour cette application. Ceux-ci s\'afficheront sur l\'écran d\'accueil et dans le tiroir d\'applications.\n\nRemarque : les notifications utiliseront toujours l\'icône et le nom par défaut.</string>
+    <string name="category_group_health">Santé</string>
+    <string name="category_group_summary_health">Applications de fitness, de nutrition &amp; médicales</string>
 </resources>

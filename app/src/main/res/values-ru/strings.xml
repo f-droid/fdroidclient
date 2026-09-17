@@ -470,4 +470,6 @@
     <string name="icon_intro">Выберите значок и название для этого приложения. Они будут отображаться на главном экране и в панели приложений.\n\nПримечание: в уведомлениях всегда будут использоваться значок и название по умолчанию.</string>
     <string name="icon_calculator">Калькулятор</string>
     <string name="panic_app_unknown_app">неизвестное приложение</string>
+    <string name="category_group_health">Здоровье</string>
+    <string name="category_group_summary_health">Приложения для фитнеса, питания и медицины</string>
 </resources>

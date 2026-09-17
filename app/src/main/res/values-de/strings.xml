@@ -461,4 +461,6 @@
     <string name="icon_intro">Wähle ein Symbol und einen Namen für diese App aus. Diese werden auf dem Startbildschirm und in der App-Übersicht angezeigt.\n\nHinweis: In Benachrichtigungen werden immer das Standardsymbol und der Standardname verwendet.</string>
     <string name="icon_calculator">Rechner</string>
     <string name="panic_app_unknown_app">eine unbekannte App</string>
+    <string name="category_group_summary_health">Fitness-, Ernährungs- und Gesundheits-Apps</string>
+    <string name="category_group_health">Gesundheit</string>
 </resources>

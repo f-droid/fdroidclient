@@ -464,4 +464,7 @@
     <string name="icon_summary">Selecteer het pictogram gebruikt door deze app op het thuisscherm en in de applade</string>
     <string name="icon_intro">Selecteer een pictogram en naam voor deze app. Dit is getoond op het hoofdscherm en in de applade.\n\nNotitie: Meldingen gebruiken altijd de standaard apnaam en het standaard app-pictogram.</string>
     <string name="icon_calculator">Rekenmachine</string>
+    <string name="panic_app_unknown_app">een onbekende app</string>
+    <string name="category_group_health">Gezondheid</string>
+    <string name="category_group_summary_health">Fitness-, voedings- en medische apps</string>
 </resources>
