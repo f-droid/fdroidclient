@@ -260,19 +260,16 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     } catch (e: Exception) {
       log.error(e) { "Error migrating update settings" }
     }
+    // foreign mirror migration from 1.x can be removed after sufficient time has passed
     try {
       if (prefs.getBoolean("preferForeign", false)) {
         log.info { "Migrating preferForeign to mirror chooser prefer foreign" }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
           it.toMutablePreferences().apply {
             this[PREF_KEY_MIRROR_CHOOSER] = MirrorChooserValues.PreferForeign.name
+            remove("preferForeign")
           }
-        }
-        // persist prefs on disk afterward
-        prefs.edit {
-          putString(PREF_KEY_MIRROR_CHOOSER, MirrorChooserValues.PreferForeign.name)
-          remove("preferForeign")
         }
       }
     } catch (e: Exception) {
@@ -282,29 +279,25 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     try {
       if (prefs.getBoolean("useTor", false)) {
         log.info { "Migrating useTor to proxy setting" }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
-          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "127.0.0.1:9050" }
-        }
-        // persist prefs on disk afterward
-        prefs.edit {
-          putString(PREF_KEY_PROXY, "127.0.0.1:9050")
-          remove("useTor")
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_PROXY] = "127.0.0.1:9050"
+            remove("useTor")
+          }
         }
       }
       val proxyHost = prefs.getString("proxyHost", null)
       val proxyPort = prefs.getString("proxyPort", null)?.toIntOrNull()
       if (proxyHost != null && proxyPort != null && proxyPort in 1..65535) {
         log.info { "Migrating proxy settings to $proxyHost:$proxyPort" }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
-          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort" }
-        }
-        // persist prefs on disk afterward
-        prefs.edit {
-          putString(PREF_KEY_PROXY, "$proxyHost:$proxyPort")
-          remove("proxyHost")
-          remove("proxyPort")
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort"
+            remove("proxyHost")
+            remove("proxyPort")
+          }
         }
       }
     } catch (e: Exception) {
