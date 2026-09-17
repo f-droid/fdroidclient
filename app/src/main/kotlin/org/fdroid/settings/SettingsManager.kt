@@ -226,22 +226,35 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
       val updateAutoDownload = prefs.getBoolean("updateAutoDownload", true)
       val overWifi = prefs.getInt("overWifi", 42)
       val overData = prefs.getInt("overData", 42)
-      if (!updateAutoDownload || overWifi < 2 || overData < 1) {
+      // only do migration, if old settings still exist
+      if (overWifi <= 2 || overData <= 2) {
         log.info { "Migrating updateAutoDownload ($updateAutoDownload) to autoUpdates setting" }
         log.info { "  overWifi: $overWifi" }
         log.info { "  overData: $overData" }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
           it.toMutablePreferences().apply {
-            this[PREF_KEY_AUTO_UPDATES] = AutoUpdateValues.Never.name
+            val newValue =
+              when {
+                overWifi == 2 && overData == 2 -> AutoUpdateValues.Always.name
+                overWifi == 2 -> AutoUpdateValues.OnlyWifi.name
+                updateAutoDownload && (overWifi != 0 || overData != 0) -> {
+                  AutoUpdateValues.OnlyWhenOpenApp.name
+                }
+                else -> AutoUpdateValues.Never.name
+              }
+            this[PREF_KEY_REPO_UPDATES] = newValue
+            // OnlyWhenOpenApp doesn't exist for app updates, so this gets set to Never
+            if (newValue == AutoUpdateValues.OnlyWhenOpenApp.name) {
+              this[PREF_KEY_AUTO_UPDATES] = AutoUpdateValues.Never.name
+            } else {
+              this[PREF_KEY_AUTO_UPDATES] = newValue
+            }
+            if (overData == 2) this[PREF_KEY_WARN_WHEN_METERED] = false
+            remove("updateAutoDownload")
+            remove("overWifi")
+            remove("overData")
           }
-        }
-        // persist prefs on disk afterward
-        prefs.edit {
-          putString(PREF_KEY_AUTO_UPDATES, AutoUpdateValues.Never.name)
-          remove("updateAutoDownload")
-          remove("overWifi")
-          remove("overData")
         }
       }
     } catch (e: Exception) {
