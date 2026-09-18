@@ -345,7 +345,7 @@
     <string name="panic_app_unknown_app">an unknown app</string>
     <string name="allow">Allow</string>
     <string name="panic_hide_migration_title">New F-Droid changed app hiding</string>
-    <string name="panic_hide_migration_message">The calculator is gone, but you can still change the app icon permanently in settings. Scroll to find \"App Icon\".</string>
+    <string name="panic_hide_migration_message">The calculator function was removed, but you can still change the app icon permanently via the \"app icon\" and \"panic button\" settings.</string>
     <string name="panic_hide_migration_button">Review settings</string>
 
     <!-- "panic button" is a well known concept in English, it is good to find a similar metaphor in your language -->
