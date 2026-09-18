@@ -456,4 +456,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">tundmatu rakendus</string>
+    <string name="panic_hide_migration_title">Uus F-Droid muutis rakenduse peitmise viisi</string>
+    <string name="panic_hide_migration_message">Kalkulaatorit enam pole, aga saad ikkagi seadistustest jäädavalt muuta rakenduse ikooni. Selle leidmiseks keri edasi.</string>
+    <string name="panic_hide_migration_button">Ülevaate seadistused</string>
+    <string name="icon_title">Rakenduse ikoon</string>
+    <string name="icon_summary">Vali ikoon, mida kasutatakse avalehel ja rakeduste loendis</string>
+    <string name="icon_intro">Sisesta sellele rakendusele nimi ja vali ikoon. Seda näidatakse avalehel ja rakenduste loendis.\n\nMärkus: teavitused kasutavad alati rakenduse vaikimisi nime ja ikooni.</string>
+    <string name="category_group_health">Tervis</string>
+    <string name="category_group_summary_health">Fitness, toitumine ja terviserakendused</string>
 </resources>

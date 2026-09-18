@@ -248,7 +248,7 @@
     <string name="first_start_loading">Захватам складишта програма</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="my_apps_empty">Искључиво апликације инсталиране од стране %1$s су приказане овде</string>
+    <string name="my_apps_empty">Искључиво апликације доступне у репозиторијуму %1$s су приказане овде</string>
     <string name="my_apps_header_apps_with_issue">Апликације са проблемима</string>
     <string name="my_apps_ignore_dialog_title">Сакриј проблеме</string>
     <string name="my_apps_ignore_dialog_text">Грешка са овом верзијом %1$s ће бити игнорисана</string>
@@ -349,7 +349,7 @@
     <string name="about_text">Програми на Ф-Дроиду су слободни и отвореног кода (ФОСС), они поштују Вашу пријатност, и доступни су свима ради прегледа изворног кода, градње и побољшавања.  \n\nДеоба програма је јасна, поштује пријатност, одговорна, постављајући правила и изазове ради побољшавања мобилног устројства.\n\nФ-дроидов учинак се мери не само објављеним програмима, већ слободом, поверењем, и дигиталним правима које брани.\n\nПомозите Ф-дроиду да сачува побољшања погоњена заједницом и наставите наш задатак отворености, пријатности и корисничких моћи.</string>
     <string name="about_license_text">Овај програм је слободна мекотворина. Можете га делити и/или прилагођавати под условима ОЈЛ ГНУ опште јавне дозволе објављене од задужбине слободног софтвреа, било издања 3 дозволе, или било којег каснијег издања.</string>
     <string name="app_no_compatible_signer_in_this_repo">Нисам успео да надградим програм, јер нема одговарајућег издања у омиљеном складишту\n\nПокушајте променом омиљеног складишта</string>
-    <string name="app_no_auto_update">Самонадргадња није доступна јер је овај програм изграђен за старије издање Андроида без подршке самосталне надградње</string>
+    <string name="app_no_auto_update">Аутоматско ажурирање није доступо јер је ова апликација изграђена за старију верзију Андроида</string>
     <string name="app_issue_update_other_repo">Надградња је доступна у другом складишту. Промените омиљено складиште ради надградње</string>
     <string name="app_issue_not_available_title">Програм није више доступан</string>
     <string name="app_issue_not_available_text">Програм је уклоњен илил је у складишту које сте онемогућили или уклонили</string>
@@ -367,7 +367,7 @@
     <string name="category_group_summary_productivity">Календари, задаци, часовници и бележнице</string>
     <string name="category_group_summary_tools">Навођење, временске прилике, рачунаљке и претварачи</string>
     <string name="category_group_summary_wallets">Улагања, новац и управници лозинки</string>
-    <string name="category_group_summary_media">Музика, доводи, игре и читачи е-књига</string>
+    <string name="category_group_summary_media">Музика, поткасти и читачи е-књига</string>
     <string name="category_group_summary_communication">Е-пошта, поруке и друштвене мреже</string>
     <string name="category_group_summary_device">Покретачи, тастатура, безбедност и предмети изгледа</string>
     <string name="category_group_summary_network">Прегледник, ВПН, посредници и ватрени зидови</string>
@@ -445,4 +445,25 @@
     <string name="repo_basicauth_password">Шифра</string>
     <string name="repo_basicauth_edit">Сачувај измене</string>
     <string name="notification_channel_self_update_title">Аутоматско ажурирање</string>
+    <string name="category_group_health">Здравље</string>
+    <string name="category_group_summary_games">Игре на табли, карташке и игре за журку</string>
+    <string name="category_group_summary_health">Апликације за фитнес, исхрану и медицину</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">непозната апликација</string>
+    <string name="panic_hide_migration_title">Нови F-Droid је променио скривање апликације</string>
+    <string name="panic_hide_migration_message">Калкулатор је нестао, али и даље можете трајно променити иконицу у подешавањима. Листајте до дна да бисте пронашли \"Иконицу апликације\".</string>
+    <string name="panic_hide_migration_button">Прегледајте подешавања</string>
+    <string name="status_downloading">Преузима се брзином од %s/секунди</string>
+    <string name="repo_disable_dialog_title">Онемогућити репозиторијум</string>
+    <string name="repo_disable_dialog_warning">Уколико сте поставили овај репозиторијум као изабрани за било које апликације, тај одабир ће нестати</string>
+    <string name="repo_disable_dialog_text">Све апликације од овог репозиторијума ће нестати. Ово нема утицаја на већ инсталиране апликације.</string>
+    <string name="repo_has_update_error_intro">Дошло је до грешке при ажурирању овог репозиторијума:</string>
+    <string name="notification_channel_self_update_description">Обавештава када се апликација аутоматски ажурирала и била затворена, тако да је лакше можете поновно покренути</string>
+    <string name="notification_self_update_title">Апликација %s је ажурирана. Додирните да бисте отворили</string>
+    <string name="icon_title">Иконица апликације</string>
+    <string name="icon_summary">Одаберите иконицу која се користи за ову апликацију на почетном екрану и у фиоци са апликацијама</string>
 </resources>

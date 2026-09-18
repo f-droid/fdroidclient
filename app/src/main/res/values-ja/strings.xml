@@ -461,4 +461,6 @@
     <string name="icon_title">アプリアイコン</string>
     <string name="icon_summary">ホーム画面やアプリドロワーでこのアプリへ割当されているアイコンを選択してください</string>
     <string name="icon_intro">このアプリのアイコン・名前を選択してください。これらがホーム画面やアプリドロワーに表示されます。\n\n備考：通知には常にデフォルトのアイコン・名前が使われます。</string>
+    <string name="category_group_health">健康</string>
+    <string name="category_group_summary_health">フィットネス、栄養＆医療関係アプリ</string>
 </resources>

@@ -459,4 +459,6 @@
     <string name="icon_title">نقشک کاره</string>
     <string name="icon_summary">گزینش نقشک استفاده شده برای این کاره روی صفحهٔ خانه و کشوی کاره</string>
     <string name="icon_intro">گزینش نام و نقشکی برای این کاره که روی صفحهٔ خانه و کشوی کاره نشان داده شود.\n\nتوجّه: آگاهی‌ها همواره از نام و نقشک پیش‌گزیده استفاده خواهند کرد.</string>
+    <string name="category_group_summary_health">کاره‌های پزشکی، تناسب اندام و مواد مغذی</string>
+    <string name="category_group_health">سلامت</string>
 </resources>

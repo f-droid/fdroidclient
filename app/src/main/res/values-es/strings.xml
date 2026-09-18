@@ -237,7 +237,7 @@
     </plurals>
     <string name="repo_basic_auth_title">Autenticación básica</string>
     <string name="repo_details_info_text">Un repositorio es una fuente de aplicaciones.\n\nSe utilizan servidores de réplicas para repartir entre varios servidores el coste y la tarea de proporcionar los datos de descarga de aplicaciones. Los servidores de réplicas que estén más cerca también pueden ser los más rápidos.\n\nLos servicios de réplicas oficiales los asigna el propietario del repositorio, y no se pueden eliminar, solo desactivar. Puedes definir tus propios servicios de réplica añadiéndolos como un repositorio normal más.</string>
-    <string name="repo_archive_unknown">Este repositorio parece no tener un archivo de versiones históricas.</string>
+    <string name="repo_archive_unknown">Este repositorio no parece tener ningún archivo.</string>
     <string name="repo_last_update_check">Última verificación de actualización del repositorio: %s</string>
     <string name="repo_confirm_delete_mirror_title">¿Eliminar espejo?</string>
     <string name="repo_confirm_delete_mirror_body">Puedes continuar instalando aplicaciones desde este repositorio utilizando los otros espejos.</string>

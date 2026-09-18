@@ -459,4 +459,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="panic_app_unknown_app">bilinmeyen bir uygulama</string>
+    <string name="panic_hide_migration_title">Yeni F-Droid uygulama gizlemeyi değiştirdi</string>
+    <string name="panic_hide_migration_message">Hesap makinesi artık yok, ancak ayarlardan uygulama simgesini kalıcı olarak değiştirebilirsiniz. Sayfayı kaydırarak \"Uygulama Simgesi\" seçeneğini bulun.</string>
+    <string name="panic_hide_migration_button">Ayarları gözden geçir</string>
+    <string name="icon_title">Uygulama simgesi</string>
+    <string name="icon_summary">Ana ekranda ve uygulama çekmecesinde bu uygulama için kullanılan simgeyi seçin</string>
+    <string name="icon_intro">Bu uygulama için bir simge ve ad seçin. Bunlar ana ekranda ve uygulama çekmecesinde gösterilir.\n\nNot: Bildirimlerde her zaman öntanımlı simge ve ad kullanılır.</string>
+    <string name="category_group_health">Sağlık</string>
+    <string name="category_group_summary_health">Fitness, beslenme ve sağlık uygulamaları</string>
 </resources>

@@ -459,4 +459,5 @@
     <string name="icon_title">Bildsimbolo de aplikaĵo</string>
     <string name="icon_summary">Elekti bildsimbolon kiu estos uzata por tiu ĉi aplikaĵo en la hejmekrano kaj la tirmenuo de aplikaĵoj</string>
     <string name="icon_intro">Elektu bildsimbolon kaj nomon por tiu ĉi aplikaĵo. Tio ĉi montriĝos en la hejmekrano kaj en la tirmenuo de aplikaĵoj.\n\nRimarko: sciigoj ĉiam uzos la implicitajn bildsimbolon kaj nomon.</string>
+    <string name="category_group_health">Sano</string>
 </resources>

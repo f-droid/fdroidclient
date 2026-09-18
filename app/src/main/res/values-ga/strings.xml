@@ -484,4 +484,6 @@
     <string name="icon_title">Deilbhín aipe</string>
     <string name="icon_summary">Roghnaigh an deilbhín a úsáidtear don aip seo ar an scáileán baile agus sa tarraiceán aipeanna</string>
     <string name="icon_intro">Roghnaigh deilbhín agus ainm don aip seo. Taispeántar iad seo ar an scáileán baile agus i dtarraiceán na n-aipeanna.\n\nTabhair faoi deara: Úsáidfidh fógraí an deilbhín agus an t-ainm réamhshocraithe i gcónaí.</string>
+    <string name="category_group_health">Sláinte</string>
+    <string name="category_group_summary_health">Aipeanna aclaíochta, cothaithe agus leighis</string>
 </resources>
