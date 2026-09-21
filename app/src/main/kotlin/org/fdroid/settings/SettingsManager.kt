@@ -20,6 +20,8 @@ import me.zhanghai.compose.preference.createPreferenceFlow
 import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
@@ -219,31 +221,90 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     }
 
   init {
+    // update settings migration from 1.x can be removed after sufficient time has passed
+    try {
+      val updateAutoDownload = prefs.getBoolean("updateAutoDownload", true)
+      val never = 0
+      val manual = 1
+      val always = 2
+      val unset = 42
+      val overWifi = prefs.getInt("overWifi", unset)
+      val overData = prefs.getInt("overData", unset)
+      // only do migration, if old settings still exist
+      if (overWifi < unset || overData < unset) {
+        log.info { "Migrating updateAutoDownload ($updateAutoDownload) to autoUpdates setting" }
+        log.info { "  overWifi: $overWifi" }
+        log.info { "  overData: $overData" }
+        // update flow: UI will update and settings will auto-persist to disk
+        prefsFlow.update {
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_REPO_UPDATES] =
+              when {
+                overWifi == never && overData == never -> AutoUpdateValues.Never.name
+                overWifi == always && overData == always -> AutoUpdateValues.Always.name
+                overWifi == always -> AutoUpdateValues.OnlyWifi.name
+                overWifi != never || overData != never -> AutoUpdateValues.OnlyWhenOpenApp.name
+                else -> AutoUpdateValues.Never.name
+              }
+            // OnlyWhenOpenApp doesn't exist for package updates
+            this[PREF_KEY_AUTO_UPDATES] =
+              when {
+                updateAutoDownload && (overWifi != never || overData != never) ->
+                  when {
+                    overWifi != never && overData != always -> AutoUpdateValues.OnlyWifi.name
+                    else -> AutoUpdateValues.Always.name
+                  }
+                overWifi == always && overData == manual -> AutoUpdateValues.OnlyWifi.name
+                else -> AutoUpdateValues.Never.name
+              }
+            if (overData == always) this[PREF_KEY_WARN_WHEN_METERED] = false
+            remove("updateAutoDownload")
+            remove("overWifi")
+            remove("overData")
+          }
+        }
+      }
+    } catch (e: Exception) {
+      log.error(e) { "Error migrating update settings" }
+    }
+    // foreign mirror migration from 1.x can be removed after sufficient time has passed
+    try {
+      if (prefs.getBoolean("preferForeign", false)) {
+        log.info { "Migrating preferForeign to mirror chooser prefer foreign" }
+        // update flow: UI will update and settings will auto-persist to disk
+        prefsFlow.update {
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_MIRROR_CHOOSER] = MirrorChooserValues.PreferForeign.name
+            remove("preferForeign")
+          }
+        }
+      }
+    } catch (e: Exception) {
+      log.error(e) { "Error migrating preferForeign settings" }
+    }
     // proxy migration from 1.x can be removed after sufficient time has passed
     try {
       if (prefs.getBoolean("useTor", false)) {
         log.info { "Migrating useTor to proxy setting" }
-        prefs.edit {
-          putString(PREF_KEY_PROXY, "127.0.0.1:9050")
-          remove("useTor")
-        }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
-          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "127.0.0.1:9050" }
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_PROXY] = "127.0.0.1:9050"
+            remove("useTor")
+          }
         }
       }
       val proxyHost = prefs.getString("proxyHost", null)
       val proxyPort = prefs.getString("proxyPort", null)?.toIntOrNull()
       if (proxyHost != null && proxyPort != null && proxyPort in 1..65535) {
         log.info { "Migrating proxy settings to $proxyHost:$proxyPort" }
-        prefs.edit {
-          putString(PREF_KEY_PROXY, "$proxyHost:$proxyPort")
-          remove("proxyHost")
-          remove("proxyPort")
-        }
-        // update flow, so UI also updates
+        // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
-          it.toMutablePreferences().apply { this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort" }
+          it.toMutablePreferences().apply {
+            this[PREF_KEY_PROXY] = "$proxyHost:$proxyPort"
+            remove("proxyHost")
+            remove("proxyPort")
+          }
         }
       }
     } catch (e: Exception) {
