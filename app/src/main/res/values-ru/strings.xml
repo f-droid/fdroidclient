@@ -461,7 +461,7 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="panic_hide_migration_title">В новой версии F-Droid изменен механизм скрытия приложения</string>
-    <string name="panic_hide_migration_message">Калькулятор удален, но вы по-прежнему можете изменить значок приложения в настройках. Прокрутите, чтобы найти пункт \"Значок приложения\".</string>
+    <string name="panic_hide_migration_message">Функция калькулятора была удалена, но вы по-прежнему можете изменить значок приложения через пункты меню настроек Значок приложения и Кнопка экстренного вызова.</string>
     <string name="panic_hide_migration_button">Просмотреть настройки</string>
     <string name="panic_hide_title">Скрыть %s</string>
     <string name="panic_hide_summary">Приложение скроется</string>

@@ -462,7 +462,7 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">une appli inconnue</string>
     <string name="panic_hide_migration_title">Nouvelle fonctionnalité de F-Droid : masquage des applications modifiées</string>
-    <string name="panic_hide_migration_message">La calculatrice a disparu, mais vous pouvez toujours modifier définitivement l\'icône de l\'application dans les paramètres. Faites défiler la liste jusqu\'à « Icône de l\'application ».</string>
+    <string name="panic_hide_migration_message">La fonction calculatrice a été supprimée, mais vous pouvez toujours modifier définitivement l\'icône de l\'application via les paramètres « Icône de l\'application » et « Bouton d\'urgence ».</string>
     <string name="panic_hide_migration_button">Vérifier les paramètres</string>
     <string name="icon_title">Icône de l\'application</string>
     <string name="icon_summary">Sélectionnez l\'icône correspondant à cette application sur l\'écran d\'accueil et dans le tiroir d\'applications</string>

@@ -448,4 +448,13 @@
     <string name="bitcoin">比特幣</string>
     <string name="litecoin">萊特幣</string>
     <string name="taler">Taler</string>
+    <string name="category_group_health">健康</string>
+    <string name="category_group_summary_health">健身、營養與醫療 app</string>
+    <string name="panic_app_unknown_app">未知的 app</string>
+    <string name="panic_hide_migration_title">新版 F-Droid 改變隱藏 app</string>
+    <string name="panic_hide_migration_button">查看設定</string>
+    <string name="icon_title">應用程式圖示</string>
+    <string name="icon_summary">選擇此應用程式在主屏幕和應用抽屜中使用的圖標</string>
+    <string name="panic_hide_migration_message">計算器功能被移除，但您仍可以通過“應用圖標”和“應急按鈕”設置永久更改應用圖標。</string>
+    <string name="icon_intro">選擇此應用程式的圖示和名稱。此設定將會在主畫面和應用程式抽屜上顯示。\n\n注意：通知將始終使用預設圖示和名稱。</string>
 </resources>

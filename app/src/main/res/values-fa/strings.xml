@@ -128,7 +128,7 @@
     <string name="panic_settings">تنظیمات دکمهٔ هراس</string>
     <string name="panic_settings_summary">کنش‌هایی که باید در صورت اضطرار انجام شوند</string>
     <string name="panic_hide_summary">کاره خودش را پنهان خواهد کرد</string>
-    <string name="icon_calculator">ماشین‌حساب</string>
+    <string name="icon_calculator">ماشین حساب</string>
     <string name="sort_search">چینش جست‌وجو</string>
     <string name="warning_scaning_qr_code">به نظر نمی‌رسد دوربینتان از تمرکز خودکار پشتیبانی کند. ممکن است پویش رمز سخت باشد.</string>
     <string name="repo_add_mirror">افزودن آینه</string>
@@ -454,7 +454,7 @@
     <string name="taler">تیلر</string>
     <string name="panic_app_unknown_app">کاره‌ای ناشناخته</string>
     <string name="panic_hide_migration_title">اف‌دروید جدید نهفتن کاره را تغییر داد</string>
-    <string name="panic_hide_migration_message">ماشین حساب رفته است؛ ولی همچنان می‌توانید نقشک کاره را برای همیشه در تنظیمات عوض کنید. لغزش برای یافتن «نقشک کاره».</string>
+    <string name="panic_hide_migration_message">ویژگی ماشین حساب برداشته شده؛ ولی همچنان می‌توانید نقشک کاره را برای همیشه از تنظیمات «نقشک کاره» و «دکمهٔ هراس» عوض کنید.</string>
     <string name="panic_hide_migration_button">بازبینی تنظیمات</string>
     <string name="icon_title">نقشک کاره</string>
     <string name="icon_summary">گزینش نقشک استفاده شده برای این کاره روی صفحهٔ خانه و کشوی کاره</string>

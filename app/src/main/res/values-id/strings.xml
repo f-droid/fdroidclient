@@ -455,9 +455,11 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">aplikasi tidak dikenal</string>
     <string name="panic_hide_migration_title">F-Droid baru mengubah penyembunyian aplikasi</string>
-    <string name="panic_hide_migration_message">Kalkulator telah hilang, tetapi Anda masih dapat mengubah ikon aplikasi secara permanen di pengaturan. Gulir untuk menemukan \"Ikon Aplikasi\".</string>
+    <string name="panic_hide_migration_message">Fungsi kalkulator telah dihapus, tetapi Anda masih bisa mengubah ikon aplikasi secara permanen melalui pengaturan “ikon aplikasi” dan “tombol panik”.</string>
     <string name="panic_hide_migration_button">Tinjau pengaturan</string>
     <string name="icon_title">Ikon aplikasi</string>
     <string name="icon_summary">Pilih ikon yang digunakan aplikasi ini pada layar utama dan laci aplikasi</string>
     <string name="icon_intro">Pilih ikon dan nama untuk aplikasi ini. Ikon dan nama tersebut akan ditampilkan pada layar utama dan laci aplikasi.\n\nCatatan: Notifikasi akan selalu menggunakan ikon dan nama bawaan.</string>
+    <string name="category_group_health">Kesehatan</string>
+    <string name="category_group_summary_health">Kebugaran, nutrisi dan aplikasi kesehatan</string>
 </resources>

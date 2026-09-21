@@ -186,4 +186,26 @@
     <string name="app_details_repositories">ਰਿਪੋਜ਼ਟਰੀਆਂ</string>
     <string name="app_details_repository_preferred">(ਤਰਜੀਹੀ)</string>
     <string name="app_details_repository_expand">repository list ਨੂੰ ਫੈਲਾਓ</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="menu_about">ਬਾਰੇ</string>
+    <string name="menu_discover">ਖੋਜੋ</string>
+    <string name="menu_apps_my">ਮੇਰੀਆਂ ਐਪਾਂ</string>
+    <string name="first_start_loading">ਐਪ ਰਿਪੋਜ਼ਟਰੀਆਂ ਪ੍ਰਾਪਤ ਹੋ ਰਹੀਆਂ ਹਨ…</string>
+    <string name="first_start_intro">ਸ਼ੁਰੂ ਕਰਨ ਲਈ, ਐਪ ਰਿਪੋਜ਼ਟਰੀਆਂ ਸਿੰਕ ਕਰੋ</string>
+    <string name="first_start_offline">ਤੁਸੀਂ ਆਫ਼ਲਾਈਨ ਹੋ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ।</string>
+    <string name="first_start_metered">ਤੁਸੀਂ ਮੋਬਾਈਲ ਡਾਟਾ ’ਤੇ ਹੋ ਅਤੇ 10 MB ਤੋਂ ਵੱਧ ਡਾਟਾ ਡਾਊਨਲੋਡ ਹੋਵੇਗਾ। ਫਿਰ ਵੀ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ‘ਰਿਪੋਜ਼ਟਰੀਆਂ ਪ੍ਰਾਪਤ ਕਰੋ’ ਦਬਾਓ।</string>
+    <string name="first_start_button">ਰਿਪੋਜ਼ਟਰੀਆਂ ਪ੍ਰਾਪਤ ਕਰੋ</string>
+    <string name="no_repos_enabled">ਕੋਈ ਰਿਪੋਜ਼ਟਰੀ ਉਪਲਬਧ ਨਹੀਂ ਹੈ, ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਰਿਪੋਜ਼ਟਰੀ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="my_apps_empty">ਸਿਰਫ਼ %1$s ਦੀਆਂ ਰਿਪੋਜ਼ਟਰੀਆਂ ਵਿੱਚ ਉਪਲਬਧ ਐਪਾਂ ਹੀ ਇੱਥੇ ਦਿਖਾਈਆਂ ਗਈਆਂ ਹਨ</string>
+    <string name="my_apps_header_recently_installed_apps">ਹੁਣੇ ਇੰਸਟਾਲ ਕੀਤੀਆਂ ਐਪਾਂ</string>
+    <string name="my_apps_header_apps_with_issue">ਸਮੱਸਿਆਵਾਂ ਵਾਲੀਆਂ ਐਪਾਂ</string>
+    <string name="my_apps_ignore_dialog_title">ਸਮੱਸਿਆ ਲੁਕਾਓ</string>
+    <string name="my_apps_ignore_dialog_text">\"%1$s\" ਦੇ ਇਸ ਵਰਜਨ ਨਾਲ ਸੰਬੰਧਿਤ ਸਮੱਸਿਆ ਨੂੰ ਅਣਡਿੱਠ ਕੀਤਾ ਜਾਵੇਗਾ</string>
+    <string name="my_apps_ignore_dialog_button">ਲੁਕਾਓ</string>
+    <string name="my_apps_export_installed_apps">ਐਪ ਲਿਸਟ ਐਕਸਪੋਰਟ ਕਰੋ</string>
+    <string name="app_list_new">ਨਵੀਆਂ ਐਪਾਂ</string>
+    <string name="app_list_recently_updated">ਹਾਲ ਹੀ ਵਿੱਚ ਅੱਪਡੇਟ ਕੀਤੀਆਂ</string>
+    <string name="app_list_most_downloaded">ਸਭ ਤੋਂ ਵੱਧ ਡਾਊਨਲੋਡ ਕੀਤੀਆਂ</string>
+    <string name="app_list_all">ਸਾਰੀਆਂ ਐਪਾਂ</string>
+    <string name="app_list_author">%s ਵੱਲੋਂ ਐਪਾਂ</string>
 </resources>
