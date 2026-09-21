@@ -7,16 +7,31 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
+import kotlin.test.assertNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.setMain
+import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.MirrorChooserValues
+import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
 import org.junit.Test
 
 class SettingsManagerTest {
 
   private val context: Context = mockk(relaxed = true)
   private val prefs: SharedPreferences = FakeSharedPreferences()
+
+  // 1.x shared preferences keys and values
+  private val overWifi = "overWifi"
+  private val overData = "overData"
+  private val updateAutoDownload = "updateAutoDownload"
+  private val never = 0
+  private val manual = 1
+  private val always = 2
 
   init {
     @OptIn(ExperimentalCoroutinesApi::class) Dispatchers.setMain(Dispatchers.Unconfined)
@@ -35,6 +50,82 @@ class SettingsManagerTest {
     // verify that the migration has been applied and old setting removed
     assertEquals("127.0.0.1:9050", prefs.getString(PREF_KEY_PROXY, null))
     assertFalse(prefs.contains("useTor"))
+  }
+
+  @Test
+  fun testUpdateDefaultsMigration() {
+    prefs.edit {
+      putInt(overWifi, always)
+      putInt(overData, manual)
+      putBoolean(updateAutoDownload, true)
+    }
+    SettingsManager(context)
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+    assertFalse(prefs.contains(overWifi))
+    assertFalse(prefs.contains(overData))
+    assertFalse(prefs.contains(updateAutoDownload))
+  }
+
+  @Test
+  fun testUpdateDefaultsMigrationWithPrivilegedExtension() {
+    prefs.edit {
+      putInt(overWifi, always)
+      putInt(overData, manual)
+      putBoolean(updateAutoDownload, false)
+    }
+    SettingsManager(context)
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+    assertFalse(prefs.contains(overWifi))
+    assertFalse(prefs.contains(overData))
+    assertFalse(prefs.contains(updateAutoDownload))
+  }
+
+  @Test
+  fun testExerciseAllUpdateMigrationOptions() {
+    for (ow in listOf(always, manual, never)) {
+      for (od in listOf(always, manual, never)) {
+        for (uad in listOf(true, false)) {
+          prefs.edit {
+            putInt(overWifi, ow)
+            putInt(overData, od)
+            putBoolean(updateAutoDownload, uad)
+          }
+          SettingsManager(context)
+          assertNotEquals(null, prefs.getString(PREF_KEY_REPO_UPDATES, null))
+          assertNotEquals(null, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+          assertFalse(prefs.contains(overWifi))
+          assertFalse(prefs.contains(overData))
+          assertFalse(prefs.contains(updateAutoDownload))
+        }
+      }
+    }
+  }
+
+  @Test
+  fun testNoPreferForeignMigration() {
+    SettingsManager(context)
+    assertNull(prefs.getString(PREF_KEY_MIRROR_CHOOSER, null))
+    assertFalse(prefs.contains("preferForeign"))
+  }
+
+  @Test
+  fun testPreferForeignFalseMigration() {
+    prefs.edit { putBoolean("preferForeign", false) }
+    SettingsManager(context)
+    assertNull(prefs.getString(PREF_KEY_MIRROR_CHOOSER, null))
+  }
+
+  @Test
+  fun testPreferForeignTrueMigration() {
+    prefs.edit { putBoolean("preferForeign", true) }
+    SettingsManager(context)
+    assertEquals(
+      MirrorChooserValues.PreferForeign.name,
+      prefs.getString(PREF_KEY_MIRROR_CHOOSER, null),
+    )
+    assertFalse(prefs.contains("preferForeign"))
   }
 }
 
