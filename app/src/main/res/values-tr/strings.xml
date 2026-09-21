@@ -461,7 +461,7 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">bilinmeyen bir uygulama</string>
     <string name="panic_hide_migration_title">Yeni F-Droid uygulama gizlemeyi değiştirdi</string>
-    <string name="panic_hide_migration_message">Hesap makinesi artık yok, ancak ayarlardan uygulama simgesini kalıcı olarak değiştirebilirsiniz. Sayfayı kaydırarak \"Uygulama Simgesi\" seçeneğini bulun.</string>
+    <string name="panic_hide_migration_message">Hesap makinesi işlevi kaldırıldı, ancak yine de \"uygulama simgesi\" ve \"panik düğmesi\" ayarları aracılığıyla uygulama simgesini kalıcı olarak değiştirebilirsiniz.</string>
     <string name="panic_hide_migration_button">Ayarları gözden geçir</string>
     <string name="icon_title">Uygulama simgesi</string>
     <string name="icon_summary">Ana ekranda ve uygulama çekmecesinde bu uygulama için kullanılan simgeyi seçin</string>
