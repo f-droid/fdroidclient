@@ -224,33 +224,40 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     // update settings migration from 1.x can be removed after sufficient time has passed
     try {
       val updateAutoDownload = prefs.getBoolean("updateAutoDownload", true)
-      val overWifi = prefs.getInt("overWifi", 42)
-      val overData = prefs.getInt("overData", 42)
+      val never = 0
+      val manual = 1
+      val always = 2
+      val unset = 42
+      val overWifi = prefs.getInt("overWifi", unset)
+      val overData = prefs.getInt("overData", unset)
       // only do migration, if old settings still exist
-      if (overWifi <= 2 || overData <= 2) {
+      if (overWifi < unset || overData < unset) {
         log.info { "Migrating updateAutoDownload ($updateAutoDownload) to autoUpdates setting" }
         log.info { "  overWifi: $overWifi" }
         log.info { "  overData: $overData" }
         // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
           it.toMutablePreferences().apply {
-            val newValue =
+            this[PREF_KEY_REPO_UPDATES] =
               when {
-                overWifi == 2 && overData == 2 -> AutoUpdateValues.Always.name
-                overWifi == 2 -> AutoUpdateValues.OnlyWifi.name
-                updateAutoDownload && (overWifi != 0 || overData != 0) -> {
-                  AutoUpdateValues.OnlyWhenOpenApp.name
-                }
+                overWifi == never && overData == never -> AutoUpdateValues.Never.name
+                overWifi == always && overData == always -> AutoUpdateValues.Always.name
+                overWifi == always -> AutoUpdateValues.OnlyWifi.name
+                overWifi != never || overData != never -> AutoUpdateValues.OnlyWhenOpenApp.name
                 else -> AutoUpdateValues.Never.name
               }
-            this[PREF_KEY_REPO_UPDATES] = newValue
-            // OnlyWhenOpenApp doesn't exist for app updates, so this gets set to Never
-            if (newValue == AutoUpdateValues.OnlyWhenOpenApp.name) {
-              this[PREF_KEY_AUTO_UPDATES] = AutoUpdateValues.Never.name
-            } else {
-              this[PREF_KEY_AUTO_UPDATES] = newValue
-            }
-            if (overData == 2) this[PREF_KEY_WARN_WHEN_METERED] = false
+            // OnlyWhenOpenApp doesn't exist for package updates
+            this[PREF_KEY_AUTO_UPDATES] =
+              when {
+                updateAutoDownload && (overWifi != never || overData != never) ->
+                  when {
+                    overWifi != never && overData != always -> AutoUpdateValues.OnlyWifi.name
+                    else -> AutoUpdateValues.Always.name
+                  }
+                overWifi == always && overData == manual -> AutoUpdateValues.OnlyWifi.name
+                else -> AutoUpdateValues.Never.name
+              }
+            if (overData == always) this[PREF_KEY_WARN_WHEN_METERED] = false
             remove("updateAutoDownload")
             remove("overWifi")
             remove("overData")
