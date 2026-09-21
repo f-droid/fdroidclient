@@ -465,7 +465,7 @@
     <string name="taler">Талер</string>
     <string name="panic_app_unknown_app">невідомий застосунок</string>
     <string name="panic_hide_migration_title">У новій версії F-Droid змінено спосіб приховування застосунків</string>
-    <string name="panic_hide_migration_message">Калькулятор зник, але ви все ще можете назавжди змінити піктограму застосунку в налаштуваннях. Прокрутіть, щоб знайти пункт \"Піктограму застосунку\".</string>
+    <string name="panic_hide_migration_message">Функцію калькулятора було вилучено, але ви все ще можете змінити піктограму застосунку назавжди через налаштування «піктограма застосунку» та «тривожна кнопка».</string>
     <string name="panic_hide_migration_button">Переглянути налаштування</string>
     <string name="icon_title">Піктограма застосунку</string>
     <string name="icon_summary">Виберіть піктограму цього застосунку на головному екрані та у списку застосунків</string>

@@ -454,6 +454,6 @@
     <string name="icon_summary">홈 화면과 앱서랍에서 표시할 아이콘 선택하기</string>
     <string name="icon_intro">이 앱의 아이콘과 이름을 선택하세요. 홈 화면과 앱서랍에 표시됩니다.\n\n참고: 알림에서는 항상 기본 아이콘과 이름을 사용합니다.</string>
     <string name="panic_hide_migration_title">새 F-Droid에서 앱 숨기기 설정이 바뀌었습니다</string>
-    <string name="panic_hide_migration_message">계산기는 사라졌지만, 여전히 설정에서 앱 아이콘을 영구적으로 변경할 수 있습니다. 스크롤하여 \"앱 아이콘\"을 찾으세요.</string>
+    <string name="panic_hide_migration_message">계산기 기능은 제거되었지만, 여전히 \"앱 아이콘\" 및 \"패닉 버튼\" 설정에서 앱 아이콘을 영구적으로 변경할 수 있습니다.</string>
     <string name="panic_hide_migration_button">설정 검토</string>
 </resources>

@@ -456,7 +456,7 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="panic_hide_migration_title">Nieuwe F-Droid heeft app verbergen veranderd</string>
-    <string name="panic_hide_migration_message">De rekenmachine is verdwenen maar u kunt het app-pictogram nog steeds permanent wijzigen in instellingen. Scroll om \"App Pictogram\" te vinden.</string>
+    <string name="panic_hide_migration_message">De rekenmachinefunctie is verwijderd maar u kunt het app-pictogram nog steeds permanent wijzigen via de \"app pictogram\" en \"paniekknop\" instellingen.</string>
     <string name="panic_hide_migration_button">Instellingen beoordelen</string>
     <string name="panic_hide_title">Verberg %s</string>
     <string name="panic_hide_summary">App zal zichzelf verbergen</string>

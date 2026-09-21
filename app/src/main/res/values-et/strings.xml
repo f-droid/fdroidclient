@@ -458,7 +458,7 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">tundmatu rakendus</string>
     <string name="panic_hide_migration_title">Uus F-Droid muutis rakenduse peitmise viisi</string>
-    <string name="panic_hide_migration_message">Kalkulaatorit enam pole, aga saad ikkagi seadistustest jäädavalt muuta rakenduse ikooni. Selle leidmiseks keri edasi.</string>
+    <string name="panic_hide_migration_message">Kalkulaatori funktsionaalsust enam pole, aga saad ikkagi jäädavalt muuta rakenduse ikooni. Selle kasuta seadistusi „rakenduse ikoon“ ja „paanikanupp“.</string>
     <string name="panic_hide_migration_button">Ülevaate seadistused</string>
     <string name="icon_title">Rakenduse ikoon</string>
     <string name="icon_summary">Vali ikoon, mida kasutatakse avalehel ja rakeduste loendis</string>

@@ -201,7 +201,7 @@
     <string name="repo_io_error">Chyba pri pripájaní k repozitáru.</string>
     <string name="repositories_last_update_never">nikdy</string>
     <string name="app_details_repository_preferred">(preferovaný)</string>
-    <string name="app_details_repository_button_prefer">Preferuj repozitár</string>
+    <string name="app_details_repository_button_prefer">Preferovať repozitár</string>
     <string name="repo_intro">Repozitár je prídavný zdroj aplikácií. Tie z tretích strán, ktoré sem pridáte majú iné štandardy ako tie, ktoré poskytujú aplikácie postavené samotným F-Droidom.
 \n
 \nProsím uistite sa, že repozitár, ktorý pridávate je dôveryhodný.</string>
@@ -385,4 +385,17 @@
     <string name="pref_category_network">Sieť</string>
     <string name="panic_app_unknown_app">neznáma aplikácia</string>
     <string name="panic_hide_migration_title">V novom F-Droide sa zmenilo skrývanie aplikácií</string>
+    <string name="category_group_health">Zdravie</string>
+    <string name="category_group_summary_health">Aplikácie zamerané na fitness, výživu a zdravie</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="screenshots_metered">Ťuknite pre načítanie snímok cez mobilné dáta</string>
+    <string name="app_no_auto_update">Automatické aktualizácie niesú k dispozícii, pretože táto aplikácia bola zostavená pre starú verziu systému Android</string>
+    <string name="app_issue_update_other_repo">Je dostupná aktualizácia v inom repozitári. Pre jej inštaláciu zmeňte preferovaný repozitár</string>
+    <string name="app_issue_not_available_text">Táto aplikácia mohla byť odstránená alebo bola v repozitári, ktorý ste odstránili alebo zakázali</string>
+    <string name="app_issue_not_available_button">Zobraziť informácie o aplikácii</string>
+    <string name="added_x_ago">Pridané %1$s</string>
+    <string name="size_colon">Veľkosť: %1$s</string>
+    <string name="version_code_colon">Kód verzie: %1$s</string>
 </resources>

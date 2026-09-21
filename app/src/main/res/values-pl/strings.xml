@@ -472,7 +472,7 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="panic_hide_migration_title">Nowy F-Droid zmienił ukrywanie aplikacji</string>
-    <string name="panic_hide_migration_message">Kalkulator zniknął, ale nadal możesz na stałe zmienić ikonę aplikacji w ustawieniach. Przewiń, aby znaleźć „Ikona aplikacji”.</string>
+    <string name="panic_hide_migration_message">Funkcja kalkulatora została usunięta, ale nadal możesz na stałe zmienić ikonę aplikacji przez ustawienia „ikony aplikacji” i „przycisku alarmowego”.</string>
     <string name="panic_hide_migration_button">Przejrzyj ustawienia</string>
     <string name="panic_hide_title">Ukryj %s</string>
     <string name="panic_hide_summary">Aplikacja ukryje się</string>

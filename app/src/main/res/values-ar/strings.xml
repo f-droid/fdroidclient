@@ -480,4 +480,13 @@ W    <string name="status_downloading">ينزل بسرعة %s/ث</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="category_group_health">الصحة</string>
+    <string name="category_group_summary_health">تطبيقات اللياقة البدنية والتغذية والتطبيقات الطبية</string>
+    <string name="panic_app_unknown_app">تطبيق مجهول</string>
+    <string name="panic_hide_migration_title">تحديث F-Droid الجديد يغير طريقة إخفاء التطبيقات</string>
+    <string name="panic_hide_migration_message">لقد اختفت الآلة الحاسبة، لكن لا يزال بإمكانك تغيير أيقونة التطبيق بشكل دائم من خلال الإعدادات. مرّر للعثور على خيار «أيقونة التطبيق».</string>
+    <string name="panic_hide_migration_button">راجع الإعدادات</string>
+    <string name="icon_title">أيقونة التطبيق</string>
+    <string name="icon_summary">حدّد الأيقونة المستخدمة لهذا التطبيق على الشاشة الرئيسية ودرج التطبيقات</string>
+    <string name="icon_intro">اختر أيقونة واسمًا لهذا التطبيق. سيظهر هذه الأيقونة والاسم على الشاشة الرئيسية وفي قائمة التطبيقات.\n\nملاحظة: ستستخدم الإشعارات دائمًا الأيقونة والاسم الافتراضيين.</string>
 </resources>

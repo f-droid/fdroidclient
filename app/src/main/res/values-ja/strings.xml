@@ -456,7 +456,7 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">不明なアプリ</string>
     <string name="panic_hide_migration_title">新たなF-Droidではアプリ非表示の設定が変更されました</string>
-    <string name="panic_hide_migration_message">電卓アプリはなくなりましたが、アプリのアイコンを設定から永続的に変更できます。“アプリアイコン“ が見つけられるまでスクロールしてください。</string>
+    <string name="panic_hide_migration_message">電卓機能は削除されましたが、“アプリアイコン“と“パニックボタン“ の設定から継続して恒久的にアプリアイコンを変更できます。</string>
     <string name="panic_hide_migration_button">設定のレビュー</string>
     <string name="icon_title">アプリアイコン</string>
     <string name="icon_summary">ホーム画面やアプリドロワーでこのアプリへ割当されているアイコンを選択してください</string>
