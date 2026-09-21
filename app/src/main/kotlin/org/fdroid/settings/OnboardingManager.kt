@@ -55,6 +55,8 @@ constructor(
   private val _showAntiFeaturesOnboarding = Onboarding(KEY_ANTI_FEATURES, prefs)
   val showAntiFeaturesOnboarding = _showAntiFeaturesOnboarding.flow
 
+  // FIXME: This gets called from PanicSettingsViewModel, because it currently serves as a
+  //  panic settings migration onboarding. Remove that call once no longer needed.
   fun onMainOnboardingSeen() {
     _showMainOnboarding.onSeen(prefs)
   }

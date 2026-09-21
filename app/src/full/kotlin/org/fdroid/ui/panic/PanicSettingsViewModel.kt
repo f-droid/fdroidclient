@@ -24,6 +24,7 @@ import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.repo.RepoPreLoader
+import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.settings.AppIcon
 import org.fdroid.ui.settings.AppIconManager
@@ -39,6 +40,7 @@ constructor(
   private val settingsManager: SettingsManager,
   private val appIconManager: AppIconManager,
   @param:IoDispatcher private val ioScope: CoroutineScope,
+  onboardingManager: OnboardingManager,
 ) : AndroidViewModel(app) {
 
   private val log = KotlinLogging.logger {}
@@ -61,6 +63,13 @@ constructor(
   var wasExitSet = exitApp
 
   var wasHideSet = hideApp
+
+  init {
+    // When the user enters panic settings, the onboarding was already seen.
+    // We still call this here again to prevent a migration onboarding from showing up again
+    // after setting up panic features for fresh installations. See #3399
+    onboardingManager.onMainOnboardingSeen()
+  }
 
   private val syncExitHidePrefs = SharedPreferences.OnSharedPreferenceChangeListener { prefs, key ->
     if (key == "pref_panic_exit") {
