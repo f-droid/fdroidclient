@@ -462,9 +462,11 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">aplicație necunoscută</string>
     <string name="panic_hide_migration_title">Noul F-Droid a schimbat modul de ascundere al aplicației</string>
-    <string name="panic_hide_migration_message">Calculatorul a dispărut, dar puteți modifica în continuare pictograma aplicației permanent în setări. Derulați pentru a găsi \"Pictogramă aplicație\".</string>
+    <string name="panic_hide_migration_message">Funcția \"calculator\" a fost eliminată, dar puteți modifica în continuare pictograma aplicației cu setările \"pictogramă aplicație\" și \"buton de panică\".</string>
     <string name="panic_hide_migration_button">Răsfoiți setări</string>
     <string name="icon_title">Pictogramă aplicație</string>
     <string name="icon_summary">Selectați pictograma utilizată pentru această aplicație pe ecranul de pornire și în sertarul cu aplicații</string>
     <string name="icon_intro">Selectați o pictogramă și un nume pentru această aplicație. Aceasta este afișată pe ecranul de pornire și în sertarul cu aplicații.\n\nNotă: Notificările vor folosi întotdeauna pictograma și numele implicite.</string>
+    <string name="category_group_health">Sănătate</string>
+    <string name="category_group_summary_health">Fitness, nutriție și aplicații medicale</string>
 </resources>

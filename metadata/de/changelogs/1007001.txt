@@ -1,5 +1,5 @@
-* überholter Direkt Swap mit dem Hotspot AP des Geräts
+* Die „Direktübertragung“ beim Verwenden des Hotspot-APs des Geräts überarbeitet
 
-* neue Panikreaktionen hinzufügen: App deinstalliert und setzt Repos auf den Standard zurück
+* Neue Panikreaktionen hinzugefügt: Apps deinstallieren und Repos auf Standardeinstellungen zurücksetzen
 
-* Proxy-Unterstützung beim ersten Start korrigieren
+* Proxy-Unterstützung beim ersten Start korrigiert

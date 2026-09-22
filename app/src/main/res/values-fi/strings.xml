@@ -455,4 +455,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="category_group_health">Terveys</string>
+    <string name="category_group_summary_health">Kuntoilu-, ravitsemus- ja terveyssovellukset</string>
+    <string name="panic_app_unknown_app">tuntematon sovellus</string>
+    <string name="panic_hide_migration_title">Uusi F-Droid versio vaihtoi sovelluspiilottamisen</string>
+    <string name="panic_hide_migration_message">Laskin funktio poistettiin, mutta voit silti vaihtaa sovelluskuvakkeen pysyvästi \"sovelluskuvake\" tai \"paniikkinäppäin\" asetuksilla.</string>
+    <string name="panic_hide_migration_button">Tarkastele asetuksia</string>
+    <string name="icon_title">Sovelluskuvake</string>
+    <string name="icon_summary">Valitse sovelluskuvake tätä sovellusta varten aloitusnäytöllä ja sovellusvalikossa</string>
+    <string name="icon_intro">Valitse kuvake ja nimi tälle sovellukselle. Tämä näytetään aloitusnäytöllä ja sovellusvalikossa.\n\nHuomatutus: Ilmoitukset aina käyttävät oletussovelluskuvaketta ja oletusnimeä.</string>
 </resources>

@@ -1,10 +1,10 @@
 * Unterstützt Tauschen über SD-Karten
 
-* Direkttausch-Korrekturen und Verbesserungen
+* Direktübertragung-Korrekturen und -Verbesserungen
 
 * Weitere Verbesserung der „App-Details“
 
-* Sprach- und Übersetzungsverbesserung zu Direkt und Tausch
+* Sprach- und Übersetzungsverbesserung zu Direktübertragung
 
 * Verbesserte App-Symbol-Auswahllogik
 
