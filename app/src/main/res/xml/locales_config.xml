@@ -27,7 +27,6 @@
     <locale android:name="gl" />
     <locale android:name="he" />
     <locale android:name="hi" />
-    <locale android:name="hi-Latn" />
     <locale android:name="hr" />
     <locale android:name="hu" />
     <locale android:name="id" />
