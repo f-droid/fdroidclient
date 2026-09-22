@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">A nova versión está asinada cunha chave diferente da antiga. Para instalar a nova versión, primeiro debe desinstalar a anterior. Fágao e ténteo de novo. (Teña en conta que ao desinstalar borraranse todos os datos internos almacenados pola aplicación)</string>
     <string name="installIncompatible">Aplicación incompatíbel co seu dispositivo. Instalala de todos os xeitos?</string>
     <string name="version">Versión</string>

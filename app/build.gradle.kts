@@ -19,8 +19,8 @@ android {
     applicationId = "org.fdroid"
     minSdk = 24
     targetSdk = 37
-    versionCode = 2000041
-    versionName = "2.0-rc1"
+    versionCode = 2000050
+    versionName = "2.0.0"
 
     testInstrumentationRunner = "org.fdroid.HiltTestRunner"
   }
@@ -29,7 +29,9 @@ android {
   val isStableRelease = (defaultConfig.versionCode ?: 0) % 100 >= 50
   if (isStableRelease) {
     androidResources {
-      localeFilters.addAll(getLocalesConfig(file("src/main/res/xml/locales_config.xml")))
+      val locales = getLocalesConfig(file("src/main/res/xml/locales_config.xml"))
+      println("Only including these translations for stable release: $locales")
+      @Suppress("UnstableApiUsage") localeFilters.addAll(locales)
     }
   }
 

@@ -1,3 +1,12 @@
+### 2.0.0 (2026-09-22)
+
+* Migrate settings from 1.x installs (Data/Wi-Fi, auto-update, foreign mirrors, proxy, and Tor)
+* Cancel install pre-approval if the request fails, falling back to system prompt
+* Implement App Icon hiding to follow the standard pattern used in the ecosystem
+* Remove calculator functionality, the app hiding is now just an icon and name change
+* More work on the port of Panic Settings to Kotlin, just #3391 is missing
+* Make donation/payment option names translateable
+
 ### 2.0-rc1 (2026-08-20)
 
 * Use better donation service icons

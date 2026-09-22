@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name_full">F-Droid</string>
     <string name="SignatureMismatch">Nova verzija je potpisana ključem različitim od stare. Da biste instalirali novu verziju, stara mora biti uklonjena. Molimo Vas, prvo uklonite staru verziju, a zatim pokušajte ponovno. (Napomena: uklanjanje će obrisati sve interne podatke aplikacije)</string>
     <string name="installIncompatible">Aplikacija nije kompatibilna s Vašim uređajem, ipak instalirati\?</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="main_menu__categories">શ્રેણીઓ</string>
     <string name="app_name_full">ઍફ઼-ડ્રૉઇડ</string>
     <string name="menu_settings">સુયોજનો</string>
