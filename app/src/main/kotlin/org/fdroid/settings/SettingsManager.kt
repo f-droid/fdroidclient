@@ -22,8 +22,8 @@ import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_INSTALL_HISTORY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_DB_REPAIR_CHECK
@@ -39,8 +39,8 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_WARN_WHEN_METERED
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE_DEFAULT
+import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
-import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_IGNORED_APP_ISSUES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_INSTALL_HISTORY
@@ -92,12 +92,13 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
         .distinctUntilChanged()
 
   val autoUpdateApps
-    get() = prefs.getString(PREF_KEY_AUTO_UPDATES, PREF_DEFAULT_AUTO_UPDATES).toAutoUpdateValue()
+    get() =
+      prefs.getString(PREF_KEY_APP_AUTO_UPDATES, PREF_DEFAULT_APP_AUTO_UPDATES).toAutoUpdateValue()
 
   val autoUpdateAppsFlow
     get() =
       prefsFlow
-        .map { it.get<String>(PREF_KEY_AUTO_UPDATES).toAutoUpdateValue() }
+        .map { it.get<String>(PREF_KEY_APP_AUTO_UPDATES).toAutoUpdateValue() }
         .distinctUntilChanged()
 
   var lastRepoUpdate: Long
@@ -247,7 +248,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
                 else -> AutoUpdateValues.Never.name
               }
             // OnlyWhenOpenApp doesn't exist for package updates
-            this[PREF_KEY_AUTO_UPDATES] =
+            this[PREF_KEY_APP_AUTO_UPDATES] =
               when {
                 updateAutoDownload && (overWifi != never || overData != never) ->
                   when {

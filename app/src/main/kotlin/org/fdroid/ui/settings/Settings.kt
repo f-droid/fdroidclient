@@ -69,14 +69,14 @@ import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
-import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
@@ -285,8 +285,8 @@ fun Settings(
           },
         )
         listPreference(
-          key = PREF_KEY_AUTO_UPDATES,
-          defaultValue = PREF_DEFAULT_AUTO_UPDATES,
+          key = PREF_KEY_APP_AUTO_UPDATES,
+          defaultValue = PREF_DEFAULT_APP_AUTO_UPDATES,
           title = { Text(stringResource(R.string.update_auto_install)) },
           icon = { strValue ->
             Icon(
