@@ -29,7 +29,9 @@ android {
   val isStableRelease = (defaultConfig.versionCode ?: 0) % 100 >= 50
   if (isStableRelease) {
     androidResources {
-      localeFilters.addAll(getLocalesConfig(file("src/main/res/xml/locales_config.xml")))
+      val locales = getLocalesConfig(file("src/main/res/xml/locales_config.xml"))
+      println("Only including these translations for stable release: $locales")
+      @Suppress("UnstableApiUsage") localeFilters.addAll(locales)
     }
   }
 
