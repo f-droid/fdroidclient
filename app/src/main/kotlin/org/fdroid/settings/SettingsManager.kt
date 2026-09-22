@@ -32,7 +32,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MY_APPS_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_SEARCH_KEYBOARD
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
@@ -50,7 +50,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MY_APPS_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
-import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_SEARCH_KEYBOARD
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
@@ -83,12 +83,15 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
       .map { it.get<Boolean>(PREF_KEY_DYNAMIC_COLORS) ?: PREF_DEFAULT_DYNAMIC_COLORS }
       .distinctUntilChanged()
   val repoUpdates
-    get() = prefs.getString(PREF_KEY_REPO_UPDATES, PREF_DEFAULT_REPO_UPDATES).toAutoUpdateValue()
+    get() =
+      prefs
+        .getString(PREF_KEY_REPO_AUTO_UPDATES, PREF_DEFAULT_REPO_AUTO_UPDATES)
+        .toAutoUpdateValue()
 
   val repoUpdatesFlow
     get() =
       prefsFlow
-        .map { it.get<String>(PREF_KEY_REPO_UPDATES).toAutoUpdateValue() }
+        .map { it.get<String>(PREF_KEY_REPO_AUTO_UPDATES).toAutoUpdateValue() }
         .distinctUntilChanged()
 
   val autoUpdateApps
@@ -239,7 +242,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
         // update flow: UI will update and settings will auto-persist to disk
         prefsFlow.update {
           it.toMutablePreferences().apply {
-            this[PREF_KEY_REPO_UPDATES] =
+            this[PREF_KEY_REPO_AUTO_UPDATES] =
               when {
                 overWifi == never && overData == never -> AutoUpdateValues.Never.name
                 overWifi == always && overData == always -> AutoUpdateValues.Always.name

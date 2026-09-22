@@ -24,8 +24,8 @@ object SettingsConstants {
     Never(false),
   }
 
-  const val PREF_KEY_REPO_UPDATES = "repoAutoUpdates"
-  val PREF_DEFAULT_REPO_UPDATES = AutoUpdateValues.OnlyWifi.name
+  const val PREF_KEY_REPO_AUTO_UPDATES = "repoAutoUpdates"
+  val PREF_DEFAULT_REPO_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name
 
   const val PREF_KEY_APP_AUTO_UPDATES = "appAutoUpdates"
   val PREF_DEFAULT_APP_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name

@@ -74,14 +74,14 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
-import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
-import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
@@ -222,8 +222,8 @@ fun Settings(
           title = { Text(stringResource(R.string.updates)) },
         )
         listPreference(
-          key = PREF_KEY_REPO_UPDATES,
-          defaultValue = PREF_DEFAULT_REPO_UPDATES,
+          key = PREF_KEY_REPO_AUTO_UPDATES,
+          defaultValue = PREF_DEFAULT_REPO_AUTO_UPDATES,
           title = { Text(stringResource(R.string.pref_repo_updates_title)) },
           icon = { strValue ->
             if (strValue != Never.name)
