@@ -462,4 +462,12 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="category_group_health">Salud</string>
+    <string name="category_group_summary_health">Deporte, nutrición y aplicaciones médicas</string>
+    <string name="panic_app_unknown_app">una app desconocida</string>
+    <string name="panic_hide_migration_message">La función de calculadora ha sido eliminada, pero puedes seguir cambiando el icono de la app permanentemente a través de las configuraciones \"icono de la app\" y \"botón del pánico\".</string>
+    <string name="panic_hide_migration_button">Configuración de reseñas</string>
+    <string name="icon_title">Icono de la app</string>
+    <string name="icon_summary">Selecciona el icono usado por esta app en la pantalla de inicio y el cajón de aplicaciones</string>
+    <string name="icon_intro">Selecciona un icono y nombre para esta app. Este se muestra en la pantalla de inicio y el cajón de aplicaciones.\n\nNota: Las notificaciones siempre se mostrarán con el icono y nombre por defecto.</string>
 </resources>
