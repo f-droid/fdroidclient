@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="yes">Tá</string>
     <string name="warning_scaning_qr_code">Ní cosúil go bhfuil autofocus ag do cheamara. B\'fhéidir go mbeadh sé deacair an cód a scanadh.</string>
     <string name="turn_on_wifi">Cuir Wi-Fi ar siúl</string>

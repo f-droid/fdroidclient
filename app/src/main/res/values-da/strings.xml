@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="SignatureMismatch">Den nye version er signeret med en anden nøgle end den gamle. For at installere den nye version skal den gamle afinstalleres først. Gør det og prøv igen. (Bemærk, at afinstallationen sletter alle interne data gemt i appen.)</string>
     <string name="installIncompatible">Appen er inkompatibel med din enhed. Installer alligevel?</string>
     <string name="version">Version</string>
