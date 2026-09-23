@@ -14,10 +14,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.setMain
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
-import org.fdroid.settings.SettingsConstants.PREF_KEY_AUTO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
-import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_UPDATES
+import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_AUTO_UPDATES
 import org.junit.Test
 
 class SettingsManagerTest {
@@ -60,8 +60,8 @@ class SettingsManagerTest {
       putBoolean(updateAutoDownload, true)
     }
     SettingsManager(context)
-    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_UPDATES, null))
-    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_AUTO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_APP_AUTO_UPDATES, null))
     assertFalse(prefs.contains(overWifi))
     assertFalse(prefs.contains(overData))
     assertFalse(prefs.contains(updateAutoDownload))
@@ -75,8 +75,8 @@ class SettingsManagerTest {
       putBoolean(updateAutoDownload, false)
     }
     SettingsManager(context)
-    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_UPDATES, null))
-    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_REPO_AUTO_UPDATES, null))
+    assertEquals(AutoUpdateValues.OnlyWifi.name, prefs.getString(PREF_KEY_APP_AUTO_UPDATES, null))
     assertFalse(prefs.contains(overWifi))
     assertFalse(prefs.contains(overData))
     assertFalse(prefs.contains(updateAutoDownload))
@@ -93,8 +93,8 @@ class SettingsManagerTest {
             putBoolean(updateAutoDownload, uad)
           }
           SettingsManager(context)
-          assertNotEquals(null, prefs.getString(PREF_KEY_REPO_UPDATES, null))
-          assertNotEquals(null, prefs.getString(PREF_KEY_AUTO_UPDATES, null))
+          assertNotEquals(null, prefs.getString(PREF_KEY_REPO_AUTO_UPDATES, null))
+          assertNotEquals(null, prefs.getString(PREF_KEY_APP_AUTO_UPDATES, null))
           assertFalse(prefs.contains(overWifi))
           assertFalse(prefs.contains(overData))
           assertFalse(prefs.contains(updateAutoDownload))
