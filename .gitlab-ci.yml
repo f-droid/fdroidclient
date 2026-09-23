@@ -273,9 +273,10 @@ libs database schema:
     - echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager --verbose create avd --name "$NAME_AVD" --package "$AVD" --device "pixel"
     - df -h
     - start-emulator.sh
-    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest"
+    # TODO remove useUnifiedTestPlatform=false when running tests on more recent SDKs
+    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.notAnnotation=androidx.test.filters.LargeTest,androidx.test.filters.FlakyTest -Pandroid.experimental.androidTest.useUnifiedTestPlatform=false"
     - ./gradlew $FLAG :app:connectedAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest
-    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest"
+    - export FLAG="-Pandroid.testInstrumentationRunnerArguments.annotation=androidx.test.filters.FlakyTest -Pandroid.experimental.androidTest.useUnifiedTestPlatform=false"
     - for i in {1..5}; do echo "$i" && ./gradlew $FLAG :app:connectedAndroidTest :libs:database:connectedCheck :libs:download:connectedAndroidTest :libs:index:connectedAndroidTest && break; done || exit 137
   allow_failure:
     exit_codes: 137
