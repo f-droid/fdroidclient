@@ -97,3 +97,25 @@ internal class RepoUpdateWorkerUnitTest {
       unmockkObject(WorkManager.Companion)
     }
   }
+
+  @Test
+  fun `updateNow uses enqueueUniqueWork with KEEP for specific repo`() {
+    mockkObject(WorkManager.Companion)
+    val workManager: WorkManager = mockk(relaxed = true)
+    every { WorkManager.getInstance(context) } returns workManager
+
+    try {
+      RepoUpdateWorker.updateNow(context, 42L)
+
+      verify(exactly = 1) {
+        workManager.enqueueUniqueWork(
+          "repoUpdate_42",
+          ExistingWorkPolicy.KEEP,
+          any<OneTimeWorkRequest>(),
+        )
+      }
+    } finally {
+      unmockkObject(WorkManager.Companion)
+    }
+  }
+}

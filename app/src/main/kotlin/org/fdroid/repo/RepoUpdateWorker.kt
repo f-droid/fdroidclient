@@ -10,6 +10,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy.UPDATE
+import androidx.work.ExistingWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
@@ -50,6 +51,7 @@ constructor(
 ) : CoroutineWorker(appContext, workerParams) {
 
   companion object {
+    @VisibleForTesting internal const val UNIQUE_WORK_NAME_REPO_UPDATE_ALL = "repoUpdateAll"
     @VisibleForTesting internal const val UNIQUE_WORK_NAME_REPO_AUTO_UPDATE = "repoAutoUpdate"
     @VisibleForTesting internal const val MAX_RUN_ATTEMPTS = 3
 
@@ -63,12 +65,13 @@ constructor(
     @JvmStatic
     @JvmOverloads
     fun updateNow(context: Context, repoId: Long = -1) {
+      val workName = if (repoId >= 0) "repoUpdate_$repoId" else UNIQUE_WORK_NAME_REPO_UPDATE_ALL
       val request =
         OneTimeWorkRequestBuilder<RepoUpdateWorker>()
           .setExpedited(RUN_AS_NON_EXPEDITED_WORK_REQUEST)
           .apply { if (repoId >= 0) setInputData(workDataOf("repoId" to repoId)) }
           .build()
-      WorkManager.getInstance(context).enqueue(request)
+      WorkManager.getInstance(context).enqueueUniqueWork(workName, ExistingWorkPolicy.KEEP, request)
     }
 
     @JvmStatic
