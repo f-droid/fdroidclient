@@ -149,6 +149,7 @@ constructor(
         Result.failure()
       }
     } finally {
+      nm.cancelUpdateRepoNotification()
       log.info {
         if (SDK_INT >= 31) "finished doWork $this (stopReason: ${this.stopReason})"
         else "finished doWork $this"
