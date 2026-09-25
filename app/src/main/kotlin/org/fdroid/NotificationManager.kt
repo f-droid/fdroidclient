@@ -39,11 +39,11 @@ constructor(@param:ApplicationContext private val context: Context) {
   private var lastRepoUpdateNotification = 0L
 
   companion object {
-    const val NOTIFICATION_ID_REPO_UPDATE: Int = 0
-    const val NOTIFICATION_ID_APP_INSTALLS: Int = 1
-    const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 2
-    const val NOTIFICATION_ID_APP_UPDATES_AVAILABLE: Int = 3
-    const val NOTIFICATION_ID_SELF_UPDATE: Int = 4
+    const val NOTIFICATION_ID_REPO_UPDATE: Int = 1
+    const val NOTIFICATION_ID_APP_INSTALLS: Int = 2
+    const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 3
+    const val NOTIFICATION_ID_APP_UPDATES_AVAILABLE: Int = 4
+    const val NOTIFICATION_ID_SELF_UPDATE: Int = 5
     private const val CHANNEL_UPDATES = "update-channel"
     private const val CHANNEL_INSTALLS = "install-channel"
     private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
