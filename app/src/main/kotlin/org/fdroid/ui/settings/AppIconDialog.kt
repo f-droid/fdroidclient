@@ -27,9 +27,9 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.utils.AdaptiveIconImage
 
 @Composable
 fun AppIconDialog(
@@ -66,8 +66,9 @@ fun AppIconDialog(
                     boxModifier.border(3.dp, MaterialTheme.colorScheme.primary, CircleShape)
                   else boxModifier
               ) {
-                AdaptiveIconImage(
-                  icon.iconRes,
+                AsyncImage(
+                  model = icon.iconRes,
+                  contentDescription = null,
                   modifier =
                     Modifier.align(Center)
                       .size(if (isSelected) 48.dp else 64.dp)
