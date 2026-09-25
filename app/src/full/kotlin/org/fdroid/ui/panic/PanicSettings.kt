@@ -32,6 +32,8 @@ import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.settings.AppIcon
+import org.fdroid.ui.utils.AdaptiveIconImage
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BackButton
 
@@ -100,6 +102,14 @@ fun PanicSettings(
           key = "pref_panic_hide",
           defaultValue = false,
           enabled = { state.actionsEnabled },
+          icon = { enabled ->
+            if (enabled) {
+              AdaptiveIconImage(
+                iconId = AppIcon.Calculator.iconRes,
+                modifier = Modifier.size(32.dp).semantics { hideFromAccessibility() },
+              )
+            }
+          },
           title = {
             Text(stringResource(R.string.panic_hide_title, stringResource(R.string.app_name)))
           },
