@@ -1,3 +1,9 @@
+### 2.0.1 (2026-09-27)
+
+* Fix app icon settings crash on Huawei/Honor devices
+* Show calculator icon when app panic hiding is enabled
+* Fix invalid notification ID (Thanks proletarius!)
+
 ### 2.0.0 (2026-09-22)
 
 * Migrate settings from 1.x installs (Data/Wi-Fi, auto-update, foreign mirrors, proxy, and Tor)
