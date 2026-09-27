@@ -34,6 +34,7 @@ import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.history.HistoryManager
 import org.fdroid.install.CacheCleaner
 import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.ui.utils.canStartForegroundService
 
 private val TAG = RepoUpdateWorker::class.java.simpleName
 
@@ -126,6 +127,12 @@ constructor(
       } else {
         "Starting RepoUpdateWorker... $this $runAttemptCount"
       }
+    }
+    try {
+      if (canStartForegroundService(applicationContext)) setForeground(getForegroundInfo())
+      else log.info { "Not using foreground service" }
+    } catch (e: Exception) {
+      log.error(e) { "Error while running setForeground: " }
     }
     val repoId = inputData.getLong("repoId", -1)
     return try {
