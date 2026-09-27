@@ -479,7 +479,7 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">aip anaithnid</string>
     <string name="panic_hide_migration_title">Athraíodh an F-Droid nua i bhfolach aipeanna</string>
-    <string name="panic_hide_migration_message">Tá an t-áireamhán imithe, ach is féidir leat deilbhín an aip a athrú go buan sna socruithe fós. Scrollaigh chun \"Deilbhín an Aip\" a aimsiú.</string>
+    <string name="panic_hide_migration_message">Baineadh an fheidhm áireamháin, ach is féidir leat deilbhín an aip a athrú go buan fós trí na socruithe \"deilbhín an aip\" agus \"cnaipe scaill\".</string>
     <string name="panic_hide_migration_button">Athbhreithnigh na socruithe</string>
     <string name="icon_title">Deilbhín aipe</string>
     <string name="icon_summary">Roghnaigh an deilbhín a úsáidtear don aip seo ar an scáileán baile agus sa tarraiceán aipeanna</string>

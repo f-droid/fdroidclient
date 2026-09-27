@@ -442,7 +442,7 @@
     <string name="category_group_games">Spiele</string>
     <string name="category_group_summary_games">Brettspiele, Kartenspiele und Partyspiele</string>
     <string name="pref_auto_updates_only_only_when_open_app">Nur beim Öffnen der App</string>
-    <string name="pref_repo_updates_summary_only_when_open_app">Nur beim Öffnen nach Updates suchen • Apps werden veralten</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Nur beim Öffnen nach Aktualisierungen suchen • Apps werden veralten</string>
     <string name="notification_channel_self_update_title">Auto-Update</string>
     <string name="notification_channel_self_update_description">Benachrichtigt dich, wenn die App aktualisiert und geschlossen wurde, sodass du sie ganz einfach erneut starten kannst</string>
     <string name="notification_self_update_title">%s wurde aktualisiert. Zum Öffnen antippen</string>

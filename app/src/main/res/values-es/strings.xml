@@ -470,4 +470,5 @@
     <string name="icon_title">Icono de la app</string>
     <string name="icon_summary">Selecciona el icono usado por esta app en la pantalla de inicio y el cajón de aplicaciones</string>
     <string name="icon_intro">Selecciona un icono y nombre para esta app. Este se muestra en la pantalla de inicio y el cajón de aplicaciones.\n\nNota: Las notificaciones siempre se mostrarán con el icono y nombre por defecto.</string>
+    <string name="panic_hide_migration_title">Nuevo cambio en la ocultación de aplicaciones de F-Droid</string>
 </resources>

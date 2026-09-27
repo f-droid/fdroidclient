@@ -398,4 +398,6 @@
     <string name="added_x_ago">Pridané %1$s</string>
     <string name="size_colon">Veľkosť: %1$s</string>
     <string name="version_code_colon">Kód verzie: %1$s</string>
+    <string name="about_text">Aplikácie na F-Droide spadajú pod voľne šíriteľný software, rešpektujú Vaše súkromie, a ich zdrojový kód je voľne dostupný pre každého k nahliadnutiu či vylepšeniu.\n\nDistribúcia aplikácií je transparentná, rešpektuje súkromie, a zakladá si na zodpovednosti, čím určuje štandard ktorý vyzýva ekosystém mobilného softvéru k zlepšeniu.\n\nDopad F-Droidu nieje meraný len v počte publikovaných aplikácií, ale v slobode, dôvere a právach, ktoré rešpektuje.\n\nPomôžte F-Droidu a jeho komunite inovovať v oblasti otvorenosti, súkromia a uživateľského zážitku.</string>
+    <string name="app_no_compatible_signer">Nieje možné aktualizovať túto aplikáciu, pretože všetky verzie majú nekompatibilnú signatúru.\n\nAk nedostávate aktualizácie iným spôsobom, budete musieť aplikáciu odinštalovať a znova nainštalovať. Dáta aplikácie budú zmazané.</string>
 </resources>

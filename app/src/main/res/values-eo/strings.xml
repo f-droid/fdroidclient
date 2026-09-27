@@ -454,7 +454,7 @@
     <string name="taler">GNU Taler</string>
     <string name="panic_app_unknown_app">nekonata aplikaĵo</string>
     <string name="panic_hide_migration_title">Nova F-Droid ŝanĝis manieron de kaŝiĝo</string>
-    <string name="panic_hide_migration_message">La kalkulilo malaperis, sed vi plue povas ŝanĝi bildsimbolon pordaŭre en agordoj. Rigardu al la agordo “Bildsimbolo de aplikaĵo”.</string>
+    <string name="panic_hide_migration_message">La trajto de kalkulilo estis forigita, sed vi plue povas pordaŭre ŝanĝi bildsimbolon de la aplikaĵo per la agordoj “Bildsimbolo de aplikaĵo” kaj “Agordi panikan butonon”.</string>
     <string name="panic_hide_migration_button">Montri agordojn</string>
     <string name="icon_title">Bildsimbolo de aplikaĵo</string>
     <string name="icon_summary">Elekti bildsimbolon kiu estos uzata por tiu ĉi aplikaĵo en la hejmekrano kaj la tirmenuo de aplikaĵoj</string>
