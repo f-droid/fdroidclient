@@ -1,5 +1,8 @@
 * Suporte experimental para desarquivar aplicativos no Android 15
-* Adicionar automaticamente aplicativos recém-instalados à tela inicial para a maioria dos lançadores (Obrigado, Dhina!).
+* Adiciona automaticamente aplicativos recém-instalados à tela inicial para a maioria dos lançadores (Obrigado, Dhina!).
 * Ações separadas de compartilhamento de link e compartilhamento de arquivo nos detalhes do aplicativo
-* Mostrar brinde quando o APK tiver mais permissões do que o esperado
-* Limpar caches internos com mais frequência para liberar espaço (Obrigado, DerGenaue!)
+* Mostra brinde quando o APK tiver mais permissões do que o esperado
+* Limpa caches internos com mais frequência para liberar espaço (Obrigado, DerGenaue!)
+* Reordena emblemas de doação para combinar com o site (obrigado, Leo!)
+* Adicionada uma configuração para preferir espelhos externos
+* Diversas correções menores

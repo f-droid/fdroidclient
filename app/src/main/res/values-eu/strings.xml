@@ -467,9 +467,11 @@
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">aplikazio ezezagun bat</string>
     <string name="panic_hide_migration_title">F-Droid berriak aplikazioak ezkutatzea aldatu du</string>
-    <string name="panic_hide_migration_message">Kalkulagailua ez dago jada, baina hala ere aplikazioaren ikonoa aldatu dezakezu behin betiko ezarpenetan. Korritu \"Aplikazioaren ikonoa\" aurkitzeko.</string>
+    <string name="panic_hide_migration_message">Kalkulagailuaren funtzioa kendu egin da, baina oraindik aplikazioaren ikonoa betiko alda dezakezu «aplikazioaren ikonoa» eta «izua-botoia» ezarpenen bidez.</string>
     <string name="panic_hide_migration_button">Berrikusi ezarpenak</string>
     <string name="icon_title">Aplikazioaren ikonoa</string>
     <string name="icon_summary">Hautatu aplikazio honek ze ikono erabiliko duen hasierako pantailan eta aplikazioen tiraderan</string>
     <string name="icon_intro">Hautatu ikono eta izen bat aplikazio honentzat. Hasierako pantailan eta aplikazioen tiraderan erakusten dira.\n\nOharra: Jakinarazpenek ikono eta izen lehenetsiak erabiliko dituzte beti.</string>
+    <string name="category_group_health">Osasuna</string>
+    <string name="category_group_summary_health">Fitnessa, elikadurari eta medikuntzari buruzko aplikazioak</string>
 </resources>

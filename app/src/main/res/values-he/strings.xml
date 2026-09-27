@@ -461,4 +461,18 @@
     </plurals>
     <string name="install_history_disabled_state">היסטוריית התקנות מושבתת\n\nהתקנות, עדכונים והסרת התקנות לא יתועדו</string>
     <string name="install_history_delete_text">למחוק היסטוריית התקנות?</string>
+    <string name="category_group_health">בריאות</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">ביטקוין</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_hide_migration_title">F-Droid החדש שינה את הסתרת היישומון</string>
+    <string name="panic_hide_migration_message">פונקציית המחשבון הוסרה, אבל עדיין אפשר לשנות את סמל היישומון לצמיתות דרך ההגדרות „סמל היישומון” ו„כפתור מצוקה”.</string>
+    <string name="panic_hide_migration_button">סקירת ההגדרות</string>
+    <string name="icon_title">סמל היישומון</string>
+    <string name="icon_summary">בחירת הסמל שישמש את היישומון הזה במסך הבית ובמגירת היישומונים</string>
+    <string name="icon_intro">יש לבחור סמל ושם ליישומון הזה. אלו יוצגו במסך הבית ובמגירת היישומונים.\n\nהערה: ההתראות תמיד ישתמשו בסמל ובשם ברירת המחדל.</string>
+    <string name="panic_app_unknown_app">יישומון לא ידוע</string>
+    <string name="category_group_summary_health">יישומוני כושר, תזונה ורפואה</string>
 </resources>

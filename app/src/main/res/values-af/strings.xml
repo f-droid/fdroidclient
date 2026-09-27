@@ -38,7 +38,7 @@
     <string name="menu_ignore_all">Ignoreer alle opdaterings</string>
     <string name="menu_ignore_this">Ignoreer hierdie opdatering</string>
     <string name="menu_website">Webwerf</string>
-    <string name="menu_email">E-pos skrywer</string>
+    <string name="menu_email">E-pos outeur</string>
     <string name="menu_issues">Probleme</string>
     <string name="menu_changelog">Veranderingslys</string>
     <string name="menu_source">Bronkode</string>
@@ -108,7 +108,7 @@
     <string name="notification_title_summary_installing">Installering van</string>
     <string name="notification_title_summary_install_error">Installering het misluk</string>
     <string name="app__install_downloaded_update">Opdateer</string>
-    <string name="installed_apps__activity_title">Geïnstalleerde programme</string>
+    <string name="installed_apps__activity_title">Geïnstalleerde apps</string>
     <string name="update_all">Dateer almal op</string>
     <string name="menu_video">Video</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Geen Internet nie? Kry programme van mense naby jou!</string>
@@ -183,4 +183,9 @@
     <string name="category_group_device">Toestel</string>
     <string name="category_group_games">Spelletjies</string>
     <string name="category_group_network">Netwerk</string>
+    <string name="app_name_full_nightly">F-Nagliks</string>
+    <string name="app_name_basic_nightly">F-Nagliks Basies</string>
+    <string name="first_start_loading">Kry app repositories…</string>
+    <string name="first_start_intro">Om te begin, sinkroniseer die app repositories</string>
+    <string name="first_start_offline">Jy is van lyn af. Konnekteer aan die Internet om te begin.</string>
 </resources>

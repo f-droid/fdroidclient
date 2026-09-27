@@ -445,4 +445,13 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
+    <string name="category_group_health">Sức khỏe</string>
+    <string name="category_group_summary_health">Thể dục, dinh dưỡng và y tế</string>
+    <string name="panic_app_unknown_app">một ứng dụng chưa biết</string>
+    <string name="panic_hide_migration_title">Phiên bản F-Droid mới đã thay đổi tính năng ẩn ứng dụng</string>
+    <string name="panic_hide_migration_message">Chức năng tính toán đã bị loại bỏ, nhưng bạn vẫn có thể thay đổi biểu tượng ứng dụng vĩnh viễn thông qua cài đặt \"biểu tượng ứng dụng\" và \"nút khẩn cấp\".</string>
+    <string name="panic_hide_migration_button">Xem lại cài đặt</string>
+    <string name="icon_title">Biểu tượng ứng dụng</string>
+    <string name="icon_summary">Chọn biểu tượng được sử dụng cho ứng dụng này trên màn hình chính và ngăn kéo ứng dụng</string>
+    <string name="icon_intro">Chọn biểu tượng và tên cho ứng dụng này. Biểu tượng và tên sẽ hiển thị trên màn hình chính và ngăn kéo ứng dụng.\n\nLưu ý: Thông báo sẽ luôn sử dụng biểu tượng và tên mặc định.</string>
 </resources>

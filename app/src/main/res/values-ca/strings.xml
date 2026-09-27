@@ -268,7 +268,7 @@
     <string name="app_list_all">Totes les aplicacions</string>
     <string name="app_list_author">Aplicacions per %s</string>
     <string name="search_placeholder">Cerca…</string>
-    <string name="search_no_results">No s\'han trobat aplicacions\n\nProva d\'emprar menys termes de cerca o d\'afegir més repositoris</string>
+    <string name="search_no_results">No s\'han trobat aplicacions\n\nProveu d\'emprar menys termes de cerca o d\'afegir més repositoris</string>
     <string name="category_group_productivity">Productivitat</string>
     <string name="category_group_tools">Eines</string>
     <string name="category_group_wallets">Finances i carteres</string>
@@ -353,7 +353,7 @@
     <string name="app_issue_not_available_text">L\'aplicació pot haver estat esborrada o trobar-se en un repositori que hàgiu esborrat o desactivat</string>
     <string name="app_issue_not_available_button">Mostra informació de l\'aplicació</string>
     <string name="app_issue_hint">Les aplicacions següents requereixen atenció. Podeu ignorar la incidència d\'una aplicació mantenint-la premuda.</string>
-    <string name="added_x_ago">S\'ha afegit fa %1$s</string>
+    <string name="added_x_ago">Afegida: %1$s</string>
     <string name="size_colon">Mida: %1$s</string>
     <string name="version_code_colon">Codi de versió: %1$s</string>
     <string name="sdk_versions_colon">Versions d\'SDK: %1$s</string>
@@ -367,7 +367,7 @@
     <string name="status_downloading_remaining">Queden %1$s</string>
     <string name="repo_has_update_error">Hi ha hagut errors a l\'actualitzar</string>
     <string name="repo_has_update_error_intro">Hi ha hagut un error a l\'hora d\'actualitzar el repositori:</string>
-    <string name="repo_last_update_upstream">Publicat el %s</string>
+    <string name="repo_last_update_upstream">Publicat: %s</string>
     <string name="repo_last_downloaded">Es va descarregar el %s</string>
     <string name="repo_basicauth_username">Nom d\'usuari</string>
     <string name="repo_basicauth_password">Contrasenya</string>
@@ -421,7 +421,7 @@
     <string name="search_history">Cerques recents</string>
     <string name="install_history_switch">Usa l\'historial d\'instal·lacions</string>
     <string name="sdk_target_version">%1$s (objectiu)</string>
-    <string name="sdk_max_version">%1$s (màxim)</string>
+    <string name="sdk_max_version">%1$s (com a màxim)</string>
     <string name="search_auto_keyboard">Obre el teclat automàticament</string>
     <string name="hide">Amaga</string>
     <string name="category_group_summary_productivity">Calendaris, tasques, rellotges i notes</string>
@@ -458,10 +458,12 @@
     <string name="litecoin">Litecoin</string>
     <string name="taler">Taler</string>
     <string name="panic_app_unknown_app">una aplicació desconeguda</string>
-    <string name="panic_hide_migration_message">La calculadora ha desaparegut, però encara podeu canviar la icona de l\'aplicació permanentment a la configuració. Desplaceu-vos per a trobar «Icona de l\'aplicació».</string>
+    <string name="panic_hide_migration_message">La funció de calculadora s’ha eliminat, però encara pots canviar permanentment la icona de l’aplicació mitjançant els ajustos «icona de l’aplicació» i «botó de pànic».</string>
     <string name="icon_title">Icona de l\'aplicació</string>
-    <string name="icon_summary">Trieu la icona usada per aquesta aplicació a la pantalla d\'inici i al calaix de l\'aplicacions</string>
+    <string name="icon_summary">Trieu la icona usada per aquesta aplicació a la pantalla d\'inici i al calaix d\'aplicacions</string>
     <string name="icon_intro">Trieu una icona i un nom per a aquesta aplicació. Això es mostra a la pantalla d\'inici i al calaix d\'aplicacions.\n\nNota: les notificacions sempre usaran la icona i el nom predeterminats.</string>
     <string name="panic_hide_migration_title">El nou F-Droid ha canviat l\'ocultació de l\'F-Droid</string>
     <string name="panic_hide_migration_button">Configuració de la revisió</string>
+    <string name="category_group_health">Salut</string>
+    <string name="category_group_summary_health">Aplicacions de fitness, nutrició i salut</string>
 </resources>

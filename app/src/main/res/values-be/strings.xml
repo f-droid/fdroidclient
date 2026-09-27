@@ -456,4 +456,10 @@
     <string name="notification_channel_self_update_title">Самастойнае абнаўленне</string>
     <string name="notification_channel_self_update_description">Паказваць апавяшчэнне пасля таго, як праграма абнаўляе сама сябе і вы зноў можаце яе запусціць</string>
     <string name="notification_self_update_title">Праграма %s абноўлена. Націсніце, каб адкрыць</string>
+    <string name="category_group_health">Здароўе</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="search_my_apps_hint">Пошук усталяваных праграм</string>
+    <string name="panic_app_unknown_app">невядомая праграма</string>
 </resources>

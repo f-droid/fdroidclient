@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l’ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l’ancienne version (attention : la désinstallation supprimera toutes les données de l\'application).</string>
+    <string name="SignatureMismatch">La nouvelle version est signée avec une clé différente de l’ancienne version. Pour installer cette nouvelle version, vous devez d\'abord désinstaller l’ancienne version (attention : la désinstallation supprimera toutes les données de l\'application)</string>
     <string name="installIncompatible">Application non compatible avec votre appareil, l’installer quand même ?</string>
     <string name="version">Version</string>
     <string name="delete">Supprimer</string>
@@ -45,7 +45,7 @@
     <string name="swap_no_wifi_network">Aucun réseau</string>
     <string name="swap_view_available_networks">Appuyez pour afficher les réseaux disponibles</string>
     <string name="open_qr_code_scanner">Ouvrir le lecteur de codes QR</string>
-    <string name="swap_welcome">Bienvenue dans F-Droid !</string>
+    <string name="swap_welcome">Bienvenue sur F-Droid !</string>
     <string name="swap_confirm_connect">Voulez-vous télécharger des applications de %1$s maintenant ?</string>
     <string name="app_name_full">F-Droid</string>
     <string name="about_source">Code source</string>
@@ -100,7 +100,7 @@
     <string name="versions">Versions</string>
     <string name="notification_title_single_update_available">Mise à jour disponible</string>
     <string name="notification_title_summary_installing">Installation</string>
-    <string name="notification_title_summary_install_error">L’installation a échoué</string>
+    <string name="notification_title_summary_install_error">Échec de l\'installation</string>
     <string name="clear_search">Effacer la recherche</string>
     <string name="main_menu__categories">Catégories</string>
     <string name="main_menu__swap_nearby">À proximité</string>
@@ -108,7 +108,7 @@
     <string name="installed_apps__activity_title">Applications installées</string>
     <string name="update_all">Tout mettre à jour</string>
     <string name="nearby_splash__download_apps_from_people_nearby">Aucune connexion Internet ? Obtenez des applications depuis les personnes à proximité !</string>
-    <string name="nearby_splash__find_people_button">Trouver des personnes à proximité</string>
+    <string name="nearby_splash__find_people_button">Avoir du monde à côté</string>
     <string name="nearby_splash__both_parties_need_fdroid">Les deux personnes doivent utiliser %1$s en étant proches.</string>
     <string name="menu_video">Vidéo</string>
     <string name="menu_license">Licence : %s</string>
@@ -347,7 +347,7 @@
     <string name="screenshots_metered">Touchez pour charger les captures d\'écran via les données cellulaires</string>
     <string name="copy_link">Copier le lien</string>
     <string name="app_no_compatible_versions">Cette application n\'est pas compatible avec votre appareil</string>
-    <string name="app_no_auto_update">La mise à jour automatique n\'est pas disponible car cette application a été développée pour une ancienne version d\'Android.</string>
+    <string name="app_no_auto_update">La mise à jour automatique n\'est pas disponible car cette application a été développée pour une ancienne version d\'Android</string>
     <string name="app_issue_update_other_repo">Une mise à jour est disponible dans un autre dépôt. Changez de dépôt préféré pour mettre à jour</string>
     <string name="app_issue_not_available_title">L\'application n\'est plus disponible</string>
     <string name="app_issue_not_available_text">L\'application peut avoir été supprimée ou était dans un dépôt que vous avez supprimé ou désactivé</string>
