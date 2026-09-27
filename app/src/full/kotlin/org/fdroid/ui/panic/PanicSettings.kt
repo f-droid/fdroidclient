@@ -21,6 +21,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import info.guardianproject.panic.Panic
 import info.guardianproject.panic.PanicResponder.PREF_TRIGGER_PACKAGE_NAME
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +34,6 @@ import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.settings.AppIcon
-import org.fdroid.ui.utils.AdaptiveIconImage
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BackButton
 
@@ -104,8 +104,9 @@ fun PanicSettings(
           enabled = { state.actionsEnabled },
           icon = { enabled ->
             if (enabled) {
-              AdaptiveIconImage(
-                iconId = AppIcon.Calculator.iconRes,
+              AsyncImage(
+                model = AppIcon.Calculator.iconRes,
+                contentDescription = null,
                 modifier = Modifier.size(32.dp).semantics { hideFromAccessibility() },
               )
             }
