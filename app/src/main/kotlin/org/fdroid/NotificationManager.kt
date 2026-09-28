@@ -28,6 +28,7 @@ import mu.KotlinLogging
 import org.fdroid.install.InstallNotificationState
 import org.fdroid.ui.navigation.IntentRouter.Companion.ACTION_MY_APPS
 import org.fdroid.updates.UpdateNotificationState
+import org.fdroid.utils.isBasic
 
 @Singleton
 class NotificationManager
@@ -49,6 +50,7 @@ constructor(@param:ApplicationContext private val context: Context) {
     private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
     private const val CHANNEL_UPDATES_AVAILABLE = "updates-available-channel"
     private const val CHANNEL_SELF_UPDATE = "self-update-channel"
+    private const val LEGACY_CHANNEL_SWAPS = "swap-channel"
   }
 
   init {
@@ -80,6 +82,8 @@ constructor(@param:ApplicationContext private val context: Context) {
           .build(),
       )
     nm.createNotificationChannelsCompat(channels)
+    // F-Droid 1.x created the swap channel also in basic which doesn't support nearby swap
+    if (isBasic) nm.deleteNotificationChannel(LEGACY_CHANNEL_SWAPS)
   }
 
   fun showUpdateRepoNotification(msg: String, throttle: Boolean = true, progress: Int? = null) {
