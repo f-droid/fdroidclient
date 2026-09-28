@@ -12,7 +12,7 @@ import org.fdroid.ui.ScreenshotTest
 
 @Composable
 @PreviewTest
-@Preview(showBackground = true, showSystemUi = true, heightDp = 1400)
+@Preview(showBackground = true, showSystemUi = true, heightDp = 1400, locale = "en-US")
 fun SettingsTest() =
   ScreenshotTest(showBottomBar = false) {
     Settings(model = getSettingsModel(), onChangeAppIcon = {}, onSaveLogcat = {}) {}
@@ -24,6 +24,7 @@ fun SettingsTest() =
   showBackground = true,
   showSystemUi = true,
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
+  locale = "en-US",
   heightDp = 1400,
 )
 fun SettingsNightTest() =

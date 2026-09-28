@@ -454,7 +454,7 @@
     <string name="notification_channel_self_update_title">Self-update</string>
     <string name="notification_channel_self_update_description">Notifies when the app updated itself and was closed, so you can launch it again easily</string>
     <string name="notification_self_update_title">%s was updated. Tap to open</string>
-    <string name="liberapay">supported donation/payment options</string>
+    <string name="liberapay">Liberapay</string>
     <string name="open_collective">Open Collective</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>

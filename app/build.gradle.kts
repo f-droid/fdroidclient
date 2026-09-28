@@ -215,14 +215,3 @@ fun getLocalesConfig(file: File): List<String> {
     nodes.item(it).attributes.getNamedItem("android:name").nodeValue.replace("-", "-r")
   }
 }
-
-// workaround for https://issuetracker.google.com/issues/430260686
-// also https://issuetracker.google.com/issues/469819154
-// and https://issuetracker.google.com/issues/444048026
-tasks.withType<com.android.compose.screenshot.tasks.PreviewScreenshotValidationTask> {
-  maxHeapSize = "4g"
-}
-
-tasks.withType<com.android.compose.screenshot.tasks.PreviewScreenshotUpdateTask> {
-  maxHeapSize = "4g"
-}
