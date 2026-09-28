@@ -1,11 +1,17 @@
 package org.fdroid.ui
 
+import android.content.Context
+import android.content.Intent
+import androidx.core.content.pm.ShortcutInfoCompat
+import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.cash.molecule.AndroidUiDispatcher
 import app.cash.molecule.RecompositionMode.ContextClock
 import app.cash.molecule.launchMolecule
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.TimeUnit.DAYS
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
@@ -14,9 +20,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
+import org.fdroid.R
 import org.fdroid.database.FDroidDatabase
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
+import org.fdroid.ui.navigation.IntentRouter.Companion.ACTION_MY_APPS
+import org.fdroid.ui.navigation.IntentRouter.Companion.ACTION_SEARCH
 import org.fdroid.updates.UpdatesManager
 import org.fdroid.utils.IoDispatcher
 
@@ -24,6 +33,7 @@ import org.fdroid.utils.IoDispatcher
 class MainViewModel
 @Inject
 constructor(
+  @param:ApplicationContext private val context: Context,
   private val db: FDroidDatabase,
   settingsManager: SettingsManager,
   updatesManager: UpdatesManager,
@@ -61,6 +71,22 @@ constructor(
         }
       }
     }
+    // create shortcuts dynamically, to avoid static shortcuts launching with NEW_TASK intent flag
+    // https://developer.android.com/develop/ui/compose/system/shortcuts/managing-shortcuts#start-one
+    val searchShortcut =
+      ShortcutInfoCompat.Builder(context, "search")
+        .setShortLabel(context.getString(R.string.menu_search))
+        .setIcon(IconCompat.createWithResource(context, R.mipmap.ic_launcher))
+        .setIntent(Intent(ACTION_SEARCH).apply { setPackage(context.packageName) })
+        .build()
+    val myAppsShortcut =
+      ShortcutInfoCompat.Builder(context, "my_apps")
+        .setShortLabel(context.getString(R.string.menu_apps_my))
+        .setIcon(IconCompat.createWithResource(context, R.mipmap.ic_launcher))
+        .setIntent(Intent(ACTION_MY_APPS).apply { setPackage(context.packageName) })
+        .build()
+    ShortcutManagerCompat.pushDynamicShortcut(context, searchShortcut)
+    ShortcutManagerCompat.pushDynamicShortcut(context, myAppsShortcut)
   }
 
   fun onOnboardingSeen() = onboardingManager.onMainOnboardingSeen()
