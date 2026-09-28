@@ -10,7 +10,12 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 @PreviewTest
-@Preview(showBackground = true, showSystemUi = true, heightDp = 3000)
+@Preview(
+  showBackground = true,
+  showSystemUi = true,
+  locale = "en-US",
+  heightDp = 2000,
+)
 fun DetailsTest() =
   ScreenshotTest(showBottomBar = false) {
     AppDetails(
@@ -41,7 +46,7 @@ fun AppDetailsNotFoundTest() =
 
 @Composable
 @PreviewTest
-@Preview(showBackground = true, showSystemUi = true, heightDp = 3000)
+@Preview(showBackground = true, showSystemUi = true, locale = "en-US", heightDp = 2000)
 fun DetailsInstallTest() =
   ScreenshotTest(showBottomBar = false) {
     // reduces information, so we can see the bottom of the expanded page
@@ -100,7 +105,8 @@ fun DetailsUpdateTest() =
   showBackground = true,
   showSystemUi = true,
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
-  heightDp = 3000,
+  locale = "en-US",
+  heightDp = 2000,
 )
 fun DetailsNightTest() =
   ScreenshotTest(showBottomBar = false) {

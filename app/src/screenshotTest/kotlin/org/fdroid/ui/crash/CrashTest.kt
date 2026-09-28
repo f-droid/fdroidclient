@@ -8,7 +8,7 @@ import org.fdroid.ui.ScreenshotTest
 
 @Composable
 @PreviewTest
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, showSystemUi = true, locale = "en-US")
 fun CrashTest() =
   ScreenshotTest(showBottomBar = false) {
     Crash(isOldCrash = false, onCancel = {}, onSend = { _, _ -> }, onSave = { _, _ -> true })
@@ -20,6 +20,7 @@ fun CrashTest() =
   showBackground = true,
   showSystemUi = true,
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
+  locale = "en-US",
 )
 fun CrashNightTest() =
   ScreenshotTest(showBottomBar = false) {
