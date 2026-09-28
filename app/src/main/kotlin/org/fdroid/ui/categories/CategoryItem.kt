@@ -2,6 +2,7 @@ package org.fdroid.ui.categories
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.AutoMirrored
+import androidx.compose.material.icons.automirrored.filled.LibraryBooks
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.automirrored.filled.QueueMusic
@@ -125,6 +126,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Alarm Clock" -> Icons.Default.Alarm
         "Battery" -> Icons.Default.BatteryChargingFull
         "Ambient Sound" -> Icons.Default.SurroundSound
+        "Audiobook" -> AutoMirrored.Default.MenuBook
         "Board Game" -> Icons.Default.DeveloperBoard
         "Bookmark" -> Icons.Default.Bookmarks
         "Browser" -> Icons.Default.OpenInBrowser
@@ -145,7 +147,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "DNS & Hosts" -> Icons.Default.Dns
         "Download" -> Icons.Default.Download
         "Draw" -> Icons.Default.Draw
-        "Ebook Reader" -> AutoMirrored.Default.MenuBook
+        "Ebook Reader" -> AutoMirrored.Default.LibraryBooks
         "Educational Game" -> Icons.Default.School
         "Email" -> Icons.Default.AlternateEmail
         "Emergency Action" -> Icons.Default.Emergency
@@ -244,6 +246,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Action Game" -> CategoryGroups.games
         "Alarm Clock" -> CategoryGroups.tools
         "Ambient Sound" -> CategoryGroups.media
+        "Audiobook" -> CategoryGroups.media
         "Battery" -> CategoryGroups.device
         "Board Game" -> CategoryGroups.games
         "Bookmark" -> CategoryGroups.storage
