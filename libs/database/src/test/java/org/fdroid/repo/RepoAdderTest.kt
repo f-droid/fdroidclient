@@ -22,6 +22,7 @@ import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.security.DigestInputStream
 import java.security.MessageDigest
+import java.security.Security
 import java.util.concurrent.Callable
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -68,6 +69,7 @@ import org.fdroid.test.TestUtils.decodeHex
 import org.fdroid.test.TestUtils.getRandomString
 import org.fdroid.test.TestUtils.getRes
 import org.fdroid.test.VerifierConstants
+import org.junit.Assume.assumeFalse
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
@@ -709,6 +711,9 @@ internal class RepoAdderTest {
 
   @Test
   fun testFallbackToV1() = runTest {
+    // TODO remove when verifying signatures with apksig
+    assumeFalse("SHA1 denyAfter 2019" in Security.getProperty("jdk.jar.disabledAlgorithms"))
+
     val url = "http://testy.at.or.at/fdroid/repo/"
     val urlTrimmed = "http://testy.at.or.at/fdroid/repo"
 
