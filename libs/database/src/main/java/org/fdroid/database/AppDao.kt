@@ -106,8 +106,7 @@ public interface AppDao {
   public suspend fun getAppsByCategory(categoryId: String): List<AppOverviewItem>
 
   /**
-   * Returns apps that are new. This means that they were added within the last [maxAgeInDays] days.
-   * The most recently added apps come first.
+   * Returns apps that are new. This means that they were added and last updated at the same time.
    *
    * @param maxAgeInDays the number of days that is still considered "new". Apps older than this
    *   won't be returned.
@@ -505,7 +504,7 @@ internal interface AppDaoInt : AppDao {
   @Transaction
   override suspend fun getNewApps(maxAgeInDays: Long): List<AppOverviewItem> {
     val query =
-      getAppsQuery("app.added >= ? ORDER BY app.added DESC") { statement ->
+      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
         statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getApps(query)
@@ -542,7 +541,7 @@ internal interface AppDaoInt : AppDao {
 
   override fun getNewAppsFlow(maxAgeInDays: Long): Flow<List<AppOverviewItem>> {
     val query =
-      getAppsQuery("app.added >= ? ORDER BY app.added DESC") { statement ->
+      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
         statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getAppsFlow(query)

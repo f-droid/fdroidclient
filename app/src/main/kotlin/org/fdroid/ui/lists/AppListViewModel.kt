@@ -169,7 +169,6 @@ constructor(
           },
         categoryIds = it.categories?.toSet(),
         antiFeatureIds = it.antiFeatureKeys.toSet(),
-        added = it.added,
       )
     }
   }

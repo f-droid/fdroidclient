@@ -7,7 +7,6 @@ import kotlin.test.assertNotEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.fdroid.LocaleChooser.getBestLocale
 import org.fdroid.database.TestUtils.getOrAwaitValue
@@ -458,23 +457,6 @@ internal class AppOverviewItemsTest : AppTest() {
       assertNotEquals(packageName2, apps[0].packageName)
       assertNotEquals(packageName2, apps[1].packageName)
     }
-  }
-
-  @Test
-  fun testNewAppsSortedByAdded() = runBlocking {
-    val now = System.currentTimeMillis()
-    val repoId = repoDao.insertOrReplace(getRandomRepo())
-    // app1 was added first, but updated last
-    appDao.insert(repoId, packageName1, app1.copy(added = now - 3000, lastUpdated = now), locales)
-    appDao.insert(repoId, packageName2, app2.copy(added = now - 2000, lastUpdated = now - 2000))
-    appDao.insert(repoId, packageName3, app3.copy(added = now - 1000, lastUpdated = now - 1000))
-    // an app added a long time ago isn't new
-    appDao.insert(repoId, getRandomString(), getRandomMetadataV2().copy(added = 0), locales)
-
-    // new apps are sorted by when they were added, newest first
-    val expected = listOf(packageName3, packageName2, packageName1)
-    assertEquals(expected, appDao.getNewApps().map { it.packageName })
-    assertEquals(expected, appDao.getNewAppsFlow().first().map { it.packageName })
   }
 
   private suspend fun getItems(): List<List<AppOverviewItem>> {

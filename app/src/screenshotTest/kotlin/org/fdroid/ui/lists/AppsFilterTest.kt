@@ -33,9 +33,7 @@ fun AppsFilterNightTest() =
             filteredCategoryIds = emptySet(),
             filteredAntiFeatureIds = emptySet(),
             filteredRepositoryIds = emptySet(),
-          ),
-          // other list types sort by latest instead of date added
-          list = AppListType.RecentlyUpdated("Recently updated"),
+          )
         )
     )
   }
