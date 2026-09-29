@@ -44,6 +44,8 @@
     <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_latest">Sort by last update</string>
+    <!-- Sort option for the list of new apps, newest added apps come first -->
+    <string name="sort_by_added">Sort by date added</string>
     <string name="filter_only_compatible">Apps compatible with this device</string>
     <string name="filter_button_save">Save as default</string>
     <!-- Shown above filter options such as categories, repositories and anti-features -->
