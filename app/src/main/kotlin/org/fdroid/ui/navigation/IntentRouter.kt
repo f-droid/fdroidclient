@@ -12,6 +12,7 @@ class IntentRouter(private val navigator: Navigator) : Consumer<Intent> {
   private val packageNameRegex = "[A-Za-z\\d_.]+".toRegex()
 
   companion object {
+    const val ACTION_SEARCH = "org.fdroid.action.SEARCH"
     const val ACTION_MY_APPS = "org.fdroid.action.MY_APPS"
   }
 
@@ -46,6 +47,11 @@ class IntentRouter(private val navigator: Navigator) : Consumer<Intent> {
           (uri.scheme == "https" && uri.host == "fdroid.link")
       ) {
         navigator.navigate(NavigationKey.AddRepo(uri.toString()))
+      }
+    } else if (ACTION_SEARCH == intent.action) {
+      val lastOnBackStack = navigator.last
+      if (lastOnBackStack !is NavigationKey.Search) {
+        navigator.navigate(NavigationKey.Search)
       }
     } else if (ACTION_MY_APPS == intent.action) {
       val lastOnBackStack = navigator.last
