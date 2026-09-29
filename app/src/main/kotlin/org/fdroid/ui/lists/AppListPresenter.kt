@@ -91,9 +91,6 @@ fun AppListPresenter(
     apps =
       if (sortBy == AppListSortOrder.NAME) {
         filteredApps?.sortedBy { it.name.lowercase(locale) }
-      } else if (type is AppListType.New) {
-        // new apps are sorted by when they were added, not by when they were last updated
-        filteredApps?.sortedByDescending { it.added ?: it.lastUpdated }
       } else {
         filteredApps?.sortedByDescending { it.lastUpdated }
       },
