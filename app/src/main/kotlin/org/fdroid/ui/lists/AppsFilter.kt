@@ -86,7 +86,11 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
             Icon(Icons.Default.AccessTime, null)
           }
         },
-        label = { Text(stringResource(R.string.sort_by_latest)) },
+        label = {
+          val sortByLatest =
+            if (info.list is AppListType.New) R.string.sort_by_added else R.string.sort_by_latest
+          Text(stringResource(sortByLatest))
+        },
         onClick = { if (!byLatestSelected) info.actions.sortBy(AppListSortOrder.LAST_UPDATED) },
       )
       FilterChip(
