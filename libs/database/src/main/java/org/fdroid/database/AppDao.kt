@@ -504,7 +504,7 @@ internal interface AppDaoInt : AppDao {
   @Transaction
   override suspend fun getNewApps(maxAgeInDays: Long): List<AppOverviewItem> {
     val query =
-      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
+      getAppsQuery("app.added >= ? ORDER BY app.added DESC") { statement ->
         statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getApps(query)
@@ -541,7 +541,7 @@ internal interface AppDaoInt : AppDao {
 
   override fun getNewAppsFlow(maxAgeInDays: Long): Flow<List<AppOverviewItem>> {
     val query =
-      getAppsQuery("app.added >= ? ORDER BY app.lastUpdated DESC") { statement ->
+      getAppsQuery("app.added >= ? ORDER BY app.added DESC") { statement ->
         statement.bindLong(1, System.currentTimeMillis() - DAYS.toMillis(maxAgeInDays))
       }
     return getAppsFlow(query)
