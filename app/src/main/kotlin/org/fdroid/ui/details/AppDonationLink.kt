@@ -2,7 +2,7 @@ package org.fdroid.ui.details
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Link
+import androidx.compose.material.icons.filled.VolunteerActivism
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -27,7 +27,7 @@ fun AppDonationLink(
       DonateType.BITCOIN -> Bitcoin
       DonateType.LITECOIN -> Litecoin
       DonateType.TALER -> if (isSystemInDarkTheme()) TalerNight else Taler
-      DonateType.GENERIC -> Icons.Default.Link
+      DonateType.GENERIC -> Icons.Default.VolunteerActivism
     },
     when (link.type) {
       DonateType.OPEN_COLLECTIVE -> stringResource(R.string.open_collective)
