@@ -4,6 +4,9 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
@@ -60,6 +63,8 @@ constructor(
   private val _state = MutableStateFlow(PanicSettingsState())
   val state = _state.asStateFlow()
 
+  var showInstructionsState by mutableStateOf(false)
+
   var wasExitSet = exitApp
 
   var wasHideSet = hideApp
@@ -89,9 +94,13 @@ constructor(
       if (isHideSet != wasHideSet) {
         wasHideSet = isHideSet
         val isExitSet = prefs.getBoolean("pref_panic_exit", true)
-        // if hide is on, also set exit on
-        if (isHideSet && !isExitSet) {
-          prefsFlow.update { it.toMutablePreferences().apply { this["pref_panic_exit"] = true } }
+        if (isHideSet) {
+          // if hide is on, trigger instructions dialog
+          showInstructionsState = true
+          // if hide is on, also set exit on
+          if (!isExitSet) {
+            prefsFlow.update { it.toMutablePreferences().apply { this["pref_panic_exit"] = true } }
+          }
         }
       }
     }
