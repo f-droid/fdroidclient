@@ -7,6 +7,7 @@ import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import java.security.Security
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
@@ -27,6 +28,7 @@ import org.fdroid.index.TempFileProvider
 import org.fdroid.index.v2.ANTI_FEATURE_KNOWN_VULNERABILITY
 import org.fdroid.index.v2.FileV2
 import org.fdroid.test.TestUtils.getRes
+import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -58,6 +60,9 @@ internal class IndexV1UpdaterTest : DbTest() {
 
   @Test
   fun testIndexV1Processing() {
+    // TODO remove when verifying signatures with apksig
+    assumeFalse("SHA1 denyAfter 2019" in Security.getProperty("jdk.jar.disabledAlgorithms"))
+    
     val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL, certificate = TESTY_CERT)
     val repo = repoDao.getRepository(repoId) ?: fail()
     downloadIndex(repo, TESTY_JAR)
@@ -123,6 +128,9 @@ internal class IndexV1UpdaterTest : DbTest() {
 
   @Test
   fun testIndexV1WithWrongCert() {
+    // TODO remove when verifying signatures with apksig
+    assumeFalse("SHA1 denyAfter 2019" in Security.getProperty("jdk.jar.disabledAlgorithms"))
+
     val repoId = repoDao.insertEmptyRepo(TESTY_CANONICAL_URL)
     val repo = repoDao.getRepository(repoId) ?: fail()
     downloadIndex(repo, TESTY_JAR)
