@@ -8,6 +8,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -15,7 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.content.edit
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -23,6 +29,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import coil3.compose.AsyncImage
 import dagger.hilt.android.AndroidEntryPoint
 import info.guardianproject.panic.Panic
 import info.guardianproject.panic.PanicResponder
@@ -35,6 +42,7 @@ import org.fdroid.R
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.settings.AppIcon
 
 @AndroidEntryPoint
 class PanicActivity : AppCompatActivity() {
@@ -82,9 +90,7 @@ class PanicActivity : AppCompatActivity() {
           state = viewModel.state.collectAsStateWithLifecycle().value,
           onBackClicked = { onBackPressedDispatcher.onBackPressed() },
         )
-      }
-      if (showPanicDialog) {
-        FDroidContent(dynamicColors = dynamicColors) {
+        if (showPanicDialog) {
           PanicConfirmationDialog(
             panicAppName = panicAppName,
             onConfirm = {
@@ -106,6 +112,9 @@ class PanicActivity : AppCompatActivity() {
               finish()
             },
           )
+        }
+        if (viewModel.showInstructionsState) {
+          HideInstructionsDialog(onConfirm = { viewModel.showInstructionsState = false })
         }
       }
     }
@@ -189,5 +198,33 @@ fun PanicConfirmationDialog(
     dismissButton = {
       TextButton(onClick = onDismiss) { Text(stringResource(android.R.string.cancel)) }
     },
+  )
+}
+
+@Composable
+fun HideInstructionsDialog(onConfirm: () -> Unit) {
+  AlertDialog(
+    onDismissRequest = {},
+    properties =
+      DialogProperties(
+        dismissOnBackPress = false,
+        dismissOnClickOutside = false,
+      ),
+    title = { Text(stringResource(R.string.panic_hide_warning_title)) },
+    text = {
+      Column(
+        horizontalAlignment = CenterHorizontally,
+        verticalArrangement = spacedBy(8.dp),
+        modifier = Modifier.fillMaxWidth(),
+      ) {
+        Text(stringResource(R.string.panic_hide_warning_message))
+        AsyncImage(
+          model = AppIcon.Calculator.iconRes,
+          contentDescription = null,
+        )
+        Text(stringResource(AppIcon.Calculator.labelRes))
+      }
+    },
+    confirmButton = { TextButton(onClick = onConfirm) { Text(stringResource(R.string.got_it)) } },
   )
 }
