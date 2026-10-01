@@ -23,7 +23,7 @@
     <string name="links">Спасылкі</string>
     <string name="versions">Версіі</string>
     <string name="more">Падрабязней</string>
-    <string name="menu_overflow_description">Дадатковыя параметры</string>
+    <string name="menu_overflow_description">Больш параметраў</string>
     <string name="less">Менш</string>
     <string name="back">Назад</string>
     <string name="cancel">Скасаваць</string>
@@ -38,7 +38,7 @@
     <string name="menu_ignore_all">Ігнараваць усе абнаўленні</string>
     <string name="menu_ignore_this">Ігнараваць гэтае абнаўленне</string>
     <string name="menu_website">Сайт</string>
-    <string name="menu_email">Напісаць аўтару</string>
+    <string name="menu_email">Напісаць ліст аўтару</string>
     <string name="menu_issues">Пытанні</string>
     <string name="menu_changelog">Спіс змен</string>
     <string name="menu_source">Зыходны код</string>
@@ -173,7 +173,7 @@
     <string name="swap_wifi_vpn_conflict">Канфліктуе з актыўным VPN!</string>
     <string name="banner_no_internet">Няма інтэрнэту</string>
     <string name="has_disallow_install_unknown_sources_globally">Адміністратар вашай прылады не дазваляе ўсталёўваць прыкладанні з незнаёмых крыніц, якія ўтрымліваюць новыя рэпазіторыі</string>
-    <string name="menu_release_channel_beta">Дазваляць Beta Абнаўленні</string>
+    <string name="menu_release_channel_beta">Дазваляць beta абнаўленні</string>
     <string name="has_disallow_install_unknown_sources">Незнаёмыя крыніцы не могуць быць дабаўленыя гэтым карыстальнікам, якія утрымліваюць новыя рэпазіторыі</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="about_title_basic">Пра F-Droid Basic</string>
@@ -462,4 +462,14 @@
     <string name="litecoin">Litecoin</string>
     <string name="search_my_apps_hint">Пошук усталяваных праграм</string>
     <string name="panic_app_unknown_app">невядомая праграма</string>
+    <string name="category_group_summary_health">Фітнэс, харчаванне і медыцынскія праграмы</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="pref_repo_updates_summary_only_when_open_app">Правяраць абнаўленні толькі калі адкрыта • Праграмы састарэюць</string>
+    <string name="panic_hide_migration_title">Новы F-Droid змяніў хаванне праграм</string>
+    <string name="panic_hide_migration_message">Функцыя калькулятара была выдалена, але вы ўсё яшчэ можаце змяніць значок праграмы назаўжды праз налады \"значок праграмы\" і \"трывожная кнопка\".</string>
+    <string name="panic_hide_migration_button">Прагляд налад</string>
+    <string name="icon_title">Значок праграмы</string>
+    <string name="icon_summary">Выберыце значок для гэтай праграмы на дамашнім экране і ў меню праграм</string>
+    <string name="icon_intro">Выберыце значок і назву для гэтай праграмы. Гэта паказваецца на дамашнім экране і ў меню праграм.\n\nNote: Notifications will always use the default icon and name.</string>
+    <string name="taler">Талер</string>
 </resources>

@@ -295,4 +295,6 @@
     <string name="first_start_button">Sækja gagnasöfn</string>
     <string name="my_apps_header_recently_installed_apps">Nýlega uppsett</string>
     <string name="search_history">Nýlegar leitir</string>
+    <string name="hide">Fela</string>
+    <string name="pref_category_network">Netkerfi</string>
 </resources>

@@ -463,4 +463,6 @@
     <string name="icon_intro">このアプリのアイコン・名前を選択してください。これらがホーム画面やアプリドロワーに表示されます。\n\n備考：通知には常にデフォルトのアイコン・名前が使われます。</string>
     <string name="category_group_health">健康</string>
     <string name="category_group_summary_health">フィットネス、栄養＆医療関係アプリ</string>
+    <string name="panic_hide_warning_message">緊急事態が起きた場合、ホーム画面・アプリドロワーにこのアプリの電卓アイコンと名称が表示されます。アプリのアイコン設定を使ってデフォルトのアイコン・名称へ戻すことができます。\n\n注：通知には常にデフォルトアイコン・名称が使われます。</string>
+    <string name="panic_hide_warning_title">復元方法を覚えておきましょう</string>
 </resources>

@@ -459,4 +459,6 @@
     <string name="panic_app_unknown_app">未知应用</string>
     <string name="category_group_health">健康</string>
     <string name="category_group_summary_health">健身、营养和医疗应用</string>
+    <string name="panic_hide_warning_title">记住如何恢复</string>
+    <string name="panic_hide_warning_message">在紧急事件中，这会在主屏幕和应用抽屉显示计算器图标和该应用的名称。使用应用图标设置恢复默认图标和名称。\n\n注意：通知始终使用默认图标和名称。</string>
 </resources>

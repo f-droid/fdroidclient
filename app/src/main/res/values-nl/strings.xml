@@ -467,4 +467,6 @@
     <string name="panic_app_unknown_app">een onbekende app</string>
     <string name="category_group_health">Gezondheid</string>
     <string name="category_group_summary_health">Fitness-, voedings- en medische apps</string>
+    <string name="panic_hide_warning_title">Herinner hoe te herstellen</string>
+    <string name="panic_hide_warning_message">In een panieksituatie toont dit het Rekenmachine-pictogram en de -naam voor deze app op het thuisscherm en in de app-lade. Gebruik App-pictograminstallingen om het standaardpictogram en -naam te herstellen.\n\nOpmerking: Meldingen zullen altijd het standaardpictogram en de -naam gebruiken.</string>
 </resources>
