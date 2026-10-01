@@ -1,7 +1,11 @@
 package org.fdroid.utils
 
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.telephony.TelephonyManager
+import androidx.annotation.WorkerThread
 import androidx.core.os.LocaleListCompat
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -21,6 +25,26 @@ fun sha256(bytes: ByteArray): String {
     }
   messageDigest.update(bytes)
   return messageDigest.digest().toHexString()
+}
+
+@WorkerThread
+fun isOldXiaomi(context: Context): Boolean {
+  val isOldXiaomiOrRedmi =
+    SDK_INT <= 31 &&
+      ("Xiaomi".equals(Build.BRAND, ignoreCase = true) ||
+        "Redmi".equals(Build.BRAND, ignoreCase = true))
+  return isOldXiaomiOrRedmi &&
+    listOf("com.miui.securitycenter", "com.miui.packageinstaller").any { isInstalled(context, it) }
+}
+
+@WorkerThread
+fun isInstalled(context: Context, packageName: String): Boolean {
+  return try {
+    context.packageManager.getPackageInfo(packageName, 0)
+    true
+  } catch (_: PackageManager.NameNotFoundException) {
+    false
+  }
 }
 
 fun getLogName(context: Context): String {

@@ -528,7 +528,7 @@ constructor(
       block(safeCont)
     }
 
-  private fun installLegacy(apkFile: File) {
+  fun installLegacy(apkFile: File) {
     val uri =
       FileProvider.getUriForFile(
         context,
