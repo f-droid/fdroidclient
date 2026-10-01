@@ -199,7 +199,7 @@
     <string name="app_details_repositories">Репозитории</string>
     <string name="app_details_repository">Репозиторий</string>
     <string name="app_details_repository_button_prefer">Предпочтительный репозиторий</string>
-    <string name="app_details_repository_expand">Развернуть список репозиториев</string>
+    <string name="app_details_repository_expand">Показать список репозиториев</string>
     <string name="repositories_last_update_never">никогда</string>
     <string name="useDnsCache">Использовать кэш DNS</string>
     <string name="useDnsCacheSummary">Использовать кэш для минимизации запросов DNS.</string>
@@ -232,7 +232,7 @@
     <string name="repo_basic_auth_title">Простая авторизация</string>
     <string name="repo_details_info_text">Репозиторий — это источник приложений.\n\nЗеркала используются для распределения нагрузки между несколькими серверами при скачивании приложений. Зеркала, расположенные ближе к вам, могут быть быстрее.\n\nОфициальные зеркала определяются владельцем репозитория. Их нельзя удалить, только отключить. Вы можете определить дополнительные пользовательские зеркала, добавив их так же, как и обычный репозиторий.</string>
     <string name="repo_archive_unknown">Похоже, что у этого репозитория нет архива.</string>
-    <string name="repo_last_update_check">Последняя проверка обновления репозитория: %s</string>
+    <string name="repo_last_update_check">Последняя проверка обновлений: %s</string>
     <string name="repo_confirm_delete_mirror_title">Удалить зеркало?</string>
     <string name="repo_confirm_delete_mirror_body">Вы можете продолжать устанавливать приложения из этого репозитория, используя другие зеркала.</string>
     <string name="share_mirror">Поделиться зеркалом</string>
@@ -399,10 +399,10 @@
     <string name="dialog_metered_text_no_size">Загрузка может повлечь дополнительные расходы в соответствии с вашим тарифным планом</string>
     <string name="copy_link">Скопировать ссылку</string>
     <string name="app_no_compatible_versions">Это приложение несовместимо с вашим устройством</string>
-    <string name="app_no_compatible_signer">Невозможно обновить это приложение, так как все версии имеют несовместимую подпись\n\nЕсли вы не можете получить обновления другими способами, возможно, вам потребуется удалить, а затем заново установить это приложение. Данные приложения будут утеряны.</string>
+    <string name="app_no_compatible_signer">Невозможно обновить это приложение, поскольку все версии имеют несовместимую подпись\n\nЕсли вы не можете получить обновления другими способами, возможно, вам потребуется удалить, а затем заново установить это приложение. Данные приложения будут утеряны.</string>
     <string name="app_no_compatible_signer_in_this_repo">Невозможно обновить это приложение, так как в выбранном репозитории нет совместимых версий\n\nПопробуйте изменить выбранный репозиторий</string>
     <string name="app_no_auto_update">Автоматическое обновление недоступно, поскольку это приложение создано для старой версии Android</string>
-    <string name="app_issue_update_other_repo">Обновление доступно в другом репозитории. Для обновления необходимо выбрать другой репозиторий</string>
+    <string name="app_issue_update_other_repo">Обновление доступно в другом репозитории. Для обновления необходимо изменить предпочтительный репозиторий</string>
     <string name="app_issue_not_available_title">Приложение больше не доступно</string>
     <string name="app_issue_not_available_text">Приложение, возможно, было удалено или находилось в репозитории, который вы удалили или отключили</string>
     <string name="app_issue_not_available_button">Показать информацию о приложении</string>
@@ -472,4 +472,6 @@
     <string name="panic_app_unknown_app">неизвестное приложение</string>
     <string name="category_group_health">Здоровье</string>
     <string name="category_group_summary_health">Приложения для фитнеса, питания и медицины</string>
+    <string name="panic_hide_warning_title">Запомните, как восстановить</string>
+    <string name="panic_hide_warning_message">В случае возникновения чрезвычайной ситуации на главном экране и в панели приложений будут отображаться значок и название приложения Калькулятор. Воспользуйтесь настройками значков приложений, чтобы восстановить значок и название по умолчанию.\n\nПримечание: в уведомлениях всегда будут использоваться значок и название по умолчанию.</string>
 </resources>

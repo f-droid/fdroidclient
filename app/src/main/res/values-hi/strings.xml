@@ -2,7 +2,7 @@
 <resources>
     <string name="delete">डिलीट करें</string>
     <string name="version">संस्करण</string>
-    <string name="updates">अपडेट</string>
+    <string name="updates">अपडेट्स</string>
     <string name="no_such_app">ऐसा कोई एप्लिकेशन नहीं मिला |</string>
     <string name="about_title_full">एफ-ड्रॉइड के बारे में</string>
     <string name="about_version">संस्करण</string>
