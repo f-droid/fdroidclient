@@ -1,3 +1,9 @@
+### 2.0.2 (2026-10-02)
+
+* Sort new apps by added date
+* Fix app installation on old Xiaomi/Redmi devices
+* Show panic app hiding explanation dialog (full only)
+ 
 ### 2.0.1 (2026-09-27)
 
 * Fix app icon settings crash on Huawei/Honor devices
