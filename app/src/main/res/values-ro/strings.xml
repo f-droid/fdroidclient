@@ -469,4 +469,6 @@
     <string name="icon_intro">Selectați o pictogramă și un nume pentru această aplicație. Aceasta este afișată pe ecranul de pornire și în sertarul cu aplicații.\n\nNotă: Notificările vor folosi întotdeauna pictograma și numele implicite.</string>
     <string name="category_group_health">Sănătate</string>
     <string name="category_group_summary_health">Fitness, nutriție și aplicații medicale</string>
+    <string name="panic_hide_warning_title">Amintiți-vă cum să restaurați</string>
+    <string name="panic_hide_warning_message">Într-un eveniment de panică, se va schimba pictograma și numele aplicației în Calculatorm pe ecranul de pornire și în sertarul cu aplicații. Utilizați setarea Pictogramă aplicație pentru a restabili pictograma și numele implicit.\n\nNotă: Notificările vor folosi întotdeauna pictograma și numele implicite.</string>
 </resources>

@@ -470,7 +470,7 @@
     <string name="category_group_health">Salute</string>
     <string name="category_group_summary_health">App per il fitness, l\'alimentazione e la salute</string>
     <string name="panic_hide_migration_title">La nuova versione di F-Droid ha modificato la funzione di occultamento delle app</string>
-    <string name="panic_hide_migration_message">La calcolatrice non c\'è più, ma puoi comunque modificare in modo permanente l\'icona dell\'app nelle impostazioni. Scorri fino a trovare “Icona app”.</string>
+    <string name="panic_hide_migration_message">La funzione calcolatrice è stata rimossa, ma puoi comunque modificare l\'icona dell\'app in modo permanente tramite le impostazioni \'icona app\' e \'pulsante antipanico\'.</string>
     <string name="panic_hide_migration_button">Verifica le impostazioni</string>
     <string name="icon_title">Icona dell\'app</string>
     <string name="icon_summary">Seleziona l\'icona di questa app sulla schermata iniziale e nel cassetto delle app</string>

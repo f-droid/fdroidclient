@@ -465,4 +465,6 @@
     <string name="icon_intro">Sisesta sellele rakendusele nimi ja vali ikoon. Seda näidatakse avalehel ja rakenduste loendis.\n\nMärkus: teavitused kasutavad alati rakenduse vaikimisi nime ja ikooni.</string>
     <string name="category_group_health">Tervis</string>
     <string name="category_group_summary_health">Fitness, toitumine ja terviserakendused</string>
+    <string name="panic_hide_warning_title">Jäta meelde, kuidas taastada</string>
+    <string name="panic_hide_warning_message">Paanikaolukorras kuvatakse kalkulaatori ikoon ja nimi avalehel ja rakenduste menüüs. Kasuta rakenduse ikooni seadistusi, et taastada vaikimisi ikoon ja nimi.\n\nMärkus: Teavitustes kasutatakse alati vaikimisi ikooni ja nime.</string>
 </resources>

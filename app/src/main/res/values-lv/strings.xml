@@ -452,4 +452,15 @@
     <string name="install_history_disabled_state">Uzstādīšanas vēsture ir atspējota\n\nUzstādīšanas, atjauninājumi un noņemšanas netiks ierakstītas</string>
     <string name="install_history_delete_ally">Izdzēst uzstādīšanas vēsturi</string>
     <string name="install_history_delete_text">Izdzēst uzstādīšanas vēsturi?</string>
+    <string name="category_group_health">Veselība</string>
+    <string name="category_group_summary_health">Fitnesa, uztura un medicīnas aplikācijas</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="panic_app_unknown_app">Nezināma aplikācija</string>
+    <string name="panic_hide_migration_message">Kalkulatora funkcija tika noņemta, taču tu vēl joprojām vari pavisam mainīt aplikācijas ikonu caur \"aplikācijas ikona\" un \"panikas poga\" iestatījumos.</string>
+    <string name="panic_hide_migration_button">Pārskatīt iestatījumus</string>
+    <string name="icon_title">Aplikācijas ikona</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="taler">Taler</string>
 </resources>

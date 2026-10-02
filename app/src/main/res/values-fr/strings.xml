@@ -469,4 +469,6 @@
     <string name="icon_intro">Choisissez une icône et un nom pour cette application. Ceux-ci s\'afficheront sur l\'écran d\'accueil et dans le tiroir d\'applications.\n\nRemarque : les notifications utiliseront toujours l\'icône et le nom par défaut.</string>
     <string name="category_group_health">Santé</string>
     <string name="category_group_summary_health">Applications de fitness, de nutrition &amp; médicales</string>
+    <string name="panic_hide_warning_title">N\'oubliez pas comment restaurer</string>
+    <string name="panic_hide_warning_message">En cas d\'alerte, l\'icône et le nom de l\'application « Calculatrice » s\'afficheront sur l\'écran d\'accueil et dans le tiroir d\'applications. Utilisez les paramètres de l\'icône de l\'application pour rétablir l\'icône et le nom par défaut.\n\nRemarque : les notifications utiliseront toujours l\'icône et le nom par défaut.</string>
 </resources>
