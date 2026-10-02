@@ -39,6 +39,8 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_THEME
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_WARN_WHEN_METERED
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_DNS_CACHE_DEFAULT
+import org.fdroid.settings.SettingsConstants.PREF_ERROR_CACHE
+import org.fdroid.settings.SettingsConstants.PREF_ERROR_CACHE_DEFAULT
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_APP_LIST_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_DYNAMIC_COLORS
@@ -194,6 +196,14 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     }
     set(value) {
       return prefs.edit { putString(PREF_DNS_CACHE, value) }
+    }
+
+  var errorCache: String
+    get() {
+      return prefs.getString(PREF_ERROR_CACHE, null) ?: PREF_ERROR_CACHE_DEFAULT
+    }
+    set(value) {
+      return prefs.edit { putString(PREF_ERROR_CACHE, value) }
     }
 
   private val _warnWhenMeteredFlow =

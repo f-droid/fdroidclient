@@ -13,16 +13,16 @@ public interface MirrorParameterManager {
    * Set or get the number of failed attempts to access the specified mirror. The intent is to order
    * mirrors for subsequent tests based on the number of failures.
    */
-  public fun incrementMirrorErrorCount(mirrorUrl: String)
+  public fun incrementMirrorErrorCount(hostname: String)
 
-  public fun getMirrorErrorCount(mirrorUrl: String): Int
+  public fun getMirrorErrorCount(hostname: String): Int
 
   /**
    * Cache the ip addresses for a mirror to bypass DNS lookups. The interface assumes the mirror
    * will include the ip addresses in string format so they will need to be converted.
    */
   public fun cacheMirrorIpAddresses(
-    mirrorUrl: String,
+    hostname: String,
     ipv4Addresses: List<String>,
     ipv6Addresses: List<String>,
   )
@@ -31,7 +31,7 @@ public interface MirrorParameterManager {
    * Returns true or false depending on whether a particular mirror should be retried before moving
    * on to the next one (typically based on checking dns results)
    */
-  public fun shouldRetryRequest(mirrorUrl: String): Boolean
+  public fun shouldRetryRequest(hostname: String): Boolean
 
   /**
    * Returns true or false depending on whether the location preference has been enabled. This

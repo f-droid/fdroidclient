@@ -42,6 +42,11 @@ class DnsCacheTest {
     settings.useDnsCache = true
     val testObject = DnsCache(settings)
 
+    // cleanup cache
+    testObject.remove(url1)
+    testObject.remove(url2)
+    testObject.remove(url3)
+
     // populate cache
     testObject.insert(url1, list1)
     testObject.insert(url2, list2)
@@ -89,6 +94,10 @@ class DnsCacheTest {
     val ipv4Strings = listOf(ip1String, ip2String)
     val ipv6Strings = listOf(ip3String, ip4String)
 
+    // cleanup cache
+    testCache.remove(url1)
+    testCache.remove(url2)
+
     testObject.populateCacheWithStrings(url1, ipv4Strings, ipv6Strings)
     val resultList1 = testObject.lookup(url1)
     assertEquals(4, resultList1.size)
@@ -107,6 +116,9 @@ class DnsCacheTest {
     settings.useDnsCache = true
     val testCache = DnsCache(settings)
     val testObject = DnsWithCache(settings, testCache)
+
+    // cleanup cache
+    testCache.remove(url2)
 
     // insert dummy value into cache
     testCache.insert(url2, list2)

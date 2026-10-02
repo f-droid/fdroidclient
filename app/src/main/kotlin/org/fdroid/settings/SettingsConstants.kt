@@ -53,6 +53,9 @@ object SettingsConstants {
   const val PREF_DNS_CACHE = "dnsCache"
   const val PREF_DNS_CACHE_DEFAULT = ""
 
+  const val PREF_ERROR_CACHE = "errorCache"
+  const val PREF_ERROR_CACHE_DEFAULT = ""
+
   const val PREF_KEY_PREVENT_SCREENSHOTS = "preventScreenshots"
   const val PREF_DEFAULT_PREVENT_SCREENSHOTS = false
 
