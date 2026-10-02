@@ -17,24 +17,28 @@ constructor(
   @param:ApplicationContext private val context: Context,
   private val settingsManager: SettingsManager,
   private val dnsWithCache: DnsWithCache,
+  private val errorCache: ErrorCache,
 ) : MirrorParameterManager {
 
   override fun cacheMirrorIpAddresses(
-    mirrorUrl: String,
+    hostname: String,
     ipv4Addresses: List<String>,
     ipv6Addresses: List<String>,
   ) {
-    dnsWithCache.populateCacheWithStrings(mirrorUrl, ipv4Addresses, ipv6Addresses)
+    dnsWithCache.populateCacheWithStrings(hostname, ipv4Addresses, ipv6Addresses)
   }
 
-  override fun shouldRetryRequest(mirrorUrl: String): Boolean {
-    return dnsWithCache.shouldRetryRequest(mirrorUrl)
+  override fun shouldRetryRequest(hostname: String): Boolean {
+    return dnsWithCache.shouldRetryRequest(hostname)
   }
 
-  // TODO overhaul default MirrorChooser
-  override fun incrementMirrorErrorCount(mirrorUrl: String) {}
+  override fun incrementMirrorErrorCount(hostname: String) {
+    errorCache.incrementErrorCount(hostname)
+  }
 
-  override fun getMirrorErrorCount(mirrorUrl: String): Int = 0
+  override fun getMirrorErrorCount(hostname: String): Int {
+    return errorCache.getErrorCount(hostname)
+  }
 
   override fun preferForeignMirrors(): Boolean {
     return settingsManager.mirrorChooser == SettingsConstants.MirrorChooserValues.PreferForeign

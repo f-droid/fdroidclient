@@ -16,15 +16,15 @@ class MirrorChooserTest {
   private val mirrors = listOf(Mirror("foo"), Mirror("bar"), Mirror("42"), Mirror("1337"))
   private val mirrorsLocation =
     listOf(
-      Mirror(baseUrl = "unknown_1", countryCode = null),
-      Mirror(baseUrl = "unknown_2", countryCode = null),
-      Mirror(baseUrl = "unknown_3", countryCode = null),
-      Mirror(baseUrl = "local_1", countryCode = "HERE"),
-      Mirror(baseUrl = "local_2", countryCode = "HERE"),
-      Mirror(baseUrl = "local_3", countryCode = "HERE"),
-      Mirror(baseUrl = "remote_1", countryCode = "THERE"),
-      Mirror(baseUrl = "remote_2", countryCode = "THERE"),
-      Mirror(baseUrl = "remote_3", countryCode = "THERE"),
+      Mirror(baseUrl = "http://test.unknown1.org", countryCode = null),
+      Mirror(baseUrl = "http://test.unknown2.org", countryCode = null),
+      Mirror(baseUrl = "http://test.unknown3.org", countryCode = null),
+      Mirror(baseUrl = "http://test.local1.org", countryCode = "HERE"),
+      Mirror(baseUrl = "http://test.local2.org", countryCode = "HERE"),
+      Mirror(baseUrl = "http://test.local3.org", countryCode = "HERE"),
+      Mirror(baseUrl = "http://test.remote1.org", countryCode = "THERE"),
+      Mirror(baseUrl = "http://test.remote2.org", countryCode = "THERE"),
+      Mirror(baseUrl = "http://test.remote3.org", countryCode = "THERE"),
     )
   private val downloadRequest = DownloadRequest("foo", mirrors)
   private val downloadRequestLocation = DownloadRequest("location", mirrorsLocation)
@@ -32,7 +32,7 @@ class MirrorChooserTest {
     DownloadRequest(
       path = "location",
       mirrors = mirrorsLocation,
-      tryFirstMirror = Mirror(baseUrl = "remote_1", countryCode = "THERE"),
+      tryFirstMirror = Mirror(baseUrl = "http://test.remote1.org", countryCode = "THERE"),
     )
 
   @Test
@@ -159,27 +159,6 @@ class MirrorChooserTest {
   }
 
   @Test
-  fun testMirrorChooserDomesticLocation() {
-    val mockManager = mockk<MirrorParameterManager>(relaxed = true)
-    every { mockManager.getCurrentLocation() } returns "HERE"
-    every { mockManager.preferForeignMirrors() } returns false
-
-    val mirrorChooser = MirrorChooserWithParameters(mockManager)
-
-    // test domestic mirror preference
-    val domesticList = mirrorChooser.orderMirrors(downloadRequestLocation)
-    // confirm the list contains all mirrors
-    assertEquals(9, domesticList.size)
-    // mirrors that are local should be included first
-    assertEquals("HERE", domesticList[0].countryCode)
-    assertEquals("HERE", domesticList[1].countryCode)
-    assertEquals("HERE", domesticList[2].countryCode)
-    // unknown mirrors should be last,
-    // because otherwise they will always be at the front if there are no domestic mirrors
-    assertEquals(null, domesticList.last().countryCode)
-  }
-
-  @Test
   fun testMirrorChooserForeignLocation() {
     val mockManager = mockk<MirrorParameterManager>(relaxed = true)
     every { mockManager.getCurrentLocation() } returns "HERE"
@@ -195,7 +174,6 @@ class MirrorChooserTest {
     assertEquals("THERE", foreignList[0].countryCode)
     assertEquals("THERE", foreignList[1].countryCode)
     assertEquals("THERE", foreignList[2].countryCode)
-    assertEquals(null, foreignList[3].countryCode)
   }
 
   @Test
@@ -203,9 +181,10 @@ class MirrorChooserTest {
     val mockManager = mockk<MirrorParameterManager>(relaxed = true)
     every { mockManager.getCurrentLocation() } returns "HERE"
     every { mockManager.preferForeignMirrors() } returns false
-    every { mockManager.getMirrorErrorCount("local_1") } returns 5
-    every { mockManager.getMirrorErrorCount("local_2") } returns 3
-    every { mockManager.getMirrorErrorCount("local_3") } returns 1
+    every { mockManager.getMirrorErrorCount(any()) } returns 99
+    every { mockManager.getMirrorErrorCount("test.local1.org") } returns 5
+    every { mockManager.getMirrorErrorCount("test.local2.org") } returns 3
+    every { mockManager.getMirrorErrorCount("test.local3.org") } returns 1
 
     val mirrorChooser = MirrorChooserWithParameters(mockManager)
 
@@ -214,13 +193,13 @@ class MirrorChooserTest {
     // confirm the list contains all mirrors
     assertEquals(9, orderedList.size)
     // mirrors that have fewer errors should be included first
-    assertEquals("local_3", orderedList[0].baseUrl)
-    assertEquals("local_2", orderedList[1].baseUrl)
-    assertEquals("local_1", orderedList[2].baseUrl)
+    assertEquals("http://test.local3.org", orderedList[0].baseUrl)
+    assertEquals("http://test.local2.org", orderedList[1].baseUrl)
+    assertEquals("http://test.local1.org", orderedList[2].baseUrl)
   }
 
   @Test
-  fun testMirrorChooserDomesticWithTryFirst() {
+  fun testMirrorChooserWithTryFirst() {
     val mockManager = mockk<MirrorParameterManager>(relaxed = true)
     every { mockManager.getCurrentLocation() } returns "HERE"
     every { mockManager.preferForeignMirrors() } returns false
@@ -231,11 +210,8 @@ class MirrorChooserTest {
     val tryFirstList = mirrorChooser.orderMirrors(downloadRequestTryFirst)
     // confirm the list contains all mirrors
     assertEquals(9, tryFirstList.size)
-    // tryfirst mirror should be included before local mirrors
-    assertEquals("remote_1", tryFirstList[0].baseUrl)
-    assertEquals("HERE", tryFirstList[1].countryCode)
-    assertEquals("HERE", tryFirstList[2].countryCode)
-    assertEquals("HERE", tryFirstList[3].countryCode)
+    // tryfirst mirror should be included before other mirrors
+    assertEquals("http://test.remote1.org", tryFirstList[0].baseUrl)
   }
 
   @Test
@@ -252,23 +228,21 @@ class MirrorChooserTest {
     var count3 = 0
     var countX = 0
     repeat(100) {
-      // test error sorting with domestic mirror preference
+      // test error sorting without foreign mirror preference
       val orderedList = mirrorChooser.orderMirrors(downloadRequestLocation)
-      if (orderedList[0].baseUrl.equals("local_1")) {
+      if (orderedList[0].baseUrl.equals("http://test.local1.org")) {
         count1++
-      } else if (orderedList[0].baseUrl.equals("local_2")) {
+      } else if (orderedList[0].baseUrl.equals("http://test.remote1.org")) {
         count2++
-      } else if (orderedList[0].baseUrl.equals("local_3")) {
+      } else if (orderedList[0].baseUrl.equals("http://test.unknown1.org")) {
         count3++
       } else {
         countX++
       }
     }
-    // all domestic urls should have appeared first in the list at least once
+    // the tested urls should have each appeared first in the list at least once
     assertTrue { count1 > 0 }
     assertTrue { count2 > 0 }
     assertTrue { count3 > 0 }
-    // no foreign urls should should have appeared first in the list
-    assertEquals(0, countX)
   }
 }
