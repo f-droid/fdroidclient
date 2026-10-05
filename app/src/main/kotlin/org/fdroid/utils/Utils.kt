@@ -15,7 +15,6 @@ import java.util.Locale
 import java.util.TimeZone
 import org.fdroid.BuildConfig.FLAVOR
 
-@OptIn(ExperimentalStdlibApi::class)
 fun sha256(bytes: ByteArray): String {
   val messageDigest: MessageDigest =
     try {
@@ -27,13 +26,16 @@ fun sha256(bytes: ByteArray): String {
   return messageDigest.digest().toHexString()
 }
 
+/** Returns true if the device is an old Xiaomi or Redmi device where SessionInstall is broken. */
 @WorkerThread
 fun isOldXiaomi(context: Context): Boolean {
-  val isOldXiaomiOrRedmi =
-    SDK_INT <= 31 &&
-      ("Xiaomi".equals(Build.BRAND, ignoreCase = true) ||
-        "Redmi".equals(Build.BRAND, ignoreCase = true))
-  return isOldXiaomiOrRedmi &&
+  val isXiaomiOrRedmi =
+    "Xiaomi".equals(Build.BRAND, ignoreCase = true) ||
+      "Redmi".equals(Build.BRAND, ignoreCase = true)
+  val isOldXiaomiOrRedmi = SDK_INT <= 31 && isXiaomiOrRedmi
+  val isChineseXiaomiOrRedmi =
+    SDK_INT <= 33 && isXiaomiOrRedmi && Build.VERSION.INCREMENTAL.takeLast(4).startsWith("CN")
+  return (isOldXiaomiOrRedmi || isChineseXiaomiOrRedmi) &&
     listOf("com.miui.securitycenter", "com.miui.packageinstaller").any { isInstalled(context, it) }
 }
 
