@@ -39,6 +39,7 @@ import org.fdroid.history.InstallEvent
 import org.fdroid.history.UninstallEvent
 import org.fdroid.index.v2.PackageVersion
 import org.fdroid.utils.IoDispatcher
+import org.fdroid.utils.isOldXiaomi
 
 @Singleton
 class AppInstallManager
@@ -374,6 +375,18 @@ constructor(
           iconModel = it.iconModel,
         )
       }
+
+    // Xiaomi MIUI is known to break the PackageInstaller API in several ways.
+    // Disabling MIUI "optimizations" in developer options fixes it,
+    // but we can't ask users to do this (bad UX).
+    // Therefore, we have no choice, but to disable it completely for those devices.
+    // See: https://github.com/vvb2060/PackageInstallerTest
+    if (isOldXiaomi(context)) {
+      log.warn { "Old Xiaomi/Redmi device detected, using legacy install for $packageName" }
+      sessionInstallManager.installLegacy(file)
+      return InstallState.UserAborted
+    }
+
     val result = sessionInstallManager.install(sessionId, packageName, newState, file)
     log.debug { "Install result: $result" }
     return if (result is InstallState.PreApproved && result.result is PreApprovalResult.Error) {
