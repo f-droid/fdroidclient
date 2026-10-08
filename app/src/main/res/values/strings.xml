@@ -33,7 +33,7 @@
     <string name="app_list_recently_updated">Recently updated</string>
     <string name="app_list_most_downloaded">Most downloaded</string>
     <string name="app_list_all">All apps</string>
-    <string name="app_list_author">Apps by %s</string>
+    <string name="app_list_author">Author %s</string>
 
     <string name="search_placeholder">Search…</string>
     <string name="search_history">Recent searches</string>
