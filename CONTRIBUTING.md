@@ -4,17 +4,16 @@
 
 If you find an issue in the app, you can use our [Issue
 Tracker](https://gitlab.com/fdroid/fdroidclient/issues). Make sure that it
-hasn't yet been reported by searching first.
-
-Remember to include the following information:
-
-* Android version
-* Device model
-* F-Droid version
-* Steps to reproduce the issue
-* Logcat - see [instructions](https://f-droid.org/wiki/page/Getting_logcat_messages_after_crash)
+hasn't yet been reported by searching (also closed tickets) first.
 
 ## Contributing code
+
+> [!WARNING]  
+> Any **AI/LLM** usage is [very](https://gitlab.com/fdroid/admin/-/work_items/575)
+> [controversial](https://gitlab.com/fdroid/admin/-/work_items/699).
+> An official policy is still being worked on.
+> Until this is ready, please do not use AI/LLM for your contribution.
+> Most importantly, do not use AI/LLM for merge request text and communication with us.
 
 Before starting to work on non-trivial code changes,
 please post in the related ticket first stating your intention to work on it.
