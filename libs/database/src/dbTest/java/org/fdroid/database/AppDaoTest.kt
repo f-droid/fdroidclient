@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.fail
+import kotlinx.coroutines.runBlocking
 import org.fdroid.database.TestUtils.getOrFail
 import org.fdroid.database.TestUtils.toMetadataV2
 import org.fdroid.test.TestRepoUtils.getRandomRepo
@@ -219,5 +220,39 @@ internal class AppDaoTest : AppTest() {
 
     appDao.insert(repoId, packageName3, app3, locales)
     assertEquals(3, appDao.getNumberOfAppsInRepository(repoId))
+  }
+
+  @Test
+  fun testReinsertingAppRemovesStaleLocalizedFilesAndUpdatesFts() = runBlocking {
+    val repoId = repoDao.insertOrReplace(getRandomRepo())
+    val app1 = app1.copy(name = mapOf("en-US" to "Onename"), summary = null)
+    val app2 = app2.copy(name = mapOf("en-US" to "Twoname"), summary = null)
+
+    // icons of app1 and app2 differ in locales, so app1's icons would go stale
+    appDao.insert(repoId, packageName, app1, locales)
+    assertEquals(app1, appDao.getApp(repoId, packageName)?.toMetadataV2()?.sort())
+    assertEquals(1, appDao.getAppSearchItems("Onename").size)
+
+    // inserting the same app again must replace its localized files, not merge them
+    appDao.insert(repoId, packageName, app2, locales)
+    assertEquals(app2, appDao.getApp(repoId, packageName)?.toMetadataV2()?.sort())
+    assertEquals(1, appDao.countApps())
+
+    // FTS table got updated as well
+    assertEquals(0, appDao.getAppSearchItems("Onename").size)
+    assertEquals(1, appDao.getAppSearchItems("Twoname").size)
+
+    // re-inserting app without localized files removes all of them
+    val appNoFiles =
+      app2.copy(
+        icon = null,
+        featureGraphic = null,
+        promoGraphic = null,
+        tvBanner = null,
+        screenshots = null,
+      )
+    appDao.insert(repoId, packageName, appNoFiles, locales)
+    assertEquals(0, appDao.countLocalizedFiles())
+    assertEquals(0, appDao.countLocalizedFileLists())
   }
 }
