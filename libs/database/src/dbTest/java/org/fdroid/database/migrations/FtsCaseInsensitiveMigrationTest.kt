@@ -18,6 +18,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.database.Converters.localizedTextV2toString
 import org.fdroid.database.CoreRepository
 import org.fdroid.database.FDroidDatabaseInt
+import org.fdroid.database.MIGRATION_13_14
 import org.fdroid.database.MIGRATION_5_6
 import org.fdroid.database.MIGRATION_8_9
 import org.fdroid.database.RepositoryPreferences
@@ -215,7 +216,7 @@ internal class FtsCaseInsensitiveMigrationTest {
         TEST_DB,
       )
       .allowMainThreadQueries()
-      .addMigrations(MIGRATION_8_9) // was added later
+      .addMigrations(MIGRATION_8_9, MIGRATION_13_14) // was added later
       .build()
       .use { db ->
         // assert that apps are still there

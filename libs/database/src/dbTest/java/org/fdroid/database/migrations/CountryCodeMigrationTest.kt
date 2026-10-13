@@ -13,6 +13,7 @@ import org.fdroid.database.CoreRepository
 import org.fdroid.database.CountryCodeMigration
 import org.fdroid.database.FDroidDatabaseInt
 import org.fdroid.database.InitialRepository
+import org.fdroid.database.MIGRATION_13_14
 import org.fdroid.database.MIGRATION_2_3
 import org.fdroid.database.MIGRATION_5_6
 import org.fdroid.database.MIGRATION_8_9
@@ -100,7 +101,7 @@ internal class CountryCodeMigrationTest {
         FDroidDatabaseInt::class.java,
         TEST_DB,
       )
-      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
+      .addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9, MIGRATION_13_14)
       .allowMainThreadQueries()
       .build()
       .use { db ->
