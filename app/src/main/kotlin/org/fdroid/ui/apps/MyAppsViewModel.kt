@@ -20,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
@@ -38,6 +39,8 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.install.InstalledAppsCache
+import org.fdroid.repo.RepoUpdateManager
+import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
@@ -60,6 +63,7 @@ constructor(
   private val networkMonitor: NetworkMonitor,
   private val updatesManager: UpdatesManager,
   private val repoManager: RepoManager,
+  repoUpdateManager: RepoUpdateManager,
 ) : AndroidViewModel(app), MyAppsActions {
 
   private val log = KotlinLogging.logger {}
@@ -68,6 +72,8 @@ constructor(
     CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
   private val updates = updatesManager.updates
+  private val reposUpdatingFlow =
+    repoUpdateManager.repoUpdateState.map { it is RepoUpdateProgress }.distinctUntilChanged()
 
   @OptIn(ExperimentalCoroutinesApi::class)
   private val installedAppItems =
@@ -106,6 +112,7 @@ constructor(
           searchQueryFlow = searchQuery,
           sortOrderFlow = sortOrder,
           networkStateFlow = networkMonitor.networkState,
+          reposUpdatingFlow = reposUpdatingFlow,
         )
       }
     }
