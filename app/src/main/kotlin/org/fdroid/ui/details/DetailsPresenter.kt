@@ -46,6 +46,7 @@ fun DetailsPresenter(
   updateChecker: UpdateChecker,
   settingsManager: SettingsManager,
   appInstallManager: AppInstallManager,
+  permissionManager: PermissionManager,
   viewModel: AppDetailsViewModel,
   packageInfoFlow: StateFlow<AppInfo?>,
   currentRepoIdFlow: StateFlow<Long?>,
@@ -278,6 +279,7 @@ fun DetailsPresenter(
             } else {
               (installedVersionCode ?: 0) < version.versionCode
             },
+          permissions = permissionManager.getPermissions(version),
         )
       },
     installedVersion = installedVersion,

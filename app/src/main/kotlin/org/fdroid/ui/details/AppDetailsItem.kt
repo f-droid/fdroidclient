@@ -268,6 +268,7 @@ data class VersionItem(
   val isCompatible: Boolean,
   val isSignerCompatible: Boolean,
   val showInstallButton: Boolean,
+  val permissions: List<Permission>,
 )
 
 enum class MainButtonState {

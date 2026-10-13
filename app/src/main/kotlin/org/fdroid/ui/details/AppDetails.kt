@@ -340,6 +340,12 @@ fun AppDetails(
         // Versions
         if (!item.versions.isNullOrEmpty()) {
           Versions(item) { scrollState.scrollTo(0) }
+          if (item.versions.any { it.permissions.isNotEmpty() }) {
+            PermissionsSection(
+              versions = item.versions,
+              modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            )
+          }
         }
         // Developer contact
         if (item.showAuthorContact)

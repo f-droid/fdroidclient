@@ -177,6 +177,14 @@
     <string name="app_details_anti_features_title">What are Anti-Features?</string>
     <string name="app_details_anti_features_text">Some apps come with behaviors you didn’t ask for — and might not want. Things like ads, tracking, or dependence on proprietary services. We call these Anti-Features.
 \n\nApps in F-Droid are clearly labeled when they contain Anti-Features, so you can make an informed choice.</string>
+    <string name="app_details_permissions_section">Permissions</string>
+    <string name="app_details_permissions_button">Show all %d permissions</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">This app requests %d sensitive permission:</item>
+        <item quantity="other">This app requests %d sensitive permissions:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">This app requests no sensitive permissions</string>
+    <string name="app_details_permissions_warning">This information is reported by the repository. The actual permissions the app receives may be different.</string>
 
     <string name="about_title_full">About F-Droid</string>
     <string name="about_title_basic">About F-Droid Basic</string>

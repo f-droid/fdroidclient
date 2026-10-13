@@ -65,6 +65,7 @@ constructor(
   private val onboardingManager: OnboardingManager,
   private val appInstallManager: AppInstallManager,
   private val installedAppsCache: InstalledAppsCache,
+  permissionManager: PermissionManager,
 ) : AndroidViewModel(app) {
   private val log = KotlinLogging.logger {}
   private val packageInfoFlow = MutableStateFlow<AppInfo?>(null)
@@ -83,6 +84,7 @@ constructor(
           updateChecker = updateChecker,
           settingsManager = settingsManager,
           appInstallManager = appInstallManager,
+          permissionManager = permissionManager,
           viewModel = this,
           packageInfoFlow = packageInfoFlow,
           currentRepoIdFlow = currentRepoIdFlow,
