@@ -234,6 +234,19 @@ internal val MIGRATION_8_9 =
     }
   }
 
+/**
+ * The tokenizer of the FTS4 table for the app metadata was modified. This migration is needed to
+ * recreate the FTS table to respect the new tokenizer and also re-create the triggers to keep the
+ * FTS table in sync with the AppMetadata table.
+ */
+internal val MIGRATION_13_14 =
+  object : Migration(13, 14) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+      // rebuild the FTS table because 10 to 11 migration may have brought row IDs out of sync
+      db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")
+    }
+  }
+
 /** Raise the setup flag in the [DbMetadata] table, so we know that initial setup is done. */
 internal class DbMetadataMigration : AutoMigrationSpec {
   override fun onPostMigrate(db: SupportSQLiteDatabase) {

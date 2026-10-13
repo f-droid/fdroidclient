@@ -18,7 +18,7 @@ import org.fdroid.LocaleChooser.getBestLocale
   // When bumping this version, please make sure to add one (or more) migration(s) below!
   // Consider also providing tests for that migration.
   // Don't forget to commit the new schema to the git repo as well.
-  version = 13,
+  version = 14,
   entities =
     [
       // repo
@@ -57,7 +57,10 @@ import org.fdroid.LocaleChooser.getBestLocale
       AutoMigration(10, 11),
       AutoMigration(11, 12),
       AutoMigration(12, 13, DbMetadataMigration::class),
+      // 13 to 14 is a manual migration
       // add future migrations above!
+      // Attention: Any AutoMigration touching AppMetadata MUST rebuild the FTS table,
+      // because it will drop and recreate the table bringing row IDs out of sync with FTS.
     ],
 )
 @TypeConverters(Converters::class)
