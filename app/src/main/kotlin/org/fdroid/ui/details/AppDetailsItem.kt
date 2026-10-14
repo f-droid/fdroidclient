@@ -269,7 +269,9 @@ data class VersionItem(
   val isSignerCompatible: Boolean,
   val showInstallButton: Boolean,
   val permissions: List<Permission>,
-)
+) {
+  val permissionsByType = permissions.groupBy { it.type }
+}
 
 enum class MainButtonState {
   /** Versions are still loading, so we don't know if there will be an update */

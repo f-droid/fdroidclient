@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.pm.PermissionInfo.PROTECTION_MASK_BASE
 import android.content.pm.PermissionInfo.PROTECTION_NORMAL
 import android.os.Build.VERSION.SDK_INT
+import androidx.annotation.StringRes
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
+import org.fdroid.R
 import org.fdroid.database.AppVersion
 import org.fdroid.index.v2.PermissionV2
 
@@ -60,11 +62,11 @@ data class Permission(
   val type: PermissionType,
 )
 
-enum class PermissionType {
-  SENSITIVE,
-  NORMAL,
-  RUNTIME,
-  CUSTOM,
+enum class PermissionType(@StringRes val titleRes: Int) {
+  SENSITIVE(R.string.app_details_permissions_title_sensitive),
+  NORMAL(R.string.app_details_permissions_title_normal),
+  RUNTIME(R.string.app_details_permissions_title_runtime),
+  CUSTOM(R.string.app_details_permissions_title_custom),
 }
 
 /** A set of permissions that are considered sensitive and don't require user approval. */

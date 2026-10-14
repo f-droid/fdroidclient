@@ -184,7 +184,12 @@
         <item quantity="other">This app requests %d sensitive permissions:</item>
     </plurals>
     <string name="app_details_permissions_sensitive_none">This app requests no sensitive permissions</string>
+    <string name="app_details_permissions_title_num">Permissions (%d)</string>
     <string name="app_details_permissions_warning">This information is reported by the repository. The actual permissions the app receives may be different.</string>
+    <string name="app_details_permissions_title_sensitive">Sensitive (%d)</string>
+    <string name="app_details_permissions_title_normal">Auto-Granted (%d)</string>
+    <string name="app_details_permissions_title_runtime">Runtime (%d)</string>
+    <string name="app_details_permissions_title_custom">Custom (%d)</string>
 
     <string name="about_title_full">About F-Droid</string>
     <string name="about_title_basic">About F-Droid Basic</string>

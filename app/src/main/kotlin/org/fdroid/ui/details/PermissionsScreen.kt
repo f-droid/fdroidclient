@@ -2,7 +2,6 @@ package org.fdroid.ui.details
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +20,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.PermDeviceInformation
+import androidx.compose.material3.Badge
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
@@ -85,7 +85,7 @@ fun PermissionsSection(
     title = stringResource(R.string.app_details_permissions_section),
     modifier = modifier,
   ) {
-    Column(modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)) {
+    Column {
       val sensitivePerms = version.permissions.filter { it.type == PermissionType.SENSITIVE }
       val numSensitive = sensitivePerms.size
       Text(
@@ -98,7 +98,8 @@ fun PermissionsSection(
               numSensitive,
               numSensitive,
             )
-          }
+          },
+        modifier = Modifier.padding(horizontal = 16.dp),
       )
       if (numSensitive > 0) {
         Text(
@@ -110,21 +111,19 @@ fun PermissionsSection(
                 }
               }
             },
-          modifier = Modifier.padding(top = 8.dp),
+          modifier = Modifier.padding(top = 8.dp).padding(horizontal = 16.dp),
         )
       }
-      Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
-        TextButton(onClick = { showScreen = true }) {
-          Text(
-            text =
-              stringResource(
-                R.string.app_details_permissions_button,
-                version.permissions.size,
-              )
-          )
-          Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-          Icon(imageVector = Icons.AutoMirrored.Default.ArrowForward, contentDescription = null)
-        }
+      TextButton(onClick = { showScreen = true }, modifier = Modifier.padding(horizontal = 4.dp)) {
+        Text(
+          text =
+            stringResource(
+              R.string.app_details_permissions_button,
+              version.permissions.size,
+            )
+        )
+        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+        Icon(imageVector = Icons.AutoMirrored.Default.ArrowForward, contentDescription = null)
       }
     }
   }
@@ -168,7 +167,10 @@ private fun PermissionsSheet(
           },
           title = {
             Text(
-              stringResource(R.string.app_details_permissions_section),
+              stringResource(
+                R.string.app_details_permissions_title_num,
+                currentVersion.permissions.size,
+              ),
               maxLines = 1,
               overflow = TextOverflow.Ellipsis,
             )
@@ -209,11 +211,33 @@ private fun PermissionsSheet(
             }
           }
         }
-        items(
-          items = currentVersion.permissions.sortedBy { it.type.ordinal },
-          contentType = { "permission" },
-        ) { permission ->
-          PermissionsRow(permission)
+        PermissionType.entries.forEach { type ->
+          val permissions = currentVersion.permissionsByType[type].orEmpty()
+          if (permissions.isNotEmpty() || type == PermissionType.SENSITIVE) {
+            item(contentType = "type_header") {
+              ListItem {
+                Text(
+                  text = stringResource(type.titleRes, permissions.size),
+                  style = MaterialTheme.typography.titleMedium,
+                  modifier = Modifier.padding(top = 8.dp),
+                )
+              }
+            }
+            if (permissions.isEmpty()) {
+              item(contentType = "type_empty") {
+                ListItem {
+                  Text(text = stringResource(R.string.app_details_permissions_sensitive_none))
+                }
+              }
+            } else {
+              items(
+                items = permissions,
+                contentType = { "permission" },
+              ) { permission ->
+                PermissionsRow(permission)
+              }
+            }
+          }
         }
       }
     }
@@ -283,17 +307,27 @@ private fun VersionDropDown(
 @Composable
 private fun PermissionsRow(permission: Permission) {
   ListItem(
-    overlineContent = { Text(text = permission.name, fontFamily = FontFamily.Monospace) },
     supportingContent = {
-      Text(
-        text = (permission.description ?: "") + "\nType: ${permission.type}",
-        style =
-          LocalTextStyle.current.copy(
-            hyphens = Hyphens.Auto,
-            lineBreak = LineBreak.Paragraph.copy(strategy = LineBreak.Strategy.HighQuality),
-          ),
-      )
-    },
+      Column(verticalArrangement = spacedBy(4.dp)) {
+        if (permission.description?.isNotBlank() == true) {
+          Text(
+            text = permission.description,
+            style =
+              LocalTextStyle.current.copy(
+                hyphens = Hyphens.Auto,
+                lineBreak = LineBreak.Paragraph.copy(strategy = LineBreak.Strategy.HighQuality),
+              ),
+          )
+        }
+        Badge(containerColor = MaterialTheme.colorScheme.surfaceContainer) {
+          Text(
+            text = permission.name.substringAfter("android.permission."),
+            fontFamily = FontFamily.Monospace,
+            modifier = Modifier.padding(2.dp),
+          )
+        }
+      }
+    }
   ) {
     val text =
       if (permission.label != null && permission.label != permission.name) {
