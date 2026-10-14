@@ -188,17 +188,26 @@ fun DetailsPresenter(
         }
     }
   }
+  // produce permissions off UiThread
+  val permissionMap =
+    produceState<Map<String, List<Permission>>?>(null, versions) {
+        withContext(dispatcher) {
+          val perms = versions?.associate { version ->
+            Pair(version.file.sha256, permissionManager.getPermissions(version))
+          }
+          value = perms
+        }
+      }
+      .value
   val authorName = app.authorName
   val authorHasMoreThanOneApp =
-    if (authorName == null) false
-    else {
+    authorName != null &&
       produceState(false) {
           withContext(dispatcher) {
             db.getAppDao().hasAuthorMoreThanOneApp(authorName).asFlow().collect { value = it }
           }
         }
         .value
-    }
   val issue =
     remember(appsWithIssues) { appsWithIssues?.find { it.packageName == packageName }?.issue }
   val locales = LocaleListCompat.getDefault()
@@ -279,7 +288,7 @@ fun DetailsPresenter(
             } else {
               (installedVersionCode ?: 0) < version.versionCode
             },
-          permissions = permissionManager.getPermissions(version),
+          permissions = permissionMap?.get(version.file.sha256) ?: emptyList(),
         )
       },
     installedVersion = installedVersion,
