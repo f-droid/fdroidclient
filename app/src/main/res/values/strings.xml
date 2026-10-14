@@ -550,6 +550,8 @@
     <string name="notification_channel_updates_available_description">Displays a notification after repositories were updated and app updates were found</string>
     <string name="notification_channel_self_update_title">Self-update</string>
     <string name="notification_channel_self_update_description">Notifies when the app updated itself and was closed, so you can launch it again easily</string>
+    <string name="notification_channel_privileged_extension_migration_title">Privileged Extension</string>
+    <string name="notification_channel_privileged_extension_migration_description">Notifies when manual intervention is required to migrate away from Privileged Extension.</string>
 
     <string name="notification_repo_update_default">Connecting to %1$s…</string>
     <string name="notification_repo_update_downloading">Downloaded %1$s from %2$s</string>
@@ -575,6 +577,9 @@
     <string name="notification_installing_confirmation">Tap to confirm</string>
     <!-- The placeholder %s will be replaced with the name of this app -->
     <string name="notification_self_update_title">%s was updated. Tap to open</string>
+    <string name="notification_privileged_extension_migration_title">Updates require manual action!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Unknown sources\" not enabled!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s now installs apps via Android\'s built-in installer. You have to grant %1$s \"unknown sources\" permission to use that installer and approve each first time install.</string>
 
     <string name="warning_scaning_qr_code">Your camera doesn\'t seem to have an autofocus. It might be difficult to scan the code.</string>
     <string name="permission_camera_denied">Grant camera permission to scan the QR code. Tap to grant camera permission in settings.</string>

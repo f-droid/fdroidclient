@@ -3,9 +3,11 @@ package org.fdroid
 import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.ComponentCaller
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.provider.Settings
 import android.view.WindowManager.LayoutParams.FLAG_SECURE
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -83,5 +85,33 @@ class MainActivity : AppCompatActivity() {
   override fun onResume() {
     super.onResume()
     notificationManager.cancelSelfUpdateNotification()
+
+    if (settingsManager.privilegedExtensionNeedsMigration) {
+      if (migratingFromPrivilegedExtension()) {
+        notificationManager.showPrivilegedExtensionMigrationNotification()
+      } else {
+        notificationManager.cancelPrivilegedExtensionMigrationNotification()
+        settingsManager.privilegedExtensionNeedsMigration = false
+      }
+    }
+  }
+
+  @Suppress("DEPRECATION")
+  private fun migratingFromPrivilegedExtension(): Boolean {
+    try {
+      packageManager.getApplicationInfo("org.fdroid.fdroid.privileged", 0)
+      if (SDK_INT < 26) {
+        if (
+          Settings.Secure.getInt(contentResolver, Settings.Secure.INSTALL_NON_MARKET_APPS, 0) != 1
+        ) {
+          return true
+        }
+      } else if (!packageManager.canRequestPackageInstalls()) {
+        return true
+      }
+    } catch (e: PackageManager.NameNotFoundException) {
+      // nothing to do
+    }
+    return false
   }
 }

@@ -31,6 +31,7 @@ import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_MY_APPS_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PREVENT_SCREENSHOTS
+import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PRIVILEGED_EXTENSION_NEEDS_MIGRATION
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_SHOW_INCOMPATIBLE
@@ -49,6 +50,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_LAST_UPDATE_CHECK
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MIRROR_CHOOSER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_MY_APPS_SORT_ORDER
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PREVENT_SCREENSHOTS
+import org.fdroid.settings.SettingsConstants.PREF_KEY_PRIVILEGED_EXTENSION_NEEDS_MIGRATION
 import org.fdroid.settings.SettingsConstants.PREF_KEY_PROXY
 import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_SHOW_INCOMPATIBLE
@@ -222,6 +224,17 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     }
     set(value) {
       prefs.edit { putString(PREF_KEY_MY_APPS_SORT_ORDER, value.toSettings()) }
+    }
+
+  var privilegedExtensionNeedsMigration: Boolean
+    get() {
+      return prefs.getBoolean(
+        PREF_KEY_PRIVILEGED_EXTENSION_NEEDS_MIGRATION,
+        PREF_DEFAULT_PRIVILEGED_EXTENSION_NEEDS_MIGRATION,
+      )
+    }
+    set(value) {
+      return prefs.edit { putBoolean(PREF_KEY_PRIVILEGED_EXTENSION_NEEDS_MIGRATION, value) }
     }
 
   init {
