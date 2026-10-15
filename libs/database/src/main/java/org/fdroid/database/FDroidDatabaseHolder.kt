@@ -52,7 +52,7 @@ public object FDroidDatabaseHolder {
         val builder =
           Room.databaseBuilder(context.applicationContext, FDroidDatabaseInt::class.java, name)
             .apply {
-              addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9)
+              addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9, MIGRATION_13_14)
               // We allow destructive migration (if no real migration was provided),
               // so we have the option to nuke the DB in production (if that will ever be needed).
               fallbackToDestructiveMigration(false)

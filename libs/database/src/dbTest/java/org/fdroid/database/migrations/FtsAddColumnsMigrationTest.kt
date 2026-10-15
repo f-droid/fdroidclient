@@ -18,6 +18,7 @@ import org.fdroid.database.AppMetadata
 import org.fdroid.database.Converters.localizedTextV2toString
 import org.fdroid.database.CoreRepository
 import org.fdroid.database.FDroidDatabaseInt
+import org.fdroid.database.MIGRATION_13_14
 import org.fdroid.database.MIGRATION_8_9
 import org.fdroid.database.RepositoryPreferences
 import org.fdroid.database.TestUtils.getOrFail
@@ -184,10 +185,11 @@ internal class FtsAddColumnsMigrationTest {
       assertSearch(db, "König", 1)
     }
 
-    helper.runMigrationsAndValidate(TEST_DB, 9, true, MIGRATION_8_9).close()
+    helper.runMigrationsAndValidate(TEST_DB, 9, true, MIGRATION_8_9, MIGRATION_13_14).close()
 
     // now get the Room DB, so we can use our DAOs for verifying the migration
     Room.databaseBuilder(context, FDroidDatabaseInt::class.java, TEST_DB)
+      .addMigrations(MIGRATION_13_14) // added later
       .allowMainThreadQueries()
       .build()
       .use { db ->
