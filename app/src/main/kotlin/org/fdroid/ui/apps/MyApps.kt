@@ -13,8 +13,6 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -53,7 +51,6 @@ import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 fun MyApps(
   myAppsInfo: MyAppsInfo,
   currentPackageName: String?,
@@ -138,7 +135,6 @@ fun MyApps(
             }
             TopAppBarOverflowButton { onDismissRequest ->
               MyAppsOverFlowMenu(
-                onCheckForUpdates = myAppsInfo.actions::checkForUpdates,
                 onInstallHistory = { onNav(NavigationKey.InstallationHistory) },
                 onExportInstalledApps = myAppsInfo.actions::exportInstalledApps,
                 onDismissRequest = onDismissRequest,

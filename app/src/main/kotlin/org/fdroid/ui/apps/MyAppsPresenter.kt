@@ -26,6 +26,7 @@ fun MyAppsPresenter(
   searchQueryFlow: StateFlow<String>,
   sortOrderFlow: StateFlow<AppListSortOrder>,
   networkStateFlow: StateFlow<NetworkState>,
+  reposUpdatingFlow: Flow<Boolean>,
 ): MyAppsModel {
   val appUpdates = appUpdatesFlow.collectAsState().value
   val appInstallStates = appInstallStatesFlow.collectAsState().value
@@ -34,6 +35,7 @@ fun MyAppsPresenter(
   val searchQuery = fixQuery(searchQueryFlow.collectAsState().value)
   val sortOrder = sortOrderFlow.collectAsState().value
   val processedPackageNames = mutableSetOf<String>()
+  val reposUpdating = reposUpdatingFlow.collectAsState(initial = false).value
 
   // we want to show apps currently installing/updating even if they have updates available,
   // so we need to handle those first
@@ -107,6 +109,7 @@ fun MyAppsPresenter(
     networkState = networkStateFlow.collectAsState().value,
     isSearching = searchQuery.isNotBlank(),
     appUpdatesBytes = updateBytes,
+    reposUpdating = reposUpdating,
   )
 }
 

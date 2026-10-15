@@ -21,6 +21,7 @@ data class MyAppsModel(
   val networkState: NetworkState,
   val isSearching: Boolean = false,
   val appUpdatesBytes: Long? = null,
+  val reposUpdating: Boolean = false,
 ) {
   val showClearInstallingAppsButton: Boolean = installingApps.all { !it.installState.showProgress }
 }
