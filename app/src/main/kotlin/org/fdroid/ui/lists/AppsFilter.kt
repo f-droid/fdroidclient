@@ -137,6 +137,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
     Text(
       text = stringResource(R.string.filter_intro),
+      style = MaterialTheme.typography.titleMedium,
       modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
     )
     // Categories
