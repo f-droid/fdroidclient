@@ -157,134 +157,135 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       Text(text = stringResource(R.string.filter_button_save))
     }
     // Filter apps by section
-    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-    Text(
-      text = stringResource(R.string.filter_intro),
-      style = MaterialTheme.typography.titleMedium,
-      modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-    )
-    // Categories
     val categories = info.model.categories
-    if (!categories.isNullOrEmpty())
-      ExpandableSection(
-        icon = rememberVectorPainter(Icons.Default.Category),
-        title = stringResource(R.string.main_menu__categories),
-        initiallyExpanded = info.model.filteredCategoryIds.isNotEmpty(),
-        iconTint = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        collapsedSummary = {
-          val selectedCategories =
-            categories.filter { it.id in info.model.filteredCategoryIds }.map { it.name }
-          if (selectedCategories.isNotEmpty()) {
-            Text(
-              text = selectedCategories.joinToString(", "),
-              style = MaterialTheme.typography.bodyMedium,
-              color = MaterialTheme.colorScheme.secondary,
-              modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
-            )
-          }
-        },
-      ) {
-        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
-          categories.forEach { item ->
-            val isSelected = item.id in info.model.filteredCategoryIds
-            CategoryChip(
-              categoryItem = item,
-              selected = isSelected,
-              onSelected = {
-                if (isSelected) {
-                  info.actions.removeCategory(item.id)
-                } else {
-                  info.actions.addCategory(item.id)
-                }
-              },
-            )
-          }
-        }
-      }
-    // Repositories
-    if (info.model.repositories.isNotEmpty())
-      ExpandableSection(
-        icon = rememberVectorPainter(PackageVariant),
-        title = stringResource(R.string.app_details_repositories),
-        initiallyExpanded = info.model.filteredRepositoryIds.isNotEmpty(),
-        iconTint = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        collapsedSummary = {
-          val selectedRepos =
-            info.model.repositories
-              .filter { it.repoId in info.model.filteredRepositoryIds }
-              .map { it.name }
-          if (selectedRepos.isNotEmpty()) {
-            Text(
-              text = selectedRepos.joinToString(", "),
-              style = MaterialTheme.typography.bodyMedium,
-              color = MaterialTheme.colorScheme.secondary,
-              modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
-            )
-          }
-        },
-      ) {
-        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
-          info.model.repositories.forEach { repo ->
-            val selected = repo.repoId in info.model.filteredRepositoryIds
-            FilterChip(
-              selected = selected,
-              modifier = Modifier.height(chipHeight),
-              leadingIcon = {
-                if (selected) {
-                  Icon(
-                    imageVector = Icons.Default.Check,
-                    contentDescription = stringResource(R.string.filter_selected),
-                  )
-                } else
-                  AsyncShimmerImage(
-                    model = repo.icon,
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
-                  )
-              },
-              label = { Text(repo.name) },
-              onClick = {
-                if (selected) {
-                  info.actions.removeRepository(repo.repoId)
-                } else {
-                  info.actions.addRepository(repo.repoId)
-                }
-              },
-            )
-          }
-        }
-      }
-    // Anti-Features
+    val repositories = info.model.repositories
     val antiFeatures = info.model.antiFeatures
-    if (!antiFeatures.isNullOrEmpty())
-      ExpandableSection(
-        icon = rememberVectorPainter(Icons.Default.WarningAmber),
-        title = stringResource(R.string.filter_antifeatures),
-        initiallyExpanded = info.model.filteredAntiFeatureIds.isNotEmpty(),
-        iconTint = MaterialTheme.colorScheme.primary,
+    if (!categories.isNullOrEmpty() || repositories.isNotEmpty() || !antiFeatures.isNullOrEmpty()) {
+      HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+      Text(
+        text = stringResource(R.string.filter_intro),
+        style = MaterialTheme.typography.titleMedium,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-      ) {
-        Column(modifier = Modifier.fillMaxWidth()) {
-          Text(
-            text = stringResource(R.string.filter_antifeatures_summary),
-            style = MaterialTheme.typography.bodyMedium,
-          )
-          antiFeatures.forEach { antiFeature ->
-            AntiFeatureRow(antiFeature, info.model.filteredAntiFeatureIds, info.actions)
+      )
+      // Categories
+      if (!categories.isNullOrEmpty())
+        ExpandableSection(
+          icon = rememberVectorPainter(Icons.Default.Category),
+          title = stringResource(R.string.main_menu__categories),
+          initiallyExpanded = info.model.filteredCategoryIds.isNotEmpty(),
+          iconTint = MaterialTheme.colorScheme.primary,
+          modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+          collapsedSummary = {
+            val selectedCategories =
+              categories.filter { it.id in info.model.filteredCategoryIds }.map { it.name }
+            if (selectedCategories.isNotEmpty()) {
+              Text(
+                text = selectedCategories.joinToString(", "),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+              )
+            }
+          },
+        ) {
+          ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+            categories.forEach { item ->
+              val isSelected = item.id in info.model.filteredCategoryIds
+              CategoryChip(
+                categoryItem = item,
+                selected = isSelected,
+                onSelected = {
+                  if (isSelected) {
+                    info.actions.removeCategory(item.id)
+                  } else {
+                    info.actions.addCategory(item.id)
+                  }
+                },
+              )
+            }
           }
         }
+      // Repositories
+      if (repositories.isNotEmpty())
+        ExpandableSection(
+          icon = rememberVectorPainter(PackageVariant),
+          title = stringResource(R.string.app_details_repositories),
+          initiallyExpanded = info.model.filteredRepositoryIds.isNotEmpty(),
+          iconTint = MaterialTheme.colorScheme.primary,
+          modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+          collapsedSummary = {
+            val selectedRepos =
+              repositories.filter { it.repoId in info.model.filteredRepositoryIds }.map { it.name }
+            if (selectedRepos.isNotEmpty()) {
+              Text(
+                text = selectedRepos.joinToString(", "),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+              )
+            }
+          },
+        ) {
+          ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+            repositories.forEach { repo ->
+              val selected = repo.repoId in info.model.filteredRepositoryIds
+              FilterChip(
+                selected = selected,
+                modifier = Modifier.height(chipHeight),
+                leadingIcon = {
+                  if (selected) {
+                    Icon(
+                      imageVector = Icons.Default.Check,
+                      contentDescription = stringResource(R.string.filter_selected),
+                    )
+                  } else
+                    AsyncShimmerImage(
+                      model = repo.icon,
+                      contentDescription = null,
+                      modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
+                    )
+                },
+                label = { Text(repo.name) },
+                onClick = {
+                  if (selected) {
+                    info.actions.removeRepository(repo.repoId)
+                  } else {
+                    info.actions.addRepository(repo.repoId)
+                  }
+                },
+              )
+            }
+          }
+        }
+      // Anti-Features
+      if (!antiFeatures.isNullOrEmpty())
+        ExpandableSection(
+          icon = rememberVectorPainter(Icons.Default.WarningAmber),
+          title = stringResource(R.string.filter_antifeatures),
+          initiallyExpanded = info.model.filteredAntiFeatureIds.isNotEmpty(),
+          iconTint = MaterialTheme.colorScheme.primary,
+          modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        ) {
+          Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+              text = stringResource(R.string.filter_antifeatures_summary),
+              style = MaterialTheme.typography.bodyMedium,
+            )
+            antiFeatures.forEach { antiFeature ->
+              AntiFeatureRow(antiFeature, info.model.filteredAntiFeatureIds, info.actions)
+            }
+          }
+        }
+      // clear all filters
+      HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+      TextButton(
+        onClick = info.actions::clearFilters,
+        modifier = modifier.align(Alignment.End).padding(horizontal = 16.dp),
+      ) {
+        Icon(Icons.Default.Clear, null)
+        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+        Text(stringResource(R.string.filter_button_clear_all))
       }
-    // clear all filters
-    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-    TextButton(
-      onClick = info.actions::clearFilters,
-      modifier = modifier.align(Alignment.End).padding(horizontal = 16.dp),
-    ) {
-      Icon(Icons.Default.Clear, null)
-      Spacer(Modifier.width(ButtonDefaults.IconSpacing))
-      Text(stringResource(R.string.filter_button_clear_all))
     }
   }
 }
