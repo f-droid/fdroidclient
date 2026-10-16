@@ -1,5 +1,6 @@
 package org.fdroid.ui.lists
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
@@ -18,7 +19,6 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.PhonelinkErase
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material.icons.filled.WarningAmber
@@ -29,6 +29,7 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.ToggleButton
@@ -129,23 +130,18 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       style = MaterialTheme.typography.bodyMedium,
       modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
     )
-    ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
-      // Incompatible filter
-      FilterChip(
-        selected = info.model.filterIncompatible,
-        modifier = Modifier.height(chipHeight),
-        leadingIcon = {
-          if (info.model.filterIncompatible) {
-            Icon(
-              imageVector = Icons.Default.Check,
-              contentDescription = stringResource(R.string.filter_selected),
-            )
-          } else {
-            Icon(Icons.Default.PhonelinkErase, null)
-          }
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = spacedBy(16.dp),
+      modifier =
+        Modifier.padding(horizontal = 16.dp).fillMaxWidth().clickable {
+          info.actions.toggleFilterIncompatible()
         },
-        label = { Text(stringResource(R.string.filter_only_compatible)) },
-        onClick = info.actions::toggleFilterIncompatible,
+    ) {
+      Text(stringResource(R.string.filter_only_compatible), modifier = Modifier.weight(1f))
+      Switch(
+        checked = !info.model.filterIncompatible,
+        onCheckedChange = { info.actions.toggleFilterIncompatible() },
       )
     }
     TextButton(
@@ -291,7 +287,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
 }
 
 @Composable
-@Preview(device = "spec:width=1080px,height=4000px,dpi=440")
+@Preview(locale = "en_US")
 private fun Preview() {
   FDroidContent {
     val info = getAppListInfo(getAppListModel())
