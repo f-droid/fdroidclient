@@ -43,8 +43,10 @@
     <string name="search_auto_keyboard">Automatically open keyboard</string>
     <string name="sort_title">Sorting and compatibility</string>
     <string name="sort_summary">Sort by</string>
-    <string name="sort_by_name">name</string>
-    <string name="sort_by_latest">last update</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_name_short">name</string>
+    <string name="sort_by_latest">Sort by last update</string>
+    <string name="sort_by_latest_short">last update</string>
     <string name="filter_only_title">Only show apps</string>
     <string name="filter_only_compatible">compatible with this device</string>
     <string name="filter_button_save">Save as default</string>

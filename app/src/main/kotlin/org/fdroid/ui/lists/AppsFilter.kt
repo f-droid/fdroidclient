@@ -105,7 +105,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       ) {
         Icon(Icons.Default.SortByAlpha, null)
         Spacer(Modifier.size(ToggleButtonDefaults.IconSpacing))
-        Text(stringResource(R.string.sort_by_name))
+        Text(stringResource(R.string.sort_by_name_short))
       }
       val byLatestSelected = info.model.sortBy == AppListSortOrder.LAST_UPDATED
       ToggleButton(
@@ -122,7 +122,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       ) {
         Icon(Icons.Default.AccessTime, null)
         Spacer(Modifier.size(ToggleButtonDefaults.IconSpacing))
-        Text(stringResource(R.string.sort_by_latest))
+        Text(stringResource(R.string.sort_by_latest_short))
       }
     }
     Text(

@@ -11,7 +11,12 @@ import org.fdroid.ui.utils.getAppListModel
 
 @Composable
 @PreviewTest
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(
+  showBackground = true,
+  showSystemUi = true,
+  locale = "en-US",
+  heightDp = 1200,
+)
 fun AppsFilterTest() =
   ScreenshotTest(showBottomBar = false) { AppsFilter(info = getAppListInfo(getAppListModel())) }
 
@@ -20,6 +25,7 @@ fun AppsFilterTest() =
 @Preview(
   showBackground = true,
   showSystemUi = true,
+  locale = "en-US",
   uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
 )
 fun AppsFilterNightTest() =
