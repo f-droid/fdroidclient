@@ -2,6 +2,7 @@ package org.fdroid.ui.lists
 
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,18 +23,24 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonGroupDefaults
+import androidx.compose.material3.ButtonGroupDefaults.ConnectedSpaceBetween
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.ToggleButton
+import androidx.compose.material3.ToggleButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.hideFromAccessibility
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -71,42 +78,58 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         modifier = Modifier.weight(1f),
       )
     }
-    ChipFlowRow(modifier = Modifier.padding(start = 16.dp)) {
-      // Sort by setting
+    // Sort by setting
+    Text(
+      text = stringResource(R.string.sort_summary),
+      style = MaterialTheme.typography.bodyMedium,
+      modifier = Modifier.padding(horizontal = 16.dp),
+    )
+    FlowRow(
+      horizontalArrangement = spacedBy(ConnectedSpaceBetween),
+      verticalArrangement = spacedBy(2.dp),
+      modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth(),
+    ) {
       val byNameSelected = info.model.sortBy == AppListSortOrder.NAME
-      FilterChip(
-        selected = byNameSelected,
-        modifier = Modifier.height(chipHeight),
-        leadingIcon = {
-          if (byNameSelected) {
-            Icon(
-              imageVector = Icons.Default.Check,
-              contentDescription = stringResource(R.string.filter_selected),
-            )
-          } else {
-            Icon(Icons.Default.SortByAlpha, null)
-          }
-        },
-        label = { Text(stringResource(R.string.sort_by_name)) },
-        onClick = { if (!byNameSelected) info.actions.sortBy(AppListSortOrder.NAME) },
-      )
+      ToggleButton(
+        checked = byNameSelected,
+        onCheckedChange = { if (it) info.actions.sortBy(AppListSortOrder.NAME) },
+        shapes = ButtonGroupDefaults.connectedLeadingButtonShapes(),
+        colors =
+          ToggleButtonDefaults.colors()
+            .copy(
+              checkedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+              checkedContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            ),
+        modifier = Modifier.weight(0.5f).semantics { role = Role.RadioButton },
+      ) {
+        Icon(Icons.Default.SortByAlpha, null)
+        Spacer(Modifier.size(ToggleButtonDefaults.IconSpacing))
+        Text(stringResource(R.string.sort_by_name))
+      }
       val byLatestSelected = info.model.sortBy == AppListSortOrder.LAST_UPDATED
-      FilterChip(
-        selected = byLatestSelected,
-        modifier = Modifier.height(chipHeight),
-        leadingIcon = {
-          if (byLatestSelected) {
-            Icon(
-              imageVector = Icons.Default.Check,
-              contentDescription = stringResource(R.string.filter_selected),
-            )
-          } else {
-            Icon(Icons.Default.AccessTime, null)
-          }
-        },
-        label = { Text(stringResource(R.string.sort_by_latest)) },
-        onClick = { if (!byLatestSelected) info.actions.sortBy(AppListSortOrder.LAST_UPDATED) },
-      )
+      ToggleButton(
+        checked = byLatestSelected,
+        onCheckedChange = { if (it) info.actions.sortBy(AppListSortOrder.LAST_UPDATED) },
+        shapes = ButtonGroupDefaults.connectedTrailingButtonShapes(),
+        colors =
+          ToggleButtonDefaults.colors()
+            .copy(
+              checkedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+              checkedContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            ),
+        modifier = Modifier.weight(0.5f).semantics { role = Role.RadioButton },
+      ) {
+        Icon(Icons.Default.AccessTime, null)
+        Spacer(Modifier.size(ToggleButtonDefaults.IconSpacing))
+        Text(stringResource(R.string.sort_by_latest))
+      }
+    }
+    Text(
+      text = stringResource(R.string.filter_only_title),
+      style = MaterialTheme.typography.bodyMedium,
+      modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
+    )
+    ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
       // Incompatible filter
       FilterChip(
         selected = info.model.filterIncompatible,

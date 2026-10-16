@@ -42,9 +42,11 @@
     <string name="search_my_apps_no_results">No matching apps\n\nTry using fewer search terms</string>
     <string name="search_auto_keyboard">Automatically open keyboard</string>
     <string name="sort_title">Sorting and compatibility</string>
-    <string name="sort_by_name">Sort by name</string>
-    <string name="sort_by_latest">Sort by last update</string>
-    <string name="filter_only_compatible">Apps compatible with this device</string>
+    <string name="sort_summary">Sort by</string>
+    <string name="sort_by_name">name</string>
+    <string name="sort_by_latest">last update</string>
+    <string name="filter_only_title">Only show apps</string>
+    <string name="filter_only_compatible">compatible with this device</string>
     <string name="filter_button_save">Save as default</string>
     <!-- Shown above filter options such as categories, repositories and anti-features -->
     <string name="filter_intro">Filter apps by</string>
