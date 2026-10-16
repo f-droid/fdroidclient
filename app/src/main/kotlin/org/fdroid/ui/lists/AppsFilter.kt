@@ -57,6 +57,7 @@ import org.fdroid.ui.utils.getAppListModel
 fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
   val scrollState = rememberScrollState()
   Column(modifier = modifier.verticalScroll(scrollState)) {
+    // Header
     Row(
       horizontalArrangement = spacedBy(8.dp),
       verticalAlignment = Alignment.CenterVertically,
@@ -75,6 +76,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       )
     }
     ChipFlowRow(modifier = Modifier.padding(start = 16.dp)) {
+      // Sort by setting
       val byNameSelected = info.model.sortBy == AppListSortOrder.NAME
       FilterChip(
         selected = byNameSelected,
@@ -109,6 +111,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         label = { Text(stringResource(R.string.sort_by_latest)) },
         onClick = { if (!byLatestSelected) info.actions.sortBy(AppListSortOrder.LAST_UPDATED) },
       )
+      // Incompatible filter
       FilterChip(
         selected = info.model.filterIncompatible,
         modifier = Modifier.height(chipHeight),
@@ -134,6 +137,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
       Spacer(Modifier.width(ButtonDefaults.IconSpacing))
       Text(text = stringResource(R.string.filter_button_save))
     }
+    // Filter apps by section
     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
     Text(
       text = stringResource(R.string.filter_intro),
@@ -148,6 +152,18 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         initiallyExpanded = info.model.filteredCategoryIds.isNotEmpty(),
         iconTint = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        collapsedSummary = {
+          val selectedCategories =
+            categories.filter { it.id in info.model.filteredCategoryIds }.map { it.name }
+          if (selectedCategories.isNotEmpty()) {
+            Text(
+              text = selectedCategories.joinToString(", "),
+              style = MaterialTheme.typography.bodyMedium,
+              color = MaterialTheme.colorScheme.secondary,
+              modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+            )
+          }
+        },
       ) {
         ChipFlowRow(modifier = modifier.fillMaxWidth()) {
           categories.forEach { item ->
@@ -174,6 +190,20 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         initiallyExpanded = info.model.filteredRepositoryIds.isNotEmpty(),
         iconTint = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        collapsedSummary = {
+          val selectedRepos =
+            info.model.repositories
+              .filter { it.repoId in info.model.filteredRepositoryIds }
+              .map { it.name }
+          if (selectedRepos.isNotEmpty()) {
+            Text(
+              text = selectedRepos.joinToString(", "),
+              style = MaterialTheme.typography.bodyMedium,
+              color = MaterialTheme.colorScheme.secondary,
+              modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+            )
+          }
+        },
       ) {
         ChipFlowRow(modifier = modifier.fillMaxWidth()) {
           info.model.repositories.forEach { repo ->

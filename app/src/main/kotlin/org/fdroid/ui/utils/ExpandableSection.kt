@@ -35,6 +35,7 @@ fun ExpandableSection(
   modifier: Modifier = Modifier,
   iconTint: Color? = null,
   initiallyExpanded: Boolean = LocalInspectionMode.current,
+  collapsedSummary: @Composable (() -> Unit)? = null,
   content: @Composable () -> Unit,
 ) {
   var sectionExpanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
@@ -67,5 +68,8 @@ fun ExpandableSection(
     ) {
       content()
     }
+  }
+  AnimatedVisibility(visible = !sectionExpanded && collapsedSummary != null) {
+    collapsedSummary?.invoke()
   }
 }
