@@ -1,7 +1,10 @@
 package org.fdroid.ui.lists
 
+import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -46,6 +49,7 @@ import org.fdroid.ui.categories.ChipFlowRow
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.utils.AsyncShimmerImage
+import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.getAppListInfo
 import org.fdroid.ui.utils.getAppListModel
 
@@ -53,7 +57,23 @@ import org.fdroid.ui.utils.getAppListModel
 fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
   val scrollState = rememberScrollState()
   Column(modifier = modifier.verticalScroll(scrollState)) {
-    FilterHeader(icon = Icons.AutoMirrored.Default.Sort, text = stringResource(R.string.sort_title))
+    Row(
+      horizontalArrangement = spacedBy(8.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+      Icon(
+        imageVector = Icons.AutoMirrored.Default.Sort,
+        contentDescription = null,
+        tint = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.semantics { hideFromAccessibility() },
+      )
+      Text(
+        text = stringResource(R.string.sort_title),
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.weight(1f),
+      )
+    }
     ChipFlowRow(modifier = Modifier.padding(start = 16.dp)) {
       val byNameSelected = info.model.sortBy == AppListSortOrder.NAME
       FilterChip(
@@ -122,111 +142,114 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
     // Categories
     val categories = info.model.categories
     if (!categories.isNullOrEmpty())
-      FilterSection(
-        icon = Icons.Default.Category,
+      ExpandableSection(
+        icon = rememberVectorPainter(Icons.Default.Category),
         title = stringResource(R.string.main_menu__categories),
         initiallyExpanded = info.model.filteredCategoryIds.isNotEmpty(),
-        onCollapsed = {
-          info.model.filteredCategoryIds.forEach { info.actions.removeCategory(it) }
-        },
+        iconTint = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
-        categories.forEach { item ->
-          val isSelected = item.id in info.model.filteredCategoryIds
-          CategoryChip(
-            categoryItem = item,
-            selected = isSelected,
-            onSelected = {
-              if (isSelected) {
-                info.actions.removeCategory(item.id)
-              } else {
-                info.actions.addCategory(item.id)
-              }
-            },
-          )
+        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+          categories.forEach { item ->
+            val isSelected = item.id in info.model.filteredCategoryIds
+            CategoryChip(
+              categoryItem = item,
+              selected = isSelected,
+              onSelected = {
+                if (isSelected) {
+                  info.actions.removeCategory(item.id)
+                } else {
+                  info.actions.addCategory(item.id)
+                }
+              },
+            )
+          }
         }
       }
     // Repositories
     if (info.model.repositories.isNotEmpty())
-      FilterSection(
-        icon = PackageVariant,
+      ExpandableSection(
+        icon = rememberVectorPainter(PackageVariant),
         title = stringResource(R.string.app_details_repositories),
         initiallyExpanded = info.model.filteredRepositoryIds.isNotEmpty(),
-        onCollapsed = {
-          info.model.filteredRepositoryIds.forEach { info.actions.removeRepository(it) }
-        },
+        iconTint = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
-        info.model.repositories.forEach { repo ->
-          val selected = repo.repoId in info.model.filteredRepositoryIds
-          FilterChip(
-            selected = selected,
-            modifier = Modifier.height(chipHeight),
-            leadingIcon = {
-              if (selected) {
-                Icon(
-                  imageVector = Icons.Default.Check,
-                  contentDescription = stringResource(R.string.filter_selected),
-                )
-              } else
-                AsyncShimmerImage(
-                  model = repo.icon,
-                  contentDescription = null,
-                  modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
-                )
-            },
-            label = { Text(repo.name) },
-            onClick = {
-              if (selected) {
-                info.actions.removeRepository(repo.repoId)
-              } else {
-                info.actions.addRepository(repo.repoId)
-              }
-            },
-          )
+        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+          info.model.repositories.forEach { repo ->
+            val selected = repo.repoId in info.model.filteredRepositoryIds
+            FilterChip(
+              selected = selected,
+              modifier = Modifier.height(chipHeight),
+              leadingIcon = {
+                if (selected) {
+                  Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = stringResource(R.string.filter_selected),
+                  )
+                } else
+                  AsyncShimmerImage(
+                    model = repo.icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
+                  )
+              },
+              label = { Text(repo.name) },
+              onClick = {
+                if (selected) {
+                  info.actions.removeRepository(repo.repoId)
+                } else {
+                  info.actions.addRepository(repo.repoId)
+                }
+              },
+            )
+          }
         }
       }
     // Anti-Features
     val antiFeatures = info.model.antiFeatures
     if (!antiFeatures.isNullOrEmpty())
-      FilterSection(
-        icon = Icons.Default.WarningAmber,
+      ExpandableSection(
+        icon = rememberVectorPainter(Icons.Default.WarningAmber),
         title = stringResource(R.string.filter_antifeatures),
         initiallyExpanded = info.model.filteredAntiFeatureIds.isNotEmpty(),
-        onCollapsed = {
-          info.model.filteredAntiFeatureIds.forEach { info.actions.removeAntiFeature(it) }
-        },
+        iconTint = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
-        antiFeatures.forEach { item ->
-          val isSelected = item.id in info.model.filteredAntiFeatureIds
-          FilterChip(
-            selected = isSelected,
-            modifier = Modifier.height(chipHeight),
-            leadingIcon = {
-              if (isSelected) {
-                Icon(
-                  imageVector = Icons.Default.Remove,
-                  contentDescription = stringResource(R.string.filter_selected),
-                )
-              } else
-                AsyncShimmerImage(
-                  model = item.iconModel,
-                  colorFilter = tint(MaterialTheme.colorScheme.onSurfaceVariant),
-                  error = rememberVectorPainter(Icons.Default.CrisisAlert),
-                  contentDescription = null,
-                  modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
-                )
-            },
-            label = { Text(item.name) },
-            colors =
-              FilterChipDefaults.filterChipColors()
-                .copy(selectedContainerColor = MaterialTheme.colorScheme.errorContainer),
-            onClick = {
-              if (isSelected) {
-                info.actions.removeAntiFeature(item.id)
-              } else {
-                info.actions.addAntiFeature(item.id)
-              }
-            },
-          )
+        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+          antiFeatures.forEach { item ->
+            val isSelected = item.id in info.model.filteredAntiFeatureIds
+            FilterChip(
+              selected = isSelected,
+              modifier = Modifier.height(chipHeight),
+              leadingIcon = {
+                if (isSelected) {
+                  Icon(
+                    imageVector = Icons.Default.Remove,
+                    contentDescription = stringResource(R.string.filter_selected),
+                  )
+                } else
+                  AsyncShimmerImage(
+                    model = item.iconModel,
+                    colorFilter = tint(MaterialTheme.colorScheme.onSurfaceVariant),
+                    error = rememberVectorPainter(Icons.Default.CrisisAlert),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
+                  )
+              },
+              label = { Text(item.name) },
+              colors =
+                FilterChipDefaults.filterChipColors()
+                  .copy(selectedContainerColor = MaterialTheme.colorScheme.errorContainer),
+              onClick = {
+                if (isSelected) {
+                  info.actions.removeAntiFeature(item.id)
+                } else {
+                  info.actions.addAntiFeature(item.id)
+                }
+              },
+            )
+          }
         }
       }
     // clear all filters
@@ -243,7 +266,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
 }
 
 @Composable
-@Preview
+@Preview(device = "spec:width=1080px,height=4000px,dpi=440")
 private fun Preview() {
   FDroidContent {
     val info = getAppListInfo(getAppListModel())
