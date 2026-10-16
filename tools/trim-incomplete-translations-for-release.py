@@ -31,6 +31,15 @@ for row in stats:
             locale = 'zh-TW'
         elif locale == 'zh_Hant_HK':
             locale = 'zh-HK'
+        elif locale == 'he':
+            locales_config.add('iw')
+            print('[+] Adding locale: iw (' + percent + ')')
+        elif locale == 'id':
+            locales_config.add('in')
+            print('[+] Adding locale: in (' + percent + ')')
+        elif locale == 'yi':
+            locales_config.add('ji')
+            print('[+] Adding locale: ji (' + percent + ')')
         locales_config.add(locale.replace('_', '-'))
         print('[+] Adding locale: ' + locale + ' (' + percent + ')')
         continue
