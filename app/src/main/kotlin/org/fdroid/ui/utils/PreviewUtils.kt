@@ -450,9 +450,20 @@ fun getAppListModel(
     filteredCategoryIds = filteredCategoryIds,
     antiFeatures =
       listOf(
-        AntiFeatureItem("Ads", "Ads", null),
-        AntiFeatureItem("KnownVuln", "Known Vulnerability", null),
-        AntiFeatureItem("NoSourceSince", "No Source Since", null),
+        AntiFeatureItem("Ads", "Ads", null, description = "Ads are bad! Mmmkay!"),
+        AntiFeatureItem(
+          "KnownVuln",
+          "Known Vulnerability",
+          null,
+          description = "These apps have a known vulnerability.",
+        ),
+        AntiFeatureItem(
+          "NoSourceSince",
+          "No Source Since",
+          null,
+          description =
+            "These apps have no source code published by their developer since a certain date.",
+        ),
       ),
     filteredAntiFeatureIds = filteredAntiFeatureIds,
     repositories = repoItems,

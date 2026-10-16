@@ -17,15 +17,12 @@ import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.CrisisAlert
 import androidx.compose.material.icons.filled.PhonelinkErase
-import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.SortByAlpha
 import androidx.compose.material.icons.filled.WarningAmber
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +31,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter.Companion.tint
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.hideFromAccessibility
@@ -246,39 +242,13 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         iconTint = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
       ) {
-        ChipFlowRow(modifier = modifier.fillMaxWidth()) {
-          antiFeatures.forEach { item ->
-            val isSelected = item.id in info.model.filteredAntiFeatureIds
-            FilterChip(
-              selected = isSelected,
-              modifier = Modifier.height(chipHeight),
-              leadingIcon = {
-                if (isSelected) {
-                  Icon(
-                    imageVector = Icons.Default.Remove,
-                    contentDescription = stringResource(R.string.filter_selected),
-                  )
-                } else
-                  AsyncShimmerImage(
-                    model = item.iconModel,
-                    colorFilter = tint(MaterialTheme.colorScheme.onSurfaceVariant),
-                    error = rememberVectorPainter(Icons.Default.CrisisAlert),
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp).semantics { hideFromAccessibility() },
-                  )
-              },
-              label = { Text(item.name) },
-              colors =
-                FilterChipDefaults.filterChipColors()
-                  .copy(selectedContainerColor = MaterialTheme.colorScheme.errorContainer),
-              onClick = {
-                if (isSelected) {
-                  info.actions.removeAntiFeature(item.id)
-                } else {
-                  info.actions.addAntiFeature(item.id)
-                }
-              },
-            )
+        Column(modifier = Modifier.fillMaxWidth()) {
+          Text(
+            text = stringResource(R.string.filter_antifeatures_summary),
+            style = MaterialTheme.typography.bodyMedium,
+          )
+          antiFeatures.forEach { antiFeature ->
+            AntiFeatureRow(antiFeature, info.model.filteredAntiFeatureIds, info.actions)
           }
         }
       }
