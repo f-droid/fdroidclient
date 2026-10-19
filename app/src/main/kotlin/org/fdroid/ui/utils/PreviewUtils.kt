@@ -35,6 +35,8 @@ import org.fdroid.ui.details.AppDetailsActions
 import org.fdroid.ui.details.DonateLink
 import org.fdroid.ui.details.DonateType
 import org.fdroid.ui.details.LoadedAppDetailsItem
+import org.fdroid.ui.details.Permission
+import org.fdroid.ui.details.PermissionType
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
@@ -244,6 +246,36 @@ val testApp =
           isCompatible = true,
           isSignerCompatible = true,
           showInstallButton = true,
+          permissions =
+            listOf(
+              Permission(
+                name = "android.permission.RECEIVE_BOOT_COMPLETED",
+                label = "run at startup",
+                description =
+                  "Allows the app to have itself started as soon as the system has finished " +
+                    "booting. This can make it take longer to start the phone and allow the app" +
+                    " to slow down the overall phone by always running.",
+                type = PermissionType.NORMAL,
+              ),
+              Permission(
+                name = "android.permission.WRITE_CALL_LOG",
+                label = "write call log",
+                description =
+                  "Allows the app to modify your phone’s call log, including data about incoming " +
+                    "and outgoing calls. Malicious apps may use this to erase or modify your call" +
+                    " log.",
+                type = PermissionType.RUNTIME,
+              ),
+              Permission(
+                name = "android.permission.INTERNET",
+                label = "have full network access",
+                description =
+                  "Allows the app to create network sockets and use custom network protocols. " +
+                    "The browser and other applications provide means to send data to the " +
+                    "internet, so this permission is not required to send data to the internet.",
+                type = PermissionType.SENSITIVE,
+              ),
+            ),
         ),
         VersionItem(
           testVersion1,
@@ -252,6 +284,7 @@ val testApp =
           isCompatible = true,
           isSignerCompatible = false,
           showInstallButton = false,
+          permissions = emptyList(),
         ),
         VersionItem(
           testVersion2,
@@ -260,6 +293,7 @@ val testApp =
           isCompatible = false,
           isSignerCompatible = true,
           showInstallButton = true,
+          permissions = emptyList(),
         ),
         VersionItem(
           testVersion2,
@@ -268,6 +302,7 @@ val testApp =
           isCompatible = true,
           isSignerCompatible = true,
           showInstallButton = false,
+          permissions = emptyList(),
         ),
       ),
     installedVersion = testVersion2,

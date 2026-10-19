@@ -70,6 +70,7 @@ internal class DetailsPresenterTest {
   private val repoPreLoader: RepoPreLoader = mockk()
   private val settingsManager: SettingsManager = mockk()
   private val appInstallManager: AppInstallManager = mockk()
+  private val permissionManager: PermissionManager = mockk()
   private val viewModel: AppDetailsViewModel = mockk(relaxed = true)
   private val compatibilityChecker: CompatibilityChecker = mockk()
   private val updateChecker = UpdateChecker(compatibilityChecker)
@@ -124,6 +125,8 @@ internal class DetailsPresenterTest {
     every { version.getWhatsNew(any()) } returns "Bug fixes"
     every { version.antiFeatureKeys } returns emptyList()
 
+    every { permissionManager.getPermissions(any()) } returns emptyList()
+
     every { appDao.getRepositoryIdsForApp(packageName) } returns listOf(repoId)
     every { appPrefsDao.getAppPrefs(packageName) } returns MutableLiveData(AppPrefs(packageName))
     every { compatibilityChecker.isCompatible(any()) } returns true
@@ -151,6 +154,7 @@ internal class DetailsPresenterTest {
         showAntiFeaturesOnboardingFlow = showAntiFeaturesOnboardingFlow,
         appsWithIssuesFlow = appsWithIssuesFlow,
         networkStateFlow = networkStateFlow,
+        permissionManager = permissionManager,
       )
     }
 
@@ -386,6 +390,7 @@ internal class DetailsPresenterTest {
 
     val version2: AppVersion = mockk()
     every { version2.versionCode } returns versionCode // same code as default version
+    every { version2.file } returns FileV1(name = "test.apk", sha256 = "abcd", size = 123L)
     every { version2.signer } returns SignerV2(listOf("a_different_signer_hash"))
     every { version2.isCompatible } returns true
     every { version2.antiFeatureKeys } returns emptyList()
@@ -844,6 +849,37 @@ internal class DetailsPresenterTest {
     }
   }
 
+  @Test
+  fun versionItemsGetPermissionsFromPermissionManager() = runTest {
+    val permissions =
+      listOf(
+        Permission(
+          name = "android.permission.CAMERA",
+          label = "Camera",
+          description = "Take pictures",
+          type = PermissionType.RUNTIME,
+        ),
+        Permission(
+          name = "org.example.permission.CUSTOM",
+          label = null,
+          description = null,
+          type = PermissionType.CUSTOM,
+        ),
+      )
+    every { permissionManager.getPermissions(version) } returns permissions
+
+    presenterFlow.test {
+      awaitNonNullItem() // first emission without versions
+      val item = awaitItem()
+
+      assertIs<LoadedAppDetailsItem>(item)
+      assertNotNull(item.versions)
+      assertEquals(permissions, item.versions.single().permissions)
+
+      cancelAndPrintRemainingEvents()
+    }
+  }
+
   private fun setupInstalledApp(versionCode: Long, isInstalled: Boolean = false) {
     val signature = mockk<Signature>()
     every { signature.toByteArray() } returns byteArrayOf(0xAB.toByte(), 0xCD.toByte())
@@ -879,7 +915,7 @@ internal class DetailsPresenterTest {
 
   private suspend fun ReceiveTurbine<AppDetailsItem?>.cancelAndPrintRemainingEvents() {
     val lastItems = cancelAndConsumeRemainingEvents()
-    if (!lastItems.isEmpty()) println("Received additional items after cancellation")
+    if (lastItems.isNotEmpty()) println("Received additional items after cancellation")
     lastItems.forEach { item -> println("  $item") }
   }
 }

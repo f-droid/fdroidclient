@@ -5,6 +5,8 @@ import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.details.AppDetails
 import org.fdroid.ui.details.LoadedAppDetailsItem
+import org.fdroid.ui.details.Permission
+import org.fdroid.ui.details.PermissionType.SENSITIVE
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.utils.getAppDetailsActions
 import org.fdroid.ui.utils.testVersion1
@@ -43,6 +45,15 @@ class DetailsScreenshotTest(localeName: String) : LocalizedScreenshotTest(locale
                 isCompatible = true,
                 isSignerCompatible = true,
                 showInstallButton = true,
+                permissions =
+                  listOf(
+                    Permission(
+                      name = "android.permission.CAMERA",
+                      label = "Camera",
+                      description = null,
+                      type = SENSITIVE,
+                    )
+                  ),
               )
             ),
         )

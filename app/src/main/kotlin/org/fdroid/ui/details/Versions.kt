@@ -12,7 +12,6 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material3.Badge
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -46,7 +45,6 @@ import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun Versions(item: LoadedAppDetailsItem, scrollUp: suspend () -> Unit) {
   ExpandableSection(
     icon = rememberVectorPainter(Icons.Default.AccessTime),
@@ -187,6 +185,14 @@ fun Version(
                 overflow = TextOverflow.Ellipsis,
               )
             }
+        }
+        SelectionContainer {
+          Text(
+            text = stringResource(R.string.permissions_colon, item.permissions.size),
+            style = MaterialTheme.typography.bodySmall,
+            maxLines = 1,
+            overflow = TextOverflow.StartEllipsis,
+          )
         }
         item.version.signer?.let { signer ->
           SelectionContainer {
