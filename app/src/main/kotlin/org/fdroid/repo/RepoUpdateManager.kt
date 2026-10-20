@@ -129,7 +129,9 @@ internal constructor(
         }
       }
 
+      log.info { "Running optimize and walCheckpoint..." }
       db.getRepositoryDao().walCheckpoint()
+      log.info { "Done optimizing and walCheckpointing" }
       updateLastCheckTimestamp(anyReposProcessed)
 
       if (anyReposProcessed) {
