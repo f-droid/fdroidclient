@@ -938,14 +938,13 @@ internal interface AppDaoInt : AppDao {
   @Transaction
   @Query(
     """
-        SELECT repoId, packageName, app.lastUpdated, app.name, app.summary,
+        SELECT app.repoId, app.packageName, app.lastUpdated, app.name, app.summary,
             app.description, app.authorName, app.categories,
             matchinfo(${AppMetadataFts.TABLE}, 'pcx')
-        FROM ${AppMetadata.TABLE} AS app
+        FROM ${AppMetadataFts.TABLE} AS fts
+        JOIN ${AppMetadata.TABLE} AS app ON app.rowid = fts.rowid
         JOIN PreferredRepo USING (packageName)
-        JOIN ${AppMetadataFts.TABLE} USING (repoId, packageName)
-        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND
-            repoId = preferredRepoId"""
+        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND app.repoId = preferredRepoId"""
   )
   override suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
