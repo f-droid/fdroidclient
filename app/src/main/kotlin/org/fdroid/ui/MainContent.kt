@@ -64,9 +64,9 @@ fun MainContent(
               AnimatedVisibility(
                 visible = showBottomBar,
                 enter = slideInVertically(initialOffsetY = { it }),
-                exit = slideOutVertically(targetOffsetY = { it })
+                exit = slideOutVertically(targetOffsetY = { it }),
               ) {
-                  BottomBar(model = model, currentNavKey = currentNavKey, onNav = onNav)
+                BottomBar(model = model, currentNavKey = currentNavKey, onNav = onNav)
               }
             },
             navRail = {
