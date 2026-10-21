@@ -1,6 +1,14 @@
 package org.fdroid.ui
 
 import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
@@ -68,6 +76,29 @@ fun MainContent(
           entries = navEntries,
           sceneDecoratorStrategies = listOf(responsiveNavigationSceneDecoratorStrategy),
           sceneStrategies = listOf(listDetailStrategy),
+          transitionSpec = {
+            if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
+            else {
+              slideInHorizontally { it } togetherWith
+                slideOutHorizontally { -it / 2 } + scaleOut(targetScale = 0.7f) + fadeOut()
+            }
+          },
+          popTransitionSpec = {
+            if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
+            else {
+              slideInHorizontally { -it / 2 } +
+                scaleIn(initialScale = 0.7f) +
+                fadeIn(tween()) togetherWith slideOutHorizontally { it }
+            }
+          },
+          predictivePopTransitionSpec = {
+            if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
+            else {
+              slideInHorizontally { -it / 2 } +
+                scaleIn(initialScale = 0.7f) +
+                fadeIn(tween()) togetherWith slideOutHorizontally { it }
+            }
+          },
           onBack = onBack,
           modifier = Modifier.hintAnchor(hintAnchor, fullScreen = true),
         )
