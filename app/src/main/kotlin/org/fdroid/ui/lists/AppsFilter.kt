@@ -125,11 +125,6 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
         Text(stringResource(R.string.sort_by_latest_short))
       }
     }
-    Text(
-      text = stringResource(R.string.filter_only_title),
-      style = MaterialTheme.typography.bodyMedium,
-      modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
-    )
     Row(
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = spacedBy(16.dp),
@@ -138,7 +133,11 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
           info.actions.toggleFilterIncompatible()
         },
     ) {
-      Text(stringResource(R.string.filter_only_compatible), modifier = Modifier.weight(1f))
+      Text(
+        stringResource(R.string.filter_only_compatible),
+        style = MaterialTheme.typography.bodyMedium,
+        modifier = Modifier.weight(1f),
+      )
       Switch(
         checked = !info.model.filterIncompatible,
         onCheckedChange = { info.actions.toggleFilterIncompatible() },
