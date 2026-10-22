@@ -260,6 +260,22 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
           initiallyExpanded = info.model.filteredAntiFeatureIds.isNotEmpty(),
           iconTint = MaterialTheme.colorScheme.primary,
           modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+          collapsedSummary = {
+            val hiddenAntiFeatures =
+              antiFeatures.filter { it.id in info.model.filteredAntiFeatureIds }.map { it.name }
+            if (hiddenAntiFeatures.isNotEmpty()) {
+              Text(
+                text =
+                  stringResource(
+                    R.string.filter_antifeatures_collapsed,
+                    hiddenAntiFeatures.joinToString(", "),
+                  ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp),
+              )
+            }
+          },
         ) {
           Column(modifier = Modifier.fillMaxWidth()) {
             Text(
