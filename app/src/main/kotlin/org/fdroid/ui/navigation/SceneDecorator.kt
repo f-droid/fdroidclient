@@ -21,6 +21,7 @@ package org.fdroid.ui.navigation
 import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -28,7 +29,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.movableContentOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation3.scene.Scene
 import androidx.navigation3.scene.SceneDecoratorStrategy
@@ -64,9 +64,9 @@ class ResponsiveNavigationScene<T : Any>(
             Box(modifier = Modifier.weight(1f)) { scene.content() }
           }
         } else {
-          Box(Modifier.fillMaxSize()) {
-            Box(Modifier.fillMaxSize()) { scene.content() }
-            Box(Modifier.align(Alignment.BottomCenter)) { navBarContent() }
+          Column(Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.weight(1f)) { scene.content() }
+            navBarContent()
           }
         }
       }

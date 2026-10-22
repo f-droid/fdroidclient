@@ -3,10 +3,12 @@ package org.fdroid.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
@@ -63,8 +65,8 @@ fun MainContent(
             navBar = {
               AnimatedVisibility(
                 visible = showBottomBar,
-                enter = slideInVertically(initialOffsetY = { it }),
-                exit = slideOutVertically(targetOffsetY = { it }),
+                enter = slideInVertically(initialOffsetY = { it }) + expandVertically(),
+                exit = slideOutVertically(targetOffsetY = { it }) + shrinkVertically(),
               ) {
                 BottomBar(model = model, currentNavKey = currentNavKey, onNav = onNav)
               }
