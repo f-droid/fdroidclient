@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
+import android.provider.Settings
+import android.provider.Settings.Secure.INSTALL_NON_MARKET_APPS
 import android.telephony.TelephonyManager
 import androidx.annotation.WorkerThread
 import androidx.core.os.LocaleListCompat
@@ -14,6 +16,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 import org.fdroid.BuildConfig.FLAVOR
+import org.fdroid.settings.SettingsManager
 
 fun sha256(bytes: ByteArray): String {
   val messageDigest: MessageDigest =
@@ -71,6 +74,41 @@ fun getCurrentLocation(context: Context): String {
 fun isChina(context: Context): Boolean {
   val country = getCurrentLocation(context)
   return country.equals("cn", ignoreCase = true)
+}
+
+/**
+ * Returns true if the user has privileged extension installed, but not yet granted unknown sources
+ * permission. It also returns false, if at any time in the past, it returned false.
+ *
+ * Can be removed after sufficient time has passed since 2026-10.
+ */
+fun isMigratingFromPrivilegedExtension(
+  context: Context,
+  settingsManager: SettingsManager,
+): Boolean {
+  // if we remember that migration isn't needed bail out early
+  if (!settingsManager.privilegedExtensionNeedsMigration) return false
+
+  // check if privileged extension is installed
+  try {
+    context.packageManager.getApplicationInfo("org.fdroid.fdroid.privileged", 0)
+  } catch (_: PackageManager.NameNotFoundException) {
+    // privileged extension isn't installed, so no need for migration
+    settingsManager.privilegedExtensionNeedsMigration = false
+    return false
+  }
+  // now check if unknown sources permission is granted, if not, migration is needed
+  return if (SDK_INT < 26) {
+      @Suppress("DEPRECATION")
+      val nonMarket = Settings.Secure.getInt(context.contentResolver, INSTALL_NON_MARKET_APPS, 0)
+      nonMarket != 1 // this is 1 if unknown sources was granted
+    } else {
+      !context.packageManager.canRequestPackageInstalls()
+    }
+    .also { result ->
+      // remember that migration isn't needed
+      if (!result) settingsManager.privilegedExtensionNeedsMigration = false
+    }
 }
 
 val isFull: Boolean
