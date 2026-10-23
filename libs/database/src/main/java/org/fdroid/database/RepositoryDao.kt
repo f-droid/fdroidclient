@@ -532,7 +532,8 @@ internal interface RepositoryDaoInt : RepositoryDao {
   fun countReleaseChannels(): Int
 
   override fun walCheckpoint() {
-    rawCheckpoint(SimpleSQLiteQuery("pragma wal_checkpoint(truncate)"))
+    rawCheckpoint(SimpleSQLiteQuery("PRAGMA optimize"))
+    rawCheckpoint(SimpleSQLiteQuery("PRAGMA wal_checkpoint(TRUNCATE)"))
   }
 
   @RawQuery fun rawCheckpoint(supportSQLiteQuery: SupportSQLiteQuery): Int
