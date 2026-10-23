@@ -89,23 +89,23 @@ fun MainContent(
             if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
             else {
               slideInHorizontally { it } togetherWith
-                slideOutHorizontally { -it / 2 } + scaleOut(targetScale = 0.7f) + fadeOut()
+                slideOutHorizontally { -it / 3 } + scaleOut(targetScale = 0.9f) + fadeOut(tween())
             }
           },
           popTransitionSpec = {
             if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
             else {
-              slideInHorizontally { -it / 2 } +
-                scaleIn(initialScale = 0.7f) +
-                fadeIn(tween()) togetherWith slideOutHorizontally { it }
+              slideInHorizontally { -it / 3 } +
+                scaleIn(initialScale = 0.9f) +
+                fadeIn(tween()) togetherWith slideOutHorizontally { it / 2 } + fadeOut(tween())
             }
           },
           predictivePopTransitionSpec = {
             if (showBottomBar) fadeIn(tween()) togetherWith fadeOut(tween())
             else {
-              slideInHorizontally { -it / 2 } +
-                scaleIn(initialScale = 0.7f) +
-                fadeIn(tween()) togetherWith slideOutHorizontally { it }
+              slideInHorizontally { -it / 3 } +
+                scaleIn(initialScale = 0.9f) +
+                fadeIn(tween()) togetherWith slideOutHorizontally { it / 2 } + fadeOut(tween())
             }
           },
           onBack = onBack,
