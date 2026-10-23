@@ -78,6 +78,7 @@ constructor(
           AntiFeatureItem(
             id = antiFeature.id,
             name = antiFeature.getName(localeList) ?: "Unknown Anti-Feature",
+            description = antiFeature.getDescription(localeList),
             iconModel = antiFeature.getIcon(localeList)?.getImageModel(repo, proxy),
           )
         }

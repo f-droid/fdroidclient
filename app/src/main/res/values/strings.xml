@@ -42,9 +42,12 @@
     <string name="search_my_apps_no_results">No matching apps\n\nTry using fewer search terms</string>
     <string name="search_auto_keyboard">Automatically open keyboard</string>
     <string name="sort_title">Sorting and compatibility</string>
+    <string name="sort_summary">Sort by</string>
     <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_name_short">name</string>
     <string name="sort_by_latest">Sort by last update</string>
-    <string name="filter_only_compatible">Apps compatible with this device</string>
+    <string name="sort_by_latest_short">last update</string>
+    <string name="filter_only_compatible">Only show apps compatible with this device</string>
     <string name="filter_button_save">Save as default</string>
     <!-- Shown above filter options such as categories, repositories and anti-features -->
     <string name="filter_intro">Filter apps by</string>
@@ -53,7 +56,9 @@
     <string name="filter">Filter</string>
     <!-- Used for filter chips (e.g. categories) when they are currently selected -->
     <string name="filter_selected">selected</string>
-    <string name="filter_antifeatures">Hide anti-features</string>
+    <string name="filter_antifeatures">Anti-features</string>
+    <string name="filter_antifeatures_summary">Show apps with these anti-features</string>
+    <string name="filter_antifeatures_collapsed">Hidden: %s</string>
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Use filters to only show apps from specific categories or repositories. You can also change the sort order.</string>
     <string name="got_it">Got it</string>
