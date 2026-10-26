@@ -228,7 +228,7 @@ fun AddRepoIntroContent(
             )
             Spacer(modifier = Modifier.weight(1f))
             FDroidButton(
-              text = stringResource(R.string.repo_add_add),
+              text = stringResource(R.string.repo_add_fetch),
               onClick = {
                 if (networkState.showWarningDialog)
                   showMeteredDialog = { onFetchRepo(textState.value.text) }

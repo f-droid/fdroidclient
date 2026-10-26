@@ -1,13 +1,14 @@
 package org.fdroid.ui.repositories.add
 
 import androidx.compose.foundation.layout.Arrangement.spacedBy
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,15 +24,18 @@ import org.fdroid.R
 import org.fdroid.database.MinimalApp
 import org.fdroid.download.getImageModel
 import org.fdroid.index.v2.FileV2
+import org.fdroid.repo.FetchResult.IsExistingMirror
+import org.fdroid.repo.FetchResult.IsExistingRepository
+import org.fdroid.repo.FetchResult.IsNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepoAndNewMirror
 import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
+import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.getRepository
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun AddRepoPreviewScreen(
   state: Fetching,
@@ -41,63 +45,90 @@ fun AddRepoPreviewScreen(
   onExistingRepo: (Long) -> Unit,
 ) {
   val localeList = LocaleListCompat.getDefault()
-  LazyColumn(
-    contentPadding = PaddingValues(horizontal = 8.dp),
-    verticalArrangement = spacedBy(8.dp),
-    modifier = modifier.fillMaxWidth(),
-  ) {
-    item {
-      RepoPreviewHeader(
-        state = state,
-        proxyConfig = proxyConfig,
-        onAddRepo = onAddRepo,
-        onExistingRepo = onExistingRepo,
-        modifier = Modifier.padding(top = 16.dp).padding(horizontal = 8.dp),
-        localeList = localeList,
-      )
-    }
-    if (
-      state.fetchResult == null ||
-        state.fetchResult is IsNewRepository ||
-        state.fetchResult is IsNewRepoAndNewMirror
+  Column(modifier = modifier.fillMaxSize()) {
+    LazyColumn(
+      contentPadding = PaddingValues(horizontal = 8.dp),
+      verticalArrangement = spacedBy(8.dp),
+      modifier = Modifier.weight(1f),
     ) {
       item {
-        Row(
-          verticalAlignment = CenterVertically,
-          horizontalArrangement = spacedBy(8.dp),
-          modifier = Modifier.padding(top = 8.dp).padding(horizontal = 8.dp),
-        ) {
-          Text(
-            text = stringResource(R.string.repo_preview_included_apps),
-            style = MaterialTheme.typography.bodyLarge,
-          )
-          Text(text = state.apps.size.toString(), style = MaterialTheme.typography.bodyLarge)
-          if (!state.done) {
-            LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
-          }
-        }
-      }
-      items(items = state.apps, key = { it.packageName }) { app ->
-        val repo = state.receivedRepo ?: error("no repo")
-        // TODO this conversion ideally doesn't happen in the UI layer
-        val item =
-          AppListItem(
-            repoId = repo.repoId,
-            packageName = app.packageName,
-            name = app.name ?: "Unknown app",
-            summary = app.summary ?: "",
-            iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
-            lastUpdated = 1L,
-            isInstalled = false,
-            isCompatible = true,
-          )
-        AppListRow(
-          item = item,
-          isSelected = false,
-          modifier = Modifier.animateItem().padding(horizontal = 8.dp).fillMaxWidth(),
+        RepoPreviewHeader(
+          state = state,
+          proxyConfig = proxyConfig,
+          modifier = Modifier.padding(top = 16.dp).padding(horizontal = 8.dp),
+          localeList = localeList,
         )
       }
+      if (
+        state.fetchResult == null ||
+          state.fetchResult is IsNewRepository ||
+          state.fetchResult is IsNewRepoAndNewMirror
+      ) {
+        item {
+          Row(
+            verticalAlignment = CenterVertically,
+            horizontalArrangement = spacedBy(8.dp),
+            modifier = Modifier.padding(top = 8.dp).padding(horizontal = 8.dp),
+          ) {
+            Text(
+              text = stringResource(R.string.repo_preview_included_apps),
+              style = MaterialTheme.typography.bodyLarge,
+            )
+            Text(text = state.apps.size.toString(), style = MaterialTheme.typography.bodyLarge)
+            if (!state.done) {
+              LinearWavyProgressIndicator(modifier = Modifier.weight(1f))
+            }
+          }
+        }
+        items(items = state.apps, key = { it.packageName }) { app ->
+          val repo = state.receivedRepo ?: error("no repo")
+          // TODO this conversion ideally doesn't happen in the UI layer
+          val item =
+            AppListItem(
+              repoId = repo.repoId,
+              packageName = app.packageName,
+              name = app.name ?: "Unknown app",
+              summary = app.summary ?: "",
+              iconModel = app.getIcon(localeList)?.getImageModel(repo, proxyConfig),
+              lastUpdated = 1L,
+              isInstalled = false,
+              isCompatible = true,
+            )
+          AppListRow(
+            item = item,
+            isSelected = false,
+            modifier = Modifier.animateItem().padding(horizontal = 8.dp).fillMaxWidth(),
+          )
+        }
+      }
     }
+    val buttonText =
+      when (state.fetchResult) {
+        is IsNewRepository -> stringResource(R.string.repo_add_new_title)
+        is IsNewRepoAndNewMirror -> stringResource(R.string.repo_add_repo_and_mirror)
+        is IsNewMirror -> stringResource(R.string.repo_add_mirror)
+        is IsExistingRepository,
+        is IsExistingMirror -> stringResource(R.string.repo_view_repo)
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+      }
+    val buttonAction: () -> Unit =
+      when (val res = state.fetchResult) {
+        is IsNewRepository,
+        is IsNewRepoAndNewMirror,
+        is IsNewMirror -> onAddRepo
+        is IsExistingRepository -> {
+          { onExistingRepo(res.existingRepoId) }
+        }
+        is IsExistingMirror -> {
+          { onExistingRepo(res.existingRepoId) }
+        }
+        else -> error("Unexpected fetch state: ${state.fetchResult}")
+      }
+    FDroidButton(
+      text = buttonText,
+      onClick = buttonAction,
+      modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp).fillMaxWidth(),
+    )
   }
 }
 

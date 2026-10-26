@@ -261,6 +261,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="repo_add_new_title">Add repository</string>
+    <string name="repo_add_preview_title">Preview repository</string>
+    <string name="repo_add_fetch">Fetch</string>
     <string name="repo_add_add">Add</string>
     <string name="repo_add_mirror">Add mirror</string>
     <string name="repo_add_repo_and_mirror">Add repository and mirror</string>

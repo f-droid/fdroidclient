@@ -62,7 +62,7 @@ fun AddRepo(
                   is FetchResult.IsExistingMirror -> {
                     stringResource(R.string.repo_add_mirror)
                   }
-                  else -> stringResource(R.string.repo_add_new_title)
+                  else -> stringResource(R.string.repo_add_preview_title)
                 }
               } else {
                 stringResource(R.string.repo_add_new_title)

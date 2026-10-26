@@ -14,7 +14,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
-import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
@@ -34,7 +33,6 @@ import org.fdroid.repo.FetchResult.IsNewRepository
 import org.fdroid.repo.Fetching
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.repositories.RepoIcon
-import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.getRepository
 
@@ -42,36 +40,11 @@ import org.fdroid.ui.utils.getRepository
 fun RepoPreviewHeader(
   state: Fetching,
   proxyConfig: ProxyConfig?,
-  onAddRepo: () -> Unit,
-  onExistingRepo: (Long) -> Unit,
   modifier: Modifier = Modifier,
   localeList: LocaleListCompat,
 ) {
   val repo = state.receivedRepo ?: error("repo was null")
   val isDevPreview = LocalInspectionMode.current
-
-  val buttonText =
-    when (state.fetchResult) {
-      is IsNewRepository -> stringResource(R.string.repo_add_new_title)
-      is IsNewRepoAndNewMirror -> stringResource(R.string.repo_add_repo_and_mirror)
-      is IsNewMirror -> stringResource(R.string.repo_add_mirror)
-      is IsExistingRepository,
-      is IsExistingMirror -> stringResource(R.string.repo_view_repo)
-      else -> error("Unexpected fetch state: ${state.fetchResult}")
-    }
-  val buttonAction: () -> Unit =
-    when (val res = state.fetchResult) {
-      is IsNewRepository,
-      is IsNewRepoAndNewMirror,
-      is IsNewMirror -> onAddRepo
-      is IsExistingRepository -> {
-        { onExistingRepo(res.existingRepoId) }
-      }
-      is IsExistingMirror -> {
-        { onExistingRepo(res.existingRepoId) }
-      }
-      else -> error("Unexpected fetch state: ${state.fetchResult}")
-    }
 
   val warningText: String? =
     when (state.fetchResult) {
@@ -120,8 +93,6 @@ fun RepoPreviewHeader(
         )
       }
 
-    FDroidButton(text = buttonText, onClick = buttonAction, modifier = Modifier.align(End))
-
     val description =
       if (isDevPreview) {
         LoremIpsum(42).values.joinToString(" ")
@@ -144,8 +115,6 @@ fun RepoPreviewScreenNewMirrorPreview() {
   FDroidContent {
     RepoPreviewHeader(
       Fetching("https://mirror.example.org", repo, emptyList(), IsNewMirror(0L)),
-      onAddRepo = {},
-      onExistingRepo = {},
       localeList = LocaleListCompat.getDefault(),
       proxyConfig = null,
     )
@@ -165,8 +134,6 @@ fun RepoPreviewScreenNewRepoAndNewMirrorPreview() {
           apps = emptyList(),
           fetchResult = IsNewRepoAndNewMirror,
         ),
-      onAddRepo = {},
-      onExistingRepo = {},
       localeList = LocaleListCompat.getDefault(),
       proxyConfig = null,
     )
@@ -181,8 +148,6 @@ fun RepoPreviewScreenExistingRepoPreview() {
   FDroidContent {
     RepoPreviewHeader(
       Fetching(address, repo, emptyList(), IsExistingRepository(0L)),
-      onAddRepo = {},
-      onExistingRepo = {},
       localeList = LocaleListCompat.getDefault(),
       proxyConfig = null,
     )
@@ -196,8 +161,6 @@ fun RepoPreviewScreenExistingMirrorPreview() {
   FDroidContent {
     RepoPreviewHeader(
       Fetching("https://mirror.example.org", repo, emptyList(), IsExistingMirror(0L)),
-      onAddRepo = {},
-      onExistingRepo = {},
       localeList = LocaleListCompat.getDefault(),
       proxyConfig = null,
     )
