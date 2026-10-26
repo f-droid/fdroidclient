@@ -14,6 +14,7 @@ import okhttp3.ConnectionSpec.Companion.CLEARTEXT
 import okhttp3.ConnectionSpec.Companion.MODERN_TLS
 import okhttp3.ConnectionSpec.Companion.RESTRICTED_TLS
 import okhttp3.Dns
+import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.internal.tls.OkHostnameVerifier
 
@@ -52,7 +53,15 @@ internal actual fun getHttpClientEngineFactory(customDns: CustomDns?): HttpClien
 }
 
 public fun isInvalidHttpUrl(url: String): Boolean {
-  return url.toHttpUrlOrNull() == null
+  val httpUrl = url.toHttpUrlOrNull() ?: return true
+  // the toHttpUrlOrNull() method doesn't perform all required validation,
+  // so we need to use the builder below that also gets used before making the HTTP request.
+  try {
+    HttpUrl.Builder().scheme(httpUrl.scheme).host(httpUrl.host).port(httpUrl.port).build()
+    return false
+  } catch (_: Exception) {
+    return true
+  }
 }
 
 public suspend fun HttpManager.getInputStream(request: DownloadRequest): InputStream {

@@ -147,6 +147,15 @@ internal class RepoAdderTest {
       assertIs<AddRepoError>(state1)
       assertEquals(INVALID_INDEX, state1.errorType)
     }
+
+    repoAdder.abortAddingRepo()
+    repoAdder.fetchRepositoryInt("https://___Hacker___%E0%A5%A6%E0%A5%AD./fdroid/repo")
+
+    repoAdder.addRepoState.test {
+      val state1 = awaitItem()
+      assertIs<AddRepoError>(state1)
+      assertEquals(INVALID_INDEX, state1.errorType)
+    }
   }
 
   @Test
