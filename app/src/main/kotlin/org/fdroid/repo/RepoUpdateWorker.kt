@@ -33,7 +33,7 @@ import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.history.HistoryManager
 import org.fdroid.install.CacheCleaner
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 
 private val TAG = RepoUpdateWorker::class.java.simpleName
@@ -75,12 +75,12 @@ constructor(
     }
 
     @JvmStatic
-    fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
+    fun scheduleOrCancel(context: Context, autoUpdate: RepoUpdateValues) {
       val workManager = WorkManager.getInstance(context)
       if (autoUpdate.workerEnabled) {
         Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
         val networkType =
-          if (autoUpdate == AutoUpdateValues.Always) {
+          if (autoUpdate == RepoUpdateValues.Always) {
             NetworkType.CONNECTED
           } else {
             NetworkType.UNMETERED

@@ -3,8 +3,9 @@ package org.fdroid.settings
 import androidx.annotation.StringRes
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 
 object SettingsConstants {
 
@@ -17,18 +18,25 @@ object SettingsConstants {
   const val PREF_KEY_DYNAMIC_COLORS = "dynamicColors"
   const val PREF_DEFAULT_DYNAMIC_COLORS = false
 
-  enum class AutoUpdateValues(val workerEnabled: Boolean) {
+  enum class RepoUpdateValues(val workerEnabled: Boolean) {
     OnlyWifi(true),
     Always(true),
     OnlyWhenOpenApp(false),
     Never(false),
   }
 
+  enum class AppUpdateValues(val workerEnabled: Boolean) {
+    Immediately(false),
+    OnlyWifi(true),
+    Always(true),
+    Never(false),
+  }
+
   const val PREF_KEY_REPO_AUTO_UPDATES = "repoAutoUpdates"
-  val PREF_DEFAULT_REPO_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name
+  val PREF_DEFAULT_REPO_AUTO_UPDATES = RepoUpdateValues.OnlyWifi.name
 
   const val PREF_KEY_APP_AUTO_UPDATES = "appAutoUpdates"
-  val PREF_DEFAULT_APP_AUTO_UPDATES = AutoUpdateValues.OnlyWifi.name
+  val PREF_DEFAULT_APP_AUTO_UPDATES = AppUpdateValues.OnlyWifi.name
 
   enum class MirrorChooserValues {
     Random {
@@ -98,11 +106,18 @@ object SettingsConstants {
   const val PREF_DEFAULT_LAST_DB_REPAIR_CHECK = -1L
 }
 
-fun String?.toAutoUpdateValue() =
+fun String?.toRepoUpdateValue() =
   try {
-    if (this == null) AutoUpdateValues.OnlyWifi else AutoUpdateValues.valueOf(this)
+    if (this == null) RepoUpdateValues.OnlyWifi else RepoUpdateValues.valueOf(this)
   } catch (_: IllegalArgumentException) {
-    AutoUpdateValues.OnlyWifi
+    RepoUpdateValues.OnlyWifi
+  }
+
+fun String?.toAppUpdateValue() =
+  try {
+    if (this == null) AppUpdateValues.OnlyWifi else AppUpdateValues.valueOf(this)
+  } catch (_: IllegalArgumentException) {
+    AppUpdateValues.OnlyWifi
   }
 
 fun String?.toMirrorChooserValue() =

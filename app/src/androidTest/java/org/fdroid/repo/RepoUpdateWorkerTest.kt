@@ -31,7 +31,7 @@ import org.fdroid.history.HistoryManager
 import org.fdroid.install.CacheCleaner
 import org.fdroid.repo.RepoUpdateWorker.Companion.MAX_RUN_ATTEMPTS
 import org.fdroid.repo.RepoUpdateWorker.Companion.UNIQUE_WORK_NAME_REPO_AUTO_UPDATE
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -70,7 +70,7 @@ internal class RepoUpdateWorkerTest {
 
   @Test
   fun schedulesWorkForAlwaysSetting() {
-    RepoUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Always)
+    RepoUpdateWorker.scheduleOrCancel(context, RepoUpdateValues.Always)
 
     val infos =
       WorkManager.getInstance(context)
@@ -83,8 +83,8 @@ internal class RepoUpdateWorkerTest {
 
   @Test
   fun cancelsWorkForNeverSetting() {
-    RepoUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Always)
-    RepoUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Never)
+    RepoUpdateWorker.scheduleOrCancel(context, RepoUpdateValues.Always)
+    RepoUpdateWorker.scheduleOrCancel(context, RepoUpdateValues.Never)
 
     val infos =
       WorkManager.getInstance(context)

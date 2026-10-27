@@ -29,7 +29,7 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.install.InstalledAppsCache
-import org.fdroid.settings.SettingsConstants
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.AppUpdateWorker
 import org.fdroid.updates.UpdatesManager
@@ -58,7 +58,7 @@ internal class RepoUpdateManagerTest {
     every { db.getRepositoryDao() } returns repositoryDao
     every { context.getString(any(), any()) } returns "repo update"
     every { settingsManager.isFirstStart } returns false
-    every { settingsManager.repoUpdates } returns SettingsConstants.AutoUpdateValues.OnlyWifi
+    every { settingsManager.repoUpdates } returns RepoUpdateValues.OnlyWifi
     every { installedAppsCache.installedApps } returns MutableStateFlow(emptyMap())
   }
 
@@ -345,7 +345,7 @@ internal class RepoUpdateManagerTest {
 
   @Test
   fun `triggers updateNow on init when OnlyWhenOpenApp and last update is stale`() {
-    every { settingsManager.repoUpdates } returns SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp
+    every { settingsManager.repoUpdates } returns RepoUpdateValues.OnlyWhenOpenApp
     every { settingsManager.lastRepoUpdate } returns 0L
     every { RepoUpdateWorker.updateNow(any()) } just runs
 

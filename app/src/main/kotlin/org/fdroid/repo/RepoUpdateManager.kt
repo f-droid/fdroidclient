@@ -91,7 +91,7 @@ internal constructor(
 
   init {
     log.info { "RepoUpdateManager initialized" }
-    if (settingsManager.repoUpdates == SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp) {
+    if (settingsManager.repoUpdates == SettingsConstants.RepoUpdateValues.OnlyWhenOpenApp) {
       val now = System.currentTimeMillis()
       if (now - settingsManager.lastRepoUpdate > MAX_UPDATE_INTERVAL_MILLIS) {
         log.info { "Last repo update was more than 12h ago, triggering update..." }

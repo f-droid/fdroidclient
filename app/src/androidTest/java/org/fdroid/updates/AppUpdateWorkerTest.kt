@@ -30,7 +30,7 @@ import org.fdroid.install.AppInstallManager
 import org.fdroid.install.AppState
 import org.fdroid.install.AppStateCategory
 import org.fdroid.install.InstallNotificationState
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 import org.fdroid.updates.AppUpdateWorker.Companion.MAX_RUN_ATTEMPTS
 import org.fdroid.updates.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_APP_UPDATE
@@ -68,7 +68,7 @@ internal class AppUpdateWorkerTest {
 
   @Test
   fun schedulesWorkForAlwaysSetting() {
-    AppUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Always)
+    AppUpdateWorker.scheduleOrCancel(context, AppUpdateValues.Always)
 
     val infos =
       WorkManager.getInstance(context)
@@ -81,8 +81,8 @@ internal class AppUpdateWorkerTest {
 
   @Test
   fun cancelsWorkForNeverSetting() {
-    AppUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Always)
-    AppUpdateWorker.scheduleOrCancel(context, AutoUpdateValues.Never)
+    AppUpdateWorker.scheduleOrCancel(context, AppUpdateValues.Always)
+    AppUpdateWorker.scheduleOrCancel(context, AppUpdateValues.Never)
 
     val infos =
       WorkManager.getInstance(context)
