@@ -24,6 +24,7 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.settings.SettingsConstants
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.UpdatesManager
 
@@ -216,10 +217,13 @@ internal constructor(
 
   private suspend fun checkAndNotifyAppUpdates() {
     updatesManager.loadUpdates().join() // wait here until we have finished loading updates
-    val numUpdates = updatesManager.numUpdates.value
-    if (numUpdates > 0) {
-      val states = updatesManager.notificationStates
-      notificationManager.showAppUpdatesAvailableNotification(states)
+    // only notify when we are not installing the updates right away anyway
+    if (settingsManager.autoUpdateApps != AppUpdateValues.Immediately) {
+      val numUpdates = updatesManager.numUpdates.value
+      if (numUpdates > 0) {
+        val states = updatesManager.notificationStates
+        notificationManager.showAppUpdatesAvailableNotification(states)
+      }
     }
   }
 }

@@ -26,6 +26,7 @@ import org.fdroid.database.UpdatableApp
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateWorker
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.ui.apps.AppWithIssueItem
@@ -97,6 +98,15 @@ constructor(
       log.debug { "Checking for updates took $duration" }
       processAvailableUpdates(updateCheckResult.updates, localeList, proxyConfig)
       processAppIssues(updateCheckResult.issues, localeList, proxyConfig)
+
+      // update apps right away if auto-update is set to immediately and there are updates available
+      if (
+        updateCheckResult.updates.isNotEmpty() &&
+          settingsManager.autoUpdateApps == AppUpdateValues.Immediately
+      ) {
+        log.info { "Auto-update is set to immediately, updating apps..." }
+        updateAll(canAskPreApprovalNow = false)
+      }
     } catch (e: Exception) {
       log.error(e) { "Error loading updates" }
     }
