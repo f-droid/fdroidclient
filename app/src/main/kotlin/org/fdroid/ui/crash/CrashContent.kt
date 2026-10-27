@@ -84,7 +84,7 @@ fun CrashContent(
       OutlinedButton(onClick = onCancel) { Text(stringResource(R.string.cancel)) }
       Button(
         onClick = {
-          val text = if (isOldCrash) "old crash" else textFieldState.text.toString()
+          val text = if (isOldCrash) "background crash" else textFieldState.text.toString()
           onSend(text, "")
         }
       ) {
