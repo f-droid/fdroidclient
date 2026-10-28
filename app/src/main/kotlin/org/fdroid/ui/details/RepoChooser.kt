@@ -52,7 +52,7 @@ fun RepoChooser(
   if (repos.isEmpty()) return
   var expanded by remember { mutableStateOf(false) }
   val currentRepo =
-    remember(currentRepoId) {
+    remember(currentRepoId, repos) {
       repos.find { it.repoId == currentRepoId } ?: error("Current repoId not in list")
     }
   val isPreferred = currentRepo.repoId == preferredRepoId
