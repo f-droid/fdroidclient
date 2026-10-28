@@ -20,6 +20,7 @@ import mu.KotlinLogging
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.Main
 import org.fdroid.ui.utils.launchSafe
+import org.fdroid.utils.isMigratingFromPrivilegedExtension
 
 // Using [AppCompatActivity] and not [ComponentActivity] seems to be needed
 // for automatic theme changes when calling AppCompatDelegate.setDefaultNightMode()
@@ -83,5 +84,12 @@ class MainActivity : AppCompatActivity() {
   override fun onResume() {
     super.onResume()
     notificationManager.cancelSelfUpdateNotification()
+
+    // this can be removed after sufficient time has passed since 2026-10
+    if (isMigratingFromPrivilegedExtension(this, settingsManager)) {
+      notificationManager.showPrivilegedExtensionMigrationNotification()
+    } else {
+      notificationManager.cancelPrivilegedExtensionMigrationNotification()
+    }
   }
 }

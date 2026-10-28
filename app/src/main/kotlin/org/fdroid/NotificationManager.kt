@@ -8,6 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_MAIN
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.net.Uri
+import android.os.Build.VERSION.SDK_INT
+import android.provider.Settings
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
@@ -44,11 +47,13 @@ constructor(@param:ApplicationContext private val context: Context) {
     const val NOTIFICATION_ID_APP_INSTALL_SUCCESS: Int = 3
     const val NOTIFICATION_ID_APP_UPDATES_AVAILABLE: Int = 4
     const val NOTIFICATION_ID_SELF_UPDATE: Int = 5
+    const val NOTIFICATION_ID_PRIVILEGED_EXTENSION_MIGRATION: Int = 6
     private const val CHANNEL_UPDATES = "update-channel"
     private const val CHANNEL_INSTALLS = "install-channel"
     private const val CHANNEL_INSTALL_SUCCESS = "install-success-channel"
     private const val CHANNEL_UPDATES_AVAILABLE = "updates-available-channel"
     private const val CHANNEL_SELF_UPDATE = "self-update-channel"
+    private const val CHANNEL_PRIVILEGED_EXTENSION_MIGRATION = "privileged-extension-channel"
   }
 
   init {
@@ -77,6 +82,12 @@ constructor(@param:ApplicationContext private val context: Context) {
         NotificationChannelCompat.Builder(CHANNEL_SELF_UPDATE, IMPORTANCE_MAX)
           .setName(s(R.string.notification_channel_self_update_title))
           .setDescription(s(R.string.notification_channel_self_update_description))
+          .build(),
+        NotificationChannelCompat.Builder(CHANNEL_PRIVILEGED_EXTENSION_MIGRATION, IMPORTANCE_MAX)
+          .setName(s(R.string.notification_channel_privileged_extension_migration_title))
+          .setDescription(
+            s(R.string.notification_channel_privileged_extension_migration_description)
+          )
           .build(),
       )
     nm.createNotificationChannelsCompat(channels)
@@ -212,6 +223,33 @@ constructor(@param:ApplicationContext private val context: Context) {
     nm.cancel(NOTIFICATION_ID_SELF_UPDATE)
   }
 
+  fun showPrivilegedExtensionMigrationNotification() {
+    val pi = getManageUnknownAppSourcesPendingIntent(context)
+    val app = context.getString(R.string.app_name)
+    val title =
+      if (SDK_INT < 26)
+        context.getString(R.string.notification_privileged_extension_migration_title_sdk25)
+      else context.getString(R.string.notification_privileged_extension_migration_title)
+    val text = context.getString(R.string.notification_privileged_extension_migration_text, app)
+    val builder =
+      NotificationCompat.Builder(context, CHANNEL_PRIVILEGED_EXTENSION_MIGRATION)
+        .setSmallIcon(R.drawable.ic_notification)
+        .setCategory(CATEGORY_REMINDER)
+        .setContentTitle(title)
+        .setContentText(text)
+        .setPriority(PRIORITY_MAX)
+        .setContentIntent(pi)
+        .setAutoCancel(false)
+    val n = builder.build()
+    if (checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+      nm.notify(NOTIFICATION_ID_PRIVILEGED_EXTENSION_MIGRATION, n)
+    }
+  }
+
+  fun cancelPrivilegedExtensionMigrationNotification() {
+    nm.cancel(NOTIFICATION_ID_PRIVILEGED_EXTENSION_MIGRATION)
+  }
+
   private fun getMainActivityPendingIntent(context: Context): PendingIntent {
     val i = Intent(ACTION_MAIN).apply { setClass(context, MainActivity::class.java) }
     val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
@@ -220,6 +258,18 @@ constructor(@param:ApplicationContext private val context: Context) {
 
   private fun getMyAppsPendingIntent(context: Context): PendingIntent {
     val i = Intent(ACTION_MY_APPS).apply { setClass(context, MainActivity::class.java) }
+    val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+    return PendingIntent.getActivity(context, 0, i, flags)
+  }
+
+  private fun getManageUnknownAppSourcesPendingIntent(context: Context): PendingIntent {
+    val i =
+      if (SDK_INT < 26) Intent(Settings.ACTION_SECURITY_SETTINGS)
+      else
+        Intent(
+          Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+          Uri.parse("package:${context.packageName}"),
+        )
     val flags = FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
     return PendingIntent.getActivity(context, 0, i, flags)
   }
