@@ -156,6 +156,16 @@ internal class RepoAdderTest {
       assertIs<AddRepoError>(state1)
       assertEquals(INVALID_INDEX, state1.errorType)
     }
+
+    repoAdder.abortAddingRepo()
+    // This last one is a punycode domain that shouldn't fail validation
+    repoAdder.fetchRepositoryInt("https://münchen.com/fdroid/repo")
+
+    repoAdder.addRepoState.test {
+      val state1 = awaitItem()
+      assertIs<AddRepoError>(state1)
+      assertEquals(IO_ERROR, state1.errorType)
+    }
   }
 
   @Test
