@@ -19,8 +19,8 @@ android {
     applicationId = "org.fdroid"
     minSdk = 24
     targetSdk = 37
-    versionCode = 2000052
-    versionName = "2.0.2"
+    versionCode = 2000053
+    versionName = "2.0.3"
 
     testInstrumentationRunner = "org.fdroid.HiltTestRunner"
   }
