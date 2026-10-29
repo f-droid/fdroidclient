@@ -1,0 +1,17 @@
+* Recortar ou eliminar automaticamente a caché cando o espazo de almacenamento sexa escaso
+
+* Rendemento mellorado en dispositivos con pouca memoria
+
+* Garantir que todas as descargas respecten a preferencia «Só con Wi-Fi»
+
+* Reducir o uso de memoria cando o dispositivo ten poucos recursos dispoñibles
+
+* Engadir espellos personalizados a calquera repositorio premendo en ligazóns, escaneando códigos QR, etc.
+
+* Selección automática de espellos mellorada
+
+* Numerosas correccións de erros e melloras relacionadas con Swap/Nearby
+
+* Solucionar unha das causas das notificacións de actualización recorrentes (#1271)
+
+* Permitir que F-Droid recoñeza os URL das versións «nightly» de F-Droid procedentes de GitLab

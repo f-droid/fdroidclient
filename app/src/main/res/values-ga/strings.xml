@@ -278,7 +278,7 @@
     <string name="app_list_recently_updated">Nuashonraithe le déanaí</string>
     <string name="app_list_most_downloaded">An chuid is mó íoslódáilte</string>
     <string name="app_list_all">Gach aip</string>
-    <string name="app_list_author">Aipeanna ó %s</string>
+    <string name="app_list_author">Údar %s</string>
     <string name="search_placeholder">Cuardaigh…</string>
     <string name="search_no_results">Níor aimsíodh aon aipeanna\n\nBain triail as níos lú téarmaí cuardaigh nó cuir níos mó stórtha leis</string>
     <string name="category_group_productivity">Táirgiúlacht</string>
@@ -314,13 +314,13 @@
     <string name="sort_title">Sórtáil agus comhoiriúnacht</string>
     <string name="sort_by_name">Sórtáil de réir ainm</string>
     <string name="sort_by_latest">Sórtáil de réir an nuashonraithe dheireanaigh</string>
-    <string name="filter_only_compatible">Aipeanna atá comhoiriúnach leis an ngléas seo</string>
+    <string name="filter_only_compatible">Ná taispeáin ach aipeanna atá comhoiriúnach leis an bhfeiste seo</string>
     <string name="filter_button_save">Sábháil mar réamhshocrú</string>
     <string name="filter_intro">Scag aipeanna de réir</string>
     <string name="filter_button_clear_all">Glan na scagairí go léir</string>
     <string name="filter">Scagaire</string>
     <string name="filter_selected">roghnaithe</string>
-    <string name="filter_antifeatures">Folaigh frithghnéithe</string>
+    <string name="filter_antifeatures">Frithghnéithe</string>
     <string name="onboarding_app_list_filter_title">Scagaire</string>
     <string name="onboarding_app_list_filter_message">Bain úsáid as scagairí chun aipeanna ó chatagóirí nó stórtha sonracha amháin a thaispeáint. Is féidir leat an t-ord sórtála a athrú freisin.</string>
     <string name="got_it">Tuigim é</string>
@@ -486,4 +486,28 @@
     <string name="icon_intro">Roghnaigh deilbhín agus ainm don aip seo. Taispeántar iad seo ar an scáileán baile agus i dtarraiceán na n-aipeanna.\n\nTabhair faoi deara: Úsáidfidh fógraí an deilbhín agus an t-ainm réamhshocraithe i gcónaí.</string>
     <string name="category_group_health">Sláinte</string>
     <string name="category_group_summary_health">Aipeanna aclaíochta, cothaithe agus leighis</string>
+    <string name="panic_hide_warning_title">Cuimhnigh conas a athchóiriú</string>
+    <string name="panic_hide_warning_message">I gcás éigeandála, taispeánfar deilbhín agus ainm an áireamháin don aip seo ar an scáileán baile agus sa tarraiceán aipeanna. Bain úsáid as socruithe dheilbhín na haipe chun an deilbhín agus an t-ainm réamhshocraithe a chur ar ais.\n\nTabhair faoi deara: Úsáidfear an deilbhín agus an t-ainm réamhshocraithe i gcónaí le haghaidh fógraí.</string>
+    <string name="sort_summary">Sórtáil de réir</string>
+    <string name="sort_by_name_short">ainm</string>
+    <string name="sort_by_latest_short">an nuashonrú deireanach</string>
+    <string name="filter_antifeatures_summary">Taispeáin aipeanna leis na frithghnéithe seo</string>
+    <string name="filter_antifeatures_collapsed">Folaithe: %s</string>
+    <string name="app_details_permissions_section">Ceadanna</string>
+    <string name="app_details_permissions_button">Taispeáin na %d cead ar fad</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Iarrann an aip seo %d cead íogair:</item>
+        <item quantity="two">Iarrann an aip seo %d chead íogair:</item>
+        <item quantity="few">Iarrann an aip seo %d chead íogair:</item>
+        <item quantity="many">Iarrann an aip seo %d chead íogair:</item>
+        <item quantity="other">Iarrann an aip seo %d cead íogair:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Ní iarrann an aip seo ceadanna íogaire ar bith</string>
+    <string name="app_details_permissions_title_num">Ceadanna (%d)</string>
+    <string name="app_details_permissions_warning">Tuairiscíonn an stór an fhaisnéis seo. D’fhéadfadh na ceadanna iarbhír a fhaigheann an aip a bheith difriúil.</string>
+    <string name="app_details_permissions_title_sensitive">Íogair (%d)</string>
+    <string name="app_details_permissions_title_normal">Deonaithe go huathoibríoch (%d)</string>
+    <string name="app_details_permissions_title_runtime">Am rite (%d)</string>
+    <string name="app_details_permissions_title_custom">Saincheaptha (%d)</string>
+    <string name="permissions_colon">Ceadanna: %1$d</string>
 </resources>

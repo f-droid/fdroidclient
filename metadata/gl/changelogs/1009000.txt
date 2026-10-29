@@ -1,0 +1,5 @@
+* Eliminouse a compatibilidade con "Android App Link", xa que non funciona con F-Droid e provocaba fugas de DNS.
+* Os repositorios de arquivo teñen agora unha prioridade menor que o repositorio principal (aparecen máis abaixo na pantalla "Xestionar repositorios"); isto soluciona problemas nos que a aplicación buscaba iconas, capturas de pantalla e outra información no arquivo en lugar de no propio repositorio.
+* Eliminouse o recorte da imaxe de cabeceira das funcionalidades (grazas, @ByteHamster!).
+* A barra de navegación axústase agora ao modo escuro (grazas, @MatthieuB!).
+* Eliminouse código obsoleto (grazas, @Isira-Seneviratne!).

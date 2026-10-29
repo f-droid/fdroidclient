@@ -1,0 +1,13 @@
+* Renovación completa da lista de "Versións" en "Detalles da aplicación" e moitas outras melloras na interface, grazas ao novo colaborador @wsdfhjxc
+
+* Corrección da navegación mediante teclado/cruceta en moitos lugares, grazas ao novo colaborador @doeffinger
+
+* Visualización do botón "Abrir" cando o contido multimedia está instalado e se pode ver
+
+* Inclusión dun botón "Compartir" en "Aplicacións instaladas" para exportar unha lista en formato CSV
+
+* Inclusión dunha lista interactiva de ficheiros APK na páxina de índice HTML
+
+* Reintento da descarga de índices desde servidores espello
+
+* Corrección da función "Enviar F-Droid por Bluetooth" en versións recentes de Android

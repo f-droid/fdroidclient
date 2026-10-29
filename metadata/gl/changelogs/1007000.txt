@@ -1,0 +1,11 @@
+* Renovación importante da interface de intercambio, preparando o terreo para unha reescrita
+
+* Mostrar a opción "Desfacer" tras eliminar elementos da lapela "Actualizacións" mediante un xesto de deslizamento (grazas, @Hocuri!)
+
+* Corrixir a xestión de ETag ao conectar con espellos (mirrors) de NGINX #1737
+
+* Solucionar problemas na visualización de "Máis recentes" causados por unha xestión incorrecta dos fusos horarios #1757
+
+* Ignorar todos os fallos sen importancia nos servizos en segundo plano
+
+* Non utilizar a "Extensión con privilexios" se está desactivada en "Configuración"

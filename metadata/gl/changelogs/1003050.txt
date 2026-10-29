@@ -1,0 +1,19 @@
+* Botóns e actualizacións de estado máis fiables
+
+* Renovación da configuración, incluíndo novos controis de uso de datos
+
+* Funcionamento en segundo plano optimizado para o aforro de batería en Android 5.0 e versións posteriores
+
+* Opción no menú para compartir repositorios
+
+* Posibilidade de desactivar os informes de fallos na configuración
+
+* Visualizador do historial de instalacións (dispoñible cando o rexistro está activado)
+
+* Lista de «anti-características» (anti-features) interactiva; engadiuse «NoSourceSince»
+
+* Android 4.0 é agora a versión mínima compatible
+
+* Melloras substanciais para versións personalizadas («whitelabel») de F-Droid
+
+* Configuración avanzada para enviar a versión de depuración e o UUID durante a descarga

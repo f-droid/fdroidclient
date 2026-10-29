@@ -1,0 +1,8 @@
+* Moitas correccións de erros
+* Mostra as iconas do repositorio na lista de repositorios
+* Mostrar os motivos das funcións anti-funcións (se están dispoñibles)
+* Actualizacións sen supervisión sen extensión privilexiada (F-Droid Basic só polo momento)
+* Mostra o tamaño da aplicación na pantalla de detalles da aplicación (só modo experto)
+* Nomes de aplicacións lixeiramente máis escuros nas listas de aplicacións para mellorar a lexibilidade
+* Restaurar o estado aberto/pechado de "Actualizar todo" na lapela Actualizacións (@tunedal)
+* Restaurar a lapela activa entre reinicios da aplicación

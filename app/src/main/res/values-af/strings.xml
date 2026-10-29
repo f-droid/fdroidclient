@@ -188,4 +188,9 @@
     <string name="first_start_loading">Kry app repositories…</string>
     <string name="first_start_intro">Om te begin, sinkroniseer die app repositories</string>
     <string name="first_start_offline">Jy is van lyn af. Konnekteer aan die Internet om te begin.</string>
+    <string name="my_apps_empty">Net apps in %1$s se repository is gewys hier</string>
+    <string name="my_apps_header_recently_installed_apps">Onlangs afgelaai</string>
+    <string name="my_apps_header_apps_with_issue">Apps met probleme</string>
+    <string name="my_apps_ignore_dialog_title">Steek probleem weg</string>
+    <string name="my_apps_ignore_dialog_text">Die probleem met die weergawe van \"%1$s\" gaan geïgnoreerd wees</string>
 </resources>

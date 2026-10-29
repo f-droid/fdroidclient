@@ -239,7 +239,7 @@
     <string name="expand">Развернуть</string>
     <string name="collapse">Свернуть</string>
     <string name="pref_export_log_title">Отладочный лог</string>
-    <string name="pref_export_log_summary">Записывает отладочные логи в файл (logcat). Осторожно: там могут быть пароли и другая секретная информация!</string>
+    <string name="pref_export_log_summary">Записывает отладочные логи в файл (logcat). Осторожно: там могут быть пароли и другая конфиденциальная информация!</string>
     <string name="export_log_success">Logcat успешно сохранен</string>
     <string name="export_log_error">Ошибка сохранения logcat</string>
     <string name="app_details_more_apps_by_author">Больше приложений от %1$s</string>
@@ -267,7 +267,7 @@
     <string name="app_list_recently_updated">Недавно обновлено</string>
     <string name="app_list_most_downloaded">Самые скачиваемые</string>
     <string name="app_list_all">Все приложения</string>
-    <string name="app_list_author">Приложения от %s</string>
+    <string name="app_list_author">Автор: %s</string>
     <string name="search_placeholder">Поиск…</string>
     <string name="search_no_results">Приложений не найдено\n\nПопробуйте использовать меньше поисковых запросов или добавить больше репозиториев</string>
     <string name="category_group_productivity">Производительность</string>
@@ -297,13 +297,13 @@
     <string name="no_repos_enabled">Репозиториев нет, добавьте первый, чтобы начать</string>
     <string name="sort_by_name">Сортировать по имени</string>
     <string name="sort_by_latest">Сортировать по дате последнего обновления</string>
-    <string name="filter_only_compatible">Приложения, совместимые с этим устройством</string>
+    <string name="filter_only_compatible">Показывать только приложения, совместимые с этим устройством</string>
     <string name="filter_button_save">Сохранить как основной</string>
     <string name="filter_intro">Фильтровать приложения по</string>
     <string name="filter_button_clear_all">Очистить все фильтры</string>
     <string name="filter">Фильтр</string>
     <string name="filter_selected">выбрано</string>
-    <string name="filter_antifeatures">Скрыть анти-функции</string>
+    <string name="filter_antifeatures">Анти-функции</string>
     <string name="onboarding_app_list_filter_title">Фильтр</string>
     <string name="onboarding_app_list_filter_message">Воспользуйтесь фильтрами, чтобы показать приложения только из определенных категорий или репозиториев. Вы также можете изменить порядок сортировки.</string>
     <string name="got_it">ОК</string>
@@ -472,6 +472,32 @@
     <string name="panic_app_unknown_app">неизвестное приложение</string>
     <string name="category_group_health">Здоровье</string>
     <string name="category_group_summary_health">Приложения для фитнеса, питания и медицины</string>
-    <string name="panic_hide_warning_title">Запомните, как восстановить</string>
+    <string name="panic_hide_warning_title">Запомните как восстановить</string>
     <string name="panic_hide_warning_message">В случае возникновения чрезвычайной ситуации на главном экране и в панели приложений будут отображаться значок и название приложения Калькулятор. Воспользуйтесь настройками значков приложений, чтобы восстановить значок и название по умолчанию.\n\nПримечание: в уведомлениях всегда будут использоваться значок и название по умолчанию.</string>
+    <string name="app_details_permissions_section">Разрешения</string>
+    <string name="app_details_permissions_button">Показать все разрешения %d</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Это приложение запрашивает %d конфиденциальное разрешение:</item>
+        <item quantity="few">Это приложение запрашивает %d конфиденциальных разрешения:</item>
+        <item quantity="many">Это приложение запрашивает %d конфиденциальных разрешений:</item>
+        <item quantity="other">Это приложение запрашивает %d конфиденциальных разрешений:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Это приложение не запрашивает конфиденциальных разрешений</string>
+    <string name="app_details_permissions_title_num">Разрешения (%d)</string>
+    <string name="app_details_permissions_warning">Эту информацию предоставляет репозиторий. Фактические разрешения, получаемые приложением, могут отличаться.</string>
+    <string name="app_details_permissions_title_sensitive">Конфиденциальные (%d)</string>
+    <string name="app_details_permissions_title_normal">Автоматически предоставлено (%d)</string>
+    <string name="app_details_permissions_title_runtime">Время выполнения (%d)</string>
+    <string name="app_details_permissions_title_custom">Пользовательский (%d)</string>
+    <string name="permissions_colon">Разрешения: %1$d</string>
+    <string name="sort_summary">Сортировать по</string>
+    <string name="sort_by_name_short">имени</string>
+    <string name="sort_by_latest_short">последнему обновлению</string>
+    <string name="filter_antifeatures_summary">Показать приложения с этими анти-функциями</string>
+    <string name="filter_antifeatures_collapsed">Скрыто: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Особое расширение</string>
+    <string name="notification_channel_privileged_extension_migration_description">Сообщает, когда для перехода с особого расширения требуется ручное вмешательство.</string>
+    <string name="notification_privileged_extension_migration_title">Для обновления требуется вручную выполнить некоторые действия!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Неизвестные источники\" не включены!</string>
+    <string name="notification_privileged_extension_migration_text">Теперь %1$s устанавливает приложения через встроенный установщик Android. Вам нужно предоставить %1$s разрешение на установку из \"неизвестных источников\" и одобрить первую установку.</string>
 </resources>

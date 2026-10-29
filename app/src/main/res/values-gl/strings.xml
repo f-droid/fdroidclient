@@ -230,7 +230,7 @@
     <string name="menu_discover">Descubrir</string>
     <string name="menu_apps_my">As miñas aplicacións</string>
     <string name="app_list_all">Todas as aplicacións</string>
-    <string name="app_list_author">Aplicacións por %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Buscar…</string>
     <string name="search_no_results">Non se atoparon aplicacións\n\nIntente usar menos termos de busca ou engadir máis repositorios</string>
     <string name="category_group_productivity">Produtividade</string>
@@ -448,4 +448,39 @@
         <item quantity="one">%1$d app actualizada</item>
         <item quantity="other">%1$d apps actualizadas</item>
     </plurals>
+    <string name="category_group_health">Saúde</string>
+    <string name="category_group_summary_health">Aplicacións de fitness, nutrición e medicina</string>
+    <string name="liberapay">Liberapay</string>
+    <string name="open_collective">Open Collective</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_hide_warning_title">Lembra como restaurar</string>
+    <string name="panic_hide_warning_message">En caso de activación do modo de pánico, amosarase a icona e o nome dunha calculadora para esta aplicación, tanto na pantalla de inicio coma no caixón de aplicacións. Utiliza a configuración da icona da aplicación para restaurar a icona e o nome predeterminados.\n\nNota: As notificacións empregarán sempre a icona e o nome predeterminados.</string>
+    <string name="panic_app_unknown_app">unha aplicación descoñecida</string>
+    <string name="panic_hide_migration_title">O novo F-Droid cambiou a ocultación de aplicacións</string>
+    <string name="panic_hide_migration_message">Eliminouse a función de calculadora, pero aínda podes cambiar a icona da aplicación de xeito permanente a través da configuración de «icona da aplicación» e «botón de pánico».</string>
+    <string name="panic_hide_migration_button">Revisar a configuración</string>
+    <string name="icon_title">Icona da aplicación</string>
+    <string name="icon_summary">Selecciona a icona que se utiliza para esta aplicación na pantalla de inicio e no caixón de aplicacións</string>
+    <string name="icon_intro">Selecciona unha icona e un nome para esta aplicación. Estes móstranse na pantalla de inicio e no caixón de aplicacións.\n\nNota: As notificacións utilizarán sempre a icona e o nome predeterminados.</string>
+    <string name="app_details_permissions_section">Permisos</string>
+    <string name="app_details_permissions_button">Amosar todos os %d permisos</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Esta aplicación require de %d permiso sensible:</item>
+        <item quantity="other">Esta aplicación require de %d permisos sensibles:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Esta aplicación non require de permisos sensibles</string>
+    <string name="app_details_permissions_title_num">Permisos (%d)</string>
+    <string name="app_details_permissions_warning">Esta información é proporcionada polo repositorio. Os permisos reais que recibe a aplicación poden ser diferentes.</string>
+    <string name="app_details_permissions_title_sensitive">Sensible (%d)</string>
+    <string name="app_details_permissions_title_normal">Concedido automaticamente (%d)</string>
+    <string name="app_details_permissions_title_runtime">Concedido automaticamente (%d)</string>
+    <string name="app_details_permissions_title_custom">Personalizado (%d)</string>
+    <string name="permissions_colon">Permisos: %1$d</string>
+    <string name="sort_summary">Ordenar por</string>
+    <string name="sort_by_name_short">nome</string>
+    <string name="sort_by_latest_short">última actualización</string>
+    <string name="filter_antifeatures_summary">Amosar aplicacións con estas funcións contrarias</string>
+    <string name="filter_antifeatures_collapsed">Agochado: %s</string>
 </resources>

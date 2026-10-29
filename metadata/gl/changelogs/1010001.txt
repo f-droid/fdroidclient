@@ -1,0 +1,7 @@
+* uso de canles de notificación para un control detallado (@Isira-Seneviratne)
+* compartir aplicacións mediante "Direct Share" desde os detalles da aplicación (@fynngodau)
+* a lapela "Máis recentes" amosará mellores resultados en dispositivos que non estean en inglés
+* actualizacións das bibliotecas principais (Jackson, androidx, Gradle, etc.)
+* mellora do soporte para a personalización da marca (*whitelabeling*)
+
+Grazas aos novos colaboradores! @fynngodau @projectgus @glennmen @Isira-Seneviratne

@@ -1,0 +1,13 @@
+* A pestana «Recentes» agora destaca as aplicacións que ofrecen descricións, traducións e capturas de pantalla
+
+* Descarga automática desde espellos (mirrors), para acelerar as descargas e reducir a carga en f-droid.org
+
+* Posibilidade de desactivar os espellos mediante novos interruptores en «Detalles do repositorio» (#1696)
+
+* Caché de descargas máis eficiente (por repositorio; abarcando diferentes servidores web #1708)
+
+* Corrección nas instalacións que requirían a opción «Orixes descoñecidas» ao usar a Extensión con privilexios (#1702)
+
+* Corrección da ausencia de iconas para os usuarios que non empregan wifi (#1592)
+
+* Mellora das traducións na lapela «Actualizacións» en relación coas preferencias

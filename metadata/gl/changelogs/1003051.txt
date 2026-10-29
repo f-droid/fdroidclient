@@ -1,0 +1,20 @@
+v1.3.1
+* Renovación profunda da infraestrutura central de «Nearby»/«Swap»
+
+* Compatibilidade con TLSv1.3, sempre que o dispositivo o admita
+
+* Botóns e actualizacións de estado máis fiables
+
+* Renovación da configuración, incluíndo novos controis de uso de datos
+
+* Funcionamento en segundo plano optimizado para o aforro de batería en Android 5.0 e versións posteriores
+
+* Opción no menú de compartir para os repositorios
+
+* Posibilidade de desactivar os informes de fallos na configuración
+
+* Visualizador do historial de instalacións (dispoñible cando o rexistro está activado)
+
+* Lista de «anti-funcionalidades» con elementos clicables; engadiuse «NoSourceSince»
+
+* Android 4.0 é agora a versión mínima compatible

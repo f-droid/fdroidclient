@@ -1,0 +1,7 @@
+* renovación importante da interface de usuario de intercambio, como preparación para a reescritura dos compoñentes internos
+* amosar a opción de "desfacer" tras eliminar elementos da lapela "Actualizacións" mediante un xesto de deslizamento (grazas, @Hocuri!)
+* corrección de problemas na visualización de "Máis recentes" causados por unha xestión incorrecta dos fusos horarios #1757
+* ignorar todos os fallos sen importancia nos servizos en segundo plano
+* renovación do sistema de intercambio en proximidade, utilizando o punto de acceso (AP) do propio dispositivo
+* incorporación de novas respostas ante erros críticos: desinstalación de aplicacións e restablecemento dos repositorios á súa configuración predeterminada
+* as unidades flash USB OTG poden utilizarse como repositorios e espellos en proximidade

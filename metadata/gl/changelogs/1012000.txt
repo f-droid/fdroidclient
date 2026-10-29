@@ -1,0 +1,12 @@
+* A localización da descrición da aplicación agora respecta plenamente as listas de idiomas en Android
+Configuración de idiomas
+
+* A lapela «Máis recentes» lista os resultados baseándose na configuración de idiomas
+
+* A lapela «Máis recentes» mostra agora os resultados ordenados do máis recente ao máis antigo (@TheLastProject @IzzySoft)
+
+* A compatibilidade con temas foi modernizada e vinculada aos temas integrados de Android (@proletarius101)
+
+* Melloráronse notablemente os resultados de busca (@Tvax @gcbrown76)
+
+* Permitir que Android xestione de xeito eficiente a programación das operacións de limpeza da caché en segundo plano (@Isira-Seneviratne)

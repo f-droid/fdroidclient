@@ -268,7 +268,7 @@
     <string name="app_list_recently_updated">به تازگی به‌روز شده</string>
     <string name="app_list_most_downloaded">بیش‌ترین بارگیری</string>
     <string name="app_list_all">همهٔ کاره‌ها</string>
-    <string name="app_list_author">کاره‌های %s</string>
+    <string name="app_list_author">نگارنده %s</string>
     <string name="search_placeholder">جست‌وجو…</string>
     <string name="search_no_results">هیچ کارهٔ مطابقی وجود ندارد\n\nتلاش برای استفاده از عبارت‌های جست‌وجوی کم‌تر یا افزودن مخزن‌های بیش‌تر</string>
     <string name="category_group_productivity">بهره‌وری</string>
@@ -306,7 +306,7 @@
     <string name="notification_installing_section_installed">نصب شده:</string>
     <string name="error">خطا</string>
     <string name="first_start_button">واکشی مخزن‌ها</string>
-    <string name="filter_antifeatures">نهفتن پادویژگی‌ها</string>
+    <string name="filter_antifeatures">پادویژگی‌ها</string>
     <string name="got_it">گرفتم</string>
     <string name="copy_link">رونوشت از پیوند</string>
     <string name="added_x_ago">‫‏%1$s افزوده شد</string>
@@ -353,7 +353,7 @@
     <string name="notification_summary">تنظیمات آگاهی سامانه را می‌گشاید</string>
     <string name="notification_repo_update_downloading">‫‏%1$s از %2$s بار گرفته شد</string>
     <string name="install_history_delete_text">حذف تاریخچهٔ نصب؟</string>
-    <string name="filter_only_compatible">کاره‌های سازگار با این افزاره</string>
+    <string name="filter_only_compatible">فقط نمایش کاره‌های سازگار با این افزاره</string>
     <string name="pref_auto_updates_only_always">همیشه (حتا روی دادهٔ همراه)</string>
     <string name="crash_report_save">ذخیرهٔ گزارش فروپاشی در قالب پرونده</string>
     <string name="ipfsgw_summary_new">بارگیری کاره‌ها با استفاده از نقطه‌های پایانی وب IPFS</string>
@@ -461,4 +461,25 @@
     <string name="icon_intro">گزینش نام و نقشکی برای این کاره که روی صفحهٔ خانه و کشوی کاره نشان داده شود.\n\nتوجّه: آگاهی‌ها همواره از نام و نقشک پیش‌گزیده استفاده خواهند کرد.</string>
     <string name="category_group_summary_health">کاره‌های پزشکی، تناسب اندام و مواد مغذی</string>
     <string name="category_group_health">سلامت</string>
+    <string name="panic_hide_warning_title">به خاطر سپردن چگونگی بازگردانی</string>
+    <string name="panic_hide_warning_message">هنگام رویداد هراس، این کاره روی صفحهٔ خانه و کشوی کاره‌ها با نام و نقشک ماشین‌حساب نشان داده خواهد شد. استفاده از تنظیمات نقشک کاره برای بازگردانی نام و نقشک پیش‌گزیده.\n\nتوجّه: آگاهی‌ها همواره از نام و نقشک پیش‌گزیده استفاده خواهند کرد.</string>
+    <string name="permissions_colon">اجازه‌ها: %1$d</string>
+    <string name="app_details_permissions_section">اجازه‌ها</string>
+    <string name="app_details_permissions_button">نمایش همهٔ %d اجازه</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">این کاره درخواست %d اجازهٔ حسّاس را می‌دهد:</item>
+        <item quantity="other">این کاره درخواست %d اجازهٔ حسّاس را می‌دهد:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">این کاره درخواست هیچ اجازهٔ حسّاسی را نمی‌دهد</string>
+    <string name="app_details_permissions_title_num">اجازه‌ها (%d)</string>
+    <string name="app_details_permissions_warning">این اطّلاعات به دست مخزن گزارش شده است. ممکن است اجازه‌های واقعی‌ای که کاره می گیرد متفاوت باشند.</string>
+    <string name="app_details_permissions_title_sensitive">حسّاس (%d)</string>
+    <string name="app_details_permissions_title_normal">خودکار اعطا شده (%d)</string>
+    <string name="app_details_permissions_title_runtime">زمان اجرا (%d)</string>
+    <string name="app_details_permissions_title_custom">سفارشی (%d)</string>
+    <string name="sort_summary">چینش بر اساس</string>
+    <string name="sort_by_name_short">نام</string>
+    <string name="sort_by_latest_short">آخرین به‌روز رسانی</string>
+    <string name="filter_antifeatures_summary">نمایش کاره‌های با این پادویژگی</string>
+    <string name="filter_antifeatures_collapsed">نهفته: %s</string>
 </resources>

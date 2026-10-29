@@ -255,10 +255,10 @@
     <string name="pref_export_log_summary">Tworzy plik z danymi wyjściowymi logcat przydatnymi do debugowania. Ostrożnie, może zawierać poufne informacje!</string>
     <string name="app_details_more_apps_by_author">Więcej aplikacji od %1$s</string>
     <plurals name="notification_summary_app_updates">
-        <item quantity="one">%1$d aktualizacja dostępna</item>
-        <item quantity="few">%1$d aktualizacje dostępne</item>
-        <item quantity="many">%1$d aktualizacji dostępnych</item>
-        <item quantity="other">%1$d aktualizacji dostępnych</item>
+        <item quantity="one">%1$d dostępna aktualizacja</item>
+        <item quantity="few">%1$d dostępne aktualizacje</item>
+        <item quantity="many">%1$d dostępnych aktualizacji</item>
+        <item quantity="other">%1$d dostępnych aktualizacji</item>
     </plurals>
     <string name="crash_dialog_title_old">F-Droid uległ awarii</string>
     <string name="app_name_full_nightly">F-Nightly</string>
@@ -279,7 +279,7 @@
     <string name="app_list_recently_updated">Ostatnio zaktualizowane</string>
     <string name="app_list_most_downloaded">Najczęściej pobierane</string>
     <string name="app_list_all">Wszystkie aplikacje</string>
-    <string name="app_list_author">Aplikacje od %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Szukaj…</string>
     <string name="search_no_results">Nie znaleziono aplikacji\n\nSpróbuj użyć mniejszej liczby terminów wyszukiwania lub dodaj więcej repozytoriów</string>
     <string name="category_group_productivity">Produktywność</string>
@@ -313,13 +313,13 @@
     <string name="sort_title">Sortowanie i zgodność</string>
     <string name="sort_by_name">Sortuj wg nazwy</string>
     <string name="sort_by_latest">Sortuj wg ostatniej aktualizacji</string>
-    <string name="filter_only_compatible">Aplikacje zgodne z tym urządzeniem</string>
+    <string name="filter_only_compatible">Pokazuj tylko aplikacje zgodne z tym urządzeniem</string>
     <string name="filter_button_save">Zapisz jako domyślne</string>
     <string name="filter_intro">Filtruj aplikacje według</string>
     <string name="filter_button_clear_all">Wyczyść wszystkie filtry</string>
     <string name="filter">Filtrowanie</string>
     <string name="filter_selected">wybrane</string>
-    <string name="filter_antifeatures">Ukryj niepożądane funkcje</string>
+    <string name="filter_antifeatures">Niepożądane funkcje</string>
     <string name="onboarding_app_list_filter_title">Filtrowanie</string>
     <string name="onboarding_app_list_filter_message">Użyj filtrów, aby wyświetlać aplikacje tylko z określonych kategorii lub repozytoriów. Możesz również zmienić kolejność sortowania.</string>
     <string name="got_it">Rozumiem</string>
@@ -483,4 +483,32 @@
     <string name="panic_app_unknown_app">nieznana aplikacja</string>
     <string name="category_group_health">Zdrowie</string>
     <string name="category_group_summary_health">Aplikacje do fitnessu, odżywiania i zdrowia</string>
+    <string name="panic_hide_warning_title">Pamiętaj, jak przywrócić</string>
+    <string name="panic_hide_warning_message">W sytuacji awaryjnej zostanie wyświetlona ikona kalkulatora i nazwa Kalkulator dla tej aplikacji na ekranie głównym i w szufladzie aplikacji. Użyj ustawienia „Ikona aplikacji”, aby przywrócić domyślną ikonę i nazwę.\n\nUwaga: Powiadomienia zawsze będą używać domyślnej ikony i nazwy.</string>
+    <string name="app_details_permissions_section">Uprawnienia</string>
+    <string name="app_details_permissions_button">Pokaż wszystkie %d uprawnień</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Ta aplikacja żąda %d wrażliwego uprawnienia:</item>
+        <item quantity="few">Ta aplikacja żąda %d wrażliwych uprawnień:</item>
+        <item quantity="many">Ta aplikacja żąda %d wrażliwych uprawnień:</item>
+        <item quantity="other">Ta aplikacja żąda %d wrażliwych uprawnień:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Ta aplikacja nie wymaga żadnych wrażliwych uprawnień</string>
+    <string name="app_details_permissions_title_num">Uprawnienia (%d)</string>
+    <string name="app_details_permissions_warning">Ta informacja została zgłoszona przez repozytorium. Właściwe uprawnienia, które otrzymuje aplikacja, mogą być inne.</string>
+    <string name="app_details_permissions_title_sensitive">Wrażliwe (%d)</string>
+    <string name="app_details_permissions_title_normal">Przyznane automatycznie (%d)</string>
+    <string name="app_details_permissions_title_runtime">Czas wykonania (%d)</string>
+    <string name="app_details_permissions_title_custom">Niestandardowe (%d)</string>
+    <string name="permissions_colon">Uprawnienia: %1$d</string>
+    <string name="sort_summary">Sortuj według</string>
+    <string name="sort_by_name_short">nazwa</string>
+    <string name="sort_by_latest_short">ostatnia aktualizacja</string>
+    <string name="filter_antifeatures_summary">Pokazuj aplikacje z tymi niepożądanymi funkcjami</string>
+    <string name="filter_antifeatures_collapsed">Ukryte: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Uprzywilejowane rozszerzenie</string>
+    <string name="notification_privileged_extension_migration_title">Aktualizacje wymagają ręcznego działania!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">„Nieznane źródła” niewłączone!</string>
+    <string name="notification_channel_privileged_extension_migration_description">Powiadamia, gdy ręczna interwencja jest wymagana, aby odejść od Uprzywilejowanego rozszerzenia.</string>
+    <string name="notification_privileged_extension_migration_text">%1$s teraz instaluje aplikacje przez wbudowany instalator Androida. Musisz przyznać %1$s uprawnienie „nieznane źródła”, aby używać tego instalatora i zatwierdzać każdą pierwszą instalację.</string>
 </resources>

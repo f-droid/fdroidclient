@@ -1,0 +1,15 @@
+* Renovación da xestión de repositorios e espellos, tanto na experiencia de usuario (UX) coma no código
+
+* Visualización previa dos novos repositorios
+
+* A instalación a través de F-Droid e F-Droid Basic admite agora actualizacións automáticas en segundo plano
+
+* En Android 14, marcar como incompatibles as aplicacións cunha versión do SDK de destino (Target SDK Version) non admitida #2692
+
+* Mantendo premido pódese copiar ligazóns, permisos e versións na pantalla de detalles da aplicación (@Tobias_Groza)
+
+* As aplicacións incompatibles só se mostran se se permite na configuración #41 (@pigpig)
+
+* Nova configuración para pasarelas (gateways) IPFS
+
+* Selección de idioma individual para cada aplicación (@Licaon-Kter)

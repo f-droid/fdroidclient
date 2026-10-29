@@ -270,7 +270,7 @@
     <string name="app_list_recently_updated">Recent actualizate</string>
     <string name="app_list_most_downloaded">Cele mai descărcate</string>
     <string name="app_list_all">Toate aplicațiile</string>
-    <string name="app_list_author">Aplicații de la %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Căutare…</string>
     <string name="search_no_results">Nu s-au găsit aplicații\n\nÎncercați să utilizați mai puțini termeni de căutare sau adăugați mai multe depozite</string>
     <string name="category_group_productivity">Productivitate</string>
@@ -311,7 +311,7 @@
     <string name="notification_installing_section_installed">Instalat:</string>
     <string name="error">Eroare</string>
     <string name="first_start_button">Preluare depozite</string>
-    <string name="filter_antifeatures">Ascunde caracteristici periculoase</string>
+    <string name="filter_antifeatures">Caracteristici periculoase</string>
     <string name="got_it">Am înțeles</string>
     <string name="copy_link">Copiere adresă</string>
     <string name="added_x_ago">Adăugat %1$s</string>
@@ -358,7 +358,7 @@
     <string name="notification_summary">Deschide setările de notificare ale sistemului</string>
     <string name="notification_repo_update_downloading">Descărcat %1$s de la %2$s</string>
     <string name="install_history_delete_text">Șterge istoricul instalărilor?</string>
-    <string name="filter_only_compatible">Aplicații compatibile cu dispozitivul</string>
+    <string name="filter_only_compatible">Doar aplicații compatibile cu dispozitivul</string>
     <string name="pref_auto_updates_only_always">Întotdeauna (chiar și pe date mobile)</string>
     <string name="crash_report_save">Salvare raport de erori în fișier</string>
     <string name="first_start_intro">Pentru a începe, sincronizați depozitele aplicației</string>
@@ -471,4 +471,24 @@
     <string name="category_group_summary_health">Fitness, nutriție și aplicații medicale</string>
     <string name="panic_hide_warning_title">Amintiți-vă cum să restaurați</string>
     <string name="panic_hide_warning_message">Într-un eveniment de panică, se va schimba pictograma și numele aplicației în Calculatorm pe ecranul de pornire și în sertarul cu aplicații. Utilizați setarea Pictogramă aplicație pentru a restabili pictograma și numele implicit.\n\nNotă: Notificările vor folosi întotdeauna pictograma și numele implicite.</string>
+    <string name="sort_summary">Sortează după</string>
+    <string name="sort_by_name_short">nume</string>
+    <string name="sort_by_latest_short">actualizare</string>
+    <string name="filter_antifeatures_summary">Afișează aplicații cu aceste caracteristici</string>
+    <string name="filter_antifeatures_collapsed">Ascuns: %s</string>
+    <string name="app_details_permissions_section">Permisiuni</string>
+    <string name="app_details_permissions_button">Afișează toate %d permisiunile</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Aplicația solicită o permisiunea sensibilă:</item>
+        <item quantity="few">Aplicația solicită %d permisiuni sensibile:</item>
+        <item quantity="other">Aplicația solicită %d de permisiuni sensibile:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Aplicația nu solicită nici o permisiunea sensibilă</string>
+    <string name="app_details_permissions_title_num">Permisiuni (%d)</string>
+    <string name="app_details_permissions_warning">Informații raportate de depozit. Permisiunile reale pe care le primește aplicația pot fi diferite.</string>
+    <string name="app_details_permissions_title_sensitive">Sensibile (%d)</string>
+    <string name="app_details_permissions_title_normal">Implicite (%d)</string>
+    <string name="app_details_permissions_title_runtime">La rulare (%d)</string>
+    <string name="app_details_permissions_title_custom">Personalizate (%d)</string>
+    <string name="permissions_colon">Permisiuni: %1$d</string>
 </resources>

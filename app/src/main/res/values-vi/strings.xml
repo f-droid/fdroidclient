@@ -45,7 +45,7 @@
     <string name="open_qr_code_scanner">Mở trình quét mã QR</string>
     <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s?</string>
-    <string name="app_name_full">F-Droid</string>
+    <string name="app_name_full">F-DroidF-Droid</string>
     <string name="links">Liên kết</string>
     <string name="back">Quay lại</string>
     <string name="about_source">Mã nguồn</string>
@@ -347,7 +347,7 @@
     <string name="app_no_compatible_versions">Ứng dụng này không tương thích với thiết bị của bạn</string>
     <string name="app_no_compatible_signer">Không thể cập nhật ứng dụng này vì tất cả các phiên bản đều có chữ ký không tương thích.\n\nNếu bạn không nhận được bản cập nhật, bạn có thể cần gỡ cài đặt rồi cài đặt lại ứng dụng này. Dữ liệu của ứng dụng sẽ bị mất.</string>
     <string name="app_no_compatible_signer_in_this_repo">Không thể cập nhật ứng dụng này vì không có phiên bản tương thích nào trong kho lưu trữ ưu tiên.\n\nHãy thử thay đổi kho lưu trữ ưu tiên</string>
-    <string name="app_no_auto_update">Tính năng tự động cập nhật không khả dụng vì ứng dụng này được thiết kế cho phiên bản Android cũ</string>
+    <string name="app_no_auto_update">Tính năng tự động cập nhật không khả dụng vì ứng dụng này được xây dựng cho phiên bản Android cũ</string>
     <string name="app_issue_update_other_repo">Có bản cập nhật ở kho lưu trữ khác. Hãy thay đổi kho lưu trữ ưu tiên để cập nhật</string>
     <string name="app_issue_not_available_title">Ứng dụng không còn khả dụng</string>
     <string name="app_issue_not_available_text">Ứng dụng có thể đã bị xóa hoặc nằm trong kho lưu trữ mà bạn đã xóa hoặc vô hiệu hóa</string>
@@ -454,4 +454,19 @@
     <string name="icon_title">Biểu tượng ứng dụng</string>
     <string name="icon_summary">Chọn biểu tượng được sử dụng cho ứng dụng này trên màn hình chính và ngăn kéo ứng dụng</string>
     <string name="icon_intro">Chọn biểu tượng và tên cho ứng dụng này. Biểu tượng và tên sẽ hiển thị trên màn hình chính và ngăn kéo ứng dụng.\n\nLưu ý: Thông báo sẽ luôn sử dụng biểu tượng và tên mặc định.</string>
+    <string name="panic_hide_warning_title">Nhớ cách khôi phục</string>
+    <string name="panic_hide_warning_message">Trong trường hợp khẩn cấp, biểu tượng và tên Máy Tính sẽ hiển thị trên màn hình chính và ngăn kéo ứng dụng. Sử dụng cài đặt biểu tượng ứng dụng để khôi phục biểu tượng và tên mặc định.\n\nLưu ý: Thông báo sẽ luôn sử dụng biểu tượng và tên mặc định.</string>
+    <string name="app_details_permissions_section">Quyền</string>
+    <string name="app_details_permissions_button">Hiện toàn bộ %d quyền</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="other">Ứng dụng yêu cầu %d quyền nhạy cảm:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Ứng dụng này không yêu cầu những quyền nhạy cảm</string>
+    <string name="app_details_permissions_title_num">Quyền (%d)</string>
+    <string name="app_details_permissions_warning">Thông tin này được khai báo trong kho mã nguồn. Những quyền thực tế mà ứng dụng nhận có thể khác.</string>
+    <string name="app_details_permissions_title_sensitive">Nhạy cảm (%d)</string>
+    <string name="app_details_permissions_title_normal">Tự-cấp quyền (%d)</string>
+    <string name="app_details_permissions_title_runtime">Runtime (%d)</string>
+    <string name="app_details_permissions_title_custom">Tùy chỉnh (%d)</string>
+    <string name="permissions_colon">Quyền: %1$d</string>
 </resources>

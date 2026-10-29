@@ -1,0 +1,9 @@
+* nova configuración de permisos de Android 10 para deter as solicitudes de orixes descoñecidas #1833
+* Xestionar os novos "permisos divididos": a localización precisa implica unha localización aproximada
+* Corrixir a preferencia da barra de busca nas versións recentes de Android (grazas @dkanada)
+* Establecer regras de copia de seguridade para evitar gardar o repositorio de intercambio
+* o teclado ábrese cando se borra a busca
+* sincronización de tradución con cadeas de Android
+* forzar os dominios comúns do repositorio a HTTPS (GitLab, GitHub, Amazon)
+* efecto de onda estándar nas ligazóns nos detalles da aplicación
+* mostrar a icona predeterminada para as aplicacións sen icona
