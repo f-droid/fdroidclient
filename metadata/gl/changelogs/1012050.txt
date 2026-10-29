@@ -1,0 +1,13 @@
+* A localización da descrición das aplicacións respecta plenamente as listas da configuración de idioma de Android
+
+* A lapela «Recentes» mostra aplicacións baseándose na configuración de idioma, ordenadas da máis recente á máis antiga (@TheLastProject @IzzySoft)
+
+* Melloras significativas nos resultados de busca (@Tvax @gcbrown76)
+
+* Limpeza da caché máis fiable
+
+* Programación eficiente da limpeza da caché (@Isira-Seneviratne)
+
+* Renovación do procesamento de URL de repositorios para garantir unha engadidura fiable (@projectgus)
+
+* Opción de participar nas métricas de F-Droid

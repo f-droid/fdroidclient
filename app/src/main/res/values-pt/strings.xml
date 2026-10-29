@@ -272,7 +272,7 @@
     <string name="app_list_recently_updated">Recentemente atualizadas</string>
     <string name="app_list_most_downloaded">Mais descarregadas</string>
     <string name="app_list_all">Todas as apps</string>
-    <string name="app_list_author">Apps por %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Procurar…</string>
     <string name="sort_by_name">Ordenar por nome</string>
     <string name="filter_selected">escolhido</string>
@@ -377,7 +377,7 @@
     <string name="app_no_compatible_versions">Esta app não é compatível com o seu dispositivo</string>
     <string name="app_no_compatible_signer">Não é possível atualizar esta app, pois todas as versões têm uma assinatura incompatível\n\nSe não recebe atualizações por outro meio, você pode precisar de reinstalar a app. Os dados da app serão apagados.</string>
     <string name="app_no_compatible_signer_in_this_repo">Não é possível atualizar esta app, pois não há versões compatíveis no repositório preferido\n\nTente alterar o repositório preferido</string>
-    <string name="app_no_auto_update">A atualização automática não está disponível, pois a app foi compilada para uma versão antiga do Android sem apoiar atualizações automáticas</string>
+    <string name="app_no_auto_update">A atualização automática não está disponível, porque a app foi compilada para uma versão antiga do Android</string>
     <string name="app_issue_update_other_repo">Uma atualização está disponível num outro repositório. Altere o repositório preferido para atualizar</string>
     <string name="app_issue_not_available_title">App acabou de estar disponível</string>
     <string name="app_issue_not_available_text">A app pode ter sido removida ou estava num repositório que removeu ou desativou</string>
@@ -457,4 +457,33 @@
     <string name="notification_channel_self_update_description">Notifica quando a app for atualizada e fechada, para que você possa abri-lo novamente com facilidade</string>
     <string name="notification_self_update_title">%s foi atualizado. Toque para abrir</string>
     <string name="category_group_summary_games">Jogos de tabuleiro, cartas e festas</string>
+    <string name="category_group_health">Saúde</string>
+    <string name="category_group_summary_health">Apps de fitness, nutrição e medicina</string>
+    <string name="liberapay">opções de doações/pagamentos apoiados</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="app_details_permissions_section">Permissões</string>
+    <string name="app_details_permissions_button">Mostrar todas as permissões de %d</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Esta app solicita %d permissão confidencial:</item>
+        <item quantity="many">Esta app solicita %d permissões confidenciais:</item>
+        <item quantity="other">Esta app solicita %d permissões confidenciais:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Esta app não solicita permissões confidenciais</string>
+    <string name="app_details_permissions_title_num">Permissões (%d)</string>
+    <string name="app_details_permissions_warning">Esta informação é relatada pelo repositório. As permissões reais que a app recebe podem ser diferentes.</string>
+    <string name="app_details_permissions_title_sensitive">Confidencial (%d)</string>
+    <string name="app_details_permissions_title_normal">Concedido automaticamente (%d)</string>
+    <string name="app_details_permissions_title_custom">Personalizado (%d)</string>
+    <string name="permissions_colon">Permissões: %1$d</string>
+    <string name="panic_hide_warning_title">Lembrar como restaurar</string>
+    <string name="panic_hide_warning_message">Em caso de pânico, isto mostrará o ícone da Calculadora e o nome desta app no ecrã inicial e na gaveta de apps. Use as configurações do ícone da app para restaurar o ícone e o nome predefinido.\n\nNota: as notificações sempre usarão o ícone e o nome predefinido.</string>
+    <string name="panic_app_unknown_app">uma app desconhecida</string>
+    <string name="panic_hide_migration_title">Novo F-Droid mudou a ocultação de apps</string>
+    <string name="panic_hide_migration_message">A função de calculadora foi removida, mas ainda pode alterar o ícone da app permanentemente através das configurações de “ícone da app” e “botão de pânico”.</string>
+    <string name="panic_hide_migration_button">Rever configurações</string>
+    <string name="icon_title">Ícone da app</string>
+    <string name="icon_summary">Selecione o ícone usado para esta app no ecrã inicial e na gaveta de apps</string>
+    <string name="icon_intro">Selecione um ícone e um nome para esta app. Isto é mostrado no ecrã inicial e na gaveta de apps.\n\nNota: as notificações sempre usarão o ícone e o nome predefinido.</string>
 </resources>

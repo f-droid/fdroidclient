@@ -261,9 +261,9 @@
     <string name="menu_about">À propos</string>
     <string name="menu_discover">Découvrir</string>
     <string name="menu_apps_my">Mes applications</string>
-    <string name="first_start_loading">Chercher des dépôts d\'applications…</string>
+    <string name="first_start_loading">Récupération des dépôts d\'applications…</string>
     <string name="my_apps_empty">Seules les applications disponibles dans les dépôts de %1$s sont affichées ici</string>
-    <string name="my_apps_header_apps_with_issue">Applications présentant des problèmes</string>
+    <string name="my_apps_header_apps_with_issue">Applications posant problèmes</string>
     <string name="my_apps_ignore_dialog_title">Masquer le problème</string>
     <string name="my_apps_ignore_dialog_text">Le problème lié à cette version de « %1$s » sera ignoré</string>
     <string name="my_apps_ignore_dialog_button">Masquer</string>
@@ -272,7 +272,7 @@
     <string name="app_list_recently_updated">Récemment mis à jour</string>
     <string name="app_list_most_downloaded">Les plus téléchargés</string>
     <string name="app_list_all">Toutes les applications</string>
-    <string name="app_list_author">Applications de %s</string>
+    <string name="app_list_author">Auteur %s</string>
     <string name="search_placeholder">Rechercher…</string>
     <string name="search_no_results">Aucune application trouvée\n\nEssayez d\'utiliser moins de termes de recherche ou d\'ajouter d\'autres dépôts</string>
     <string name="category_group_productivity">Productivité</string>
@@ -300,7 +300,7 @@
     <string name="first_start_offline">Vous êtes hors ligne. Connectez-vous à Internet pour commencer.</string>
     <string name="first_start_button">Récupérer les dépôts</string>
     <string name="first_start_metered">Vous utilisez les données mobiles et le téléchargement dépassera 10 Mo. Appuyez sur « Récupérer les dépôts » pour lancer quand même le téléchargement.</string>
-    <string name="no_repos_enabled">Aucun dépôt disponible, ajouter un dépôt pour commencer</string>
+    <string name="no_repos_enabled">Aucun dépôt disponible, en ajouter un pour commencer</string>
     <string name="search_filter_no_results">Aucune application correspondante\n\nEssayez d\'utiliser moins de termes de recherche ou de supprimer les filtres</string>
     <string name="search_my_apps_no_results">Aucune application correspondante\n\nEssayez d\'utiliser moins de termes de recherche</string>
     <string name="sort_title">Ordre de tri et compatibilité</string>

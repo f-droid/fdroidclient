@@ -1,0 +1,13 @@
+* Admítese o intercambio mediante tarxetas SD
+
+* Correccións de erros e melloras en "Nearby Swap"
+
+* Melloras adicionais en "Detalles da aplicación"
+
+* Actualización do idioma e das traducións relacionadas con "Nearby" e "Swap"
+
+* Lóxica mellorada para a selección da icona da aplicación
+
+* Engadido de repositorios a través do ficheiro `additional_repos.xml` integrado, proveniente da ROM, do OEM ou do provedor
+
+* Visualización do `versionCode` nas entradas expandidas da lista de versións, no modo experto

@@ -1,0 +1,17 @@
+* Soporte para temas integrado cos temas nativos de Android (@proletarius101)
+
+* Novas notificacións na parte superior: "Sen Internet" e "Sen datos nin WiFi activados"
+
+* Mellora na xestión de repositorios e espellos en dispositivos USB-OTG e tarxetas SD
+
+* Evítanse as actualizacións repetidas da biblioteca Trichrome
+
+* Máis cambios para adaptarse ás directrices de Material Design (@proletarius101)
+
+* Mellora da insignia de OpenCollective (@ConnyDuck)
+
+* Renovación do sistema de carga de iconas mediante Glide (@proletarius101)
+
+* Nova icona adaptativa (@12people)
+
+* Modernización do código (@Isira-Seneviratne)

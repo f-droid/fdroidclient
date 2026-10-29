@@ -1,0 +1,8 @@
+* Supporto sperimentale per il ripristino delle app archiviate (un-archiving) su Android 15
+* Aggiunta automatica delle nuove app installate alla schermata Home per la maggior parte dei launcher (grazie a Dhina!)
+* Separate le azioni di condivisione del collegamento e di condivisione del file nella schermata dei dettagli dell'app
+* Viene ora mostrato un messaggio temporaneo (toast) quando un APK richiede più autorizzazioni del previsto
+* Pulizia più frequente delle cache interne per liberare spazio (grazie a DerGenaue!)
+* Riordinati i badge per le donazioni in modo da corrispondere a quelli presenti sul sito web (grazie a Leo!)
+* Aggiunta un'opzione nelle impostazioni per preferire i mirror esteri
+* Numerose correzioni di bug minori

@@ -1,0 +1,7 @@
+* uso de canais de notificación para un control detallado (@Isira-Seneviratne)
+* selección de idioma mellorada con múltiples configuracións rexionais (@spacecowboy/@bubu)
+* a lapela «Máis recentes» amosará mellores resultados en dispositivos que non estean en inglés
+* actualizacións das bibliotecas principais (Jackson, androidx, Gradle, etc.)
+* perfeccionamento da compatibilidade con *whitelabeling*
+
+Grazas aos novos colaboradores! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

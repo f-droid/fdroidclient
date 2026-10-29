@@ -258,7 +258,7 @@
     <string name="app_list_recently_updated">Recent geüpdatet</string>
     <string name="app_list_most_downloaded">Meest gedownload</string>
     <string name="app_list_all">Alle apps</string>
-    <string name="app_list_author">Apps van %s</string>
+    <string name="app_list_author">Auteur %s</string>
     <string name="search_placeholder">Zoeken…</string>
     <string name="first_start_loading">App gegevensbanken binnenhalen…</string>
     <string name="search_no_results">Geen apps gevonden\n\nProbeer minder zoektermen of voeg meer gegevensbanken toe</string>
@@ -305,10 +305,10 @@
     <string name="sort_title">Sorteren en compatibiliteit</string>
     <string name="sort_by_name">Op naam sorteren</string>
     <string name="sort_by_latest">Op recentheid sorteren</string>
-    <string name="filter_only_compatible">Apps voor dit apparaat</string>
+    <string name="filter_only_compatible">Toon alleen apps die compatibel zijn met dit apparaat</string>
     <string name="filter_button_save">Als standaard opslaan</string>
     <string name="filter_intro">Apps filteren op</string>
-    <string name="filter_antifeatures">Anti-functies verbergen</string>
+    <string name="filter_antifeatures">Anti-functies</string>
     <string name="onboarding_app_list_filter_message">Gebruik filters om alleen apps uit bepaalde categorieën of gegevensbanken weer te geven. Je kunt ook de sortering aanpassen.</string>
     <string name="got_it">Begrepen</string>
     <string name="pref_dyn_colors_title">Systeemkleuren gebruiken</string>
@@ -469,4 +469,28 @@
     <string name="category_group_summary_health">Fitness-, voedings- en medische apps</string>
     <string name="panic_hide_warning_title">Herinner hoe te herstellen</string>
     <string name="panic_hide_warning_message">In een panieksituatie toont dit het Rekenmachine-pictogram en de -naam voor deze app op het thuisscherm en in de app-lade. Gebruik App-pictograminstallingen om het standaardpictogram en -naam te herstellen.\n\nOpmerking: Meldingen zullen altijd het standaardpictogram en de -naam gebruiken.</string>
+    <string name="app_details_permissions_section">Toestemmingen</string>
+    <string name="app_details_permissions_button">Toon alle %d toestemmingen</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Deze app vraagt om %d gevoelige toestemming:</item>
+        <item quantity="other">Deze app vraagt om %d gevoelige toestemmingen:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Deze app vraagt niet om gevoelige toestemmingen</string>
+    <string name="app_details_permissions_title_num">Toestemmingen (%d)</string>
+    <string name="app_details_permissions_warning">Deze informatie wordt gerapporteerd door de opslagruimte. De werkelijke toestemmingen die de app ontvangt zijn mogelijk anders.</string>
+    <string name="app_details_permissions_title_sensitive">Gevoelig (%d)</string>
+    <string name="app_details_permissions_title_normal">Automatisch Verleend (%d)</string>
+    <string name="app_details_permissions_title_runtime">Runtime (%d)</string>
+    <string name="app_details_permissions_title_custom">Aangepast (%d)</string>
+    <string name="permissions_colon">Toestemmingen: %1$d</string>
+    <string name="sort_summary">Sorteren op</string>
+    <string name="sort_by_name_short">naam</string>
+    <string name="sort_by_latest_short">laatste update</string>
+    <string name="filter_antifeatures_summary">Toon apps met deze anti-functies</string>
+    <string name="filter_antifeatures_collapsed">Verborgen: %s</string>
+    <string name="notification_channel_privileged_extension_migration_description">Geeft een melding wanneer handmatige tussenkomst vereist is om weg te migreren van Rechtenuitbreiding.</string>
+    <string name="notification_privileged_extension_migration_title">Updates vereisen handmatige actie!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Onbekende bronnen\" niet ingeschakeld!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s installeert apps nu via de ingebouwde installer van Android. Je moet %1$s de machtiging \"onbekende bronnen\" verlenen om die installer te gebruiken en elke eerste installatie goedkeuren.</string>
+    <string name="notification_channel_privileged_extension_migration_title">Bevoorrechtte Extensie</string>
 </resources>

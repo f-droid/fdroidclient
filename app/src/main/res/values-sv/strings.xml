@@ -235,7 +235,7 @@
     <string name="collapse">Fäll in</string>
     <string name="no_handler_app_generic">Det finns ingen app som kan hantera detta.</string>
     <string name="pref_export_log_title">Felsökningslogg</string>
-    <string name="repo_basic_auth_title">Grundläggande HTTP-autentisering</string>
+    <string name="repo_basic_auth_title">Grundläggande aut</string>
     <string name="pref_export_log_summary">Skapar en fil med logcat-utdata som kan användas vid felsökning. Var försiktig: filen kan innehålla känslig information!</string>
     <string name="export_log_error">Det gick inte att spara logcat-loggen</string>
     <string name="repo_details_info_text">Ett förråd är en källa till appar.\n\nSpeglar fördelar nedladdningstrafiken mellan flera servrar. En spegel som finns närmare dig kan vara snabbare.\n\nOfficiella speglar anges av förrådets ägare. De kan inte tas bort, utan endast inaktiveras. Du kan lägga till egna speglar på samma sätt som vanliga förråd.</string>
@@ -268,7 +268,7 @@
     <string name="app_list_recently_updated">Nyligen uppdaterade appar</string>
     <string name="app_list_most_downloaded">Mest hämtade appar</string>
     <string name="app_list_all">Alla appar</string>
-    <string name="app_list_author">Appar från %s</string>
+    <string name="app_list_author">Författare %s</string>
     <string name="search_placeholder">Sök…</string>
     <string name="search_no_results">Inga appar hittades\n\nFörsök med färre söktermer eller lägg till fler förråd</string>
     <string name="category_group_productivity">Produktivitet</string>
@@ -305,13 +305,13 @@
     <string name="sort_title">Sortering och kompatibilitet</string>
     <string name="sort_by_name">Sortera efter namn</string>
     <string name="sort_by_latest">Sortera efter senaste uppdatering</string>
-    <string name="filter_only_compatible">Appar kompatibla med den här enheten</string>
+    <string name="filter_only_compatible">Visa endast appar kompatibla med den här enheten</string>
     <string name="filter_button_save">Spara som standard</string>
     <string name="filter_intro">Filtrera appar efter</string>
     <string name="filter_button_clear_all">Rensa alla filter</string>
     <string name="filter">Filter</string>
     <string name="filter_selected">valda</string>
-    <string name="filter_antifeatures">Dölj antifunktioner</string>
+    <string name="filter_antifeatures">Antifunktioner</string>
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Använd filter så att du bara ser appar från specifika kategorier eller förråd. Du kan också ändra sorteringen.</string>
     <string name="got_it">Jag förstår</string>
@@ -461,4 +461,25 @@
     <string name="panic_app_unknown_app">en okänd app</string>
     <string name="category_group_health">Hälsa</string>
     <string name="category_group_summary_health">Träning, kost och medicinska appar</string>
+    <string name="panic_hide_warning_title">Kom ihåg hur man återställer</string>
+    <string name="panic_hide_warning_message">Vid en paniksituation visas ikonen för ”Kalkylator” och appens namn på startskärmen och i appmenyn. Använd inställningarna för appikoner för att återställa standardikonen och standardnamnet. \n \nObservera att: Aviseringar kommer alltid att använda standardikonen och standardnamnet.</string>
+    <string name="app_details_permissions_section">Behörigheter</string>
+    <string name="app_details_permissions_button">Visa alla %d behörigheter</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Den här appen begär %d känslig behörighet:</item>
+        <item quantity="other">Den här appen begär %d känsliga behörigheter:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Den här appen begär inga känsliga behörigheter</string>
+    <string name="app_details_permissions_title_num">Behörigheter (%d)</string>
+    <string name="app_details_permissions_title_sensitive">Känsliga (%d)</string>
+    <string name="permissions_colon">Behörigheter: %1$d</string>
+    <string name="sort_summary">Sortera efter</string>
+    <string name="sort_by_name_short">namn</string>
+    <string name="sort_by_latest_short">senast uppdaterad</string>
+    <string name="filter_antifeatures_summary">Visa appar med dessa antifunktioner</string>
+    <string name="filter_antifeatures_collapsed">Dolda: %s</string>
+    <string name="app_details_permissions_title_normal">Auto-beviljade (%d)</string>
+    <string name="app_details_permissions_warning">Denna information har rapporterats från förrådet. De faktiska behörigheter som appen får kan vara andra.</string>
+    <string name="app_details_permissions_title_custom">Anpassade (%d)</string>
+    <string name="app_details_permissions_title_runtime">Exekvering (%d)</string>
 </resources>

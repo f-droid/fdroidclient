@@ -1,0 +1,6 @@
+* Material Design 3 (con visualizzazione edge-to-edge, ma senza colori dinamici). Grazie a proletarius!
+* Riprogettate le schermate dei dettagli dei repository (Grazie a Thore!)
+* Aggiunta l'esportazione del file Logcat nelle impostazioni avanzate.
+* Aggiornato il target SDK (Android 15 per la versione Basic e Android 11 per la versione Full).
+* Aggiunto un collegamento alla pagina dell'app nelle impostazioni di sistema (Grazie a j-m4!)
+* Utilizzato il selettore di applicazioni di Android per condividere le app installate e la cronologia delle installazioni (Grazie a Thore!)

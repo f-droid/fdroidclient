@@ -162,7 +162,7 @@
     <string name="disabled">Keelatud</string>
     <string name="swap_error_cannot_start_bluetooth">Bluetoothi ei saa käivitada!</string>
     <string name="swap_toast_closing_nearby_after_timeout">Naabrus suleti, sest teda ei kasutatud.</string>
-    <string name="nearby_splash__document_tree">Otsi USB OTG meedialt tarkvarahoidlaid ja peegelservereid.</string>
+    <string name="nearby_splash__document_tree">Otsi USB OTG meediumilt tarkvarahoidlaid ja peegelservereid.</string>
     <string name="notification_channel_updates_description">Kuvatakse rakenduste ja repositooriumite uuenduste teavitusi.</string>
     <string name="notification_channel_updates_title">Uuendused</string>
     <string name="notification_channel_swaps_description">Kuvatakse kohaliku ja autonoomse andmevahetuse teavitusi.</string>
@@ -272,7 +272,7 @@
     <string name="app_list_recently_updated">Hiljuti uuendatud</string>
     <string name="app_list_most_downloaded">Enim allalaaditud</string>
     <string name="app_list_all">Kõik rakendused</string>
-    <string name="app_list_author">Rakendused arendajalt %s</string>
+    <string name="app_list_author">Autor: %s</string>
     <string name="search_placeholder">Otsi…</string>
     <string name="search_no_results">Rakendusi ei leidu\n\nProovi kasutada laiemaid otsingutingimusi või lisa veel rakenduste hoidlaid</string>
     <string name="category_group_productivity">Tarbetarkvara</string>
@@ -311,13 +311,13 @@
     <string name="sort_title">Järjestus ja ühilduvus</string>
     <string name="sort_by_name">Järjesta nime alusel</string>
     <string name="sort_by_latest">Järjesta viimase uuenduse alusel</string>
-    <string name="filter_only_compatible">Selle nutiseadmega ühilduvad rakendused</string>
+    <string name="filter_only_compatible">Näita vaid selle nutiseadmega ühilduvaid rakendusi</string>
     <string name="filter_button_save">Salvesta vaikimisi väärtuseks</string>
     <string name="filter_intro">Filtreeri rakendusi</string>
     <string name="filter_button_clear_all">Eemalda kõik filtrid</string>
     <string name="filter">Filter</string>
     <string name="filter_selected">valitud</string>
-    <string name="filter_antifeatures">Peida omadused, mis ei sobi</string>
+    <string name="filter_antifeatures">Omadused, mis ei sobi</string>
     <string name="got_it">Selge lugu</string>
     <string name="dialog_metered_button">Laadi alla</string>
     <string name="repo_basicauth_username">Kasutajanimi</string>
@@ -417,7 +417,7 @@
     <string name="crash_report_error">Aruande saatmine ei õnnestunud. Kohe kuidagi ei leidnud e-posti rakendust :(</string>
     <string name="crash_report_save">Salvesta kokkujooksmise aruanne failina</string>
     <string name="crash_report_saved">Aruanne on salvestatud faili</string>
-    <string name="crash_report_error_saving">Aruanne faili salvestamisel tekkis viga</string>
+    <string name="crash_report_error_saving">Aruande salvestamisel failina tekkis viga</string>
     <string name="permission_camera_denied">QR-koodi skaneerimiseks luba rakendusel kasutada kaamerat. Klõpsa vastava seadistuste vaate avamiseks.</string>
     <string name="search_history">Hiljutised otsingud</string>
     <string name="install_history_switch">Kasuta paigalduse ajalugu</string>
@@ -467,4 +467,28 @@
     <string name="category_group_summary_health">Fitness, toitumine ja terviserakendused</string>
     <string name="panic_hide_warning_title">Jäta meelde, kuidas taastada</string>
     <string name="panic_hide_warning_message">Paanikaolukorras kuvatakse kalkulaatori ikoon ja nimi avalehel ja rakenduste menüüs. Kasuta rakenduse ikooni seadistusi, et taastada vaikimisi ikoon ja nimi.\n\nMärkus: Teavitustes kasutatakse alati vaikimisi ikooni ja nime.</string>
+    <string name="app_details_permissions_section">Õigused</string>
+    <string name="app_details_permissions_button">Näita kõiki õigusi: kokku %d</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Selle rakenduse poolt küsitud delikaatne õigus (%d):</item>
+        <item quantity="other">Selle rakenduse poolt küsitud delikaatsed õigused (%d):</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">See rakendus ei küsi ühtegi delikaatset õigust</string>
+    <string name="app_details_permissions_title_num">Õigused (%d)</string>
+    <string name="app_details_permissions_warning">See teave on edastatud tarkavarhoidla poolt. Tegelikud rakenduse küsitavad õigused võivad sellest erineda.</string>
+    <string name="app_details_permissions_title_sensitive">Delikaatsed (%d)</string>
+    <string name="app_details_permissions_title_normal">Automaatselt lubatud (%d)</string>
+    <string name="app_details_permissions_title_runtime">Käitusaegsed (%d)</string>
+    <string name="app_details_permissions_title_custom">Kohandatud (%d)</string>
+    <string name="permissions_colon">Õigused: %1$d</string>
+    <string name="sort_summary">Järjestus</string>
+    <string name="sort_by_name_short">nimi</string>
+    <string name="sort_by_latest_short">viimane muutmine</string>
+    <string name="filter_antifeatures_summary">Näita rakendusi, millel on mmadused, mis ei sobi</string>
+    <string name="filter_antifeatures_collapsed">Peidetud: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Priviligeeritud laiendus</string>
+    <string name="notification_channel_privileged_extension_migration_description">Saad teavituse, kui priviligeeritud laienduse kasutamise lõpetamine eeldab sinu sekkumist.</string>
+    <string name="notification_privileged_extension_migration_title">Uuendamine eeldab käsitsi sekkumist!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">„Tundmatuid allikad“ pole lubatud!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s paigaldab nüüd rakendusi Androidi sisseehitatud paigaldajaga. Sa pead lubama, et %1$s saab kasutada õigust paigaldada tundmatutest allikatest ja kinnitama iga esimese paigalduse.</string>
 </resources>

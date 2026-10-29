@@ -1,0 +1,8 @@
+* soporte experimental para desarquivar aplicacións en Android 15
+* engadir automaticamente as aplicacións recén instaladas á pantalla de inicio na maioría dos lanzadores (grazas, Dhina!)
+* separar as accións de compartir ligazón e compartir ficheiro nos detalles da aplicación
+* mostrar unha notificación emerxente (toast) cando un APK ten máis permisos dos esperados
+* limpar as cachés internas con máis frecuencia para liberar espazo (grazas, DerGenaue!)
+* reordenar as insignias de doazón para que coincidan coas do sitio web (grazas, Leo!)
+* engadir unha opción na configuración para dar preferencia a espellos (mirrors) estranxeiros
+* moitas correccións de erros menores

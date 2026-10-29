@@ -465,11 +465,13 @@
     <string name="category_group_summary_health">Фітнэс, харчаванне і медыцынскія праграмы</string>
     <string name="open_collective">Open Collective</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Правяраць абнаўленні толькі калі адкрыта • Праграмы састарэюць</string>
-    <string name="panic_hide_migration_title">Новы F-Droid змяніў хаванне праграм</string>
+    <string name="panic_hide_migration_title">Новы F-Droid змяніў хаванне праграмы</string>
     <string name="panic_hide_migration_message">Функцыя калькулятара была выдалена, але вы ўсё яшчэ можаце змяніць значок праграмы назаўжды праз налады \"значок праграмы\" і \"трывожная кнопка\".</string>
     <string name="panic_hide_migration_button">Прагляд налад</string>
     <string name="icon_title">Значок праграмы</string>
     <string name="icon_summary">Выберыце значок для гэтай праграмы на дамашнім экране і ў меню праграм</string>
     <string name="icon_intro">Выберыце значок і назву для гэтай праграмы. Гэта паказваецца на дамашнім экране і ў меню праграм.\n\nNote: Notifications will always use the default icon and name.</string>
     <string name="taler">Талер</string>
+    <string name="panic_hide_warning_title">Запомніць як аднавіць</string>
+    <string name="panic_hide_warning_message">У трывожнай сітуацыі будзе паказана назва і значок Калькулятара для гэтай праграмы на дамашнім экране і ў меню праграм. Выкарыстоўвайце налады значка праграмы каб аднавіць стандартны значок і назву.\n\nЗаўвага: Паведамленні будуць заўсёды выкарыстоўваць стандартны значок і назву.</string>
 </resources>

@@ -239,7 +239,7 @@
     <string name="app_list_recently_updated">Neseniai atnaujintos</string>
     <string name="app_list_most_downloaded">Daugiausiai atsisiuntimų</string>
     <string name="app_list_all">Visos programėlės</string>
-    <string name="app_list_author">%s sukurtos programėlės</string>
+    <string name="app_list_author">Autorius %s</string>
     <string name="search_placeholder">Ieškoti…</string>
     <string name="search_no_results">Nerastos programėlės\n\nPamėginkite naudoti mažiau paieškos žodžių arba įtraukite daugiau saugyklų</string>
     <string name="category_group_productivity">Produktyvumas</string>
@@ -345,13 +345,13 @@
     <string name="no_repos_enabled">Nėra pasiekiamų saugyklų, pridėkite saugyklą norėdami pradėti</string>
     <string name="search_filter_no_results">Nėra atitinkančių programėlių\n\nPamėginkite naudoti mažiau paieškos žodžių arba pašalinkite filtrus</string>
     <string name="search_my_apps_no_results">Nėra atitinkančių programėlių\n\nPamėginkite naudoti mažiau paieškos žodžių</string>
-    <string name="filter_only_compatible">Su šiuo įrenginiu suderinamos programėlės</string>
+    <string name="filter_only_compatible">Rodyti tik su šiuo įrenginiu suderinamas programėles</string>
     <string name="filter_button_save">Išsaugoti kaip numatytąjį</string>
     <string name="filter_intro">Filtruoti programėles pagal</string>
     <string name="filter_button_clear_all">Išvalyti visus filtrus</string>
     <string name="filter">Filtras</string>
     <string name="filter_selected">pasirinkta</string>
-    <string name="filter_antifeatures">Slėpti nepageidaujamas funkcijas</string>
+    <string name="filter_antifeatures">Nepageidaujamos funkcijos</string>
     <string name="onboarding_app_list_filter_title">Filtras</string>
     <string name="onboarding_app_list_filter_message">Naudoti filtrus, kad būtų rodomos programėlės tik iš tam tikrų kategorijų ar saugyklų. Taip pat galite pakeisti rūšiavimo tvarką.</string>
     <string name="got_it">Supratau</string>
@@ -478,4 +478,25 @@
     <string name="icon_title">Programėlės piktograma</string>
     <string name="icon_summary">Pasirinkite šios programėlės piktogramą, rodomą pagrindiniame ir programėlių ekranuose</string>
     <string name="icon_intro">Pasirinkite šios programėlės piktogramą ir pavadinimą. Tai bus rodoma pagrindiniame ir programėlių ekranuose.\n\nPastaba: pranešimai bus visada rodomi su numatytaisiais piktograma ir pavadinimu.</string>
+    <string name="app_details_permissions_section">Leidimai</string>
+    <string name="app_details_permissions_button">Rodyti visus %d leidimus</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Ši programėlė prašo %d jautraus leidimo:</item>
+        <item quantity="few">Ši programėlė prašo %d jautrių leidimų:</item>
+        <item quantity="many">Ši programėlė prašo %d jautrių leidimų:</item>
+        <item quantity="other">Ši programėlė prašo %d jautrių leidimų:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Ši programėlė neprašo jautrių leidimų</string>
+    <string name="app_details_permissions_title_num">Leidimai (%d)</string>
+    <string name="app_details_permissions_warning">Šią informaciją praneša saugykla. Tikslūs programėlės gaunami leidimai gali skirtis.</string>
+    <string name="app_details_permissions_title_sensitive">Jautrūs (%d)</string>
+    <string name="app_details_permissions_title_normal">Suteikti automatiškai (%d)</string>
+    <string name="app_details_permissions_title_runtime">Vykdymo trukmė (%d)</string>
+    <string name="app_details_permissions_title_custom">Tinkinti (%d)</string>
+    <string name="permissions_colon">Leidimai: %1$d</string>
+    <string name="sort_summary">Rikiuoti pagal</string>
+    <string name="sort_by_name_short">pavadinimą</string>
+    <string name="sort_by_latest_short">paskutinį atnaujinimą</string>
+    <string name="filter_antifeatures_summary">Rodyti programėles su šiomis nepageidaujamomis funkcijomis</string>
+    <string name="filter_antifeatures_collapsed">Paslėpta: %s</string>
 </resources>

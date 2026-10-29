@@ -97,7 +97,7 @@
     <string name="menu_email">Eine E-Mail an den Autor senden</string>
     <string name="swap_stopping_wifi">WLAN anhalten …</string>
     <string name="install_error_notify_title">Fehler beim Installieren von %s</string>
-    <string name="installing">Installation …</string>
+    <string name="installing">Wird installiert …</string>
     <string name="update_auto_install">Automatisch installieren</string>
     <string name="versions">Versionen</string>
     <string name="notification_title_single_update_available">Aktualisierung verfügbar</string>
@@ -179,13 +179,13 @@
     <string name="repo_io_error">Fehler beim Verbindungsaufbau mit der Paketquelle.</string>
     <string name="turn_on_wifi">WLAN einschalten</string>
     <string name="repo_add_new_title">Paketquelle hinzufügen</string>
-    <string name="repo_state_fetching">Paketquelle abrufen …</string>
+    <string name="repo_state_fetching">Repository abrufen …</string>
     <string name="repo_state_adding">Paketquelle hinzufügen …</string>
     <string name="repo_exists">Diese Paketquelle wurde bereits hinzugefügt.</string>
     <string name="swap_banner_message">Zum Tausch von Apps aktiviere dein WLAN und verbinde dich mit demselben Netzwerk wie dein Freund.</string>
     <string name="repo_invalid">Ungültiges Repository. \n \nKontaktiere die Maintainer und teile ihnen das Problem mit.</string>
     <string name="repo_intro">Ein Repository ist eine zusätzliche Quelle für Apps. Apps von Drittanbietern, die du hier hinzufügst, haben andere Standards als die von F-Droid selbst bereitgestellten Apps.\n\nBitte stelle sicher, dass das Repository, das du hinzufügst, vertrauenswürdig ist.</string>
-    <string name="repo_enter_url">URL des Repositorys manuell eingeben</string>
+    <string name="repo_enter_url">Repository-URL manuell eingeben</string>
     <string name="nearby_splace__external_storage_permission_button">Probieren</string>
     <string name="nearby_splach__external_storage_permission_explainer">F-Droid kann auf der SD-Karte nach Paketquellen und Spiegelservern suchen, benötigt dafür aber deine Erlaubnis.</string>
     <string name="swap_connection_indexv0_error">Du versuchst dich mit jemandem mit einer veralteten F-Droid-App zu verbinden. Vor einer Verbindung muss diese F-Droid-App aktualisiert werden. Du kannst den Direkttausch verwenden, um die veraltete App über die neue auf deinem Gerät zu aktualisieren.</string>
@@ -267,7 +267,7 @@
     <string name="app_list_recently_updated">Kürzlich aktualisiert</string>
     <string name="app_list_most_downloaded">Am häufigsten heruntergeladen</string>
     <string name="app_list_all">Alle Apps</string>
-    <string name="app_list_author">Apps von %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Suchen …</string>
     <string name="search_no_results">Keine Apps gefunden\n\nVersuche es mit weniger Suchbegriffen oder füge weitere Repositorys hinzu</string>
     <string name="category_group_productivity">Produktivität</string>
@@ -292,7 +292,7 @@
     <string name="installed_version">Installierte Version:</string>
     <string name="ipfsgw_summary_new">Download von Apps über IPFS-Webendpunkte</string>
     <string name="first_start_button">Repositorys abrufen</string>
-    <string name="filter_antifeatures">Unerwünschte Merkmale ausblenden</string>
+    <string name="filter_antifeatures">Unerwünschte Merkmale</string>
     <string name="first_start_intro">Um loszulegen, synchronisiere die App-Repositorys</string>
     <string name="first_start_offline">Du bist offline. Stelle eine Verbindung zum Internet her, um loszulegen.</string>
     <string name="first_start_metered">Du nutzt mobiles Internet und es werden mehr als 10 MB heruntergeladen. Tippe auf „Repositorys abrufen“, um trotzdem loszulegen.</string>
@@ -302,7 +302,7 @@
     <string name="sort_title">Sortierung und Kompatibilität</string>
     <string name="sort_by_name">Nach Name sortieren</string>
     <string name="sort_by_latest">Nach letzter Aktualisierung sortieren</string>
-    <string name="filter_only_compatible">Mit diesem Gerät kompatible Apps</string>
+    <string name="filter_only_compatible">Nur mit diesem Gerät kompatible Apps anzeigen</string>
     <string name="filter_button_save">Als Standard speichern</string>
     <string name="filter_intro">Apps filtern nach</string>
     <string name="filter_button_clear_all">Alle Filter löschen</string>
@@ -387,8 +387,8 @@
     <string name="notification_repo_update_default">Verbindung zu %1$s wird hergestellt …</string>
     <string name="notification_repo_update_downloading">%1$s von %2$s heruntergeladen</string>
     <plurals name="notification_repo_update_saving">
-        <item quantity="one">%1$d von %2$s App gespeichert</item>
-        <item quantity="other">%1$d von %2$s Apps gespeichert</item>
+        <item quantity="one">%1$d App von %2$s gespeichert</item>
+        <item quantity="other">%1$d Apps von %2$s gespeichert</item>
     </plurals>
     <plurals name="notification_installing_title">
         <item quantity="one">%1$d App wird installiert …</item>
@@ -412,7 +412,7 @@
     <string name="install_history_disabled_state">Der Installationsverlauf ist deaktiviert\n\nInstallationen, Aktualisierungen und Deinstallationen werden nicht aufgezeichnet</string>
     <string name="install_history_delete_ally">Installationsverlauf löschen</string>
     <string name="install_history_delete_text">Möchtest du den Installationsverlauf löschen?</string>
-    <string name="status_downloading">Wird heruntergeladen mit %s/s</string>
+    <string name="status_downloading">Wird heruntergeladen, mit %s/s</string>
     <string name="status_downloading_remaining">noch %1$s</string>
     <string name="search_history">Zuletzt gesucht</string>
     <string name="install_history_switch">Installationsverlauf verwenden</string>
@@ -444,7 +444,7 @@
     <string name="pref_auto_updates_only_only_when_open_app">Nur beim Öffnen der App</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Nur beim Öffnen nach Aktualisierungen suchen • Apps werden veralten</string>
     <string name="notification_channel_self_update_title">Auto-Update</string>
-    <string name="notification_channel_self_update_description">Benachrichtigt dich, wenn die App aktualisiert und geschlossen wurde, sodass du sie ganz einfach erneut starten kannst</string>
+    <string name="notification_channel_self_update_description">Benachrichtigt, wenn die App sich aktualisiert hat und geschlossen wurde, sodass sie einfach erneut gestartet werden kann</string>
     <string name="notification_self_update_title">%s wurde aktualisiert. Zum Öffnen antippen</string>
     <string name="liberapay">Liberapay</string>
     <string name="open_collective">Open Collective</string>
@@ -463,4 +463,30 @@
     <string name="panic_app_unknown_app">eine unbekannte App</string>
     <string name="category_group_summary_health">Fitness-, Ernährungs- und Gesundheits-Apps</string>
     <string name="category_group_health">Gesundheit</string>
+    <string name="panic_hide_warning_message">Im Notfall werden das Rechner-Symbol und der Name dieser App auf dem Startbildschirm und in der App-Übersicht angezeigt. Verwende die Einstellungen für App-Symbole, um das Standardsymbol und den Standardnamen wiederherzustellen.\n\nHinweis: Benachrichtigungen verwenden immer das Standardsymbol und den Standardnamen.</string>
+    <string name="panic_hide_warning_title">Wie man es wiederherstellt</string>
+    <string name="app_details_permissions_section">Berechtigungen</string>
+    <string name="app_details_permissions_button">Alle %d Berechtigungen anzeigen</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Diese App fordert %d sensible Berechtigung an:</item>
+        <item quantity="other">Diese App fordert %d sensible Berechtigungen an:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Diese App fordert keine sensiblen Berechtigungen an</string>
+    <string name="app_details_permissions_title_num">Berechtigungen (%d)</string>
+    <string name="app_details_permissions_warning">Diese Informationen stammen aus dem Repository. Die tatsächlichen Berechtigungen, die die App erhält, können davon abweichen.</string>
+    <string name="app_details_permissions_title_sensitive">Sensibel (%d)</string>
+    <string name="app_details_permissions_title_normal">Automatisch gewährt (%d)</string>
+    <string name="app_details_permissions_title_runtime">Laufzeit (%d)</string>
+    <string name="permissions_colon">Berechtigungen: %1$d</string>
+    <string name="app_details_permissions_title_custom">Benutzerdefiniert (%d)</string>
+    <string name="sort_summary">Sortieren nach</string>
+    <string name="sort_by_name_short">Name</string>
+    <string name="sort_by_latest_short">Letzte Aktualisierung</string>
+    <string name="filter_antifeatures_summary">Apps mit diesen unerwünschten Merkmalen anzeigen</string>
+    <string name="filter_antifeatures_collapsed">Ausgeblendet: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Rechteerweiterung</string>
+    <string name="notification_channel_privileged_extension_migration_description">Benachrichtigt, wenn ein manueller Eingriff erforderlich ist, um von der Rechteerweiterung wegzuwechseln.</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">„Unbekannte Quellen“ nicht aktiviert!</string>
+    <string name="notification_privileged_extension_migration_title">Aktualisierungen erfordern manuelle Aktion!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s installiert Apps nun über Androids integrierten Installer. Du musst %1$s die Berechtigung „Unbekannte Quellen“ erteilen, um diesen Installer nutzen zu können, und jede Erstinstallation bestätigen.</string>
 </resources>

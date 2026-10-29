@@ -1,0 +1,5 @@
+* Renovación completa da lóxica de descarga para mellorar o rendemento e o soporte para espellos (mirrors).
+
+* As capturas de pantalla e os elementos gráficos descárganse agora desde espellos.
+
+* Reduciuse unha fuga de privacidade relacionada coas sesións TLS.

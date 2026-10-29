@@ -1,0 +1,17 @@
+* Revisar o menú Compartir para usar opcións integradas como Nearby
+
+* Mellorar o fluxo de traballo e a navegación de Nearby con moitas correccións de erros
+
+* Melloras no deseño de materiais (@proletarius101)
+
+* As aplicacións sen iconas PNG agora móstranse na lapela Última (@ashutoshgngwr)
+
+* Mellorar a xestión de iconas con configuracións de datos/WiFi limitadas
+
+* Compatibilidade con máis escáneres de códigos de barras (@Lugerun)
+
+* Permitir a elección de que AntiFeatures mostrar
+
+* Bloquear a adición de repositorios cando o administrador do dispositivo non permite "Fontes descoñecidas"
+
+* Eliminar a configuración "Permitir solicitudes push"

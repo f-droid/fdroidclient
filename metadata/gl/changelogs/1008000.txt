@@ -1,0 +1,3 @@
+* Corrección da preferencia da barra de busca en versións recentes de Android (grazas a @dkanada)
+* Xestión dos permisos divididos da API 29: a localización precisa implica agora a localización aproximada
+* Definición de regras de copia de seguridade para evitar gardar o repositorio de intercambio (swap repo)

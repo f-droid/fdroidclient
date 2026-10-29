@@ -1,0 +1,4 @@
+* xestionar a configuración de permisos en Android 10 para evitar os avisos sobre «orixes descoñecidas»
+* o teclado ábrese ao limpar a busca
+* sincronización de traducións coas cadeas de texto de Android
+* forzar o uso de HTTPS nos dominios de repositorios comúns (GitLab, GitHub, Amazon)

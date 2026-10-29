@@ -78,4 +78,6 @@
     <string name="notification_channel_updates_title">અદ્યતનો</string>
     <string name="paste">ચોંટાડો</string>
     <string name="ipfsgw_add_add">ઉમેરો</string>
+    <string name="menu_about">વિશે</string>
+    <string name="menu_discover">નવું ખોજો</string>
 </resources>

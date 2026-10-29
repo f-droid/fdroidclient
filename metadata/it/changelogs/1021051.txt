@@ -1,5 +1,11 @@
-- Riscritto l'aggiornatore del repository da capo per rendere più affidabili gli aggiornamenti in background
-- Suddivisi nome e riassunto nelle liste delle app per una lettura più semplice 
-- Adesso possono essere visualizzati degli avvisi quando l'app non può essere aggiornata dalla repo preferita
-- Le app che puntano al ventiquattresimo SDK non funzionano più per Android 15
-- Altro ancora...
+* Riscritto il sistema di aggiornamento dei repository per rendere più affidabili gli aggiornamenti in background
+* Separati nome e descrizione breve negli elenchi delle app per migliorarne la leggibilità
+* Aggiunto un avviso quando le app non possono essere aggiornate dal repository preferito
+* Le app che richiedono l'SDK 24 non sono compatibili con i dispositivi Android 15
+* Migliorata la gestione dei mirror nell'anteprima di "Aggiungi repository" (grazie a Thore!)
+* Abilitati gli aggiornamenti automatici senza supervisione delle app sui dispositivi Xiaomi che non utilizzano MIUI (grazie a Irate!)
+* Aggiunta la fiducia nei certificati root installati dall'utente (grazie a B.!)
+* Corretta la ricerca senza distinzione tra maiuscole e minuscole in presenza di caratteri accentati e altri segni diacritici (grazie a Tobias!)
+* Aggiornate le descrizioni delle funzionalità indesiderate (Anti-Features) (grazie a Licaon!)
+* Aggiunta la funzionalità indesiderata (Anti-Feature) relativa al tethering di rete (grazie a linsui!)
+* Gli spazi bianchi vengono ora ignorati durante l'aggiunta di repository mirror (grazie a Tobias!)

@@ -271,7 +271,7 @@
     <string name="app_list_recently_updated">Baru diperbarui</string>
     <string name="app_list_most_downloaded">Banyak diunduh</string>
     <string name="app_list_all">Semua aplikasi</string>
-    <string name="app_list_author">Aplikasi oleh %s</string>
+    <string name="app_list_author">Pengembang %s</string>
     <string name="search_placeholder">Cari…</string>
     <string name="search_no_results">Tidak ada aplikasi ditemukan\n\nCoba gunakan lebih sedikit kata kunci atau tambahkan lebih banyak repositori</string>
     <string name="category_group_productivity">Produktifitas</string>
@@ -462,4 +462,19 @@
     <string name="icon_intro">Pilih ikon dan nama untuk aplikasi ini. Ikon dan nama tersebut akan ditampilkan pada layar utama dan laci aplikasi.\n\nCatatan: Notifikasi akan selalu menggunakan ikon dan nama bawaan.</string>
     <string name="category_group_health">Kesehatan</string>
     <string name="category_group_summary_health">Kebugaran, nutrisi dan aplikasi kesehatan</string>
+    <string name="panic_hide_warning_title">Ingat cara memulihkan</string>
+    <string name="app_details_permissions_section">Izin</string>
+    <string name="app_details_permissions_button">Tampilkan semua %d izin</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="other">Aplikasi ini meminta %d izin sensitif:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Aplikasi ini tidak meminta izin sensitif</string>
+    <string name="app_details_permissions_title_num">Izin (%d)</string>
+    <string name="app_details_permissions_warning">Informasi ini dilaporkan oleh repositori. Izin yang sebenarnya diterima aplikasi mungkin berbeda.</string>
+    <string name="app_details_permissions_title_sensitive">Sensitif (%d)</string>
+    <string name="app_details_permissions_title_normal">Diberikan Otomatis (%d)</string>
+    <string name="app_details_permissions_title_runtime">Runtime (%d)</string>
+    <string name="app_details_permissions_title_custom">Khusus (%d)</string>
+    <string name="permissions_colon">Izin: %1$d</string>
+    <string name="panic_hide_warning_message">Saat terjadi peristiwa panik, ikon dan nama aplikasi ini di layar utama dan laci aplikasi akan ditampilkan sebagai Kalkulator. Gunakan pengaturan Ikon aplikasi untuk memulihkan ikon dan nama bawaan.\n\nCatatan: Notifikasi akan selalu menggunakan ikon dan nama bawaan.</string>
 </resources>

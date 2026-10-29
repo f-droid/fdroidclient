@@ -1,0 +1,6 @@
+* Material Design 3 (con deseño de bordo a bordo, pero sen cores dinámicas) (Grazas, proletarius!)
+* Redeseño das pantallas de detalles do repositorio (Grazas, Thore!)
+* Engadiuse a exportación de ficheiros logcat na configuración avanzada
+* Actualización do SDK de destino (Android 15 para a versión básica e Android 11 para a completa)
+* Engadiuse unha ligazón de retorno desde a páxina da aplicación na configuración do sistema (Grazas, j-m4!)
+* Uso do selector de aplicacións para compartir as aplicacións instaladas e o historial de instalacións (Grazas, Thore!)
