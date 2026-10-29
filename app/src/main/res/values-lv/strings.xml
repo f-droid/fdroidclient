@@ -119,7 +119,7 @@
     <string name="repo_user_mirrors">Lietotāja spoguļglabātavas</string>
     <string name="theme">Izskats</string>
     <string name="banner_updating_repositories">Atjaunina glabātavas</string>
-    <string name="icon_calculator">Kalkulators</string>
+    <string name="icon_calculator">Skaitļotājs</string>
     <string name="panic_hide_summary">Lietotne paslēps sevi</string>
     <string name="panic_hide_title">Paslēpt %s</string>
     <string name="panic_destructive_actions">Postošas darbības</string>
@@ -266,7 +266,7 @@
     <string name="app_list_recently_updated">Nesen atjauninātas</string>
     <string name="app_list_most_downloaded">Visvairāk lejupielādētās</string>
     <string name="app_list_all">Visas lietotnes</string>
-    <string name="app_list_author">Lietotnes no %s</string>
+    <string name="app_list_author">Autors %s</string>
     <string name="search_placeholder">Meklēt…</string>
     <string name="search_no_results">Netika atrasta neviena lietotne\n\nJāmēģina izmantot vienkāršāks meklēšanas vaicājums vai jāpievieno vairāk glabātavu</string>
     <string name="category_group_productivity">Ražīgums</string>
@@ -453,14 +453,19 @@
     <string name="install_history_delete_ally">Izdzēst uzstādīšanas vēsturi</string>
     <string name="install_history_delete_text">Izdzēst uzstādīšanas vēsturi?</string>
     <string name="category_group_health">Veselība</string>
-    <string name="category_group_summary_health">Fitnesa, uztura un medicīnas aplikācijas</string>
+    <string name="category_group_summary_health">Vingruma, uztura un ārstniecības lietotnes</string>
     <string name="liberapay">Liberapay</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
-    <string name="panic_app_unknown_app">Nezināma aplikācija</string>
-    <string name="panic_hide_migration_message">Kalkulatora funkcija tika noņemta, taču tu vēl joprojām vari pavisam mainīt aplikācijas ikonu caur \"aplikācijas ikona\" un \"panikas poga\" iestatījumos.</string>
+    <string name="panic_app_unknown_app">nezināma lietotne</string>
+    <string name="panic_hide_migration_message">Skaitļotāja iespēja tika noņemta, taču lietotnes ikonu joprojām var pastāvīgi nomainīt ar iestatījumiem “Lietotnes ikona” un “Ārkārtas poga”.</string>
     <string name="panic_hide_migration_button">Pārskatīt iestatījumus</string>
-    <string name="icon_title">Aplikācijas ikona</string>
+    <string name="icon_title">Lietotnes ikona</string>
     <string name="open_collective">Open Collective</string>
     <string name="taler">Taler</string>
+    <string name="panic_hide_warning_title">Atcerēties kā atjaunot</string>
+    <string name="panic_hide_warning_message">Ārkārtas gadījumā tas sākuma ekrānā un lietotņu atvilktnē parādīs skaitļotāja ikonu un nosaukumu. Ar “Lietotnes ikonas iestatījumi” var atjaunot noklusējuma ikonu un nosaukumu.\n\nPiezīme: paziņojumos vienmēr tiks izmantota noklusējuma ikona un nosaukums.</string>
+    <string name="panic_hide_migration_title">Jaunajā F-Droid ir mainīta lietotnes paslēpšana</string>
+    <string name="icon_summary">Jāatlasa šai lietotnei sākuma skatā un lietotņu atvilktnē izmantojamā ikona</string>
+    <string name="icon_intro">Jāatlasa šīs lietotnes ikona un nosaukums. Tas tiks rādīts sākuma skatā un lietotņu atvilktnē.\n\nPiezīme: paziņojumos vienmēr tiks izmantota noklusējuma ikona un nosaukums.</string>
 </resources>

@@ -274,7 +274,7 @@
     <string name="app_list_recently_updated">Recientemente actualizado</string>
     <string name="app_list_most_downloaded">Más descargado</string>
     <string name="app_list_all">Todas las apps</string>
-    <string name="app_list_author">Aplicaciones por %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Buscar…</string>
     <string name="search_no_results">No se encontraron apps\n\nIntenta usar menos términos de búsqueda o agrega más repositorios</string>
     <string name="category_group_productivity">Productividad</string>
@@ -308,13 +308,13 @@
     <string name="sort_title">Clasificación y compatibilidad</string>
     <string name="sort_by_name">Ordenar por nombre</string>
     <string name="sort_by_latest">Ordenar por última actualización</string>
-    <string name="filter_only_compatible">Aplicaciones compatibles con este dispositivo</string>
+    <string name="filter_only_compatible">Solo mostrar aplicaciones compatibles con este dispositivo</string>
     <string name="filter_button_save">Guardar como predeterminado</string>
     <string name="filter_intro">Filtrar aplicaciones por</string>
     <string name="filter_button_clear_all">Limpiar todos los filtros</string>
     <string name="filter">Filtro</string>
     <string name="filter_selected">seleccionado</string>
-    <string name="filter_antifeatures">Ocultar características indeseadas</string>
+    <string name="filter_antifeatures">Características controvertidas</string>
     <string name="onboarding_app_list_filter_title">Filtro</string>
     <string name="onboarding_app_list_filter_message">Usa los filtros para mostrar aplicaciones de categorías o repositorios específicos. También puedes cambiar el orden de clasificación.</string>
     <string name="got_it">Entendido</string>
@@ -471,4 +471,13 @@
     <string name="icon_summary">Selecciona el icono usado por esta app en la pantalla de inicio y el cajón de aplicaciones</string>
     <string name="icon_intro">Selecciona un icono y nombre para esta app. Este se muestra en la pantalla de inicio y el cajón de aplicaciones.\n\nNota: Las notificaciones siempre se mostrarán con el icono y nombre por defecto.</string>
     <string name="panic_hide_migration_title">Nuevo cambio en la ocultación de aplicaciones de F-Droid</string>
+    <string name="panic_hide_warning_title">Recuerda cómo restaurar</string>
+    <string name="panic_hide_warning_message">En un momento de pánico, esto mostrará el ícono y nombre de la Calculadora para esta app en la pantalla de inicio y el cajón de aplicaciones. Utilice los ajustes de ícono de la aplicación para restaurar el ícono y nombre predeterminado.\n\nNota: Las notificaciones siempre tendrán el ícono y nombre predeterminado.</string>
+    <string name="sort_by_name_short">nombre</string>
+    <string name="sort_by_latest_short">última actualización</string>
+    <string name="app_details_permissions_section">Permisos</string>
+    <string name="app_details_permissions_button">Mostrar todos los permisos %d</string>
+    <string name="app_details_permissions_title_num">Permisos (%d)</string>
+    <string name="sort_summary">Ordenar por</string>
+    <string name="filter_antifeatures_summary">Mostrar aplicaciones con estas características controvertidas</string>
 </resources>

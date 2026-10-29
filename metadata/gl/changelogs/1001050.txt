@@ -1,0 +1,7 @@
+* Soporte para espellos oficiais de calquera repositorio, con selección automática baseada na dispoñibilidade
+
+* Melloras significativas na interface, así como estabilidade e corrección de erros
+
+* Novas opcións de privacidade: impedir capturas de pantalla; saír ante unha situación de emerxencia
+
+* Novos idiomas: coreano (ko) e vietnamita (vi)

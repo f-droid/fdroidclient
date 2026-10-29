@@ -1,0 +1,7 @@
+* Engadíronse opcións en RepoDetails para desactivar un, varios ou todos os espellos (#1696)
+
+* Selección dun espello aleatorio para a descarga de cada paquete/APK
+
+* As descargas de APK almacénanse en caché por repositorio, non por espello
+
+* Xestión de ETags de Apache e NGINX ao comprobar se o índice está actualizado (#1708)

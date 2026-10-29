@@ -1,0 +1,7 @@
+Modernización completa do código de descarga, indexación e bases de datos. É máis rápido e robusto, ao tempo que consome menos ancho de banda. Tamén resulta máis doado de manter, grazas a un conxunto de probas moi mellorado. Corríxense numerosos fallos que provocaban peches inesperados, así como erros de longa data.
+
+* Funciona mellor en dispositivos económicos con menos memoria.
+
+* Corríxense os erros #649 #860 #1206 #1588 #1710 #1971 #1989 #2080 #2081 #2157 #2322 #2353 #2370 #2412 #2431 #2436 #2442 #2443 #2444 #2477 #2484 #2485 #2490 #2493 #2495 #2500 #2503 #2505 #2508
+
+* Novo idioma: cantonés (yue)

@@ -1,0 +1,7 @@
+* Tuki virallisille peileille mille tahansa repolle, automaattisella valinnalla riippuen saatavuudesta
+
+* Paljon käyttöliittymän viimeistelyä, sekä vakautta ja bugikorjauksia
+
+* Uudet yksityisyysvalinnat: Kuvakaappausten estäminen; poistu paniikkitilanteessa
+
+* Uudet kielet: korea (ko) ja vietnam (vi)

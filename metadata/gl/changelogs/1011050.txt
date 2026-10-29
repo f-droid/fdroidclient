@@ -1,0 +1,7 @@
+* Mellora a vinculación de URL nas descricións das aplicacións
+
+* Mellorado o manexo de tarxetas SD e USG-OTG nas proximidades
+
+* Código modernizado e cambiou de PNG a vectores (grazas @isira-seneviratne!)
+
+* Recoñece URL de repositorio máis longos para admitir espellos GitCDN/RawGit/etc

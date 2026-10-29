@@ -224,7 +224,7 @@
     <string name="app_list_recently_updated">Nedávno aktualizované</string>
     <string name="app_list_most_downloaded">Najsťahovanejšie</string>
     <string name="app_list_all">Všetky aplikácie</string>
-    <string name="app_list_author">Aplikácie od vyvojára %s</string>
+    <string name="app_list_author">Autor: %s</string>
     <string name="search_placeholder">Vyhľadať…</string>
     <string name="search_no_results">Nenašli sa žiadne aplikácie\n\nSkúste použiť menej slov alebo pridať ďalšie repozitáre</string>
     <string name="category_group_productivity">Produktivita</string>
@@ -485,4 +485,6 @@
     <string name="app_no_compatible_signer_in_this_repo">Túto aplikáciu nie je možné aktualizovať, pretože v preferovanom repozitári nie sú k dispozícii žiadne kompatibilné verzie\n\nSkúste zmeniť preferovaný repozitár</string>
     <string name="app_issue_hint">Nasledujúce aplikácie vyžadujú vašu pozornosť. Problém s aplikáciou môžete ignorovať jej dlhým stlačením.</string>
     <string name="sdk_versions_colon">Verzie SDK: %1$s</string>
+    <string name="panic_hide_warning_title">Zapamätajte si, ako obnoviť</string>
+    <string name="panic_hide_warning_message">V prípade panickej udalosti sa na domovskej obrazovke a v zozname aplikácií zobrazia namiesto tejto aplikácie ikona a názov Kalkulačky. Pomocou nastavení ikony aplikácie môžete obnoviť východziu ikonu a názov.\n\nPoznámka: Oznámenia budú vždy používať východziu ikonu a názov.</string>
 </resources>

@@ -1,0 +1,7 @@
+* Corrixiuse o uso de repositorios e espellos desde o almacenamento externo en versións recentes de Android
+* Mellorouse a xestión da wifi en «Nas proximidades»
+* A barra de navegación agora lembra a súa posición mesmo cando se reinicia F-Droid
+* Novo idioma: suahili
+* Corrixiuse a descarga de imaxes para repositorios que aínda usan index-v1
+* Corrixíronse peches inesperados relacionados coa memoria de intercambio (swap), a xestión de repositorios e outros aspectos
+* Eliminouse o botón «Volver a unha versión anterior» (downgrade), xa que Android xa non o permite

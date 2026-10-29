@@ -265,7 +265,7 @@
     <string name="app_list_recently_updated">Ĝisdatigitaj antaŭ nelonga tempo</string>
     <string name="app_list_most_downloaded">Plej ofte elŝutataj</string>
     <string name="app_list_all">Ĉiuj aplikaĵoj</string>
-    <string name="app_list_author">Aplikaĵoj fare de %s</string>
+    <string name="app_list_author">Aŭtoro: %s</string>
     <string name="search_placeholder">Serĉi…</string>
     <string name="search_no_results">Trovis neniun aplikaĵon\n\nProvu uzi malpli da serĉvortoj aŭ aldoni pliajn deponejojn</string>
     <string name="category_group_productivity">Oficejo</string>
@@ -301,13 +301,13 @@
     <string name="sort_title">Ordigo kaj akordo</string>
     <string name="sort_by_name">Ordigi laŭ nomo</string>
     <string name="sort_by_latest">Ordigi laŭ lasta ĝisdatigo</string>
-    <string name="filter_only_compatible">Aplikaĵoj akordaj kun tiu ĉi aparato</string>
+    <string name="filter_only_compatible">Montri nur aplikaĵojn akordajn kun tiu ĉi aparato</string>
     <string name="filter_button_save">Konservi kiel implicitan</string>
     <string name="filter_intro">Filtri aplikaĵojn</string>
     <string name="filter_button_clear_all">Nuligi ĉiujn filtrilojn</string>
     <string name="filter">Filtri</string>
     <string name="filter_selected">elektita</string>
-    <string name="filter_antifeatures">Fiebloj por escepti</string>
+    <string name="filter_antifeatures">Fiebloj</string>
     <string name="onboarding_app_list_filter_title">Filtrilo</string>
     <string name="onboarding_app_list_filter_message">Uzu filtrilojn por montri nur aplikaĵojn de specifaj kategorioj aŭ deponejoj. Vi ankaŭ povas ŝanĝi manieron de ordigo.</string>
     <string name="got_it">Kompreneble</string>
@@ -461,4 +461,25 @@
     <string name="icon_intro">Elektu bildsimbolon kaj nomon por tiu ĉi aplikaĵo. Tio ĉi montriĝos en la hejmekrano kaj en la tirmenuo de aplikaĵoj.\n\nRimarko: sciigoj ĉiam uzos la implicitajn bildsimbolon kaj nomon.</string>
     <string name="category_group_health">Sano</string>
     <string name="category_group_summary_health">Aplikaĵoj pri trejnado, nutrado kaj medicinaj</string>
+    <string name="panic_hide_warning_title">Memoru pri kiel restarigi</string>
+    <string name="panic_hide_warning_message">Dum danĝera situacio, iu ĉi aplikaĵo ricevos la nomon “Kalkulilo” kaj bildsimbolon de kalkulilo sur la ĉefekrano kaj en tirmenuo de aplikaĵoj. Uzu la agordon “Bildsimbolo de aplikaĵo” por restarigi implicitajn nomon kaj bildsimbolon.\n\nRimarko: sciigoj ĉiam uzos la implicitajn nomon kaj bildsimbolon.</string>
+    <string name="app_details_permissions_section">Permesoj</string>
+    <string name="app_details_permissions_button">Montri ĉiujn %d permesojn</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Tiu ĉi aplikaĵo postulas %d riskan permeson:</item>
+        <item quantity="other">Tiu ĉi aplikaĵo postulas %d riskajn permesojn:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Tiu ĉi aplikaĵo postulas neniun riskan permeson</string>
+    <string name="app_details_permissions_title_num">Permesoj (%d)</string>
+    <string name="app_details_permissions_warning">Tiuj ĉi informoj estas liverataj de la deponejo. La veraj permesoj ricevitaj de la aplikaĵo povas esti aliaj.</string>
+    <string name="app_details_permissions_title_sensitive">Riskaj (%d)</string>
+    <string name="app_details_permissions_title_normal">Aŭtomate ricevitaj (%d)</string>
+    <string name="app_details_permissions_title_runtime">Ricevitaj dum uzo (%d)</string>
+    <string name="app_details_permissions_title_custom">Propraj (%d)</string>
+    <string name="permissions_colon">Permesoj: %1$d</string>
+    <string name="sort_summary">Ordigi laŭ</string>
+    <string name="sort_by_name_short">nomo</string>
+    <string name="sort_by_latest_short">lasta ĝisdatigo</string>
+    <string name="filter_antifeatures_summary">Montri aplikaĵojn kun la jenaj nedezirataj ebloj</string>
+    <string name="filter_antifeatures_collapsed">Kaŝitaj: %s</string>
 </resources>

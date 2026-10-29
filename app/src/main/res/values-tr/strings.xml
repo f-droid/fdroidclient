@@ -177,7 +177,7 @@
     <string name="has_disallow_install_unknown_sources_globally">Aygıt yöneticiniz, yeni depolar da dahil olmak üzere bilinmeyen kaynaklardan uygulama yüklemeye izin vermiyor</string>
     <string name="swap_wifi_vpn_conflict">Etkin VPN ile çakışıyor!</string>
     <string name="menu_release_channel_beta">Beta güncellemelerine İzin Ver</string>
-    <string name="app_name_basic">F-Droid Temel</string>
+    <string name="app_name_basic">F-Droid Basit</string>
     <string name="about_title_basic">F-Droid Temel Hakkında</string>
     <string name="turn_on_wifi">Kablosuz bağlantıyı aç</string>
     <string name="repo_state_adding">Depo ekleniyor…</string>
@@ -267,7 +267,7 @@
     <string name="category_group_communication">İletişim</string>
     <string name="category_group_interests">İlgi Alanları</string>
     <string name="app_name_full_nightly">F-Nightly</string>
-    <string name="app_name_basic_nightly">F-Nightly Temel</string>
+    <string name="app_name_basic_nightly">F-Nightly Basit</string>
     <string name="first_start_loading">Uygulama depoları getiriliyor…</string>
     <string name="my_apps_empty">Burada yalnızca %1$s\'nin depolarında bulunan uygulamalar gösterilmektedir</string>
     <string name="my_apps_header_apps_with_issue">Sorunlu uygulamalar</string>
@@ -278,7 +278,7 @@
     <string name="app_list_recently_updated">Yakın zamanda güncellenmiş</string>
     <string name="app_list_most_downloaded">En çok indirilenler</string>
     <string name="app_list_all">Tüm uygulamalar</string>
-    <string name="app_list_author">%s tarafından uygulamalar</string>
+    <string name="app_list_author">Yazarı %s</string>
     <string name="search_placeholder">Ara…</string>
     <string name="search_no_results">Herhangi bir uygulama bulunamadı \n\nDaha az arama terimi kullanmayı ya da daha fazla depo eklemeyi deneyin</string>
     <string name="category_group_wallets">Mali durum ve Cüzdanlar</string>
@@ -291,7 +291,7 @@
     <string name="status_install_preparing">Yüklemeye hazırlanılıyor…</string>
     <string name="whats_new_title">Yeni neler var</string>
     <string name="donate_title">Bağış yap</string>
-    <string name="anti_features_title">Bu uygulama karşıt özelliklere sahip</string>
+    <string name="anti_features_title">Bu uygulama sıra dışı özelliklere sahip</string>
     <string name="developer_contact">Geliştirici bilgileri</string>
     <string name="technical_info">Teknik bilgi</string>
     <string name="package_name">Paket ismi:</string>
@@ -299,9 +299,9 @@
     <string name="call_to_action_keepandroidopen">F-Droid tehlike altında. Google, sizin kendi cihazınıza nasıl uygulama yükleyeceğinizi değiştirmeye çalışıyor. Yardımınıza ihtiyacımız var.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="ipfsgw_summary_new">IPFS HTTP ağ geçitleri (web gateway’leri) üzerinden uygulama indirme</string>
-    <string name="first_start_intro">Başlamak için uygulama depolarını eşzamanlayın</string>
+    <string name="first_start_intro">Başlamak için uygulama depolarını senkronize edin</string>
     <string name="first_start_offline">Çevrim dışısınız. Başlamak için İnternete bağlanın.</string>
-    <string name="first_start_metered">Mobil veridesiniz ve 10MB\'tan fazla indirilecek. Yine de başlamak için Getir\'ye basın.</string>
+    <string name="first_start_metered">Mobil veridesiniz ve 10MB\'tan fazla indirilecek. Yine de başlamak için Getir\'e basın.</string>
     <string name="first_start_button">Depoları getir</string>
     <string name="no_repos_enabled">Kullanılabilir bir depo yok, başlamak için bir depo ekleyin</string>
     <string name="search_filter_no_results">Eşleşen bir uygulama bulunamadı \n\nDaha az arama terimi kullanmayı ya da filtreleri kaldırmayı deneyin</string>
@@ -309,13 +309,13 @@
     <string name="sort_title">Sıralama ve uyumluluk</string>
     <string name="sort_by_name">İsme göre sırala</string>
     <string name="sort_by_latest">Son güncellemeye göre sırala</string>
-    <string name="filter_only_compatible">Bu cihazla uyumlu uygulamalar</string>
+    <string name="filter_only_compatible">Yalnızca bu aygıtla uyumlu uygulamaları göster</string>
     <string name="filter_button_save">Varsayılan olarak kaydet</string>
     <string name="filter_intro">Uygulamaları filtrele</string>
     <string name="filter_button_clear_all">Tüm filtreleri temizle</string>
     <string name="filter">Filtre</string>
     <string name="filter_selected">seçildi</string>
-    <string name="filter_antifeatures">Karşıt özellikleri gizle</string>
+    <string name="filter_antifeatures">Karşıt özellikler</string>
     <string name="onboarding_app_list_filter_title">Filtre</string>
     <string name="onboarding_app_list_filter_message">Sadece belirli bir kategoriden ya da depodan uygulama göstermek için filtreleri kullanın. Sıralamayı da değiştirebilirsiniz.</string>
     <string name="got_it">Anladım</string>
@@ -468,4 +468,30 @@
     <string name="icon_intro">Bu uygulama için bir simge ve ad seçin. Bunlar ana ekranda ve uygulama çekmecesinde gösterilir.\n\nNot: Bildirimlerde her zaman öntanımlı simge ve ad kullanılır.</string>
     <string name="category_group_health">Sağlık</string>
     <string name="category_group_summary_health">Fitness, beslenme ve sağlık uygulamaları</string>
+    <string name="panic_hide_warning_title">Nasıl geri yükleneceğini hatırlayın</string>
+    <string name="panic_hide_warning_message">Bir acil durum olduğunda, ana ekranda ve uygulama çekmecesinde Hesap Makinesi simgesi ve bu uygulamanın adı gösterilecektir. Öntanımlı simgeyi ve adı geri yüklemek için Uygulama simgesi ayarlarını kullanın.\n\nNot: Bildirimlerde her zaman öntanımlı simge ve ad kullanılır.</string>
+    <string name="app_details_permissions_section">İzinler</string>
+    <string name="app_details_permissions_button">%d izinin tümünü göster</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Bu uygulama %d hassas izin istiyor:</item>
+        <item quantity="other">Bu uygulama %d hassas izin istiyor:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Bu uygulama hassas izin istemiyor</string>
+    <string name="app_details_permissions_title_num">İzinler (%d)</string>
+    <string name="app_details_permissions_warning">Bu bilgiler depo tarafından bildirilir. Uygulamanın aldığı gerçek izinler farklı olabilir.</string>
+    <string name="app_details_permissions_title_sensitive">Hassas (%d)</string>
+    <string name="app_details_permissions_title_normal">Otomatik Verildi (%d)</string>
+    <string name="app_details_permissions_title_runtime">Çalışma Zamanı (%d)</string>
+    <string name="app_details_permissions_title_custom">Özel (%d)</string>
+    <string name="permissions_colon">İzinler: %1$d</string>
+    <string name="sort_summary">Sıralama ölçütü</string>
+    <string name="sort_by_name_short">ad</string>
+    <string name="sort_by_latest_short">son güncelleme</string>
+    <string name="filter_antifeatures_summary">Bu karşıt özelliklere sahip uygulamaları göster</string>
+    <string name="filter_antifeatures_collapsed">Gizli: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Ayrıcalıklı Uzantı</string>
+    <string name="notification_channel_privileged_extension_migration_description">Ayrıcalıklı Uzantıdan çıkmak için elle müdahale gerektiğinde bildirim gönderir.</string>
+    <string name="notification_privileged_extension_migration_title">Güncellemeler için elle işlem yapılması gerekiyor!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Bilinmeyen kaynaklar\" etkinleştirilmedi!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s artık uygulamaları Android\'in yerleşik kurucusu ile kuruyor. Bu kurucuyu kullanmak için %1$s\'e \"bilinmeyen kaynaklar\" iznini vermeniz ve her ilk kurulumda onaylamanız gerekiyor.</string>
 </resources>

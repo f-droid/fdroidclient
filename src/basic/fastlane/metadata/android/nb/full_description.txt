@@ -1,0 +1,15 @@
+Merk: Basic-versjonen av F-Droid-klienten har ikke all F-Droid funksjonalitet (f. eks. ingen nærdeling av apper eller panikkfunksjonalitet). Den er utviklet for 13+ og kan oppdatere apper automatisk uten en privilegert utvidelse eller roottilgang.
+
+F-Droid er en installerbar katalog full av frie apper til Android. F-Droid-klientappen gjør det lett å finne og installere apper og holde dem oppdatert på enheten din.
+
+Den kan kobles til alle F-Droid-kompatible pakkebrønner. Standardbrønnen er å finne på f-droid.org, som bare inneholder fullstendig frie apper.
+
+Android selv er åpen i den betydning at du fritt kan installere APK-er fra hvor nå enn du vil, men det er mange gode grunner til å bruke F-Droid til å laste ned frie apper med:
+
+* Bli varslet når oppdateringer er tilgjengelige
+* Last ned og oppdaterer apper automatisk etter ønske
+* Følg med på gamle og betaversjoner av apper
+* Filtrer ut apper som er inkompatible med din enhet
+* Finn apper gjennom kategorier og søkbare beskrivelser
+* Finn nettsider for donasjoner og kildekode til apper
+* Sikre at appene dine er trygge gjennom pakkebrønnsignatursjekker og APK-hasher

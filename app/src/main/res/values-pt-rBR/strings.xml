@@ -272,7 +272,7 @@
     <string name="app_list_recently_updated">Atualizados recentemente</string>
     <string name="app_list_most_downloaded">Mais baixados</string>
     <string name="app_list_all">Todos os apps</string>
-    <string name="app_list_author">Apps por %s</string>
+    <string name="app_list_author">Autor %s</string>
     <string name="search_placeholder">Buscar…</string>
     <string name="search_no_results">Nenhum app encontrado\n\nTente usar menos termos na busca ou adicione mais repositórios</string>
     <string name="category_group_productivity">Produtividade</string>
@@ -306,13 +306,13 @@
     <string name="sort_title">Classificação e compatibilidade</string>
     <string name="sort_by_name">Ordenar pelo nome</string>
     <string name="sort_by_latest">Ordenar pela última atualização</string>
-    <string name="filter_only_compatible">Apps compatíveis com esse dispositivo</string>
+    <string name="filter_only_compatible">Mostrar apenas apps compatíveis com esse dispositivo</string>
     <string name="filter_button_save">Salvar como padrão</string>
     <string name="filter_intro">Filtrar apps por</string>
     <string name="filter_button_clear_all">Limpar todos os filtros</string>
     <string name="filter">Filtro</string>
     <string name="filter_selected">selecionado</string>
-    <string name="filter_antifeatures">Ocultar características indesejáveis</string>
+    <string name="filter_antifeatures">Características indesejáveis</string>
     <string name="onboarding_app_list_filter_title">Filtro</string>
     <string name="onboarding_app_list_filter_message">Use filtros para mostrar apenas apps de categorias ou repositórios específicos. Você também pode mudar a ordem.</string>
     <string name="got_it">Entendi</string>
@@ -469,4 +469,26 @@
     <string name="icon_intro">Selecione um ícone e um nome para este aplicativo. Isso é mostrado na tela inicial e na gaveta de aplicativos.\n\nObservação: as notificações sempre usarão o ícone e o nome padrão.</string>
     <string name="category_group_health">Saúde</string>
     <string name="category_group_summary_health">Aplicativos de fitness, nutrição e medicina</string>
+    <string name="panic_hide_warning_title">Lembrar como restaurar</string>
+    <string name="panic_hide_warning_message">Em caso de pânico, isso mostrará o ícone da Calculadora e o nome deste aplicativo na tela inicial e na gaveta de aplicativos. Use as configurações do ícone do aplicativo para restaurar o ícone e o nome padrão.\n\nObservação: as notificações sempre usarão o ícone e o nome padrão.</string>
+    <string name="app_details_permissions_section">Permissões</string>
+    <string name="app_details_permissions_button">Mostrar todas as permissões de %d</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Este aplicativo solicita %d permissão confidencial:</item>
+        <item quantity="many">Este aplicativo solicita %d permissões confidenciais:</item>
+        <item quantity="other">Este aplicativo solicita %d permissões confidenciais:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Este aplicativo não solicita permissões confidenciais</string>
+    <string name="app_details_permissions_title_num">Permissões (%d)</string>
+    <string name="app_details_permissions_warning">Esta informação é relatada pelo repositório. As permissões reais que o aplicativo recebe podem ser diferentes.</string>
+    <string name="app_details_permissions_title_sensitive">Confidencial (%d)</string>
+    <string name="app_details_permissions_title_normal">Concedido automaticamente (%d)</string>
+    <string name="app_details_permissions_title_runtime">Tempo de execução (%d)</string>
+    <string name="app_details_permissions_title_custom">Personalizado (%d)</string>
+    <string name="permissions_colon">Permissões: %1$d</string>
+    <string name="sort_summary">Ordenar por</string>
+    <string name="sort_by_name_short">nome</string>
+    <string name="sort_by_latest_short">última atualização</string>
+    <string name="filter_antifeatures_summary">Mostrar apps com estas características indesejáveis</string>
+    <string name="filter_antifeatures_collapsed">Oculto: %s</string>
 </resources>

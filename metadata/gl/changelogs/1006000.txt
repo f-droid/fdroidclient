@@ -1,0 +1,11 @@
+* Xestión dos permisos implícitos `READ_EXTERNAL_STORAGE`, que provocan unha solicitude de permisos durante a instalación cando se utiliza a Extensión Privilexiada (#1702)
+
+* Datos de índice saneados para reducir posibles ameazas procedentes do servidor
+
+* O "tempo de espera de lectura" (*Read Timeout*) activa o uso de espellos (*mirrors*) cando as lecturas son lentas
+
+* Corrección da ausencia de iconas para os usuarios que non empregan Wi-Fi (#1592)
+
+* Uso de títulos diferenciados para a preferencia de actualizacións e a lapela de actualizacións, para facilitar a tradución
+
+* Correccións na interface de usuario (UI) por parte de @ConnyDuck (#1636, #1618)

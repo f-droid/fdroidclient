@@ -264,7 +264,7 @@
     <string name="app_list_recently_updated">最近更新</string>
     <string name="app_list_most_downloaded">最多下載</string>
     <string name="app_list_all">所有應用程式</string>
-    <string name="app_list_author">%s 的應用程式</string>
+    <string name="app_list_author">作者 %s</string>
     <string name="search_placeholder">搜尋…</string>
     <string name="search_no_results">找不到應用程式\n\n請嘗試減少搜尋關鍵字或新增軟體庫或</string>
     <string name="category_group_productivity">生產性</string>
@@ -457,4 +457,6 @@
     <string name="icon_summary">選擇此應用程式在主屏幕和應用抽屜中使用的圖標</string>
     <string name="panic_hide_migration_message">計算器功能被移除，但您仍可以通過“應用圖標”和“應急按鈕”設置永久更改應用圖標。</string>
     <string name="icon_intro">選擇此應用程式的圖示和名稱。此設定將會在主畫面和應用程式抽屜上顯示。\n\n注意：通知將始終使用預設圖示和名稱。</string>
+    <string name="panic_hide_warning_title">記住如何恢復</string>
+    <string name="panic_hide_warning_message">在緊急事件當中，這一選項會在主螢幕以及 app 通知 顯示這款 app 的名稱，請使用 App 圖示設定來恢復預設圖示與名稱。\n\n注意：通告總會顯示預設圖示與名稱。</string>
 </resources>

@@ -269,7 +269,7 @@
     <string name="app_list_recently_updated">Nedávno aktualizované</string>
     <string name="app_list_most_downloaded">Nejstahovanější</string>
     <string name="app_list_all">Všechny aplikace</string>
-    <string name="app_list_author">Aplikace od vývojáře %s</string>
+    <string name="app_list_author">Autor: %s</string>
     <string name="search_placeholder">Hledat…</string>
     <string name="search_no_results">Nenalezeny žádné aplikace\n\nZkuste použít méně slov nebo přidat další repozitáře</string>
     <string name="category_group_productivity">Produktivita</string>
@@ -305,13 +305,13 @@
     <string name="sort_title">Řazení a kompatibilita</string>
     <string name="sort_by_name">Seřadit podle jména</string>
     <string name="sort_by_latest">Seřadit podle poslední aktualizace</string>
-    <string name="filter_only_compatible">Aplikace kompatibilní s tímto zařízením</string>
+    <string name="filter_only_compatible">Zobrazit pouze aplikace kompatibilní s tímto zařízením</string>
     <string name="filter_button_save">Uložit jako výchozí</string>
     <string name="filter_intro">Filtrovat aplikace podle</string>
     <string name="filter_button_clear_all">Vymazat všechny filtry</string>
     <string name="filter">Filtr</string>
     <string name="filter_selected">vybráno</string>
-    <string name="filter_antifeatures">Skrýt anti-vlastnosti</string>
+    <string name="filter_antifeatures">Anti-vlastnosti</string>
     <string name="onboarding_app_list_filter_title">Filtr</string>
     <string name="onboarding_app_list_filter_message">Použijte filtry pro zobrazení aplikací pouze ze specifických kategorií nebo repozitářů. Můžete také změnit pořadí řazení.</string>
     <string name="got_it">Rozumím</string>
@@ -472,4 +472,27 @@
     <string name="icon_intro">Vyberte ikonu a název této aplikace. Toto je zobrazeno na domovské stránce a v seznamu aplikací.\n\nUpozornění: oznámení budou vždy používat výchozí ikonu a název.</string>
     <string name="category_group_health">Zdraví</string>
     <string name="category_group_summary_health">Aplikace zaměřené na fitness, výživu a zdraví</string>
+    <string name="panic_hide_warning_title">Zapamatujte si, jak provést obnovení</string>
+    <string name="panic_hide_warning_message">V případě panické události se na domovské obrazovce a v seznamu aplikací zobrazí místo této aplikace ikona a název Kalkulačka. Pomocí nastavení ikony aplikace můžete obnovit výchozí ikonu a název.\n\nPoznámka: Oznámení budou vždy používat výchozí ikonu a název.</string>
+    <string name="app_details_permissions_section">Oprávnění</string>
+    <string name="app_details_permissions_button">Zobrazit všech %d oprávnění</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Tato aplikace žádá o %d citlivé oprávnění:</item>
+        <item quantity="few">Tato aplikace žádá o %d citlivá oprávnění:</item>
+        <item quantity="many">Tato aplikace žádá o %d citlivých oprávnění:</item>
+        <item quantity="other">Tato aplikace žádá o %d citlivých oprávnění:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Tato aplikace nežádá o žádná citlivá oprávnění</string>
+    <string name="app_details_permissions_title_num">Oprávnění (%d)</string>
+    <string name="app_details_permissions_warning">Tyto informace jsou hlášeny repozitářem. Oprávnění, která aplikace reálně obdrží, se mohou lišit.</string>
+    <string name="app_details_permissions_title_sensitive">Citlivá (%d)</string>
+    <string name="app_details_permissions_title_normal">Automaticky udělená (%d)</string>
+    <string name="app_details_permissions_title_runtime">Při běhu (%d)</string>
+    <string name="app_details_permissions_title_custom">Vlastní (%d)</string>
+    <string name="permissions_colon">Oprávnění: %1$d</string>
+    <string name="sort_summary">Seřadit podle</string>
+    <string name="sort_by_name_short">název</string>
+    <string name="sort_by_latest_short">poslední aktualizace</string>
+    <string name="filter_antifeatures_summary">Zobrazit aplikace s těmito anti-vlastnostmi</string>
+    <string name="filter_antifeatures_collapsed">Skryté: %s</string>
 </resources>

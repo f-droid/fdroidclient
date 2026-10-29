@@ -258,7 +258,7 @@
     <string name="crash_dialog_title_old">F-Droidがクラッシュしました</string>
     <string name="app_name_full_nightly">完全なナイトリー</string>
     <string name="app_name_basic_nightly">完全な基本ナイトリー</string>
-    <string name="menu_about">約</string>
+    <string name="menu_about">このアプリについて</string>
     <string name="menu_discover">発見</string>
     <string name="menu_apps_my">マイアプリ</string>
     <string name="first_start_loading">アプリのリポジトリを取得中…</string>
@@ -272,7 +272,7 @@
     <string name="app_list_recently_updated">最近の更新</string>
     <string name="app_list_most_downloaded">最もダウンロードされた</string>
     <string name="app_list_all">全てのアプリ</string>
-    <string name="app_list_author">%s によるアプリ</string>
+    <string name="app_list_author">%s による著作</string>
     <string name="search_placeholder">検索…</string>
     <string name="search_no_results">アプリが見つかりませんでした\n\nリポジトリを追加するか検索語を減らしてみて下さい</string>
     <string name="category_group_productivity">生産性</string>
@@ -303,11 +303,11 @@
     <string name="search_history">最近の検索</string>
     <string name="sort_by_name">名前でソート</string>
     <string name="sort_by_latest">更新順にソート</string>
-    <string name="filter_only_compatible">このデバイスと互換性のあるアプリ</string>
+    <string name="filter_only_compatible">このデバイスと互換性があるアプリのみ</string>
     <string name="filter_button_save">デフォルトとして保存</string>
     <string name="filter_button_clear_all">全てのフィルターを解除</string>
     <string name="filter">フィルター</string>
-    <string name="filter_antifeatures">好ましくない機能を隠す</string>
+    <string name="filter_antifeatures">好ましくない機能</string>
     <string name="onboarding_app_list_filter_title">フィルター</string>
     <string name="pref_dyn_colors_title">システムの色を使用</string>
     <string name="pref_language_summary">システムの言語設定を開く</string>
@@ -465,4 +465,22 @@
     <string name="category_group_summary_health">フィットネス、栄養＆医療関係アプリ</string>
     <string name="panic_hide_warning_message">緊急事態が起きた場合、ホーム画面・アプリドロワーにこのアプリの電卓アイコンと名称が表示されます。アプリのアイコン設定を使ってデフォルトのアイコン・名称へ戻すことができます。\n\n注：通知には常にデフォルトアイコン・名称が使われます。</string>
     <string name="panic_hide_warning_title">復元方法を覚えておきましょう</string>
+    <string name="app_details_permissions_section">権限</string>
+    <string name="app_details_permissions_button">すべての %d 権限を表示</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="other">このアプリは %d 件の機密性が高い権限を要求しています:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">このアプリは機密性の高い権限を一切要求しません</string>
+    <string name="app_details_permissions_title_num">権限 (%d)</string>
+    <string name="app_details_permissions_warning">この情報はリポジトリにより報告されたものです。実際にアプリが付与する権限はこれと異なる場合があります。</string>
+    <string name="app_details_permissions_title_sensitive">機密性が高い (%d)</string>
+    <string name="app_details_permissions_title_normal">自動で付与 (%d)</string>
+    <string name="app_details_permissions_title_runtime">実行環境 (%d)</string>
+    <string name="app_details_permissions_title_custom">個別 (%d)</string>
+    <string name="permissions_colon">権限: %1$d</string>
+    <string name="sort_by_name_short">名前</string>
+    <string name="sort_by_latest_short">最終更新</string>
+    <string name="filter_antifeatures_summary">好ましくない機能があるアプリを表示</string>
+    <string name="filter_antifeatures_collapsed">非表示: %s</string>
+    <string name="sort_summary">ソート</string>
 </resources>

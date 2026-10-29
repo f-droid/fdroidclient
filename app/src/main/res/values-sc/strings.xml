@@ -96,7 +96,7 @@
     <string name="installing">Installende…</string>
     <string name="update_auto_install">Installa sos agiornamentos in automàticu</string>
     <string name="versions">Versiones</string>
-    <string name="notification_title_single_update_available">Agiornamentu a disponimentu</string>
+    <string name="notification_title_single_update_available">Atualizatzione a disponimentu</string>
     <string name="notification_title_summary_installing">Installende</string>
     <string name="notification_title_summary_install_error">Installatzione fallida</string>
     <string name="main_menu__categories">Categorias</string>
@@ -222,4 +222,10 @@
     <string name="auto_update_time_past">Agiornamentu imbeniente cando sas cunditziones sunt satisfatas</string>
     <string name="menu_share_apk">Cumpartzi s\'archìviu APK</string>
     <string name="swap_bluetooth_permissions">Fruni su permissu pro su Bluetooth o a sos dispositivos a curtzu!</string>
+    <string name="menu_about">Informatziones</string>
+    <string name="menu_discover">Iscoberi</string>
+    <string name="menu_apps_my">Aplicatziones meas</string>
+    <string name="first_start_loading">Recuperende sos depòsitos de aplicatziones…</string>
+    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_basic_nightly">F-Nightly Bàsicu</string>
 </resources>

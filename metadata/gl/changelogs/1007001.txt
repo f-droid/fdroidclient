@@ -1,0 +1,5 @@
+* Renovouse o intercambio (swap) nas proximidades mediante o punto de acceso (AP) do dispositivo
+
+* Engadíronse novas respostas de emerxencia: desinstalación de aplicacións e restablecemento dos repositorios á configuración predeterminada
+
+* Corrixiuse a compatibilidade con proxies no primeiro inicio

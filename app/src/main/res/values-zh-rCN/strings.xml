@@ -267,7 +267,7 @@
     <string name="app_list_recently_updated">最近更新</string>
     <string name="app_list_most_downloaded">下载最多</string>
     <string name="app_list_all">所有应用</string>
-    <string name="app_list_author">%s 的应用</string>
+    <string name="app_list_author">作者 %s</string>
     <string name="search_placeholder">搜索…</string>
     <string name="search_no_results">没找到应用\n\n试试减少搜索词或添加更多存储库</string>
     <string name="category_group_productivity">生产力</string>
@@ -301,13 +301,13 @@
     <string name="sort_title">排序和兼容性</string>
     <string name="sort_by_name">按名称排序</string>
     <string name="sort_by_latest">按上次更新日期排序</string>
-    <string name="filter_only_compatible">兼容此设备的应用</string>
+    <string name="filter_only_compatible">只显示兼容此设备的应用</string>
     <string name="filter_button_save">保存为默认</string>
     <string name="filter_intro">应用筛选依据</string>
     <string name="filter_button_clear_all">清除所有筛选</string>
     <string name="filter">筛选器</string>
     <string name="filter_selected">已选中</string>
-    <string name="filter_antifeatures">隐藏负面特征</string>
+    <string name="filter_antifeatures">负面特征</string>
     <string name="onboarding_app_list_filter_title">筛选器</string>
     <string name="onboarding_app_list_filter_message">使用筛选器来只显示特定类别或存储库的应用。您也可以更改排列顺序。</string>
     <string name="got_it">知道了</string>
@@ -461,4 +461,27 @@
     <string name="category_group_summary_health">健身、营养和医疗应用</string>
     <string name="panic_hide_warning_title">记住如何恢复</string>
     <string name="panic_hide_warning_message">在紧急事件中，这会在主屏幕和应用抽屉显示计算器图标和该应用的名称。使用应用图标设置恢复默认图标和名称。\n\n注意：通知始终使用默认图标和名称。</string>
+    <string name="app_details_permissions_section">权限</string>
+    <string name="app_details_permissions_button">显示所有 %d 个权限</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="other">此应用请求 %d 个敏感权限：</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">此应用未请求敏感权限</string>
+    <string name="app_details_permissions_title_num">权限 (%d)</string>
+    <string name="app_details_permissions_warning">此信息由存储库报告。应用收到的实际权限可能不同。</string>
+    <string name="app_details_permissions_title_sensitive">敏感 (%d)</string>
+    <string name="app_details_permissions_title_normal">自动生成 (%d)</string>
+    <string name="app_details_permissions_title_runtime">运行时 (%d)</string>
+    <string name="app_details_permissions_title_custom">自定义 (%d)</string>
+    <string name="permissions_colon">权限： %1$d</string>
+    <string name="sort_summary">排序依据</string>
+    <string name="sort_by_name_short">名称</string>
+    <string name="sort_by_latest_short">最后更新</string>
+    <string name="filter_antifeatures_summary">显示含这些负面特征的应用</string>
+    <string name="filter_antifeatures_collapsed">已隐藏：%s</string>
+    <string name="notification_channel_privileged_extension_migration_title">特权扩展</string>
+    <string name="notification_channel_privileged_extension_migration_description">需要人工干预来迁离特权扩展时进行通知。</string>
+    <string name="notification_privileged_extension_migration_title">更新需要手动操作！</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">未启用“未知来源”！</string>
+    <string name="notification_privileged_extension_migration_text">%1$s 现在通过安卓系统的内置安装器安装应用。你必须授予 %1$s “未知来源”权限以使用该安装器并批准每个首次安装。</string>
 </resources>

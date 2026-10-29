@@ -375,7 +375,7 @@
     <string name="app_no_compatible_versions">Esta app não é compatível com o seu dispositivo</string>
     <string name="app_no_compatible_signer">Não é possível atualizar esta app, pois todas as versões têm uma assinatura incompatível\n\nSe não recebe atualizações por outro meio, pode precisar de reinstalar a app. Os dados da app serão apagados.</string>
     <string name="app_no_compatible_signer_in_this_repo">Não é possível atualizar esta app, pois não há versões compatíveis no repositório preferido\n\nTente alterar o repositório preferido</string>
-    <string name="app_no_auto_update">A atualização automática não está disponível, pois a app foi compilada para uma versão antiga do Android sem suporte a atualizações automáticas</string>
+    <string name="app_no_auto_update">A atualização automática não está disponível, porque a app foi compilada para uma versão antiga do Android</string>
     <string name="app_issue_update_other_repo">Uma atualização está disponível num outro repositório. Altere o repositório preferido para atualizar</string>
     <string name="app_issue_not_available_title">App acabou de estar disponível</string>
     <string name="app_issue_not_available_text">A app pode ter sido removida ou estava num repositório que removeu ou desativou</string>
@@ -454,4 +454,18 @@
     <string name="install_history_delete_text">Apagar o histórico de instalações?</string>
     <string name="liberapay">opções de pagamento/doações suportadas</string>
     <string name="open_collective">Open Collective</string>
+    <string name="category_group_health">Saúde</string>
+    <string name="category_group_summary_health">Apps de fitness, nutrição e medicina</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="litecoin">Litecoin</string>
+    <string name="taler">Taler</string>
+    <string name="panic_hide_warning_title">Lembrar como restaurar</string>
+    <string name="panic_hide_warning_message">Em caso de pânico, isso mostrará o ícone da Calculadora e o nome desta app no ecrã inicial e na gaveta de apps. Use as configurações do ícone da app para restaurar o ícone e o nome predefinido.\n\nObservação: as notificações sempre usarão o ícone e o nome predefinido.</string>
+    <string name="panic_app_unknown_app">uma app desconhecida</string>
+    <string name="panic_hide_migration_title">Novo F-Droid mudou a ocultação de apps</string>
+    <string name="panic_hide_migration_message">A função de calculadora foi removida, mas ainda pode alterar o ícone da app permanentemente através das configurações de “ícone da app” e “botão de pânico”.</string>
+    <string name="panic_hide_migration_button">Rever configurações</string>
+    <string name="icon_title">Ícone da app</string>
+    <string name="icon_summary">Selecione o ícone usado para esta app no ecrã inicial e na gaveta de apps</string>
+    <string name="icon_intro">Selecione um ícone e um nome para esta app. Isso é mostrado no ecrã inicial e na gaveta de apps.\n\nObservação: as notificações sempre usarão o ícone e o nome predefinido.</string>
 </resources>
