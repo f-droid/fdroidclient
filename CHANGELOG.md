@@ -1,3 +1,11 @@
+### 2.0.3 (2026-10-29)
+
+* Include more complete translations: bn, in, iw, kk, uz
+* Updated existing translations
+* Fix slow searches on Android 14
+* Fix wrong search results for some users
+* Notify Privileged Extension users of new installer setup
+
 ### 2.0.2 (2026-10-02)
 
 * Sort new apps by added date
