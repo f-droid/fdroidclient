@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.icu.text.RelativeDateTimeFormatter
 import android.os.PowerManager
 import android.text.format.DateUtils
 import android.util.Log
@@ -19,6 +20,8 @@ import androidx.core.graphics.createBitmap
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.viktormykhailiv.compose.hints.HintHost
+import java.util.Locale
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.fdroid.database.Repository
@@ -95,13 +98,49 @@ suspend fun generateQrBitmap(qrData: String): Bitmap? =
   }
 
 fun Long.asRelativeTimeString(): String {
-  return DateUtils.getRelativeTimeSpanString(
-      this,
-      System.currentTimeMillis(),
-      DateUtils.MINUTE_IN_MILLIS,
-      DateUtils.FORMAT_ABBREV_ALL,
-    )
-    .toString()
+  val now = System.currentTimeMillis()
+  val difference = now - this
+
+  val oneWeek = TimeUnit.DAYS.toMillis(7)
+  val oneMonth = TimeUnit.DAYS.toMillis(30)
+  val oneYear = TimeUnit.DAYS.toMillis(365)
+
+  val formatter = RelativeDateTimeFormatter.getInstance(Locale.getDefault())
+  return when {
+    difference < oneWeek -> {
+      DateUtils.getRelativeTimeSpanString(
+          this,
+          now,
+          DateUtils.MINUTE_IN_MILLIS,
+          DateUtils.FORMAT_ABBREV_ALL,
+        )
+        .toString()
+    }
+    difference < oneMonth -> {
+      DateUtils.getRelativeTimeSpanString(
+          this,
+          now,
+          DateUtils.WEEK_IN_MILLIS,
+        )
+        .toString()
+    }
+    difference < oneYear -> {
+      val months = (difference / oneMonth).toInt()
+      formatter.format(
+        months.toDouble(),
+        RelativeDateTimeFormatter.Direction.LAST,
+        RelativeDateTimeFormatter.RelativeUnit.MONTHS,
+      )
+    }
+    else -> {
+      val years = (difference / oneYear).toInt()
+      formatter.format(
+        years.toDouble(),
+        RelativeDateTimeFormatter.Direction.LAST,
+        RelativeDateTimeFormatter.RelativeUnit.YEARS,
+      )
+    }
+  }
 }
 
 val String.flagEmoji: String?
