@@ -105,6 +105,7 @@ constructor(
           settingsManager.autoUpdateApps == AppUpdateValues.Immediately
       ) {
         log.info { "Auto-update is set to immediately, updating apps..." }
+        notificationManager.cancelUpdateRepoNotification()
         updateAll(canAskPreApprovalNow = false)
       }
     } catch (e: Exception) {

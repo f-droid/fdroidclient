@@ -171,6 +171,7 @@ internal class UpdatesManagerTest {
     mockLoadUpdates(AppCheckResult(updates, emptyList()))
     every { settingsManager.autoUpdateApps } returns AppUpdateValues.Immediately
     every { repoManager.getRepository(1L) } returns makeRepository()
+    every { notificationManager.cancelUpdateRepoNotification() } just runs
 
     createUpdatesManager()
       .loadUpdates(
@@ -182,6 +183,7 @@ internal class UpdatesManagerTest {
     advanceUntilIdle()
 
     coVerify(exactly = 1) {
+      notificationManager.cancelUpdateRepoNotification()
       updateInstaller.updateAll(
         appsToUpdate =
           match {
