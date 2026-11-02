@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
@@ -132,7 +134,11 @@ fun AppDetails(
           OnboardingPopupCard(
             title = stringResource(R.string.app_details_anti_features_title),
             message = stringResource(R.string.app_details_anti_features_text),
-            modifier = Modifier.padding(horizontal = 32.dp, vertical = 8.dp),
+            modifier =
+              Modifier.safeDrawingPadding()
+                .padding(horizontal = 32.dp, vertical = 8.dp)
+                .heightIn(max = 1200.dp)
+                .verticalScroll(state = rememberScrollState()),
             onGotIt = {
               item.actions.onAntiFeaturesOnboardingSeen()
               hintController.dismiss()
