@@ -9,11 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.Image
+import androidx.compose.material3.ButtonDefaults.elevatedButtonColors
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -41,6 +43,7 @@ import androidx.compose.ui.semantics.hideFromAccessibility
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
@@ -69,6 +72,12 @@ fun Screenshots(isMetered: Boolean, phoneScreenshots: List<Any>) {
       )
       ElevatedButton(
         onClick = { showEvenWhenMetered = true },
+        colors =
+          elevatedButtonColors()
+            .copy(
+              containerColor = MaterialTheme.colorScheme.inverseSurface,
+              contentColor = MaterialTheme.colorScheme.inversePrimary,
+            ),
         modifier = Modifier.padding(horizontal = 16.dp),
       ) {
         Text(text = stringResource(R.string.screenshots_metered), textAlign = TextAlign.Center)
@@ -133,8 +142,10 @@ private fun Preview() {
   FDroidContent { Screenshots(false, testApp.phoneScreenshots) }
 }
 
-@Preview(widthDp = 300)
+@PreviewLightDark
 @Composable
 private fun PreviewMetered() {
-  FDroidContent { Screenshots(true, testApp.phoneScreenshots) }
+  FDroidContent {
+    Box(modifier = Modifier.width(300.dp)) { Screenshots(true, testApp.phoneScreenshots) }
+  }
 }
