@@ -444,6 +444,8 @@ constructor(
       // The update ownership enforcement can only be enabled on initial installation.
       // Set this to true on package update is a no-op.
       params.setRequestUpdateOwnership(true)
+      // don't enable disabled apps via the update
+      params.setApplicationEnabledSettingPersistent()
     }
     return params
   }
