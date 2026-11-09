@@ -6,6 +6,10 @@ import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Arrangement.SpaceBetween
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Box
@@ -26,7 +30,6 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearWavyProgressIndicator
@@ -90,7 +93,6 @@ import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 /** Timestamp [now] gets passed in for screenshot tests to have a stable download speed. */
 fun AppDetailsHeader(
   item: LoadedAppDetailsItem,
@@ -273,7 +275,11 @@ fun AppDetailsHeader(
   // Main Buttons
   val state = item.installState
   val buttonLineModifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
-  AnimatedVisibility(item.mainButtonState == MainButtonState.PROGRESS) {
+  AnimatedVisibility(
+    visible = item.mainButtonState == MainButtonState.PROGRESS,
+    enter = slideInVertically(initialOffsetY = { it }) + expandVertically(),
+    exit = slideOutVertically(targetOffsetY = { it }) + shrinkVertically(),
+  ) {
     Column(modifier = buttonLineModifier) {
       val strRes =
         when (state) {
@@ -351,12 +357,10 @@ fun AppDetailsHeader(
       }
     }
   }
-  AnimatedVisibility(
+  if (
     item.mainButtonState == MainButtonState.INSTALL ||
       item.mainButtonState == MainButtonState.UPDATE ||
-      (item.showOpenButton &&
-        item.mainButtonState != MainButtonState.LOADING &&
-        item.mainButtonState != MainButtonState.PROGRESS)
+      (item.showOpenButton && item.mainButtonState != MainButtonState.PROGRESS)
   ) {
     Row(horizontalArrangement = spacedBy(8.dp, CenterHorizontally), modifier = buttonLineModifier) {
       if (item.showOpenButton) {
@@ -379,6 +383,7 @@ fun AppDetailsHeader(
               item.actions.installAction(item.app, item.suggestedVersion, item.icon)
             }
           },
+          enabled = item.mainButtonState != MainButtonState.LOADING,
           modifier = Modifier.weight(1f),
         ) {
           if (item.mainButtonState == MainButtonState.INSTALL) {
