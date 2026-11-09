@@ -594,7 +594,7 @@ internal class RepoAdderTest {
   fun testWrongKnownFingerprintWithGivenFingerprint() = runTest {
     val url = "https://example.org/repo?fingerprint=${VerifierConstants.FINGERPRINT}"
     testMinRepoPreview("https://example.org/repo", url) { state2 ->
-      assertTrue(state2 is AddRepoError, "$state2")
+      assertIs<AddRepoError>(state2, "$state2")
       assertEquals(INVALID_FINGERPRINT, state2.errorType)
       val e = assertIs<SigningException>(state2.exception)
       assertTrue(e.message!!.contains("Known fingerprint different"))

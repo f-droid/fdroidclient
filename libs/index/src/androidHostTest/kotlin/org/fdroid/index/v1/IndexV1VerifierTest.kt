@@ -65,7 +65,7 @@ internal class IndexV1VerifierTest {
           assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
       }
-    assertTrue(e.message!!.contains("fingerprint"))
+    assertTrue(e.message!!.contains("fingerprint"), e.message)
   }
 
   @Test
@@ -91,7 +91,7 @@ internal class IndexV1VerifierTest {
           assertEquals("foo\n", inputStream.readBytes().decodeToString())
         }
       }
-    assertTrue(e.message!!.contains("certificate"))
+    assertTrue(e.message!!.contains("certificate"), e.message)
   }
 
   @Test

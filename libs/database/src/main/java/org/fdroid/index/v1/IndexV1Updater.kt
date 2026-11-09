@@ -80,8 +80,10 @@ public class IndexV1Updater(
           )
         repoDao.updateRepositoryPreferences(updatedPrefs)
       }
-    } catch (e: OldIndexException) {
-      if (e.isSameTimestamp) return IndexUpdateResult.Unchanged else throw e
+    } catch (e: Exception) {
+      val cause = e.cause
+      if (cause is OldIndexException && cause.isSameTimestamp) return IndexUpdateResult.Unchanged
+      else throw e
     } finally {
       file.delete()
     }

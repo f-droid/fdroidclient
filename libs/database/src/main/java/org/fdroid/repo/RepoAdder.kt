@@ -27,7 +27,9 @@ import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.JsonDecodingException
 import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
 import org.fdroid.database.AppOverviewItem
@@ -46,6 +48,7 @@ import org.fdroid.index.RepoUpdater
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
+import org.fdroid.index.defaultRepoUriBuilder
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
@@ -201,8 +204,13 @@ internal class RepoAdder(
         onError(AddRepoError(INVALID_INDEX, e))
         return
       } catch (e: Exception) { // all other exceptions also need to get caught
-        log.error(e) { "Error fetching repo." }
-        onError(AddRepoError(IO_ERROR, e))
+        if (e.cause is SigningException) {
+          onError(AddRepoError(INVALID_FINGERPRINT, e))
+          log.error(e) { "Error verifying repo with given fingerprint." }
+        } else {
+          log.error(e) { "Error fetching repo." }
+          onError(AddRepoError(IO_ERROR, e))
+        }
         return
       }
     // set final result
@@ -226,6 +234,7 @@ internal class RepoAdder(
    *
    * @return the temporary file the repo was written to.
    */
+  @OptIn(ExperimentalSerializationApi::class)
   private suspend fun fetchRepo(
     uri: Uri,
     fingerprint: String?,
@@ -245,6 +254,13 @@ internal class RepoAdder(
       val repo = getTempRepo(uri, IndexFormatVersion.ONE, username, password)
       val repoFetcher = RepoV1Fetcher(tempFileProvider, downloaderFactory, repoUriBuilder)
       repoFetcher.fetchRepo(uri, repo, receiver, fingerprint)
+    } catch (e: JsonDecodingException) {
+      if (e.cause != null) {
+        log.error(e) { "Error fetching repo: " }
+        throw e.cause!!
+      } else {
+        throw e
+      }
     }
   }
 

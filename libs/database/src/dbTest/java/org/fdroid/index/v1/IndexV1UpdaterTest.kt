@@ -159,8 +159,8 @@ internal class IndexV1UpdaterTest : DbTest() {
     downloadIndex(futureRepo, TESTY_JAR)
     val result = indexUpdater.update(futureRepo)
     assertIs<IndexUpdateResult.Error>(result)
-    assertIs<OldIndexException>(result.e)
-    assertFalse((result.e as OldIndexException).isSameTimestamp)
+    assertIs<OldIndexException>(result.e.cause)
+    assertFalse((result.e.cause as OldIndexException).isSameTimestamp)
   }
 
   @Test

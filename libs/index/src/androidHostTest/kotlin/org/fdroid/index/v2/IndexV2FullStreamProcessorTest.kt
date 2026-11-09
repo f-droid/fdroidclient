@@ -10,6 +10,7 @@ import kotlin.test.assertTrue
 import kotlin.test.fail
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.JsonDecodingException
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
@@ -52,8 +53,8 @@ internal class IndexV2FullStreamProcessorTest {
   @Test
   fun testMalformedIndex() {
     // empty dict
-    assertFailsWith<IllegalStateException> { testStreamError("{ }") }
-      .also { assertContains(it.message!!, "Unexpected startIndex") }
+    assertFailsWith<JsonDecodingException> { testStreamError("{ }") }
+      .also { assertContains(it.message, "Unexpected startIndex") }
 
     // garbage input
     assertFailsWith<SerializationException> { testStreamError("{ 23^^%*dfDFG568 }") }
