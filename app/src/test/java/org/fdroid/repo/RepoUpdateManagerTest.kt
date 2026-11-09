@@ -29,7 +29,8 @@ import org.fdroid.index.IndexUpdateResult
 import org.fdroid.index.RepoManager
 import org.fdroid.index.RepoUpdater
 import org.fdroid.install.InstalledAppsCache
-import org.fdroid.settings.SettingsConstants
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.fdroid.updates.AppUpdateWorker
 import org.fdroid.updates.UpdatesManager
@@ -58,7 +59,7 @@ internal class RepoUpdateManagerTest {
     every { db.getRepositoryDao() } returns repositoryDao
     every { context.getString(any(), any()) } returns "repo update"
     every { settingsManager.isFirstStart } returns false
-    every { settingsManager.repoUpdates } returns SettingsConstants.AutoUpdateValues.OnlyWifi
+    every { settingsManager.repoUpdates } returns RepoUpdateValues.OnlyWifi
     every { installedAppsCache.installedApps } returns MutableStateFlow(emptyMap())
   }
 
@@ -218,6 +219,7 @@ internal class RepoUpdateManagerTest {
     every { notificationManager.cancelUpdateRepoNotification() } just runs
     every { repositoryDao.walCheckpoint() } just runs
     every { settingsManager.lastRepoUpdate = any() } just runs
+    every { settingsManager.autoUpdateApps } returns AppUpdateValues.OnlyWifi
 
     repoUpdateManager.isUpdating.test {
       assertFalse(awaitItem())
@@ -265,6 +267,7 @@ internal class RepoUpdateManagerTest {
     every { notificationManager.cancelUpdateRepoNotification() } just runs
     every { repositoryDao.walCheckpoint() } just runs
     every { settingsManager.lastRepoUpdate = any() } just runs
+    every { settingsManager.autoUpdateApps } returns AppUpdateValues.OnlyWifi
 
     clearUpdateManagerMocks()
 
@@ -286,6 +289,7 @@ internal class RepoUpdateManagerTest {
       every { notificationManager.cancelUpdateRepoNotification() } just runs
       every { repositoryDao.walCheckpoint() } just runs
       every { settingsManager.lastRepoUpdate = any() } just runs
+      every { settingsManager.autoUpdateApps } returns AppUpdateValues.OnlyWifi
       every { updatesManager.numUpdates } returns MutableStateFlow(2)
       every { updatesManager.notificationStates } returns mockk(relaxed = true)
       every { notificationManager.showAppUpdatesAvailableNotification(any()) } just runs
@@ -297,6 +301,30 @@ internal class RepoUpdateManagerTest {
       verify(exactly = 1) { updatesManager.loadUpdates() }
       verify(exactly = 1) { notificationManager.showAppUpdatesAvailableNotification(any()) }
     }
+
+  @Test
+  fun `updateRepos shows no notification when updating apps immediately`() = runTest {
+    val repo: Repository = mockk(relaxed = true) { every { enabled } returns true }
+
+    every { settingsManager.lastRepoUpdate } returns 1337L
+    every { repositoryDao.getRepositories() } returns listOf(repo)
+    every { notificationManager.showUpdateRepoNotification(any(), false, null) } just runs
+    every { repoUpdater.update(repo) } returns IndexUpdateResult.Processed
+    every { notificationManager.cancelUpdateRepoNotification() } just runs
+    every { repositoryDao.walCheckpoint() } just runs
+    every { settingsManager.lastRepoUpdate = any() } just runs
+    every { settingsManager.autoUpdateApps } returns AppUpdateValues.Immediately
+    every { updatesManager.numUpdates } returns MutableStateFlow(2)
+    every { updatesManager.notificationStates } returns mockk(relaxed = true)
+    every { notificationManager.showAppUpdatesAvailableNotification(any()) } just runs
+
+    clearUpdateManagerMocks()
+
+    repoUpdateManager.updateRepos()
+
+    verify(exactly = 1) { updatesManager.loadUpdates() }
+    verify(exactly = 0) { notificationManager.showAppUpdatesAvailableNotification(any()) }
+  }
 
   @Test
   fun `updateRepos does not show app update notification when processed repos find no app updates`() =
@@ -311,6 +339,7 @@ internal class RepoUpdateManagerTest {
       every { repositoryDao.walCheckpoint() } just runs
       every { settingsManager.lastRepoUpdate = any() } just runs
       every { updatesManager.numUpdates } returns MutableStateFlow(0)
+      every { settingsManager.autoUpdateApps } returns AppUpdateValues.OnlyWifi
 
       clearUpdateManagerMocks()
 
@@ -345,7 +374,7 @@ internal class RepoUpdateManagerTest {
 
   @Test
   fun `triggers updateNow on init when OnlyWhenOpenApp and last update is stale`() {
-    every { settingsManager.repoUpdates } returns SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp
+    every { settingsManager.repoUpdates } returns RepoUpdateValues.OnlyWhenOpenApp
     every { settingsManager.lastRepoUpdate } returns 0L
     every { RepoUpdateWorker.updateNow(any()) } just runs
 

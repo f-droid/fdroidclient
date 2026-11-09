@@ -27,7 +27,6 @@ import androidx.compose.material.icons.filled.SystemSecurityUpdateWarning
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material.icons.filled.UpdateDisabled
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -63,11 +62,7 @@ import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.rememberPreferenceState
 import me.zhanghai.compose.preference.switchPreference
 import org.fdroid.R
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Always
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues.Never
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWhenOpenApp
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues.OnlyWifi
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
@@ -85,8 +80,10 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_REPO_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
-import org.fdroid.settings.toAutoUpdateValue
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
+import org.fdroid.settings.toAppUpdateValue
 import org.fdroid.settings.toMirrorChooserValue
+import org.fdroid.settings.toRepoUpdateValue
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.asRelativeTimeString
@@ -95,7 +92,6 @@ import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.utils.getLogName
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun Settings(
   model: SettingsModel,
   onChangeAppIcon: (AppIcon) -> Unit,
@@ -226,7 +222,7 @@ fun Settings(
           defaultValue = PREF_DEFAULT_REPO_AUTO_UPDATES,
           title = { Text(stringResource(R.string.pref_repo_updates_title)) },
           icon = { strValue ->
-            if (strValue != Never.name)
+            if (strValue != RepoUpdateValues.Never.name)
               Icon(
                 imageVector = Icons.Default.SystemSecurityUpdate,
                 contentDescription = null,
@@ -241,7 +237,7 @@ fun Settings(
               )
           },
           summary = { strValue ->
-            val value = strValue.toAutoUpdateValue()
+            val value = strValue.toRepoUpdateValue()
             if (value.workerEnabled) {
               val nextUpdate = model.nextRepoUpdateFlow.collectAsState(Long.MAX_VALUE).value
               val nextUpdateStr =
@@ -256,15 +252,15 @@ fun Settings(
                   stringResource(R.string.auto_update_time, nextUpdate.asRelativeTimeString())
                 }
               val s =
-                if (value == OnlyWifi) {
+                if (value == RepoUpdateValues.OnlyWifi) {
                   stringResource(R.string.pref_repo_updates_summary_only_wifi)
-                } else if (value == Always) {
+                } else if (value == RepoUpdateValues.Always) {
                   stringResource(R.string.pref_repo_updates_summary_always)
                 } else error("Unknown value: $strValue")
               Text(s + "\n" + nextUpdateStr)
             } else {
               val s =
-                if (value == OnlyWhenOpenApp) {
+                if (value == RepoUpdateValues.OnlyWhenOpenApp) {
                   stringResource(R.string.pref_repo_updates_summary_only_when_open_app)
                 } else {
                   stringResource(R.string.pref_repo_updates_summary_never)
@@ -272,14 +268,15 @@ fun Settings(
               Text(text = s, color = MaterialTheme.colorScheme.error)
             }
           },
-          values = AutoUpdateValues.entries.map { it.name },
+          values = RepoUpdateValues.entries.map { it.name },
           valueToText = { value: String ->
             AnnotatedString(
-              when (value.toAutoUpdateValue()) {
-                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
-                Always -> res.getString(R.string.pref_auto_updates_only_always)
-                OnlyWhenOpenApp -> res.getString(R.string.pref_auto_updates_only_only_when_open_app)
-                Never -> res.getString(R.string.pref_auto_updates_only_never)
+              when (value.toRepoUpdateValue()) {
+                RepoUpdateValues.OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
+                RepoUpdateValues.Always -> res.getString(R.string.pref_auto_updates_only_always)
+                RepoUpdateValues.OnlyWhenOpenApp ->
+                  res.getString(R.string.pref_auto_updates_only_only_when_open_app)
+                RepoUpdateValues.Never -> res.getString(R.string.pref_auto_updates_only_never)
               }
             )
           },
@@ -291,14 +288,14 @@ fun Settings(
           icon = { strValue ->
             Icon(
               imageVector =
-                if (strValue != Never.name) {
+                if (strValue != AppUpdateValues.Never.name) {
                   Icons.Default.Update
                 } else {
                   Icons.Default.UpdateDisabled
                 },
               contentDescription = null,
               tint =
-                if (strValue != Never.name) {
+                if (strValue != AppUpdateValues.Never.name) {
                   LocalContentColor.current
                 } else {
                   MaterialTheme.colorScheme.error
@@ -307,8 +304,9 @@ fun Settings(
             )
           },
           summary = { strValue ->
+            val value = strValue.toAppUpdateValue()
             val s =
-              if (strValue != Never.name) {
+              if (value.workerEnabled) {
                 val nextUpdate = model.nextAppUpdateFlow.collectAsState(Long.MAX_VALUE).value
                 val nextUpdateStr =
                   if (nextUpdate == Long.MAX_VALUE) {
@@ -321,34 +319,40 @@ fun Settings(
                   } else {
                     stringResource(R.string.auto_update_time, nextUpdate.asRelativeTimeString())
                   }
-                val s =
-                  if (strValue == OnlyWifi.name) {
-                    stringResource(R.string.pref_auto_updates_summary_only_wifi)
-                  } else if (strValue == Always.name) {
-                    stringResource(R.string.pref_auto_updates_summary_always)
-                  } else error("Unknown value: $strValue")
-                s + "\n" + nextUpdateStr
+                val preS =
+                  when (value) {
+                    AppUpdateValues.OnlyWifi ->
+                      stringResource(R.string.pref_auto_updates_summary_only_wifi)
+                    AppUpdateValues.Always ->
+                      stringResource(R.string.pref_auto_updates_summary_always)
+                    else -> error("Unknown value with worker: $strValue")
+                  }
+                preS + "\n" + nextUpdateStr
               } else {
-                stringResource(R.string.pref_auto_updates_summary_never)
+                when (value) {
+                  AppUpdateValues.Immediately ->
+                    stringResource(R.string.pref_auto_updates_summary_immediately)
+                  AppUpdateValues.Never -> stringResource(R.string.pref_auto_updates_summary_never)
+                  else -> error("Unknown value: $strValue")
+                }
               }
             val textColor =
-              if (strValue != Never.name) {
+              if (strValue != AppUpdateValues.Never.name) {
                 Color.Unspecified
               } else {
                 MaterialTheme.colorScheme.error
               }
             Text(s, color = textColor)
           },
-          // Exclude the OnlyWhenOpenApp option here
-          values =
-            AutoUpdateValues.entries.mapNotNull { if (it == OnlyWhenOpenApp) null else it.name },
+          values = AppUpdateValues.entries.map { it.name },
           valueToText = { value: String ->
             AnnotatedString(
-              when (value.toAutoUpdateValue()) {
-                OnlyWifi -> res.getString(R.string.pref_auto_updates_only_wifi)
-                Always -> res.getString(R.string.pref_auto_updates_only_always)
-                OnlyWhenOpenApp -> res.getString(R.string.pref_auto_updates_only_only_when_open_app)
-                Never -> res.getString(R.string.pref_auto_updates_only_never)
+              when (value.toAppUpdateValue()) {
+                AppUpdateValues.Immediately ->
+                  res.getString(R.string.pref_auto_updates_only_immediately)
+                AppUpdateValues.OnlyWifi -> res.getString(R.string.pref_auto_app_updates_only_wifi)
+                AppUpdateValues.Always -> res.getString(R.string.pref_auto_app_updates_only_always)
+                AppUpdateValues.Never -> res.getString(R.string.pref_auto_updates_only_never)
               }
             )
           },

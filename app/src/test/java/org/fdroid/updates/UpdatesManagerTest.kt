@@ -45,6 +45,7 @@ import org.fdroid.download.PackageName
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateWorker
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.junit.After
 import org.junit.Before
@@ -159,6 +160,40 @@ internal class UpdatesManagerTest {
       // one update available, so numUpdates is 1
       assertEquals(1, updatesManager.numUpdates.value)
     }
+
+  @Test
+  fun `loadUpdates updates all apps when auto-update is immediate`() = testScope.runTest {
+    val updates =
+      listOf(
+        makeUpdatableApp(packageName = "com.example.app1"),
+        makeUpdatableApp(packageName = "com.example.app2"),
+      )
+    mockLoadUpdates(AppCheckResult(updates, emptyList()))
+    every { settingsManager.autoUpdateApps } returns AppUpdateValues.Immediately
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    every { notificationManager.cancelUpdateRepoNotification() } just runs
+
+    createUpdatesManager()
+      .loadUpdates(
+        mapOf(
+          "com.example.app1" to makePackageInfo("com.example.app1"),
+          "com.example.app2" to makePackageInfo("com.example.app2"),
+        )
+      )
+    advanceUntilIdle()
+
+    coVerify(exactly = 1) {
+      notificationManager.cancelUpdateRepoNotification()
+      updateInstaller.updateAll(
+        appsToUpdate =
+          match {
+            it.map { appUpdate -> appUpdate.packageName }.toSet() ==
+              setOf("com.example.app1", "com.example.app2")
+          },
+        canAskPreApprovalNow = false,
+      )
+    }
+  }
 
   @Test
   fun `loadUpdates with null name, repo and trimmed whatsNew`() = testScope.runTest {

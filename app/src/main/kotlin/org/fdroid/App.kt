@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Build.VERSION.SDK_INT
 import androidx.compose.runtime.Composer
-import androidx.compose.runtime.ExperimentalComposeRuntimeApi
 import androidx.compose.runtime.tooling.ComposeStackTraceMode
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
@@ -91,7 +90,6 @@ class App : Application(), Configuration.Provider, SingletonImageLoader.Factory 
     }
   }
 
-  @OptIn(ExperimentalComposeRuntimeApi::class)
   override fun onCreate() {
     super.onCreate()
     if (BuildConfig.DEBUG) {

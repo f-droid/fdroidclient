@@ -20,7 +20,7 @@ import me.zhanghai.compose.preference.createPreferenceFlow
 import me.zhanghai.compose.preference.isDefaultPreferenceFlowAndroidLongSupportEnabled
 import mu.KotlinLogging
 import org.fdroid.database.AppListSortOrder
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsConstants.MirrorChooserValues
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_AUTO_UPDATES
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_APP_LIST_SORT_ORDER
@@ -61,6 +61,7 @@ import org.fdroid.settings.SettingsConstants.PREF_KEY_THEME
 import org.fdroid.settings.SettingsConstants.PREF_KEY_WARN_WHEN_METERED
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE
 import org.fdroid.settings.SettingsConstants.PREF_USE_DNS_CACHE_DEFAULT
+import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.settings.SettingsConstants.getAppListSortOrder
 import org.fdroid.settings.SettingsConstants.toSettings
 
@@ -90,22 +91,22 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
     get() =
       prefs
         .getString(PREF_KEY_REPO_AUTO_UPDATES, PREF_DEFAULT_REPO_AUTO_UPDATES)
-        .toAutoUpdateValue()
+        .toRepoUpdateValue()
 
   val repoUpdatesFlow
     get() =
       prefsFlow
-        .map { it.get<String>(PREF_KEY_REPO_AUTO_UPDATES).toAutoUpdateValue() }
+        .map { it.get<String>(PREF_KEY_REPO_AUTO_UPDATES).toRepoUpdateValue() }
         .distinctUntilChanged()
 
   val autoUpdateApps
     get() =
-      prefs.getString(PREF_KEY_APP_AUTO_UPDATES, PREF_DEFAULT_APP_AUTO_UPDATES).toAutoUpdateValue()
+      prefs.getString(PREF_KEY_APP_AUTO_UPDATES, PREF_DEFAULT_APP_AUTO_UPDATES).toAppUpdateValue()
 
   val autoUpdateAppsFlow
     get() =
       prefsFlow
-        .map { it.get<String>(PREF_KEY_APP_AUTO_UPDATES).toAutoUpdateValue() }
+        .map { it.get<String>(PREF_KEY_APP_AUTO_UPDATES).toAppUpdateValue() }
         .distinctUntilChanged()
 
   var lastRepoUpdate: Long
@@ -267,22 +268,22 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
           it.toMutablePreferences().apply {
             this[PREF_KEY_REPO_AUTO_UPDATES] =
               when {
-                overWifi == never && overData == never -> AutoUpdateValues.Never.name
-                overWifi == always && overData == always -> AutoUpdateValues.Always.name
-                overWifi == always -> AutoUpdateValues.OnlyWifi.name
-                overWifi != never || overData != never -> AutoUpdateValues.OnlyWhenOpenApp.name
-                else -> AutoUpdateValues.Never.name
+                overWifi == never && overData == never -> RepoUpdateValues.Never.name
+                overWifi == always && overData == always -> RepoUpdateValues.Always.name
+                overWifi == always -> RepoUpdateValues.OnlyWifi.name
+                overWifi != never || overData != never -> RepoUpdateValues.OnlyWhenOpenApp.name
+                else -> RepoUpdateValues.Never.name
               }
             // OnlyWhenOpenApp doesn't exist for package updates
             this[PREF_KEY_APP_AUTO_UPDATES] =
               when {
                 updateAutoDownload && (overWifi != never || overData != never) ->
                   when {
-                    overWifi != never && overData != always -> AutoUpdateValues.OnlyWifi.name
-                    else -> AutoUpdateValues.Always.name
+                    overWifi != never && overData != always -> AppUpdateValues.OnlyWifi.name
+                    else -> AppUpdateValues.Always.name
                   }
-                overWifi == always && overData == manual -> AutoUpdateValues.OnlyWifi.name
-                else -> AutoUpdateValues.Never.name
+                overWifi == always && overData == manual -> AppUpdateValues.OnlyWifi.name
+                else -> AppUpdateValues.Never.name
               }
             if (overData == always) this[PREF_KEY_WARN_WHEN_METERED] = false
             remove("updateAutoDownload")

@@ -27,7 +27,7 @@ import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_APP_INSTALLS
 import org.fdroid.install.AppInstallManager
 import org.fdroid.install.InstallNotificationState
-import org.fdroid.settings.SettingsConstants.AutoUpdateValues
+import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
 
 @HiltWorker
@@ -47,12 +47,12 @@ constructor(
     @VisibleForTesting internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
 
     @JvmStatic
-    fun scheduleOrCancel(context: Context, autoUpdate: AutoUpdateValues) {
+    fun scheduleOrCancel(context: Context, autoUpdate: AppUpdateValues) {
       val workManager = WorkManager.getInstance(context)
       if (autoUpdate.workerEnabled) {
         Log.i(TAG, "scheduleOrCancel: enqueueUniquePeriodicWork")
         val networkType =
-          if (autoUpdate == AutoUpdateValues.Always) {
+          if (autoUpdate == AppUpdateValues.Always) {
             NetworkType.CONNECTED
           } else {
             NetworkType.UNMETERED
