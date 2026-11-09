@@ -119,6 +119,7 @@ fun SearchResults(
         AppListRow(
           item = item,
           isSelected = false,
+          showLastUpdated = true,
           modifier =
             Modifier.fillMaxWidth().animateItem().clickable {
               onNav(NavigationKey.AppDetails(item.packageName))

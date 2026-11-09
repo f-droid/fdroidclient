@@ -5,6 +5,7 @@ import androidx.annotation.RestrictTo
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import java.util.concurrent.TimeUnit.DAYS
 import java.util.concurrent.TimeUnit.HOURS
+import java.util.concurrent.TimeUnit.MINUTES
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.database.AppMetadata
 import org.fdroid.database.AppPrefs
@@ -360,7 +361,7 @@ val appListItems =
       packageName = "org.example.camera",
       name = "Open Camera",
       summary = "Camera app with manual controls",
-      lastUpdated = 1,
+      lastUpdated = System.currentTimeMillis() - DAYS.toMillis(365),
       isInstalled = false,
       isCompatible = true,
     ),
@@ -369,7 +370,7 @@ val appListItems =
       packageName = "org.example.notes",
       name = "Simple Notes",
       summary = "Fast and offline note taking",
-      lastUpdated = 2,
+      lastUpdated = System.currentTimeMillis() - DAYS.toMillis(14),
       isInstalled = true,
       isCompatible = true,
     ),
@@ -378,7 +379,7 @@ val appListItems =
       packageName = "org.example.music",
       name = "Wave Player",
       summary = "Music player with playlist support",
-      lastUpdated = 3,
+      lastUpdated = System.currentTimeMillis() - DAYS.toMillis(1),
       isInstalled = true,
       isCompatible = true,
     ),
@@ -387,7 +388,7 @@ val appListItems =
       packageName = "org.example.reader",
       name = "Book Reader",
       summary = "Read EPUB and PDF files",
-      lastUpdated = 4,
+      lastUpdated = System.currentTimeMillis() - MINUTES.toMillis(120),
       isInstalled = false,
       isCompatible = true,
     ),
