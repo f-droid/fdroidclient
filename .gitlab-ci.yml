@@ -166,7 +166,7 @@ app screenshots:
     - test -n "$ANDROID_HOME" || source /etc/profile.d/bsenv.sh
     - export GRADLE_USER_HOME=$PWD/.gradle
     - git lfs install
-    - git lfs fetch https://gitlab.com/fdroid/fdroidclient.git --all
+    - git lfs fetch https://gitlab.com/fdroid/fdroidclient.git --all || true
     - git lfs fetch origin --all || true # may fail if fork has LFS disabled
     - git lfs checkout
   script:
