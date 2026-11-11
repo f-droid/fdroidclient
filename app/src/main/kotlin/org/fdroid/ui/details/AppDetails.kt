@@ -172,7 +172,10 @@ fun AppDetails(
               CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
               ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+            modifier =
+              Modifier.fillMaxWidth()
+                .animateContentSize()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
           ) {
             Text(
               text = stringResource(R.string.whats_new_title),
