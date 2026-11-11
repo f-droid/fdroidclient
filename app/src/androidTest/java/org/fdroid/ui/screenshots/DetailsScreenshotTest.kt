@@ -9,6 +9,7 @@ import org.fdroid.ui.details.Permission
 import org.fdroid.ui.details.PermissionType.SENSITIVE
 import org.fdroid.ui.details.VersionItem
 import org.fdroid.ui.utils.getAppDetailsActions
+import org.fdroid.ui.utils.getRepository
 import org.fdroid.ui.utils.testVersion1
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,6 +29,7 @@ class DetailsScreenshotTest(localeName: String) : LocalizedScreenshotTest(locale
         LoadedAppDetailsItem(
           app = appMetadata,
           actions = getAppDetailsActions(),
+          repository = getRepository(),
           installState = InstallState.Unknown,
           networkState = NetworkState(isOnline = true, isMetered = false),
           name = appMetadata.name.getBestLocale(localeList) ?: "Unknown name",

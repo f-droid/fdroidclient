@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.Icon
@@ -35,6 +36,33 @@ fun ExpandableSection(
   collapsedSummary: @Composable (() -> Unit)? = null,
   content: @Composable () -> Unit,
 ) {
+  ExpandableSection(
+    icon = icon,
+    title = {
+      Text(
+        text = title,
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.weight(1f),
+      )
+    },
+    modifier = modifier,
+    iconTint = iconTint,
+    initiallyExpanded = initiallyExpanded,
+    collapsedSummary = collapsedSummary,
+    content = content,
+  )
+}
+
+@Composable
+fun ExpandableSection(
+  icon: Painter?,
+  title: @Composable RowScope.() -> Unit,
+  modifier: Modifier = Modifier,
+  iconTint: Color? = null,
+  initiallyExpanded: Boolean = LocalInspectionMode.current,
+  collapsedSummary: @Composable (() -> Unit)? = null,
+  content: @Composable () -> Unit,
+) {
   var sectionExpanded by rememberSaveable { mutableStateOf(initiallyExpanded) }
   Column(modifier = modifier.fillMaxWidth()) {
     Row(
@@ -50,11 +78,7 @@ fun ExpandableSection(
           tint = iconTint ?: LocalContentColor.current,
           modifier = Modifier.semantics { hideFromAccessibility() },
         )
-      Text(
-        text = title,
-        style = MaterialTheme.typography.titleMedium,
-        modifier = Modifier.weight(1f),
-      )
+      title()
       IconButton(onClick = { sectionExpanded = !sectionExpanded }) {
         ExpandIconArrow(sectionExpanded)
       }

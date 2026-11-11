@@ -243,6 +243,8 @@
     <string name="app_inst_known_source">Installed (from %s)</string>
     <string name="app_inst_unknown_source">Installed (from unknown source)</string>
     <string name="app__install_downloaded_update">Update</string>
+    <!-- The Placeholder will be replaced with a version name, e.g. Version 2.0 available -->
+    <string name="app_beta_available">Version %s available</string>
     <string name="copy_link">Copy link</string>
     <string name="app_no_compatible_versions">This app is not compatible with your device</string>
     <string name="app_no_compatible_signer">Can\'t update this app, because all versions have an incompatible signature\n\nIf you don\'t receive updates through other means, you may need to uninstall and then reinstall this app. The app\'s data will be lost.</string>

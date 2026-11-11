@@ -15,6 +15,7 @@ import org.fdroid.database.Repository
 import org.fdroid.download.Mirror
 import org.fdroid.download.NetworkState
 import org.fdroid.index.IndexFormatVersion
+import org.fdroid.index.RELEASE_CHANNEL_BETA
 import org.fdroid.index.v2.FileV1
 import org.fdroid.index.v2.PackageManifest
 import org.fdroid.index.v2.PackageVersion
@@ -114,7 +115,7 @@ val testVersion1 =
     override val size: Long = 1024 * 1024 * 42
     override val signer: SignerV2 =
       SignerV2(listOf("271721a9cddc96660336c19a39ae3cca4375072c80d3c8170860c333d2252b90"))
-    override val releaseChannels: List<String>? = null
+    override val releaseChannels: List<String> = listOf(RELEASE_CHANNEL_BETA)
     override val packageManifest: PackageManifest =
       object : PackageManifest {
         override val minSdkVersion: Int = 2
@@ -207,6 +208,7 @@ val testApp =
         isCompatible = true,
       ),
     actions = getAppDetailsActions(),
+    repository = getRepository(),
     installState = InstallState.Unknown,
     networkState = NetworkState(isOnline = false, isMetered = false),
     appPrefs = AppPrefs("org.schabi.newpipe"),
