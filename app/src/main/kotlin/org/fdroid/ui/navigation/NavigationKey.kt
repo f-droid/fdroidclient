@@ -17,6 +17,10 @@ import org.fdroid.ui.lists.AppListType
 
 sealed interface NavigationKey : NavKey {
 
+  @Serializable data object MainOnboardingWelcome : NavigationKey
+
+  @Serializable data object MainOnboardingPermissions : NavigationKey
+
   @Serializable
   data object Discover : NavigationKey, MainNavKey {
     override val label: Int = R.string.menu_discover

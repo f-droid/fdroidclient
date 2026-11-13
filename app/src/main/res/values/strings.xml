@@ -13,6 +13,23 @@
     <string name="menu_discover">Discover</string>
     <string name="menu_apps_my">My apps</string>
 
+    <string name="onboarding_title">Welcome to F-Droid</string>
+    <string name="onboarding_intro">Your trusted home for Free and Open Source Mobile Apps</string>
+    <string name="onboarding_online">We\'ll get your apps ready while you set up</string>
+    <string name="onboarding_metered_title">Download with mobile data</string>
+    <string name="onboarding_metered_summary">Fetching app information will use more than 10 MB of mobile data</string>
+    <string name="onboarding_wifi_title">Wait for Wi-Fi</string>
+    <string name="onboarding_wifi_summary">Starts when you\'re connected</string>
+    <string name="onboarding_permission_title">Permissions</string>
+    <string name="onboarding_permission_summary">F-Droid needs these permissions to function properly</string>
+    <string name="onboarding_permission_install_apps_title">Install apps</string>
+    <string name="onboarding_permission_install_apps_summary">Required for installing and updating apps\nNavigate back when approved</string>
+    <string name="onboarding_permission_notifications_title">Notifications</string>
+    <string name="onboarding_permission_notifications_summary">Tell you when updates are available</string>
+    <string name="onboarding_permission_doze_title">Background checks</string>
+    <string name="onboarding_permission_doze_summary">Check and install updates while closed</string>
+    <string name="onboarding_button_skip">Skip for now</string>
+    <string name="onboarding_button_finish">Finish</string>
     <string name="first_start_loading">Fetching app repositories…</string>
     <string name="first_start_intro">To get started, sync app repositories</string>
     <string name="first_start_offline">You\'re offline. Connect to the Internet to start.</string>
