@@ -8,6 +8,7 @@ import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,6 +36,8 @@ import org.fdroid.ui.navigation.extraNavigationEntries
 import org.fdroid.ui.navigation.rememberNavigationState
 import org.fdroid.ui.navigation.toEntries
 import org.fdroid.ui.navigation.topLevelRoutes
+import org.fdroid.ui.onboarding.MainOnboardingPermissions
+import org.fdroid.ui.onboarding.MainOnboardingWelcome
 import org.fdroid.ui.repositories.repoEntry
 import org.fdroid.ui.search.GlobalSearch
 import org.fdroid.ui.search.SearchActions
@@ -67,7 +70,23 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
   val isBigScreen = directive.maxHorizontalPartitions > 1
   var showSearchKeyboard by remember { mutableStateOf(false) }
 
+  val viewModel = hiltViewModel<MainViewModel>()
+  val mainModel = viewModel.mainModel.collectAsStateWithLifecycle().value
+
   val entryProvider: (NavKey) -> NavEntry<NavKey> = entryProvider {
+    entry<NavigationKey.MainOnboardingWelcome> {
+      MainOnboardingWelcome(
+        networkState = mainModel.networkState,
+        onNav = { navKey -> navigator.replaceLast(navKey) },
+      )
+    }
+    entry<NavigationKey.MainOnboardingPermissions> {
+      MainOnboardingPermissions(
+        mainOnboardingState = mainModel.mainOnboardingState,
+        reCheckPermissions = viewModel::refreshMainOnboardingState,
+        onNav = { navKey -> navigator.replaceLast(navKey) },
+      )
+    }
     discoverEntry(navigator)
     myAppsEntry(navigator, isBigScreen)
     appDetailsEntry(navigator, isBigScreen)
@@ -134,9 +153,16 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     // flavor specific navigation destinations go here
     extraNavigationEntries(navigator)
   }
-  val viewModel = hiltViewModel<MainViewModel>()
+  // show main onboarding, if first start, or permissions are missing
+  LaunchedEffect(mainModel.mainOnboardingState.show) {
+    if (mainModel.mainOnboardingState.isFirstStart) {
+      navigator.replaceLast(NavigationKey.MainOnboardingWelcome)
+    } else if (!mainModel.mainOnboardingState.permissionState.acceptable) {
+      navigator.replaceLast(NavigationKey.MainOnboardingPermissions)
+    }
+  }
   MainContent(
-    model = viewModel.mainModel.collectAsStateWithLifecycle().value,
+    model = mainModel,
     navEntries = navigationState.toEntries(entryProvider),
     directive = directive,
     isBigScreen = isBigScreen,
