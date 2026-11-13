@@ -41,9 +41,9 @@ import org.fdroid.R
 import org.fdroid.database.NotAvailable
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.onboarding.OnboardingCard
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
-import org.fdroid.ui.utils.OnboardingCard
 import org.fdroid.ui.utils.getMyAppsInfo
 import org.fdroid.ui.utils.myAppsModel
 

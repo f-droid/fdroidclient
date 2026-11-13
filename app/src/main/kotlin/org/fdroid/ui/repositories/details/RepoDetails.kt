@@ -37,11 +37,11 @@ import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.onboarding.OnboardingPopupCard
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.MeteredConnectionDialog
-import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.TopAppBarOverflowButton
 import org.fdroid.ui.utils.getRepoDetailsInfo

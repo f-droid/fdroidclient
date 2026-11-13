@@ -1,4 +1,4 @@
-package org.fdroid.ui.utils
+package org.fdroid.ui.onboarding
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -45,7 +45,6 @@ fun OnboardingPopupCard(
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun OnboardingCard(
   title: String,
   message: String,
