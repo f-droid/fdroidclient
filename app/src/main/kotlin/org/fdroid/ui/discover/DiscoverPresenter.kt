@@ -24,7 +24,7 @@ fun DiscoverPresenter(
   recentlyUpdatedAppsFlow: Flow<List<AppOverviewItem>>,
   mostDownloadedAppsFlow: Flow<List<AppOverviewItem>>,
   categoriesFlow: Flow<List<CategoryItem>>,
-  installedAppsFlow: StateFlow<Map<String, PackageInfo>>,
+  installedAppsFlow: StateFlow<Map<String, PackageInfo>?>,
   isFirstStart: Boolean,
   networkState: NetworkState,
   repoUpdateStateFlow: StateFlow<RepoUpdateState?>,
@@ -39,7 +39,7 @@ fun DiscoverPresenter(
     repository: Repository,
     proxyConfig: ProxyConfig?,
   ): AppDiscoverItem {
-    val isInstalled = installedApps.contains(packageName)
+    val isInstalled = installedApps?.containsKey(packageName) == true
     val imageModel = getIcon(localeList)?.getImageModel(repository, proxyConfig)
     return AppDiscoverItem(
       packageName = packageName,

@@ -11,6 +11,7 @@ import android.content.pm.PackageManager.GET_SIGNATURES
 import android.net.Uri
 import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
 import androidx.core.content.ContextCompat.registerReceiver
+import app.cash.turbine.test
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
@@ -18,14 +19,19 @@ import io.mockk.mockkStatic
 import io.mockk.verify
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runCurrent
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
 @Suppress("DEPRECATION")
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class InstalledAppsCacheTest {
 
   private val context: Context = mockk(relaxed = true)
@@ -52,7 +58,7 @@ internal class InstalledAppsCacheTest {
 
     val cache = InstalledAppsCache(context, ioScope)
 
-    assertEquals(2, cache.installedApps.value.size)
+    assertEquals(2, cache.installedApps.value?.size)
     assertTrue(cache.isInstalled("org.example.a"))
     assertTrue(cache.isInstalled("org.example.b"))
     assertFalse(cache.isInstalled("org.example.missing"))
@@ -72,12 +78,12 @@ internal class InstalledAppsCacheTest {
     // app gets added
     cache.onReceive(context, packageChangedIntent(ACTION_PACKAGE_ADDED, "org.example.new"))
     assertTrue(cache.isInstalled("org.example.new"))
-    assertEquals(1, cache.installedApps.value.size)
+    assertEquals(1, cache.installedApps.value?.size)
 
     // app gets removed
     cache.onReceive(context, packageChangedIntent(ACTION_PACKAGE_REMOVED, "org.example.new"))
     assertFalse(cache.isInstalled("org.example.new"))
-    assertEquals(0, cache.installedApps.value.size)
+    assertEquals(0, cache.installedApps.value?.size)
   }
 
   @Test
@@ -97,7 +103,7 @@ internal class InstalledAppsCacheTest {
     )
 
     assertTrue(cache.isInstalled("org.example.replace"))
-    assertEquals(1, cache.installedApps.value.size)
+    assertEquals(1, cache.installedApps.value?.size)
   }
 
   @Test
@@ -111,9 +117,66 @@ internal class InstalledAppsCacheTest {
 
     cache.onReceive(context, packageChangedIntent(ACTION_PACKAGE_ADDED, "org.example.gone"))
 
-    assertEquals(1, cache.installedApps.value.size)
+    assertEquals(1, cache.installedApps.value?.size)
     assertTrue(cache.isInstalled("org.example.existing"))
     assertFalse(cache.isInstalled("org.example.gone"))
+  }
+
+  @Test
+  fun `cache is null until installed apps have loaded`() = runTest {
+    val app = packageInfo("org.example.installed")
+    every { packageManager.getInstalledPackages(GET_SIGNATURES) } returns listOf(app)
+    every { packageManager.getPackageInfo(app.packageName, GET_SIGNATURES) } returns app
+    every { packageManager.getPackageInfo("org.example.missing", GET_SIGNATURES) } throws
+      PackageManager.NameNotFoundException("missing")
+
+    val cache = InstalledAppsCache(context, backgroundScope)
+
+    cache.installedApps.test {
+      // initial flow emission is null
+      assertNull(awaitItem())
+      // installed check still works, because it falls back to PackageManager when the cache is null
+      assertTrue(cache.isInstalled(app.packageName))
+      assertFalse(cache.isInstalled("org.example.missing"))
+      runCurrent()
+      // after things have loaded, we get our cache map
+      assertEquals(mapOf(app.packageName to app), awaitItem())
+      expectNoEvents()
+    }
+  }
+
+  @Test
+  fun `an empty load publishes an empty cache`() = runTest {
+    every { packageManager.getInstalledPackages(GET_SIGNATURES) } returns emptyList()
+    val cache = InstalledAppsCache(context, backgroundScope)
+
+    assertNull(cache.installedApps.value)
+    runCurrent()
+    assertEquals(emptyMap(), cache.installedApps.value)
+  }
+
+  @Test
+  fun `broadcasts during initial load are applied to the completed cache`() = runTest {
+    val removed = packageInfo("org.example.removed")
+    val retained = packageInfo("org.example.retained")
+    val added = packageInfo("org.example.added")
+    every { packageManager.getPackageInfo(added.packageName, GET_SIGNATURES) } returns added
+    lateinit var cache: InstalledAppsCache
+    every { packageManager.getInstalledPackages(GET_SIGNATURES) } answers
+      {
+        cache.onReceive(context, packageChangedIntent(ACTION_PACKAGE_REMOVED, removed.packageName))
+        cache.onReceive(context, packageChangedIntent(ACTION_PACKAGE_ADDED, added.packageName))
+        assertNull(cache.installedApps.value)
+        listOf(removed, retained)
+      }
+    cache = InstalledAppsCache(context, backgroundScope)
+
+    assertNull(cache.installedApps.value)
+    runCurrent()
+    assertEquals(
+      mapOf(retained.packageName to retained, added.packageName to added),
+      cache.installedApps.value,
+    )
   }
 
   private fun packageInfo(packageName: String) =

@@ -18,6 +18,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -65,7 +66,7 @@ internal class UpdatesManagerTest {
   private val updateInstaller: UpdateInstaller = mockk(relaxed = true)
 
   private val testScope = TestScope()
-  private val installedAppsFlow = MutableStateFlow<Map<String, PackageInfo>>(emptyMap())
+  private val installedAppsFlow = MutableStateFlow<Map<String, PackageInfo>?>(emptyMap())
   private val scope =
     CoroutineScope(
       testScope.backgroundScope.coroutineContext +
@@ -104,6 +105,25 @@ internal class UpdatesManagerTest {
   }
 
   @Test
+  fun `loadUpdates waits for installed apps to finish loading`() = testScope.runTest {
+    installedAppsFlow.value = null
+    mockLoadUpdates()
+    val updatesManager = createUpdatesManager()
+
+    val job = updatesManager.loadUpdates()
+    advanceUntilIdle()
+    assertTrue(job.isActive)
+    verify(exactly = 0) { dbAppChecker.getApps(any()) }
+
+    val installedApps = installedApps("app1")
+    installedAppsFlow.value = installedApps
+    advanceUntilIdle()
+    job.join()
+    verify(exactly = 1) { dbAppChecker.getApps(installedApps) }
+    assertNotNull(updatesManager.updates.value)
+  }
+
+  @Test
   fun `init collects installedApps, skips empty and re-loads on new installed apps`() =
     testScope.runTest {
       mockLoadUpdates()
@@ -115,7 +135,7 @@ internal class UpdatesManagerTest {
       val installedApps1 = installedApps("app1")
       installedAppsFlow.value = installedApps1
       advanceUntilIdle()
-      advanceTimeBy(2000)
+      advanceTimeBy(2000.milliseconds)
       verify(exactly = 1) { dbAppChecker.getApps(installedApps1) }
       assertNotNull(updatesManager.updates.value) // populated after first real emission
 

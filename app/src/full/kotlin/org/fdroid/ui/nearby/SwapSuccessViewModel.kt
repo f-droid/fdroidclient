@@ -53,7 +53,7 @@ constructor(
   @SuppressLint("StaticFieldLeak") private var service: SwapService? = null
 
   private val installedApps
-    get() = installedAppsCache.installedApps.value
+    get() = installedAppsCache.installedApps.value ?: emptyMap()
 
   private val localeList = LocaleListCompat.getDefault()
   private val peerRepo = MutableStateFlow<Repository?>(null)
