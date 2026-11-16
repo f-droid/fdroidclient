@@ -81,7 +81,7 @@ fun MainOnboardingPermissions(
         Modifier.clickable {
           if (!mainOnboardingState.permissionState.canRequestPackageInstalls) {
             intentLauncher.launchSafe(
-              mainOnboardingState.permissionState.requestPackageInstallsIntent
+              mainOnboardingState.permissionState.requestPackageInstallsIntent,
             )
           }
         },
@@ -126,7 +126,7 @@ fun MainOnboardingPermissions(
         Modifier.clickable {
           if (!mainOnboardingState.permissionState.isIgnoringBatteryOptimizations) {
             intentLauncher.launchSafe(
-              mainOnboardingState.permissionState.requestIgnoreBatteryOptimizationsIntent
+              mainOnboardingState.permissionState.requestIgnoreBatteryOptimizationsIntent,
             )
           }
         },
@@ -173,7 +173,7 @@ private fun PreviewSkip() {
           mainOnboardingState.permissionState.copy(
             hasNotificationPermission = false,
             isIgnoringBatteryOptimizations = false,
-          )
+          ),
       ),
       reCheckPermissions = {},
       onNav = {},
