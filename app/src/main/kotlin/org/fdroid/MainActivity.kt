@@ -37,6 +37,14 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     log.info { "onCreate($savedInstanceState)" }
+
+    // clear intent if we are restoring from a saved state, to avoid re-processing it
+    // intents while we are still running get passed directly to onNewIntent
+    if (savedInstanceState != null && intent != null) {
+      log.info { "Clearing intent: $intent" }
+      intent = null
+    }
+
     // observe preventScreenshots setting and react to changes
     lifecycleScope.launch {
       // this flow doesn't change when we are paused, so we keep collecting it
@@ -52,8 +60,8 @@ class MainActivity : AppCompatActivity() {
     setContent {
       Main {
         // inform OnNewIntentListeners about the initial intent (otherwise would be missed)
-        log.info { "Passing initial intent: $intent" }
         if (intent != null) {
+          log.info { "Passing initial intent: $intent" }
           onNewIntent(intent)
           // set intent to null to avoid re-processing on configuration changes
           intent = null
