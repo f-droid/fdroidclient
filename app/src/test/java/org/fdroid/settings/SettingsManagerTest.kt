@@ -155,11 +155,11 @@ private class FakeSharedPreferences : SharedPreferences {
   override fun edit(): SharedPreferences.Editor = FakeEditor()
 
   override fun registerOnSharedPreferenceChangeListener(
-    listener: SharedPreferences.OnSharedPreferenceChangeListener?
+    listener: SharedPreferences.OnSharedPreferenceChangeListener?,
   ) = TODO()
 
   override fun unregisterOnSharedPreferenceChangeListener(
-    listener: SharedPreferences.OnSharedPreferenceChangeListener?
+    listener: SharedPreferences.OnSharedPreferenceChangeListener?,
   ) = TODO()
 
   inner class FakeEditor : SharedPreferences.Editor {

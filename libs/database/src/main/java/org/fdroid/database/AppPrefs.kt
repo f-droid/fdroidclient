@@ -52,7 +52,7 @@ public data class AppPrefs(
           appPrefReleaseChannels.toMutableList().apply { remove(releaseChannel) }
         } else {
           (appPrefReleaseChannels?.toMutableList() ?: ArrayList()).apply { add(releaseChannel) }
-        }
+        },
     )
 }
 
@@ -63,6 +63,6 @@ public data class AppPrefs(
     WHERE pref.enabled = 1 AND (repoId = COALESCE(preferredRepoId, repoId) OR
       NOT EXISTS (SELECT 1 FROM AppMetadata WHERE repoId=AppPrefs.preferredRepoId AND packageName=AppPrefs.packageName)
     )
-    GROUP BY packageName HAVING MAX(pref.weight)"""
+    GROUP BY packageName HAVING MAX(pref.weight)""",
 )
 internal class PreferredRepo(val packageName: String, val preferredRepoId: Long)

@@ -67,7 +67,7 @@ internal class IndexV2FullStreamProcessorTest {
                 "repo": 1
             }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "object") }
@@ -80,7 +80,7 @@ internal class IndexV2FullStreamProcessorTest {
               "repo": { }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -95,7 +95,7 @@ internal class IndexV2FullStreamProcessorTest {
               }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "address") }
@@ -112,7 +112,7 @@ internal class IndexV2FullStreamProcessorTest {
               "packages": []
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "object") }

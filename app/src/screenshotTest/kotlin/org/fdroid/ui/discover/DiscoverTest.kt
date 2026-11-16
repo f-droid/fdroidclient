@@ -109,7 +109,7 @@ private fun getLoadedModel(): LoadedDiscoverModel {
           CategoryItem(id = "Forum", name = "Forum"),
           CategoryItem(id = "Messaging", name = "Messaging"),
           CategoryItem(id = "Phone & SMS", name = "Phone & SMS"),
-        )
+        ),
     )
   return LoadedDiscoverModel(
     newApps = newApps,

@@ -207,7 +207,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
         repository.toCoreRepository(
           version = version,
           certificate = "0123", // just for testing
-        )
+        ),
       )
     val currentMinWeight = getMinRepositoryWeight()
     val repositoryPreferences = RepositoryPreferences(repoId, currentMinWeight - 2)
@@ -228,7 +228,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
   @Query(
     """SELECT * FROM ${CoreRepository.TABLE}
         WHERE certificate = :certificate AND address NOT LIKE "%/archive" COLLATE NOCASE
-        LIMIT 1"""
+        LIMIT 1""",
   )
   fun getRepository(certificate: String): Repository?
 
@@ -237,7 +237,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
   @Query(
     """SELECT * FROM ${CoreRepository.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        ORDER BY pref.weight DESC"""
+        ORDER BY pref.weight DESC""",
   )
   override fun getRepositories(): List<Repository>
 
@@ -246,7 +246,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
   @Query(
     """SELECT * FROM ${CoreRepository.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        ORDER BY pref.weight DESC"""
+        ORDER BY pref.weight DESC""",
   )
   override fun getLiveRepositories(): LiveData<List<Repository>>
 
@@ -257,7 +257,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
   @Query(
     """SELECT * FROM ${Category.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)"""
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""",
   )
   override fun getLiveCategories(): LiveData<List<Category>>
 
@@ -265,7 +265,7 @@ internal interface RepositoryDaoInt : RepositoryDao {
   @Query(
     """SELECT * FROM ${AntiFeature.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
-        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)"""
+        WHERE pref.enabled = 1 GROUP BY id HAVING MAX(pref.weight)""",
   )
   override fun getAntiFeaturesFlow(): Flow<List<AntiFeature>>
 
@@ -359,19 +359,19 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
   @Query(
     """UPDATE ${RepositoryPreferences.TABLE} SET userMirrors = :mirrors
-        WHERE repoId = :repoId"""
+        WHERE repoId = :repoId""",
   )
   override fun updateUserMirrors(repoId: Long, mirrors: List<String>)
 
   @Query(
     """UPDATE ${RepositoryPreferences.TABLE} SET username = :username, password = :password
-        WHERE repoId = :repoId"""
+        WHERE repoId = :repoId""",
   )
   override fun updateUsernameAndPassword(repoId: Long, username: String?, password: String?)
 
   @Query(
     """UPDATE ${RepositoryPreferences.TABLE} SET disabledMirrors = :disabledMirrors
-        WHERE repoId = :repoId"""
+        WHERE repoId = :repoId""",
   )
   override fun updateDisabledMirrors(repoId: Long, disabledMirrors: List<String>)
 
@@ -416,13 +416,13 @@ internal interface RepositoryDaoInt : RepositoryDao {
 
   @Query(
     """UPDATE ${RepositoryPreferences.TABLE} SET weight = weight + :offset
-        WHERE weight >= :weightFrom AND weight <= :weightTo"""
+        WHERE weight >= :weightFrom AND weight <= :weightTo""",
   )
   fun shiftRepoWeights(weightFrom: Int, weightTo: Int, offset: Int)
 
   @Query(
     """SELECT repoId FROM ${CoreRepository.TABLE}
-        WHERE certificate = :cert AND address LIKE '%/archive' COLLATE NOCASE"""
+        WHERE certificate = :cert AND address LIKE '%/archive' COLLATE NOCASE""",
   )
   fun getArchiveRepoId(cert: String): Long?
 
@@ -430,14 +430,14 @@ internal interface RepositoryDaoInt : RepositoryDao {
     """UPDATE ${RepositoryPreferences.TABLE}
             SET errorCount = errorCount + 1, lastError = :errorMsg
             WHERE repoId = :repoId
-        """
+        """,
   )
   fun trackRepoUpdateError(repoId: Long, errorMsg: String)
 
   @Query(
     """UPDATE ${RepositoryPreferences.TABLE}
             SET errorCount = 0, lastError = NULL WHERE repoId = :repoId
-        """
+        """,
   )
   fun resetRepoUpdateError(repoId: Long)
 

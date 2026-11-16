@@ -228,7 +228,7 @@ internal class DetailsPresenterTest {
               "https://opencollective.com/${app.metadata.openCollective}/donate",
               "bitcoin:${app.metadata.bitcoin}",
               "litecoin:${app.metadata.litecoin}",
-            )
+            ),
         ),
         item.donateLinks,
       )
@@ -460,7 +460,7 @@ internal class DetailsPresenterTest {
           installedVersionCode = versionCode,
           issue = issue,
           lastUpdated = 200L,
-        )
+        ),
       )
 
     presenterFlow.test {

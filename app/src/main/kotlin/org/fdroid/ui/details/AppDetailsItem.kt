@@ -151,7 +151,7 @@ data class LoadedAppDetailsItem(
             dbApp.metadata.openCollective?.let { it -> "https://opencollective.com/$it/donate" },
             dbApp.metadata.bitcoin?.let { it -> "bitcoin:$it" },
             dbApp.metadata.litecoin?.let { it -> "litecoin:$it" },
-          )
+          ),
       ),
   )
 

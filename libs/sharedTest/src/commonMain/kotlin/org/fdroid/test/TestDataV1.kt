@@ -102,7 +102,7 @@ object TestDataMidV1 {
               description = "App1 beschreibung",
               name = "app 1 name",
               summary = "App1 Zusammenfassung",
-            )
+            ),
         ),
     )
   val app2 =
@@ -140,7 +140,7 @@ object TestDataMidV1 {
             ),
           "bg" to
             Localized(
-              summary = "Магазинът за приложения, който уважава независимостта и поверителността"
+              summary = "Магазинът за приложения, който уважава независимостта и поверителността",
             ),
           "bn" to
             Localized(

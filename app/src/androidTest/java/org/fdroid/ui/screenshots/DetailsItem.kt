@@ -193,5 +193,5 @@ val appDetailsScreenshots =
         "https://f-droid.org/repo/org.fdroid.basic/en-US/phoneScreenshots/11-app-details.png",
         "https://f-droid.org/repo/org.fdroid.basic/en-US/phoneScreenshots/20-repos.png",
         "https://f-droid.org/repo/org.fdroid.basic/en-US/phoneScreenshots/21-repo-details.png",
-      )
+      ),
   )

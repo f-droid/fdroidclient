@@ -121,7 +121,7 @@ internal abstract class FDroidDatabaseInt : RoomDatabase(), FDroidDatabase, Clos
           // FTS4 index somehow corrupted, need to rebuild
           Log.w(TAG, "Database integrity check failed: $result. Attempting to rebuild FTS index...")
           db.execSQL(
-            "INSERT INTO ${AppMetadataFts.TABLE}(${AppMetadataFts.TABLE}) VALUES('rebuild')"
+            "INSERT INTO ${AppMetadataFts.TABLE}(${AppMetadataFts.TABLE}) VALUES('rebuild')",
           )
         } else {
           Log.w(TAG, "Database integrity check failed: $result")
@@ -164,7 +164,7 @@ public interface FDroidDatabase {
    */
   @Deprecated("Will be removed in future version")
   public fun afterLocalesChanged(
-    locales: LocaleListCompat = getLocales(Resources.getSystem().configuration)
+    locales: LocaleListCompat = getLocales(Resources.getSystem().configuration),
   )
 
   /**

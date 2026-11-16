@@ -220,7 +220,8 @@ fun MyAppsList(
         if (myAppsInfo.model.showAppIssueHint)
           item(key = "C-hint", contentType = "hint") {
             Card(
-              modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
+              modifier =
+                Modifier.fillMaxWidth().padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
             ) {
               Column(modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
                 Text(
@@ -338,11 +339,12 @@ private fun Preview() {
             installingApps =
               listOf(
                 myAppsModel.installingApps[0].copy(
-                  installState = InstallState.Installed("Installed App", "0.5.2", null, 1337L, null)
-                )
+                  installState =
+                    InstallState.Installed("Installed App", "0.5.2", null, 1337L, null),
+                ),
               ),
             appsWithIssue = emptyList(),
-          )
+          ),
         ),
       currentPackageName = null,
       onAppItemClick = {},

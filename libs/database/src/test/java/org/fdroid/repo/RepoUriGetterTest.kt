@@ -76,7 +76,7 @@ internal class RepoUriGetterTest {
     val uri1 =
       RepoUriGetter.getUri(
         "https://fdroid.link/index.html#https://f-droid.org/repo?" +
-          "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+          "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
       )
     assertEquals("https://f-droid.org/repo", uri1.uri.toString())
     assertEquals(
@@ -114,7 +114,7 @@ internal class RepoUriGetterTest {
     val uri2 =
       RepoUriGetter.getUri(
         "example.com/repo?" +
-          "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"
+          "fingerprint=43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
       )
     assertEquals("https://example.com/repo", uri2.uri.toString())
     assertEquals(
@@ -128,7 +128,7 @@ internal class RepoUriGetterTest {
     val uri1 =
       RepoUriGetter.getUri(
         "fdroidrepos://grobox.de/fdroid/repo?fingerprint=" +
-          "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c"
+          "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
       )
     assertEquals("https://grobox.de/fdroid/repo", uri1.uri.toString())
     assertEquals(
@@ -143,7 +143,7 @@ internal class RepoUriGetterTest {
     val uri3 =
       RepoUriGetter.getUri(
         "FDROIDREPOS://grobox.de/fdroid/repo?fingerprint=" +
-          "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c"
+          "28e14fb3b280bce8ff1e0f8e82726ff46923662cecff2a0689108ce19e8b347c",
       )
     assertEquals("https://grobox.de/fdroid/repo", uri3.uri.toString())
     assertEquals(
@@ -197,7 +197,7 @@ internal class RepoUriGetterTest {
       RepoUriGetter.getUri(
         "http://192.168.3.159:8888/fdroid/repo?FINGERPRINT=" +
           "BA29D02E303B2604D00C91189600E868B26FA0B248DC39D75C5C0F4349CA5FA9" +
-          "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE"
+          "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE",
       )
     assertEquals("http://192.168.3.159:8888/fdroid/repo", uri.uri.toString())
     assertEquals(
@@ -212,7 +212,7 @@ internal class RepoUriGetterTest {
       Uri.parse(
         "http://192.168.3.159:8888/fdroid/repo?FINGERPRINT=" +
           "BA29D02E303B2604D00C91189600E868B26FA0B248DC39D75C5C0F4349CA5FA9" +
-          "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE"
+          "&SWAP=1&BSSID=44:FE:3B:7F:7F:EE",
       )
     assertTrue(RepoUriGetter.isSwapUri(uri1))
 

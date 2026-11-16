@@ -110,7 +110,7 @@ fun AddRepoIntroContent(
         setOrientationLocked(false)
         setDesiredBarcodeFormats(QR_CODE)
         addExtra(SCAN_TYPE, MIXED_SCAN)
-      }
+      },
     )
   }
 

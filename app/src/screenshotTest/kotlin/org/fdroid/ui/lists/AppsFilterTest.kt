@@ -39,7 +39,7 @@ fun AppsFilterNightTest() =
             filteredCategoryIds = emptySet(),
             filteredAntiFeatureIds = emptySet(),
             filteredRepositoryIds = emptySet(),
-          )
-        )
+          ),
+        ),
     )
   }

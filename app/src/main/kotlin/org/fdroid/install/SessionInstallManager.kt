@@ -292,7 +292,7 @@ constructor(
                 sessionId = sessionId,
                 intent = pendingIntent,
                 progress = progress,
-              )
+              ),
             )
           }
           PackageInstaller.STATUS_FAILURE_ABORTED -> {

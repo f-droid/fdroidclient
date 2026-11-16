@@ -13,7 +13,7 @@ import org.fdroid.ui.navigation.Navigator
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.discoverEntry(navigator: Navigator) {
   entry<NavigationKey.Discover>(
-    metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
+    metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() },
   ) {
     val viewModel = hiltViewModel<DiscoverViewModel>()
     Discover(

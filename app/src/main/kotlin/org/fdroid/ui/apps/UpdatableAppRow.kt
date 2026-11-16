@@ -51,7 +51,7 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
               contentDescription =
                 stringResource(R.string.notification_title_single_update_available),
             )
-          }
+          },
         ) {
           AsyncShimmerImage(
             model = app.iconModel,
@@ -74,7 +74,7 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
               MaterialTheme.colorScheme.surfaceVariant
             } else {
               Color.Transparent
-            }
+            },
         ),
     )
     AnimatedVisibility(

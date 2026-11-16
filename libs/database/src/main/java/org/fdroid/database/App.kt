@@ -42,7 +42,7 @@ public interface MinimalApp {
     [
       // Supports the "More apps by ..." button in AppDetails, which links to the "Apps by ..."
       // list.
-      Index("authorName")
+      Index("authorName"),
     ],
   foreignKeys =
     [
@@ -51,7 +51,7 @@ public interface MinimalApp {
         parentColumns = ["repoId"],
         childColumns = ["repoId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 public data class AppMetadata(
@@ -250,7 +250,12 @@ internal constructor(
       if (file.repoId != metadata.repoId || file.type != type) return@forEach
       val list = map.getOrPut(file.locale) { ArrayList() } as ArrayList
       list.add(
-        FileV2(name = file.name, sha256 = file.sha256, size = file.size, ipfsCidV1 = file.ipfsCidV1)
+        FileV2(
+          name = file.name,
+          sha256 = file.sha256,
+          size = file.size,
+          ipfsCidV1 = file.ipfsCidV1,
+        ),
       )
     }
     return map.ifEmpty { null }
@@ -439,7 +444,7 @@ internal interface IFile {
       // In addition to primary key, as reordering the primary key so `packageName` is first:
       //  * Requires complex migration, dropping and recreating the table.
       //  * May be queries which want `repoId` first (though this is unlikely for this table)
-      Index("packageName")
+      Index("packageName"),
     ],
   foreignKeys =
     [
@@ -448,7 +453,7 @@ internal interface IFile {
         parentColumns = ["repoId", "packageName"],
         childColumns = ["repoId", "packageName"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 internal data class LocalizedFile(
@@ -521,7 +526,7 @@ internal data class LocalizedIcon(
       //  * May be queries which want `repoId` first (though this is unlikely for this table)
       //
       // This includes `repoId` so it can be used as a covering index in specific queries.
-      Index("packageName", "repoId")
+      Index("packageName", "repoId"),
     ],
   foreignKeys =
     [
@@ -530,7 +535,7 @@ internal data class LocalizedIcon(
         parentColumns = ["repoId", "packageName"],
         childColumns = ["repoId", "packageName"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 internal data class LocalizedFileList(

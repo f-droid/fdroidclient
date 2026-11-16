@@ -114,7 +114,7 @@ internal class MirrorChooserRandom : MirrorChooserImpl() {
 }
 
 internal class MirrorChooserWithParameters(
-  private val mirrorParameterManager: MirrorParameterManager? = null
+  private val mirrorParameterManager: MirrorParameterManager? = null,
 ) : MirrorChooserImpl() {
 
   override fun orderMirrors(downloadRequest: DownloadRequest): List<Mirror> {

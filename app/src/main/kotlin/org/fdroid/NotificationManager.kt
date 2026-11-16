@@ -86,7 +86,7 @@ constructor(@param:ApplicationContext private val context: Context) {
         NotificationChannelCompat.Builder(CHANNEL_PRIVILEGED_EXTENSION_MIGRATION, IMPORTANCE_MAX)
           .setName(s(R.string.notification_channel_privileged_extension_migration_title))
           .setDescription(
-            s(R.string.notification_channel_privileged_extension_migration_description)
+            s(R.string.notification_channel_privileged_extension_migration_description),
           )
           .build(),
       )
@@ -125,7 +125,7 @@ constructor(@param:ApplicationContext private val context: Context) {
   }
 
   private fun getAppUpdatesAvailableNotification(
-    state: UpdateNotificationState
+    state: UpdateNotificationState,
   ): NotificationCompat.Builder {
     val pi = getMyAppsPendingIntent(context)
     return NotificationCompat.Builder(context, CHANNEL_UPDATES_AVAILABLE)

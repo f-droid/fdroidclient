@@ -107,7 +107,7 @@ public class IndexV2Updater(
           val currentTimestamp = repoDao.getRepository(repo.repoId)?.timestamp
           if (currentTimestamp != repo.timestamp)
             throw ConcurrentModificationException(
-              "Repo timestamp expected ${repo.timestamp}, but was $currentTimestamp"
+              "Repo timestamp expected ${repo.timestamp}, but was $currentTimestamp",
             )
           // still the expected timestamp, so go on processing...
           streamProcessor.process(repoVersion, inputStream) { i ->

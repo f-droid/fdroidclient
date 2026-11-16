@@ -48,7 +48,7 @@ internal class EntryTest {
             "timestamp": [1, 2]
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -62,7 +62,7 @@ internal class EntryTest {
             "version": {}
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "version") }
@@ -77,7 +77,7 @@ internal class EntryTest {
             "index": 1337
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "object") }
@@ -96,7 +96,7 @@ internal class EntryTest {
               }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "numPackages") }
@@ -117,7 +117,7 @@ internal class EntryTest {
               "diffs": []
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "diffs") }

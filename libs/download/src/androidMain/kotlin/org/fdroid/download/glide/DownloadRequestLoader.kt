@@ -29,7 +29,7 @@ public class DownloadRequestLoader(private val httpManager: HttpManager) :
   public class Factory(private val httpManager: HttpManager) :
     ModelLoaderFactory<DownloadRequest, InputStream> {
     override fun build(
-      multiFactory: MultiModelLoaderFactory
+      multiFactory: MultiModelLoaderFactory,
     ): ModelLoader<DownloadRequest, InputStream> {
       return DownloadRequestLoader(httpManager)
     }

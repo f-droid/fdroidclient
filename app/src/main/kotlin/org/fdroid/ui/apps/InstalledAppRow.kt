@@ -49,7 +49,7 @@ fun InstalledAppRow(
                 },
               contentDescription = stringResource(R.string.my_apps_header_apps_with_issue),
             )
-        }
+        },
       ) {
         AsyncShimmerImage(
           model = app.iconModel,
@@ -68,7 +68,7 @@ fun InstalledAppRow(
             MaterialTheme.colorScheme.surfaceVariant
           } else {
             Color.Transparent
-          }
+          },
       ),
     modifier = modifier,
   )

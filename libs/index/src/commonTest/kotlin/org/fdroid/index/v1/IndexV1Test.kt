@@ -63,7 +63,7 @@ internal class IndexV1Test {
               "repo": {}
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -76,7 +76,7 @@ internal class IndexV1Test {
               "repo": { "timestamp": "string" }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "numeric literal") }
@@ -102,7 +102,7 @@ internal class IndexV1Test {
                 $validRepo,
                 "apps": {}
             }"""
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "apps") }
@@ -114,7 +114,7 @@ internal class IndexV1Test {
                 $validRepo,
                 "packages": []
             }"""
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "packages") }

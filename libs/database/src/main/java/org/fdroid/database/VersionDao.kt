@@ -172,7 +172,7 @@ internal interface VersionDaoInt : VersionDao {
     """SELECT * FROM ${Version.TABLE}
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC, pref.weight DESC, manifest_nativecode ASC"""
+        ORDER BY manifest_versionCode DESC, pref.weight DESC, manifest_nativecode ASC""",
   )
   override fun getAppVersions(packageName: String): LiveData<List<AppVersion>>
 
@@ -181,13 +181,13 @@ internal interface VersionDaoInt : VersionDao {
   @Query(
     """SELECT * FROM ${Version.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName
-        ORDER BY manifest_versionCode DESC, manifest_nativecode ASC"""
+        ORDER BY manifest_versionCode DESC, manifest_nativecode ASC""",
   )
   override fun getAppVersions(repoId: Long, packageName: String): LiveData<List<AppVersion>>
 
   @Query(
     """SELECT * FROM ${Version.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId"""
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""",
   )
   fun getVersion(repoId: Long, packageName: String, versionId: String): Version?
 
@@ -209,19 +209,19 @@ internal interface VersionDaoInt : VersionDao {
         WHERE pref.enabled = 1 AND
               manifest_versionCode > COALESCE(appPrefs.ignoreVersionCodeUpdate, 0) AND
               packageName IN (:packageNames)
-        ORDER BY manifest_versionCode DESC, pref.weight DESC"""
+        ORDER BY manifest_versionCode DESC, pref.weight DESC""",
   )
   fun getVersionsInternal(packageNames: List<String>): List<Version>
 
   @Query(
     """SELECT * FROM ${VersionedString.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun getVersionedStrings(repoId: Long, packageName: String): List<VersionedString>
 
   @Query(
     """SELECT * FROM ${VersionedString.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId"""
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""",
   )
   fun getVersionedStrings(
     repoId: Long,
@@ -234,19 +234,19 @@ internal interface VersionDaoInt : VersionDao {
 
   @Query(
     """DELETE FROM ${Version.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId"""
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""",
   )
   fun deleteAppVersion(repoId: Long, packageName: String, versionId: String)
 
   @Query(
     """DELETE FROM ${VersionedString.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId"""
+        WHERE repoId = :repoId AND packageName = :packageName AND versionId = :versionId""",
   )
   fun deleteVersionedStrings(repoId: Long, packageName: String, versionId: String)
 
   @Query(
     """DELETE FROM ${VersionedString.TABLE} WHERE repoId = :repoId
-        AND packageName = :packageName AND versionId = :versionId AND type = :type"""
+        AND packageName = :packageName AND versionId = :versionId AND type = :type""",
   )
   fun deleteVersionedStrings(
     repoId: Long,

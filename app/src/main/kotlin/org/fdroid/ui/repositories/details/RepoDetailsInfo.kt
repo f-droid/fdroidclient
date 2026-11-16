@@ -121,7 +121,7 @@ data class UserMirrorItem(val mirror: Mirror, val isEnabled: Boolean) : MirrorIt
         putExtra(EXTRA_TEXT, uri)
       }
     context.startActivitySafe(
-      Intent.createChooser(intent, context.getString(R.string.share_mirror))
+      Intent.createChooser(intent, context.getString(R.string.share_mirror)),
     )
   }
 }

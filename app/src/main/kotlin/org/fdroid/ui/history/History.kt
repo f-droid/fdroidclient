@@ -68,7 +68,7 @@ fun History(
             onClick = {
               onDeleteAll()
               onDismiss()
-            }
+            },
           ) {
             Text(text = stringResource(R.string.delete), color = MaterialTheme.colorScheme.error)
           }

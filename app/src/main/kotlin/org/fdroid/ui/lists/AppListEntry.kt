@@ -14,7 +14,7 @@ fun EntryProviderScope<NavKey>.appListEntry(navigator: Navigator, isBigScreen: B
   entry<NavigationKey.AppList>(metadata = ListDetailSceneStrategy.listPane("appdetails")) {
     val viewModel =
       hiltViewModel<AppListViewModel, AppListViewModel.Factory>(
-        creationCallback = { factory -> factory.create(it.type) }
+        creationCallback = { factory -> factory.create(it.type) },
       )
     val appListInfo =
       object : AppListInfo {

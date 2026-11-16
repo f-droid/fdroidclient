@@ -215,7 +215,9 @@ private fun FilterButton(
   ) {
     IconButton(onClick = toggleFilterVisibility, modifier = modifier) {
       BadgedBox(
-        badge = { if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary) }
+        badge = {
+          if (showFilterBadge) Badge(containerColor = MaterialTheme.colorScheme.secondary)
+        },
       ) {
         Icon(
           imageVector = Icons.Filled.FilterList,

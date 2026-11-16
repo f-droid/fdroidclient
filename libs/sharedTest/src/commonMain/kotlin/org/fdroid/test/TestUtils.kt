@@ -58,11 +58,11 @@ object TestUtils {
                       usesPermission = pv.manifest.usesPermission.sortedBy { p -> p.name },
                       usesPermissionSdk23 =
                         pv.manifest.usesPermissionSdk23.sortedBy { p -> p.name },
-                    )
+                    ),
                 )
               },
           )
-        }
+        },
     )
 
   fun MetadataV2.sort(): MetadataV2 =

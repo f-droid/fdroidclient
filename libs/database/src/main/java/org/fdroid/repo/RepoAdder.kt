@@ -165,7 +165,7 @@ internal class RepoAdder(
             val knownFingerprint = knownRepos[repo.address]
             if (knownFingerprint != repo.fingerprint)
               throw SigningException(
-                "Known fingerprint different from given one: ${repo.fingerprint}"
+                "Known fingerprint different from given one: ${repo.fingerprint}",
               )
           }
           fetchResult = getFetchResult(fetchUrl, repo)

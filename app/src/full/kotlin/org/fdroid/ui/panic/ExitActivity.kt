@@ -8,18 +8,20 @@ import kotlin.system.exitProcess
 class ExitActivity : AppCompatActivity() {
   companion object {
     fun exitAndRemoveFromRecentApps(activity: AppCompatActivity) {
-      activity.runOnUiThread({
-        val intent =
-          Intent(activity, ExitActivity::class.java).apply {
-            addFlags(
-              Intent.FLAG_ACTIVITY_NEW_TASK or
-                Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or
-                Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                Intent.FLAG_ACTIVITY_NO_ANIMATION
-            )
-          }
-        activity.startActivity(intent)
-      })
+      activity.runOnUiThread(
+        {
+          val intent =
+            Intent(activity, ExitActivity::class.java).apply {
+              addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK or
+                  Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS or
+                  Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                  Intent.FLAG_ACTIVITY_NO_ANIMATION,
+              )
+            }
+          activity.startActivity(intent)
+        },
+      )
     }
   }
 

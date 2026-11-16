@@ -96,8 +96,8 @@ val searchResultApps =
             "en-US" to
               FileV2(
                 name =
-                  "/com.mcsnowflake.worktimer/en-US/icon_2ulxYoOyPvurF6rw-fHZdyx3Ys-_1ohNUVVvyih_wEM=.png"
-              )
+                  "/com.mcsnowflake.worktimer/en-US/icon_2ulxYoOyPvurF6rw-fHZdyx3Ys-_1ohNUVVvyih_wEM=.png",
+              ),
           ),
         added = 23,
         lastUpdated = 42,
@@ -142,7 +142,7 @@ val searchResultApps =
                   "/de.wger.flutter/en-US/icon_yXwYQPVpjYOb_9wLe4BDR9YY9FCYY29RuuvMfGdIW68=.png",
                 sha256 = "c97c1840f5698d839bffdc0b7b804347d618f45098636f51baebcc7c67485baf",
                 size = 12181,
-              )
+              ),
           ),
         added = 23,
         lastUpdated = 42,
@@ -165,7 +165,7 @@ val searchResultApps =
                   "/es.ideotec.workouttime/en-US/icon_GmCBd-0I_HjZNdIMk10t7ceQ5yMtFnn_SrHYgnEsKvI=.png",
                 sha256 = "1a608177ed08fc78d935d20c935d2dedc790e7232d1679ff4ab1d882712c2af2",
                 size = 24900,
-              )
+              ),
           ),
         added = 23,
         lastUpdated = 42,
@@ -214,8 +214,8 @@ val searchResultApps =
             "en-US" to
               FileV2(
                 name =
-                  "/me.ahmetcetinkaya.whph/en-US/icon_tpPTqqEGIdreAhCa15py36S-PiU0HDONw1S8SrfdG1s=.png"
-              )
+                  "/me.ahmetcetinkaya.whph/en-US/icon_tpPTqqEGIdreAhCa15py36S-PiU0HDONw1S8SrfdG1s=.png",
+              ),
           ),
         added = 23,
         lastUpdated = 42,
@@ -249,8 +249,8 @@ val searchResultApps =
             "en-US" to
               FileV2(
                 name =
-                  "/org.runnerup.free/en-US/icon_kN3i52l3-KVxE-yMinNc6g8JQTsMQeRFjWA2fW3M1uE=.png"
-              )
+                  "/org.runnerup.free/en-US/icon_kN3i52l3-KVxE-yMinNc6g8JQTsMQeRFjWA2fW3M1uE=.png",
+              ),
           ),
         added = 23,
         lastUpdated = 42,

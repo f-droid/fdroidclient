@@ -86,7 +86,7 @@ fun CrashContent(
         onClick = {
           val text = if (isOldCrash) "background crash" else textFieldState.text.toString()
           onSend(text, "")
-        }
+        },
       ) {
         Text(stringResource(R.string.crash_report_button_send))
       }

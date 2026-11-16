@@ -94,7 +94,7 @@ internal class IndexV1StreamProcessorTest {
               "repo": {}
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -107,7 +107,7 @@ internal class IndexV1StreamProcessorTest {
               "repo": { "timestamp": "string" }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "numeric literal") }
@@ -134,7 +134,7 @@ internal class IndexV1StreamProcessorTest {
                 "requests": {"install": [], "uninstall": []},
                 "apps": {}
             }"""
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "apps") }
@@ -148,7 +148,7 @@ internal class IndexV1StreamProcessorTest {
                 "apps": [],
                 "packages": []
             }"""
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "packages") }
@@ -209,7 +209,7 @@ internal class IndexV1StreamProcessorTest {
       val currentPackage = packages[packageName] ?: fail()
       packages[packageName] =
         currentPackage.copy(
-          metadata = currentPackage.metadata.copy(preferredSigner = preferredSigner)
+          metadata = currentPackage.metadata.copy(preferredSigner = preferredSigner),
         )
     }
   }

@@ -48,7 +48,8 @@ internal class UpdateInstallerTest {
   private val testScope = TestScope()
   private val scope =
     CoroutineScope(
-      testScope.backgroundScope.coroutineContext + UnconfinedTestDispatcher(testScope.testScheduler)
+      testScope.backgroundScope.coroutineContext +
+        UnconfinedTestDispatcher(testScope.testScheduler),
     )
 
   @Before
@@ -99,7 +100,7 @@ internal class UpdateInstallerTest {
             packageName = "com.example.app",
             installedVersionName = "4.0",
             update = ver,
-          )
+          ),
         )
 
       createUpdateInstaller().updateAll(oneUpdate, canAskPreApprovalNow = true)
@@ -225,7 +226,7 @@ internal class UpdateInstallerTest {
             packageName = "com.example.app",
             installedVersionName = "4.0",
             update = ver,
-          )
+          ),
         )
       coEvery { appInstallManager.install(any(), any(), any(), any(), any(), any(), any()) } returns
         mockk()

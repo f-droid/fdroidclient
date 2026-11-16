@@ -99,14 +99,14 @@ public data class AppV1(
   }
 
   private fun Map<String, Localized>?.toLocalizedTextV2(
-    selector: (Localized) -> String?
+    selector: (Localized) -> String?,
   ): LocalizedTextV2? {
     if (this == null) return null
     return mapValuesNotNull { selector(it.value) }
   }
 
   private fun Map<String, Localized>?.toLocalizedFileV2(
-    selector: (Localized) -> String?
+    selector: (Localized) -> String?,
   ): LocalizedFileV2? {
     if (this == null) return null
     return mapValuesNotNull {

@@ -120,7 +120,7 @@ fun PermissionsSection(
             stringResource(
               R.string.app_details_permissions_button,
               version.permissions.size,
-            )
+            ),
         )
         Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
         Icon(imageVector = Icons.AutoMirrored.Default.ArrowForward, contentDescription = null)
@@ -194,7 +194,7 @@ private fun PermissionsSheet(
           ElevatedCard(
             colors =
               CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.errorContainer
+                containerColor = MaterialTheme.colorScheme.errorContainer,
               ),
             modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp, horizontal = 16.dp),
           ) {
@@ -327,7 +327,7 @@ private fun PermissionsRow(permission: Permission) {
           )
         }
       }
-    }
+    },
   ) {
     val text =
       if (permission.label != null && permission.label != permission.name) {

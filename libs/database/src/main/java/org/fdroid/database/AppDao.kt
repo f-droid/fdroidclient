@@ -184,7 +184,7 @@ public interface AppDao {
   public fun getInstalledAppListItems(packageManager: PackageManager): LiveData<List<AppListItem>>
 
   public fun getInstalledAppListItems(
-    packageInfoMap: Map<String, PackageInfo>
+    packageInfoMap: Map<String, PackageInfo>,
   ): Flow<List<AppListItem>>
 
   public suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
@@ -369,7 +369,7 @@ internal interface AppDaoInt : AppDao {
   @Deprecated("Only for v1 index")
   @Query(
     """UPDATE ${AppMetadata.TABLE} SET preferredSigner = :preferredSigner
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun updatePreferredSigner(repoId: Long, packageName: String, preferredSigner: String?)
 
@@ -379,14 +379,14 @@ internal interface AppDaoInt : AppDao {
             SELECT TOTAL(isCompatible) > 0 FROM ${Version.TABLE}
             WHERE repoId = :repoId AND ${AppMetadata.TABLE}.packageName = ${Version.TABLE}.packageName
         )
-        WHERE repoId = :repoId"""
+        WHERE repoId = :repoId""",
   )
   override fun updateCompatibility(repoId: Long)
 
   @Deprecated("Will be removed in future version")
   @Query(
     """UPDATE ${AppMetadata.TABLE} SET localizedName = :name, localizedSummary = :summary
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun updateAppMetadata(repoId: Long, packageName: String, name: String?, summary: String?)
 
@@ -398,28 +398,28 @@ internal interface AppDaoInt : AppDao {
         JOIN RepositoryPreferences AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
         WHERE packageName = :packageName AND pref.enabled = 1 AND repoId = preferredRepoId
-        ORDER BY pref.weight DESC LIMIT 1"""
+        ORDER BY pref.weight DESC LIMIT 1""",
   )
   override fun getApp(packageName: String): LiveData<App?>
 
   @Transaction
   @Query(
     """SELECT * FROM ${AppMetadata.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   override fun getApp(repoId: Long, packageName: String): App?
 
   @Query(
     """SELECT repoId FROM ${AppMetadata.TABLE}
         JOIN RepositoryPreferences AS pref USING (repoId)
-        WHERE pref.enabled = 1 AND packageName = :packageName"""
+        WHERE pref.enabled = 1 AND packageName = :packageName""",
   )
   override fun getRepositoryIdsForApp(packageName: String): List<Long>
 
   /** Used for diffing. */
   @Query(
     """SELECT * FROM ${AppMetadata.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun getAppMetadata(repoId: Long, packageName: String): AppMetadata?
 
@@ -429,7 +429,7 @@ internal interface AppDaoInt : AppDao {
   /** used for diffing */
   @Query(
     """SELECT * FROM ${LocalizedFile.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun getLocalizedFiles(repoId: Long, packageName: String): List<LocalizedFile>
 
@@ -447,7 +447,7 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName IS NULL ASC, icon.packageName IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
-        LIMIT :limit"""
+        LIMIT :limit""",
   )
   override fun getAppOverviewItems(limit: Int): LiveData<List<AppOverviewItem>>
 
@@ -466,7 +466,7 @@ internal interface AppDaoInt : AppDao {
         GROUP BY packageName HAVING MAX(pref.weight)
         ORDER BY localizedName IS NULL ASC, icon.packageName IS NULL ASC,
             localizedSummary IS NULL ASC, app.lastUpdated DESC
-        LIMIT :limit"""
+        LIMIT :limit""",
   )
   override fun getAppOverviewItems(category: String, limit: Int): LiveData<List<AppOverviewItem>>
 
@@ -476,7 +476,7 @@ internal interface AppDaoInt : AppDao {
   @Query(
     """SELECT repoId, packageName, added, app.lastUpdated, localizedName,
              localizedSummary, name, summary, categories, app.isCompatible
-        FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName"""
+        FROM ${AppMetadata.TABLE} AS app WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun getAppOverviewItem(repoId: Long, packageName: String): AppOverviewItem?
 
@@ -526,7 +526,7 @@ internal interface AppDaoInt : AppDao {
             localizedSummary, name, summary, categories, version.antiFeatures, app.isCompatible
         FROM ${AppMetadata.TABLE} AS app
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE repoId = :repoId"""
+        WHERE repoId = :repoId""",
   )
   override suspend fun getAppsByRepository(repoId: Long): List<AppOverviewItem>
 
@@ -580,7 +580,7 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadata.TABLE} AS app
         JOIN PreferredRepo USING (packageName)
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-        WHERE repoId = preferredRepoId"""
+        WHERE repoId = preferredRepoId""",
       )
     if (whereQuery.isNotEmpty()) queryBuilder.append(" AND ").append(whereQuery)
     return RoomRawQuery(
@@ -594,7 +594,7 @@ internal interface AppDaoInt : AppDao {
   @Transaction
   @RawQuery(
     observedEntities =
-      [AppMetadata::class, Version::class, Repository::class, RepositoryPreferences::class]
+      [AppMetadata::class, Version::class, Repository::class, RepositoryPreferences::class],
   )
   fun getAppsFlow(query: RoomRawQuery): Flow<List<AppOverviewItem>>
 
@@ -635,7 +635,7 @@ internal interface AppDaoInt : AppDao {
                 WHERE pref.enabled = 1
                     AND repoId = PreferredRepo.preferredRepoId
                     AND categories LIKE '%,' || ? || ',%' 
-                GROUP BY packageName HAVING MAX(pref.weight)"""
+                GROUP BY packageName HAVING MAX(pref.weight)""",
         )
       addOrderBy(queryBuilder, sortOrder)
       val rawQuery =
@@ -663,7 +663,7 @@ internal interface AppDaoInt : AppDao {
                     categories, version.antiFeatures, app.isCompatible, app.preferredSigner
                 FROM ${AppMetadata.TABLE} AS app
                 LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
-                WHERE repoId = :repoId"""
+                WHERE repoId = :repoId""",
         )
       addOrderBy(queryBuilder, sortOrder)
       val rawQuery =
@@ -695,7 +695,7 @@ internal interface AppDaoInt : AppDao {
                 LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
                 WHERE pref.enabled = 1 AND authorName = ?
                       AND PreferredRepo.preferredRepoId = repoId
-                GROUP BY packageName HAVING MAX(pref.weight)"""
+                GROUP BY packageName HAVING MAX(pref.weight)""",
         )
       addOrderBy(queryBuilder, sortOrder)
       val rawQuery =
@@ -722,7 +722,7 @@ internal interface AppDaoInt : AppDao {
   }
 
   private fun LiveData<List<AppListItem>>.map(
-    packageManager: PackageManager
+    packageManager: PackageManager,
   ): LiveData<List<AppListItem>> {
     val installedPackages =
       packageManager.getInstalledPackages(0).associateBy { packageInfo -> packageInfo.packageName }
@@ -755,7 +755,7 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND ${AppMetadataFts.TABLE} MATCH :searchQuery AND
             repoId = preferredRepoId
-        GROUP BY packageName HAVING MAX(pref.weight)"""
+        GROUP BY packageName HAVING MAX(pref.weight)""",
   )
   fun getAppListItems(searchQuery: String): LiveData<List<AppListItem>>
 
@@ -772,7 +772,7 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
            ${AppMetadataFts.TABLE} MATCH :searchQuery AND repoId = preferredRepoId
-        GROUP BY packageName HAVING MAX(pref.weight)"""
+        GROUP BY packageName HAVING MAX(pref.weight)""",
   )
   fun getAppListItems(category: String, searchQuery: String): LiveData<List<AppListItem>>
 
@@ -792,7 +792,7 @@ internal interface AppDaoInt : AppDao {
         WHERE repoId = :repoId AND app.rowid IN (
             SELECT rowid FROM ${AppMetadataFts.TABLE}
             WHERE repoId = :repoId AND ${AppMetadataFts.TABLE} MATCH :searchQuery
-        )"""
+        )""",
   )
   fun getAppListItems(repoId: Long, searchQuery: String): LiveData<List<AppListItem>>
 
@@ -807,7 +807,7 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         WHERE pref.enabled = 1 AND repoId = preferredRepoId
         GROUP BY packageName HAVING MAX(pref.weight)
-        ORDER BY localizedName COLLATE NOCASE ASC"""
+        ORDER BY localizedName COLLATE NOCASE ASC""",
   )
   fun getAppListItemsByName(): LiveData<List<AppListItem>>
 
@@ -822,7 +822,7 @@ internal interface AppDaoInt : AppDao {
         LEFT JOIN ${HighestVersion.TABLE} AS version USING (repoId, packageName)
         WHERE pref.enabled = 1 AND repoId = PreferredRepo.preferredRepoId
         GROUP BY packageName HAVING MAX(pref.weight)
-        ORDER BY app.lastUpdated DESC"""
+        ORDER BY app.lastUpdated DESC""",
   )
   fun getAppListItemsByLastUpdated(): LiveData<List<AppListItem>>
 
@@ -840,7 +840,7 @@ internal interface AppDaoInt : AppDao {
         JOIN PreferredRepo USING (packageName)
         WHERE pref.enabled = 1 AND packageName IN (:packageNames) AND repoId = preferredRepoId
         GROUP BY packageName HAVING MAX(pref.weight)
-        ORDER BY localizedName COLLATE NOCASE ASC"""
+        ORDER BY localizedName COLLATE NOCASE ASC""",
   )
   fun getAppListItems(packageNames: List<String>): LiveData<List<AppListItem>>
 
@@ -853,7 +853,7 @@ internal interface AppDaoInt : AppDao {
         WHERE authorName = :authorName AND app.rowid IN (
             SELECT rowid FROM ${AppMetadataFts.TABLE}
             WHERE authorName = :authorName AND ${AppMetadataFts.TABLE} MATCH :searchQuery
-        )"""
+        )""",
   )
   fun getAppListItemsForAuthor(authorName: String, searchQuery: String): LiveData<List<AppListItem>>
 
@@ -866,12 +866,12 @@ internal interface AppDaoInt : AppDao {
             JOIN PreferredRepo USING (packageName)
             WHERE authorName = :author AND repoId = preferredRepoId
             GROUP BY packageName
-            LIMIT 2)"""
+            LIMIT 2)""",
   )
   override fun hasAuthorMoreThanOneApp(author: String): LiveData<Boolean>
 
   override fun getInstalledAppListItems(
-    packageManager: PackageManager
+    packageManager: PackageManager,
   ): LiveData<List<AppListItem>> {
     val installedPackages =
       packageManager.getInstalledPackages(0).associateBy { packageInfo -> packageInfo.packageName }
@@ -887,7 +887,7 @@ internal interface AppDaoInt : AppDao {
   }
 
   override fun getInstalledAppListItems(
-    packageInfoMap: Map<String, PackageInfo>
+    packageInfoMap: Map<String, PackageInfo>,
   ): Flow<List<AppListItem>> {
     val packageNames = packageInfoMap.keys.toList()
     // since sqlite 3.32.0 the max variables number was increased to 32766
@@ -944,7 +944,7 @@ internal interface AppDaoInt : AppDao {
         FROM ${AppMetadataFts.TABLE} AS fts
         JOIN ${AppMetadata.TABLE} AS app ON app.rowid = fts.rowid
         JOIN PreferredRepo USING (packageName)
-        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND app.repoId = preferredRepoId"""
+        WHERE ${AppMetadataFts.TABLE} MATCH :searchQuery AND app.repoId = preferredRepoId""",
   )
   override suspend fun getAppSearchItems(searchQuery: String): List<AppSearchItem>
 
@@ -957,7 +957,7 @@ internal interface AppDaoInt : AppDao {
         JOIN ${RepositoryPreferences.TABLE} AS pref USING (repoId)
         JOIN PreferredRepo USING (packageName)
         WHERE pref.enabled = 1 AND categories LIKE '%,' || :category || ',%' AND
-            repoId = preferredRepoId"""
+            repoId = preferredRepoId""",
   )
   override fun getNumberOfAppsInCategory(category: String): Int
 
@@ -969,33 +969,33 @@ internal interface AppDaoInt : AppDao {
 
   @Query(
     """DELETE FROM ${LocalizedFile.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND type = :type"""
+        WHERE repoId = :repoId AND packageName = :packageName AND type = :type""",
   )
   fun deleteLocalizedFiles(repoId: Long, packageName: String, type: String)
 
   @Query(
     """DELETE FROM ${LocalizedFile.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND type = :type
-        AND locale = :locale"""
+        AND locale = :locale""",
   )
   fun deleteLocalizedFile(repoId: Long, packageName: String, type: String, locale: String)
 
   @Query(
     """DELETE FROM ${LocalizedFileList.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName"""
+        WHERE repoId = :repoId AND packageName = :packageName""",
   )
   fun deleteLocalizedFileLists(repoId: Long, packageName: String)
 
   @Query(
     """DELETE FROM ${LocalizedFileList.TABLE}
-        WHERE repoId = :repoId AND packageName = :packageName AND type = :type"""
+        WHERE repoId = :repoId AND packageName = :packageName AND type = :type""",
   )
   fun deleteLocalizedFileLists(repoId: Long, packageName: String, type: String)
 
   @Query(
     """DELETE FROM ${LocalizedFileList.TABLE}
         WHERE repoId = :repoId AND packageName = :packageName AND type = :type
-        AND locale = :locale"""
+        AND locale = :locale""",
   )
   fun deleteLocalizedFileList(repoId: Long, packageName: String, type: String, locale: String)
 

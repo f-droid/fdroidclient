@@ -9,7 +9,7 @@ hiltNavigationCompose = "1.4.0"
 dokka = "2.3.0"
 mavenPublish = "0.37.0"
 screenshot = "0.0.1-alpha16"
-ktfmt = "0.27.0"
+ktfmt = "0.28.0"
 
 kotlinxSerializationCore = "1.12.0"
 kotlinxSerializationJson = "1.12.0"
@@ -57,7 +57,7 @@ nanohttpd = "2.3.1"
 # logging
 slf4jApi = "2.0.20"
 microutilsKotlinLogging = "3.0.5"
-logbackClassic = "1.6.6"
+logbackClassic = "1.6.7"
 logbackAndroid = "3.0.0"
 
 # tests

@@ -56,7 +56,7 @@ fun Discover(
                 val hasRepoIssues = (discoverModel as? LoadedDiscoverModel)?.hasRepoIssues == true
                 if (dest.id == NavigationKey.Repos && hasRepoIssues)
                   Badge(content = null, modifier = Modifier.size(8.dp))
-              }
+              },
             ) {
               TopAppBarButton(
                 imageVector = dest.icon,

@@ -181,7 +181,7 @@ fun AppDetailsHeader(
                           SpanStyle(
                             color = ButtonDefaults.textButtonColors().contentColor,
                             textDecoration = TextDecoration.None,
-                          )
+                          ),
                       ),
                   ),
                 start = startIndex,
@@ -342,7 +342,7 @@ fun AppDetailsHeader(
           onClick = {
             if (!cancelled) item.actions.cancelInstall()
             cancelled = true
-          }
+          },
         ) {
           AnimatedVisibility(cancelled) {
             CircularProgressIndicator(modifier = Modifier.size(24.dp))

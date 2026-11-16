@@ -68,7 +68,8 @@ internal class UpdatesManagerTest {
   private val installedAppsFlow = MutableStateFlow<Map<String, PackageInfo>>(emptyMap())
   private val scope =
     CoroutineScope(
-      testScope.backgroundScope.coroutineContext + UnconfinedTestDispatcher(testScope.testScheduler)
+      testScope.backgroundScope.coroutineContext +
+        UnconfinedTestDispatcher(testScope.testScheduler),
     )
 
   @Before
@@ -178,7 +179,7 @@ internal class UpdatesManagerTest {
         mapOf(
           "com.example.app1" to makePackageInfo("com.example.app1"),
           "com.example.app2" to makePackageInfo("com.example.app2"),
-        )
+        ),
       )
     advanceUntilIdle()
 
@@ -217,11 +218,11 @@ internal class UpdatesManagerTest {
           makeUpdatableApp(packageName = "pkg.b", update = nullVer),
         ),
         emptyList(),
-      )
+      ),
     )
     createUpdatesManager().also { updatesManager ->
       updatesManager.loadUpdates(
-        mapOf("pkg.a" to makePackageInfo("pkg.a"), "pkg.b" to makePackageInfo("pkg.b"))
+        mapOf("pkg.a" to makePackageInfo("pkg.a"), "pkg.b" to makePackageInfo("pkg.b")),
       )
       advanceUntilIdle()
       updatesManager.updates.test {
@@ -250,7 +251,7 @@ internal class UpdatesManagerTest {
       every { repoManager.getRepository(1L) } returns makeRepository()
 
       mockLoadUpdates(
-        AppCheckResult(listOf(makeUpdatableApp(packageName = "a1", name = "A1")), emptyList())
+        AppCheckResult(listOf(makeUpdatableApp(packageName = "a1", name = "A1")), emptyList()),
       )
       installedAppsFlow.value = installedApps("a1")
       val updatesManager = createUpdatesManager()
@@ -261,7 +262,7 @@ internal class UpdatesManagerTest {
 
       // second call replaces first
       mockLoadUpdates(
-        AppCheckResult(listOf(makeUpdatableApp(packageName = "a2", name = "A2")), emptyList())
+        AppCheckResult(listOf(makeUpdatableApp(packageName = "a2", name = "A2")), emptyList()),
       )
       updatesManager.loadUpdates(installedApps("a2"))
       advanceUntilIdle()
@@ -323,7 +324,7 @@ internal class UpdatesManagerTest {
     val issue = KnownVulnerability(fromPreferredRepo = true)
     val overview = makeAppOverviewItem(lastUpdated = 42L, name = "Vulnerable App")
     mockLoadUpdates(
-      AppCheckResult(emptyList(), listOf(AvailableAppWithIssue(overview, "1.0", 10, issue)))
+      AppCheckResult(emptyList(), listOf(AvailableAppWithIssue(overview, "1.0", 10, issue))),
     )
     every { repoManager.getRepository(1L) } returns makeRepository()
     createUpdatesManager().also { updatesManager ->
@@ -348,7 +349,7 @@ internal class UpdatesManagerTest {
       AppCheckResult(
         emptyList(),
         listOf(UnavailableAppWithIssue("com.removed", "Removed App", "3.0", 30)),
-      )
+      ),
     )
     createUpdatesManager().also { updatesManager ->
       updatesManager.loadUpdates(installedApps("com.removed"))
@@ -385,9 +386,9 @@ internal class UpdatesManagerTest {
                 "1.0",
                 10,
                 issue,
-              )
+              ),
             ),
-          )
+          ),
         )
         createUpdatesManager().also { updatesManager ->
           updatesManager.loadUpdates(installedApps(packageName))
@@ -415,7 +416,7 @@ internal class UpdatesManagerTest {
             "com.ign1" to makePackageInfo("com.ign1"),
             "com.kept" to makePackageInfo("com.kept"),
             "com.ign2" to makePackageInfo("com.ign2"),
-          )
+          ),
         )
         advanceUntilIdle()
         updatesManager.appsWithIssues.test {
@@ -480,9 +481,9 @@ internal class UpdatesManagerTest {
             "2.0",
             20,
             KnownVulnerability(false),
-          )
+          ),
         ),
-      )
+      ),
     )
     every { repoManager.getRepository(1L) } returns makeRepository()
     val updatesManager = createUpdatesManager()
@@ -490,7 +491,7 @@ internal class UpdatesManagerTest {
       mapOf(
         "com.example.app" to makePackageInfo("com.example.app"),
         "com.issue" to makePackageInfo("com.issue"),
-      )
+      ),
     )
     advanceUntilIdle()
 
@@ -532,7 +533,7 @@ internal class UpdatesManagerTest {
         )
       mockLoadUpdates(AppCheckResult(listOf(u1, u2), emptyList()))
       updatesManager.loadUpdates(
-        mapOf("a1" to makePackageInfo("a1"), "a2" to makePackageInfo("a2"))
+        mapOf("a1" to makePackageInfo("a1"), "a2" to makePackageInfo("a2")),
       )
       advanceUntilIdle()
       // now we got two updates and notification text was updated

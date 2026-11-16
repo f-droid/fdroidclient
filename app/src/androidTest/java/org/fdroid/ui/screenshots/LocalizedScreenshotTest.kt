@@ -84,7 +84,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
       DeviceConfigurationOverride(
         override =
           DeviceConfigurationOverride.Locales(locales = localeList) then
-            DeviceConfigurationOverride.DarkMode(dark)
+            DeviceConfigurationOverride.DarkMode(dark),
       ) {
         MainContent(
           model =
@@ -96,7 +96,7 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
             ),
           navEntries =
             listOf(
-              NavEntry(currentNavKey) { content(LocaleListCompat.forLanguageTags(localeName)) }
+              NavEntry(currentNavKey) { content(LocaleListCompat.forLanguageTags(localeName)) },
             ),
           directive = PaneScaffoldDirective.Default,
           isBigScreen = false,

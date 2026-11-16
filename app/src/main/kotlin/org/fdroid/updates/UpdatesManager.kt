@@ -86,7 +86,7 @@ constructor(
 
   /** Loads available updates and app issues for the given [packageInfoMap]. */
   fun loadUpdates(
-    packageInfoMap: Map<String, PackageInfo> = installedAppsCache.installedApps.value
+    packageInfoMap: Map<String, PackageInfo> = installedAppsCache.installedApps.value,
   ) = coroutineScope.launch {
     if (packageInfoMap.isEmpty()) return@launch
     val localeList = LocaleListCompat.getDefault()

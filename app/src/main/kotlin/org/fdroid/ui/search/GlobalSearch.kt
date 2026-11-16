@@ -78,7 +78,7 @@ fun GlobalSearch(
           }
         },
       )
-    }
+    },
   ) { paddingValues ->
     HorizontalDivider(
       color = SearchBarDefaults.colors().dividerColor,

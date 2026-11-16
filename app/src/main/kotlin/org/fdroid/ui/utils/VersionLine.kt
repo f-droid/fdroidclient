@@ -62,7 +62,7 @@ fun VersionLine(fromVersion: String?, toVersion: String, extraText: String? = nu
             width = 24.sp,
             height = 20.sp,
             placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter,
-          )
+          ),
         ) {
           Icon(
             Icons.AutoMirrored.Default.ArrowRightAlt,
@@ -70,7 +70,7 @@ fun VersionLine(fromVersion: String?, toVersion: String, extraText: String? = nu
             modifier = Modifier.padding(horizontal = 2.dp),
           )
         },
-      )
+      ),
     )
   Text(test, inlineContent = if (fromVersion == null) mapOf() else inlineContent)
 }

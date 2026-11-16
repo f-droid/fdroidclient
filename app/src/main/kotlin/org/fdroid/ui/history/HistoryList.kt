@@ -105,7 +105,7 @@ fun HistoryList(
                       stringResource(R.string.menu_uninstall)
                     },
                 )
-              }
+              },
             ) {
               AsyncShimmerImage(
                 model = item.iconModel,

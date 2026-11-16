@@ -55,7 +55,10 @@ class ResponsiveNavigationScene<T : Any>(
           Row(Modifier.fillMaxSize()) {
             Box(
               modifier =
-                Modifier.sharedElement(rememberSharedContentState("nav-rail"), animatedContentScope)
+                Modifier.sharedElement(
+                  rememberSharedContentState("nav-rail"),
+                  animatedContentScope,
+                ),
             ) {
               if (isMovableContentCaller) {
                 navRailContent()

@@ -159,7 +159,7 @@ fun AppDetails(
               end = innerPadding.calculateEndPadding(LocalLayoutDirection.current),
               bottom = innerPadding.calculateBottomPadding(),
             )
-            .onGloballyPositioned { coordinates -> size = coordinates.size }
+            .onGloballyPositioned { coordinates -> size = coordinates.size },
       ) {
         // Header is taking care of top innerPadding
         AppDetailsHeader(item, onNav, innerPadding)
@@ -173,7 +173,7 @@ fun AppDetails(
           ElevatedCard(
             colors =
               CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
               ),
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
           ) {
@@ -238,7 +238,7 @@ fun AppDetails(
               Modifier.fillMaxWidth()
                 .animateContentSize()
                 .padding(horizontal = 16.dp)
-                .padding(top = 8.dp)
+                .padding(top = 8.dp),
           ) {
             SelectionContainer {
               Text(

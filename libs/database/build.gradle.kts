@@ -116,7 +116,7 @@ dokka {
 }
 
 class RoomSchemaArgProvider(
-  @get:InputDirectory @get:PathSensitive(PathSensitivity.RELATIVE) val schemaDir: File
+  @get:InputDirectory @get:PathSensitive(PathSensitivity.RELATIVE) val schemaDir: File,
 ) : CommandLineArgumentProvider {
   override fun asArguments(): Iterable<String> = listOf("room.schemaLocation=${schemaDir.path}")
 }

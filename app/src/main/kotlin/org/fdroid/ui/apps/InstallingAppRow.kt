@@ -71,7 +71,7 @@ fun InstallingAppRow(app: InstallingAppItem, isSelected: Boolean, modifier: Modi
             MaterialTheme.colorScheme.surfaceVariant
           } else {
             Color.Transparent
-          }
+          },
       ),
     modifier = modifier,
   )

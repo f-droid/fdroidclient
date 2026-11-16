@@ -41,7 +41,7 @@ internal class MirrorTest {
   fun testIsOnion() {
     assertTrue(
       Mirror("http://ftpfaudev4triw2vxiwzf4334e3mynz7osqgtozhbc77fixncqzbyoyd.onion/fdroid/repo")
-        .isOnion()
+        .isOnion(),
     )
     assertFalse(Mirror("https://www.f-droid.org/fdroid/repo").isOnion())
     assertFalse(Mirror("http://192.168.0.1/fdroid/repo").isOnion())

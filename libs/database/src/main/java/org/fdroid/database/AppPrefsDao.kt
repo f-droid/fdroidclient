@@ -45,10 +45,10 @@ internal interface AppPrefsDaoInt : AppPrefsDao {
   /** Use [getPreferredRepos] instead as this handles more than 1000 package names. */
   @Query(
     """SELECT packageName, preferredRepoId FROM PreferredRepo 
-             WHERE packageName IN (:packageNames)"""
+             WHERE packageName IN (:packageNames)""",
   )
   fun getPreferredReposInternal(
-    packageNames: List<String>
+    packageNames: List<String>,
   ): Map<@MapColumn("packageName") String, @MapColumn("preferredRepoId") Long>
 
   @Insert(onConflict = REPLACE) override fun update(appPrefs: AppPrefs)
