@@ -12,6 +12,13 @@ import org.fdroid.ui.categories.CategoryItem
 @Composable
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
+private fun DiscoverDbClosedTest() = ScreenshotTest {
+  Discover(discoverModel = DbClosedDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
+}
+
+@Composable
+@PreviewTest
+@Preview(showBackground = true, showSystemUi = true)
 fun DiscoverFirstStartTest() = ScreenshotTest {
   Discover(
     discoverModel =
