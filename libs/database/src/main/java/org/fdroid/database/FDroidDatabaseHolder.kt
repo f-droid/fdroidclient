@@ -3,6 +3,8 @@ package org.fdroid.database
 import android.content.Context
 import androidx.annotation.GuardedBy
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import kotlinx.coroutines.Dispatchers
 
@@ -15,7 +17,6 @@ public object FDroidDatabaseHolder {
   @Volatile @GuardedBy("lock") private var instance: FDroidDatabaseInt? = null
   private val lock = Any()
 
-  internal val TAG = FDroidDatabase::class.simpleName
   internal val dispatcher
     get() = Dispatchers.IO
 
@@ -31,6 +32,7 @@ public object FDroidDatabaseHolder {
     name: String = "fdroid_db",
     fixture: FDroidFixture? = null,
     logSlowQueries: Boolean = false,
+    onOpenCallback: Runnable? = null,
   ): FDroidDatabase {
     // if the INSTANCE is not null, then return it,
     // if it is, then create the database
@@ -40,8 +42,19 @@ public object FDroidDatabaseHolder {
           Room.databaseBuilder(context.applicationContext, FDroidDatabaseInt::class.java, name)
             .apply {
               addMigrations(MIGRATION_2_3, MIGRATION_5_6, MIGRATION_8_9, MIGRATION_13_14)
+              // add callback that adds fixtures at creation time
               if (fixture != null) {
                 addCallback(FDroidFixtureCallback(context, name, fixture))
+              }
+              if (onOpenCallback != null) {
+                addCallback(
+                  object : RoomDatabase.Callback() {
+                    override fun onOpen(db: SupportSQLiteDatabase) {
+                      super.onOpen(db)
+                      onOpenCallback.run()
+                    }
+                  },
+                )
               }
               // We allow destructive migration (if no real migration was provided),
               // so we have the option to nuke the DB in production (if that will ever be needed).
