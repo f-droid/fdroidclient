@@ -6,12 +6,9 @@ import java.io.FileInputStream
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
-import kotlin.test.assertIs
 import kotlin.test.assertNull
 import kotlin.test.fail
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.json.JsonDecodingException
 import org.fdroid.index.v2.AntiFeatureV2
 import org.fdroid.index.v2.CategoryV2
 import org.fdroid.index.v2.IndexV2
@@ -28,7 +25,6 @@ import org.fdroid.test.TestUtils.ASSET_PATH
 import org.fdroid.test.v1compat
 import org.junit.Test
 
-@OptIn(ExperimentalSerializationApi::class)
 internal class IndexV1StreamProcessorTest {
 
   @Test
@@ -36,30 +32,22 @@ internal class IndexV1StreamProcessorTest {
     testStreamProcessing("$ASSET_PATH/index-empty-v1.json", TestDataEmptyV2.index.v1compat())
   }
 
-  @Test
+  @Test(expected = OldIndexException::class)
   fun testEmptyEqualTimestamp() {
-    val e =
-      assertFailsWith<JsonDecodingException> {
-        testStreamProcessing(
-          "$ASSET_PATH/index-empty-v1.json",
-          TestDataEmptyV2.index.v1compat(),
-          TestDataEmptyV2.index.repo.timestamp,
-        )
-      }
-    assertIs<OldIndexException>(e.cause)
+    testStreamProcessing(
+      "$ASSET_PATH/index-empty-v1.json",
+      TestDataEmptyV2.index.v1compat(),
+      TestDataEmptyV2.index.repo.timestamp,
+    )
   }
 
-  @Test
+  @Test(expected = OldIndexException::class)
   fun testEmptyHigherTimestamp() {
-    val e =
-      assertFailsWith<JsonDecodingException> {
-        testStreamProcessing(
-          "$ASSET_PATH/index-empty-v1.json",
-          TestDataEmptyV2.index.v1compat(),
-          TestDataEmptyV2.index.repo.timestamp + 1,
-        )
-      }
-    assertIs<OldIndexException>(e.cause)
+    testStreamProcessing(
+      "$ASSET_PATH/index-empty-v1.json",
+      TestDataEmptyV2.index.v1compat(),
+      TestDataEmptyV2.index.repo.timestamp + 1,
+    )
   }
 
   @Test

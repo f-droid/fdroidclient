@@ -8,9 +8,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlin.test.fail
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.json.JsonDecodingException
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
 import org.fdroid.test.TestDataMidV2
@@ -20,7 +18,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
-@OptIn(ExperimentalSerializationApi::class)
 internal class IndexV2FullStreamProcessorTest {
 
   @get:Rule var folder: TemporaryFolder = TemporaryFolder()
@@ -53,8 +50,8 @@ internal class IndexV2FullStreamProcessorTest {
   @Test
   fun testMalformedIndex() {
     // empty dict
-    assertFailsWith<JsonDecodingException> { testStreamError("{ }") }
-      .also { assertContains(it.message, "Unexpected startIndex") }
+    assertFailsWith<IllegalStateException> { testStreamError("{ }") }
+      .also { assertContains(it.message!!, "Unexpected startIndex") }
 
     // garbage input
     assertFailsWith<SerializationException> { testStreamError("{ 23^^%*dfDFG568 }") }

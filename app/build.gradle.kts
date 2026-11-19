@@ -14,6 +14,7 @@ plugins {
 android {
   namespace = "org.fdroid"
   compileSdk = libs.versions.compileSdk.get().toInt()
+  compileSdkMinor = 2
 
   defaultConfig {
     applicationId = "org.fdroid"
@@ -114,7 +115,6 @@ dependencies {
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.compose.material.icons.extended)
   implementation(libs.androidx.lifecycle.viewmodel.compose)
-  implementation(libs.androidx.compose.material3.adaptive.navigation)
   implementation(libs.androidx.compose.material3.adaptive.navigation3)
   implementation(libs.androidx.compose.ui.tooling.preview)
   implementation(libs.androidx.compose.material3)
