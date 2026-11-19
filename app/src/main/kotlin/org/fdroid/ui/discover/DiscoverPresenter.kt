@@ -20,6 +20,7 @@ import org.fdroid.ui.categories.CategoryItem
 
 @Composable
 fun DiscoverPresenter(
+  databaseOpenStateFlow: StateFlow<Boolean>,
   newAppsFlow: Flow<List<AppOverviewItem>>,
   recentlyUpdatedAppsFlow: Flow<List<AppOverviewItem>>,
   mostDownloadedAppsFlow: Flow<List<AppOverviewItem>>,
@@ -75,7 +76,11 @@ fun DiscoverPresenter(
   val categories = categoriesFlow.collectAsState(null).value
   val repositoriesFlow = repoManager.repositoriesState
 
-  return if (
+  val isDbClosed = !databaseOpenStateFlow.collectAsState().value
+
+  return if (isDbClosed) {
+    DbClosedDiscoverModel
+  } else if (
     !mostDownloadedApps.isNullOrEmpty() ||
       !newApps.isNullOrEmpty() ||
       !categories.isNullOrEmpty() ||

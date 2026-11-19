@@ -1,6 +1,8 @@
 package org.fdroid.ui.discover
 
+import androidx.compose.foundation.layout.Arrangement.Center
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -8,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Scaffold
@@ -17,8 +20,12 @@ import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -78,6 +85,30 @@ fun Discover(
     modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     when (discoverModel) {
+      is DbClosedDiscoverModel -> {
+        Column(
+          horizontalAlignment = CenterHorizontally,
+          verticalArrangement = Center,
+          modifier = modifier.fillMaxSize().padding(paddingValues),
+        ) {
+          Text(
+            text = stringResource(R.string.db_closed_migrating),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(16.dp),
+          )
+          // use thicker stroke for larger circle
+          val stroke =
+            Stroke(width = with(LocalDensity.current) { 6.dp.toPx() }, cap = StrokeCap.Round)
+          val progressModifier = Modifier.padding(16.dp).size(128.dp).align(CenterHorizontally)
+          // show indeterminate circle since we don't have any progress
+          CircularWavyProgressIndicator(
+            wavelength = 24.dp,
+            stroke = stroke,
+            trackStroke = stroke,
+            modifier = progressModifier,
+          )
+        }
+      }
       is FirstStartDiscoverModel ->
         FirstStart(
           networkState = discoverModel.networkState,
@@ -108,6 +139,14 @@ fun Discover(
         }
       }
     }
+  }
+}
+
+@Preview
+@Composable
+fun DbClosedPreview() {
+  FDroidContent {
+    Discover(discoverModel = DbClosedDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
   }
 }
 
