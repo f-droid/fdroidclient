@@ -14,13 +14,11 @@ data class FirstStartDiscoverModel(
   val repoUpdateState: RepoUpdateState?,
 ) : DiscoverModel()
 
-data object LoadingDiscoverModel : DiscoverModel()
-
 data object NoEnabledReposDiscoverModel : DiscoverModel()
 
 data class LoadedDiscoverModel(
-  val newApps: List<AppDiscoverItem>,
-  val recentlyUpdatedApps: List<AppDiscoverItem>,
+  val newApps: List<AppDiscoverItem>?,
+  val recentlyUpdatedApps: List<AppDiscoverItem>?,
   val mostDownloadedApps: List<AppDiscoverItem>?,
   val categories: Map<CategoryGroup, List<CategoryItem>>?,
   val hasRepoIssues: Boolean,

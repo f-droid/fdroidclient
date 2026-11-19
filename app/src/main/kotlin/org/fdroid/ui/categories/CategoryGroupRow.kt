@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -35,7 +34,6 @@ import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.VerticalAnimatedVisibility
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun CategoryGroupRow(
   group: CategoryGroup,
   categories: List<CategoryItem>,

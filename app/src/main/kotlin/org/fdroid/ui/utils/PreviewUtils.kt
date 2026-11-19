@@ -39,6 +39,7 @@ import org.fdroid.ui.details.LoadedAppDetailsItem
 import org.fdroid.ui.details.Permission
 import org.fdroid.ui.details.PermissionType
 import org.fdroid.ui.details.VersionItem
+import org.fdroid.ui.discover.LoadedDiscoverModel
 import org.fdroid.ui.lists.AntiFeatureItem
 import org.fdroid.ui.lists.AppListActions
 import org.fdroid.ui.lists.AppListInfo
@@ -312,6 +313,15 @@ val testApp =
     suggestedVersion = null,
     possibleUpdate = testVersion1,
     proxy = null,
+  )
+
+val loadingDiscoverModel =
+  LoadedDiscoverModel(
+    newApps = null,
+    recentlyUpdatedApps = null,
+    mostDownloadedApps = null,
+    categories = null,
+    hasRepoIssues = false,
   )
 
 fun getAppDetailsActions() =

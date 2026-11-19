@@ -8,6 +8,7 @@ import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.ui.ScreenshotTest
 import org.fdroid.ui.categories.CategoryGroups
 import org.fdroid.ui.categories.CategoryItem
+import org.fdroid.ui.utils.loadingDiscoverModel
 
 @Composable
 @PreviewTest
@@ -45,6 +46,15 @@ private fun DiscoverNoEnabledReposTest() = ScreenshotTest {
 private fun DiscoverTest() {
   ScreenshotTest {
     Discover(discoverModel = getLoadedModel(), onListTap = {}, onAppTap = {}, onNav = {})
+  }
+}
+
+@Composable
+@PreviewTest
+@Preview(showBackground = true, showSystemUi = true)
+private fun DiscoverLoadingTest() {
+  ScreenshotTest {
+    Discover(discoverModel = loadingDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
   }
 }
 
