@@ -118,6 +118,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         enabled = viewModel.useInstallHistory.collectAsStateWithLifecycle(null).value,
         onEnabled = viewModel::useInstallHistory,
         onDeleteAll = viewModel::deleteHistory,
+        onNav = { navKey -> navigator.navigate(navKey) },
         onBackClicked = { navigator.goBack() },
       )
     }

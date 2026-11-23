@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,17 +22,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.TopAppBarButton
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun History(
   items: List<HistoryItem>?,
   enabled: Boolean?,
   onEnabled: (Boolean) -> Unit,
   onDeleteAll: () -> Unit,
+  onNav: (NavigationKey) -> Unit,
   onBackClicked: (() -> Unit)?,
 ) {
   var deleteAllDialogShown by remember { mutableStateOf(false) }
@@ -57,7 +57,7 @@ fun History(
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     if (items == null) BigLoadingIndicator(modifier = Modifier.padding(paddingValues))
-    else HistoryList(items, enabled, onEnabled, paddingValues)
+    else HistoryList(items, enabled, onEnabled, onNav, paddingValues)
     val onDismiss = { deleteAllDialogShown = false }
     if (deleteAllDialogShown)
       AlertDialog(
@@ -83,17 +83,17 @@ fun History(
 @Preview
 @Composable
 private fun PreviewLoading() {
-  FDroidContent { History(null, true, {}, {}) {} }
+  FDroidContent { History(null, true, {}, {}, {}) {} }
 }
 
 @Preview
 @Composable
 private fun PreviewEmpty() {
-  FDroidContent { History(emptyList(), true, {}, {}) {} }
+  FDroidContent { History(emptyList(), true, {}, {}, {}) {} }
 }
 
 @Preview
 @Composable
 private fun PreviewEmptyDisabled() {
-  FDroidContent { History(emptyList(), false, {}, {}) {} }
+  FDroidContent { History(emptyList(), false, {}, {}, {}) {} }
 }

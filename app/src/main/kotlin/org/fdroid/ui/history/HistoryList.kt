@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.fdroid.R
 import org.fdroid.history.InstallEvent
+import org.fdroid.ui.navigation.NavigationKey
 import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
 import org.fdroid.ui.utils.VersionLine
@@ -43,6 +44,7 @@ fun HistoryList(
   items: List<HistoryItem>,
   enabled: Boolean?,
   onEnabled: (Boolean) -> Unit,
+  onNav: (NavigationKey) -> Unit,
   paddingValues: PaddingValues,
 ) {
   LazyColumn(contentPadding = paddingValues) {
@@ -115,7 +117,6 @@ fun HistoryList(
               )
             }
           },
-          headlineContent = { Text(item.event.name ?: item.event.packageName) },
           supportingContent = {
             val dateStr = item.event.time.asRelativeTimeString()
             if (item.event is InstallEvent) {
@@ -123,8 +124,18 @@ fun HistoryList(
             } else Text(dateStr)
           },
           colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-          modifier = if (enabled == false) Modifier.alpha(0.5f) else Modifier,
-        )
+          modifier =
+            if (enabled == false) Modifier.alpha(0.5f)
+            else {
+              Modifier.clickable {
+                onNav(
+                  NavigationKey.AppDetails(item.event.packageName),
+                )
+              }
+            },
+        ) {
+          Text(item.event.name ?: item.event.packageName)
+        }
       }
   }
 }

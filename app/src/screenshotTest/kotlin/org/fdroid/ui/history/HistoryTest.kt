@@ -14,7 +14,7 @@ import org.fdroid.ui.ScreenshotTest
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
 fun HistoryLoadingTest() =
-  ScreenshotTest(showBottomBar = false) { History(items = null, enabled = true, {}, {}, {}) }
+  ScreenshotTest(showBottomBar = false) { History(items = null, enabled = true, {}, {}, {}, {}) }
 
 @Composable
 @PreviewTest
@@ -26,6 +26,7 @@ fun HistoryEmptyTest() =
       enabled = true,
       onEnabled = {},
       onDeleteAll = {},
+      onNav = {},
       onBackClicked = {},
     )
   }
@@ -40,6 +41,7 @@ fun HistoryEmptyDisabledTest() =
       enabled = false,
       onEnabled = {},
       onDeleteAll = {},
+      onNav = {},
       onBackClicked = {},
     )
   }
@@ -54,6 +56,7 @@ fun HistoryPopulatedTest() =
       enabled = true,
       onEnabled = {},
       onDeleteAll = {},
+      onNav = {},
       onBackClicked = {},
     )
   }
@@ -72,6 +75,7 @@ fun HistoryNightTest() =
       enabled = false,
       onEnabled = {},
       onDeleteAll = {},
+      onNav = {},
       onBackClicked = {},
     )
   }
