@@ -1,7 +1,6 @@
 package org.fdroid.ui.details
 
 import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -88,6 +87,7 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.OnboardingPopupCard
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.testApp
 
 @Composable
@@ -163,7 +163,7 @@ fun AppDetails(
       ) {
         // Header is taking care of top innerPadding
         AppDetailsHeader(item, onNav, innerPadding)
-        AnimatedVisibility(item.showWarnings) {
+        VerticalAnimatedVisibility(item.showWarnings) {
           AppDetailsWarnings(item, Modifier.padding(horizontal = 16.dp))
         }
         // What's New

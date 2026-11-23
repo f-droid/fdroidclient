@@ -12,9 +12,18 @@ import android.text.format.DateUtils
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.animation.CapturedAnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
 import com.google.zxing.BarcodeFormat
@@ -30,6 +39,21 @@ import org.fdroid.database.Repository
 fun HintOverlayContainer(content: @Composable () -> Unit) {
   HintHost(
     overlay = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
+    content = content,
+  )
+}
+
+@Composable
+fun VerticalAnimatedVisibility(
+  visible: Boolean,
+  modifier: Modifier = Modifier,
+  content: @Composable () -> Unit,
+) {
+  CapturedAnimatedVisibility(
+    visible = visible,
+    enter = fadeIn() + expandVertically(),
+    exit = shrinkVertically() + fadeOut(),
+    modifier = modifier.semantics { liveRegion = LiveRegionMode.Polite },
     content = content,
   )
 }

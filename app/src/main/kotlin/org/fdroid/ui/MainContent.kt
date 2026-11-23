@@ -1,18 +1,13 @@
 package org.fdroid.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
@@ -30,6 +25,7 @@ import org.fdroid.ui.navigation.BottomBar
 import org.fdroid.ui.navigation.NavigationRail
 import org.fdroid.ui.navigation.rememberResponsiveNavigationSceneDecoratorStrategy
 import org.fdroid.ui.utils.HintOverlayContainer
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 
 @Composable
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
@@ -63,11 +59,7 @@ fun MainContent(
           rememberResponsiveNavigationSceneDecoratorStrategy<NavKey>(
             isBigScreen = isBigScreen,
             navBar = {
-              AnimatedVisibility(
-                visible = showBottomBar,
-                enter = slideInVertically(initialOffsetY = { it }) + expandVertically(),
-                exit = slideOutVertically(targetOffsetY = { it }) + shrinkVertically(),
-              ) {
+              VerticalAnimatedVisibility(showBottomBar) {
                 BottomBar(model = model, currentNavKey = currentNavKey, onNav = onNav)
               }
             },

@@ -1,6 +1,5 @@
 package org.fdroid.ui.repositories.details
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,14 +19,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
-import androidx.compose.ui.semantics.liveRegion
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.fdroid.R
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.FDroidOutlineButton
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 
 @Composable
 fun BasicAuth(
@@ -51,9 +48,9 @@ fun BasicAuth(
       state = passwordState,
       label = { Text(stringResource(R.string.repo_basicauth_password)) },
     )
-    AnimatedVisibility(
+    VerticalAnimatedVisibility(
       visible = showSaveButton,
-      modifier = Modifier.align(Alignment.End).semantics { liveRegion = LiveRegionMode.Polite },
+      modifier = Modifier.align(Alignment.End),
     ) {
       FDroidOutlineButton(
         text = stringResource(R.string.repo_basicauth_edit),

@@ -2,7 +2,6 @@ package org.fdroid.ui.repositories
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -47,6 +46,7 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.HintOverlayContainer
 import org.fdroid.ui.utils.OnboardingPopupCard
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.getRepositoriesInfo
 import org.fdroid.ui.utils.repoItems
 
@@ -110,7 +110,7 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
       )
     },
     floatingActionButton = {
-      AnimatedVisibility(showFab) {
+      VerticalAnimatedVisibility(showFab) {
         FloatingActionButton(onClick = info::onAddRepo, modifier = Modifier.padding(16.dp)) {
           Icon(
             imageVector = Icons.Default.Add,
