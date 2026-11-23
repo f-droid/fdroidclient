@@ -79,7 +79,7 @@ import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.categories.ChipFlowRow
+import org.fdroid.ui.categories.ChipFlexBox
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
@@ -224,7 +224,7 @@ fun AppDetailsHeader(
   }
   // Category chips
   if (!item.categories.isNullOrEmpty())
-    ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
+    ChipFlexBox(modifier = Modifier.padding(start = 8.dp)) {
       item.categories.forEach { categoryItem ->
         AssistChip(
           label = {

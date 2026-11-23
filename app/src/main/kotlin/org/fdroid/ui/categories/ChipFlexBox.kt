@@ -1,8 +1,8 @@
 package org.fdroid.ui.categories
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.FlowRowScope
+import androidx.compose.foundation.layout.FlexBox
+import androidx.compose.foundation.layout.FlexBoxScope
+import androidx.compose.foundation.layout.FlexWrap
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,18 +18,20 @@ val chipHeight = 36.dp
  * [chipHeight] so that all chips match.
  */
 @Composable
-fun ChipFlowRow(modifier: Modifier = Modifier, content: @Composable FlowRowScope.() -> Unit) {
-  FlowRow(
-    horizontalArrangement = Arrangement.spacedBy(8.dp),
-    verticalArrangement = Arrangement.spacedBy(8.dp),
+fun ChipFlexBox(modifier: Modifier = Modifier, content: @Composable FlexBoxScope.() -> Unit) {
+  FlexBox(
     modifier = modifier.padding(8.dp),
+    config = {
+      wrap(FlexWrap.Wrap)
+      gap(8.dp)
+    },
     content = content,
   )
 }
 
 @Preview
 @Composable
-fun ChipFlowRowFewItemsPreview() {
+fun ChipFlexBoxFewItemsPreview() {
   val categories =
     listOf(
       CategoryItem("News", "News"),
@@ -37,12 +39,12 @@ fun ChipFlowRowFewItemsPreview() {
       CategoryItem("doesn't exist", "Oops"),
     )
 
-  FDroidContent { ChipFlowRow { categories.forEach { category -> CategoryChip(category, {}) } } }
+  FDroidContent { ChipFlexBox { categories.forEach { category -> CategoryChip(category, {}) } } }
 }
 
 @Preview
 @Composable
-fun ChipFlowRowManyItemsPreview() {
+fun ChipFlexBoxManyItemsPreview() {
   val categories =
     listOf(
       CategoryItem("Cloud Storage & File Sync", "Cloud Storage & File Sync"),
@@ -61,5 +63,5 @@ fun ChipFlowRowManyItemsPreview() {
       CategoryItem("Science & Education", "Science & Education"),
     )
 
-  FDroidContent { ChipFlowRow { categories.forEach { category -> CategoryChip(category, {}) } } }
+  FDroidContent { ChipFlexBox { categories.forEach { category -> CategoryChip(category, {}) } } }
 }

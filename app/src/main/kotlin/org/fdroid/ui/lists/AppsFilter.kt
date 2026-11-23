@@ -49,7 +49,7 @@ import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.categories.CategoryChip
-import org.fdroid.ui.categories.ChipFlowRow
+import org.fdroid.ui.categories.ChipFlexBox
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.icons.PackageVariant
 import org.fdroid.ui.utils.AsyncShimmerImage
@@ -183,7 +183,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
             }
           },
         ) {
-          ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+          ChipFlexBox(modifier = modifier.fillMaxWidth()) {
             categories.forEach { item ->
               val isSelected = item.id in info.model.filteredCategoryIds
               CategoryChip(
@@ -221,7 +221,7 @@ fun AppsFilter(info: AppListInfo, modifier: Modifier = Modifier) {
             }
           },
         ) {
-          ChipFlowRow(modifier = modifier.fillMaxWidth()) {
+          ChipFlexBox(modifier = modifier.fillMaxWidth()) {
             repositories.forEach { repo ->
               val selected = repo.repoId in info.model.filteredRepositoryIds
               FilterChip(

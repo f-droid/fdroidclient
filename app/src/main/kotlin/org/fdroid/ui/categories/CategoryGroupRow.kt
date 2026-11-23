@@ -78,7 +78,7 @@ fun CategoryGroupRow(
     enter = fadeIn() + expandVertically(),
     exit = fadeOut() + shrinkVertically(),
   ) {
-    ChipFlowRow(modifier = Modifier.padding(8.dp)) {
+    ChipFlexBox(modifier = Modifier.padding(8.dp)) {
       categories.forEach { categoryItem ->
         CategoryChip(
           categoryItem = categoryItem,

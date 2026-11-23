@@ -16,7 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -32,7 +31,7 @@ import org.fdroid.search.SavedSearch
 import org.fdroid.search.SearchHelper.isSearchable
 import org.fdroid.ui.categories.CategoryChip
 import org.fdroid.ui.categories.CategoryItem
-import org.fdroid.ui.categories.ChipFlowRow
+import org.fdroid.ui.categories.ChipFlexBox
 import org.fdroid.ui.lists.AppListItem
 import org.fdroid.ui.lists.AppListRow
 import org.fdroid.ui.lists.AppListType
@@ -42,7 +41,6 @@ import org.fdroid.ui.utils.BigLoadingIndicator
 data class SearchResults(val apps: List<AppListItem>, val categories: List<CategoryItem>)
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun SearchResults(
   paddingValues: PaddingValues,
   searchResults: SearchResults?,
@@ -73,7 +71,7 @@ fun SearchResults(
           )
         }
         if (!categories.isNullOrEmpty()) {
-          item { CategoriesFlowRow(categories, onNav, modifier = Modifier.padding(top = 16.dp)) }
+          item { CategoriesFlexBox(categories, onNav, modifier = Modifier.padding(top = 16.dp)) }
         }
         item { Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars)) }
         item { Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.ime)) }
@@ -82,7 +80,7 @@ fun SearchResults(
   } else if (searchResults.apps.isEmpty() && textFieldState.text.isSearchable()) {
     Column(modifier = modifier.padding(paddingValues)) {
       if (searchResults.categories.isNotEmpty()) {
-        CategoriesFlowRow(searchResults.categories, onNav)
+        CategoriesFlexBox(searchResults.categories, onNav)
       }
       Text(
         text = stringResource(R.string.search_no_results),
@@ -98,7 +96,7 @@ fun SearchResults(
     ) {
       if (searchResults.categories.isNotEmpty()) {
         item(key = "categories", contentType = "category") {
-          CategoriesFlowRow(searchResults.categories, onNav)
+          CategoriesFlexBox(searchResults.categories, onNav)
         }
       }
       if (searchResults.apps.isNotEmpty()) {
@@ -133,7 +131,7 @@ fun SearchResults(
 }
 
 @Composable
-private fun CategoriesFlowRow(
+private fun CategoriesFlexBox(
   categories: List<CategoryItem>,
   onNav: (NavigationKey) -> Unit,
   modifier: Modifier = Modifier,
@@ -144,7 +142,7 @@ private fun CategoriesFlowRow(
       style = MaterialTheme.typography.labelLarge,
       modifier = Modifier.padding(8.dp),
     )
-    ChipFlowRow {
+    ChipFlexBox {
       categories.forEach { item ->
         CategoryChip(
           categoryItem = item,
