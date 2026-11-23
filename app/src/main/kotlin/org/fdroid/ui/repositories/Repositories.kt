@@ -25,7 +25,7 @@ import androidx.compose.material3.TopAppBarDefaults.enterAlwaysScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.computedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -77,9 +77,10 @@ fun Repositories(info: RepositoryInfo, isBigScreen: Boolean, onBackClicked: () -
   val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
   val listState = rememberLazyListState()
   val showFab by remember {
-    derivedStateOf {
+    computedStateOf {
       val firstVisibleItemIndex = listState.firstVisibleItemIndex
       val firstVisibleItemScrollOffset = listState.firstVisibleItemScrollOffset
+      @Suppress("RedundantIf")
       if (firstVisibleItemIndex == 0 && firstVisibleItemScrollOffset == 0) {
         true
       } else if (listState.isScrollInProgress) {
