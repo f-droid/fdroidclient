@@ -98,8 +98,8 @@ fun SwapSuccessAppRow(
                 Button(onClick = { onInstall(app.packageName) }) {
                   Text(
                     stringResource(
-                      if (app.hasUpdate) R.string.menu_upgrade else R.string.menu_install
-                    )
+                      if (app.hasUpdate) R.string.menu_upgrade else R.string.menu_install,
+                    ),
                   )
                 }
               }

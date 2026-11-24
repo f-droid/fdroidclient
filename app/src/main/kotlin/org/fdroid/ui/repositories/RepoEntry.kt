@@ -19,7 +19,7 @@ import org.fdroid.ui.repositories.details.RepoDetailsViewModel
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 fun EntryProviderScope<NavKey>.repoEntry(navigator: Navigator, isBigScreen: Boolean) {
   entry<NavigationKey.Repos>(
-    metadata = ListDetailSceneStrategy.listPane("repos") { NoRepoSelected() }
+    metadata = ListDetailSceneStrategy.listPane("repos") { NoRepoSelected() },
   ) {
     val viewModel = hiltViewModel<RepositoriesViewModel>()
     val info =
@@ -64,7 +64,7 @@ fun EntryProviderScope<NavKey>.repoEntry(navigator: Navigator, isBigScreen: Bool
     ->
     val viewModel =
       hiltViewModel<RepoDetailsViewModel, RepoDetailsViewModel.Factory>(
-        creationCallback = { factory -> factory.create(navKey.repoId) }
+        creationCallback = { factory -> factory.create(navKey.repoId) },
       )
     RepoDetails(
       info =

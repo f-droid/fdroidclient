@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.fdroid.CompatibilityChecker
@@ -46,6 +47,7 @@ import org.fdroid.index.RepoUpdater
 import org.fdroid.index.RepoUriBuilder
 import org.fdroid.index.SigningException
 import org.fdroid.index.TempFileProvider
+import org.fdroid.index.defaultRepoUriBuilder
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_FINGERPRINT
 import org.fdroid.repo.AddRepoError.ErrorType.INVALID_INDEX
 import org.fdroid.repo.AddRepoError.ErrorType.IO_ERROR
@@ -162,7 +164,7 @@ internal class RepoAdder(
             val knownFingerprint = knownRepos[repo.address]
             if (knownFingerprint != repo.fingerprint)
               throw SigningException(
-                "Known fingerprint different from given one: ${repo.fingerprint}"
+                "Known fingerprint different from given one: ${repo.fingerprint}",
               )
           }
           fetchResult = getFetchResult(fetchUrl, repo)
@@ -226,6 +228,7 @@ internal class RepoAdder(
    *
    * @return the temporary file the repo was written to.
    */
+  @OptIn(ExperimentalSerializationApi::class)
   private suspend fun fetchRepo(
     uri: Uri,
     fingerprint: String?,

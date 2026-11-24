@@ -70,7 +70,7 @@ object DiffUtils {
           features = emptyList(),
           usesPermission = emptyList(),
           usesPermissionSdk23 = emptyList(),
-        )
+        ),
     )
 
   fun <T> Map<String, T>.applyDiff(diff: Map<String, T?>): Map<String, T> =

@@ -8,7 +8,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlin.test.fail
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
 import org.fdroid.test.TestDataEmptyV2
 import org.fdroid.test.TestDataMaxV2
@@ -19,7 +18,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
-@OptIn(ExperimentalSerializationApi::class)
 internal class IndexV2FullStreamProcessorTest {
 
   @get:Rule var folder: TemporaryFolder = TemporaryFolder()
@@ -66,7 +64,7 @@ internal class IndexV2FullStreamProcessorTest {
                 "repo": 1
             }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "object") }
@@ -79,7 +77,7 @@ internal class IndexV2FullStreamProcessorTest {
               "repo": { }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -94,7 +92,7 @@ internal class IndexV2FullStreamProcessorTest {
               }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "address") }
@@ -111,7 +109,7 @@ internal class IndexV2FullStreamProcessorTest {
               "packages": []
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "object") }

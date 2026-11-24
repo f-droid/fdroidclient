@@ -92,7 +92,7 @@ internal open class RepoV2StreamReceiver(
         certificate = certificate,
         username = username,
         password = password,
-      )
+      ),
     )
   }
 

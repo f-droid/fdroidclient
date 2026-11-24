@@ -88,7 +88,7 @@ fun AppListRow(
             MaterialTheme.colorScheme.surfaceVariant
           } else {
             Color.Transparent
-          }
+          },
       ),
   ) {
     Text(item.name)

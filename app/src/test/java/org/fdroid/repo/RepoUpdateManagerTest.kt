@@ -76,7 +76,7 @@ internal class RepoUpdateManagerTest {
         notificationManager = mockk(relaxed = true),
         updateInstaller = mockk(relaxed = true),
         coroutineScope = CoroutineScope(UnconfinedTestDispatcher()),
-      )
+      ),
     ) {
       every { loadUpdates() } returns mockk(relaxed = true)
     }

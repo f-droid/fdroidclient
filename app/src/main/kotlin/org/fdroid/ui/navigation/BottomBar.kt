@@ -115,7 +115,7 @@ private fun NavIcon(dest: MainNavKey, numUpdates: Int, hasIssues: Boolean) {
           contentDescription = stringResource(R.string.my_apps_header_apps_with_issue),
         )
       }
-    }
+    },
   ) {
     Icon(dest.icon, contentDescription = stringResource(dest.label))
   }

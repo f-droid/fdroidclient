@@ -52,7 +52,7 @@ fun UserMirrors(
           onClick = {
             onDeleteMirror(showDeleteDialog!!)
             showDeleteDialog = null
-          }
+          },
         ) {
           Text(text = stringResource(R.string.delete), color = MaterialTheme.colorScheme.error)
         }

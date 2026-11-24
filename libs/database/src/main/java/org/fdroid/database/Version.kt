@@ -37,7 +37,7 @@ import org.fdroid.index.v2.UsesSdkV2
         parentColumns = ["repoId", "packageName"],
         childColumns = ["repoId", "packageName"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 internal data class Version(
@@ -233,7 +233,7 @@ internal enum class VersionedStringType {
       // In addition to primary key, as reordering the primary key so `versionId` is first:
       //  * Requires complex migration, dropping and recreating the table.
       //  * May be queries which want `repoId` first (though this is unlikely for this table)
-      Index("versionId")
+      Index("versionId"),
     ],
   foreignKeys =
     [
@@ -242,7 +242,7 @@ internal enum class VersionedStringType {
         parentColumns = ["repoId", "packageName", "versionId"],
         childColumns = ["repoId", "packageName", "versionId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 internal data class VersionedString(

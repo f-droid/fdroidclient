@@ -28,7 +28,7 @@ internal class TimingOpenHelperFactory(
 ) : SupportSQLiteOpenHelper.Factory {
 
   override fun create(
-    configuration: SupportSQLiteOpenHelper.Configuration
+    configuration: SupportSQLiteOpenHelper.Configuration,
   ): SupportSQLiteOpenHelper {
     val helper = delegate.create(configuration)
     return TimingOpenHelper(helper, slowQueryThresholdMs, logAllQueries, explainAllQueries)

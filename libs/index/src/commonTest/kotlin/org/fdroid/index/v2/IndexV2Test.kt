@@ -56,7 +56,7 @@ internal class IndexV2Test {
               "repo": 1
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "repo") }
@@ -69,7 +69,7 @@ internal class IndexV2Test {
               "repo": { }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "timestamp") }
@@ -84,7 +84,7 @@ internal class IndexV2Test {
               }
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "address") }
@@ -101,7 +101,7 @@ internal class IndexV2Test {
               "packages": []
           }
           """
-            .trimIndent()
+            .trimIndent(),
         )
       }
       .also { assertContains(it.message!!, "packages") }

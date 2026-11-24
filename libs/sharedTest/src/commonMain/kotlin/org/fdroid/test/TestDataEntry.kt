@@ -38,7 +38,7 @@ object TestDataEntry {
               sha256 = "b7fc69156cbd42aef1ec3f0a5a943868ccb4b62775bce71fa8cc06cc63ad425b",
               size = 911,
               numPackages = 1,
-            )
+            ),
         ),
     )
 

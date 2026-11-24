@@ -133,7 +133,7 @@ internal class RepoAdderIntegrationTest {
     repoAdder.fetchRepositoryInt(
       url =
         "https://apt.izzysoft.de/fdroid/repo" +
-          "?fingerprint=3BF0D6ABFEAE2F401707B6D966BE743BF0EEE49C2561B9BA39073711F628937A"
+          "?fingerprint=3BF0D6ABFEAE2F401707B6D966BE743BF0EEE49C2561B9BA39073711F628937A",
     )
     val state = repoAdder.addRepoState.value
     assertTrue(state is Fetching, state.toString())

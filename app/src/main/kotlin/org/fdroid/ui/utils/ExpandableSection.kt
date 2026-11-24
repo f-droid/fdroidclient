@@ -1,6 +1,5 @@
 package org.fdroid.ui.utils
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -22,9 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.hideFromAccessibility
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
@@ -62,14 +59,9 @@ fun ExpandableSection(
         ExpandIconArrow(sectionExpanded)
       }
     }
-    AnimatedVisibility(
-      visible = sectionExpanded,
-      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-    ) {
-      content()
-    }
+    VerticalAnimatedVisibility(sectionExpanded) { content() }
   }
-  AnimatedVisibility(visible = !sectionExpanded && collapsedSummary != null) {
+  VerticalAnimatedVisibility(!sectionExpanded && collapsedSummary != null) {
     collapsedSummary?.invoke()
   }
 }

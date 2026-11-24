@@ -12,6 +12,13 @@ import org.fdroid.ui.categories.CategoryItem
 @Composable
 @PreviewTest
 @Preview(showBackground = true, showSystemUi = true)
+private fun DiscoverDbClosedTest() = ScreenshotTest {
+  Discover(discoverModel = DbClosedDiscoverModel, onListTap = {}, onAppTap = {}, onNav = {})
+}
+
+@Composable
+@PreviewTest
+@Preview(showBackground = true, showSystemUi = true)
 fun DiscoverFirstStartTest() = ScreenshotTest {
   Discover(
     discoverModel =
@@ -109,7 +116,7 @@ private fun getLoadedModel(): LoadedDiscoverModel {
           CategoryItem(id = "Forum", name = "Forum"),
           CategoryItem(id = "Messaging", name = "Messaging"),
           CategoryItem(id = "Phone & SMS", name = "Phone & SMS"),
-        )
+        ),
     )
   return LoadedDiscoverModel(
     newApps = newApps,

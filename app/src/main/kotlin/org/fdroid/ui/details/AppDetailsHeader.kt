@@ -3,7 +3,7 @@ package org.fdroid.ui.details
 import android.content.res.Configuration
 import android.text.format.Formatter
 import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.CapturedAnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement.SpaceBetween
@@ -26,7 +26,6 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearWavyProgressIndicator
@@ -76,7 +75,7 @@ import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.install.InstallState
 import org.fdroid.ui.FDroidContent
-import org.fdroid.ui.categories.ChipFlowRow
+import org.fdroid.ui.categories.ChipFlexBox
 import org.fdroid.ui.categories.chipHeight
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
@@ -84,13 +83,13 @@ import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.InstalledBadge
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.getRepository
 import org.fdroid.ui.utils.startActivitySafe
 import org.fdroid.ui.utils.testApp
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 /** Timestamp [now] gets passed in for screenshot tests to have a stable download speed. */
 fun AppDetailsHeader(
   item: LoadedAppDetailsItem,
@@ -123,7 +122,7 @@ fun AppDetailsHeader(
     }
   }
   var showMeteredDialog by remember { mutableStateOf(false) }
-  AnimatedVisibility(item.mainButtonState == MainButtonState.LOADING) {
+  VerticalAnimatedVisibility(item.mainButtonState == MainButtonState.LOADING) {
     LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth().absoluteOffset(y = (-8).dp))
   }
   // Offline bar, if no internet
@@ -179,7 +178,7 @@ fun AppDetailsHeader(
                           SpanStyle(
                             color = ButtonDefaults.textButtonColors().contentColor,
                             textDecoration = TextDecoration.None,
-                          )
+                          ),
                       ),
                   ),
                 start = startIndex,
@@ -222,7 +221,7 @@ fun AppDetailsHeader(
   }
   // Category chips
   if (!item.categories.isNullOrEmpty())
-    ChipFlowRow(modifier = Modifier.padding(start = 8.dp)) {
+    ChipFlexBox(modifier = Modifier.padding(start = 8.dp)) {
       item.categories.forEach { categoryItem ->
         AssistChip(
           label = {
@@ -273,7 +272,7 @@ fun AppDetailsHeader(
   // Main Buttons
   val state = item.installState
   val buttonLineModifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
-  AnimatedVisibility(item.mainButtonState == MainButtonState.PROGRESS) {
+  VerticalAnimatedVisibility(item.mainButtonState == MainButtonState.PROGRESS) {
     Column(modifier = buttonLineModifier) {
       val strRes =
         when (state) {
@@ -336,12 +335,12 @@ fun AppDetailsHeader(
           onClick = {
             if (!cancelled) item.actions.cancelInstall()
             cancelled = true
-          }
+          },
         ) {
-          AnimatedVisibility(cancelled) {
+          CapturedAnimatedVisibility(cancelled) {
             CircularProgressIndicator(modifier = Modifier.size(24.dp))
           }
-          AnimatedVisibility(!cancelled) {
+          CapturedAnimatedVisibility(!cancelled) {
             Icon(
               imageVector = Icons.Default.Cancel,
               contentDescription = stringResource(R.string.cancel),
@@ -351,12 +350,10 @@ fun AppDetailsHeader(
       }
     }
   }
-  AnimatedVisibility(
+  if (
     item.mainButtonState == MainButtonState.INSTALL ||
       item.mainButtonState == MainButtonState.UPDATE ||
-      (item.showOpenButton &&
-        item.mainButtonState != MainButtonState.LOADING &&
-        item.mainButtonState != MainButtonState.PROGRESS)
+      (item.showOpenButton && item.mainButtonState != MainButtonState.PROGRESS)
   ) {
     Row(horizontalArrangement = spacedBy(8.dp, CenterHorizontally), modifier = buttonLineModifier) {
       if (item.showOpenButton) {
@@ -379,6 +376,7 @@ fun AppDetailsHeader(
               item.actions.installAction(item.app, item.suggestedVersion, item.icon)
             }
           },
+          enabled = item.mainButtonState != MainButtonState.LOADING,
           modifier = Modifier.weight(1f),
         ) {
           if (item.mainButtonState == MainButtonState.INSTALL) {

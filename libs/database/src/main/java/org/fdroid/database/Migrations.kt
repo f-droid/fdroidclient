@@ -36,7 +36,7 @@ internal class MultiRepoMigration : AutoMigrationSpec {
         """
             SELECT repoId, address, certificate, weight FROM ${CoreRepository.TABLE}
             JOIN ${RepositoryPreferences.TABLE} USING (repoId)
-            ORDER BY weight DESC"""
+            ORDER BY weight DESC""",
       )
       .use { cursor ->
         while (cursor.moveToNext()) {
@@ -135,7 +135,7 @@ internal val MIGRATION_5_6 =
         "CREATE VIRTUAL TABLE IF NOT EXISTS `AppMetadataFts`" +
           "USING FTS4(`repoId` INTEGER NOT NULL, `packageName` TEXT NOT NULL, " +
           "`localizedName` TEXT, `localizedSummary` TEXT, " +
-          "tokenize=unicode61 \"remove_diacritics=0\", content=`AppMetadata`)"
+          "tokenize=unicode61 \"remove_diacritics=0\", content=`AppMetadata`)",
       )
       // rebuild the FTS table to populate it with the new tokenizer
       db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")
@@ -191,7 +191,7 @@ internal val MIGRATION_8_9 =
                 notindexed=`repoId`
         )
         """
-          .trimIndent()
+          .trimIndent(),
       )
       db.execSQL(
         """
@@ -199,7 +199,7 @@ internal val MIGRATION_8_9 =
         BEFORE UPDATE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts`
         WHERE `docid`=OLD.`rowid`; END
         """
-          .trimIndent()
+          .trimIndent(),
       )
       db.execSQL(
         """
@@ -207,7 +207,7 @@ internal val MIGRATION_8_9 =
         BEFORE DELETE ON `AppMetadata` BEGIN DELETE FROM `AppMetadataFts`
         WHERE `docid`=OLD.`rowid`; END
         """
-          .trimIndent()
+          .trimIndent(),
       )
       db.execSQL(
         """
@@ -217,7 +217,7 @@ internal val MIGRATION_8_9 =
         VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`name`, NEW.`summary`, NEW.`description`, NEW.`authorName`, NEW.`packageName`)
         ; END
         """
-          .trimIndent()
+          .trimIndent(),
       )
       db.execSQL(
         """
@@ -227,7 +227,7 @@ internal val MIGRATION_8_9 =
         VALUES (NEW.`rowid`, NEW.`repoId`, NEW.`name`, NEW.`summary`, NEW.`description`, NEW.`authorName`, NEW.`packageName`)
         ; END
         """
-          .trimIndent()
+          .trimIndent(),
       )
       // rebuild the FTS table to populate it with the new tokenizer
       db.execSQL("INSERT INTO AppMetadataFts(AppMetadataFts) VALUES('rebuild')")

@@ -21,6 +21,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
@@ -77,7 +78,7 @@ constructor(
 
   @OptIn(ExperimentalCoroutinesApi::class)
   private val installedAppItems =
-    installedAppsCache.installedApps.flatMapLatest { installedApps ->
+    installedAppsCache.installedApps.filterNotNull().flatMapLatest { installedApps ->
       val proxyConfig = settingsManager.proxyConfig
       db.getAppDao().getInstalledAppListItems(installedApps).map { list ->
         list.map { app ->

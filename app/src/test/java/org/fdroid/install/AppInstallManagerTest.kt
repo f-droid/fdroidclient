@@ -166,7 +166,7 @@ internal class AppInstallManagerTest {
           it.packageName == packageName &&
             it.versionName == "1.0" &&
             it.oldVersionName == installedVersionName
-        }
+        },
       )
     }
   }
@@ -510,7 +510,7 @@ internal class AppInstallManagerTest {
       // installing the app will need user confirmation
       installApp(currentVersionName = null)
       assertIs<InstallState.UserConfirmationNeeded>(
-        appInstallManager.getAppFlow(packageName).first()
+        appInstallManager.getAppFlow(packageName).first(),
       )
 
       every { packageInstaller.getSessionInfo(42) } returns null
@@ -549,7 +549,7 @@ internal class AppInstallManagerTest {
       appInstallManager.checkUserConfirmation(packageName, confirmationState)
       verify(exactly = 1) { pendingIntent.send() } // still only 1 send from above
       assertIs<InstallState.UserConfirmationNeeded>(
-        appInstallManager.getAppFlow(packageName).first()
+        appInstallManager.getAppFlow(packageName).first(),
       )
     }
 
@@ -579,7 +579,7 @@ internal class AppInstallManagerTest {
         historyManager.append(
           match { event ->
             event.packageName == packageName && event is org.fdroid.history.UninstallEvent
-          }
+          },
         )
       }
     }

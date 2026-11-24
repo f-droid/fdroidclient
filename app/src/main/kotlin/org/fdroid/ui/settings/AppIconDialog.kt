@@ -64,7 +64,7 @@ fun AppIconDialog(
                 modifier =
                   if (isSelected)
                     boxModifier.border(3.dp, MaterialTheme.colorScheme.primary, CircleShape)
-                  else boxModifier
+                  else boxModifier,
               ) {
                 AsyncImage(
                   model = icon.iconRes,

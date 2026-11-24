@@ -1,7 +1,6 @@
 package org.fdroid.ui.details
 
 import android.text.format.Formatter
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -27,9 +26,6 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
-import androidx.compose.ui.semantics.liveRegion
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +37,7 @@ import org.fdroid.ui.utils.ExpandIconChevron
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.MeteredConnectionDialog
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.asRelativeTimeString
 import org.fdroid.ui.utils.testApp
 
@@ -115,10 +112,7 @@ fun Version(
           }
       }
     }
-    AnimatedVisibility(
-      visible = expanded,
-      modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-    ) {
+    VerticalAnimatedVisibility(expanded) {
       val coroutineScope = rememberCoroutineScope()
       var showMeteredDialog by remember { mutableStateOf(false) }
       Column(modifier = Modifier.fillMaxWidth().padding(start = 40.dp)) {

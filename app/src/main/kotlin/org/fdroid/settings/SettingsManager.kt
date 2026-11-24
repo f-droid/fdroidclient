@@ -215,7 +215,7 @@ class SettingsManager @Inject constructor(@param:ApplicationContext private val 
 
   private val _showSearchKeyboardFlow =
     MutableStateFlow(
-      prefs.getBoolean(PREF_KEY_SHOW_SEARCH_KEYBOARD, PREF_DEFAULT_SHOW_SEARCH_KEYBOARD)
+      prefs.getBoolean(PREF_KEY_SHOW_SEARCH_KEYBOARD, PREF_DEFAULT_SHOW_SEARCH_KEYBOARD),
     )
   val showSearchKeyboardFlow = _showSearchKeyboardFlow.asStateFlow()
 

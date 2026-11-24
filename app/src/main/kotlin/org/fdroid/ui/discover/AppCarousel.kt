@@ -59,7 +59,7 @@ fun AppCarousel(
         shape = CircleShape,
         colors =
           IconButtonDefaults.iconButtonColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = MaterialTheme.colorScheme.surfaceContainer,
           ),
         modifier = Modifier.size(48.dp).padding(6.dp),
       ) {

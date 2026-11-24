@@ -270,7 +270,7 @@ public val DUMMY_TEST_REPO: Repository =
         parentColumns = ["repoId"],
         childColumns = ["repoId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 internal data class Mirror(
@@ -334,7 +334,7 @@ public abstract class RepoAttribute {
         parentColumns = ["repoId"],
         childColumns = ["repoId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 public data class AntiFeature(
@@ -370,7 +370,7 @@ internal fun Map<String, AntiFeatureV2>.toRepoAntiFeatures(repoId: Long) = map {
         parentColumns = ["repoId"],
         childColumns = ["repoId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 public data class Category(
@@ -406,7 +406,7 @@ internal fun Map<String, CategoryV2>.toRepoCategories(repoId: Long) = map {
         parentColumns = ["repoId"],
         childColumns = ["repoId"],
         onDelete = ForeignKey.CASCADE,
-      )
+      ),
     ],
 )
 public data class ReleaseChannel(
@@ -473,7 +473,7 @@ private fun validateCertificate(certificate: String?) {
   if (certificate != null)
     require(
       certificate.length % 2 == 0 &&
-        certificate.chunked(2).find { it.toIntOrNull(16) == null } == null
+        certificate.chunked(2).find { it.toIntOrNull(16) == null } == null,
     ) {
       "Invalid certificate: $certificate"
     }

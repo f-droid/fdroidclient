@@ -147,7 +147,7 @@ fun MyApps(
     modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
   ) { paddingValues ->
     val lazyListState = rememberLazyListState()
-    if (updatableApps == null && installedApps == null) BigLoadingIndicator()
+    if (updatableApps.isNullOrEmpty() && installedApps == null) BigLoadingIndicator()
     else if (
       installingApps.isEmpty() &&
         updatableApps.isNullOrEmpty() &&

@@ -39,7 +39,7 @@ fun RepositoryRow(
               color = MaterialTheme.colorScheme.error,
               contentDescription = stringResource(R.string.repo_has_update_error),
             )
-        }
+        },
       ) {
         AsyncShimmerImage(
           model = repoItem.icon,
@@ -66,7 +66,7 @@ fun RepositoryRow(
             MaterialTheme.colorScheme.surfaceVariant
           } else {
             MaterialTheme.colorScheme.background
-          }
+          },
       ),
     modifier = modifier,
   )

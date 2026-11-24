@@ -7,6 +7,8 @@ import org.fdroid.ui.categories.CategoryItem
 
 sealed class DiscoverModel
 
+data object DbClosedDiscoverModel : DiscoverModel()
+
 data class FirstStartDiscoverModel(
   val networkState: NetworkState,
   val repoUpdateState: RepoUpdateState?,

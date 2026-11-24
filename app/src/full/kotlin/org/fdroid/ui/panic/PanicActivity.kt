@@ -145,7 +145,7 @@ class PanicActivity : AppCompatActivity() {
             try {
               panicAppName =
                 packageManager.getApplicationLabel(
-                  packageManager.getApplicationInfo(callerPackageName, 0)
+                  packageManager.getApplicationInfo(callerPackageName, 0),
                 ) as String
             } catch (e: PackageManager.NameNotFoundException) {
               log.error(e) { "Panic app label not found: " }

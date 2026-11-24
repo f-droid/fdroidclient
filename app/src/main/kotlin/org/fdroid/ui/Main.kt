@@ -74,7 +74,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
     appListEntry(navigator, isBigScreen)
     repoEntry(navigator, isBigScreen)
     entry<NavigationKey.Search>(
-      metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() }
+      metadata = ListDetailSceneStrategy.listPane("appdetails") { NoAppSelected() },
     ) {
       val viewModel = hiltViewModel<SearchViewModel>()
       GlobalSearch(
@@ -118,6 +118,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
         enabled = viewModel.useInstallHistory.collectAsStateWithLifecycle(null).value,
         onEnabled = viewModel::useInstallHistory,
         onDeleteAll = viewModel::deleteHistory,
+        onNav = { navKey -> navigator.navigate(navKey) },
         onBackClicked = { navigator.goBack() },
       )
     }
@@ -127,7 +128,7 @@ fun Main(onListeningForIntent: () -> Unit = {}) {
           if (isBigScreen) null
           else {
             { navigator.goBack() }
-          }
+          },
       )
     }
     // flavor specific navigation destinations go here

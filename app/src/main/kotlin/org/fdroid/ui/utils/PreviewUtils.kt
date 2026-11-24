@@ -538,7 +538,7 @@ internal val myAppsModel =
               totalBytes = 100,
               startMillis = System.currentTimeMillis(),
             ),
-        )
+        ),
       ),
     appsWithIssue =
       listOf(
@@ -675,7 +675,7 @@ fun getRepoDetailsInfo(
       updateState = RepoUpdateProgress(42L, true, 0.75f),
       networkState = NetworkState(isOnline = false, isMetered = false),
       proxy = null,
-    )
+    ),
 ) =
   object : RepoDetailsInfo {
     override val model = model

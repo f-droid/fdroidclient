@@ -73,11 +73,11 @@ public fun getV1ReleaseChannels(): Map<String, ReleaseChannelV2> =
       ReleaseChannelV2(
         name = mapOf(DEFAULT_LOCALE to RELEASE_CHANNEL_BETA),
         description = emptyMap(),
-      )
+      ),
   )
 
 internal fun <T> Map<String, Localized>.mapValuesNotNull(
-  transform: (Map.Entry<String, Localized>) -> T?
+  transform: (Map.Entry<String, Localized>) -> T?,
 ): Map<String, T>? {
   val map = LinkedHashMap<String, T>(size)
   for (element in this) {

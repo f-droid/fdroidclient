@@ -1,5 +1,7 @@
 package org.fdroid.fdroid.nearby;
 
+import static androidx.work.ExistingWorkPolicy.REPLACE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -20,18 +22,17 @@ import androidx.work.Data;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-import androidx.work.WorkRequest;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import org.apache.commons.net.util.SubnetUtils;
 import org.apache.commons.net.util.SubnetUtils6;
-import org.fdroid.database.Repository;
 import org.fdroid.BuildConfig;
+import org.fdroid.R;
+import org.fdroid.database.Repository;
 import org.fdroid.fdroid.FDroidApp;
 import org.fdroid.fdroid.Hasher;
 import org.fdroid.fdroid.Preferences;
-import org.fdroid.R;
 import org.fdroid.fdroid.Utils;
 
 import java.net.Inet4Address;
@@ -103,7 +104,7 @@ public class WifiStateChangeService extends Worker {
             networkInfoStateInt = ni.getState().ordinal();
         }
 
-        WorkRequest workRequest = new OneTimeWorkRequest.Builder(WifiStateChangeService.class)
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(WifiStateChangeService.class)
                 .setConstraints(new Constraints.Builder()
                         .setRequiredNetworkType(NetworkType.CONNECTED)
                         .build())
@@ -112,7 +113,8 @@ public class WifiStateChangeService extends Worker {
                         .build()
                 )
                 .build();
-        WorkManager.getInstance(context).enqueue(workRequest);
+        WorkManager.getInstance(context)
+                .enqueueUniqueWork("WifiStateChangeService", REPLACE, workRequest);
     }
 
     @NonNull

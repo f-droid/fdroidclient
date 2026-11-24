@@ -96,12 +96,26 @@ class LocalizationTest {
         } catch (e: IllegalFormatException) {
           Log.i(TAG, locale.toString() + " " + field.getName())
           throw IllegalArgumentException(
-            ("Bad '" + formats + "' format in " + locale + " " + field.getName() + ": " + e.message)
+            ("Bad '" +
+              formats +
+              "' format in " +
+              locale +
+              " " +
+              field.getName() +
+              ": " +
+              e.message),
           )
         } catch (e: Resources.NotFoundException) {
           Log.i(TAG, locale.toString() + " " + field.getName())
           throw IllegalArgumentException(
-            ("Bad '" + formats + "' format in " + locale + " " + field.getName() + ": " + e.message)
+            ("Bad '" +
+              formats +
+              "' format in " +
+              locale +
+              " " +
+              field.getName() +
+              ": " +
+              e.message),
           )
         }
       }
@@ -163,7 +177,7 @@ class LocalizationTest {
         } catch (e: Exception) {
           Log.i(TAG, locale.toString() + " " + field.getName())
           throw IllegalArgumentException(
-            ("Bad format in '" + locale + "' '" + field.getName() + "': " + e.message)
+            ("Bad format in '" + locale + "' '" + field.getName() + "': " + e.message),
           )
         }
       }

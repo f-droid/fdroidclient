@@ -1,6 +1,5 @@
 package org.fdroid.ui.apps
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,9 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.hideFromAccessibility
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,6 +32,7 @@ import org.fdroid.ui.utils.AsyncShimmerImage
 import org.fdroid.ui.utils.BadgeIcon
 import org.fdroid.ui.utils.ExpandIconArrow
 import org.fdroid.ui.utils.VersionLine
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.getPreviewVersion
 
 @Composable
@@ -51,7 +49,7 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
               contentDescription =
                 stringResource(R.string.notification_title_single_update_available),
             )
-          }
+          },
         ) {
           AsyncShimmerImage(
             model = app.iconModel,
@@ -74,12 +72,12 @@ fun UpdatableAppRow(app: AppUpdateItem, isSelected: Boolean, modifier: Modifier 
               MaterialTheme.colorScheme.surfaceVariant
             } else {
               Color.Transparent
-            }
+            },
         ),
     )
-    AnimatedVisibility(
+    VerticalAnimatedVisibility(
       visible = isExpanded,
-      modifier = Modifier.padding(8.dp).semantics { liveRegion = LiveRegionMode.Polite },
+      modifier = Modifier.padding(8.dp),
     ) {
       Card(modifier = Modifier.fillMaxWidth()) {
         Text(

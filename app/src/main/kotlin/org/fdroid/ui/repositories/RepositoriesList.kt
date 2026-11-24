@@ -123,8 +123,8 @@ fun RepositoriesList(
           ElevatedCard(
             colors =
               CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.tertiaryContainer
-              )
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+              ),
           ) {
             Row(
               verticalAlignment = Alignment.CenterVertically,
@@ -150,7 +150,7 @@ fun RepositoriesList(
           onClick = {
             info.onRepositoryEnabled(repoId, false)
             showDisableRepoDialog = null
-          }
+          },
         ) {
           Text(
             text = stringResource(R.string.repo_disable_warning_button),

@@ -59,7 +59,7 @@ fun MeteredConnectionDialog(
         onClick = {
           onDismiss()
           onConfirm(dontShowAgain)
-        }
+        },
       ) {
         Text(
           text = stringResource(R.string.dialog_metered_button),

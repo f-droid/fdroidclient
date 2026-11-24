@@ -37,7 +37,7 @@ mavenPublishing {
       javadocJar = com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaHtml"),
       sourcesJar = com.vanniktech.maven.publish.SourcesJar.Sources(),
       androidVariantsToPublish = listOf("release"),
-    )
+    ),
   )
 }
 

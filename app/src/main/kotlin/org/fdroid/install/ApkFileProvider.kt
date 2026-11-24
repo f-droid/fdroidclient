@@ -79,7 +79,7 @@ class ApkFileProvider : ContentProvider() {
             MIME_TYPE,
             applicationInfo.publicSourceDir,
             File(applicationInfo.publicSourceDir).length(),
-          )
+          ),
         )
       } catch (e: Exception) {
         log.error(e) { "Error returning cursor: " }

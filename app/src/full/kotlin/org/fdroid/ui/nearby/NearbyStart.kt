@@ -28,7 +28,7 @@ import org.fdroid.ui.utils.BackButton
 fun NearbyStart(onBackClicked: () -> Unit) {
   val context = LocalContext.current
   Scaffold(
-    topBar = { TopAppBar(navigationIcon = { BackButton(onClick = onBackClicked) }, title = {}) }
+    topBar = { TopAppBar(navigationIcon = { BackButton(onClick = onBackClicked) }, title = {}) },
   ) { innerPadding ->
     Column(
       modifier =
@@ -43,7 +43,7 @@ fun NearbyStart(onBackClicked: () -> Unit) {
         onClick = {
           val i = Intent(context, SwapService::class.java)
           ContextCompat.startForegroundService(context, i)
-        }
+        },
       ) {
         Text(stringResource(R.string.nearby_splash__find_people_button))
       }

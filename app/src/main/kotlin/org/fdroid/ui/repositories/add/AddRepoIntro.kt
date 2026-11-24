@@ -8,7 +8,6 @@ import android.net.Uri
 import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement.SpaceBetween
 import androidx.compose.foundation.layout.Arrangement.spacedBy
@@ -56,9 +55,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
-import androidx.compose.ui.semantics.liveRegion
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -81,6 +77,7 @@ import org.fdroid.ui.utils.FDroidButton
 import org.fdroid.ui.utils.FDroidOutlineButton
 import org.fdroid.ui.utils.MeteredConnectionDialog
 import org.fdroid.ui.utils.OfflineBar
+import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.launchSafe
 import org.fdroid.ui.utils.startActivitySafe
 
@@ -110,7 +107,7 @@ fun AddRepoIntroContent(
         setOrientationLocked(false)
         setDesiredBarcodeFormats(QR_CODE)
         addExtra(SCAN_TYPE, MIXED_SCAN)
-      }
+      },
     )
   }
 
@@ -154,10 +151,7 @@ fun AddRepoIntroContent(
           if (networkState.showWarningDialog) showMeteredDialog = scanLambda else scanLambda()
         },
       )
-      AnimatedVisibility(
-        visible = showPermissionWarning,
-        modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-      ) {
+      VerticalAnimatedVisibility(showPermissionWarning) {
         Card(
           colors =
             CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseSurface),
@@ -198,10 +192,7 @@ fun AddRepoIntroContent(
       val textState = remember { mutableStateOf(TextFieldValue()) }
       val focusRequester = remember { FocusRequester() }
       val coroutineScope = rememberCoroutineScope()
-      AnimatedVisibility(
-        visible = manualExpanded,
-        modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
-      ) {
+      VerticalAnimatedVisibility(manualExpanded) {
         Column(horizontalAlignment = Alignment.End, verticalArrangement = spacedBy(16.dp)) {
           TextField(
             value = textState.value,

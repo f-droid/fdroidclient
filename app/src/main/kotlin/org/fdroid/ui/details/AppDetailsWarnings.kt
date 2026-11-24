@@ -125,7 +125,7 @@ private fun IncompatiblePreview() {
   FDroidContent {
     Column {
       AppDetailsWarnings(
-        testApp.copy(versions = listOf(testApp.versions!!.first().copy(isCompatible = false)))
+        testApp.copy(versions = listOf(testApp.versions!!.first().copy(isCompatible = false))),
       )
     }
   }

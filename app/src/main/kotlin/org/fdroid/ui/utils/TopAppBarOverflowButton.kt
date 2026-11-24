@@ -15,7 +15,7 @@ import org.fdroid.R
 
 @Composable
 fun TopAppBarOverflowButton(
-  menuItems: @Composable (ColumnScope.(onDismissRequest: () -> Unit) -> Unit)
+  menuItems: @Composable (ColumnScope.(onDismissRequest: () -> Unit) -> Unit),
 ) {
   Box {
     var menuExpanded by remember { mutableStateOf(false) }

@@ -93,7 +93,7 @@ fun Modifier.shimmer(): Modifier {
       targetValue = 1200f,
       animationSpec =
         infiniteRepeatable(
-          animation = tween(durationMillis = 2000, easing = FastOutLinearInEasing)
+          animation = tween(durationMillis = 2000, easing = FastOutLinearInEasing),
         ),
       label = "Translate",
     )

@@ -25,6 +25,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -100,6 +101,7 @@ constructor(
       // Collect the cached packageInfo for this app. This way we have a central place
       // to react to state changes for installs, updates and uninstalls
       installedAppsCache.installedApps
+        .filterNotNull()
         .map { cacheMap -> cacheMap[packageName]?.let { getLongVersionCode(it) } }
         .distinctUntilChanged()
         .collect { loadPackageInfoFlow() }
@@ -109,7 +111,7 @@ constructor(
   @WorkerThread
   private fun loadPackageInfoFlow() {
     val packageManager = app.packageManager
-    val packageInfo = installedAppsCache.installedApps.value[packageName]
+    val packageInfo = installedAppsCache.installedApps.value?.get(packageName)
     packageInfoFlow.value =
       if (packageInfo == null) {
         AppInfo(packageName)

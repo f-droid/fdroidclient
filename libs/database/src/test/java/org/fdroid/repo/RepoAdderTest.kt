@@ -520,7 +520,7 @@ internal class RepoAdderTest {
           it.indexFile.name == "../index-min-v2.json" &&
             it.mirrors.size == 1 &&
             it.mirrors[0].baseUrl == urlTrimmed
-        }
+        },
       )
     } returns indexStream
     every {
@@ -594,7 +594,7 @@ internal class RepoAdderTest {
   fun testWrongKnownFingerprintWithGivenFingerprint() = runTest {
     val url = "https://example.org/repo?fingerprint=${VerifierConstants.FINGERPRINT}"
     testMinRepoPreview("https://example.org/repo", url) { state2 ->
-      assertTrue(state2 is AddRepoError, "$state2")
+      assertIs<AddRepoError>(state2, "$state2")
       assertEquals(INVALID_FINGERPRINT, state2.errorType)
       val e = assertIs<SigningException>(state2.exception)
       assertTrue(e.message!!.contains("Known fingerprint different"))
@@ -633,7 +633,7 @@ internal class RepoAdderTest {
           it.indexFile.name == "../index-min-v2.json" &&
             it.mirrors.size == 1 &&
             it.mirrors[0].baseUrl == repoAddress
-        }
+        },
       )
     } returns indexStream
     every {
@@ -694,7 +694,7 @@ internal class RepoAdderTest {
           it.indexFile.name == "/index-v2.json" &&
             it.mirrors.size == 1 &&
             it.mirrors[0].baseUrl == "https://example.org/repo"
-        }
+        },
       )
     } returns indexStream
     every {
@@ -862,7 +862,7 @@ internal class RepoAdderTest {
             it.name.getBestLocale(localeList) == repoName &&
             it.username == username &&
             it.password == password // this is the important bit
-        }
+        },
       )
     } returns 42L
     every { repoDao.updateUserMirrors(42L, listOf(urlTrimmed)) } just Runs
@@ -890,7 +890,7 @@ internal class RepoAdderTest {
 
   private fun mockMinRepoDownload(
     // Override the URL to download, e.g., when adding via a user mirror
-    downloadUrl: String = TestDataMinV2.repo.address
+    downloadUrl: String = TestDataMinV2.repo.address,
   ) {
     mockRepoDownload(
       downloadUrl,
@@ -902,7 +902,7 @@ internal class RepoAdderTest {
 
   private fun mockMidRepoDownload(
     // Override the URL to download, e.g., when adding via a user/official mirror
-    downloadUrl: String = TestDataMidV2.repo.address
+    downloadUrl: String = TestDataMidV2.repo.address,
   ) {
     mockRepoDownload(
       downloadUrl,
@@ -947,7 +947,7 @@ internal class RepoAdderTest {
           it.indexFile.name == "../$indexFile" &&
             it.mirrors.size == 1 &&
             it.mirrors[0].baseUrl == downloadUrlTrimmed
-        }
+        },
       )
     } returns indexDigestStream
     every { digest.digest() } returns digestHex.decodeHex()
@@ -974,7 +974,7 @@ internal class RepoAdderTest {
           it.address == repoAddress &&
             it.formatVersion == IndexFormatVersion.TWO &&
             it.name.getBestLocale(localeList) == repoName
-        }
+        },
       )
     } returns 42L
     every { repoDao.getRepository(42L) } returns newRepo

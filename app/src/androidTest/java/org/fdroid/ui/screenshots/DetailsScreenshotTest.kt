@@ -52,9 +52,9 @@ class DetailsScreenshotTest(localeName: String) : LocalizedScreenshotTest(locale
                       label = "Camera",
                       description = null,
                       type = SENSITIVE,
-                    )
+                    ),
                   ),
-              )
+              ),
             ),
         )
       AppDetails(item = item, onNav = {}, onBackNav = {})

@@ -36,7 +36,7 @@ constructor(
     MutableStateFlow(
       connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)?.let {
         NetworkState(it, warnWhenMetered)
-      } ?: NetworkState(isOnline = false, isMetered = false, warnWhenMetered = warnWhenMetered)
+      } ?: NetworkState(isOnline = false, isMetered = false, warnWhenMetered = warnWhenMetered),
     )
   val networkState = _networkState.asStateFlow()
 

@@ -14,7 +14,7 @@ fun EntryProviderScope<NavKey>.appDetailsEntry(navigator: Navigator, isBigScreen
   entry<NavigationKey.AppDetails>(metadata = ListDetailSceneStrategy.detailPane("appdetails")) {
     val viewModel =
       hiltViewModel<AppDetailsViewModel, AppDetailsViewModel.Factory>(
-        creationCallback = { factory -> factory.create(it.packageName) }
+        creationCallback = { factory -> factory.create(it.packageName) },
       )
     AppDetails(
       item = viewModel.appDetails.collectAsStateWithLifecycle().value,

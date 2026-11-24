@@ -87,7 +87,7 @@ fun RepoDetailsHeader(
       ElevatedCard(
         colors =
           CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.errorContainer
+            containerColor = MaterialTheme.colorScheme.errorContainer,
           ),
         modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
       ) {

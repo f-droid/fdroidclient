@@ -50,7 +50,7 @@ fun PanicSettings(
         navigationIcon = { BackButton(onClick = onBackClicked) },
         title = { Text(stringResource(R.string.panic_settings)) },
       )
-    }
+    },
   ) { paddingValues ->
     ProvidePreferenceLocals(prefsFlow) {
       val res = LocalResources.current

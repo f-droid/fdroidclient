@@ -64,7 +64,7 @@ fun PackageV2.v1compat(overrideLocale: Boolean = false) =
               metadata.screenshots?.wear?.mapValues { list -> list.value.map { it.v1compat() } },
             tv = metadata.screenshots?.tv?.mapValues { list -> list.value.map { it.v1compat() } },
           ),
-      )
+      ),
   )
 
 fun PackageVersionV2.v1compat() =
@@ -76,7 +76,7 @@ fun PackageVersionV2.v1compat() =
           if ((manifest.signer?.sha256?.size ?: 0) <= 1) manifest.signer
           else {
             SignerV2(manifest.signer?.sha256?.subList(0, 1) ?: error(""))
-          }
+          },
       ),
     releaseChannels = releaseChannels.filter { it == RELEASE_CHANNEL_BETA },
     antiFeatures = antiFeatures.mapValues { emptyMap() },
@@ -98,7 +98,7 @@ object TestDataEmptyV2 {
               name = "/icons/empty-v1.png",
               sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
               size = 32492,
-            )
+            ),
         ),
       webBaseUrl = null,
       description = mapOf(LOCALE to "This is a repo with empty data."),
@@ -123,7 +123,7 @@ object TestDataMinV2 {
               name = "/icons/min-v1.png",
               sha256 = "74758e480ae76297c8947f107db9ea03d2933c9d5c110d02046977cf78d43def",
               size = 0,
-            )
+            ),
         ),
       address = "https://min-v1.org/repo",
       description = mapOf(LOCALE to "This is a repo with minimal data."),
@@ -196,7 +196,7 @@ object TestDataMidV2 {
                       name = "/icons/cat2.png",
                       sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                       size = Long.MAX_VALUE,
-                    )
+                    ),
                 ),
             ),
           "System" to CategoryV2(name = emptyMap()),
@@ -207,7 +207,7 @@ object TestDataMidV2 {
             AntiFeatureV2(
               name = mapOf(LOCALE to "AntiFeature"),
               description = mapOf(LOCALE to "A bad anti-feature, we can't show to users."),
-            )
+            ),
         ),
     )
   val repoCompat = repo.v1compat()
@@ -257,7 +257,7 @@ object TestDataMidV2 {
           maxSdkVersion = 4568,
           signer =
             SignerV2(
-              sha256 = listOf("824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf")
+              sha256 = listOf("824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf"),
             ),
           features = listOf(FeatureV2("new feature")),
         ),
@@ -292,7 +292,7 @@ object TestDataMidV2 {
                   name = "/icons/icon-min1.png",
                   sha256 = "824a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
                   size = 1337,
-                )
+                ),
             ),
           lastUpdated = 1234567891,
         ),
@@ -306,7 +306,7 @@ object TestDataMidV2 {
           mapOf(
             version1_1.file.sha256 to version1_1Compat,
             version1_2.file.sha256 to version1_2Compat,
-          )
+          ),
       )
 
   val version2_1 =
@@ -325,7 +325,7 @@ object TestDataMidV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -379,7 +379,7 @@ object TestDataMidV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -431,7 +431,7 @@ object TestDataMidV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -480,7 +480,7 @@ object TestDataMidV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -529,7 +529,7 @@ object TestDataMidV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -627,7 +627,7 @@ object TestDataMidV2 {
                   name = "/icons/org.fdroid.fdroid.1014050.png",
                   sha256 = "224a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
                   size = 1237,
-                )
+                ),
             ),
           featureGraphic =
             mapOf(
@@ -638,7 +638,7 @@ object TestDataMidV2 {
                       "featureGraphic_PTun9TO4cMFOeiqbvQSrkdcxNUcOFQCymMIaj9UJOAY=.jpg",
                   sha256 = "424a109b2352138c3699760e1683385d0ed50ce526fc7982f8d65757743374bf",
                   size = 4237,
-                )
+                ),
             ),
           screenshots =
             Screenshots(
@@ -698,8 +698,8 @@ object TestDataMidV2 {
                           "424a109b2352138c3699750e1683385d" + "0ed50ce526fc7982f8d65757743374bf",
                         size = 485287,
                       ),
-                    )
-                )
+                    ),
+                ),
             ),
           lastUpdated = 1643250075000,
         ),
@@ -723,7 +723,7 @@ object TestDataMidV2 {
             version2_3.file.sha256 to version2_3Compat,
             version2_4.file.sha256 to version2_4Compat,
             version2_5.file.sha256 to version2_5Compat,
-          )
+          ),
       )
   val packages = mapOf(PACKAGE_NAME_1 to app1, PACKAGE_NAME_2 to app2)
 
@@ -796,7 +796,7 @@ object TestDataMaxV2 {
                       name = "/icons/antifeature.png",
                       sha256 = "24758e480ae66297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                       size = 254916,
-                    )
+                    ),
                 ),
               name = mapOf(LOCALE to "AntiFeature"),
               description = mapOf(LOCALE to "A bad anti-feature, we can't show to users."),
@@ -820,7 +820,7 @@ object TestDataMaxV2 {
                       name = "/icons/cat3.png",
                       sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                       size = Long.MAX_VALUE,
-                    )
+                    ),
                 ),
               description = mapOf(LOCALE to "Cat3"),
             ),
@@ -834,7 +834,7 @@ object TestDataMaxV2 {
                       name = "/icons/cat2.png",
                       sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                       size = Long.MAX_VALUE,
-                    )
+                    ),
                 ),
               description = mapOf(LOCALE to "Cat3"),
             ),
@@ -848,7 +848,7 @@ object TestDataMaxV2 {
                       name = "/icons/cat1.png",
                       sha256 = "54758e480ae76297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                       size = Long.MAX_VALUE,
-                    )
+                    ),
                 ),
               description = mapOf(LOCALE to "Cat1"),
             ),
@@ -908,7 +908,7 @@ object TestDataMaxV2 {
           usesSdk = UsesSdkV2(minSdkVersion = 22, targetSdkVersion = 25),
           signer =
             SignerV2(
-              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab")
+              sha256 = listOf("43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab"),
             ),
           usesPermission =
             listOf(
@@ -936,7 +936,7 @@ object TestDataMaxV2 {
   val version2_4 = TestDataMidV2.version2_4.copy(antiFeatures = mapOf("AddOne" to emptyMap()))
   val version2_5 =
     TestDataMidV2.version2_5.copy(
-      antiFeatures = mapOf("AddOne" to mapOf(LOCALE to "was added this update"))
+      antiFeatures = mapOf("AddOne" to mapOf(LOCALE to "was added this update")),
     )
   val app2 =
     TestDataMidV2.app2.copy(
@@ -963,7 +963,7 @@ object TestDataMaxV2 {
                   name = "/org.fdroid.fdroid/en-US/new icon",
                   sha256 = "324a109b2352138c3699760e1683385d1ed50ce526fc7982f8d65757743374ba",
                   size = 2233,
-                )
+                ),
             ),
           screenshots =
             TestDataMidV2.app2.metadata.screenshots?.copy(
@@ -1008,7 +1008,7 @@ object TestDataMaxV2 {
                           "424a109b2352138c3699750e1683385d" + "0ed50ce526fc7982f8d65757743374bf",
                         size = 485286,
                       ),
-                    )
+                    ),
                 ),
               tenInch =
                 mapOf(
@@ -1019,8 +1019,8 @@ object TestDataMaxV2 {
                         sha256 =
                           "54758e380ae76297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = Long.MIN_VALUE,
-                      )
-                    )
+                      ),
+                    ),
                 ),
               wear = null,
             ),
@@ -1080,7 +1080,7 @@ object TestDataMaxV2 {
                 listOf(
                   "43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab",
                   "33238d512c1e3eb2d6569f4a3bfbf5523418b22e0a3ed1552770abb9a9c9ccvb",
-                )
+                ),
             ),
           usesPermission =
             listOf(
@@ -1163,7 +1163,7 @@ object TestDataMaxV2 {
                       "hm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
                   sha256 = "32758e380aeg6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                   size = 2253245,
-                )
+                ),
             ),
           featureGraphic =
             mapOf(
@@ -1176,7 +1176,7 @@ object TestDataMaxV2 {
                       "hm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
                   sha256 = "54758e380ae762f7c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                   size = 32453245,
-                )
+                ),
             ),
           promoGraphic =
             mapOf(
@@ -1189,7 +1189,7 @@ object TestDataMaxV2 {
                       "hm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
                   sha256 = "54758e380aee6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                   size = 4523325,
-                )
+                ),
             ),
           tvBanner =
             mapOf(
@@ -1202,7 +1202,7 @@ object TestDataMaxV2 {
                       "hm7eidaiy2AeCaej9iexahyooshu2ic9tea1ool8tu4Y/en/en ",
                   sha256 = "54758e380aeh6297c7947f107db9ea03d2933c9d5c110d02046977cf78d43def",
                   size = 32453245,
-                )
+                ),
             ),
           video = mapOf("en" to "en "),
           screenshots =
@@ -1233,7 +1233,7 @@ object TestDataMaxV2 {
                           "54758e380aee6297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = 0,
                       ),
-                    )
+                    ),
                 ),
               sevenInch =
                 mapOf(
@@ -1261,7 +1261,7 @@ object TestDataMaxV2 {
                           "54758e380aee6297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = 0,
                       ),
-                    )
+                    ),
                 ),
               tenInch =
                 mapOf(
@@ -1289,7 +1289,7 @@ object TestDataMaxV2 {
                           "54758e380aee6297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = 0,
                       ),
-                    )
+                    ),
                 ),
               wear =
                 mapOf(
@@ -1317,7 +1317,7 @@ object TestDataMaxV2 {
                           "54758e380aee6297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = 0,
                       ),
-                    )
+                    ),
                 ),
               tv =
                 mapOf(
@@ -1345,7 +1345,7 @@ object TestDataMaxV2 {
                           "54758e380aee6297c7947f107db9ea03" + "d2933c9d5c110d02046977cf78d43def",
                         size = 0,
                       ),
-                    )
+                    ),
                 ),
             ),
         ),
@@ -1373,6 +1373,6 @@ object TestDataMaxV2 {
             TestDataMidV2.PACKAGE_NAME_1 to TestDataMidV2.app1Compat,
             TestDataMidV2.PACKAGE_NAME_2 to app2Compat,
             PACKAGE_NAME_3 to app3Compat,
-          )
+          ),
       )
 }

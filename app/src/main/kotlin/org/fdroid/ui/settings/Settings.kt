@@ -104,7 +104,7 @@ fun Settings(
         navigationIcon = { BackButton(onClick = onBackClicked) },
         title = { Text(stringResource(R.string.menu_settings), maxLines = 1) },
       )
-    }
+    },
   ) { paddingValues ->
     val launcher =
       rememberLauncherForActivityResult(CreateDocument("text/plain")) { onSaveLogcat(it) }
@@ -128,7 +128,7 @@ fun Settings(
                 "dark" -> res.getString(R.string.theme_dark)
                 "followSystem" -> res.getString(R.string.theme_follow_system)
                 else -> error("Unknown value: $value")
-              }
+              },
             )
           }
         listPreference(
@@ -277,7 +277,7 @@ fun Settings(
                 RepoUpdateValues.OnlyWhenOpenApp ->
                   res.getString(R.string.pref_auto_updates_only_only_when_open_app)
                 RepoUpdateValues.Never -> res.getString(R.string.pref_auto_updates_only_never)
-              }
+              },
             )
           },
         )
@@ -353,7 +353,7 @@ fun Settings(
                 AppUpdateValues.OnlyWifi -> res.getString(R.string.pref_auto_app_updates_only_wifi)
                 AppUpdateValues.Always -> res.getString(R.string.pref_auto_app_updates_only_always)
                 AppUpdateValues.Never -> res.getString(R.string.pref_auto_updates_only_never)
-              }
+              },
             )
           },
         )

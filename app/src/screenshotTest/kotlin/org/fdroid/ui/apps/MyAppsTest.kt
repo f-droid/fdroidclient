@@ -73,8 +73,8 @@ fun MyAppsInstalledAndIssues() {
         installingApps =
           listOf(
             myAppsModel.installingApps[0].copy(
-              installState = InstallState.Installed("Installed App", "0.5.2", null, 1337L, null)
-            )
+              installState = InstallState.Installed("Installed App", "0.5.2", null, 1337L, null),
+            ),
           ),
         appsWithIssue = getAppIssues(),
         installedApps = getInstalledApps(),
@@ -196,7 +196,7 @@ private fun getAppIssues() =
       installedVersionCode = 1,
       issue = NoCompatibleSigner(),
       lastUpdated = 1770000000L,
-    )
+    ),
   )
 
 private fun getInstalledApps() =

@@ -10,6 +10,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_SIGNATURES
 import android.os.Build.VERSION.SDK_INT
+import androidx.annotation.GuardedBy
 import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
 import androidx.core.content.ContextCompat.registerReceiver
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -18,7 +19,6 @@ import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.utils.IoDispatcher
@@ -33,7 +33,12 @@ constructor(
 
   private val log = KotlinLogging.logger {}
   private val packageManager = context.packageManager
-  private val _installedApps = MutableStateFlow<Map<String, PackageInfo>>(emptyMap())
+  private val lock = Any()
+  // Broadcasts received during the initial scan must not publish a partial cache or get lost
+  @GuardedBy("lock") private val pendingChanges = mutableMapOf<String, PackageInfo?>()
+  private val _installedApps = MutableStateFlow<Map<String, PackageInfo>?>(null)
+
+  /** Null until the initial package scan completes; an empty map is a completed scan. */
   val installedApps = _installedApps.asStateFlow()
 
   init {
@@ -48,13 +53,26 @@ constructor(
       log.info { "Loading installed apps..." }
       @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
       val installedPackages = packageManager.getInstalledPackages(GET_SIGNATURES)
-      _installedApps.update { installedPackages.associateBy { it.packageName } }
+      synchronized(lock) {
+        val apps = installedPackages.associateBy { it.packageName }.toMutableMap()
+        pendingChanges.forEach { (packageName, info) ->
+          if (info == null) apps.remove(packageName) else apps[packageName] = info
+        }
+        pendingChanges.clear()
+        _installedApps.value = apps
+      }
     }
   }
 
   fun isInstalled(packageName: String): Boolean {
-    // TODO on first start this may have to wait for installed apps to load
-    return _installedApps.value.contains(packageName)
+    val apps = _installedApps.value
+    if (apps != null) return apps.containsKey(packageName)
+    return try {
+      @Suppress("DEPRECATION") packageManager.getPackageInfo(packageName, GET_SIGNATURES)
+      true
+    } catch (_: PackageManager.NameNotFoundException) {
+      false
+    }
   }
 
   override fun onReceive(context: Context, intent: Intent) {
@@ -80,7 +98,7 @@ constructor(
       @Suppress("DEPRECATION") // we'll use this as long as it works, new one was broken
       val packageInfo = packageManager.getPackageInfo(packageName, GET_SIGNATURES)
       // even if the app got replaced, we need to update packageInfo for new version code
-      _installedApps.update { it.toMutableMap().apply { put(packageName, packageInfo) } }
+      updatePackage(packageName, packageInfo)
     } catch (e: PackageManager.NameNotFoundException) {
       // Broadcasts don't always get delivered on time. So when this broadcast arrives,
       // the user may already have uninstalled the app.
@@ -97,7 +115,21 @@ constructor(
     val packageName =
       intent.data?.schemeSpecificPart ?: error("No package name in ACTION_PACKAGE_REMOVED")
     if (!replacing || archival) {
-      _installedApps.update { apps -> apps.toMutableMap().apply { remove(packageName) } }
+      updatePackage(packageName, null)
+    }
+  }
+
+  private fun updatePackage(packageName: String, packageInfo: PackageInfo?) {
+    synchronized(lock) {
+      val apps = _installedApps.value
+      if (apps == null) {
+        pendingChanges[packageName] = packageInfo
+      } else {
+        _installedApps.value =
+          apps.toMutableMap().apply {
+            if (packageInfo == null) remove(packageName) else put(packageName, packageInfo)
+          }
+      }
     }
   }
 }

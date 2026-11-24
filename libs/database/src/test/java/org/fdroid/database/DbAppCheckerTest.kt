@@ -558,6 +558,6 @@ internal class DbAppCheckerTest {
         versionId = "foo bar versionId",
         type = VersionedStringType.PERMISSION,
         name = "android.permission.INTERNET",
-      )
+      ),
     )
 }

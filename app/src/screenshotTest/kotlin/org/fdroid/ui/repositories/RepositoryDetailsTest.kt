@@ -32,7 +32,7 @@ fun RepositoryDetailsMinTest() =
           updateState = null,
           archiveState = ArchiveState.ENABLED,
           networkState = NetworkState(isOnline = true, isMetered = true),
-        )
+        ),
       ),
       { _, _ -> },
       {},
@@ -56,7 +56,7 @@ fun RepositoryDetailsNightTest() =
           updateState = null,
           archiveState = ArchiveState.UNKNOWN,
           networkState = NetworkState(isOnline = false, isMetered = true),
-        )
+        ),
       ),
       { _, _ -> },
       {},

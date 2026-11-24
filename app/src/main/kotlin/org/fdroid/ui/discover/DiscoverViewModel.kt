@@ -33,6 +33,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import mu.KotlinLogging
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.db.DatabaseOpenState
 import org.fdroid.download.NetworkMonitor
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
@@ -47,6 +48,7 @@ constructor(
   private val app: Application,
   savedStateHandle: SavedStateHandle,
   private val db: FDroidDatabase,
+  databaseOpenState: DatabaseOpenState,
   networkMonitor: NetworkMonitor,
   private val settingsManager: SettingsManager,
   private val repoManager: RepoManager,
@@ -95,6 +97,7 @@ constructor(
       @SuppressLint("StateFlowValueCalledInComposition") // see comment below
       moleculeScope.launchMolecule(mode = ContextClock) {
         DiscoverPresenter(
+          databaseOpenStateFlow = databaseOpenState.isOpen,
           newAppsFlow = newAppsFlow,
           recentlyUpdatedAppsFlow = recentlyUpdatedAppsFlow,
           mostDownloadedAppsFlow = mostDownloadedApps,

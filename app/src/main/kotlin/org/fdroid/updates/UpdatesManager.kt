@@ -13,6 +13,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -80,21 +82,22 @@ constructor(
       // delay initial check for updates a bit, so we don't hammer the DB during start-up
       delay(1500.milliseconds)
       // Auto-refresh updates when installed apps change.
-      installedAppsCache.installedApps.collect { loadUpdates(it) }
+      installedAppsCache.installedApps.filterNotNull().collect { loadUpdates(it) }
     }
   }
 
   /** Loads available updates and app issues for the given [packageInfoMap]. */
   fun loadUpdates(
-    packageInfoMap: Map<String, PackageInfo> = installedAppsCache.installedApps.value
+    packageInfoMap: Map<String, PackageInfo>? = null,
   ) = coroutineScope.launch {
-    if (packageInfoMap.isEmpty()) return@launch
+    val installedApps = packageInfoMap ?: installedAppsCache.installedApps.filterNotNull().first()
+    if (installedApps.isEmpty()) return@launch
     val localeList = LocaleListCompat.getDefault()
     try {
-      log.info { "Checking for updates (${packageInfoMap.size} apps)..." }
+      log.info { "Checking for updates (${installedApps.size} apps)..." }
       val proxyConfig = settingsManager.proxyConfig
       val (updateCheckResult, duration) =
-        measureTimedValue { dbAppChecker.getApps(packageInfoMap = packageInfoMap) }
+        measureTimedValue { dbAppChecker.getApps(packageInfoMap = installedApps) }
       log.debug { "Checking for updates took $duration" }
       processAvailableUpdates(updateCheckResult.updates, localeList, proxyConfig)
       processAppIssues(updateCheckResult.issues, localeList, proxyConfig)

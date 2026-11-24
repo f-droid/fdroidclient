@@ -68,7 +68,7 @@ fun RepoChooser(
         value =
           TextFieldValue(
             annotatedString =
-              getRepoString(repo = currentRepo, isPreferred = repos.size > 1 && isPreferred)
+              getRepoString(repo = currentRepo, isPreferred = repos.size > 1 && isPreferred),
           ),
         textStyle = MaterialTheme.typography.bodyMedium,
         onValueChange = {},

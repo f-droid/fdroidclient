@@ -57,6 +57,7 @@ import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Handyman
 import androidx.compose.material.icons.filled.HealthAndSafety
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.HourglassEmpty
 import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Keyboard
 import androidx.compose.material.icons.filled.Language
@@ -144,6 +145,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Development" -> Icons.Default.DeveloperMode
         "Dice" -> Icons.Default.Casino
         "Diet" -> Icons.Default.Fastfood
+        "Digital Wellbeing" -> Icons.Default.HourglassEmpty
         "DNS & Hosts" -> Icons.Default.Dns
         "Download" -> Icons.Default.Download
         "Draw" -> Icons.Default.Draw
@@ -265,6 +267,7 @@ data class CategoryItem(val id: String, val name: String, val description: Strin
         "Development" -> CategoryGroups.interests
         "Dice" -> CategoryGroups.games
         "Diet" -> CategoryGroups.health
+        "Digital Wellbeing" -> CategoryGroups.health
         "DNS & Hosts" -> CategoryGroups.network
         "Download" -> CategoryGroups.network
         "Draw" -> CategoryGroups.interests

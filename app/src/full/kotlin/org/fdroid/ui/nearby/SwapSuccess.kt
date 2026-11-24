@@ -36,7 +36,7 @@ object SwapSuccessBinder {
   @JvmStatic
   fun bind(composeView: ComposeView, viewModel: SwapSuccessViewModel) {
     composeView.setViewCompositionStrategy(
-      ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+      ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed,
     )
     composeView.setContent {
       FDroidContent {

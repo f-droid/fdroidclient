@@ -85,8 +85,8 @@ internal class ReflectionDifferTest {
       JsonObject(
         mapOf(
           "icon" to
-            JsonObject(mapOf(LOCALE to JsonObject(mapOf("name" to JsonPrimitive("file1b")))))
-        )
+            JsonObject(mapOf(LOCALE to JsonObject(mapOf("name" to JsonPrimitive("file1b"))))),
+        ),
       )
     val diff2 =
       JsonObject(
@@ -100,11 +100,11 @@ internal class ReflectionDifferTest {
                       "name" to JsonPrimitive("file2"),
                       "sha256" to JsonPrimitive("hash2"),
                       "size" to JsonPrimitive(2L),
-                    )
-                  )
-              )
-            )
-        )
+                    ),
+                  ),
+              ),
+            ),
+        ),
       )
     val diffedCat1 = ReflectionDiffer.applyDiff(category1, diff1)
     val diffedCat2 = ReflectionDiffer.applyDiff(category2, diff2)
