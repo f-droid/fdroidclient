@@ -80,6 +80,8 @@ internal constructor(
   private val _isUpdating = MutableStateFlow(false)
   val isUpdating = _isUpdating.asStateFlow()
   val repoUpdateState = repoUpdateListener.updateState
+  val immediateAppUpdates
+    get() = settingsManager.autoUpdateApps == AppUpdateValues.Immediately
 
   /**
    * The time in milliseconds of the (earliest!) next automatic repo update check. This is
@@ -109,9 +111,9 @@ internal constructor(
    * are refreshed.
    */
   @WorkerThread
-  suspend fun updateRepos() {
+  suspend fun updateRepos(): IndexUpdateResult {
     currentCoroutineContext().ensureActive()
-    if (shouldSkipUpdate()) return
+    if (shouldSkipUpdate()) return IndexUpdateResult.Unchanged
 
     _isUpdating.value = true
     try {
@@ -137,7 +139,9 @@ internal constructor(
 
       if (anyReposProcessed) {
         checkAndNotifyAppUpdates()
+        return IndexUpdateResult.Processed
       }
+      return IndexUpdateResult.Unchanged
     } finally {
       notificationManager.cancelUpdateRepoNotification()
       _isUpdating.value = false
@@ -218,7 +222,7 @@ internal constructor(
   private suspend fun checkAndNotifyAppUpdates() {
     updatesManager.loadUpdates().join() // wait here until we have finished loading updates
     // only notify when we are not installing the updates right away anyway
-    if (settingsManager.autoUpdateApps != AppUpdateValues.Immediately) {
+    if (!immediateAppUpdates) {
       val numUpdates = updatesManager.numUpdates.value
       if (numUpdates > 0) {
         val states = updatesManager.notificationStates

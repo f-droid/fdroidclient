@@ -9,8 +9,11 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.ExistingWorkPolicy
 import androidx.work.ForegroundInfo
 import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
@@ -45,6 +48,8 @@ constructor(
     private val TAG = AppUpdateWorker::class.simpleName
     @VisibleForTesting internal const val MAX_RUN_ATTEMPTS = 3
     @VisibleForTesting internal const val UNIQUE_WORK_NAME_APP_UPDATE = "autoAppUpdate"
+    @VisibleForTesting
+    internal const val UNIQUE_WORK_NAME_APP_UPDATE_IMMEDIATE = "autoAppUpdateImmediate"
 
     @JvmStatic
     fun scheduleOrCancel(context: Context, autoUpdate: AppUpdateValues) {
@@ -82,6 +87,19 @@ constructor(
         Log.w(TAG, "Cancelling job due to settings!")
         workManager.cancelUniqueWork(UNIQUE_WORK_NAME_APP_UPDATE)
       }
+    }
+
+    fun runNow(context: Context) {
+      val workManager = WorkManager.getInstance(context)
+      val request =
+        OneTimeWorkRequestBuilder<AppUpdateWorker>()
+          .setExpedited(RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+          .build()
+      workManager.enqueueUniqueWork(
+        UNIQUE_WORK_NAME_APP_UPDATE_IMMEDIATE,
+        ExistingWorkPolicy.KEEP,
+        request,
+      )
     }
 
     fun getAutoUpdateWorkInfo(context: Context): Flow<WorkInfo?> {

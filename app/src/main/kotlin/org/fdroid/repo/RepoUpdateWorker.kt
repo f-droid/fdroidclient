@@ -32,9 +32,11 @@ import mu.KotlinLogging
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.history.HistoryManager
+import org.fdroid.index.IndexUpdateResult
 import org.fdroid.install.CacheCleaner
 import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
+import org.fdroid.updates.AppUpdateWorker
 
 private val TAG = RepoUpdateWorker::class.java.simpleName
 
@@ -137,10 +139,18 @@ constructor(
     val repoId = inputData.getLong("repoId", -1)
     return try {
       currentCoroutineContext().ensureActive()
-      if (repoId >= 0) repoUpdateManager.updateRepo(repoId) else repoUpdateManager.updateRepos()
+      val result =
+        if (repoId >= 0) repoUpdateManager.updateRepo(repoId) else repoUpdateManager.updateRepos()
       // use opportunity to clean up cached APKs
       cacheCleaner.clean()
       historyManager.pruneEvents()
+
+      // update apps right away, if repos changed and app auto-update is set to immediately
+      if (result == IndexUpdateResult.Processed && repoUpdateManager.immediateAppUpdates) {
+        log.info { "Auto-update is set to immediately, starting AppUpdateWorker..." }
+        AppUpdateWorker.runNow(applicationContext)
+      }
+
       // return result
       Result.success()
     } catch (e: Exception) {
