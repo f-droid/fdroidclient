@@ -72,6 +72,7 @@ constructor(
         }
       } catch (e: Exception) {
         log.error(e) { "Error loading most downloaded apps: " }
+        emit(emptyList())
         return@flow
       }
     db.getAppDao().getAppsFlow(packageNames).collect { apps -> emit(apps) }
