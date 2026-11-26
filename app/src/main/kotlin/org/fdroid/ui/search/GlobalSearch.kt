@@ -34,7 +34,6 @@ import org.fdroid.ui.utils.categoryItems
 import org.fdroid.ui.utils.getSearchInfo
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun GlobalSearch(
   info: SearchInfo,
   textFieldState: TextFieldState = rememberTextFieldState(),

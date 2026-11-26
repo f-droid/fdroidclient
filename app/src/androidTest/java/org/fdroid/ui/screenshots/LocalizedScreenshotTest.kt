@@ -21,9 +21,11 @@ import java.io.File
 import kotlin.test.assertTrue
 import kotlin.test.fail
 import org.fdroid.BuildConfig.FLAVOR_variant
+import org.fdroid.download.NetworkState
 import org.fdroid.ui.MainContent
 import org.fdroid.ui.MainModel
 import org.fdroid.ui.navigation.NavigationKey
+import org.fdroid.ui.utils.mainOnboardingState
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Rule
@@ -90,6 +92,8 @@ abstract class LocalizedScreenshotTest(val localeName: String) {
           model =
             MainModel(
               dynamicColors = false,
+              mainOnboardingState = mainOnboardingState,
+              networkState = NetworkState(isOnline = true, isMetered = false),
               numUpdates = numUpdates,
               hasAppIssues = hasAppIssues,
               showOnboarding = false,

@@ -18,6 +18,8 @@ class OnboardingManager
 @Inject
 constructor(
   @param:ApplicationContext private val context: Context,
+  private val settingsManager: SettingsManager,
+  private val permissionsManager: PermissionsManager,
   legacyOnboardingManager: LegacyOnboardingManager,
 ) {
 
@@ -32,6 +34,13 @@ constructor(
   }
 
   private val prefs = context.getSharedPreferences("onboarding", MODE_PRIVATE)
+
+  val mainOnboardingState: MainOnboardingState
+    get() =
+      MainOnboardingState(
+        isFirstStart = settingsManager.isFirstStart,
+        permissionState = permissionsManager.permissionState,
+      )
 
   private val _showMainOnboarding =
     Onboarding(KEY_MAIN, prefs, legacyOnboardingManager.showAppHidingOnboarding)
@@ -84,6 +93,13 @@ constructor(
   fun onAntiFeaturesOnboardingSeen() {
     _showAntiFeaturesOnboarding.onSeen(prefs)
   }
+}
+
+data class MainOnboardingState(
+  val isFirstStart: Boolean,
+  val permissionState: PermissionState,
+) {
+  val show: Boolean = isFirstStart || !permissionState.acceptable
 }
 
 private data class Onboarding(val key: String, private val _flow: MutableStateFlow<Boolean>) {

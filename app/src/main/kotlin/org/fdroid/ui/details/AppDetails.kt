@@ -83,10 +83,10 @@ import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.icons.License
 import org.fdroid.ui.lists.AppListType
 import org.fdroid.ui.navigation.NavigationKey
+import org.fdroid.ui.onboarding.OnboardingPopupCard
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.ExpandableSection
 import org.fdroid.ui.utils.HintOverlayContainer
-import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.testApp
 

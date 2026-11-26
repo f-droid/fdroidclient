@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularWavyProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -37,7 +36,6 @@ import org.fdroid.repo.RepoUpdateWorker
 import org.fdroid.ui.FDroidContent
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun FirstStart(
   networkState: NetworkState,
   repoUpdateState: RepoUpdateState?,
@@ -52,7 +50,11 @@ fun FirstStart(
     // TODO it would be nice to surface normal update errors better and also let the user retry
   }
   Column(verticalArrangement = Center, modifier = modifier) {
-    if ((!networkState.isOnline || networkState.showWarningDialog) && !override) {
+    if (
+      (!networkState.isOnline || networkState.showWarningDialog) &&
+        repoUpdateState !is RepoUpdateProgress &&
+        !override
+    ) {
       // offline or metered, not overridden
       val res =
         if (networkState.showWarningDialog) {

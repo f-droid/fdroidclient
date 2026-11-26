@@ -17,11 +17,14 @@ import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.fdroid.R
 import org.fdroid.database.FDroidDatabase
+import org.fdroid.download.NetworkMonitor
 import org.fdroid.settings.OnboardingManager
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.navigation.IntentRouter.Companion.ACTION_MY_APPS
@@ -37,6 +40,7 @@ constructor(
   private val db: FDroidDatabase,
   settingsManager: SettingsManager,
   updatesManager: UpdatesManager,
+  networkMonitor: NetworkMonitor,
   private val onboardingManager: OnboardingManager,
   @param:IoDispatcher val coroutineScope: CoroutineScope,
 ) : ViewModel() {
@@ -45,11 +49,15 @@ constructor(
   private val moleculeScope =
     CoroutineScope(viewModelScope.coroutineContext + AndroidUiDispatcher.Main)
 
+  private val mainOnboardingStateFlow = MutableStateFlow(onboardingManager.mainOnboardingState)
+
   val mainModel: StateFlow<MainModel> by
     lazy(LazyThreadSafetyMode.NONE) {
       moleculeScope.launchMolecule(mode = ContextClock) {
         MainPresenter(
           dynamicColorsFlow = settingsManager.dynamicColorFlow,
+          mainOnboardingStateFlow = mainOnboardingStateFlow,
+          networkStateFlow = networkMonitor.networkState,
           numUpdatesFlow = updatesManager.numUpdates,
           appsWithIssuesFlow = updatesManager.appsWithIssues,
           showOnboardingFlow = onboardingManager.showMainOnboarding,
@@ -87,6 +95,10 @@ constructor(
         .build()
     ShortcutManagerCompat.pushDynamicShortcut(context, searchShortcut)
     ShortcutManagerCompat.pushDynamicShortcut(context, myAppsShortcut)
+  }
+
+  fun refreshMainOnboardingState() {
+    mainOnboardingStateFlow.update { onboardingManager.mainOnboardingState }
   }
 
   fun onOnboardingSeen() = onboardingManager.onMainOnboardingSeen()

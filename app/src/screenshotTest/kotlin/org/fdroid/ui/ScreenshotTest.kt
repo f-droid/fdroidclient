@@ -8,8 +8,10 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigationevent.NavigationEventDispatcher
 import androidx.navigationevent.NavigationEventDispatcherOwner
 import androidx.navigationevent.compose.LocalNavigationEventDispatcherOwner
+import org.fdroid.download.NetworkState
 import org.fdroid.ui.navigation.MainNavKey
 import org.fdroid.ui.navigation.NavigationKey
+import org.fdroid.ui.utils.mainOnboardingState
 
 @Composable
 fun ScreenshotTest(
@@ -24,6 +26,8 @@ fun ScreenshotTest(
       model =
         MainModel(
           dynamicColors = false,
+          mainOnboardingState = mainOnboardingState,
+          networkState = NetworkState(isOnline = true, isMetered = false),
           numUpdates = numUpdates,
           hasAppIssues = hasAppIssues,
           showOnboarding = false,

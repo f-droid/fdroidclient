@@ -4,11 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
+import org.fdroid.download.NetworkState
+import org.fdroid.settings.MainOnboardingState
 import org.fdroid.settings.SettingsConstants.PREF_DEFAULT_DYNAMIC_COLORS
 import org.fdroid.ui.apps.AppWithIssueItem
 
 data class MainModel(
   val dynamicColors: Boolean,
+  val mainOnboardingState: MainOnboardingState,
+  val networkState: NetworkState,
   val numUpdates: Int,
   val hasAppIssues: Boolean,
   val showOnboarding: Boolean,
@@ -17,12 +21,16 @@ data class MainModel(
 @Composable
 fun MainPresenter(
   dynamicColorsFlow: Flow<Boolean>,
+  mainOnboardingStateFlow: StateFlow<MainOnboardingState>,
+  networkStateFlow: StateFlow<NetworkState>,
   numUpdatesFlow: StateFlow<Int>,
   appsWithIssuesFlow: StateFlow<List<AppWithIssueItem>?>,
   showOnboardingFlow: StateFlow<Boolean>,
 ): MainModel {
   return MainModel(
     dynamicColors = dynamicColorsFlow.collectAsState(initial = PREF_DEFAULT_DYNAMIC_COLORS).value,
+    mainOnboardingState = mainOnboardingStateFlow.collectAsState().value,
+    networkState = networkStateFlow.collectAsState().value,
     numUpdates = numUpdatesFlow.collectAsState().value,
     hasAppIssues = !appsWithIssuesFlow.collectAsState().value.isNullOrEmpty(),
     showOnboarding = showOnboardingFlow.collectAsState().value,

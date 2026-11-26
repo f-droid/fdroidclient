@@ -27,8 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import org.fdroid.R
+import org.fdroid.download.NetworkState
 import org.fdroid.ui.FDroidContent
 import org.fdroid.ui.MainModel
+import org.fdroid.ui.utils.mainOnboardingState
 
 @Composable
 fun BottomBar(model: MainModel, currentNavKey: NavKey, onNav: (MainNavKey) -> Unit) {
@@ -136,6 +138,8 @@ private fun Preview() {
         val model =
           MainModel(
             dynamicColors = false,
+            mainOnboardingState = mainOnboardingState,
+            networkState = NetworkState(isOnline = true, isMetered = false),
             numUpdates = 3,
             hasAppIssues = false,
             showOnboarding = false,
@@ -161,6 +165,8 @@ private fun PreviewIssues() {
         val model =
           MainModel(
             dynamicColors = true,
+            mainOnboardingState = mainOnboardingState,
+            networkState = NetworkState(isOnline = true, isMetered = false),
             numUpdates = 0,
             hasAppIssues = true,
             showOnboarding = false,

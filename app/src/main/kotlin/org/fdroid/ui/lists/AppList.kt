@@ -58,11 +58,11 @@ import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.database.AppListSortOrder
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.onboarding.OnboardingPopupCard
 import org.fdroid.ui.search.TopSearchBar
 import org.fdroid.ui.utils.BackButton
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.HintOverlayContainer
-import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.TopAppBarButton
 import org.fdroid.ui.utils.appListItems
 import org.fdroid.ui.utils.getAppListInfo

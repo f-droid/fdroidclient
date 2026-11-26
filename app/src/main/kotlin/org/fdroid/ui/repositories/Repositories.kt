@@ -43,9 +43,9 @@ import com.viktormykhailiv.compose.hints.rememberHintController
 import org.fdroid.R
 import org.fdroid.download.NetworkState
 import org.fdroid.ui.FDroidContent
+import org.fdroid.ui.onboarding.OnboardingPopupCard
 import org.fdroid.ui.utils.BigLoadingIndicator
 import org.fdroid.ui.utils.HintOverlayContainer
-import org.fdroid.ui.utils.OnboardingPopupCard
 import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.getRepositoriesInfo
 import org.fdroid.ui.utils.repoItems

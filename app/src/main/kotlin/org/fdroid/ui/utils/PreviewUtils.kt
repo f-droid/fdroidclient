@@ -23,6 +23,8 @@ import org.fdroid.install.InstallConfirmationState
 import org.fdroid.install.InstallState
 import org.fdroid.repo.RepoUpdateProgress
 import org.fdroid.search.SavedSearch
+import org.fdroid.settings.MainOnboardingState
+import org.fdroid.settings.PermissionState
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.ui.apps.AppWithIssueItem
 import org.fdroid.ui.apps.InstalledAppItem
@@ -90,6 +92,18 @@ object Names {
       "Immich",
     )
 }
+
+internal val mainOnboardingState =
+  MainOnboardingState(
+    false,
+    PermissionState(
+      canRequestPackageInstalls = true,
+      isIgnoringBatteryOptimizations = true,
+      hasNotificationPermission = true,
+      requestPackageInstallsIntent = Intent(),
+      requestIgnoreBatteryOptimizationsIntent = Intent(),
+    ),
+  )
 
 val testVersion1 =
   object : PackageVersion {
