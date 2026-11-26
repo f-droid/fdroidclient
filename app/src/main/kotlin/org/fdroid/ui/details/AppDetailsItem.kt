@@ -39,6 +39,7 @@ data class LoadedAppDetailsItem(
    * [app] may be different.
    */
   val preferredRepoId: Long = app.repoId,
+  val repository: Repository,
   /** A list of [Repository]s the app is in. If this is empty, we don't want to show the list. */
   val repositories: List<Repository> = emptyList(),
   val name: String,
@@ -100,6 +101,7 @@ data class LoadedAppDetailsItem(
     installState = installState,
     networkState = networkState,
     preferredRepoId = preferredRepoId,
+    repository = repository,
     repositories = repositories,
     name = dbApp.metadata.name.getBestLocale(localeList)?.removeZeroWhiteSpace() ?: "Unknown App",
     summary = dbApp.metadata.summary.getBestLocale(localeList)?.removeZeroWhiteSpace() ?: "",
@@ -167,6 +169,29 @@ data class LoadedAppDetailsItem(
 
   val ignoresAllUpdates: Boolean
     get() = appPrefs?.ignoreAllUpdates == true
+
+  /**
+   * Returns the first compatible version that is in a special release channel and newer than the
+   * current [suggestedVersion].
+   */
+  val firstNonStableVersion: PackageVersion?
+    get() {
+      val suggestedVersionCode = suggestedVersion?.versionCode ?: 0L
+      // versions are expected to be sorted by versionCode descending
+      versions?.forEach { versionItem ->
+        if (
+          versionItem.isCompatible &&
+            !versionItem.version.releaseChannels.isNullOrEmpty() &&
+            versionItem.version.versionCode > suggestedVersionCode
+        ) {
+          return versionItem.version
+        } else if (versionItem.version.versionCode <= suggestedVersionCode) {
+          // we can stop searching, because all following versions will be older
+          return null
+        }
+      }
+      return null
+    }
 
   /**
    * True if the update from [possibleUpdate] is being ignored and not already ignoring all updates

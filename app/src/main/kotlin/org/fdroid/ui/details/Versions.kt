@@ -6,12 +6,15 @@ import androidx.compose.foundation.layout.Arrangement.spacedBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material3.Badge
+import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,12 +26,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
+import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_TYPE_NORMAL
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import androidx.core.os.ConfigurationCompat
 import kotlinx.coroutines.launch
 import org.fdroid.R
 import org.fdroid.database.AppVersion
@@ -43,12 +51,45 @@ import org.fdroid.ui.utils.testApp
 
 @Composable
 fun Versions(item: LoadedAppDetailsItem, scrollUp: suspend () -> Unit) {
+  val firstNonStableVersion = item.firstNonStableVersion
   ExpandableSection(
     icon = rememberVectorPainter(Icons.Default.AccessTime),
-    title = stringResource(R.string.versions),
+    title = {
+      Column(modifier = Modifier.weight(1f)) {
+        Text(
+          text = stringResource(R.string.versions),
+          style = MaterialTheme.typography.titleMedium,
+        )
+        val configuration = LocalConfiguration.current
+        val releaseChannel =
+          remember(configuration, firstNonStableVersion) {
+            val versionReleaseChannel = firstNonStableVersion?.releaseChannels?.firstOrNull()
+            val locales = ConfigurationCompat.getLocales(configuration)
+            item.repository.getReleaseChannels()[versionReleaseChannel]?.getName(locales)
+          }
+        if (firstNonStableVersion != null) {
+          Row(
+            horizontalArrangement = spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(bottom = 4.dp),
+          ) {
+            Badge(containerColor = MaterialTheme.colorScheme.secondaryContainer) {
+              Text(
+                text = releaseChannel ?: "Beta",
+                modifier = Modifier.padding(4.dp),
+              )
+            }
+            Text(
+              text = stringResource(R.string.app_beta_available, firstNonStableVersion.versionName),
+              style = MaterialTheme.typography.bodyMedium,
+            )
+          }
+        }
+      }
+    },
     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
   ) {
-    Column(modifier = Modifier) {
+    Column {
       item.versions?.forEach { versionItem ->
         Version(
           item = versionItem,
@@ -58,6 +99,23 @@ fun Versions(item: LoadedAppDetailsItem, scrollUp: suspend () -> Unit) {
           },
           onNotWarnWhenMetered = item.actions.onNotWarnWhenMetered,
           scrollUp = scrollUp,
+        )
+      }
+      Row(
+        horizontalArrangement = spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier =
+          Modifier.heightIn(min = LocalMinimumInteractiveComponentSize.current)
+            .padding(start = 8.dp, bottom = 8.dp)
+            .clickable { item.actions.allowBetaVersions() },
+      ) {
+        Text(
+          stringResource(R.string.app_beta_opt_in),
+          modifier = Modifier.weight(1f),
+        )
+        Switch(
+          checked = item.allowsBetaVersions,
+          onCheckedChange = null,
         )
       }
     }
@@ -228,8 +286,23 @@ fun Version(
   }
 }
 
-@Preview
 @Composable
+@PreviewLightDark
+private fun Preview() {
+  FDroidContent {
+    val versions = testApp.versions!!
+    val testApp = testApp.copy(versions = versions.subList(2, versions.size))
+    Versions(testApp) {}
+  }
+}
+
+@Composable
+@Preview(name = "Light", device = "spec:height=1200dp,width=400dp")
+@Preview(
+  name = "Dark",
+  device = "spec:height=1200dp,width=400dp",
+  uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+)
 fun VersionsPreview() {
   FDroidContent { Versions(testApp) {} }
 }

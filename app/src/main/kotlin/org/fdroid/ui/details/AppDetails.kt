@@ -29,8 +29,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -91,7 +89,6 @@ import org.fdroid.ui.utils.VerticalAnimatedVisibility
 import org.fdroid.ui.utils.testApp
 
 @Composable
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 fun AppDetails(
   item: AppDetailsItem?,
   onNav: (NavigationKey) -> Unit,
@@ -175,7 +172,10 @@ fun AppDetails(
               CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
               ),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+            modifier =
+              Modifier.fillMaxWidth()
+                .animateContentSize()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
           ) {
             Text(
               text = stringResource(R.string.whats_new_title),
