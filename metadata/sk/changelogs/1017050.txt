@@ -1,0 +1,8 @@
+*Opravy mnohých chýb
+*Zobrazenie ikon repozitárov v zozname repozitárov
+*Zobrazenie dôvodov pre Anti-funkcie (ak sú k dispozícii)
+*Bezobslužné aktualizácie bez Privileged Extension (zatiaľ iba vo F-Droid Basic) 
+* Zobrazovanie veľkosti aplikácie na obrazovke s jej podrobnosťami (iba v režime expert)
+* Mierne stmavené názvy aplikácií v zoznamoch, pre zlepšenie čitateľnosti
+* Obnovenie stavu otvorený/zatvorený v sekcii “Aktualizovať všetko“ na karte Aktualizácie (@tunedal)
+* Po opätovnom spustení aplikácie obnoviť naposledy otvorenú kartu

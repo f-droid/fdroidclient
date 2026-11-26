@@ -1,0 +1,5 @@
+* prepracovaný proces výmeny v blízkosti s využitím hotspotu zariadenia
+
+* pridanie nových panických reakcii: odinštalovanie aplikácie a obnovenie repozitára na predvolený
+
+*oprava podpory proxy serverov pri prvom spustení

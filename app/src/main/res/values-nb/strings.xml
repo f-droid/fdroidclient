@@ -490,4 +490,11 @@
     <string name="notification_privileged_extension_migration_title">Oppdateringer krever manuell handling!</string>
     <string name="notification_privileged_extension_migration_title_sdk25">\"Ukjente kilder\" ikke slått på!</string>
     <string name="notification_privileged_extension_migration_text">%1$s installerer nå apper via Androids innebygde installerer. Du må gi %1$s \"ukjente kilder\" tillatelse for å bruke den installereren og godkjenne hver førstegangsinstallasjon.</string>
+    <string name="repo_add_preview_title">Forhåndsvis pakkebrønn</string>
+    <string name="repo_add_fetch">Hent</string>
+    <string name="last_updated_short">Oppdatert %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Daglig kun med Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Daglig selv med mobildata</string>
+    <string name="pref_auto_updates_only_immediately">Så snart som mulig</string>
+    <string name="pref_auto_updates_summary_immediately">Last ned og oppdater apper så snart en oppdatering er tilgjengelig</string>
 </resources>

@@ -1,0 +1,5 @@
+* Odstránená podpora "android App Link", pretože nemôže pracovať s aplikáciou F-Droid a spúšťala úniky DNS.
+* Archívne repozitáre majú teraz nižšiu prioritu ako Repozitár (vyššie na obrazovke spravovania repozitárov), oprava chýb s hľadaním ikony, snímky obrazovky a ďaľších informácii v Archíve namiesto samotného repozitára
+* Zastavenie vystrihnutia obrázku v hlavičke (ďakujeme @ByteHamster!)
+* Zjednotenie navigačnej lišty v tmavom režime (ďakujeme @MatthieuB!)
+* Vyčistenie zastaralého kódu (ďakujeme @Isira-Seneviratne!)

@@ -317,12 +317,12 @@
     <string name="pref_auto_updates_summary_only_wifi">Ежедневно скачивать и обновлять приложения, когда устройство подключено к Wi-Fi и не используется</string>
     <string name="pref_auto_updates_summary_always">Ежедневно загружайте и обновляйте приложения даже при использовании мобильного интернета, когда устройство не используется</string>
     <string name="pref_auto_updates_summary_never">Автоматические обновления отключены • Приложения необходимо обновлять вручную</string>
-    <string name="pref_repo_updates_title">Проверить обновления</string>
+    <string name="pref_repo_updates_title">Проверять обновления</string>
     <string name="pref_repo_updates_summary_never">Не проверять наличие обновлений • Приложения будут устаревать</string>
     <string name="pref_category_network">Сеть</string>
     <string name="pref_mirror_chooser_summary_random">Случайно</string>
     <string name="pref_mirror_chooser_summary_prefer_foreign">Предпочитать из других стран</string>
-    <string name="pref_proxy_title">Подключиться через SOCKS-прокси</string>
+    <string name="pref_proxy_title">Подключение через SOCKS-прокси</string>
     <string name="pref_proxy_disabled">Подключаться к интернету без прокси</string>
     <string name="pref_proxy_enabled">Использовать %s для подключения</string>
     <string name="pref_proxy_hint">Прокси должен быть указан в формате host:port</string>
@@ -500,4 +500,11 @@
     <string name="notification_privileged_extension_migration_title">Для обновления требуется вручную выполнить некоторые действия!</string>
     <string name="notification_privileged_extension_migration_title_sdk25">\"Неизвестные источники\" не включены!</string>
     <string name="notification_privileged_extension_migration_text">Теперь %1$s устанавливает приложения через встроенный установщик Android. Вам нужно предоставить %1$s разрешение на установку из \"неизвестных источников\" и одобрить первую установку.</string>
+    <string name="repo_add_preview_title">Предпросмотр репозитория</string>
+    <string name="repo_add_fetch">Извлечь</string>
+    <string name="last_updated_short">Обновлено %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Ежедневно только через Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Ежедневно, даже при использовании мобильного интернета</string>
+    <string name="pref_auto_updates_only_immediately">Как можно скорее</string>
+    <string name="pref_auto_updates_summary_immediately">Скачивать и обновлять приложения, как только появляется обновление</string>
 </resources>

@@ -1,0 +1,9 @@
+* Nová konfigurácia povolení v Androide 10, ktorá zabraňuje zobrazovaniu výziev „Neznáme zdroje“ (#1833)
+* Spracovanie nových „rozdelených povolení“: povolenie na presnú polohu zahŕňa aj povolenie na približnú polohu
+* Opravenie nastavenia posuvníka v novších verziách Androidu (vďaka @dkanada)
+* Nastaviť pravidlá zálohovania tak, aby sa repozitár Swap nezálohoval
+* Po vymazaní vyhľadávania sa otvorí klávesnica
+* Synchronizovať preklady s reťazcami Androidu
+* Vynútiť používanie protokolu HTTPS pre bežné domény repozitárov (GitLab, GitHub, Amazon)
+* Použiť štandardný efekt zvlnenia na odkazoch v podrobnostiach aplikácie
+* Zobrazovať predvolenú ikonu pri aplikáciách, ktoré nemajú vlastnú ikonu

@@ -41,7 +41,7 @@
     <string name="repo_confirm_delete_body">Als een bron verwijderd wordt zijn de apps daaruit niet meer beschikbaar.
 \n
 \n Let op: alle eerder geïnstalleerde apps blijven op je apparaat staan.</string>
-    <string name="not_on_same_wifi">Uw apparaat zit niet op dezelfde WiFi als de lokale gegevensbank als die zojuist is toegevoegd. Probeer verbinding te maken met netwerk: %s</string>
+    <string name="not_on_same_wifi">Uw apparaat zit niet op dezelfde WiFi als de lokale gegevensbank die zojuist is toegevoegd. Probeer verbinding te maken met dit netwerk: %s</string>
     <string name="swap_join_same_wifi">Maak beiden verbinding met hetzelfde wifi netwerk</string>
     <string name="swap">Apps uitwisselen</string>
     <string name="swap_no_wifi_network">Nog geen netwerkverbinding</string>
@@ -54,7 +54,7 @@
     <string name="back">Terug</string>
     <string name="bad_fingerprint">Foute vingerafdruk</string>
     <string name="menu_changelog">Wijzigingen</string>
-    <string name="banner_updating_repositories">Databanken worden geüpdated</string>
+    <string name="banner_updating_repositories">Databanken worden geüpdatet</string>
     <string name="pref_language">Taal</string>
     <string name="wifi">Wi-Fi</string>
     <string name="wifi_ap">Hotspot</string>
@@ -296,10 +296,10 @@
     <string name="call_to_action_keepandroidopen">F-Droid loopt gevaar. Google verandert de manier waarop je apps op je apparaat installeert. We hebben je hulp nodig.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="first_start_intro">Om te beginnen, synchroniseer de app databanken</string>
-    <string name="first_start_offline">U bent offline. Begin door te verbinden met het internet.</string>
+    <string name="first_start_offline">U bent offline. Verbind met het internet om te beginnen.</string>
     <string name="first_start_button">Gegevensbanken ophalen</string>
-    <string name="first_start_metered">Je gebruikt mobiele data en er wordt meer dan 10 MB gedownload. Tik op \'Gegevensbanken ophalen\' om toch te beginnen.</string>
-    <string name="no_repos_enabled">Geen gegevensbanken ingeschakeld. Voeg er een toe om te beginnen</string>
+    <string name="first_start_metered">Je gebruikt mobiele data en er zal meer dan 10 MB gedownload worden. Tik op \'Gegevensbanken ophalen\' om toch te beginnen.</string>
+    <string name="no_repos_enabled">Geen gegevensbanken beschikbaar. Voeg er een toe om te beginnen</string>
     <string name="search_filter_no_results">Geen overeenkomende apps\n\nGebruik minder zoektermen of filters</string>
     <string name="search_my_apps_no_results">Geen overeenkomende apps\n\nGebruik minder zoektermen</string>
     <string name="sort_title">Sorteren en compatibiliteit</string>
@@ -394,7 +394,7 @@
     <string name="repo_disable_dialog_warning">Als u deze databank heeft ingesteld als de voorkeursoptie voor een app zal die voorkeur verloren raken</string>
     <string name="repo_disable_dialog_text">Alle apps uit deze databank zullenverdwijnen. Al geïnstalleerde apps worden niet beïnvloed.</string>
     <string name="repo_has_update_error">Update foutmeldingen</string>
-    <string name="repo_has_update_error_intro">Een fout trad op terwijl deze databank werd geüpdated:</string>
+    <string name="repo_has_update_error_intro">Een fout trad op terwijl deze databank werd geüpdatet:</string>
     <string name="repo_last_update_upstream">%s gepubliceerd</string>
     <string name="repo_last_downloaded">%s gedownload</string>
     <string name="repo_basicauth_username">Gebruikersnaam</string>
@@ -412,7 +412,7 @@
     <string name="notification_channel_install_success_title">Automatisch geïnstalleerde apps</string>
     <string name="notification_channel_install_success_description">Geeft een notificatie weer nadat apps automatisch geïnstalleerd zijn</string>
     <string name="notification_channel_updates_available_title">Beschikbare app updates</string>
-    <string name="notification_channel_updates_available_description">Geef een notificatie weer nadat databanken werden geüpdated en updates zijn gevonden</string>
+    <string name="notification_channel_updates_available_description">Geeft een notificatie weer nadat databanken zijn geüpdatet en updates zijn gevonden</string>
     <string name="notification_repo_update_default">Verbinden met %1$s…</string>
     <string name="notification_repo_update_downloading">%1$s wordt gedownload vanuit %2$s</string>
     <plurals name="notification_repo_update_saving">
@@ -428,8 +428,8 @@
         <item quantity="other">%1$d apps worden geüpdate…</item>
     </plurals>
     <plurals name="notification_update_success_title">
-        <item quantity="one">%1$d app geüpdated</item>
-        <item quantity="other">%1$d apps geüpdated</item>
+        <item quantity="one">%1$d app geüpdatet</item>
+        <item quantity="other">%1$d apps geüpdatet</item>
     </plurals>
     <string name="notification_installing_section_installing">Installeren:</string>
     <string name="notification_installing_section_confirmation">Heeft gebruikersbevestiging nodig:</string>
@@ -448,8 +448,8 @@
     <string name="pref_auto_updates_only_only_when_open_app">Alleen als de app wordt geopend</string>
     <string name="pref_repo_updates_summary_only_when_open_app">Controleer alleen op updates als de app is geopend • Apps zullen verouderd raken</string>
     <string name="notification_channel_self_update_title">Zelf-update</string>
-    <string name="notification_channel_self_update_description">Meldt als de app zichzelf heeft geüpdated en is afgesloten zodat u het eenvoudig opnieuw kan opstarten</string>
-    <string name="notification_self_update_title">%s is geüpdated. Tik om te openen</string>
+    <string name="notification_channel_self_update_description">Meldt het als de app zichzelf heeft geüpdatet en is afgesloten, zodat u het eenvoudig opnieuw kan opstarten</string>
+    <string name="notification_self_update_title">%s is geüpdatet. Tik om te openen</string>
     <string name="liberapay">Liberapay</string>
     <string name="open_collective">Open Collective</string>
     <string name="bitcoin">Bitcoin</string>
@@ -493,4 +493,31 @@
     <string name="notification_privileged_extension_migration_title_sdk25">\"Onbekende bronnen\" niet ingeschakeld!</string>
     <string name="notification_privileged_extension_migration_text">%1$s installeert apps nu via de ingebouwde installer van Android. Je moet %1$s de machtiging \"onbekende bronnen\" verlenen om die installer te gebruiken en elke eerste installatie goedkeuren.</string>
     <string name="notification_channel_privileged_extension_migration_title">Bevoorrechtte Extensie</string>
+    <string name="repo_add_preview_title">Voorbeeldweergave van databank</string>
+    <string name="repo_add_fetch">Ophalen</string>
+    <string name="last_updated_short">%1$s geüpdatet</string>
+    <string name="pref_auto_app_updates_only_wifi">Dagelijks alleen op Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Dagelijks zelfs op mobiele gegevens</string>
+    <string name="pref_auto_updates_only_immediately">Zo snel mogelijk</string>
+    <string name="pref_auto_updates_summary_immediately">Download en update apps zo snel als een update beschikbaar is</string>
+    <string name="onboarding_title">Welkom bij F-Droid</string>
+    <string name="onboarding_intro">Uw vertrouwde thuis voor Vrije en Open Source Mobiele Apps</string>
+    <string name="onboarding_online">We maken uw apps klaar terwijl u installeert</string>
+    <string name="onboarding_metered_title">Download met mobiele gegevens</string>
+    <string name="onboarding_metered_summary">Appinformatie ophalen zal meer dan 10 MB mobiele gegevens gebruiken</string>
+    <string name="onboarding_wifi_title">Wachten op Wi-Fi</string>
+    <string name="onboarding_wifi_summary">Start wanneer u verbonden bent</string>
+    <string name="onboarding_permission_title">Rechten</string>
+    <string name="onboarding_permission_summary">F-Droid heeft deze rechten nodig om goed te werken</string>
+    <string name="onboarding_permission_install_apps_title">Installeer apps</string>
+    <string name="onboarding_permission_install_apps_summary">Vereist voor het installeren en updaten van apps\nNavigeer terug wanneer u dit heeft goedgekeurd</string>
+    <string name="onboarding_permission_notifications_title">Meldingen</string>
+    <string name="onboarding_permission_notifications_summary">Geeft aan wanneer updates beschikbaar zijn</string>
+    <string name="onboarding_permission_doze_title">Checks in de achtergrond</string>
+    <string name="onboarding_permission_doze_summary">Check en installeer updates terwijl de app gesloten is</string>
+    <string name="onboarding_button_skip">Sla nu over</string>
+    <string name="onboarding_button_finish">Voltooien</string>
+    <string name="db_closed_migrating">Database migreren…\n\nDit kan even duren</string>
+    <string name="app_beta_available">Versie %s beschikbaar</string>
+    <string name="app_beta_opt_in">Krijg automatisch beta-updates</string>
 </resources>

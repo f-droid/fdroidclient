@@ -1,0 +1,7 @@
+*Na kartu Aktualizácie boli pridané gestá potiahnutia
+
+*Zobraziť varovania s akciami na karte Aktualizácie pre KnownVulns
+
+*Aktualizované preklady
+
+*Opravy Tmavého užívateľského rozhrania

@@ -1,0 +1,15 @@
+* Automatické vymazanie alebo zmenšenie vyrovnávacej pamäte, pri nedostatku úložného priestoru
+
+* Zlepšenie výkonu na zariadeniach s malým množstvom pamäte
+
+* Zabezpečenie, aby sa pri všetkých sťahovaniach rešpektovalo nastavenie „Sťahovať iba cez Wi‑Fi“
+
+* Zníženie využitia pamäte, keď jej má zariadenie nedostatok
+
+* Pridávanie vlastných zrkadiel do ľubovoľného repozitára kliknutím na odkazy, skenovaním QR kódov atď.
+
+* Množstvo opráv chýb a vylepšení funkcií Swap a Nearby
+
+* Oprava jednej z príčin opakovaných upozornení na aktualizácie (#1271)
+
+* Zabezpečenie, aby F-Droid rozpoznával URL adresy nočných zostavení F-Droidu z GitLabu

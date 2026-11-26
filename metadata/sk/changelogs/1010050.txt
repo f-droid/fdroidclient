@@ -1,0 +1,7 @@
+* využíva notifikačné kanály pre detailné ovládanie (@Isira-Seneviratne)
+* vylepšenie jazykového výberu s viacerými miestnymi jazykmi (@spacecowboy/@bubu)
+* Najnovšia karta bude zobrazovať lepšie výsledky na neanglických zariadeniach
+* aktualizácie základných knižníc (Jackson, androidx, gradle atď.)
+* podpora poľského whitelabelingu
+
+Ďakujeme novým prispievateľom! @spacecowboy @projectgus @glennmen @Isira-Seneviratne

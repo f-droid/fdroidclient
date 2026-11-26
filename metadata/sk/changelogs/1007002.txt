@@ -1,0 +1,1 @@
+* USB OTG flash disky môžu byť použité ako v blízke repozitáre a zrkadlá repozitárov

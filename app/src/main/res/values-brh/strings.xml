@@ -15,4 +15,11 @@
     <string name="menu_upgrade">اپڈیٹ</string>
     <string name="more">پین</string>
     <string name="repo_details">توشہ</string>
+    <string name="ok">جوان</string>
+    <string name="main_menu__categories">زمرہ غاک</string>
+    <string name="main_menu__swap_nearby">خڑک</string>
+    <string name="next">مستی</string>
+    <string name="pref_language">زبان</string>
+    <string name="swap_welcome">F-Droid ٹی ببو خیراٹ!</string>
+    <string name="less">کم</string>
 </resources>

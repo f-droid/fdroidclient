@@ -239,7 +239,7 @@
     <string name="repo_basic_auth_title">基本身份验证</string>
     <string name="expand">展开</string>
     <string name="collapse">折叠</string>
-    <string name="repo_details_info_text">存储库是应用源。\n\n镜像用于再多个服务器间分配应用下载的负荷。离你越近的镜像可能速度越快。\n\n官方镜像由存储库所有者定义。它们无法被删除，只能被停用。你可以自定义额外镜像，像正常的存储库一样添加它们。</string>
+    <string name="repo_details_info_text">存储库是应用源。\n\n镜像用于在多个服务器间分配应用下载的负荷。离你越近的镜像可能速度越快。\n\n官方镜像由存储库所有者定义。它们无法被删除，只能被停用。你可以自定义额外镜像，像正常的存储库一样添加它们。</string>
     <string name="export_log_success">成功保存了 Logcat</string>
     <string name="export_log_error">保存 logcat 出错</string>
     <string name="pref_export_log_title">调试日志</string>
@@ -484,4 +484,11 @@
     <string name="notification_privileged_extension_migration_title">更新需要手动操作！</string>
     <string name="notification_privileged_extension_migration_title_sdk25">未启用“未知来源”！</string>
     <string name="notification_privileged_extension_migration_text">%1$s 现在通过安卓系统的内置安装器安装应用。你必须授予 %1$s “未知来源”权限以使用该安装器并批准每个首次安装。</string>
+    <string name="repo_add_preview_title">预览存储库</string>
+    <string name="repo_add_fetch">获取</string>
+    <string name="last_updated_short">%1$s 更新</string>
+    <string name="pref_auto_app_updates_only_wifi">每天更新（仅在连接到 Wi-Fi 时）</string>
+    <string name="pref_auto_app_updates_only_always">每天更新（即使用手机流量）</string>
+    <string name="pref_auto_updates_only_immediately">尽可能快</string>
+    <string name="pref_auto_updates_summary_immediately">一有更新就下载和更新应用</string>
 </resources>

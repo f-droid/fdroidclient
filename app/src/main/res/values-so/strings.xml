@@ -16,7 +16,7 @@
     <string name="back">Ka noqo</string>
     <string name="updates">Cusbonaysiinta</string>
     <string name="app_name_full">F-Droid</string>
-    <string name="notification_title_summary_install_error">Ku shubidii ma guulaysanin</string>
+    <string name="notification_title_summary_install_error">Ku shubidii laguma guulaysanin</string>
     <string name="notification_title_single_update_available">Cusboonaysiin ayaa diyaar ah</string>
     <string name="crash_dialog_title">F-Droid way khalkhashay</string>
     <string name="swap_send_fdroid">Dir F-Droid</string>
@@ -30,4 +30,28 @@
     <string name="yes">Haa</string>
     <string name="ok">Hagaag</string>
     <string name="menu_about">Ku saabsan</string>
+    <string name="app_name_basic">F-Droid Aasaasiga ah</string>
+    <string name="app_name_full_nightly">F-Habeenkii</string>
+    <string name="app_name_basic_nightly">F-Habeenkii Aasaasiga ah</string>
+    <string name="menu_discover">Soo hel</string>
+    <string name="first_start_loading">Soo helitaanka kaydka abka…</string>
+    <string name="first_start_offline">Waad ka maqan tahay internetka. Ku xidho internetka si aad u bilowdo.</string>
+    <string name="first_start_metered">Waxaad internet-ka ku isticmaalaysaa mobile data waxaana la soo dejisan doonaa in ka badan 10 MB. Taabo si aad u bilowdo si kastaba ha ahaatee.</string>
+    <string name="no_repos_enabled">Ma jiraan wax kayd ah oo la heli karo, ku dar kayd si aad u bilowdo</string>
+    <string name="my_apps_empty">Barnaamijyada kaliya ee laga heli karo kaydka %1$s ayaa halkan lagu muujinaya</string>
+    <string name="my_apps_header_recently_installed_apps">Dhawaan la rakibay</string>
+    <string name="my_apps_header_apps_with_issue">Abka leh dhibaatooyin</string>
+    <string name="my_apps_ignore_dialog_title">Qari dhibaatada</string>
+    <string name="my_apps_ignore_dialog_text">Dhibaatada ku saabsan noocaan \"%1$s\" waa la iska indho tiri doonaa</string>
+    <string name="my_apps_ignore_dialog_button">Qari</string>
+    <string name="my_apps_export_installed_apps">Dhoofi liiska abka</string>
+    <string name="app_list_new">Barnaamijyada cusub</string>
+    <string name="app_list_recently_updated">Dhawaan la cusbooneysiiyay</string>
+    <string name="app_list_most_downloaded">Inta badan la soo dejiyo</string>
+    <string name="app_list_all">Dhammaan abiska</string>
+    <string name="app_list_author">Qoraaga %s</string>
+    <string name="search_placeholder">Raadi…</string>
+    <string name="search_history">Dhawaan la raadiyay</string>
+    <string name="search_no_results">Wax abis ah lama helin\n\nIsku day in aad isticmaasho raadin yar ama aad ku darto keyd badan</string>
+    <string name="search_filter_no_results">Wax ab lamid ah lama helin\n\nIsku day in aad isticmaasho raadin yar ama aad ka saarto filtarada</string>
 </resources>

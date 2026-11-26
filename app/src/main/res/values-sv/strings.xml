@@ -18,7 +18,7 @@
     <string name="cancel">Avbryt</string>
     <string name="malformed_repo_uri">Ignorerar ogiltig förråds-URL: %s</string>
     <string name="menu_search">Sök</string>
-    <string name="menu_add_repo">Nytt förråd</string>
+    <string name="menu_add_repo">Nytt filförråd</string>
     <string name="menu_share">Dela</string>
     <string name="menu_install">Installera</string>
     <string name="menu_uninstall">Avinstallera</string>
@@ -482,4 +482,16 @@
     <string name="app_details_permissions_warning">Denna information har rapporterats från förrådet. De faktiska behörigheter som appen får kan vara andra.</string>
     <string name="app_details_permissions_title_custom">Anpassade (%d)</string>
     <string name="app_details_permissions_title_runtime">Exekvering (%d)</string>
+    <string name="notification_channel_privileged_extension_migration_title">Priviligerad Förlängning</string>
+    <string name="notification_channel_privileged_extension_migration_description">Aviserar när manuell åtgärd krävs för att migrera bort från Priviligerad Förlängning.</string>
+    <string name="notification_privileged_extension_migration_title">Uppdateringar kräver manuell åtgärd!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Okända källor\" är inte aktiverade!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s installerar nu appar via Android:s inbyggda installationsprogram. Du måste ge %1$s behörighet för ”okända källor” för att kunna använda installationsprogrammet och godkänna varje installation första gången den sker.</string>
+    <string name="repo_add_fetch">Hämta</string>
+    <string name="repo_add_preview_title">Förhandsgranska förråd</string>
+    <string name="last_updated_short">Uppdaterade %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Dagligen endast på Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Dagligen även på mobil-data</string>
+    <string name="pref_auto_updates_only_immediately">Så fort som möjligt</string>
+    <string name="pref_auto_updates_summary_immediately">Hämta och uppdatera appar så fort som en uppdatering finns tillgänglig</string>
 </resources>

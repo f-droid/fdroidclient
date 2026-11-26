@@ -1,0 +1,7 @@
+* Podpora oficiálnych zrkadiel pre ľubovolné repo s automatickým výberom na základe dostupnosti
+
+* Mnoho vylepšení používateľského rozhrania ako aj stability a opráv chýb
+
+* Nové predvoľby súkromia: Blokovanie snímok obrazovky; ukončenie pri panike
+
+* Nové jazyky: kórejčina (ko) a vietnamčina (vi)

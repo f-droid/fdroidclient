@@ -305,14 +305,14 @@
     <string name="sort_title">Сортиране и съвместимост</string>
     <string name="sort_by_name">Сортиране по име</string>
     <string name="sort_by_latest">Сортиране по дата на последно обновяване</string>
-    <string name="filter_only_compatible">Приложения, съвместими с устройството</string>
+    <string name="filter_only_compatible">Покажи само приложения, съвместими с това устройство</string>
     <string name="filter_button_save">Запазване като подразбирано</string>
     <string name="filter_intro">Филтриране приложения по</string>
     <string name="filter_button_clear_all">Изчистване на филтрите</string>
     <string name="filter">Филтър</string>
     <string name="onboarding_app_list_filter_title">Филтър</string>
     <string name="filter_selected">избрано</string>
-    <string name="filter_antifeatures">Скриване на анти-функциите</string>
+    <string name="filter_antifeatures">Анти-функции</string>
     <string name="onboarding_app_list_filter_message">Използвайте филтрите, за да отсеете приложенията от определени категории или хранилища. Можете да промените и сортирането.</string>
     <string name="got_it">Разбрах</string>
     <string name="clear">Изчистване</string>
@@ -463,4 +463,30 @@
     <string name="pref_category_network">Мрежа</string>
     <string name="panic_hide_warning_title">Запомни как да възстановиш</string>
     <string name="panic_hide_warning_message">В случай на паническа ситуация това ще покаже „Калкулатор“ като иконка и име на началния екран и в менюто за приложения. Използвай настройките, за да възстановиш иконката и името по подразбиране.\n\nЗабележка: Уведомленията винаги ще използват иконката и името на приложението по подразбиране.</string>
+    <string name="sort_summary">Сортиране по</string>
+    <string name="sort_by_name_short">име</string>
+    <string name="sort_by_latest_short">последно обновяване</string>
+    <string name="filter_antifeatures_summary">Показване на приложенията с тези анти-функции</string>
+    <string name="filter_antifeatures_collapsed">Скрити: %s</string>
+    <string name="app_details_permissions_section">Разрешения</string>
+    <string name="app_details_permissions_button">Покажи всички %d разрешения</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Това приложение изисква %d чувствително разрешение:</item>
+        <item quantity="other">Това приложение изисква %d чувствителни разрешения:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Това приложение не изисква чувствителни разрешения</string>
+    <string name="app_details_permissions_title_num">Разрешения (%d)</string>
+    <string name="app_details_permissions_warning">Тази информация се предоставя от хранилището. Действителните разрешения, които приложението получава, може да са различни.</string>
+    <string name="app_details_permissions_title_sensitive">Чувствителни (%d)</string>
+    <string name="app_details_permissions_title_normal">Автоматично предоставени (%d)</string>
+    <string name="app_details_permissions_title_runtime">Време на изпълнение (%d)</string>
+    <string name="app_details_permissions_title_custom">По избор (%d)</string>
+    <string name="permissions_colon">Разрешения: %1$d</string>
+    <string name="repo_add_preview_title">Преглед на хранилището</string>
+    <string name="repo_add_fetch">Изтегли</string>
+    <string name="notification_channel_privileged_extension_migration_title">Разширение с привилегии</string>
+    <string name="notification_channel_privileged_extension_migration_description">Уведомява, когато е необходима ръчна намеса за миграция от привилегировано разширение.</string>
+    <string name="notification_privileged_extension_migration_title">Актуализациите изискват ръчно действие!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">„Неизвестни източници“ не са включени!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s вече инсталира приложения чрез вградения инсталатор на Android. Трябва да се даде разрешение на %1$s за „неизвестни източници“, за да се използва този инсталатор, и да се одобри всяка първа инсталация.</string>
 </resources>

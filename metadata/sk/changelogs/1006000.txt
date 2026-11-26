@@ -1,0 +1,12 @@
+* Spracovanie implicitne priradeného povolenia READ_EXTERNAL_STORAGE, ktoré pri inštaláciách s Privileged Extension vyvoláva
+   výzvu na udelenie povolenia (#1702)
+
+* Očistené údaje indexu, aby sa znížili možné hrozby zo servera
+
+* Pri pomalom načítavaní použitie zrkadlového servera po vypršaní časového limitu čítania
+
+* Oprava chýbajúcich ikon u používateľov, ktorí nepoužívajú Wi‑Fi (#1592)
+
+* Použitie odlišných názvov pre predvoľbu Aktualizácie a kartu Aktualizácie, pre uľahčenie prekladu
+
+* Opravy používateľského rozhrania od @ConnyDuck (#1636, #1618)

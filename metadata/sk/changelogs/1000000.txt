@@ -1,0 +1,6 @@
+*Podpora inštalácie médii, OTA, ZIP súborov atď.
+
+*Plná podpora APK súborov podpísaných viacerými prihlasovacími kľúčmi
+*Nový tibetský preklad
+
+*Po vypnutí repozitára odstráňte súvisiace aplikácie a kategórie

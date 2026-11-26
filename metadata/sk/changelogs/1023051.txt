@@ -1,0 +1,6 @@
+* Zavedenie Material Design 3 (vrátane rozhrania od okraja po okraj, ale bez dynamických farieb) (vďaka, proletarius!)
+* Prepracovanie obrazoviek s podrobnosťami o repozitároch (vďaka, Thore!)
+* Pridanie exportu súborov logcat do expertných nastavení
+* Aktualizácia cieľovej verzie SDK (Android 15 pre Basic a Android 11 pre plnú verziu)
+* Pridanie odkazu späť z nastavení systému na stránku aplikácie (vďaka, j-m4!)
+* Použitie výberu aplikácie na zdieľanie nainštalovaných aplikácií a histórie inštalácií (vďaka, Thore!)

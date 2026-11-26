@@ -514,4 +514,16 @@ W    <string name="status_downloading">ينزل بسرعة %s/ث</string>
     <string name="sort_by_latest_short">آخر تحديث</string>
     <string name="filter_antifeatures_summary">أظهر التطبيقات مع هذه المكروهات</string>
     <string name="filter_antifeatures_collapsed">مختفي: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">الامتداد المتميز</string>
+    <string name="notification_channel_privileged_extension_migration_description">يُعلم المستخدم عندما يتطلب الأمر تدخلاً يدويًّا للانتقال من «الامتداد المتميز».</string>
+    <string name="notification_privileged_extension_migration_title">تتطلب التحديثات إجراءً يدويًّا!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">”المصادر المجهولة“ غير مُفعّلة!</string>
+    <string name="notification_privileged_extension_migration_text">يتم الآن تثبيت %1$s عبر أداة التثبيت المدمجة في نظام أندرويد. يتعين عليك منح %1$s إذن «المصادر غير المعروفة» لاستخدام أداة التثبيت هذه والموافقة على كل عملية تثبيت تتم لأول مرة.</string>
+    <string name="repo_add_preview_title">معاينة المستودع</string>
+    <string name="repo_add_fetch">اجلب</string>
+    <string name="last_updated_short">حُدِّث %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">يوميًا فقط على Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">يوميًا حتى عند استخدام بيانات الجوّال</string>
+    <string name="pref_auto_updates_only_immediately">في أقرب وقت ممكن</string>
+    <string name="pref_auto_updates_summary_immediately">نزّل التطبيقات وحدّثها فور توفر أي تحديث</string>
 </resources>

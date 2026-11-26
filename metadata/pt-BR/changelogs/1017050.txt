@@ -1,8 +1,8 @@
-* Muitas correções de bugs
-* Mostra ícones de repositório na lista de repositórios
-* Mostra motivos para anti-recursos (quando disponíveis)
-* Atualizações autônomas sem extensão privilegiada (apenas F-Droid Basic por enquanto)
-* Mostra o tamanho do aplicativo na tela de detalhes do aplicativo (somente no modo expert)
-* Nomes de aplicativos mais escuros nas listas de aplicativos para melhorar a legibilidade
-* Restaura o estado aberto/fechado de "Atualizar tudo" na aba Atualizações
-* Restaura a aba ativa entre reinícios do aplicativo
+* Muitas correções de bugs.
+* Exibir ícones dos repositórios nas listas.
+* Exibir motivos das antifuncionalidades (quando disponíveis).
+* Atualizações automáticas sem extensão privilegiada (por enquanto, só no F-Droid Basic).
+* Exibir tamanho do app nos detalhes (modo especialista).
+* Nomes dos apps mais escuros para melhorar a leitura.
+* Restaurar estado de "Atualizar tudo" na aba Atualizações (@tunedal).
+* Restaurar aba ativa entre reinicializações do app

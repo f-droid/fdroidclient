@@ -278,7 +278,7 @@
     <string name="app_list_recently_updated">Duela gutxi eguneratutakoak</string>
     <string name="app_list_most_downloaded">Gehien deskargatuak</string>
     <string name="app_list_all">Aplikazio guztiak</string>
-    <string name="app_list_author">%s araberako aplikazioak</string>
+    <string name="app_list_author">Egilea %s</string>
     <string name="search_placeholder">Bilatu…</string>
     <string name="search_no_results">Ez da aplikaziorik aurkitu\n\nSaiatu bilaketa-termino gutxiago erabiltzen edo gehitu biltegi gehiago</string>
     <string name="category_group_productivity">Produktibitatea</string>
@@ -318,13 +318,13 @@
     <string name="sort_title">Sailkapena eta bateragarritasuna</string>
     <string name="sort_by_name">Ordenatu izenaren arabera</string>
     <string name="sort_by_latest">Ordenatu azken eguneraketaren arabera</string>
-    <string name="filter_only_compatible">Gailu honekin bateragarriak diren aplikazioak</string>
+    <string name="filter_only_compatible">Erakutsi soilik gailu honekin bateragarriak diren aplikazioak</string>
     <string name="filter_button_save">Gorde lehenetsi gisa</string>
     <string name="filter_intro">Iragazi aplikazioak honen arabera</string>
     <string name="filter_button_clear_all">Garbitu iragazki guztiak</string>
     <string name="filter">Iragazkia</string>
     <string name="filter_selected">hautatua</string>
-    <string name="filter_antifeatures">Ezkutatu gogokoak ez diren funtzioak</string>
+    <string name="filter_antifeatures">Ezaugarri eztabaidagarriak</string>
     <string name="onboarding_app_list_filter_title">Iragazkia</string>
     <string name="onboarding_app_list_filter_message">Erabili iragazkiak kategoria edo biltegi zehatzetako aplikazioak soilik erakusteko. Orden irizpidea ere alda dezakezu.</string>
     <string name="got_it">Lortu</string>
@@ -474,4 +474,32 @@
     <string name="icon_intro">Hautatu ikono eta izen bat aplikazio honentzat. Hasierako pantailan eta aplikazioen tiraderan erakusten dira.\n\nOharra: Jakinarazpenek ikono eta izen lehenetsiak erabiliko dituzte beti.</string>
     <string name="category_group_health">Osasuna</string>
     <string name="category_group_summary_health">Fitnessa, elikadurari eta medikuntzari buruzko aplikazioak</string>
+    <string name="sort_summary">Honen arabera ordenatu</string>
+    <string name="sort_by_name_short">izena</string>
+    <string name="sort_by_latest_short">azken eguneraketa</string>
+    <string name="filter_antifeatures_summary">Erakutsi ezaugarri eztabaidagarriak dituzten aplikazioak</string>
+    <string name="filter_antifeatures_collapsed">Ezkutuan: %s</string>
+    <string name="app_details_permissions_section">Baimenak</string>
+    <string name="app_details_permissions_button">Erakutsi %d baimen guztiak</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Aplikazio honek baimen sentikor %d eskatzen du:</item>
+        <item quantity="other">Aplikazio honek %d baimen sentikor eskatzen ditu:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Aplikazio honek ez du baimen sentikorrik eskatzen</string>
+    <string name="app_details_permissions_title_num">Baimenak (%d)</string>
+    <string name="app_details_permissions_warning">Informazio hori biltegiak ematen du. Aplikazioak jasotzen dituen benetako baimenak desberdinak izan daitezke.</string>
+    <string name="app_details_permissions_title_sensitive">Sentikorra (%d)</string>
+    <string name="app_details_permissions_title_normal">Baimen automatikoa (%d)</string>
+    <string name="app_details_permissions_title_runtime">Exekuzio-denbora (%d)</string>
+    <string name="app_details_permissions_title_custom">Pertsonalizatua (%d)</string>
+    <string name="permissions_colon">Baimenak: %1$d</string>
+    <string name="repo_add_preview_title">Aurrebista biltegia</string>
+    <string name="repo_add_fetch">Eskuratu</string>
+    <string name="panic_hide_warning_title">Gogoratu nola leheneratu</string>
+    <string name="panic_hide_warning_message">Izu-gertaera batean, honek Kalkulagailuaren ikonoa eta aplikazio honen izena erakutsiko ditu hasierako pantailan eta aplikazioen tiraderan. Erabili aplikazioaren ikonoaren ezarpenak lehenetsitako ikonoa eta izena leheneratzeko.\n\nOharra: jakinarazpenek beti erabiliko dituzte lehenetsitako ikonoa eta izena.</string>
+    <string name="notification_channel_privileged_extension_migration_title">Gehigarri pribilegiatua</string>
+    <string name="notification_channel_privileged_extension_migration_description">Gehigarri pribilegiatu batetik migratzeko eskuzko esku-hartzea behar denean jakinarazten du.</string>
+    <string name="notification_privileged_extension_migration_title">Eguneratzeek eskuzko ekintzak behar dituzte!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Iturburu ezezagunak\" ez dago gaituta!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s-ek aplikazioak instalatzen ditu orain Android-en integratutako instalatzailearen bidez. Instalatzaile hori erabiltzeko %1$s \"iturburu ezezagunak\" baimena eman behar diozu eta lehen aldiz instalatzen den bakoitzean onartu.</string>
 </resources>
