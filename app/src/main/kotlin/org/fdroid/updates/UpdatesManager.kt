@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo
 import androidx.core.os.LocaleListCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.ktor.client.engine.ProxyConfig
+import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.time.Duration.Companion.milliseconds
@@ -28,7 +29,6 @@ import org.fdroid.database.UpdatableApp
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateWorker
-import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.fdroid.ui.apps.AppUpdateItem
 import org.fdroid.ui.apps.AppWithIssueItem
@@ -56,6 +56,8 @@ constructor(
   private val _numUpdates = MutableStateFlow(0)
   val numUpdates = _numUpdates.asStateFlow()
 
+  private val isUpdatingApps = AtomicBoolean(false)
+
   /**
    * The time in milliseconds of the (earliest!) next repository update run. This is
    * [Long.MAX_VALUE], if no time is known.
@@ -81,8 +83,14 @@ constructor(
     coroutineScope.launch {
       // delay initial check for updates a bit, so we don't hammer the DB during start-up
       delay(1500.milliseconds)
-      // Auto-refresh updates when installed apps change.
-      installedAppsCache.installedApps.filterNotNull().collect { loadUpdates(it) }
+      // auto-refresh updates when installed apps change
+      installedAppsCache.installedApps.filterNotNull().collect {
+        if (isUpdatingApps.get()) {
+          log.info { "Skipping update check because updates are currently being installed" }
+        } else {
+          loadUpdates(it)
+        }
+      }
     }
   }
 
@@ -101,16 +109,6 @@ constructor(
       log.debug { "Checking for updates took $duration" }
       processAvailableUpdates(updateCheckResult.updates, localeList, proxyConfig)
       processAppIssues(updateCheckResult.issues, localeList, proxyConfig)
-
-      // update apps right away if auto-update is set to immediately and there are updates available
-      if (
-        updateCheckResult.updates.isNotEmpty() &&
-          settingsManager.autoUpdateApps == AppUpdateValues.Immediately
-      ) {
-        log.info { "Auto-update is set to immediately, updating apps..." }
-        notificationManager.cancelUpdateRepoNotification()
-        updateAll(canAskPreApprovalNow = false)
-      }
     } catch (e: Exception) {
       log.error(e) { "Error loading updates" }
     }
@@ -166,6 +164,16 @@ constructor(
    */
   suspend fun updateAll(canAskPreApprovalNow: Boolean) {
     val appsToUpdate = updates.value ?: updates.firstOrNull() ?: return
-    updateInstaller.updateAll(appsToUpdate, canAskPreApprovalNow)
+    if (isUpdatingApps.compareAndSet(false, true)) {
+      try {
+        log.info { "Starting update process for ${appsToUpdate.size} apps..." }
+        updateInstaller.updateAll(appsToUpdate, canAskPreApprovalNow)
+      } finally {
+        isUpdatingApps.set(false)
+        log.info { "Update process finished" }
+      }
+    } else {
+      log.info { "Update process is already running, skipping updateAll()" }
+    }
   }
 }

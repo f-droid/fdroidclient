@@ -183,7 +183,7 @@ internal class RepoUpdateManagerTest {
   fun `updateRepos does not do quick recheck`() = runTest {
     every { settingsManager.lastRepoUpdate } returns (System.currentTimeMillis() - 500)
 
-    repoUpdateManager.updateRepos()
+    assertEquals(IndexUpdateResult.Unchanged, repoUpdateManager.updateRepos())
 
     verify(exactly = 0) { repositoryDao.getRepositories() }
   }
@@ -199,7 +199,7 @@ internal class RepoUpdateManagerTest {
     every { repositoryDao.walCheckpoint() } just runs
     every { settingsManager.lastRepoUpdate = any() } just runs
 
-    repoUpdateManager.updateRepos()
+    assertEquals(IndexUpdateResult.Unchanged, repoUpdateManager.updateRepos())
 
     // ensure we didn't skip the update
     verify(exactly = 1) { repositoryDao.getRepositories() }
@@ -223,7 +223,7 @@ internal class RepoUpdateManagerTest {
 
     repoUpdateManager.isUpdating.test {
       assertFalse(awaitItem())
-      repoUpdateManager.updateRepos()
+      assertEquals(IndexUpdateResult.Processed, repoUpdateManager.updateRepos())
       assertTrue(awaitItem())
       assertFalse(awaitItem())
     }
@@ -250,7 +250,7 @@ internal class RepoUpdateManagerTest {
       every { notificationManager.cancelUpdateRepoNotification() } just runs
       every { repositoryDao.walCheckpoint() } just runs
 
-      repoUpdateManager.updateRepos()
+      assertEquals(IndexUpdateResult.Unchanged, repoUpdateManager.updateRepos())
 
       verify(exactly = 0) { settingsManager.lastRepoUpdate = any() }
     }
@@ -271,7 +271,7 @@ internal class RepoUpdateManagerTest {
 
     clearUpdateManagerMocks()
 
-    repoUpdateManager.updateRepos()
+    assertEquals(IndexUpdateResult.Processed, repoUpdateManager.updateRepos())
 
     verify(exactly = 1) { settingsManager.lastRepoUpdate = any() }
     verify(exactly = 1) { updatesManager.loadUpdates() }
@@ -296,7 +296,7 @@ internal class RepoUpdateManagerTest {
 
       clearUpdateManagerMocks()
 
-      repoUpdateManager.updateRepos()
+      assertEquals(IndexUpdateResult.Processed, repoUpdateManager.updateRepos())
 
       verify(exactly = 1) { updatesManager.loadUpdates() }
       verify(exactly = 1) { notificationManager.showAppUpdatesAvailableNotification(any()) }
@@ -320,7 +320,7 @@ internal class RepoUpdateManagerTest {
 
     clearUpdateManagerMocks()
 
-    repoUpdateManager.updateRepos()
+    assertEquals(IndexUpdateResult.Processed, repoUpdateManager.updateRepos())
 
     verify(exactly = 1) { updatesManager.loadUpdates() }
     verify(exactly = 0) { notificationManager.showAppUpdatesAvailableNotification(any()) }
@@ -343,7 +343,7 @@ internal class RepoUpdateManagerTest {
 
       clearUpdateManagerMocks()
 
-      repoUpdateManager.updateRepos()
+      assertEquals(IndexUpdateResult.Processed, repoUpdateManager.updateRepos())
 
       verify(exactly = 1) { updatesManager.loadUpdates() }
       verify(exactly = 0) { notificationManager.showAppUpdatesAvailableNotification(any()) }

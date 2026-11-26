@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import app.cash.turbine.ReceiveTurbine
 import app.cash.turbine.test
+import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.just
@@ -15,14 +16,17 @@ import io.mockk.unmockkObject
 import io.mockk.verify
 import io.mockk.verifyOrder
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceTimeBy
@@ -46,7 +50,6 @@ import org.fdroid.download.PackageName
 import org.fdroid.index.RepoManager
 import org.fdroid.install.InstalledAppsCache
 import org.fdroid.repo.RepoUpdateWorker
-import org.fdroid.settings.SettingsConstants.AppUpdateValues
 import org.fdroid.settings.SettingsManager
 import org.junit.After
 import org.junit.Before
@@ -181,40 +184,6 @@ internal class UpdatesManagerTest {
       // one update available, so numUpdates is 1
       assertEquals(1, updatesManager.numUpdates.value)
     }
-
-  @Test
-  fun `loadUpdates updates all apps when auto-update is immediate`() = testScope.runTest {
-    val updates =
-      listOf(
-        makeUpdatableApp(packageName = "com.example.app1"),
-        makeUpdatableApp(packageName = "com.example.app2"),
-      )
-    mockLoadUpdates(AppCheckResult(updates, emptyList()))
-    every { settingsManager.autoUpdateApps } returns AppUpdateValues.Immediately
-    every { repoManager.getRepository(1L) } returns makeRepository()
-    every { notificationManager.cancelUpdateRepoNotification() } just runs
-
-    createUpdatesManager()
-      .loadUpdates(
-        mapOf(
-          "com.example.app1" to makePackageInfo("com.example.app1"),
-          "com.example.app2" to makePackageInfo("com.example.app2"),
-        ),
-      )
-    advanceUntilIdle()
-
-    coVerify(exactly = 1) {
-      notificationManager.cancelUpdateRepoNotification()
-      updateInstaller.updateAll(
-        appsToUpdate =
-          match {
-            it.map { appUpdate -> appUpdate.packageName }.toSet() ==
-              setOf("com.example.app1", "com.example.app2")
-          },
-        canAskPreApprovalNow = false,
-      )
-    }
-  }
 
   @Test
   fun `loadUpdates with null name, repo and trimmed whatsNew`() = testScope.runTest {
@@ -599,6 +568,40 @@ internal class UpdatesManagerTest {
         true,
       )
     }
+  }
+
+  @Test
+  fun `init does not load updates while apps are being updated`() = testScope.runTest {
+    mockLoadUpdates(AppCheckResult(listOf(makeUpdatableApp()), emptyList()))
+    every { repoManager.getRepository(1L) } returns makeRepository()
+    val updatesManager = createUpdatesManager()
+    advanceTimeBy(2000.milliseconds)
+
+    val installedApps1 = installedApps("app1")
+    updatesManager.loadUpdates(installedApps1)
+    advanceUntilIdle()
+    verify(exactly = 1) { dbAppChecker.getApps(installedApps1) }
+
+    // block updateAll() so that the update process stays in progress
+    val updateFinished = CompletableDeferred<Unit>()
+    coEvery { updateInstaller.updateAll(any(), any()) } coAnswers { updateFinished.await() }
+    val updateJob = launch { updatesManager.updateAll(canAskPreApprovalNow = true) }
+    advanceUntilIdle()
+    assertTrue(updateJob.isActive)
+    val installedApps2 = installedApps("app2")
+    installedAppsFlow.value = installedApps2
+    advanceUntilIdle()
+    // not checking installed apps for updates
+    verify(exactly = 0) { dbAppChecker.getApps(installedApps2) }
+
+    // once finished, new emissions trigger loading again
+    updateFinished.complete(Unit)
+    advanceUntilIdle()
+    assertFalse(updateJob.isActive)
+    val installedApps3 = installedApps("app3")
+    installedAppsFlow.value = installedApps3
+    advanceUntilIdle()
+    verify(exactly = 1) { dbAppChecker.getApps(installedApps3) }
   }
 
   // Helpers

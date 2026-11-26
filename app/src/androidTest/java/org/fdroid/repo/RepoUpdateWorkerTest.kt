@@ -7,7 +7,9 @@ import androidx.core.app.NotificationCompat
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.work.Configuration
+import androidx.work.ExistingWorkPolicy
 import androidx.work.ListenableWorker
+import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
@@ -18,21 +20,27 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
+import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.runs
+import io.mockk.slot
 import io.mockk.verify
 import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertTrue
 import kotlinx.coroutines.test.runTest
 import org.fdroid.NotificationManager
 import org.fdroid.NotificationManager.Companion.NOTIFICATION_ID_REPO_UPDATE
 import org.fdroid.history.HistoryManager
+import org.fdroid.index.IndexUpdateResult
 import org.fdroid.install.CacheCleaner
 import org.fdroid.repo.RepoUpdateWorker.Companion.MAX_RUN_ATTEMPTS
 import org.fdroid.repo.RepoUpdateWorker.Companion.UNIQUE_WORK_NAME_REPO_AUTO_UPDATE
 import org.fdroid.settings.SettingsConstants.RepoUpdateValues
 import org.fdroid.ui.utils.canStartForegroundService
+import org.fdroid.updates.AppUpdateWorker
+import org.fdroid.updates.AppUpdateWorker.Companion.UNIQUE_WORK_NAME_APP_UPDATE_IMMEDIATE
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -62,7 +70,7 @@ internal class RepoUpdateWorkerTest {
     mockkStatic("org.fdroid.ui.utils.UiUtilsKt")
     every { canStartForegroundService(any()) } returns false
 
-    coEvery { repoUpdateManager.updateRepos() } just runs
+    coEvery { repoUpdateManager.updateRepos() } returns IndexUpdateResult.Unchanged
     every { repoUpdateManager.updateRepo(any()) } returns mockk(relaxed = true)
     every { cacheCleaner.clean() } just runs
     every { historyManager.pruneEvents() } just runs
@@ -99,16 +107,7 @@ internal class RepoUpdateWorkerTest {
   fun doWorkReturnsSuccessAndUpdatesAllRepos() = runTest {
     every { workerParams.inputData } returns workDataOf()
 
-    val worker =
-      RepoUpdateWorker(
-        appContext = context,
-        workerParams = workerParams,
-        repoUpdateManager = repoUpdateManager,
-        cacheCleaner = cacheCleaner,
-        historyManager = historyManager,
-        nm = notificationManager,
-      )
-
+    val worker = makeRepoUpdateWorker()
     val result = worker.doWork()
 
     assertEquals(ListenableWorker.Result.success(), result)
@@ -122,19 +121,34 @@ internal class RepoUpdateWorkerTest {
   }
 
   @Test
+  fun doWorkStartsAppUpdateWorkerWhenImmediateUpdatesAreEnabled() = runTest {
+    every { workerParams.inputData } returns workDataOf()
+    coEvery { repoUpdateManager.updateRepos() } returns IndexUpdateResult.Processed
+    every { repoUpdateManager.immediateAppUpdates } returns true
+
+    // mock WorkManager to verify that AppUpdateWorker is started
+    mockkObject(WorkManager.Companion)
+    val workManager: WorkManager = mockk(relaxed = true)
+    every { WorkManager.getInstance(context) } returns workManager
+    val worker = makeRepoUpdateWorker()
+    assertEquals(ListenableWorker.Result.success(), worker.doWork())
+
+    val request = slot<OneTimeWorkRequest>()
+    verify(exactly = 1) {
+      workManager.enqueueUniqueWork(
+        UNIQUE_WORK_NAME_APP_UPDATE_IMMEDIATE,
+        ExistingWorkPolicy.KEEP,
+        capture(request),
+      )
+    }
+    assertTrue(AppUpdateWorker::class.java.name in request.captured.tags)
+  }
+
+  @Test
   fun doWorkUpdatesSingleRepoWhenRepoIdIsProvided() = runTest {
     every { workerParams.inputData } returns workDataOf("repoId" to 42L)
 
-    val worker =
-      RepoUpdateWorker(
-        appContext = context,
-        workerParams = workerParams,
-        repoUpdateManager = repoUpdateManager,
-        cacheCleaner = cacheCleaner,
-        historyManager = historyManager,
-        nm = notificationManager,
-      )
-
+    val worker = makeRepoUpdateWorker()
     val result = worker.doWork()
 
     assertEquals(ListenableWorker.Result.success(), result)
@@ -152,16 +166,7 @@ internal class RepoUpdateWorkerTest {
     every { workerParams.runAttemptCount } returns MAX_RUN_ATTEMPTS
     coEvery { repoUpdateManager.updateRepos() } throws RuntimeException("boom")
 
-    val worker =
-      RepoUpdateWorker(
-        appContext = context,
-        workerParams = workerParams,
-        repoUpdateManager = repoUpdateManager,
-        cacheCleaner = cacheCleaner,
-        historyManager = historyManager,
-        nm = notificationManager,
-      )
-
+    val worker = makeRepoUpdateWorker()
     val result = worker.doWork()
 
     assertEquals(ListenableWorker.Result.retry(), result)
@@ -175,16 +180,7 @@ internal class RepoUpdateWorkerTest {
     every { workerParams.runAttemptCount } returns MAX_RUN_ATTEMPTS + 1
     coEvery { repoUpdateManager.updateRepos() } throws RuntimeException("boom")
 
-    val worker =
-      RepoUpdateWorker(
-        appContext = context,
-        workerParams = workerParams,
-        repoUpdateManager = repoUpdateManager,
-        cacheCleaner = cacheCleaner,
-        historyManager = historyManager,
-        nm = notificationManager,
-      )
-
+    val worker = makeRepoUpdateWorker()
     val result = worker.doWork()
 
     assertEquals(ListenableWorker.Result.failure(), result)
@@ -199,19 +195,20 @@ internal class RepoUpdateWorkerTest {
     every { notificationManager.getRepoUpdateNotification() } returns builder
     every { builder.build() } returns notification
 
-    val worker =
-      RepoUpdateWorker(
-        appContext = context,
-        workerParams = workerParams,
-        repoUpdateManager = repoUpdateManager,
-        cacheCleaner = cacheCleaner,
-        historyManager = historyManager,
-        nm = notificationManager,
-      )
-
+    val worker = makeRepoUpdateWorker()
     val info = worker.getForegroundInfo()
 
     assertEquals(NOTIFICATION_ID_REPO_UPDATE, info.notificationId)
     assertIs<Notification>(info.notification)
   }
+
+  private fun makeRepoUpdateWorker() =
+    RepoUpdateWorker(
+      appContext = context,
+      workerParams = workerParams,
+      repoUpdateManager = repoUpdateManager,
+      cacheCleaner = cacheCleaner,
+      historyManager = historyManager,
+      nm = notificationManager,
+    )
 }

@@ -17,6 +17,7 @@ import io.mockk.verify
 import kotlinx.coroutines.test.runTest
 import org.fdroid.NotificationManager
 import org.fdroid.history.HistoryManager
+import org.fdroid.index.IndexUpdateResult
 import org.fdroid.install.CacheCleaner
 import org.junit.Before
 import org.junit.Test
@@ -34,7 +35,7 @@ internal class RepoUpdateWorkerUnitTest {
   fun setUp() {
     every { workerParams.inputData } returns workDataOf()
     every { workerParams.runAttemptCount } returns 0
-    coEvery { repoUpdateManager.updateRepos() } just runs
+    coEvery { repoUpdateManager.updateRepos() } returns IndexUpdateResult.Processed
     every { cacheCleaner.clean() } just runs
     every { historyManager.pruneEvents() } just runs
     every { notificationManager.cancelUpdateRepoNotification() } just runs
