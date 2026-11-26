@@ -320,7 +320,7 @@
     <string name="filter_button_clear_all">Zrušiť všetky filtre</string>
     <string name="filter">Filter</string>
     <string name="filter_selected">vybrané</string>
-    <string name="filter_antifeatures">Skryť anti-vlastnosti</string>
+    <string name="filter_antifeatures">Anti-vlastnosti</string>
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Použite filtre pre zobrazenie aplikácií len zo špecifických kategórií alebo repozitárov. Tiež môžete zmeniť poradie zoradenia.</string>
     <string name="got_it">Rozumiem</string>
@@ -338,7 +338,7 @@
     <string name="category_group_summary_network">Prehliadač, VPN, proxy a firewall</string>
     <string name="search_filter_no_results">Nenájdené žiadne zodpovedajúce aplikácie\n\nSkúste použiť menej slov alebo odstrániť filtre</string>
     <string name="search_my_apps_no_results">Nenájdené žiadne zodpovedajúce aplikácie\n\nSkúste použiť menej slov</string>
-    <string name="filter_only_compatible">Aplikácie kompatibilné s týmto zariadením</string>
+    <string name="filter_only_compatible">Zobraziť iba aplikácie kompatibilné s týmto zariadením</string>
     <string name="filter_button_save">Uložiť ako predvolené</string>
     <string name="filter_intro">Filtrovať aplikácie podľa</string>
     <string name="category_group_summary_storage">Súbory, galéria, cloudová synchronizácia a šifrovanie</string>
@@ -487,4 +487,32 @@
     <string name="sdk_versions_colon">Verzie SDK: %1$s</string>
     <string name="panic_hide_warning_title">Zapamätajte si, ako obnoviť</string>
     <string name="panic_hide_warning_message">V prípade panickej udalosti sa na domovskej obrazovke a v zozname aplikácií zobrazia namiesto tejto aplikácie ikona a názov Kalkulačky. Pomocou nastavení ikony aplikácie môžete obnoviť východziu ikonu a názov.\n\nPoznámka: Oznámenia budú vždy používať východziu ikonu a názov.</string>
+    <string name="sort_summary">Zoradiť podľa</string>
+    <string name="sort_by_name_short">názov</string>
+    <string name="sort_by_latest_short">posledná aktualizácia</string>
+    <string name="filter_antifeatures_summary">Zobraziť aplikácie s týmito anti-vlastnosťami</string>
+    <string name="filter_antifeatures_collapsed">Skryté: %s</string>
+    <string name="app_details_permissions_section">Povolenia</string>
+    <string name="app_details_permissions_sensitive_none">Táto aplikácia nevyžaduje žiadne citlivé povolenia</string>
+    <string name="app_details_permissions_title_num">Povolenia (%d)</string>
+    <string name="app_details_permissions_warning">Tieto informácie sú hlásené repozitárom. Povolenia, ktoré aplikácia reálne obdrží, sa môžu líšiť.</string>
+    <string name="app_details_permissions_title_sensitive">Citlivé (%d)</string>
+    <string name="app_details_permissions_title_normal">Automaticky udelené (%d)</string>
+    <string name="app_details_permissions_title_runtime">Čas behu (%d)</string>
+    <string name="app_details_permissions_title_custom">Vlastné (%d</string>
+    <string name="permissions_colon">Povolenia: %1$d</string>
+    <string name="notification_channel_privileged_extension_migration_title">Privilegované rozšírenia</string>
+    <string name="notification_channel_privileged_extension_migration_description">Upozorňuje, keď je potrebný manuálny zásah pri prechode z privilegovaného rozšírenia.</string>
+    <string name="notification_privileged_extension_migration_title">Aktualizácie vyžadujú manuálny zásah!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Neznáme zdroje\" nie sú povolené!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s teraz inštaluje aplikácie pomocou vstavaného inštalátora systému Android. Pre použitie daného inštalátora musíte aplikácii %1$s poskytnúť povolenie \"neznáme zdroje\" a schváliť každú prvotnú inštaláciu.</string>
+    <string name="repo_add_preview_title">Ukážka repozitára</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Táto aplikácia žiada %d citlivé povolenie:</item>
+        <item quantity="few">Táto aplikácia žiada %d citlivé povolenia:</item>
+        <item quantity="many">Táto aplikácia žiada %d citlivých povolení:</item>
+        <item quantity="other">Táto aplikácia žiada %d citlivých povolení:</item>
+    </plurals>
+    <string name="repo_add_fetch">Získať</string>
+    <string name="app_details_permissions_button">Zobrazenie všetkých %d povolení</string>
 </resources>

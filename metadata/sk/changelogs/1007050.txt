@@ -1,0 +1,7 @@
+* zásadné prepracovanie používateľského rozhrania swap, pre prípravu prepísania vnútorností
+* zobrazenie "späť" po návrate z karty Aktualizácie (ďakujeme @Hocuri!)
+* oprava problémov so zobrazením "Najnovšie" sposobeným nesprávnym spracovaním časových pásiem #1757
+* ignorovanie všetkých nedôležitých pádov služby na pozadí
+* prepracovanie blizkeho swap za použitia hotspotu zariadenia
+* pridanie nových panických odpovedí: aplikácia odinštaluje a resetuje repozitáre na predvolené
+* USB OTG flash disky možno používať ako blízke repozitáre a zrkadlové servery

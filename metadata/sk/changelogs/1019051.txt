@@ -1,0 +1,15 @@
+* Kompletné prepracovanie práce s repozitármi a zrkadlovými servermi — používateľského prostredia aj kódu
+
+* Zobrazovať ukážku nových repozitárov
+
+* Inštalácia cez F-Droid a F-Droid Basic teraz podporuje automatické aktualizácie na pozadí
+
+* V Androide 14 označovanie aplikácii s nepodporovanou verziou Target SDK ako nekompatibilné(#2692)
+
+* Kopírovanie odkazov dlhým stlačením, povolenia a verzie na obrazovke s podrobnosťami aplikácie (@Tobias_Groza)
+
+* Nekompatibilné aplikácie sa zobrazujú iba vtedy, keď je to povolené v nastaveniach (#41, @pigpig)
+
+* Nové nastavenia brán IPFS
+
+* Výber jazyka pre jednotlivé aplikácie (@Licaon-Kter)

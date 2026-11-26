@@ -167,7 +167,7 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="updates">Updates</string>
-    <string name="ok">Okay</string>
+    <string name="ok">OK</string>
     <string name="app_name_full">F-Droid</string>
     <string name="theme_follow_system">Follow system</string>
     <string name="banner_no_internet">No internet</string>
@@ -490,4 +490,16 @@
     <string name="sort_by_latest_short">last update</string>
     <string name="filter_antifeatures_summary">Show apps with these anti-features</string>
     <string name="filter_antifeatures_collapsed">Hidden: %s</string>
+    <string name="repo_add_preview_title">Preview repository</string>
+    <string name="repo_add_fetch">Fetch</string>
+    <string name="notification_channel_privileged_extension_migration_title">Privileged Extension</string>
+    <string name="notification_channel_privileged_extension_migration_description">Notifies when manual intervention is required to migrate away from Privileged Extension.</string>
+    <string name="notification_privileged_extension_migration_title">Updates require manual action!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Unknown sources\" not enabled!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s now installs apps via Android\'s built-in installer. You have to grant %1$s \"unknown sources\" permission to use that installer and approve each first time install.</string>
+    <string name="last_updated_short">Updated %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Daily only on Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Daily even on mobile data</string>
+    <string name="pref_auto_updates_only_immediately">As soon as possible</string>
+    <string name="pref_auto_updates_summary_immediately">Download and update apps as soon as an update is available</string>
 </resources>

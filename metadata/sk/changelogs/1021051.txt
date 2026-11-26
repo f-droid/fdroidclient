@@ -1,0 +1,11 @@
+* Prepracovanie aktualizátora repozitárov na zvýšenie spoľahlivosti aktualizácií na pozadí
+* Oddelenie názvov a stručných opisov aplikácií v zoznamoch na zlepšenie čitateľnosti
+* Zobrazovanie upozornenia, keď aplikácie nemožno aktualizovať z preferovaného repozitára
+* Označovanie aplikácií zacielených na SDK 24 ako nekompatibilných so zariadeniami s Androidom 15
+* Vylepšené spracovanie zrkadlových serverov v ukážke pri pridávaní repozitára (vďaka, Thore!)
+* Zapnutie automatických aktualizácií aplikácií na zariadeniach Xiaomi bez systému MIUI (vďaka, Irate!)
+* Dôverovanie koreňovým certifikátom pridaným používateľom (vďaka, B.!)
+* Oprava vyhľadávania bez rozlišovania veľkých a malých písmen pri výrazoch s diakritikou (vďaka, Tobias!)
+* Aktualizácia opisov antifunkcií (vďaka, Licaon!)
+* Pridanie antifunkcie „Zdieľanie internetového pripojenia“ (vďaka, linsui!)
+* Ignorovanie medzier pri pridávaní zrkadlových repozitárov (vďaka, Tobias!)

@@ -17,7 +17,7 @@
     <string name="repo_add_add">Adicionar</string>
     <string name="cancel">Cancelar</string>
     <string name="malformed_repo_uri">Ignorando URI de repositório mal formada: %s</string>
-    <string name="menu_search">Buscar</string>
+    <string name="menu_search">Pesquisar</string>
     <string name="menu_add_repo">Novo repositório</string>
     <string name="menu_share">Compartilhar</string>
     <string name="menu_install">Instalar</string>
@@ -34,18 +34,18 @@
     <string name="deleting_repo">Apagando o repositório atual…</string>
     <string name="linking_apks">Vinculando APKs ao repositório…</string>
     <string name="icon">Ícone</string>
-    <string name="next">Avançar</string>
+    <string name="next">Próximo</string>
     <string name="theme">Tema</string>
     <string name="repo_fingerprint">Impressão digital da chave de assinatura (SHA-256)</string>
     <string name="repo_confirm_delete_title">Apagar repositório?</string>
     <string name="repo_confirm_delete_body">O apagamento de um repositório significa que os apps do mesmo não estarão mais disponíveis. \n \nObservação: Todos os apps instalados previamente permanecerão no seu dispositivo.</string>
-    <string name="not_on_same_wifi">O seu dispositivo não está na mesma rede Wi-Fi do Repositório Local que você acabou de adicionar! Tente se conectar à rede: %s</string>
+    <string name="not_on_same_wifi">Seu dispositivo não está conectado à mesma rede Wi-Fi do Repositório Local que você acabou de adicionar! Tente conectar-se a esta rede: %s</string>
     <string name="swap_join_same_wifi">Entre na mesma rede Wi-Fi que seu amigo</string>
     <string name="swap">Trocar apps</string>
     <string name="swap_no_wifi_network">Não há rede ainda</string>
     <string name="swap_view_available_networks">Toque para abrir as redes disponíveis</string>
     <string name="open_qr_code_scanner">Abrir o leitor de código QR</string>
-    <string name="swap_welcome">Boas-vindas ao F-Droid!</string>
+    <string name="swap_welcome">Bem-vindo ao F-Droid!</string>
     <string name="swap_confirm_connect">Você quer obter apps de %1$s agora?</string>
     <string name="app_name_full">F-Droid</string>
     <string name="app_incompatible">Incompatível</string>
@@ -78,8 +78,8 @@
     <string name="swap_not_visible_wifi">Não visível por Wi-Fi</string>
     <string name="swap_wifi_device_name">Nome do dispositivo</string>
     <string name="swap_cant_find_peers">Não consegue achar quem você está procurando?</string>
-    <string name="swap_send_fdroid">Enviar o F-Droid</string>
-    <string name="apps">Apps</string>
+    <string name="swap_send_fdroid">Enviar ao F-Droid</string>
+    <string name="apps">Aplicativos</string>
     <string name="swap_connecting">Conectando</string>
     <string name="swap_confirm">Confirmar troca</string>
     <string name="swap_qr_isnt_for_swap">O código QR que você leu não parece ser um código de troca.</string>
@@ -103,7 +103,7 @@
     <string name="notification_title_summary_install_error">A instalação falhou</string>
     <string name="clear_search">Apagar busca</string>
     <string name="main_menu__categories">Categorias</string>
-    <string name="main_menu__swap_nearby">Proximidade</string>
+    <string name="main_menu__swap_nearby">Nas proximidades</string>
     <string name="app__install_downloaded_update">Atualizar</string>
     <string name="installed_apps__activity_title">Apps instalados</string>
     <string name="update_all">Atualizar tudo</string>
@@ -230,9 +230,9 @@
     <string name="repo_archive_unknown">O repositório não parece ter um arquivo.</string>
     <string name="repo_archive_check">Conferir se há um arquivo</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">%d app</item>
-        <item quantity="many">%d de apps</item>
-        <item quantity="other">%d apps</item>
+        <item quantity="one">%d aplicativo</item>
+        <item quantity="many">%d aplicativos</item>
+        <item quantity="other">%d aplicativos</item>
     </plurals>
     <string name="repo_last_update_check">Última busca por atualizações do repositório: %s</string>
     <string name="repo_confirm_delete_mirror_title">Apagar espelho?</string>
@@ -254,7 +254,7 @@
         <item quantity="other">%1$d atualizações disponíveis</item>
     </plurals>
     <string name="crash_dialog_title_old">F-Droid tinha travado</string>
-    <string name="app_name_full_nightly">F-Nightly</string>
+    <string name="app_name_full_nightly">f-nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Básico</string>
     <string name="call_to_action_keepandroidopen">O F-Droid está sob ameaça. O Google está mudando a forma como você instala aplicativos no seu dispositivo. Precisamos da sua ajuda.</string>
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
@@ -268,7 +268,7 @@
     <string name="my_apps_ignore_dialog_text">O problema com esta versão de \"%1$s\" será ignorado</string>
     <string name="my_apps_ignore_dialog_button">Ocultar</string>
     <string name="my_apps_export_installed_apps">Exportar lista de apps</string>
-    <string name="app_list_new">Apps novos</string>
+    <string name="app_list_new">Novos apps</string>
     <string name="app_list_recently_updated">Atualizados recentemente</string>
     <string name="app_list_most_downloaded">Mais baixados</string>
     <string name="app_list_all">Todos os apps</string>
@@ -298,9 +298,9 @@
     <string name="ipfsgw_summary_new">Baixe aplicativos usando endpoints web do IPFS</string>
     <string name="first_start_intro">Para começar, sincronize os repositórios de apps</string>
     <string name="first_start_offline">Você está desconectado. Conecte-se à internet para começar.</string>
-    <string name="first_start_metered">Você está nos dados móveis e mais de 10 MB serão baixados. Toque em Buscar repositórios para iniciar mesmo assim.</string>
+    <string name="first_start_metered">Você está usando dados móveis e serão baixados mais de 10 MB. Toque em “Buscar repositórios” para iniciar mesmo assim.</string>
     <string name="first_start_button">Buscar repositórios</string>
-    <string name="no_repos_enabled">Nenhum repositório disponível, adicione um para começar</string>
+    <string name="no_repos_enabled">Não há repositórios disponíveis. Adicione um repositório para começar</string>
     <string name="search_filter_no_results">Nenhum app correspondente\n\nTente usar menos termos na busca ou remova filtros</string>
     <string name="search_my_apps_no_results">Nenhum app correspondente\n\nTente usar menos termos na busca</string>
     <string name="sort_title">Classificação e compatibilidade</string>
@@ -456,10 +456,10 @@
     <string name="notification_channel_self_update_description">Notifica quando o app for atualizado e fechado, para que você possa abri-lo novamente com facilidade</string>
     <string name="notification_self_update_title">%s foi atualizado. Toque para abrir</string>
     <string name="liberapay">Liberapay</string>
-    <string name="open_collective">Open Collective</string>
+    <string name="open_collective">open collective</string>
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
-    <string name="taler">Taler</string>
+    <string name="taler">taler</string>
     <string name="panic_app_unknown_app">um aplicativo desconhecido</string>
     <string name="panic_hide_migration_title">Novo F-Droid mudou a ocultação de aplicativos</string>
     <string name="panic_hide_migration_message">A função de calculadora foi removida, mas você ainda pode alterar o ícone do aplicativo permanentemente por meio das configurações de “ícone do aplicativo” e “botão de pânico”.</string>
@@ -491,4 +491,16 @@
     <string name="sort_by_latest_short">última atualização</string>
     <string name="filter_antifeatures_summary">Mostrar apps com estas características indesejáveis</string>
     <string name="filter_antifeatures_collapsed">Oculto: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Extensão Privilegiada</string>
+    <string name="notification_channel_privileged_extension_migration_description">Notifica quando intervenção manual é necessária para parar de usar a Extensão Privilegiada.</string>
+    <string name="notification_privileged_extension_migration_title">Atualizações requerem ação manual!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Fontes desconhecidas\" não está ativado!</string>
+    <string name="notification_privileged_extension_migration_text">O %1$s agora instala apps pelo instalador embutido no Android. Você deve conceder a permissão de \"fontes desconhecidas\" pro %1$s para usar o instalador, e aprovar a instalação pelo menos uma vez.</string>
+    <string name="repo_add_preview_title">Prévia do repositório</string>
+    <string name="repo_add_fetch">Buscar</string>
+    <string name="last_updated_short">Atualizado %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Diariamente apenas no Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Diariamente mesmo nos dados móveis</string>
+    <string name="pref_auto_updates_only_immediately">Imediatamente</string>
+    <string name="pref_auto_updates_summary_immediately">Baixe e atualize apps logo que atualizações se tornem disponíveis</string>
 </resources>

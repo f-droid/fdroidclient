@@ -500,4 +500,11 @@
     <string name="notification_privileged_extension_migration_title">Оновлення потребують ручних дій!</string>
     <string name="notification_privileged_extension_migration_title_sdk25">\"Невідомі джерела\" не ввімкнено!</string>
     <string name="notification_privileged_extension_migration_text">%1$s тепер встановлює програми через вбудований інсталятор Android. Вам потрібно надати %1$s дозвіл \"невідомих джерел\" на використання цього інсталятора та схвалення кожного першого встановлення.</string>
+    <string name="repo_add_preview_title">Попередній перегляд репозиторію</string>
+    <string name="repo_add_fetch">Отримати</string>
+    <string name="last_updated_short">Оновлено %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Щодня лише через Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Щоденно, навіть при використанні мобільних даних</string>
+    <string name="pref_auto_updates_only_immediately">Якомога швидше</string>
+    <string name="pref_auto_updates_summary_immediately">Завантажити та оновити застосунки, щойно оновлення стане доступним</string>
 </resources>

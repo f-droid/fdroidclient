@@ -307,13 +307,13 @@
     <string name="sort_title">Pengurutan dan kompatibilitas</string>
     <string name="sort_by_name">Urutkan berdasarkan nama</string>
     <string name="sort_by_latest">Urutkan berdasarkan pembaruan terakhir</string>
-    <string name="filter_only_compatible">Aplikasi yang kompatibel dengan perangkat ini</string>
+    <string name="filter_only_compatible">Hanya tampilkan aplikasi yang kompatibel dengan perangkat ini</string>
     <string name="filter_button_save">Simpan sebagai default</string>
     <string name="filter_intro">Filter aplikasi berdasarkan</string>
     <string name="filter_button_clear_all">Hapus semua filter</string>
     <string name="filter">Filter</string>
     <string name="filter_selected">dipilih</string>
-    <string name="filter_antifeatures">Sembunyikan fitur anti-privasi</string>
+    <string name="filter_antifeatures">Fitur negatif</string>
     <string name="onboarding_app_list_filter_title">Filter</string>
     <string name="onboarding_app_list_filter_message">Gunakan filter untuk hanya menampilkan aplikasi dari kategori atau repositori tertentu. Anda juga dapat mengubah urutan pengurutan.</string>
     <string name="got_it">Mengerti</string>
@@ -477,4 +477,16 @@
     <string name="app_details_permissions_title_custom">Khusus (%d)</string>
     <string name="permissions_colon">Izin: %1$d</string>
     <string name="panic_hide_warning_message">Saat terjadi peristiwa panik, ikon dan nama aplikasi ini di layar utama dan laci aplikasi akan ditampilkan sebagai Kalkulator. Gunakan pengaturan Ikon aplikasi untuk memulihkan ikon dan nama bawaan.\n\nCatatan: Notifikasi akan selalu menggunakan ikon dan nama bawaan.</string>
+    <string name="sort_summary">Urutkan berdasarkan</string>
+    <string name="sort_by_name_short">nama</string>
+    <string name="sort_by_latest_short">pembaruan terakhir</string>
+    <string name="filter_antifeatures_summary">Tampilkan aplikasi dengan fitur negatif berikut</string>
+    <string name="filter_antifeatures_collapsed">Disembunyikan: %s</string>
+    <string name="repo_add_preview_title">Pratinjau repositori</string>
+    <string name="repo_add_fetch">Ambil</string>
+    <string name="notification_channel_privileged_extension_migration_title">Ekstensi Berhak Istimewa</string>
+    <string name="notification_channel_privileged_extension_migration_description">Memberi notifikasi saat tindakan manual diperlukan untuk beralih dari Ekstensi Berhak Istimewa.</string>
+    <string name="notification_privileged_extension_migration_title">Pembaruan memerlukan tindakan manual!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Sumber tidak dikenal\" belum diaktifkan!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s kini memasang aplikasi melalui pemasang bawaan Android. Anda harus memberikan izin \"sumber tidak dikenal\" kepada %1$s untuk menggunakan pemasang tersebut dan menyetujui setiap pemasangan pertama kali.</string>
 </resources>

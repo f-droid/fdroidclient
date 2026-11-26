@@ -14,7 +14,7 @@
     <string name="menu_add_repo">Yangi repozitoriy</string>
     <string name="menu_share">Ulaşiş</string>
     <string name="menu_install">Örnatiş</string>
-    <string name="menu_uninstall">Öçiriş</string>
+    <string name="menu_uninstall">Öçirib taşlaş</string>
     <string name="menu_upgrade">Yangilaş</string>
     <string name="main_menu__categories">Kategoriyalar</string>
     <string name="next">Keyingi</string>
@@ -22,7 +22,7 @@
     <string name="swap_welcome">F-droidʼga xuş kelibsiz!</string>
     <string name="back">Orqaga</string>
     <string name="cancel">Bekor qiliş</string>
-    <string name="delete">Öçiriş</string>
+    <string name="delete">Öçirib taşlaş</string>
     <string name="app_name_full">F‑Droid</string>
     <string name="install_history">Örnatiş tarixi</string>
     <string name="update_auto_install">Yangilanişlarni avtomatik örnatiş</string>
@@ -30,7 +30,7 @@
     <string name="category_group_device">Qurilma</string>
     <string name="my_apps_ignore_dialog_button">Yaşiriş</string>
     <string name="menu_about">Dastur haqida</string>
-    <string name="menu_apps_my">Mening ilovalarim</string>
+    <string name="menu_apps_my">Ilovalarim</string>
     <string name="my_apps_ignore_dialog_title">Xatolikni yaxşiriş</string>
     <string name="app_name_basic">F-Droid Basic</string>
     <string name="app_name_full_nightly">F-Nightly</string>
@@ -92,7 +92,7 @@
     <string name="whats_new_title">Nima yangiliklar</string>
     <string name="donate_title">Donat qiliş</string>
     <string name="anti_features_title">Bu ilovada anti-xususiyatlar bor</string>
-    <string name="developer_contact">Dasturçi bilan aloqa</string>
+    <string name="developer_contact">Dasturçi bilan boğlaniş</string>
     <string name="technical_info">Texnik maʼlumotlar</string>
     <string name="package_name">Paket nomi:</string>
     <string name="liberapay">Liberapay</string>
@@ -100,7 +100,7 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="litecoin">Litecoin</string>
     <string name="version">Versiya</string>
-    <string name="by_author_format">yaratdi %s</string>
+    <string name="by_author_format">%s tomonidan</string>
     <string name="pref_export_log_title">Debug jurnali</string>
     <string name="export_log_success">Logcat muvaffaqiyatli saqlandi</string>
     <string name="export_log_error">Logcat saqlaşda xatolik yuz berdi</string>
@@ -147,7 +147,7 @@
     <string name="dialog_metered_dont_show">Bu qayta körsatilmasin</string>
     <string name="dialog_metered_button">Yuklab oliş</string>
     <string name="screenshots_metered">Mobil internet orqali skrinşotlarni yuklaş uçun bosing</string>
-    <string name="app_suggested">Tavsiya etilgan</string>
+    <string name="app_suggested">Tavsiya etiladi</string>
     <string name="app_incompatible">Mos kelmaydi</string>
     <string name="app_installed">Örnatilgan</string>
     <string name="app_inst_known_source">Örnatilgan (%sʼdan)</string>
@@ -355,7 +355,7 @@
     <string name="install_history_empty_state">Bu röyxat hali ham böş\n\nIlovalarni örnatganingizda, yangilaganingizda yoki öçirib taşlaganingizda, bu yerda qayd paydo böladi</string>
     <string name="install_history_disabled_state">Örnatiş tarixi öçirib qöyilgan\n\nÖrnatişlar, yangilanişlar va öçirişlar qayd etilmaydi</string>
     <string name="install_history_delete_ally">Örnatiş tarixini öçiriş</string>
-    <string name="install_history_delete_text">Örnatiş tarixini öçirişni xohlaysizmi?</string>
+    <string name="install_history_delete_text">Örnatiş tarixini öçirişmoqçimisiz?</string>
     <string name="expand">Kengaytiriş</string>
     <string name="collapse">Yiğiş</string>
     <string name="call_to_action_keepandroidopen">F-Droid tahdid ostida. Google qurilmangizga ilovalarni örnatiş usulini özgartirmoqda. Bizga yordamingiz kerak.</string>
@@ -427,7 +427,7 @@
     <string name="swap_toast_closing_nearby_after_timeout">Yaqin atrofdagi qurilmalar funksiyasi harakatsiz turgani uçun öçirildi.</string>
     <string name="auto_update_time">Keyingi eng erta yangilaniş: %s</string>
     <string name="auto_update_time_past">Keyingi yangilaniş şartlar bajarilganidan söng bajariladi</string>
-    <string name="theme_follow_system">Tizimga böyiça</string>
+    <string name="theme_follow_system">Tizimnikidek</string>
     <string name="notification_channel_swaps_title">Almaşişlar</string>
     <string name="notification_channel_updates_description">Ilova va repozitoriy yangilaniş bildirişnomalarini körsatadi.</string>
     <string name="notification_channel_install_success_description">Ilovalar avtomatik örnatilgandan keyin bildirişnoma körsatadi</string>

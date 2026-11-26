@@ -1,0 +1,7 @@
+* Opravené používanie repozitárov a zrkadlových serverov z externého úložiska v novších verziách Androidu
+* Vylepšená správa Wi‑Fi vo funkcii Nearby
+* Navigačný panel si teraz pamätá svoju polohu aj po reštartovaní F-Droidu
+* Nový jazyk: svahilčina
+* Opravené sťahovanie obrázkov pre repozitáre, ktoré stále používajú index-v1
+* Opravené pády aplikácie súvisiace so Swapom, správou repozitárov a ďalšími funkciami
+* Tlačidlo Downgrade bolo odstránené, pretože Android to už neumožňuje

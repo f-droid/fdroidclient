@@ -479,7 +479,19 @@
     <string name="app_details_permissions_title_custom">سفارشی (%d)</string>
     <string name="sort_summary">چینش بر اساس</string>
     <string name="sort_by_name_short">نام</string>
-    <string name="sort_by_latest_short">آخرین به‌روز رسانی</string>
+    <string name="sort_by_latest_short">آخرین به‌روز رسانی</string>
     <string name="filter_antifeatures_summary">نمایش کاره‌های با این پادویژگی</string>
     <string name="filter_antifeatures_collapsed">نهفته: %s</string>
+    <string name="pref_auto_app_updates_only_always">روانه حتا روی دادهٔ همراه</string>
+    <string name="last_updated_short">به‌روز شده در %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">روزانه روی وای‌فای</string>
+    <string name="pref_auto_updates_only_immediately">به محض امکان</string>
+    <string name="pref_auto_updates_summary_immediately">بارگیری و به‌روز رسانی کاره‌ها به محض موجود بودن به‌روز رسانی</string>
+    <string name="repo_add_preview_title">پیش‌نمایش مخزن</string>
+    <string name="repo_add_fetch">واکشی</string>
+    <string name="notification_channel_privileged_extension_migration_title">افزونهٔ ممتاز</string>
+    <string name="notification_channel_privileged_extension_migration_description">آگاه کردن هنگام نیاز به مداخلهٔ دستی برای مهاجرت از افزونهٔ ممتاز.</string>
+    <string name="notification_privileged_extension_migration_title">به‌روز رسانی نیازمند کنش دستی!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">«منابع ناشناخته» به کار نیفتاده!</string>
+    <string name="notification_privileged_extension_migration_text">%1$sاکنون کاره‌ را با نصب کنندهٔ توکار اندروید نصب می‌کند. برای استفاده از این نصب کننده باید اجازهٔ «منبع‌های ناشناس» را به %1$s داده و نخستین بار نصب هر برنامه را تأیید کنید.</string>
 </resources>

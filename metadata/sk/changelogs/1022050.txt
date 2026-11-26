@@ -1,0 +1,8 @@
+* Experimentálna podpora obnovovania archivovaných aplikácií v Androide 15
+* Automatické pridávanie novo nainštalovaných aplikácií na domovskú obrazovku vo väčšine spúšťačov (vďaka, Dhina!)
+* Oddelenie akcií na zdieľanie odkazu a súboru v podrobnostiach aplikácie
+* Zobrazovanie krátkeho upozornenia, keď súbor APK požaduje viac povolení, než sa očakávalo
+* Častejšie čistenie internej vyrovnávacej pamäte na uvoľnenie miesta (vďaka, DerGenaue!)
+* Zmena poradia odznakov darcov tak, aby zodpovedalo webovej stránke (vďaka, Leo!)
+* Pridanie nastavenia na uprednostňovanie zahraničných zrkadlových serverov
+* Množstvo drobných opráv chýb

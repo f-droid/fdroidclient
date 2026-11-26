@@ -489,4 +489,10 @@
     <string name="install_history_delete_text">Να διαγραφεί το ιστορικό εγκαταστάσεων;</string>
     <string name="icon_summary">Επιλέξτε το εικονίδιο που χρησιμοποιείται για αυτήν την εφαρμογή στην αρχική οθόνη και στο συρτάρι εφαρμογών</string>
     <string name="icon_intro">Επιλέξτε ένα εικονίδιο και ένα όνομα για αυτήν την εφαρμογή. Αυτά εμφανίζονται στην αρχική οθόνη και στο συρτάρι εφαρμογών.\n\nΣημείωση: Οι ειδοποιήσεις θα χρησιμοποιούν πάντα το προεπιλεγμένο εικονίδιο και όνομα.</string>
+    <string name="notification_channel_privileged_extension_migration_title">Προνομιακή Επέκταση</string>
+    <string name="notification_channel_privileged_extension_migration_description">Ειδοποιεί όταν απαιτείται χειροκίνητη παρέμβαση για την μετακίνηση μακριά από την Προνομιακή Επέκταση.</string>
+    <string name="notification_privileged_extension_migration_title">Ενημερώσεις απαιτούν χειροκίνητη ενέργεια!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Άγνωστες πηγές\" δεν είναι ενεργοποιημένο!</string>
+    <string name="notification_privileged_extension_migration_text">Το %1$s τώρα εγκαθιστά εφαρμογές μέσω του ενσωματωμένου εγκαταστάτη του Android. Πρέπει να χορηγήσετε στο %1$s την άδεια \"άγνωστες πηγές\" για να χρησιμοποιηθεί αυτός ο εγκαταστάτης και να εγκρίνετε κάθε νέα εγκατάσταση.</string>
+    <string name="repo_add_preview_title">Προεπισκόπηση αποθετηρίου</string>
 </resources>

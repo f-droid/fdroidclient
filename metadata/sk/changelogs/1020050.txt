@@ -1,0 +1,13 @@
+*Prepracovanie spôsobu zobrazovania repozitárov, aby bolo zrejmé, keď sa aplikácia inštaluje z iného zdroja než f-droid.org
+
+*Umožnenie* používateľom meniť prioritu repozitárov globálne aj pre jednotlivé aplikácie
+
+*Predvolené zapnutie vlastných antifunkcií namiesto ich vypnutia
+
+*Podpora prijímania URL adries repozitárov cez funkciu Zdieľať
+
+*Prispôsobenie všetkých obrazoviek dennej a nočnej téme
+
+*Aktualizácia používania externého úložiska na podporu targetSdkVersion 29
+
+*Aktualizácia F-Droid Basicu na podporu targetSdkVersion 34

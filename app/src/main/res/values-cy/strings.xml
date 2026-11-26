@@ -176,4 +176,22 @@
     <string name="swap_wifi_vpn_conflict">Gwrthdaro gyda VPN gweithredol!</string>
     <string name="theme_follow_system">Dilyn y system</string>
     <string name="has_disallow_install_unknown_sources">Ni all y defnyddiwr hwn ychwanegu ffynonellau anhysbys, gan gynnwys ystorfeydd newydd</string>
+    <string name="menu_about">Ynghylch</string>
+    <string name="menu_apps_my">Fy apiau fi</string>
+    <string name="first_start_metered">Ar ddata ffôn symudol a mwy na 10 MB y bydd wedi\'i lawrlwytho. Tapiwch cyrchu storfeydd i ddechrau beth bynnag.</string>
+    <string name="first_start_button">Cyrchu storfeydd</string>
+    <string name="no_repos_enabled">Dim storfeydd ar gael, ychwanegwch storfa i ddechrau</string>
+    <string name="my_apps_ignore_dialog_button">Cuddio</string>
+    <string name="app_list_new">Apiau newydd</string>
+    <string name="app_list_all">Apiau i gyd</string>
+    <string name="search_placeholder">Chwilio…</string>
+    <string name="sort_by_name_short">enw</string>
+    <string name="sort_by_latest_short">diweddariad diwetha</string>
+    <string name="got_it">Iawn</string>
+    <string name="hide">Cuddio</string>
+    <string name="category_group_device">Dyfais</string>
+    <string name="category_group_games">Gêmau</string>
+    <string name="category_group_health">Iechyd</string>
+    <string name="pref_dyn_colors_title">Defnyddio\'r lliwiau system</string>
+    <string name="pref_language_summary">Agor gosodiadau iaith system</string>
 </resources>

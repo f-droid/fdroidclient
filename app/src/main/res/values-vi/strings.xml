@@ -45,7 +45,7 @@
     <string name="open_qr_code_scanner">Mở trình quét mã QR</string>
     <string name="swap_welcome">Chào mừng bạn đến với F-Droid!</string>
     <string name="swap_confirm_connect">Bạn có muốn nhận ứng dụng từ %1$s?</string>
-    <string name="app_name_full">F-DroidF-Droid</string>
+    <string name="app_name_full">F-Droid</string>
     <string name="links">Liên kết</string>
     <string name="back">Quay lại</string>
     <string name="about_source">Mã nguồn</string>
@@ -290,7 +290,7 @@
     <string name="call_to_action_keepandroidopen_url">https://keepandroidopen.org</string>
     <string name="ipfsgw_summary_new">Tải ứng dụng bằng điểm cuối IPFS</string>
     <string name="added_x_ago">Vào %1$s</string>
-    <string name="filter_antifeatures">Ẩn phản-tính năng</string>
+    <string name="filter_antifeatures">Phản-tính năng</string>
     <string name="sort_title">Sắp xếp và tương thích</string>
     <string name="sort_by_name">Theo tên</string>
     <string name="sort_by_latest">Theo lần cuối cập nhật</string>
@@ -469,4 +469,21 @@
     <string name="app_details_permissions_title_runtime">Runtime (%d)</string>
     <string name="app_details_permissions_title_custom">Tùy chỉnh (%d)</string>
     <string name="permissions_colon">Quyền: %1$d</string>
+    <string name="sort_summary">Xếp theo</string>
+    <string name="sort_by_name_short">tên</string>
+    <string name="sort_by_latest_short">lần cuối cập nhật</string>
+    <string name="filter_antifeatures_summary">Hiện ứng dụng với những phản-tính năng này</string>
+    <string name="filter_antifeatures_collapsed">Đã ẩn: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Mở rộng đặc quyền</string>
+    <string name="notification_channel_privileged_extension_migration_description">Thông báo khi cần can thiệp thủ công để chuyển đổi khỏi Chế độ Mở rộng đặc quyền.</string>
+    <string name="notification_privileged_extension_migration_title">Việc cập nhật yêu cầu thao tác thủ công!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">Chức năng \"Cho phép nguồn không xác định\" chưa được bật!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s hiện cài đặt ứng dụng thông qua trình cài đặt tích hợp sẵn của Android. Bạn phải cấp cho %1$s quyền \"cho phép cài đặt từ nguồn không xác định\" và phê duyệt mỗi lần cài đặt đầu tiên.</string>
+    <string name="repo_add_preview_title">Xem trước kho</string>
+    <string name="repo_add_fetch">Tải</string>
+    <string name="last_updated_short">Đã cập nhật %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Hàng ngày chỉ qua Wi-Fi</string>
+    <string name="pref_auto_app_updates_only_always">Hàng ngày kể cả trên mạng di động</string>
+    <string name="pref_auto_updates_only_immediately">Sớm nhất có thể</string>
+    <string name="pref_auto_updates_summary_immediately">Tải xuống và cập nhật các ứng dụng sớm nhất có thể khi bản cập nhật khả dụng</string>
 </resources>

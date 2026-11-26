@@ -5,7 +5,7 @@
     <string name="version">Versión</string>
     <string name="updates">Actualizacións</string>
     <string name="no_such_app">Non se atopou esa aplicación.</string>
-    <string name="about_title_full">Acerca do F-Droid</string>
+    <string name="about_title_full">En canto a F-Droid</string>
     <string name="about_version">Versión</string>
     <string name="app_installed">Instalada</string>
     <string name="ok">Aceptar</string>
@@ -178,7 +178,7 @@
     <string name="swap_wifi_vpn_conflict">Conflitos coa VPN activa!</string>
     <string name="menu_release_channel_beta">Permitir Actualizacións Beta</string>
     <string name="app_name_basic">F-Droid básico</string>
-    <string name="about_title_basic">Acerca do F-Droid Básico</string>
+    <string name="about_title_basic">En canto a F-Droid Básico</string>
     <string name="useDnsCache">Empregar caché DNS</string>
     <string name="useDnsCacheSummary">Empregar resultados da caché para minimizar as consultas DNS.</string>
     <string name="repo_list_info_title">Lista de repositorios</string>
@@ -216,7 +216,7 @@
     <string name="repo_and_mirror_add_both_info">A URL que está tentando engadir (%s) é un espello dun novo repositorio. Ambos o repositorio orixinal e o espello serán engadidos.</string>
     <string name="swap_bluetooth_permissions">Por favor, outorgue o permiso Bluetooth ou Dispositivo próximo!</string>
     <string name="paste">Pegar</string>
-    <string name="copied_to_clipboard">Copiado no portapapeis</string>
+    <string name="copied_to_clipboard">Copiado no portarretallos</string>
     <string name="ipfsgw_title">Portas de enlace IPFS</string>
     <string name="ipfsgw_explainer">Baixar as aplicacións dende pontos finais web IPFS. (Só funciona para repositorios F-Droid compatibles con IPFS)</string>
     <string name="ipfsgw_caption_custom_gateways">Portas IPFS personalizadas</string>
@@ -226,7 +226,7 @@
     <string name="ipfsgw_caption_official_gateways">Portas IPFS oficiais</string>
     <string name="app_name_full_nightly">F-Nightly</string>
     <string name="app_name_basic_nightly">F-Nightly Basic</string>
-    <string name="menu_about">Acerca de</string>
+    <string name="menu_about">En canto a</string>
     <string name="menu_discover">Descubrir</string>
     <string name="menu_apps_my">As miñas aplicacións</string>
     <string name="app_list_all">Todas as aplicacións</string>
@@ -236,7 +236,7 @@
     <string name="category_group_productivity">Produtividade</string>
     <string name="category_group_tools">Ferramentas</string>
     <string name="category_group_wallets">Finanzas e carteiras</string>
-    <string name="filter_antifeatures">Ocultar funcións indesexables</string>
+    <string name="filter_antifeatures">Antifuncións</string>
     <string name="anti_features_title">Esta app ten funcións indesexables</string>
     <string name="app_details_anti_features_title">Que son as Funcións Indesexables?</string>
     <string name="app_details_anti_features_text">Algunhas aplicacións veñen con funcións que non pediches — e pode que non queiras. Cousas como publicidade, seguimento ou dependencia de servizos propietarios. A isto chamámoslle funcións indesexables.\n\nAs apps en F-Droid están etiquetadas de xeito claro cando conteñen funcións indesexables, para que poidas tomar unha decisión informada.</string>
@@ -263,7 +263,7 @@
     <string name="sort_title">Ordenación e compatibilidade</string>
     <string name="sort_by_name">Ordenar por nome</string>
     <string name="sort_by_latest">Ordenar pola última actualización</string>
-    <string name="filter_only_compatible">Aplicacións compatíbeis con este dispositivo</string>
+    <string name="filter_only_compatible">Só amosar aplicacións compatíbeis con este dispositivo</string>
     <string name="filter_button_save">Gardar como predeterminado</string>
     <string name="filter_intro">Filtrar aplicacións por</string>
     <string name="filter_button_clear_all">Limpar todos os filtros</string>
@@ -416,8 +416,8 @@
     <string name="error">Erro</string>
     <string name="whats_new_title">O que hai novo</string>
     <plurals name="repo_num_apps_text">
-        <item quantity="one">1 app</item>
-        <item quantity="other">%d apps</item>
+        <item quantity="one">1 aplicación</item>
+        <item quantity="other">%d aplicacións</item>
     </plurals>
     <string name="repo_last_update_upstream">Publicado %s</string>
     <plurals name="notification_summary_app_updates">
@@ -483,4 +483,16 @@
     <string name="sort_by_latest_short">última actualización</string>
     <string name="filter_antifeatures_summary">Amosar aplicacións con estas funcións contrarias</string>
     <string name="filter_antifeatures_collapsed">Agochado: %s</string>
+    <string name="repo_add_preview_title">Vista previa do repositorio</string>
+    <string name="notification_channel_privileged_extension_migration_title">Extensións con privilexios</string>
+    <string name="notification_channel_privileged_extension_migration_description">Notifica cando se precisa intervención manual para migrar dunha Extensións Privilexiada.</string>
+    <string name="notification_privileged_extension_migration_title">As actualizacións precisan de acción manual!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">\"Fontes descoñecidas\" non está activado!</string>
+    <string name="repo_add_fetch">Obter</string>
+    <string name="pref_auto_app_updates_only_wifi">A diario, só con wifi</string>
+    <string name="pref_auto_app_updates_only_always">A diario, mesmo con datos móbiles</string>
+    <string name="pref_auto_updates_only_immediately">O antes posible</string>
+    <string name="pref_auto_updates_summary_immediately">Descarga e actualiza as aplicacións en canto haxa unha actualización dispoñible</string>
+    <string name="last_updated_short">Actualizada %1$s</string>
+    <string name="notification_privileged_extension_migration_text">Agora %1$s instala aplicacións a través do instalador integrado de Android. Tes que concederlle a %1$s permiso de \"fontes descoñecidas\" para usar ese instalador e aprobar cada primeira instalación.</string>
 </resources>

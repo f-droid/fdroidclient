@@ -1,0 +1,4 @@
+* spracovanie konfigurácie povolení na Adroid 10 pre zastavenie výziev Neznámych zdrojov
+* otvorenie klávesnice pri vymazaní vyhladávania
+* synchronizácia prekladu s reťazcami systému Android
+* vynútenie domén bežných repozitárov na HTTPS (GitLab, GitHub, Amazon)

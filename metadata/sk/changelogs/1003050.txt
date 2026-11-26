@@ -1,0 +1,19 @@
+*Spolahlivejšie tlačítka a aktualizácie stavu
+
+*Prepracovanie nastavení vrátane nového ovládania využitia dát
+
+*Procesy na pozadí s ohľadom na batériu na Android 5.0 a novších
+
+*Položka ponuky zdielania pre repozitáre
+
+*Vypnutie hlásení o pádoch v nastaveniach
+
+*Inštalácia prehliadača histórie pri zapnutom protokolovaní
+
+*Klinutelný Anti-Feature zoznam, pridaný NoSourceSince
+
+*Android 4.0 je teraz najnižsí podporovaný
+
+*Výrazné vylepšenia pre upravené verzie F-Droidu
+
+*Expertné nastavenie na odosielanie verzie na ladenie a UUID pri sťahovaní

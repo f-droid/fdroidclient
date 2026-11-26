@@ -482,4 +482,16 @@
     <string name="sort_by_latest_short">lasta ĝisdatigo</string>
     <string name="filter_antifeatures_summary">Montri aplikaĵojn kun la jenaj nedezirataj ebloj</string>
     <string name="filter_antifeatures_collapsed">Kaŝitaj: %s</string>
+    <string name="notification_channel_privileged_extension_migration_title">Privilegia aldonaĵo</string>
+    <string name="notification_channel_privileged_extension_migration_description">Montras sciigon kiam permana interago estas necesa por migri el la privilegia aldonaĵo.</string>
+    <string name="notification_privileged_extension_migration_title">Ĝisdatigoj postulas permanan agon!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">“Nekonataj fontoj” estas malaktivaj!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s nuntempe instalas aplikaĵojn per enkonstruita instalilo de Android. Vi devas doni al %1$s la permeson “nekonataj fontoj” por ke ĝi povu uzi tiun instalilon kaj konfirmi ĉiun unuan instaladon.</string>
+    <string name="repo_add_preview_title">Antaŭvido de deponejo</string>
+    <string name="repo_add_fetch">Elŝuti</string>
+    <string name="last_updated_short">Ĝisdatigita %1$s</string>
+    <string name="pref_auto_app_updates_only_wifi">Ĉiutage nur per vifio</string>
+    <string name="pref_auto_app_updates_only_always">Ĉiutage eĉ per ĉeltelefona konekto</string>
+    <string name="pref_auto_updates_only_immediately">Kiel eble plej frue</string>
+    <string name="pref_auto_updates_summary_immediately">Elŝutas kaj ĝisdatigas aplikaĵojn tuj post eldono de ĝisdatigo</string>
 </resources>

@@ -1,0 +1,3 @@
+* Oprava predvolieb vyhľadávacieho panelu na posledných verziách Androidu (ďakujeme @dkanada)
+* Spracovanie rozdelenia oprávnení API 29: povolenie pre približnú polohu teraz zahŕňa aj presnú polohu
+* Definovanie záložných pravidiel pre zabránenie uloženia swap repozitára

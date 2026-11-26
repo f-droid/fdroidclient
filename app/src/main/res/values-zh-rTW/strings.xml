@@ -459,4 +459,12 @@
     <string name="icon_intro">選擇此應用程式的圖示和名稱。此設定將會在主畫面和應用程式抽屜上顯示。\n\n注意：通知將始終使用預設圖示和名稱。</string>
     <string name="panic_hide_warning_title">記住如何恢復</string>
     <string name="panic_hide_warning_message">在緊急事件當中，這一選項會在主螢幕以及 app 通知 顯示這款 app 的名稱，請使用 App 圖示設定來恢復預設圖示與名稱。\n\n注意：通告總會顯示預設圖示與名稱。</string>
+    <string name="sort_by_name_short">名稱</string>
+    <string name="sort_by_latest_short">最後更新</string>
+    <string name="app_details_permissions_section">權限</string>
+    <string name="app_details_permissions_sensitive_none">此應用程式未請求任何敏感權限</string>
+    <string name="app_details_permissions_warning">這些資訊由軟體庫提供。可能與應用程式實際取得的權限不同。</string>
+    <string name="app_details_permissions_title_normal">自動授予（%d）</string>
+    <string name="permissions_colon">權限：%1$d</string>
+    <string name="repo_add_preview_title">預覽軟體庫</string>
 </resources>

@@ -1,13 +1,13 @@
-* O modo como os repositórios são representados para os usuários foi redesenhado para deixar claro quando uma instalação está vindo de algum outro local que não seja o f-droid.org
+* Reformular a apresentação dos repositórios para indicar instalações de fontes diferentes de f-droid.org
 
-* Permitir que usuários modifiquem a prioridade dos repositórios globalmente e por app
+* Alterar a prioridade dos repositórios globalmente e por app
 
-* Apps com funcionalidades indesejáveis agora aparecem por padrão, em vez de serem escondidos
+* Antifuncionalidades personalizadas agora ativadas por padrão, em vez de desativadas
 
-* Suporte ao recebimento de URLs via o Compartilhar
+* Receber URLs de repositórios pelo recurso Compartilhar
 
-* Todas as atividades agoram respeitam o tema noite/dia
+* Todas as atividades respeitam o tema claro/escuro
 
-* Foi atualizado o uso de armazenamento externo para funcionar com o targetSdkVersion 29
+* Ajustar o uso do armazenamento externo ao targetSdkVersion 29
 
-* F-Droid Básico foi atualizado para funcionar com o targetSdkVersion 34
+* F-Droid Basic atualizado para targetSdkVersion 34

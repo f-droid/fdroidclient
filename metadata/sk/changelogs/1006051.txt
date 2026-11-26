@@ -1,0 +1,3 @@
+*Aktualizované preklady
+*Opravené problémy s veľkosťou tlačidiel #1678
+*Zastavené náhodné pády na pozadí

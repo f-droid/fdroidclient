@@ -150,13 +150,13 @@
     <string name="sort_title">Сұрыптау және үйлесімділік</string>
     <string name="sort_by_name">Аты бойынша сұрыптау</string>
     <string name="sort_by_latest">Соңғы жаңарту бойынша сұрыптау</string>
-    <string name="filter_only_compatible">Осы құрылғымен үйлесімді қолданбалар</string>
+    <string name="filter_only_compatible">Тек осы құрылғымен үйлесімді қолданбаларды көрсету</string>
     <string name="filter_button_save">Үнсіз келісім бойынша сақтау</string>
     <string name="filter_intro">Қолданбаларды сүзгілеу шарты:</string>
     <string name="filter_button_clear_all">Барлық сүзгілерді тазарту</string>
     <string name="filter">Сүзгі</string>
     <string name="filter_selected">таңдалған</string>
-    <string name="filter_antifeatures">Антимүмкіндіктерді жасыру</string>
+    <string name="filter_antifeatures">Антимүмкіндіктер</string>
     <string name="onboarding_app_list_filter_title">Сүзгі</string>
     <string name="onboarding_app_list_filter_message">Тек белгілі бір санаттардағы немесе репозиторийлердегі қолданбаларды көрсету үшін сүзгілерді пайдаланыңыз. Сондай-ақ сұрыптау ретін өзгертуге болады.</string>
     <string name="got_it">Түсінікті</string>
@@ -462,4 +462,30 @@
     <string name="icon_summary">Бұл қолданба үшін басты экранда және қолданбалар мәзірінде пайдаланылатын таңбашаны таңдаңыз</string>
     <string name="icon_intro">Бұл қолданба үшін таңбаша мен атау таңдаңыз. Ол басты экранда және қолданбалар мәзірінде көрсетіледі.\n\nЕскертпе: хабарландыруларда әрқашан бастапқы таңбаша мен атау пайдаланылады.</string>
     <string name="icon_calculator">Калькулятор</string>
+    <string name="sort_summary">Сұрыптау реті</string>
+    <string name="sort_by_name_short">аты</string>
+    <string name="sort_by_latest_short">соңғы жаңарту</string>
+    <string name="filter_antifeatures_summary">Осы антимүмкіндіктері бар қолданбаларды көрсету</string>
+    <string name="filter_antifeatures_collapsed">Жасырын: %s</string>
+    <string name="app_details_permissions_section">Рұқсаттар</string>
+    <string name="app_details_permissions_button">Барлық %d рұқсатты көрсету</string>
+    <plurals name="app_details_permissions_sensitive">
+        <item quantity="one">Бұл қолданба %d сезімтал рұқсат сұрайды:</item>
+        <item quantity="other">Бұл қолданба %d сезімтал рұқсат сұрайды:</item>
+    </plurals>
+    <string name="app_details_permissions_sensitive_none">Бұл қолданба ешқандай сезімтал рұқсат сұрамайды</string>
+    <string name="app_details_permissions_title_num">Рұқсаттар (%d)</string>
+    <string name="app_details_permissions_warning">Бұл ақпаратты репозиторий ұсынған. Қолданба алатын нақты рұқсаттар өзгеше болуы мүмкін.</string>
+    <string name="app_details_permissions_title_sensitive">Сезімтал (%d)</string>
+    <string name="app_details_permissions_title_normal">Автоматты түрде берілген (%d)</string>
+    <string name="app_details_permissions_title_runtime">Орындалу кезінде (%d)</string>
+    <string name="app_details_permissions_title_custom">Пайдаланушылық (%d)</string>
+    <string name="permissions_colon">Рұқсаттар: %1$d</string>
+    <string name="repo_add_preview_title">Репозиторийді алдын ала қарау</string>
+    <string name="repo_add_fetch">Жүктеп алу</string>
+    <string name="notification_channel_privileged_extension_migration_title">Привилегиялы кеңейту</string>
+    <string name="notification_channel_privileged_extension_migration_description">Привилегиялы кеңейтуден ауысу үшін қолмен әрекет ету қажет болғанда хабарлайды.</string>
+    <string name="notification_privileged_extension_migration_title">Жаңартулар қолмен әрекет етуді талап етеді!</string>
+    <string name="notification_privileged_extension_migration_title_sdk25">«Белгісіз дереккөздер» іске қосылмаған!</string>
+    <string name="notification_privileged_extension_migration_text">%1$s енді қолданбаларды Android жүйесінің кірістірілген орнатқышы арқылы орнатады. Сол орнатқышты пайдалану үшін %1$s қолданбасына «белгісіз дереккөздер» рұқсатын беріп, әрбір алғашқы орнатуды мақұлдауыңыз керек.</string>
 </resources>

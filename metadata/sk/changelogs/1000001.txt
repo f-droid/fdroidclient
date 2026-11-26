@@ -1,0 +1,3 @@
+*Opravená chyba, ktorá odstraňovala aplikácie z repozitárov (#568)
+
+*Výrazne rýchlejšie aktualizácie indexov

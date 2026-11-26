@@ -1,0 +1,13 @@
+F-Droid — bu Android uçun erkin dasturlar katalogidir. F-Droid ilovasi qurilmangizdagi ilovalarni körib çiqiş, örnatiş va yangilanişlarni kuzatib borişni osonlaştiradi.
+
+U F-Droid bilan mos keladigan istalgan repozitoriyga ulana oladi. Birlamçi repozitoriy f-droid.org saytida joylaşgan bölib, u faqat haqiqiy erkin dasturlarni öz içiga oladi.
+
+Android’ning özi oçiq tizim bölib, istalgan manbadan APK fayllarni örnatiş erkinligini beradi, biroq erkin ilovalar menejeri sifatida aynan F-Droid’dan foydalaniş uçun bir qança asosli sabablar bor:
+
+* Yangilanişlar çiqqanda bildirişnoma oliş
+* Xohişga köra yangilanişlarni avtomatik yuklab oliş va örnatiş
+* Eski va beta versiyalarni kuzatib boriş
+* Qurilmangizga mos kelmaydigan ilovalarni filtrlaş
+* Turli kategoriyalar va tavsiflar böyiça ilovalarni qidirib topiş
+* Donat qiliş, manba kodi va boşqa tegişli havolalarga tez kiriş
+* Repozitoriy indeksi imzolari va APK xeşlarini tekşiriş orqali xavfsizlikni ta’minlaş
